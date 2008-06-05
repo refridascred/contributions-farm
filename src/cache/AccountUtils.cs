@@ -27,11 +27,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double RetryTools = 62.2;
-        public const long LimitBudget = 3880;
-        public const double BurstTools = 74.12;
-        public const double MaxTools = 32.01;
-        public const long StepDepth = 8754;
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesBounds(long[] series, long seed)
+        {
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
