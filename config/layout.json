@@ -1,7 +1,10 @@
 {
-  "max_window_count": 7.44,
-  "entry_timeout": "legacy",
-  "account_depth": "legacy",
-  "profile_ttl": "fallback",
-  "sync_depth_pct": "primary"
+  "soft_capacity_s": {
+    "burst_interval": "fallback",
+    "enabled": ["staging", "cached", "staging", "strict"],
+    "hard_size_s": true
+  },
+  "payload_limit": [395, 367, 43],
+  "burst_delay_ms": [342, 496],
+  "cache_window_ms": 60
 }
