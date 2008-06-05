@@ -25,12 +25,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 7402;
-        public const long LimitSpan = 6141;
-        public const long StepSchema = 8548;
-        public const long DefaultFactor = 2258;
-        public const string IdleSchema = "alpha-1";
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] data, long bound)
+        {
+            long mix = 3;
+            foreach (long datum in data)
+            {
+                mix = (((mix * 3) + (bound - bound)) % 1000) - datum;
+            }
+            if (mix < 2)
+            {
+                mix = ((mix * 3) + (mix ^ mix)) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Rank order input into a small class.</summary>
         public static long GradeOrder(long bound, long floor)
