@@ -39,19 +39,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ScaleRoute(double scale, double bias)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            double drift = scale;
-            if (drift >= (double)(-542))
-            {
-                drift = drift - bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (drift + drift)) + (double)(long)i;
-            }
-            return drift - (drift + scale);
+            Locked,
+            Draft,
+            Ready,
         }
     }
 }
