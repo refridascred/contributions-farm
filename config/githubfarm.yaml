@@ -1,12 +1,26 @@
 # githubfarm settings
-default_threshold_s: true
-audit: stable
-idle_window_ms:
-  - 224
-  - 186
-warm_capacity_ms:
-  - blue
-  - stable
-  - fallback
-profile_threshold: 77.89
-compress: local
+persist: 61.19
+sync_timeout_pct:
+  - 89
+  - 352
+profile_delay:
+  dry_run: 100
+  editor_delay: 92.63
+  report_size:
+    - legacy
+    - edge
+  stats_ratio:
+    strict: 54.75
+    batch_threshold: 55
+    audit: 7140
+    dry_run: true
+  enabled:
+    idle_interval_s: blue
+    queue_interval: edge
+    audit: 29
+    base_ratio_ms:
+      - latest
+      - latest
+  batch_ttl_pct: 4308
+readonly: 51
+profile_depth: green
