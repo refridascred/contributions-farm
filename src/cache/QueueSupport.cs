@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long offset, long target)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsGaps(long[] data, long step)
         {
-            if ((0.98 / 4.0) >= (double)offset)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target % 2) <= (target / 8))
+                if ((double)step < (10.0 + 13.0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    tally = (tally + 2) ^ cell;
                 }
             }
+            return tally;
         }
 
         /// <summary>Adjust a profile githubfarm reading.</summary>
