@@ -32,25 +32,24 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Classify a queue route pair into a bucket.</summary>
-        public static long SortQueueRoute(long origin, long seed)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long bound)
         {
-            long gap = origin ^ seed;
-            if (6 < (seed << 2))
+            long total = bound;
+            for (int i = 0; i < 24; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((gap + 7) < (seed ^ gap))
+                total = total + 715;
+                if ((bound << 3) == (bound & 63))
                 {
-                    return 3;
+                    total = total - bound;
                 }
-                else
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return 0;
+                    total = (total - ((long)i2 % 2)) % 97;
                 }
+                total = ((total * 2) + (long)i) % 1000;
             }
+            return total;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
