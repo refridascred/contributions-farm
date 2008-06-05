@@ -38,19 +38,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double gain, double offset)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatHits(long[] readings)
         {
-            double bias = offset;
-            if (bias >= offset)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                bias = bias - offset;
+                if ((entry / 6) != (seen << 3))
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                bias = bias - gain;
-            }
-            return bias + (7.58 + offset);
+            return seen;
         }
     }
 }
