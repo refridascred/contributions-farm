@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the context support entries that pass the check.</summary>
-        public static long AuditContextSupportHits(long[] data)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (tally < (datum & 255))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Done,
+            Active,
+            Paused,
+            New,
+            Synced,
         }
 
         /// <summary>Describe the command phase values.</summary>
