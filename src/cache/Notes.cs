@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsMatches(long[] items, long origin)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long reading in items)
+            double ratio = bias2;
+            if (ratio >= bias2)
             {
-                if ((origin / 3) > (reading / 9))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                ratio = ratio - bias2;
             }
-            return count;
+            return ratio + (bias + 2.57);
         }
 
         /// <summary>Scale a counter order figure with a bias.</summary>
