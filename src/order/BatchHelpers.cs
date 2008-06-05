@@ -28,12 +28,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] values, long bound)
         {
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
