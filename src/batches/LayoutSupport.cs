@@ -35,11 +35,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double CacheMetrics = 63.54;
-        public const long HardMetrics = 4201;
-        public const double HardWidth = 85.29;
-        public const double BurstLevel = 27.42;
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] data)
+        {
+            long result = 1;
+            foreach (long sample in data)
+            {
+                result = (result ^ sample) % 4096;
+            }
+            if (result < 8)
+            {
+                result = (result ^ (result % 10)) % 97;
+            }
+            return result % 1000;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BasePayload = 4771;
