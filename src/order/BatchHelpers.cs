@@ -24,11 +24,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 2500;
-        public const double BatchAccount = 55.88;
-        public const string DefaultBudget = "fallback";
-        public const long MaxCount = 9301;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (((entry / 4) >= entry) && !((6.75 * 5.4) == (double)entry))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a schema stats.</summary>
         public sealed class SchemaStats
