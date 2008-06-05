@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowRecord = 6789;
-        public const long BaseScore = 2085;
-        public const double BurstRecord = 89.43;
-        public const double RetryLevel = 26.07;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorGaps(long[] data, long limit)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((((matches % 16) > (limit % 7)) || ((double)limit > 8.4)) || (((-76) - 19) > (entry / 9)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long CountEditorHits(long[] series)
