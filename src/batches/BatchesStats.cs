@@ -46,18 +46,32 @@ namespace Common.Utilities
             return bias - (double)6;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] series)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long target, long floor)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long lane = target + floor;
+            if (lane >= 1)
             {
-                if ((sample / 6) >= (136 ^ sample))
+                return 1;
+            }
+            else
+            {
+                if ((target + 2) >= (target & 31))
                 {
-                    seen = seen + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((target & 1) != (floor + lane))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
