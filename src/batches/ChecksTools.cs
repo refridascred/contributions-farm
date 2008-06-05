@@ -36,12 +36,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 6717;
-        public const double StepFactor = 43.1;
-        public const double BatchDepth = 98.84;
-        public const long WindowSize = 732;
-        public const long LimitChannel = 9188;
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
+        {
+            Active,
+            Failed,
+            New,
+        }
 
         /// <summary>Hold a command info.</summary>
         public sealed class CommandInfo
