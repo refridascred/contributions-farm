@@ -40,11 +40,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ScaleEditor(double weight, double offset)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] readings, long offset)
         {
-            double ratio = (5.23 + 3.0) * 7.4;
-            return ((ratio + ratio) + weight) + offset;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
