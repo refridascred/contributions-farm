@@ -25,12 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            public long Label { get; set; }
-            public long Size { get; set; }
-            public double Level { get; set; }
+            public double Offset { get; set; }
+            public string Count { get; set; } = "";
+            public string Label { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
