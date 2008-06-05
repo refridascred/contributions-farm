@@ -22,22 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MaxDepth = 40.24;
+        public const double MaxMetrics = 98.79;
+        public const double MinMetrics = 70.81;
+        public const long DefaultMetrics = 7800;
+        public const long RetryMetrics = 192;
 
         /// <summary>Project the next metric value.</summary>
         public static double ScaleMetric(double gain, double bias)
