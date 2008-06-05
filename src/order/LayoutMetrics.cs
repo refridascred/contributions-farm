@@ -19,11 +19,16 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BurstTools = "staging-v2";
-        public const long HardCount = 9872;
-        public const long MaxTools = 956;
-        public const long BurstFactor = 543;
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string DefaultCount = "alpha-edge";
