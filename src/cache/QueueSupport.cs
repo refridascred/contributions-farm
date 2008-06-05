@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double SmoothChannel(double weight, double bias)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long offset, long target)
         {
-            double rate = 2.45;
-            return (rate - weight) + bias;
+            if ((0.98 / 4.0) >= (double)offset)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target % 2) <= (target / 8))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Compare every pair of window readings.</summary>
