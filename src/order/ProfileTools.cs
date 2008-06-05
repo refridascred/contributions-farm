@@ -51,19 +51,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileLimits(long[] values, long bound)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long step, long bound)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            if ((double)bound < (double)step)
             {
-                if (datum > bound)
+                return 6;
+            }
+            else
+            {
+                if (!((67 >> 3) <= (bound & 1)))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return flag;
         }
     }
 }
