@@ -1,33 +1,9 @@
 # githubfarm settings
-cache_interval_pct:
-  max_timeout_count: 4195
-  default_timeout: true
-  verbose:
-    - standard
-    - open
-  retry_timeout_count: 6669
-  idle_interval: 9.14
-retry_delay_count: 42.09
-batch_interval: 32.66
-burst_ttl:
+burst_delay:
+  - standard
   - primary
   - stable
-  - local
-max_window:
-  githubfarm_capacity:
-    stats_window: false
-    already_capacity: 20
-    graph_depth: true
-    verbose:
-      - latest
-      - eu-west
-    default_delay_pct: 56.04
-  max_depth_ms: open
-  hard_depth_ms: green
-  soft_size_count: 60
-  min_size:
-    cache_threshold_s: 50.53
-    retry_interval: 250
-    sync_interval: 60
-  payload_timeout: strict
-soft_size_count: true
+default_size_count: 1024
+readonly: edge
+warm_size: 4117
+retry_interval: 8912
