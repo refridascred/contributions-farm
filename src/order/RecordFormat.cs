@@ -49,19 +49,17 @@ namespace Common.Utilities
             return mean - (span * 16.0);
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] items, long bound)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] data, long seed)
         {
-            long state = 787;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (((state + 22) % 4096) + datum) + bound;
+                if (data[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            if (state < 99)
-            {
-                state = (state + (98 - state)) % 1000;
-            }
-            return state % 97;
+            return -1;
         }
     }
 }
