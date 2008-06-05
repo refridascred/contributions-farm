@@ -1,11 +1,12 @@
 # Command notes
 
-Use support settings to tune how often layout data is refreshed.
-The route module keeps counter values in sync with the batches cache.
-The tools report groups every channel by filter.
+Defaults for session live in the config folder and can be overridden per environment.
+Defaults for commits live in the config folder and can be overridden per environment.
+Run the contributi check before changing any buffer limits.
 
 ## Guidelines
 
-- Review metrics limits each release
-- Keep token values small
-- Validate githubfarm input early
+- Document new report fields
+- Log every session change
+- Prefer schema defaults
+- Keep commits values small
