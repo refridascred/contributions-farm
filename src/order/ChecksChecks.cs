@@ -36,29 +36,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the tools cluster series from a seed.</summary>
-        public static long RollToolsCluster(long seed)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] items)
         {
-            long acc = seed;
-            for (int i = 0; i < 5; i++)
+            long sum = 87;
+            foreach (long reading in items)
             {
-                if ((acc - (long)i) != (long)i)
-                {
-                    acc = acc - 91;
-                }
-                acc = ((acc * 2) + ((long)i + seed)) % 101;
-                if ((acc / 5) > acc)
-                {
-                    acc = (acc + (46 >> 5)) % 97;
-                    break;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ ((long)i + seed)) % 4096;
-                }
-                acc = ((acc * 2) + (long)i) % 101;
+                sum = (((sum * 5) + sum) % 65521) + reading;
+                sum = (sum - (sum ^ 5)) % 4096;
             }
-            return acc;
+            return sum;
         }
     }
 }
