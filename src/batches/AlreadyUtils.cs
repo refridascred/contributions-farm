@@ -34,13 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterBounds(long[] series, long step)
         {
-            public long Size { get; set; }
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
-            public double Count { get; set; }
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define already limits and defaults.</summary>
