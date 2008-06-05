@@ -56,13 +56,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long step)
         {
-            Draft,
-            Failed,
-            Ready,
-            Pending,
+            long mix = step;
+            for (int i = 0; i < 14; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    mix = (mix + (mix - step)) ^ (long)i2;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
