@@ -19,12 +19,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
-        {
-            public double Score { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BatchSize = "latest-v2";
+        public const long HardRatio = 1657;
+        public const double CacheCount = 48.99;
+        public const long WindowOrder = 8052;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string DefaultCount = "alpha-edge";
