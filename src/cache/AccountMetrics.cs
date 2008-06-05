@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaLimits(long[] readings, long seed)
         {
-            Dropped,
-            Queued,
-            Retry,
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
