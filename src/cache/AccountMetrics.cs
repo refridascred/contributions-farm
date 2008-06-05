@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryBounds(long[] samples, long bound)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Size { get; set; } = "";
+            public bool Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a token summary.</summary>
