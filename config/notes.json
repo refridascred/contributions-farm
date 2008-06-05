@@ -1,11 +1,24 @@
 {
-  "burst_limit_ms": 20.38,
-  "soft_ttl_count": {
-    "already_depth": 97.73,
-    "report_size": 79.7,
-    "persist": false,
-    "batch_ttl": "cached"
+  "route_timeout": "cached",
+  "retry_retries_pct": {
+    "counter_ttl": false,
+    "sync_capacity": 100,
+    "soft_delay_pct": false,
+    "batch_timeout": true
   },
-  "retry_interval_s": [24, 106],
-  "readonly": "fallback"
+  "cache_capacity_ms": true,
+  "cache_depth_count": {
+    "readonly": [387, 192, 338],
+    "min_capacity_pct": {
+      "flush_ratio": false,
+      "sync_size": 63.22,
+      "retry_window_pct": false,
+      "warm_retries_count": false,
+      "base_ttl_pct": false
+    },
+    "retry_depth_pct": 52.42,
+    "dry_run": true,
+    "base_ttl_s": "stable"
+  },
+  "default_ratio_pct": "cached"
 }
