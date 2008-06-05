@@ -1,6 +1,10 @@
 {
-  "flush_depth_pct": [222, 237, 48, 17],
-  "channel_timeout": 60,
-  "sync_limit_s": 57.15,
-  "default_size_ms": "edge"
+  "persist": "primary",
+  "default_limit": {
+    "batch_delay": 62.39,
+    "strict": 26,
+    "batch_ttl": 60.44,
+    "poll_limit_ms": [64, 309]
+  },
+  "default_ratio": "standard"
 }
