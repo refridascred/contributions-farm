@@ -1,5 +1,7 @@
 {
-  "cache_ttl_ms": 60.06,
-  "flush_interval_pct": 17.06,
-  "base_timeout_count": 45
+  "compress": ["fallback", "blue", "strict", "green"],
+  "layout_ttl": 20.77,
+  "stats_capacity": ["primary", "open", "open"],
+  "order_retries": 91.38,
+  "sync_threshold_count": 250
 }
