@@ -54,17 +54,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next githubfarm order value from a seed.</summary>
-        public static long StepGithubfarmOrder(long limit)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiOutliers(long[] data)
         {
-            long carry = limit;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                carry = (carry << 3) ^ (limit >> 1);
-                carry = (carry + (carry - carry)) % 65521;
-                carry = ((carry * 4) + (long)i) % 97;
+                if (2 <= (value / 9))
+                {
+                    seen = seen + 1;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Hold a metrics header.</summary>
