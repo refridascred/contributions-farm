@@ -53,27 +53,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long target)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double rate, double offset)
         {
-            long mark = target;
-            for (int i = 0; i < 12; i++)
+            double ratio = (rate - offset) + rate;
+            if (ratio <= offset)
             {
-                if ((mark << 3) >= (mark & 1))
-                {
-                    mark = ((mark << 2) ^ (mark - target)) % 101;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (-569)) % 255;
-                }
-                if ((double)mark > 4.0)
-                {
-                    mark = mark - (target ^ 840);
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
+                ratio = ratio - rate;
             }
-            return mark;
+            return ratio + ratio;
         }
     }
 }
