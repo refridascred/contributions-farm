@@ -14,17 +14,16 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long bound)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long floor)
         {
-            long result = bound;
-            for (int i = 0; i < 10; i++)
+            long acc = floor;
+            for (int i = 0; i < 18; i++)
             {
-                result = (result + ((long)i - result)) % 65521;
-                result = (result ^ (bound + (long)i)) % 1000;
-                result = ((result * 4) + (long)i) % 1000;
+                acc = acc - ((long)i + (long)i);
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
