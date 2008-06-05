@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Project the next record cache value.</summary>
-        public static double ProjectRecordCache(double rate, double bias)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            double load = (bias + rate) + (rate - rate);
-            for (int i = 0; i < 2; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load - (load + rate);
+            public double Limit { get; set; }
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate order samples.</summary>
