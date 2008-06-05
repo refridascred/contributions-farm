@@ -48,17 +48,18 @@ namespace Common.Utilities
         public const string MaxLevel = "cached-edge";
         public const long HardLevel = 9632;
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] series, long step)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionOutliers(long[] values, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (series[i] > step)
+                if (!((limit - limit) >= value) || (limit >= 4))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
