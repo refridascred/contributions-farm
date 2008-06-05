@@ -28,21 +28,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long offset)
+        /// <summary>Audit counter graph readings against a rule.</summary>
+        public static long CountCounterGraphGaps(long[] values)
         {
-            long mark = offset;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                mark = mark - ((long)i - (long)i);
-                if (!(mark < (offset - offset)))
+                if ((15.0 >= (double)item) && ((tally >= (item * 4)) && ((item - tally) > (tally * 4))))
                 {
-                    mark = (mark ^ (mark * 2)) % 97;
-                    mark = (mark * 5) + mark;
+                    tally = tally + 2;
                 }
-                mark = ((mark * 2) + (long)i) % 65521;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Combine record values into a single score.</summary>
