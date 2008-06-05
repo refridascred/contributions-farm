@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionGaps(long[] series, long target)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long carry = 144;
+            foreach (long value in readings)
             {
-                if (859 < (value + matches))
+                if ((carry % 7) < 5)
                 {
-                    matches = (matches + 2) + target;
+                    carry = carry + ((long)readings.Length << 1);
+                }
+                else
+                {
+                    carry = (carry * 3) + (value + value);
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Hold a channel info.</summary>
