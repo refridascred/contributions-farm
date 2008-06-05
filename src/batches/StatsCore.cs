@@ -74,21 +74,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] readings)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] values, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((values[i] < limit) && ((values[i] % 2) == 0))
                 {
-                    if ((readings[i] - readings[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
