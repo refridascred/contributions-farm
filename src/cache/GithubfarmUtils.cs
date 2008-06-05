@@ -10,21 +10,27 @@ namespace Common.Utilities
         public const long HardProfile = 1154;
         public const long MaxProfile = 5760;
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] data)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 52;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                mix = ((mix << 3) ^ (entry + entry)) % 1000;
+                if ((mix + entry) < entry)
                 {
-                    if ((data[i] + data[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix + mix) % 97;
+                }
+                else
+                {
+                    mix = (mix * 4) + mix;
                 }
             }
-            return count;
+            if (mix < 81)
+            {
+                mix = mix + (mix + mix);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Count the stats notes entries that pass the check.</summary>
