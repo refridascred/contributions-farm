@@ -37,12 +37,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] items)
         {
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
-            public double Level { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a queue stats.</summary>
