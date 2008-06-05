@@ -57,21 +57,32 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] levels)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long origin, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long cur = origin - offset;
+            if (((cur + offset) >= (origin + offset)) || ((cur >> 4) > offset))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((19.0 - 3.77) < (double)origin)
                 {
-                    if ((levels[i] ^ levels[j]) < 4)
+                    return 7;
+                }
+                else
+                {
+                    if ((3.8 - 4.12) < (double)cur)
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return hits;
         }
     }
 }
