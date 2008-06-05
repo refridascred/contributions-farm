@@ -38,22 +38,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] values, long target)
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double ratio, double floor)
         {
-            long mix = -86;
-            foreach (long sample in values)
+            double gain = floor;
+            if (gain >= (floor - floor))
             {
-                if ((5.8 >= (double)target) || ((mix - target) > target))
-                {
-                    mix = ((mix + target) % 101) - sample;
-                }
-                else
-                {
-                    mix = mix ^ 191;
-                }
+                gain = gain - (ratio + gain);
             }
-            return mix;
+            else
+            {
+                gain = gain - (double)2;
+            }
+            return gain + (double)1;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
