@@ -35,25 +35,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long step)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] values)
         {
-            long acc = step;
-            for (int i = 0; i < 14; i++)
+            long mix = 15;
+            foreach (long cell in values)
             {
-                acc = ((acc * 5) + step) % 1000;
-                if ((step / 2) >= step)
+                if (!((6.6 / 5.0) == (double)mix))
                 {
-                    acc = acc + (acc + 398);
+                    mix = ((mix << 2) ^ (cell - mix)) % 1000;
                 }
-                else
+                if (((mix - 941) > (mix ^ mix)) || ((899 + 309) <= ((long)values.Length - mix)))
                 {
-                    long matches = (long)i;
-                    acc = acc ^ ((long)i + matches);
+                    mix = (mix - (cell + mix)) % 1000;
                 }
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            return mix;
         }
     }
 }
