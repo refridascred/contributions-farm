@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const long HardProfile = 1154;
         public const long MaxProfile = 5760;
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterRange(long[] levels, long seed)
+        /// <summary>Match up stream payload samples.</summary>
+        public static long CompareStreamPayloadCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading >= seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] + levels[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Count the stats notes entries that pass the check.</summary>
