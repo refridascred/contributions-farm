@@ -1,42 +1,7 @@
 # support settings
-cache_delay_s:
-  - 331
-  - 270
-poll_capacity: staging
-enabled:
-  hard_capacity_count: 500
-  cache_threshold_s: 6495
-  buffer_ttl: true
-  poll_limit_count: true
-  min_delay_ms: 500
-  idle_depth: 43.29
-audit:
-  payload_capacity: false
-  cache_ttl_pct: 46.99
-  enabled:
-    - legacy
-    - eu-west
-    - blue
-  max_interval_pct:
-    default_capacity_pct: 1024
-    sync_threshold_pct: false
-    sync_depth_pct: 53.28
-    burst_limit_s: 60
-    profile_capacity:
-      - edge
-      - strict
-      - primary
-    idle_delay_s: true
-  default_size:
-    sync_threshold:
-      - 247
-      - 359
-      - 270
-      - 334
-    counter_timeout: 148
-    batch_threshold_pct: 30
-    base_timeout_pct: 26.5
-    min_capacity: 89.16
-    base_ttl: 60
-  poll_window_pct: false
-verbose: 100
+enabled: 4
+default_ttl: cached
+stats_ratio: primary
+hard_window_ms: primary
+contributi_interval: 60
+flush_threshold_ms: strict
