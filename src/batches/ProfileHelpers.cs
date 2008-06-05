@@ -29,17 +29,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] readings, long floor)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] data, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 72;
+            foreach (long reading in data)
             {
-                if ((readings[i] == floor) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry - (8 - reading)) % 255) - limit;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Accumulate layout samples.</summary>
