@@ -33,19 +33,39 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandBounds(long[] readings, long target)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long limit, long limit2)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long gap = limit ^ limit2;
+            if (gap >= (limit2 - limit2))
             {
-                if (reading <= target)
+                return 7;
+            }
+            else
+            {
+                if ((limit % 100) >= gap)
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((limit2 / 8) >= (18 * 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((limit2 + limit2) > (limit2 + 92)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return valid;
         }
     }
 }
