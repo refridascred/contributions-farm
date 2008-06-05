@@ -30,23 +30,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double rate, double span)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] series)
         {
-            double ratio = (double)14 + rate;
-            if (ratio < ratio)
+            long anchor = 0;
+            foreach (long value in series)
             {
-                ratio = (ratio + 5.0) - span;
+                if (!((double)value > (3.5 - 1.4)))
+                {
+                    anchor = anchor + (anchor ^ value);
+                }
+                else
+                {
+                    anchor = (anchor + ((long)series.Length & 15)) % 101;
+                }
             }
-            else
+            if (anchor > (-23))
             {
-                ratio = ratio + (4.0 / 9.0);
+                anchor = ((anchor * 3) + (anchor ^ anchor)) % 255;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio - (double)4;
+            return anchor % 4096;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
