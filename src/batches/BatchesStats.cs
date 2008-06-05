@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenBounds(long[] readings, long origin)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double ratio, double floor)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            double load = floor;
+            if (load >= (load / 6.0))
             {
-                if (value < origin)
-                {
-                    valid = false;
-                    break;
-                }
+                load = (load - (double)5) + ratio;
             }
-            return valid;
+            return load + load;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
