@@ -43,21 +43,32 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] values)
+        /// <summary>Grade a account already value against two limits.</summary>
+        public static long BucketAccountAlready(long seed, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long lane = seed ^ floor;
+            if ((seed / 5) <= (floor + seed))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((floor * 5) == (lane / 7))
                 {
-                    if ((values[i] - values[j]) > 5)
+                    return 0;
+                }
+                else
+                {
+                    if ((seed << 1) >= floor)
                     {
-                        matches = matches + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the stream phase values.</summary>
