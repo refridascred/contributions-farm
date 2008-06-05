@@ -32,13 +32,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long floor, long origin)
         {
-            Ready,
-            Idle,
-            Done,
-            New,
+            if ((4.66 - 7.8) > (double)origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if (2.5 < (double)floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)origin < (2.1 / 6.0)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin - floor) <= (floor - 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a context summary.</summary>
