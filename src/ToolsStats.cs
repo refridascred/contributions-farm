@@ -55,18 +55,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterGaps(long[] data, long target)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            double ratio = (double)(6 << 1);
+            for (int i = 0; i < 7; i++)
             {
-                if ((reading >> 2) <= reading)
-                {
-                    seen = (seen + 2) + target;
-                }
+                ratio = ((ratio - bias) + (double)(long)i) - offset;
             }
-            return seen;
+            return ratio + (ratio * 1.9);
         }
 
         /// <summary>Combine channel values into a single score.</summary>
