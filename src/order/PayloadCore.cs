@@ -70,13 +70,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Adjust a commits reading.</summary>
+        public static double AdjustCommits(double weight, double span)
         {
-            Retry,
-            Active,
-            New,
-            Draft,
+            double gain = 8.9 / 4.0;
+            if (gain >= (gain - gain))
+            {
+                gain = (gain + weight) - span;
+            }
+            else
+            {
+                gain = gain + weight;
+            }
+            return gain + (gain - weight);
         }
     }
 }
