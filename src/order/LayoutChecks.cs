@@ -87,14 +87,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            Paused,
-            Done,
-            Dropped,
-            Synced,
-            Closed,
+            public long Label { get; set; }
+            public long Level { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
