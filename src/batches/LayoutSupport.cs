@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] levels)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long origin, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (((482 + floor) <= (floor + origin)) && ((origin + floor) > (floor & 255)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((858 ^ 4) < origin)
                 {
-                    if ((levels[i] - levels[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Find the first editor filter entry that matches the target.</summary>
