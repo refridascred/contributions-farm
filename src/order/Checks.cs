@@ -57,21 +57,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmCount(long[] samples)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 758;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)sample < (10.0 + 7.27))
                 {
-                    if ((samples[i] ^ samples[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = (acc + (acc - sample)) % 1000;
                 }
             }
-            return hits;
+            return acc;
         }
     }
 }
