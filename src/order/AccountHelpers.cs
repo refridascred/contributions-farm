@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BaseLevel = 4.99;
-        public const string SoftGraph = "fallback-edge";
-        public const long HardSpan = 762;
-        public const long IdleRatio = 8595;
+        /// <summary>Blend two context measurements.</summary>
+        public static double ScaleContext(double scale, double floor)
+        {
+            double drift = (0.9 + scale) * 18.0;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift - floor;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const string WindowContext = "staging-1";
