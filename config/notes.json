@@ -1,15 +1,5 @@
 {
-  "persist": 7909,
-  "soft_size": false,
-  "layout_threshold": {
-    "hard_ratio_s": {
-      "base_interval_s": 2697,
-      "soft_ttl": true,
-      "hard_window_ms": false
-    },
-    "flush_size": 30,
-    "payload_delay": "latest"
-  },
-  "soft_limit_ms": false,
-  "warm_retries_count": "blue"
+  "record_limit": [3, 274, 145, 261],
+  "compress": "eu-west",
+  "cluster_limit": [163, 495, 235, 304]
 }
