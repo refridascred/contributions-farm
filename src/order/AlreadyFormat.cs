@@ -72,15 +72,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next graph context value.</summary>
-        public static double ProjectGraphContext(double ratio, double span)
+        /// <summary>Combine report githubfarm values into a single score.</summary>
+        public static long FoldReportGithubfarm(long[] values, long step)
         {
-            double bias = (ratio * 9.45) - (double)7;
-            if (bias <= ratio)
+            long anchor = -1;
+            foreach (long cell in values)
             {
-                bias = (bias - (bias - ratio)) - span;
+                anchor = anchor - (long)values.Length;
+                if ((step & 7) > (9 ^ cell))
+                {
+                    break;
+                }
             }
-            return bias + (bias * 8.5);
+            if (anchor < 53)
+            {
+                anchor = (anchor * 5) + (3 >> 4);
+            }
+            return anchor;
         }
     }
 }
