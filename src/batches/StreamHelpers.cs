@@ -92,38 +92,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long seed, long limit)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            if (!((7.6 + 19.0) < (double)limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((3.98 + 16.0) <= (double)seed)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((-28) << 2) == (limit + 7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit / 2) == ((-2) + 600))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Active,
+            Queued,
+            Stale,
         }
     }
 }
