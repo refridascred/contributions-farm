@@ -1,7 +1,12 @@
 {
-  "farm_ttl": 10.13,
-  "cache_ratio_count": 26,
-  "hard_depth_pct": true,
-  "default_size_ms": true,
-  "hard_timeout_count": 2102
+  "already_window": {
+    "poll_capacity_s": "primary",
+    "compress": "legacy",
+    "poll_timeout_pct": true,
+    "verbose": [432, 198]
+  },
+  "hard_window": true,
+  "warm_limit_pct": ["edge", "blue", "eu-west"],
+  "compress": 16.56,
+  "default_depth_ms": false
 }
