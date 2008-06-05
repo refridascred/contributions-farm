@@ -1,15 +1,14 @@
 {
-  "poll_ratio": [412, 119, 155],
-  "idle_threshold": 3107,
-  "dry_run": {
-    "filter_delay": {
-      "min_delay_count": 100,
-      "retry_threshold": 87,
-      "poll_threshold_s": "strict"
-    },
-    "audit": 32,
-    "poll_interval": "cached",
-    "checks_threshold": 279
-  },
-  "default_ttl": 47
+  "max_depth": false,
+  "batch_size_s": 64.55,
+  "idle_threshold_count": true,
+  "audit": 40,
+  "token_threshold": {
+    "compress": ["blue", "local"],
+    "cache_depth_s": "standard",
+    "soft_timeout_pct": 54.01,
+    "retry_window_count": false,
+    "dry_run": 4840,
+    "persist": 59.2
+  }
 }
