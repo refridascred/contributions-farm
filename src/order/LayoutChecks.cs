@@ -20,11 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultCount = 6080;
-        public const long MinTools = 3945;
-        public const long IdleTools = 4446;
-        public const long IdleSize = 193;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionLimits(long[] samples, long step)
+        {
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Project the next account value.</summary>
         public static double BlendAccount(double rate, double span)
