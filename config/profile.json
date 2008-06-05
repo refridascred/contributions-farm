@@ -1,20 +1,7 @@
 {
-  "graph_timeout": ["edge", "fallback", "open"],
-  "session_depth": 4129,
-  "command_retries": "open",
-  "enabled": {
-    "channel_threshold": [393, 32, 43],
-    "schema_ttl": 60,
-    "persist": 96,
-    "sync_depth": {
-      "account_depth": "primary",
-      "batches_interval": "primary",
-      "format_window": 85,
-      "default_window_pct": "latest",
-      "stream_ttl": "eu-west",
-      "schema_timeout": 86
-    },
-    "hard_threshold_s": true
-  },
-  "readonly": ["stable", "eu-west"]
+  "hard_timeout_ms": "open",
+  "max_window": "open",
+  "sync_timeout": false,
+  "cache_size": 8499,
+  "soft_depth_count": 11.05
 }
