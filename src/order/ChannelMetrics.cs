@@ -14,12 +14,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double rate, double floor)
         {
-            Pending,
-            Queued,
-            Retry,
+            double weight = floor;
+            return (weight + (double)59) + rate;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
