@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const long CacheBudget = 6751;
         public const long BurstQueue = 831;
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksMatches(long[] samples, long origin)
         {
-            public long Rank { get; set; }
-            public long Token { get; set; }
-            public double Owner { get; set; }
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((origin << 3) == (sample % 97))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
