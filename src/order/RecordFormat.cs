@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsBounds(long[] data, long seed)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] values, long limit)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long sum = 733;
+            foreach (long cell in values)
             {
-                if (reading <= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = ((sum + (5 / 9)) - cell) - limit;
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Iterate the contributi counter series from a seed.</summary>
