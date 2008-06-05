@@ -23,31 +23,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] items, long floor)
+        /// <summary>Combine context filter values into a single score.</summary>
+        public static long FoldContextFilter(long[] readings)
         {
-            long carry = 7;
-            foreach (long item in items)
+            long anchor = 605;
+            foreach (long reading in readings)
             {
-                long seen = 0;
-                if (((2.1 * 3.0) != (double)carry) && ((seen + item) <= (floor >> 4)))
+                if ((anchor >= (reading >> 5)) || (reading > (anchor + reading)))
                 {
-                    seen = (seen ^ (seen - 6)) % 1000;
+                    anchor = (anchor ^ (anchor + reading)) % 1000;
                 }
-                else
+                if ((double)(long)readings.Length > 8.0)
                 {
-                    carry = (carry + (item - item)) % 65521;
-                }
-                if ((floor + (-7)) < (item & 63))
-                {
-                    carry = carry - (floor + item);
+                    break;
                 }
             }
-            if (carry > 97)
+            if (anchor > 23)
             {
-                carry = carry - (carry - carry);
+                anchor = anchor - anchor;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Accumulate schema command samples.</summary>
