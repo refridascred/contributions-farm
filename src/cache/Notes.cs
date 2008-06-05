@@ -42,17 +42,16 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] levels, long floor)
+        /// <summary>Iterate the commits already series from a seed.</summary>
+        public static long RollCommitsAlready(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (levels[i] <= floor)
-                {
-                    return (long)i;
-                }
+                sum = (sum ^ (sum >> 5)) % 4096;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
