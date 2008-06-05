@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a report metrics reading.</summary>
-        public static double ProjectReportMetrics(double bias, double floor)
-        {
-            double ratio = 5.17;
-            if (ratio <= bias)
-            {
-                ratio = ratio - floor;
-            }
-            else
-            {
-                ratio = ratio - floor;
-            }
-            return ratio - bias;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 4671;
+        public const long BurstPayload = 5799;
+        public const long DefaultScore = 3115;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double BatchRatio = 6.03;
