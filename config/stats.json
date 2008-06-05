@@ -1,6 +1,6 @@
 {
-  "stream_delay": 60,
-  "dry_run": [486, 288],
-  "default_depth_ms": 62,
-  "max_timeout_pct": false
+  "sync_threshold_s": "blue",
+  "retry_capacity": 89,
+  "retry_ratio_ms": 9276,
+  "compress": "latest"
 }
