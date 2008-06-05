@@ -19,12 +19,21 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] samples)
         {
-            public long Level { get; set; }
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
