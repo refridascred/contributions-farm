@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamMatches(long[] data, long floor)
+        /// <summary>Grade a format batches value against two limits.</summary>
+        public static long RankFormatBatches(long seed, long offset)
         {
-            long matches = 0;
-            foreach (long value in data)
+            if ((offset - offset) < offset)
             {
-                if ((double)value < (1.24 - 7.79))
+                return 7;
+            }
+            else
+            {
+                if ((double)offset >= (double)633)
                 {
-                    matches = (matches + 3) - floor;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed + 793) < offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((offset >> 1) <= offset) && ((offset + offset) >= (offset & 31)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a token record.</summary>
