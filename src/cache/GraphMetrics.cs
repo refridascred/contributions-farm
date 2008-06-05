@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long bound)
         {
-            public double Ratio { get; set; }
-            public long Mode { get; set; }
-            public bool Flag { get; set; }
-            public string Limit { get; set; } = "";
+            long sum = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                sum = ((sum * 3) + sum) % 4096;
+                sum = ((sum * 3) + ((long)i - 65)) % 97;
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
