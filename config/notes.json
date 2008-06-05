@@ -1,18 +1,8 @@
 {
-  "default_window_count": {
-    "idle_window_s": 60,
-    "filter_timeout": false,
-    "burst_interval": 16.29
-  },
-  "warm_interval_s": 98.19,
-  "metrics_interval": {
-    "metrics_capacity": "standard",
-    "cache_window_count": ["strict", "open"],
-    "cache_ratio_s": false,
-    "warm_delay_s": 250,
-    "warm_ttl": false,
-    "report_timeout": "green"
-  },
-  "retry_window": 40.43,
-  "cache_delay": 500
+  "hard_depth_pct": 250,
+  "cache_window_pct": 21.63,
+  "stream_size": false,
+  "poll_size_count": 53.46,
+  "verbose": true,
+  "strict": 85.02
 }
