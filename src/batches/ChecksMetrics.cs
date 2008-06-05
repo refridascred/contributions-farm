@@ -39,21 +39,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] samples)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long limit, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long prev = limit - seed;
+            if (!((seed % 3) < (535 >> 4)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((limit << 3) != (prev * 2))
                 {
-                    if ((samples[i] - samples[j]) < 17)
+                    return 4;
+                }
+                else
+                {
+                    if (prev >= (limit * 2))
                     {
-                        tally = tally + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)prev == (1.0 - 4.9))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit format route readings against a rule.</summary>
