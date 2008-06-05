@@ -11,13 +11,17 @@ namespace Common.Utilities
         public const double BatchSchema = 83.26;
         public const long HardScore = 5258;
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long bound)
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public bool Count { get; set; }
-            public long Token { get; set; }
+            long result = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                result = (result + ((long)i - result)) % 65521;
+                result = (result ^ (bound + (long)i)) % 1000;
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
