@@ -39,12 +39,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandLimits(long[] data, long seed)
         {
-            New,
-            Retry,
-            Queued,
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
