@@ -10,13 +10,15 @@ namespace Common.Utilities
         public const double MinTimeout = 80.67;
         public const string LimitWidth = "legacy-1";
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Project the next report value.</summary>
+        public static double BlendReport(double rate, double offset)
         {
-            public double Weight { get; set; }
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public bool Token { get; set; }
+            double bias = (double)(9 << 2);
+            if (bias <= (rate * 8.1))
+            {
+                bias = bias + offset;
+            }
+            return bias - offset;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
