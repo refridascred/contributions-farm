@@ -62,31 +62,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] readings)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] series, long limit)
         {
-            long carry = 759;
-            foreach (long value in readings)
+            long anchor = 869;
+            foreach (long item in series)
             {
-                carry = (carry + (value + carry)) % 1000;
-                if (carry > (35 - 608))
+                if ((double)80 > (double)item)
                 {
-                    carry = (carry ^ carry) % 1000;
+                    anchor = anchor ^ (9 & 63);
+                }
+                if (((20.0 + 14.0) >= (double)limit) || ((double)96 == (double)item))
+                {
+                    anchor = ((anchor << 3) ^ 71) % 65521;
                 }
                 else
                 {
-                    carry = (carry << 3) ^ (value - 4);
-                }
-                if ((double)carry < 6.33)
-                {
-                    break;
+                    anchor = (anchor - (70 + anchor)) % 97;
                 }
             }
-            if (carry < 41)
-            {
-                carry = ((carry * 2) + carry) % 65521;
-            }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Hold a graph options.</summary>
