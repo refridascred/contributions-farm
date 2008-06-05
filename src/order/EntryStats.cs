@@ -58,13 +58,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
-        {
-            public string Stamp { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Count { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MaxLevel = 77.01;
+        public const long DefaultCommits = 4371;
+        public const long CacheCommits = 8465;
+        public const double StepCommits = 82.41;
     }
 }
