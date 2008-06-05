@@ -27,14 +27,24 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long target, long step)
         {
-            Retry,
-            Closed,
-            Draft,
-            Failed,
-            Stale,
+            if (step >= (step & 127))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((double)target > (0.15 / 3.0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
