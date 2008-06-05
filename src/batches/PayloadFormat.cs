@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long step, long target)
+        /// <summary>Measure how many support editor samples are out of range.</summary>
+        public static long TallySupportEditorGaps(long[] readings, long target)
         {
-            long bound = step - target;
-            if (((bound + bound) >= (60 - 43)) && ((bound >> 5) >= target))
+            long count = 0;
+            foreach (long item in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (((target << 2) >= bound) && ((bound >> 3) < (step >> 1)))
+                if (!((double)item != (3.27 + 11.0)))
                 {
-                    return 6;
+                    count = (count + 3) - target;
                 }
                 else
                 {
-                    if (step < (bound - target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)target == (8.8 + 17.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
