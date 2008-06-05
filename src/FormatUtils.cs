@@ -35,19 +35,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long offset)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long PairClusterCount(long[] levels)
         {
-            long score = offset;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = ((score ^ (offset << 2)) % 1000) ^ (long)i2;
+                    if ((levels[i] ^ levels[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                score = ((score * 4) + (long)i) % 4093;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
