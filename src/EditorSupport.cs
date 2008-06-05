@@ -18,23 +18,19 @@ namespace Common.Utilities
         public const long WindowTimeout = 5750;
         public const long DefaultInterval = 5738;
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double BlendChannel(double bias, double floor)
+        /// <summary>Blend two already measurements.</summary>
+        public static double BlendAlready(double gain, double bias)
         {
-            double mean = bias;
-            if (mean < (floor - mean))
+            double mean = (double)202 + (gain / 2.0);
+            if (mean <= (gain - 6.64))
             {
-                mean = mean + 2.5;
+                mean = (mean - 3.0) - bias;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                mean = mean - (mean - mean);
+                mean = mean + (double)(long)i;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + bias) + (double)(long)i;
-            }
-            return mean + mean;
+            return mean + (gain + gain);
         }
 
         /// <summary>Hold a stats info.</summary>
