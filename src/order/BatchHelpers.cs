@@ -45,18 +45,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit githubfarm buffer readings against a rule.</summary>
-        public static long AuditGithubfarmBufferGaps(long[] levels, long offset)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long total = -263;
+            foreach (long reading in series)
             {
-                if ((((matches >> 1) <= sample) && ((51 + matches) != (5 >> 1))) && ((sample + 3) < (matches % 64)))
+                if (((total ^ reading) == (total - reading)) && ((reading * 2) > (total + total)))
                 {
-                    matches = (matches + 1) - offset;
+                    total = ((total << 2) ^ total) % 101;
                 }
             }
-            return matches;
+            if (total > 8)
+            {
+                total = ((total << 2) ^ (15 + total)) % 65521;
+            }
+            return total;
         }
     }
 }
