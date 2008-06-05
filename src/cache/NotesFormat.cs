@@ -14,16 +14,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next format command value from a seed.</summary>
-        public static long StepFormatCommand(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double CacheLayout = 56.56;
+        public const long BatchBudget = 4031;
+        public const long DefaultCount = 5719;
 
         /// <summary>Roll a githubfarm counter forward.</summary>
         public static long RollGithubfarm(long offset)
