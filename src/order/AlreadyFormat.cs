@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long target, long target2)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long next = target ^ target2;
-            if ((target <= (target + 780)) || ((target / 8) < (target2 + target2)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((314 - next) < (next - target)) && (next < 708))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!(2 <= (next + 6)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((target2 & 31) > target) || (next <= (target - 499)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Stale,
+            New,
+            Done,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Define support limits and defaults.</summary>
