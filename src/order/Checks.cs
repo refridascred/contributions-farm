@@ -44,21 +44,15 @@ namespace Common.Utilities
             return drift + scale;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] samples)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 6;
+            foreach (long item in data)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = (anchor * 2) + item;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
