@@ -25,12 +25,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a githubfarm commits reading by value.</summary>
-        public static long FindGithubfarmCommitsIndex(long[] items, long target)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] items, long seed)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] >= target)
+                if (items[i] == seed)
                 {
                     return (long)i;
                 }
