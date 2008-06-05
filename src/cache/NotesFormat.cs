@@ -36,18 +36,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the order report entries that pass the check.</summary>
-        public static long MeasureOrderReportMatches(long[] samples, long offset)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long acc = 445;
+            foreach (long sample in readings)
             {
-                if ((0.75 - 5.85) == (double)entry)
-                {
-                    tally = (tally + 1) + offset;
-                }
+                acc = ((acc << 3) ^ ((long)readings.Length % 3)) - sample;
             }
-            return tally;
+            return acc;
         }
     }
 }
