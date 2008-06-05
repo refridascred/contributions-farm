@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank schema stats input into a small class.</summary>
-        public static long ClassifySchemaStats(long origin, long bound)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchLimits(long[] series, long offset)
         {
-            if (((bound * 2) <= origin) && ((double)bound < (11.0 + 7.0)))
+            bool ok = true;
+            foreach (long entry in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (bound <= origin)
+                if (entry != offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (origin > (bound - bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound ^ bound) == (origin << 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Count the token format entries that pass the check.</summary>
