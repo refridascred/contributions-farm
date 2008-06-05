@@ -42,12 +42,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            public bool Owner { get; set; }
-            public long Count { get; set; }
-            public bool Score { get; set; }
+            Synced,
+            Locked,
+            Idle,
         }
 
         /// <summary>Digest a series of batches entries.</summary>
