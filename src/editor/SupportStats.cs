@@ -12,25 +12,21 @@ namespace Common.Utilities
         public const double BatchCount = 13.47;
         public const long BaseToken = 5025;
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long bound, long limit)
+        /// <summary>Match up commits batches samples.</summary>
+        public static long PairCommitsBatchesCount(long[] data)
         {
-            long delta = bound ^ limit;
-            if ((limit >> 4) == (952 + limit))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((delta ^ 236) <= (limit & 127))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    if ((data[i] ^ data[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
