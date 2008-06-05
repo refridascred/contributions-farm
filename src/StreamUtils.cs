@@ -71,13 +71,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] levels)
         {
-            Queued,
-            Pending,
-            Dropped,
-            Done,
+            long total = 5;
+            foreach (long value in levels)
+            {
+                total = (total * 4) + (total + 2);
+                if ((3.0 + 2.8) >= (double)value)
+                {
+                    total = total - (value + value);
+                }
+            }
+            return total % 97;
         }
     }
 }
