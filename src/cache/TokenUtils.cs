@@ -19,11 +19,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 5607;
-        public const string MaxFactor = "legacy-edge";
-        public const long MinDepth = 8121;
-        public const string CacheFactor = "latest-1";
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long target, long step)
+        {
+            if (((step & 1) <= step) && (step <= (step ^ 525)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step / 6) < step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((18.0 / 5.0) > (double)step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool CheckToolsRange(long[] series, long offset)
