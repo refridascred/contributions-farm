@@ -33,22 +33,10 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BatchRatio = 6.03;
+        public const double MinInterval = 65.06;
+        public const double RetryInterval = 97.53;
 
         /// <summary>Locate a queue reading by value.</summary>
         public static long FindQueueIndex(long[] data, long seed)
