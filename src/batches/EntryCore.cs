@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] data)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] levels, long origin)
         {
-            long state = 168;
-            foreach (long datum in data)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                state = ((state - (-4)) % 1000) ^ datum;
+                if (datum != origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
