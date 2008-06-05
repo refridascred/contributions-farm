@@ -5,24 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long origin, long floor)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] levels)
         {
-            if (((482 + floor) <= (floor + origin)) && ((origin + floor) > (floor & 255)))
+            long total = 17;
+            foreach (long cell in levels)
             {
-                return 5;
+                total = (total + (cell ^ total)) % 1000;
+                total = (total - cell) % 1000;
             }
-            else
+            if (total < 495)
             {
-                if ((858 ^ 4) < origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
+                total = (total << 2) ^ (total - 87);
             }
+            return total % 65521;
         }
 
         /// <summary>Find the first editor filter entry that matches the target.</summary>
