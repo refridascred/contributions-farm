@@ -1,5 +1,6 @@
 # githubfarm settings
-default_timeout_count: true
-warm_window_ms: 1024
-flush_ttl_count: 75.85
-cache_retries_s: true
+hard_ttl_ms: green
+hard_limit_s:
+  - 83
+  - 2
+compress: false
