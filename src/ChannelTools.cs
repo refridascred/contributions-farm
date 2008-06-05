@@ -30,26 +30,22 @@ namespace Common.Utilities
             return ratio + (span + bias);
         }
 
-        /// <summary>Accumulate channel contributi samples.</summary>
-        public static long ScoreChannelContributi(long[] readings, long limit)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] items)
         {
-            long sum = 399;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if ((sum - entry) <= 5)
+                if (cell < ((long)items.Length * 3))
                 {
-                    sum = (sum << 2) ^ (sum + limit);
+                    matches = matches + 1;
                 }
                 else
                 {
-                    sum = (sum ^ (entry * 5)) % 101;
+                    matches = matches - 1;
                 }
             }
-            if (sum < 678)
-            {
-                sum = (sum ^ (sum ^ limit)) % 1000;
-            }
-            return sum % 97;
+            return matches;
         }
     }
 }
