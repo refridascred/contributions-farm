@@ -1,5 +1,11 @@
 {
-  "flush_retries": "local",
-  "hard_capacity": "local",
-  "soft_threshold": "primary"
+  "min_delay": 2124,
+  "default_delay": 61.84,
+  "batch_ttl": {
+    "filter_window": 72.36,
+    "max_delay_count": 1862,
+    "batch_interval": [220, 289]
+  },
+  "command_size": "edge",
+  "support_threshold": "green"
 }
