@@ -1,7 +1,7 @@
 {
-  "strict": 97,
-  "hard_threshold": 2399,
-  "min_ttl": [72, 37],
-  "default_capacity_count": "latest",
-  "idle_delay_ms": "blue"
+  "min_window_ms": 10.93,
+  "contributi_ratio": 15,
+  "compress": "latest",
+  "buffer_interval": 30,
+  "max_ttl_s": 100
 }
