@@ -42,12 +42,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultRatio = 2721;
-        public const string LimitCount = "latest-1";
-        public const long BaseWidth = 8049;
-        public const long WindowChannel = 4906;
-        public const string IdleChannel = "fallback-v2";
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsGaps(long[] levels, long floor)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum / 9) > datum)
+                {
+                    tally = (tally + 2) + floor;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long WeighMetrics(long[] samples)
