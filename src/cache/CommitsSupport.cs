@@ -27,19 +27,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountRange(long[] data, long bound)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long bound)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long state = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (entry >= bound)
+                long lane = ((long)i - state) & 127;
+                if (((lane * 4) <= (lane + state)) && (lane > (bound >> 1)))
                 {
-                    flag = false;
-                    break;
+                    lane = (lane + (bound + 0)) % 97;
                 }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Match up window checks samples.</summary>
