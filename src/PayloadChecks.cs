@@ -39,13 +39,24 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Classify a metric command pair into a bucket.</summary>
+        public static long ClassifyMetricCommand(long limit, long target)
         {
-            public double Owner { get; set; }
-            public double Stamp { get; set; }
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
+            if ((limit / 2) > (4 + limit))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit % 16) > target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
