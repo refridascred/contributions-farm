@@ -38,21 +38,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] readings)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] data, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (data[i] == step)
                 {
-                    if ((readings[i] + readings[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the metric state values.</summary>
