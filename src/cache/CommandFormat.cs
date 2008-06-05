@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            New,
-            Active,
-            Locked,
-            Retry,
+            public bool Label { get; set; }
+            public long Size { get; set; }
+            public double Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Locate a commits reading by value.</summary>
