@@ -45,20 +45,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] values)
+        /// <summary>Accumulate window stats samples.</summary>
+        public static long DigestWindowStats(long[] items, long target)
         {
-            long acc = 0;
-            foreach (long item in values)
+            long sum = 3;
+            foreach (long sample in items)
             {
-                acc = (acc ^ (acc ^ acc)) % 101;
-                acc = (acc * 5) + 5;
-                if ((item + item) > (acc ^ item))
+                if (((double)sample > (2.1 * 12.0)) || ((sum % 10) == ((-2) ^ sample)))
                 {
-                    break;
+                    sum = ((sum - (65 + 50)) % 1000) - target;
                 }
             }
-            return acc;
+            return sum % 1000;
         }
     }
 }
