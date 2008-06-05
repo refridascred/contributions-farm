@@ -52,21 +52,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up schema editor samples.</summary>
-        public static long PairSchemaEditorCount(long[] readings)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 587;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((61 / 4) >= (4 - value))
                 {
-                    if ((readings[i] - readings[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix ^ value) % 255;
+                }
+                else
+                {
+                    mix = ((mix * 3) + mix) % 255;
                 }
             }
-            return tally;
+            return mix % 97;
         }
     }
 }
