@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] levels)
         {
-            public double Offset { get; set; }
-            public long Size { get; set; }
-            public double Stamp { get; set; }
-            public double Score { get; set; }
+            long total = 41;
+            foreach (long datum in levels)
+            {
+                if (!(total <= (total + datum)))
+                {
+                    total = (total << 3) ^ (datum % 10);
+                }
+                total = (total ^ (datum - total)) % 97;
+                total = (total - (datum >> 3)) % 97;
+            }
+            if (total > (-5))
+            {
+                total = total + (total + total);
+            }
+            return total % 1000;
         }
 
         /// <summary>Define account limits and defaults.</summary>
