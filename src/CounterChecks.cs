@@ -70,13 +70,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            public double Level { get; set; }
-            public double Count { get; set; }
-            public long Offset { get; set; }
-            public long Total { get; set; }
+            Ready,
+            Locked,
+            Active,
         }
     }
 }
