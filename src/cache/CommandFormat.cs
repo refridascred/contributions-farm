@@ -14,19 +14,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsBounds(long[] series, long seed)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Label { get; set; }
+            public double Rank { get; set; }
+            public double Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
