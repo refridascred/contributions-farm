@@ -14,10 +14,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double CacheRatio = 77.57;
-        public const string BurstRatio = "primary-edge";
-        public const long StepBudget = 2374;
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double SmoothCounter(double bias, double bias2)
+        {
+            double weight = (double)(-30) / 2.0;
+            if (weight >= weight)
+            {
+                weight = weight + (5.7 * 2.2);
+            }
+            else
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (double)(-1)) + (double)(long)i;
+            }
+            return weight - (bias + bias2);
+        }
 
         /// <summary>Validate already notes readings against a bound.</summary>
         public static bool CheckAlreadyNotesLimits(long[] levels, long floor)
