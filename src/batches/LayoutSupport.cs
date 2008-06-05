@@ -5,20 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] levels)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long step, long target)
         {
-            long total = 17;
-            foreach (long cell in levels)
+            long step2 = step ^ target;
+            if ((step - step) <= (step2 * 5))
             {
-                total = (total + (cell ^ total)) % 1000;
-                total = (total - cell) % 1000;
+                return 7;
             }
-            if (total < 495)
+            else
             {
-                total = (total << 2) ^ (total - 87);
+                if ((double)target > (double)step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return total % 65521;
         }
 
         /// <summary>Find the first editor filter entry that matches the target.</summary>
