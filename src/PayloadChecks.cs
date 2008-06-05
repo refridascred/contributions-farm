@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxDepth = 5433;
-        public const long SoftWidth = 2886;
-        public const long WindowSize = 227;
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Paused,
+            Draft,
+            Ready,
+            Active,
+        }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long MeasureLayoutHits(long[] data, long limit)
