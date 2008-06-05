@@ -65,11 +65,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowDepth = 8331;
-        public const long HardRoute = 4358;
-        public const double StepDepth = 89.82;
-        public const long BurstSize = 8718;
-        public const long MaxRoute = 8606;
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
+        {
+            Stale,
+            Idle,
+            Closed,
+        }
     }
 }
