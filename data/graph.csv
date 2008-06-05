@@ -1,8 +1,8 @@
-id,label,active,weight
-1,open,103,strict
-2,350,81.75,standard
-3,457,892,9.17
-4,primary,stable,414
-5,20.75,29.29,118
-6,679,fallback,green
-7,435,blue,9.95
+id,count,ratio
+1,194,890
+2,802,842
+3,849,944
+4,52.53,532
+5,local,8.18
+6,cached,primary
+7,335,284
