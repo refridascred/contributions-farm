@@ -5,19 +5,29 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesLimits(long[] levels, long origin)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long bound)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long state = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (cell < origin)
+                state = (state - ((-4) % 60)) % 1000;
+                if ((bound & 15) <= (long)i)
                 {
-                    found = false;
-                    break;
+                    state = (state * 3) + (long)i;
                 }
+                else
+                {
+                    state = (state + ((long)i ^ state)) % 255;
+                }
+                if ((state % 24) >= 8)
+                {
+                    state = state + ((long)i ^ (long)i);
+                    continue;
+                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
