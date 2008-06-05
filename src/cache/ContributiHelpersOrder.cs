@@ -12,22 +12,15 @@ namespace Common.Utilities
         public const long HardCount = 7398;
         public const long LimitLevel = 4609;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmOutliers(long[] series)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long limit)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long acc = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if ((datum * 4) > 667)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
