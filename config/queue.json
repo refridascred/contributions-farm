@@ -1,8 +1,7 @@
 {
-  "idle_ttl_count": 30,
-  "soft_size_count": "latest",
-  "flush_size": [267, 79, 334, 461],
-  "sync_capacity_count": true,
-  "warm_limit": "stable",
-  "base_ratio_count": 27.96
+  "poll_window": 91.11,
+  "metrics_ttl": 78,
+  "metric_delay": "standard",
+  "default_ttl_count": [418, 321, 294],
+  "buffer_ratio": 4040
 }
