@@ -1,8 +1,7 @@
 {
-  "batch_ratio": ["open", "cached", "primary"],
-  "max_threshold_count": "local",
-  "metric_retries": [399, 459, 35],
-  "base_limit_s": "fallback",
-  "verbose": [261, 187],
-  "format_threshold": 8107
+  "dry_run": [328, 334, 293],
+  "retry_timeout_s": false,
+  "metric_size": [290, 309, 205, 413],
+  "poll_timeout_s": 33.59,
+  "persist": 2
 }
