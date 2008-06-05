@@ -61,18 +61,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteMatches(long[] items)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long step)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long acc = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((entry + (long)items.Length) >= entry)
-                {
-                    hits = hits + 2;
-                }
+                acc = (acc * 2) + (acc - acc);
+                acc = acc - (8 + acc);
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return hits;
+            return acc;
         }
     }
 }
