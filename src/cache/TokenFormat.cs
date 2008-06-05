@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate filter batches readings against a bound.</summary>
-        public static bool VerifyFilterBatchesBounds(long[] samples, long step)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenOutliers(long[] items)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (item != step)
+                if (count >= (26 - datum))
                 {
-                    stale = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
