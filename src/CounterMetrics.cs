@@ -16,18 +16,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Count the command schema entries that pass the check.</summary>
-        public static long MeasureCommandSchemaOutliers(long[] values)
+        /// <summary>Measure how many cache githubfarm samples are out of range.</summary>
+        public static long MeasureCacheGithubfarmGaps(long[] values)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (!!((seen % 5) == (value + value)))
+                if (((5.7 >= (double)count) && ((count ^ reading) != (reading ^ 6))) || ((1.12 + 14.0) >= (1.76 * 8.59)))
                 {
-                    seen = seen + 2;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a session entry.</summary>
