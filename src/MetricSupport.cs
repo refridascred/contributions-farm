@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long seed, long bound)
         {
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            if (((seed * 2) != (seed - 7)) || ((bound / 7) == (seed % 64)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((seed / 8) <= (bound ^ 9)) && ((9 % 2) <= (seed % 2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
