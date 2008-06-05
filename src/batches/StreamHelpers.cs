@@ -48,15 +48,19 @@ namespace Common.Utilities
         public const long HardEditor = 7617;
         public const long CacheScore = 1432;
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long origin)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelRange(long[] series, long floor)
         {
-            long mark = origin;
-            for (int i = 0; i < 13; i++)
+            bool found = true;
+            foreach (long datum in series)
             {
-                mark = ((mark * 3) + (long)i) % 4093;
+                if (datum != floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Describe the window class values.</summary>
