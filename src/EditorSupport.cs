@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long bound)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenRange(long[] readings, long target)
         {
-            long total = bound;
-            for (int i = 0; i < 23; i++)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                total = ((total * 5) + (long)i) % 101;
+                if (value > target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Define window limits and defaults.</summary>
