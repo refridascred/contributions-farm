@@ -17,19 +17,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesLimits(long[] series, long floor)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long MatchWindowCount(long[] items)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value >= floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] + items[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Blend two format session measurements.</summary>
