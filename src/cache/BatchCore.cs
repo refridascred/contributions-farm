@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double ratio, double span)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            double bias = span + (ratio * 5.77);
-            return bias - span;
+            Dropped,
+            Ready,
+            Retry,
+            New,
+            Synced,
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
