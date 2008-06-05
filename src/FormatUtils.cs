@@ -32,19 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterHits(long[] values)
-        {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((value + tally) <= tally)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MaxBuffer = "cached-v2";
+        public const long HardBuffer = 6597;
+        public const long CacheBuffer = 6826;
+        public const long BatchBuffer = 1808;
+        public const long DefaultFactor = 8455;
 
         /// <summary>Hold a report info.</summary>
         public sealed class ReportInfo
