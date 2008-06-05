@@ -50,12 +50,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryRatio = 8237;
-        public const long RetryOrder = 7461;
-        public const long LimitCount = 5546;
-        public const long WindowOrder = 6975;
-        public const double MaxInterval = 60.32;
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
+        {
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
+        }
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
