@@ -50,17 +50,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a batches profile reading by value.</summary>
-        public static long FindBatchesProfileIndex(long[] series, long origin)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > origin) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Offset { get; set; }
+            public bool Mode { get; set; }
+            public long Size { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
