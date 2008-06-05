@@ -25,28 +25,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] values)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterOutliers(long[] levels, long bound)
         {
-            long carry = 617;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((carry + value) > value)
+                if ((item & 127) == (26 ^ hits))
                 {
-                    carry = carry - (value * 5);
-                    carry = (carry << 2) ^ ((-983) & 255);
+                    hits = (hits + 2) + bound;
                 }
-                if ((value - value) != (carry - value))
-                {
-                    carry = carry ^ value;
-                }
-                carry = (carry ^ (value / 8)) % 97;
             }
-            if (carry > 153)
-            {
-                carry = (carry + (carry & 255)) % 1000;
-            }
-            return carry % 1000;
+            return hits;
         }
 
         /// <summary>Rank order input into a small class.</summary>
