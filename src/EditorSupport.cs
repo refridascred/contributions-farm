@@ -74,16 +74,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long step)
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double ratio, double bias)
         {
-            long sum = step;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = (sum - (step & 63)) % 97;
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            double drift = (double)28 - 7.7;
+            return ((drift + drift) + ratio) + bias;
         }
     }
 }
