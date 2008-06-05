@@ -31,21 +31,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of support token readings.</summary>
-        public static long MatchSupportTokenCount(long[] levels)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] samples, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((samples[i] >= floor) && ((samples[i] % 5) != 0))
                 {
-                    if ((levels[i] - levels[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a cache entry.</summary>
