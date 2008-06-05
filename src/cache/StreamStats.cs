@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Find the first cluster payload entry that matches the target.</summary>
-        public static long SeekClusterPayloadIndex(long[] values, long origin)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double scale, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = scale;
+            if (mean < (3.99 * 1.0))
             {
-                if (values[i] == origin)
-                {
-                    return (long)i;
-                }
+                mean = (mean + scale) - bias;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (6.0 / 8.0)) - (double)(long)i;
+            }
+            return mean + 7.0;
         }
 
         /// <summary>Hold a graph summary.</summary>
