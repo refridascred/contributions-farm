@@ -27,17 +27,25 @@ namespace Common.Utilities
         public const double IdleRoute = 25.16;
         public const long MinRatio = 4708;
 
-        /// <summary>Find the first route commits entry that matches the target.</summary>
-        public static long SeekRouteCommitsIndex(long[] readings, long offset)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long limit, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long prev = limit - offset;
+            if ((double)offset != (double)764)
             {
-                if ((readings[i] == offset) && ((readings[i] % 5) != 0))
+                return 8;
+            }
+            else
+            {
+                if (((7.0 + 14.0) != (double)prev) || ((57 << 3) <= (offset * 3)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
