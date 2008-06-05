@@ -1,8 +1,5 @@
 {
-  "poll_delay": "green",
-  "verbose": "edge",
-  "burst_timeout_s": 39.44,
-  "flush_timeout": [381, 375],
-  "default_threshold": 30,
-  "soft_interval_pct": false
+  "verbose": "standard",
+  "idle_interval": "legacy",
+  "min_timeout_ms": true
 }
