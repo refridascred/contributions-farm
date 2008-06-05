@@ -36,19 +36,21 @@ namespace Common.Utilities
             return weight + (double)80;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsRange(long[] samples, long floor)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long target)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long anchor = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (item < floor)
+                anchor = (anchor - (anchor >> 1)) % 1000;
+                if ((627 - anchor) <= (target + (long)i))
                 {
-                    ready = false;
-                    break;
+                    anchor = (anchor - (anchor + target)) % 255;
+                    anchor = ((anchor * 3) + (target / 6)) % 101;
                 }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return ready;
+            return anchor;
         }
     }
 }
