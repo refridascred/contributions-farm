@@ -1,11 +1,7 @@
 {
-  "githubfarm_retries": false,
-  "base_ttl_s": {
-    "channel_interval": 69,
-    "report_window": "fallback",
-    "enabled": 59.2,
-    "strict": "standard",
-    "report_ttl": 35
-  },
-  "compress": 5772
+  "base_threshold_s": 7.33,
+  "route_limit": 68,
+  "audit": 500,
+  "readonly": "primary",
+  "max_limit": true
 }
