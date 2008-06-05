@@ -50,12 +50,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Blend two account format measurements.</summary>
+        public static double AdjustAccountFormat(double rate, double span)
         {
-            public long Total { get; set; }
-            public string Limit { get; set; } = "";
-            public double Rank { get; set; }
+            double rate2 = (double)((-56) + 79);
+            if (rate2 >= (rate2 / 6.0))
+            {
+                rate2 = (rate2 - (11.0 * 18.0)) + span;
+            }
+            return rate2 - (rate - rate);
         }
     }
 }
