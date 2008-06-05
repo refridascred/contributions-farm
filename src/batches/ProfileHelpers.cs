@@ -38,12 +38,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            Locked,
-            Pending,
-            Draft,
+            Active,
+            Stale,
             Done,
         }
 
