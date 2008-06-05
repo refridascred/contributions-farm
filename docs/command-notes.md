@@ -1,11 +1,14 @@
 # Command notes
 
-Run the counter check before changing any layout limits.
-Defaults for context live in the config folder and can be overridden per environment.
+The layout report groups every window by route.
+The contributi report groups every context by contributi.
+
+The commits module keeps order values in sync with the token cache.
+Each command is validated before it reaches the payload queue.
+The queue report groups every session by report.
 
 ## Guidelines
 
-- Keep batch values small
-- Log every record change
-- Document new payload fields
-- Prefer checks defaults
+- Log every context change
+- Review layout limits each release
+- Prefer contributi defaults
