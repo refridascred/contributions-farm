@@ -32,11 +32,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Validate session editor readings against a bound.</summary>
+        public static bool GuardSessionEditorLimits(long[] levels, long target)
         {
-            public string Rank { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
