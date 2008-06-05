@@ -40,24 +40,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of buffer already readings.</summary>
-        public static long CombineBufferAlready(long[] samples, long offset)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] values, long limit)
         {
-            long mark = 28;
-            foreach (long sample in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark * 4) + sample) % 97;
-                if (!((sample > (offset ^ offset)) || ((double)sample > (1.5 + 7.0))))
+                if (values[i] >= limit)
                 {
-                    mark = mark - offset;
-                    mark = (mark + (-9)) % 65521;
-                }
-                if ((mark - sample) >= 34)
-                {
-                    mark = (mark << 2) ^ (sample + mark);
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
     }
 }
