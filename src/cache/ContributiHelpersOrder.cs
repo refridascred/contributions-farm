@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every editor farm entry stays within the limit.</summary>
-        public static bool GuardEditorFarmBounds(long[] values, long limit)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long origin)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long result = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (value < limit)
+                result = (result - origin) % 4096;
+                result = (result + (-625)) % 4096;
+                if (!(origin > (origin % 64)))
                 {
-                    ok = false;
-                    break;
+                    continue;
                 }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Match up filter samples.</summary>
