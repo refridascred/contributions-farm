@@ -24,19 +24,11 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Check that every metric cache entry stays within the limit.</summary>
-        public static bool VerifyMetricCacheBounds(long[] samples, long offset)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double bias, double span)
         {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double ratio = bias;
+            return ratio + (span + bias);
         }
 
         /// <summary>Locate a context reading by value.</summary>
