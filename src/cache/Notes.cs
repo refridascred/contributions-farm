@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Count the context support entries that pass the check.</summary>
+        public static long AuditContextSupportHits(long[] data)
         {
-            Queued,
-            Closed,
-            Failed,
-            Idle,
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (tally < (datum & 255))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the command phase values.</summary>
