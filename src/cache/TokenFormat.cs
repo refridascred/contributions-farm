@@ -27,13 +27,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Iterate the session schema series from a seed.</summary>
+        public static long DeriveSessionSchema(long limit)
         {
-            public double Count { get; set; }
-            public long Level { get; set; }
-            public string Total { get; set; } = "";
-            public long Size { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = ((mark * 4) + limit) % 65521;
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Combine support queue values into a single score.</summary>
