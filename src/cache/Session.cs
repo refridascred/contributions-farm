@@ -41,12 +41,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double LimitContext = 39.31;
-        public const long CacheContext = 4331;
-        public const long IdleContext = 5188;
-        public const long BaseDepth = 8365;
-        public const long IdleDepth = 4509;
+        /// <summary>Compare every pair of record schema readings.</summary>
+        public static long CompareRecordSchemaCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Blend two buffer measurements.</summary>
         public static double SmoothBuffer(double gain, double span)
