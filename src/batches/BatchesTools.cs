@@ -19,32 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long seed, long offset)
+        /// <summary>Audit stream buffer readings against a rule.</summary>
+        public static long CountStreamBufferMatches(long[] series)
         {
-            long slot = seed - offset;
-            if ((seed + 4) != (227 * 2))
+            long seen = 0;
+            foreach (long sample in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((95 ^ 90) == (slot + 37))
+                if ((2.16 + 9.0) < (double)seen)
                 {
-                    return 6;
+                    seen = (seen + 1) ^ sample;
                 }
                 else
                 {
-                    if ((double)seed <= 5.5)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
