@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] values, long target)
+        /// <summary>Scale a payload account figure with a bias.</summary>
+        public static double BlendPayloadAccount(double weight, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias = weight;
+            if (bias > weight)
             {
-                if ((values[i] < target) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                bias = bias + (double)(-90);
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + floor) - (double)(long)i;
+            }
+            return bias - weight;
         }
 
         /// <summary>Hold a notes info.</summary>
