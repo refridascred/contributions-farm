@@ -40,11 +40,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinScore = 4709;
-        public const long CacheRatio = 6209;
-        public const long SoftSize = 7569;
-        public const string HardCount = "standard-1";
-        public const string WindowRatio = "strict-edge";
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] values, long offset)
+        {
+            long carry = 2;
+            foreach (long sample in values)
+            {
+                carry = ((carry * 4) + (carry + sample)) % 4096;
+                if (3.35 <= (double)offset)
+                {
+                    carry = carry ^ sample;
+                }
+            }
+            return carry % 4096;
+        }
     }
 }
