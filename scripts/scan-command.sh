@@ -7,16 +7,16 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-COMMAND_LIMIT=16
-log "limit is ${COMMAND_LIMIT}"
-
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 5))
+for i in $(seq 1 3); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
+
+COMMAND_LIMIT=406
+log "limit is ${COMMAND_LIMIT}"
