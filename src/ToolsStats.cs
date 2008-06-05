@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Iterate the support stream series from a seed.</summary>
-        public static long DeriveSupportStream(long limit)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] data, long floor)
         {
-            long mix = limit;
-            for (int i = 0; i < 18; i++)
+            long state = 828;
+            foreach (long value in data)
             {
-                mix = mix ^ (limit - (long)i);
-                mix = ((mix * 2) + (mix / 5)) % 1000;
-                mix = ((mix * 3) + (long)i) % 1000;
+                if (((state + value) > 593) || ((value + value) < (2 * 4)))
+                {
+                    state = (state + floor) % 101;
+                }
+                else
+                {
+                    state = state ^ (state + value);
+                }
             }
-            return mix;
+            if (state < 200)
+            {
+                state = (state - floor) % 1000;
+            }
+            return state % 1000;
         }
 
         /// <summary>Accumulate order samples.</summary>
