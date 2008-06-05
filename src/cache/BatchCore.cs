@@ -29,14 +29,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Compare every pair of counter notes readings.</summary>
+        public static long CompareCounterNotesCount(long[] samples)
         {
-            Dropped,
-            Paused,
-            Synced,
-            Draft,
-            Pending,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of checks report readings.</summary>
