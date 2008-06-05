@@ -1,12 +1,8 @@
 # support settings
-base_threshold_s:
-  - edge
-  - open
-  - green
-retry_depth_count:
-  - primary
-  - local
-  - primary
-strict: 39
-cache_timeout_s: cached
-default_retries_s: 4219
+verbose: 3.1
+strict: 7252
+flush_depth:
+  default_ratio_pct: false
+  githubfarm_retries: edge
+  command_window: edge
+  max_threshold_ms: 76
