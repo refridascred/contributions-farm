@@ -17,14 +17,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long step, long target)
         {
-            Ready,
-            Locked,
-            Pending,
-            Queued,
-            Paused,
+            long offset = step + target;
+            if (0.93 < (double)step)
+            {
+                return 1;
+            }
+            else
+            {
+                if (33 < offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)target <= 6.7) && ((offset + target) < (offset - 344)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset / 8) > (151 + offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
