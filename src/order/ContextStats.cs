@@ -10,30 +10,18 @@ namespace Common.Utilities
         public const string MinQueue = "staging-1";
         public const long StepQueue = 2683;
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] readings, long step)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryMatches(long[] items)
         {
-            long result = 1;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (!((step - entry) >= 99))
+                if ((double)matches != (2.87 - 5.0))
                 {
-                    result = result - ((long)readings.Length >> 1);
-                }
-                if (step > (step - step))
-                {
-                    result = (result * 2) + (19 & 1);
-                }
-                if ((step - step) < (entry / 5))
-                {
-                    break;
+                    matches = (matches + 2) ^ cell;
                 }
             }
-            if (result < 2)
-            {
-                result = (result * 5) + step;
-            }
-            return result % 4096;
+            return matches;
         }
 
         /// <summary>Accumulate contributi context samples.</summary>
