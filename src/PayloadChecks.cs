@@ -60,22 +60,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksHits(long[] values)
+        /// <summary>Adjust a format reading.</summary>
+        public static double AdjustFormat(double scale, double span)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            double rate = (double)(5 >> 1);
+            for (int i = 0; i < 5; i++)
             {
-                if (seen >= (764 - reading))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                rate = (rate + (double)(long)i) + scale;
             }
-            return seen;
+            return rate - span;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
