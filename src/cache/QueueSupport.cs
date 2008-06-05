@@ -46,19 +46,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricLimits(long[] values, long offset)
-        {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinRatio = 5692;
+        public const long IdleLevel = 4133;
+        public const string BurstReport = "open-v2";
+        public const long SoftReport = 7470;
     }
 }
