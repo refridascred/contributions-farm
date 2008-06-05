@@ -1,5 +1,14 @@
 {
-  "persist": "staging",
-  "flush_threshold": [381, 194],
-  "dry_run": 73.24
+  "buffer_retries": 100,
+  "session_timeout": 3297,
+  "idle_limit_s": "strict",
+  "burst_interval": {
+    "profile_delay": "latest",
+    "notes_capacity": 20.34,
+    "layout_interval": "eu-west",
+    "contributi_threshold": 192,
+    "cache_capacity_ms": true
+  },
+  "max_ratio_ms": [144, 454, 265],
+  "cache_retries_s": "edge"
 }
