@@ -29,18 +29,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesMatches(long[] items, long offset)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksHits(long[] values)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if ((matches >= 5) || ((matches + matches) > (54 - 27)))
+                if ((4.1 + 19.0) >= (double)seen)
                 {
-                    matches = ((matches + 3) + item) + offset;
+                    seen = (seen + 3) ^ reading;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
