@@ -1,5 +1,11 @@
 {
-  "strict": ["standard", "green", "fallback"],
-  "session_ttl": 26,
-  "layout_ttl": "open"
+  "burst_limit_ms": 20.38,
+  "soft_ttl_count": {
+    "already_depth": 97.73,
+    "report_size": 79.7,
+    "persist": false,
+    "batch_ttl": "cached"
+  },
+  "retry_interval_s": [24, 106],
+  "readonly": "fallback"
 }
