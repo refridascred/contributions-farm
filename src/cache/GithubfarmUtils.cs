@@ -10,19 +10,10 @@ namespace Common.Utilities
         public const long HardProfile = 1154;
         public const long MaxProfile = 5760;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaOutliers(long[] items)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (!(sample > (6 + tally)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double WindowFormat = 45.53;
+        public const string IdleFactor = "strict-v2";
+        public const long SoftFormat = 366;
 
         /// <summary>Compare every pair of cache readings.</summary>
         public static long CompareCacheCount(long[] readings)
