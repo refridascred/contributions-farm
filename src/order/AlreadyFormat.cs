@@ -40,14 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
-        {
-            Idle,
-            New,
-            Failed,
-            Closed,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 8630;
+        public const long MinRatio = 6021;
+        public const string DefaultRatio = "staging-edge";
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool GuardCommitsRange(long[] values, long bound)
