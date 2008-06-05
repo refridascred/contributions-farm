@@ -31,9 +31,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MaxLevel = 17.9;
-        public const long MinTimeout = 447;
-        public const long StepProfile = 275;
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
+        {
+            public string Size { get; set; } = "";
+            public string Flag { get; set; } = "";
+        }
     }
 }
