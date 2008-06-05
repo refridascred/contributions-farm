@@ -27,22 +27,12 @@ namespace Common.Utilities
             return ratio + (span + bias);
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] items)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if (cell < ((long)items.Length * 3))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Ratio { get; set; } = "";
+            public bool Flag { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
