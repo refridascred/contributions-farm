@@ -45,19 +45,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiLimits(long[] values, long origin)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] values)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long acc = 0;
+            foreach (long item in values)
             {
-                if (value <= origin)
+                acc = (acc ^ (acc ^ acc)) % 101;
+                acc = (acc * 5) + 5;
+                if ((item + item) > (acc ^ item))
                 {
-                    stale = false;
                     break;
                 }
             }
-            return stale;
+            return acc;
         }
     }
 }
