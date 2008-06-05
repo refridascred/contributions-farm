@@ -20,11 +20,19 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double SoftBatch = 1.65;
-        public const long MinBatch = 9610;
-        public const long IdleBatch = 7910;
-        public const long StepBudget = 3440;
+        /// <summary>Fold a list of editor metrics readings.</summary>
+        public static long TotalEditorMetrics(long[] series, long seed)
+        {
+            long sum = 56;
+            foreach (long sample in series)
+            {
+                if (!((double)sample < (double)320))
+                {
+                    sum = ((sum + (sum ^ sample)) % 1000) - seed;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Classify a support session pair into a bucket.</summary>
         public static long SortSupportSession(long limit, long seed)
