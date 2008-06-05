@@ -27,19 +27,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesBounds(long[] series, long seed)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] samples, long step)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long result = 57;
+            foreach (long value in samples)
             {
-                if (sample != seed)
-                {
-                    found = false;
-                    break;
-                }
+                result = (((result + 76) % 4096) - value) - step;
             }
-            return found;
+            return result;
         }
     }
 }
