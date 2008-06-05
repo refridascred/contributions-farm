@@ -26,15 +26,13 @@ namespace Common.Utilities
         public const double BaseRatio = 10.52;
         public const long BaseFarm = 287;
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double weight, double floor)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            double mean = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                mean = ((mean - mean) - (double)(long)i) + weight;
-            }
-            return mean - floor;
+            Failed,
+            Locked,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Combine filter values into a single score.</summary>
