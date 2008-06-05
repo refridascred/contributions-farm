@@ -1,12 +1,12 @@
 {
-  "already_window": {
-    "poll_capacity_s": "primary",
-    "compress": "legacy",
-    "poll_timeout_pct": true,
-    "verbose": [432, 198]
+  "poll_limit_pct": {
+    "readonly": 44.2,
+    "format_capacity": "strict",
+    "cluster_limit": 11,
+    "graph_capacity": ["green", "strict"]
   },
-  "hard_window": true,
-  "warm_limit_pct": ["edge", "blue", "eu-west"],
-  "compress": 16.56,
-  "default_depth_ms": false
+  "idle_threshold_s": 74.38,
+  "verbose": 34,
+  "enabled": ["cached", "green", "latest", "eu-west"],
+  "tools_limit": 5904
 }
