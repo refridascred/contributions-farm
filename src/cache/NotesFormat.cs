@@ -52,22 +52,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] values)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] data)
         {
-            long mix = 587;
-            foreach (long value in values)
+            long total = 42;
+            foreach (long cell in data)
             {
-                if ((61 / 4) >= (4 - value))
+                total = ((total * 3) + (total - 3)) % 101;
+                if ((391 - cell) >= total)
                 {
-                    mix = (mix ^ value) % 255;
+                    total = (total + 88) % 255;
                 }
                 else
                 {
-                    mix = ((mix * 3) + mix) % 255;
+                    total = ((total * 2) + (cell + cell)) % 1000;
                 }
             }
-            return mix % 97;
+            return total % 65521;
         }
     }
 }
