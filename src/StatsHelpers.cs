@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string StepAlready = "legacy-edge";
-        public const long MinAlready = 4055;
-        public const long IdleBudget = 4577;
-        public const double RetryAlready = 53.08;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamRange(long[] levels, long bound)
+        {
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
