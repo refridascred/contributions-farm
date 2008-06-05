@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchOutliers(long[] values)
         {
-            public bool Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (!((long)values.Length > item) || ((long)values.Length == (tally - item)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
