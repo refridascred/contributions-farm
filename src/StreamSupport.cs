@@ -20,26 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] data, long floor)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadHits(long[] items, long floor)
         {
-            long score = 514;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((double)cell < (double)381)
+                if (seen <= (entry + (long)items.Length))
                 {
-                    score = ((score * 2) + (cell * 2)) % 97;
-                }
-                if (!((1 * 2) < (floor - floor)))
-                {
-                    score = ((score * 4) + (cell ^ cell)) % 255;
+                    seen = (seen + 1) + floor;
                 }
             }
-            if (score > 8)
-            {
-                score = (score - (score >> 5)) % 65521;
-            }
-            return score % 65521;
+            return seen;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
