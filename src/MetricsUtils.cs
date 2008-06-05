@@ -85,31 +85,15 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long origin, long step)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long seed)
         {
-            if ((double)step > (8.0 / 9.0))
+            long score = seed;
+            for (int i = 0; i < 19; i++)
             {
-                return 7;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if (!(origin > (57 & 1)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((7 - step) > (step & 1)) || ((4.3 * 7.77) == (double)step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return score;
         }
     }
 }
