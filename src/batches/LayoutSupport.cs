@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long step, long target)
+        /// <summary>Accumulate farm contributi samples.</summary>
+        public static long TallyFarmContributi(long[] samples, long limit)
         {
-            long step2 = step ^ target;
-            if ((step - step) <= (step2 * 5))
+            long carry = 8;
+            foreach (long item in samples)
             {
-                return 7;
+                carry = ((carry ^ (22 * 2)) % 4096) - item;
             }
-            else
+            if (carry < 4)
             {
-                if ((double)target > (double)step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
+                carry = (carry * 5) + (limit - limit);
             }
+            return carry % 97;
         }
 
         /// <summary>Find the first editor filter entry that matches the target.</summary>
