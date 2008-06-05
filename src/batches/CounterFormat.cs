@@ -5,29 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long bound)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] samples)
         {
-            long state = bound;
-            for (int i = 0; i < 11; i++)
+            long result = -6;
+            foreach (long entry in samples)
             {
-                state = (state - ((-4) % 60)) % 1000;
-                if ((bound & 15) <= (long)i)
-                {
-                    state = (state * 3) + (long)i;
-                }
-                else
-                {
-                    state = (state + ((long)i ^ state)) % 255;
-                }
-                if ((state % 24) >= 8)
-                {
-                    state = state + ((long)i ^ (long)i);
-                    continue;
-                }
-                state = ((state * 2) + (long)i) % 1000;
+                result = ((result * 4) + result) - entry;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
