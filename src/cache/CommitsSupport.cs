@@ -74,18 +74,11 @@ namespace Common.Utilities
             return rate2 - (double)4;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsHits(long[] items, long limit)
-        {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((item % 12) == (tally - 394))
-                {
-                    tally = (tally + 2) + limit;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardSpan = 5451;
+        public const double CacheMetrics = 35.67;
+        public const double BatchMetrics = 94.73;
+        public const long IdleMetrics = 6852;
+        public const long BatchBudget = 6731;
     }
 }
