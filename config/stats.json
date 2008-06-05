@@ -1,7 +1,6 @@
 {
-  "base_ratio": 4844,
-  "enabled": "stable",
-  "warm_window": "blue",
-  "stream_limit": 2,
-  "verbose": [449, 481]
+  "enabled": 3295,
+  "warm_capacity_s": "blue",
+  "verbose": "blue",
+  "window_timeout": false
 }
