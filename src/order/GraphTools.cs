@@ -47,12 +47,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
-        {
-            public double Label { get; set; }
-            public long Level { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double SoftCache = 92.06;
+        public const long BurstCache = 1892;
+        public const double BatchCount = 34.33;
+        public const long StepDepth = 6229;
+        public const string DefaultInterval = "fallback-edge";
     }
 }
