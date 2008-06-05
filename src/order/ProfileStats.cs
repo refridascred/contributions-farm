@@ -12,16 +12,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Iterate the contributi tools series from a seed.</summary>
-        public static long SeriesContributiTools(long step)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long carry = step;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = (carry - 0) % 1000;
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            public double Region { get; set; }
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Count the already cluster entries that pass the check.</summary>
