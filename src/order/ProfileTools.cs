@@ -36,14 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferRange(long[] levels, long floor)
         {
-            Locked,
-            Done,
-            Paused,
-            Retry,
-            Closed,
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Match up stats samples.</summary>
