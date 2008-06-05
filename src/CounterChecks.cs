@@ -49,11 +49,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long floor)
         {
-            public long Weight { get; set; }
-            public long Label { get; set; }
+            long mix = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
