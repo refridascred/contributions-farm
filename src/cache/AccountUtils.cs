@@ -28,17 +28,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] levels, long step)
+        /// <summary>Audit contributi metric readings against a rule.</summary>
+        public static long MeasureContributiMetricOutliers(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((levels[i] >= step) && ((levels[i] % 5) != 0))
+                if (datum >= ((-55) & 127))
                 {
-                    return (long)i;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Locate a stream batches reading by value.</summary>
