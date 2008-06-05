@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
-        {
-            public bool Label { get; set; }
-            public long Mode { get; set; }
-            public string Level { get; set; } = "";
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 5758;
+        public const long BaseScore = 9729;
+        public const string RetrySchema = "staging-1";
+        public const double StepSchema = 74.14;
 
         /// <summary>Validate token session readings against a bound.</summary>
         public static bool VerifyTokenSessionBounds(long[] levels, long step)
