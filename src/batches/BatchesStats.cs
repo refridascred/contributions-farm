@@ -13,18 +13,14 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] series, long bound)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((bound - matches) > (sample >> 1))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Draft,
+            Idle,
+            Synced,
+            Stale,
+            Queued,
         }
 
         /// <summary>Audit report readings against a rule.</summary>
