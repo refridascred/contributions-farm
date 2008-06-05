@@ -1,6 +1,17 @@
 {
-  "base_threshold_s": "primary",
-  "layout_delay": 3178,
-  "compress": ["fallback", "blue", "blue", "fallback"],
-  "warm_size": "cached"
+  "stream_window": {
+    "retry_timeout_ms": 3873,
+    "enabled": true,
+    "editor_retries": 80.11
+  },
+  "dry_run": 10.79,
+  "entry_window": 86,
+  "hard_limit_count": {
+    "sync_capacity": "standard",
+    "graph_interval": 43.48,
+    "soft_retries_s": 250,
+    "soft_ttl_count": 88.99,
+    "sync_interval_ms": "stable",
+    "default_threshold_count": false
+  }
 }
