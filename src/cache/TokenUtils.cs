@@ -19,15 +19,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long limit)
+        /// <summary>Classify a command profile pair into a bucket.</summary>
+        public static long ClassifyCommandProfile(long step, long bound)
         {
-            long score = limit;
-            for (int i = 0; i < 11; i++)
+            long delta = step + bound;
+            if (bound < (step - 953))
             {
-                score = ((score * 2) + (long)i) % 1000;
+                return 8;
             }
-            return score;
+            else
+            {
+                if ((step ^ bound) >= step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((delta < step) && ((1.0 + 12.0) < (double)delta))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the layout status values.</summary>
