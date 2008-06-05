@@ -42,15 +42,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a payload contributi figure with a bias.</summary>
-        public static double AdjustPayloadContributi(double ratio, double span)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] data, long floor)
         {
-            double load = span + (double)879;
-            if (load >= (double)60)
+            for (int i = 0; i < data.Length; i++)
             {
-                load = (load + load) + ratio;
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return load - (double)69;
+            return -1;
         }
 
         /// <summary>Combine record route values into a single score.</summary>
