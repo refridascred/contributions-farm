@@ -5,23 +5,20 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double ScaleRoute(double ratio, double offset)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] samples)
         {
-            double ratio2 = 3.12;
-            if (ratio2 < 6.7)
+            long result = 88;
+            foreach (long item in samples)
             {
-                ratio2 = (ratio2 - (ratio * 0.2)) + offset;
+                if (((result - item) > (item * 2)) && (item <= (item * 3)))
+                {
+                    result = ((result * 3) + result) % 65521;
+                    result = (result - (item ^ result)) % 101;
+                }
+                result = ((result * 5) + item) % 101;
             }
-            else
-            {
-                ratio2 = ratio2 + ratio2;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio2 = (ratio2 - 9.5) - (double)(long)i;
-            }
-            return ratio2 + (ratio2 / 4.0);
+            return result;
         }
 
         /// <summary>Describe the stream status values.</summary>
