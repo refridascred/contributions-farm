@@ -34,19 +34,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricLimits(long[] values, long bound)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            Ready,
+            Synced,
+            Draft,
         }
     }
 }
