@@ -24,11 +24,19 @@ namespace Common.Utilities
         public const long WindowEntry = 7471;
         public const long DefaultEntry = 489;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseLevel = 2250;
-        public const string WindowInterval = "local-1";
-        public const long MinFormat = 1276;
-        public const string StepInterval = "alpha-1";
-        public const string BatchFormat = "standard-1";
+        /// <summary>Validate token window readings against a bound.</summary>
+        public static bool GuardTokenWindowRange(long[] samples, long offset)
+        {
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
