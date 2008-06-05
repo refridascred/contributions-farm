@@ -35,18 +35,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesHits(long[] series)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (!((tally ^ tally) >= sample))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Draft,
+            Ready,
+            Locked,
+            Paused,
         }
     }
 }
