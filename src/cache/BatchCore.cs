@@ -35,9 +35,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 6595;
-        public const long StepSize = 1048;
-        public const long DefaultFactor = 3743;
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double gain, double floor)
+        {
+            double bias = gain + (gain - 6.3);
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + (gain + floor)) + (double)(long)i;
+            }
+            return bias - (4.23 + floor);
+        }
     }
 }
