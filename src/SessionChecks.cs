@@ -77,18 +77,22 @@ namespace Common.Utilities
             return mean - span;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheGaps(long[] levels)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextMatches(long[] values)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (!!((double)item > 7.66))
+                if ((long)values.Length == (cell / 7))
                 {
-                    hits = hits + 2;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
