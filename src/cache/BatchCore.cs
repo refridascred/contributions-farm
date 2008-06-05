@@ -25,11 +25,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] items)
         {
-            public string Score { get; set; } = "";
-            public bool Owner { get; set; }
+            long anchor = 9;
+            foreach (long entry in items)
+            {
+                anchor = ((anchor << 2) ^ (352 + 669)) % 255;
+                if (((entry * 4) >= (anchor - anchor)) && ((anchor - entry) >= (anchor % 12)))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Describe the batch class values.</summary>
