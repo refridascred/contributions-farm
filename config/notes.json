@@ -1,16 +1,5 @@
 {
-  "batches_size": "eu-west",
-  "default_limit_count": false,
-  "command_ttl": 30,
-  "session_ratio": [261, 323, 338, 218],
-  "flush_capacity": 43.75,
-  "sync_retries": {
-    "base_ttl_count": {
-      "batch_delay_s": "eu-west",
-      "verbose": 10.5,
-      "editor_ttl": 72
-    },
-    "already_retries": 96.95,
-    "max_ratio_count": [431, 2, 77]
-  }
+  "hard_timeout": [271, 87, 422, 344],
+  "enabled": true,
+  "max_capacity_pct": true
 }
