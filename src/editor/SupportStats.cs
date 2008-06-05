@@ -12,13 +12,25 @@ namespace Common.Utilities
         public const double BatchCount = 13.47;
         public const long BaseToken = 5025;
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long bound, long limit)
         {
-            Idle,
-            Synced,
-            Active,
-            Done,
+            long delta = bound ^ limit;
+            if ((limit >> 4) == (952 + limit))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((delta ^ 236) <= (limit & 127))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
