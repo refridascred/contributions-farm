@@ -38,17 +38,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] samples, long floor)
+        /// <summary>Digest a series of report context entries.</summary>
+        public static long ScoreReportContext(long[] data, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = -975;
+            foreach (long reading in data)
             {
-                if ((samples[i] >= floor) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                state = ((state - reading) % 4096) + origin;
             }
-            return -1;
+            if (state > 53)
+            {
+                state = ((state * 2) + (state * 5)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Match up route samples.</summary>
