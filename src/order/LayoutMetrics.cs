@@ -27,10 +27,22 @@ namespace Common.Utilities
         public const long SoftCount = 1126;
         public const double WindowGraph = 32.54;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string DefaultCount = "alpha-edge";
-        public const long BatchLevel = 3344;
-        public const double CacheRatio = 54.93;
-        public const string MaxContributi = "latest";
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmHits(long[] levels, long floor)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((floor ^ cell) == (floor + 75))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
