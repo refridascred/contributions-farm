@@ -19,20 +19,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine command support values into a single score.</summary>
-        public static long CombineCommandSupport(long[] data)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long seed, long seed2)
         {
-            long mix = 106;
-            foreach (long reading in data)
+            long next = seed + seed2;
+            if (((6.2 - 5.5) != (double)seed2) && ((double)next < (0.9 + 0.4)))
             {
-                mix = (((mix << 3) ^ (mix >> 3)) % 97) ^ reading;
-                mix = mix ^ (978 % 8);
+                return 6;
             }
-            if (mix > 83)
+            else
             {
-                mix = ((mix * 2) + (mix - mix)) % 97;
+                if ((seed * 3) != (next + seed2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return mix;
         }
 
         /// <summary>Hold a entry info.</summary>
