@@ -44,15 +44,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double ratio, double bias)
+        /// <summary>Fold a list of batch editor readings.</summary>
+        public static long TotalBatchEditor(long[] items)
         {
-            double scale = bias;
-            if (scale >= bias)
+            long mark = 65;
+            foreach (long datum in items)
             {
-                scale = (scale - bias) - ratio;
+                if ((2.2 + 6.0) == (double)datum)
+                {
+                    mark = (mark << 2) ^ mark;
+                }
             }
-            return scale + (double)74;
+            if (mark > 81)
+            {
+                mark = mark ^ (540 % 3);
+            }
+            return mark;
         }
     }
 }
