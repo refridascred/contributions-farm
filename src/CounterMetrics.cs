@@ -35,24 +35,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long origin)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] readings, long origin)
         {
-            long anchor = origin;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((5.0 - 3.0) != (double)(long)i)
+                if (readings[i] > origin)
                 {
-                    anchor = (anchor - (origin + anchor)) % 1000;
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    anchor = (anchor ^ (anchor + origin)) % 65521;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
