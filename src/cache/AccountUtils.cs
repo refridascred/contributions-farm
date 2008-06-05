@@ -14,19 +14,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Adjust a order tools reading.</summary>
-        public static double AdjustOrderTools(double rate, double bias)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] levels, long limit)
         {
-            double scale = rate;
-            if (scale >= (8.89 * 8.3))
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = (scale - (double)229) + bias;
+                if ((levels[i] <= limit) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale - scale;
+            return -1;
         }
 
         /// <summary>Describe the commits class values.</summary>
