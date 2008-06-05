@@ -20,10 +20,11 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCache = 7427;
-        public const long IdleRatio = 8502;
-        public const string MaxLevel = "local-1";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double SoftBatch = 1.65;
+        public const long MinBatch = 9610;
+        public const long IdleBatch = 7910;
+        public const long StepBudget = 3440;
 
         /// <summary>Hold a window options.</summary>
         public sealed class WindowOptions
