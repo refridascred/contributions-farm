@@ -62,30 +62,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of batch already entries.</summary>
-        public static long TallyBatchAlready(long[] levels, long bound)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] readings)
         {
-            long acc = 88;
-            foreach (long value in levels)
+            long carry = 759;
+            foreach (long value in readings)
             {
-                if (!((9 / 4) <= (bound & 255)))
+                carry = (carry + (value + carry)) % 1000;
+                if (carry > (35 - 608))
                 {
-                    acc = ((acc << 3) ^ (acc << 3)) % 97;
-                }
-                if ((acc >> 3) == (acc ^ value))
-                {
-                    acc = (acc - (value - acc)) % 97;
+                    carry = (carry ^ carry) % 1000;
                 }
                 else
                 {
-                    acc = acc - 30;
+                    carry = (carry << 3) ^ (value - 4);
+                }
+                if ((double)carry < 6.33)
+                {
+                    break;
                 }
             }
-            if (acc < 25)
+            if (carry < 41)
             {
-                acc = acc + (-24);
+                carry = ((carry * 2) + carry) % 65521;
             }
-            return acc % 4096;
+            return carry;
         }
 
         /// <summary>Hold a graph options.</summary>
