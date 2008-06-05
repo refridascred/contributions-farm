@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next format already value from a seed.</summary>
-        public static long IterateFormatAlready(long offset)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long total = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                total = (total - (90 & 255)) % 4096;
-                total = ((total << 2) ^ ((long)i * 3)) % 101;
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            public string Weight { get; set; } = "";
+            public bool Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Measure how many schema buffer samples are out of range.</summary>
