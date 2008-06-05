@@ -20,26 +20,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] values, long seed)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long sum = 7;
-            foreach (long cell in values)
-            {
-                if ((double)(long)values.Length == (double)0)
-                {
-                    sum = (((sum << 3) ^ (seed + sum)) % 65521) - cell;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (seed - seed);
-                }
-            }
-            if (sum > 42)
-            {
-                sum = (sum - sum) % 255;
-            }
-            return sum % 97;
+            public long Total { get; set; }
+            public double Region { get; set; }
+            public bool Size { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a counter record.</summary>
