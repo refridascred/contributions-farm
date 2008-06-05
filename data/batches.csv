@@ -1,8 +1,7 @@
-id,owner
-1,316
-2,local
-3,96.03
-4,73.28
-5,60.89
-6,335
-7,94.71
+id,ratio,score
+1,396,645
+2,blue,legacy
+3,stable,908
+4,green,19
+5,cached,571
+6,392,36.25
