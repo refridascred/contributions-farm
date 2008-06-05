@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of report route readings.</summary>
-        public static long DigestReportRoute(long[] items)
+        /// <summary>Combine support counter values into a single score.</summary>
+        public static long CombineSupportCounter(long[] levels)
         {
-            long total = 4;
-            foreach (long datum in items)
+            long mix = 6;
+            foreach (long item in levels)
             {
-                total = (total - (total + 624)) - datum;
+                if (mix < (long)levels.Length)
+                {
+                    mix = ((mix << 3) ^ (item + item)) % 65521;
+                }
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
