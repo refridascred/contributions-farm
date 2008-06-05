@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] levels, long limit)
-        {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string IdleSchema = "local-v2";
+        public const double StepDepth = 74.95;
+        public const string RetrySchema = "primary-v2";
 
         /// <summary>Accumulate order samples.</summary>
         public static long ScoreOrder(long[] levels, long target)
