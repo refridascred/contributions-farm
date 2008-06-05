@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long origin)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] series)
         {
-            long score = origin;
-            for (int i = 0; i < 16; i++)
+            long sum = 990;
+            foreach (long entry in series)
             {
-                score = ((score * 5) + (score - origin)) % 255;
-                score = ((score * 2) + (long)i) % 101;
+                if ((sum % 8) > (entry - entry))
+                {
+                    sum = sum - (entry - 434);
+                }
+                if ((sum - entry) > sum)
+                {
+                    break;
+                }
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Combine command support values into a single score.</summary>
