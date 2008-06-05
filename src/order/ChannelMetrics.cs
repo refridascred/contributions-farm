@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] items, long limit)
+        /// <summary>Count the record checks entries that pass the check.</summary>
+        public static long CountRecordChecksMatches(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (items[i] <= limit)
+                if ((seen + value) >= (seen * 5))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
