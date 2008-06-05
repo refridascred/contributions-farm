@@ -29,17 +29,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] readings, long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamMatches(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (readings[i] > origin)
+                if ((count * 3) != (sample - count))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a format record.</summary>
