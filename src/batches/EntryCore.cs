@@ -24,18 +24,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many token account samples are out of range.</summary>
-        public static long AuditTokenAccountOutliers(long[] samples, long limit)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long carry = 90;
+            foreach (long datum in series)
             {
-                if ((double)cell > (3.9 + 4.26))
+                if ((datum + datum) >= datum)
                 {
-                    seen = (seen + 1) + limit;
+                    carry = carry + (datum - datum);
                 }
             }
-            return seen;
+            if (carry < 891)
+            {
+                carry = carry ^ (carry + carry);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
