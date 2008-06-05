@@ -22,21 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count account metrics pairs that satisfy a relation.</summary>
-        public static long CompareAccountMetricsCount(long[] data)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] items, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (items[i] > offset)
                 {
-                    if ((data[i] + data[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Adjust a route reading.</summary>
