@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 3509;
+        public const long LimitTimeout = 910;
+        public const long WindowRatio = 8033;
 
         /// <summary>Iterate the contributi counter series from a seed.</summary>
         public static long SeriesContributiCounter(long bound)
