@@ -61,17 +61,9 @@ namespace Common.Utilities
             return gain + (double)1;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowRatio = 8878;
+        public const long HardLevel = 1630;
+        public const double IdlePayload = 53.01;
     }
 }
