@@ -18,23 +18,12 @@ namespace Common.Utilities
         public const long StepSize = 443;
         public const long RetryRecord = 9814;
 
-        /// <summary>Accumulate commits route samples.</summary>
-        public static long DigestCommitsRoute(long[] values)
-        {
-            long sum = -124;
-            foreach (long sample in values)
-            {
-                if ((double)sample != (9.6 / 7.0))
-                {
-                    sum = ((sum * 4) + (sum + 36)) % 4096;
-                }
-            }
-            if (sum > 7)
-            {
-                sum = ((sum << 3) ^ (sum / 9)) % 255;
-            }
-            return sum;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double WindowBatches = 35.59;
+        public const double LimitDepth = 78.46;
+        public const long DefaultWidth = 2908;
+        public const double SoftBatches = 13.5;
+        public const long IdleBatches = 944;
 
         /// <summary>Compare every pair of context order readings.</summary>
         public static long PairContextOrderCount(long[] series)
