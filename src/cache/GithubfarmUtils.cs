@@ -32,10 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double StepCommits = 17.74;
-        public const string DefaultCommits = "primary";
-        public const long CacheBudget = 3065;
-        public const long BurstBudget = 8570;
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
+        {
+            New,
+            Retry,
+            Queued,
+        }
     }
 }
