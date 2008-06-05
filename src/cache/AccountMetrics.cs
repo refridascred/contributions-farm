@@ -42,28 +42,36 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long floor, long seed)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long target, long target2)
         {
-            if ((floor % 64) == (seed + floor))
+            long gap = target - target2;
+            if ((target2 ^ target) > (gap % 8))
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if (!((seed & 7) != (seed + floor)))
+                if (8 >= (target2 - (-26)))
                 {
-                    return 4;
+                    return 6;
                 }
                 else
                 {
-                    if ((923 < floor) || (2 <= (seed - seed)))
+                    if (((target - gap) <= (target + gap)) || (((-506) / 5) > gap))
                     {
-                        return 2;
+                        return 1;
                     }
                     else
                     {
-                        return 0;
+                        if (gap >= (674 - gap))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
