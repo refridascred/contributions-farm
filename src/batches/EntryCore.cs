@@ -23,21 +23,17 @@ namespace Common.Utilities
         public const long BurstTimeout = 2878;
         public const long DefaultContributi = 8409;
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] samples)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LookupEntryIndex(long[] levels, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((levels[i] == bound) && ((levels[i] % 3) == 0))
                 {
-                    if ((samples[i] ^ samples[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Derive the next context support value from a seed.</summary>
