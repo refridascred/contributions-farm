@@ -1,7 +1,7 @@
 {
-  "already_depth": 3472,
-  "cache_size": 20,
-  "flush_size": "open",
-  "min_threshold_s": 24.82,
-  "batch_window_pct": 80.27
+  "strict": 97,
+  "hard_threshold": 2399,
+  "min_ttl": [72, 37],
+  "default_capacity_count": "latest",
+  "idle_delay_ms": "blue"
 }
