@@ -35,22 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] series)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long total = -263;
-            foreach (long reading in series)
-            {
-                if (((total ^ reading) == (total - reading)) && ((reading * 2) > (total + total)))
-                {
-                    total = ((total << 2) ^ total) % 101;
-                }
-            }
-            if (total > 8)
-            {
-                total = ((total << 2) ^ (15 + total)) % 65521;
-            }
-            return total;
+            public double Offset { get; set; }
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
