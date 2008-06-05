@@ -14,11 +14,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 8929;
-        public const long CacheGraph = 5673;
-        public const string BaseInterval = "standard-edge";
-        public const string WindowSize = "staging";
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
+        {
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string MaxChannel = "fallback-v2";
