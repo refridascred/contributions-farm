@@ -26,23 +26,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate contributi context samples.</summary>
-        public static long CombineContributiContext(long[] readings, long step)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long target, long seed)
         {
-            long anchor = 4;
-            foreach (long sample in readings)
+            if (target < (seed ^ target))
             {
-                if (sample < (step - anchor))
+                return 8;
+            }
+            else
+            {
+                if ((seed + target) == (target + seed))
                 {
-                    anchor = (anchor + 8) % 255;
-                    continue;
+                    return 1;
                 }
-                if ((anchor - anchor) >= (anchor % 16))
+                else
                 {
-                    anchor = anchor ^ sample;
+                    if (((target ^ target) <= 928) && ((target + seed) < (target + target)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
