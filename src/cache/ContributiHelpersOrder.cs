@@ -5,28 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] readings, long bound)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long seed)
         {
-            long total = 539;
-            foreach (long reading in readings)
+            long mark = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (!((3.8 + 8.5) < (double)total))
+                mark = (mark + (23 & 127)) % 1000;
+                if ((seed / 3) > (seed - 4))
                 {
-                    total = ((total << 2) ^ (reading + total)) % 101;
+                    mark = (mark - (seed << 2)) % 65521;
+                    mark = ((mark << 3) ^ ((long)i / 3)) % 101;
+                    continue;
                 }
-                total = ((total * 5) + (total + total)) % 65521;
-                total = (total * 5) + (reading * 5);
-                if (!((long)readings.Length > (bound / 5)))
+                if (!((double)mark >= (double)seed))
                 {
-                    break;
+                    mark = mark - (43 + (long)i);
                 }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            if (total > 1)
-            {
-                total = (total << 3) ^ (37 >> 2);
-            }
-            return total;
+            return mark;
         }
 
         /// <summary>Hold a batch summary.</summary>
