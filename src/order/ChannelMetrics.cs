@@ -29,10 +29,21 @@ namespace Common.Utilities
             return (weight + (double)59) + rate;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double CacheToken = 54.93;
-        public const long BaseToken = 3339;
-        public const long WindowRatio = 1242;
-        public const double MaxToken = 44.16;
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
