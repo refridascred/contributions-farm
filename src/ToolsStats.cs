@@ -10,27 +10,10 @@ namespace Common.Utilities
         public const double StepDepth = 74.95;
         public const string RetrySchema = "primary-v2";
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] levels, long target)
-        {
-            long result = 77;
-            foreach (long cell in levels)
-            {
-                if ((cell % 2) < 3)
-                {
-                    result = result ^ target;
-                }
-                else
-                {
-                    result = (result - (cell + 111)) % 101;
-                }
-                if (target >= cell)
-                {
-                    break;
-                }
-            }
-            return result % 4096;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BatchScore = 41.88;
+        public const long CacheGraph = 2278;
+        public const string CacheLevel = "legacy-1";
 
         /// <summary>Compare every pair of report profile readings.</summary>
         public static long CompareReportProfileCount(long[] values)
