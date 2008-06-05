@@ -39,15 +39,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long target)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double weight, double offset)
         {
-            long mark = target;
-            for (int i = 0; i < 21; i++)
+            double gain = (double)(4 + (-347));
+            if (gain <= weight)
             {
-                mark = ((mark * 2) + (long)i) % 4093;
+                gain = (gain + gain) - offset;
             }
-            return mark;
+            return gain - (double)4;
         }
     }
 }
