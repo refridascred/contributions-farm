@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] levels)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaRange(long[] series, long bound)
         {
-            long acc = 36;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if ((669 ^ reading) == (reading + acc))
+                if (sample >= bound)
                 {
-                    acc = (acc ^ (reading >> 1)) % 101;
-                }
-                else
-                {
-                    acc = ((acc * 5) + reading) % 97;
+                    found = false;
+                    break;
                 }
             }
-            if (acc > 20)
-            {
-                acc = (acc + (acc >> 3)) % 97;
-            }
-            return acc;
+            return found;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
