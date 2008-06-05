@@ -77,39 +77,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a profile checks pair into a bucket.</summary>
-        public static long BucketProfileChecks(long offset, long offset2)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long offset3 = offset ^ offset2;
-            if ((double)offset2 >= 4.8)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset2 / 5) <= (offset3 % 10))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (2.0 >= (double)offset3)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset2 + offset3) == (offset3 * 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public long Token { get; set; }
+            public long Total { get; set; }
         }
     }
 }
