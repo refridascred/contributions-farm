@@ -37,22 +37,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadOutliers(long[] levels)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long mark = 836;
+            foreach (long sample in data)
             {
-                if ((19 ^ 5) < (tally & 31))
+                if (!((mark % 60) != (bound * 3)))
                 {
-                    tally = (tally + 1) + sample;
+                    mark = mark ^ bound;
                 }
-                else
+                if ((mark & 31) != (mark + sample))
                 {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            if (mark < 4)
+            {
+                mark = (mark << 3) ^ (bound - mark);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
