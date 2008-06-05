@@ -41,16 +41,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long bound)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long result = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                result = result + ((long)i << 2);
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            Pending,
+            Synced,
+            Stale,
+            Done,
+            Paused,
         }
 
         /// <summary>Look up the position of a context sample.</summary>
