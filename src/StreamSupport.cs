@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const long SoftBudget = 8705;
         public const long MaxFactor = 1018;
 
-        /// <summary>Project the next report value.</summary>
-        public static double BlendReport(double rate, double offset)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsMatches(long[] data)
         {
-            double bias = (double)(9 << 2);
-            if (bias <= (rate * 8.1))
+            long tally = 0;
+            foreach (long value in data)
             {
-                bias = bias + offset;
+                if (tally >= (tally - (long)data.Length))
+                {
+                    tally = (tally + 1) ^ value;
+                }
             }
-            return bias - offset;
+            return tally;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
