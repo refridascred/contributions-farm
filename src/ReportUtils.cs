@@ -17,24 +17,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long offset)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long PairStreamCount(long[] samples)
         {
-            long anchor = offset;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((long)i <= anchor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor - (anchor * 5)) % 97;
-                    anchor = (anchor + anchor) % 65521;
+                    if ((samples[i] + samples[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                if ((double)anchor < 5.86)
-                {
-                    anchor = anchor + (offset / 6);
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Hold a batches options.</summary>
