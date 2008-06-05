@@ -12,21 +12,22 @@ namespace Common.Utilities
         public const double SoftBatch = 13.98;
         public const long MaxBatch = 3974;
 
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] readings)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] values, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 30;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((target + cell) >= (cell << 3))
                 {
-                    if ((readings[i] ^ readings[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
+                }
+                if ((2 * 5) <= target)
+                {
+                    mark = (mark << 2) ^ (mark + cell);
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Hold a cache options.</summary>
