@@ -40,12 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            Stale,
-            Pending,
-            Synced,
+            Idle,
+            New,
+            Failed,
+            Closed,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
