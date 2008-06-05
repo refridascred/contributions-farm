@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a already command counter forward.</summary>
-        public static long RollAlreadyCommand(long seed)
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] values)
         {
-            long sum = seed;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
