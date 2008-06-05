@@ -19,18 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] series)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long sum = 4;
-            foreach (long entry in series)
-            {
-                if ((double)entry > (double)sum)
-                {
-                    sum = ((sum * 4) + (entry >> 5)) % 65521;
-                }
-            }
-            return sum;
+            Locked,
+            Done,
+            New,
+            Retry,
+            Idle,
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
