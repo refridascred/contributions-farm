@@ -46,15 +46,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] levels, long seed)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long mark = 4;
-            foreach (long cell in levels)
-            {
-                mark = (((mark << 2) ^ (mark + cell)) % 1000) + seed;
-            }
-            return mark % 65521;
+            public long Token { get; set; }
+            public double Level { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define farm limits and defaults.</summary>
