@@ -17,31 +17,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long seed, long origin)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] samples)
         {
-            if ((double)seed > (4.0 + 4.81))
+            long anchor = 670;
+            foreach (long cell in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed + origin) <= ((-89) * 4))
+                if (((-80) - 4) < (cell >> 2))
                 {
-                    return 2;
+                    anchor = (anchor * 2) + (cell - cell);
                 }
                 else
                 {
-                    if ((seed >> 2) <= 12)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    anchor = (anchor - (anchor % 7)) % 97;
+                }
+                if ((cell - 35) != (anchor / 7))
+                {
+                    break;
                 }
             }
+            return anchor % 4096;
         }
 
         /// <summary>Describe the command state values.</summary>
