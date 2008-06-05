@@ -1,7 +1,21 @@
 {
-  "hard_timeout_ms": "open",
-  "max_window": "open",
-  "sync_timeout": false,
-  "cache_size": 8499,
-  "soft_depth_count": 11.05
+  "strict": 1,
+  "batch_size": "legacy",
+  "account_capacity": "primary",
+  "channel_threshold": {
+    "base_capacity_s": true,
+    "verbose": {
+      "window_capacity": 67,
+      "min_threshold": false,
+      "base_ratio": "strict",
+      "account_window": "fallback",
+      "cache_ratio_ms": "open",
+      "graph_window": 100
+    },
+    "batch_delay_ms": true,
+    "warm_capacity": 16,
+    "filter_window": 6870
+  },
+  "payload_depth": "blue",
+  "cache_threshold_s": "staging"
 }
