@@ -10,27 +10,19 @@ namespace Common.Utilities
         public const long HardProfile = 1154;
         public const long MaxProfile = 5760;
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] data)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterRange(long[] levels, long seed)
         {
-            long mix = 52;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                mix = ((mix << 3) ^ (entry + entry)) % 1000;
-                if ((mix + entry) < entry)
+                if (reading >= seed)
                 {
-                    mix = (mix + mix) % 97;
-                }
-                else
-                {
-                    mix = (mix * 4) + mix;
+                    ok = false;
+                    break;
                 }
             }
-            if (mix < 81)
-            {
-                mix = mix + (mix + mix);
-            }
-            return mix % 1000;
+            return ok;
         }
 
         /// <summary>Count the stats notes entries that pass the check.</summary>
