@@ -53,22 +53,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordHits(long[] levels)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LocatePayloadIndex(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((count - value) == (63 / 3))
+                if (levels[i] >= offset)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
