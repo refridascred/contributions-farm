@@ -41,18 +41,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextMatches(long[] data)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long step)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long state = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((matches - 2) <= entry)
-                {
-                    matches = matches + 1;
-                }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
