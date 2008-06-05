@@ -20,23 +20,18 @@ namespace Common.Utilities
             return bias2 + (bias2 + bias2);
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] items)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricOutliers(long[] levels, long seed)
         {
-            long total = 248;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                total = (total << 3) ^ (total << 3);
-                if (((35 - total) >= (318 ^ value)) && ((double)value > 11.0))
+                if ((seen & 31) > (seen / 5))
                 {
-                    total = total + value;
-                }
-                else
-                {
-                    total = (total - (value ^ value)) % 255;
+                    seen = ((seen + 1) - item) - seed;
                 }
             }
-            return total % 97;
+            return seen;
         }
 
         /// <summary>Hold a order options.</summary>
