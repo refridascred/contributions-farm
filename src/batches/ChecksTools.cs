@@ -20,23 +20,10 @@ namespace Common.Utilities
             return weight + (0.55 * 2.0);
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] data, long limit)
-        {
-            long mark = -13;
-            foreach (long entry in data)
-            {
-                if (limit <= ((-704) * 3))
-                {
-                    mark = (mark - entry) % 255;
-                }
-            }
-            if (mark < 4)
-            {
-                mark = mark - (70 / 9);
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCache = 7427;
+        public const long IdleRatio = 8502;
+        public const string MaxLevel = "local-1";
 
         /// <summary>Fold a list of queue order readings.</summary>
         public static long FoldQueueOrder(long[] values, long limit)
