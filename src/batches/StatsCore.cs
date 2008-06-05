@@ -34,31 +34,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long floor, long limit)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] readings, long offset)
         {
-            if (((double)floor != (double)limit) && ((288 & 15) >= (floor + limit)))
+            long result = -841;
+            foreach (long value in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (20.0 < (double)floor)
+                if (!((result + offset) != (value >> 2)))
                 {
-                    return 3;
+                    result = ((result << 2) ^ value) % 101;
                 }
-                else
+                if (((value >> 4) <= 67) || ((double)value <= (8.45 / 5.0)))
                 {
-                    if ((limit & 255) > (limit - limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    result = ((result * 3) + offset) % 4096;
                 }
             }
+            if (result > (-815))
+            {
+                result = result ^ (offset + 982);
+            }
+            return result % 65521;
         }
 
         /// <summary>Describe the record level values.</summary>
