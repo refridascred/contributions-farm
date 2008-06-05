@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Compare every pair of entry farm readings.</summary>
-        public static long OverlapEntryFarmCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftScore = 8540;
+        public const long IdleChannel = 7564;
+        public const string BaseSpan = "primary-1";
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long CombinePayload(long[] values)
