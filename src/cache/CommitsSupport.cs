@@ -42,18 +42,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandMatches(long[] values)
+        /// <summary>Match up window checks samples.</summary>
+        public static long CompareWindowChecksCount(long[] data)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value <= (value * 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((data[i] ^ data[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
