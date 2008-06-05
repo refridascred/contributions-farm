@@ -34,18 +34,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutGaps(long[] data)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordBounds(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if (((6 + seen) >= sample) || ((seen - seen) >= seen))
+                if (value <= step)
                 {
-                    seen = seen + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
