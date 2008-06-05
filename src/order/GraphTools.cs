@@ -70,11 +70,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double SoftCache = 92.06;
-        public const long BurstCache = 1892;
-        public const double BatchCount = 34.33;
-        public const long StepDepth = 6229;
-        public const string DefaultInterval = "fallback-edge";
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long bound, long bound2)
+        {
+            if (bound > (bound & 63))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((481 + bound) < (bound2 + bound2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
