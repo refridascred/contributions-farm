@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const double StepCount = 14.01;
         public const long LimitScore = 4603;
 
-        /// <summary>Audit contributi metric readings against a rule.</summary>
-        public static long MeasureContributiMetricOutliers(long[] readings)
+        /// <summary>Audit githubfarm cache readings against a rule.</summary>
+        public static long CountGithubfarmCacheMatches(long[] items, long seed)
         {
             long tally = 0;
-            foreach (long datum in readings)
+            foreach (long item in items)
             {
-                if (datum >= ((-55) & 127))
+                if ((1 << 1) > (item ^ item))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 3) + seed;
                 }
             }
             return tally;
