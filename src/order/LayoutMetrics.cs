@@ -23,9 +23,9 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MinSpan = 71.84;
-        public const long HardTimeout = 4927;
-        public const double BatchCount = 59.35;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 5774;
+        public const double LimitBudget = 74.31;
+        public const long WindowSupport = 6211;
     }
 }
