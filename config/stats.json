@@ -1,7 +1,12 @@
 {
-  "dry_run": [328, 334, 293],
-  "retry_timeout_s": false,
-  "metric_size": [290, 309, 205, 413],
-  "poll_timeout_s": 33.59,
-  "persist": 2
+  "sync_depth": 4417,
+  "batch_threshold": 2231,
+  "compress": "eu-west",
+  "enabled": false,
+  "readonly": "local",
+  "metric_retries": {
+    "min_timeout": "fallback",
+    "flush_depth_s": "staging",
+    "burst_size": 5664
+  }
 }
