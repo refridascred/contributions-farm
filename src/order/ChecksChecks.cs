@@ -11,22 +11,20 @@ namespace Common.Utilities
         public const double BurstFactor = 44.2;
         public const double IdleMetrics = 14.75;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheOutliers(long[] data)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long seed)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long mark = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)matches < (5.66 * 3.4))
+                mark = (mark ^ (seed % 24)) % 101;
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    matches = (matches + 2) ^ item;
+                    mark = (mark + (414 ^ mark)) ^ (long)i2;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
