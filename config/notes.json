@@ -1,8 +1,12 @@
 {
-  "max_window_pct": [281, 216],
-  "hard_delay_ms": 30,
-  "hard_depth": ["strict", "green", "green"],
-  "min_window": false,
-  "burst_delay_s": 500,
-  "session_retries": [93, 488]
+  "verbose": 28,
+  "min_depth_pct": "staging",
+  "readonly": {
+    "persist": "staging",
+    "verbose": "legacy",
+    "default_retries_ms": 1024,
+    "min_window_s": [132, 484],
+    "base_interval_s": [414, 14, 446, 163],
+    "checks_capacity": 98
+  }
 }
