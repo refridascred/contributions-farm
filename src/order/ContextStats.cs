@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] data, long target)
+        /// <summary>Measure how many cluster tools samples are out of range.</summary>
+        public static long TallyClusterToolsHits(long[] readings, long origin)
         {
-            long score = 1;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((target - item) < item)
+                if (hits < (origin - hits))
                 {
-                    score = (score ^ (item & 63)) % 97;
+                    hits = (hits + 3) + value;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
