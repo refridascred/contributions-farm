@@ -28,25 +28,20 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long origin, long origin2)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long seed)
         {
-            long offset = origin + origin2;
-            if ((250 - offset) == (origin2 + offset))
+            long mix = seed;
+            for (int i = 0; i < 7; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin2 & 63) > (origin2 & 127))
+                mix = ((mix << 2) ^ seed) % 101;
+                if ((seed ^ (long)i) <= (seed - seed))
                 {
-                    return 0;
+                    mix = ((mix << 3) ^ (-575)) % 1000;
                 }
-                else
-                {
-                    return 1;
-                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
+            return mix;
         }
 
         /// <summary>Hold a queue stats.</summary>
