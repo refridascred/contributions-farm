@@ -20,10 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double RetryQueue = 52.84;
-        public const long MaxRatio = 5976;
-        public const long CacheQueue = 1733;
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
+        {
+            public bool Total { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long SoftFactor = 1047;
