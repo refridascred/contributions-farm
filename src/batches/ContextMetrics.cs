@@ -58,19 +58,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every token filter entry stays within the limit.</summary>
-        public static bool CheckTokenFilterLimits(long[] data, long limit)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] values, long target)
         {
-            bool valid = true;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value != limit)
+                if ((values[i] > target) && ((values[i] % 5) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
