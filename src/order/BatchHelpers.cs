@@ -22,11 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Validate editor window readings against a bound.</summary>
+        public static bool CheckEditorWindowRange(long[] samples, long target)
         {
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a order stats.</summary>
