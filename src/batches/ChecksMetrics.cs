@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] values)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long offset, long offset2)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (!((8.6 + 8.7) != (double)offset2))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)offset < 0.9)
                 {
-                    if ((values[i] - values[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a counter stats.</summary>
