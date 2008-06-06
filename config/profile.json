@@ -1,8 +1,23 @@
 {
-  "min_retries": 73.87,
-  "buffer_ttl": 24,
-  "stream_capacity": 4802,
-  "enabled": 1745,
-  "compress": 1,
-  "default_threshold_count": ["legacy", "strict", "latest"]
+  "sync_depth_ms": {
+    "persist": 1694,
+    "readonly": 48,
+    "batch_ttl": 46.56,
+    "poll_ratio_ms": true
+  },
+  "max_window": 73.23,
+  "compress": true,
+  "command_depth": {
+    "buffer_depth": 13,
+    "dry_run": "open",
+    "stats_capacity": "stable",
+    "context_window": {
+      "idle_capacity_ms": 5916,
+      "already_ttl": 100,
+      "route_ttl": 35,
+      "readonly": false
+    },
+    "strict": true
+  },
+  "contributi_capacity": 54.99
 }
