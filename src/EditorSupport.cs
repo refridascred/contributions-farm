@@ -65,14 +65,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            Paused,
-            Draft,
-            Locked,
-            Dropped,
-            Pending,
+            public string Size { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
