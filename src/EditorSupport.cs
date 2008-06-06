@@ -65,11 +65,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            public string Size { get; set; } = "";
-            public double Limit { get; set; }
+            Draft,
+            Closed,
+            New,
+            Idle,
+            Synced,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
