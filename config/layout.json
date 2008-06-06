@@ -1,6 +1,5 @@
 {
-  "cache_timeout_ms": 71,
-  "max_ratio_ms": 90.46,
-  "soft_limit": true,
-  "filter_timeout": [24, 485, 472, 472]
+  "batches_capacity": "fallback",
+  "graph_depth": 27.56,
+  "persist": "latest"
 }
