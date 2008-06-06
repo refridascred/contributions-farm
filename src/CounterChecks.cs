@@ -18,11 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long target)
         {
-            public long Mode { get; set; }
-            public bool Size { get; set; }
+            long sum = target;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = sum ^ target;
+                sum = (sum ^ ((long)i + sum)) % 4096;
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Hold a schema options.</summary>
