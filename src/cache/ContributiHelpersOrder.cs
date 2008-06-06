@@ -22,17 +22,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first metric stream entry that matches the target.</summary>
-        public static long LocateMetricStreamIndex(long[] items, long target)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Done,
+            Idle,
         }
 
         /// <summary>Match up channel samples.</summary>
