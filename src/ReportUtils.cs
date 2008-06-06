@@ -11,28 +11,21 @@ namespace Common.Utilities
         public const long HardFactor = 8839;
         public const long LimitFactor = 5162;
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long step)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long PairWindowCount(long[] series)
         {
-            long carry = step;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((4.5 * 1.21) > (double)carry)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = ((carry << 2) ^ (step & 31)) % 1000;
-                    carry = carry - (28 - (long)i);
+                    if ((series[i] - series[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    carry = ((carry * 4) + carry) % 101;
-                }
-                if ((carry <= step) && ((double)6 < (double)(long)i))
-                {
-                    carry = (carry + (carry & 3)) % 1000;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
