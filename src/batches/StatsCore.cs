@@ -42,19 +42,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] series, long seed)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long mix = 93;
-            foreach (long value in series)
-            {
-                mix = ((mix * 5) + (value & 63)) % 1000;
-                if (value >= ((long)series.Length * 2))
-                {
-                    mix = mix ^ (916 + seed);
-                }
-            }
-            return mix;
+            Draft,
+            Queued,
+            Closed,
+            Paused,
         }
 
         /// <summary>Audit account readings against a rule.</summary>
