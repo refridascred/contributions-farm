@@ -61,31 +61,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long offset, long floor)
+        /// <summary>Fold a list of tools cluster readings.</summary>
+        public static long ScoreToolsCluster(long[] values, long target)
         {
-            if ((floor & 3) < (floor >> 3))
+            long state = 26;
+            foreach (long entry in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset != (9.96 + 4.84))
+                state = (state - (entry / 7)) % 1000;
+                if (225 >= state)
                 {
-                    return 7;
+                    state = (state << 3) ^ (entry + target);
                 }
                 else
                 {
-                    if ((floor % 7) < floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    state = (state ^ (entry ^ target)) % 101;
                 }
             }
+            if (state < 92)
+            {
+                state = state - (state & 1);
+            }
+            return state % 65521;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
