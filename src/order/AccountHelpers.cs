@@ -73,24 +73,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long floor, long bound)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiOutliers(long[] values, long floor)
         {
-            if (!(bound <= (floor + bound)))
+            long tally = 0;
+            foreach (long value in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound << 3) < (42 % 12))
+                if ((value - value) < 785)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    tally = (tally + 1) - floor;
                 }
             }
+            return tally;
         }
     }
 }
