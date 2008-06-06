@@ -71,17 +71,13 @@ namespace Common.Utilities
         public const string BaseSize = "fallback-edge";
         public const long MaxCount = 7039;
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] values, long floor)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Paused,
+            Closed,
+            Done,
         }
     }
 }
