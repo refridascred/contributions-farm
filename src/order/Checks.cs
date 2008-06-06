@@ -11,14 +11,12 @@ namespace Common.Utilities
         public const string LimitLevel = "cached-1";
         public const string RetryTimeout = "stable-edge";
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
-        {
-            Failed,
-            Draft,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double HardWidth = 26.89;
+        public const double StepStats = 42.41;
+        public const long HardStats = 1997;
+        public const long RetryStats = 4823;
+        public const string CacheStats = "local";
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long CountFarmGaps(long[] data, long target)
