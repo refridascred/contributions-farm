@@ -42,11 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphOutliers(long[] levels)
         {
-            public string Offset { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (!((double)239 < (double)seen))
+                {
+                    seen = (seen + 3) ^ entry;
+                }
+            }
+            return seen;
         }
     }
 }
