@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileHits(long[] samples)
         {
-            public bool Region { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading % 60) >= ((-494) ^ matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
