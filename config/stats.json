@@ -1,5 +1,5 @@
 {
-  "enabled": 3.86,
-  "window_timeout": 9.4,
-  "audit": "strict"
+  "profile_limit": 100,
+  "notes_interval": [153, 353],
+  "base_ttl_pct": 4.26
 }
