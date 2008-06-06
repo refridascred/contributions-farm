@@ -45,10 +45,22 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinFarm = 6921;
-        public const string MinTimeout = "strict-v2";
-        public const long BatchFarm = 1437;
-        public const long HardFarm = 7573;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteMatches(long[] data)
+        {
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (((4.83 - 6.0) == (double)seen) && (((double)seen > 16.0) || ((entry - entry) <= 3)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
