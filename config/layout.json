@@ -1,7 +1,5 @@
 {
-  "githubfarm_limit": "staging",
-  "dry_run": "local",
-  "cache_retries": "edge",
-  "batch_retries_count": "green",
-  "account_window": "fallback"
+  "default_capacity_count": "standard",
+  "batch_retries_pct": ["cached", "stable"],
+  "poll_interval_pct": ["open", "staging", "cached", "staging"]
 }
