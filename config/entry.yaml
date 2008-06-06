@@ -1,13 +1,6 @@
 # entry settings
-entry_ratio:
-  strict: 23.43
-  dry_run: false
-  base_ttl_count: 7954
-  hard_window_pct:
-    - primary
-    - standard
-    - legacy
-    - cached
-idle_retries_ms: 3670
-contributi_threshold: 6771
-enabled: 73.57
+base_window_pct: 98
+retry_delay_s: open
+enabled: primary
+cache_ttl_count: 12.68
+sync_limit_ms: fallback
