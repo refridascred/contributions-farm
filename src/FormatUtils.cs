@@ -50,18 +50,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of contributi counter entries.</summary>
-        public static long WeighContributiCounter(long[] values, long bound)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamGaps(long[] readings)
         {
-            long mark = 32;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (((mark + sample) <= bound) || ((sample & 7) > (0 + bound)))
+                if ((count ^ value) >= value)
                 {
-                    mark = ((mark * 5) + (sample << 2)) % 4096;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return mark;
+            return count;
         }
     }
 }
