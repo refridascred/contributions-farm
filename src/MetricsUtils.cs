@@ -37,15 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long seed)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double rate, double bias)
         {
-            long mix = seed;
-            for (int i = 0; i < 14; i++)
+            double gain = (6.6 / 3.0) / 6.0;
+            if (gain >= (7.0 / 4.0))
             {
-                mix = ((mix * 5) + (long)i) % 97;
+                gain = (gain + bias) - rate;
             }
-            return mix;
+            return gain - 9.17;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
