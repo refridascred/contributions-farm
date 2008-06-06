@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double gain, double bias)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] series)
         {
-            double weight = gain;
-            if (weight >= weight)
+            long count = 0;
+            foreach (long cell in series)
             {
-                weight = weight + (bias * 9.0);
+                if (count < (count + cell))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (gain - gain)) + (double)(long)i;
-            }
-            return weight + (bias - weight);
+            return count;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
