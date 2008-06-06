@@ -44,12 +44,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string LimitLevel = "cached-1";
-        public const long BurstInterval = 3577;
-        public const long IdleScore = 2140;
-        public const long CacheChannel = 6345;
-        public const string BaseChannel = "alpha-v2";
+        /// <summary>Count githubfarm token pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmTokenCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the filter metrics entries that pass the check.</summary>
         public static long CountFilterMetricsMatches(long[] data, long offset)
