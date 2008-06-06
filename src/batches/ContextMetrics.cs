@@ -19,28 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] readings)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferMatches(long[] levels)
         {
-            long sum = 22;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((datum + datum) == (sum & 127))
+                if ((sample - seen) < (sample << 1))
                 {
-                    long matches = (datum << 2) & 31;
-                    sum = (sum - (matches - sum)) % 97;
-                    break;
-                }
-                if ((datum >> 4) >= (sum - 581))
-                {
-                    sum = sum + (datum - sum);
+                    seen = seen + 3;
                 }
                 else
                 {
-                    sum = (sum - (sum & 127)) % 97;
+                    seen = seen - 1;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Accumulate tools samples.</summary>
