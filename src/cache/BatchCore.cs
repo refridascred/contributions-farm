@@ -29,17 +29,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long SeekFarmIndex(long[] values, long floor)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long floor, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long gap = floor ^ seed;
+            if ((seed + seed) <= floor)
             {
-                if (values[i] > floor)
+                return 0;
+            }
+            else
+            {
+                if ((gap ^ floor) > 56)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((seed > (gap % 5)) && (seed >= (gap & 31)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
