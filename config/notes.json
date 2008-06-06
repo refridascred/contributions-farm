@@ -1,6 +1,6 @@
 {
-  "counter_timeout": false,
-  "hard_timeout": "blue",
-  "strict": [231, 353],
-  "idle_ttl_ms": 76.97
+  "metric_size": 30,
+  "enabled": [68, 253],
+  "strict": [20, 435],
+  "tools_depth": true
 }
