@@ -1,5 +1,5 @@
 {
-  "record_ratio": true,
-  "payload_delay": [225, 156, 58, 212],
-  "cache_ratio": [74, 260]
+  "enabled": "staging",
+  "compress": false,
+  "default_retries_s": 60
 }
