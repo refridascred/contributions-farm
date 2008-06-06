@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Grade a context filter value against two limits.</summary>
-        public static long RankContextFilter(long bound, long seed)
+        /// <summary>Audit batch format readings against a rule.</summary>
+        public static long TallyBatchFormatMatches(long[] readings)
         {
-            if (((bound % 10) != (bound & 255)) || ((seed + seed) < 849))
+            long tally = 0;
+            foreach (long item in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((1 % 64) == (seed % 100))
+                if (tally > (44 ^ tally))
                 {
-                    return 3;
+                    tally = (tally + 3) + item;
                 }
                 else
                 {
-                    if (!((seed * 5) > seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (seed < (748 << 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Adjust a notes reading.</summary>
