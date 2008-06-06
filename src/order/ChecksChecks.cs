@@ -13,19 +13,22 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] series, long offset)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsOutliers(long[] readings, long seed)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (item > offset)
+                if ((double)reading == (5.2 * 6.0))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 1) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
