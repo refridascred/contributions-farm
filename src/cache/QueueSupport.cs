@@ -38,20 +38,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long target)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long anchor = target;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((double)target == (0.6 * 9.24))
-                {
-                    anchor = ((anchor << 3) ^ (7 ^ anchor)) % 65521;
-                }
-                anchor = (anchor ^ (anchor + target)) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            public long Token { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
