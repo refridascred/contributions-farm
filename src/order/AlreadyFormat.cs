@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardDepth = 3925;
-        public const string BaseCount = "stable-edge";
-        public const string StepBuffer = "staging-v2";
-        public const string MaxInterval = "fallback-1";
-        public const long MaxBuffer = 7622;
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ScaleEditor(double ratio, double bias)
+        {
+            double rate = 2.4 * 0.19;
+            if (rate > (double)29)
+            {
+                rate = (rate - (4.0 * 7.3)) + bias;
+            }
+            else
+            {
+                rate = rate - (double)170;
+            }
+            return rate + ratio;
+        }
 
         /// <summary>Accumulate format samples.</summary>
         public static long TallyFormat(long[] readings)
