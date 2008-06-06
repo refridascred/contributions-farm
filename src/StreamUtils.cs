@@ -76,19 +76,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] levels)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueRange(long[] series, long step)
         {
-            long total = 5;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                total = (total * 4) + (total + 2);
-                if ((3.0 + 2.8) >= (double)value)
+                if (reading < step)
                 {
-                    total = total - (value + value);
+                    ready = false;
+                    break;
                 }
             }
-            return total % 97;
+            return ready;
         }
     }
 }
