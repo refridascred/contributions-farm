@@ -27,15 +27,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] series)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] levels)
         {
-            long anchor = 5;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (anchor ^ anchor) - datum;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return anchor % 4096;
+            return matches;
         }
 
         /// <summary>Validate farm graph readings against a bound.</summary>
