@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] values)
         {
-            Draft,
-            Idle,
-            Synced,
-            Locked,
-            New,
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a counter stats.</summary>
