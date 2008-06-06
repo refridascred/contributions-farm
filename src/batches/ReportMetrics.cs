@@ -30,10 +30,17 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double HardSize = 33.31;
-        public const long MinSize = 2386;
-        public const double MinFactor = 48.65;
-        public const long HardScore = 5005;
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
