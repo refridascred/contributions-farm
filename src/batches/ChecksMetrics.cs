@@ -21,22 +21,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit metrics notes readings against a rule.</summary>
-        public static long MeasureMetricsNotesHits(long[] series, long limit)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((limit ^ 20) < (907 / 4))
-                {
-                    seen = (seen + 2) ^ cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Token { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
