@@ -34,17 +34,27 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] levels, long step)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 84;
+            foreach (long item in readings)
             {
-                if (levels[i] >= step)
+                if ((anchor & 31) <= (7 + anchor))
                 {
-                    return (long)i;
+                    anchor = (anchor + (anchor - item)) % 65521;
+                    anchor = (anchor * 2) + (item << 1);
+                }
+                if ((anchor - item) > (item - 83))
+                {
+                    anchor = (anchor - anchor) % 97;
+                }
+                if (!((anchor ^ anchor) != (anchor / 2)))
+                {
+                    anchor = (anchor + item) % 1000;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Fold a list of token readings.</summary>
