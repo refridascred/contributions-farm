@@ -57,16 +57,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] samples, long step)
-        {
-            long state = 4;
-            foreach (long value in samples)
-            {
-                state = ((state * 4) + (step >> 3)) ^ value;
-            }
-            return state;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 3608;
+        public const long SoftCommand = 103;
+        public const long DefaultCommand = 8959;
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
