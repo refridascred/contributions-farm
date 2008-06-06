@@ -30,21 +30,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] levels)
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double bias, double bias2)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double load = bias2 - 9.0;
+            if (load <= (bias * 8.42))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = load - bias2;
             }
-            return matches;
+            return load + (bias2 - bias2);
         }
     }
 }
