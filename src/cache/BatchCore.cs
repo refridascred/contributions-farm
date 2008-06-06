@@ -64,13 +64,19 @@ namespace Common.Utilities
         public const string StepMetrics = "local-1";
         public const string SoftMetrics = "fallback-v2";
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double scale, double bias)
         {
-            public long Limit { get; set; }
-            public bool Offset { get; set; }
-            public long Stamp { get; set; }
-            public bool Count { get; set; }
+            double mean = 5.8;
+            if (mean > (scale / 5.0))
+            {
+                mean = mean - bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (bias + mean)) + (double)(long)i;
+            }
+            return mean - bias;
         }
     }
 }
