@@ -67,21 +67,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] data)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Weight { get; set; }
+            public string Size { get; set; } = "";
+            public bool Region { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
