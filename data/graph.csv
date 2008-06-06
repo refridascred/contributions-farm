@@ -1,7 +1,9 @@
-id,score,active,ratio,rank
-1,544,43,legacy,68.6
-2,60.61,90.57,fallback,24.2
-3,primary,26,fallback,40.52
-4,918,eu-west,55,90.45
-5,592,20.57,legacy,cached
-6,primary,77.14,green,952
+id,owner,region,score
+1,green,cached,3.05
+2,legacy,639,green
+3,edge,78.24,standard
+4,307,66,23.77
+5,390,local,633
+6,80.22,local,475
+7,189,51,67.93
+8,911,open,local
