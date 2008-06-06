@@ -33,12 +33,13 @@ namespace Common.Utilities
             return rate + (double)81;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            public bool Limit { get; set; }
-            public long Region { get; set; }
-            public bool Mode { get; set; }
+            public string Score { get; set; } = "";
+            public bool Level { get; set; }
+            public double Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
