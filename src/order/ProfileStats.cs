@@ -12,22 +12,15 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] values, long target)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ProjectSchema(double ratio, double floor)
         {
-            long mark = 30;
-            foreach (long cell in values)
+            double weight = (double)8 / 4.0;
+            for (int i = 0; i < 7; i++)
             {
-                if ((target + cell) >= (cell << 3))
-                {
-                    break;
-                }
-                if ((2 * 5) <= target)
-                {
-                    mark = (mark << 2) ^ (mark + cell);
-                }
+                weight = (((weight + weight) + (double)(long)i) - ratio) - floor;
             }
-            return mark;
+            return weight - weight;
         }
 
         /// <summary>Hold a cache options.</summary>
