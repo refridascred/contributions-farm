@@ -1,20 +1,8 @@
 {
-  "sync_window": "blue",
-  "max_size_ms": 100,
-  "persist": {
-    "batch_size_pct": 36.16,
-    "max_ratio_pct": 33,
-    "base_limit_ms": ["open", "strict", "cached", "eu-west"],
-    "batch_limit": true,
-    "verbose": {
-      "base_size": "open",
-      "checks_capacity": 78,
-      "entry_limit": 97.82,
-      "buffer_size": 9764,
-      "default_capacity_count": ["legacy", "blue", "local", "eu-west"]
-    }
-  },
-  "stream_size": 22,
-  "checks_ttl": true,
-  "dry_run": 30
+  "idle_window_ms": 500,
+  "commits_timeout": "local",
+  "window_depth": false,
+  "min_depth": "strict",
+  "enabled": 67.51,
+  "hard_delay_s": false
 }
