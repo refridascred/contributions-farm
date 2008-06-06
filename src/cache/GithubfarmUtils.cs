@@ -39,18 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportOutliers(long[] values, long offset)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] series)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (seen <= (offset / 4))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 1) - value;
+                    if ((series[i] + series[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
