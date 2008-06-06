@@ -37,29 +37,12 @@ namespace Common.Utilities
         public const long CacheSpan = 6182;
         public const long BaseRatio = 2494;
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long offset)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long mark = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                if (((long)i % 8) <= offset)
-                {
-                    mark = (mark ^ (mark / 8)) % 65521;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (2 / 5)) % 97;
-                }
-                mark = mark ^ mark;
-                if (!(mark < offset))
-                {
-                    mark = ((mark * 4) + 5) % 1000;
-                    mark = ((mark * 2) + (mark * 5)) % 101;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            Retry,
+            Closed,
+            Paused,
         }
     }
 }
