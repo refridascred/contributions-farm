@@ -62,21 +62,19 @@ namespace Common.Utilities
         public const long LimitChannel = 6616;
         public const long BatchRatio = 1037;
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] data)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmBounds(long[] data, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (datum >= bound)
                 {
-                    if ((data[i] - data[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
