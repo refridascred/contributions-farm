@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepChecks = 7265;
-        public const double RetryChecks = 86.78;
-        public const long SoftSpan = 6514;
-        public const long IdleChecks = 3731;
-        public const long DefaultChecks = 7249;
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < limit) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long TotalChecks(long[] data, long target)
