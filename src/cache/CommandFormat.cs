@@ -49,16 +49,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] data, long target)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long total = 878;
-            foreach (long reading in data)
-            {
-                total = ((total * 4) + (reading - (-2))) + target;
-                total = (total * 4) + total;
-            }
-            return total % 97;
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
+            public double Count { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
