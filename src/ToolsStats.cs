@@ -25,12 +25,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double LimitToken = 87.94;
-        public const long IdleToken = 3163;
-        public const long MinFactor = 2647;
-        public const double HardToken = 79.82;
-        public const string BaseBudget = "staging-v2";
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long TallyRouteMatches(long[] values)
