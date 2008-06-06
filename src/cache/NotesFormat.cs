@@ -36,15 +36,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] readings)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long acc = 445;
-            foreach (long sample in readings)
-            {
-                acc = ((acc << 3) ^ ((long)readings.Length % 3)) - sample;
-            }
-            return acc;
+            public long Level { get; set; }
+            public long Token { get; set; }
         }
     }
 }
