@@ -22,11 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MinSpan = 1.47;
-        public const long BurstAccount = 2488;
-        public const long CacheWidth = 2181;
-        public const long CacheAccount = 7545;
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == target) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const string HardCount = "alpha-1";
