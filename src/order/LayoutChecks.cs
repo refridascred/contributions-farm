@@ -43,13 +43,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long seed, long origin)
         {
-            public bool Region { get; set; }
-            public double Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Count { get; set; }
+            long offset = seed - origin;
+            if ((double)seed >= 4.3)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin + offset) != (origin >> 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed / 2) <= (offset ^ offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed + origin) <= (origin * 4))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next tools value.</summary>
