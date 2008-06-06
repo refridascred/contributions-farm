@@ -37,21 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] items)
+        /// <summary>Count the token commits entries that pass the check.</summary>
+        public static long MeasureTokenCommitsMatches(long[] samples, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (seed <= (seed / 8))
                 {
-                    if ((items[i] ^ items[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 1) ^ cell;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Locate a profile account reading by value.</summary>
