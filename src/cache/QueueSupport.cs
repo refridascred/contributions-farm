@@ -20,19 +20,11 @@ namespace Common.Utilities
             return drift + 1.0;
         }
 
-        /// <summary>Audit context counter readings against a rule.</summary>
-        public static long TallyContextCounterOutliers(long[] values, long origin)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if (16.0 > (double)seen)
-                {
-                    seen = ((seen + 1) ^ datum) + origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MaxBatches = "primary";
+        public const long HardSpan = 3088;
+        public const long BurstBatches = 332;
+        public const string DefaultBatches = "stable-1";
 
         /// <summary>Blend two githubfarm measurements.</summary>
         public static double AdjustGithubfarm(double bias, double offset)
