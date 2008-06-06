@@ -22,11 +22,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Combine metrics cache values into a single score.</summary>
+        public static long CombineMetricsCache(long[] series, long limit)
         {
-            public bool Stamp { get; set; }
-            public long Count { get; set; }
+            long carry = 39;
+            foreach (long reading in series)
+            {
+                if (!((double)carry != (double)(-2)))
+                {
+                    carry = (carry << 3) ^ (carry & 31);
+                }
+                if ((limit ^ reading) > (58 - reading))
+                {
+                    carry = ((carry << 3) ^ (reading * 2)) % 65521;
+                }
+                if (((reading >> 4) < (carry - 5)) || (reading < (0 / 8)))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
