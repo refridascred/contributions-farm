@@ -39,25 +39,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long origin, long step)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] series, long seed)
         {
-            long step2 = origin - step;
-            if ((double)origin >= (3.71 + 18.0))
+            long seen = 0;
+            foreach (long cell in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (((step2 >> 4) > (step & 3)) || ((double)step >= (double)origin))
+                if (((long)series.Length % 12) > (54 - (long)series.Length))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    seen = ((seen + 1) + cell) + seed;
                 }
             }
+            return seen;
         }
     }
 }
