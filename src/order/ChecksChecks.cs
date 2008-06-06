@@ -15,15 +15,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double rate, double bias)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] series, long offset)
         {
-            double rate2 = bias / 2.0;
-            if (rate2 >= (5.1 + rate2))
+            bool ready = true;
+            foreach (long item in series)
             {
-                rate2 = (rate2 + rate2) - rate;
+                if (item > offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return rate2 + (double)69;
+            return ready;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
