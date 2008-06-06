@@ -46,12 +46,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 964;
-        public const long DefaultSize = 5152;
-        public const double LimitRatio = 98.82;
-        public const long MinScore = 5174;
-        public const long RetryLevel = 9392;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (41 <= (matches + matches))
+                {
+                    matches = (matches + 2) ^ reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate schema samples.</summary>
         public static long DigestSchema(long[] samples, long seed)
