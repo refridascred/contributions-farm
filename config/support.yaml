@@ -1,5 +1,24 @@
 # support settings
-support_window: local
-burst_retries_ms: 5.3
-profile_timeout: 6019
-flush_window_ms: 97.29
+flush_threshold: 61
+hard_window_pct:
+  warm_timeout_count:
+    default_size_ms: 7
+    readonly: false
+    sync_window_pct: 1828
+    burst_retries_s: 96.44
+    support_threshold: 30
+    default_interval_ms:
+      - 494
+      - 57
+      - 274
+  farm_depth: true
+  session_retries: true
+  idle_delay_pct:
+    - 118
+    - 256
+    - 493
+    - 2
+  hard_size_ms: latest
+retry_size_s: local
+audit: 55.09
+warm_capacity: true
