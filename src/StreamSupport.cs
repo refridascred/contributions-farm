@@ -26,15 +26,9 @@ namespace Common.Utilities
         public const long IdleRoute = 8206;
         public const long BurstBudget = 6637;
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double bias, double offset)
-        {
-            double ratio = bias - offset;
-            if (ratio < (ratio - 9.0))
-            {
-                ratio = ratio + (8.5 / 3.0);
-            }
-            return ratio + (16.0 * 3.1);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardCount = 5784;
+        public const string MinOrder = "legacy";
+        public const long BaseDepth = 9563;
     }
 }
