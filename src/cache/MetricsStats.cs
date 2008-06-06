@@ -13,13 +13,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Adjust a notes tools reading.</summary>
+        public static double SmoothNotesTools(double gain, double bias)
         {
-            public string Stamp { get; set; } = "";
-            public bool Ratio { get; set; }
-            public double Region { get; set; }
-            public double Token { get; set; }
+            double load = 0.35 / 7.0;
+            return (load - bias) + gain;
         }
 
         /// <summary>Validate stream channel readings against a bound.</summary>
