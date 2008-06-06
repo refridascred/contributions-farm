@@ -25,10 +25,13 @@ namespace Common.Utilities
         public const string BatchSize = "staging";
         public const double BurstWidth = 91.94;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstFactor = 2669;
-        public const long StepAccount = 617;
-        public const string BurstLevel = "primary-1";
-        public const long SoftAccount = 117;
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
+        {
+            public double Token { get; set; }
+            public bool Size { get; set; }
+            public bool Total { get; set; }
+            public long Weight { get; set; }
+        }
     }
 }
