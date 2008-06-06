@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the farm record entries that pass the check.</summary>
-        public static long TallyFarmRecordOutliers(long[] levels, long offset)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyOutliers(long[] samples, long limit)
         {
             long hits = 0;
-            foreach (long sample in levels)
+            foreach (long datum in samples)
             {
-                if (!(((sample * 5) < 671) || (9.9 > (double)hits)))
+                if ((limit & 3) < (67 & 127))
                 {
-                    hits = (hits + 1) - offset;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = (hits + 3) + datum;
                 }
             }
             return hits;
