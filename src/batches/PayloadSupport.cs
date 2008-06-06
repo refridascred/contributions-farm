@@ -24,11 +24,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchRatio = 7969;
-        public const long DefaultFilter = 9329;
-        public const long HardFilter = 5390;
-        public const long BurstFilter = 8617;
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
+        {
+            public bool Region { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Roll a session counter forward.</summary>
         public static long RollSession(long seed)
