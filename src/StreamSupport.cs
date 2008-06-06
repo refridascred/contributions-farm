@@ -19,25 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a profile stream pair into a bucket.</summary>
-        public static long GradeProfileStream(long seed, long step)
-        {
-            if (6.39 > (double)step)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed + seed) < (step & 63))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheWidth = 3187;
+        public const double SoftRoute = 18.9;
+        public const long DefaultWidth = 9233;
+        public const long IdleRoute = 8206;
+        public const long BurstBudget = 6637;
 
         /// <summary>Adjust a stream reading.</summary>
         public static double ProjectStream(double bias, double offset)
