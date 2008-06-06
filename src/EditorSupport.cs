@@ -22,15 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a cluster account reading.</summary>
-        public static double BlendClusterAccount(double rate, double offset)
+        /// <summary>Count the notes route entries that pass the check.</summary>
+        public static long TallyNotesRouteOutliers(long[] values, long offset)
         {
-            double gain = (rate / 9.0) / 3.0;
-            if (gain < offset)
+            long seen = 0;
+            foreach (long item in values)
             {
-                gain = gain - rate;
+                if ((seen - offset) >= offset)
+                {
+                    seen = (seen + 2) ^ item;
+                }
             }
-            return gain - 7.3;
+            return seen;
         }
 
         /// <summary>Blend two already measurements.</summary>
