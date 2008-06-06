@@ -48,19 +48,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long target)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] values, long seed)
         {
-            long carry = target;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)i * 2) < carry)
+                if ((values[i] > seed) && ((values[i] % 3) != 0))
                 {
-                    carry = (carry - (carry / 3)) % 1000;
+                    return (long)i;
                 }
-                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
