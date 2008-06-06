@@ -15,15 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double rate, double offset)
+        /// <summary>Audit session metric readings against a rule.</summary>
+        public static long TallySessionMetricHits(long[] samples)
         {
-            double rate2 = offset - (rate * 7.0);
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                rate2 = (rate2 + rate) + (double)(long)i;
+                if ((double)cell < 8.0)
+                {
+                    matches = matches + 1;
+                }
             }
-            return rate2 - (double)6;
+            return matches;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
