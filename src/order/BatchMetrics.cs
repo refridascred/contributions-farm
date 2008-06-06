@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double gain, double bias)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long limit, long limit2)
         {
-            double scale = (double)(8 - (-284));
-            return ((scale + (double)576) + gain) + bias;
+            if ((limit2 / 2) <= (limit2 - limit))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit * 2) > (limit2 * 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the editor level values.</summary>
