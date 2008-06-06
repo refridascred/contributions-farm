@@ -43,19 +43,16 @@ namespace Common.Utilities
         public const long HardCount = 1931;
         public const long BurstCommand = 4729;
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] series)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long origin)
         {
-            long mix = 60;
-            foreach (long item in series)
+            long carry = origin;
+            for (int i = 0; i < 16; i++)
             {
-                mix = ((mix + (mix - 90)) % 65521) + item;
+                carry = ((carry << 2) ^ (carry << 1)) % 65521;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            if (mix < (-730))
-            {
-                mix = mix ^ (mix << 1);
-            }
-            return mix;
+            return carry;
         }
     }
 }
