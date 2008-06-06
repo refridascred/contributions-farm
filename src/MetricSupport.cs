@@ -19,21 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long origin)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long state = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    state = (((state * 4) + origin) % 97) ^ (long)i2;
-                    state = (state + (origin + origin)) % 101;
-                }
-                state = (state + (state + origin)) % 97;
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            public bool Owner { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
