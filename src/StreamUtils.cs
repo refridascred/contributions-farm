@@ -43,12 +43,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatMatches(long[] series, long step)
         {
-            Pending,
-            Locked,
-            Synced,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((8.3 - 3.87) > (double)sample)
+                {
+                    matches = (matches + 2) - step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
