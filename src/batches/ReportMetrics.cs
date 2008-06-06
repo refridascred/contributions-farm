@@ -24,9 +24,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardDepth = 3754;
-        public const string StepRecord = "fallback";
-        public const string DefaultRecord = "fallback-edge";
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long floor, long floor2)
+        {
+            long edge = floor + floor2;
+            if (floor > (floor2 + floor))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor - edge) != (7 + floor2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor2 & 255) >= (floor - edge))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
