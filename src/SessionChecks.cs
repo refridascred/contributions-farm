@@ -32,16 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] readings, long origin)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long total = 87;
-            foreach (long reading in readings)
-            {
-                total = ((total << 2) ^ (total - reading)) + origin;
-                total = ((total * 2) + (reading - total)) % 1000;
-            }
-            return total;
+            public string Mode { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Digest a series of layout stream entries.</summary>
