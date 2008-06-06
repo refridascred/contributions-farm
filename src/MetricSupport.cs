@@ -37,13 +37,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandRange(long[] data, long step)
         {
-            public long Weight { get; set; }
-            public double Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Label { get; set; }
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
