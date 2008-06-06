@@ -1,4 +1,23 @@
 # githubfarm settings
-hard_depth: green
-default_window_s: blue
-hard_threshold_s: true
+warm_depth_count: blue
+persist: true
+verbose: 250
+base_ttl_ms: false
+stream_limit:
+  soft_ratio: edge
+  readonly: 2435
+  dry_run:
+    strict: 6007
+    report_ttl:
+      - 341
+      - 142
+      - 186
+      - 307
+    editor_window: 78.93
+    retry_retries_count: open
+    flush_capacity_count: 50
+  batches_depth:
+    - 217
+    - 300
+    - 483
+layout_delay: 41.39
