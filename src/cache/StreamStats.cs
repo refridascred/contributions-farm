@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double ratio, double bias)
+        /// <summary>Compare every pair of queue batches readings.</summary>
+        public static long PairQueueBatchesCount(long[] series)
         {
-            double gain = bias;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = (gain + (gain - ratio)) + (double)(long)i;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return gain + (double)742;
+            return matches;
         }
 
         /// <summary>Define route limits and defaults.</summary>
