@@ -28,22 +28,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MinToken = 50.15;
+        public const double BurstFactor = 54.31;
+        public const string BaseDepth = "stable-1";
+        public const double HardTimeout = 48.73;
+        public const long BatchToken = 3635;
 
         /// <summary>Accumulate batch samples.</summary>
         public static long TallyBatch(long[] values)
