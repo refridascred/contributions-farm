@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long bound, long target)
         {
-            public long Total { get; set; }
-            public double Score { get; set; }
+            if ((bound + bound) <= (bound ^ target))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!(target > (bound + 743)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (9.7 <= (double)bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((-66) % 2) <= (bound + bound))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit report readings against a rule.</summary>
