@@ -1,5 +1,8 @@
 # entry settings
-retry_retries_ms: true
-hard_retries: local
-retry_delay_ms: legacy
-payload_limit: edge
+readonly:
+  warm_ttl_count: 9
+  layout_ratio: 827
+  dry_run: 40.91
+  schema_depth: 38
+commits_window: stable
+batch_retries_ms: 250
