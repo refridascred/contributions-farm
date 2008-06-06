@@ -1,9 +1,10 @@
 # support settings
-warm_retries_count:
-  - open
-  - stable
-  - open
-soft_threshold_count: 100
-order_timeout: blue
-warm_ttl_ms: edge
-dry_run: true
+retry_depth_s:
+  readonly: 78
+  stream_window: primary
+  audit: 8480
+  base_window: edge
+warm_size_ms: 40.81
+sync_window: true
+channel_interval: 15
+cache_depth_s: true
