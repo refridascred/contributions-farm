@@ -1,18 +1,7 @@
 # support settings
-audit: latest
-githubfarm_ttl: false
-readonly:
-  batch_ratio: legacy
-  idle_size:
-    - 287
-    - 11
-    - 235
-    - 472
-  default_limit_s: true
-  base_depth:
-    account_window: latest
-    min_interval_ms: edge
-    base_interval_s:
-      - blue
-      - latest
-  notes_interval: open
+burst_threshold_ms: true
+poll_size_pct: eu-west
+default_capacity_count:
+  - fallback
+  - staging
+base_depth_count: 100
