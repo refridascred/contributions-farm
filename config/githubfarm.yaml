@@ -1,4 +1,37 @@
 # githubfarm settings
-metric_threshold: 60
-warm_timeout: 41
-burst_delay: 35.73
+audit: 1.46
+cache_capacity: local
+contributi_ttl: false
+base_timeout:
+  - 372
+  - 389
+  - 36
+command_ratio:
+  - blue
+  - blue
+  - stable
+  - cached
+metric_ttl:
+  poll_timeout:
+    poll_window_s: 48.99
+    warm_delay:
+      - local
+      - eu-west
+      - legacy
+      - cached
+    schema_size:
+      - fallback
+      - strict
+      - standard
+      - legacy
+    idle_interval_s: green
+    soft_ratio_pct: 2951
+  readonly:
+    report_ratio: false
+    cache_interval_s: eu-west
+    flush_ratio: 93
+    burst_threshold_ms: latest
+  metrics_depth: 2789
+  min_window_s: false
+  base_size: 6
+  soft_retries_count: 18
