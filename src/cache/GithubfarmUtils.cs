@@ -14,15 +14,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double scale, double bias)
+        /// <summary>Validate route session readings against a bound.</summary>
+        public static bool CheckRouteSessionLimits(long[] levels, long target)
         {
-            double bias2 = 5.25;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                bias2 = ((bias2 + scale) - (double)(long)i) - bias;
+                if (datum < target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return bias2 - scale;
+            return stale;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
