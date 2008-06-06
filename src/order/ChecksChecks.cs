@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long OverlapContributiCount(long[] items)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 9;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                anchor = ((anchor << 2) ^ (anchor % 8)) % 4096;
+                if (!((double)60 == (double)anchor))
                 {
-                    if ((items[i] - items[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = ((anchor * 3) + (datum & 255)) % 1000;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
