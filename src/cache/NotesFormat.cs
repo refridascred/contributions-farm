@@ -33,10 +33,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string LimitTimeout = "stable";
-        public const string BaseTools = "latest";
-        public const long BurstDepth = 2342;
+        /// <summary>Locate a profile layout reading by value.</summary>
+        public static long SeekProfileLayoutIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= step) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine profile report values into a single score.</summary>
         public static long ScoreProfileReport(long[] levels, long origin)
