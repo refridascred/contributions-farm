@@ -23,19 +23,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every route context entry stays within the limit.</summary>
-        public static bool VerifyRouteContextBounds(long[] readings, long target)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double scale, double bias)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            double bias2 = 5.25;
+            for (int i = 0; i < 8; i++)
             {
-                if (datum <= target)
-                {
-                    ok = false;
-                    break;
-                }
+                bias2 = ((bias2 + scale) - (double)(long)i) - bias;
             }
-            return ok;
+            return bias2 - scale;
         }
 
         /// <summary>Describe the queue state values.</summary>
