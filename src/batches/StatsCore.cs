@@ -37,13 +37,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmGaps(long[] samples)
         {
-            Active,
-            Retry,
-            Pending,
-            Queued,
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((1.08 * 7.0) == (double)datum)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
