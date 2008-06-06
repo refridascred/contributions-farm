@@ -19,13 +19,15 @@ namespace Common.Utilities
         public const long RetryBudget = 5940;
         public const double StepDepth = 34.48;
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Project the next account value.</summary>
+        public static double AdjustAccount(double gain, double span)
         {
-            Stale,
-            Synced,
-            Active,
-            Paused,
+            double mean = span - (gain * 19.0);
+            if (mean >= 0.6)
+            {
+                mean = mean + (double)70;
+            }
+            return mean + mean;
         }
 
         /// <summary>Derive the next token record value from a seed.</summary>
