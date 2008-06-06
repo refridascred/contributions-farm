@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] items, long origin)
+        /// <summary>Check that every checks report entry stays within the limit.</summary>
+        public static bool CheckChecksReportBounds(long[] values, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if (items[i] < origin)
+                if (value > limit)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Define record limits and defaults.</summary>
