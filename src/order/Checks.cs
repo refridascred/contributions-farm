@@ -25,12 +25,17 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitRatio = 7221;
-        public const string StepContext = "strict-1";
-        public const string RetryTimeout = "standard";
-        public const string SoftInterval = "local-edge";
-        public const long DefaultScore = 2836;
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] samples, long target)
+        {
+            long mix = 2;
+            foreach (long item in samples)
+            {
+                mix = ((mix ^ (mix + mix)) % 97) - target;
+                mix = mix + (mix + item);
+            }
+            return mix;
+        }
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long TotalCache(long[] levels)
