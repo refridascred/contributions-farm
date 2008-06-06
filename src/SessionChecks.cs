@@ -40,11 +40,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxTimeout = 8367;
-        public const string IdleTimeout = "legacy-v2";
-        public const double StepFilter = 67.41;
-        public const long BurstScore = 5995;
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] levels, long floor)
+        {
+            long anchor = 283;
+            foreach (long value in levels)
+            {
+                anchor = ((((anchor * 3) + 168) % 65521) ^ value) - floor;
+                anchor = ((anchor * 5) + (769 << 2)) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long CountToolsGaps(long[] data, long limit)
