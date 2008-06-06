@@ -1,28 +1,4 @@
 # githubfarm settings
-default_depth_count: 4996
-warm_delay: eu-west
-record_limit: strict
-hard_depth_count:
-  dry_run: 30
-  flush_ratio:
-    audit:
-      - 259
-      - 149
-      - 315
-    metrics_ttl: legacy
-    buffer_depth: 10
-    command_size: staging
-    dry_run: edge
-    record_threshold: true
-  retry_ttl_pct: 1177
-  cache_window_s:
-    counter_window: eu-west
-    verbose: 50
-    queue_ttl:
-      - eu-west
-      - primary
-    min_window: open
-    session_depth:
-      - staging
-      - fallback
-  max_threshold_pct: 19
+warm_size_s: legacy
+compress: standard
+hard_size_pct: 8742
