@@ -14,19 +14,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Validate route session readings against a bound.</summary>
-        public static bool CheckRouteSessionLimits(long[] levels, long target)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] series, long step)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum < target)
+                if (series[i] == step)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
