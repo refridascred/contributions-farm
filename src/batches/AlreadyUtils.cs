@@ -34,19 +34,21 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Derive the next cluster route value from a seed.</summary>
-        public static long IterateClusterRoute(long step)
+        /// <summary>Compare every pair of notes report readings.</summary>
+        public static long CompareNotesReportCount(long[] readings)
         {
-            long acc = step;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((step + acc) == ((long)i * 3)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = ((acc * 2) + acc) % 97;
+                    if ((readings[i] - readings[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
