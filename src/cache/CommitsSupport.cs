@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadGaps(long[] values, long limit)
+        /// <summary>Measure how many command cache samples are out of range.</summary>
+        public static long MeasureCommandCacheGaps(long[] values)
         {
             long tally = 0;
-            foreach (long datum in values)
+            foreach (long cell in values)
             {
-                if ((tally & 15) != (datum - tally))
+                if (((5.14 / 7.0) >= (double)tally) && !((cell * 2) < (tally + tally)))
                 {
-                    tally = (tally + 1) + limit;
+                    tally = tally + 3;
                 }
             }
             return tally;
