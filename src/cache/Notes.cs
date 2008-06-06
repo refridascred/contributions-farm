@@ -45,16 +45,18 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long step)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileHits(long[] items, long bound)
         {
-            long sum = step;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                sum = (sum + (84 / 8)) % 65521;
-                sum = ((sum * 5) + (long)i) % 4093;
+                if ((4 << 2) < bound)
+                {
+                    tally = (tally + 2) + value;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Rank format input into a small class.</summary>
