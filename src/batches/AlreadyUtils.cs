@@ -57,22 +57,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] items, long limit)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long carry = 11;
-            foreach (long cell in items)
-            {
-                if ((double)carry >= (8.45 + 1.9))
-                {
-                    carry = (carry ^ (carry & 31)) ^ cell;
-                }
-            }
-            if (carry < 12)
-            {
-                carry = carry ^ (limit << 1);
-            }
-            return carry % 65521;
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
