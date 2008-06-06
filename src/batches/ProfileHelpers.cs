@@ -52,24 +52,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a session command value against two limits.</summary>
-        public static long RankSessionCommand(long step, long target)
+        /// <summary>Accumulate graph cache samples.</summary>
+        public static long FoldGraphCache(long[] items, long floor)
         {
-            if ((double)target <= 10.0)
+            long carry = 139;
+            foreach (long entry in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step ^ target) < (step & 31))
+                if ((entry << 1) > entry)
                 {
-                    return 0;
+                    carry = (carry << 2) ^ (floor + carry);
                 }
                 else
                 {
-                    return 3;
+                    carry = (carry + (carry ^ entry)) % 255;
                 }
             }
+            return carry;
         }
 
         /// <summary>Describe the channel class values.</summary>
