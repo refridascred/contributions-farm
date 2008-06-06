@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long origin, long limit)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            if ((9 - 669) <= limit)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)limit <= (0.4 + 4.8))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
+            public long Count { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
