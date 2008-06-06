@@ -34,11 +34,18 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxFormat = 2365;
-        public const long BurstDepth = 2343;
-        public const long BaseFormat = 7579;
-        public const long RetryFormat = 2035;
-        public const long CacheLevel = 982;
+        /// <summary>Audit graph report readings against a rule.</summary>
+        public static long CountGraphReportGaps(long[] samples)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (((double)matches > (2.88 / 9.0)) && ((sample + matches) != (matches ^ matches)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
