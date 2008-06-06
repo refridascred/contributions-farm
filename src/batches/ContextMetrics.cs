@@ -35,13 +35,14 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            Failed,
-            Ready,
-            Closed,
+            Draft,
+            Synced,
+            Idle,
             Done,
+            Ready,
         }
 
         /// <summary>Digest a series of batch entries.</summary>
