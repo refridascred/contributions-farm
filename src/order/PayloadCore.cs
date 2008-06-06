@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorGaps(long[] data, long limit)
+        /// <summary>Measure how many record filter samples are out of range.</summary>
+        public static long AuditRecordFilterHits(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((((matches % 16) > (limit % 7)) || ((double)limit > 8.4)) || (((-76) - 19) > (entry / 9)))
+                if ((90 % 100) > cell)
                 {
-                    matches = matches + 3;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Classify a order format pair into a bucket.</summary>
