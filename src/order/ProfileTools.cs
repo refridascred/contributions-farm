@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 6573;
-        public const string LimitCount = "cached-edge";
-        public const long RetryFactor = 6916;
-        public const long BurstAccount = 5959;
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportLimits(long[] levels, long seed)
+        {
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long MeasureGraphGaps(long[] levels)
