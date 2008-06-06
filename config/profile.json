@@ -1,7 +1,8 @@
 {
-  "audit": 30,
-  "compress": "edge",
-  "default_ttl": 1137,
-  "sync_capacity_s": 100,
-  "retry_ttl_s": true
+  "hard_interval_s": "fallback",
+  "poll_ratio_s": "eu-west",
+  "base_ratio_pct": true,
+  "schema_delay": "stable",
+  "base_size_count": 89.62,
+  "default_retries_count": true
 }
