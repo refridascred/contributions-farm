@@ -46,13 +46,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            Retry,
-            Paused,
+            Pending,
             Queued,
-            Synced,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
