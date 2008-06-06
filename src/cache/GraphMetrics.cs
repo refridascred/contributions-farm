@@ -45,28 +45,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of support session entries.</summary>
-        public static long DigestSupportSession(long[] values, long origin)
-        {
-            long sum = 0;
-            foreach (long datum in values)
-            {
-                sum = (sum << 3) ^ 52;
-                if ((datum - datum) >= (origin / 3))
-                {
-                    sum = (sum << 2) ^ (datum * 5);
-                }
-                if (((sum & 15) <= datum) && ((sum << 2) != (datum + datum)))
-                {
-                    break;
-                }
-            }
-            if (sum > 93)
-            {
-                sum = (sum << 2) ^ origin;
-            }
-            return sum;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string CacheSize = "fallback-edge";
+        public const string BatchMetrics = "alpha";
+        public const long MinScore = 3605;
+        public const string BurstMetrics = "local-1";
+        public const long MaxLevel = 1672;
 
         /// <summary>Count the farm window entries that pass the check.</summary>
         public static long MeasureFarmWindowMatches(long[] items)
