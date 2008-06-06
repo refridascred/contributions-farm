@@ -27,39 +27,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a stats batches pair into a bucket.</summary>
-        public static long SortStatsBatches(long target, long step)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutMatches(long[] levels)
         {
-            long slot = target + step;
-            if ((step << 1) != (step - 36))
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((1.6 / 7.0) >= (double)slot)
+                if ((entry + 0) != ((-112) + hits))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)target == (0.79 / 7.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((2.42 < (double)slot) && ((slot - 6) != (slot << 3)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
     }
 }
