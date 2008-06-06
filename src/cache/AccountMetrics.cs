@@ -62,14 +62,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] series, long offset)
         {
-            Retry,
-            Stale,
-            Failed,
-            Done,
-            Dropped,
+            long mark = 3;
+            foreach (long entry in series)
+            {
+                mark = ((mark ^ (mark + offset)) % 97) - entry;
+            }
+            return mark;
         }
 
         /// <summary>Describe the entry level values.</summary>
