@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string StepSchema = "latest-1";
-        public const long IdleFactor = 9712;
-        public const long BatchBudget = 4218;
-        public const long RetrySize = 5805;
-        public const string CacheSchema = "stable-1";
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyLimits(long[] series, long offset)
+        {
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Match up checks samples.</summary>
         public static long CompareChecksCount(long[] samples)
