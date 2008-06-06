@@ -22,18 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandGaps(long[] values)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (!(905 > (value + value)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Flag { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Fold a list of support readings.</summary>
