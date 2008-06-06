@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] levels, long offset)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long target, long seed)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long span = target - seed;
+            if ((target + target) <= (span + 524))
             {
-                if (datum != offset)
+                return 1;
+            }
+            else
+            {
+                if ((seed - target) <= target)
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((8.8 * 0.9) <= (double)span)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed >= (span + target)) || (seed < 62))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Describe the command level values.</summary>
