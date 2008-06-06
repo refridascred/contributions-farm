@@ -19,21 +19,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] data)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((4.5 * 1.21) > (double)carry)
                 {
-                    if ((data[i] + data[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
+                    carry = ((carry << 2) ^ (step & 31)) % 1000;
+                    carry = carry - (28 - (long)i);
                 }
+                else
+                {
+                    carry = ((carry * 4) + carry) % 101;
+                }
+                if ((carry <= step) && ((double)6 < (double)(long)i))
+                {
+                    carry = (carry + (carry & 3)) % 1000;
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Hold a account summary.</summary>
