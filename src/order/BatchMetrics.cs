@@ -70,11 +70,17 @@ namespace Common.Utilities
             return weight + (12.0 / 5.0);
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double BlendChannel(double scale, double offset)
+        /// <summary>Look up the position of a farm layout sample.</summary>
+        public static long FindFarmLayoutIndex(long[] levels, long bound)
         {
-            double scale2 = (7.0 + 4.0) + (double)111;
-            return (scale2 + offset) + scale;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == bound) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
