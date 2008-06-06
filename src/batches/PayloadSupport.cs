@@ -38,10 +38,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftToken = 4405;
-        public const string BurstToken = "open-1";
-        public const long HardToken = 298;
-        public const string WindowToken = "cached-v2";
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
+        {
+            Draft,
+            Dropped,
+            Locked,
+            Queued,
+        }
     }
 }
