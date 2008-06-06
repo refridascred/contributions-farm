@@ -48,12 +48,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double SoftDepth = 39.59;
-        public const long BatchEntry = 3289;
-        public const double CacheScore = 26.62;
-        public const long MaxEntry = 6924;
-        public const double BaseBudget = 33.94;
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
