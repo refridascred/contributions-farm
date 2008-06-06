@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] levels)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long acc = 8;
-            foreach (long reading in levels)
-            {
-                acc = ((acc << 3) ^ (acc << 1)) - reading;
-            }
-            if (acc > 96)
-            {
-                acc = ((acc * 2) + (acc ^ acc)) % 4096;
-            }
-            return acc % 65521;
+            Synced,
+            Closed,
+            Stale,
+            Queued,
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
