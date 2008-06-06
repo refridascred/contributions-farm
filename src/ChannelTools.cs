@@ -37,15 +37,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] data)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long origin, long step)
         {
-            long sum = -379;
-            foreach (long sample in data)
+            if (((8.8 / 7.0) >= (double)step) && ((origin % 60) < (origin & 7)))
             {
-                sum = ((sum ^ sum) % 1000) ^ sample;
+                return 1;
             }
-            return sum;
+            else
+            {
+                if ((origin & 1) >= (step - origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
