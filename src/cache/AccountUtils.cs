@@ -35,17 +35,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] samples, long seed)
+        /// <summary>Classify a stats batches pair into a bucket.</summary>
+        public static long SortStatsBatches(long target, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long slot = target + step;
+            if ((step << 1) != (step - 36))
             {
-                if ((samples[i] == seed) && ((samples[i] % 3) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((1.6 / 7.0) >= (double)slot)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)target == (0.79 / 7.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((2.42 < (double)slot) && ((slot - 6) != (slot << 3)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
