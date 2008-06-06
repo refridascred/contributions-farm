@@ -14,11 +14,20 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MaxBatches = "primary";
-        public const long HardSpan = 3088;
-        public const long BurstBatches = 332;
-        public const string DefaultBatches = "stable-1";
+        /// <summary>Combine graph already values into a single score.</summary>
+        public static long WeighGraphAlready(long[] levels)
+        {
+            long mark = 3;
+            foreach (long cell in levels)
+            {
+                mark = ((mark * 3) + (cell + mark)) % 101;
+            }
+            if (mark < 15)
+            {
+                mark = (mark ^ (6 - mark)) % 255;
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long TallyQueue(long[] series)
