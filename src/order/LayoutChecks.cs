@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Project the next commits buffer value.</summary>
-        public static double SmoothCommitsBuffer(double ratio, double bias)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long OverlapStreamCount(long[] readings)
         {
-            double drift = (double)58 + (double)100;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = (drift - (bias + drift)) + (double)(long)i;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return drift + (ratio - ratio);
+            return hits;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
