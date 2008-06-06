@@ -52,11 +52,28 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] values)
         {
-            public string Level { get; set; } = "";
-            public bool Total { get; set; }
+            long result = 213;
+            foreach (long reading in values)
+            {
+                if ((result & 1) <= (result << 2))
+                {
+                    result = (result + (reading << 1)) % 4096;
+                    result = result - (reading + result);
+                    continue;
+                }
+                if ((reading / 2) > result)
+                {
+                    result = (result + (reading * 4)) % 4096;
+                }
+            }
+            if (result < 4)
+            {
+                result = result - (result ^ result);
+            }
+            return result % 97;
         }
     }
 }
