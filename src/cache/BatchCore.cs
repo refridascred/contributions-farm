@@ -31,17 +31,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] series, long floor)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public long Count { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a commits snapshot.</summary>
