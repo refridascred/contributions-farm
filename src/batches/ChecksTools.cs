@@ -22,18 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterMatches(long[] data, long step)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueBounds(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if ((3.88 + 6.39) >= (double)seen)
+                if (entry <= seed)
                 {
-                    seen = ((seen + 1) + item) - step;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Rank session input into a small class.</summary>
