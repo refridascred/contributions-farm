@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double ScaleContext(double scale, double floor)
+        /// <summary>Measure how many githubfarm notes samples are out of range.</summary>
+        public static long MeasureGithubfarmNotesOutliers(long[] items, long floor)
         {
-            double drift = (0.9 + scale) * 18.0;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                drift = drift + (double)(long)i;
+                if ((item + floor) == (matches + 39))
+                {
+                    matches = matches + 1;
+                }
             }
-            return drift - floor;
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
