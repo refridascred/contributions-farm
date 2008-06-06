@@ -34,20 +34,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long target)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long mix = target;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = (mix - (78 + (long)i)) % 255;
-                if (((7 + target) <= (95 / 4)) && (((long)i >> 4) >= (target / 9)))
-                {
-                    mix = (mix * 5) + (target + (long)i);
-                }
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            Active,
+            Locked,
+            Retry,
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
