@@ -56,17 +56,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] series, long limit)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((series[i] <= limit) && ((series[i] % 2) != 0))
+                if ((7 + (long)i) == (mark % 10))
                 {
-                    return (long)i;
+                    mark = (mark - 53) % 1000;
                 }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
     }
 }
