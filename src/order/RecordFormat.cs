@@ -49,11 +49,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileLimits(long[] samples, long step)
         {
-            public long Level { get; set; }
-            public long Limit { get; set; }
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
