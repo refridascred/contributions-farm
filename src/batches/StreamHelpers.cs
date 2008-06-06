@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double ScaleContext(double rate, double offset)
+        /// <summary>Iterate the payload batches series from a seed.</summary>
+        public static long DerivePayloadBatches(long bound)
         {
-            double drift = (double)(123 * 4);
-            if (drift <= (rate + rate))
+            long total = bound;
+            for (int i = 0; i < 16; i++)
             {
-                drift = drift + offset;
+                total = (total + (total ^ total)) % 1000;
+                total = ((total * 4) + (long)i) % 97;
             }
-            return drift - offset;
+            return total;
         }
 
         /// <summary>Adjust a notes reading.</summary>
