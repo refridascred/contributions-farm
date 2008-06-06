@@ -36,11 +36,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            public bool Score { get; set; }
-            public string Flag { get; set; } = "";
+            Retry,
+            Paused,
+            Queued,
+            Synced,
         }
 
         /// <summary>Hold a order summary.</summary>
