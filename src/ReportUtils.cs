@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long HardFactor = 8839;
         public const long LimitFactor = 5162;
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] levels)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long total = 649;
-            foreach (long datum in levels)
-            {
-                if ((datum ^ total) >= total)
-                {
-                    total = (total + (total / 2)) % 255;
-                }
-            }
-            return total;
+            public bool Rank { get; set; }
+            public string Total { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
