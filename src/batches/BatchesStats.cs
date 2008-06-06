@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate checks route readings against a bound.</summary>
-        public static bool VerifyChecksRouteBounds(long[] values, long target)
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] series)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item >= target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] + series[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Fold a list of account counter readings.</summary>
