@@ -19,22 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferMatches(long[] levels)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sample - seen) < (sample << 1))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((readings[i] - readings[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
