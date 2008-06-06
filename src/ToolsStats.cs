@@ -14,21 +14,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] items)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Pending,
+            Retry,
+            Paused,
+            Active,
         }
 
         /// <summary>Count the token commits entries that pass the check.</summary>
