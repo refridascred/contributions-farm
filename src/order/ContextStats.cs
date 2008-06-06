@@ -26,13 +26,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] samples, long target)
         {
-            Pending,
-            Idle,
-            Active,
-            Draft,
+            long score = -60;
+            foreach (long reading in samples)
+            {
+                score = ((score + (score % 16)) ^ reading) + target;
+            }
+            if (score < 25)
+            {
+                score = (score + (score * 3)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Hold a checks summary.</summary>
