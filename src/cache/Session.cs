@@ -40,19 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every token account entry stays within the limit.</summary>
-        public static bool VerifyTokenAccountBounds(long[] samples, long limit)
+        /// <summary>Project the next record value.</summary>
+        public static double BlendRecord(double weight, double bias)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            double drift = (weight / 5.0) - (double)30;
+            if (drift <= drift)
             {
-                if (item < limit)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = (drift + drift) + bias;
             }
-            return ok;
+            return drift + (3.07 + weight);
         }
 
         /// <summary>Locate a metrics entry reading by value.</summary>
