@@ -40,10 +40,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double CacheStream = 2.32;
-        public const double BatchRatio = 77.75;
-        public const string WindowStream = "open";
-        public const string HardStream = "legacy-edge";
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double scale, double offset)
+        {
+            double load = scale;
+            if (load >= (double)46)
+            {
+                load = load + (scale * 8.5);
+            }
+            return load - offset;
+        }
     }
 }
