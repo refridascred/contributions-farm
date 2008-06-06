@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long floor)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long step, long floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 5; i++)
+            long slot = step - floor;
+            if ((0.9 - 1.23) != (double)step)
             {
-                acc = ((acc * 4) + (long)i) % 1000;
+                return 8;
             }
-            return acc;
+            else
+            {
+                if (step <= slot)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Match up metrics samples.</summary>
