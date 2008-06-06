@@ -13,28 +13,36 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long bound, long offset)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long limit, long step)
         {
-            if (((bound << 2) <= (66 + bound)) && ((offset + bound) != (offset + 977)))
+            long bound = limit ^ step;
+            if ((step / 4) < 2)
             {
-                return 5;
+                return 6;
             }
             else
             {
-                if ((offset + bound) < (bound - offset))
+                if ((bound + limit) < (step >> 2))
                 {
                     return 1;
                 }
                 else
                 {
-                    if (0 < (bound + bound))
+                    if ((bound < (16 - limit)) && ((double)step < 10.0))
                     {
-                        return 2;
+                        return 7;
                     }
                     else
                     {
-                        return 4;
+                        if ((4.24 / 6.0) >= (double)step)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
