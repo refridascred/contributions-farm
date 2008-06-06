@@ -15,15 +15,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] items)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long PairMetricsCount(long[] values)
         {
-            long sum = 194;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (sum << 2) ^ (52 + datum);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
