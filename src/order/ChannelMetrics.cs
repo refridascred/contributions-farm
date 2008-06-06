@@ -20,21 +20,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] items)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] samples, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 272;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)state >= 7.7)
                 {
-                    if ((items[i] ^ items[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = (((state * 5) + target) % 1000) + cell;
+                }
+                else
+                {
+                    state = state ^ state;
                 }
             }
-            return tally;
+            if (state < (-8))
+            {
+                state = state ^ (state + (long)samples.Length);
+            }
+            return state;
         }
 
         /// <summary>Measure how many metric contributi samples are out of range.</summary>
