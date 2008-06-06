@@ -22,32 +22,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long floor, long floor2)
-        {
-            long edge = floor + floor2;
-            if (floor > (floor2 + floor))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor - edge) != (7 + floor2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor2 & 255) >= (floor - edge))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 8769;
+        public const long RetrySize = 141;
+        public const double SoftFactor = 57.74;
+        public const double IdleScore = 31.88;
+        public const long IdleRatio = 9416;
     }
 }
