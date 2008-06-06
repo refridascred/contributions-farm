@@ -2,13 +2,14 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     label TEXT,
-    state TEXT NOT NULL DEFAULT 'new',
-    token TEXT,
+    level INTEGER,
     active INTEGER NOT NULL DEFAULT 1,
-    count INTEGER NOT NULL DEFAULT 0
+    region TEXT,
+    owner TEXT NOT NULL
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_state ON commits_records (state);
+CREATE INDEX IF NOT EXISTS idx_commits_records_owner ON commits_records (owner);
 
-INSERT INTO commits_records (label, state, token, active, count) VALUES ('legacy', 'standard', 'primary', 13, 37);
-INSERT INTO commits_records (label, state, token, active, count) VALUES ('eu-west', 'eu-west', 'standard', 19, 77);
+INSERT INTO commits_records (label, level, active, region, owner) VALUES ('stable', 54, 73, 'open', 'eu-west');
+INSERT INTO commits_records (label, level, active, region, owner) VALUES ('primary', 73, 23, 'standard', 'stable');
+INSERT INTO commits_records (label, level, active, region, owner) VALUES ('legacy', 26, 57, 'legacy', 'green');
