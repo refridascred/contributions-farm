@@ -69,12 +69,22 @@ namespace Common.Utilities
         public const long MinFactor = 5164;
         public const long MinDepth = 423;
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportGaps(long[] samples, long origin)
         {
-            Retry,
-            Failed,
-            Active,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((origin + 9) >= seen)
+                {
+                    seen = (seen + 2) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
