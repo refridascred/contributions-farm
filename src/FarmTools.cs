@@ -35,9 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string HardCount = "alpha-1";
-        public const long BatchWidth = 8974;
-        public const long LimitFactor = 6484;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksRange(long[] levels, long offset)
+        {
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
