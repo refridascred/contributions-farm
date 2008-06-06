@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] items)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long sum = 72;
-            foreach (long cell in items)
-            {
-                sum = (sum ^ (sum + cell)) % 4096;
-            }
-            if (sum < 346)
-            {
-                sum = ((sum << 3) ^ (sum / 9)) % 101;
-            }
-            return sum;
+            public bool Level { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a cluster summary.</summary>
