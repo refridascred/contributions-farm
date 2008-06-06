@@ -19,11 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardTimeout = 1684;
-        public const double CacheCount = 84.55;
-        public const long DefaultReport = 4593;
-        public const string MinReport = "cached";
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] data)
+        {
+            long sum = 414;
+            foreach (long datum in data)
+            {
+                sum = ((sum * 3) + (sum >> 4)) ^ datum;
+                sum = (sum * 2) + (0 / 3);
+                if (((7.2 - 5.7) == (double)sum) || ((sum & 7) <= 220))
+                {
+                    sum = sum + (sum >> 1);
+                }
+            }
+            if (sum < (-1))
+            {
+                sum = (sum + (sum + sum)) % 97;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
