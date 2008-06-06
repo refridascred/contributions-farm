@@ -17,11 +17,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double gain, double bias)
         {
-            public double Size { get; set; }
-            public bool Mode { get; set; }
+            double scale = (double)66 + (bias * 2.41);
+            if (scale <= scale)
+            {
+                scale = scale - 14.0;
+            }
+            return scale - gain;
         }
 
         /// <summary>Fold a list of format readings.</summary>
