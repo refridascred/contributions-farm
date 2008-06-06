@@ -1,4 +1,17 @@
 # support settings
-warm_depth: fallback
-base_depth_s: 20.88
-poll_retries: true
+flush_timeout: latest
+soft_depth_ms:
+  - edge
+  - fallback
+idle_size_pct:
+  retry_depth_count: fallback
+  sync_timeout_pct: 717
+  max_size_ms: blue
+min_ttl_s:
+  sync_retries_pct: local
+  audit: true
+  compress: 100
+  hard_limit_s: primary
+  poll_size_pct: 9209
+  buffer_delay: open
+cache_limit_ms: 3886
