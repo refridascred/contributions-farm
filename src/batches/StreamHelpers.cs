@@ -30,12 +30,18 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Measure how many commits farm samples are out of range.</summary>
+        public static long TallyCommitsFarmMatches(long[] levels, long target)
         {
-            public bool Total { get; set; }
-            public long Token { get; set; }
-            public double Rank { get; set; }
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((target & 127) < (item + matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
