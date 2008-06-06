@@ -64,19 +64,39 @@ namespace Common.Utilities
         public const long LimitChannel = 6616;
         public const long BatchRatio = 1037;
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmBounds(long[] data, long bound)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long step, long target)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long diff = step ^ target;
+            if ((5 + target) > (diff ^ target))
             {
-                if (datum >= bound)
+                return 7;
+            }
+            else
+            {
+                if ((target ^ 54) >= target)
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (((diff / 5) == (target + step)) || (diff <= (target & 15)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((diff ^ target) <= 845)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
