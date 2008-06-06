@@ -53,15 +53,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] series)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long CompareCounterCount(long[] readings)
         {
             long matches = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((7 * 3) > (datum - matches))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((readings[i] - readings[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
