@@ -32,27 +32,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] samples)
+        /// <summary>Find the first metrics window entry that matches the target.</summary>
+        public static long LookupMetricsWindowIndex(long[] samples, long origin)
         {
-            long mark = 5;
-            foreach (long item in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = mark - (mark + (-73));
-                if (((mark << 2) == (mark + item)) || ((item << 1) <= (mark - item)))
+                if (samples[i] == origin)
                 {
-                    mark = (mark + (mark + item)) % 65521;
-                }
-                else
-                {
-                    mark = mark + (item / 3);
+                    return (long)i;
                 }
             }
-            if (mark < 11)
-            {
-                mark = ((mark * 5) + mark) % 101;
-            }
-            return mark % 1000;
+            return -1;
         }
     }
 }
