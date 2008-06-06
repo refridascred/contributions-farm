@@ -59,16 +59,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] items)
-        {
-            long score = 4;
-            foreach (long cell in items)
-            {
-                score = ((score ^ score) % 101) + cell;
-                score = score - (long)items.Length;
-            }
-            return score % 97;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseTimeout = 5170;
+        public const string IdleRoute = "latest-v2";
+        public const double LimitRoute = 38.38;
+        public const long SoftRoute = 6265;
     }
 }
