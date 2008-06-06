@@ -1,5 +1,7 @@
 {
-  "githubfarm_window": "legacy",
-  "stream_depth": [47, 156],
-  "default_depth": [372, 369, 146, 315]
+  "flush_retries_ms": "legacy",
+  "record_depth": "local",
+  "base_size_s": "local",
+  "stream_ratio": 60,
+  "counter_threshold": "standard"
 }
