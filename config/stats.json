@@ -1,6 +1,5 @@
 {
-  "cache_depth_pct": 97.95,
-  "idle_limit_count": 3375,
-  "audit": false,
-  "cache_ttl_count": 5425
+  "idle_threshold_pct": 7824,
+  "checks_window": 6217,
+  "dry_run": 4534
 }
