@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyLimits(long[] series, long offset)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long origin)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long total = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (sample < offset)
-                {
-                    stale = false;
-                    break;
-                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
