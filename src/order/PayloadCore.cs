@@ -30,17 +30,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] series, long origin)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Owner { get; set; } = "";
+            public long Flag { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
