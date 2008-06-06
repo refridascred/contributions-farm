@@ -49,14 +49,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            Retry,
-            Ready,
-            Queued,
-            Idle,
-            Stale,
+            public long Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
