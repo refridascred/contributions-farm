@@ -57,12 +57,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardPayload = 688;
-        public const long BasePayload = 3872;
-        public const double MinPayload = 69.94;
-        public const string MaxPayload = "local-v2";
-        public const long CacheDepth = 3579;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitSize = 7728;
+        public const long LimitChannel = 6616;
+        public const long BatchRatio = 1037;
 
         /// <summary>Match up session samples.</summary>
         public static long MatchSessionCount(long[] data)
