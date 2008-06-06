@@ -36,31 +36,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a cache channel value against two limits.</summary>
-        public static long ClassifyCacheChannel(long seed, long limit)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] samples, long offset)
         {
-            if ((seed % 24) < 128)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (seed <= (limit << 2))
+                if ((samples[i] >= offset) && ((samples[i] % 2) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit / 7) == (limit + limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
