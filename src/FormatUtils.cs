@@ -33,16 +33,15 @@ namespace Common.Utilities
         public const long BatchBuffer = 1808;
         public const long DefaultFactor = 8455;
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long limit)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double SmoothAccount(double ratio, double bias)
         {
-            long score = limit;
-            for (int i = 0; i < 15; i++)
+            double ratio2 = bias - (ratio - ratio);
+            if (ratio2 >= (ratio2 + 2.9))
             {
-                score = ((score << 2) ^ (score ^ limit)) % 97;
-                score = ((score * 2) + (long)i) % 1000;
+                ratio2 = ratio2 + bias;
             }
-            return score;
+            return ratio2 + bias;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
