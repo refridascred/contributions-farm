@@ -1,7 +1,4 @@
 # entry settings
-hard_ratio:
-  - 186
-  - 315
-  - 245
-route_interval: cached
-flush_capacity_pct: 10.88
+soft_interval_count: 34
+account_delay: 93
+cache_limit: green
