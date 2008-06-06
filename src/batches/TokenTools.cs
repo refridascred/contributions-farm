@@ -34,17 +34,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] series, long origin)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long bound, long bound2)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (bound2 <= (bound + bound))
             {
-                if ((series[i] < origin) && ((series[i] % 5) == 0))
+                return 0;
+            }
+            else
+            {
+                if (((double)bound > (3.0 - 8.5)) && (6.0 <= (double)bound2))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (490 <= (bound - bound2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
