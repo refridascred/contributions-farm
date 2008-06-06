@@ -1,7 +1,5 @@
 {
-  "burst_interval": [384, 273, 311],
-  "sync_depth": "cached",
-  "warm_ratio_ms": 0.37,
-  "hard_depth": 10.24,
-  "base_depth": ["strict", "blue"]
+  "window_limit": 59,
+  "flush_ttl_pct": 40.63,
+  "default_delay": 80
 }
