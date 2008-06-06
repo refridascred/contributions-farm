@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] items)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public double Count { get; set; }
+            public bool Limit { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the command status values.</summary>
