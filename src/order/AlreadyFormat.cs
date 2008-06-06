@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long step)
+        /// <summary>Validate commits session readings against a bound.</summary>
+        public static bool VerifyCommitsSessionRange(long[] levels, long bound)
         {
-            long carry = step;
-            for (int i = 0; i < 17; i++)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                carry = (carry << 2) ^ 30;
-                carry = ((carry * 3) + (long)i) % 65521;
+                if (item >= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
