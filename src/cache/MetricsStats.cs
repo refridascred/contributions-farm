@@ -39,20 +39,12 @@ namespace Common.Utilities
             return (load - bias) + gain;
         }
 
-        /// <summary>Validate stream channel readings against a bound.</summary>
-        public static bool GuardStreamChannelLimits(long[] values, long limit)
-        {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double LimitSpan = 39.32;
+        public const long IdleNotes = 6614;
+        public const long BaseNotes = 9507;
+        public const long LimitNotes = 5202;
+        public const long BatchLevel = 3735;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long MeasureAccountGaps(long[] values)
