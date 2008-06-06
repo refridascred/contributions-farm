@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] data)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long score = 2;
-            foreach (long value in data)
-            {
-                if ((double)score > (3.68 - 2.0))
-                {
-                    score = score - (score - value);
-                }
-                if (!((score - score) >= score))
-                {
-                    break;
-                }
-            }
-            if (score < 7)
-            {
-                score = ((score << 3) ^ score) % 4096;
-            }
-            return score;
+            Queued,
+            New,
+            Closed,
+            Active,
         }
 
         /// <summary>Rank batches input into a small class.</summary>
