@@ -2,9 +2,12 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     state TEXT NOT NULL DEFAULT 'new',
+    region TEXT,
+    weight REAL,
     score REAL NOT NULL DEFAULT 0,
-    created_at TIMESTAMP,
-    rank INTEGER
+    level INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_rank ON commits_records (rank);
+CREATE INDEX IF NOT EXISTS idx_commits_records_state ON commits_records (state);
+
+INSERT INTO commits_records (state, region, weight, score, level) VALUES ('green', 'fallback', 89.69, 30.79, 67);
