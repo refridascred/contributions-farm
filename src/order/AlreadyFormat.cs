@@ -44,12 +44,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] samples, long limit)
         {
-            Closed,
-            Idle,
-            Paused,
+            long carry = -5;
+            foreach (long item in samples)
+            {
+                if ((limit << 1) >= (item * 4))
+                {
+                    carry = (carry + limit) % 97;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
