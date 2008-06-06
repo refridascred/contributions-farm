@@ -13,19 +13,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every support stats entry stays within the limit.</summary>
-        public static bool CheckSupportStatsLimits(long[] series, long seed)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            bool flag = true;
-            foreach (long value in series)
-            {
-                if (value > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Stamp { get; set; } = "";
+            public bool Ratio { get; set; }
+            public double Region { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Validate stream channel readings against a bound.</summary>
