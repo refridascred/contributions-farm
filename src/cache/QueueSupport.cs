@@ -5,27 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine support profile values into a single score.</summary>
-        public static long ScoreSupportProfile(long[] levels)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long origin, long limit)
         {
-            long anchor = 891;
-            foreach (long sample in levels)
+            if ((9 - 669) <= limit)
             {
-                long next = anchor;
-                if (sample <= next)
+                return 8;
+            }
+            else
+            {
+                if ((double)limit <= (0.4 + 4.8))
                 {
-                    anchor = (anchor + sample) % 4096;
+                    return 0;
                 }
-                if ((sample + (long)levels.Length) > sample)
+                else
                 {
-                    anchor = (anchor ^ (sample ^ anchor)) % 101;
-                }
-                if ((anchor >> 5) >= (sample >> 5))
-                {
-                    break;
+                    return 5;
                 }
             }
-            return anchor % 65521;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
