@@ -1,7 +1,5 @@
 {
-  "dry_run": 58,
-  "stream_window": 29,
-  "cache_capacity_s": "stable",
-  "readonly": 6934,
-  "verbose": "staging"
+  "idle_ratio_ms": "fallback",
+  "hard_delay_count": false,
+  "entry_threshold": [319, 402, 34]
 }
