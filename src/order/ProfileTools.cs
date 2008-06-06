@@ -46,13 +46,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Rank counter account input into a small class.</summary>
+        public static long SortCounterAccount(long bound, long origin)
         {
-            Pending,
-            Queued,
-            Dropped,
-            Draft,
+            if (((origin ^ bound) < (origin + 372)) && ((origin % 97) <= (origin ^ bound)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)origin < (6.6 * 1.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
