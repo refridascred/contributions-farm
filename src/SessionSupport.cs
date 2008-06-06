@@ -28,17 +28,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first metrics window entry that matches the target.</summary>
-        public static long LookupMetricsWindowIndex(long[] samples, long origin)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
+            public double Weight { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
