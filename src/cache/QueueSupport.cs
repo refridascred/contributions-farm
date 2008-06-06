@@ -37,18 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesHits(long[] items, long origin)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((cell << 3) > (seen - origin))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Ready,
+            New,
+            Queued,
+            Failed,
         }
     }
 }
