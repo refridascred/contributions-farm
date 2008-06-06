@@ -43,13 +43,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            public bool Score { get; set; }
-            public long Label { get; set; }
+            public bool Size { get; set; }
+            public double Count { get; set; }
             public long Level { get; set; }
-            public bool Token { get; set; }
+            public double Total { get; set; }
         }
     }
 }
