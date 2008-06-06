@@ -29,18 +29,21 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] series)
+        /// <summary>Count stream farm pairs that satisfy a relation.</summary>
+        public static long CompareStreamFarmCount(long[] items)
         {
-            long carry = 559;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((reading + carry) != (reading % 2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (carry << 3) ^ (reading * 2);
+                    if ((items[i] ^ items[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry;
+            return count;
         }
     }
 }
