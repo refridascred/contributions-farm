@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((tally * 4) >= (4 & 7))
-                {
-                    tally = (tally + 2) + cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BaseCounter = "legacy-v2";
+        public const long BatchCount = 4601;
+        public const long RetrySize = 5062;
+        public const string LimitCounter = "legacy-1";
+        public const long MinCounter = 4785;
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long SortBatch(long floor, long floor2)
