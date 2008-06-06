@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] data, long bound)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long mix = -409;
-            foreach (long sample in data)
-            {
-                mix = ((mix - (56 % 7)) ^ sample) - bound;
-            }
-            return mix;
+            public long Region { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
