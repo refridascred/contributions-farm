@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 2397;
-        public const string DefaultChecks = "standard-edge";
-        public const string SoftFactor = "alpha-v2";
-        public const long LimitRatio = 2566;
-        public const long MaxSpan = 9041;
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double scale, double floor)
+        {
+            double bias = floor;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + (scale + bias)) + (double)(long)i;
+            }
+            return bias + (bias - floor);
+        }
 
         /// <summary>Digest a series of record entries.</summary>
         public static long CombineRecord(long[] readings, long origin)
