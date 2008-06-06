@@ -69,22 +69,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheOutliers(long[] values, long bound)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long OverlapContextCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((tally >> 2) > (bound * 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 1) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((readings[i] + readings[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
