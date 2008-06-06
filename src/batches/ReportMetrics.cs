@@ -13,17 +13,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Find the first channel commits entry that matches the target.</summary>
-        public static long LocateChannelCommitsIndex(long[] levels, long step)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 16; i++)
             {
-                if (levels[i] <= step)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define record limits and defaults.</summary>
