@@ -25,19 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileBounds(long[] readings, long limit)
+        /// <summary>Locate a batches graph reading by value.</summary>
+        public static long LocateBatchesGraphIndex(long[] items, long target)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample > limit)
+                if (items[i] > target)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Describe the stats kind values.</summary>
