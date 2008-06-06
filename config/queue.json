@@ -1,5 +1,12 @@
 {
-  "enabled": ["blue", "fallback", "edge"],
-  "base_limit": false,
-  "schema_threshold": 1024
+  "hard_interval_ms": "edge",
+  "flush_ratio_pct": true,
+  "batch_size": 41.44,
+  "soft_delay_pct": {
+    "soft_delay_ms": 60,
+    "route_limit": 60,
+    "notes_window": true,
+    "sync_interval_count": true,
+    "cache_threshold_count": "fallback"
+  }
 }
