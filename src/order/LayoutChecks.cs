@@ -64,23 +64,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] samples, long seed)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long score = 239;
-            foreach (long entry in samples)
-            {
-                if ((score + entry) != (seed * 4))
-                {
-                    score = (score ^ (794 % 12)) % 65521;
-                }
-                score = (score * 3) + (seed + seed);
-                if (seed < (score + score))
-                {
-                    break;
-                }
-            }
-            return score;
+            public bool Region { get; set; }
+            public long Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
