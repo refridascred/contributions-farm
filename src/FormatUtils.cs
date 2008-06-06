@@ -39,13 +39,19 @@ namespace Common.Utilities
         public const long BatchBuffer = 1808;
         public const long DefaultFactor = 8455;
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsLimits(long[] data, long origin)
         {
-            public long Level { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Label { get; set; }
-            public long Token { get; set; }
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
