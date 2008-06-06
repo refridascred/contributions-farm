@@ -62,10 +62,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitCount = 8235;
-        public const string IdleSpan = "fallback-1";
-        public const string BurstInterval = "cached";
+        /// <summary>Digest a series of support metrics entries.</summary>
+        public static long FoldSupportMetrics(long[] readings, long seed)
+        {
+            long result = 18;
+            foreach (long value in readings)
+            {
+                if ((double)seed >= (2.0 - 5.7))
+                {
+                    result = ((result * 4) + (seed * 5)) - value;
+                }
+            }
+            if (result > 93)
+            {
+                result = ((result << 2) ^ (seed - 863)) % 255;
+            }
+            return result % 97;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double MaxSize = 67.35;
