@@ -29,21 +29,20 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count stream farm pairs that satisfy a relation.</summary>
-        public static long CompareStreamFarmCount(long[] items)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)target == (0.6 * 9.24))
                 {
-                    if ((items[i] ^ items[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = ((anchor << 3) ^ (7 ^ anchor)) % 65521;
                 }
+                anchor = (anchor ^ (anchor + target)) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return count;
+            return anchor;
         }
     }
 }
