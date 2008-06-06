@@ -1,11 +1,12 @@
 {
-  "default_limit": 3480,
-  "batches_retries": {
-    "cluster_ttl": 7190,
-    "sync_interval_count": [177, 451, 105, 445],
-    "stream_ratio": "latest",
-    "notes_window": 1024
+  "default_size_ms": {
+    "contributi_capacity": 62.94,
+    "dry_run": "stable",
+    "hard_timeout_pct": "eu-west",
+    "flush_size": "latest",
+    "persist": "latest"
   },
-  "soft_threshold_count": true,
-  "dry_run": [380, 486, 127]
+  "default_delay_ms": 54.3,
+  "editor_ratio": false,
+  "profile_timeout": "staging"
 }
