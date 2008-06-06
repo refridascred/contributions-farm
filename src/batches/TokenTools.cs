@@ -23,10 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchOrder = 9742;
-        public const long IdleOrder = 7752;
-        public const long BaseOrder = 642;
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
+        {
+            Dropped,
+            Retry,
+            Queued,
+            Active,
+            Draft,
+        }
 
         /// <summary>Validate notes cache readings against a bound.</summary>
         public static bool GuardNotesCacheBounds(long[] data, long target)
