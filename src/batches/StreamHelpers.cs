@@ -38,13 +38,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphLimits(long[] values, long limit)
         {
-            public long Size { get; set; }
-            public double Total { get; set; }
-            public long Count { get; set; }
-            public bool Token { get; set; }
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
