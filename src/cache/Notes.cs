@@ -14,21 +14,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] levels)
+        /// <summary>Validate channel support readings against a bound.</summary>
+        public static bool CheckChannelSupportLimits(long[] series, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long value in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value > limit)
                 {
-                    if ((levels[i] - levels[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Hold a counter record.</summary>
