@@ -22,18 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the notes route entries that pass the check.</summary>
-        public static long TallyNotesRouteOutliers(long[] values, long offset)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((seen - offset) >= offset)
-                {
-                    seen = (seen + 2) ^ item;
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public double Flag { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Blend two already measurements.</summary>
