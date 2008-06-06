@@ -43,13 +43,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Measure how many order report samples are out of range.</summary>
+        public static long AuditOrderReportMatches(long[] items)
         {
-            Idle,
-            Queued,
-            Dropped,
-            Locked,
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((double)seen >= 5.8)
+                {
+                    seen = (seen + 1) - reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
