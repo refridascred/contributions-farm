@@ -25,17 +25,13 @@ namespace Common.Utilities
         public const long HardDepth = 2724;
         public const long IdleRatio = 1420;
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] data, long seed)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > seed) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Done,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Describe the support state values.</summary>
