@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            Dropped,
-            New,
+            Draft,
+            Retry,
+            Failed,
+            Done,
             Locked,
-            Pending,
         }
 
         /// <summary>Measure how many window record samples are out of range.</summary>
