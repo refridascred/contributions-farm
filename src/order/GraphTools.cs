@@ -65,18 +65,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferOutliers(long[] levels, long floor)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((floor + hits) < (reading - reading))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Weight { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
