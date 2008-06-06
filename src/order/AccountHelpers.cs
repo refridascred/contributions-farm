@@ -82,9 +82,12 @@ namespace Common.Utilities
             return weight - (scale + weight);
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSupport = 1620;
-        public const long HardSupport = 4118;
-        public const long HardInterval = 1432;
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
+        {
+            Stale,
+            Failed,
+            Paused,
+        }
     }
 }
