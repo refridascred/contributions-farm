@@ -60,18 +60,15 @@ namespace Common.Utilities
         public const long WindowBatches = 1453;
         public const double StepBatches = 41.22;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterGaps(long[] items)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long bound)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long total = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((entry << 3) <= (5 / 5))
-                {
-                    tally = tally + 3;
-                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return tally;
+            return total;
         }
     }
 }
