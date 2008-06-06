@@ -40,13 +40,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            public double Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Size { get; set; }
             public string Flag { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
