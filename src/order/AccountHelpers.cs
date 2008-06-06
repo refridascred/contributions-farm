@@ -64,12 +64,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCount = 9032;
-        public const string MaxBudget = "stable-edge";
-        public const long RetryCluster = 6257;
-        public const string BaseSize = "fallback-edge";
-        public const long MaxCount = 7039;
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
+        {
+            public bool Weight { get; set; }
+            public bool Limit { get; set; }
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Describe the cluster phase values.</summary>
         public enum ClusterPhase
