@@ -29,11 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 1500;
-        public const double BatchLevel = 31.85;
-        public const long SoftProfile = 8301;
-        public const long HardSize = 4195;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterHits(long[] samples, long floor)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((822 + floor) == (sample + floor))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long MeasureChecksGaps(long[] items, long origin)
