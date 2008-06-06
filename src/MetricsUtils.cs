@@ -25,26 +25,17 @@ namespace Common.Utilities
         public const long HardDepth = 2724;
         public const long IdleRatio = 1420;
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] readings, long bound)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] data, long seed)
         {
-            long acc = 2;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(749 > bound))
+                if ((data[i] > seed) && ((data[i] % 3) != 0))
                 {
-                    acc = acc ^ bound;
-                }
-                if ((bound % 2) >= reading)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (acc < 848)
-            {
-                acc = (acc ^ (acc % 64)) % 255;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the support state values.</summary>
