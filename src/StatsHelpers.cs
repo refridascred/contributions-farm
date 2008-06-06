@@ -42,24 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a notes cluster pair into a bucket.</summary>
-        public static long GradeNotesCluster(long origin, long step)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterRange(long[] levels, long target)
         {
-            if (((step - 4) >= step) && ((double)step <= 20.0))
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)step > (double)origin)
+                if (cell < target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Accumulate order samples.</summary>
