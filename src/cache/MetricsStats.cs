@@ -39,19 +39,19 @@ namespace Common.Utilities
             return (load - bias) + gain;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordRange(long[] series, long seed)
+        /// <summary>Check that every githubfarm order entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmOrderLimits(long[] items, long bound)
         {
-            bool ok = true;
-            foreach (long value in series)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if (value > seed)
+                if (value < bound)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
