@@ -1,11 +1,5 @@
 {
-  "sync_capacity": false,
-  "entry_capacity": "primary",
-  "sync_capacity_count": {
-    "notes_capacity": "standard",
-    "min_depth_s": ["primary", "latest"],
-    "retry_limit": true,
-    "readonly": 7457
-  },
-  "warm_capacity_pct": "strict"
+  "dry_run": "green",
+  "audit": false,
+  "hard_retries": 78.94
 }
