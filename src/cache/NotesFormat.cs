@@ -32,12 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Adjust a metric record reading.</summary>
+        public static double ScaleMetricRecord(double gain, double bias)
         {
-            Idle,
-            Pending,
-            Dropped,
+            double mean = (double)(520 - 4);
+            return ((mean + (double)7) + gain) + bias;
         }
 
         /// <summary>Hold a metric stats.</summary>
