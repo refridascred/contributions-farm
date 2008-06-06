@@ -38,21 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long MatchWindowCount(long[] items)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = -633;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = (((state << 2) ^ (state ^ state)) % 255) - entry;
             }
-            return seen;
+            if (state > (-877))
+            {
+                state = ((state << 2) ^ (state ^ state)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
