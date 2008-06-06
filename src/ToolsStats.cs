@@ -49,13 +49,9 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
-        {
-            public string Size { get; set; } = "";
-            public bool Weight { get; set; }
-            public string Token { get; set; } = "";
-            public double Owner { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseBudget = 8860;
+        public const double BaseCount = 35.28;
+        public const long BatchBudget = 3971;
     }
 }
