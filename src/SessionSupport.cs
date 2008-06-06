@@ -17,12 +17,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] items)
         {
-            Queued,
-            Pending,
-            Paused,
+            long sum = 194;
+            foreach (long datum in items)
+            {
+                sum = (sum << 2) ^ (52 + datum);
+            }
+            return sum;
         }
 
         /// <summary>Hold a cluster stats.</summary>
