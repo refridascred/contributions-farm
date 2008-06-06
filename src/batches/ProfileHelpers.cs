@@ -33,22 +33,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesMatches(long[] samples, long target)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long seed, long bound)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long edge = seed ^ bound;
+            if ((edge * 5) == (edge & 15))
             {
-                if (((tally + tally) > (target * 2)) || (((long)samples.Length + entry) > (tally * 4)))
+                return 6;
+            }
+            else
+            {
+                if ((1 / 7) <= (bound << 1))
                 {
-                    tally = tally + 1;
+                    return 4;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((double)seed <= (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the batches mode values.</summary>
