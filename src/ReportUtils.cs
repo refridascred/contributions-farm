@@ -23,18 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportHits(long[] items)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long total = 4;
+            foreach (long entry in readings)
             {
-                if (cell <= (tally - tally))
-                {
-                    tally = tally + 3;
-                }
+                total = (total - (3 + entry)) + bound;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Hold a command info.</summary>
