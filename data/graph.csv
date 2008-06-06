@@ -1,7 +1,7 @@
-id,rank,state,region
-1,open,297,498
-2,14.72,252,strict
-3,eu-west,87,526
-4,58.22,107,eu-west
-5,latest,613,green
-6,3.91,663,22
+id,count,ratio,label,region
+1,green,stable,strict,620
+2,39.93,670,staging,primary
+3,273,440,78.76,359
+4,142,green,18.73,28
+5,32.37,75.02,470,latest
+6,blue,732,local,96.84
