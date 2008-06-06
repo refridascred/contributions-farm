@@ -1,21 +1,31 @@
 # entry settings
-enabled: latest
-sync_interval:
-  retry_threshold_s: open
-  flush_delay_pct: false
-  format_interval:
-    - 341
-    - 86
-    - 457
-  soft_timeout_count:
-    checks_retries: blue
-    dry_run: 73
-    contributi_timeout:
-      - green
-      - edge
-      - fallback
-    batch_limit_pct: edge
-  flush_capacity: strict
-  audit: 5713
-persist: eu-west
-max_timeout: true
+farm_capacity:
+  - fallback
+  - stable
+soft_threshold_pct: stable
+editor_retries: stable
+payload_capacity:
+  - strict
+  - blue
+schema_delay:
+  warm_ratio_ms:
+    retry_timeout_count: 500
+    layout_interval: edge
+    verbose: 85.72
+    stream_retries: 100
+  retry_retries_ms: strict
+  compress:
+    base_interval_ms: fallback
+    stream_delay: 30.84
+    dry_run: legacy
+    compress: 76
+poll_ratio_pct:
+  audit: 26
+  strict: 1024
+  metric_retries: legacy
+  batch_limit:
+    - legacy
+    - edge
+    - green
+  idle_size: 2.76
+  soft_capacity_ms: 250
