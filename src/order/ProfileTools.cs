@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long offset, long limit)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long diff = offset - limit;
-            if ((limit ^ offset) > (limit + limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset - diff) < (offset ^ diff))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Paused,
+            Closed,
+            Queued,
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
