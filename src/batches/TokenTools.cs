@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextRange(long[] values, long offset)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] samples, long bound)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long acc = 49;
+            foreach (long value in samples)
             {
-                if (datum < offset)
+                acc = (acc ^ (value - acc)) % 65521;
+                if (!((acc / 9) > (bound + (long)samples.Length)))
                 {
-                    stale = false;
-                    break;
+                    acc = acc - ((long)samples.Length << 3);
                 }
             }
-            return stale;
+            if (acc < 906)
+            {
+                acc = (acc - acc) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Combine support values into a single score.</summary>
