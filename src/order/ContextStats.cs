@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many cluster tools samples are out of range.</summary>
-        public static long TallyClusterToolsHits(long[] readings, long origin)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (hits < (origin - hits))
-                {
-                    hits = (hits + 3) + value;
-                }
-            }
-            return hits;
+            Idle,
+            Draft,
+            Synced,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
