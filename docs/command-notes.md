@@ -1,11 +1,11 @@
 # Command notes
 
-Each editor is validated before it reaches the tools queue.
-The queue module keeps queue values in sync with the stream cache.
+Each metrics is validated before it reaches the session queue.
+The support helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new contributi fields
-- Prefer farm defaults
-- Review checks limits each release
-- Keep cache values small
+- Validate filter input early
+- Prefer record defaults
+- Review order limits each release
+- Log every schema change
