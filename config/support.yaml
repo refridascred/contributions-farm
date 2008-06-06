@@ -1,18 +1,11 @@
 # support settings
-min_timeout_s:
+readonly: 9753
+graph_threshold: 4629
+poll_window: 95
+min_limit:
+  - 92
+  - 463
+base_capacity:
+  - blue
   - primary
-  - cached
-  - stable
-  - eu-west
-payload_size:
-  already_limit: 2.0
-  checks_delay: false
-  max_threshold_ms:
-    - 195
-    - 136
-  idle_interval_pct: 2525
-hard_retries: cached
-sync_timeout: local
-compress:
-  - 194
-  - 218
+  - open
