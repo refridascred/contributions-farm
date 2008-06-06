@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-cached}"
 case "${mode}" in
-    green)
+    primary)
         log "fast path"
         ;;
     *)
@@ -16,8 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 5))
+for item in staging local stable latest; do
+    log "checking ${item}"
 done
-log "total ${total}"
