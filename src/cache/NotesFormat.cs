@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterBounds(long[] series, long step)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] items)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long acc = 3;
+            foreach (long value in items)
             {
-                if (value >= step)
+                if ((acc >= (acc / 9)) || ((acc / 9) <= (value + acc)))
                 {
-                    ok = false;
-                    break;
+                    acc = acc ^ (value - value);
                 }
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Project the next batches contributi value.</summary>
