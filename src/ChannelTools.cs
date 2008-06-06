@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueBounds(long[] data, long origin)
+        /// <summary>Iterate the tools checks series from a seed.</summary>
+        public static long RollToolsChecks(long limit)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long mark = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (value != origin)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
