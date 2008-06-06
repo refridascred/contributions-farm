@@ -22,20 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextLimits(long[] readings, long step)
-        {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 1277;
+        public const long StepAccount = 5975;
+        public const string SoftLevel = "latest";
+        public const long MinAccount = 2460;
+        public const long DefaultBudget = 6899;
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool VerifySchemaRange(long[] values, long target)
