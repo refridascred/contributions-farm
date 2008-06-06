@@ -47,32 +47,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long offset, long step)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long target)
         {
-            long edge = offset + step;
-            if (edge > (edge - 23))
+            long state = target;
+            for (int i = 0; i < 18; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)edge < (3.1 / 5.0))
+                long step = ((long)i + target) / 3;
+                if ((double)step != (2.8 / 8.0))
                 {
-                    return 1;
+                    state = (state ^ ((long)i * 3)) % 97;
                 }
-                else
-                {
-                    if ((edge * 5) >= step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                step = (step ^ (long)i) % 4096;
+                state = ((state * 4) + (long)i) % 1000;
             }
+            return state;
         }
     }
 }
