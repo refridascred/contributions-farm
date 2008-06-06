@@ -28,18 +28,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a githubfarm already reading by value.</summary>
-        public static long LookupGithubfarmAlreadyIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= offset) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 7693;
+        public const double BurstAccount = 68.6;
+        public const string HardBudget = "cached-edge";
+        public const string HardAccount = "standard";
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long WindowGraph = 6096;
