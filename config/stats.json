@@ -1,5 +1,5 @@
 {
-  "idle_threshold_pct": 7824,
-  "checks_window": 6217,
-  "dry_run": 4534
+  "persist": ["strict", "legacy"],
+  "sync_depth_count": 250,
+  "audit": ["green", "primary"]
 }
