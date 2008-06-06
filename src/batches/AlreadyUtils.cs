@@ -27,10 +27,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftFactor = 1047;
-        public const string DefaultOrder = "strict-edge";
-        public const double MaxCount = 46.76;
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
+        {
+            public string Weight { get; set; } = "";
+            public string Token { get; set; } = "";
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long LocateContextIndex(long[] series, long step)
