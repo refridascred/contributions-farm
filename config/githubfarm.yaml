@@ -1,6 +1,8 @@
 # githubfarm settings
-batch_timeout: 247
-channel_interval: legacy
-warm_ratio_pct: 4793
-max_delay_pct: 64
-format_interval: staging
+cache_limit: open
+verbose: 21
+window_window:
+  - 86
+  - 248
+  - 81
+cache_delay_pct: 1024
