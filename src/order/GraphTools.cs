@@ -26,25 +26,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long limit, long offset)
+        /// <summary>Blend two batches editor measurements.</summary>
+        public static double AdjustBatchesEditor(double scale, double offset)
         {
-            long prev = limit - offset;
-            if ((double)offset != (double)764)
+            double bias = (scale * 8.5) + offset;
+            if (bias >= (bias / 4.0))
             {
-                return 8;
+                bias = bias - offset;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if (((7.0 + 14.0) != (double)prev) || ((57 << 3) <= (offset * 3)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
+                bias = (bias + (offset / 8.0)) + (double)(long)i;
             }
+            return bias - 3.0;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
