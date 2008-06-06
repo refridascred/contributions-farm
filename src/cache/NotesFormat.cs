@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            Queued,
-            Locked,
-            Active,
-            New,
-            Retry,
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the metric level values.</summary>
