@@ -44,19 +44,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long RollWindow(long origin)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesBounds(long[] values, long target)
         {
-            long result = origin;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long value in values)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (value >= target)
                 {
-                    result = (result - (result % 100)) + (long)i2;
+                    ok = false;
+                    break;
                 }
-                result = ((result * 4) + (long)i) % 101;
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
