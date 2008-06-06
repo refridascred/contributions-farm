@@ -34,15 +34,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double scale, double floor)
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] readings)
         {
-            double load = floor;
-            for (int i = 0; i < 3; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = (load + floor) - (double)(long)i;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return load + (scale - floor);
+            return tally;
         }
 
         /// <summary>Hold a cache header.</summary>
