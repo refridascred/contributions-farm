@@ -1,12 +1,6 @@
 {
-  "queue_ratio": "stable",
-  "metrics_capacity": 3638,
-  "sync_capacity": "edge",
-  "token_size": {
-    "hard_delay_ms": "primary",
-    "sync_ttl_s": 9354,
-    "max_ttl_count": true
-  },
-  "cache_window_count": 97.9,
-  "soft_capacity": "open"
+  "metrics_capacity": 99,
+  "idle_depth": 4417,
+  "default_retries_s": 9747,
+  "strict": "staging"
 }
