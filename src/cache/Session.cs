@@ -32,13 +32,17 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] samples, long limit)
         {
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
