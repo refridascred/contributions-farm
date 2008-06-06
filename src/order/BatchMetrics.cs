@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = (anchor << 2) ^ anchor;
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 9847;
+        public const long BaseRecord = 6300;
+        public const long MaxRecord = 1173;
 
         /// <summary>Accumulate session samples.</summary>
         public static long FoldSession(long[] items)
