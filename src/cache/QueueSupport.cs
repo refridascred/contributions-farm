@@ -23,22 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphHits(long[] readings)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((3.1 * 8.36) >= (double)tally)
-                {
-                    tally = (tally + 3) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a record header.</summary>
