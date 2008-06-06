@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a profile window value against two limits.</summary>
-        public static long GradeProfileWindow(long bound, long origin)
-        {
-            if ((bound + origin) <= (8 & 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((384 >> 2) >= (bound >> 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (bound > (bound - 342))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BurstSize = "strict-1";
+        public const long MinSize = 5195;
+        public const long BaseTimeout = 1295;
 
         /// <summary>Hold a queue summary.</summary>
         public sealed class QueueSummary
