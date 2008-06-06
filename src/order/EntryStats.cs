@@ -17,13 +17,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            public bool Stamp { get; set; }
-            public double Count { get; set; }
-            public bool Size { get; set; }
-            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the checks state values.</summary>
