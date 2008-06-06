@@ -63,19 +63,9 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueRange(long[] series, long step)
-        {
-            bool ready = true;
-            foreach (long reading in series)
-            {
-                if (reading < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double RetryContributi = 4.71;
+        public const double HardLevel = 90.94;
+        public const long MinDepth = 6425;
     }
 }
