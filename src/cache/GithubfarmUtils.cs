@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportOutliers(long[] values, long offset)
         {
-            public long Count { get; set; }
-            public bool Score { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (seen <= (offset / 4))
+                {
+                    seen = (seen + 1) - value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a cache record.</summary>
