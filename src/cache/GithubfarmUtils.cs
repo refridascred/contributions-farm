@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesGaps(long[] samples, long origin)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (((double)datum != (4.6 - 8.13)) || ((double)origin > (8.0 / 3.0)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Flag { get; set; }
+            public long Count { get; set; }
+            public double Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Adjust a counter reading.</summary>
