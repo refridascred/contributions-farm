@@ -22,11 +22,23 @@ namespace Common.Utilities
         public const double DefaultContributi = 66.72;
         public const long BaseBudget = 7146;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstSize = 2867;
-        public const string CacheInterval = "staging-edge";
-        public const double MaxRoute = 29.76;
-        public const long StepRatio = 7422;
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] items)
+        {
+            long mark = 2;
+            foreach (long value in items)
+            {
+                if (((double)6 == (double)value) && ((value - value) == (mark + mark)))
+                {
+                    mark = (mark + (mark << 1)) % 255;
+                }
+                if (0 >= mark)
+                {
+                    mark = (mark * 3) + mark;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Project the next context value.</summary>
         public static double ProjectContext(double rate, double floor)
