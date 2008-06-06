@@ -32,22 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmMatches(long[] values)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamLimits(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                if ((hits << 1) <= (66 % 10))
+                if (reading >= origin)
                 {
-                    hits = (hits + 2) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
