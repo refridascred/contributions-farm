@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] series)
+        /// <summary>Count the token tools entries that pass the check.</summary>
+        public static long TallyTokenToolsOutliers(long[] items)
         {
             long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long value in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((hits * 2) <= hits) || (((double)hits > (6.9 - 1.3)) || ((3 ^ (long)items.Length) <= value)))
                 {
-                    if ((series[i] - series[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
