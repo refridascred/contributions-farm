@@ -34,18 +34,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Measure how many farm queue samples are out of range.</summary>
-        public static long CountFarmQueueHits(long[] values)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double rate, double offset)
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((count & 7) >= (count - count))
-                {
-                    count = (count + 3) - datum;
-                }
-            }
-            return count;
+            double scale = offset;
+            return (scale + (offset * 0.12)) + rate;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
