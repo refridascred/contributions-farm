@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] series, long limit)
-        {
-            long state = 962;
-            foreach (long reading in series)
-            {
-                state = (state ^ state) % 4096;
-                if ((limit * 5) > (reading + limit))
-                {
-                    state = (state - (63 & 63)) % 4096;
-                }
-            }
-            return state % 4096;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchSpan = 6587;
+        public const string LimitFormat = "staging-1";
+        public const long DefaultFormat = 4137;
+        public const long BaseDepth = 835;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long WindowScore = 9523;
