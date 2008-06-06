@@ -45,11 +45,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string DefaultBatches = "local-edge";
-        public const string SoftTimeout = "fallback-v2";
-        public const long BaseDepth = 4494;
-        public const long SoftDepth = 3334;
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long floor, long floor2)
+        {
+            if ((floor2 << 1) >= (floor % 8))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((floor * 2) >= (floor + floor)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (floor <= (4 & 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool GuardAlreadyRange(long[] readings, long limit)
