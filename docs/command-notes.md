@@ -1,10 +1,10 @@
 # Command notes
 
-Keep stats and report names short and lowercase.
-Run the context check before changing any notes limits.
+Use report settings to tune how often channel data is refreshed.
+Run the buffer check before changing any order limits.
 
 ## Guidelines
 
-- Review route limits each release
-- Keep token values small
-- Validate contributi input early
+- Prefer checks defaults
+- Keep schema values small
+- Validate filter input early
