@@ -14,19 +14,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderOutliers(long[] items)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((17 / 8) > (sample >> 3))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSize = 5777;
+        public const double DefaultScore = 91.94;
+        public const double BatchSession = 74.63;
+        public const long MinFactor = 7138;
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long MatchClusterCount(long[] samples)
