@@ -1,7 +1,8 @@
 {
-  "compress": false,
-  "retry_depth_ms": 5630,
-  "cache_window_count": 75.42,
-  "persist": 41.74,
-  "max_ratio": 60
+  "soft_timeout_pct": 24.09,
+  "compress": 83,
+  "cache_ratio": false,
+  "flush_interval": 60,
+  "base_threshold": 8710,
+  "cluster_timeout": 1024
 }
