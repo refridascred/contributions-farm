@@ -78,38 +78,17 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long origin, long bound)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] readings, long target)
         {
-            if (!((bound >> 5) <= (origin + origin)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(origin > (bound >> 4)))
+                if ((readings[i] <= target) && ((readings[i] % 5) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((17.0 + 1.62) > (double)origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)bound <= (7.73 / 6.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
