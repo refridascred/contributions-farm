@@ -1,14 +1,6 @@
 {
-  "command_limit": 60,
-  "payload_retries": "cached",
-  "batch_retries": [198, 476],
-  "flush_interval_ms": 7.14,
-  "sync_timeout": {
-    "readonly": "open",
-    "audit": 8110,
-    "persist": 95.8,
-    "layout_retries": 46.14,
-    "editor_interval": 240
-  },
-  "persist": 56
+  "soft_window_count": 75,
+  "max_window": "green",
+  "dry_run": 7044,
+  "hard_window_ms": 21.46
 }
