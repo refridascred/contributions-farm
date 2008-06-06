@@ -1,7 +1,7 @@
 {
-  "profile_depth": 83.07,
-  "retry_threshold_pct": "edge",
-  "checks_depth": ["blue", "fallback", "stable"],
-  "max_ttl_ms": true,
-  "enabled": "primary"
+  "metrics_delay": "latest",
+  "hard_interval": 60,
+  "hard_threshold_pct": "edge",
+  "payload_retries": 30,
+  "strict": "latest"
 }
