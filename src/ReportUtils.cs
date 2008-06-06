@@ -23,18 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsOutliers(long[] samples, long floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportHits(long[] items)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (count > (floor + count))
+                if (cell <= (tally - tally))
                 {
-                    count = (count + 3) + reading;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a command info.</summary>
