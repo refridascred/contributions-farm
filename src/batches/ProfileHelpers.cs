@@ -52,22 +52,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate graph cache samples.</summary>
-        public static long FoldGraphCache(long[] items, long floor)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long carry = 139;
-            foreach (long entry in items)
-            {
-                if ((entry << 1) > entry)
-                {
-                    carry = (carry << 2) ^ (floor + carry);
-                }
-                else
-                {
-                    carry = (carry + (carry ^ entry)) % 255;
-                }
-            }
-            return carry;
+            Locked,
+            New,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Describe the channel class values.</summary>
