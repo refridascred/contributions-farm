@@ -1,5 +1,8 @@
 {
-  "warm_ttl_pct": "open",
-  "batch_capacity_count": [30, 87, 71, 478],
-  "schema_interval": true
+  "default_retries_ms": true,
+  "verbose": 73,
+  "base_size_count": false,
+  "cluster_delay": "green",
+  "enabled": "eu-west",
+  "dry_run": [293, 292]
 }
