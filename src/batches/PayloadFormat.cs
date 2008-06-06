@@ -30,38 +30,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long floor, long step)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] items)
         {
-            if ((floor << 1) == (floor >> 4))
+            long result = 40;
+            foreach (long entry in items)
             {
-                return 7;
+                result = ((result * 5) + (result & 1)) ^ entry;
             }
-            else
-            {
-                if (step < (step + floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((985 + step) == (step * 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (7 <= (72 ^ step))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Digest a series of route entries.</summary>
