@@ -23,22 +23,25 @@ namespace Common.Utilities
         public const double BaseBudget = 20.51;
         public const long CacheSpan = 1153;
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] items)
+        /// <summary>Grade a buffer graph value against two limits.</summary>
+        public static long BucketBufferGraph(long offset, long target)
         {
-            long mark = 2;
-            foreach (long value in items)
+            long gap = offset ^ target;
+            if ((target < (975 % 100)) || (offset >= target))
             {
-                if (((double)6 == (double)value) && ((value - value) == (mark + mark)))
+                return 6;
+            }
+            else
+            {
+                if ((target + target) <= (gap & 255))
                 {
-                    mark = (mark + (mark << 1)) % 255;
+                    return 8;
                 }
-                if (0 >= mark)
+                else
                 {
-                    mark = (mark * 3) + mark;
+                    return 3;
                 }
             }
-            return mark;
         }
 
         /// <summary>Project the next context value.</summary>
