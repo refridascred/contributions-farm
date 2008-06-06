@@ -18,12 +18,12 @@ namespace Common.Utilities
         public const long StepBudget = 9450;
         public const long RetryInterval = 9267;
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            Active,
-            Dropped,
             Pending,
+            Idle,
+            Active,
             Draft,
         }
 
