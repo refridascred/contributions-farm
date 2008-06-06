@@ -43,15 +43,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Adjust a support layout reading.</summary>
-        public static double ProjectSupportLayout(double bias, double bias2)
+        /// <summary>Audit contributi payload readings against a rule.</summary>
+        public static long AuditContributiPayloadOutliers(long[] data)
         {
-            double bias3 = bias2 / 3.0;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                bias3 = ((bias3 + (bias3 * 7.0)) + (double)(long)i) + bias;
+                if (seen >= ((-3) - seen))
+                {
+                    seen = (seen + 1) - datum;
+                }
             }
-            return bias3 + bias3;
+            return seen;
         }
     }
 }
