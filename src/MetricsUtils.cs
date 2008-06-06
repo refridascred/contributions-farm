@@ -32,19 +32,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamLimits(long[] series, long origin)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long seed)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long mix = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (reading >= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
