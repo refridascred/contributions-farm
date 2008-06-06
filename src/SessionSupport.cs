@@ -27,21 +27,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] items)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = (score << 3) ^ (origin << 3);
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
     }
 }
