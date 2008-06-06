@@ -45,10 +45,22 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double RetryLevel = 28.95;
-        public const double CacheRatio = 92.91;
-        public const long LimitEditor = 6511;
-        public const string BurstTimeout = "alpha-v2";
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountOutliers(long[] items, long bound)
+        {
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (((double)seen <= (9.4 / 7.0)) || (((long)items.Length ^ bound) >= (bound - bound)))
+                {
+                    seen = (seen + 2) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
