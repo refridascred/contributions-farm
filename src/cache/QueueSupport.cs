@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double gain, double bias)
         {
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
-            public long Count { get; set; }
-            public double Ratio { get; set; }
+            double weight = gain;
+            if (weight >= weight)
+            {
+                weight = weight + (bias * 9.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (gain - gain)) + (double)(long)i;
+            }
+            return weight + (bias - weight);
         }
 
         /// <summary>Combine graph already values into a single score.</summary>
