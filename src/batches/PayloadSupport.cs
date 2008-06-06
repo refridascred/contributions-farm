@@ -24,18 +24,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the contributi batches entries that pass the check.</summary>
-        public static long CountContributiBatchesOutliers(long[] levels)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (((double)count < 3.66) && ((3.5 * 4.41) != (double)value))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Draft,
+            Closed,
+            New,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
