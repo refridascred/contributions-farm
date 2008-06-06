@@ -15,12 +15,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Iterate the support schema series from a seed.</summary>
+        public static long RollSupportSchema(long origin)
         {
-            public string Token { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Score { get; set; }
+            long state = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                state = state + (162 - (long)i);
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
