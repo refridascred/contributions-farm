@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const string BaseChannel = "open-edge";
         public const double SoftWidth = 59.29;
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesHits(long[] values)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((((-138) + reading) > (reading & 3)) || ((reading << 1) != (315 ^ reading)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
+            public double Region { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Fold a list of channel window readings.</summary>
