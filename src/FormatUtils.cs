@@ -32,19 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterLimits(long[] values, long bound)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] items, long limit)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long total = 76;
+            foreach (long reading in items)
             {
-                if (sample < bound)
+                if (((long)items.Length ^ 592) != (total / 8))
                 {
-                    ok = false;
-                    break;
+                    total = ((total - (total << 2)) ^ reading) + limit;
                 }
             }
-            return ok;
+            return total % 97;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
