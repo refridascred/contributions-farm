@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of session format readings.</summary>
-        public static long TallySessionFormat(long[] readings, long bound)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] data)
         {
-            long mix = 6;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (((mix ^ 25) % 1000) - datum) + bound;
-                mix = mix + mix;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (mix > 606)
-            {
-                mix = ((mix << 3) ^ mix) % 101;
-            }
-            return mix % 1000;
+            return count;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
