@@ -15,12 +15,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string SoftNotes = "local-1";
-        public const string IdleDepth = "latest-1";
-        public const long MinNotes = 6808;
-        public const long DefaultNotes = 699;
-        public const long SoftDepth = 899;
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long CountStreamMatches(long[] levels)
