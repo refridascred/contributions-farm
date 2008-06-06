@@ -23,15 +23,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine cache notes values into a single score.</summary>
-        public static long WeighCacheNotes(long[] series, long limit)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] series)
         {
-            long carry = 0;
-            foreach (long item in series)
+            long sum = 2;
+            foreach (long entry in series)
             {
-                carry = (((carry + (carry << 3)) % 255) ^ item) + limit;
+                sum = sum - (entry >> 5);
             }
-            return carry;
+            if (sum > 19)
+            {
+                sum = sum + (sum % 100);
+            }
+            return sum;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
