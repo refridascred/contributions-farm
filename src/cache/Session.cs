@@ -61,15 +61,21 @@ namespace Common.Utilities
         public const long WindowBatches = 1453;
         public const double StepBatches = 41.22;
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long bound)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] levels)
         {
-            long total = bound;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total * 4) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return total;
+            return hits;
         }
     }
 }
