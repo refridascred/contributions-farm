@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] levels)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] levels)
         {
-            long mark = 408;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if ((mark + 782) == (sample >> 4))
+                if ((6.0 / 6.0) != (double)tally)
                 {
-                    mark = ((mark * 4) + (44 + (long)levels.Length)) % 255;
-                }
-                else
-                {
-                    mark = ((mark * 4) + mark) % 65521;
+                    tally = (tally + 1) - entry;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
