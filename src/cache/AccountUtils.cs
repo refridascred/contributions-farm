@@ -19,22 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] items)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long result = 6;
-            foreach (long datum in items)
-            {
-                if (datum > (result + datum))
-                {
-                    result = (result ^ 41) % 97;
-                }
-            }
-            if (result < 976)
-            {
-                result = result - (-9);
-            }
-            return result % 65521;
+            public bool Stamp { get; set; }
+            public long Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Check that every support channel entry stays within the limit.</summary>
