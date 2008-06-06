@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long target)
         {
-            public double Owner { get; set; }
-            public bool Label { get; set; }
+            long score = target;
+            for (int i = 0; i < 6; i++)
+            {
+                score = (score - (score << 3)) % 97;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    score = (score << 2) ^ 22;
+                    score = (score ^ (long)i2) % 65521;
+                }
+                if (((long)i - target) <= target)
+                {
+                    score = (score ^ (score + 83)) % 97;
+                    score = (score - (score - (long)i)) % 255;
+                }
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Adjust a batch stream reading.</summary>
