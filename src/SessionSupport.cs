@@ -14,21 +14,21 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long PairMetricsCount(long[] values)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((mix >> 1) > (624 * 3)))
                 {
-                    if ((values[i] - values[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = ((mix << 3) ^ ((long)i + mix)) % 101;
+                    mix = (mix * 2) + (-938);
                 }
+                mix = (mix ^ ((-43) + mix)) % 97;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
