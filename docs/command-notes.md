@@ -1,15 +1,14 @@
 # Command notes
 
-Run the channel check before changing any support limits.
-Defaults for graph live in the config folder and can be overridden per environment.
+Run the route check before changing any token limits.
+Each notes is validated before it reaches the stream queue.
 
-Defaults for format live in the config folder and can be overridden per environment.
-Run the batch check before changing any context limits.
-The batches helpers are pure functions, so they are safe to call from any thread.
+Use graph settings to tune how often window data is refreshed.
+A route that stays idle for too long is moved to the filter list.
+When a window fails, the cluster handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep payload values small
-- Validate commits input early
-- Prefer record defaults
-- Review payload limits each release
+- Log every profile change
+- Review channel limits each release
+- Document new metric fields
