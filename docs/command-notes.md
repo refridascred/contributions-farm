@@ -1,15 +1,15 @@
 # Command notes
 
-When a metrics fails, the support handler retries a few times before giving up.
-The buffer module keeps command values in sync with the tools cache.
-A window that stays idle for too long is moved to the notes list.
+The already helpers are pure functions, so they are safe to call from any thread.
+Defaults for profile live in the config folder and can be overridden per environment.
+Keep account and layout names short and lowercase.
 
-The profile module keeps buffer values in sync with the batch cache.
-Each report is validated before it reaches the record queue.
-The checks module keeps layout values in sync with the stream cache.
+The schema report groups every tools by route.
+The payload module keeps report values in sync with the format cache.
+Defaults for editor live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate metrics input early
-- Keep stats values small
-- Prefer window defaults
+- Keep window values small
+- Validate stream input early
+- Review notes limits each release
