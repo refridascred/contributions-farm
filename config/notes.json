@@ -1,5 +1,13 @@
 {
-  "min_ttl_s": 47.31,
-  "hard_interval_count": 1105,
-  "idle_threshold_s": "fallback"
+  "warm_delay_s": [178, 55],
+  "batch_window_ms": {
+    "warm_capacity_pct": true,
+    "burst_retries_ms": [124, 172, 488],
+    "default_size_pct": 250,
+    "sync_window_s": "local",
+    "min_threshold_s": 30,
+    "idle_threshold_pct": [96, 496, 138, 276]
+  },
+  "poll_limit": [326, 279],
+  "batch_capacity_ms": 30
 }
