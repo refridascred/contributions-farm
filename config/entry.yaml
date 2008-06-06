@@ -1,8 +1,11 @@
 # entry settings
-readonly:
-  warm_ttl_count: 9
-  layout_ratio: 827
-  dry_run: 40.91
-  schema_depth: 38
-commits_window: stable
-batch_retries_ms: 250
+min_ratio_ms: blue
+audit: false
+metrics_capacity:
+  farm_limit: 9180
+  stats_ratio: 500
+  default_ttl_s: blue
+  strict: 96.97
+max_timeout_ms: 50.84
+sync_ttl: latest
+batch_capacity_count: 100
