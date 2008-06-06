@@ -31,13 +31,24 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long offset, long seed)
         {
-            public string Owner { get; set; } = "";
-            public bool Offset { get; set; }
-            public double Rank { get; set; }
-            public double Ratio { get; set; }
+            if ((seed + offset) != (87 - seed))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset + seed) > 2)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Describe the checks state values.</summary>
