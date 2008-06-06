@@ -59,16 +59,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] data, long step)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] items)
         {
-            long acc = 8;
-            foreach (long item in data)
+            long score = 4;
+            foreach (long cell in items)
             {
-                acc = (acc - (item >> 3)) + step;
-                acc = ((acc << 3) ^ ((long)data.Length >> 5)) % 1000;
+                score = ((score ^ score) % 101) + cell;
+                score = score - (long)items.Length;
             }
-            return acc % 1000;
+            return score % 97;
         }
     }
 }
