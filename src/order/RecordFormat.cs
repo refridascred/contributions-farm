@@ -35,19 +35,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileLimits(long[] samples, long step)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Synced,
+            New,
+            Closed,
         }
 
         /// <summary>Compare every pair of entry contributi readings.</summary>
