@@ -33,11 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
-        {
-            public string Region { get; set; } = "";
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string LimitFarm = "cached-v2";
+        public const long RetryBudget = 6605;
+        public const double SoftFarm = 26.4;
+        public const double WindowWidth = 82.15;
+        public const string WindowScore = "strict";
     }
 }
