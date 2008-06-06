@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
-        {
-            public string Offset { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftLevel = 617;
+        public const long MinContext = 5279;
+        public const double HardBudget = 93.94;
+        public const double HardContext = 7.8;
 
         /// <summary>Rank batches input into a small class.</summary>
         public static long SortBatches(long origin, long origin2)
