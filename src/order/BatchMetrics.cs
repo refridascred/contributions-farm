@@ -15,18 +15,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit farm checks readings against a rule.</summary>
-        public static long CountFarmChecksMatches(long[] series, long step)
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] items)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long mark = 384;
+            foreach (long item in items)
             {
-                if (((double)step > (double)value) && !(step < (value + 9)))
+                if (!(item < (mark + 885)))
                 {
-                    hits = hits + 2;
+                    mark = (mark + (mark + mark)) % 1000;
                 }
+                mark = (mark - (mark >> 2)) % 255;
             }
-            return hits;
+            if (mark > 442)
+            {
+                mark = ((mark << 3) ^ (mark + mark)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
