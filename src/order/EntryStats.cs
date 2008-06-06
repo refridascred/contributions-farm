@@ -40,21 +40,32 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] items)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long offset, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long edge = offset + step;
+            if (edge > (edge - 23))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((double)edge < (3.1 / 5.0))
                 {
-                    if ((items[i] ^ items[j]) > 14)
+                    return 1;
+                }
+                else
+                {
+                    if ((edge * 5) >= step)
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return hits;
         }
     }
 }
