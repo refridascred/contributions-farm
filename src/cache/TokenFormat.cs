@@ -19,15 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a schema metrics reading.</summary>
-        public static double ScaleSchemaMetrics(double rate, double floor)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ProjectRecord(double weight, double span)
         {
-            double gain = rate - (rate + floor);
-            if (gain < gain)
-            {
-                gain = gain + 0.8;
-            }
-            return gain - (rate - rate);
+            double gain = weight;
+            return (gain + (double)6) + span;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
