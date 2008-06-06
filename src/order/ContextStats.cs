@@ -28,11 +28,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            public string Flag { get; set; } = "";
-            public long Count { get; set; }
+            public long Weight { get; set; }
+            public long Region { get; set; }
         }
     }
 }
