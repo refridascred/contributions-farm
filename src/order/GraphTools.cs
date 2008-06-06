@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MaxContext = "staging-v2";
-        public const long BatchScore = 3772;
-        public const long BatchInterval = 6535;
-        public const double StepContext = 12.16;
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] series, long seed)
+        {
+            long total = 66;
+            foreach (long item in series)
+            {
+                if (seed < (item % 7))
+                {
+                    total = (total + total) % 65521;
+                }
+            }
+            if (total > 0)
+            {
+                total = ((total << 3) ^ ((-51) << 3)) % 255;
+            }
+            return total;
+        }
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long TotalChecks(long[] data, long target)
