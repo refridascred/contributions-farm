@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowLimits(long[] series, long bound)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] series)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long total = 64;
+            foreach (long sample in series)
             {
-                if (value != bound)
-                {
-                    stale = false;
-                    break;
-                }
+                total = (total - 215) + sample;
+                total = (total ^ 4) % 1000;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
