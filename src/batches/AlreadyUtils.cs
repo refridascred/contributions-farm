@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            public bool Rank { get; set; }
-            public string Offset { get; set; } = "";
+            Queued,
+            Draft,
+            Stale,
+            Retry,
+            New,
         }
 
         /// <summary>Check that every format batches entry stays within the limit.</summary>
