@@ -40,12 +40,18 @@ namespace Common.Utilities
             return mean + 7.66;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double RetryTimeout = 47.82;
-        public const string BatchFactor = "alpha-edge";
-        public const string MaxTimeout = "stable-1";
-        public const double LimitLevel = 56.76;
-        public const long IdleWidth = 416;
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= limit) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
         public static long MatchWindowCount(long[] items)
