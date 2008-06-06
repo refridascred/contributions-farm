@@ -40,19 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelRange(long[] series, long floor)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] items)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long state = 54;
+            foreach (long cell in items)
             {
-                if (entry < floor)
-                {
-                    valid = false;
-                    break;
-                }
+                state = ((state << 2) ^ ((-5) - state)) ^ cell;
             }
-            return valid;
+            if (state > 20)
+            {
+                state = ((state * 2) + (state >> 5)) % 255;
+            }
+            return state;
         }
     }
 }
