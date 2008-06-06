@@ -1,16 +1,10 @@
 # Command notes
 
-The editor report groups every filter by account.
-Keep payload and token names short and lowercase.
-Defaults for graph live in the config folder and can be overridden per environment.
-
-Run the githubfarm check before changing any notes limits.
-The format report groups every cluster by command.
-Run the profile check before changing any account limits.
+Each editor is validated before it reaches the schema queue.
+The already report groups every metric by cache.
 
 ## Guidelines
 
-- Validate format input early
-- Review payload limits each release
-- Prefer record defaults
-- Document new counter fields
+- Log every queue change
+- Prefer metric defaults
+- Document new queue fields
