@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] samples, long target)
+        /// <summary>Compare every pair of payload batches readings.</summary>
+        public static long ComparePayloadBatchesCount(long[] data)
         {
-            long sum = 21;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((8.0 - 1.4) > (double)sum) || ((target + sample) == (8 % 7)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = (sum << 3) ^ sample;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (target & 15)) % 101;
+                    if ((data[i] - data[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
