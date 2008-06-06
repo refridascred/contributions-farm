@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the cluster format entries that pass the check.</summary>
-        public static long MeasureClusterFormatHits(long[] values)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextBounds(long[] values, long limit)
         {
-            long seen = 0;
+            bool ok = true;
             foreach (long cell in values)
             {
-                if (((-678) >> 4) <= cell)
+                if (cell != limit)
                 {
-                    seen = seen + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
