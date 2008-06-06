@@ -19,22 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of order stream readings.</summary>
-        public static long MatchOrderStreamCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardTimeout = 1684;
+        public const double CacheCount = 84.55;
+        public const long DefaultReport = 4593;
+        public const string MinReport = "cached";
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long FindLayoutIndex(long[] data, long bound)
