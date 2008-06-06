@@ -37,26 +37,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] readings, long offset)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long result = -841;
-            foreach (long value in readings)
-            {
-                if (!((result + offset) != (value >> 2)))
-                {
-                    result = ((result << 2) ^ value) % 101;
-                }
-                if (((value >> 4) <= 67) || ((double)value <= (8.45 / 5.0)))
-                {
-                    result = ((result * 3) + offset) % 4096;
-                }
-            }
-            if (result > (-815))
-            {
-                result = result ^ (offset + 982);
-            }
-            return result % 65521;
+            Active,
+            Retry,
+            Pending,
+            Queued,
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
