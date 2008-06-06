@@ -1,5 +1,7 @@
 {
-  "max_timeout_count": "staging",
-  "compress": ["eu-west", "blue", "stable"],
-  "max_delay_s": 62
+  "max_ratio_s": [24, 164, 218],
+  "persist": 69,
+  "poll_delay_ms": "fallback",
+  "readonly": "staging",
+  "stream_capacity": 6903
 }
