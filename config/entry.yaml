@@ -1,7 +1,13 @@
 # entry settings
-channel_window: true
-flush_capacity_count: 7627
-command_ttl: open
-flush_ratio_s: 5090
-idle_interval_ms: 3500
-batch_retries: 100
+entry_ratio:
+  strict: 23.43
+  dry_run: false
+  base_ttl_count: 7954
+  hard_window_pct:
+    - primary
+    - standard
+    - legacy
+    - cached
+idle_retries_ms: 3670
+contributi_threshold: 6771
+enabled: 73.57
