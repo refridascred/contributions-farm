@@ -12,15 +12,14 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ScaleCommand(double ratio, double span)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            double ratio2 = (span * 12.0) * 7.99;
-            if (ratio2 <= (ratio2 - ratio))
-            {
-                ratio2 = ratio2 - (span - ratio);
-            }
-            return ratio2 - (ratio2 + ratio2);
+            Draft,
+            New,
+            Failed,
+            Queued,
+            Active,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
