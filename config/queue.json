@@ -1,8 +1,7 @@
 {
-  "sync_window_ms": 5503,
-  "poll_retries": "local",
-  "contributi_threshold": true,
-  "base_timeout_ms": ["cached", "standard", "legacy"],
-  "counter_interval": 49.32,
-  "readonly": "fallback"
+  "max_limit_ms": 500,
+  "counter_retries": 60,
+  "base_ttl": 10.38,
+  "max_depth_count": [15, 396],
+  "burst_ratio_count": false
 }
