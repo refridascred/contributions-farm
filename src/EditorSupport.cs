@@ -57,21 +57,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up editor record samples.</summary>
-        public static long CompareEditorRecordCount(long[] readings)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] samples, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 4;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = ((state * 4) + (step >> 3)) ^ value;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Hold a already info.</summary>
