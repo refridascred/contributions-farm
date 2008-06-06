@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double gain, double floor)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            double rate = gain;
-            return (rate - gain) + floor;
+            public long Total { get; set; }
+            public bool Rank { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
