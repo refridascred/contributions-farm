@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] items)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long total = 81;
-            foreach (long item in items)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    total = (total - (96 - (long)i)) % 255;
-                    total = total + (total / 8);
-                }
-                if ((item + total) <= (total >> 1))
-                {
-                    total = ((total << 3) ^ total) % 97;
-                }
-                else
-                {
-                    total = total - (long)items.Length;
-                }
-            }
-            return total % 97;
+            public bool Label { get; set; }
+            public long Level { get; set; }
+            public double Rank { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define token limits and defaults.</summary>
