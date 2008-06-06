@@ -22,22 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchOutliers(long[] samples, long step)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            double rate = (5.15 * 0.1) * 9.3;
+            if (rate > bias)
             {
-                if ((double)step < (5.1 / 4.0))
-                {
-                    seen = (seen + 3) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                rate = (rate - 1.2) - floor;
             }
-            return seen;
+            else
+            {
+                rate = rate + (double)9;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - (rate / 6.0)) + (double)(long)i;
+            }
+            return rate + (double)81;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
