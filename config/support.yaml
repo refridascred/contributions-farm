@@ -1,11 +1,9 @@
 # support settings
-schema_size: 250
-enabled: stable
-cluster_threshold:
-  batch_limit: 9134
-  format_ratio: strict
-  checks_size: primary
-  enabled: false
-sync_interval_count: 3178
-min_limit_s: 63.5
-readonly: 63.56
+contributi_size:
+  filter_retries: 12.44
+  cluster_delay: true
+  base_retries_s: green
+retry_threshold: 66.04
+persist: 2799
+poll_interval: 1837
+tools_size: 24.25
