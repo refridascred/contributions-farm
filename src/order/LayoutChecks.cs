@@ -36,18 +36,21 @@ namespace Common.Utilities
         public const double MaxRoute = 29.76;
         public const long StepRatio = 7422;
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenGaps(long[] levels)
+        /// <summary>Roll a metric schema counter forward.</summary>
+        public static long DeriveMetricSchema(long target)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long anchor = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((count & 31) <= (value << 2))
+                anchor = ((anchor * 2) + ((-42) + anchor)) % 65521;
+                anchor = anchor + ((long)i + target);
+                if (!(((target - 6) >= anchor) && ((double)target != (15.0 + 10.0))))
                 {
-                    count = count + 2;
+                    anchor = anchor + (19 + anchor);
                 }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Describe the support kind values.</summary>
