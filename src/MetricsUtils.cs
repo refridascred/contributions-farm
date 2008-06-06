@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Count the cache githubfarm entries that pass the check.</summary>
+        public static long CountCacheGithubfarmHits(long[] series)
         {
-            public double Size { get; set; }
-            public long Label { get; set; }
-            public double Token { get; set; }
-            public bool Weight { get; set; }
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (!(tally <= (reading + 373)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
