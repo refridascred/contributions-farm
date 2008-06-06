@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of batches queue entries.</summary>
-        public static long FoldBatchesQueue(long[] readings, long bound)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueBounds(long[] data, long origin)
         {
-            long acc = 57;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long value in data)
             {
-                acc = ((((acc << 3) ^ (acc - 8)) % 4096) - cell) - bound;
+                if (value != origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (acc > 0)
-            {
-                acc = (acc + (acc >> 4)) % 1000;
-            }
-            return acc;
+            return valid;
         }
 
         /// <summary>Count support order pairs that satisfy a relation.</summary>
