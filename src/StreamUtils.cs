@@ -26,17 +26,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first window editor entry that matches the target.</summary>
-        public static long LookupWindowEditorIndex(long[] readings, long floor)
+        /// <summary>Count the format window entries that pass the check.</summary>
+        public static long CountFormatWindowOutliers(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (readings[i] == floor)
+                if ((8.52 * 19.0) > (double)count)
                 {
-                    return (long)i;
+                    count = (count + 2) ^ sample;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Adjust a graph reading.</summary>
