@@ -58,11 +58,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsBounds(long[] series, long offset)
         {
-            public string Stamp { get; set; } = "";
-            public string Rank { get; set; } = "";
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
