@@ -19,19 +19,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double weight, double offset)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] readings)
         {
-            double scale = 2.1 + offset;
-            if (scale < (double)705)
+            long sum = 22;
+            foreach (long datum in readings)
             {
-                scale = scale - weight;
+                if ((datum + datum) == (sum & 127))
+                {
+                    long matches = (datum << 2) & 31;
+                    sum = (sum - (matches - sum)) % 97;
+                    break;
+                }
+                if ((datum >> 4) >= (sum - 581))
+                {
+                    sum = sum + (datum - sum);
+                }
+                else
+                {
+                    sum = (sum - (sum & 127)) % 97;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - offset) + (double)(long)i;
-            }
-            return scale - offset;
+            return sum;
         }
 
         /// <summary>Describe the counter kind values.</summary>
