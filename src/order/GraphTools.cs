@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long bound, long step)
-        {
-            if ((step >= (8 - (-24))) && ((4 << 1) <= step))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound < 500) || ((double)step != (1.43 * 4.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step <= (step ^ 619)) || (step < bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MaxContext = "staging-v2";
+        public const long BatchScore = 3772;
+        public const long BatchInterval = 6535;
+        public const double StepContext = 12.16;
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long TotalChecks(long[] data, long target)
