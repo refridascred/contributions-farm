@@ -1,19 +1,7 @@
 # githubfarm settings
-soft_retries_ms: 38
-readonly: true
-hard_size_pct:
-  - 342
-  - 161
-  - 93
-  - 402
-hard_limit_count:
-  poll_ttl_count:
-    - 270
-    - 69
-    - 187
-    - 91
-  idle_interval: 60
-  cache_timeout_s: 6037
-  soft_interval_ms: false
-default_window_s: 500
-soft_interval: eu-west
+githubfarm_delay:
+  - legacy
+  - strict
+idle_delay_s: true
+support_limit: 69.75
+max_timeout_pct: fallback
