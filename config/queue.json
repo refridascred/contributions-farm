@@ -1,20 +1,6 @@
 {
-  "retry_size_pct": "latest",
-  "schema_delay": "stable",
-  "cache_ratio": {
-    "cache_delay": {
-      "hard_size_count": "open",
-      "burst_size_s": 51.88,
-      "base_depth_count": "standard",
-      "base_capacity_count": 74.18,
-      "commits_size": true,
-      "enabled": 40
-    },
-    "min_threshold_s": 60,
-    "burst_ttl": 60,
-    "hard_threshold_s": 99,
-    "retry_depth": 9594,
-    "compress": "primary"
-  },
-  "max_ttl_ms": false
+  "batch_size_count": 54.92,
+  "max_timeout_count": 250,
+  "warm_limit_ms": 25,
+  "enabled": "green"
 }
