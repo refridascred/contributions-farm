@@ -1,7 +1,7 @@
-id,weight,score,owner
-1,684,850,970
-2,81.14,10.36,edge
-3,green,2.33,444
-4,999,33.4,289
-5,50,green,81.23
-6,125,green,704
+id,region,label,count,state
+1,71.41,727,legacy,strict
+2,blue,387,open,901
+3,74.48,open,68.8,45.24
+4,55.0,135,edge,open
+5,legacy,22.16,625,49.26
+6,staging,16.08,strict,stable
