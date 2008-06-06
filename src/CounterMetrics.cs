@@ -41,12 +41,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double SmoothContributi(double gain, double offset)
         {
-            public double Rank { get; set; }
-            public long Token { get; set; }
-            public string Owner { get; set; } = "";
+            double ratio = (double)(132 + 370);
+            if (ratio <= 12.0)
+            {
+                ratio = (ratio - gain) + offset;
+            }
+            else
+            {
+                ratio = ratio + gain;
+            }
+            return ratio + ratio;
         }
     }
 }
