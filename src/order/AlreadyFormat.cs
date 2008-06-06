@@ -31,38 +31,13 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long limit, long bound)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            if ((bound ^ limit) <= bound)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)limit >= (double)bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!(33 < limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound * 4) < (18 % 64))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public string Owner { get; set; } = "";
+            public bool Offset { get; set; }
+            public double Rank { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the checks state values.</summary>
