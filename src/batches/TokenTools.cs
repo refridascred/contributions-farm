@@ -23,19 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchGaps(long[] samples, long origin)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)cell == (3.82 * 0.2))
-                {
-                    seen = (seen + 1) + origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchOrder = 9742;
+        public const long IdleOrder = 7752;
+        public const long BaseOrder = 642;
 
         /// <summary>Validate notes cache readings against a bound.</summary>
         public static bool GuardNotesCacheBounds(long[] data, long target)
