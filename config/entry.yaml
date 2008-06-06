@@ -1,4 +1,15 @@
 # entry settings
-hard_limit_count: staging
-schema_threshold: 56.28
-idle_capacity_ms: fallback
+soft_depth_pct:
+  - strict
+  - fallback
+  - stable
+  - eu-west
+min_retries: 83
+support_size:
+  dry_run: false
+  base_depth: stable
+  retry_delay: legacy
+sync_threshold_s:
+  - blue
+  - latest
+  - fallback
