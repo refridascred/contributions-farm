@@ -22,32 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long floor, long offset)
-        {
-            if ((floor ^ 331) == (offset - floor))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor % 2) == (offset % 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!(offset >= (floor + offset)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BatchSize = 0.69;
+        public const double IdleCount = 2.63;
+        public const long StepDepth = 9914;
+        public const long HardMetric = 9486;
 
         /// <summary>Rank schema input into a small class.</summary>
         public static long ClassifySchema(long seed, long origin)
