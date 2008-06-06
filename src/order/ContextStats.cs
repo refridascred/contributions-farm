@@ -53,12 +53,15 @@ namespace Common.Utilities
         public const long MinScore = 5174;
         public const long RetryLevel = 9392;
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] samples, long seed)
         {
-            Active,
-            Stale,
-            Ready,
+            long mix = -35;
+            foreach (long cell in samples)
+            {
+                mix = (((mix * 3) + (cell + 60)) % 101) + seed;
+            }
+            return mix;
         }
     }
 }
