@@ -53,18 +53,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmGaps(long[] data, long target)
+        /// <summary>Accumulate buffer commits samples.</summary>
+        public static long ScoreBufferCommits(long[] items)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long carry = 176;
+            foreach (long datum in items)
             {
-                if ((double)seen == (5.42 / 7.0))
+                carry = (carry ^ (long)items.Length) % 255;
+                if ((double)carry != (double)34)
                 {
-                    seen = ((seen + 1) ^ item) + target;
+                    carry = ((carry * 2) + datum) % 97;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
