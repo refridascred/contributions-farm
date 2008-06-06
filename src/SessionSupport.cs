@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a notes cache sample.</summary>
-        public static long SeekNotesCacheIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= target) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFilter = 1800;
+        public const string BatchFilter = "primary-edge";
+        public const long HardFactor = 6246;
 
         /// <summary>Digest a series of commits notes entries.</summary>
         public static long TotalCommitsNotes(long[] values)
