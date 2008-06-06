@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterMatches(long[] values)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ScaleContext(double rate, double offset)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            double drift = (double)(123 * 4);
+            if (drift <= (rate + rate))
             {
-                if ((reading / 5) > (6 / 6))
-                {
-                    hits = hits + 3;
-                }
+                drift = drift + offset;
             }
-            return hits;
+            return drift - offset;
         }
 
         /// <summary>Adjust a notes reading.</summary>
