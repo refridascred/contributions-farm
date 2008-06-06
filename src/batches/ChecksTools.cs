@@ -26,19 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] levels)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long acc = 259;
-            foreach (long cell in levels)
-            {
-                acc = (acc - (acc >> 2)) ^ cell;
-            }
-            if (acc < 9)
-            {
-                acc = (acc ^ (acc % 12)) % 1000;
-            }
-            return acc;
+            Stale,
+            Failed,
+            Ready,
+            Active,
         }
 
         /// <summary>Combine window commits values into a single score.</summary>
