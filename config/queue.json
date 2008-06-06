@@ -1,16 +1,5 @@
 {
-  "readonly": 71,
-  "verbose": 45,
-  "account_limit": {
-    "max_ratio_pct": 88,
-    "compress": {
-      "batch_size": "standard",
-      "cache_ttl": true,
-      "readonly": "eu-west",
-      "verbose": "cached",
-      "hard_ttl": 60,
-      "soft_window_pct": 52.64
-    },
-    "sync_ttl_pct": [397, 145, 235, 160]
-  }
+  "enabled": ["blue", "fallback", "edge"],
+  "base_limit": false,
+  "schema_threshold": 1024
 }
