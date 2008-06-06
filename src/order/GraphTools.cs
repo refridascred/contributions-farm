@@ -56,13 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsLimits(long[] series, long limit)
         {
-            public long Rank { get; set; }
-            public long Score { get; set; }
-            public long Token { get; set; }
-            public long Size { get; set; }
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a batches stats.</summary>
