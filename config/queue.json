@@ -1,6 +1,5 @@
 {
-  "persist": 24,
-  "cache_threshold_count": "green",
-  "idle_depth_ms": 44,
-  "sync_ttl_ms": ["eu-west", "staging", "edge", "fallback"]
+  "sync_capacity": 10.19,
+  "notes_window": false,
+  "flush_retries_ms": true
 }
