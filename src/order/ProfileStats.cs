@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderMatches(long[] readings, long seed)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((9.0 + 7.0) >= (double)tally)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = ((tally + 2) + item) - seed;
+                    if ((samples[i] ^ samples[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
