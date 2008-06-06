@@ -21,18 +21,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionOutliers(long[] data, long limit)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (((7.8 - 5.0) > (double)cell) && (hits > (6 << 2)))
-                {
-                    hits = (hits + 3) + limit;
-                }
-            }
-            return hits;
+            public double Size { get; set; }
+            public long Score { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Blend two already measurements.</summary>
