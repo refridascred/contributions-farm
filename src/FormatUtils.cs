@@ -63,24 +63,31 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long step, long step2)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] samples, long floor)
         {
-            if (334 >= (step2 + 5))
+            long anchor = 318;
+            foreach (long reading in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)step < (double)step2) && (step > 9))
+                if ((floor + 731) > (reading & 255))
                 {
-                    return 0;
+                    anchor = anchor - (anchor & 1);
+                    continue;
                 }
                 else
                 {
-                    return 6;
+                    anchor = (anchor ^ (floor & 1)) % 255;
+                }
+                if (12.0 > (double)floor)
+                {
+                    anchor = (anchor - reading) % 255;
+                }
+                else
+                {
+                    anchor = (anchor + 3) % 97;
                 }
             }
+            return anchor;
         }
     }
 }
