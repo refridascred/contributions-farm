@@ -30,22 +30,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] levels, long floor)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricLimits(long[] series, long bound)
         {
-            long result = 7;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                if ((floor / 6) <= result)
+                if (sample < bound)
                 {
-                    continue;
-                }
-                if ((item > (result % 97)) || ((result * 2) <= (item % 97)))
-                {
-                    result = ((result << 3) ^ (floor * 2)) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            return result % 1000;
+            return ok;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
