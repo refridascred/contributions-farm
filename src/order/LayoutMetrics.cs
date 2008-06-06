@@ -24,24 +24,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long floor, long floor2)
-        {
-            if (!((floor2 + floor) < (floor - floor)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((floor2 + floor) <= (606 + 51)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BatchTimeout = 92.94;
+        public const long MinRecord = 7077;
+        public const long BaseRecord = 7888;
+        public const string LimitRecord = "standard";
     }
 }
