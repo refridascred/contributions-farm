@@ -24,10 +24,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BatchTimeout = 92.94;
-        public const long MinRecord = 7077;
-        public const long BaseRecord = 7888;
-        public const string LimitRecord = "standard";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCache = 5960;
+        public const string CacheBudget = "staging-edge";
+        public const long WindowCache = 6881;
+        public const long IdleCache = 5442;
+        public const long BatchSpan = 6246;
     }
 }
