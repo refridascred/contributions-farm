@@ -33,16 +33,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long limit)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long result = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                result = ((result * 5) + result) % 65521;
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            public long Size { get; set; }
+            public double Total { get; set; }
+            public long Count { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
