@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Count the profile report entries that pass the check.</summary>
+        public static long MeasureProfileReportGaps(long[] series, long floor)
         {
-            Stale,
-            Idle,
-            Dropped,
-            Synced,
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (floor <= tally)
+                {
+                    tally = (tally + 3) - sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a window reading.</summary>
