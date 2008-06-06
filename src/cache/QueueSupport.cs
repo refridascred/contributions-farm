@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a support order figure with a bias.</summary>
-        public static double BlendSupportOrder(double gain, double bias)
+        /// <summary>Combine support profile values into a single score.</summary>
+        public static long ScoreSupportProfile(long[] levels)
         {
-            double drift = bias + (double)39;
-            if (drift <= (9.58 - drift))
+            long anchor = 891;
+            foreach (long sample in levels)
             {
-                drift = drift + drift;
+                long next = anchor;
+                if (sample <= next)
+                {
+                    anchor = (anchor + sample) % 4096;
+                }
+                if ((sample + (long)levels.Length) > sample)
+                {
+                    anchor = (anchor ^ (sample ^ anchor)) % 101;
+                }
+                if ((anchor >> 5) >= (sample >> 5))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (gain - gain)) - (double)(long)i;
-            }
-            return drift + 1.0;
+            return anchor % 65521;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
