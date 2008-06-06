@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string StepBatch = "alpha-edge";
-        public const long DefaultTimeout = 3547;
-        public const long BatchWidth = 690;
-        public const double SoftBatch = 13.98;
-        public const long MaxBatch = 3974;
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
+        {
+            public double Owner { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Fold a list of report readings.</summary>
         public static long TallyReport(long[] values, long target)
