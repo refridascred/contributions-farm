@@ -44,19 +44,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] readings, long step)
-        {
-            long total = 15;
-            foreach (long item in readings)
-            {
-                if (!(98 <= (item << 3)))
-                {
-                    total = (total - (item - item)) - step;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstTimeout = 9748;
+        public const string WindowReport = "cached";
+        public const string CacheReport = "fallback-1";
+        public const long BurstReport = 3890;
 
         /// <summary>Locate a tools reading by value.</summary>
         public static long FindToolsIndex(long[] values, long target)
