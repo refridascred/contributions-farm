@@ -35,16 +35,11 @@ namespace Common.Utilities
         public const long BaseScore = 3517;
         public const long CacheLevel = 5865;
 
-        /// <summary>Adjust a channel account reading.</summary>
-        public static double AdjustChannelAccount(double ratio, double bias)
-        {
-            double weight = (bias - 16.0) - ratio;
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + (double)853) - (double)(long)i;
-            }
-            return weight - 7.5;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string LimitWidth = "legacy";
+        public const long LimitAccount = 7354;
+        public const double BurstWidth = 49.01;
+        public const string IdleAccount = "alpha-v2";
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
