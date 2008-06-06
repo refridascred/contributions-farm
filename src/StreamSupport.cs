@@ -25,11 +25,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double SmoothChannel(double rate, double bias)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] series, long seed)
         {
-            double drift = rate;
-            return drift + (bias / 6.0);
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the editor class values.</summary>
