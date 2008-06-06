@@ -47,13 +47,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long IterateSchema(long floor)
         {
-            public string Limit { get; set; } = "";
-            public double Owner { get; set; }
-            public string Score { get; set; } = "";
-            public double Offset { get; set; }
+            long result = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
