@@ -60,13 +60,23 @@ namespace Common.Utilities
         public const long LimitTimeout = 3512;
         public const long MaxBuffer = 7500;
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Accumulate tools command samples.</summary>
+        public static long TotalToolsCommand(long[] data, long seed)
         {
-            New,
-            Paused,
-            Queued,
-            Done,
+            long anchor = 7;
+            foreach (long value in data)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    anchor = ((anchor + anchor) - (long)i) - value;
+                }
+                anchor = (anchor ^ seed) % 4096;
+            }
+            if (anchor < 561)
+            {
+                anchor = (anchor * 5) + (8 + 193);
+            }
+            return anchor % 97;
         }
     }
 }
