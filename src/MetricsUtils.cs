@@ -41,19 +41,11 @@ namespace Common.Utilities
         public const double MinInterval = 65.06;
         public const double RetryInterval = 97.53;
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] items, long bound)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long score = 0;
-            foreach (long cell in items)
-            {
-                score = (score - (score + bound)) + cell;
-                if ((double)bound >= (17.0 / 8.0))
-                {
-                    break;
-                }
-            }
-            return score % 97;
+            public long Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
