@@ -24,14 +24,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long origin, long offset)
         {
-            Draft,
-            Closed,
-            New,
-            Stale,
-            Dropped,
+            long diff = origin + offset;
+            if ((diff <= (offset ^ offset)) || ((double)origin >= (20.0 + 7.8)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin ^ offset) >= offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((9.3 + 5.5) > (double)diff))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset ^ origin) > (origin ^ diff))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
