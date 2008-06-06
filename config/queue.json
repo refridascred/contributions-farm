@@ -1,6 +1,17 @@
 {
-  "account_window": ["cached", "latest", "cached"],
-  "verbose": 7846,
-  "flush_window": 15.53,
-  "editor_window": 5659
+  "strict": {
+    "audit": 30,
+    "hard_threshold_ms": "edge",
+    "base_ratio_pct": "stable",
+    "batch_window": [478, 325, 291, 482],
+    "sync_size_count": {
+      "cache_ttl_ms": "fallback",
+      "enabled": [438, 78],
+      "command_retries": 62.71,
+      "stream_depth": "strict"
+    },
+    "flush_depth_s": "staging"
+  },
+  "idle_window_ms": 40,
+  "batch_depth": 19.46
 }
