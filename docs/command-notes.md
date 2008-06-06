@@ -1,13 +1,11 @@
 # Command notes
 
-When a metrics fails, the counter handler retries a few times before giving up.
-Run the githubfarm check before changing any report limits.
-
-A commits that stays idle for too long is moved to the metrics list.
-The session report groups every route by commits.
+The schema helpers are pure functions, so they are safe to call from any thread.
+The tools module keeps format values in sync with the graph cache.
 
 ## Guidelines
 
-- Prefer buffer defaults
-- Keep order values small
-- Document new notes fields
+- Validate session input early
+- Review window limits each release
+- Document new filter fields
+- Log every format change
