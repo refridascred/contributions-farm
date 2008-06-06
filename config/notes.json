@@ -1,18 +1,6 @@
 {
-  "commits_depth": "edge",
-  "verbose": 29.66,
-  "checks_limit": ["green", "local", "standard", "latest"],
-  "soft_ratio": {
-    "min_window": 13.12,
-    "warm_depth_pct": {
-      "min_timeout_pct": false,
-      "cache_window_s": 2222,
-      "tools_ttl": "green"
-    },
-    "burst_threshold_count": "strict",
-    "retry_window_pct": [447, 457, 317],
-    "max_ttl_ms": 8978,
-    "persist": "blue"
-  },
-  "sync_depth_count": [341, 223, 333]
+  "retry_ratio": 48,
+  "hard_retries": "legacy",
+  "max_threshold_pct": true,
+  "soft_threshold": 78.04
 }
