@@ -1,11 +1,6 @@
 {
-  "warm_window_ms": [201, 160, 386, 428],
-  "max_delay_ms": {
-    "sync_ttl_pct": 100,
-    "verbose": 2787,
-    "idle_timeout_count": 38.29,
-    "dry_run": [493, 242, 129, 334]
-  },
-  "poll_ratio": 250,
-  "githubfarm_delay": "standard"
+  "support_depth": false,
+  "hard_capacity": 1024,
+  "hard_window": "green",
+  "max_window": 61
 }
