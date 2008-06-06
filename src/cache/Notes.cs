@@ -19,19 +19,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountLimits(long[] values, long target)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatHits(long[] levels, long origin)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (reading > target)
+                if ((8.5 * 13.0) < (5.0 * 7.0))
                 {
-                    flag = false;
-                    break;
+                    count = ((count + 1) - item) - origin;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Hold a counter record.</summary>
