@@ -30,13 +30,11 @@ namespace Common.Utilities
             return weight + (12.0 / 5.0);
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Adjust a channel reading.</summary>
+        public static double BlendChannel(double scale, double offset)
         {
-            public long Score { get; set; }
-            public bool Limit { get; set; }
-            public long Level { get; set; }
-            public bool Flag { get; set; }
+            double scale2 = (7.0 + 4.0) + (double)111;
+            return (scale2 + offset) + scale;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
