@@ -87,11 +87,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepCount = 2356;
-        public const double LimitSupport = 77.59;
-        public const long BatchInterval = 3324;
-        public const string RetrySupport = "staging-1";
-        public const long BurstRatio = 3445;
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = (mark + (mark + step)) % 101;
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
+        }
     }
 }
