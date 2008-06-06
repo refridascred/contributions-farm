@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinFormat = 1302;
-        public const long SoftFormat = 9529;
-        public const string StepLevel = "primary-1";
-        public const long SoftTimeout = 6576;
-        public const string StepFormat = "alpha-edge";
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] levels)
+        {
+            long acc = 8;
+            foreach (long reading in levels)
+            {
+                acc = ((acc << 3) ^ (acc << 1)) - reading;
+            }
+            if (acc > 96)
+            {
+                acc = ((acc * 2) + (acc ^ acc)) % 4096;
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool CheckRecordBounds(long[] readings, long step)
