@@ -47,17 +47,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] values, long limit)
+        /// <summary>Project the next tools value.</summary>
+        public static double AdjustTools(double bias, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double load = floor;
+            if (load < floor)
             {
-                if ((values[i] < limit) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                load = (load - (12.0 * 4.48)) + bias;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load - 8.0;
         }
 
         /// <summary>Describe the batches phase values.</summary>
