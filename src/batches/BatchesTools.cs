@@ -19,19 +19,17 @@ namespace Common.Utilities
         public const long IdleContributi = 6238;
         public const double SoftCount = 31.9;
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] items)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] readings, long limit)
         {
-            long state = 54;
-            foreach (long cell in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state << 2) ^ ((-5) - state)) ^ cell;
+                if ((readings[i] > limit) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (state > 20)
-            {
-                state = ((state * 2) + (state >> 5)) % 255;
-            }
-            return state;
+            return -1;
         }
     }
 }
