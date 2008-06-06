@@ -19,11 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 1185;
-        public const long RetryCommits = 5433;
-        public const long CacheFactor = 7577;
-        public const long StepBudget = 8458;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 856;
+        public const long RetryTools = 497;
+        public const double BaseInterval = 57.38;
+        public const long StepSpan = 8121;
+        public const double IdleSize = 53.7;
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool GuardFilterLimits(long[] readings, long floor)
