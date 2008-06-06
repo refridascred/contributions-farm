@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphGaps(long[] values, long limit)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((hits & 63) < (hits ^ item))
-                {
-                    hits = (hits + 3) - limit;
-                }
-            }
-            return hits;
+            Failed,
+            Pending,
+            Queued,
+            Stale,
         }
 
         /// <summary>Hold a commits record.</summary>
