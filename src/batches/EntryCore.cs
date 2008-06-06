@@ -13,20 +13,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Combine already cache values into a single score.</summary>
-        public static long TotalAlreadyCache(long[] values)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long seed)
         {
-            long total = 63;
-            foreach (long item in values)
+            long total = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if ((2 >> 2) > item)
-                {
-                    total = (total << 2) ^ (item + total);
-                }
-                if ((item / 3) >= (item / 8))
-                {
-                    break;
-                }
+                total = ((total * 3) + (long)i) % 4093;
             }
             return total;
         }
