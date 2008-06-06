@@ -34,19 +34,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiRange(long[] data, long offset)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Done,
+            Pending,
+            Closed,
+            New,
         }
     }
 }
