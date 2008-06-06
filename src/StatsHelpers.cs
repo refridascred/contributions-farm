@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Scale a context token figure with a bias.</summary>
-        public static double ProjectContextToken(double bias, double floor)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            double rate = (double)392;
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (((rate + (13.0 + rate)) - (double)(long)i) - bias) + floor;
-            }
-            return rate - 4.0;
+            Idle,
+            Active,
+            Done,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Hold a contributi record.</summary>
