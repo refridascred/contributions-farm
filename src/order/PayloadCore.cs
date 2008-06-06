@@ -41,19 +41,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] items, long offset)
-        {
-            long anchor = 9;
-            foreach (long entry in items)
-            {
-                if ((anchor << 2) < entry)
-                {
-                    anchor = ((anchor * 3) + (offset >> 3)) % 97;
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstBudget = 735;
+        public const string HardBudget = "stable";
+        public const double SoftCounter = 2.17;
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool GuardBatchRange(long[] readings, long floor)
