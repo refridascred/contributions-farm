@@ -42,13 +42,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            public double Weight { get; set; }
-            public string Size { get; set; } = "";
-            public bool Region { get; set; }
-            public long Offset { get; set; }
+            public bool Score { get; set; }
+            public long Label { get; set; }
+            public long Level { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
