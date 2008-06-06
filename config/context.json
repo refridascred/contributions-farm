@@ -1,5 +1,8 @@
 {
-  "hard_timeout_pct": 98,
-  "max_limit_count": false,
-  "poll_size": "primary"
+  "max_limit_count": "eu-west",
+  "flush_depth_s": [355, 276, 69],
+  "dry_run": 78,
+  "default_timeout_s": "standard",
+  "hard_delay_pct": 250,
+  "batch_ratio": "green"
 }
