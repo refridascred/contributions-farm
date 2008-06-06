@@ -43,13 +43,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Measure how many farm queue samples are out of range.</summary>
+        public static long CountFarmQueueHits(long[] values)
         {
-            Closed,
-            Draft,
-            Dropped,
-            Idle,
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((count & 7) >= (count - count))
+                {
+                    count = (count + 3) - datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
