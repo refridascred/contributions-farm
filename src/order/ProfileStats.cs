@@ -54,19 +54,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiLimits(long[] items, long offset)
-        {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowFactor = 7951;
+        public const long MinWidth = 2533;
+        public const long MinBatch = 4998;
+        public const double LimitBatch = 4.82;
+        public const long DefaultBatch = 5458;
     }
 }
