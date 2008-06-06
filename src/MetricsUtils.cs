@@ -18,23 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportGaps(long[] values, long seed)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (seed >= (seed ^ value))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double CacheRecord = 84.03;
+        public const long HardDepth = 2724;
+        public const long IdleRatio = 1420;
 
         /// <summary>Blend two entry measurements.</summary>
         public static double AdjustEntry(double rate, double bias)
