@@ -33,11 +33,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string LimitFarm = "cached-v2";
-        public const long RetryBudget = 6605;
-        public const double SoftFarm = 26.4;
-        public const double WindowWidth = 82.15;
-        public const string WindowScore = "strict";
+        /// <summary>Grade a batches channel value against two limits.</summary>
+        public static long BucketBatchesChannel(long step, long seed)
+        {
+            long next = step + seed;
+            if (!((double)next >= (4.4 - 13.0)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (step > (next - 868))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step << 3) >= (seed - next))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
