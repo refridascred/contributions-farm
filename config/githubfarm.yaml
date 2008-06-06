@@ -1,9 +1,4 @@
 # githubfarm settings
-cache_window:
-  - 481
-  - 25
-burst_depth_ms:
-  - staging
-  - standard
-min_window_s: 51
-readonly: 86
+metric_threshold: 60
+warm_timeout: 41
+burst_delay: 35.73
