@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] data)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long step, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long cur = step - floor;
+            if (((step - cur) <= (43 + floor)) && (cur < (step + floor)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((step + step) != (cur % 16)) && (39 < (cur << 3)))
                 {
-                    if ((data[i] - data[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
