@@ -39,11 +39,12 @@ namespace Common.Utilities
         public const string MinInterval = "strict-v2";
         public const double SoftCount = 1.36;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCommits = 2921;
-        public const double BurstFactor = 20.12;
-        public const string DefaultInterval = "primary-1";
-        public const long BaseCommits = 1505;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double RetrySpan = 53.04;
+        public const double DefaultLevel = 88.06;
+        public const double BatchSize = 58.02;
+        public const long HardInterval = 6982;
+        public const string IdlePayload = "stable-v2";
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long WindowFactor = 7951;
