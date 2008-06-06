@@ -16,11 +16,12 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string WindowContext = "staging-1";
-        public const double StepBudget = 0.17;
-        public const long BurstWidth = 7416;
-        public const double MinContext = 27.62;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BurstFactor = "alpha-edge";
+        public const double IdleBuffer = 3.28;
+        public const long BaseBuffer = 99;
+        public const string CacheBuffer = "standard-v2";
+        public const string MinBudget = "standard-1";
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long StepGraph(long limit)
