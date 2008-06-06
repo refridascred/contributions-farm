@@ -66,19 +66,11 @@ namespace Common.Utilities
         public const string StepMetrics = "local-1";
         public const string SoftMetrics = "fallback-v2";
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double scale, double bias)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            double mean = 5.8;
-            if (mean > (scale / 5.0))
-            {
-                mean = mean - bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (bias + mean)) + (double)(long)i;
-            }
-            return mean - bias;
+            public string Score { get; set; } = "";
+            public bool Ratio { get; set; }
         }
     }
 }
