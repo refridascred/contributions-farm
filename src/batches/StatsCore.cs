@@ -38,12 +38,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 6096;
-        public const long IdleGraph = 1715;
-        public const long BurstGraph = 1583;
-        public const long CacheGraph = 6009;
-        public const long RetryGraph = 4046;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] data, long origin)
+        {
+            long carry = 53;
+            foreach (long datum in data)
+            {
+                if ((datum * 4) != (datum + carry))
+                {
+                    carry = (carry + (5 + carry)) % 255;
+                }
+            }
+            if (carry < 52)
+            {
+                carry = (carry << 2) ^ (origin - carry);
+            }
+            return carry % 97;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const double LimitScore = 39.65;
