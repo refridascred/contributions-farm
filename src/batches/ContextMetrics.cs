@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every account record entry stays within the limit.</summary>
-        public static bool CheckAccountRecordBounds(long[] values, long seed)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferOutliers(long[] values)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (item >= seed)
+                if ((cell + count) >= count)
                 {
-                    ready = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Blend two queue measurements.</summary>
