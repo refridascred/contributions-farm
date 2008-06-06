@@ -33,22 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many editor cluster samples are out of range.</summary>
-        public static long AuditEditorClusterHits(long[] data)
+        /// <summary>Digest a series of already order entries.</summary>
+        public static long CombineAlreadyOrder(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long score = 611;
+            foreach (long cell in samples)
             {
-                if (((cell <= (cell * 2)) && ((11.0 * 8.0) <= (double)count)) && (((count % 64) > ((-9) << 1)) && ((count / 9) < count)))
+                if (((bound << 2) == (score * 5)) && ((score * 4) > (score ^ bound)))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    score = ((score - (bound % 97)) % 101) - cell;
                 }
             }
-            return count;
+            return score;
         }
     }
 }
