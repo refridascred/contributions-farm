@@ -30,19 +30,11 @@ namespace Common.Utilities
         public const long StepSpan = 8121;
         public const double IdleSize = 53.7;
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterLimits(long[] readings, long floor)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Size { get; set; } = "";
+            public double Stamp { get; set; }
         }
     }
 }
