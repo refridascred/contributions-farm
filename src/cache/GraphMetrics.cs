@@ -44,26 +44,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] levels, long seed)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long bound, long floor)
         {
-            long state = 193;
-            foreach (long item in levels)
+            if (6.0 > (double)bound)
             {
-                if (((item ^ seed) >= (item + seed)) || (item >= (state + item)))
+                return 6;
+            }
+            else
+            {
+                if ((13.0 / 9.0) == (double)bound)
                 {
-                    state = (state << 3) ^ (item ^ item);
-                }
-                if ((state + state) != (11 >> 1))
-                {
-                    state = (state ^ seed) % 101;
+                    return 3;
                 }
                 else
                 {
-                    state = state ^ (seed & 7);
+                    if (((3.6 - 8.0) == (double)floor) || ((237 ^ floor) <= (bound / 6)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return state % 1000;
         }
 
         /// <summary>Describe the metric mode values.</summary>
