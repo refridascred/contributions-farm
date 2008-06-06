@@ -22,18 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the token commits entries that pass the check.</summary>
-        public static long TallyTokenCommitsOutliers(long[] levels, long limit)
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            double rate = (bias + scale) / 6.0;
+            if (rate > (double)418)
             {
-                if ((matches + item) >= (item & 255))
-                {
-                    matches = (matches + 1) - limit;
-                }
+                rate = rate + 4.13;
             }
-            return matches;
+            return rate - (scale - 5.97);
         }
 
         /// <summary>Locate a farm reading by value.</summary>
