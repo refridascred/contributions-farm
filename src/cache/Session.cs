@@ -51,17 +51,15 @@ namespace Common.Utilities
             return drift + (3.07 + weight);
         }
 
-        /// <summary>Locate a metrics entry reading by value.</summary>
-        public static long FindMetricsEntryIndex(long[] values, long offset)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] data, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 26;
+            foreach (long entry in data)
             {
-                if ((values[i] == offset) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mix = (((mix ^ mix) % 4096) ^ entry) - origin;
             }
-            return -1;
+            return mix % 65521;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
