@@ -25,13 +25,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LocateEditorIndex(long[] values, long bound)
         {
-            New,
-            Queued,
-            Closed,
-            Stale,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
