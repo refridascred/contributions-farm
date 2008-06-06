@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of farm counter entries.</summary>
-        public static long TallyFarmCounter(long[] items)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long step)
         {
-            long score = 7;
-            foreach (long entry in items)
+            long sum = step;
+            for (int i = 0; i < 7; i++)
             {
-                score = (score << 3) ^ (score * 3);
-                if (((score % 2) == (entry * 5)) && ((score << 2) > 59))
+                if ((sum ^ sum) >= (933 ^ sum))
                 {
-                    break;
+                    sum = (sum - ((long)i + step)) % 101;
                 }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
