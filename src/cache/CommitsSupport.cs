@@ -19,14 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] data, long floor)
         {
-            Idle,
-            Pending,
-            Done,
-            Queued,
-            Retry,
+            long result = 48;
+            foreach (long cell in data)
+            {
+                result = ((result - (floor - result)) % 1000) ^ cell;
+            }
+            if (result < 64)
+            {
+                result = result - floor;
+            }
+            return result % 65521;
         }
 
         /// <summary>Define record limits and defaults.</summary>
