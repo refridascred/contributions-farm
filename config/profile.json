@@ -1,23 +1,8 @@
 {
-  "sync_depth_ms": {
-    "persist": 1694,
-    "readonly": 48,
-    "batch_ttl": 46.56,
-    "poll_ratio_ms": true
-  },
-  "max_window": 73.23,
-  "compress": true,
-  "command_depth": {
-    "buffer_depth": 13,
-    "dry_run": "open",
-    "stats_capacity": "stable",
-    "context_window": {
-      "idle_capacity_ms": 5916,
-      "already_ttl": 100,
-      "route_ttl": 35,
-      "readonly": false
-    },
-    "strict": true
-  },
-  "contributi_capacity": 54.99
+  "batches_ratio": [108, 284, 428, 297],
+  "window_limit": true,
+  "max_retries": false,
+  "filter_limit": 83.87,
+  "hard_ttl_count": [175, 148, 161],
+  "max_interval": 9299
 }
