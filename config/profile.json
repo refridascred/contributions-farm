@@ -1,13 +1,5 @@
 {
-  "commits_interval": "strict",
-  "layout_threshold": {
-    "sync_interval_pct": 14,
-    "flush_limit": 67.09,
-    "enabled": "cached",
-    "batch_threshold": 45,
-    "burst_threshold": [64, 134, 124, 5]
-  },
-  "max_delay_s": 68.22,
-  "contributi_limit": [37, 268, 297],
-  "order_interval": 4580
+  "min_limit_pct": 96.31,
+  "contributi_ttl": 9530,
+  "max_size_ms": "primary"
 }
