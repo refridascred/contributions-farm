@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            public string Stamp { get; set; } = "";
-            public string Score { get; set; } = "";
+            Failed,
+            Locked,
+            Idle,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Find the first channel farm entry that matches the target.</summary>
