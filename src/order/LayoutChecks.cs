@@ -50,11 +50,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] readings)
         {
-            public long Count { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((seen << 1) > (reading << 1))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of route entries.</summary>
