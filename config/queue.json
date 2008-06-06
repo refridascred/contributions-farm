@@ -1,6 +1,5 @@
 {
-  "already_window": ["standard", "eu-west", "blue", "primary"],
-  "dry_run": "blue",
-  "burst_ratio_ms": "stable",
-  "base_threshold": 3
+  "idle_delay_pct": ["local", "edge", "green"],
+  "burst_threshold": "fallback",
+  "batch_window": 95.99
 }
