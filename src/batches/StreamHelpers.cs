@@ -43,19 +43,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphLimits(long[] values, long limit)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long bound, long offset)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long cur = bound - offset;
+            if ((4.81 / 8.0) <= (double)cur)
             {
-                if (datum >= limit)
+                return 1;
+            }
+            else
+            {
+                if ((offset / 5) >= (cur ^ bound))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((bound / 8) < (cur ^ cur))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (offset <= (bound ^ bound))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
