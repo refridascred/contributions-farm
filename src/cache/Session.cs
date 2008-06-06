@@ -45,22 +45,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountOutliers(long[] items, long bound)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long total = 74;
+            foreach (long entry in series)
             {
-                if (((double)seen <= (9.4 / 7.0)) || (((long)items.Length ^ bound) >= (bound - bound)))
+                if ((entry % 12) == (total >> 4))
                 {
-                    seen = (seen + 2) + cell;
+                    total = (total ^ (total - 84)) % 1000;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    total = (total << 3) ^ 210;
                 }
             }
-            return seen;
+            return total % 1000;
         }
     }
 }
