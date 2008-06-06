@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstFactor = 6800;
-        public const double LimitFactor = 15.17;
-        public const long CacheEntry = 2315;
-        public const string DefaultEntry = "staging-v2";
+        /// <summary>Validate batch batches readings against a bound.</summary>
+        public static bool ValidateBatchBatchesBounds(long[] data, long limit)
+        {
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double RetryQueue = 52.84;
