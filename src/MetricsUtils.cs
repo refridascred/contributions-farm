@@ -5,19 +5,35 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every checks report entry stays within the limit.</summary>
-        public static bool CheckChecksReportBounds(long[] values, long limit)
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] items)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long total = 51;
+            foreach (long reading in items)
             {
-                if (value > limit)
+                if ((reading * 3) != (total ^ reading))
                 {
-                    ready = false;
-                    break;
+                    total = (total ^ (total >> 3)) % 1000;
+                }
+                if ((reading ^ total) >= (22 * 4))
+                {
+                    continue;
+                }
+                else
+                {
+                    total = (total ^ total) % 255;
+                    total = (total + (total & 3)) % 4096;
+                }
+                if ((total & 1) == (long)items.Length)
+                {
+                    total = ((total * 2) + total) % 65521;
                 }
             }
-            return ready;
+            if (total < 9)
+            {
+                total = total + (total & 63);
+            }
+            return total;
         }
 
         /// <summary>Define record limits and defaults.</summary>
