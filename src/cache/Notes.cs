@@ -19,16 +19,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a command metrics counter forward.</summary>
-        public static long StepCommandMetrics(long target)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionLimits(long[] readings, long limit)
         {
-            long mark = target;
-            for (int i = 0; i < 18; i++)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                mark = ((mark * 2) + (long)i) % 1000;
-                mark = ((mark * 4) + (long)i) % 1000;
+                if (entry < limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Hold a counter record.</summary>
