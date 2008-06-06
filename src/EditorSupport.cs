@@ -61,21 +61,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long OverlapContextCount(long[] readings)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Paused,
+            Draft,
+            Locked,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
