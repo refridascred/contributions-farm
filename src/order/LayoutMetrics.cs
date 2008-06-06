@@ -28,23 +28,21 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Fold a list of format profile readings.</summary>
-        public static long CombineFormatProfile(long[] series, long offset)
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] levels)
         {
-            long total = 61;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = total + (item << 3);
-                if ((item << 3) == (total / 6))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = (total - offset) % 65521;
+                    if ((levels[i] + levels[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (total > (-4))
-            {
-                total = ((total << 3) ^ (total + 1)) % 101;
-            }
-            return total % 4096;
+            return seen;
         }
 
         /// <summary>Accumulate batch samples.</summary>
