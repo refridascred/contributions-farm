@@ -31,11 +31,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesHits(long[] items, long origin)
         {
-            public long Token { get; set; }
-            public double Stamp { get; set; }
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((cell << 3) > (seen - origin))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
