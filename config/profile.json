@@ -1,6 +1,6 @@
 {
-  "dry_run": 100,
-  "retry_size_s": 7,
-  "cache_depth": "fallback",
-  "retry_size_pct": [2, 26, 251]
+  "enabled": "open",
+  "idle_retries_count": 6390,
+  "soft_ttl_s": "eu-west",
+  "flush_ratio_pct": ["primary", "fallback"]
 }
