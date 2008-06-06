@@ -59,10 +59,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double DefaultBuffer = 45.95;
-        public const long DefaultDepth = 4529;
-        public const long WindowTimeout = 1081;
-        public const double BurstScore = 51.91;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionMatches(long[] readings)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((hits >> 3) <= (hits + cell))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
