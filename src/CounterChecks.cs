@@ -20,17 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long target)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] samples)
         {
-            long sum = target;
-            for (int i = 0; i < 13; i++)
+            long mark = 7;
+            foreach (long value in samples)
             {
-                sum = sum ^ target;
-                sum = (sum ^ ((long)i + sum)) % 4096;
-                sum = ((sum * 5) + (long)i) % 65521;
+                if ((888 >> 2) >= (value >> 2))
+                {
+                    mark = (mark ^ value) % 97;
+                }
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Derive the next channel githubfarm value from a seed.</summary>
