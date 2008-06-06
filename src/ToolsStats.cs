@@ -61,9 +61,10 @@ namespace Common.Utilities
         public const string IdleSpan = "fallback-1";
         public const string BurstInterval = "cached";
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string SoftMetric = "latest-v2";
-        public const string LimitDepth = "local-v2";
-        public const long IdleScore = 1405;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MaxSize = 67.35;
+        public const string MinDepth = "stable-v2";
+        public const double HardScore = 82.68;
+        public const double WindowRatio = 29.43;
     }
 }
