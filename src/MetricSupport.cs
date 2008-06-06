@@ -40,9 +40,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 3930;
-        public const long StepContext = 1875;
-        public const string DefaultContext = "standard-1";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseCount = 6514;
+        public const string StepBatch = "strict";
+        public const long MinDepth = 5171;
+        public const long LimitBatch = 1403;
     }
 }
