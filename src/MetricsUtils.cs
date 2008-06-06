@@ -34,32 +34,14 @@ namespace Common.Utilities
             return gain - 9.17;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long bound, long step)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long diff = bound ^ step;
-            if ((411 < (diff * 3)) || (bound < diff))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)diff <= (19.0 - 1.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((diff ^ step) > (bound >> 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Done,
+            Queued,
+            Draft,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
