@@ -48,21 +48,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long CompareReportCount(long[] readings)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] data, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = -152;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = carry ^ (step - sample);
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
