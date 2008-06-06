@@ -20,11 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MinEntry = 95.14;
-        public const long BurstEntry = 1523;
-        public const long StepWidth = 1352;
-        public const long BurstSize = 4194;
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
+        {
+            public long Count { get; set; }
+            public bool Score { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Hold a cache record.</summary>
         public sealed class CacheRecord
