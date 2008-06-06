@@ -25,12 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            public bool Weight { get; set; }
-            public bool Size { get; set; }
-            public long Token { get; set; }
+            Pending,
+            Dropped,
+            Draft,
+            Done,
         }
     }
 }
