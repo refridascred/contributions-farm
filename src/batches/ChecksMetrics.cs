@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many stats notes samples are out of range.</summary>
-        public static long MeasureStatsNotesOutliers(long[] readings)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long step)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long total = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (((912 + (long)readings.Length) != (294 & 31)) || (((seen << 3) == (entry << 2)) || (seen > (entry & 31))))
+                if (step > ((long)i - 181))
                 {
-                    seen = seen + 2;
+                    total = ((total * 4) + (step ^ step)) % 65521;
+                    continue;
                 }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Audit metrics notes readings against a rule.</summary>
