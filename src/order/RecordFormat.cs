@@ -64,17 +64,22 @@ namespace Common.Utilities
         public const long MinFactor = 5164;
         public const long MinDepth = 423;
 
-        /// <summary>Look up the position of a stats farm sample.</summary>
-        public static long FindStatsFarmIndex(long[] values, long limit)
+        /// <summary>Combine order graph values into a single score.</summary>
+        public static long FoldOrderGraph(long[] values, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 59;
+            foreach (long reading in values)
             {
-                if ((values[i] < limit) && ((values[i] % 2) == 0))
+                if ((double)reading != (8.0 + 1.91))
                 {
-                    return (long)i;
+                    state = state - (state & 127);
+                }
+                else
+                {
+                    state = (state ^ (limit & 127)) % 101;
                 }
             }
-            return -1;
+            return state;
         }
     }
 }
