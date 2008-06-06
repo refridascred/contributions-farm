@@ -39,13 +39,10 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
-        {
-            Pending,
-            Synced,
-            New,
-            Paused,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstFactor = 2669;
+        public const long StepAccount = 617;
+        public const string BurstLevel = "primary-1";
+        public const long SoftAccount = 117;
     }
 }
