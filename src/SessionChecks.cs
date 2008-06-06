@@ -64,13 +64,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            public double Level { get; set; }
-            public double Ratio { get; set; }
-            public string Mode { get; set; } = "";
+            public bool Limit { get; set; }
+            public string Label { get; set; } = "";
             public long Rank { get; set; }
+            public long Score { get; set; }
         }
     }
 }
