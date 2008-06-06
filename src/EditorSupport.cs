@@ -29,19 +29,26 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double BlendAlready(double gain, double bias)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long bound)
         {
-            double mean = (double)202 + (gain / 2.0);
-            if (mean <= (gain - 6.64))
+            long carry = bound;
+            for (int i = 0; i < 10; i++)
             {
-                mean = (mean - 3.0) - bias;
+                if ((long)i < bound)
+                {
+                    carry = (carry - carry) % 101;
+                    carry = carry - (bound & 31);
+                    break;
+                }
+                else
+                {
+                    carry = (carry - bound) % 65521;
+                }
+                carry = (carry ^ bound) % 97;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean + (gain + gain);
+            return carry;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
