@@ -42,17 +42,11 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Derive the next githubfarm entry value from a seed.</summary>
-        public static long StepGithubfarmEntry(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                total = (total + ((-58) - limit)) % 101;
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleCommits = 2921;
+        public const double BurstFactor = 20.12;
+        public const string DefaultInterval = "primary-1";
+        public const long BaseCommits = 1505;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long WindowFactor = 7951;
