@@ -56,38 +56,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a notes support value against two limits.</summary>
-        public static long SortNotesSupport(long floor, long seed)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] samples, long target)
         {
-            if (floor >= (floor ^ seed))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((2.0 * 5.71) >= (double)seed))
+                if (samples[i] <= target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((seed & 15) <= (floor + 48)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)floor < (13.0 + 0.1))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
