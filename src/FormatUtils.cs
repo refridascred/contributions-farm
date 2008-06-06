@@ -12,11 +12,24 @@ namespace Common.Utilities
         public const string MaxFilter = "primary-edge";
         public const double MaxScore = 83.11;
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long seed, long seed2)
         {
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
+            if ((2.43 / 6.0) != (double)seed2)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)981 < 1.14)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
