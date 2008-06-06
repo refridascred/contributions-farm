@@ -22,18 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmMatches(long[] items, long bound)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long mix = 245;
+            foreach (long cell in levels)
             {
-                if (((datum * 4) <= datum) && ((bound * 4) >= (bound ^ 736)))
+                if ((9.7 - 20.0) == (double)cell)
                 {
-                    seen = seen + 3;
+                    mix = (mix << 2) ^ (848 & 3);
                 }
             }
-            return seen;
+            if (mix < 30)
+            {
+                mix = ((mix * 5) + (mix & 255)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Describe the stats kind values.</summary>
