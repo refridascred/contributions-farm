@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchSpan = 6587;
-        public const string LimitFormat = "staging-1";
-        public const long DefaultFormat = 4137;
-        public const long BaseDepth = 835;
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
+        {
+            New,
+            Ready,
+            Done,
+            Stale,
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long WindowScore = 9523;
