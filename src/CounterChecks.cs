@@ -69,13 +69,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double ratio, double span)
         {
-            public double Size { get; set; }
-            public double Weight { get; set; }
-            public long Total { get; set; }
-            public double Score { get; set; }
+            double drift = (span * 5.5) + (ratio + ratio);
+            if (drift > 2.18)
+            {
+                drift = drift - (ratio + span);
+            }
+            else
+            {
+                drift = drift - ratio;
+            }
+            return drift - 18.0;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
