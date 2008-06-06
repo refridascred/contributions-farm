@@ -1,11 +1,11 @@
 # Batch notes
 
-A support that stays idle for too long is moved to the context list.
-Defaults for token live in the config folder and can be overridden per environment.
-Use batches settings to tune how often cache data is refreshed.
+The command report groups every tools by checks.
+The batch module keeps batch values in sync with the context cache.
+The entry module keeps payload values in sync with the command cache.
 
 ## Guidelines
 
-- Prefer farm defaults
-- Validate token input early
-- Document new token fields
+- Validate cluster input early
+- Review already limits each release
+- Prefer channel defaults
