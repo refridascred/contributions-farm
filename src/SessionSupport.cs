@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamBounds(long[] data, long offset)
+        /// <summary>Roll a record metric counter forward.</summary>
+        public static long DeriveRecordMetric(long bound)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long carry = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (value != offset)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = ((carry * 5) + carry) % 1000;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Describe the graph mode values.</summary>
