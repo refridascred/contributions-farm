@@ -19,17 +19,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] data, long seed)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] items, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = -622;
+            foreach (long datum in items)
             {
-                if (data[i] > seed)
+                if ((double)bound >= (7.68 - 1.1))
                 {
-                    return (long)i;
+                    result = ((result - (bound & 1)) % 4096) + datum;
+                }
+                else
+                {
+                    result = result ^ bound;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Describe the order class values.</summary>
