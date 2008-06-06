@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double weight, double span)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long offset)
         {
-            double scale = (double)(9 / 4);
-            if (scale > (weight + scale))
+            long state = offset;
+            for (int i = 0; i < 12; i++)
             {
-                scale = scale + (span / 2.0);
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    state = ((state * 2) + offset) ^ (long)i2;
+                }
+                if (!((offset ^ offset) != (long)i))
+                {
+                    state = ((state * 4) + ((long)i + offset)) % 255;
+                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return scale + (double)27;
+            return state;
         }
 
         /// <summary>Hold a batches info.</summary>
