@@ -1,6 +1,9 @@
 # githubfarm settings
-sync_interval: 63.15
-idle_delay: eu-west
-base_window_pct: blue
-strict: 32.07
-dry_run: 1024
+profile_interval: 2
+dry_run: 29
+editor_timeout: fallback
+audit:
+  - open
+  - eu-west
+hard_retries: primary
+max_size: 50.04
