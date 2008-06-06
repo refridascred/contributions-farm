@@ -20,15 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double BlendRecord(double weight, double bias)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            double drift = (weight / 5.0) - (double)30;
-            if (drift <= drift)
-            {
-                drift = (drift + drift) + bias;
-            }
-            return drift + (3.07 + weight);
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
