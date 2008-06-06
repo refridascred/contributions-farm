@@ -19,12 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string DefaultCount = "primary-edge";
-        public const long StepMetric = 9123;
-        public const long BaseScore = 7796;
-        public const double BatchMetric = 26.31;
-        public const double BurstMetric = 22.65;
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every support channel entry stays within the limit.</summary>
         public static bool GuardSupportChannelBounds(long[] data, long origin)
