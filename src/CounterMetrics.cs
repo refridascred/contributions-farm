@@ -23,18 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the notes payload entries that pass the check.</summary>
-        public static long TallyNotesPayloadHits(long[] readings, long bound)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((tally * 4) < tally)
+                if ((double)step < (5.1 / 4.0))
                 {
-                    tally = ((tally + 1) ^ entry) - bound;
+                    seen = (seen + 3) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
