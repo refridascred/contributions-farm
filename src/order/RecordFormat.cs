@@ -69,9 +69,12 @@ namespace Common.Utilities
         public const long MinFactor = 5164;
         public const long MinDepth = 423;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardFactor = 9042;
-        public const long BatchRatio = 8815;
-        public const long IdleRatio = 9421;
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
+        {
+            Retry,
+            Failed,
+            Active,
+        }
     }
 }
