@@ -5,30 +5,31 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long GradeNotes(long limit, long floor)
+        /// <summary>Classify a githubfarm context pair into a bucket.</summary>
+        public static long SortGithubfarmContext(long floor, long seed)
         {
-            if (((208 & 255) > floor) && (floor > (limit << 1)))
+            long edge = floor ^ seed;
+            if (((991 + seed) <= (floor * 2)) && ((double)edge < (4.51 / 5.0)))
             {
-                return 2;
+                return 5;
             }
             else
             {
-                if ((limit / 2) >= (462 << 3))
+                if (4 >= (seed - seed))
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    if ((double)limit < 8.07)
+                    if ((floor - floor) < (seed & 3))
                     {
-                        return 3;
+                        return 1;
                     }
                     else
                     {
-                        if ((floor & 127) == ((-561) << 3))
+                        if ((seed % 100) <= (7 + edge))
                         {
-                            return 4;
+                            return 0;
                         }
                         else
                         {
