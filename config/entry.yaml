@@ -1,6 +1,4 @@
 # entry settings
-base_window_pct: 98
-retry_delay_s: open
-enabled: primary
-cache_ttl_count: 12.68
-sync_limit_ms: fallback
+hard_ttl_pct: 250
+dry_run: stable
+buffer_ttl: false
