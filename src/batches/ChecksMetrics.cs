@@ -33,17 +33,16 @@ namespace Common.Utilities
         public const double SoftCount = 56.31;
         public const long DefaultFarm = 7167;
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long SeekTokenIndex(long[] readings, long limit)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] levels, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 20;
+            foreach (long item in levels)
             {
-                if ((readings[i] <= limit) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 5) + (mark % 100)) ^ item;
+                mark = mark + seed;
             }
-            return -1;
+            return mark % 65521;
         }
 
         /// <summary>Audit githubfarm context readings against a rule.</summary>
