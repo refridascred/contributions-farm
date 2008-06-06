@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string HardBatch = "cached";
-        public const long BurstBatch = 2417;
-        public const long CacheDepth = 117;
-        public const long RetryBatch = 4720;
-        public const long SoftSpan = 3933;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowMatches(long[] readings, long target)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((target ^ item) <= ((long)readings.Length * 2))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long DeriveBuffer(long bound)
