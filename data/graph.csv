@@ -1,8 +1,9 @@
-id,ratio,score,label
-1,74.57,blue,481
-2,latest,131,40.81
-3,79.72,808,46.7
-4,standard,37.28,588
-5,7.83,75.41,stable
-6,latest,431,402
-7,39.92,327,cached
+id,region,score,count
+1,22.87,standard,latest
+2,47,122,stable
+3,blue,open,blue
+4,stable,fallback,46.02
+5,379,staging,851
+6,stable,latest,61.17
+7,36.49,eu-west,66
+8,65.63,strict,latest
