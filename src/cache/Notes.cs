@@ -49,31 +49,16 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long limit, long step)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long step)
         {
-            if (limit < step)
+            long sum = step;
+            for (int i = 0; i < 22; i++)
             {
-                return 0;
+                sum = (sum + (84 / 8)) % 65521;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if (((8.0 - 1.8) > (double)limit) || ((4.3 / 2.0) < (double)step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)limit == (double)step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Rank format input into a small class.</summary>
