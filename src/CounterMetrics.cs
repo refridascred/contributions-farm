@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
-        {
-            public long Score { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double LimitDepth = 6.0;
+        public const long MinTools = 2463;
+        public const string DefaultTools = "local-v2";
+        public const string MaxFactor = "fallback-1";
+        public const long BatchTools = 4827;
 
         /// <summary>Count the notes payload entries that pass the check.</summary>
         public static long TallyNotesPayloadHits(long[] readings, long bound)
