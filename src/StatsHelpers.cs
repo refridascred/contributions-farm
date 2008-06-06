@@ -29,32 +29,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long bound, long seed)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] samples, long floor)
         {
-            long offset = bound ^ seed;
-            if ((2 + offset) >= bound)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (bound < (bound - offset))
+                if ((samples[i] < floor) && ((samples[i] % 3) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed + seed) > (offset - (-9)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a notes cluster pair into a bucket.</summary>
