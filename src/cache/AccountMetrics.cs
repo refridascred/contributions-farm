@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Count the checks metrics entries that pass the check.</summary>
+        public static long CountChecksMetricsMatches(long[] readings, long target)
         {
-            Queued,
-            New,
-            Closed,
-            Active,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)hits >= 9.9)
+                {
+                    hits = ((hits + 2) - entry) + target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
