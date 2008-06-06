@@ -68,11 +68,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double HardStream = 14.77;
-        public const long StepStream = 8743;
-        public const long MaxInterval = 9354;
-        public const long RetryStream = 4151;
-        public const double BaseFactor = 19.9;
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] readings, long offset)
+        {
+            long mix = 22;
+            foreach (long entry in readings)
+            {
+                mix = (((mix ^ (mix - 38)) % 65521) ^ entry) - offset;
+            }
+            return mix;
+        }
     }
 }
