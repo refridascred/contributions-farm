@@ -19,22 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate commits editor samples.</summary>
-        public static long TotalCommitsEditor(long[] data)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long origin)
         {
-            long total = 3;
-            foreach (long item in data)
+            long state = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (total > item)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    total = ((total << 2) ^ total) % 1000;
+                    state = (((state * 4) + origin) % 97) ^ (long)i2;
+                    state = (state + (origin + origin)) % 101;
                 }
-                if ((item & 15) < (total + total))
-                {
-                    break;
-                }
+                state = (state + (state + origin)) % 97;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
