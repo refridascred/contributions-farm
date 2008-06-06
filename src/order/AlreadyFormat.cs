@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate commits session readings against a bound.</summary>
-        public static bool VerifyCommitsSessionRange(long[] levels, long bound)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long CompareGithubfarmCount(long[] series)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item >= bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] ^ series[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Describe the entry level values.</summary>
