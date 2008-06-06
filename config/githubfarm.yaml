@@ -1,13 +1,13 @@
 # githubfarm settings
-channel_threshold:
-  - 150
-  - 79
-  - 329
-flush_size: 9441
-counter_threshold: stable
-filter_threshold:
-  - 355
-  - 83
-  - 252
-  - 388
-channel_delay: local
+hard_interval: true
+hard_capacity_ms: 68
+poll_interval_pct:
+  - open
+  - local
+  - legacy
+  - legacy
+burst_ttl_pct:
+  - primary
+  - green
+retry_depth_count: 62.27
+persist: 32.96
