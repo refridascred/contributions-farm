@@ -54,18 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > step) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitMetrics = 260;
+        public const double WindowMetrics = 49.37;
+        public const string RetryInterval = "fallback-1";
+        public const string StepMetrics = "local-1";
+        public const string SoftMetrics = "fallback-v2";
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
