@@ -33,17 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] samples, long origin)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
         }
     }
 }
