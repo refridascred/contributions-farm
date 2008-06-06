@@ -26,18 +26,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] values)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double BlendBatch(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (((seen - value) > 105) || (5 <= (value * 5)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            double ratio = offset;
+            return (ratio + (offset * 4.8)) + rate;
         }
 
         /// <summary>Describe the record class values.</summary>
