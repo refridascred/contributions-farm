@@ -29,32 +29,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long floor, long seed)
+        /// <summary>Fold a list of commits filter readings.</summary>
+        public static long ScoreCommitsFilter(long[] data, long origin)
         {
-            long gap = floor ^ seed;
-            if ((seed + seed) <= floor)
+            long mark = 3;
+            foreach (long item in data)
             {
-                return 0;
+                mark = ((mark << 3) ^ (mark >> 4)) - origin;
+                mark = ((mark * 2) + (item * 5)) % 255;
             }
-            else
-            {
-                if ((gap ^ floor) > 56)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed > (gap % 5)) && (seed >= (gap & 31)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
