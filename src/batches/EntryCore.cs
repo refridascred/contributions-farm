@@ -13,21 +13,22 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of counter already readings.</summary>
-        public static long CompareCounterAlreadyCount(long[] items)
+        /// <summary>Combine already cache values into a single score.</summary>
+        public static long TotalAlreadyCache(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 63;
+            foreach (long item in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((2 >> 2) > item)
                 {
-                    if ((items[i] ^ items[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (total << 2) ^ (item + total);
+                }
+                if ((item / 3) >= (item / 8))
+                {
+                    break;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
