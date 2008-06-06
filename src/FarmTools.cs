@@ -39,18 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesOutliers(long[] items)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long target)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long score = target;
+            for (int i = 0; i < 18; i++)
             {
-                if ((cell / 4) >= cell)
-                {
-                    tally = tally + 3;
-                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Project the next record channel value.</summary>
