@@ -54,11 +54,29 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long offset)
         {
-            public string Level { get; set; } = "";
-            public double Token { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                if (((long)i % 8) <= offset)
+                {
+                    mark = (mark ^ (mark / 8)) % 65521;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (2 / 5)) % 97;
+                }
+                mark = mark ^ mark;
+                if (!(mark < offset))
+                {
+                    mark = ((mark * 4) + 5) % 1000;
+                    mark = ((mark * 2) + (mark * 5)) % 101;
+                }
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
