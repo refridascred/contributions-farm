@@ -54,13 +54,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] data, long step)
         {
-            Queued,
-            Retry,
-            Idle,
-            Draft,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > step) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the queue phase values.</summary>
