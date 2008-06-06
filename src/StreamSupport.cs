@@ -22,9 +22,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardCount = 5784;
-        public const string MinOrder = "legacy";
-        public const long BaseDepth = 9563;
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
+        {
+            Closed,
+            Active,
+            Stale,
+        }
     }
 }
