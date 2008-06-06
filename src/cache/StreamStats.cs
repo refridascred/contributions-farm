@@ -48,14 +48,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] samples, long target)
         {
-            Draft,
-            Paused,
-            Ready,
-            New,
-            Failed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < target) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
