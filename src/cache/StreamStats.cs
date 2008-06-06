@@ -14,23 +14,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the channel commits entries that pass the check.</summary>
-        public static long AuditChannelCommitsMatches(long[] readings)
-        {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((tally * 3) > (tally + item))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BurstWidth = 6.47;
+        public const long IdleRatio = 9295;
+        public const double BaseTimeout = 46.65;
+        public const string RetryMetrics = "standard-v2";
+        public const double BurstInterval = 11.6;
 
         /// <summary>Hold a record stats.</summary>
         public sealed class RecordStats
