@@ -1,6 +1,10 @@
-id,level,label
-1,latest,primary
-2,eu-west,strict
-3,508,green
-4,472,404
-5,21,25.94
+id,weight,owner,token
+1,775,896,14.01
+2,strict,cached,45.96
+3,7.89,61.03,618
+4,14.94,blue,839
+5,fallback,433,4.11
+6,68.94,789,blue
+7,903,175,blue
+8,896,39.0,20.38
+9,309,162,69.31
