@@ -62,18 +62,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordOutliers(long[] samples)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferOutliers(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((8.3 / 7.0) <= (double)tally)
+                if ((floor + hits) < (reading - reading))
                 {
-                    tally = (tally + 2) - value;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
