@@ -14,21 +14,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count window context pairs that satisfy a relation.</summary>
-        public static long PairWindowContextCount(long[] items)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterHits(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((value > count) || ((value >> 4) >= 9))
                 {
-                    if ((items[i] ^ items[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a metrics stats.</summary>
