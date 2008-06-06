@@ -1,12 +1,5 @@
 {
-  "session_size": [474, 454, 258],
-  "compress": {
-    "poll_ratio": 60,
-    "enabled": true,
-    "burst_threshold": 30
-  },
-  "support_capacity": "stable",
-  "max_threshold": 42,
-  "burst_ratio_pct": 49,
-  "retry_size": 100
+  "default_threshold_pct": "primary",
+  "commits_delay": "edge",
+  "compress": "edge"
 }
