@@ -43,13 +43,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] series, long target)
         {
-            public bool Size { get; set; }
-            public double Count { get; set; }
-            public long Level { get; set; }
-            public double Total { get; set; }
+            long acc = 622;
+            foreach (long value in series)
+            {
+                acc = ((acc * 2) + (value / 2)) % 4096;
+                if (((target - acc) >= target) || (target <= value))
+                {
+                    acc = ((acc * 4) + (acc % 7)) % 255;
+                }
+            }
+            if (acc > 49)
+            {
+                acc = ((acc * 3) + (target << 1)) % 101;
+            }
+            return acc;
         }
     }
 }
