@@ -27,19 +27,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double ratio, double floor)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            double ratio2 = ratio - (double)8;
-            if (ratio2 > (16.0 - ratio))
-            {
-                ratio2 = ratio2 - (floor + ratio);
-            }
-            else
-            {
-                ratio2 = ratio2 - ratio2;
-            }
-            return ratio2 - (double)82;
+            Stale,
+            Ready,
+            Idle,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
