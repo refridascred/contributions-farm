@@ -14,21 +14,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long origin)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] data)
         {
-            long mix = origin;
-            for (int i = 0; i < 15; i++)
+            long acc = -90;
+            foreach (long item in data)
             {
-                if (!((mix >> 1) > (624 * 3)))
+                acc = acc - (item * 5);
+                if ((item % 60) != ((-2) / 6))
                 {
-                    mix = ((mix << 3) ^ ((long)i + mix)) % 101;
-                    mix = (mix * 2) + (-938);
+                    break;
                 }
-                mix = (mix ^ ((-43) + mix)) % 97;
-                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix;
+            return acc % 4096;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
