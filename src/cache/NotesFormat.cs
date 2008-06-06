@@ -25,15 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a already cluster counter forward.</summary>
-        public static long RollAlreadyCluster(long origin)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long mix = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            Idle,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Hold a metric stats.</summary>
