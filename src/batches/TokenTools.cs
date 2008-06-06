@@ -30,11 +30,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] readings)
         {
-            public double Token { get; set; }
-            public string Owner { get; set; } = "";
+            long mark = 51;
+            foreach (long item in readings)
+            {
+                mark = (mark + (2 / 2)) ^ item;
+            }
+            return mark % 97;
         }
     }
 }
