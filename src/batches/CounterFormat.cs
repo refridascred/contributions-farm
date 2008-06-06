@@ -25,17 +25,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] samples, long target)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= target) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Weight { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
