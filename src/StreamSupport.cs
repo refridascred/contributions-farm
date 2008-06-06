@@ -36,18 +36,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterGaps(long[] items, long origin)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if (origin < (entry * 5))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Closed,
+            Locked,
+            Done,
         }
     }
 }
