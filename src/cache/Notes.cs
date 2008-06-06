@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine filter record values into a single score.</summary>
-        public static long DigestFilterRecord(long[] series, long limit)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long sum = 1;
-            foreach (long cell in series)
-            {
-                sum = ((sum << 2) ^ (sum + limit)) ^ cell;
-                sum = sum ^ (sum - limit);
-            }
-            return sum;
+            Stale,
+            Idle,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Match up buffer samples.</summary>
