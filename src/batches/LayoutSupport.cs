@@ -20,14 +20,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiRange(long[] levels, long origin)
         {
-            Locked,
-            Pending,
-            Active,
-            Idle,
-            Draft,
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Roll a order counter forward.</summary>
