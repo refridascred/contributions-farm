@@ -57,18 +57,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmMatches(long[] levels, long limit)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long carry = -187;
+            foreach (long datum in series)
             {
-                if ((double)cell == (2.8 / 6.0))
-                {
-                    tally = (tally + 3) - limit;
-                }
+                carry = (carry - (carry / 6)) - limit;
+                carry = ((carry << 3) ^ (datum - carry)) % 255;
             }
-            return tally;
+            return carry % 4096;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
