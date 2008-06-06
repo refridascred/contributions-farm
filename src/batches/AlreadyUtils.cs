@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitFactor = 3317;
-        public const double BatchSpan = 27.45;
-        public const long BaseCount = 8109;
-        public const double SoftScore = 24.58;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstFactor = 6800;
+        public const double LimitFactor = 15.17;
+        public const long CacheEntry = 2315;
+        public const string DefaultEntry = "staging-v2";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double RetryQueue = 52.84;
