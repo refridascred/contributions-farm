@@ -21,12 +21,16 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long origin)
         {
-            Retry,
-            Draft,
-            New,
+            long mix = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = ((mix << 3) ^ 7) % 1000;
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
