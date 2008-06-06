@@ -40,12 +40,22 @@ namespace Common.Utilities
         public const double LimitLevel = 56.76;
         public const long IdleWidth = 416;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BurstWindow = 62.34;
-        public const long BurstLevel = 6621;
-        public const long CacheBudget = 2818;
-        public const long BurstInterval = 2530;
-        public const long BatchWidth = 4184;
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long MatchWindowCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long LookupFilterIndex(long[] series, long target)
