@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenHits(long[] readings, long target)
         {
-            Paused,
-            Closed,
-            Queued,
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (((long)readings.Length ^ target) != (seen - item))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
