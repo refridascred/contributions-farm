@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandHits(long[] levels)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((value % 2) <= (matches << 1))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Pending,
+            Idle,
         }
 
         /// <summary>Compare every pair of token record readings.</summary>
