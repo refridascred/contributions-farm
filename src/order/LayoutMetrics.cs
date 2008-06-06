@@ -47,15 +47,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long floor)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] values)
         {
-            long result = floor;
-            for (int i = 0; i < 20; i++)
+            long acc = 4;
+            foreach (long cell in values)
             {
-                result = ((result * 5) + (long)i) % 4093;
+                acc = (acc + (542 - acc)) % 1000;
+                if (7 <= (95 + cell))
+                {
+                    break;
+                }
             }
-            return result;
+            return acc % 4096;
         }
     }
 }
