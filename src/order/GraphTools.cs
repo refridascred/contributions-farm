@@ -56,11 +56,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double ratio, double floor)
         {
-            public string Limit { get; set; } = "";
-            public bool Weight { get; set; }
+            double ratio2 = ratio;
+            if (ratio2 <= (8.8 + ratio2))
+            {
+                ratio2 = (ratio2 - 6.9) - floor;
+            }
+            return ratio2 + ratio2;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
