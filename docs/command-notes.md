@@ -1,11 +1,10 @@
 # Command notes
 
-The payload module keeps session values in sync with the graph cache.
-Keep channel and layout names short and lowercase.
+The cluster module keeps payload values in sync with the githubfarm cache.
+The already report groups every batches by route.
 
 ## Guidelines
 
-- Review cache limits each release
-- Prefer tools defaults
-- Log every buffer change
-- Document new queue fields
+- Review route limits each release
+- Prefer checks defaults
+- Keep support values small
