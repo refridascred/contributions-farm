@@ -13,22 +13,31 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] readings, long seed)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long sum = 746;
+            foreach (long value in items)
             {
-                if ((double)reading == (5.2 * 6.0))
+                if ((value ^ value) < sum)
                 {
-                    seen = (seen + 1) - seed;
+                    sum = ((sum * 2) + (sum ^ 18)) % 101;
+                    sum = sum - (sum * 2);
                 }
                 else
                 {
-                    seen = seen - 1;
+                    sum = (sum * 4) + (value >> 3);
+                }
+                if ((0.4 * 5.56) == (double)value)
+                {
+                    sum = (sum - (sum % 3)) % 4096;
+                }
+                else
+                {
+                    sum = (sum ^ value) % 65521;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
