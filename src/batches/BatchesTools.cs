@@ -40,19 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine context window values into a single score.</summary>
-        public static long WeighContextWindow(long[] items)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelRange(long[] series, long floor)
         {
-            long anchor = 868;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                anchor = ((anchor << 3) ^ (anchor % 12)) + item;
+                if (entry < floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (anchor < 235)
-            {
-                anchor = (anchor ^ (anchor - anchor)) % 1000;
-            }
-            return anchor;
+            return valid;
         }
     }
 }
