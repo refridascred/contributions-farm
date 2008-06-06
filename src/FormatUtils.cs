@@ -40,18 +40,18 @@ namespace Common.Utilities
         public const long BatchBuffer = 1808;
         public const long DefaultFactor = 8455;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteMatches(long[] values)
+        /// <summary>Measure how many buffer channel samples are out of range.</summary>
+        public static long TallyBufferChannelOutliers(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (((long)values.Length ^ entry) < 5)
+                if ((((sample << 3) < (78 * 4)) || ((sample + sample) > ((-64) % 100))) || (count >= (sample - count)))
                 {
-                    tally = tally + 1;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Digest a series of contributi counter entries.</summary>
