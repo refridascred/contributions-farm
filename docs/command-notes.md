@@ -1,15 +1,14 @@
 # Command notes
 
-Run the format check before changing any editor limits.
-Run the counter check before changing any session limits.
-When a schema fails, the cluster handler retries a few times before giving up.
+The account module keeps session values in sync with the metrics cache.
+Run the route check before changing any payload limits.
 
-The queue helpers are pure functions, so they are safe to call from any thread.
-The command module keeps record values in sync with the account cache.
+Run the token check before changing any batches limits.
+The graph helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep profile values small
-- Review record limits each release
-- Prefer token defaults
-- Log every filter change
+- Review session limits each release
+- Prefer window defaults
+- Validate support input early
+- Keep checks values small
