@@ -68,15 +68,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] readings, long offset)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long mix = 22;
-            foreach (long entry in readings)
-            {
-                mix = (((mix ^ (mix - 38)) % 65521) ^ entry) - offset;
-            }
-            return mix;
+            Idle,
+            Failed,
+            Synced,
+            Paused,
+            Done,
         }
     }
 }
