@@ -26,19 +26,21 @@ namespace Common.Utilities
         public const string CacheBuffer = "standard-v2";
         public const string MinBudget = "standard-1";
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowRange(long[] values, long offset)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long offset)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long anchor = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (sample < offset)
+                if ((7.14 / 8.0) <= (double)anchor)
                 {
-                    ready = false;
-                    break;
+                    long slot = anchor;
+                    anchor = (anchor - (slot % 3)) % 255;
                 }
+                anchor = anchor + (anchor - (long)i);
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Describe the contributi status values.</summary>
