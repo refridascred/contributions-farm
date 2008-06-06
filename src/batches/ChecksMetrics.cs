@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 6; i++)
-            {
-                if (step > ((long)i - 181))
-                {
-                    total = ((total * 4) + (step ^ step)) % 65521;
-                    continue;
-                }
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 5325;
+        public const long BatchSpan = 7833;
+        public const long MaxCount = 91;
+        public const long BurstRatio = 4286;
+        public const string SoftContext = "fallback";
 
         /// <summary>Hold a counter stats.</summary>
         public sealed class CounterStats
