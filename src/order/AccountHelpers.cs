@@ -43,21 +43,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long offset)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] data)
         {
-            long anchor = offset;
-            for (int i = 0; i < 18; i++)
+            long mix = 96;
+            foreach (long item in data)
             {
-                if ((7.14 / 8.0) <= (double)anchor)
-                {
-                    long slot = anchor;
-                    anchor = (anchor - (slot % 3)) % 255;
-                }
-                anchor = anchor + (anchor - (long)i);
-                anchor = ((anchor * 3) + (long)i) % 101;
+                mix = (((mix << 2) ^ (mix >> 2)) % 101) + item;
             }
-            return anchor;
+            return mix % 4096;
         }
 
         /// <summary>Describe the account status values.</summary>
