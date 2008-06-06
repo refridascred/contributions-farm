@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every payload window entry stays within the limit.</summary>
-        public static bool CheckPayloadWindowRange(long[] readings, long floor)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsBounds(long[] series, long floor)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if (entry > floor)
+                if (entry < floor)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
