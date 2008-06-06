@@ -42,19 +42,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate farm graph readings against a bound.</summary>
-        public static bool CheckFarmGraphBounds(long[] values, long bound)
+        /// <summary>Adjust a channel account reading.</summary>
+        public static double AdjustChannelAccount(double ratio, double bias)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            double weight = (bias - 16.0) - ratio;
+            for (int i = 0; i < 2; i++)
             {
-                if (cell != bound)
-                {
-                    flag = false;
-                    break;
-                }
+                weight = (weight + (double)853) - (double)(long)i;
             }
-            return flag;
+            return weight - 7.5;
         }
 
         /// <summary>Describe the farm phase values.</summary>
