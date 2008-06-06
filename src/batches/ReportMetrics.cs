@@ -24,18 +24,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] samples)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatRange(long[] readings, long seed)
         {
-            long anchor = 118;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if ((anchor >> 1) >= (entry + entry))
+                if (item != seed)
                 {
-                    anchor = anchor ^ 14;
+                    ready = false;
+                    break;
                 }
             }
-            return anchor;
+            return ready;
         }
     }
 }
