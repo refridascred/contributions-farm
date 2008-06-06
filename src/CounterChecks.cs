@@ -64,19 +64,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double SmoothChannel(double rate, double bias)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            double weight = (double)(1 + 89);
-            if (weight >= (rate + 7.9))
-            {
-                weight = weight - (bias * 16.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + (bias - weight)) + (double)(long)i;
-            }
-            return weight - 5.8;
+            public double Size { get; set; }
+            public double Weight { get; set; }
+            public long Total { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Rank filter input into a small class.</summary>
