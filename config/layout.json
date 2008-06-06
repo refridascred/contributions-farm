@@ -1,6 +1,7 @@
 {
-  "hard_delay_ms": "blue",
-  "idle_delay": "strict",
-  "retry_interval": "legacy",
-  "sync_size": "stable"
+  "retry_window": ["stable", "blue", "stable", "staging"],
+  "order_interval": 2293,
+  "stream_delay": false,
+  "compress": "cached",
+  "hard_limit_pct": 12
 }
