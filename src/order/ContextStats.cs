@@ -32,18 +32,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchHits(long[] levels)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionHits(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((9.0 + 7.94) >= (double)hits)
+                if ((entry << 1) < (matches - entry))
                 {
-                    hits = (hits + 2) ^ cell;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
