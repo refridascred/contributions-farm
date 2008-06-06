@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long RetryEditor = 248;
         public const long MaxEditor = 6877;
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextLimits(long[] readings, long step)
         {
-            New,
-            Locked,
-            Failed,
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
