@@ -38,11 +38,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double StepInterval = 3.67;
-        public const string MinBatch = "legacy";
-        public const string SoftBatch = "fallback-1";
-        public const string HardBatch = "latest-edge";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 964;
+        public const long DefaultSize = 5152;
+        public const double LimitRatio = 98.82;
+        public const long MinScore = 5174;
+        public const long RetryLevel = 9392;
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long PairMetricCount(long[] levels)
