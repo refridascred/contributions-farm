@@ -35,18 +35,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many stats context samples are out of range.</summary>
-        public static long MeasureStatsContextHits(long[] levels)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long origin)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long mark = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((3.35 - 2.2) < (double)count)
-                {
-                    count = (count + 2) + entry;
-                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return count;
+            return mark;
         }
     }
 }
