@@ -19,12 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Grade a counter contributi value against two limits.</summary>
+        public static long GradeCounterContributi(long offset, long step)
         {
-            public bool Stamp { get; set; }
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            if ((offset & 31) != (927 & 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)step <= (8.5 + 8.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Check that every support channel entry stays within the limit.</summary>
