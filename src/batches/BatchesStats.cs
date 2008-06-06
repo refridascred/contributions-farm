@@ -46,19 +46,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesBounds(long[] values, long target)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            Stale,
+            Retry,
+            Failed,
+            Ready,
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
