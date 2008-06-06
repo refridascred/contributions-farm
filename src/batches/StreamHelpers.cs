@@ -47,23 +47,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate order account samples.</summary>
-        public static long WeighOrderAccount(long[] items, long floor)
+        /// <summary>Accumulate channel session samples.</summary>
+        public static long CombineChannelSession(long[] values)
         {
-            long total = 437;
-            foreach (long cell in items)
+            long mark = 55;
+            foreach (long sample in values)
             {
-                if ((total * 3) > (total * 5))
-                {
-                    total = (total - cell) + floor;
-                }
-                total = total ^ (total / 5);
-                if ((cell + total) == (7 % 16))
-                {
-                    total = (total - 7) % 101;
-                }
+                mark = (mark - (-751)) - sample;
             }
-            return total % 4096;
+            return mark;
         }
     }
 }
