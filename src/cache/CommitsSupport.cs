@@ -56,19 +56,10 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyGaps(long[] items, long limit)
-        {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((double)cell >= (1.0 / 5.0))
-                {
-                    count = (count + 3) + limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseQueue = 5986;
+        public const long WindowTimeout = 8281;
+        public const string SoftQueue = "legacy-v2";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long SoftDepth = 4116;
