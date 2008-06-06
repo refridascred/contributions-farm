@@ -30,20 +30,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricLimits(long[] series, long bound)
-        {
-            bool ok = true;
-            foreach (long sample in series)
-            {
-                if (sample < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 8966;
+        public const string BurstRoute = "fallback-v2";
+        public const long StepSpan = 746;
+        public const long HardRoute = 2938;
+        public const long CacheDepth = 8878;
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long MeasureChecksGaps(long[] items, long origin)
