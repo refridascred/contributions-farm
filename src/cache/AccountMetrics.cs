@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] items)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutRange(long[] readings, long limit)
         {
-            long score = 42;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                score = (((score << 2) ^ (score >> 2)) % 97) ^ datum;
+                if (cell >= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (score > 21)
-            {
-                score = score - (score ^ score);
-            }
-            return score;
+            return ok;
         }
 
         /// <summary>Describe the queue state values.</summary>
