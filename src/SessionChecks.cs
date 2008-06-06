@@ -72,13 +72,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Count already window pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyWindowCount(long[] samples)
         {
-            Ready,
-            Queued,
-            Done,
-            Pending,
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
