@@ -39,21 +39,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] samples)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] data, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((data[i] <= step) && ((data[i] % 5) != 0))
                 {
-                    if ((samples[i] + samples[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
