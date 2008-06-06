@@ -19,14 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
             Draft,
+            Closed,
             New,
+            Locked,
             Failed,
-            Queued,
-            Active,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
