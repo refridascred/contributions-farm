@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string SoftStats = "stable-1";
-        public const string WindowStats = "legacy-1";
-        public const long MinInterval = 8500;
-        public const long DefaultLevel = 891;
+        /// <summary>Match up token layout samples.</summary>
+        public static long MatchTokenLayoutCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the format metric series from a seed.</summary>
         public static long DeriveFormatMetric(long limit)
