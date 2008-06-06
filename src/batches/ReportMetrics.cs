@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long limit, long target)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] samples)
         {
-            long cur = limit - target;
-            if ((target - cur) <= (limit - 817))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (target < limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (cur > (-5))
+                    if ((samples[i] + samples[j]) > 9)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a filter summary.</summary>
