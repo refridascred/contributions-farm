@@ -52,18 +52,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the metrics report entries that pass the check.</summary>
-        public static long MeasureMetricsReportGaps(long[] items, long step)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long step, long limit)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long lane = step ^ limit;
+            if ((step >> 3) <= (61 << 1))
             {
-                if ((step << 3) != (86 << 1))
+                return 1;
+            }
+            else
+            {
+                if ((lane % 7) == (step * 2))
                 {
-                    tally = (tally + 3) - entry;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
     }
 }
