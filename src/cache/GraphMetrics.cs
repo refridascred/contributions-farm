@@ -31,18 +31,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] series)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long result = 8;
-            foreach (long sample in series)
-            {
-                if (((133 >> 5) > (sample % 97)) && (sample > result))
-                {
-                    result = ((result * 3) + (sample + result)) % 255;
-                }
-            }
-            return result % 1000;
+            public double Flag { get; set; }
+            public string Token { get; set; } = "";
+            public bool Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
