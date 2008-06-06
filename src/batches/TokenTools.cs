@@ -25,13 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] series, long origin)
         {
-            Pending,
-            Dropped,
-            Draft,
-            Done,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < origin) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
