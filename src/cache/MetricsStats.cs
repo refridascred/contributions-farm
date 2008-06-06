@@ -57,12 +57,14 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            Synced,
-            Failed,
-            Locked,
+            Retry,
+            Active,
+            Queued,
+            Done,
+            Idle,
         }
     }
 }
