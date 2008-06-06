@@ -23,21 +23,19 @@ namespace Common.Utilities
         public const string CacheBuffer = "standard-v2";
         public const string MinBudget = "standard-1";
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long limit)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowRange(long[] values, long offset)
         {
-            long sum = limit;
-            for (int i = 0; i < 14; i++)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                sum = (sum * 4) + (limit >> 1);
-                for (int i2 = 0; i2 < 11; i2++)
+                if (sample < offset)
                 {
-                    sum = ((sum * 3) + (-8)) ^ (long)i2;
+                    ready = false;
+                    break;
                 }
-                sum = sum ^ limit;
-                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Define format limits and defaults.</summary>
