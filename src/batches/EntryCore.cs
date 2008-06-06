@@ -77,15 +77,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double scale, double floor)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            double weight = (double)(9 % 97);
-            for (int i = 0; i < 2; i++)
-            {
-                weight = ((weight - (floor + 2.2)) + (double)(long)i) + scale;
-            }
-            return weight - (double)38;
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
