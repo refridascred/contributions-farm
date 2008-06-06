@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutOutliers(long[] levels)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsHits(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((matches ^ entry) >= (entry << 1))
+                if ((bound > entry) || ((hits * 4) == (hits % 97)))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
