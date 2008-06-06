@@ -39,20 +39,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double scale, double floor)
-        {
-            double gain = scale;
-            if (gain < (gain + scale))
-            {
-                gain = (gain + (gain / 4.0)) - floor;
-            }
-            else
-            {
-                gain = gain - (11.0 + scale);
-            }
-            return gain + (scale * 4.0);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardPayload = 688;
+        public const long BasePayload = 3872;
+        public const double MinPayload = 69.94;
+        public const string MaxPayload = "local-v2";
+        public const long CacheDepth = 3579;
 
         /// <summary>Match up session samples.</summary>
         public static long MatchSessionCount(long[] data)
