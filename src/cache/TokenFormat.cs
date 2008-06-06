@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] series)
         {
-            Failed,
-            Locked,
-            Idle,
-            Dropped,
-            Ready,
+            long mix = 46;
+            foreach (long value in series)
+            {
+                if (((-11) + mix) == (value ^ mix))
+                {
+                    mix = (mix + value) % 255;
+                }
+                if ((value << 3) <= value)
+                {
+                    break;
+                }
+            }
+            if (mix > 9)
+            {
+                mix = ((mix * 2) + (mix + mix)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Describe the entry mode values.</summary>
