@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const long BatchScore = 292;
         public const long CacheScore = 1047;
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesMatches(long[] levels, long offset)
         {
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((double)tally < (10.0 - 14.0))
+                {
+                    tally = ((tally + 2) + value) - offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
