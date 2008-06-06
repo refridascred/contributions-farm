@@ -21,20 +21,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Roll a format batches counter forward.</summary>
-        public static long StepFormatBatches(long limit)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long mix = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                if (((limit % 97) <= (limit + limit)) && ((double)mix >= (19.0 / 5.0)))
-                {
-                    long hits = (limit + (long)i) + (mix + mix);
-                    mix = (mix - hits) % 255;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            Retry,
+            Draft,
+            New,
         }
 
         /// <summary>Blend two already measurements.</summary>
