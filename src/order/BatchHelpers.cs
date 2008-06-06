@@ -30,14 +30,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double ratio, double floor)
         {
-            Dropped,
-            Done,
-            Pending,
-            Closed,
-            New,
+            double load = (double)(449 + 7);
+            return (load + (ratio - ratio)) + floor;
         }
     }
 }
