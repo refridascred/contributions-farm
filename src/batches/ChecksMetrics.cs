@@ -47,21 +47,28 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] levels)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 52;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((carry / 6) > (carry & 255))
                 {
-                    if ((levels[i] + levels[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = carry + (datum & 31);
+                    carry = carry - (datum - carry);
+                }
+                carry = ((carry * 3) + (datum + datum)) % 65521;
+                if ((263 + datum) > (7 & 63))
+                {
+                    carry = (carry - (carry & 127)) % 65521;
+                }
+                else
+                {
+                    carry = (carry - carry) % 4096;
                 }
             }
-            return matches;
+            return carry;
         }
     }
 }
