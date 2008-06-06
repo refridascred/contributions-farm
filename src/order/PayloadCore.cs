@@ -30,19 +30,21 @@ namespace Common.Utilities
             return ratio2 + ratio;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double BlendLayout(double rate, double floor)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCount(long[] items)
         {
-            double drift = rate;
-            if (drift >= floor)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = drift - (drift / 8.0);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (floor * 2.92)) + (double)(long)i;
-            }
-            return drift - floor;
+            return tally;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
