@@ -20,15 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the record queue entries that pass the check.</summary>
-        public static long CountRecordQueueOutliers(long[] items)
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] items)
         {
             long tally = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((tally - tally) <= (sample % 100))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((items[i] + items[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
