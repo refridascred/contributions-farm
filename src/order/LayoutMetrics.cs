@@ -15,21 +15,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up order batch samples.</summary>
-        public static long OverlapOrderBatchCount(long[] data)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double AdjustProfile(double bias, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio = 8.2 + span;
+            if (ratio > (double)7)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = ratio - (double)2;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (bias / 6.0)) + (double)(long)i;
+            }
+            return ratio - (span - bias);
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
