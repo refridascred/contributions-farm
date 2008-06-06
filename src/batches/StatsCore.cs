@@ -37,14 +37,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Measure how many support notes samples are out of range.</summary>
+        public static long CountSupportNotesOutliers(long[] series, long floor)
         {
-            Failed,
-            Stale,
-            Draft,
-            Retry,
-            Active,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (((97 > (seen >> 2)) || ((7.7 - 2.4) > (double)cell)) && ((floor ^ seen) > (500 << 2)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the commits status values.</summary>
