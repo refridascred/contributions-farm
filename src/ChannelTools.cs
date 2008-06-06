@@ -47,24 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long origin, long step)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            if (((8.8 / 7.0) >= (double)step) && ((origin % 60) < (origin & 7)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin & 1) >= (step - origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Size { get; set; }
+            public bool Limit { get; set; }
+            public bool Token { get; set; }
+            public long Total { get; set; }
         }
     }
 }
