@@ -21,10 +21,23 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string WindowEntry = "alpha-v2";
-        public const double IdleEntry = 93.35;
-        public const long MaxEntry = 7738;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsGaps(long[] series)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((((8.14 + 5.88) <= (double)hits) || ((double)(-21) >= (double)hits)) && (((reading + reading) < (reading - hits)) && (hits <= reading)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string MaxBuffer = "cached-v2";
