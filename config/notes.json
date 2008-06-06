@@ -1,12 +1,5 @@
 {
-  "readonly": {
-    "warm_ttl_s": false,
-    "entry_interval": 93.52,
-    "retry_delay_count": 6228,
-    "poll_threshold_s": true,
-    "flush_ttl_count": 9176,
-    "sync_capacity_count": "blue"
-  },
-  "cache_capacity_pct": "edge",
-  "retry_timeout_s": "fallback"
+  "order_depth": "cached",
+  "poll_ttl": 500,
+  "soft_ratio_pct": 47.09
 }
