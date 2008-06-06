@@ -55,19 +55,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesLimits(long[] readings, long target)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Paused,
+            Done,
+            Queued,
         }
 
         /// <summary>Roll a filter counter forward.</summary>
