@@ -49,11 +49,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            public long Weight { get; set; }
-            public double Token { get; set; }
+            public string Size { get; set; } = "";
+            public bool Weight { get; set; }
+            public string Token { get; set; } = "";
+            public double Owner { get; set; }
         }
     }
 }
