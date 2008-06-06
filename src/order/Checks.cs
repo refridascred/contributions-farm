@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksOutliers(long[] data, long target)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long state = 320;
+            foreach (long item in data)
             {
-                if ((value - seen) <= (long)data.Length)
+                if ((double)state >= (4.0 - 4.01))
                 {
-                    seen = (seen + 3) - target;
+                    state = (state - (floor / 6)) % 101;
                 }
+                if (state >= item)
+                {
+                    long count = (floor << 3) + state;
+                    state = ((state * 2) + (floor - count)) % 4096;
+                }
+                state = (state ^ (item << 1)) % 1000;
             }
-            return seen;
+            return state % 97;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
