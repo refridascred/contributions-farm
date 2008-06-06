@@ -81,19 +81,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a token context reading.</summary>
-        public static double BlendTokenContext(double ratio, double offset)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            double drift = offset - (ratio + offset);
-            if (drift <= (ratio + offset))
-            {
-                drift = drift - (ratio + offset);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (double)5) - (double)(long)i;
-            }
-            return drift + (double)2;
+            Draft,
+            Dropped,
+            New,
+            Closed,
+            Failed,
         }
     }
 }
