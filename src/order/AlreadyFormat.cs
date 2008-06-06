@@ -46,13 +46,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long target)
         {
-            Done,
-            New,
-            Draft,
-            Paused,
+            long state = target;
+            for (int i = 0; i < 19; i++)
+            {
+                state = (state + target) % 101;
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
