@@ -21,19 +21,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] levels)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long score = 96;
-            foreach (long value in levels)
-            {
-                if ((double)value <= (2.2 + 1.4))
-                {
-                    score = (score ^ (935 % 5)) % 255;
-                }
-                score = (score * 2) + (score - 3);
-            }
-            return score;
+            Done,
+            Paused,
+            Idle,
+            Stale,
+            New,
         }
 
         /// <summary>Describe the checks state values.</summary>
