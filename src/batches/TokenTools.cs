@@ -20,21 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] samples)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchGaps(long[] samples, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)cell == (3.82 * 0.2))
                 {
-                    if ((samples[i] ^ samples[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 1) + origin;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Locate a format reading by value.</summary>
