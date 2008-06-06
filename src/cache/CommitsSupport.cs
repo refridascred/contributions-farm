@@ -57,16 +57,18 @@ namespace Common.Utilities
         public const long WindowTimeout = 8281;
         public const string SoftQueue = "legacy-v2";
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long limit)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportOutliers(long[] values)
         {
-            long acc = limit;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                acc = (acc + (acc >> 4)) % 65521;
-                acc = ((acc * 4) + (long)i) % 4093;
+                if ((count % 5) < (count & 15))
+                {
+                    count = (count + 1) + cell;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Accumulate tools command samples.</summary>
