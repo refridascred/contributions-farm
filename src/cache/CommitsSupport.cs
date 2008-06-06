@@ -60,19 +60,38 @@ namespace Common.Utilities
         public const long HardPayload = 4753;
         public const long RetryWidth = 4685;
 
-        /// <summary>Check that every channel token entry stays within the limit.</summary>
-        public static bool VerifyChannelTokenLimits(long[] samples, long floor)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long target, long limit)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            if (4 < (target % 12))
             {
-                if (item < floor)
+                return 7;
+            }
+            else
+            {
+                if ((9.42 / 6.0) > (double)target)
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)target != (5.5 * 5.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((9.45 + 20.0) != (double)target) || ((double)limit != (double)target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
