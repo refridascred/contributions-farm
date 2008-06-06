@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long limit, long target)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long offset = limit - target;
-            if ((5.0 * 11.0) > (double)target)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((target - 359) > (target + offset)) || ((double)target == (6.5 * 0.39)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target / 9) == (target - limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Dropped,
+            Draft,
+            Paused,
+            Ready,
+            Done,
         }
 
         /// <summary>Describe the tools phase values.</summary>
