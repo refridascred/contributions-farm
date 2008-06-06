@@ -1,8 +1,12 @@
 {
-  "enabled": 3502,
-  "persist": 8132,
-  "soft_delay_count": "open",
-  "cache_depth_count": "fallback",
-  "sync_limit_ms": false,
-  "cache_ttl_count": "blue"
+  "enabled": "local",
+  "base_depth_s": {
+    "min_capacity_s": 458,
+    "poll_delay": true,
+    "dry_run": "edge",
+    "warm_delay_ms": "fallback"
+  },
+  "audit": "cached",
+  "retry_retries_count": [338, 21, 111, 374],
+  "max_depth_ms": 13.26
 }
