@@ -39,9 +39,21 @@ namespace Common.Utilities
         public const double RetryGraph = 20.42;
         public const long HardFactor = 3007;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 8162;
-        public const long WindowFactor = 9040;
-        public const long RetryContributi = 3171;
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long OverlapProfileCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
