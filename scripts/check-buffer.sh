@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=236
-log "limit is ${BUFFER_LIMIT}"
-
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in local green; do
+for item in strict standard; do
     log "checking ${item}"
 done
+
+BUFFER_LIMIT=157
+log "limit is ${BUFFER_LIMIT}"
