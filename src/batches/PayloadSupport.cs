@@ -20,13 +20,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            public string Limit { get; set; } = "";
-            public long Size { get; set; }
-            public double Owner { get; set; }
-            public long Token { get; set; }
+            Stale,
+            New,
+            Synced,
+            Pending,
+            Paused,
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
