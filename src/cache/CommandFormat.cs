@@ -27,22 +27,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] values, long floor)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] series, long target)
         {
-            long sum = 4;
-            foreach (long reading in values)
+            long anchor = 574;
+            foreach (long sample in series)
             {
-                if (2 <= reading)
+                anchor = ((anchor << 3) ^ (anchor ^ sample)) % 1000;
+                anchor = (anchor * 5) + target;
+                if (((double)target >= (double)anchor) || ((20.0 * 5.66) == (double)target))
                 {
-                    sum = (sum ^ reading) % 1000;
+                    anchor = anchor ^ (sample * 3);
                 }
             }
-            if (sum < 5)
-            {
-                sum = sum - (floor - (long)values.Length);
-            }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Hold a session entry.</summary>
