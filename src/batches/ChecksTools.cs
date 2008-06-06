@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] samples, long seed)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long bound, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long diff = bound + seed;
+            if (bound <= (5 - diff))
             {
-                if (samples[i] <= seed)
+                return 8;
+            }
+            else
+            {
+                if (bound <= (seed + seed))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
