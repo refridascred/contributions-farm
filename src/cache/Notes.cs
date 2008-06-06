@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            Ready,
-            Retry,
-            Closed,
+            Stale,
+            Failed,
+            Done,
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
