@@ -25,10 +25,17 @@ namespace Common.Utilities
         public const double BurstRoute = 91.11;
         public const long CacheFactor = 3337;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 5973;
-        public const string BaseEntry = "fallback-edge";
-        public const long StepCount = 141;
-        public const long LimitEntry = 2103;
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == step) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
