@@ -40,14 +40,16 @@ namespace Common.Utilities
         public const long BatchBuffer = 1808;
         public const long DefaultFactor = 8455;
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long limit)
         {
-            Draft,
-            Pending,
-            Ready,
-            Active,
-            Retry,
+            long score = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                score = ((score << 2) ^ (score ^ limit)) % 97;
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
