@@ -19,14 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            Retry,
-            Failed,
-            Paused,
-            Stale,
-            Ready,
+            public long Stamp { get; set; }
+            public long Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Accumulate queue samples.</summary>
