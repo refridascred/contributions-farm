@@ -61,14 +61,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
-        {
-            Ready,
-            Queued,
-            Locked,
-            Done,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 696;
+        public const long LimitBatches = 3531;
+        public const string IdleBatches = "standard-1";
+        public const long RetrySize = 8350;
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
