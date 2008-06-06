@@ -1,7 +1,16 @@
 {
-  "default_size": 30,
-  "min_size_ms": false,
-  "max_delay_ms": ["stable", "latest"],
-  "max_capacity_count": true,
-  "retry_window_count": 27.24
+  "notes_retries": 250,
+  "min_size_count": 250,
+  "min_depth_ms": "eu-west",
+  "min_capacity": {
+    "flush_limit_pct": 250,
+    "profile_size": ["open", "stable"],
+    "batch_interval_pct": {
+      "sync_size_pct": false,
+      "idle_interval": 63,
+      "poll_capacity": 67,
+      "window_retries": 85.12
+    },
+    "max_timeout": ["primary", "legacy", "legacy"]
+  }
 }
