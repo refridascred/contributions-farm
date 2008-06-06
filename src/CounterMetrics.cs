@@ -41,18 +41,26 @@ namespace Common.Utilities
             return rate + (double)81;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesOutliers(long[] readings, long step)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long mark = 2;
+            foreach (long value in levels)
             {
-                if (((step - 47) > matches) || (((double)matches <= (6.17 / 5.0)) && ((1.8 / 9.0) <= (double)matches)))
+                if (!(8.3 > (double)mark))
                 {
-                    matches = (matches + 3) ^ datum;
+                    mark = (mark + value) % 255;
+                }
+                if ((value - offset) >= mark)
+                {
+                    mark = (mark << 2) ^ (offset + offset);
+                }
+                if (mark > 52)
+                {
+                    break;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
