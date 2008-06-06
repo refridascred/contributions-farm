@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Locate a support contributi reading by value.</summary>
-        public static long SeekSupportContributiIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitFactor = 3317;
+        public const double BatchSpan = 27.45;
+        public const long BaseCount = 8109;
+        public const double SoftScore = 24.58;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double RetryQueue = 52.84;
