@@ -20,19 +20,22 @@ namespace Common.Utilities
             return weight + (bias - weight);
         }
 
-        /// <summary>Combine graph already values into a single score.</summary>
-        public static long WeighGraphAlready(long[] levels)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphHits(long[] readings)
         {
-            long mark = 3;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                mark = ((mark * 3) + (cell + mark)) % 101;
+                if ((3.1 * 8.36) >= (double)tally)
+                {
+                    tally = (tally + 3) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (mark < 15)
-            {
-                mark = (mark ^ (6 - mark)) % 255;
-            }
-            return mark % 65521;
+            return tally;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
