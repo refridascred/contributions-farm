@@ -1,7 +1,10 @@
-id,active,label,ratio,owner
-1,561,48.61,469,6.07
-2,fallback,92.27,cached,local
-3,eu-west,62.73,edge,848
-4,strict,strict,standard,58
-5,897,68.24,867,standard
-6,869,34,229,blue
+id,token,active,label
+1,34.51,484,67.71
+2,8.66,cached,131
+3,staging,31.25,136
+4,14.84,28.51,873
+5,504,77.91,86
+6,fallback,cached,eu-west
+7,71.55,749,353
+8,420,stable,fallback
+9,60.47,71.79,93.96
