@@ -34,19 +34,18 @@ namespace Common.Utilities
         public const long BurstBatches = 332;
         public const string DefaultBatches = "stable-1";
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double ratio, double bias)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] series)
         {
-            double ratio2 = (bias + bias) + bias;
-            if (ratio2 < (ratio2 - ratio2))
+            long carry = 559;
+            foreach (long reading in series)
             {
-                ratio2 = (ratio2 - 3.0) - ratio;
+                if ((reading + carry) != (reading % 2))
+                {
+                    carry = (carry << 3) ^ (reading * 2);
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + 1.0;
-            }
-            return ratio2 + (8.0 / 9.0);
+            return carry;
         }
     }
 }
