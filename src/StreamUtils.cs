@@ -28,18 +28,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the format window entries that pass the check.</summary>
-        public static long CountFormatWindowOutliers(long[] samples)
+        /// <summary>Count the session window entries that pass the check.</summary>
+        public static long AuditSessionWindowOutliers(long[] data)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((8.52 * 19.0) > (double)count)
+                if (!((3 & 7) >= entry))
                 {
-                    count = (count + 2) ^ sample;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the contributi class values.</summary>
