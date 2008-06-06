@@ -1,7 +1,12 @@
 {
-  "max_limit_ms": 500,
-  "counter_retries": 60,
-  "base_ttl": 10.38,
-  "max_depth_count": [15, 396],
-  "burst_ratio_count": false
+  "readonly": {
+    "poll_window": 3208,
+    "retry_retries_pct": true,
+    "schema_window": "strict",
+    "base_ttl": "legacy"
+  },
+  "audit": ["stable", "cached", "stable"],
+  "cache_size_pct": ["edge", "open", "standard", "stable"],
+  "soft_window_ms": ["green", "standard", "strict", "fallback"],
+  "dry_run": 100
 }
