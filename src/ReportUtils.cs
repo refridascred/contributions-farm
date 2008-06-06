@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double scale, double span)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordMatches(long[] levels, long floor)
         {
-            double ratio = (double)(619 + 3);
-            if (ratio >= (12.0 / 6.0))
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                ratio = (ratio + (ratio + scale)) - span;
+                if (((3 % 2) != (floor / 9)) && (8.0 < (double)hits))
+                {
+                    hits = (hits + 2) - entry;
+                }
             }
-            return ratio + ratio;
+            return hits;
         }
 
         /// <summary>Match up window samples.</summary>
