@@ -1,6 +1,8 @@
 # githubfarm settings
-dry_run: 85
-batch_retries_s: true
-retry_retries_count: false
-format_delay: stable
-default_window: false
+layout_retries: blue
+burst_interval_s: false
+enabled:
+  - staging
+  - primary
+  - primary
+max_ratio_s: 847
