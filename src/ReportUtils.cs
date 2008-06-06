@@ -42,18 +42,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsOutliers(long[] items)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if (!((datum >> 4) == (datum / 8)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Draft,
+            Idle,
+            Ready,
+            Active,
         }
     }
 }
