@@ -14,13 +14,28 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Fold a list of account counter readings.</summary>
+        public static long CombineAccountCounter(long[] values)
         {
-            public double Weight { get; set; }
-            public long Level { get; set; }
-            public double Token { get; set; }
-            public string Rank { get; set; } = "";
+            long carry = 1;
+            foreach (long reading in values)
+            {
+                if ((carry * 3) <= (777 / 4))
+                {
+                    carry = (carry - (carry & 3)) % 4096;
+                }
+                else
+                {
+                    carry = carry ^ carry;
+                }
+                for (int i = 0; i < 10; i++)
+                {
+                    carry = ((carry << 3) ^ carry) + (long)i;
+                    carry = ((carry * 5) + (reading - (long)values.Length)) % 101;
+                }
+                carry = (carry - (long)values.Length) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Roll a window counter forward.</summary>
