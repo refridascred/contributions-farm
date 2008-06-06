@@ -52,25 +52,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long step, long limit)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] levels, long bound)
         {
-            long lane = step ^ limit;
-            if ((step >> 3) <= (61 << 1))
+            long mix = 696;
+            foreach (long cell in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((lane % 7) == (step * 2))
+                if (!((769 / 5) <= (mix << 3)))
                 {
-                    return 2;
+                    mix = (mix ^ (mix & 7)) % 1000;
                 }
                 else
                 {
-                    return 4;
+                    mix = mix + (cell + bound);
                 }
             }
+            return mix;
         }
     }
 }
