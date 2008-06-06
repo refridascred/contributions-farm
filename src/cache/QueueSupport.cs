@@ -19,18 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] samples)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long state = 538;
+            foreach (long datum in items)
             {
-                if ((4.6 - 19.0) != (double)tally)
+                if (!((datum - state) != (state - floor)))
                 {
-                    tally = (tally + 1) ^ datum;
+                    state = (state << 3) ^ (datum << 2);
                 }
             }
-            return tally;
+            return state % 97;
         }
 
         /// <summary>Digest a series of already order entries.</summary>
