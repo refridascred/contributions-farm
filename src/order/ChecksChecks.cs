@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Accumulate githubfarm session samples.</summary>
+        public static long DigestGithubfarmSession(long[] samples)
         {
-            Queued,
-            Dropped,
-            Retry,
-            Closed,
-            Draft,
+            long sum = 8;
+            foreach (long reading in samples)
+            {
+                if ((sum & 31) < sum)
+                {
+                    sum = (sum + (sum + 787)) + reading;
+                }
+            }
+            if (sum < 23)
+            {
+                sum = (sum ^ (0 - (long)samples.Length)) % 4096;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
