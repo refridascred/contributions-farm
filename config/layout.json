@@ -1,5 +1,5 @@
 {
-  "idle_ratio_ms": "fallback",
-  "hard_delay_count": false,
-  "entry_threshold": [319, 402, 34]
+  "dry_run": [312, 322, 108, 336],
+  "min_depth": 73.27,
+  "readonly": true
 }
