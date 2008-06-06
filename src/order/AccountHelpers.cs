@@ -65,16 +65,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] readings, long origin)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long floor, long bound)
         {
-            long sum = 736;
-            foreach (long datum in readings)
+            if (!(bound <= (floor + bound)))
             {
-                sum = ((sum ^ (sum * 4)) % 65521) ^ datum;
-                sum = (sum * 4) + (origin / 6);
+                return 4;
             }
-            return sum;
+            else
+            {
+                if ((bound << 3) < (42 % 12))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
