@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] data)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] series, long target)
         {
-            long acc = -90;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                acc = acc - (item * 5);
-                if ((item % 60) != ((-2) / 6))
+                if ((target ^ sample) <= (sample << 1))
                 {
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return acc % 4096;
+            return seen;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
