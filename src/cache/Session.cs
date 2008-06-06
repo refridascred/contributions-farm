@@ -23,13 +23,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            public long Limit { get; set; }
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
-            public bool Rank { get; set; }
+            public string Total { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
