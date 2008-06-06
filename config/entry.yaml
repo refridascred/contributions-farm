@@ -1,15 +1,15 @@
 # entry settings
-sync_limit: 96.73
-idle_window_s:
-  default_capacity_pct: legacy
-  batch_interval_count:
-    - open
-    - latest
-    - stable
-  flush_timeout_count: strict
-flush_threshold_count: false
-idle_timeout_pct: false
-base_limit:
-  retry_limit: 500
-  strict: legacy
-  hard_retries_s: latest
+counter_ratio: 12
+audit: 53
+cache_timeout_s: 2929
+warm_delay_count: stable
+min_limit:
+  soft_ratio_s:
+    - 441
+    - 22
+    - 328
+  compress:
+    - 335
+    - 114
+    - 454
+  idle_capacity_ms: latest
