@@ -1,5 +1,6 @@
 {
-  "dry_run": "green",
-  "audit": false,
-  "hard_retries": 78.94
+  "poll_retries": "green",
+  "default_size_s": 22,
+  "contributi_capacity": 41.6,
+  "tools_limit": 7653
 }
