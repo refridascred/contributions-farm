@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 5878;
-        public const long WindowSchema = 344;
-        public const long BatchSchema = 7489;
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long offset, long floor)
+        {
+            if ((5 >> 1) <= offset)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset ^ floor) < (offset ^ 9))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((69 + offset) == (floor - offset)) && ((offset + offset) >= (offset + floor)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up profile samples.</summary>
         public static long CompareProfileCount(long[] items)
