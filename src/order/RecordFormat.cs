@@ -52,13 +52,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            public string Weight { get; set; } = "";
-            public string Total { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public string Offset { get; set; } = "";
+            public double Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the graph status values.</summary>
