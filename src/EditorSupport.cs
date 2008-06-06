@@ -75,10 +75,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string SoftCount = "alpha-1";
-        public const string BatchGithubfarm = "open-1";
-        public const string HardGithubfarm = "cached-1";
-        public const long DefaultScore = 6775;
+        /// <summary>Find the first report schema entry that matches the target.</summary>
+        public static long LookupReportSchemaIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < limit) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
