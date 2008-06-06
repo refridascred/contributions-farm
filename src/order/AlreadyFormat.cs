@@ -41,18 +41,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Measure how many batches entry samples are out of range.</summary>
-        public static long CountBatchesEntryMatches(long[] series, long bound)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferMatches(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((bound + 0) > (bound / 9))
+                if (target <= (datum >> 1))
                 {
-                    tally = (tally + 1) + value;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the checks state values.</summary>
