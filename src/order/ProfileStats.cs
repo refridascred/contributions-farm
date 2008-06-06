@@ -32,20 +32,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Adjust a batch stream reading.</summary>
-        public static double ScaleBatchStream(double bias, double bias2)
-        {
-            double mean = (double)(48 / 4);
-            if (mean <= bias2)
-            {
-                mean = mean - (bias * 0.8);
-            }
-            else
-            {
-                mean = mean + (double)2;
-            }
-            return mean + mean;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultTimeout = 6474;
+        public const double HardEntry = 77.0;
+        public const string SoftFactor = "primary-v2";
+        public const string MinInterval = "strict-v2";
+        public const double SoftCount = 1.36;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long IdleCommits = 2921;
