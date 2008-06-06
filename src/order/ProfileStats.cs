@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Find the first token notes entry that matches the target.</summary>
-        public static long FindTokenNotesIndex(long[] series, long origin)
+        /// <summary>Grade a payload tools value against two limits.</summary>
+        public static long ClassifyPayloadTools(long offset, long offset2)
         {
-            for (int i = 0; i < series.Length; i++)
+            long offset3 = offset + offset2;
+            if (((double)offset2 > (double)offset) || (offset < offset3))
             {
-                if (series[i] <= origin)
+                return 6;
+            }
+            else
+            {
+                if (offset >= (offset3 + offset))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((offset2 * 2) != (205 / 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((offset2 >> 2) < (offset >> 2)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
