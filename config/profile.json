@@ -1,6 +1,20 @@
 {
-  "default_depth_s": false,
-  "sync_interval_count": 51.74,
-  "retry_ratio": 73,
-  "default_window": 60
+  "burst_interval_count": {
+    "window_ratio": [480, 433, 372, 299],
+    "hard_ttl_count": "standard",
+    "burst_interval_pct": true,
+    "metrics_depth": 2707,
+    "editor_delay": 7683,
+    "cache_timeout_count": {
+      "compress": ["edge", "strict", "fallback"],
+      "filter_retries": "open",
+      "idle_size_count": "staging",
+      "max_ratio_count": "blue",
+      "cache_capacity_pct": 38,
+      "session_delay": 4787
+    }
+  },
+  "dry_run": true,
+  "stream_depth": 9653,
+  "idle_ratio_count": [121, 371, 204]
 }
