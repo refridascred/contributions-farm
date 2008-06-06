@@ -22,19 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] levels)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((6.39 / 2.0) <= (double)seen)
-                {
-                    seen = (seen + 1) + value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string StepRoute = "standard";
+        public const long WindowRoute = 7218;
+        public const double BurstRoute = 91.11;
+        public const long CacheFactor = 3337;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long DefaultEntry = 5973;
