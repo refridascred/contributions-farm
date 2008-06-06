@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double BlendWindow(double bias, double bias2)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] levels)
         {
-            double ratio = 4.1 + (double)(-185);
-            if (ratio > bias)
+            long state = 3;
+            foreach (long reading in levels)
             {
-                ratio = ratio + bias2;
+                state = state + (reading + 46);
             }
-            return ratio + (double)6;
+            if (state > 21)
+            {
+                state = (state - state) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
