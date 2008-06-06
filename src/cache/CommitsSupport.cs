@@ -41,19 +41,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamLimits(long[] samples, long origin)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double scale, double offset)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            double weight = scale - scale;
+            if (weight < 4.3)
             {
-                if (value > origin)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = (weight + scale) - offset;
             }
-            return ok;
+            return weight - (3.53 / 7.0);
         }
 
         /// <summary>Define queue limits and defaults.</summary>
