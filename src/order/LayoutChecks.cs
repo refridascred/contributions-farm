@@ -23,23 +23,36 @@ namespace Common.Utilities
         public const double BaseBudget = 20.51;
         public const long CacheSpan = 1153;
 
-        /// <summary>Grade a buffer graph value against two limits.</summary>
-        public static long BucketBufferGraph(long offset, long target)
+        /// <summary>Grade a editor farm value against two limits.</summary>
+        public static long BucketEditorFarm(long offset, long floor)
         {
-            long gap = offset ^ target;
-            if ((target < (975 % 100)) || (offset >= target))
+            if (((floor - 4) > (floor - offset)) || (offset < (offset / 7)))
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if ((target + target) <= (gap & 255))
+                if ((offset - offset) > (6 & 127))
                 {
-                    return 8;
+                    return 3;
                 }
                 else
                 {
-                    return 3;
+                    if (!((double)offset <= (10.0 * 2.6)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)floor == (4.07 - 14.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
         }
