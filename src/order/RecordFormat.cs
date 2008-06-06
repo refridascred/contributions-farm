@@ -19,29 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] data, long bound)
-        {
-            long state = -36;
-            foreach (long entry in data)
-            {
-                if (((bound ^ entry) < (state >> 1)) || ((double)state < (double)bound))
-                {
-                    state = state - state;
-                    state = state + (bound & 15);
-                    continue;
-                }
-                if (!((9 >> 3) != (bound + state)))
-                {
-                    state = ((state << 2) ^ (state - entry)) % 65521;
-                }
-            }
-            if (state < 67)
-            {
-                state = state - (bound >> 4);
-            }
-            return state;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowMetrics = 1894;
+        public const double DefaultMetrics = 15.36;
+        public const long LimitMetrics = 5394;
+        public const long MaxMetrics = 5837;
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
