@@ -1,10 +1,19 @@
 # support settings
-retry_depth_s:
-  readonly: 78
-  stream_window: primary
-  audit: 8480
-  base_window: edge
-warm_size_ms: 40.81
-sync_window: true
-channel_interval: 15
-cache_depth_s: true
+default_window:
+  flush_timeout_s:
+    enabled: strict
+    batch_depth: 10.09
+    cache_threshold:
+      - latest
+      - stable
+      - stable
+      - open
+  enabled: true
+  cache_size: blue
+  stats_delay: stable
+  warm_interval_s: strict
+batch_delay_pct: eu-west
+checks_retries: true
+idle_timeout_count: 4006
+retry_window_pct: 59.95
+token_ratio: 7459
