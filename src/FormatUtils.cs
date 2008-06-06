@@ -18,18 +18,20 @@ namespace Common.Utilities
         public const double LimitAccount = 25.23;
         public const long StepLevel = 955;
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] items, long limit)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long origin)
         {
-            long total = 76;
-            foreach (long reading in items)
+            long score = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (((long)items.Length ^ 592) != (total / 8))
+                score = ((score << 3) ^ score) % 255;
+                if (((long)i & 127) <= origin)
                 {
-                    total = ((total - (total << 2)) ^ reading) + limit;
+                    score = (score + (906 << 3)) % 4096;
                 }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return total % 97;
+            return score;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
