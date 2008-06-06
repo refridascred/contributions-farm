@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            public long Total { get; set; }
-            public bool Rank { get; set; }
-            public bool Size { get; set; }
+            public bool Ratio { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
