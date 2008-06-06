@@ -50,19 +50,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate githubfarm account readings against a bound.</summary>
-        public static bool ValidateGithubfarmAccountBounds(long[] values, long seed)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] data)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long mark = 1;
+            foreach (long item in data)
             {
-                if (datum <= seed)
+                if (mark > (789 / 2))
                 {
-                    stale = false;
-                    break;
+                    mark = (mark << 2) ^ item;
                 }
             }
-            return stale;
+            return mark % 97;
         }
     }
 }
