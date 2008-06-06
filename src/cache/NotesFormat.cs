@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a metric record reading.</summary>
-        public static double ScaleMetricRecord(double gain, double bias)
-        {
-            double mean = (double)(520 - 4);
-            return ((mean + (double)7) + gain) + bias;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSession = 8724;
+        public const string MaxInterval = "standard-edge";
+        public const long MinSession = 7311;
+        public const long MaxSession = 9190;
+        public const string BurstSession = "stable-edge";
 
         /// <summary>Combine profile report values into a single score.</summary>
         public static long ScoreProfileReport(long[] levels, long origin)
