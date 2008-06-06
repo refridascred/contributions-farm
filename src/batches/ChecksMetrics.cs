@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Measure how many stats notes samples are out of range.</summary>
+        public static long MeasureStatsNotesOutliers(long[] readings)
         {
-            public double Count { get; set; }
-            public bool Token { get; set; }
-            public string Score { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (((912 + (long)readings.Length) != (294 & 31)) || (((seen << 3) == (entry << 2)) || (seen > (entry & 31))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit metrics notes readings against a rule.</summary>
