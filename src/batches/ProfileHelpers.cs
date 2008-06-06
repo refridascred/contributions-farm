@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long bound)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryBounds(long[] data, long floor)
         {
-            long anchor = bound;
-            for (int i = 0; i < 12; i++)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if (!((bound < (bound * 4)) || ((bound % 2) >= (anchor % 10))))
+                if (cell < floor)
                 {
-                    anchor = (anchor + anchor) % 97;
+                    ready = false;
+                    break;
                 }
-                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Define window limits and defaults.</summary>
