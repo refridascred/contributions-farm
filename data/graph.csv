@@ -1,6 +1,11 @@
-id,owner
-1,primary
-2,73.72
-3,legacy
-4,769
-5,913
+id,active,count,ratio
+1,517,361,89.02
+2,eu-west,30.88,green
+3,806,117,94.5
+4,252,59.65,58.34
+5,328,209,653
+6,standard,700,117
+7,stable,74.58,306
+8,24.24,94.44,610
+9,81.17,792,edge
+10,legacy,fallback,26.18
