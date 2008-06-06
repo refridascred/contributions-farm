@@ -35,12 +35,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            public string Score { get; set; } = "";
-            public double Region { get; set; }
-            public string Token { get; set; } = "";
+            public long Size { get; set; }
+            public long Flag { get; set; }
+            public double Level { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
