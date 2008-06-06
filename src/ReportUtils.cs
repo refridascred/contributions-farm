@@ -35,14 +35,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
-        {
-            public double Ratio { get; set; }
-            public double Mode { get; set; }
-            public long Region { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFarm = 5469;
+        public const long LimitSize = 2093;
+        public const long BurstFarm = 3894;
+        public const string SoftFarm = "open-edge";
 
         /// <summary>Describe the command status values.</summary>
         public enum CommandStatus
