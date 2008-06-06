@@ -1,6 +1,12 @@
 {
-  "batches_depth": 72.1,
-  "idle_depth_ms": 5050,
-  "poll_depth": 100,
-  "poll_retries_count": 500
+  "min_limit_count": [125, 231, 418, 386],
+  "flush_threshold_pct": {
+    "order_timeout": 59.39,
+    "soft_window_ms": 4,
+    "hard_size": "green"
+  },
+  "enabled": 11.73,
+  "compress": 14,
+  "batch_timeout": "latest",
+  "min_capacity_pct": "strict"
 }
