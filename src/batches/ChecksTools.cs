@@ -51,31 +51,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long origin, long origin2)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] series)
         {
-            if ((3.0 + 1.6) == (double)origin2)
+            long acc = 6;
+            foreach (long sample in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin << 1) == (origin2 & 15))
+                if ((sample + sample) != (acc + sample))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin - origin) < ((-93) >> 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    acc = ((acc * 5) + acc) % 101;
                 }
             }
+            if (acc > 260)
+            {
+                acc = acc - acc;
+            }
+            return acc;
         }
     }
 }
