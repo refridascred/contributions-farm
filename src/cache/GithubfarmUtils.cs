@@ -53,18 +53,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit commits batch readings against a rule.</summary>
-        public static long CountCommitsBatchGaps(long[] values, long limit)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (!(((count << 3) > limit) && ((double)918 < (double)count)))
-                {
-                    count = (count + 2) ^ entry;
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a farm options.</summary>
