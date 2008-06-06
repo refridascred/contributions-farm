@@ -1,5 +1,7 @@
 {
-  "already_limit": 19.99,
-  "warm_window_s": true,
-  "sync_ttl_pct": 60
+  "audit": 30,
+  "compress": "edge",
+  "default_ttl": 1137,
+  "sync_capacity_s": 100,
+  "retry_ttl_s": true
 }
