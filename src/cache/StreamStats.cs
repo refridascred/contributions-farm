@@ -33,20 +33,12 @@ namespace Common.Utilities
         public const long BaseSize = 6292;
         public const string LimitScore = "stable-edge";
 
-        /// <summary>Derive the next token record value from a seed.</summary>
-        public static long RollTokenRecord(long seed)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long state = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                state = state + (long)i;
-                if ((seed & 63) < (seed % 3))
-                {
-                    state = state + (seed >> 5);
-                }
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            Stale,
+            Draft,
+            Failed,
         }
     }
 }
