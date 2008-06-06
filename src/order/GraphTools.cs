@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long step)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatBounds(long[] items, long limit)
         {
-            long sum = step;
-            for (int i = 0; i < 7; i++)
+            bool found = true;
+            foreach (long reading in items)
             {
-                if ((sum ^ sum) >= (933 ^ sum))
+                if (reading < limit)
                 {
-                    sum = (sum - ((long)i + step)) % 101;
+                    found = false;
+                    break;
                 }
-                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
