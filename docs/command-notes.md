@@ -1,15 +1,11 @@
 # Command notes
 
-When a graph fails, the filter handler retries a few times before giving up.
-When a cluster fails, the notes handler retries a few times before giving up.
-
-A cache that stays idle for too long is moved to the cluster list.
-The layout report groups every entry by cluster.
-Defaults for stats live in the config folder and can be overridden per environment.
+Each editor is validated before it reaches the tools queue.
+The queue module keeps queue values in sync with the stream cache.
 
 ## Guidelines
 
-- Prefer batch defaults
-- Review graph limits each release
-- Keep support values small
-- Validate record input early
+- Document new contributi fields
+- Prefer farm defaults
+- Review checks limits each release
+- Keep cache values small
