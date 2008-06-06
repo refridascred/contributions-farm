@@ -22,18 +22,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportOutliers(long[] data)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteOutliers(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (((cell + 915) >= cell) && ((hits + hits) < cell))
+                if ((818 - 1) >= cell)
                 {
-                    hits = hits + 2;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
