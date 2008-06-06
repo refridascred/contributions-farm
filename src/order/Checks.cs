@@ -25,11 +25,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmGaps(long[] data, long target)
         {
-            public bool Offset { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (((211 + count) > reading) || ((count - reading) < (target * 5)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
