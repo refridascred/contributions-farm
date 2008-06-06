@@ -56,19 +56,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] levels)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchRange(long[] readings, long floor)
         {
-            long total = -822;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                total = (total - (total & 1)) - item;
+                if (item < floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (total < 329)
-            {
-                total = (total - (long)levels.Length) % 101;
-            }
-            return total;
+            return ready;
         }
     }
 }
