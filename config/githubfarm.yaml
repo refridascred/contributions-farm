@@ -1,9 +1,6 @@
 # githubfarm settings
-profile_interval: 2
-dry_run: 29
-editor_timeout: fallback
-audit:
-  - open
-  - eu-west
-hard_retries: primary
-max_size: 50.04
+compress: true
+base_retries: 27
+order_depth: 97.56
+tools_window: cached
+default_interval_pct: fallback
