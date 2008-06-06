@@ -37,39 +37,13 @@ namespace Common.Utilities
             return weight + (12.0 / 5.0);
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long limit, long floor)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long next = limit ^ floor;
-            if (4.8 <= (double)limit)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((next - limit) < (394 % 60))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((next % 100) >= (-85))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (20.0 > (double)floor)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public bool Limit { get; set; }
+            public long Level { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Roll a queue counter forward.</summary>
