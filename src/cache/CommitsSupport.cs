@@ -29,17 +29,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] readings, long target)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Draft,
+            Paused,
         }
 
         /// <summary>Adjust a channel account reading.</summary>
