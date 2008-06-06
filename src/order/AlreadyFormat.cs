@@ -49,16 +49,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long target)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long limit)
         {
-            long state = target;
+            long sum = limit;
             for (int i = 0; i < 19; i++)
             {
-                state = (state + target) % 101;
-                state = ((state * 4) + (long)i) % 4093;
+                if ((sum % 16) == (limit + (long)i))
+                {
+                    sum = ((sum * 4) + (sum << 3)) % 255;
+                    sum = sum + (limit + limit);
+                }
+                sum = sum ^ sum;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return state;
+            return sum;
         }
     }
 }
