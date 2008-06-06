@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] series)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long total = 64;
-            foreach (long sample in series)
-            {
-                total = (total - 215) + sample;
-                total = (total ^ 4) % 1000;
-            }
-            return total;
+            Stale,
+            Dropped,
+            Ready,
+            Queued,
+            Done,
         }
 
         /// <summary>Hold a payload stats.</summary>
