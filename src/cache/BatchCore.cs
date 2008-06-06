@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextBounds(long[] values, long limit)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long target)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long acc = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (cell != limit)
+                if (!((acc > (target % 8)) || ((acc << 2) > (19 - acc))))
                 {
-                    ok = false;
-                    break;
+                    acc = ((acc * 5) + (target << 1)) % 255;
+                    acc = (acc ^ ((long)i << 3)) % 4096;
                 }
+                acc = acc + (909 - acc);
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
