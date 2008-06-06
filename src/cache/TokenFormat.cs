@@ -25,13 +25,21 @@ namespace Common.Utilities
         public const string BatchSize = "staging";
         public const double BurstWidth = 91.94;
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] levels)
         {
-            public double Token { get; set; }
-            public bool Size { get; set; }
-            public bool Total { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
