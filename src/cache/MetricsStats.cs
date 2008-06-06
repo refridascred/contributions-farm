@@ -72,19 +72,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsLimits(long[] values, long origin)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmLimits(long[] readings, long seed)
         {
-            bool found = true;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if (reading <= origin)
+                if (value != seed)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
     }
 }
