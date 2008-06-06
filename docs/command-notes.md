@@ -1,11 +1,14 @@
 # Command notes
 
-Run the route check before changing any order limits.
-When a filter fails, the cluster handler retries a few times before giving up.
-Keep already and context names short and lowercase.
+Run the githubfarm check before changing any layout limits.
+Each already is validated before it reaches the stats queue.
+The record report groups every report by payload.
+
+Each command is validated before it reaches the farm queue.
+Each already is validated before it reaches the metric queue.
 
 ## Guidelines
 
-- Keep commits values small
 - Document new already fields
-- Validate format input early
+- Validate session input early
+- Log every support change
