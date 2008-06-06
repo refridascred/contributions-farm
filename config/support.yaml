@@ -1,12 +1,18 @@
 # support settings
-warm_depth:
-  - 449
-  - 488
-persist: strict
-payload_ratio: 1412
-support_timeout:
-  burst_ratio: 250
-  queue_retries: open
-  min_threshold_s: standard
-  base_depth_count: 9079
-batch_threshold_count: cached
+audit: latest
+githubfarm_ttl: false
+readonly:
+  batch_ratio: legacy
+  idle_size:
+    - 287
+    - 11
+    - 235
+    - 472
+  default_limit_s: true
+  base_depth:
+    account_window: latest
+    min_interval_ms: edge
+    base_interval_s:
+      - blue
+      - latest
+  notes_interval: open
