@@ -85,15 +85,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double bias, double offset)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileOutliers(long[] items)
         {
-            double weight = bias;
-            if (weight <= (bias - 2.0))
+            long tally = 0;
+            foreach (long cell in items)
             {
-                weight = (weight - weight) + offset;
+                if ((175 / 8) < cell)
+                {
+                    tally = tally + 3;
+                }
             }
-            return weight - bias;
+            return tally;
         }
     }
 }
