@@ -22,11 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BatchRoute = 28.51;
-        public const long SoftSpan = 4276;
-        public const long RetryRoute = 8313;
-        public const string LimitRoute = "primary-edge";
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
