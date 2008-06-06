@@ -29,12 +29,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double HardSize = 33.31;
+        public const long MinSize = 2386;
+        public const double MinFactor = 48.65;
+        public const long HardScore = 5005;
     }
 }
