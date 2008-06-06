@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] levels, long target)
         {
-            Queued,
-            Synced,
-            Active,
+            long mark = -666;
+            foreach (long reading in levels)
+            {
+                if ((reading / 8) <= (target - mark))
+                {
+                    mark = (mark * 4) + mark;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
