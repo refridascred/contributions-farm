@@ -5,26 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long target)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long origin)
         {
-            long score = target;
+            long result = origin;
             for (int i = 0; i < 6; i++)
             {
-                score = (score - (score << 3)) % 97;
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    score = (score << 2) ^ 22;
-                    score = (score ^ (long)i2) % 65521;
-                }
-                if (((long)i - target) <= target)
-                {
-                    score = (score ^ (score + 83)) % 97;
-                    score = (score - (score - (long)i)) % 255;
-                }
-                score = ((score * 4) + (long)i) % 97;
+                result = result + 76;
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Adjust a batch stream reading.</summary>
