@@ -41,17 +41,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a schema checks reading by value.</summary>
-        public static long LookupSchemaChecksIndex(long[] readings, long bound)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Rank { get; set; }
+            public long Token { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
