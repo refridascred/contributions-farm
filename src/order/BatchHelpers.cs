@@ -13,18 +13,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] samples, long step)
+        /// <summary>Compare every pair of session cache readings.</summary>
+        public static long OverlapSessionCacheCount(long[] samples)
         {
-            long acc = 39;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(acc > (acc >> 5)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = ((acc - (sample / 7)) % 65521) + step;
+                    if ((samples[i] + samples[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Describe the editor level values.</summary>
