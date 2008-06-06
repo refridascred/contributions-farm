@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] data)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesGaps(long[] samples, long origin)
         {
-            long anchor = -20;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((811 > (anchor >> 1)) && ((double)cell != (double)anchor))
+                if (((double)datum != (4.6 - 8.13)) || ((double)origin > (8.0 / 3.0)))
                 {
-                    anchor = anchor ^ (anchor + anchor);
+                    matches = matches + 3;
                 }
             }
-            if (anchor < 28)
-            {
-                anchor = (anchor + (13 * 5)) % 65521;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Adjust a counter reading.</summary>
