@@ -51,22 +51,11 @@ namespace Common.Utilities
             return mean - 1.0;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorHits(long[] samples, long target)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double AdjustBatch(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (((matches - matches) <= (target >> 2)) && ((double)target <= 2.89))
-                {
-                    matches = (matches + 1) ^ value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            double bias = weight;
+            return (bias - (bias + 4.4)) + offset;
         }
 
         /// <summary>Describe the command class values.</summary>
