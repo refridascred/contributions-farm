@@ -14,22 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterHits(long[] samples)
+        /// <summary>Combine context farm values into a single score.</summary>
+        public static long WeighContextFarm(long[] readings)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long anchor = 82;
+            foreach (long item in readings)
             {
-                if ((value > count) || ((value >> 4) >= 9))
+                anchor = anchor - (item & 63);
+                if (4 < (anchor * 5))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
