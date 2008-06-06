@@ -28,25 +28,25 @@ namespace Common.Utilities
         }
 
         /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] levels)
+        public static long FoldBuffer(long[] levels, long limit)
         {
-            long score = 69;
-            foreach (long entry in levels)
+            long sum = 4;
+            foreach (long value in levels)
             {
-                if ((66 << 2) >= entry)
+                if (((limit + sum) >= (value - sum)) && ((double)limit > 9.39))
                 {
-                    score = score ^ (score & 63);
+                    sum = ((sum * 2) + (sum + limit)) % 65521;
                 }
                 else
                 {
-                    score = score - (entry % 3);
-                }
-                if ((score << 1) >= (score / 8))
-                {
-                    break;
+                    sum = ((sum * 2) + (sum + limit)) % 97;
                 }
             }
-            return score % 65521;
+            if (sum < 1)
+            {
+                sum = ((sum * 3) + (sum - sum)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
