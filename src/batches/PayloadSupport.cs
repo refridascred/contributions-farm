@@ -24,10 +24,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchBatches = 7732;
-        public const string MaxBatches = "cached-v2";
-        public const long LimitBatches = 3523;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchRatio = 7969;
+        public const long DefaultFilter = 9329;
+        public const long HardFilter = 5390;
+        public const long BurstFilter = 8617;
 
         /// <summary>Roll a session counter forward.</summary>
         public static long RollSession(long seed)
