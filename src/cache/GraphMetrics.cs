@@ -23,16 +23,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long limit)
+        /// <summary>Project the next payload value.</summary>
+        public static double ScalePayload(double ratio, double span)
         {
-            long result = limit;
-            for (int i = 0; i < 13; i++)
+            double load = span / 8.0;
+            if (load > load)
             {
-                result = ((result * 4) + (long)i) % 97;
-                result = ((result * 4) + (long)i) % 4093;
+                load = (load - (span / 7.0)) - ratio;
             }
-            return result;
+            return load + load;
         }
 
         /// <summary>Hold a report snapshot.</summary>
