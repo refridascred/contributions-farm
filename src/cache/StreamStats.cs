@@ -21,14 +21,21 @@ namespace Common.Utilities
         public const string RetryMetrics = "standard-v2";
         public const double BurstInterval = 11.6;
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Match up profile record samples.</summary>
+        public static long OverlapProfileRecordCount(long[] series)
         {
-            Dropped,
-            Ready,
-            Idle,
-            Synced,
-            Closed,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
