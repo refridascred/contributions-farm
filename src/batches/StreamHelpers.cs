@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit batch format readings against a rule.</summary>
-        public static long TallyBatchFormatMatches(long[] readings)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterMatches(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (tally > (44 ^ tally))
+                if ((((2.59 - 7.0) < (double)reading) || ((seen / 6) >= seen)) || ((seen & 255) == (8 - 5)))
                 {
-                    tally = (tally + 3) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = (seen + 2) + floor;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Adjust a notes reading.</summary>
