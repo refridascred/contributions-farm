@@ -1,7 +1,18 @@
 {
-  "session_ttl": true,
-  "flush_delay": true,
-  "flush_retries_count": "staging",
-  "warm_capacity_s": "standard",
-  "compress": false
+  "contributi_size": 73,
+  "cache_window_count": {
+    "warm_limit_ms": {
+      "metrics_size": "local",
+      "retry_interval": 6985,
+      "dry_run": 17.25,
+      "default_size_ms": [471, 44, 423],
+      "sync_retries": 20,
+      "tools_window": 41
+    },
+    "sync_capacity_ms": 60,
+    "burst_window": [264, 470],
+    "dry_run": 69.57
+  },
+  "hard_limit": 93.07,
+  "burst_window": false
 }
