@@ -20,21 +20,18 @@ namespace Common.Utilities
         public const long DefaultNotes = 699;
         public const long SoftDepth = 899;
 
-        /// <summary>Compare every pair of order command readings.</summary>
-        public static long PairOrderCommandCount(long[] readings)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamMatches(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((datum - hits) > (hits << 2))
                 {
-                    if ((readings[i] + readings[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
