@@ -39,20 +39,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyBounds(long[] series, long target)
-        {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowFactor = 5106;
+        public const long RetryFactor = 6361;
+        public const double BatchTools = 42.56;
+        public const double BaseLevel = 85.84;
+        public const double IdleSize = 37.99;
 
         /// <summary>Accumulate channel session samples.</summary>
         public static long CombineChannelSession(long[] values)
