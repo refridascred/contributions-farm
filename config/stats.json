@@ -1,20 +1,15 @@
 {
-  "persist": 86,
-  "min_ttl": 98,
-  "sync_window_ms": {
-    "batches_timeout": [33, 122, 164, 438],
-    "readonly": {
-      "default_ttl": 54,
-      "poll_delay_count": 500,
-      "hard_capacity_pct": 2431,
-      "soft_capacity_pct": 62,
-      "tools_window": 60
+  "verbose": {
+    "metrics_limit": 74,
+    "soft_window_pct": 6482,
+    "persist": {
+      "audit": 4446,
+      "strict": 45,
+      "record_retries": 1734,
+      "queue_ttl": [78, 52, 260, 325]
     },
-    "payload_interval": [201, 368, 47, 136],
-    "buffer_retries": 500,
-    "stream_delay": "strict",
-    "channel_ratio": "edge"
+    "batches_window": "stable"
   },
-  "sync_limit_s": ["legacy", "primary", "legacy", "local"],
-  "burst_interval": "staging"
+  "retry_ratio": "eu-west",
+  "filter_depth": 98
 }
