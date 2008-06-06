@@ -62,16 +62,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long origin)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long carry = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = ((carry << 2) ^ (carry << 1)) % 65521;
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            public string Stamp { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
     }
 }
