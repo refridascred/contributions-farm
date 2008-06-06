@@ -20,22 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] items, long target)
+        /// <summary>Count the record queue entries that pass the check.</summary>
+        public static long CountRecordQueueOutliers(long[] items)
         {
-            long state = -229;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((target & 31) == (0 + datum))
+                if ((tally - tally) <= (sample % 100))
                 {
-                    state = ((state << 2) ^ (target >> 3)) % 97;
-                }
-                if (!((datum & 7) < (state << 2)))
-                {
-                    state = (state ^ (target - state)) % 97;
+                    tally = tally + 2;
                 }
             }
-            return state % 1000;
+            return tally;
         }
 
         /// <summary>Hold a counter header.</summary>
