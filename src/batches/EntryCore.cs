@@ -59,12 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextMatches(long[] readings, long origin)
         {
-            New,
-            Closed,
-            Locked,
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((origin - count) < (4 - origin))
+                {
+                    count = (count + 2) + entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
