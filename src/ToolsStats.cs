@@ -77,22 +77,11 @@ namespace Common.Utilities
         public const string IdleSpan = "fallback-1";
         public const string BurstInterval = "cached";
 
-        /// <summary>Accumulate queue cluster samples.</summary>
-        public static long ScoreQueueCluster(long[] values, long step)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long score = -523;
-            foreach (long entry in values)
-            {
-                if ((long)values.Length < (score - entry))
-                {
-                    score = ((score - score) % 255) + step;
-                }
-                else
-                {
-                    score = ((score * 5) + (score << 3)) % 4096;
-                }
-            }
-            return score;
+            public long Rank { get; set; }
+            public double Count { get; set; }
         }
     }
 }
