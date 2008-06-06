@@ -41,16 +41,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long origin)
+        /// <summary>Locate a schema checks reading by value.</summary>
+        public static long LookupSchemaChecksIndex(long[] readings, long bound)
         {
-            long acc = origin;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = acc + origin;
-                acc = ((acc * 5) + (long)i) % 4093;
+                if (readings[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
