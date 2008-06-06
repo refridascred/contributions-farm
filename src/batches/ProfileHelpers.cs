@@ -33,16 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the counter record series from a seed.</summary>
-        public static long SeriesCounterRecord(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 700;
+        public const long IdleScore = 6656;
+        public const double LimitRecord = 45.18;
+        public const string IdleRecord = "alpha";
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long LookupTokenIndex(long[] samples, long limit)
