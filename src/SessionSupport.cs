@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a checks batch pair into a bucket.</summary>
-        public static long ClassifyChecksBatch(long floor, long bound)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutOutliers(long[] levels)
         {
-            long next = floor + bound;
-            if (!(next < (bound >> 4)))
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(bound >= (next + next)))
+                if ((matches ^ entry) >= (entry << 1))
                 {
-                    return 2;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    if ((double)76 <= (double)floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
