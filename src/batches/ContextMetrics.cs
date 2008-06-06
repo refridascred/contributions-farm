@@ -26,33 +26,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long offset, long floor)
-        {
-            long cur = offset - floor;
-            if ((offset ^ cur) > (floor * 4))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset <= (double)739)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (floor > offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double IdleChannel = 44.78;
+        public const long SoftBudget = 7501;
+        public const long LimitLevel = 9912;
+        public const long BaseChannel = 6854;
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long AuditEditorHits(long[] samples, long target)
