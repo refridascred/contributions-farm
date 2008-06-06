@@ -16,18 +16,19 @@ namespace Common.Utilities
             return drift + (ratio - ratio);
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesOutliers(long[] samples)
+        /// <summary>Iterate the schema queue series from a seed.</summary>
+        public static long DeriveSchemaQueue(long offset)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long mark = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (((matches & 15) <= (matches + 56)) && ((item + matches) > item))
+                if (((long)i % 5) < offset)
                 {
-                    matches = matches + 2;
+                    mark = (mark << 3) ^ (offset - offset);
                 }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Hold a format options.</summary>
