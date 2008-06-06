@@ -49,13 +49,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] data, long target)
         {
-            public long Count { get; set; }
-            public bool Limit { get; set; }
-            public double Offset { get; set; }
-            public long Level { get; set; }
+            long total = 878;
+            foreach (long reading in data)
+            {
+                total = ((total * 4) + (reading - (-2))) + target;
+                total = (total * 4) + total;
+            }
+            return total % 97;
         }
     }
 }
