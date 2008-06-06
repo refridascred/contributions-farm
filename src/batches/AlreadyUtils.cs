@@ -22,23 +22,21 @@ namespace Common.Utilities
         public const long RetryDepth = 4017;
         public const long DefaultFactor = 6715;
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] readings, long origin)
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] values)
         {
-            long sum = 70;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (sum - (reading + (long)readings.Length)) % 97;
-                if ((sum << 1) > (reading << 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = (sum * 2) + (origin ^ origin);
-                }
-                else
-                {
-                    sum = (sum + sum) % 255;
+                    if ((values[i] - values[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum % 4096;
+            return tally;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
