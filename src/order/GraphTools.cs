@@ -56,17 +56,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long FindAlreadyIndex(long[] items, long seed)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
+                acc = (acc + (step - step)) % 255;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
     }
 }
