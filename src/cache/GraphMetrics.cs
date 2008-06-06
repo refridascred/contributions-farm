@@ -31,18 +31,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportHits(long[] values, long offset)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] series)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long result = 8;
+            foreach (long sample in series)
             {
-                if (((offset * 3) < (6 ^ (-46))) || ((double)502 != (double)item))
+                if (((133 >> 5) > (sample % 97)) && (sample > result))
                 {
-                    tally = tally + 2;
+                    result = ((result * 3) + (sample + result)) % 255;
                 }
             }
-            return tally;
+            return result % 1000;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
