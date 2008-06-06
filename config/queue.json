@@ -1,5 +1,12 @@
 {
-  "hard_capacity_pct": 76.42,
-  "sync_threshold": true,
-  "hard_limit_count": true
+  "idle_depth_ms": 26.3,
+  "retry_ttl_pct": 8272,
+  "enabled": 88.01,
+  "batch_interval": {
+    "commits_window": "strict",
+    "dry_run": [201, 148],
+    "idle_capacity_count": 28.01,
+    "report_window": "cached",
+    "max_retries": ["blue", "open", "local", "latest"]
+  }
 }
