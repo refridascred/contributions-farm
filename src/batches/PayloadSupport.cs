@@ -32,36 +32,28 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long origin, long offset)
+        /// <summary>Grade a payload already value against two limits.</summary>
+        public static long SortPayloadAlready(long step, long bound)
         {
-            long diff = origin + offset;
-            if ((diff <= (offset ^ offset)) || ((double)origin >= (20.0 + 7.8)))
+            if (((step ^ bound) <= bound) || ((372 & 31) <= bound))
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if ((origin ^ offset) >= offset)
+                if (bound <= (414 - step))
                 {
-                    return 0;
+                    return 1;
                 }
                 else
                 {
-                    if (!((9.3 + 5.5) > (double)diff))
+                    if ((step + (-254)) >= (2 * 2))
                     {
-                        return 7;
+                        return 0;
                     }
                     else
                     {
-                        if ((offset ^ origin) > (origin ^ diff))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        return 3;
                     }
                 }
             }
