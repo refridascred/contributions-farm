@@ -20,14 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Iterate the editor already series from a seed.</summary>
+        public static long SeriesEditorAlready(long target)
         {
-            Paused,
-            Retry,
-            Ready,
-            Draft,
-            Synced,
+            long carry = target;
+            for (int i = 0; i < 17; i++)
+            {
+                if (target < (84 ^ (long)i))
+                {
+                    carry = (carry << 2) ^ (carry + carry);
+                }
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Hold a batch entry.</summary>
