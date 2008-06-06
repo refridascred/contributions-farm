@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ScaleEditor(double ratio, double bias)
-        {
-            double rate = 2.4 * 0.19;
-            if (rate > (double)29)
-            {
-                rate = (rate - (4.0 * 7.3)) + bias;
-            }
-            else
-            {
-                rate = rate - (double)170;
-            }
-            return rate + ratio;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryFarm = 2616;
+        public const long BaseDepth = 2208;
+        public const long MaxBudget = 2557;
+        public const long BatchScore = 3903;
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
