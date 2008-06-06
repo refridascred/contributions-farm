@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferGaps(long[] values)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileLimits(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if (((845 ^ value) != (matches - value)) && ((matches % 10) != (value % 10)))
+                if (entry != limit)
                 {
-                    matches = matches + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
