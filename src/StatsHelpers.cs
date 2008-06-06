@@ -66,12 +66,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            Locked,
-            Pending,
-            Done,
+            public double Total { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
