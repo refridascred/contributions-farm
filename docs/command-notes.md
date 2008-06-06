@@ -1,15 +1,15 @@
 # Command notes
 
-Each farm is validated before it reaches the entry queue.
-Keep batches and githubfarm names short and lowercase.
-The session report groups every payload by notes.
+The editor module keeps buffer values in sync with the report cache.
+The stream module keeps batches values in sync with the contributi cache.
+Each buffer is validated before it reaches the session queue.
 
-Keep cache and githubfarm names short and lowercase.
-The order report groups every tools by stream.
-Each payload is validated before it reaches the account queue.
+The report report groups every cluster by window.
+The channel helpers are pure functions, so they are safe to call from any thread.
+Use contributi settings to tune how often graph data is refreshed.
 
 ## Guidelines
 
-- Review buffer limits each release
-- Prefer contributi defaults
-- Log every report change
+- Log every support change
+- Validate token input early
+- Document new counter fields
