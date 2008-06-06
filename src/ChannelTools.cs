@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            public long Region { get; set; }
-            public bool Flag { get; set; }
+            Paused,
+            Draft,
+            Idle,
+            Active,
+            Pending,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
