@@ -32,18 +32,12 @@ namespace Common.Utilities
         public const long IdleProfile = 4836;
         public const string BaseFactor = "stable-edge";
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] samples, long bound)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long mark = 56;
-            foreach (long datum in samples)
-            {
-                if ((mark >> 4) < (datum % 100))
-                {
-                    mark = ((mark - ((-33) ^ datum)) % 65521) - bound;
-                }
-            }
-            return mark % 65521;
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
