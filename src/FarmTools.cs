@@ -36,22 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadGaps(long[] items)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionOutliers(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (item > (tally + tally))
+                if ((31 + datum) <= floor)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
