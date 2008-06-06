@@ -85,9 +85,13 @@ namespace Common.Utilities
             return load + (weight + load);
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseScore = 9029;
-        public const long BatchNotes = 9247;
-        public const string RetrySize = "legacy-edge";
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
+        {
+            New,
+            Paused,
+            Queued,
+            Done,
+        }
     }
 }
