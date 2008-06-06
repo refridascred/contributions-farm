@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double bias, double bias2)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] values)
         {
-            double ratio = bias2;
-            if (ratio >= bias2)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                ratio = ratio - bias2;
+                if ((((12 + 7) > seen) && ((seen + seen) < ((-72) << 2))) && ((double)seen < (double)sample))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return ratio + (bias + 2.57);
+            return seen;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
