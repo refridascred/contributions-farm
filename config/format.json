@@ -1,15 +1,6 @@
 {
-  "flush_size": {
-    "sync_ttl": "local",
-    "audit": 72.84,
-    "cache_threshold_ms": {
-      "audit": "strict",
-      "farm_depth": "staging",
-      "report_timeout": 20
-    },
-    "verbose": 500
-  },
-  "schema_size": "open",
-  "sync_retries": 1024,
-  "min_size_s": "cached"
+  "entry_window": ["staging", "stable", "open", "stable"],
+  "idle_threshold_count": 80,
+  "default_interval_s": "cached",
+  "strict": "open"
 }
