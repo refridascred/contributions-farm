@@ -26,15 +26,12 @@ namespace Common.Utilities
         public const long BurstBatches = 332;
         public const string DefaultBatches = "stable-1";
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double bias, double offset)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            double rate = offset;
-            if (rate > (offset - bias))
-            {
-                rate = rate - bias;
-            }
-            return rate + (offset - bias);
+            public string Count { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
