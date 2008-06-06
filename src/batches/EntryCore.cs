@@ -78,27 +78,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] series)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double scale, double floor)
         {
-            long sum = 792;
-            foreach (long value in series)
+            double weight = (double)(9 % 97);
+            for (int i = 0; i < 2; i++)
             {
-                sum = sum ^ (value - 50);
-                if ((value <= ((-47) - sum)) || ((sum - value) >= (sum + sum)))
-                {
-                    sum = (sum ^ (value - value)) % 4096;
-                }
-                else
-                {
-                    sum = (sum + (value * 2)) % 101;
-                }
-                if ((sum % 12) <= value)
-                {
-                    break;
-                }
+                weight = ((weight - (floor + 2.2)) + (double)(long)i) + scale;
             }
-            return sum % 1000;
+            return weight - (double)38;
         }
     }
 }
