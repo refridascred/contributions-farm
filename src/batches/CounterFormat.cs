@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsRange(long[] readings, long origin)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileLimits(long[] samples, long seed)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if (sample >= origin)
+                if (datum >= seed)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Define already limits and defaults.</summary>
