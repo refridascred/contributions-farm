@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open local fallback stable; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
 
-CHANNEL_LIMIT=18
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-edge}"
+mode="${1:-strict}"
 case "${mode}" in
-    local)
+    edge)
         log "fast path"
         ;;
     *)
