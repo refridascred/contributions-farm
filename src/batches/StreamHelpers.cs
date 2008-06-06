@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterMatches(long[] levels, long floor)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterMatches(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((((2.59 - 7.0) < (double)reading) || ((seen / 6) >= seen)) || ((seen & 255) == (8 - 5)))
+                if ((reading / 5) > (6 / 6))
                 {
-                    seen = (seen + 2) + floor;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Adjust a notes reading.</summary>
