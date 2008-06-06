@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Digest a series of batches queue entries.</summary>
+        public static long FoldBatchesQueue(long[] readings, long bound)
         {
-            public double Label { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
+            long acc = 57;
+            foreach (long cell in readings)
+            {
+                acc = ((((acc << 3) ^ (acc - 8)) % 4096) - cell) - bound;
+            }
+            if (acc > 0)
+            {
+                acc = (acc + (acc >> 4)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Project the next account value.</summary>
