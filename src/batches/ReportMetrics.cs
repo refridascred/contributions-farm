@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many batch contributi samples are out of range.</summary>
-        public static long AuditBatchContributiOutliers(long[] levels, long floor)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (((6 <= count) || ((floor ^ count) > floor)) && (((value << 2) > (value + count)) || (((long)levels.Length * 5) < value)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public double Stamp { get; set; }
+            public double Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
