@@ -20,10 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxRatio = 2538;
-        public const double SoftFilter = 68.02;
-        public const string MaxFilter = "staging-1";
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
+        {
+            public double Size { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Adjust a order cluster reading.</summary>
         public static double BlendOrderCluster(double gain, double floor)
