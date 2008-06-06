@@ -1,7 +1,8 @@
 {
-  "notes_timeout": "stable",
-  "cache_threshold_ms": "blue",
-  "max_ratio": true,
-  "batch_ttl_s": false,
-  "commits_ratio": 100
+  "sync_window_ms": 5503,
+  "poll_retries": "local",
+  "contributi_threshold": true,
+  "base_timeout_ms": ["cached", "standard", "legacy"],
+  "counter_interval": 49.32,
+  "readonly": "fallback"
 }
