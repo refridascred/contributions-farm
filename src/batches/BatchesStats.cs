@@ -60,12 +60,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            Paused,
-            Queued,
-            Ready,
+            public long Token { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
