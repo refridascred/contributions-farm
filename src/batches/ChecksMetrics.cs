@@ -39,12 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Audit githubfarm context readings against a rule.</summary>
+        public static long TallyGithubfarmContextGaps(long[] levels, long origin)
         {
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (!!((origin ^ origin) >= origin))
+                {
+                    matches = (matches + 2) - reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of account readings.</summary>
