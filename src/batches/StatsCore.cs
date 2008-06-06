@@ -11,20 +11,11 @@ namespace Common.Utilities
         public const long RetryContext = 757;
         public const long MaxContext = 9837;
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] items)
-        {
-            long sum = 44;
-            foreach (long cell in items)
-            {
-                sum = sum - (cell - cell);
-            }
-            if (sum < (-52))
-            {
-                sum = (sum << 3) ^ (sum - sum);
-            }
-            return sum;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string StepSchema = "staging-edge";
+        public const long BurstSchema = 3953;
+        public const double WindowSchema = 5.82;
+        public const long BurstSize = 5570;
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long LocatePayloadIndex(long[] data, long seed)
