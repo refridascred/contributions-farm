@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] samples, long floor)
+        /// <summary>Audit contributi cluster readings against a rule.</summary>
+        public static long MeasureContributiClusterHits(long[] series, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((samples[i] >= floor) && ((samples[i] % 5) != 0))
+                if ((step ^ count) < count)
                 {
-                    return (long)i;
+                    count = (count + 1) - entry;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Check that every support stats entry stays within the limit.</summary>
