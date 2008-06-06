@@ -57,12 +57,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 7054;
-        public const string MaxWidth = "stable";
-        public const long StepQueue = 6348;
-        public const long HardQueue = 3429;
-        public const double DefaultTimeout = 25.44;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyRange(long[] levels, long bound)
+        {
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long SoftSupport = 1620;
