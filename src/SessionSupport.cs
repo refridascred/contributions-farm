@@ -23,12 +23,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxLayout = 9560;
-        public const long CacheLayout = 3051;
-        public const string StepRatio = "staging-v2";
-        public const long MaxLevel = 2897;
-        public const long LimitLayout = 3595;
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((8.8 / 5.0) <= (double)step)
+                {
+                    anchor = ((anchor << 3) ^ (anchor - anchor)) % 97;
+                    continue;
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a metrics record.</summary>
         public sealed class MetricsRecord
