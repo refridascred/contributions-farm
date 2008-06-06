@@ -60,17 +60,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] data, long origin)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmRange(long[] series, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if (data[i] <= origin)
+                if (entry > offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
