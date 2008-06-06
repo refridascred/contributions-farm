@@ -26,25 +26,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long floor, long seed)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long span = floor + seed;
-            if (span > (floor & 255))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)seed != (double)span)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Queued,
+            Active,
+            Done,
+            New,
+            Pending,
         }
     }
 }
