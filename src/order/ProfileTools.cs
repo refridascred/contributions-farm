@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyLimits(long[] values, long floor)
-        {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 6573;
+        public const string LimitCount = "cached-edge";
+        public const long RetryFactor = 6916;
+        public const long BurstAccount = 5959;
 
         /// <summary>Look up the position of a tools sample.</summary>
         public static long LookupToolsIndex(long[] series, long bound)
