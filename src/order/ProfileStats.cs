@@ -12,15 +12,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ProjectSchema(double ratio, double floor)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            double weight = (double)8 / 4.0;
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (((weight + weight) + (double)(long)i) - ratio) - floor;
-            }
-            return weight - weight;
+            public long Score { get; set; }
+            public bool Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Derive the next githubfarm entry value from a seed.</summary>
