@@ -13,12 +13,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] values)
         {
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
-            public bool Level { get; set; }
+            long total = 74;
+            foreach (long reading in values)
+            {
+                total = (total * 5) + (128 * 2);
+                if ((reading >> 4) < (reading / 9))
+                {
+                    total = total ^ (total + total);
+                }
+            }
+            return total;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
