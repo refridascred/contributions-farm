@@ -78,11 +78,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinRatio = 677;
-        public const long MinSize = 9952;
-        public const long BurstBudget = 2131;
-        public const long BaseGraph = 6704;
-        public const long SoftGraph = 146;
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
