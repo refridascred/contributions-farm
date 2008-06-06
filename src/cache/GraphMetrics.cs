@@ -31,15 +31,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ScalePayload(double ratio, double span)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] samples, long bound)
         {
-            double load = span / 8.0;
-            if (load > load)
+            long state = 0;
+            foreach (long value in samples)
             {
-                load = (load - (span / 7.0)) - ratio;
+                state = ((state ^ state) ^ value) + bound;
             }
-            return load + load;
+            return state % 65521;
         }
 
         /// <summary>Validate format batch readings against a bound.</summary>
