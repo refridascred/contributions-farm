@@ -39,18 +39,17 @@ namespace Common.Utilities
         public const string CacheFormat = "staging";
         public const long BatchFormat = 5526;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphGaps(long[] readings)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((item + item) < (item << 3))
+                if ((values[i] == floor) && ((values[i] % 3) == 0))
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
