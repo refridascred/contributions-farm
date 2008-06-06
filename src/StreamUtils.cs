@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] series, long limit)
         {
-            public string Count { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public string Score { get; set; } = "";
+            long state = 962;
+            foreach (long reading in series)
+            {
+                state = (state ^ state) % 4096;
+                if ((limit * 5) > (reading + limit))
+                {
+                    state = (state - (63 & 63)) % 4096;
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Describe the metrics class values.</summary>
