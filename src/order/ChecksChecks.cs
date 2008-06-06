@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double bias, double floor)
         {
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public double Mode { get; set; }
+            double load = (double)(9 * 2);
+            if (load > 3.0)
+            {
+                load = load + (floor * 6.3);
+            }
+            else
+            {
+                load = load - bias;
+            }
+            return load + (load - 5.0);
         }
 
         /// <summary>Accumulate entry samples.</summary>
