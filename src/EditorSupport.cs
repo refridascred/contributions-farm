@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long MatchProfileCount(long[] samples)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double AdjustGithubfarm(double scale, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = scale;
+            if (load <= (9.0 / 6.0))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = (load - (double)41) + floor;
             }
-            return hits;
+            return load - load;
         }
 
         /// <summary>Hold a commits info.</summary>
