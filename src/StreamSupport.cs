@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ProjectMetric(double gain, double offset)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long step)
         {
-            double rate = gain;
-            if (rate > (double)66)
+            long mix = step;
+            for (int i = 0; i < 12; i++)
             {
-                rate = (rate + (5.0 / 4.0)) + offset;
+                if (!((double)step > (double)1))
+                {
+                    mix = (mix ^ (564 + mix)) % 255;
+                }
+                else
+                {
+                    mix = mix ^ step;
+                }
+                mix = mix + (step ^ mix);
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            else
-            {
-                rate = rate + (13.0 + gain);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate + gain;
+            return mix;
         }
 
         /// <summary>Hold a order entry.</summary>
