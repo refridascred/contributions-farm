@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long seed)
         {
-            Dropped,
-            Locked,
-            Synced,
-            Ready,
-            Queued,
+            long anchor = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                anchor = (anchor << 2) ^ anchor;
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate session samples.</summary>
