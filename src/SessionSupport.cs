@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a record metric counter forward.</summary>
-        public static long DeriveRecordMetric(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = ((carry * 5) + carry) % 1000;
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseRatio = 6376;
+        public const string IdleChecks = "latest-v2";
+        public const long LimitChecks = 3131;
+        public const long StepChecks = 8848;
 
         /// <summary>Accumulate entry samples.</summary>
         public static long ScoreEntry(long[] items)
