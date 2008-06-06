@@ -20,21 +20,18 @@ namespace Common.Utilities
         public const double BatchSession = 74.63;
         public const long MinFactor = 7138;
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] samples)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] series, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 808;
+            foreach (long value in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((step * 5) > 617)
                 {
-                    if ((samples[i] + samples[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = ((total << 3) ^ (value & 15)) % 101;
                 }
             }
-            return tally;
+            return total % 97;
         }
     }
 }
