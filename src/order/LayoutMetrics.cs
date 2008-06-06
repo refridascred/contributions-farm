@@ -45,31 +45,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long bound, long bound2)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            if ((double)bound2 != (3.0 / 8.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((895 - bound2) > bound2) || ((bound2 % 97) > (bound2 + bound2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound2 + bound2) <= bound2)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public string Limit { get; set; } = "";
+            public double Owner { get; set; }
+            public string Score { get; set; } = "";
+            public double Offset { get; set; }
         }
     }
 }
