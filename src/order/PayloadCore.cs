@@ -49,20 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] samples, long step)
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] readings, long offset)
         {
-            long anchor = 77;
-            foreach (long cell in samples)
+            long anchor = 41;
+            foreach (long value in readings)
             {
-                if (((double)cell == (8.0 + 15.0)) && ((7.53 - 2.3) > 9.0))
+                if ((offset + 9) <= (631 & 3))
                 {
-                    anchor = (((anchor * 4) + (cell & 15)) % 4096) + step;
+                    anchor = ((anchor << 2) ^ (54 * 4)) % 65521;
+                    anchor = (anchor * 5) + (offset + 93);
                 }
-                else
-                {
-                    anchor = (anchor * 3) + (cell + cell);
-                }
+                anchor = anchor - (value >> 2);
+            }
+            if (anchor < (-31))
+            {
+                anchor = (anchor << 2) ^ (offset - 343);
             }
             return anchor;
         }
