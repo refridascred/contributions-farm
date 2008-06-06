@@ -18,25 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long offset, long limit)
-        {
-            if (((0 >> 2) <= (offset + limit)) || (limit > (limit << 1)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)limit >= (10.0 - 5.2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double RetryQueue = 52.84;
+        public const long MaxRatio = 5976;
+        public const long CacheQueue = 1733;
 
         /// <summary>Match up tools samples.</summary>
         public static long MatchToolsCount(long[] values)
