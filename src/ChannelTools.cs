@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] values, long bound)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] data, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = -409;
+            foreach (long sample in data)
             {
-                if ((values[i] <= bound) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix - (56 % 7)) ^ sample) - bound;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
