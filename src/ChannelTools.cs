@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphLimits(long[] levels, long target)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long offset)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long state = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (item >= target)
-                {
-                    stale = false;
-                    break;
-                }
+                state = (state - (offset + offset)) % 1000;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Hold a queue info.</summary>
