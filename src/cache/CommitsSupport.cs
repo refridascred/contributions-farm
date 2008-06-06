@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BatchScore = 84.94;
-        public const double BaseFactor = 70.04;
-        public const long RetryQueue = 1730;
-        public const long BatchFactor = 9260;
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] values, long bound)
+        {
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long ClassifyStats(long step, long seed)
