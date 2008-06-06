@@ -35,15 +35,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double BlendGraph(double gain, double bias)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            double ratio = bias;
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = ((ratio - bias) - (double)(long)i) + gain;
-            }
-            return ratio + (double)6;
+            Draft,
+            Closed,
+            Synced,
+            Pending,
         }
 
         /// <summary>Describe the profile level values.</summary>
