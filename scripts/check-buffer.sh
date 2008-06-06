@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in blue standard stable latest; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-BUFFER_LIMIT=216
+BUFFER_LIMIT=455
 log "limit is ${BUFFER_LIMIT}"
-
-for item in blue primary latest; do
-    log "checking ${item}"
-done
