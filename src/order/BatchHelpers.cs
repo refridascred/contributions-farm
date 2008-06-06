@@ -29,11 +29,32 @@ namespace Common.Utilities
         public const long StepSpan = 8121;
         public const double IdleSize = 53.7;
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Classify a session metric pair into a bucket.</summary>
+        public static long GradeSessionMetric(long origin, long limit)
         {
-            public string Size { get; set; } = "";
-            public double Stamp { get; set; }
+            long offset = origin ^ limit;
+            if (offset >= (origin + limit))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((2.66 - 8.4) != (double)limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)offset >= 20.0)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
