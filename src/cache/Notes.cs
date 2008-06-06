@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] values)
+        /// <summary>Digest a series of order window entries.</summary>
+        public static long FoldOrderWindow(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long anchor = 0;
+            foreach (long item in readings)
             {
-                if ((((12 + 7) > seen) && ((seen + seen) < ((-72) << 2))) && ((double)seen < (double)sample))
+                if ((800 >> 1) >= (anchor + bound))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    anchor = (((anchor << 3) ^ (bound % 3)) % 255) + item;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
