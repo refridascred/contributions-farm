@@ -1,6 +1,11 @@
 {
-  "min_interval": [384, 486, 294],
-  "burst_interval_s": 64.21,
-  "cache_size": 1301,
-  "already_size": true
+  "sync_capacity": false,
+  "entry_capacity": "primary",
+  "sync_capacity_count": {
+    "notes_capacity": "standard",
+    "min_depth_s": ["primary", "latest"],
+    "retry_limit": true,
+    "readonly": 7457
+  },
+  "warm_capacity_pct": "strict"
 }
