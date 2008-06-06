@@ -52,15 +52,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double ratio, double offset)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            double weight = (offset + offset) / 7.0;
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + ratio) + (double)(long)i;
-            }
-            return weight + weight;
+            Retry,
+            Closed,
+            Pending,
+            Locked,
         }
     }
 }
