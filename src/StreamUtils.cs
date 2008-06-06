@@ -20,13 +20,10 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
-        {
-            Closed,
-            Paused,
-            Locked,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowScore = 9523;
+        public const long SoftSpan = 1377;
+        public const string BurstCount = "standard-edge";
 
         /// <summary>Count the format window entries that pass the check.</summary>
         public static long CountFormatWindowOutliers(long[] samples)
