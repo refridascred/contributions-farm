@@ -38,19 +38,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterRange(long[] levels, long target)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Locked,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Match up notes profile samples.</summary>
