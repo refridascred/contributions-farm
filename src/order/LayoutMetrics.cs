@@ -20,14 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
-        {
-            public double Count { get; set; }
-            public double Flag { get; set; }
-            public string Weight { get; set; } = "";
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepLayout = 3257;
+        public const double CacheDepth = 61.61;
+        public const long SoftLayout = 329;
+        public const double CacheLayout = 42.39;
+        public const long StepInterval = 8199;
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
