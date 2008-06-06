@@ -1,12 +1,23 @@
 # githubfarm settings
-readonly: 5515
-max_ratio_count: eu-west
-notes_delay:
-  - 323
-  - 219
-session_depth:
-  - eu-west
-  - latest
-  - staging
-  - eu-west
-base_ttl_s: 14
+support_limit:
+  commits_size: true
+  window_retries: 78.17
+  batch_delay:
+    - strict
+    - legacy
+    - green
+    - cached
+  max_timeout_ms:
+    audit: latest
+    flush_depth: 2941
+    compress: 55.08
+    persist: 25
+    warm_delay: fallback
+  batch_ratio_pct: 1024
+  max_depth_pct: 54
+sync_threshold_ms: blue
+compress:
+  - blue
+  - cached
+dry_run: green
+max_ratio_pct: 4944
