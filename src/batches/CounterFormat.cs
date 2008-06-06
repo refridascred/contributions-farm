@@ -23,11 +23,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double rate, double floor)
+        /// <summary>Audit cache support readings against a rule.</summary>
+        public static long MeasureCacheSupportGaps(long[] series, long origin)
         {
-            double mean = (3.77 * 20.0) + 4.0;
-            return ((mean - mean) + rate) + floor;
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((4.0 * 3.2) >= (double)matches)
+                {
+                    matches = ((matches + 2) ^ sample) - origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up notes order samples.</summary>
