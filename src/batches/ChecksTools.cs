@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueBounds(long[] readings, long seed)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] levels)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long acc = 259;
+            foreach (long cell in levels)
             {
-                if (entry <= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = (acc - (acc >> 2)) ^ cell;
             }
-            return stale;
+            if (acc < 9)
+            {
+                acc = (acc ^ (acc % 12)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
