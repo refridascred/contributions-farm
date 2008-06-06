@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const long DefaultSession = 5320;
         public const long CacheDepth = 5542;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteMatches(long[] data)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (!((seen - reading) >= reading))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public string Region { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Adjust a tools reading.</summary>
