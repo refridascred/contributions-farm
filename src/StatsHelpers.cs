@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double gain, double offset)
         {
-            Idle,
-            Active,
-            Done,
-            Dropped,
-            Ready,
+            double scale = 8.03;
+            return ((scale + (scale - scale)) + gain) + offset;
         }
 
         /// <summary>Hold a contributi record.</summary>
