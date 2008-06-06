@@ -20,19 +20,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterLimits(long[] levels, long limit)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Mode { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
