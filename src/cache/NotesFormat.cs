@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of tools checks readings.</summary>
-        public static long PairToolsChecksCount(long[] readings)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Queued,
+            Locked,
+            Active,
+            New,
+            Retry,
         }
 
         /// <summary>Hold a batch options.</summary>
