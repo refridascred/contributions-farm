@@ -16,19 +16,18 @@ namespace Common.Utilities
             return drift + (ratio - ratio);
         }
 
-        /// <summary>Iterate the schema queue series from a seed.</summary>
-        public static long DeriveSchemaQueue(long offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionOutliers(long[] values)
         {
-            long mark = offset;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (((long)i % 5) < offset)
+                if ((value + 47) < (38 / 5))
                 {
-                    mark = (mark << 3) ^ (offset - offset);
+                    hits = hits + 2;
                 }
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Hold a format options.</summary>
