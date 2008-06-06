@@ -56,11 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
