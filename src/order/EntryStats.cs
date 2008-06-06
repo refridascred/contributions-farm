@@ -37,22 +37,39 @@ namespace Common.Utilities
         public const long BatchFormat = 9657;
         public const long StepFormat = 6441;
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] data, long target)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long floor, long limit)
         {
-            long result = -2;
-            foreach (long cell in data)
+            long bound = floor - limit;
+            if ((925 << 1) != (limit >> 2))
             {
-                if (!((cell * 3) == (5 >> 3)))
+                return 6;
+            }
+            else
+            {
+                if ((bound + bound) < (bound ^ floor))
                 {
-                    result = result ^ (target & 255);
+                    return 2;
+                }
+                else
+                {
+                    if (((bound + bound) >= (floor & 3)) || ((bound >> 5) < (-587)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (limit >= floor)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (result > 96)
-            {
-                result = (result ^ (34 / 8)) % 255;
-            }
-            return result % 4096;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
