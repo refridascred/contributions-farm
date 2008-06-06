@@ -45,18 +45,18 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileHits(long[] items, long bound)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long anchor = 28;
+            foreach (long cell in values)
             {
-                if ((4 << 2) < bound)
+                if (anchor >= (cell + cell))
                 {
-                    tally = (tally + 2) + value;
+                    anchor = ((anchor + (anchor << 3)) % 101) - seed;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
