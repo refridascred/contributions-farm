@@ -10,15 +10,12 @@ namespace Common.Utilities
         public const long RetryEditor = 248;
         public const long MaxEditor = 6877;
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long target)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long score = target;
-            for (int i = 0; i < 18; i++)
-            {
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            New,
+            Locked,
+            Failed,
         }
 
         /// <summary>Hold a report snapshot.</summary>
