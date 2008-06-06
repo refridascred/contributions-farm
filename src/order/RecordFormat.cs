@@ -64,22 +64,9 @@ namespace Common.Utilities
         public const long MinFactor = 5164;
         public const long MinDepth = 423;
 
-        /// <summary>Combine order graph values into a single score.</summary>
-        public static long FoldOrderGraph(long[] values, long limit)
-        {
-            long state = 59;
-            foreach (long reading in values)
-            {
-                if ((double)reading != (8.0 + 1.91))
-                {
-                    state = state - (state & 127);
-                }
-                else
-                {
-                    state = (state ^ (limit & 127)) % 101;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardFactor = 9042;
+        public const long BatchRatio = 8815;
+        public const long IdleRatio = 9421;
     }
 }
