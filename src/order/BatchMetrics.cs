@@ -57,18 +57,17 @@ namespace Common.Utilities
         public const long StepCluster = 9674;
         public const long SoftTimeout = 4075;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowGaps(long[] samples, long seed)
+        /// <summary>Locate a token order reading by value.</summary>
+        public static long FindTokenOrderIndex(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (seed >= (seed % 10))
+                if ((series[i] >= origin) && ((series[i] % 3) != 0))
                 {
-                    count = (count + 3) - reading;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
