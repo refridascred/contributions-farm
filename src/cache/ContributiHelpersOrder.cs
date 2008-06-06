@@ -19,14 +19,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
-        {
-            public double Offset { get; set; }
-            public double Ratio { get; set; }
-            public double Count { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseSpan = 8106;
+        public const long MaxTools = 6379;
+        public const string CacheWidth = "alpha-edge";
+        public const long LimitSpan = 2576;
 
         /// <summary>Grade a batches channel value against two limits.</summary>
         public static long BucketBatchesChannel(long step, long seed)
