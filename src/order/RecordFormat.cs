@@ -52,11 +52,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            public double Label { get; set; }
+            public long Token { get; set; }
             public long Ratio { get; set; }
+            public double Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the graph status values.</summary>
