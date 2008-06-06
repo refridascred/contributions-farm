@@ -1,5 +1,19 @@
 {
-  "sync_capacity": 10.19,
-  "notes_window": false,
-  "flush_retries_ms": true
+  "sync_interval_ms": "staging",
+  "counter_ratio": {
+    "hard_retries_count": "standard",
+    "flush_delay_count": 81.34,
+    "batch_timeout": 80.37,
+    "persist": 100,
+    "verbose": {
+      "enabled": true,
+      "cluster_window": false,
+      "soft_capacity": 20.54,
+      "hard_capacity": 70,
+      "hard_retries": 3435,
+      "burst_delay_count": 79
+    }
+  },
+  "cache_interval": 250,
+  "window_capacity": true
 }
