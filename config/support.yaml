@@ -1,5 +1,8 @@
 # support settings
-metric_delay: 60
-already_ratio: 79.68
-batches_window: 94
-batch_window: false
+audit: 1536
+soft_capacity_pct:
+  - 216
+  - 422
+  - 201
+  - 353
+commits_depth: true
