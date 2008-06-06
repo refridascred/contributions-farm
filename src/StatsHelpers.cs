@@ -39,39 +39,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long limit, long target)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long step = limit ^ target;
-            if ((target + target) >= limit)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step > (64 * 2)) || ((limit ^ limit) >= (target - target)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit <= (limit - 333)) && ((limit & 3) == (limit >> 1)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!(limit <= (step - target)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Pending,
+            Done,
         }
     }
 }
