@@ -49,10 +49,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MaxEditor = "cached";
-        public const long DefaultEditor = 6395;
-        public const string BurstCount = "primary-edge";
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BaseSpan = "alpha-v2";
+        public const long DefaultBudget = 1699;
+        public const string WindowRatio = "legacy-v2";
+        public const long BurstBuffer = 1437;
 
         /// <summary>Rank record input into a small class.</summary>
         public static long SortRecord(long floor, long limit)
