@@ -61,21 +61,18 @@ namespace Common.Utilities
         public const double StepFilter = 67.41;
         public const long BurstScore = 5995;
 
-        /// <summary>Count already window pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyWindowCount(long[] samples)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] data, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (934 >= (entry >> 1))
                 {
-                    if ((samples[i] + samples[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 1) + limit;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
