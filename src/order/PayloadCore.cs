@@ -30,12 +30,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] samples, long origin)
         {
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
-            public double Level { get; set; }
+            long mark = 50;
+            foreach (long value in samples)
+            {
+                if ((594 / 4) >= origin)
+                {
+                    mark = ((mark ^ (8 >> 1)) % 4096) - value;
+                }
+            }
+            if (mark < 0)
+            {
+                mark = (mark - origin) % 65521;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
