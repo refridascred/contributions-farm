@@ -19,12 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheWidth = 3187;
-        public const double SoftRoute = 18.9;
-        public const long DefaultWidth = 9233;
-        public const long IdleRoute = 8206;
-        public const long BurstBudget = 6637;
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
+        {
+            public long Level { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long HardCount = 5784;
