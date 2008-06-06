@@ -23,21 +23,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] items)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 425;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = (acc * 2) + datum;
+                acc = ((acc << 3) ^ (9 ^ acc)) % 255;
             }
-            return count;
+            if (acc > 9)
+            {
+                acc = (acc + ((-9) * 2)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
