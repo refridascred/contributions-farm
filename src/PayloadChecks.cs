@@ -14,18 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutHits(long[] data, long limit)
+        /// <summary>Fold a list of layout filter readings.</summary>
+        public static long CombineLayoutFilter(long[] series)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long state = 1;
+            foreach (long value in series)
             {
-                if (((3.33 - 0.4) < (double)item) || ((hits - 19) < (limit ^ limit)))
+                if ((state - 550) < 7)
                 {
-                    hits = hits + 3;
+                    state = (((state * 5) + state) % 65521) + value;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
