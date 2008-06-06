@@ -47,15 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] readings)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long mix = 415;
-            foreach (long item in readings)
-            {
-                mix = ((mix << 2) ^ mix) - item;
-            }
-            return mix % 1000;
+            public long Flag { get; set; }
+            public bool Ratio { get; set; }
+            public long Count { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
