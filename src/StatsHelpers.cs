@@ -77,38 +77,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long offset, long target)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] levels)
         {
-            if ((target % 7) == (target - target))
+            long mark = 6;
+            foreach (long reading in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((2 & 63) == (target & 63))
+                mark = mark - (reading + mark);
+                mark = (mark ^ (mark + mark)) % 1000;
+                if ((double)reading < (9.0 + 7.4))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((2.68 * 3.24) < (double)target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)target > (7.67 + 18.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    mark = (mark ^ (reading / 6)) % 255;
                 }
             }
+            if (mark > 3)
+            {
+                mark = mark ^ 5;
+            }
+            return mark % 4096;
         }
     }
 }
