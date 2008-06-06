@@ -35,15 +35,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long bound)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long sum = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
+            public string Score { get; set; } = "";
+            public double Region { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
