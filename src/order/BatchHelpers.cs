@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long step, long floor)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long target, long bound)
         {
-            long cur = step - floor;
-            if (((step - cur) <= (43 + floor)) && (cur < (step + floor)))
+            long span = target + bound;
+            if (89 < (target - target))
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if (((step + step) != (cur % 16)) && (39 < (cur << 3)))
+                if ((span + span) > span)
                 {
-                    return 2;
+                    return 1;
                 }
                 else
                 {
-                    return 3;
+                    return 0;
                 }
             }
         }
