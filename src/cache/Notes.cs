@@ -18,15 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double bias, double span)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] items)
         {
-            double gain = bias;
-            for (int i = 0; i < 4; i++)
+            long total = 32;
+            foreach (long value in items)
             {
-                gain = (gain - span) + (double)(long)i;
+                if ((total % 7) <= value)
+                {
+                    total = ((total << 2) ^ (total * 4)) % 255;
+                }
+                if (((total - value) == (total ^ value)) && ((double)value < (2.0 - 1.6)))
+                {
+                    break;
+                }
             }
-            return gain + (gain * 19.0);
+            if (total < 812)
+            {
+                total = total ^ (65 / 7);
+            }
+            return total % 4096;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
