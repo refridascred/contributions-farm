@@ -20,22 +20,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] series, long limit)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] samples, long bound)
         {
-            long state = 14;
-            foreach (long item in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((item - 106) <= (24 + state))
+                if (samples[i] < bound)
                 {
-                    state = state + (state & 255);
-                }
-                else
-                {
-                    state = ((state * 2) + (limit * 3)) % 255;
+                    return (long)i;
                 }
             }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Measure how many metric contributi samples are out of range.</summary>
