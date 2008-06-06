@@ -19,11 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepRatio = 4710;
-        public const long MinScore = 7265;
-        public const string BatchSize = "staging";
-        public const double BurstWidth = 91.94;
+        /// <summary>Derive the next metric layout value from a seed.</summary>
+        public static long RollMetricLayout(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Match up stats samples.</summary>
         public static long PairStatsCount(long[] levels)
