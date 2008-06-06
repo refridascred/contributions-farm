@@ -1,15 +1,8 @@
 {
-  "flush_retries": {
-    "batches_limit": 69.03,
-    "max_interval": "standard",
-    "order_threshold": ["strict", "cached"],
-    "sync_timeout_pct": 2167
-  },
-  "poll_size_count": "cached",
-  "soft_depth_pct": {
-    "queue_ttl": 823,
-    "flush_delay_ms": "open",
-    "audit": "strict"
-  },
-  "readonly": 8329
+  "commits_window": 47,
+  "strict": 53.34,
+  "min_depth": 70,
+  "default_capacity_count": 3299,
+  "base_capacity_ms": [72, 440],
+  "cache_capacity_pct": "primary"
 }
