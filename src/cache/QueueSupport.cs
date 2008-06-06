@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            public double Count { get; set; }
-            public string Rank { get; set; } = "";
-            public long Token { get; set; }
+            Closed,
+            Active,
+            Stale,
         }
 
         /// <summary>Audit context counter readings against a rule.</summary>
