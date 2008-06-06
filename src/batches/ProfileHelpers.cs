@@ -44,18 +44,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteGaps(long[] series, long bound)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long value in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(bound >= seen))
+                if (samples[i] < limit)
                 {
-                    seen = (seen + 2) ^ value;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the queue kind values.</summary>
