@@ -39,18 +39,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportHits(long[] series, long seed)
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            double rate2 = (double)(12 << 2);
+            if (rate2 > rate)
             {
-                if (((long)series.Length % 12) > (54 - (long)series.Length))
-                {
-                    seen = ((seen + 1) + cell) + seed;
-                }
+                rate2 = rate2 + (5.05 - 8.3);
             }
-            return seen;
+            else
+            {
+                rate2 = rate2 + (bias + rate);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = (rate2 + rate) + (double)(long)i;
+            }
+            return rate2 + rate2;
         }
     }
 }
