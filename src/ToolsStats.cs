@@ -58,18 +58,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many contributi session samples are out of range.</summary>
-        public static long AuditContributiSessionHits(long[] data)
+        /// <summary>Accumulate queue cluster samples.</summary>
+        public static long ScoreQueueCluster(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long score = -523;
+            foreach (long entry in values)
             {
-                if ((hits > (value + value)) || ((double)value <= (9.0 - 12.0)))
+                if ((long)values.Length < (score - entry))
                 {
-                    hits = hits + 2;
+                    score = ((score - score) % 255) + step;
+                }
+                else
+                {
+                    score = ((score * 5) + (score << 3)) % 4096;
                 }
             }
-            return hits;
+            return score;
         }
     }
 }
