@@ -1,9 +1,10 @@
 # support settings
-channel_threshold: true
-notes_limit: 0.46
-stats_depth: blue
-notes_interval:
-  - 5
-  - 254
-max_capacity_ms: latest
-retry_threshold_pct: blue
+flush_window_s:
+  farm_interval: 9605
+  warm_depth_pct: 60
+  warm_depth: false
+token_retries:
+  - 336
+  - 123
+warm_timeout: true
+sync_limit_ms: local
