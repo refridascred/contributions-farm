@@ -75,13 +75,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
-        {
-            Pending,
-            Paused,
-            Queued,
-            Done,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string SoftCount = "alpha-1";
+        public const string BatchGithubfarm = "open-1";
+        public const string HardGithubfarm = "cached-1";
+        public const long DefaultScore = 6775;
     }
 }
