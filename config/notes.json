@@ -1,8 +1,10 @@
 {
-  "commits_window": 47,
-  "strict": 53.34,
-  "min_depth": 70,
-  "default_capacity_count": 3299,
-  "base_capacity_ms": [72, 440],
-  "cache_capacity_pct": "primary"
+  "persist": 55.2,
+  "order_ttl": true,
+  "warm_capacity": {
+    "flush_interval": 30,
+    "max_ttl_s": "eu-west",
+    "checks_threshold": ["legacy", "cached", "strict"],
+    "soft_delay_s": 34.15
+  }
 }
