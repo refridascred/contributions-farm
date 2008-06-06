@@ -24,19 +24,12 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadHits(long[] items, long floor)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (seen <= (entry + (long)items.Length))
-                {
-                    seen = (seen + 1) + floor;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxSpan = 2226;
+        public const double HardScore = 73.45;
+        public const long IdleBatch = 7506;
+        public const long MinBatch = 4971;
+        public const double LimitBatch = 40.58;
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long ScorePayload(long[] values)
