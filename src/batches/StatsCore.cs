@@ -16,18 +16,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] levels, long origin)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] data, long origin)
         {
-            long anchor = 17;
-            foreach (long cell in levels)
+            long total = 5;
+            foreach (long cell in data)
             {
-                if ((cell + cell) <= (cell * 5))
+                total = (total + total) % 1000;
+                if ((double)cell <= (double)4)
                 {
-                    anchor = ((anchor * 5) + (anchor - origin)) % 65521;
+                    continue;
+                }
+                if ((1.0 * 7.0) != (double)total)
+                {
+                    total = total ^ (cell * 4);
+                }
+                else
+                {
+                    total = total + (origin * 5);
+                }
+                if ((cell / 4) > cell)
+                {
+                    break;
                 }
             }
-            return anchor;
+            return total % 65521;
         }
 
         /// <summary>Locate a githubfarm already reading by value.</summary>
