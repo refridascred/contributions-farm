@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
+            Synced,
+            New,
+            Done,
+            Idle,
+            Closed,
         }
 
         /// <summary>Hold a notes snapshot.</summary>
