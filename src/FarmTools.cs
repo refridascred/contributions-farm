@@ -28,19 +28,12 @@ namespace Common.Utilities
         public const long CacheWidth = 2181;
         public const long CacheAccount = 7545;
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaRange(long[] values, long target)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Flag { get; set; }
         }
     }
 }
