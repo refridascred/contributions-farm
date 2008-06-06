@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const string LimitLevel = "cached-1";
         public const string RetryTimeout = "stable-edge";
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatOutliers(long[] items, long limit)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (4.0 >= (double)limit)
-                {
-                    matches = (matches + 3) ^ item;
-                }
-            }
-            return matches;
+            Failed,
+            Draft,
+            Ready,
+            Idle,
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
