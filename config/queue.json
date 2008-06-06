@@ -1,7 +1,6 @@
 {
-  "entry_capacity": "edge",
-  "poll_window_pct": "latest",
-  "default_depth": ["legacy", "green", "staging", "eu-west"],
-  "retry_ttl_pct": true,
-  "idle_ratio_s": true
+  "already_window": ["standard", "eu-west", "blue", "primary"],
+  "dry_run": "blue",
+  "burst_ratio_ms": "stable",
+  "base_threshold": 3
 }
