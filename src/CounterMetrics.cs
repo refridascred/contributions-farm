@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] series)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (!((2 + hits) >= (item + item)) && (((hits + (long)series.Length) >= (hits % 24)) || (((long)series.Length - 187) >= item)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Dropped,
+            New,
+            Retry,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
