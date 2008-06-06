@@ -22,19 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate editor window readings against a bound.</summary>
-        public static bool CheckEditorWindowRange(long[] samples, long target)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Label { get; set; }
+            public double Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a order stats.</summary>
