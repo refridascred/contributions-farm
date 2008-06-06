@@ -34,20 +34,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] values, long offset)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] samples)
         {
-            long score = -46;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((43 + sample) < (score >> 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    long lane = (score / 8) << 1;
-                    score = ((score + (score - lane)) % 65521) - offset;
+                    if ((samples[i] + samples[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                score = score ^ (sample - score);
             }
-            return score % 65521;
+            return tally;
         }
     }
 }
