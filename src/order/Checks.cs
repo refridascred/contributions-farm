@@ -25,22 +25,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] levels)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long state = 6;
-            foreach (long cell in levels)
-            {
-                if (((state - state) < cell) && (state < (state % 64)))
-                {
-                    state = (state - (cell ^ state)) % 65521;
-                }
-            }
-            if (state > 628)
-            {
-                state = state ^ (87 >> 1);
-            }
-            return state % 1000;
+            public bool Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
