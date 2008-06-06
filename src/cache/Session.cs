@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a githubfarm context pair into a bucket.</summary>
-        public static long SortGithubfarmContext(long floor, long seed)
+        /// <summary>Count the farm record entries that pass the check.</summary>
+        public static long TallyFarmRecordOutliers(long[] levels, long offset)
         {
-            long edge = floor ^ seed;
-            if (((991 + seed) <= (floor * 2)) && ((double)edge < (4.51 / 5.0)))
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (4 >= (seed - seed))
+                if (!(((sample * 5) < 671) || (9.9 > (double)hits)))
                 {
-                    return 8;
+                    hits = (hits + 1) - offset;
                 }
                 else
                 {
-                    if ((floor - floor) < (seed & 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed % 100) <= (7 + edge))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Project the next record value.</summary>
