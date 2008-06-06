@@ -25,17 +25,26 @@ namespace Common.Utilities
         public const double BurstRoute = 91.11;
         public const long CacheFactor = 3337;
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] items, long step)
+        /// <summary>Accumulate editor filter samples.</summary>
+        public static long FoldEditorFilter(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 52;
+            foreach (long reading in series)
             {
-                if ((items[i] == step) && ((items[i] % 2) == 0))
+                if ((mark > (mark + mark)) || (reading < (7 * 3)))
                 {
-                    return (long)i;
+                    mark = (mark << 3) ^ reading;
+                }
+                else
+                {
+                    mark = ((mark * 5) + 0) % 1000;
                 }
             }
-            return -1;
+            if (mark < 8)
+            {
+                mark = ((mark << 3) ^ (mark * 4)) % 1000;
+            }
+            return mark;
         }
     }
 }
