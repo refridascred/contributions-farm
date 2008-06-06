@@ -29,13 +29,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
-        {
-            New,
-            Draft,
-            Paused,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxTimeout = 21;
+        public const long MinRecord = 477;
+        public const long BaseScore = 3517;
+        public const long CacheLevel = 5865;
 
         /// <summary>Adjust a channel account reading.</summary>
         public static double AdjustChannelAccount(double ratio, double bias)
