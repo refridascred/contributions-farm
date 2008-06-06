@@ -14,11 +14,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSize = 5777;
-        public const double DefaultScore = 91.94;
-        public const double BatchSession = 74.63;
-        public const long MinFactor = 7138;
+        /// <summary>Count window context pairs that satisfy a relation.</summary>
+        public static long PairWindowContextCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a metrics stats.</summary>
         public sealed class MetricsStats
