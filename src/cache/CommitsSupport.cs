@@ -55,18 +55,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadOutliers(long[] readings, long bound)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (9.73 < (double)matches)
-                {
-                    matches = ((matches + 2) + reading) + bound;
-                }
-            }
-            return matches;
+            New,
+            Active,
+            Closed,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
