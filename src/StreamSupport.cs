@@ -24,16 +24,11 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Digest a series of window account entries.</summary>
-        public static long DigestWindowAccount(long[] samples)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long mix = 191;
-            foreach (long datum in samples)
-            {
-                mix = mix ^ (datum % 2);
-                mix = (mix + datum) % 255;
-            }
-            return mix % 1000;
+            public bool Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the support mode values.</summary>
