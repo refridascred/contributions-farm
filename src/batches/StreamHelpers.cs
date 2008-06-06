@@ -36,15 +36,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] items)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyBounds(long[] series, long target)
         {
-            long mix = 240;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                mix = (mix + (mix & 7)) + entry;
+                if (datum >= target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Accumulate channel session samples.</summary>
