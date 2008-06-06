@@ -38,11 +38,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesBounds(long[] series, long limit)
         {
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
