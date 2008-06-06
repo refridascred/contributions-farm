@@ -36,19 +36,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksRange(long[] levels, long offset)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyCount(long[] levels)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample <= offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
