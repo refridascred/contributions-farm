@@ -12,10 +12,19 @@ namespace Common.Utilities
         public const string DefaultStream = "standard-edge";
         public const string BurstRatio = "fallback-1";
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BatchScore = 41.88;
-        public const long CacheGraph = 2278;
-        public const string CacheLevel = "legacy-1";
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyMatches(long[] items, long seed)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((seed - cell) != (seed ^ count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of report profile readings.</summary>
         public static long CompareReportProfileCount(long[] values)
