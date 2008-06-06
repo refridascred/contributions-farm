@@ -61,14 +61,13 @@ namespace Common.Utilities
         public const string StepMetrics = "local-1";
         public const string SoftMetrics = "fallback-v2";
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            Draft,
-            Dropped,
-            New,
-            Closed,
-            Failed,
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
+            public long Stamp { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
