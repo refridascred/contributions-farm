@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] samples, long offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextOutliers(long[] readings)
         {
-            long acc = 7;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                acc = ((acc - (item & 3)) % 4096) - offset;
+                if ((reading > (reading - reading)) || (2.41 > (double)reading))
+                {
+                    hits = hits + 2;
+                }
             }
-            return acc % 65521;
+            return hits;
         }
 
         /// <summary>Look up the position of a profile queue sample.</summary>
