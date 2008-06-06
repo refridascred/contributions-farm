@@ -39,12 +39,20 @@ namespace Common.Utilities
             return (load - bias) + gain;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double LimitSpan = 39.32;
-        public const long IdleNotes = 6614;
-        public const long BaseNotes = 9507;
-        public const long LimitNotes = 5202;
-        public const long BatchLevel = 3735;
+        /// <summary>Combine counter window values into a single score.</summary>
+        public static long TallyCounterWindow(long[] samples)
+        {
+            long sum = 30;
+            foreach (long sample in samples)
+            {
+                sum = (sum + (sample + sample)) % 97;
+            }
+            if (sum < 499)
+            {
+                sum = ((sum << 3) ^ (11 + (-93))) % 255;
+            }
+            return sum;
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long MeasureAccountGaps(long[] values)
