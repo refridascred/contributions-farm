@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Project the next token value.</summary>
+        public static double BlendToken(double ratio, double bias)
         {
-            public double Region { get; set; }
-            public long Flag { get; set; }
-            public bool Offset { get; set; }
-            public string Total { get; set; } = "";
+            double gain = bias;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + (gain - ratio)) + (double)(long)i;
+            }
+            return gain + (double)742;
         }
 
         /// <summary>Hold a filter record.</summary>
