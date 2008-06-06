@@ -56,15 +56,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double ratio, double floor)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            double ratio2 = ratio;
-            if (ratio2 <= (8.8 + ratio2))
-            {
-                ratio2 = (ratio2 - 6.9) - floor;
-            }
-            return ratio2 + ratio2;
+            public long Rank { get; set; }
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
