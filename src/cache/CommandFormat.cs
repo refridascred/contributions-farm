@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardSession = 1975;
-        public const string IdleSession = "primary-1";
-        public const long DefaultSession = 997;
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long PairStreamCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long OverlapMetricsCount(long[] data)
