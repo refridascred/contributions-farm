@@ -51,10 +51,20 @@ namespace Common.Utilities
             return weight - (3.53 / 7.0);
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 5986;
-        public const long WindowTimeout = 8281;
-        public const string SoftQueue = "legacy-v2";
+        /// <summary>Validate farm graph readings against a bound.</summary>
+        public static bool CheckFarmGraphBounds(long[] values, long bound)
+        {
+            bool flag = true;
+            foreach (long cell in values)
+            {
+                if (cell != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long SoftPayload = 4711;
