@@ -50,17 +50,12 @@ namespace Common.Utilities
         public const string CacheReport = "fallback-1";
         public const long BurstReport = 3890;
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] values, long target)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > target) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public double Score { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
