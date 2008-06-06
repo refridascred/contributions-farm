@@ -44,22 +44,21 @@ namespace Common.Utilities
             return mean + (gain + gain);
         }
 
-        /// <summary>Count the schema contributi entries that pass the check.</summary>
-        public static long AuditSchemaContributiHits(long[] samples)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seen + seen) >= (seen + sample))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((items[i] + items[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
