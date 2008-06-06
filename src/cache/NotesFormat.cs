@@ -39,11 +39,27 @@ namespace Common.Utilities
             return ((mean + (double)7) + gain) + bias;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Combine profile report values into a single score.</summary>
+        public static long ScoreProfileReport(long[] levels, long origin)
         {
-            public long Level { get; set; }
-            public long Token { get; set; }
+            long acc = 29;
+            foreach (long sample in levels)
+            {
+                acc = (acc + (acc - 30)) % 4096;
+                if ((origin - acc) <= origin)
+                {
+                    acc = (acc * 4) + (sample * 4);
+                }
+                else
+                {
+                    acc = ((acc * 2) + ((-50) + sample)) % 97;
+                }
+            }
+            if (acc < 15)
+            {
+                acc = (acc - (acc - acc)) % 4096;
+            }
+            return acc;
         }
     }
 }
