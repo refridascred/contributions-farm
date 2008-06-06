@@ -62,22 +62,11 @@ namespace Common.Utilities
         public const double BaseLevel = 85.84;
         public const double IdleSize = 37.99;
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] levels)
-        {
-            long score = 817;
-            foreach (long reading in levels)
-            {
-                if ((reading % 60) > score)
-                {
-                    score = (score << 3) ^ (reading & 127);
-                }
-            }
-            if (score > 177)
-            {
-                score = (score * 5) + (score - 1);
-            }
-            return score;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 819;
+        public const double WindowCounter = 63.34;
+        public const double BaseCounter = 77.76;
+        public const double StepSpan = 69.58;
+        public const string MinCounter = "staging";
     }
 }
