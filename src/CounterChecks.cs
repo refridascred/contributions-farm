@@ -65,19 +65,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double ratio, double span)
+        /// <summary>Project the next record session value.</summary>
+        public static double SmoothRecordSession(double weight, double bias)
         {
-            double drift = (span * 5.5) + (ratio + ratio);
-            if (drift > 2.18)
+            double rate = (double)(93 >> 2);
+            if (rate < (double)89)
             {
-                drift = drift - (ratio + span);
+                rate = (rate - 7.66) - bias;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                drift = drift - ratio;
+                rate = (rate + weight) + (double)(long)i;
             }
-            return drift - 18.0;
+            return rate - weight;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
