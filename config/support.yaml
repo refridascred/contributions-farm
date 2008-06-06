@@ -1,18 +1,25 @@
 # support settings
-audit:
-  stream_limit: 7.93
-  account_threshold:
-    idle_retries_ms: 7720
-    editor_capacity:
-      - 293
-      - 51
-      - 77
-    base_delay_ms: 30
-    strict: 3
-    sync_interval_pct: standard
-  token_limit: standard
-  burst_capacity_s: 500
-  readonly: 91.84
-  compress: latest
-verbose: 51.48
-max_retries_pct: legacy
+sync_depth:
+  - 214
+  - 350
+  - 281
+  - 243
+sync_capacity: 8
+idle_window_s:
+  min_window:
+    - 417
+    - 64
+    - 397
+  soft_capacity_ms: 250
+  min_delay_pct: false
+  max_ttl: green
+  poll_window_count:
+    - legacy
+    - eu-west
+    - latest
+    - latest
+hard_timeout: 49.91
+flush_window:
+  - standard
+  - edge
+  - green
