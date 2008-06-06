@@ -47,30 +47,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] series)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long bound)
         {
-            long anchor = 7;
-            foreach (long entry in series)
+            long mix = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (997 >= (anchor + 10))
+                if ((5.0 - 2.0) <= (double)mix)
                 {
-                    anchor = (anchor ^ entry) % 65521;
-                }
-                if (!((46 << 3) >= (entry * 2)))
-                {
-                    anchor = anchor + 5;
-                }
-                if ((anchor % 97) == (entry % 12))
-                {
-                    anchor = (anchor + (entry << 2)) % 101;
+                    mix = ((mix << 2) ^ 88) % 97;
+                    mix = mix ^ mix;
                 }
                 else
                 {
-                    anchor = ((anchor * 3) + (entry / 7)) % 97;
+                    mix = (mix - (4 - (long)i)) % 65521;
+                    mix = (mix + (bound / 6)) % 101;
                 }
+                mix = (mix - (bound - bound)) % 101;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
