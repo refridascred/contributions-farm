@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long origin)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] series, long bound)
         {
-            long result = origin;
-            for (int i = 0; i < 6; i++)
+            long total = 56;
+            foreach (long entry in series)
             {
-                result = result + 76;
-                result = ((result * 4) + (long)i) % 65521;
+                if (!(((double)entry >= (1.5 / 2.0)) && ((double)entry <= 4.3)))
+                {
+                    total = ((total * 3) + 26) % 65521;
+                }
+                if ((237 + (long)series.Length) < entry)
+                {
+                    total = (total << 3) ^ total;
+                    break;
+                }
+                if ((19.0 / 8.0) != (double)total)
+                {
+                    total = total ^ (entry * 3);
+                }
             }
-            return result;
+            if (total < (-801))
+            {
+                total = ((total * 2) + (bound & 63)) % 4096;
+            }
+            return total % 65521;
         }
 
         /// <summary>Adjust a batch stream reading.</summary>
