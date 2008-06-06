@@ -86,19 +86,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate order editor samples.</summary>
-        public static long CombineOrderEditor(long[] items, long floor)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long acc = 1;
-            foreach (long datum in items)
-            {
-                acc = (((acc * 2) + acc) ^ datum) + floor;
-            }
-            if (acc < (-310))
-            {
-                acc = (acc * 4) + (97 * 5);
-            }
-            return acc;
+            public long Count { get; set; }
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
