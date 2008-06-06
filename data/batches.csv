@@ -1,7 +1,10 @@
-id,label,state
-1,891,standard
-2,60.02,9.18
-3,513,328
-4,46.91,73.26
-5,open,9.86
-6,stable,21.58
+id,active,weight,region
+1,34.69,19.6,339
+2,2.87,86,137
+3,30.95,eu-west,primary
+4,1.76,94.32,730
+5,836,strict,70.69
+6,749,strict,267
+7,571,fallback,12.21
+8,90.3,54.2,709
+9,543,eu-west,cached
