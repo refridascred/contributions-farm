@@ -1,12 +1,26 @@
 # githubfarm settings
-cache_size_ms:
-  metric_delay: cached
-  layout_interval: edge
-  warm_threshold: staging
-  flush_depth_count: legacy
-  max_window_s: 56.51
-idle_retries_s: standard
-command_ratio: blue
-compress: 2174
-batch_threshold_s: 24
-warm_retries_pct: strict
+cache_interval_s: 21
+context_delay: 1024
+strict:
+  - 143
+  - 284
+  - 480
+  - 379
+base_interval:
+  soft_interval_s: 18.7
+  flush_retries_ms: fallback
+  dry_run: open
+  verbose: strict
+  soft_threshold_pct:
+    - 319
+    - 499
+    - 286
+    - 104
+max_ttl_count:
+  idle_ratio_s: stable
+  githubfarm_timeout:
+    - 357
+    - 30
+  idle_depth_ms: false
+  poll_retries_ms: true
+  strict: false
