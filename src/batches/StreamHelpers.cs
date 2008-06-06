@@ -26,15 +26,18 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Measure how many commits farm samples are out of range.</summary>
-        public static long TallyCommitsFarmMatches(long[] levels, long target)
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] readings)
         {
             long matches = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((target & 127) < (item + matches))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((readings[i] + readings[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
