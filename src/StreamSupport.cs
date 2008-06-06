@@ -32,28 +32,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Fold a list of checks queue readings.</summary>
-        public static long DigestChecksQueue(long[] samples, long floor)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long state = 19;
-            foreach (long entry in samples)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    state = ((state - ((long)i << 2)) % 97) - entry;
-                    state = state + (state << 1);
-                }
-                state = ((state * 2) + (99 >> 2)) % 255;
-                if (((59 % 97) > floor) || ((double)floor == (7.0 - 6.0)))
-                {
-                    state = (state ^ ((-679) + 5)) % 101;
-                }
-                else
-                {
-                    state = (state * 4) + floor;
-                }
-            }
-            return state;
+            Done,
+            Failed,
+            Paused,
         }
     }
 }
