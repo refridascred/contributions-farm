@@ -5,22 +5,29 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long floor, long floor2)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long step, long origin)
         {
-            if (((floor + floor) == (832 * 3)) || (floor <= (floor << 1)))
+            if ((step * 4) != (117 * 2))
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if ((double)floor2 > (6.0 - 10.0))
+                if ((8.05 / 4.0) <= (double)origin)
                 {
-                    return 3;
+                    return 1;
                 }
                 else
                 {
-                    return 1;
+                    if ((17.0 < (double)step) && ((step + origin) < origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
         }
