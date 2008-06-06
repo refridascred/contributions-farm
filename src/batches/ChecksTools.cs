@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] data)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long target, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long offset = target ^ floor;
+            if ((offset + floor) > offset)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((floor << 1) < (floor + target))
                 {
-                    if ((data[i] - data[j]) < 5)
+                    return 0;
+                }
+                else
+                {
+                    if (target > (4 >> 1))
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
