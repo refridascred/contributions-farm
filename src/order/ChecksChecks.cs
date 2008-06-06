@@ -47,15 +47,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long origin)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long origin, long step)
         {
-            long mark = origin;
-            for (int i = 0; i < 21; i++)
+            long step2 = origin - step;
+            if ((double)origin >= (3.71 + 18.0))
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if (((step2 >> 4) > (step & 3)) || ((double)step >= (double)origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
