@@ -22,12 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            public double Label { get; set; }
-            public double Owner { get; set; }
-            public long Count { get; set; }
+            New,
+            Closed,
+            Idle,
+            Paused,
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
