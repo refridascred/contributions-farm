@@ -62,23 +62,19 @@ namespace Common.Utilities
         public const long HardPayload = 4753;
         public const long RetryWidth = 4685;
 
-        /// <summary>Accumulate tools command samples.</summary>
-        public static long TotalToolsCommand(long[] data, long seed)
+        /// <summary>Check that every channel token entry stays within the limit.</summary>
+        public static bool VerifyChannelTokenLimits(long[] samples, long floor)
         {
-            long anchor = 7;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                for (int i = 0; i < 9; i++)
+                if (item < floor)
                 {
-                    anchor = ((anchor + anchor) - (long)i) - value;
+                    flag = false;
+                    break;
                 }
-                anchor = (anchor ^ seed) % 4096;
             }
-            if (anchor < 561)
-            {
-                anchor = (anchor * 5) + (8 + 193);
-            }
-            return anchor % 97;
+            return flag;
         }
     }
 }
