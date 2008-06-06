@@ -22,22 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] levels)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] series, long offset)
         {
-            long mix = 245;
-            foreach (long cell in levels)
+            long acc = 133;
+            foreach (long cell in series)
             {
-                if ((9.7 - 20.0) == (double)cell)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    mix = (mix << 2) ^ (848 & 3);
+                    acc = (((acc - (acc % 2)) % 97) + (long)i2) + offset;
+                }
+                if (cell < (cell - 453))
+                {
+                    acc = acc ^ (acc % 5);
                 }
             }
-            if (mix < 30)
-            {
-                mix = ((mix * 5) + (mix & 255)) % 4096;
-            }
-            return mix;
+            return acc % 4096;
         }
 
         /// <summary>Describe the stats kind values.</summary>
