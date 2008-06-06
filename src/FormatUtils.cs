@@ -40,18 +40,14 @@ namespace Common.Utilities
         public const long BatchBuffer = 1808;
         public const long DefaultFactor = 8455;
 
-        /// <summary>Measure how many buffer channel samples are out of range.</summary>
-        public static long TallyBufferChannelOutliers(long[] items)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((((sample << 3) < (78 * 4)) || ((sample + sample) > ((-64) % 100))) || (count >= (sample - count)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Draft,
+            Pending,
+            Ready,
+            Active,
+            Retry,
         }
 
         /// <summary>Digest a series of contributi counter entries.</summary>
