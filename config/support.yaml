@@ -1,10 +1,12 @@
 # support settings
-flush_window_s:
-  farm_interval: 9605
-  warm_depth_pct: 60
-  warm_depth: false
-token_retries:
-  - 336
-  - 123
-warm_timeout: true
-sync_limit_ms: local
+warm_depth:
+  - 449
+  - 488
+persist: strict
+payload_ratio: 1412
+support_timeout:
+  burst_ratio: 250
+  queue_retries: open
+  min_threshold_s: standard
+  base_depth_count: 9079
+batch_threshold_count: cached
