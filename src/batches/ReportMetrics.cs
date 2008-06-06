@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long limit, long target)
         {
-            public double Stamp { get; set; }
-            public double Level { get; set; }
-            public long Rank { get; set; }
+            long cur = limit - target;
+            if ((target - cur) <= (limit - 817))
+            {
+                return 0;
+            }
+            else
+            {
+                if (target < limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (cur > (-5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a filter summary.</summary>
