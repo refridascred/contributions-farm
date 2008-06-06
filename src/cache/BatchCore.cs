@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] data)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long bound, long step)
         {
-            long total = 87;
-            foreach (long cell in data)
+            if (step >= (819 ^ bound))
             {
-                if (((total + total) < (total / 6)) && ((total * 2) < total))
+                return 4;
+            }
+            else
+            {
+                if (7.0 >= (double)step)
                 {
-                    total = ((total << 3) ^ (cell & 3)) % 65521;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            if (total < (-7))
-            {
-                total = (total << 2) ^ (7 + total);
-            }
-            return total;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
