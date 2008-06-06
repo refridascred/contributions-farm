@@ -86,22 +86,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksOutliers(long[] values, long bound)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterGaps(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if ((double)datum < (double)(long)values.Length)
+                if ((35 >> 4) <= cell)
                 {
-                    tally = (tally + 1) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = (seen + 1) + target;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
