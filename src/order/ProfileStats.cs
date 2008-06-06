@@ -36,18 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] values)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long mix = 6;
+            foreach (long entry in readings)
             {
-                if ((sample << 3) != (seen * 2))
+                if (18 < (mix + entry))
                 {
-                    seen = seen + 1;
+                    mix = (mix - (mix + mix)) % 1000;
+                }
+                if ((entry << 2) >= (entry / 2))
+                {
+                    break;
                 }
             }
-            return seen;
+            return mix % 1000;
         }
 
         /// <summary>Describe the payload state values.</summary>
