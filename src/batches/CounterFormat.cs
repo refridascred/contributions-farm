@@ -15,23 +15,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the layout command series from a seed.</summary>
-        public static long RollLayoutCommand(long seed)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double rate, double offset)
         {
-            long carry = seed;
-            for (int i = 0; i < 21; i++)
+            double rate2 = offset - (rate * 7.0);
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)carry != (double)seed)
-                {
-                    carry = ((carry * 3) + (4 / 6)) % 101;
-                }
-                else
-                {
-                    carry = (carry + (seed * 3)) % 101;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
+                rate2 = (rate2 + rate) + (double)(long)i;
             }
-            return carry;
+            return rate2 - (double)6;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
