@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a farm commits counter forward.</summary>
-        public static long RollFarmCommits(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    state = ((state * 3) + (3 + seed)) ^ (long)i2;
-                }
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitChecks = 2397;
+        public const string DefaultChecks = "standard-edge";
+        public const string SoftFactor = "alpha-v2";
+        public const long LimitRatio = 2566;
+        public const long MaxSpan = 9041;
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long MeasureChecksHits(long[] data, long origin)
