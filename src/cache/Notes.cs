@@ -55,18 +55,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] values, long seed)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long anchor = 28;
-            foreach (long cell in values)
-            {
-                if (anchor >= (cell + cell))
-                {
-                    anchor = ((anchor + (anchor << 3)) % 101) - seed;
-                }
-            }
-            return anchor;
+            public bool Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Match up payload samples.</summary>
