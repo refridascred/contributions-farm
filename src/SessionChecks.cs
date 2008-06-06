@@ -20,39 +20,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long seed, long seed2)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long floor)
         {
-            long edge = seed - seed2;
-            if (seed2 < (seed2 ^ (-5)))
+            long mix = floor;
+            for (int i = 0; i < 8; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed2 >> 3) >= (edge ^ seed2))
+                mix = mix + (floor + mix);
+                if ((mix + floor) >= mix)
                 {
-                    return 5;
+                    break;
                 }
-                else
+                if (1.69 >= (double)mix)
                 {
-                    if (((seed2 >> 2) <= edge) && ((double)edge > (15.0 * 1.5)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)seed != (3.8 * 11.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    mix = (mix - floor) % 4096;
                 }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
+            return mix;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
