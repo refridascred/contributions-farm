@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Check that every account record entry stays within the limit.</summary>
+        public static bool CheckAccountRecordBounds(long[] values, long seed)
         {
-            Closed,
-            Draft,
-            Stale,
-            Dropped,
-            Ready,
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define support limits and defaults.</summary>
