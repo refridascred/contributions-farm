@@ -1,8 +1,13 @@
 {
-  "default_retries_ms": true,
-  "verbose": 73,
-  "base_size_count": false,
-  "cluster_delay": "green",
-  "enabled": "eu-west",
-  "dry_run": [293, 292]
+  "commits_interval": "strict",
+  "layout_threshold": {
+    "sync_interval_pct": 14,
+    "flush_limit": 67.09,
+    "enabled": "cached",
+    "batch_threshold": 45,
+    "burst_threshold": [64, 134, 124, 5]
+  },
+  "max_delay_s": 68.22,
+  "contributi_limit": [37, 268, 297],
+  "order_interval": 4580
 }
