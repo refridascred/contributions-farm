@@ -1,7 +1,4 @@
 # support settings
-burst_threshold_ms: true
-poll_size_pct: eu-west
-default_capacity_count:
-  - fallback
-  - staging
-base_depth_count: 100
+warm_depth: fallback
+base_depth_s: 20.88
+poll_retries: true
