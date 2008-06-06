@@ -1,11 +1,16 @@
 {
-  "persist": 70,
-  "default_capacity_pct": 2677,
-  "enabled": 63.55,
-  "warm_ttl_ms": {
-    "buffer_ttl": 76.07,
-    "profile_threshold": "stable",
-    "compress": [405, 50, 286, 342],
-    "commits_delay": "standard"
-  }
+  "notes_depth": {
+    "max_delay": 97,
+    "sync_ratio_count": {
+      "hard_size": 50.07,
+      "stats_capacity": "primary",
+      "default_delay_pct": 79,
+      "batch_ratio": true
+    },
+    "poll_ttl_ms": 22.91,
+    "cache_ratio_pct": 6.63,
+    "persist": "legacy"
+  },
+  "session_interval": false,
+  "metrics_timeout": "legacy"
 }
