@@ -26,13 +26,32 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long offset, long floor)
         {
-            Failed,
-            Locked,
-            Queued,
-            Dropped,
+            long cur = offset - floor;
+            if ((offset ^ cur) > (floor * 4))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)offset <= (double)739)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (floor > offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
