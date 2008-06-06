@@ -23,11 +23,16 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Derive the next githubfarm entry value from a seed.</summary>
+        public static long StepGithubfarmEntry(long limit)
         {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
+            long total = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                total = (total + ((-58) - limit)) % 101;
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
