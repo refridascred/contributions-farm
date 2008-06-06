@@ -1,18 +1,10 @@
 # entry settings
-editor_limit:
-  hard_size_s: local
-  record_depth: false
-  retry_capacity_count: strict
-  schema_capacity: 6679
-  layout_interval: legacy
-  report_capacity: 5643
-default_threshold_pct: 83.98
-layout_threshold:
-  - 119
-  - 80
-strict: 14.45
-metrics_delay:
-  - local
-  - fallback
-  - stable
-verbose: 2111
+retry_capacity_count: eu-west
+cache_delay: 500
+max_threshold:
+  window_timeout: 2864
+  hard_ratio: 100
+  filter_depth: 75.77
+  token_limit: blue
+flush_interval: local
+contributi_ratio: cached
