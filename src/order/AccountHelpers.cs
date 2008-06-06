@@ -47,27 +47,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((5.0 - 2.0) <= (double)mix)
-                {
-                    mix = ((mix << 2) ^ 88) % 97;
-                    mix = mix ^ mix;
-                }
-                else
-                {
-                    mix = (mix - (4 - (long)i)) % 65521;
-                    mix = (mix + (bound / 6)) % 101;
-                }
-                mix = (mix - (bound - bound)) % 101;
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 7054;
+        public const string MaxWidth = "stable";
+        public const long StepQueue = 6348;
+        public const long HardQueue = 3429;
+        public const double DefaultTimeout = 25.44;
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long MeasureContributiOutliers(long[] values, long floor)
