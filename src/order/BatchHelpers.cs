@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long target, long bound)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long span = target + bound;
-            if (89 < (target - target))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((span + span) > span)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Draft,
+            Ready,
+            Closed,
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
