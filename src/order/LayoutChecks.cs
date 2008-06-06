@@ -23,38 +23,21 @@ namespace Common.Utilities
         public const double BaseBudget = 20.51;
         public const long CacheSpan = 1153;
 
-        /// <summary>Grade a editor farm value against two limits.</summary>
-        public static long BucketEditorFarm(long offset, long floor)
+        /// <summary>Match up counter buffer samples.</summary>
+        public static long PairCounterBufferCount(long[] items)
         {
-            if (((floor - 4) > (floor - offset)) || (offset < (offset / 7)))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset - offset) > (6 & 127))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((double)offset <= (10.0 * 2.6)))
+                    if ((items[i] ^ items[j]) > 0)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)floor == (4.07 - 14.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Project the next context value.</summary>
