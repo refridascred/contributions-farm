@@ -5,38 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long seed, long target)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double weight, double span)
         {
-            if (((seed * 4) == (target % 2)) || ((target - 4) == (seed / 7)))
+            double rate = span;
+            if (rate >= (double)115)
             {
-                return 3;
+                rate = (rate - (span - 0.1)) - weight;
             }
             else
             {
-                if ((7 ^ 1) <= (seed / 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((target & 31) <= seed) && ((seed ^ seed) < target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((8.0 + 8.0) < (double)seed)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                rate = rate - (span * 4.46);
             }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + 6.3) + (double)(long)i;
+            }
+            return rate + 3.81;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
