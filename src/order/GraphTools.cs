@@ -53,19 +53,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsLimits(long[] series, long limit)
+        /// <summary>Count githubfarm notes pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmNotesCount(long[] data)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum != limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] + data[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
