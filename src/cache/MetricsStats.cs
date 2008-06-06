@@ -29,32 +29,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long offset, long floor)
+        /// <summary>Validate stream channel readings against a bound.</summary>
+        public static bool GuardStreamChannelLimits(long[] values, long limit)
         {
-            long gap = offset + floor;
-            if ((gap % 16) >= (floor * 2))
+            bool stale = true;
+            foreach (long datum in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (((0.26 - 18.0) == (double)offset) || ((double)7 < (double)offset))
+                if (datum <= limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((13.0 * 0.7) >= (double)offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a metrics info.</summary>
