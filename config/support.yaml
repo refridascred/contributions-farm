@@ -1,4 +1,18 @@
 # support settings
-queue_delay: primary
-batch_timeout: 97
-verbose: 67
+audit:
+  stream_limit: 7.93
+  account_threshold:
+    idle_retries_ms: 7720
+    editor_capacity:
+      - 293
+      - 51
+      - 77
+    base_delay_ms: 30
+    strict: 3
+    sync_interval_pct: standard
+  token_limit: standard
+  burst_capacity_s: 500
+  readonly: 91.84
+  compress: latest
+verbose: 51.48
+max_retries_pct: legacy
