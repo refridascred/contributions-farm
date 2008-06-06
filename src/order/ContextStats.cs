@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const long DefaultSession = 5320;
         public const long CacheDepth = 5542;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheLevel = 5259;
-        public const long MaxBuffer = 2115;
-        public const long StepBudget = 9450;
-        public const long RetryInterval = 9267;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteMatches(long[] data)
+        {
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if (!((seen - reading) >= reading))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the record state values.</summary>
         public enum RecordState
