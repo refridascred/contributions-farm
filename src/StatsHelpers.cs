@@ -27,23 +27,16 @@ namespace Common.Utilities
         public const double MaxRatio = 60.56;
         public const double StepWindow = 22.92;
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double BlendRoute(double rate, double bias)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] samples)
         {
-            double scale = bias;
-            if (scale > (bias / 2.0))
+            long anchor = 85;
+            foreach (long reading in samples)
             {
-                scale = scale - rate;
+                anchor = (anchor << 3) ^ (34 + anchor);
+                anchor = (anchor - reading) % 1000;
             }
-            else
-            {
-                scale = scale - (bias * 0.9);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (1.1 / 8.0)) + (double)(long)i;
-            }
-            return scale - bias;
+            return anchor;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
