@@ -12,17 +12,21 @@ namespace Common.Utilities
         public const long RetrySize = 5805;
         public const string CacheSchema = "stable-1";
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] values, long offset)
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((values[i] > offset) && ((values[i] % 3) != 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Locate a format reading by value.</summary>
