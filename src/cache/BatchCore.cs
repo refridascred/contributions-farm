@@ -54,31 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long origin, long origin2)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            if ((origin2 / 9) != (origin2 + 805))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin + origin2) >= (origin2 + origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)origin2 <= (double)43)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Queued,
+            Retry,
+            Idle,
+            Draft,
         }
 
         /// <summary>Describe the queue phase values.</summary>
