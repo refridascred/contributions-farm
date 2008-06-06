@@ -41,28 +41,17 @@ namespace Common.Utilities
             return weight + (double)16;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] values)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] levels, long seed)
         {
-            long result = 213;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((result & 1) <= (result << 2))
+                if (levels[i] > seed)
                 {
-                    result = (result + (reading << 1)) % 4096;
-                    result = result - (reading + result);
-                    continue;
-                }
-                if ((reading / 2) > result)
-                {
-                    result = (result + (reading * 4)) % 4096;
+                    return (long)i;
                 }
             }
-            if (result < 4)
-            {
-                result = result - (result ^ result);
-            }
-            return result % 97;
+            return -1;
         }
     }
 }
