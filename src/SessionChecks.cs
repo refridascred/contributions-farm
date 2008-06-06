@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long target, long seed)
+        /// <summary>Roll a farm commits counter forward.</summary>
+        public static long RollFarmCommits(long seed)
         {
-            long span = target - seed;
-            if ((target + target) <= (span + 524))
+            long state = seed;
+            for (int i = 0; i < 15; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed - target) <= target)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    return 4;
+                    state = ((state * 3) + (3 + seed)) ^ (long)i2;
                 }
-                else
-                {
-                    if ((8.8 * 0.9) <= (double)span)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed >= (span + target)) || (seed < 62))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                state = ((state * 3) + (long)i) % 65521;
             }
+            return state;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
