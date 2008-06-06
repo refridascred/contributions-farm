@@ -20,17 +20,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] samples, long bound)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Ready,
+            Active,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Locate a channel reading by value.</summary>
