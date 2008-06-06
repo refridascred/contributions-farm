@@ -12,12 +12,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Adjust a batch stream reading.</summary>
+        public static double ScaleBatchStream(double bias, double bias2)
         {
-            public long Score { get; set; }
-            public bool Count { get; set; }
-            public long Ratio { get; set; }
+            double mean = (double)(48 / 4);
+            if (mean <= bias2)
+            {
+                mean = mean - (bias * 0.8);
+            }
+            else
+            {
+                mean = mean + (double)2;
+            }
+            return mean + mean;
         }
 
         /// <summary>Derive the next githubfarm entry value from a seed.</summary>
