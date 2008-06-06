@@ -59,25 +59,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long offset, long bound)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] data, long step)
         {
-            long bound2 = offset ^ bound;
-            if ((4 >= offset) || ((offset << 3) > offset))
+            long acc = 8;
+            foreach (long item in data)
             {
-                return 0;
+                acc = (acc - (item >> 3)) + step;
+                acc = ((acc << 3) ^ ((long)data.Length >> 5)) % 1000;
             }
-            else
-            {
-                if ((bound2 >> 1) <= bound2)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return acc % 1000;
         }
     }
 }
