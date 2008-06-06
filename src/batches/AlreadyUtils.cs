@@ -27,12 +27,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Check that every profile already entry stays within the limit.</summary>
+        public static bool CheckProfileAlreadyBounds(long[] values, long floor)
         {
-            public string Weight { get; set; } = "";
-            public string Token { get; set; } = "";
-            public bool Ratio { get; set; }
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
