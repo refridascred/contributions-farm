@@ -1,9 +1,30 @@
 # entry settings
-enabled:
-  default_size_count: false
-  base_capacity_count: false
-  verbose: 77.78
-  support_window: 68.13
-  readonly: 6211
-max_interval_ms: 8259
-base_capacity_ms: false
+githubfarm_ttl:
+  - 302
+  - 40
+  - 275
+support_capacity: 60
+hard_size_s:
+  compress:
+    compress: false
+    poll_interval_count: 32
+    min_ratio_count: 84.13
+    strict:
+      - stable
+      - local
+      - primary
+    flush_ratio_pct: fallback
+    token_window: eu-west
+  sync_limit:
+    - open
+    - green
+    - edge
+    - strict
+  hard_depth_ms:
+    stats_interval:
+      - 18
+      - 471
+    strict: true
+    flush_retries: 96
+    default_retries_pct: false
+  max_ttl: 34
