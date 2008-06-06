@@ -49,18 +49,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MaxEditor = "cached";
+        public const long DefaultEditor = 6395;
+        public const string BurstCount = "primary-edge";
 
         /// <summary>Rank record input into a small class.</summary>
         public static long SortRecord(long floor, long limit)
