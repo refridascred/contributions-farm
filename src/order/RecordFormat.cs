@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long CompareProfileCount(long[] items)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((seen + seen) < (seen + datum))
                 {
-                    if ((items[i] ^ items[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the filter level values.</summary>
