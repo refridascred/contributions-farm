@@ -1,7 +1,12 @@
 {
-  "format_ttl": true,
-  "readonly": 28,
-  "profile_ttl": 2961,
-  "idle_retries": "staging",
-  "farm_threshold": true
+  "readonly": {
+    "warm_ttl_s": false,
+    "entry_interval": 93.52,
+    "retry_delay_count": 6228,
+    "poll_threshold_s": true,
+    "flush_ttl_count": 9176,
+    "sync_capacity_count": "blue"
+  },
+  "cache_capacity_pct": "edge",
+  "retry_timeout_s": "fallback"
 }
