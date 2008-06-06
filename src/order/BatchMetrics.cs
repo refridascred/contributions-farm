@@ -44,21 +44,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count githubfarm token pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmTokenCount(long[] values)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenMatches(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (tally >= datum)
                 {
-                    if ((values[i] + values[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Count the filter metrics entries that pass the check.</summary>
