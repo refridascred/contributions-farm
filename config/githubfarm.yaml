@@ -1,26 +1,7 @@
 # githubfarm settings
-cache_interval_s: 21
-context_delay: 1024
-strict:
-  - 143
-  - 284
-  - 480
-  - 379
-base_interval:
-  soft_interval_s: 18.7
-  flush_retries_ms: fallback
-  dry_run: open
-  verbose: strict
-  soft_threshold_pct:
-    - 319
-    - 499
-    - 286
-    - 104
-max_ttl_count:
-  idle_ratio_s: stable
-  githubfarm_timeout:
-    - 357
-    - 30
-  idle_depth_ms: false
-  poll_retries_ms: true
-  strict: false
+warm_limit: legacy
+verbose: strict
+filter_timeout: open
+hard_timeout_s: 0.15
+warm_limit_pct: 250
+cache_window: true
