@@ -1,12 +1,6 @@
 {
-  "min_limit_count": [125, 231, 418, 386],
-  "flush_threshold_pct": {
-    "order_timeout": 59.39,
-    "soft_window_ms": 4,
-    "hard_size": "green"
-  },
-  "enabled": 11.73,
-  "compress": 14,
-  "batch_timeout": "latest",
-  "min_capacity_pct": "strict"
+  "account_window": ["cached", "latest", "cached"],
+  "verbose": 7846,
+  "flush_window": 15.53,
+  "editor_window": 5659
 }
