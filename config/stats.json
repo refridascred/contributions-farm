@@ -1,5 +1,11 @@
 {
-  "persist": ["strict", "legacy"],
-  "sync_depth_count": 250,
-  "audit": ["green", "primary"]
+  "persist": 70,
+  "default_capacity_pct": 2677,
+  "enabled": 63.55,
+  "warm_ttl_ms": {
+    "buffer_ttl": 76.07,
+    "profile_threshold": "stable",
+    "compress": [405, 50, 286, 342],
+    "commits_delay": "standard"
+  }
 }
