@@ -12,25 +12,10 @@ namespace Common.Utilities
         public const string MaxFilter = "primary-edge";
         public const double MaxScore = 83.11;
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long seed, long seed2)
-        {
-            if ((2.43 / 6.0) != (double)seed2)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)981 < 1.14)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxRatio = 3442;
+        public const long BurstOrder = 4258;
+        public const long MinOrder = 9638;
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long CombineBatches(long[] items, long limit)
