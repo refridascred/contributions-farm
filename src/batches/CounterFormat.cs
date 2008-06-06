@@ -20,19 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileLimits(long[] samples, long seed)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Queued,
+            Closed,
+            Stale,
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
