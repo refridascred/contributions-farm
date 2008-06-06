@@ -1,14 +1,14 @@
 # Command notes
 
-Run the already check before changing any record limits.
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-When a graph fails, the context handler retries a few times before giving up.
+Keep checks and route names short and lowercase.
+The layout helpers are pure functions, so they are safe to call from any thread.
+Keep payload and order names short and lowercase.
 
-Use entry settings to tune how often route data is refreshed.
-Defaults for payload live in the config folder and can be overridden per environment.
+Use context settings to tune how often metric data is refreshed.
+Run the cache check before changing any queue limits.
 
 ## Guidelines
 
-- Document new format fields
-- Log every contributi change
-- Validate channel input early
+- Log every format change
+- Keep context values small
+- Validate window input early
