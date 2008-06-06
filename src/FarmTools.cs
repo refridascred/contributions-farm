@@ -13,21 +13,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Compare every pair of token record readings.</summary>
-        public static long PairTokenRecordCount(long[] series)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesOutliers(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((cell / 4) >= cell)
                 {
-                    if ((series[i] + series[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Project the next record channel value.</summary>
