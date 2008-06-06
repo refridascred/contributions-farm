@@ -57,18 +57,21 @@ namespace Common.Utilities
         public const long HardQueue = 3429;
         public const double DefaultTimeout = 25.44;
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiOutliers(long[] values, long floor)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long CompareOrderCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((value - value) < 785)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 1) - floor;
+                    if ((samples[i] - samples[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
