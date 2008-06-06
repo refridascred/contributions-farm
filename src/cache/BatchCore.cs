@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long target)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] data)
         {
-            long acc = target;
-            for (int i = 0; i < 21; i++)
+            long total = 87;
+            foreach (long cell in data)
             {
-                if (!((acc > (target % 8)) || ((acc << 2) > (19 - acc))))
+                if (((total + total) < (total / 6)) && ((total * 2) < total))
                 {
-                    acc = ((acc * 5) + (target << 1)) % 255;
-                    acc = (acc ^ ((long)i << 3)) % 4096;
+                    total = ((total << 3) ^ (cell & 3)) % 65521;
                 }
-                acc = acc + (909 - acc);
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
+            if (total < (-7))
+            {
+                total = (total << 2) ^ (7 + total);
+            }
+            return total;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
