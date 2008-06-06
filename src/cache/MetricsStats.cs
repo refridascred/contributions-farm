@@ -34,21 +34,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] readings)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] readings, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = -94;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                acc = acc - cell;
+                if ((offset + acc) == (offset * 5))
                 {
-                    if ((readings[i] ^ readings[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = acc - (cell ^ acc);
+                }
+                else
+                {
+                    acc = acc ^ (5 + 0);
+                }
+                if ((offset - 7) < (acc + acc))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (acc > 976)
+            {
+                acc = (acc + (offset & 127)) % 97;
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a cache header.</summary>
