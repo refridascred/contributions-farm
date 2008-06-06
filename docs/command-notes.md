@@ -1,15 +1,15 @@
 # Command notes
 
-The already helpers are pure functions, so they are safe to call from any thread.
-Defaults for profile live in the config folder and can be overridden per environment.
-Keep account and layout names short and lowercase.
+Run the format check before changing any editor limits.
+Run the counter check before changing any session limits.
+When a schema fails, the cluster handler retries a few times before giving up.
 
-The schema report groups every tools by route.
-The payload module keeps report values in sync with the format cache.
-Defaults for editor live in the config folder and can be overridden per environment.
+The queue helpers are pure functions, so they are safe to call from any thread.
+The command module keeps record values in sync with the account cache.
 
 ## Guidelines
 
-- Keep window values small
-- Validate stream input early
-- Review notes limits each release
+- Keep profile values small
+- Review record limits each release
+- Prefer token defaults
+- Log every filter change
