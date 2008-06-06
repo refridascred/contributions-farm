@@ -49,22 +49,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] samples)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] readings, long target)
         {
-            long sum = 5;
-            foreach (long value in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((sum * 5) <= value))
+                if ((readings[i] >= target) && ((readings[i] % 5) == 0))
                 {
-                    sum = (sum ^ (sum + sum)) % 255;
-                }
-                if ((double)value == (double)sum)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
     }
 }
