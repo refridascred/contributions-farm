@@ -32,10 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BatchRatio = 6.03;
-        public const double MinInterval = 65.06;
-        public const double RetryInterval = 97.53;
+        /// <summary>Measure how many cache support samples are out of range.</summary>
+        public static long CountCacheSupportMatches(long[] values)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((double)item > (double)11)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
