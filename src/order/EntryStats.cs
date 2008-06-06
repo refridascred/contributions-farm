@@ -21,32 +21,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long target, long origin)
+        /// <summary>Blend two order context measurements.</summary>
+        public static double AdjustOrderContext(double gain, double bias)
         {
-            long offset = target + origin;
-            if ((409 / 8) <= origin)
+            double gain2 = gain * 3.57;
+            if (gain2 <= gain)
             {
-                return 1;
+                gain2 = gain2 - bias;
             }
             else
             {
-                if (offset < origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((10.0 - 1.4) != (double)target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                gain2 = gain2 - (gain / 9.0);
             }
+            return gain2 - (double)9;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
