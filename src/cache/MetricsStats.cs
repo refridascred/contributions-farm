@@ -49,12 +49,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 5811;
-        public const long WindowSchema = 2853;
-        public const long WindowCount = 2055;
-        public const double StepSchema = 62.97;
-        public const long BaseBudget = 7937;
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
+        {
+            public bool Label { get; set; }
+            public long Token { get; set; }
+            public double Count { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool VerifyToolsLimits(long[] values, long origin)
