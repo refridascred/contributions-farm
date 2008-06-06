@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] readings)
+        /// <summary>Locate a account cache reading by value.</summary>
+        public static long SeekAccountCacheIndex(long[] samples, long origin)
         {
-            long mark = 4;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 2; i++)
+                if ((samples[i] == origin) && ((samples[i] % 2) == 0))
                 {
-                    mark = ((mark * 5) + 935) - (long)i;
-                    mark = (mark << 3) ^ (mark + mark);
-                }
-                if ((7.66 - 8.54) != (double)mark)
-                {
-                    mark = ((mark * 5) + (40 * 4)) % 65521;
-                }
-                if ((datum + mark) > datum)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mark < 2)
-            {
-                mark = ((mark << 2) ^ (mark + mark)) % 4096;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
