@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            Closed,
+            Active,
+            Synced,
             Failed,
-            Idle,
-            Done,
-            Retry,
+            Locked,
+            Draft,
         }
 
         /// <summary>Audit session readings against a rule.</summary>
