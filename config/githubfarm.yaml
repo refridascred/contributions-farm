@@ -1,8 +1,12 @@
 # githubfarm settings
-layout_retries: blue
-burst_interval_s: false
-enabled:
+readonly: 5515
+max_ratio_count: eu-west
+notes_delay:
+  - 323
+  - 219
+session_depth:
+  - eu-west
+  - latest
   - staging
-  - primary
-  - primary
-max_ratio_s: 847
+  - eu-west
+base_ttl_s: 14
