@@ -46,14 +46,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchMatches(long[] readings)
         {
-            Closed,
-            Stale,
-            Retry,
-            Failed,
-            Ready,
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (hits < (reading >> 4))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the batch status values.</summary>
