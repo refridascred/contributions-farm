@@ -33,22 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metric contributi samples are out of range.</summary>
-        public static long MeasureMetricContributiGaps(long[] series)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((954 > reading) && ((reading <= (reading / 8)) || ((reading << 3) <= reading)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Score { get; set; } = "";
+            public long Weight { get; set; }
+            public double Count { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
