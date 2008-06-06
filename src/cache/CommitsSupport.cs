@@ -19,25 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long step, long seed)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long offset = step ^ seed;
-            if ((offset <= (offset - 6)) && ((seed + offset) < (step + offset)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((step / 7) < (step - 64)) && ((offset * 3) > step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Retry,
+            Failed,
+            Paused,
+            Stale,
+            Ready,
         }
 
         /// <summary>Blend two token measurements.</summary>
