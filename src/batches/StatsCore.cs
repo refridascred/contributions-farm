@@ -54,9 +54,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string SoftCount = "open";
-        public const long MaxFactor = 4349;
-        public const long BurstSize = 5297;
+        /// <summary>Find the first stream githubfarm entry that matches the target.</summary>
+        public static long FindStreamGithubfarmIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > offset) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
