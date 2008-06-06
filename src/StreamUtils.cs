@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            public double Weight { get; set; }
-            public bool Label { get; set; }
+            Queued,
+            Active,
+            Stale,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Describe the metrics class values.</summary>
