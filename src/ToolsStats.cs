@@ -57,13 +57,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            Locked,
-            Queued,
-            Draft,
-            Stale,
+            public long Weight { get; set; }
+            public double Token { get; set; }
         }
     }
 }
