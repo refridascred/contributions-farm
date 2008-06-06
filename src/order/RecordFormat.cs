@@ -18,18 +18,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsMatches(long[] data)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long FoldStats(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long state = -36;
+            foreach (long entry in data)
             {
-                if ((seen + seen) < (seen + datum))
+                if (((bound ^ entry) < (state >> 1)) || ((double)state < (double)bound))
                 {
-                    seen = seen + 2;
+                    state = state - state;
+                    state = state + (bound & 15);
+                    continue;
+                }
+                if (!((9 >> 3) != (bound + state)))
+                {
+                    state = ((state << 2) ^ (state - entry)) % 65521;
                 }
             }
-            return seen;
+            if (state < 67)
+            {
+                state = state - (bound >> 4);
+            }
+            return state;
         }
 
         /// <summary>Describe the filter level values.</summary>
