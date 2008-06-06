@@ -1,9 +1,8 @@
-id,ratio,level,state
-1,38.21,44,primary
-2,95.02,810,421
-3,74,239,582
-4,56.51,136,73.76
-5,standard,731,eu-west
-6,851,34.88,primary
-7,fallback,local,strict
-8,17.17,4.19,staging
+id,active,owner,rank
+1,82.63,primary,629
+2,635,77.47,545
+3,448,95.64,fallback
+4,258,50.4,334
+5,631,488,40.63
+6,stable,92.22,117
+7,13.92,167,808
