@@ -22,11 +22,15 @@ namespace Common.Utilities
         public const long RetryRoute = 8313;
         public const string LimitRoute = "primary-edge";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double CacheLevel = 57.6;
-        public const long BatchProfile = 6562;
-        public const long IdleProfile = 4836;
-        public const string BaseFactor = "stable-edge";
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
+        {
+            Active,
+            Dropped,
+            Retry,
+            Done,
+            New,
+        }
 
         /// <summary>Describe the metrics class values.</summary>
         public enum MetricsClass
