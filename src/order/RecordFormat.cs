@@ -44,21 +44,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of entry contributi readings.</summary>
-        public static long PairEntryContributiCount(long[] data)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Active,
+            Failed,
+            Queued,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
