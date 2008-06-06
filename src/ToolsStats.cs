@@ -43,14 +43,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
-        {
-            public string Flag { get; set; } = "";
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public double Token { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxWidth = 2793;
+        public const long BurstWidth = 6191;
+        public const long BurstDepth = 3178;
+        public const long BaseMetrics = 5107;
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
