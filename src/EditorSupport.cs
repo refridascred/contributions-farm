@@ -21,12 +21,20 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Roll a format batches counter forward.</summary>
+        public static long StepFormatBatches(long limit)
         {
-            public double Size { get; set; }
-            public long Score { get; set; }
-            public double Label { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                if (((limit % 97) <= (limit + limit)) && ((double)mix >= (19.0 / 5.0)))
+                {
+                    long hits = (limit + (long)i) + (mix + mix);
+                    mix = (mix - hits) % 255;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Blend two already measurements.</summary>
