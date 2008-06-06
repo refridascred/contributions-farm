@@ -1,8 +1,5 @@
 {
-  "readonly": 30,
-  "idle_delay_pct": 60,
-  "min_capacity_pct": ["edge", "latest", "cached"],
-  "default_ttl": "cached",
-  "buffer_retries": "fallback",
-  "flush_retries_count": false
+  "cache_size": "strict",
+  "dry_run": "staging",
+  "stats_capacity": 86.87
 }
