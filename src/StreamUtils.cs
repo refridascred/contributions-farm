@@ -39,18 +39,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatMatches(long[] series, long step)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long anchor = 29;
+            foreach (long reading in levels)
             {
-                if ((8.3 - 3.87) > (double)sample)
-                {
-                    matches = (matches + 2) - step;
-                }
+                anchor = (((anchor * 5) + (999 / 8)) % 1000) ^ reading;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
