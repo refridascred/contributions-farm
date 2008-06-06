@@ -1,7 +1,5 @@
 {
-  "flush_retries_ms": "legacy",
-  "record_depth": "local",
-  "base_size_s": "local",
-  "stream_ratio": 60,
-  "counter_threshold": "standard"
+  "max_timeout_count": "staging",
+  "compress": ["eu-west", "blue", "stable"],
+  "max_delay_s": 62
 }
