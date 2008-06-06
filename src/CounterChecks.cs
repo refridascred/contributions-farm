@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowLimits(long[] levels, long seed)
+        /// <summary>Match up window cache samples.</summary>
+        public static long MatchWindowCacheCount(long[] items)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value >= seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((items[i] ^ items[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
