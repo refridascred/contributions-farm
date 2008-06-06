@@ -59,12 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitMetrics = 260;
-        public const double WindowMetrics = 49.37;
-        public const string RetryInterval = "fallback-1";
-        public const string StepMetrics = "local-1";
-        public const string SoftMetrics = "fallback-v2";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double WindowSize = 87.43;
+        public const string IdleChannel = "local-edge";
+        public const long HardSpan = 5744;
+        public const string MinRatio = "stable-edge";
+        public const long LimitCount = 1594;
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
