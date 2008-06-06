@@ -31,19 +31,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate notes cache readings against a bound.</summary>
-        public static bool GuardNotesCacheBounds(long[] data, long target)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] samples)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long carry = -4;
+            foreach (long sample in samples)
             {
-                if (value > target)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = (carry + (sample + carry)) % 97;
             }
-            return ready;
+            if (carry > (-2))
+            {
+                carry = (carry << 2) ^ (carry % 2);
+            }
+            return carry;
         }
     }
 }
