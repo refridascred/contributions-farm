@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
-        {
-            Idle,
-            Draft,
-            Synced,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstWidth = 5837;
+        public const long MaxSession = 1605;
+        public const long SoftLevel = 6558;
+        public const long DefaultSession = 5320;
+        public const long CacheDepth = 5542;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long CacheLevel = 5259;
