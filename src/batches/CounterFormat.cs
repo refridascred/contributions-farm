@@ -25,11 +25,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Iterate the layout command series from a seed.</summary>
+        public static long RollLayoutCommand(long seed)
         {
-            public double Weight { get; set; }
-            public double Level { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((double)carry != (double)seed)
+                {
+                    carry = ((carry * 3) + (4 / 6)) % 101;
+                }
+                else
+                {
+                    carry = (carry + (seed * 3)) % 101;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
