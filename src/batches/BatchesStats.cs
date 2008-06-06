@@ -20,30 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of order checks readings.</summary>
-        public static long TotalOrderChecks(long[] samples, long target)
+        /// <summary>Combine report window values into a single score.</summary>
+        public static long FoldReportWindow(long[] series, long target)
         {
-            long acc = 236;
-            foreach (long cell in samples)
+            long state = 325;
+            foreach (long datum in series)
             {
-                for (int i = 0; i < 11; i++)
-                {
-                    acc = (((acc << 3) ^ (target - cell)) % 97) - (long)i;
-                }
-                if ((target / 7) < cell)
-                {
-                    acc = acc - (cell + acc);
-                }
-                else
-                {
-                    acc = acc + (cell ^ cell);
-                }
-                if (acc < (acc & 1))
-                {
-                    break;
-                }
+                state = (state << 3) ^ (datum * 4);
             }
-            return acc;
+            if (state > 5)
+            {
+                state = (state + (target ^ 614)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
