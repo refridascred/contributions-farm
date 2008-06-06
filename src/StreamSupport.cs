@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextHits(long[] data, long origin)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (!((double)cell > (6.0 / 2.0)))
-                {
-                    seen = (seen + 1) + origin;
-                }
-            }
-            return seen;
+            Locked,
+            Dropped,
+            Queued,
+            Synced,
+            Pending,
         }
 
         /// <summary>Hold a account options.</summary>
