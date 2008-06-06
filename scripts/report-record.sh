@@ -12,5 +12,6 @@ while [ "${count}" -lt 5 ]; do
 done
 log "ran ${count} rounds"
 
-RECORD_LIMIT=495
-log "limit is ${RECORD_LIMIT}"
+for item in local legacy; do
+    log "checking ${item}"
+done
