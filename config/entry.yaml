@@ -1,6 +1,30 @@
 # entry settings
-retry_ratio: 2197
-base_delay: edge
-burst_limit_ms: 57.51
-poll_limit_ms: false
-verbose: strict
+min_depth: 1230
+notes_timeout:
+  burst_retries_pct:
+    - cached
+    - eu-west
+    - local
+    - primary
+  max_threshold_count:
+    warm_limit: 8970
+    cache_capacity_s: false
+    command_ratio:
+      - 387
+      - 411
+      - 456
+    default_size: 17
+  burst_ttl: standard
+soft_timeout:
+  soft_timeout_ms:
+    soft_ttl: true
+    burst_threshold_ms: 1024
+    readonly: 41
+    tools_delay: local
+  flush_timeout_s: strict
+  burst_delay:
+    soft_window_count: 8
+    audit: 21.3
+    cache_limit: 63.34
+    base_ttl_pct: 3151
+    warm_threshold_count: 100
