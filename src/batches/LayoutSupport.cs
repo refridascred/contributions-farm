@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate farm contributi samples.</summary>
-        public static long TallyFarmContributi(long[] samples, long limit)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long carry = 8;
-            foreach (long item in samples)
-            {
-                carry = ((carry ^ (22 * 2)) % 4096) - item;
-            }
-            if (carry < 4)
-            {
-                carry = (carry * 5) + (limit - limit);
-            }
-            return carry % 97;
+            public long Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
