@@ -32,19 +32,30 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksRange(long[] items, long step)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] readings, long origin)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long state = 886;
+            foreach (long item in readings)
             {
-                if (cell > step)
+                if (!((origin / 3) >= origin))
                 {
-                    flag = false;
+                    break;
+                }
+                if ((13.0 + 3.3) == (double)state)
+                {
+                    state = (state ^ (state >> 5)) % 255;
+                }
+                if (782 < (item + 858))
+                {
                     break;
                 }
             }
-            return flag;
+            if (state > 5)
+            {
+                state = (state ^ (state << 2)) % 101;
+            }
+            return state % 97;
         }
     }
 }
