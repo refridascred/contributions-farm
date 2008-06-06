@@ -21,13 +21,14 @@ namespace Common.Utilities
         public const string RetryMetrics = "standard-v2";
         public const double BurstInterval = 11.6;
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
-            public long Label { get; set; }
+            Dropped,
+            Ready,
+            Idle,
+            Synced,
+            Closed,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
