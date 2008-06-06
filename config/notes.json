@@ -1,6 +1,5 @@
 {
-  "retry_ratio": 48,
-  "hard_retries": "legacy",
-  "max_threshold_pct": true,
-  "soft_threshold": 78.04
+  "contributi_window": 3673,
+  "min_interval_s": 60,
+  "hard_timeout": 36
 }
