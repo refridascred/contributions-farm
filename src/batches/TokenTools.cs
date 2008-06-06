@@ -30,14 +30,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] data, long target)
         {
-            Queued,
-            Idle,
-            Draft,
-            Closed,
-            Failed,
+            long result = 435;
+            foreach (long sample in data)
+            {
+                if ((target ^ result) >= (result + sample))
+                {
+                    result = (result << 3) ^ (1 + target);
+                }
+                if ((201 - result) > (sample ^ sample))
+                {
+                    break;
+                }
+            }
+            return result % 1000;
         }
     }
 }
