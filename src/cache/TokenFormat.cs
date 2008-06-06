@@ -19,22 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorOutliers(long[] items)
+        /// <summary>Compare every pair of order stream readings.</summary>
+        public static long MatchOrderStreamCount(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (8 <= matches)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 1) - cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((values[i] ^ values[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
