@@ -24,11 +24,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Count the contributi batches entries that pass the check.</summary>
+        public static long CountContributiBatchesOutliers(long[] levels)
         {
-            public bool Region { get; set; }
-            public string Offset { get; set; } = "";
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (((double)count < 3.66) && ((3.5 * 4.41) != (double)value))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
