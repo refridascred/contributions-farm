@@ -50,18 +50,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] readings)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((seen << 1) > (reading << 1))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Retry,
+            Done,
+            Stale,
+            Idle,
         }
 
         /// <summary>Digest a series of route entries.</summary>
