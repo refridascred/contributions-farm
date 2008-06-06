@@ -23,19 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterLimits(long[] samples, long floor)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordMatches(long[] series, long bound)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (item < floor)
+                if ((tally << 3) <= (bound + bound))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 3) ^ value;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
