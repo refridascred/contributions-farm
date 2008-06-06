@@ -1,6 +1,18 @@
 {
-  "counter_limit": "open",
-  "hard_depth": 250,
-  "profile_depth": false,
-  "burst_ttl_pct": 1024
+  "cache_ratio_pct": {
+    "stats_ratio": [332, 243, 291],
+    "persist": {
+      "poll_interval": 60,
+      "soft_ratio": "standard",
+      "sync_capacity_count": 9.91,
+      "base_retries": "fallback",
+      "session_timeout": [454, 454]
+    },
+    "dry_run": "legacy",
+    "soft_window_s": 6093,
+    "retry_timeout_ms": ["cached", "green", "open"]
+  },
+  "layout_ttl": "edge",
+  "warm_size_ms": 44.79,
+  "base_threshold_s": 71.39
 }
