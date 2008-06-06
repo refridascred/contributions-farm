@@ -50,19 +50,18 @@ namespace Common.Utilities
             return scale + 4.86;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsBounds(long[] data, long offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderGaps(long[] readings)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (datum < offset)
+                if ((reading / 2) >= (reading + reading))
                 {
-                    found = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
