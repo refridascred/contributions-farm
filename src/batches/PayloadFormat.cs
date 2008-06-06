@@ -30,15 +30,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] items)
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double bias, double floor)
         {
-            long result = 40;
-            foreach (long entry in items)
+            double weight = 11.0;
+            for (int i = 0; i < 2; i++)
             {
-                result = ((result * 5) + (result & 1)) ^ entry;
+                weight = (((weight + (weight - weight)) + (double)(long)i) + bias) - floor;
             }
-            return result;
+            return weight + (double)16;
         }
 
         /// <summary>Digest a series of route entries.</summary>
