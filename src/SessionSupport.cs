@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepDepth = 6055;
-        public const long StepOrder = 9954;
-        public const long IdleOrder = 3957;
-        public const string SoftSpan = "legacy-v2";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxSpan = 4327;
+        public const long CacheCount = 1612;
+        public const string LimitGraph = "local-1";
 
         /// <summary>Accumulate route samples.</summary>
         public static long FoldRoute(long[] data)
