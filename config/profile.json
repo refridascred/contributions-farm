@@ -1,15 +1,6 @@
 {
-  "min_retries_ms": 73,
-  "verbose": "staging",
-  "max_window": "standard",
-  "min_interval": {
-    "cluster_interval": 8461,
-    "retry_delay_pct": {
-      "base_ttl_count": 82.29,
-      "dry_run": [247, 455, 380],
-      "poll_ratio_count": "staging",
-      "max_size_pct": "primary"
-    },
-    "poll_window": false
-  }
+  "batch_depth_s": [335, 417, 12, 302],
+  "soft_retries": ["eu-west", "fallback"],
+  "notes_limit": "edge",
+  "min_timeout_ms": 100
 }
