@@ -25,12 +25,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] values, long bound)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] samples, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] == bound)
+                if ((samples[i] >= target) && ((samples[i] % 5) != 0))
                 {
                     return (long)i;
                 }
