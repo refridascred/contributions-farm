@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFilter = 1800;
-        public const string BatchFilter = "primary-edge";
-        public const long HardFactor = 6246;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferHits(long[] series)
+        {
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if (!(7.76 >= (double)matches))
+                {
+                    matches = (matches + 3) - value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long MaxLayout = 9560;
