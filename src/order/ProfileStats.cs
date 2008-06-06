@@ -39,18 +39,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of batches filter readings.</summary>
-        public static long TotalBatchesFilter(long[] readings)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] samples)
         {
-            long state = 666;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((state - state) != (state & 7)) && ((state % 5) >= datum))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = state ^ ((long)readings.Length - state);
+                    if ((samples[i] + samples[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
