@@ -19,19 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamLimits(long[] series, long seed)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Weight { get; set; }
+            public long Level { get; set; }
+            public double Token { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Roll a window counter forward.</summary>
