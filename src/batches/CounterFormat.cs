@@ -15,18 +15,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit session metric readings against a rule.</summary>
-        public static long TallySessionMetricHits(long[] samples)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesMatches(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((double)cell < 8.0)
+                if ((99 % 97) <= tally)
                 {
-                    matches = matches + 1;
+                    tally = (tally + 2) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
