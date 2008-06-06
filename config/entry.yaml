@@ -1,10 +1,6 @@
 # entry settings
-channel_retries: blue
-tools_threshold: standard
-idle_interval: 1024
-idle_capacity: strict
-profile_size:
-  - legacy
-  - blue
-  - open
-persist: open
+retry_ratio: 2197
+base_delay: edge
+burst_limit_ms: 57.51
+poll_limit_ms: false
+verbose: strict
