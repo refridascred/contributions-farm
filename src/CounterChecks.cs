@@ -11,12 +11,25 @@ namespace Common.Utilities
         public const long MinChecks = 1146;
         public const long BurstRatio = 3886;
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long origin, long bound)
         {
-            public long Mode { get; set; }
-            public double Limit { get; set; }
-            public bool Score { get; set; }
+            long span = origin - bound;
+            if (((span + 8) == (bound << 1)) && ((9 / 6) > (4 + span)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((7.31 - 13.0) >= (double)origin) || (538 <= (span & 3)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
