@@ -1,7 +1,19 @@
 {
-  "stats_size": 7083,
-  "enabled": 56.47,
-  "min_interval": ["edge", "primary"],
-  "commits_window": "legacy",
-  "min_retries": 1109
+  "context_ttl": {
+    "soft_ttl_s": 250,
+    "account_retries": true,
+    "batch_interval_s": "edge",
+    "flush_timeout": ["green", "strict", "primary", "local"],
+    "support_retries": {
+      "route_ratio": 1024,
+      "soft_capacity": false,
+      "poll_window_count": 55.51,
+      "min_ratio_count": "latest",
+      "verbose": 5133,
+      "max_interval_s": 47.85
+    }
+  },
+  "batches_depth": 28.96,
+  "burst_interval_pct": true,
+  "audit": 7006
 }
