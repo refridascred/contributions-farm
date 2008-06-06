@@ -1,4 +1,9 @@
 # support settings
-entry_timeout: edge
-batch_size_count: 34
-sync_size_count: 12.15
+warm_retries_count:
+  - open
+  - stable
+  - open
+soft_threshold_count: 100
+order_timeout: blue
+warm_ttl_ms: edge
+dry_run: true
