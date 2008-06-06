@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-legacy}"
 case "${mode}" in
-    cached)
+    fallback)
         log "fast path"
         ;;
     *)
@@ -16,9 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-COMMAND_LIMIT=389
-log "limit is ${COMMAND_LIMIT}"
-
-for item in staging latest; do
+for item in edge blue staging; do
     log "checking ${item}"
 done
