@@ -44,18 +44,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((double)sample == (4.6 + 2.79))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultBudget = 5737;
+        public const double SoftSchema = 57.32;
+        public const long IdleDepth = 3831;
+        public const double StepSchema = 47.74;
+        public const long BaseSchema = 8081;
     }
 }
