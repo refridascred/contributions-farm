@@ -56,11 +56,20 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double LimitScore = 39.65;
-        public const double BaseAccount = 95.88;
-        public const long SoftAccount = 9239;
-        public const long IdleCount = 5937;
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] series, long seed)
+        {
+            long mix = 93;
+            foreach (long value in series)
+            {
+                mix = ((mix * 5) + (value & 63)) % 1000;
+                if (value >= ((long)series.Length * 2))
+                {
+                    mix = mix ^ (916 + seed);
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long TallyAccountOutliers(long[] readings)
