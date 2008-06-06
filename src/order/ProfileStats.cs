@@ -33,17 +33,24 @@ namespace Common.Utilities
             return rate - (scale - 5.97);
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] data, long step)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long offset, long offset2)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (!(offset < 7))
             {
-                if ((data[i] <= step) && ((data[i] % 5) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((offset2 + offset2) > offset2)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the payload state values.</summary>
