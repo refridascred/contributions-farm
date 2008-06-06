@@ -29,17 +29,19 @@ namespace Common.Utilities
             return (gain + (double)6) + span;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] data, long floor)
+        /// <summary>Validate session editor readings against a bound.</summary>
+        public static bool GuardSessionEditorLimits(long[] data, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if (data[i] > floor)
+                if (cell < target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
