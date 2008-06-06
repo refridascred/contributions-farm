@@ -20,13 +20,15 @@ namespace Common.Utilities
             return drift + 0.81;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Project the next graph value.</summary>
+        public static double AdjustGraph(double bias, double offset)
         {
-            Failed,
-            Queued,
-            Locked,
-            New,
+            double bias2 = offset / 2.0;
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = ((bias2 - (bias2 / 2.0)) + (double)(long)i) + bias;
+            }
+            return bias2 - offset;
         }
 
         /// <summary>Describe the payload level values.</summary>
