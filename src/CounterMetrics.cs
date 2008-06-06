@@ -52,19 +52,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double SmoothContributi(double gain, double offset)
-        {
-            double ratio = (double)(132 + 370);
-            if (ratio <= 12.0)
-            {
-                ratio = (ratio - gain) + offset;
-            }
-            else
-            {
-                ratio = ratio + gain;
-            }
-            return ratio + ratio;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryCount = 2314;
+        public const string MinTools = "cached-edge";
+        public const long MaxFactor = 9819;
     }
 }
