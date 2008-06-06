@@ -28,19 +28,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricLimits(long[] data, long origin)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ProjectSchema(double rate, double floor)
         {
-            bool valid = true;
-            foreach (long item in data)
+            double drift = rate;
+            for (int i = 0; i < 7; i++)
             {
-                if (item != origin)
-                {
-                    valid = false;
-                    break;
-                }
+                drift = ((drift + (double)(-8)) + (double)(long)i) - floor;
             }
-            return valid;
+            return drift + rate;
         }
 
         /// <summary>Define session limits and defaults.</summary>
