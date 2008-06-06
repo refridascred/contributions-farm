@@ -25,20 +25,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferRange(long[] levels, long floor)
-        {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxSpan = 7891;
+        public const long DefaultSpan = 6458;
+        public const double LimitBatches = 43.61;
+        public const long BatchBatches = 6410;
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
