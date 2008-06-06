@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count counter editor pairs that satisfy a relation.</summary>
-        public static long PairCounterEditorCount(long[] readings)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] levels, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 13;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((mix - mix) <= (long)levels.Length)
                 {
-                    if ((readings[i] + readings[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix + (offset - entry)) % 97;
                 }
             }
-            return hits;
+            if (mix > 6)
+            {
+                mix = (mix ^ (long)levels.Length) % 255;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Describe the batch kind values.</summary>
