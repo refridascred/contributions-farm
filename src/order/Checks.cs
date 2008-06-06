@@ -25,10 +25,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BatchRatio = 29.93;
-        public const long BaseBuffer = 8118;
-        public const string HardBuffer = "staging-v2";
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitRatio = 7221;
+        public const string StepContext = "strict-1";
+        public const string RetryTimeout = "standard";
+        public const string SoftInterval = "local-edge";
+        public const long DefaultScore = 2836;
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long TotalCache(long[] levels)
