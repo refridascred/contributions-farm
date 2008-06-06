@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] series)
+        /// <summary>Blend two window measurements.</summary>
+        public static double BlendWindow(double bias, double bias2)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double ratio = 4.1 + (double)(-185);
+            if (ratio > bias)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio = ratio + bias2;
             }
-            return seen;
+            return ratio + (double)6;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
