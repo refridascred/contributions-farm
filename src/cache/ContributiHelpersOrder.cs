@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] items, long bound)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileBounds(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if (bound < cell)
+                if (sample > limit)
                 {
-                    hits = hits + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Describe the stats kind values.</summary>
