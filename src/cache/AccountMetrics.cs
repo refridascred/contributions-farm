@@ -69,19 +69,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate queue metrics readings against a bound.</summary>
-        public static bool GuardQueueMetricsLimits(long[] levels, long origin)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long origin, long offset)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            if (origin >= (1 % 8))
             {
-                if (value <= origin)
+                return 7;
+            }
+            else
+            {
+                if (!((offset + offset) > (origin << 1)))
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return stale;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
