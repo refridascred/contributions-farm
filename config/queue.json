@@ -1,16 +1,20 @@
 {
-  "audit": false,
-  "metric_window": {
-    "cache_retries": {
-      "retry_retries_ms": "primary",
-      "batch_depth_count": 82.09,
-      "readonly": ["blue", "edge"],
-      "profile_size": "strict",
-      "hard_size_s": 500
-    },
-    "dry_run": "green",
-    "enabled": "cached",
-    "readonly": 48
+  "batch_interval_s": ["strict", "open"],
+  "compress": 26.75,
+  "hard_capacity_pct": {
+    "payload_ratio": 10.16,
+    "persist": "open",
+    "record_retries": ["cached", "stable", "edge"],
+    "min_retries": 82.41,
+    "base_retries_count": false,
+    "poll_depth": 3936
   },
-  "format_interval": 54
+  "retry_window_count": {
+    "compress": "stable",
+    "persist": 1024,
+    "readonly": ["green", "fallback", "cached", "strict"],
+    "default_depth_pct": 6332,
+    "audit": 7656
+  },
+  "retry_size_ms": "fallback"
 }
