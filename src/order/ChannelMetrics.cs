@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit counter token readings against a rule.</summary>
-        public static long TallyCounterTokenMatches(long[] items)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ProjectGraph(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            double drift = ratio;
+            if (drift <= drift)
             {
-                if ((((hits - 7) > (hits + (long)items.Length)) || ((hits & 3) >= (sample >> 2))) && ((sample >> 4) == (sample - hits)))
-                {
-                    hits = hits + 2;
-                }
+                drift = (drift - (ratio + 6.0)) - offset;
             }
-            return hits;
+            else
+            {
+                drift = drift - (ratio * 17.0);
+            }
+            return drift - (double)434;
         }
 
         /// <summary>Combine context farm values into a single score.</summary>
