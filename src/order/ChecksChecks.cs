@@ -15,21 +15,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] samples)
+        /// <summary>Roll a schema tools counter forward.</summary>
+        public static long IterateSchemaTools(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = ((acc << 3) ^ (long)i) % 97;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
