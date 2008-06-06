@@ -1,19 +1,7 @@
 {
-  "cache_depth_ms": 1024,
-  "dry_run": {
-    "hard_retries": {
-      "hard_delay_count": 1237,
-      "compress": 88,
-      "default_ttl": "local",
-      "enabled": ["edge", "local", "staging", "cached"],
-      "buffer_capacity": "standard",
-      "persist": ["latest", "open", "blue"]
-    },
-    "batches_interval": [6, 391],
-    "sync_delay_ms": "blue"
-  },
-  "warm_timeout": "latest",
-  "max_interval": "standard",
-  "audit": true,
-  "route_retries": 55
+  "compress": false,
+  "retry_depth_ms": 5630,
+  "cache_window_count": 75.42,
+  "persist": 41.74,
+  "max_ratio": 60
 }
