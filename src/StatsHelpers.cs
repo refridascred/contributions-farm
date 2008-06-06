@@ -12,21 +12,12 @@ namespace Common.Utilities
         public const long SoftSchema = 2167;
         public const long WindowBudget = 2354;
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] data)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Active,
+            New,
+            Failed,
         }
 
         /// <summary>Define window limits and defaults.</summary>
