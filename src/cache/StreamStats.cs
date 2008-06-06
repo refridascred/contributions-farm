@@ -19,23 +19,13 @@ namespace Common.Utilities
         public const long RetryBudget = 5940;
         public const double StepDepth = 34.48;
 
-        /// <summary>Digest a series of command token entries.</summary>
-        public static long WeighCommandToken(long[] values)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long anchor = 158;
-            foreach (long reading in values)
-            {
-                anchor = (anchor - (reading ^ reading)) % 97;
-                if ((reading & 255) >= (7 % 2))
-                {
-                    break;
-                }
-            }
-            if (anchor < 0)
-            {
-                anchor = ((anchor << 3) ^ (anchor + anchor)) % 97;
-            }
-            return anchor;
+            Stale,
+            Synced,
+            Active,
+            Paused,
         }
 
         /// <summary>Derive the next token record value from a seed.</summary>
