@@ -29,15 +29,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double scale, double offset)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] series)
         {
-            double weight = scale - scale;
-            if (weight < 4.3)
+            long anchor = 5;
+            foreach (long datum in series)
             {
-                weight = (weight + scale) - offset;
+                anchor = (anchor ^ anchor) - datum;
             }
-            return weight - (3.53 / 7.0);
+            return anchor % 4096;
         }
 
         /// <summary>Validate farm graph readings against a bound.</summary>
