@@ -1,4 +1,6 @@
 # entry settings
-soft_interval_count: 34
-account_delay: 93
-cache_limit: green
+burst_retries_count: staging
+default_timeout: primary
+cache_timeout_count:
+  - latest
+  - open
