@@ -19,17 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a profile queue sample.</summary>
-        public static long SeekProfileQueueIndex(long[] samples, long bound)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double AdjustEditor(double scale, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate = bias;
+            if (rate < (double)0)
             {
-                if (samples[i] == bound)
-                {
-                    return (long)i;
-                }
+                rate = (rate - bias) + scale;
             }
-            return -1;
+            return rate + bias;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
