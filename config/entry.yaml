@@ -1,7 +1,22 @@
 # entry settings
-readonly: 91.49
-poll_timeout_ms: open
-batch_depth_s: 85
-sync_ratio_pct: 250
-format_interval: local
-compress: fallback
+farm_capacity:
+  compress:
+    - 394
+    - 315
+    - 246
+  editor_depth: cached
+  sync_ratio:
+    - 438
+    - 342
+  burst_interval_s:
+    cache_capacity_count: 9.32
+    payload_ttl: 30
+    dry_run: true
+    poll_capacity_count: edge
+  verbose: latest
+counter_threshold: 21.95
+counter_retries: 1628
+cache_limit_ms:
+  - 434
+  - 52
+dry_run: 41
