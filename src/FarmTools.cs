@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double weight, double span)
-        {
-            double rate = span;
-            if (rate >= (double)115)
-            {
-                rate = (rate - (span - 0.1)) - weight;
-            }
-            else
-            {
-                rate = rate - (span * 4.46);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + 6.3) + (double)(long)i;
-            }
-            return rate + 3.81;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinEditor = 8123;
+        public const long RetryEditor = 248;
+        public const long MaxEditor = 6877;
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long StepCommits(long target)
