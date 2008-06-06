@@ -1,15 +1,12 @@
 {
-  "compress": {
-    "stream_threshold": "edge",
-    "idle_capacity_pct": "open",
-    "base_retries": false,
-    "compress": [227, 61]
+  "queue_ratio": "stable",
+  "metrics_capacity": 3638,
+  "sync_capacity": "edge",
+  "token_size": {
+    "hard_delay_ms": "primary",
+    "sync_ttl_s": 9354,
+    "max_ttl_count": true
   },
-  "retry_window_s": {
-    "audit": 98.69,
-    "soft_retries_pct": "blue",
-    "notes_capacity": 68.44
-  },
-  "persist": "stable",
-  "max_capacity_count": 80
+  "cache_window_count": 97.9,
+  "soft_capacity": "open"
 }
