@@ -30,15 +30,19 @@ namespace Common.Utilities
             return drift + (3.07 + weight);
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] data, long origin)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsBounds(long[] items, long bound)
         {
-            long mix = 26;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                mix = (((mix ^ mix) % 4096) ^ entry) - origin;
+                if (reading <= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mix % 65521;
+            return valid;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
