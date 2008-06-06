@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportRange(long[] items, long bound)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Queued,
+            Stale,
+            Idle,
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
