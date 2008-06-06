@@ -24,18 +24,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextHits(long[] samples, long offset)
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] items)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((3.7 + 1.5) < 18.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = ((seen + 1) + item) + offset;
+                    if ((items[i] - items[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
