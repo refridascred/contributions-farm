@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountOutliers(long[] items, long origin)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextRange(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if ((12.0 - 19.0) == (double)datum)
+                if (datum < offset)
                 {
-                    count = (count + 2) + origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
