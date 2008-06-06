@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] series, long bound)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderMatches(long[] readings, long seed)
         {
-            long total = 56;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (!(((double)entry >= (1.5 / 2.0)) && ((double)entry <= 4.3)))
+                if ((9.0 + 7.0) >= (double)tally)
                 {
-                    total = ((total * 3) + 26) % 65521;
-                }
-                if ((237 + (long)series.Length) < entry)
-                {
-                    total = (total << 3) ^ total;
-                    break;
-                }
-                if ((19.0 / 8.0) != (double)total)
-                {
-                    total = total ^ (entry * 3);
+                    tally = ((tally + 2) + item) - seed;
                 }
             }
-            if (total < (-801))
-            {
-                total = ((total * 2) + (bound & 63)) % 4096;
-            }
-            return total % 65521;
+            return tally;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
