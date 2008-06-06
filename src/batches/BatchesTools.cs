@@ -50,18 +50,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] data)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterLimits(long[] series, long origin)
         {
-            long mark = 1;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if (mark > (789 / 2))
+                if (reading < origin)
                 {
-                    mark = (mark << 2) ^ item;
+                    stale = false;
+                    break;
                 }
             }
-            return mark % 97;
+            return stale;
         }
     }
 }
