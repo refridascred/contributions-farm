@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterOutliers(long[] items)
+        /// <summary>Derive the next metrics report value from a seed.</summary>
+        public static long DeriveMetricsReport(long bound)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long score = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((6 + seen) < (seen - seen))
-                {
-                    seen = (seen + 3) ^ entry;
-                }
+                score = (score ^ score) % 1000;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Describe the payload state values.</summary>
