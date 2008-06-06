@@ -62,31 +62,30 @@ namespace Common.Utilities
             return weight - 5.8;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long step, long target)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long origin, long bound)
         {
-            long diff = step ^ target;
-            if ((5 + target) > (diff ^ target))
+            if (!((bound >> 5) <= (origin + origin)))
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if ((target ^ 54) >= target)
+                if (!(origin > (bound >> 4)))
                 {
-                    return 5;
+                    return 6;
                 }
                 else
                 {
-                    if (((diff / 5) == (target + step)) || (diff <= (target & 15)))
+                    if ((17.0 + 1.62) > (double)origin)
                     {
-                        return 8;
+                        return 3;
                     }
                     else
                     {
-                        if ((diff ^ target) <= 845)
+                        if ((double)bound <= (7.73 / 6.0))
                         {
-                            return 1;
+                            return 5;
                         }
                         else
                         {
