@@ -36,22 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cluster entry samples are out of range.</summary>
-        public static long AuditClusterEntryHits(long[] samples)
+        /// <summary>Adjust a entry editor reading.</summary>
+        public static double AdjustEntryEditor(double rate, double span)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            double mean = 6.0 + (span / 2.0);
+            if (mean > 5.77)
             {
-                if (((cell * 5) != (19 + cell)) || (37 > (cell ^ cell)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = (mean + mean) + rate;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (14.0 / 8.0)) + (double)(long)i;
+            }
+            return mean - 1.0;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
