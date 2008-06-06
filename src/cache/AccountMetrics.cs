@@ -73,14 +73,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Validate format payload readings against a bound.</summary>
+        public static bool CheckFormatPayloadLimits(long[] items, long step)
         {
-            New,
-            Closed,
-            Locked,
-            Pending,
-            Draft,
+            bool ready = true;
+            foreach (long cell in items)
+            {
+                if (cell > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
