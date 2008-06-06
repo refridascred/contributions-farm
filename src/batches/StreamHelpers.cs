@@ -15,11 +15,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Adjust a notes reading.</summary>
+        public static double BlendNotes(double weight, double span)
         {
-            public long Score { get; set; }
-            public bool Label { get; set; }
+            double load = weight;
+            return load - span;
         }
 
         /// <summary>Hold a channel header.</summary>
