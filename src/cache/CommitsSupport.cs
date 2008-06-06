@@ -55,22 +55,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many stats format samples are out of range.</summary>
-        public static long MeasureStatsFormatHits(long[] samples, long bound)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadOutliers(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (hits >= sample)
+                if (9.73 < (double)matches)
                 {
-                    hits = (hits + 3) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = ((matches + 2) + reading) + bound;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
