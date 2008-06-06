@@ -1,8 +1,7 @@
 {
-  "base_ttl": "staging",
-  "default_interval": "standard",
-  "editor_timeout": 22.13,
-  "min_delay_pct": "eu-west",
-  "strict": 3983,
-  "queue_delay": ["local", "standard"]
+  "session_ttl": true,
+  "flush_delay": true,
+  "flush_retries_count": "staging",
+  "warm_capacity_s": "standard",
+  "compress": false
 }
