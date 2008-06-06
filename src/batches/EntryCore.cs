@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long seed)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long total = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            Closed,
+            Ready,
+            Stale,
+            Locked,
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
