@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchChannel = 7783;
-        public const string SoftChannel = "latest-edge";
-        public const long BurstTimeout = 9560;
-        public const double CacheBudget = 23.8;
-        public const long BaseChannel = 6399;
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long target, long floor)
+        {
+            if ((floor & 255) > (floor - floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((floor + 4) >= (floor + target)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor - target) >= target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a notes tools reading.</summary>
         public static double SmoothNotesTools(double gain, double bias)
