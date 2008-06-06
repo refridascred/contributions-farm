@@ -64,17 +64,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LookupFilterIndex(long[] series, long target)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorBounds(long[] readings, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if (series[i] < target)
+                if (entry <= step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
