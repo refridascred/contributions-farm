@@ -82,16 +82,9 @@ namespace Common.Utilities
         public const double LimitFactor = 31.85;
         public const double StepBudget = 53.41;
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 7; i++)
-            {
-                carry = (carry * 5) + (long)i;
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string SoftCount = "open";
+        public const long MaxFactor = 4349;
+        public const long BurstSize = 5297;
     }
 }
