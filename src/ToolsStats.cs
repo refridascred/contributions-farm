@@ -31,10 +31,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 9624;
-        public const long RetryFactor = 3594;
-        public const long CacheEntry = 9852;
+        /// <summary>Define token limits and defaults.</summary>
+        public const double LimitToken = 87.94;
+        public const long IdleToken = 3163;
+        public const long MinFactor = 2647;
+        public const double HardToken = 79.82;
+        public const string BaseBudget = "staging-v2";
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long TallyRouteMatches(long[] values)
