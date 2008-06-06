@@ -1,8 +1,10 @@
 # support settings
-audit: 1536
-soft_capacity_pct:
-  - 216
-  - 422
-  - 201
-  - 353
-commits_depth: true
+default_threshold_pct: 1024
+flush_limit_pct: 250
+dry_run: 12
+record_size:
+  - open
+  - edge
+  - primary
+  - legacy
+default_threshold_count: 64.91
