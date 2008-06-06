@@ -24,19 +24,16 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsLimits(long[] series, long offset)
+        /// <summary>Digest a series of window account entries.</summary>
+        public static long DigestWindowAccount(long[] samples)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long mix = 191;
+            foreach (long datum in samples)
             {
-                if (item < offset)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = mix ^ (datum % 2);
+                mix = (mix + datum) % 255;
             }
-            return valid;
+            return mix % 1000;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
