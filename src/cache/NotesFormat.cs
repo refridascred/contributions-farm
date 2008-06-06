@@ -22,12 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSession = 8724;
-        public const string MaxInterval = "standard-edge";
-        public const long MinSession = 7311;
-        public const long MaxSession = 9190;
-        public const string BurstSession = "stable-edge";
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
+        {
+            public double Weight { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Combine profile report values into a single score.</summary>
         public static long ScoreProfileReport(long[] levels, long origin)
