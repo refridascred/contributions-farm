@@ -20,19 +20,15 @@ namespace Common.Utilities
             return drift - (double)434;
         }
 
-        /// <summary>Combine context farm values into a single score.</summary>
-        public static long WeighContextFarm(long[] readings)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long limit)
         {
-            long anchor = 82;
-            foreach (long item in readings)
+            long total = limit;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = anchor - (item & 63);
-                if (4 < (anchor * 5))
-                {
-                    break;
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
