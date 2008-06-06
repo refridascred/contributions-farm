@@ -49,14 +49,38 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long offset, long limit)
         {
-            Retry,
-            Active,
-            Closed,
-            Draft,
-            Queued,
+            if ((6.0 + 8.3) >= (double)limit)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset * 4) == (limit - limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (offset > (limit ^ offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)offset < 1.9) && ((limit / 8) < limit))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
