@@ -1,6 +1,9 @@
 # entry settings
-burst_retries_count: staging
-default_timeout: primary
-cache_timeout_count:
-  - latest
-  - open
+batch_ratio: green
+metric_capacity: open
+dry_run:
+  - 4
+  - 201
+  - 453
+hard_delay_s: 2049
+already_limit: 9.72
