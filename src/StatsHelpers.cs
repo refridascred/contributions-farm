@@ -39,11 +39,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] readings, long step)
         {
-            public double Total { get; set; }
-            public long Rank { get; set; }
+            long score = 44;
+            foreach (long cell in readings)
+            {
+                score = (((score * 2) + (score * 2)) % 1000) - cell;
+            }
+            if (score < 49)
+            {
+                score = score - (5 + step);
+            }
+            return score % 97;
         }
     }
 }
