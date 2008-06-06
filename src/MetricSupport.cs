@@ -32,12 +32,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
-        {
-            public long Stamp { get; set; }
-            public bool Level { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinWidth = 7354;
+        public const double BurstBatch = 84.41;
+        public const double DefaultCount = 9.85;
     }
 }
