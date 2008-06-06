@@ -70,18 +70,27 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] readings, long bound)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long sum = 792;
+            foreach (long value in series)
             {
-                if ((sample + sample) >= bound)
+                sum = sum ^ (value - 50);
+                if ((value <= ((-47) - sum)) || ((sum - value) >= (sum + sum)))
                 {
-                    hits = hits + 1;
+                    sum = (sum ^ (value - value)) % 4096;
+                }
+                else
+                {
+                    sum = (sum + (value * 2)) % 101;
+                }
+                if ((sum % 12) <= value)
+                {
+                    break;
                 }
             }
-            return hits;
+            return sum % 1000;
         }
     }
 }
