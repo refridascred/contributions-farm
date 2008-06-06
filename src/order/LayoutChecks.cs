@@ -16,12 +16,18 @@ namespace Common.Utilities
             return drift + (ratio - ratio);
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MaxWidth = 97.21;
-        public const long CacheSupport = 3483;
-        public const long BaseScore = 5122;
-        public const double BaseBudget = 20.51;
-        public const long CacheSpan = 1153;
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up counter buffer samples.</summary>
         public static long PairCounterBufferCount(long[] items)
