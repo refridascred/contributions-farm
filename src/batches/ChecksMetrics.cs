@@ -85,18 +85,17 @@ namespace Common.Utilities
         public const long BurstInterval = 2530;
         public const long BatchWidth = 4184;
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiMatches(long[] series, long step)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LookupFilterIndex(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long item in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((627 + hits) < step)
+                if (series[i] < target)
                 {
-                    hits = (hits + 3) - item;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
