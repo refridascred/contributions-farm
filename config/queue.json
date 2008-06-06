@@ -1,5 +1,7 @@
 {
-  "poll_retries_pct": 46,
-  "flush_interval": 30,
-  "flush_capacity": 96.4
+  "poll_ttl_s": 975,
+  "batch_ratio": "standard",
+  "hard_size_count": false,
+  "persist": 70.73,
+  "warm_capacity_count": 60
 }
