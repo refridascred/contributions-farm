@@ -1,17 +1,7 @@
 {
-  "min_size_count": "legacy",
-  "soft_interval_count": [17, 413],
-  "min_capacity_pct": {
-    "flush_timeout_count": true,
-    "record_interval": "local",
-    "min_depth_pct": 100,
-    "order_delay": false
-  },
-  "profile_interval": [381, 407, 284, 420],
-  "retry_interval": {
-    "verbose": "edge",
-    "burst_retries": "standard",
-    "batch_limit_pct": "latest",
-    "schema_retries": 71
-  }
+  "context_window": [59, 483, 159, 400],
+  "idle_delay": "strict",
+  "persist": 87,
+  "burst_depth_s": 500,
+  "metrics_timeout": "open"
 }
