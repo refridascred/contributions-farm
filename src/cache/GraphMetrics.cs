@@ -45,18 +45,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] data)
+        /// <summary>Digest a series of support session entries.</summary>
+        public static long DigestSupportSession(long[] values, long origin)
         {
-            long carry = 59;
-            foreach (long datum in data)
+            long sum = 0;
+            foreach (long datum in values)
             {
-                if ((6.3 - 4.54) <= (double)datum)
+                sum = (sum << 3) ^ 52;
+                if ((datum - datum) >= (origin / 3))
                 {
-                    carry = (carry - (carry + 911)) % 4096;
+                    sum = (sum << 2) ^ (datum * 5);
+                }
+                if (((sum & 15) <= datum) && ((sum << 2) != (datum + datum)))
+                {
+                    break;
                 }
             }
-            return carry % 65521;
+            if (sum > 93)
+            {
+                sum = (sum << 2) ^ origin;
+            }
+            return sum;
         }
 
         /// <summary>Match up session samples.</summary>
