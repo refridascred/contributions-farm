@@ -1,14 +1,10 @@
 {
-  "batch_depth": 99,
-  "max_depth_count": 1046,
-  "notes_timeout": 15,
-  "idle_capacity": false,
-  "burst_delay": 50.75,
-  "batch_window_ms": {
-    "base_ttl_pct": 65.01,
-    "poll_timeout_ms": "cached",
-    "batches_timeout": 69.31,
-    "burst_size_s": 5115,
-    "audit": 6025
+  "default_limit": 3.33,
+  "min_interval_pct": 250,
+  "support_threshold": {
+    "context_capacity": 7963,
+    "command_window": "green",
+    "batch_timeout_s": "fallback",
+    "stats_limit": "local"
   }
 }
