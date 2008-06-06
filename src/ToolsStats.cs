@@ -50,12 +50,19 @@ namespace Common.Utilities
         public const long BurstDepth = 3178;
         public const long BaseMetrics = 5107;
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyRange(long[] readings, long limit)
         {
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
+            bool ok = true;
+            foreach (long value in readings)
+            {
+                if (value > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Accumulate queue cluster samples.</summary>
