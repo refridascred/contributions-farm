@@ -20,29 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long origin, long origin2)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long step, long seed)
         {
-            if (!(origin < (origin2 + origin2)))
+            long offset = step ^ seed;
+            if ((offset <= (offset - 6)) && ((seed + offset) < (step + offset)))
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if ((double)origin2 < (2.0 / 3.0))
+                if (((step / 7) < (step - 64)) && ((offset * 3) > step))
                 {
-                    return 8;
+                    return 6;
                 }
                 else
                 {
-                    if ((6.5 + 4.6) <= (double)origin2)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return 7;
                 }
             }
         }
