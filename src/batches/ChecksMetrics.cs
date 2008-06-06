@@ -39,18 +39,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit format route readings against a rule.</summary>
-        public static long MeasureFormatRouteGaps(long[] levels, long floor)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            double mean = (floor * 0.21) / 8.0;
+            if (mean > mean)
             {
-                if ((floor % 60) > value)
-                {
-                    hits = hits + 1;
-                }
+                mean = mean - (rate - rate);
             }
-            return hits;
+            return mean + 7.66;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
