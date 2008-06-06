@@ -47,18 +47,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many order report samples are out of range.</summary>
-        public static long AuditOrderReportMatches(long[] items)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((double)seen >= 5.8)
-                {
-                    seen = (seen + 1) - reading;
-                }
-            }
-            return seen;
+            Retry,
+            Ready,
+            Pending,
+            Draft,
+            Locked,
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
