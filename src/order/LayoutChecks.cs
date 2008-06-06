@@ -40,11 +40,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string HardStats = "open-edge";
-        public const long WindowStats = 6737;
-        public const long BaseStats = 1232;
-        public const string WindowInterval = "alpha-1";
+        /// <summary>Measure how many support notes samples are out of range.</summary>
+        public static long CountSupportNotesOutliers(long[] data, long limit)
+        {
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (limit > (limit + hits))
+                {
+                    hits = (hits + 3) + entry;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the batches phase values.</summary>
         public enum BatchesPhase
