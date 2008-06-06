@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileHits(long[] samples)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long offset)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long total = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((reading % 60) >= ((-494) ^ matches))
-                {
-                    matches = matches + 2;
-                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Grade a counter contributi value against two limits.</summary>
