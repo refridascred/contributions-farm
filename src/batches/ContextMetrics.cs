@@ -20,12 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultScore = 9966;
-        public const string IdleSupport = "alpha-1";
-        public const string BatchSupport = "local-edge";
-        public const long LimitRatio = 7111;
-        public const long BaseDepth = 2131;
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double weight, double offset)
+        {
+            double scale = 2.1 + offset;
+            if (scale < (double)705)
+            {
+                scale = scale - weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - offset) + (double)(long)i;
+            }
+            return scale - offset;
+        }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool GuardChecksBounds(long[] samples, long target)
