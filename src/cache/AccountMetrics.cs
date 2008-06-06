@@ -62,16 +62,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] series, long offset)
-        {
-            long mark = 3;
-            foreach (long entry in series)
-            {
-                mark = ((mark ^ (mark + offset)) % 97) - entry;
-            }
-            return mark;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftBudget = 914;
+        public const long StepCluster = 4487;
+        public const long IdleCluster = 4828;
+        public const long DefaultScore = 4548;
+        public const long DefaultCluster = 347;
 
         /// <summary>Validate format payload readings against a bound.</summary>
         public static bool CheckFormatPayloadLimits(long[] items, long step)
