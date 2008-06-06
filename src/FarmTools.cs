@@ -18,13 +18,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaRange(long[] values, long target)
         {
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
-            public string Count { get; set; } = "";
-            public bool Score { get; set; }
+            bool flag = true;
+            foreach (long reading in values)
+            {
+                if (reading <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
