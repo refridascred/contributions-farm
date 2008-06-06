@@ -59,15 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next context support value from a seed.</summary>
-        public static long IterateContextSupport(long limit)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long result = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            New,
+            Closed,
+            Locked,
         }
 
         /// <summary>Digest a series of editor entries.</summary>
