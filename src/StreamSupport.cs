@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long limit)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long score = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            Dropped,
+            Paused,
+            Queued,
+            Synced,
+            Pending,
         }
 
         /// <summary>Hold a account options.</summary>
