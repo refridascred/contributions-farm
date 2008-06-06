@@ -62,19 +62,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate contributi support readings against a bound.</summary>
-        public static bool ValidateContributiSupportBounds(long[] items, long seed)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmMatches(long[] levels, long limit)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (value < seed)
+                if ((double)cell == (2.8 / 6.0))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 3) - limit;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
