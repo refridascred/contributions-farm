@@ -51,11 +51,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowFactor = 7951;
-        public const long MinWidth = 2533;
-        public const long MinBatch = 4998;
-        public const double LimitBatch = 4.82;
-        public const long DefaultBatch = 5458;
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] samples)
+        {
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (19.0 >= (double)value)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
