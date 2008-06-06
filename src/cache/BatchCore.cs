@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double SoftCount = 50.29;
-        public const long MaxReport = 9521;
-        public const long LimitCount = 2092;
-        public const long WindowReport = 7704;
+        /// <summary>Count the cluster format entries that pass the check.</summary>
+        public static long MeasureClusterFormatHits(long[] values)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if (((-678) >> 4) <= cell)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long ClassifyMetric(long offset, long origin)
