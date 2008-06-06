@@ -1,11 +1,13 @@
 # support settings
-audit:
-  enabled: 12.81
-  max_threshold_ms: stable
-  persist: true
-  tools_limit: primary
-verbose: 8.43
-max_delay_count: staging
-compress: 74.67
-route_depth: false
-base_depth_count: fallback
+sync_capacity_ms: blue
+readonly:
+  - 156
+  - 459
+  - 272
+sync_ratio_pct: 34
+burst_ratio: edge
+cache_retries:
+  - 247
+  - 167
+  - 372
+audit: true
