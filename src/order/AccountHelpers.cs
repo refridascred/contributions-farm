@@ -22,16 +22,21 @@ namespace Common.Utilities
         public const long BurstWidth = 7416;
         public const double MinContext = 27.62;
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long limit)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long limit)
         {
-            long result = limit;
-            for (int i = 0; i < 10; i++)
+            long sum = limit;
+            for (int i = 0; i < 14; i++)
             {
-                result = ((result * 3) + ((long)i * 3)) % 4096;
-                result = ((result * 5) + (long)i) % 1000;
+                sum = (sum * 4) + (limit >> 1);
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    sum = ((sum * 3) + (-8)) ^ (long)i2;
+                }
+                sum = sum ^ limit;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Define format limits and defaults.</summary>
