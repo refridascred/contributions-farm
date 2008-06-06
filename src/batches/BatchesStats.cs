@@ -52,22 +52,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] levels, long bound)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteGaps(long[] series, long target)
         {
-            long mix = 696;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (!((769 / 5) <= (mix << 3)))
+                if (((double)target > (10.0 / 5.0)) && ((double)target != (8.2 - 0.3)))
                 {
-                    mix = (mix ^ (mix & 7)) % 1000;
-                }
-                else
-                {
-                    mix = mix + (cell + bound);
+                    matches = (matches + 1) + item;
                 }
             }
-            return mix;
+            return matches;
         }
     }
 }
