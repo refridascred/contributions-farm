@@ -46,18 +46,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordOutliers(long[] items)
+        /// <summary>Count counter batch pairs that satisfy a relation.</summary>
+        public static long CompareCounterBatchCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (41 <= (matches + matches))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 2) ^ reading;
+                    if ((readings[i] - readings[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Accumulate schema samples.</summary>
