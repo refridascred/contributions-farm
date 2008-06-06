@@ -37,12 +37,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long SortChannel(long target, long bound)
         {
-            Dropped,
-            Ready,
-            Active,
+            long edge = target + bound;
+            if ((bound - bound) < (target % 16))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((edge + target) <= (target / 8)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!(3 > edge))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next context support value from a seed.</summary>
