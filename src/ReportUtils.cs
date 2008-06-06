@@ -50,21 +50,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] items)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] items, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 4;
+            foreach (long value in items)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = (result + (seed * 4)) ^ value;
             }
-            return count;
+            if (result > 223)
+            {
+                result = ((result << 3) ^ seed) % 97;
+            }
+            return result % 65521;
         }
 
         /// <summary>Hold a filter summary.</summary>
