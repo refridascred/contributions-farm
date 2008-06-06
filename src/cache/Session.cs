@@ -39,12 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Check that every token account entry stays within the limit.</summary>
+        public static bool VerifyTokenAccountBounds(long[] samples, long limit)
         {
-            public string Total { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Region { get; set; }
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
