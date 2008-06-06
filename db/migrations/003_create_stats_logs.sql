@@ -3,11 +3,10 @@ CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     region TEXT,
     rank INTEGER,
-    state TEXT NOT NULL DEFAULT 'new',
-    level INTEGER
+    level INTEGER,
+    active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_level ON stats_logs (level);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_active ON stats_logs (active);
 
-INSERT INTO stats_logs (region, rank, state, level) VALUES ('strict', 70, 'standard', 40);
-INSERT INTO stats_logs (region, rank, state, level) VALUES ('green', 45, 'cached', 52);
+INSERT INTO stats_logs (region, rank, level, active) VALUES ('open', 98, 53, 80);
