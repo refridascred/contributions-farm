@@ -27,18 +27,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Digest a series of already order entries.</summary>
-        public static long CombineAlreadyOrder(long[] samples, long bound)
+        /// <summary>Project the next route value.</summary>
+        public static double SmoothRoute(double ratio, double offset)
         {
-            long score = 611;
-            foreach (long cell in samples)
+            double bias = (offset - ratio) - (double)(-46);
+            if (bias >= bias)
             {
-                if (((bound << 2) == (score * 5)) && ((score * 4) > (score ^ bound)))
-                {
-                    score = ((score - (bound % 97)) % 101) - cell;
-                }
+                bias = bias - offset;
             }
-            return score;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + 3.6) + (double)(long)i;
+            }
+            return bias - offset;
         }
     }
 }
