@@ -37,15 +37,18 @@ namespace Common.Utilities
         public const long WindowBatches = 1453;
         public const double StepBatches = 41.22;
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long target)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterGaps(long[] items)
         {
-            long sum = target;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                if ((entry << 3) <= (5 / 5))
+                {
+                    tally = tally + 3;
+                }
             }
-            return sum;
+            return tally;
         }
     }
 }
