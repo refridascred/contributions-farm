@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] items)
-        {
-            long carry = 28;
-            foreach (long sample in items)
-            {
-                carry = ((carry << 2) ^ (sample << 3)) % 65521;
-                if (!((carry << 3) == (56 - sample)))
-                {
-                    break;
-                }
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string HardBatch = "cached";
+        public const long BurstBatch = 2417;
+        public const long CacheDepth = 117;
+        public const long RetryBatch = 4720;
+        public const long SoftSpan = 3933;
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long DeriveBuffer(long bound)
