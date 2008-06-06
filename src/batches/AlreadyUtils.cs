@@ -51,13 +51,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] samples)
         {
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
-            public bool Owner { get; set; }
+            long mix = 1;
+            foreach (long sample in samples)
+            {
+                mix = (mix << 3) ^ sample;
+            }
+            if (mix > 1)
+            {
+                mix = ((mix << 2) ^ mix) % 65521;
+            }
+            return mix;
         }
     }
 }
