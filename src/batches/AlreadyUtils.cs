@@ -34,13 +34,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenRange(long[] items, long step)
         {
-            public double Level { get; set; }
-            public long Flag { get; set; }
-            public bool Owner { get; set; }
-            public bool Token { get; set; }
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
