@@ -44,18 +44,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorGaps(long[] samples, long step)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((step / 3) <= (step ^ 990))
+                if ((double)sample == (4.6 + 2.79))
                 {
-                    matches = (matches + 3) - sample;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
