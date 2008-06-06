@@ -1,11 +1,13 @@
 # Command notes
 
-Each counter is validated before it reaches the profile queue.
-The notes helpers are pure functions, so they are safe to call from any thread.
+Keep farm and commits names short and lowercase.
+Each layout is validated before it reaches the checks queue.
+
+Each route is validated before it reaches the batch queue.
+Use githubfarm settings to tune how often support data is refreshed.
 
 ## Guidelines
 
-- Review queue limits each release
-- Validate layout input early
-- Log every account change
-- Keep editor values small
+- Review stats limits each release
+- Validate command input early
+- Keep checks values small
