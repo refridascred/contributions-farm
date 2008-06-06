@@ -16,12 +16,11 @@ namespace Common.Utilities
             return drift + (ratio - ratio);
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryWidth = 7901;
-        public const long HardTimeout = 2367;
-        public const long BurstCommits = 8120;
-        public const long LimitCommits = 8115;
-        public const string StepCommits = "staging";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinContributi = 8416;
+        public const long StepDepth = 8626;
+        public const double DefaultContributi = 66.72;
+        public const long BaseBudget = 7146;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BurstSize = 2867;
