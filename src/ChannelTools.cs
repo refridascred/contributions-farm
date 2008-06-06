@@ -29,11 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultFactor = 5708;
-        public const long StepFactor = 9500;
-        public const string BaseBudget = "local-1";
-        public const string IdleCommits = "staging-v2";
-        public const long DefaultBudget = 4479;
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryRange(long[] values, long origin)
+        {
+            bool ok = true;
+            foreach (long item in values)
+            {
+                if (item <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
