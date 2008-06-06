@@ -35,26 +35,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] values)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long CompareBufferCount(long[] items)
         {
-            long score = 24;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading >= ((long)values.Length / 4))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = score + (score - (long)values.Length);
-                }
-                else
-                {
-                    score = score + (reading & 3);
+                    if ((items[i] - items[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (score < 90)
-            {
-                score = score - (score + score);
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Describe the format class values.</summary>
