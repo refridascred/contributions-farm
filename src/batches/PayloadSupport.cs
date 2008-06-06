@@ -31,16 +31,10 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = ((mix << 2) ^ (118 / 4)) % 97;
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftToken = 4405;
+        public const string BurstToken = "open-1";
+        public const long HardToken = 298;
+        public const string WindowToken = "cached-v2";
     }
 }
