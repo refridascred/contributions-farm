@@ -49,11 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftDepth = 4555;
-        public const long RetryFormat = 2722;
-        public const long BatchFormat = 9657;
-        public const long StepFormat = 6441;
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank record input into a small class.</summary>
         public static long SortRecord(long floor, long limit)
