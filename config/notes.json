@@ -1,8 +1,8 @@
 {
-  "persist": ["local", "green", "stable"],
-  "base_threshold": "strict",
-  "dry_run": "local",
-  "base_threshold_count": true,
-  "burst_size_s": [409, 277, 92],
-  "schema_size": "standard"
+  "readonly": 30,
+  "idle_delay_pct": 60,
+  "min_capacity_pct": ["edge", "latest", "cached"],
+  "default_ttl": "cached",
+  "buffer_retries": "fallback",
+  "flush_retries_count": false
 }
