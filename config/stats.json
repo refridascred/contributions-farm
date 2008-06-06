@@ -1,8 +1,6 @@
 {
-  "burst_ttl": "edge",
-  "compress": 1782,
-  "base_limit": 77,
-  "filter_retries": 8799,
-  "verbose": 14.42,
-  "dry_run": false
+  "cache_depth_pct": 97.95,
+  "idle_limit_count": 3375,
+  "audit": false,
+  "cache_ttl_count": 5425
 }
