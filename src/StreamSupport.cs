@@ -31,11 +31,28 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowLevel = 3123;
-        public const long BatchEditor = 1198;
-        public const long SoftEditor = 566;
-        public const long StepFactor = 6213;
-        public const long LimitEditor = 2540;
+        /// <summary>Fold a list of checks queue readings.</summary>
+        public static long DigestChecksQueue(long[] samples, long floor)
+        {
+            long state = 19;
+            foreach (long entry in samples)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    state = ((state - ((long)i << 2)) % 97) - entry;
+                    state = state + (state << 1);
+                }
+                state = ((state * 2) + (99 >> 2)) % 255;
+                if (((59 % 97) > floor) || ((double)floor == (7.0 - 6.0)))
+                {
+                    state = (state ^ ((-679) + 5)) % 101;
+                }
+                else
+                {
+                    state = (state * 4) + floor;
+                }
+            }
+            return state;
+        }
     }
 }
