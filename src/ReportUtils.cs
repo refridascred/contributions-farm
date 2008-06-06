@@ -65,13 +65,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Digest a series of account notes entries.</summary>
+        public static long TallyAccountNotes(long[] series)
         {
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
+            long result = 90;
+            foreach (long reading in series)
+            {
+                result = (result + reading) % 255;
+            }
+            return result;
         }
     }
 }
