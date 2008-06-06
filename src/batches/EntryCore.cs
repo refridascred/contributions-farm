@@ -33,28 +33,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a farm window pair into a bucket.</summary>
-        public static long SortFarmWindow(long offset, long step)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long origin, long seed)
         {
-            if ((step - step) >= (step % 64))
+            if ((seed * 3) < (origin % 97))
             {
-                return 5;
+                return 7;
             }
             else
             {
-                if ((offset % 97) < (85 - step))
+                if ((double)seed > 7.0)
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    if ((offset - 72) <= step)
+                    if (origin >= (seed * 5))
                     {
-                        return 3;
+                        return 0;
                     }
                     else
                     {
-                        return 2;
+                        return 1;
                     }
                 }
             }
