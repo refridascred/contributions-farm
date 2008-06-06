@@ -40,19 +40,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyBounds(long[] series, long step)
+        /// <summary>Digest a series of account counter entries.</summary>
+        public static long DigestAccountCounter(long[] levels)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long sum = 3;
+            foreach (long datum in levels)
             {
-                if (item < step)
+                if (((4 + datum) >= (6 + datum)) && ((0 & 15) <= (sum & 31)))
                 {
-                    flag = false;
-                    break;
+                    sum = (sum - datum) % 97;
                 }
             }
-            return flag;
+            return sum % 97;
         }
 
         /// <summary>Hold a graph summary.</summary>
