@@ -72,12 +72,22 @@ namespace Common.Utilities
         public const long SoftCommand = 103;
         public const long DefaultCommand = 8959;
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksOutliers(long[] values, long bound)
         {
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((double)datum < (double)(long)values.Length)
+                {
+                    tally = (tally + 1) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
