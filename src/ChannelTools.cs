@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of token command entries.</summary>
-        public static long ScoreTokenCommand(long[] series, long step)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelOutliers(long[] levels)
         {
-            long acc = 66;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (acc >= (value * 3))
+                if ((9.0 / 6.0) <= (double)entry)
                 {
-                    acc = (((acc << 3) ^ (acc & 63)) % 97) - step;
+                    count = count + 2;
                 }
             }
-            if (acc < 13)
-            {
-                acc = (acc + (acc & 3)) % 4096;
-            }
-            return acc % 4096;
+            return count;
         }
 
         /// <summary>Describe the tools status values.</summary>
