@@ -76,24 +76,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a session order pair into a bucket.</summary>
-        public static long ClassifySessionOrder(long target, long step)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyGaps(long[] items)
         {
-            if ((7 & 255) == (target - target))
+            long count = 0;
+            foreach (long cell in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((8.1 / 5.0) <= (double)target)
+                if (9 > (count << 1))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    count = (count + 1) + cell;
                 }
             }
+            return count;
         }
     }
 }
