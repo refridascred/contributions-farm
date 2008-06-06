@@ -34,18 +34,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutMatches(long[] data)
+        /// <summary>Grade a cache channel value against two limits.</summary>
+        public static long ClassifyCacheChannel(long seed, long limit)
         {
-            long count = 0;
-            foreach (long value in data)
+            if ((seed % 24) < 128)
             {
-                if (count >= ((long)data.Length / 2))
+                return 0;
+            }
+            else
+            {
+                if (seed <= (limit << 2))
                 {
-                    count = (count + 1) ^ value;
+                    return 8;
+                }
+                else
+                {
+                    if ((limit / 7) == (limit + limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
