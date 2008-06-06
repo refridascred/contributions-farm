@@ -22,17 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] readings, long target)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheGaps(long[] values, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((readings[i] == target) && ((readings[i] % 3) == 0))
+                if (!(((tally >> 5) <= (tally << 1)) && ((offset / 2) >= ((-9) >> 2))))
                 {
-                    return (long)i;
+                    tally = (tally + 2) + cell;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
