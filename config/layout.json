@@ -1,5 +1,6 @@
 {
-  "min_ratio": 63.5,
-  "order_threshold": 2023,
-  "soft_capacity": ["cached", "standard", "open", "primary"]
+  "hard_retries_s": [314, 453, 375],
+  "sync_retries_s": false,
+  "enabled": 1658,
+  "format_timeout": 9459
 }
