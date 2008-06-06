@@ -30,17 +30,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] items, long target)
+        /// <summary>Audit command metrics readings against a rule.</summary>
+        public static long AuditCommandMetricsOutliers(long[] data, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (items[i] < target)
+                if ((((83 >> 1) != (sample >> 4)) && (9.13 < (double)limit)) || (seen < (sample << 1)))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
