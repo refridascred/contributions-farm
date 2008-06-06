@@ -6,19 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green eu-west; do
+for item in open local fallback stable; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+CHANNEL_LIMIT=18
+log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-staging}"
+mode="${1:-edge}"
 case "${mode}" in
-    latest)
+    local)
         log "fast path"
         ;;
     *)
