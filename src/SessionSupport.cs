@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferHits(long[] series)
+        /// <summary>Classify a checks batch pair into a bucket.</summary>
+        public static long ClassifyChecksBatch(long floor, long bound)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long next = floor + bound;
+            if (!(next < (bound >> 4)))
             {
-                if (!(7.76 >= (double)matches))
+                return 5;
+            }
+            else
+            {
+                if (!(bound >= (next + next)))
                 {
-                    matches = (matches + 3) - value;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((double)76 <= (double)floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
