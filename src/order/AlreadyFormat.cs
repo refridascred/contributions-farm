@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardWidth = 2210;
+        public const double MinRatio = 5.32;
+        public const string IdleFactor = "open";
+        public const string BurstContext = "local";
+        public const long LimitContext = 3047;
 
         /// <summary>Accumulate format samples.</summary>
         public static long TallyFormat(long[] readings)
