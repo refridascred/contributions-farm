@@ -67,24 +67,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long step, long origin)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            if ((2.0 - 9.0) != (double)origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if (origin <= (722 << 1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Owner { get; set; } = "";
+            public bool Score { get; set; }
         }
     }
 }
