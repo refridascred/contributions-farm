@@ -1,26 +1,6 @@
 {
-  "persist": 60,
-  "tools_delay": 77,
-  "audit": false,
-  "tools_size": 56.83,
-  "base_ttl": {
-    "readonly": true,
-    "poll_window": 6726,
-    "base_ratio": 6418
-  },
-  "filter_ttl": {
-    "cache_retries_pct": "blue",
-    "batch_capacity_pct": 46,
-    "idle_size": "cached",
-    "sync_retries_count": "open",
-    "sync_size_count": 58.26,
-    "compress": {
-      "sync_timeout": 6.05,
-      "poll_ttl_s": true,
-      "metrics_depth": "stable",
-      "hard_window_ms": true,
-      "retry_window_pct": 51.42,
-      "soft_ttl_s": false
-    }
-  }
+  "verbose": 30,
+  "graph_limit": "latest",
+  "dry_run": 3442,
+  "farm_interval": "open"
 }
