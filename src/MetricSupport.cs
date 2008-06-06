@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ProjectSchema(double rate, double floor)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportMatches(long[] levels)
         {
-            double drift = rate;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                drift = ((drift + (double)(-8)) + (double)(long)i) - floor;
+                if ((entry & 15) < entry)
+                {
+                    hits = hits + 1;
+                }
             }
-            return drift + rate;
+            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
