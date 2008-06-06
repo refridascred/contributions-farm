@@ -1,6 +1,21 @@
 # entry settings
-contributi_ratio: strict
-burst_delay_pct: 45
-base_window: cached
-githubfarm_capacity: false
-tools_delay: 4546
+enabled: latest
+sync_interval:
+  retry_threshold_s: open
+  flush_delay_pct: false
+  format_interval:
+    - 341
+    - 86
+    - 457
+  soft_timeout_count:
+    checks_retries: blue
+    dry_run: 73
+    contributi_timeout:
+      - green
+      - edge
+      - fallback
+    batch_limit_pct: edge
+  flush_capacity: strict
+  audit: 5713
+persist: eu-west
+max_timeout: true
