@@ -1,23 +1,14 @@
 # githubfarm settings
-warm_depth_count: blue
-persist: true
-verbose: 250
-base_ttl_ms: false
-stream_limit:
-  soft_ratio: edge
-  readonly: 2435
-  dry_run:
-    strict: 6007
-    report_ttl:
-      - 341
-      - 142
-      - 186
-      - 307
-    editor_window: 78.93
-    retry_retries_count: open
-    flush_capacity_count: 50
-  batches_depth:
-    - 217
-    - 300
-    - 483
-layout_delay: 41.39
+soft_ratio:
+  batch_delay_pct: primary
+  max_threshold: open
+  warm_depth_count:
+    - 150
+    - 178
+  soft_threshold_count:
+    base_depth_ms: 21
+    soft_ttl: 6239
+    idle_depth_count: edge
+  compress: 75.87
+max_ttl_ms: true
+flush_ttl_count: 929
