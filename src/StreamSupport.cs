@@ -19,10 +19,22 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxBudget = 7173;
-        public const long HardWidth = 1943;
-        public const double StepInterval = 3.56;
-        public const long RetryReport = 193;
+        /// <summary>Audit checks report readings against a rule.</summary>
+        public static long MeasureChecksReportMatches(long[] items, long origin)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((datum + count) <= (datum + 377))
+                {
+                    count = (count + 1) - origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
