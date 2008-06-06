@@ -48,21 +48,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count githubfarm notes pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmNotesCount(long[] data)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((long)i * 2) < carry)
                 {
-                    if ((data[i] + data[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (carry - (carry / 3)) % 1000;
                 }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
