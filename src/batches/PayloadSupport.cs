@@ -20,18 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksOutliers(long[] levels, long origin)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterLimits(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                if ((seen >> 1) > (268 & 255))
+                if (datum <= limit)
                 {
-                    seen = ((seen + 3) ^ reading) + origin;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
