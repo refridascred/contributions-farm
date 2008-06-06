@@ -27,13 +27,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            public double Flag { get; set; }
-            public double Total { get; set; }
-            public long Limit { get; set; }
-            public string Size { get; set; } = "";
+            Active,
+            Idle,
+            Retry,
+            Failed,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
