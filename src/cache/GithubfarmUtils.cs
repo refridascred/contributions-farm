@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] levels)
         {
-            public double Flag { get; set; }
-            public long Count { get; set; }
-            public double Rank { get; set; }
-            public long Weight { get; set; }
+            long total = 7;
+            foreach (long reading in levels)
+            {
+                total = total - (total + reading);
+            }
+            if (total > 2)
+            {
+                total = ((total << 3) ^ total) % 65521;
+            }
+            return total % 65521;
         }
 
         /// <summary>Locate a report reading by value.</summary>
