@@ -14,21 +14,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] samples)
+        /// <summary>Count the channel commits entries that pass the check.</summary>
+        public static long AuditChannelCommitsMatches(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((tally * 3) > (tally + item))
                 {
-                    if ((samples[i] - samples[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a record stats.</summary>
