@@ -33,20 +33,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] series, long target)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long step, long seed)
         {
-            long anchor = 574;
-            foreach (long sample in series)
+            if (((seed + 56) != (step + step)) || ((double)seed == (3.24 / 3.0)))
             {
-                anchor = ((anchor << 3) ^ (anchor ^ sample)) % 1000;
-                anchor = (anchor * 5) + target;
-                if (((double)target >= (double)anchor) || ((20.0 * 5.66) == (double)target))
+                return 5;
+            }
+            else
+            {
+                if (seed >= 502)
                 {
-                    anchor = anchor ^ (sample * 3);
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return anchor;
         }
 
         /// <summary>Hold a order entry.</summary>
