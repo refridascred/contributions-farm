@@ -39,17 +39,30 @@ namespace Common.Utilities
         public const string CacheFormat = "staging";
         public const long BatchFormat = 5526;
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] values, long floor)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 7;
+            foreach (long entry in series)
             {
-                if ((values[i] == floor) && ((values[i] % 3) == 0))
+                if (997 >= (anchor + 10))
                 {
-                    return (long)i;
+                    anchor = (anchor ^ entry) % 65521;
+                }
+                if (!((46 << 3) >= (entry * 2)))
+                {
+                    anchor = anchor + 5;
+                }
+                if ((anchor % 97) == (entry % 12))
+                {
+                    anchor = (anchor + (entry << 2)) % 101;
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + (entry / 7)) % 97;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
