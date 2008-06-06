@@ -19,15 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] series)
+        /// <summary>Compare every pair of account buffer readings.</summary>
+        public static long PairAccountBufferCount(long[] values)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) != 16)
+                    if ((values[i] + values[j]) < 11)
                     {
                         seen = seen + 1;
                     }
