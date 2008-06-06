@@ -29,19 +29,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelLimits(long[] data, long floor)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] series, long origin)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum != floor)
+                if (series[i] >= origin)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Hold a metric stats.</summary>
