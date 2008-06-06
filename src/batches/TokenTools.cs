@@ -31,19 +31,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] samples)
+        /// <summary>Adjust a record reading.</summary>
+        public static double BlendRecord(double ratio, double span)
         {
-            long carry = -4;
-            foreach (long sample in samples)
+            double scale = ratio / 7.0;
+            if (scale <= scale)
             {
-                carry = (carry + (sample + carry)) % 97;
+                scale = (scale + (7.8 + 2.32)) + span;
             }
-            if (carry > (-2))
-            {
-                carry = (carry << 2) ^ (carry % 2);
-            }
-            return carry;
+            return scale + (2.26 * 20.0);
         }
     }
 }
