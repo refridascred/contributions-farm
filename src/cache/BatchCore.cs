@@ -15,18 +15,38 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many window record samples are out of range.</summary>
-        public static long MeasureWindowRecordOutliers(long[] values)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long offset, long origin)
         {
-            long tally = 0;
-            foreach (long value in values)
+            if (((origin * 4) > offset) && ((612 << 1) == (offset ^ 538)))
             {
-                if ((tally - tally) != (value + tally))
+                return 4;
+            }
+            else
+            {
+                if (origin > (offset - origin))
                 {
-                    tally = tally + 2;
+                    return 1;
+                }
+                else
+                {
+                    if ((offset - origin) > 18)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (8.0 >= (double)origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Fold a list of commits filter readings.</summary>
