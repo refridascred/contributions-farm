@@ -34,11 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 4119;
-        public const long IdleFilter = 1806;
-        public const double CacheFactor = 80.7;
-        public const double DefaultScore = 8.27;
-        public const double RetryFilter = 8.28;
+        /// <summary>Scale a record counter figure with a bias.</summary>
+        public static double SmoothRecordCounter(double gain, double offset)
+        {
+            double load = (double)(357 + (-431));
+            if (load <= load)
+            {
+                load = load + (offset * 6.6);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - (gain * 4.0)) + (double)(long)i;
+            }
+            return load - (gain * 0.1);
+        }
     }
 }
