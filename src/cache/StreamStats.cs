@@ -27,12 +27,14 @@ namespace Common.Utilities
         public const long IdleProfile = 4836;
         public const string BaseFactor = "stable-edge";
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-            public bool Rank { get; set; }
+            Draft,
+            Paused,
+            Ready,
+            New,
+            Failed,
         }
     }
 }
