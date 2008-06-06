@@ -1,8 +1,5 @@
 # entry settings
-verbose: false
-poll_timeout_s: 30
-support_depth:
-  - 180
-  - 233
-  - 493
-  - 7
+window_threshold: 30
+buffer_capacity: primary
+sync_ratio: false
+max_retries_s: blue
