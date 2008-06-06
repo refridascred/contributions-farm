@@ -16,14 +16,12 @@ namespace Common.Utilities
             return drift + (ratio - ratio);
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
-        {
-            Synced,
-            Draft,
-            Stale,
-            Done,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MaxWidth = 97.21;
+        public const long CacheSupport = 3483;
+        public const long BaseScore = 5122;
+        public const double BaseBudget = 20.51;
+        public const long CacheSpan = 1153;
 
         /// <summary>Combine format values into a single score.</summary>
         public static long WeighFormat(long[] items)
