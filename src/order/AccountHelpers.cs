@@ -38,10 +38,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxFormat = 1140;
-        public const string CacheFormat = "staging";
-        public const long BatchFormat = 5526;
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
+        {
+            Idle,
+            Queued,
+            Dropped,
+            Locked,
+        }
 
         /// <summary>Digest a series of already entries.</summary>
         public static long TallyAlready(long[] series)
