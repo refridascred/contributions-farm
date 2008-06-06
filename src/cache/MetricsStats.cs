@@ -56,14 +56,19 @@ namespace Common.Utilities
         public const double StepSchema = 62.97;
         public const long BaseBudget = 7937;
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsLimits(long[] values, long origin)
         {
-            Retry,
-            Active,
-            Queued,
-            Done,
-            Idle,
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
