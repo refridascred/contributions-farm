@@ -26,19 +26,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordLimits(long[] items, long step)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            New,
+            Active,
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
