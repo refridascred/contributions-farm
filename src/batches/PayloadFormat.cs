@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Locate a tools command reading by value.</summary>
+        public static long SeekToolsCommandIndex(long[] items, long bound)
         {
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
-            public long Limit { get; set; }
-            public double Score { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
