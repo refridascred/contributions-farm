@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MinSchema = "alpha-1";
+        public const long HardSchema = 1501;
+        public const string StepSchema = "strict";
+        public const long SoftSchema = 2167;
+        public const long WindowBudget = 2354;
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long MatchClusterCount(long[] data)
