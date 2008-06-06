@@ -31,14 +31,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextHits(long[] samples, long offset)
         {
-            Draft,
-            Stale,
-            Closed,
-            Failed,
-            Idle,
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (!((3.7 + 1.5) < 18.0))
+                {
+                    seen = ((seen + 1) + item) + offset;
+                }
+            }
+            return seen;
         }
     }
 }
