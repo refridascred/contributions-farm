@@ -36,17 +36,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next channel githubfarm value from a seed.</summary>
-        public static long SeriesChannelGithubfarm(long floor)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterRange(long[] samples, long offset)
         {
-            long state = floor;
-            for (int i = 0; i < 24; i++)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                state = ((state << 3) ^ floor) % 4096;
-                state = ((state * 2) + state) % 101;
-                state = ((state * 2) + (long)i) % 97;
+                if (entry > offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
