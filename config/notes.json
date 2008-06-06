@@ -1,12 +1,15 @@
 {
-  "persist": 773,
-  "verbose": 61,
-  "base_ttl_count": "eu-west",
-  "counter_size": "stable",
-  "max_delay": {
-    "retry_size_s": "green",
-    "warm_timeout_s": "legacy",
-    "filter_interval": 76
+  "persist": {
+    "filter_delay": {
+      "support_capacity": "green",
+      "strict": 1024,
+      "min_ratio_count": false,
+      "min_delay_count": 2,
+      "githubfarm_retries": 5611
+    },
+    "max_limit_count": "fallback",
+    "stats_window": 1024
   },
-  "format_limit": "standard"
+  "readonly": 9905,
+  "metric_depth": 1984
 }
