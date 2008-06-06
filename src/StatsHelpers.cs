@@ -13,12 +13,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] values)
         {
-            Active,
-            New,
-            Failed,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
