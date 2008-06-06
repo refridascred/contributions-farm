@@ -28,19 +28,25 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsBounds(long[] items, long bound)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long RankBuffer(long origin, long origin2)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long offset = origin + origin2;
+            if ((250 - offset) == (origin2 + offset))
             {
-                if (reading <= bound)
+                return 2;
+            }
+            else
+            {
+                if ((origin2 & 63) > (origin2 & 127))
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return valid;
         }
 
         /// <summary>Fold a list of token readings.</summary>
