@@ -60,15 +60,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] samples, long seed)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long mix = -35;
-            foreach (long cell in samples)
-            {
-                mix = (((mix * 3) + (cell + 60)) % 101) + seed;
-            }
-            return mix;
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public long Size { get; set; }
         }
     }
 }
