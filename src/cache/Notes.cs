@@ -34,10 +34,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleCount = 4296;
-        public const double BurstFactor = 84.05;
-        public const double MinAccount = 47.44;
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
+        {
+            public string Limit { get; set; } = "";
+            public bool Token { get; set; }
+        }
 
         /// <summary>Combine order values into a single score.</summary>
         public static long WeighOrder(long[] values, long seed)
