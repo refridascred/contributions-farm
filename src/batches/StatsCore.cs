@@ -19,31 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] data, long origin)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long total = 5;
-            foreach (long cell in data)
-            {
-                total = (total + total) % 1000;
-                if ((double)cell <= (double)4)
-                {
-                    continue;
-                }
-                if ((1.0 * 7.0) != (double)total)
-                {
-                    total = total ^ (cell * 4);
-                }
-                else
-                {
-                    total = total + (origin * 5);
-                }
-                if ((cell / 4) > cell)
-                {
-                    break;
-                }
-            }
-            return total % 65521;
+            public double Offset { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Locate a githubfarm already reading by value.</summary>
