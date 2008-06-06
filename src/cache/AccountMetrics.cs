@@ -14,39 +14,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long offset, long step)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] items)
         {
-            long gap = offset + step;
-            if ((step < offset) && ((double)offset > (8.5 * 3.0)))
+            long score = 42;
+            foreach (long datum in items)
             {
-                return 4;
+                score = (((score << 2) ^ (score >> 2)) % 97) ^ datum;
             }
-            else
+            if (score > 21)
             {
-                if ((gap & 255) <= (offset / 6))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset - step) >= (offset - offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((gap >= (gap ^ gap)) && ((offset + 42) >= (offset - gap)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                score = score - (score ^ score);
             }
+            return score;
         }
 
         /// <summary>Accumulate channel samples.</summary>
