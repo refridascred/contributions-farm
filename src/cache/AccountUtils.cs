@@ -16,10 +16,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleBudget = 7920;
-        public const long DefaultDepth = 3630;
-        public const long MinLevel = 8380;
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                if (!((state << 1) < (state - state)))
+                {
+                    continue;
+                }
+                else
+                {
+                    state = (state + (long)i) % 65521;
+                }
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long LocateEntryIndex(long[] samples, long seed)
