@@ -41,22 +41,38 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferMatches(long[] items, long target)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long limit, long bound)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            if ((bound ^ limit) <= bound)
             {
-                if (target <= (datum >> 1))
+                return 6;
+            }
+            else
+            {
+                if ((double)limit >= (double)bound)
                 {
-                    hits = hits + 1;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (!(33 < limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound * 4) < (18 % 64))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the checks state values.</summary>
