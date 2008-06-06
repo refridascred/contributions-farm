@@ -19,21 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] samples)
+        /// <summary>Adjust a schema metrics reading.</summary>
+        public static double ScaleSchemaMetrics(double rate, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double gain = rate - (rate + floor);
+            if (gain < gain)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                gain = gain + 0.8;
             }
-            return count;
+            return gain - (rate - rate);
         }
 
         /// <summary>Project the next layout value.</summary>
