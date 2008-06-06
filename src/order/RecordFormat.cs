@@ -39,10 +39,20 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 7772;
-        public const long CacheCommits = 5751;
-        public const string LimitWidth = "cached-1";
+        /// <summary>Combine token profile values into a single score.</summary>
+        public static long WeighTokenProfile(long[] values)
+        {
+            long sum = 57;
+            foreach (long reading in values)
+            {
+                sum = ((sum + (sum >> 3)) % 101) ^ reading;
+            }
+            if (sum < 27)
+            {
+                sum = sum ^ (sum >> 3);
+            }
+            return sum;
+        }
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long WeighMetric(long[] items)
