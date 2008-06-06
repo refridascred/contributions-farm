@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] levels, long offset)
+        /// <summary>Scale a filter stream figure with a bias.</summary>
+        public static double BlendFilterStream(double weight, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = bias * 18.0;
+            for (int i = 0; i < 9; i++)
             {
-                if (levels[i] >= offset)
-                {
-                    return (long)i;
-                }
+                ratio = ((ratio - (8.01 + 2.47)) - (double)(long)i) - weight;
             }
-            return -1;
+            return ratio - (3.0 + bias);
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
