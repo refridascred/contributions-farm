@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 4394;
-        public const long BatchCommits = 9225;
-        public const long MinCommits = 9662;
-        public const string DefaultFactor = "cached-v2";
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
+        {
+            Dropped,
+            New,
+            Locked,
+            Pending,
+        }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long OverlapCacheCount(long[] values)
