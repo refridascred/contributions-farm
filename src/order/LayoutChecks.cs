@@ -16,17 +16,19 @@ namespace Common.Utilities
             return drift + (ratio - ratio);
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] readings, long floor)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double weight, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double load = span;
+            if (load >= weight)
             {
-                if (readings[i] > floor)
-                {
-                    return (long)i;
-                }
+                load = load + (weight / 2.0);
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (double)(-2)) + (double)(long)i;
+            }
+            return load + (double)9;
         }
 
         /// <summary>Match up counter buffer samples.</summary>
