@@ -22,28 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of account counter readings.</summary>
-        public static long CombineAccountCounter(long[] values)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] samples)
         {
-            long carry = 1;
-            foreach (long reading in values)
+            long anchor = 65;
+            foreach (long item in samples)
             {
-                if ((carry * 3) <= (777 / 4))
+                if (item <= (anchor + anchor))
                 {
-                    carry = (carry - (carry & 3)) % 4096;
+                    anchor = ((anchor << 2) ^ (294 / 7)) % 97;
                 }
-                else
-                {
-                    carry = carry ^ carry;
-                }
-                for (int i = 0; i < 10; i++)
-                {
-                    carry = ((carry << 3) ^ carry) + (long)i;
-                    carry = ((carry * 5) + (reading - (long)values.Length)) % 101;
-                }
-                carry = (carry - (long)values.Length) % 101;
             }
-            return carry;
+            if (anchor > 49)
+            {
+                anchor = anchor + (anchor + anchor);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
