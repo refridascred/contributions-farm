@@ -20,12 +20,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long seed, long step)
         {
-            Idle,
-            Closed,
-            Pending,
+            if (((double)seed >= (double)0) && ((step - 50) < (744 & 1)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed + seed) > (step / 9))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)step <= (7.6 * 0.85))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
