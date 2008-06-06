@@ -22,18 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheGaps(long[] values, long offset)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (!(((tally >> 5) <= (tally << 1)) && ((offset / 2) >= ((-9) >> 2))))
-                {
-                    tally = (tally + 2) + cell;
-                }
-            }
-            return tally;
+            Paused,
+            Queued,
+            Ready,
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
