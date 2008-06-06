@@ -20,19 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiRange(long[] levels, long origin)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Paused,
+            Retry,
+            Ready,
+            Draft,
+            Synced,
         }
 
         /// <summary>Hold a batch entry.</summary>
