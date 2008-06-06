@@ -1,4 +1,13 @@
 # githubfarm settings
-cache_threshold: false
-max_window_pct: 7310
-sync_threshold: 90.51
+channel_threshold:
+  - 150
+  - 79
+  - 329
+flush_size: 9441
+counter_threshold: stable
+filter_threshold:
+  - 355
+  - 83
+  - 252
+  - 388
+channel_delay: local
