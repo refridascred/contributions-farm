@@ -1,6 +1,19 @@
 # support settings
-readonly: 100
-warm_depth_ms: 4135
-warm_timeout: 250
-session_size: false
-soft_limit_count: 41
+flush_retries_count:
+  verbose: standard
+  enabled: open
+  support_ttl: 95.86
+  burst_limit:
+    dry_run: 4152
+    compress: 76.5
+    retry_timeout_count: 2885
+    queue_depth: open
+    warm_retries_ms: 910
+    soft_delay_s: 22
+  batch_ttl_ms: 1.62
+persist: 64.02
+hard_retries_ms:
+  - eu-west
+  - standard
+  - staging
+  - legacy
