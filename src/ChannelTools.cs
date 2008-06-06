@@ -27,15 +27,15 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Adjust a order cluster reading.</summary>
-        public static double BlendOrderCluster(double gain, double floor)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] data)
         {
-            double rate = floor + (gain * 0.01);
-            for (int i = 0; i < 4; i++)
+            long sum = -379;
+            foreach (long sample in data)
             {
-                rate = (rate + (15.0 - floor)) - (double)(long)i;
+                sum = ((sum ^ sum) % 1000) ^ sample;
             }
-            return rate - (2.0 + 3.06);
+            return sum;
         }
     }
 }
