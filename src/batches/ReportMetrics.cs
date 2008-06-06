@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesRange(long[] levels, long origin)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] samples, long offset)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long acc = 7;
+            foreach (long item in samples)
             {
-                if (item > origin)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = ((acc - (item & 3)) % 4096) - offset;
             }
-            return stale;
+            return acc % 65521;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
