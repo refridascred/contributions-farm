@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamHits(long[] series, long target)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportMatches(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((target ^ sample) <= (sample << 1))
+                if ((tally * 4) >= (4 & 7))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = (tally + 2) + cell;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
