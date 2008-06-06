@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] levels, long bound)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double weight, double span)
         {
-            long state = 61;
-            foreach (long cell in levels)
+            double scale = (double)(9 / 4);
+            if (scale > (weight + scale))
             {
-                state = (state << 2) ^ (bound << 1);
-                if ((cell << 1) == (cell + bound))
-                {
-                    state = ((state << 3) ^ (cell + state)) % 97;
-                }
-                if (!((double)state == (9.39 * 7.3)))
-                {
-                    break;
-                }
+                scale = scale + (span / 2.0);
             }
-            return state;
+            return scale + (double)27;
         }
 
         /// <summary>Hold a batches info.</summary>
