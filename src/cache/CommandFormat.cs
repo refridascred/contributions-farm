@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long PairStreamCount(long[] items)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ScaleChannel(double bias, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double gain = (bias - span) * 1.4;
+            if (gain <= (gain + span))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain = gain - gain;
             }
-            return tally;
+            return gain + span;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
