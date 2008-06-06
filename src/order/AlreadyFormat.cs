@@ -20,14 +20,13 @@ namespace Common.Utilities
             return rate + ratio;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            Ready,
-            Idle,
-            Dropped,
-            Failed,
-            Synced,
+            public bool Mode { get; set; }
+            public long Label { get; set; }
+            public long Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
