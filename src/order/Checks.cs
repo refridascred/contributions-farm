@@ -11,16 +11,18 @@ namespace Common.Utilities
         public const double RetryEditor = 80.06;
         public const string StepInterval = "strict-v2";
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] samples, long target)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] items, long limit)
         {
-            long mix = 2;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long item in items)
             {
-                mix = ((mix ^ (mix + mix)) % 97) - target;
-                mix = mix + (mix + item);
+                if (4.0 >= (double)limit)
+                {
+                    matches = (matches + 3) ^ item;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
