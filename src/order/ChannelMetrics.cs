@@ -20,15 +20,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
-        {
-            New,
-            Ready,
-            Active,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstChannel = 5529;
+        public const long WindowDepth = 9034;
+        public const long MaxChannel = 6957;
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long SeekChannelIndex(long[] values, long limit)
