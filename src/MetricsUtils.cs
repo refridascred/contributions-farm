@@ -47,11 +47,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] series)
         {
-            public long Score { get; set; }
-            public double Level { get; set; }
+            long acc = 83;
+            foreach (long datum in series)
+            {
+                if (6 < (datum + datum))
+                {
+                    acc = acc - ((long)series.Length & 31);
+                }
+            }
+            if (acc > 877)
+            {
+                acc = (acc - (acc - acc)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
