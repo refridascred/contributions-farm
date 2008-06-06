@@ -19,23 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] readings, long target)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] values, long limit)
         {
-            long sum = -8;
-            foreach (long sample in readings)
+            long mix = 42;
+            foreach (long value in values)
             {
-                if ((target >> 1) <= sum)
+                if (((8.9 - 4.55) >= (double)limit) || ((780 & 255) >= limit))
                 {
-                    sum = sum - target;
-                    break;
+                    mix = (mix ^ (value ^ mix)) % 1000;
                 }
-                if ((double)sample < (double)sum)
+                else
                 {
-                    sum = (sum + (sum + target)) % 65521;
+                    mix = (mix << 2) ^ mix;
                 }
             }
-            return sum;
+            return mix % 97;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
