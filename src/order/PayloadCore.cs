@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long floor)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long sum = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    sum = (sum + floor) - (long)i2;
-                    sum = (sum + ((long)i & 1)) % 97;
-                }
-                sum = sum ^ 1;
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            Stale,
+            New,
+            Locked,
+            Done,
+            Dropped,
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
