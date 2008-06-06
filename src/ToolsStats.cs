@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const long RetryCount = 611;
         public const double WindowFilter = 4.9;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyMatches(long[] items, long seed)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long SeekSchemaIndex(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((seed - cell) != (seed ^ count))
+                if (series[i] == seed)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Compare every pair of report profile readings.</summary>
