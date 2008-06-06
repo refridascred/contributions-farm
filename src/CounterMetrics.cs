@@ -14,23 +14,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double bias, double floor)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] items, long target)
         {
-            double rate = (5.15 * 0.1) * 9.3;
-            if (rate > bias)
+            long state = -229;
+            foreach (long datum in items)
             {
-                rate = (rate - 1.2) - floor;
+                if ((target & 31) == (0 + datum))
+                {
+                    state = ((state << 2) ^ (target >> 3)) % 97;
+                }
+                if (!((datum & 7) < (state << 2)))
+                {
+                    state = (state ^ (target - state)) % 97;
+                }
             }
-            else
-            {
-                rate = rate + (double)9;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - (rate / 6.0)) + (double)(long)i;
-            }
-            return rate + (double)81;
+            return state % 1000;
         }
 
         /// <summary>Hold a stats stats.</summary>
