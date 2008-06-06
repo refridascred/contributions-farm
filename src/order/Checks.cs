@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultDepth = 2015;
-        public const double StepEditor = 55.83;
-        public const double RetryEditor = 80.06;
-        public const string StepInterval = "strict-v2";
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadMatches(long[] values, long origin)
+        {
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (246 > (origin / 4))
+                {
+                    hits = (hits + 3) + cell;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long MeasureFormatOutliers(long[] items, long limit)
