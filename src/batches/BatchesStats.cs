@@ -22,22 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] samples)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionHits(long[] series, long target)
         {
-            long anchor = 65;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (item <= (anchor + anchor))
+                if (!((seen % 5) < (item / 3)))
                 {
-                    anchor = ((anchor << 2) ^ (294 / 7)) % 97;
+                    seen = (seen + 3) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (anchor > 49)
-            {
-                anchor = anchor + (anchor + anchor);
-            }
-            return anchor % 1000;
+            return seen;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
