@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double gain, double offset)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long bound, long floor)
         {
-            double scale = 8.03;
-            return ((scale + (scale - scale)) + gain) + offset;
+            if (floor <= (bound * 4))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)bound < (11.0 + 0.01)) || (bound <= floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)floor == (double)30) && ((bound % 97) < (bound % 3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound + floor) >= (40 ^ floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a contributi record.</summary>
