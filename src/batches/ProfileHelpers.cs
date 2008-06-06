@@ -58,12 +58,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            Ready,
+            Dropped,
+            New,
+            Locked,
             Done,
-            Active,
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
