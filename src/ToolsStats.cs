@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchSize = 4731;
-        public const long RetryCount = 611;
-        public const double WindowFilter = 4.9;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportRange(long[] items, long bound)
+        {
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long OverlapRouteCount(long[] items)
