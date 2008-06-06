@@ -5,31 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of channel support readings.</summary>
-        public static long DigestChannelSupport(long[] data, long step)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] items)
         {
-            long sum = 47;
-            foreach (long value in data)
+            long total = 81;
+            foreach (long item in items)
             {
-                if (5.1 <= (double)sum)
+                for (int i = 0; i < 5; i++)
                 {
-                    sum = (sum * 3) + (step * 2);
+                    total = (total - (96 - (long)i)) % 255;
+                    total = total + (total / 8);
                 }
-                sum = ((sum * 3) + (step << 2)) % 65521;
-                if ((69 * 5) < value)
+                if ((item + total) <= (total >> 1))
                 {
-                    sum = sum + (value ^ sum);
+                    total = ((total << 3) ^ total) % 97;
                 }
                 else
                 {
-                    sum = (sum ^ (300 + 8)) % 255;
+                    total = total - (long)items.Length;
                 }
             }
-            if (sum > 71)
-            {
-                sum = (sum ^ (sum - step)) % 97;
-            }
-            return sum % 65521;
+            return total % 97;
         }
 
         /// <summary>Fold a list of format profile readings.</summary>
