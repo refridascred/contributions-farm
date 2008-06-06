@@ -1,17 +1,12 @@
 {
-  "schema_interval": {
-    "idle_delay": 8456,
-    "warm_limit": 3389,
-    "hard_capacity_ms": {
-      "compress": ["standard", "local"],
-      "flush_depth_count": "legacy",
-      "readonly": "blue"
-    },
-    "layout_ratio": [178, 169, 464]
+  "persist": 773,
+  "verbose": 61,
+  "base_ttl_count": "eu-west",
+  "counter_size": "stable",
+  "max_delay": {
+    "retry_size_s": "green",
+    "warm_timeout_s": "legacy",
+    "filter_interval": 76
   },
-  "stats_window": 8391,
-  "persist": true,
-  "min_size_pct": true,
-  "burst_window_count": [123, 287, 55, 487],
-  "window_capacity": 72.43
+  "format_limit": "standard"
 }
