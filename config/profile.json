@@ -1,6 +1,13 @@
 {
-  "enabled": "open",
-  "idle_retries_count": 6390,
-  "soft_ttl_s": "eu-west",
-  "flush_ratio_pct": ["primary", "fallback"]
+  "poll_capacity_count": 100,
+  "contributi_ratio": false,
+  "strict": {
+    "editor_interval": false,
+    "strict": "edge",
+    "default_capacity": false,
+    "verbose": "primary",
+    "counter_capacity": 758,
+    "warm_capacity_pct": 61
+  },
+  "verbose": "eu-west"
 }
