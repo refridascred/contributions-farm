@@ -13,13 +13,31 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long offset, long step)
         {
-            public double Rank { get; set; }
-            public long Mode { get; set; }
-            public double Owner { get; set; }
-            public string Flag { get; set; } = "";
+            if (((double)offset > (9.82 - 9.06)) || ((offset % 97) < (step - offset)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((91 + step) > 792) || (step >= (step + (-987))))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (step > (step + offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine context window values into a single score.</summary>
