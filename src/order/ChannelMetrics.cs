@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesMatches(long[] series, long limit)
+        /// <summary>Project the next context value.</summary>
+        public static double AdjustContext(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            double ratio = (double)(3 >> 2);
+            for (int i = 0; i < 6; i++)
             {
-                if ((5.2 * 9.0) != (double)matches)
-                {
-                    matches = ((matches + 3) ^ sample) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                ratio = (((ratio - (5.3 / 2.0)) + (double)(long)i) - weight) - offset;
             }
-            return matches;
+            return ratio + (ratio * 8.4);
         }
 
         /// <summary>Combine context farm values into a single score.</summary>
