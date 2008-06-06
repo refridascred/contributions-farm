@@ -26,19 +26,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate session editor readings against a bound.</summary>
-        public static bool GuardSessionEditorLimits(long[] data, long target)
-        {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 4490;
+        public const long SoftFactor = 9869;
+        public const long WindowFilter = 2510;
+        public const double BatchScore = 21.22;
     }
 }
