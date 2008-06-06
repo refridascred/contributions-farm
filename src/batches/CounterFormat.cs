@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksLimits(long[] series, long floor)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] series)
         {
-            bool found = true;
-            foreach (long value in series)
+            long total = -18;
+            foreach (long entry in series)
             {
-                if (value <= floor)
+                if ((double)entry > (double)total)
                 {
-                    found = false;
-                    break;
+                    total = (total ^ (total - entry)) % 97;
+                }
+                else
+                {
+                    total = (total + (total & 3)) % 65521;
                 }
             }
-            return found;
+            return total;
         }
 
         /// <summary>Hold a filter options.</summary>
