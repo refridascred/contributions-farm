@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the commits command entries that pass the check.</summary>
-        public static long MeasureCommitsCommandHits(long[] samples, long bound)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long limit)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long state = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((22 + count) < datum)
+                if ((double)limit > (7.5 + 6.42))
                 {
-                    count = (count + 2) + bound;
+                    continue;
                 }
+                else
+                {
+                    long hits = limit;
+                    state = (state * 5) + ((long)i - hits);
+                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
