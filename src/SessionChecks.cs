@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double bias, double span)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] levels, long offset)
         {
-            double bias2 = span;
-            for (int i = 0; i < 5; i++)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                bias2 = ((bias2 + (span / 2.0)) - (double)(long)i) - bias;
+                if (datum != offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return bias2 + (9.18 + bias2);
+            return flag;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
