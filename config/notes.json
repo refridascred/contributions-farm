@@ -1,5 +1,18 @@
 {
-  "cache_size": "strict",
-  "dry_run": "staging",
-  "stats_capacity": 86.87
+  "max_timeout_count": 7232,
+  "sync_depth": "local",
+  "idle_delay_pct": [482, 170, 344],
+  "compress": {
+    "default_threshold_count": 15.35,
+    "stream_ttl": "cached",
+    "dry_run": true
+  },
+  "checks_window": {
+    "persist": 28.82,
+    "flush_limit_s": [169, 117, 316],
+    "cache_limit_s": [280, 413, 139],
+    "max_delay": 39.95,
+    "base_ratio_count": 29.25,
+    "account_ttl": "eu-west"
+  }
 }
