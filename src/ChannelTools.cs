@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a queue metrics reading.</summary>
-        public static double ProjectQueueMetrics(double bias, double bias2)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] values, long target)
         {
-            double ratio = bias2;
-            for (int i = 0; i < 4; i++)
+            long carry = 8;
+            foreach (long item in values)
             {
-                ratio = (ratio + bias) - (double)(long)i;
+                carry = (((carry << 3) ^ item) % 97) - target;
             }
-            return ratio - ratio;
+            return carry;
         }
 
         /// <summary>Locate a report reading by value.</summary>
