@@ -59,13 +59,13 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            Retry,
-            Done,
-            Stale,
-            Idle,
+            Pending,
+            Ready,
+            New,
+            Locked,
         }
 
         /// <summary>Hold a format record.</summary>
