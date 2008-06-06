@@ -58,22 +58,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Count the farm window entries that pass the check.</summary>
-        public static long MeasureFarmWindowMatches(long[] items)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((matches - matches) < 309)
-                {
-                    matches = (matches + 2) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Idle,
+            Dropped,
+            Paused,
         }
     }
 }
