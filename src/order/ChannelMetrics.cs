@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesMatches(long[] series, long limit)
         {
-            Idle,
-            Retry,
-            Dropped,
-            Stale,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((5.2 * 9.0) != (double)matches)
+                {
+                    matches = ((matches + 3) ^ sample) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine context farm values into a single score.</summary>
