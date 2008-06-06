@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 5758;
-        public const long BaseScore = 9729;
-        public const string RetrySchema = "staging-1";
-        public const double StepSchema = 74.14;
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double gain, double bias)
+        {
+            double scale = (double)(8 - (-284));
+            return ((scale + (double)576) + gain) + bias;
+        }
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
