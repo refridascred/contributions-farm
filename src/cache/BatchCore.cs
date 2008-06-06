@@ -31,13 +31,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] values, long floor)
         {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
