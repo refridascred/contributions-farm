@@ -57,21 +57,9 @@ namespace Common.Utilities
         public const long HardQueue = 3429;
         public const double DefaultTimeout = 25.44;
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long CompareOrderCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 1620;
+        public const long HardSupport = 4118;
+        public const long HardInterval = 1432;
     }
 }
