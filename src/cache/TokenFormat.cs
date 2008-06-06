@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] items)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheGaps(long[] values)
         {
             long count = 0;
-            foreach (long datum in items)
+            foreach (long entry in values)
             {
-                if (count >= (26 - datum))
+                if ((count << 3) > (entry << 2))
                 {
                     count = count + 2;
                 }
