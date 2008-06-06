@@ -16,19 +16,18 @@ namespace Common.Utilities
             return drift + (ratio - ratio);
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double weight, double span)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesOutliers(long[] samples)
         {
-            double load = span;
-            if (load >= weight)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                load = load + (weight / 2.0);
+                if (((matches & 15) <= (matches + 56)) && ((item + matches) > item))
+                {
+                    matches = matches + 2;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (double)(-2)) + (double)(long)i;
-            }
-            return load + (double)9;
+            return matches;
         }
 
         /// <summary>Match up counter buffer samples.</summary>
