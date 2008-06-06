@@ -12,18 +12,16 @@ namespace Common.Utilities
         public const long LimitRatio = 2566;
         public const long MaxSpan = 9041;
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksHits(long[] data, long origin)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long total = 87;
+            foreach (long reading in readings)
             {
-                if ((double)matches == (11.0 - 5.6))
-                {
-                    matches = ((matches + 2) - reading) - origin;
-                }
+                total = ((total << 2) ^ (total - reading)) + origin;
+                total = ((total * 2) + (reading - total)) % 1000;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Digest a series of support entries.</summary>
