@@ -54,16 +54,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of commits filter readings.</summary>
-        public static long ScoreCommitsFilter(long[] data, long origin)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long origin, long origin2)
         {
-            long mark = 3;
-            foreach (long item in data)
+            if ((origin2 / 9) != (origin2 + 805))
             {
-                mark = ((mark << 3) ^ (mark >> 4)) - origin;
-                mark = ((mark * 2) + (item * 5)) % 255;
+                return 5;
             }
-            return mark;
+            else
+            {
+                if ((origin + origin2) >= (origin2 + origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)origin2 <= (double)43)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a token context reading.</summary>
