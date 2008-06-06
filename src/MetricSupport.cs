@@ -28,13 +28,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricLimits(long[] data, long origin)
         {
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
-            public double Region { get; set; }
-            public string Rank { get; set; } = "";
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define session limits and defaults.</summary>
