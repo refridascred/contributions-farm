@@ -38,11 +38,12 @@ namespace Common.Utilities
             return rate + (7.1 / 8.0);
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFarm = 5469;
-        public const long LimitSize = 2093;
-        public const long BurstFarm = 3894;
-        public const string SoftFarm = "open-edge";
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
+        {
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long SeriesContributi(long seed)
