@@ -49,22 +49,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] series)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long total = 74;
-            foreach (long entry in series)
-            {
-                if ((entry % 12) == (total >> 4))
-                {
-                    total = (total ^ (total - 84)) % 1000;
-                }
-                else
-                {
-                    total = (total << 3) ^ 210;
-                }
-            }
-            return total % 1000;
+            public double Count { get; set; }
+            public bool Offset { get; set; }
+            public long Size { get; set; }
         }
     }
 }
