@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Roll a window batches counter forward.</summary>
-        public static long StepWindowBatches(long bound)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long sum = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = ((sum * 4) + (bound << 2)) % 1000;
-                sum = ((sum << 2) ^ (sum + bound)) % 65521;
-                sum = (sum + (2 - sum)) % 1000;
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            Done,
+            Active,
+            Closed,
         }
 
         /// <summary>Project the next buffer value.</summary>
