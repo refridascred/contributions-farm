@@ -31,15 +31,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long floor)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] series, long floor)
         {
-            long result = floor;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result * 3) + (long)i) % 101;
+                if (series[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
