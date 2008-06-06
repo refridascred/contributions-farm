@@ -27,19 +27,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] series)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] levels, long origin)
         {
-            long sum = 2;
-            foreach (long entry in series)
+            long result = 67;
+            foreach (long reading in levels)
             {
-                sum = sum - (entry >> 5);
+                result = ((result << 2) ^ (reading + 615)) - origin;
+                result = (result ^ (9 << 1)) % 65521;
             }
-            if (sum > 19)
-            {
-                sum = sum + (sum % 100);
-            }
-            return sum;
+            return result % 65521;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
