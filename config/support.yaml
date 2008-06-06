@@ -1,19 +1,9 @@
 # support settings
-flush_retries_count:
-  verbose: standard
-  enabled: open
-  support_ttl: 95.86
-  burst_limit:
-    dry_run: 4152
-    compress: 76.5
-    retry_timeout_count: 2885
-    queue_depth: open
-    warm_retries_ms: 910
-    soft_delay_s: 22
-  batch_ttl_ms: 1.62
-persist: 64.02
-hard_retries_ms:
-  - eu-west
-  - standard
-  - staging
-  - legacy
+base_timeout: 71.5
+hard_depth_ms:
+  - 326
+  - 297
+  - 195
+cache_window: 5806
+base_window: 13.67
+persist: 500
