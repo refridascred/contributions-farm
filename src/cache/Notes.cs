@@ -59,10 +59,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseTimeout = 5170;
-        public const string IdleRoute = "latest-v2";
-        public const double LimitRoute = 38.38;
-        public const long SoftRoute = 6265;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] series)
+        {
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((7 * 3) > (datum - matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
