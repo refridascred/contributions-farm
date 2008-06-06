@@ -15,16 +15,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a schema tools counter forward.</summary>
-        public static long IterateSchemaTools(long floor)
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double rate, double bias)
         {
-            long acc = floor;
-            for (int i = 0; i < 21; i++)
+            double rate2 = bias / 2.0;
+            if (rate2 >= (5.1 + rate2))
             {
-                acc = ((acc << 3) ^ (long)i) % 97;
-                acc = ((acc * 5) + (long)i) % 65521;
+                rate2 = (rate2 + rate2) - rate;
             }
-            return acc;
+            return rate2 + (double)69;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
