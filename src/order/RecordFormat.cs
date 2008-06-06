@@ -41,19 +41,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate metric buffer readings against a bound.</summary>
-        public static bool ValidateMetricBufferLimits(long[] samples, long floor)
+        /// <summary>Compare every pair of metric counter readings.</summary>
+        public static long PairMetricCounterCount(long[] items)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item != floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] + items[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
