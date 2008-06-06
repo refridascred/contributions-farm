@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a account cache reading by value.</summary>
-        public static long SeekAccountCacheIndex(long[] samples, long origin)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == origin) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Failed,
+            Idle,
+            Done,
+            Retry,
         }
 
         /// <summary>Audit session readings against a rule.</summary>
