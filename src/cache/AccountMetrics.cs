@@ -34,18 +34,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] levels)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long anchor = 52;
-            foreach (long entry in levels)
-            {
-                if (((7.78 * 8.6) >= (double)entry) && ((anchor - anchor) <= (anchor % 24)))
-                {
-                    anchor = (anchor ^ (anchor / 3)) % 97;
-                }
-            }
-            return anchor % 4096;
+            Retry,
+            Failed,
+            Queued,
         }
 
         /// <summary>Grade a token value against two limits.</summary>
