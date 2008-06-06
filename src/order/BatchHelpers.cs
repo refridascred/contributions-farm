@@ -26,16 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next stats channel value from a seed.</summary>
-        public static long IterateStatsChannel(long target)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long carry = target;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = (carry ^ (long)i) % 65521;
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            Done,
+            Idle,
+            Closed,
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
