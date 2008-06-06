@@ -1,7 +1,7 @@
 {
-  "retry_window": ["stable", "blue", "stable", "staging"],
-  "order_interval": 2293,
-  "stream_delay": false,
-  "compress": "cached",
-  "hard_limit_pct": 12
+  "min_threshold_s": 30,
+  "readonly": 1955,
+  "persist": [141, 229, 455, 328],
+  "max_window": ["eu-west", "eu-west"],
+  "graph_window": 17
 }
