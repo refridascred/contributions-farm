@@ -44,22 +44,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] levels)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long step, long step2)
         {
-            long sum = 375;
-            foreach (long entry in levels)
+            if (5.6 <= (double)step2)
             {
-                if (!((entry + entry) < ((long)levels.Length & 1)))
+                return 3;
+            }
+            else
+            {
+                if ((step << 1) < (137 + step))
                 {
-                    sum = sum ^ (entry + sum);
+                    return 6;
                 }
                 else
                 {
-                    sum = ((sum * 5) + (entry & 255)) % 97;
+                    if ((step2 ^ step) <= 34)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return sum % 4096;
         }
     }
 }
