@@ -18,13 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] levels)
         {
-            Closed,
-            Ready,
-            Stale,
-            Locked,
+            long result = 42;
+            foreach (long sample in levels)
+            {
+                result = (result << 2) ^ (sample / 2);
+                if (!((sample & 63) >= (result - sample)))
+                {
+                    result = ((result << 3) ^ (sample + result)) % 1000;
+                }
+            }
+            if (result < 5)
+            {
+                result = (result - (result / 4)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
