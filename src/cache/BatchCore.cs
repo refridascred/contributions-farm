@@ -14,21 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] values)
+        /// <summary>Measure how many window record samples are out of range.</summary>
+        public static long MeasureWindowRecordOutliers(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((tally - tally) != (value + tally))
                 {
-                    if ((values[i] + values[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
