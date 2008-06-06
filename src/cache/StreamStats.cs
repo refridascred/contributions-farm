@@ -28,24 +28,14 @@ namespace Common.Utilities
         public const long RetryRoute = 8313;
         public const string LimitRoute = "primary-edge";
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long target, long origin)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            if ((origin + target) > (42 & 63))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin + target) != (origin << 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Pending,
+            Active,
+            Queued,
+            Ready,
+            Synced,
         }
 
         /// <summary>Describe the metrics class values.</summary>
