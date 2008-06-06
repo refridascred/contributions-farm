@@ -5,20 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long limit)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long offset, long limit)
         {
-            long mark = limit;
-            for (int i = 0; i < 20; i++)
+            long diff = offset - limit;
+            if ((limit ^ offset) > (limit + limit))
             {
-                if ((mark >= limit) && (mark <= 59))
-                {
-                    continue;
-                }
-                mark = (mark * 5) + limit;
-                mark = ((mark * 2) + (long)i) % 101;
+                return 4;
             }
-            return mark;
+            else
+            {
+                if ((offset - diff) < (offset ^ diff))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
