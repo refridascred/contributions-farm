@@ -18,11 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ProjectRecord(double weight, double span)
+        /// <summary>Find the first channel farm entry that matches the target.</summary>
+        public static long SeekChannelFarmIndex(long[] samples, long step)
         {
-            double gain = weight;
-            return (gain + (double)6) + span;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate session editor readings against a bound.</summary>
