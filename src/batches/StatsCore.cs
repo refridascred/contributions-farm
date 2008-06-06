@@ -41,10 +41,20 @@ namespace Common.Utilities
         public const long CacheGraph = 6009;
         public const long RetryGraph = 4046;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultTimeout = 1034;
-        public const double LimitFactor = 31.85;
-        public const double StepBudget = 53.41;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksRange(long[] levels, long step)
+        {
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string SoftCount = "open";
