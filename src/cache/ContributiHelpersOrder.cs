@@ -22,22 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] series, long offset)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long target)
         {
-            long acc = 133;
-            foreach (long cell in series)
+            long mark = target;
+            for (int i = 0; i < 7; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    acc = (((acc - (acc % 2)) % 97) + (long)i2) + offset;
-                }
-                if (cell < (cell - 453))
-                {
-                    acc = acc ^ (acc % 5);
-                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return acc % 4096;
+            return mark;
         }
 
         /// <summary>Describe the stats kind values.</summary>
