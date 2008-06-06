@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 8627;
-        public const long MinSession = 7425;
-        public const long CacheSession = 4463;
-        public const string SoftSession = "strict-1";
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] samples)
+        {
+            long score = 36;
+            foreach (long item in samples)
+            {
+                if ((item + score) < score)
+                {
+                    score = (score ^ (9 * 4)) % 97;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (item & 31)) % 255;
+                    score = score - 536;
+                }
+                if ((-42) < (item ^ score))
+                {
+                    score = score - (score - item);
+                }
+            }
+            if (score > 303)
+            {
+                score = score - (score * 3);
+            }
+            return score;
+        }
 
         /// <summary>Rank layout input into a small class.</summary>
         public static long SortLayout(long origin, long offset)
