@@ -1,5 +1,14 @@
 {
-  "min_retries_count": 47.84,
-  "sync_interval_pct": "eu-west",
-  "soft_timeout_pct": 30
+  "batch_depth": 99,
+  "max_depth_count": 1046,
+  "notes_timeout": 15,
+  "idle_capacity": false,
+  "burst_delay": 50.75,
+  "batch_window_ms": {
+    "base_ttl_pct": 65.01,
+    "poll_timeout_ms": "cached",
+    "batches_timeout": 69.31,
+    "burst_size_s": 5115,
+    "audit": 6025
+  }
 }
