@@ -32,16 +32,10 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double rate, double floor)
-        {
-            double mean = (floor * 0.21) / 8.0;
-            if (mean > mean)
-            {
-                mean = mean - (rate - rate);
-            }
-            return mean + 7.66;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFactor = 6736;
+        public const double SoftCount = 56.31;
+        public const long DefaultFarm = 7167;
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long SeekTokenIndex(long[] readings, long limit)
