@@ -27,13 +27,23 @@ namespace Common.Utilities
         public const double MaxRatio = 60.56;
         public const double StepWindow = 22.92;
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double BlendRoute(double rate, double bias)
         {
-            Synced,
-            Locked,
-            Dropped,
-            Ready,
+            double scale = bias;
+            if (scale > (bias / 2.0))
+            {
+                scale = scale - rate;
+            }
+            else
+            {
+                scale = scale - (bias * 0.9);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (1.1 / 8.0)) + (double)(long)i;
+            }
+            return scale - bias;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
