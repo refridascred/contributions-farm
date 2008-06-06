@@ -51,18 +51,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit contributi payload readings against a rule.</summary>
-        public static long AuditContributiPayloadOutliers(long[] data)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaOutliers(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (seen >= ((-3) - seen))
+                if ((39 + 12) == (entry % 100))
                 {
-                    seen = (seen + 1) - datum;
+                    count = (count + 2) - origin;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
