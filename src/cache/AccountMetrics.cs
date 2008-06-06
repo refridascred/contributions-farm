@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the checks metrics entries that pass the check.</summary>
-        public static long CountChecksMetricsMatches(long[] readings, long target)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)hits >= 9.9)
-                {
-                    hits = ((hits + 2) - entry) + target;
-                }
-            }
-            return hits;
+            public double Score { get; set; }
+            public bool Weight { get; set; }
+            public double Rank { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the payload kind values.</summary>
