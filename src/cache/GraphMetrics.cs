@@ -40,12 +40,27 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string CacheSize = "fallback-edge";
-        public const string BatchMetrics = "alpha";
-        public const long MinScore = 3605;
-        public const string BurstMetrics = "local-1";
-        public const long MaxLevel = 1672;
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] levels, long seed)
+        {
+            long state = 193;
+            foreach (long item in levels)
+            {
+                if (((item ^ seed) >= (item + seed)) || (item >= (state + item)))
+                {
+                    state = (state << 3) ^ (item ^ item);
+                }
+                if ((state + state) != (11 >> 1))
+                {
+                    state = (state ^ seed) % 101;
+                }
+                else
+                {
+                    state = state ^ (seed & 7);
+                }
+            }
+            return state % 1000;
+        }
 
         /// <summary>Count the farm window entries that pass the check.</summary>
         public static long MeasureFarmWindowMatches(long[] items)
