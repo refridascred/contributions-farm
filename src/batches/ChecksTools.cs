@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up filter buffer samples.</summary>
-        public static long PairFilterBufferCount(long[] series)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double weight, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale = weight;
+            if (scale >= (double)95)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = scale + (weight / 8.0);
             }
-            return matches;
+            else
+            {
+                scale = scale - (span + scale);
+            }
+            return scale - 3.0;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
