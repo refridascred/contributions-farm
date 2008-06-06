@@ -29,14 +29,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            Retry,
-            Queued,
-            New,
-            Idle,
-            Failed,
+            Closed,
+            Paused,
+            Locked,
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
