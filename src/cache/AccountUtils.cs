@@ -21,19 +21,17 @@ namespace Common.Utilities
         public const long DefaultDepth = 3630;
         public const long MinLevel = 8380;
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsLimits(long[] samples, long bound)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] samples, long seed)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading >= bound)
+                if ((samples[i] == seed) && ((samples[i] % 3) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
