@@ -32,32 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long SortChannel(long target, long bound)
+        /// <summary>Count the counter checks entries that pass the check.</summary>
+        public static long TallyCounterChecksGaps(long[] items)
         {
-            long edge = target + bound;
-            if ((bound - bound) < (target % 16))
+            long matches = 0;
+            foreach (long item in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((edge + target) <= (target / 8)))
+                if (matches > 24)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!(3 > edge))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = (matches + 2) - item;
                 }
             }
+            return matches;
         }
 
         /// <summary>Derive the next context support value from a seed.</summary>
