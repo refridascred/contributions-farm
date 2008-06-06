@@ -57,19 +57,10 @@ namespace Common.Utilities
         public const long WindowTimeout = 8281;
         public const string SoftQueue = "legacy-v2";
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((count % 5) < (count & 15))
-                {
-                    count = (count + 1) + cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 4711;
+        public const long HardPayload = 4753;
+        public const long RetryWidth = 4685;
 
         /// <summary>Accumulate tools command samples.</summary>
         public static long TotalToolsCommand(long[] data, long seed)
