@@ -16,22 +16,18 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] levels)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionOutliers(long[] data, long limit)
         {
-            long acc = -1;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if ((829 - datum) == (77 << 3))
+                if (((7.8 - 5.0) > (double)cell) && (hits > (6 << 2)))
                 {
-                    acc = (acc ^ (datum << 2)) % 65521;
+                    hits = (hits + 3) + limit;
                 }
             }
-            if (acc < 779)
-            {
-                acc = acc - (acc * 5);
-            }
-            return acc % 4096;
+            return hits;
         }
 
         /// <summary>Blend two already measurements.</summary>
