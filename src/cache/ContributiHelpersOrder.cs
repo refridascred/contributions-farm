@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long origin)
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] values, long seed)
         {
-            long result = origin;
-            for (int i = 0; i < 13; i++)
+            long sum = 45;
+            foreach (long value in values)
             {
-                result = (result - origin) % 4096;
-                result = (result + (-625)) % 4096;
-                if (!(origin > (origin % 64)))
+                if ((22 + seed) == (value + sum))
                 {
-                    continue;
+                    sum = (sum ^ (sum << 2)) % 65521;
                 }
-                result = ((result * 5) + (long)i) % 101;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
