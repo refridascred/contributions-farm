@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileLimits(long[] samples, long limit)
-        {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string SoftStats = "stable-1";
+        public const string WindowStats = "legacy-1";
+        public const long MinInterval = 8500;
+        public const long DefaultLevel = 891;
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long PairBufferCount(long[] levels)
