@@ -58,11 +58,23 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] samples, long seed)
         {
-            public double Score { get; set; }
-            public long Total { get; set; }
+            long score = 239;
+            foreach (long entry in samples)
+            {
+                if ((score + entry) != (seed * 4))
+                {
+                    score = (score ^ (794 % 12)) % 65521;
+                }
+                score = (score * 3) + (seed + seed);
+                if (seed < (score + score))
+                {
+                    break;
+                }
+            }
+            return score;
         }
     }
 }
