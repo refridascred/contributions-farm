@@ -24,12 +24,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
-        {
-            public string Flag { get; set; } = "";
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchBatches = 7732;
+        public const string MaxBatches = "cached-v2";
+        public const long LimitBatches = 3523;
 
         /// <summary>Roll a session counter forward.</summary>
         public static long RollSession(long seed)
