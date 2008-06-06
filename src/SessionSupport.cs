@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BurstToken = 39.56;
-        public const long RetryWidth = 9930;
-        public const double BatchCount = 21.63;
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
+        {
+            public bool Size { get; set; }
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
         public static long PairMetricsCount(long[] values)
