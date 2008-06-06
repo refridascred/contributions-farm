@@ -1,6 +1,5 @@
 {
-  "idle_ttl_pct": true,
-  "batch_threshold_pct": "latest",
-  "compress": ["strict", "cached", "blue", "primary"],
-  "batches_ttl": 33
+  "githubfarm_window": "legacy",
+  "stream_depth": [47, 156],
+  "default_depth": [372, 369, 146, 315]
 }
