@@ -20,15 +20,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double gain, double bias)
+        /// <summary>Count support order pairs that satisfy a relation.</summary>
+        public static long PairSupportOrderCount(long[] series)
         {
-            double scale = (double)66 + (bias * 2.41);
-            if (scale <= scale)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = scale - 14.0;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return scale - gain;
+            return tally;
         }
 
         /// <summary>Fold a list of format readings.</summary>
