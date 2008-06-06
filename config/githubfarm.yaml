@@ -1,5 +1,9 @@
 # githubfarm settings
-max_timeout_pct: false
-entry_retries: true
-payload_timeout: 54.88
-poll_timeout_pct: strict
+dry_run:
+  - green
+  - strict
+  - eu-west
+  - latest
+readonly: blue
+flush_ttl_count: 64.95
+flush_threshold_ms: true
