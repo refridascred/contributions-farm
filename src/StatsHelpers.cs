@@ -53,24 +53,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] levels)
+        /// <summary>Match up notes profile samples.</summary>
+        public static long CompareNotesProfileCount(long[] items)
         {
-            long mark = 6;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = mark - (reading + mark);
-                mark = (mark ^ (mark + mark)) % 1000;
-                if ((double)reading < (9.0 + 7.4))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = (mark ^ (reading / 6)) % 255;
+                    if ((items[i] ^ items[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mark > 3)
-            {
-                mark = mark ^ 5;
-            }
-            return mark % 4096;
+            return tally;
         }
     }
 }
