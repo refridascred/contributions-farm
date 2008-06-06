@@ -22,18 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaMatches(long[] series)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterMatches(long[] data, long step)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (!(((6 ^ count) != (count & 63)) && ((471 - datum) < (datum - count))))
+                if ((3.88 + 6.39) >= (double)seen)
                 {
-                    count = count + 2;
+                    seen = ((seen + 1) + item) - step;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Rank session input into a small class.</summary>
