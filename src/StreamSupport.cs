@@ -12,11 +12,16 @@ namespace Common.Utilities
         public const long SoftInterval = 620;
         public const long HardInterval = 8892;
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long origin)
         {
-            public long Level { get; set; }
-            public double Count { get; set; }
+            long mix = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = ((mix << 2) ^ ((long)i + origin)) % 101;
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Audit checks report readings against a rule.</summary>
