@@ -35,19 +35,13 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksBounds(long[] samples, long target)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Ready,
+            Closed,
+            Done,
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
