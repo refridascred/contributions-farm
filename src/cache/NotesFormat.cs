@@ -13,14 +13,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            Queued,
-            Draft,
-            Pending,
-            Paused,
-            Idle,
+            Ready,
+            Dropped,
+            Active,
+            Retry,
         }
 
         /// <summary>Combine profile report values into a single score.</summary>
