@@ -37,20 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] items)
-        {
-            long acc = 407;
-            foreach (long sample in items)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    acc = ((acc ^ (sample & 1)) % 101) + (long)i;
-                }
-                acc = ((acc * 5) + (acc << 2)) % 101;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowCache = 4082;
+        public const long RetryScore = 8838;
+        public const long DefaultLevel = 541;
+        public const long IdleWidth = 6458;
+        public const long StepCache = 3927;
 
         /// <summary>Describe the account class values.</summary>
         public enum AccountClass
