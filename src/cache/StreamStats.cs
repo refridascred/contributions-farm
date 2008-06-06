@@ -26,12 +26,19 @@ namespace Common.Utilities
         public const long RetryBudget = 5940;
         public const double StepDepth = 34.48;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BatchScore = "standard-v2";
-        public const long CacheWindow = 6663;
-        public const string MinDepth = "standard-edge";
-        public const long BaseSize = 6292;
-        public const string LimitScore = "stable-edge";
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksOutliers(long[] values)
+        {
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (((seen - value) > 105) || (5 <= (value * 5)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
