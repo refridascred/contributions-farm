@@ -1,8 +1,6 @@
 {
-  "cache_retries_pct": 66.73,
-  "poll_window": "edge",
-  "soft_ttl": 32.53,
-  "counter_capacity": true,
-  "idle_interval": ["cached", "local", "primary"],
-  "idle_ratio": "eu-west"
+  "batches_depth": 72.1,
+  "idle_depth_ms": 5050,
+  "poll_depth": 100,
+  "poll_retries_count": 500
 }
