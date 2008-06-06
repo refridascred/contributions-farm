@@ -68,18 +68,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] samples)
+        /// <summary>Count the farm window entries that pass the check.</summary>
+        public static long MeasureFarmWindowMatches(long[] items)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long entry in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((matches - matches) < 309)
                 {
-                    if ((samples[i] ^ samples[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 2) ^ entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
