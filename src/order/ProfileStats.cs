@@ -49,19 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsLimits(long[] values, long step)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            Failed,
+            Locked,
         }
     }
 }
