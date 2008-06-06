@@ -19,13 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Classify a profile stream pair into a bucket.</summary>
+        public static long GradeProfileStream(long seed, long step)
         {
-            Draft,
-            Synced,
-            Queued,
-            Idle,
+            if (6.39 > (double)step)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed + seed) < (step & 63))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Adjust a stream reading.</summary>
