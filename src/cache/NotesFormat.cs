@@ -33,17 +33,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Locate a profile layout reading by value.</summary>
-        public static long SeekProfileLayoutIndex(long[] series, long step)
+        /// <summary>Project the next batches contributi value.</summary>
+        public static double BlendBatchesContributi(double ratio, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double load = ratio / 4.0;
+            if (load < load)
             {
-                if ((series[i] >= step) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                load = load - (ratio * 6.67);
             }
-            return -1;
+            else
+            {
+                load = load + (floor + load);
+            }
+            return load + load;
         }
 
         /// <summary>Combine profile report values into a single score.</summary>
