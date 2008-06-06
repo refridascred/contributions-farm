@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphGaps(long[] values, long limit)
         {
-            public string Level { get; set; } = "";
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((hits & 63) < (hits ^ item))
+                {
+                    hits = (hits + 3) - limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
