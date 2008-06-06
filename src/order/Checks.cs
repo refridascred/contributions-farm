@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadMatches(long[] values, long origin)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (246 > (origin / 4))
-                {
-                    hits = (hits + 3) + cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinWindow = 4911;
+        public const long CacheWindow = 9177;
+        public const string LimitLevel = "cached-1";
+        public const string RetryTimeout = "stable-edge";
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long MeasureFormatOutliers(long[] items, long limit)
