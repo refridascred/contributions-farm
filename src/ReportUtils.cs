@@ -23,19 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double scale, double span)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsOutliers(long[] samples, long floor)
         {
-            double rate = (double)(51 & 1);
-            if (rate > (double)32)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                rate = (rate + (span / 9.0)) - scale;
+                if (count > (floor + count))
+                {
+                    count = (count + 3) + reading;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + span) - (double)(long)i;
-            }
-            return rate + (7.1 / 8.0);
+            return count;
         }
 
         /// <summary>Hold a command info.</summary>
