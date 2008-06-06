@@ -34,9 +34,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheDepth = 6789;
-        public const long MaxRatio = 6697;
-        public const string CacheSchema = "latest";
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
+        {
+            New,
+            Locked,
+            Paused,
+            Synced,
+            Done,
+        }
     }
 }
