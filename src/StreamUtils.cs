@@ -11,10 +11,22 @@ namespace Common.Utilities
         public const double HardWidth = 26.36;
         public const long WindowSize = 5646;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowScore = 9523;
-        public const long SoftSpan = 1377;
-        public const string BurstCount = "standard-edge";
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the format window entries that pass the check.</summary>
         public static long CountFormatWindowOutliers(long[] samples)
