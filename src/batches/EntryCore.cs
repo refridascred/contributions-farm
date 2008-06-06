@@ -16,15 +16,18 @@ namespace Common.Utilities
             return ratio - (3.0 + bias);
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long seed)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatMatches(long[] values, long offset)
         {
-            long carry = seed;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                if ((7.0 / 7.0) != (double)matches)
+                {
+                    matches = ((matches + 1) ^ entry) + offset;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Classify a farm window pair into a bucket.</summary>
