@@ -40,11 +40,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxSpan = 7891;
-        public const long DefaultSpan = 6458;
-        public const double LimitBatches = 43.61;
-        public const long BatchBatches = 6410;
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
+        {
+            Queued,
+            Synced,
+            Closed,
+            Failed,
+        }
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
