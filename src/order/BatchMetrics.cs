@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many cache entry samples are out of range.</summary>
-        public static long TallyCacheEntryHits(long[] readings, long bound)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((seen >> 1) < (bound ^ 3))
-                {
-                    seen = (seen + 3) + value;
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Audit farm checks readings against a rule.</summary>
