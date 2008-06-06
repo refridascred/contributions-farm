@@ -34,27 +34,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] readings)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long target)
         {
-            long anchor = 84;
-            foreach (long item in readings)
+            long carry = target;
+            for (int i = 0; i < 4; i++)
             {
-                if ((anchor & 31) <= (7 + anchor))
+                carry = ((carry << 2) ^ (long)i) % 65521;
+                if ((12.0 * 5.0) < (double)(long)i)
                 {
-                    anchor = (anchor + (anchor - item)) % 65521;
-                    anchor = (anchor * 2) + (item << 1);
+                    carry = (carry + (carry * 5)) % 255;
                 }
-                if ((anchor - item) > (item - 83))
-                {
-                    anchor = (anchor - anchor) % 97;
-                }
-                if (!((anchor ^ anchor) != (anchor / 2)))
-                {
-                    anchor = (anchor + item) % 1000;
-                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Fold a list of token readings.</summary>
