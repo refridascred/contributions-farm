@@ -49,9 +49,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseBudget = 8860;
-        public const double BaseCount = 35.28;
-        public const long BatchBudget = 3971;
+        /// <summary>Measure how many contributi session samples are out of range.</summary>
+        public static long AuditContributiSessionHits(long[] data)
+        {
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((hits > (value + value)) || ((double)value <= (9.0 - 12.0)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
