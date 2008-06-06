@@ -1,7 +1,18 @@
 # entry settings
-retry_ratio_count: eu-west
-burst_interval_s: 5635
-stream_delay:
-  - 51
-  - 171
-warm_capacity: 8265
+readonly:
+  poll_window_ms: 49.0
+  readonly: 30
+  default_size_s: 12
+  hard_window_s: 60
+  queue_ratio:
+    - standard
+    - fallback
+  idle_threshold_count: primary
+burst_depth_ms:
+  - 369
+  - 247
+  - 290
+channel_capacity:
+  - 207
+  - 134
+verbose: false
