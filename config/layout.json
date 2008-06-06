@@ -1,7 +1,7 @@
 {
-  "retry_depth_s": ["stable", "green", "standard", "green"],
-  "soft_size_pct": [16, 340, 195, 428],
-  "soft_depth_s": [443, 429, 465],
-  "hard_capacity": 44,
-  "default_ttl_count": 50
+  "burst_interval": [384, 273, 311],
+  "sync_depth": "cached",
+  "warm_ratio_ms": 0.37,
+  "hard_depth": 10.24,
+  "base_depth": ["strict", "blue"]
 }
