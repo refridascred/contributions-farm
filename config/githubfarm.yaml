@@ -1,9 +1,8 @@
 # githubfarm settings
-dry_run:
-  - green
-  - strict
-  - eu-west
+entry_retries: edge
+compress:
+  - staging
   - latest
-readonly: blue
-flush_ttl_count: 64.95
-flush_threshold_ms: true
+  - edge
+  - edge
+batch_size: false
