@@ -1,5 +1,6 @@
 {
-  "flush_size_pct": [230, 266, 304, 17],
-  "account_interval": "edge",
-  "persist": 1024
+  "warm_limit_s": 2403,
+  "checks_interval": 3.37,
+  "stats_interval": 3550,
+  "max_depth_pct": true
 }
