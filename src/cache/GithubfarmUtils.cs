@@ -73,11 +73,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandGaps(long[] values, long step)
         {
-            public string Owner { get; set; } = "";
-            public bool Score { get; set; }
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (((-20) >> 2) == (sample % 3))
+                {
+                    count = (count + 2) + step;
+                }
+            }
+            return count;
         }
     }
 }
