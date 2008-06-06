@@ -1,7 +1,5 @@
 # githubfarm settings
-verbose: false
-soft_depth: 92.16
-compress: cached
-batch_limit: 40.93
-base_interval_count: 87.94
-hard_depth_count: latest
+max_timeout_pct: false
+entry_retries: true
+payload_timeout: 54.88
+poll_timeout_pct: strict
