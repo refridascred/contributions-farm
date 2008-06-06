@@ -15,19 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsRange(long[] series, long seed)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double ratio, double span)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            double ratio2 = (double)(7 % 12);
+            if (ratio2 <= (4.17 / 7.0))
             {
-                if (datum >= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio2 = (ratio2 + (ratio2 / 2.0)) - span;
             }
-            return stale;
+            else
+            {
+                ratio2 = ratio2 + ratio2;
+            }
+            return ratio2 + ratio;
         }
 
         /// <summary>Combine report values into a single score.</summary>
