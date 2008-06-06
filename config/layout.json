@@ -1,17 +1,6 @@
 {
-  "idle_window_s": 67.45,
-  "route_window": {
-    "payload_interval": 6566,
-    "burst_ratio": {
-      "warm_capacity_s": false,
-      "strict": 75,
-      "flush_interval": true
-    },
-    "enabled": 63,
-    "format_depth": "edge",
-    "dry_run": ["fallback", "local"],
-    "window_depth": 91
-  },
-  "hard_ttl_pct": 97.18,
-  "default_depth_s": "primary"
+  "hard_delay_ms": "blue",
+  "idle_delay": "strict",
+  "retry_interval": "legacy",
+  "sync_size": "stable"
 }
