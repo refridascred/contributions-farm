@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const string RetrySchema = "staging-1";
         public const double StepSchema = 74.14;
 
-        /// <summary>Validate token session readings against a bound.</summary>
-        public static bool VerifyTokenSessionBounds(long[] levels, long step)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Done,
+            Locked,
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
