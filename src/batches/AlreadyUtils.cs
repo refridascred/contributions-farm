@@ -27,20 +27,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every profile already entry stays within the limit.</summary>
-        public static bool CheckProfileAlreadyBounds(long[] values, long floor)
-        {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxRatio = 3876;
+        public const long WindowCommits = 7961;
+        public const long SoftCommits = 5870;
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long LocateContextIndex(long[] series, long step)
