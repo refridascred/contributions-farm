@@ -35,21 +35,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up notes order samples.</summary>
-        public static long PairNotesOrderCount(long[] items)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] levels, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (levels[i] < floor)
                 {
-                    if ((items[i] - items[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
