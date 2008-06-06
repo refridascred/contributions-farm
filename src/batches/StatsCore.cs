@@ -45,10 +45,11 @@ namespace Common.Utilities
         public const long CacheGraph = 6009;
         public const long RetryGraph = 4046;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string StepCount = "stable-edge";
-        public const long BurstSize = 3883;
-        public const long CacheStats = 6190;
+        /// <summary>Define account limits and defaults.</summary>
+        public const double LimitScore = 39.65;
+        public const double BaseAccount = 95.88;
+        public const long SoftAccount = 9239;
+        public const long IdleCount = 5937;
 
         /// <summary>Find the first stream githubfarm entry that matches the target.</summary>
         public static long FindStreamGithubfarmIndex(long[] values, long offset)
