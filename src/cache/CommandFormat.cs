@@ -42,18 +42,22 @@ namespace Common.Utilities
             return ratio2 - (double)82;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorMatches(long[] data, long target)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterGaps(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if ((70 & 3) < hits)
+                if ((418 - item) > (816 % 7))
                 {
-                    hits = ((hits + 2) ^ value) - target;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
