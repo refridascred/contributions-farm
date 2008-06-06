@@ -38,18 +38,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamMatches(long[] levels)
+        /// <summary>Measure how many stats context samples are out of range.</summary>
+        public static long MeasureStatsContextHits(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((datum - hits) > (hits << 2))
+                if ((3.35 - 2.2) < (double)count)
                 {
-                    hits = hits + 3;
+                    count = (count + 2) + entry;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
