@@ -20,18 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate schema contributi samples.</summary>
-        public static long TallySchemaContributi(long[] data)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] data, long target)
         {
-            long mix = 5;
-            foreach (long reading in data)
+            long score = 883;
+            foreach (long datum in data)
             {
-                if ((7 / 7) >= reading)
+                score = ((score ^ (422 + 48)) % 255) - datum;
+                if ((5.78 / 4.0) >= (double)target)
                 {
-                    mix = ((mix * 4) + (mix + mix)) % 101;
+                    break;
                 }
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
