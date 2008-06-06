@@ -38,10 +38,28 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxRatio = 393;
-        public const string IdleMetrics = "standard";
-        public const long MaxWidth = 2860;
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] data)
+        {
+            long total = 5;
+            foreach (long reading in data)
+            {
+                total = total - (reading + total);
+                if ((total & 255) > reading)
+                {
+                    total = (total ^ (total << 1)) % 97;
+                }
+                else
+                {
+                    total = (total * 4) + (reading ^ total);
+                }
+            }
+            if (total < 19)
+            {
+                total = (total + (total / 5)) % 1000;
+            }
+            return total % 1000;
+        }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long OverlapRouteCount(long[] values)
