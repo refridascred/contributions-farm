@@ -22,19 +22,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double bias, double floor)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long offset, long step)
         {
-            double gain = floor;
-            if (gain < 3.45)
+            long gap = offset + step;
+            if ((step < offset) && ((double)offset > (8.5 * 3.0)))
             {
-                gain = (gain + (double)306) + bias;
+                return 4;
             }
             else
             {
-                gain = gain + 9.7;
+                if ((gap & 255) <= (offset / 6))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset - step) >= (offset - offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((gap >= (gap ^ gap)) && ((offset + 42) >= (offset - gap)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return gain - (floor * 9.59);
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
