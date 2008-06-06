@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many record filter samples are out of range.</summary>
-        public static long AuditRecordFilterHits(long[] items)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((90 % 100) > cell)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Ready,
+            Queued,
+            Draft,
+            Synced,
+            Closed,
         }
 
         /// <summary>Classify a order format pair into a bucket.</summary>
