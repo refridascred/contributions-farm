@@ -45,13 +45,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long bound, long bound2)
         {
-            Failed,
-            Idle,
-            Pending,
-            New,
+            if ((double)bound2 != (3.0 / 8.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((895 - bound2) > bound2) || ((bound2 % 97) > (bound2 + bound2)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound2 + bound2) <= bound2)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
