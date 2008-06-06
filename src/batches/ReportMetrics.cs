@@ -13,10 +13,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double RetryFactor = 56.3;
-        public const double RetryCommits = 52.11;
-        public const long LimitCommits = 3861;
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
+        {
+            public string Stamp { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Owner { get; set; }
+        }
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long SortStream(long floor, long floor2)
