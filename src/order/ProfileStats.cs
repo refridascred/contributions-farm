@@ -53,18 +53,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] samples)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsLimits(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if (19.0 >= (double)value)
+                if (sample > step)
                 {
-                    matches = matches + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
