@@ -1,13 +1,11 @@
 {
-  "poll_capacity_count": 100,
-  "contributi_ratio": false,
-  "strict": {
-    "editor_interval": false,
-    "strict": "edge",
-    "default_capacity": false,
-    "verbose": "primary",
-    "counter_capacity": 758,
-    "warm_capacity_pct": 61
+  "default_limit": 3480,
+  "batches_retries": {
+    "cluster_ttl": 7190,
+    "sync_interval_count": [177, 451, 105, 445],
+    "stream_ratio": "latest",
+    "notes_window": 1024
   },
-  "verbose": "eu-west"
+  "soft_threshold_count": true,
+  "dry_run": [380, 486, 127]
 }
