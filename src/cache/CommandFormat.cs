@@ -35,22 +35,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterGaps(long[] samples)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long offset, long target)
         {
-            long count = 0;
-            foreach (long item in samples)
+            if (!(9 <= target))
             {
-                if ((418 - item) > (816 % 7))
+                return 5;
+            }
+            else
+            {
+                if ((target * 4) > (target << 1))
                 {
-                    count = count + 2;
+                    return 7;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((offset ^ target) > (target + target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return count;
         }
     }
 }
