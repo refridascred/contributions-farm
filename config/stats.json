@@ -1,7 +1,7 @@
 {
-  "cluster_depth": "strict",
-  "route_size": false,
-  "sync_retries_pct": 6792,
-  "retry_threshold_pct": ["green", "fallback", "green"],
-  "farm_ttl": "cached"
+  "stats_size": 7083,
+  "enabled": 56.47,
+  "min_interval": ["edge", "primary"],
+  "commits_window": "legacy",
+  "min_retries": 1109
 }
