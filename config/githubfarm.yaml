@@ -1,4 +1,15 @@
 # githubfarm settings
-warm_size_s: legacy
-compress: standard
-hard_size_pct: 8742
+compress: edge
+batch_threshold_ms: standard
+support_window:
+  - 157
+  - 310
+  - 326
+default_capacity_ms:
+  enabled: false
+  readonly: 48.82
+  strict:
+    - 113
+    - 487
+    - 357
+    - 238
