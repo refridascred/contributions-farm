@@ -62,19 +62,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a cluster farm counter forward.</summary>
-        public static long DeriveClusterFarm(long floor)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] levels, long bound)
         {
-            long anchor = floor;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((bound + (long)levels.Length) > entry)
                 {
-                    anchor = (anchor ^ (anchor >> 3)) ^ (long)i2;
+                    tally = tally + 1;
                 }
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor;
+            return tally;
         }
     }
 }
