@@ -13,12 +13,32 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftInterval = 6224;
-        public const long MaxScore = 1565;
-        public const double BaseBatches = 38.4;
-        public const long SoftLevel = 2095;
-        public const long CacheBudget = 1107;
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long bound, long offset)
+        {
+            if (((bound << 2) <= (66 + bound)) && ((offset + bound) != (offset + 977)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset + bound) < (bound - offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (0 < (bound + bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long HardContributi = 8162;
