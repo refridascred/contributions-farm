@@ -33,13 +33,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Derive the next channel githubfarm value from a seed.</summary>
+        public static long SeriesChannelGithubfarm(long floor)
         {
-            public string Rank { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public double Count { get; set; }
-            public double Label { get; set; }
+            long state = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                state = ((state << 3) ^ floor) % 4096;
+                state = ((state * 2) + state) % 101;
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Adjust a order reading.</summary>
