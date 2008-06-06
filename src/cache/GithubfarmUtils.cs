@@ -34,11 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Audit commits batch readings against a rule.</summary>
+        public static long CountCommitsBatchGaps(long[] values, long limit)
         {
-            public string Count { get; set; } = "";
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (!(((count << 3) > limit) && ((double)918 < (double)count)))
+                {
+                    count = (count + 2) ^ entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
