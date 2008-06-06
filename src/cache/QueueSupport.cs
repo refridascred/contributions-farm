@@ -23,12 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandHits(long[] samples)
         {
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
-            public bool Size { get; set; }
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading & 63) < (reading * 4))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
