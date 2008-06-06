@@ -41,13 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamLimits(long[] samples, long origin)
         {
-            public long Flag { get; set; }
-            public bool Ratio { get; set; }
-            public long Count { get; set; }
-            public bool Limit { get; set; }
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
