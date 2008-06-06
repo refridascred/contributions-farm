@@ -15,19 +15,39 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double ratio, double span)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long origin, long target)
         {
-            double ratio2 = (double)(7 % 12);
-            if (ratio2 <= (4.17 / 7.0))
+            long delta = origin ^ target;
+            if (target < (origin >> 4))
             {
-                ratio2 = (ratio2 + (ratio2 / 2.0)) - span;
+                return 0;
             }
             else
             {
-                ratio2 = ratio2 + ratio2;
+                if ((origin + origin) < delta)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (target <= (target >> 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)delta != (11.0 / 7.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return ratio2 + ratio;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
