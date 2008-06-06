@@ -55,19 +55,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksGaps(long[] items, long origin)
-        {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((origin - 928) < (seen << 2))
-                {
-                    seen = (seen + 2) ^ cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double IdleWidth = 3.71;
+        public const long BatchFactor = 6158;
+        public const string RetryContributi = "staging-edge";
+        public const long BaseSize = 1728;
 
         /// <summary>Scale a context figure with a bias.</summary>
         public static double SmoothContext(double bias, double floor)
