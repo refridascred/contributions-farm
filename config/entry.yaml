@@ -1,10 +1,5 @@
 # entry settings
-retry_capacity_count: eu-west
-cache_delay: 500
-max_threshold:
-  window_timeout: 2864
-  hard_ratio: 100
-  filter_depth: 75.77
-  token_limit: blue
-flush_interval: local
-contributi_ratio: cached
+retry_retries_ms: true
+hard_retries: local
+retry_delay_ms: legacy
+payload_limit: edge
