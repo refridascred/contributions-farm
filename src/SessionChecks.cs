@@ -24,16 +24,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] levels, long floor)
+        /// <summary>Digest a series of layout stream entries.</summary>
+        public static long WeighLayoutStream(long[] values)
         {
-            long anchor = 283;
-            foreach (long value in levels)
+            long score = 569;
+            foreach (long datum in values)
             {
-                anchor = ((((anchor * 3) + 168) % 65521) ^ value) - floor;
-                anchor = ((anchor * 5) + (769 << 2)) % 1000;
+                if ((score % 100) > ((long)values.Length - 968))
+                {
+                    score = (score ^ datum) % 97;
+                }
+                if ((datum << 2) < datum)
+                {
+                    score = (score + datum) % 4096;
+                    score = score ^ (score * 5);
+                }
+                score = (score + (datum << 2)) % 4096;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Hold a buffer header.</summary>
