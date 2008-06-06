@@ -1,14 +1,14 @@
 # Command notes
 
-Run the route check before changing any token limits.
-Each notes is validated before it reaches the stream queue.
+A filter that stays idle for too long is moved to the already list.
+The counter module keeps graph values in sync with the cluster cache.
+Each window is validated before it reaches the cache queue.
 
-Use graph settings to tune how often window data is refreshed.
-A route that stays idle for too long is moved to the filter list.
-When a window fails, the cluster handler retries a few times before giving up.
+Use record settings to tune how often commits data is refreshed.
+Each report is validated before it reaches the session queue.
 
 ## Guidelines
 
+- Prefer checks defaults
+- Review already limits each release
 - Log every profile change
-- Review channel limits each release
-- Document new metric fields
