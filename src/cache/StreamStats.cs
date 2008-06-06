@@ -26,12 +26,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double BlendBatch(double rate, double offset)
-        {
-            double ratio = offset;
-            return (ratio + (offset * 4.8)) + rate;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double CacheLevel = 57.6;
+        public const long BatchProfile = 6562;
+        public const long IdleProfile = 4836;
+        public const string BaseFactor = "stable-edge";
 
         /// <summary>Accumulate profile samples.</summary>
         public static long FoldProfile(long[] samples, long bound)
