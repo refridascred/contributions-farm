@@ -69,19 +69,38 @@ namespace Common.Utilities
         public const double BaseTimeout = 13.09;
         public const double StepDepth = 72.81;
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesLimits(long[] values, long bound)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long offset, long bound)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            if ((offset - bound) > (bound ^ bound))
             {
-                if (sample < bound)
+                return 0;
+            }
+            else
+            {
+                if (!(134 >= (offset - bound)))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (bound >= ((-93) * 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (bound >= 83)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
