@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BatchLevel = "stable";
-        public const long CacheChecks = 7975;
-        public const long MinChecks = 1146;
-        public const long BurstRatio = 3886;
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
+        {
+            Draft,
+            Queued,
+            Closed,
+        }
 
         /// <summary>Rank notes input into a small class.</summary>
         public static long RankNotes(long origin, long bound)
