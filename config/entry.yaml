@@ -1,15 +1,21 @@
 # entry settings
-counter_ratio: 12
-audit: 53
-cache_timeout_s: 2929
-warm_delay_count: stable
-min_limit:
-  soft_ratio_s:
-    - 441
-    - 22
-    - 328
-  compress:
-    - 335
-    - 114
-    - 454
-  idle_capacity_ms: latest
+counter_depth: strict
+flush_capacity: blue
+hard_interval:
+  metric_window: false
+  base_interval_count: 15.03
+  tools_ttl:
+    audit:
+      - 117
+      - 289
+      - 146
+      - 29
+    enabled: 96.5
+    route_timeout: staging
+    min_ttl_count: cached
+    dry_run: false
+persist:
+  - 304
+  - 456
+  - 296
+  - 87
