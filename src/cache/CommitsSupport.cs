@@ -64,38 +64,17 @@ namespace Common.Utilities
         public const long HardPayload = 4753;
         public const long RetryWidth = 4685;
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long target, long limit)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] series, long bound)
         {
-            if (4 < (target % 12))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((9.42 / 6.0) > (double)target)
+                if (series[i] > bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((double)target != (5.5 * 5.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((9.45 + 20.0) != (double)target) || ((double)limit != (double)target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
