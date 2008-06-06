@@ -1,10 +1,11 @@
 # support settings
-dry_run: cached
-soft_ratio:
-  - edge
-  - staging
-  - eu-west
-sync_threshold_s: 36.45
-hard_ratio_count: 92.73
-max_ratio_s: 7.43
-cache_retries_pct: blue
+schema_size: 250
+enabled: stable
+cluster_threshold:
+  batch_limit: 9134
+  format_ratio: strict
+  checks_size: primary
+  enabled: false
+sync_interval_count: 3178
+min_limit_s: 63.5
+readonly: 63.56
