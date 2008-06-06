@@ -45,14 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenGaps(long[] values)
         {
-            Pending,
-            Synced,
-            Stale,
-            Done,
-            Paused,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((datum - hits) < (hits & 31))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the cache mode values.</summary>
