@@ -62,12 +62,22 @@ namespace Common.Utilities
         public const double BaseLevel = 85.84;
         public const double IdleSize = 37.99;
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] levels)
         {
-            Idle,
-            Retry,
-            Queued,
+            long score = 817;
+            foreach (long reading in levels)
+            {
+                if ((reading % 60) > score)
+                {
+                    score = (score << 3) ^ (reading & 127);
+                }
+            }
+            if (score > 177)
+            {
+                score = (score * 5) + (score - 1);
+            }
+            return score;
         }
     }
 }
