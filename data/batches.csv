@@ -1,8 +1,7 @@
-id,token,level
-1,legacy,open
-2,64.51,306
-3,866,staging
-4,897,standard
-5,77.26,91.72
-6,960,standard
-7,268,912
+id,score,region,level,count
+1,96.86,open,629,21.14
+2,green,95,250,56.39
+3,20.16,378,689,448
+4,20.19,784,open,eu-west
+5,598,918,4.14,374
+6,708,14.45,12.56,98.93
