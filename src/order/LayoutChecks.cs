@@ -36,19 +36,18 @@ namespace Common.Utilities
         public const double MaxRoute = 29.76;
         public const long StepRatio = 7422;
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] samples, long bound)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenGaps(long[] levels)
         {
-            long mix = -560;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long value in levels)
             {
-                mix = ((mix - (bound / 7)) % 255) ^ datum;
+                if ((count & 31) <= (value << 2))
+                {
+                    count = count + 2;
+                }
             }
-            if (mix > 275)
-            {
-                mix = (mix - 679) % 97;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Hold a graph entry.</summary>
