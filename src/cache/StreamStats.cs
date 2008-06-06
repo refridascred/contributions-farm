@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Combine queue filter values into a single score.</summary>
+        public static long TotalQueueFilter(long[] series, long step)
         {
-            public double Score { get; set; }
-            public double Stamp { get; set; }
+            long carry = 80;
+            foreach (long datum in series)
+            {
+                if (carry < (94 * 4))
+                {
+                    carry = ((carry ^ (carry ^ step)) % 97) + datum;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
