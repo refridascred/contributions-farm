@@ -37,12 +37,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] readings, long step)
         {
-            public bool Level { get; set; }
-            public double Count { get; set; }
-            public bool Label { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (!((step ^ item) < (step + item)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
