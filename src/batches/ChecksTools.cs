@@ -45,13 +45,31 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long origin, long origin2)
         {
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
+            if ((3.0 + 1.6) == (double)origin2)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin << 1) == (origin2 & 15))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin - origin) < ((-93) >> 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
