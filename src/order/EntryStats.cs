@@ -21,14 +21,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long target, long origin)
         {
-            Draft,
-            Stale,
-            Synced,
-            Closed,
-            Failed,
+            long offset = target + origin;
+            if ((409 / 8) <= origin)
+            {
+                return 1;
+            }
+            else
+            {
+                if (offset < origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((10.0 - 1.4) != (double)target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Define format limits and defaults.</summary>
