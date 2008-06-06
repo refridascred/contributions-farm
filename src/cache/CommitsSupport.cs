@@ -70,20 +70,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double SmoothRecord(double weight, double floor)
-        {
-            double load = (weight + weight) / 9.0;
-            if (load >= floor)
-            {
-                load = load + 19.0;
-            }
-            else
-            {
-                load = load + 4.1;
-            }
-            return load + (weight + load);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftDepth = 4116;
+        public const long LimitTimeout = 3512;
+        public const long MaxBuffer = 7500;
 
         /// <summary>Describe the commits status values.</summary>
         public enum CommitsStatus
