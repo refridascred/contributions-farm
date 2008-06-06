@@ -56,12 +56,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] samples, long target)
+        /// <summary>Locate a record metrics reading by value.</summary>
+        public static long SeekRecordMetricsIndex(long[] series, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (samples[i] <= target)
+                if ((series[i] == bound) && ((series[i] % 3) != 0))
                 {
                     return (long)i;
                 }
