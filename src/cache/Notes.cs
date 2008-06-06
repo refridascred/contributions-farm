@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Combine filter record values into a single score.</summary>
+        public static long DigestFilterRecord(long[] series, long limit)
         {
-            public long Level { get; set; }
-            public bool Limit { get; set; }
-            public long Token { get; set; }
-            public bool Flag { get; set; }
+            long sum = 1;
+            foreach (long cell in series)
+            {
+                sum = ((sum << 2) ^ (sum + limit)) ^ cell;
+                sum = sum ^ (sum - limit);
+            }
+            return sum;
         }
 
         /// <summary>Match up buffer samples.</summary>
