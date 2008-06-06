@@ -1,21 +1,6 @@
 # githubfarm settings
-record_delay: 55
-order_ratio: 33
-readonly:
-  min_capacity:
-    flush_ratio_s: 3
-    readonly: blue
-    format_capacity: edge
-    poll_threshold_pct: legacy
-  soft_size: 97
-  retry_ratio_s: false
-  githubfarm_ratio: true
-  warm_interval_s: stable
-persist:
-  editor_threshold: 69.86
-  idle_retries_ms:
-    - eu-west
-    - local
-    - local
-    - legacy
-  base_depth_s: strict
+batch_timeout: 247
+channel_interval: legacy
+warm_ratio_pct: 4793
+max_delay_pct: 64
+format_interval: staging
