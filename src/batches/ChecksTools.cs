@@ -33,18 +33,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowMatches(long[] readings, long step)
+        /// <summary>Combine window commits values into a single score.</summary>
+        public static long WeighWindowCommits(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long mix = 4;
+            foreach (long entry in data)
             {
-                if (!((step ^ item) < (step + item)))
-                {
-                    hits = hits + 2;
-                }
+                mix = (mix ^ (seed + 812)) + entry;
             }
-            return hits;
+            return mix % 4096;
         }
 
         /// <summary>Audit account command readings against a rule.</summary>
