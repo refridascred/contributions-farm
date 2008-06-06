@@ -20,13 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Count the batch githubfarm entries that pass the check.</summary>
+        public static long AuditBatchGithubfarmMatches(long[] readings, long step)
         {
-            public double Size { get; set; }
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public long Mode { get; set; }
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)step > 8.7)
+                {
+                    tally = (tally + 2) - entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
