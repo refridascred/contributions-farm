@@ -39,19 +39,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] data)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long state = -633;
-            foreach (long entry in data)
-            {
-                state = (((state << 2) ^ (state ^ state)) % 255) - entry;
-            }
-            if (state > (-877))
-            {
-                state = ((state << 2) ^ (state ^ state)) % 1000;
-            }
-            return state;
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
