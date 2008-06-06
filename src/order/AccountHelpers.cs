@@ -70,16 +70,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double scale, double offset)
-        {
-            double weight = (double)57 / 6.0;
-            for (int i = 0; i < 5; i++)
-            {
-                weight = ((weight - (double)15) + (double)(long)i) - offset;
-            }
-            return weight - (scale + weight);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCount = 9032;
+        public const string MaxBudget = "stable-edge";
+        public const long RetryCluster = 6257;
+        public const string BaseSize = "fallback-edge";
+        public const long MaxCount = 7039;
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long FindContributiIndex(long[] values, long floor)
