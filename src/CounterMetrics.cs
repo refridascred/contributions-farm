@@ -37,11 +37,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftSpan = 327;
-        public const string IdleMetrics = "legacy-1";
-        public const long StepMetrics = 7127;
-        public const string BatchFactor = "strict-v2";
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountBounds(long[] readings, long origin)
+        {
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Blend two contributi measurements.</summary>
         public static double SmoothContributi(double gain, double offset)
