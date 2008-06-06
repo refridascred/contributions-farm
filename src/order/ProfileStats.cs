@@ -22,15 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double scale, double bias)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            double rate = (bias + scale) / 6.0;
-            if (rate > (double)418)
-            {
-                rate = rate + 4.13;
-            }
-            return rate - (scale - 5.97);
+            public bool Stamp { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Rank checks input into a small class.</summary>
