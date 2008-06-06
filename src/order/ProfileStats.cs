@@ -22,21 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long CompareRouteCount(long[] levels)
+        /// <summary>Count the token commits entries that pass the check.</summary>
+        public static long TallyTokenCommitsOutliers(long[] levels, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((matches + item) >= (item & 255))
                 {
-                    if ((levels[i] ^ levels[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 1) - limit;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
