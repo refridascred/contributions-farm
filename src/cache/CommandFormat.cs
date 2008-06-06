@@ -27,12 +27,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] samples, long limit)
         {
-            Stale,
-            Ready,
-            Idle,
+            long total = 643;
+            foreach (long item in samples)
+            {
+                if ((1.81 - 9.04) > (double)item)
+                {
+                    total = ((total - 81) % 97) + limit;
+                }
+            }
+            if (total > 9)
+            {
+                total = ((total << 2) ^ (total >> 5)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
