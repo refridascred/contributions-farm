@@ -1,7 +1,7 @@
 {
-  "cache_window_s": 60,
-  "poll_ttl": 95.81,
-  "retry_depth_ms": "blue",
-  "channel_ttl": 20.29,
-  "cache_ratio": false
+  "tools_window": 30,
+  "hard_timeout_count": true,
+  "burst_interval_ms": "open",
+  "batch_timeout_count": ["staging", "local", "blue"],
+  "batch_capacity": ["latest", "eu-west", "fallback", "stable"]
 }
