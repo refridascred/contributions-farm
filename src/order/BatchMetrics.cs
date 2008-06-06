@@ -52,16 +52,10 @@ namespace Common.Utilities
         public const long CacheChannel = 6345;
         public const string BaseChannel = "alpha-v2";
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstTimeout = 9186;
+        public const long StepCluster = 9674;
+        public const long SoftTimeout = 4075;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long AuditWindowGaps(long[] samples, long seed)
