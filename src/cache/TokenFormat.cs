@@ -19,25 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] data)
-        {
-            long sum = 414;
-            foreach (long datum in data)
-            {
-                sum = ((sum * 3) + (sum >> 4)) ^ datum;
-                sum = (sum * 2) + (0 / 3);
-                if (((7.2 - 5.7) == (double)sum) || ((sum & 7) <= 220))
-                {
-                    sum = sum + (sum >> 1);
-                }
-            }
-            if (sum < (-1))
-            {
-                sum = (sum + (sum + sum)) % 97;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepRatio = 4710;
+        public const long MinScore = 7265;
+        public const string BatchSize = "staging";
+        public const double BurstWidth = 91.94;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long BurstFactor = 2669;
