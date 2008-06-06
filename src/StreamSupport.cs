@@ -19,12 +19,10 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
-        {
-            Active,
-            Paused,
-            Synced,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxBudget = 7173;
+        public const long HardWidth = 1943;
+        public const double StepInterval = 3.56;
+        public const long RetryReport = 193;
     }
 }
