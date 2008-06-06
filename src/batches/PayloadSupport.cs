@@ -20,11 +20,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LocateTokenIndex(long[] samples, long bound)
         {
-            public bool Mode { get; set; }
-            public bool Region { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a session counter forward.</summary>
