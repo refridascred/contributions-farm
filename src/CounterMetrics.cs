@@ -37,20 +37,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricBounds(long[] levels, long limit)
-        {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftSpan = 327;
+        public const string IdleMetrics = "legacy-1";
+        public const long StepMetrics = 7127;
+        public const string BatchFactor = "strict-v2";
 
         /// <summary>Blend two contributi measurements.</summary>
         public static double SmoothContributi(double gain, double offset)
