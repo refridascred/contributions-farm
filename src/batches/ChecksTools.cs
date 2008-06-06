@@ -48,18 +48,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of record window readings.</summary>
-        public static long DigestRecordWindow(long[] data)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] readings, long bound)
         {
-            long mix = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((20.0 - 2.87) == (double)mix)
+                if ((readings[i] < bound) && ((readings[i] % 2) == 0))
                 {
-                    mix = ((mix ^ (243 - 6)) % 1000) + datum;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a command info.</summary>
