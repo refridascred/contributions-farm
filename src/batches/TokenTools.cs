@@ -19,12 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] data, long offset)
         {
-            public long Count { get; set; }
-            public bool Weight { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == offset) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
