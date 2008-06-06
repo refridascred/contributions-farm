@@ -15,23 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((99 % 97) <= tally)
-                {
-                    tally = (tally + 2) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double DefaultScore = 28.38;
+        public const string BurstSpan = "standard";
+        public const double MaxPayload = 21.85;
+        public const long BatchScore = 9401;
+        public const long WindowPayload = 3101;
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
