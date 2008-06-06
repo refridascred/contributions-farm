@@ -45,23 +45,10 @@ namespace Common.Utilities
         public const long CacheGraph = 6009;
         public const long RetryGraph = 4046;
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueOutliers(long[] values, long floor)
-        {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((double)sample == (0.3 / 2.0))
-                {
-                    seen = (seen + 2) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string StepCount = "stable-edge";
+        public const long BurstSize = 3883;
+        public const long CacheStats = 6190;
 
         /// <summary>Find the first stream githubfarm entry that matches the target.</summary>
         public static long FindStreamGithubfarmIndex(long[] values, long offset)
