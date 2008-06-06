@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a context report sample.</summary>
-        public static long FindContextReportIndex(long[] readings, long offset)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ProjectMetric(double gain, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double rate = gain;
+            if (rate > (double)66)
             {
-                if ((readings[i] == offset) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                rate = (rate + (5.0 / 4.0)) + offset;
             }
-            return -1;
+            else
+            {
+                rate = rate + (13.0 + gain);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate + gain;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
