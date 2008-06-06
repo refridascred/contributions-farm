@@ -33,12 +33,18 @@ namespace Common.Utilities
             return (ratio + (offset * 4.8)) + rate;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] samples, long bound)
         {
-            Stale,
-            Draft,
-            Failed,
+            long mark = 56;
+            foreach (long datum in samples)
+            {
+                if ((mark >> 4) < (datum % 100))
+                {
+                    mark = ((mark - ((-33) ^ datum)) % 65521) - bound;
+                }
+            }
+            return mark % 65521;
         }
     }
 }
