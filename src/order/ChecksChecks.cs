@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate githubfarm session samples.</summary>
-        public static long DigestGithubfarmSession(long[] samples)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatLimits(long[] samples, long seed)
         {
-            long sum = 8;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if ((sum & 31) < sum)
+                if (datum > seed)
                 {
-                    sum = (sum + (sum + 787)) + reading;
+                    valid = false;
+                    break;
                 }
             }
-            if (sum < 23)
-            {
-                sum = (sum ^ (0 - (long)samples.Length)) % 4096;
-            }
-            return sum % 1000;
+            return valid;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
