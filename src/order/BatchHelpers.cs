@@ -30,11 +30,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double ratio, double floor)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            double load = (double)(449 + 7);
-            return (load + (ratio - ratio)) + floor;
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
