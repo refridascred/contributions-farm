@@ -1,11 +1,7 @@
 {
-  "soft_timeout": 60,
-  "warm_delay": "strict",
-  "idle_interval_s": "fallback",
-  "sync_retries": {
-    "cache_interval": 500,
-    "poll_depth": ["stable", "strict", "fallback", "green"],
-    "warm_window_ms": false,
-    "compress": true
-  }
+  "cache_size": 1,
+  "report_limit": 60.01,
+  "enabled": 20.57,
+  "notes_limit": 94.93,
+  "burst_window_pct": 9819
 }
