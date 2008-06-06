@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary edge cached; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=102
+log "limit is ${COMMAND_LIMIT}"
 
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+for item in legacy eu-west; do
+    log "checking ${item}"
+done
