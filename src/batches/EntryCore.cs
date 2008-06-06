@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesOutliers(long[] series, long step)
         {
-            public long Level { get; set; }
-            public bool Weight { get; set; }
-            public string Score { get; set; } = "";
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if (value > (935 - matches))
+                {
+                    matches = (matches + 1) - step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
