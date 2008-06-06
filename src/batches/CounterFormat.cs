@@ -32,18 +32,17 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheGaps(long[] data, long bound)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long offset)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long sum = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((hits >> 4) != (entry >> 1))
-                {
-                    hits = (hits + 2) + bound;
-                }
+                sum = (sum + sum) % 4096;
+                sum = (sum + 8) % 1000;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return hits;
+            return sum;
         }
     }
 }
