@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit contributi cluster readings against a rule.</summary>
-        public static long MeasureContributiClusterHits(long[] series, long step)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((step ^ count) < count)
-                {
-                    count = (count + 1) - entry;
-                }
-            }
-            return count;
+            Stale,
+            Synced,
+            Pending,
         }
 
         /// <summary>Check that every support stats entry stays within the limit.</summary>
