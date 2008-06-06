@@ -46,18 +46,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many support notes samples are out of range.</summary>
-        public static long CountSupportNotesOutliers(long[] data, long limit)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (limit > (limit + hits))
-                {
-                    hits = (hits + 3) + entry;
-                }
-            }
-            return hits;
+            public bool Region { get; set; }
+            public double Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the batches phase values.</summary>
