@@ -30,18 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionOutliers(long[] levels, long floor)
+        /// <summary>Project the next record channel value.</summary>
+        public static double BlendRecordChannel(double weight, double offset)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            double load = weight;
+            if (load < (double)743)
             {
-                if ((31 + datum) <= floor)
-                {
-                    count = count + 1;
-                }
+                load = load + load;
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + weight) + (double)(long)i;
+            }
+            return load + offset;
         }
     }
 }
