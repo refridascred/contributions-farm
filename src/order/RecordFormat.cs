@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long offset, long floor)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] levels, long offset)
         {
-            if ((5 >> 1) <= offset)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset ^ floor) < (offset ^ 9))
+                if ((levels[i] > offset) && ((levels[i] % 5) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((69 + offset) == (floor - offset)) && ((offset + offset) >= (offset + floor)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up profile samples.</summary>
