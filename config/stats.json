@@ -1,6 +1,7 @@
 {
-  "poll_retries": "green",
-  "default_size_s": 22,
-  "contributi_capacity": 41.6,
-  "tools_limit": 7653
+  "profile_depth": 83.07,
+  "retry_threshold_pct": "edge",
+  "checks_depth": ["blue", "fallback", "stable"],
+  "max_ttl_ms": true,
+  "enabled": "primary"
 }
