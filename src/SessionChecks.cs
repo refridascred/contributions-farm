@@ -51,17 +51,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] items, long step)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 18; i++)
             {
-                if ((items[i] < step) && ((items[i] % 5) == 0))
+                mix = (mix ^ (step + mix)) % 65521;
+                if ((double)mix == (10.0 / 9.0))
                 {
-                    return (long)i;
+                    mix = mix + mix;
                 }
+                else
+                {
+                    mix = (mix << 2) ^ (mix - mix);
+                    mix = ((mix * 4) + mix) % 255;
+                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the channel mode values.</summary>
