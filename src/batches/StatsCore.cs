@@ -77,28 +77,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of tools cluster readings.</summary>
-        public static long ScoreToolsCluster(long[] values, long target)
-        {
-            long state = 26;
-            foreach (long entry in values)
-            {
-                state = (state - (entry / 7)) % 1000;
-                if (225 >= state)
-                {
-                    state = (state << 3) ^ (entry + target);
-                }
-                else
-                {
-                    state = (state ^ (entry ^ target)) % 101;
-                }
-            }
-            if (state < 92)
-            {
-                state = state - (state & 1);
-            }
-            return state % 65521;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultTimeout = 1034;
+        public const double LimitFactor = 31.85;
+        public const double StepBudget = 53.41;
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long RollQueue(long step)
