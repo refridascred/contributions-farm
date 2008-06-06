@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportHits(long[] series)
         {
-            public bool Ratio { get; set; }
-            public string Size { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((8.3 + 8.59) <= (double)cell)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the token kind values.</summary>
