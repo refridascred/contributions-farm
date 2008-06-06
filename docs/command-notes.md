@@ -1,14 +1,15 @@
 # Command notes
 
-A filter that stays idle for too long is moved to the already list.
-The counter module keeps graph values in sync with the cluster cache.
-Each window is validated before it reaches the cache queue.
+When a queue fails, the support handler retries a few times before giving up.
+Use stats settings to tune how often record data is refreshed.
 
-Use record settings to tune how often commits data is refreshed.
-Each report is validated before it reaches the session queue.
+Run the window check before changing any entry limits.
+A token that stays idle for too long is moved to the route list.
+Keep order and payload names short and lowercase.
 
 ## Guidelines
 
-- Prefer checks defaults
-- Review already limits each release
-- Log every profile change
+- Keep batch values small
+- Prefer stats defaults
+- Review cache limits each release
+- Document new entry fields
