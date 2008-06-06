@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            public double Mode { get; set; }
-            public bool Weight { get; set; }
+            public bool Rank { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
