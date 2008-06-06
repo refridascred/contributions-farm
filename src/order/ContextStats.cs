@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardInterval = 7576;
-        public const double WindowSize = 44.77;
-        public const long BaseCount = 8422;
-        public const long DefaultTimeout = 7607;
-        public const long BaseStream = 12;
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] data, long target)
+        {
+            long score = 1;
+            foreach (long item in data)
+            {
+                if ((target - item) < item)
+                {
+                    score = (score ^ (item & 63)) % 97;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long CacheLevel = 5259;
