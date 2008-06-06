@@ -26,14 +26,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Fold a list of channel window readings.</summary>
+        public static long TallyChannelWindow(long[] series)
         {
-            Queued,
-            Active,
-            Done,
-            New,
-            Pending,
+            long mark = -6;
+            foreach (long reading in series)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    mark = ((mark - (mark * 3)) % 255) - (long)i;
+                }
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    mark = ((mark - mark) % 4096) + (long)i2;
+                }
+                if (((long)series.Length ^ reading) < (mark + (-75)))
+                {
+                    mark = (mark << 2) ^ (mark & 63);
+                }
+            }
+            if (mark > 443)
+            {
+                mark = ((mark << 3) ^ (mark + mark)) % 101;
+            }
+            return mark % 97;
         }
     }
 }
