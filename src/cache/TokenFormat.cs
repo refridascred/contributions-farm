@@ -15,17 +15,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first channel farm entry that matches the target.</summary>
-        public static long SeekChannelFarmIndex(long[] samples, long step)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Dropped,
+            Paused,
+            Idle,
+            Synced,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
