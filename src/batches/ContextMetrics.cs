@@ -69,12 +69,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            Retry,
-            Dropped,
+            Ready,
             Paused,
+            Draft,
         }
     }
 }
