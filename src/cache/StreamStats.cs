@@ -39,14 +39,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            Pending,
-            Active,
-            Queued,
-            Ready,
-            Synced,
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the metrics class values.</summary>
