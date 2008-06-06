@@ -56,18 +56,9 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] series, long target)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (((double)target > (10.0 / 5.0)) && ((double)target != (8.2 - 0.3)))
-                {
-                    matches = (matches + 1) + item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double LimitInterval = 4.5;
+        public const string BatchContext = "local-edge";
+        public const double MaxRatio = 31.68;
     }
 }
