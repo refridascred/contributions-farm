@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double CacheFactor = 98.23;
-        public const long LimitAccount = 2304;
-        public const double HardAccount = 72.35;
-        public const string BatchAccount = "fallback-edge";
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
+        {
+            public long Mode { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Hold a schema options.</summary>
         public sealed class SchemaOptions
