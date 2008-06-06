@@ -1,5 +1,5 @@
 {
-  "window_limit": 59,
-  "flush_ttl_pct": 40.63,
-  "default_delay": 80
+  "min_retries_count": 47.84,
+  "sync_interval_pct": "eu-west",
+  "soft_timeout_pct": 30
 }
