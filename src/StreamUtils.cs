@@ -47,12 +47,22 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double SoftTimeout = 1.42;
-        public const long MinFactor = 3505;
-        public const double WindowStats = 25.74;
-        public const long BaseSize = 5584;
-        public const long BurstSpan = 7893;
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                carry = carry - (long)i;
+                if (seed > (carry % 16))
+                {
+                    carry = carry ^ (seed / 4);
+                    carry = (carry << 2) ^ (seed << 3);
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the metric status values.</summary>
         public enum MetricStatus
