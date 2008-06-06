@@ -1,6 +1,7 @@
 {
-  "metric_size": 30,
-  "enabled": [68, 253],
-  "strict": [20, 435],
-  "tools_depth": true
+  "cache_window_s": 60,
+  "poll_ttl": 95.81,
+  "retry_depth_ms": "blue",
+  "channel_ttl": 20.29,
+  "cache_ratio": false
 }
