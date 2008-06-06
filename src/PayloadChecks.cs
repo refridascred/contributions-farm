@@ -46,24 +46,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank checks githubfarm input into a small class.</summary>
-        public static long SortChecksGithubfarm(long offset, long step)
+        /// <summary>Match up schema samples.</summary>
+        public static long OverlapSchemaCount(long[] items)
         {
-            if ((offset / 7) <= (step ^ offset))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((5.4 / 8.0) < (double)step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    if ((items[i] + items[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
