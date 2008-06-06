@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many githubfarm notes samples are out of range.</summary>
-        public static long MeasureGithubfarmNotesOutliers(long[] items, long floor)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long sum = 21;
+            foreach (long sample in samples)
             {
-                if ((item + floor) == (matches + 39))
+                if (((8.0 - 1.4) > (double)sum) || ((target + sample) == (8 % 7)))
                 {
-                    matches = matches + 1;
+                    sum = (sum << 3) ^ sample;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (target & 15)) % 101;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
