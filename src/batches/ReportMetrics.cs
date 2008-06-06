@@ -19,15 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double scale, double bias)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long bound)
         {
-            double rate = bias;
-            if (rate < (double)0)
+            long total = bound;
+            for (int i = 0; i < 8; i++)
             {
-                rate = (rate - bias) + scale;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return rate + bias;
+            return total;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
