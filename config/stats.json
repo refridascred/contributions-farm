@@ -1,7 +1,12 @@
 {
-  "metrics_delay": "latest",
-  "hard_interval": 60,
-  "hard_threshold_pct": "edge",
-  "payload_retries": 30,
-  "strict": "latest"
+  "max_timeout_pct": 89,
+  "verbose": {
+    "sync_capacity_pct": [222, 420, 234],
+    "dry_run": [459, 231, 388],
+    "flush_threshold_s": "legacy",
+    "cache_ratio_count": 97.22,
+    "metrics_interval": "fallback",
+    "buffer_limit": 63.49
+  },
+  "soft_limit_pct": "open"
 }
