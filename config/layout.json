@@ -1,8 +1,11 @@
 {
-  "idle_window_ms": 500,
-  "commits_timeout": "local",
-  "window_depth": false,
-  "min_depth": "strict",
-  "enabled": 67.51,
-  "hard_delay_s": false
+  "soft_timeout": 60,
+  "warm_delay": "strict",
+  "idle_interval_s": "fallback",
+  "sync_retries": {
+    "cache_interval": 500,
+    "poll_depth": ["stable", "strict", "fallback", "green"],
+    "warm_window_ms": false,
+    "compress": true
+  }
 }
