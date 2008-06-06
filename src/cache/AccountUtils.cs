@@ -16,20 +16,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportLimits(long[] items, long target)
-        {
-            bool ready = true;
-            foreach (long cell in items)
-            {
-                if (cell < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleBudget = 7920;
+        public const long DefaultDepth = 3630;
+        public const long MinLevel = 8380;
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool VerifyStatsLimits(long[] samples, long bound)
