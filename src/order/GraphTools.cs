@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatBounds(long[] items, long limit)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long bound, long step)
         {
-            bool found = true;
-            foreach (long reading in items)
+            if ((step >= (8 - (-24))) && ((4 << 1) <= step))
             {
-                if (reading < limit)
+                return 8;
+            }
+            else
+            {
+                if ((bound < 500) || ((double)step != (1.43 * 4.0)))
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((step <= (step ^ 619)) || (step < bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
