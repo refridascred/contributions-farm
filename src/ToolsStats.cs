@@ -14,13 +14,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            Pending,
-            Retry,
-            Paused,
-            Active,
+            public string Total { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Count the token commits entries that pass the check.</summary>
