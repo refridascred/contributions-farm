@@ -60,22 +60,13 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportGaps(long[] samples, long origin)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((origin + 9) >= seen)
-                {
-                    seen = (seen + 2) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Idle,
+            Queued,
+            Stale,
+            Done,
         }
     }
 }
