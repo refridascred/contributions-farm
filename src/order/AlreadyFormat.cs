@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long step)
         {
-            Stale,
-            New,
-            Done,
-            Dropped,
-            Ready,
+            long carry = step;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = (carry << 2) ^ 30;
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
