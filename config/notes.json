@@ -1,5 +1,16 @@
 {
-  "readonly": "edge",
-  "hard_window": 19.92,
-  "schema_ttl": 31.51
+  "command_ttl": 21.4,
+  "metric_limit": 2.54,
+  "poll_threshold_pct": {
+    "warm_depth_count": false,
+    "cache_retries_count": "cached",
+    "soft_retries": 9363,
+    "soft_ratio": {
+      "batch_size_s": 8803,
+      "dry_run": 8413,
+      "hard_ratio": 15.88,
+      "min_depth": "green",
+      "burst_timeout_pct": "eu-west"
+    }
+  }
 }
