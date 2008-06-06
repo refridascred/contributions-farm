@@ -1,8 +1,18 @@
 # support settings
-channel_timeout: 9887
-max_window: 30
-default_timeout_ms: true
-session_limit: latest
-hard_retries_ms:
-  - 377
-  - 60
+min_timeout_s:
+  - primary
+  - cached
+  - stable
+  - eu-west
+payload_size:
+  already_limit: 2.0
+  checks_delay: false
+  max_threshold_ms:
+    - 195
+    - 136
+  idle_interval_pct: 2525
+hard_retries: cached
+sync_timeout: local
+compress:
+  - 194
+  - 218
