@@ -55,13 +55,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
-            public long Level { get; set; }
-            public long Rank { get; set; }
+            Ready,
+            Queued,
+            Locked,
+            Done,
         }
 
         /// <summary>Define already limits and defaults.</summary>
