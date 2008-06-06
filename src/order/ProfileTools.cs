@@ -37,13 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiGaps(long[] data, long offset)
         {
-            Queued,
-            Synced,
-            Closed,
-            Failed,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((3.89 - 4.5) > (7.0 * 0.91))
+                {
+                    count = ((count + 1) ^ entry) + offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank counter account input into a small class.</summary>
