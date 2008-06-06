@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double weight, double span)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] samples, long seed)
         {
-            double scale = weight;
-            if (scale >= (double)95)
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = scale + (weight / 8.0);
+                if (samples[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - (span + scale);
-            }
-            return scale - 3.0;
+            return -1;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
