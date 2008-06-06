@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double rate, double span)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long OverlapContributiCount(long[] values)
         {
-            double load = rate;
-            if (load >= load)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = load + rate;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - span;
-            }
-            return load + rate;
+            return hits;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
