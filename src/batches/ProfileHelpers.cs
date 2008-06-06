@@ -33,32 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long seed, long bound)
+        /// <summary>Iterate the counter record series from a seed.</summary>
+        public static long SeriesCounterRecord(long floor)
         {
-            long edge = seed ^ bound;
-            if ((edge * 5) == (edge & 15))
+            long total = floor;
+            for (int i = 0; i < 13; i++)
             {
-                return 6;
+                total = ((total * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((1 / 7) <= (bound << 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)seed <= (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
