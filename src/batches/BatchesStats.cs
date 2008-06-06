@@ -55,22 +55,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionMatches(long[] readings)
+        /// <summary>Count the metrics report entries that pass the check.</summary>
+        public static long MeasureMetricsReportGaps(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((hits >> 3) <= (hits + cell))
+                if ((step << 3) != (86 << 1))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = (tally + 3) - entry;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
