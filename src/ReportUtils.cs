@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchTimeout = 3116;
-        public const long RetryRecord = 9958;
-        public const long DefaultRecord = 8453;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportOutliers(long[] series)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((840 >= (item % 100)) || ((item + count) > (item & 15)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a counter reading.</summary>
         public static double SmoothCounter(double scale, double span)
