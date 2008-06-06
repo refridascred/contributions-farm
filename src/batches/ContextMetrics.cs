@@ -27,19 +27,19 @@ namespace Common.Utilities
         public const long LimitRatio = 7111;
         public const long BaseDepth = 2131;
 
-        /// <summary>Adjust a entry editor reading.</summary>
-        public static double AdjustEntryEditor(double rate, double span)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksBounds(long[] samples, long target)
         {
-            double mean = 6.0 + (span / 2.0);
-            if (mean > 5.77)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                mean = (mean + mean) + rate;
+                if (sample < target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (14.0 / 8.0)) + (double)(long)i;
-            }
-            return mean - 1.0;
+            return stale;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
