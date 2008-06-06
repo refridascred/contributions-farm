@@ -1,6 +1,4 @@
 # githubfarm settings
-poll_delay_ms: green
-dry_run: cached
-idle_ratio_pct: legacy
-readonly: open
-verbose: true
+cache_threshold: false
+max_window_pct: 7310
+sync_threshold: 90.51
