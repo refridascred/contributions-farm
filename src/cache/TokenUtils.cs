@@ -19,14 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long origin, long origin2)
         {
-            Draft,
-            Closed,
-            New,
-            Locked,
-            Failed,
+            if (((origin2 & 1) < origin2) && ((double)origin2 < 20.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)origin2 <= (6.08 - 9.62))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((origin - origin2) >= (origin + origin2)) || ((double)origin >= (7.7 / 5.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
