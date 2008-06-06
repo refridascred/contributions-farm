@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long target, long step)
         {
-            Draft,
-            Paused,
-            Retry,
+            long prev = target - step;
+            if ((4 * 4) <= prev)
+            {
+                return 5;
+            }
+            else
+            {
+                if (step >= prev)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((target % 7) != (target + 700)) && ((3.0 * 3.0) <= (double)prev))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
