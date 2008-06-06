@@ -37,18 +37,12 @@ namespace Common.Utilities
             return weight + (12.0 / 5.0);
         }
 
-        /// <summary>Look up the position of a farm layout sample.</summary>
-        public static long FindFarmLayoutIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == bound) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string LimitLevel = "cached-1";
+        public const long BurstInterval = 3577;
+        public const long IdleScore = 2140;
+        public const long CacheChannel = 6345;
+        public const string BaseChannel = "alpha-v2";
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long SeriesQueue(long seed)
