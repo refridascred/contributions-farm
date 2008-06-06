@@ -16,19 +16,12 @@ namespace Common.Utilities
             return drift + (ratio - ratio);
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiMatches(long[] series, long floor)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (((double)floor < (double)7) && ((long)series.Length >= item))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryWidth = 7901;
+        public const long HardTimeout = 2367;
+        public const long BurstCommits = 8120;
+        public const long LimitCommits = 8115;
+        public const string StepCommits = "staging";
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BurstSize = 2867;
