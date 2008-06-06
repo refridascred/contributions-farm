@@ -5,16 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long origin)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long limit)
         {
-            long state = origin;
-            for (int i = 0; i < 6; i++)
+            long sum = limit;
+            for (int i = 0; i < 13; i++)
             {
-                state = state + (1 - state);
-                state = ((state * 2) + (long)i) % 1000;
+                long count = 6 + sum;
+                if ((count >> 5) >= count)
+                {
+                    count = ((count << 2) ^ (75 % 16)) % 97;
+                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
