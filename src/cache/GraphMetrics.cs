@@ -42,13 +42,19 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Validate format batch readings against a bound.</summary>
+        public static bool CheckFormatBatchBounds(long[] data, long limit)
         {
-            public long Score { get; set; }
-            public long Region { get; set; }
-            public long Offset { get; set; }
-            public long Weight { get; set; }
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
