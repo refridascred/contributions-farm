@@ -45,23 +45,10 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] series, long target)
-        {
-            long acc = 622;
-            foreach (long value in series)
-            {
-                acc = ((acc * 2) + (value / 2)) % 4096;
-                if (((target - acc) >= target) || (target <= value))
-                {
-                    acc = ((acc * 4) + (acc % 7)) % 255;
-                }
-            }
-            if (acc > 49)
-            {
-                acc = ((acc * 3) + (target << 1)) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinFarm = 6921;
+        public const string MinTimeout = "strict-v2";
+        public const long BatchFarm = 1437;
+        public const long HardFarm = 7573;
     }
 }
