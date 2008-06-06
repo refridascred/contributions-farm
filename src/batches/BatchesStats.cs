@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Validate checks route readings against a bound.</summary>
+        public static bool VerifyChecksRouteBounds(long[] values, long target)
         {
-            Failed,
-            Pending,
-            Queued,
-            Stale,
+            bool stale = true;
+            foreach (long item in values)
+            {
+                if (item >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of account counter readings.</summary>
