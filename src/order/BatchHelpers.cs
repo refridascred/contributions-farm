@@ -26,12 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 856;
-        public const long RetryTools = 497;
-        public const double BaseInterval = 57.38;
-        public const long StepSpan = 8121;
-        public const double IdleSize = 53.7;
+        /// <summary>Derive the next stats channel value from a seed.</summary>
+        public static long IterateStatsChannel(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = (carry ^ (long)i) % 65521;
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool CheckContributiRange(long[] data, long offset)
