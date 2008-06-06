@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MinSchema = "alpha-1";
-        public const long HardSchema = 1501;
-        public const string StepSchema = "strict";
-        public const long SoftSchema = 2167;
-        public const long WindowBudget = 2354;
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
+        {
+            public long Offset { get; set; }
+            public bool Owner { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
