@@ -30,15 +30,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] readings)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long mark = 51;
-            foreach (long item in readings)
-            {
-                mark = (mark + (2 / 2)) ^ item;
-            }
-            return mark % 97;
+            Queued,
+            Idle,
+            Draft,
+            Closed,
+            Failed,
         }
     }
 }
