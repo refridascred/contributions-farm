@@ -16,12 +16,22 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] levels)
         {
-            public long Size { get; set; }
-            public double Flag { get; set; }
-            public string Level { get; set; } = "";
+            long acc = -1;
+            foreach (long datum in levels)
+            {
+                if ((829 - datum) == (77 << 3))
+                {
+                    acc = (acc ^ (datum << 2)) % 65521;
+                }
+            }
+            if (acc < 779)
+            {
+                acc = acc - (acc * 5);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Blend two already measurements.</summary>
