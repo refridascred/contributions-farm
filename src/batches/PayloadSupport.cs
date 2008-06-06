@@ -29,9 +29,38 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseCount = 6499;
-        public const long LimitWindow = 407;
-        public const string BurstWindow = "alpha-1";
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long step, long offset)
+        {
+            if (step < (offset * 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step + (-7)) <= ((-3) + step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((5.33 + 6.85) == (double)step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((13.0 * 4.66) == (double)step)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
