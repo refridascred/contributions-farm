@@ -45,21 +45,12 @@ namespace Common.Utilities
         public const long MinScore = 5174;
         public const long RetryLevel = 9392;
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long PairMetricCount(long[] levels)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Active,
+            Stale,
+            Ready,
         }
     }
 }
