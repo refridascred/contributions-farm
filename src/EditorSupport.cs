@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double AdjustGithubfarm(double scale, double floor)
+        /// <summary>Fold a list of session format readings.</summary>
+        public static long TallySessionFormat(long[] readings, long bound)
         {
-            double load = scale;
-            if (load <= (9.0 / 6.0))
+            long mix = 6;
+            foreach (long datum in readings)
             {
-                load = (load - (double)41) + floor;
+                mix = (((mix ^ 25) % 1000) - datum) + bound;
+                mix = mix + mix;
             }
-            return load - load;
+            if (mix > 606)
+            {
+                mix = ((mix << 3) ^ mix) % 101;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
