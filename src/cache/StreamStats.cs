@@ -19,12 +19,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BaseFilter = 82.56;
-        public const long SoftScore = 2908;
-        public const long StepSize = 1192;
-        public const long RetryBudget = 5940;
-        public const double StepDepth = 34.48;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileGaps(long[] values, long limit)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((limit + seen) >= reading)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long AuditChecksOutliers(long[] values)
