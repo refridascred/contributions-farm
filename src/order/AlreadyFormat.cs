@@ -15,16 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the support schema series from a seed.</summary>
-        public static long RollSupportSchema(long origin)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadBounds(long[] values, long limit)
         {
-            long state = origin;
-            for (int i = 0; i < 16; i++)
+            bool found = true;
+            foreach (long entry in values)
             {
-                state = state + (162 - (long)i);
-                state = ((state * 5) + (long)i) % 4093;
+                if (entry >= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Measure how many batches entry samples are out of range.</summary>
