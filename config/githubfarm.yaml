@@ -1,14 +1,28 @@
 # githubfarm settings
-soft_ratio:
-  batch_delay_pct: primary
-  max_threshold: open
-  warm_depth_count:
-    - 150
-    - 178
-  soft_threshold_count:
-    base_depth_ms: 21
-    soft_ttl: 6239
-    idle_depth_count: edge
-  compress: 75.87
-max_ttl_ms: true
-flush_ttl_count: 929
+default_depth_count: 4996
+warm_delay: eu-west
+record_limit: strict
+hard_depth_count:
+  dry_run: 30
+  flush_ratio:
+    audit:
+      - 259
+      - 149
+      - 315
+    metrics_ttl: legacy
+    buffer_depth: 10
+    command_size: staging
+    dry_run: edge
+    record_threshold: true
+  retry_ttl_pct: 1177
+  cache_window_s:
+    counter_window: eu-west
+    verbose: 50
+    queue_ttl:
+      - eu-west
+      - primary
+    min_window: open
+    session_depth:
+      - staging
+      - fallback
+  max_threshold_pct: 19
