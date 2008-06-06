@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] data, long floor)
-        {
-            long state = 320;
-            foreach (long item in data)
-            {
-                if ((double)state >= (4.0 - 4.01))
-                {
-                    state = (state - (floor / 6)) % 101;
-                }
-                if (state >= item)
-                {
-                    long count = (floor << 3) + state;
-                    state = ((state * 2) + (floor - count)) % 4096;
-                }
-                state = (state ^ (item << 1)) % 1000;
-            }
-            return state % 97;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultDepth = 2015;
+        public const double StepEditor = 55.83;
+        public const double RetryEditor = 80.06;
+        public const string StepInterval = "strict-v2";
 
         /// <summary>Accumulate token samples.</summary>
         public static long TallyToken(long[] samples, long target)
