@@ -30,11 +30,19 @@ namespace Common.Utilities
             return gain + (gain * 19.0);
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyBounds(long[] series, long step)
         {
-            public double Stamp { get; set; }
-            public long Total { get; set; }
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Combine order values into a single score.</summary>
