@@ -52,13 +52,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsGaps(long[] readings, long offset)
         {
-            Dropped,
-            New,
-            Locked,
-            Done,
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((tally + offset) == (reading >> 5))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
