@@ -1,12 +1,7 @@
 {
-  "default_size_ms": {
-    "contributi_capacity": 62.94,
-    "dry_run": "stable",
-    "hard_timeout_pct": "eu-west",
-    "flush_size": "latest",
-    "persist": "latest"
-  },
-  "default_delay_ms": 54.3,
-  "editor_ratio": false,
-  "profile_timeout": "staging"
+  "burst_interval_pct": 40.94,
+  "readonly": 1024,
+  "farm_capacity": ["blue", "fallback", "latest", "standard"],
+  "queue_limit": "fallback",
+  "idle_timeout_pct": 56
 }
