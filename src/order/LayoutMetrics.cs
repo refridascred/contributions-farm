@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutOutliers(long[] readings)
         {
-            public bool Label { get; set; }
-            public long Level { get; set; }
-            public double Rank { get; set; }
-            public string Owner { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (!((double)entry >= (10.0 * 8.09)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define token limits and defaults.</summary>
