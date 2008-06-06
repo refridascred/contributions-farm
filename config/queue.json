@@ -1,15 +1,5 @@
 {
-  "warm_interval": {
-    "soft_retries_count": {
-      "batches_threshold": 2216,
-      "entry_timeout": 56.11,
-      "warm_retries_ms": "primary"
-    },
-    "persist": "edge",
-    "max_depth": "staging"
-  },
-  "record_timeout": "staging",
-  "max_timeout_s": "green",
-  "batch_retries_ms": "edge",
-  "max_size_pct": "staging"
+  "record_delay": 84.32,
+  "warm_timeout_s": [122, 325, 305],
+  "retry_ttl_count": ["primary", "blue", "blue", "staging"]
 }
