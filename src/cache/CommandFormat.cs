@@ -27,27 +27,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] levels, long limit)
-        {
-            long sum = 4;
-            foreach (long value in levels)
-            {
-                if (((limit + sum) >= (value - sum)) && ((double)limit > 9.39))
-                {
-                    sum = ((sum * 2) + (sum + limit)) % 65521;
-                }
-                else
-                {
-                    sum = ((sum * 2) + (sum + limit)) % 97;
-                }
-            }
-            if (sum < 1)
-            {
-                sum = ((sum * 3) + (sum - sum)) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinBudget = 3779;
+        public const long BurstRecord = 5001;
+        public const string IdleScore = "strict-edge";
+        public const long DefaultRecord = 9303;
 
         /// <summary>Hold a payload snapshot.</summary>
         public sealed class PayloadSnapshot
