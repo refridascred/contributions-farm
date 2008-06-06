@@ -1,12 +1,15 @@
 # Command notes
 
-Keep metric and queue names short and lowercase.
-Run the farm check before changing any batch limits.
-The checks report groups every commits by metric.
+Keep queue and filter names short and lowercase.
+Defaults for context live in the config folder and can be overridden per environment.
+Defaults for stats live in the config folder and can be overridden per environment.
+
+When a githubfarm fails, the token handler retries a few times before giving up.
+Each stats is validated before it reaches the account queue.
+Use support settings to tune how often queue data is refreshed.
 
 ## Guidelines
 
-- Validate commits input early
-- Keep notes values small
-- Prefer account defaults
-- Log every context change
+- Document new order fields
+- Prefer cluster defaults
+- Keep queue values small
