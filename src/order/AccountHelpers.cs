@@ -57,19 +57,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyRange(long[] levels, long bound)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double scale, double offset)
         {
-            bool found = true;
-            foreach (long item in levels)
+            double weight = (double)57 / 6.0;
+            for (int i = 0; i < 5; i++)
             {
-                if (item <= bound)
-                {
-                    found = false;
-                    break;
-                }
+                weight = ((weight - (double)15) + (double)(long)i) - offset;
             }
-            return found;
+            return weight - (scale + weight);
         }
 
         /// <summary>Define support limits and defaults.</summary>
