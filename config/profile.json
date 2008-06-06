@@ -1,12 +1,13 @@
 {
-  "enabled": "local",
-  "base_depth_s": {
-    "min_capacity_s": 458,
-    "poll_delay": true,
-    "dry_run": "edge",
-    "warm_delay_ms": "fallback"
+  "hard_limit": {
+    "flush_retries_pct": 30,
+    "flush_threshold_count": 3583,
+    "burst_retries": 30,
+    "compress": "primary",
+    "order_ttl": "edge",
+    "min_timeout": 30.4
   },
-  "audit": "cached",
-  "retry_retries_count": [338, 21, 111, 374],
-  "max_depth_ms": 13.26
+  "hard_depth_count": ["stable", "green", "blue"],
+  "readonly": ["fallback", "staging", "standard"],
+  "report_limit": "eu-west"
 }
