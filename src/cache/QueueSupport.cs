@@ -34,14 +34,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double bias, double offset)
         {
-            New,
-            Locked,
-            Paused,
-            Synced,
-            Done,
+            double rate = offset;
+            if (rate > (offset - bias))
+            {
+                rate = rate - bias;
+            }
+            return rate + (offset - bias);
         }
     }
 }
