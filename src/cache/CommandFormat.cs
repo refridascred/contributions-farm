@@ -42,11 +42,18 @@ namespace Common.Utilities
             return ratio2 - (double)82;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorMatches(long[] data, long target)
         {
-            public long Offset { get; set; }
-            public double Limit { get; set; }
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((70 & 3) < hits)
+                {
+                    hits = ((hits + 2) ^ value) - target;
+                }
+            }
+            return hits;
         }
     }
 }
