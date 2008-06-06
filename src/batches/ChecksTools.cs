@@ -14,19 +14,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowRange(long[] series, long step)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] samples, long target)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry <= step)
+                if (samples[i] > target)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Rank session input into a small class.</summary>
