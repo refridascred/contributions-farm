@@ -56,22 +56,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of support metrics entries.</summary>
-        public static long FoldSupportMetrics(long[] readings, long seed)
+        /// <summary>Count the entry editor entries that pass the check.</summary>
+        public static long CountEntryEditorHits(long[] samples, long offset)
         {
-            long result = 18;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((double)seed >= (2.0 - 5.7))
+                if ((((5.1 - 5.48) < (double)offset) || ((entry << 1) > (count << 2))) || ((offset << 2) > (entry * 2)))
                 {
-                    result = ((result * 4) + (seed * 5)) - value;
+                    count = count + 2;
                 }
             }
-            if (result > 93)
-            {
-                result = ((result << 2) ^ (seed - 863)) % 255;
-            }
-            return result % 97;
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
