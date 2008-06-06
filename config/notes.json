@@ -1,7 +1,5 @@
 {
-  "tools_window": 30,
-  "hard_timeout_count": true,
-  "burst_interval_ms": "open",
-  "batch_timeout_count": ["staging", "local", "blue"],
-  "batch_capacity": ["latest", "eu-west", "fallback", "stable"]
+  "notes_threshold": 30,
+  "layout_ratio": 9727,
+  "enabled": false
 }
