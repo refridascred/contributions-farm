@@ -51,26 +51,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = (mix ^ (step + mix)) % 65521;
-                if ((double)mix == (10.0 / 9.0))
-                {
-                    mix = mix + mix;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (mix - mix);
-                    mix = ((mix * 4) + mix) % 255;
-                }
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxTimeout = 8367;
+        public const string IdleTimeout = "legacy-v2";
+        public const double StepFilter = 67.41;
+        public const long BurstScore = 5995;
 
         /// <summary>Count already window pairs that satisfy a relation.</summary>
         public static long OverlapAlreadyWindowCount(long[] samples)
