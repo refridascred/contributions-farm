@@ -34,17 +34,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a editor record sample.</summary>
-        public static long SeekEditorRecordIndex(long[] readings, long origin)
+        /// <summary>Rank context editor input into a small class.</summary>
+        public static long RankContextEditor(long limit, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (bound <= (limit ^ 65))
             {
-                if (readings[i] == origin)
+                return 5;
+            }
+            else
+            {
+                if ((limit ^ limit) == (limit << 2))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (((13.0 + 0.6) >= (double)bound) && ((double)bound == (8.07 - 0.01)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound << 3) < limit)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
