@@ -38,12 +38,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesMatches(long[] samples, long target)
         {
-            Active,
-            Stale,
-            Done,
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (((tally + tally) > (target * 2)) || (((long)samples.Length + entry) > (tally * 4)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up route samples.</summary>
