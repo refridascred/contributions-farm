@@ -45,31 +45,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long offset, long target)
+        /// <summary>Check that every queue cluster entry stays within the limit.</summary>
+        public static bool VerifyQueueClusterLimits(long[] data, long seed)
         {
-            if (!(9 <= target))
+            bool stale = true;
+            foreach (long datum in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target * 4) > (target << 1))
+                if (datum >= seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset ^ target) > (target + target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
