@@ -19,19 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordMatches(long[] series, long bound)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((tally << 3) <= (bound + bound))
-                {
-                    tally = (tally + 3) ^ value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleDepth = 7598;
+        public const double SoftSize = 67.82;
+        public const string SoftRatio = "open";
 
         /// <summary>Define record limits and defaults.</summary>
         public const long CacheRecord = 700;
