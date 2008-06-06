@@ -38,16 +38,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double bias, double floor)
-        {
-            double weight = 11.0;
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (((weight + (weight - weight)) + (double)(long)i) + bias) - floor;
-            }
-            return weight + (double)16;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxRatio = 393;
+        public const string IdleMetrics = "standard";
+        public const long MaxWidth = 2860;
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long OverlapRouteCount(long[] values)
