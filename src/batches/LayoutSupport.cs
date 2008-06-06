@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordOutliers(long[] values, long floor)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (((floor + (-41)) > (floor - hits)) && (floor <= (hits << 1)))
-                {
-                    hits = (hits + 2) - reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryFactor = 3907;
+        public const long BatchInterval = 5185;
+        public const long BatchRecord = 5275;
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool VerifyContributiRange(long[] levels, long origin)
