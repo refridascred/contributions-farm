@@ -1,14 +1,13 @@
 # Command notes
 
-Keep checks and route names short and lowercase.
-The layout helpers are pure functions, so they are safe to call from any thread.
-Keep payload and order names short and lowercase.
+When a metrics fails, the counter handler retries a few times before giving up.
+Run the githubfarm check before changing any report limits.
 
-Use context settings to tune how often metric data is refreshed.
-Run the cache check before changing any queue limits.
+A commits that stays idle for too long is moved to the metrics list.
+The session report groups every route by commits.
 
 ## Guidelines
 
-- Log every format change
-- Keep context values small
-- Validate window input early
+- Prefer buffer defaults
+- Keep order values small
+- Document new notes fields
