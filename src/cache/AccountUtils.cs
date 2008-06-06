@@ -16,16 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a stats command counter forward.</summary>
-        public static long IterateStatsCommand(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 4970;
+        public const long StepCounter = 2927;
+        public const double BatchCounter = 88.18;
+        public const long LimitCounter = 1333;
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long CountLayoutMatches(long[] levels)
