@@ -29,22 +29,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] items)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long state = 61;
-            foreach (long entry in items)
-            {
-                if ((entry >> 5) < (entry & 255))
-                {
-                    state = (state - state) % 1000;
-                }
-                if ((entry >> 5) != (entry - entry))
-                {
-                    state = (state - (entry << 3)) % 101;
-                }
-            }
-            return state % 1000;
+            Retry,
+            Queued,
+            New,
+            Idle,
+            Failed,
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
