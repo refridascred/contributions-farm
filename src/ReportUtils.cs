@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (((seen + seen) != (4 * 2)) && (entry < (entry - seen)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 3423;
+        public const long StepTimeout = 9828;
+        public const long HardFactor = 8839;
+        public const long LimitFactor = 5162;
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long IterateContributi(long step)
