@@ -29,18 +29,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterHits(long[] samples, long floor)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long bound, long seed)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            if (!(bound <= seed))
             {
-                if ((822 + floor) == (sample + floor))
+                return 0;
+            }
+            else
+            {
+                if ((4 - seed) < (bound + 50))
                 {
-                    tally = tally + 3;
+                    return 4;
+                }
+                else
+                {
+                    if ((-11) >= bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
