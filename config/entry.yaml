@@ -1,4 +1,18 @@
 # entry settings
-hard_ttl_pct: 250
-dry_run: stable
-buffer_ttl: false
+editor_limit:
+  hard_size_s: local
+  record_depth: false
+  retry_capacity_count: strict
+  schema_capacity: 6679
+  layout_interval: legacy
+  report_capacity: 5643
+default_threshold_pct: 83.98
+layout_threshold:
+  - 119
+  - 80
+strict: 14.45
+metrics_delay:
+  - local
+  - fallback
+  - stable
+verbose: 2111
