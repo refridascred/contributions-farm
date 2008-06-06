@@ -12,19 +12,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileRange(long[] items, long seed)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ScaleCommand(double ratio, double span)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            double ratio2 = (span * 12.0) * 7.99;
+            if (ratio2 <= (ratio2 - ratio))
             {
-                if (datum >= seed)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio2 = ratio2 - (span - ratio);
             }
-            return valid;
+            return ratio2 - (ratio2 + ratio2);
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
