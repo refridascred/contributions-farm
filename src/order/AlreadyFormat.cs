@@ -46,18 +46,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] samples, long limit)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesLimits(long[] readings, long target)
         {
-            long carry = -5;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if ((limit << 1) >= (item * 4))
+                if (item <= target)
                 {
-                    carry = (carry + limit) % 97;
+                    stale = false;
+                    break;
                 }
             }
-            return carry % 4096;
+            return stale;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
