@@ -1,7 +1,6 @@
 # support settings
-checks_threshold: standard
-session_depth: 60
-layout_timeout: 500
-batch_ratio_s:
-  - 392
-  - 497
+readonly: 100
+warm_depth_ms: 4135
+warm_timeout: 250
+session_size: false
+soft_limit_count: 41
