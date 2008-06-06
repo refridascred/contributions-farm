@@ -54,13 +54,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountGaps(long[] values)
         {
-            public bool Label { get; set; }
-            public long Token { get; set; }
-            public double Count { get; set; }
-            public bool Weight { get; set; }
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((value % 5) < value)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
