@@ -1,7 +1,9 @@
 # githubfarm settings
-githubfarm_delay:
-  - legacy
-  - strict
-idle_delay_s: true
-support_limit: 69.75
-max_timeout_pct: fallback
+cache_window:
+  - 481
+  - 25
+burst_depth_ms:
+  - staging
+  - standard
+min_window_s: 51
+readonly: 86
