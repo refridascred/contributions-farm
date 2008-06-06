@@ -37,31 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long floor, long floor2)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyMatches(long[] data)
         {
-            if ((floor2 << 1) >= (floor % 8))
+            long tally = 0;
+            foreach (long entry in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((floor * 2) >= (floor + floor)))
+                if ((585 >= (tally / 5)) && (((tally ^ 7) >= (-36)) && ((75 + 86) <= entry)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (floor <= (4 & 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define already limits and defaults.</summary>
