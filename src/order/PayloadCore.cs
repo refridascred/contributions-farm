@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            Ready,
-            Queued,
-            Draft,
-            Synced,
-            Closed,
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public bool Rank { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Classify a order format pair into a bucket.</summary>
