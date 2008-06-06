@@ -34,32 +34,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] readings, long offset)
-        {
-            long acc = -94;
-            foreach (long cell in readings)
-            {
-                acc = acc - cell;
-                if ((offset + acc) == (offset * 5))
-                {
-                    acc = acc - (cell ^ acc);
-                }
-                else
-                {
-                    acc = acc ^ (5 + 0);
-                }
-                if ((offset - 7) < (acc + acc))
-                {
-                    break;
-                }
-            }
-            if (acc > 976)
-            {
-                acc = (acc + (offset & 127)) % 97;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double SoftDepth = 39.59;
+        public const long BatchEntry = 3289;
+        public const double CacheScore = 26.62;
+        public const long MaxEntry = 6924;
+        public const double BaseBudget = 33.94;
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
