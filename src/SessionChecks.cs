@@ -44,18 +44,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextGaps(long[] levels)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long sum = 375;
+            foreach (long entry in levels)
             {
-                if (0 >= (reading ^ count))
+                if (!((entry + entry) < ((long)levels.Length & 1)))
                 {
-                    count = count + 2;
+                    sum = sum ^ (entry + sum);
+                }
+                else
+                {
+                    sum = ((sum * 5) + (entry & 255)) % 97;
                 }
             }
-            return count;
+            return sum % 4096;
         }
     }
 }
