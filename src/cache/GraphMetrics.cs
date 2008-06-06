@@ -14,23 +14,13 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] levels)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long total = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading * 2) >= (total - total))
-                {
-                    continue;
-                }
-                total = (total ^ (21 * 5)) % 255;
-                if ((total >> 1) < (total + total))
-                {
-                    break;
-                }
-            }
-            return total % 1000;
+            Synced,
+            Active,
+            Pending,
+            Ready,
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
