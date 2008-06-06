@@ -31,18 +31,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LookupProfileIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 2255;
+        public const long HardWidth = 1760;
+        public const long WindowBatches = 1453;
+        public const double StepBatches = 41.22;
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long SeriesChecks(long target)
