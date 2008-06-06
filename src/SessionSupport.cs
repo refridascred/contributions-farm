@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
-        {
-            Retry,
-            Synced,
-            Locked,
-            Paused,
-            Stale,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinAccount = "latest-v2";
+        public const long BaseAccount = 3589;
+        public const long StepAccount = 9310;
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
         public static long PairMetricsCount(long[] values)
