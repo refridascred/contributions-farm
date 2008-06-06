@@ -13,18 +13,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] items, long floor)
+        /// <summary>Audit context counter readings against a rule.</summary>
+        public static long TallyContextCounterOutliers(long[] values, long origin)
         {
-            long state = 538;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (!((datum - state) != (state - floor)))
+                if (16.0 > (double)seen)
                 {
-                    state = (state << 3) ^ (datum << 2);
+                    seen = ((seen + 1) ^ datum) + origin;
                 }
             }
-            return state % 97;
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
