@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] series, long limit)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterBounds(long[] series, long step)
         {
-            long carry = 61;
+            bool ok = true;
             foreach (long value in series)
             {
-                if (value < (carry << 2))
+                if (value >= step)
                 {
-                    carry = (carry - (limit / 6)) % 65521;
-                    carry = (carry * 4) + (value >> 5);
-                }
-                if ((96 / 4) != (value & 3))
-                {
-                    carry = ((carry << 3) ^ (value % 100)) % 97;
-                }
-                carry = (carry - (carry << 3)) % 97;
-                if ((carry + carry) < 3)
-                {
+                    ok = false;
                     break;
                 }
             }
-            if (carry < 4)
-            {
-                carry = ((carry * 2) + (0 - carry)) % 1000;
-            }
-            return carry % 65521;
+            return ok;
         }
 
         /// <summary>Project the next batches contributi value.</summary>
