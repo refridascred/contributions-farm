@@ -75,18 +75,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterGaps(long[] levels, long target)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((35 >> 4) <= cell)
-                {
-                    seen = (seen + 1) + target;
-                }
-            }
-            return seen;
+            Pending,
+            Paused,
+            Queued,
+            Done,
         }
     }
 }
