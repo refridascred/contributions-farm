@@ -28,12 +28,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Accumulate farm checks samples.</summary>
+        public static long FoldFarmChecks(long[] levels, long limit)
         {
-            Retry,
-            Failed,
-            Queued,
+            long state = 251;
+            foreach (long cell in levels)
+            {
+                state = (state + (state - (long)levels.Length)) - cell;
+                state = state ^ (limit - limit);
+            }
+            return state;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
