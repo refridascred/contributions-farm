@@ -27,19 +27,9 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double SmoothRoute(double ratio, double offset)
-        {
-            double bias = (offset - ratio) - (double)(-46);
-            if (bias >= bias)
-            {
-                bias = bias - offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + 3.6) + (double)(long)i;
-            }
-            return bias - offset;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheDepth = 6789;
+        public const long MaxRatio = 6697;
+        public const string CacheSchema = "latest";
     }
 }
