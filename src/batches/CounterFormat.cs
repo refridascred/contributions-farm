@@ -35,17 +35,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultAlready = 2180;
+        public const long CacheBudget = 4954;
+        public const long WindowCount = 9699;
     }
 }
