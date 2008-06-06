@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordOutliers(long[] values, long floor)
         {
-            public long Stamp { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (((floor + (-41)) > (floor - hits)) && (floor <= (hits << 1)))
+                {
+                    hits = (hits + 2) - reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
