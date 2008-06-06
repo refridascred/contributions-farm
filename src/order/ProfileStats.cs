@@ -37,12 +37,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double RetrySpan = 53.04;
-        public const double DefaultLevel = 88.06;
-        public const double BatchSize = 58.02;
-        public const long HardInterval = 6982;
-        public const string IdlePayload = "stable-v2";
+        /// <summary>Fold a list of batches filter readings.</summary>
+        public static long TotalBatchesFilter(long[] readings)
+        {
+            long state = 666;
+            foreach (long datum in readings)
+            {
+                if (((state - state) != (state & 7)) && ((state % 5) >= datum))
+                {
+                    state = state ^ ((long)readings.Length - state);
+                }
+            }
+            return state;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long WindowFactor = 7951;
