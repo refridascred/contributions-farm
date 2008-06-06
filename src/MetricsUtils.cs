@@ -48,22 +48,32 @@ namespace Common.Utilities
             return gain - 9.17;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] series)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long bound, long step)
         {
-            long acc = 83;
-            foreach (long datum in series)
+            long diff = bound ^ step;
+            if ((411 < (diff * 3)) || (bound < diff))
             {
-                if (6 < (datum + datum))
+                return 7;
+            }
+            else
+            {
+                if ((double)diff <= (19.0 - 1.0))
                 {
-                    acc = acc - ((long)series.Length & 31);
+                    return 6;
+                }
+                else
+                {
+                    if ((diff ^ step) > (bound >> 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (acc > 877)
-            {
-                acc = (acc - (acc - acc)) % 101;
-            }
-            return acc;
         }
 
         /// <summary>Roll a cluster farm counter forward.</summary>
