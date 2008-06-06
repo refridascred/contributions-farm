@@ -32,12 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double bias, double offset)
         {
-            Done,
-            Failed,
-            Paused,
+            double ratio = bias - offset;
+            if (ratio < (ratio - 9.0))
+            {
+                ratio = ratio + (8.5 / 3.0);
+            }
+            return ratio + (16.0 * 3.1);
         }
     }
 }
