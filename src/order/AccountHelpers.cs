@@ -23,12 +23,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BurstFactor = "alpha-edge";
-        public const double IdleBuffer = 3.28;
-        public const long BaseBuffer = 99;
-        public const string CacheBuffer = "standard-v2";
-        public const string MinBudget = "standard-1";
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long seed, long seed2)
+        {
+            long delta = seed + seed2;
+            if (delta < seed)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((1.86 * 4.7) > (double)seed2) && ((double)delta < (2.6 + 2.0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long StepProfile(long offset)
