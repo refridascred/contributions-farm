@@ -1,5 +1,8 @@
 {
-  "retry_size": 74.35,
-  "strict": true,
-  "enabled": [354, 92, 452, 492]
+  "enabled": 3502,
+  "persist": 8132,
+  "soft_delay_count": "open",
+  "cache_depth_count": "fallback",
+  "sync_limit_ms": false,
+  "cache_ttl_count": "blue"
 }
