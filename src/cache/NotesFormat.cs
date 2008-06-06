@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiGaps(long[] data)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long limit, long step)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            if (!((limit ^ step) == (step + step)))
             {
-                if (6.42 >= (double)cell)
+                return 2;
+            }
+            else
+            {
+                if ((limit + limit) != (step & 63))
                 {
-                    hits = hits + 2;
+                    return 4;
+                }
+                else
+                {
+                    if (limit > step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
