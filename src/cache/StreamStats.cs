@@ -19,22 +19,12 @@ namespace Common.Utilities
         public const long RetryBudget = 5940;
         public const double StepDepth = 34.48;
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BatchScore = "standard-v2";
+        public const long CacheWindow = 6663;
+        public const string MinDepth = "standard-edge";
+        public const long BaseSize = 6292;
+        public const string LimitScore = "stable-edge";
 
         /// <summary>Derive the next token record value from a seed.</summary>
         public static long RollTokenRecord(long seed)
