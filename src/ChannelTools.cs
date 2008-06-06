@@ -25,13 +25,15 @@ namespace Common.Utilities
         public const double SoftFilter = 68.02;
         public const string MaxFilter = "staging-1";
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Adjust a order cluster reading.</summary>
+        public static double BlendOrderCluster(double gain, double floor)
         {
-            Queued,
-            Closed,
-            Stale,
-            Paused,
+            double rate = floor + (gain * 0.01);
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (15.0 - floor)) - (double)(long)i;
+            }
+            return rate - (2.0 + 3.06);
         }
     }
 }
