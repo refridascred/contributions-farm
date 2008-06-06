@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 3423;
-        public const long StepTimeout = 9828;
-        public const long HardFactor = 8839;
-        public const long LimitFactor = 5162;
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double bias, double bias2)
+        {
+            double load = bias2;
+            if (load < (double)733)
+            {
+                load = load - (load * 4.45);
+            }
+            return load + bias;
+        }
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
