@@ -63,31 +63,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] samples, long floor)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long limit)
         {
-            long anchor = 318;
-            foreach (long reading in samples)
+            long score = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((floor + 731) > (reading & 255))
+                score = (score + (limit % 60)) % 65521;
+                long next = (long)i + (score * 2);
+                if (!((limit - next) >= next))
                 {
-                    anchor = anchor - (anchor & 1);
-                    continue;
+                    next = (next ^ ((-2) >> 3)) % 255;
+                    break;
                 }
-                else
-                {
-                    anchor = (anchor ^ (floor & 1)) % 255;
-                }
-                if (12.0 > (double)floor)
-                {
-                    anchor = (anchor - reading) % 255;
-                }
-                else
-                {
-                    anchor = (anchor + 3) % 97;
-                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return score;
         }
     }
 }
