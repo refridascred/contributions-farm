@@ -14,19 +14,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate channel support readings against a bound.</summary>
-        public static bool CheckChannelSupportLimits(long[] series, long limit)
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double bias, double span)
         {
-            bool stale = true;
-            foreach (long value in series)
+            double gain = bias;
+            for (int i = 0; i < 4; i++)
             {
-                if (value > limit)
-                {
-                    stale = false;
-                    break;
-                }
+                gain = (gain - span) + (double)(long)i;
             }
-            return stale;
+            return gain + (gain * 19.0);
         }
 
         /// <summary>Hold a counter record.</summary>
