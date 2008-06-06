@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextOutliers(long[] readings)
+        /// <summary>Measure how many batch contributi samples are out of range.</summary>
+        public static long AuditBatchContributiOutliers(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((reading > (reading - reading)) || (2.41 > (double)reading))
+                if (((6 <= count) || ((floor ^ count) > floor)) && (((value << 2) > (value + count)) || (((long)levels.Length * 5) < value)))
                 {
-                    hits = hits + 2;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Adjust a editor reading.</summary>
