@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up batches commits samples.</summary>
-        public static long PairBatchesCommitsCount(long[] series)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] items, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 176;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = (((total ^ (4 - total)) % 4096) + sample) + step;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
