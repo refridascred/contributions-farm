@@ -49,13 +49,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            Active,
-            Idle,
             Retry,
-            Failed,
+            Ready,
+            Queued,
+            Idle,
+            Stale,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
