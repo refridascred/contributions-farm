@@ -37,19 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountBounds(long[] readings, long origin)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] series)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long mix = 469;
+            foreach (long item in series)
             {
-                if (datum != origin)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = ((mix - (mix * 4)) % 255) ^ item;
             }
-            return flag;
+            if (mix < 59)
+            {
+                mix = (mix ^ mix) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
