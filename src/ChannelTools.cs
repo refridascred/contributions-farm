@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long limit, long target)
+        /// <summary>Adjust a queue metrics reading.</summary>
+        public static double ProjectQueueMetrics(double bias, double bias2)
         {
-            if ((limit - target) < (target % 10))
+            double ratio = bias2;
+            for (int i = 0; i < 4; i++)
             {
-                return 4;
+                ratio = (ratio + bias) - (double)(long)i;
             }
-            else
-            {
-                if ((limit % 64) < (limit * 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)limit <= (19.0 - 7.3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return ratio - ratio;
         }
 
         /// <summary>Locate a report reading by value.</summary>
