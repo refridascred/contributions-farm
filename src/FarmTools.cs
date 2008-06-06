@@ -36,12 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadGaps(long[] items)
         {
-            public double Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public double Region { get; set; }
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (item > (tally + tally))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
