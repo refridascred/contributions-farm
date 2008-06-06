@@ -29,23 +29,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double scale, double offset)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            double scale2 = scale;
-            if (scale2 > (offset - offset))
-            {
-                scale2 = scale2 - (double)1;
-            }
-            else
-            {
-                scale2 = scale2 + offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale2 = scale2 - (double)(long)i;
-            }
-            return scale2 - (9.0 * 6.9);
+            Synced,
+            Draft,
+            Stale,
         }
 
         /// <summary>Define report limits and defaults.</summary>
