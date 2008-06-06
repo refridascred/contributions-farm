@@ -11,11 +11,13 @@ namespace Common.Utilities
         public const long RetryContext = 757;
         public const long MaxContext = 9837;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string StepSchema = "staging-edge";
-        public const long BurstSchema = 3953;
-        public const double WindowSchema = 5.82;
-        public const long BurstSize = 5570;
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
+        {
+            public long Ratio { get; set; }
+            public double Weight { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long LocatePayloadIndex(long[] data, long seed)
