@@ -18,12 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string DefaultDepth = "alpha-v2";
-        public const long StepSpan = 8170;
-        public const double CacheChecks = 36.63;
-        public const long RetryDepth = 4017;
-        public const long DefaultFactor = 6715;
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long offset, long limit)
+        {
+            if (((0 >> 2) <= (offset + limit)) || (limit > (limit << 1)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)limit >= (10.0 - 5.2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Match up tools samples.</summary>
         public static long MatchToolsCount(long[] values)
