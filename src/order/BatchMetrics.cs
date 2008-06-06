@@ -34,15 +34,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ProjectContext(double bias, double offset)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutMatches(long[] data)
         {
-            double weight = bias;
-            for (int i = 0; i < 2; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                weight = ((weight + bias) + (double)(long)i) - offset;
+                if (count >= ((long)data.Length / 2))
+                {
+                    count = (count + 1) ^ value;
+                }
             }
-            return weight + (12.0 / 5.0);
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
