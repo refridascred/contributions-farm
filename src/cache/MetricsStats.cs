@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            Stale,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchChannel = 7783;
+        public const string SoftChannel = "latest-edge";
+        public const long BurstTimeout = 9560;
+        public const double CacheBudget = 23.8;
+        public const long BaseChannel = 6399;
 
         /// <summary>Adjust a notes tools reading.</summary>
         public static double SmoothNotesTools(double gain, double bias)
