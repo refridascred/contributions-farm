@@ -5,12 +5,29 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long seed)
         {
-            public long Mode { get; set; }
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
+            long acc = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    acc = (acc - (acc + 7)) - (long)i2;
+                }
+                long hits = 490 ^ (acc - acc);
+                if ((double)seed >= 15.0)
+                {
+                    acc = acc - (hits ^ hits);
+                    hits = hits ^ (long)i;
+                }
+                else
+                {
+                    hits = hits ^ (hits >> 3);
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
