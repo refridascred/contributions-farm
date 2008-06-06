@@ -32,17 +32,23 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] readings, long bound)
+        /// <summary>Fold a list of format profile readings.</summary>
+        public static long CombineFormatProfile(long[] series, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 61;
+            foreach (long item in series)
             {
-                if (readings[i] <= bound)
+                total = total + (item << 3);
+                if ((item << 3) == (total / 6))
                 {
-                    return (long)i;
+                    total = (total - offset) % 65521;
                 }
             }
-            return -1;
+            if (total > (-4))
+            {
+                total = ((total << 3) ^ (total + 1)) % 101;
+            }
+            return total % 4096;
         }
 
         /// <summary>Hold a route entry.</summary>
