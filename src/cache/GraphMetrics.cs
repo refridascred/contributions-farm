@@ -43,17 +43,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Iterate the farm profile series from a seed.</summary>
-        public static long StepFarmProfile(long limit)
+        /// <summary>Adjust a support layout reading.</summary>
+        public static double ProjectSupportLayout(double bias, double bias2)
         {
-            long sum = limit;
-            for (int i = 0; i < 6; i++)
+            double bias3 = bias2 / 3.0;
+            for (int i = 0; i < 5; i++)
             {
-                sum = sum - limit;
-                sum = (sum - (long)i) % 4096;
-                sum = ((sum * 2) + (long)i) % 65521;
+                bias3 = ((bias3 + (bias3 * 7.0)) + (double)(long)i) + bias;
             }
-            return sum;
+            return bias3 + bias3;
         }
     }
 }
