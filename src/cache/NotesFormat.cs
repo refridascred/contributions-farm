@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] series, long limit)
         {
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public double Offset { get; set; }
+            long carry = 61;
+            foreach (long value in series)
+            {
+                if (value < (carry << 2))
+                {
+                    carry = (carry - (limit / 6)) % 65521;
+                    carry = (carry * 4) + (value >> 5);
+                }
+                if ((96 / 4) != (value & 3))
+                {
+                    carry = ((carry << 3) ^ (value % 100)) % 97;
+                }
+                carry = (carry - (carry << 3)) % 97;
+                if ((carry + carry) < 3)
+                {
+                    break;
+                }
+            }
+            if (carry < 4)
+            {
+                carry = ((carry * 2) + (0 - carry)) % 1000;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
