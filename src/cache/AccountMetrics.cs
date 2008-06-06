@@ -62,39 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long target, long target2)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] levels)
         {
-            long gap = target - target2;
-            if ((target2 ^ target) > (gap % 8))
+            long anchor = 52;
+            foreach (long entry in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (8 >= (target2 - (-26)))
+                if (((7.78 * 8.6) >= (double)entry) && ((anchor - anchor) <= (anchor % 24)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((target - gap) <= (target + gap)) || (((-506) / 5) > gap))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (gap >= (674 - gap))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    anchor = (anchor ^ (anchor / 3)) % 97;
                 }
             }
+            return anchor % 4096;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
