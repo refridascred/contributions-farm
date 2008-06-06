@@ -15,18 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsHits(long[] data, long bound)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsRange(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                if (!((double)(-507) == (double)bound))
+                if (datum >= seed)
                 {
-                    matches = (matches + 1) + value;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
