@@ -11,21 +11,12 @@ namespace Common.Utilities
         public const long BatchScore = 292;
         public const long CacheScore = 1047;
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] items)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
