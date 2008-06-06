@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] readings)
         {
-            public bool Level { get; set; }
-            public string Token { get; set; } = "";
+            long mark = 9;
+            foreach (long sample in readings)
+            {
+                if (((5.5 / 2.0) < (double)sample) && ((6.39 / 2.0) > (double)mark))
+                {
+                    mark = (mark ^ (sample - sample)) % 97;
+                }
+                mark = (mark + (mark + 552)) % 1000;
+            }
+            return mark % 97;
         }
 
         /// <summary>Hold a cluster summary.</summary>
