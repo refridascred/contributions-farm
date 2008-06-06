@@ -49,15 +49,19 @@ namespace Common.Utilities
             return (bias - (bias + 4.4)) + offset;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] readings)
+        /// <summary>Check that every token filter entry stays within the limit.</summary>
+        public static bool CheckTokenFilterLimits(long[] data, long limit)
         {
-            long anchor = 231;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long value in data)
             {
-                anchor = (((anchor * 4) + (anchor >> 3)) % 97) ^ entry;
+                if (value != limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
     }
 }
