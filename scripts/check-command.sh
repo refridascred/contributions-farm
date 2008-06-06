@@ -6,19 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local standard; do
+for item in staging primary fallback local; do
     log "checking ${item}"
 done
 
-mode="${1:-staging}"
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+mode="${1:-stable}"
 case "${mode}" in
-    latest)
+    local)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-COMMAND_LIMIT=195
-log "limit is ${COMMAND_LIMIT}"
