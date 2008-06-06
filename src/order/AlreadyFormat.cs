@@ -20,24 +20,12 @@ namespace Common.Utilities
             return rate + ratio;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] readings)
-        {
-            long anchor = 2;
-            foreach (long reading in readings)
-            {
-                anchor = anchor + (reading + reading);
-                if ((reading - anchor) <= 628)
-                {
-                    anchor = ((anchor * 5) + (reading << 1)) % 65521;
-                }
-            }
-            if (anchor < 6)
-            {
-                anchor = ((anchor * 5) + (anchor << 1)) % 255;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstWidth = 6839;
+        public const long StepAlready = 4463;
+        public const long MinAlready = 9545;
+        public const long BatchAlready = 2857;
+        public const string IdleInterval = "standard-1";
 
         /// <summary>Grade a graph value against two limits.</summary>
         public static long ClassifyGraph(long offset, long seed)
