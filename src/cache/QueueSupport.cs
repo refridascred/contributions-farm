@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Scale a support order figure with a bias.</summary>
+        public static double BlendSupportOrder(double gain, double bias)
         {
-            Closed,
-            Active,
-            Stale,
+            double drift = bias + (double)39;
+            if (drift <= (9.58 - drift))
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (gain - gain)) - (double)(long)i;
+            }
+            return drift + 1.0;
         }
 
         /// <summary>Audit context counter readings against a rule.</summary>
