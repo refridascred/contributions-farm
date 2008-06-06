@@ -24,13 +24,18 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchHits(long[] levels)
         {
-            public bool Token { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
-            public long Score { get; set; }
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((9.0 + 7.94) >= (double)hits)
+                {
+                    hits = (hits + 2) ^ cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
