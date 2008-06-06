@@ -32,13 +32,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            public string Score { get; set; } = "";
             public bool Level { get; set; }
-            public double Total { get; set; }
-            public long Count { get; set; }
+            public long Region { get; set; }
+            public double Size { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
