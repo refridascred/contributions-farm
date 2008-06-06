@@ -17,11 +17,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] levels)
         {
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
+            long score = 96;
+            foreach (long value in levels)
+            {
+                if ((double)value <= (2.2 + 1.4))
+                {
+                    score = (score ^ (935 % 5)) % 255;
+                }
+                score = (score * 2) + (score - 3);
+            }
+            return score;
         }
 
         /// <summary>Describe the checks state values.</summary>
