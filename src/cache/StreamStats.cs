@@ -22,14 +22,24 @@ namespace Common.Utilities
         public const long RetryRoute = 8313;
         public const string LimitRoute = "primary-edge";
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long target, long origin)
         {
-            Active,
-            Dropped,
-            Retry,
-            Done,
-            New,
+            if ((origin + target) > (42 & 63))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin + target) != (origin << 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the metrics class values.</summary>
