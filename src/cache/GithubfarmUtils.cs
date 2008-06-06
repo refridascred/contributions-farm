@@ -5,35 +5,29 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long bound, long target)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long origin, long origin2)
         {
-            if ((bound + bound) <= (bound ^ target))
+            long slot = origin - origin2;
+            if ((slot ^ origin) > origin)
             {
-                return 5;
+                return 7;
             }
             else
             {
-                if (!(target > (bound + 743)))
+                if ((origin2 + slot) > slot)
                 {
-                    return 4;
+                    return 6;
                 }
                 else
                 {
-                    if (9.7 <= (double)bound)
+                    if ((double)slot < 1.14)
                     {
-                        return 0;
+                        return 4;
                     }
                     else
                     {
-                        if (((-66) % 2) <= (bound + bound))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        return 5;
                     }
                 }
             }
