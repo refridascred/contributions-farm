@@ -34,19 +34,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the token commits entries that pass the check.</summary>
-        public static long MeasureTokenCommitsMatches(long[] samples, long seed)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (seed <= (seed / 8))
-                {
-                    seen = (seen + 1) ^ cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 9624;
+        public const long RetryFactor = 3594;
+        public const long CacheEntry = 9852;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long TallyAlreadyMatches(long[] data)
