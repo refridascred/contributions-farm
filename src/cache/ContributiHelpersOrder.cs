@@ -22,15 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long target)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long step)
         {
-            long mark = target;
-            for (int i = 0; i < 7; i++)
+            long score = step;
+            for (int i = 0; i < 22; i++)
             {
-                mark = ((mark * 3) + (long)i) % 97;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Describe the stats kind values.</summary>
