@@ -34,16 +34,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long limit)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphOutliers(long[] values, long step)
         {
-            long acc = limit;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                acc = (acc ^ acc) % 255;
-                acc = ((acc * 3) + (long)i) % 4093;
+                if ((step - hits) >= (cell - 38))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
