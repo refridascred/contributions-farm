@@ -39,15 +39,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] levels)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long anchor = 29;
-            foreach (long reading in levels)
-            {
-                anchor = (((anchor * 5) + (999 / 8)) % 1000) ^ reading;
-            }
-            return anchor;
+            Synced,
+            Locked,
+            Dropped,
+            Stale,
+            Active,
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
