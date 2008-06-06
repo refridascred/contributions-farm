@@ -23,18 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit cache support readings against a rule.</summary>
-        public static long MeasureCacheSupportGaps(long[] series, long origin)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsRange(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if ((4.0 * 3.2) >= (double)matches)
+                if (sample >= origin)
                 {
-                    matches = ((matches + 2) ^ sample) - origin;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Match up notes order samples.</summary>
