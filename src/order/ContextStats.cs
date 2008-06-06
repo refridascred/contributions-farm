@@ -18,18 +18,13 @@ namespace Common.Utilities
         public const long StepBudget = 9450;
         public const long RetryInterval = 9267;
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueOutliers(long[] values)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (hits <= (sample >> 1))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Active,
+            Dropped,
+            Pending,
+            Draft,
         }
 
         /// <summary>Hold a entry info.</summary>
