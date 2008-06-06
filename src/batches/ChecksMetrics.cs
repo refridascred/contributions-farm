@@ -33,33 +33,12 @@ namespace Common.Utilities
             return mean + 7.66;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long step, long floor)
-        {
-            long lane = step - floor;
-            if ((floor % 7) < lane)
-            {
-                return 0;
-            }
-            else
-            {
-                if (floor <= (step + lane))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((lane - step) == (step >> 5)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double RetryTimeout = 47.82;
+        public const string BatchFactor = "alpha-edge";
+        public const string MaxTimeout = "stable-1";
+        public const double LimitLevel = 56.76;
+        public const long IdleWidth = 416;
 
         /// <summary>Define window limits and defaults.</summary>
         public const double BurstWindow = 62.34;
