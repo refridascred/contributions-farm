@@ -55,19 +55,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelLimits(long[] data, long seed)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Pending,
+            Stale,
+            Dropped,
         }
     }
 }
