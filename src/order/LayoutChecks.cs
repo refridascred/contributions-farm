@@ -30,21 +30,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up counter buffer samples.</summary>
-        public static long PairCounterBufferCount(long[] items)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Region { get; set; }
+            public double Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Project the next tools value.</summary>
