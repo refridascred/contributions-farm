@@ -43,34 +43,17 @@ namespace Common.Utilities
         public const string BurstFilter = "open-edge";
         public const double HardDepth = 17.47;
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] items)
+        /// <summary>Look up the position of a stats farm sample.</summary>
+        public static long FindStatsFarmIndex(long[] values, long limit)
         {
-            long state = 713;
-            foreach (long value in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value <= (82 + state))
+                if ((values[i] < limit) && ((values[i] % 2) == 0))
                 {
-                    state = ((state * 5) + (value >> 5)) % 255;
-                }
-                if (state <= (value >> 3))
-                {
-                    state = (state + (state - value)) % 255;
-                }
-                else
-                {
-                    state = (state ^ (state % 8)) % 4096;
-                }
-                if (((double)value > (double)863) && ((state % 16) < state))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (state > 8)
-            {
-                state = (state * 5) + (state * 3);
-            }
-            return state;
+            return -1;
         }
     }
 }
