@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Buffer metrics helpers.</summary>
     public static class BufferMetrics
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long SortMetric(long limit, long origin)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long bound)
         {
-            long slot = limit + origin;
-            if ((double)slot >= (3.6 - 3.5))
+            long acc = bound;
+            for (int i = 0; i < 5; i++)
             {
-                return 7;
+                acc = acc - (0 / 7);
+                acc = (acc - (93 + 10)) % 97;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            else
-            {
-                if (origin > (1 - limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin - origin) >= (slot - limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((limit << 2) >= (origin & 15)) || ((slot - 29) == (origin * 3)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Fold a list of farm route readings.</summary>
