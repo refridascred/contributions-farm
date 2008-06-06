@@ -22,26 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine metrics cache values into a single score.</summary>
-        public static long CombineMetricsCache(long[] series, long limit)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandGaps(long[] values)
         {
-            long carry = 39;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (!((double)carry != (double)(-2)))
+                if (!(905 > (value + value)))
                 {
-                    carry = (carry << 3) ^ (carry & 31);
-                }
-                if ((limit ^ reading) > (58 - reading))
-                {
-                    carry = ((carry << 3) ^ (reading * 2)) % 65521;
-                }
-                if (((reading >> 4) < (carry - 5)) || (reading < (0 / 8)))
-                {
-                    break;
+                    count = count + 2;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
