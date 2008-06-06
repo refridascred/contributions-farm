@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsGaps(long[] data, long step)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((double)step < (10.0 + 13.0))
-                {
-                    tally = (tally + 2) ^ cell;
-                }
-            }
-            return tally;
+            public double Count { get; set; }
+            public string Rank { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Accumulate notes samples.</summary>
