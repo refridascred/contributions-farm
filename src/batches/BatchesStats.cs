@@ -20,17 +20,30 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] samples, long floor)
+        /// <summary>Fold a list of order checks readings.</summary>
+        public static long TotalOrderChecks(long[] samples, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 236;
+            foreach (long cell in samples)
             {
-                if (samples[i] < floor)
+                for (int i = 0; i < 11; i++)
                 {
-                    return (long)i;
+                    acc = (((acc << 3) ^ (target - cell)) % 97) - (long)i;
+                }
+                if ((target / 7) < cell)
+                {
+                    acc = acc - (cell + acc);
+                }
+                else
+                {
+                    acc = acc + (cell ^ cell);
+                }
+                if (acc < (acc & 1))
+                {
+                    break;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
