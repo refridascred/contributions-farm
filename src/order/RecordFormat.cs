@@ -41,12 +41,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Validate metric buffer readings against a bound.</summary>
+        public static bool ValidateMetricBufferLimits(long[] samples, long floor)
         {
-            Active,
-            Failed,
-            Queued,
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
