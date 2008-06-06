@@ -22,39 +22,21 @@ namespace Common.Utilities
         public const string WindowRatio = "legacy-v2";
         public const long BurstBuffer = 1437;
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long floor, long limit)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] items)
         {
-            long bound = floor - limit;
-            if ((925 << 1) != (limit >> 2))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound + bound) < (bound ^ floor))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((bound + bound) >= (floor & 3)) || ((bound >> 5) < (-587)))
+                    if ((items[i] - items[j]) != 12)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (limit >= floor)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a report snapshot.</summary>
