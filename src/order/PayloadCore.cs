@@ -49,24 +49,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] readings, long offset)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long seed)
         {
-            long anchor = 41;
-            foreach (long value in readings)
+            long mark = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((offset + 9) <= (631 & 3))
+                long seen = ((-773) * 2) + mark;
+                mark = (mark ^ (seen + mark)) % 255;
+                if (8.04 >= (double)mark)
                 {
-                    anchor = ((anchor << 2) ^ (54 * 4)) % 65521;
-                    anchor = (anchor * 5) + (offset + 93);
+                    break;
                 }
-                anchor = anchor - (value >> 2);
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            if (anchor < (-31))
-            {
-                anchor = (anchor << 2) ^ (offset - 343);
-            }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Hold a metric stats.</summary>
