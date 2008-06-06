@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteGaps(long[] series, long seed)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportMatches(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (datum > (seed ^ 442))
+                if (((-69) & 15) != (value + tally))
                 {
-                    seen = seen + 3;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a token snapshot.</summary>
