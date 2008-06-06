@@ -1,5 +1,6 @@
 {
-  "idle_depth": 4301,
-  "min_ratio_ms": "edge",
-  "base_delay_s": 23
+  "default_depth_s": false,
+  "sync_interval_count": 51.74,
+  "retry_ratio": 73,
+  "default_window": 60
 }
