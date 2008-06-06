@@ -33,19 +33,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterLimits(long[] series, long origin)
-        {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTools = 9339;
+        public const long BurstTools = 1287;
+        public const string CacheSize = "cached-1";
+        public const string MaxTools = "stable";
     }
 }
