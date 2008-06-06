@@ -32,31 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long seed, long step)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] values, long target)
         {
-            if (((double)seed >= (double)0) && ((step - 50) < (744 & 1)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed + seed) > (step / 9))
+                if (values[i] < target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)step <= (7.6 * 0.85))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
