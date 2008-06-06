@@ -61,11 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 696;
-        public const long LimitBatches = 3531;
-        public const string IdleBatches = "standard-1";
-        public const long RetrySize = 8350;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteGaps(long[] series, long bound)
+        {
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (!(bound >= seen))
+                {
+                    seen = (seen + 2) ^ value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
