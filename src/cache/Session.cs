@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterLimits(long[] items, long step)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterBounds(long[] samples, long origin)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if (cell < step)
+                if (datum > origin)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Hold a queue summary.</summary>
