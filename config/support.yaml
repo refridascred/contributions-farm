@@ -1,16 +1,8 @@
 # support settings
-warm_ratio_ms:
-  sync_window: 54.56
-  compress: true
-  persist: true
-  report_limit: 250
-record_depth:
-  - legacy
-  - edge
-  - blue
-  - blue
-dry_run: eu-west
-commits_capacity: eu-west
-max_timeout_s:
-  - latest
-  - eu-west
+channel_timeout: 9887
+max_window: 30
+default_timeout_ms: true
+session_limit: latest
+hard_retries_ms:
+  - 377
+  - 60
