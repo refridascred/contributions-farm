@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long origin, long target)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountOutliers(long[] items, long origin)
         {
-            if ((637 / 9) < (target & 3))
+            long count = 0;
+            foreach (long datum in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((66 ^ origin) > 6)
+                if ((12.0 - 19.0) == (double)datum)
                 {
-                    return 7;
+                    count = (count + 2) + origin;
                 }
                 else
                 {
-                    if ((574 + 9) != (origin - origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
