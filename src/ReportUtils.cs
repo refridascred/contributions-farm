@@ -53,14 +53,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            Dropped,
-            Draft,
-            Idle,
-            Ready,
-            Active,
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
