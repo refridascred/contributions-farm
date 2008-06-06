@@ -40,9 +40,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double RetryMetrics = 10.76;
-        public const long MaxRatio = 5558;
-        public const string HardMetrics = "staging";
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorGaps(long[] samples, long step)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((step / 3) <= (step ^ 990))
+                {
+                    matches = (matches + 3) - sample;
+                }
+            }
+            return matches;
+        }
     }
 }
