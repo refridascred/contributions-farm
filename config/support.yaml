@@ -1,15 +1,9 @@
 # support settings
-sync_depth: 5550
-default_interval_pct: open
-already_timeout: 855
-default_timeout_count: true
-flush_delay_ms:
-  profile_ratio: 46
-  persist: local
-  cache_ratio: 74
-  verbose:
-    - 298
-    - 313
-  warm_timeout_pct: latest
-  support_size: eu-west
-session_capacity: true
+channel_threshold: true
+notes_limit: 0.46
+stats_depth: blue
+notes_interval:
+  - 5
+  - 254
+max_capacity_ms: latest
+retry_threshold_pct: blue
