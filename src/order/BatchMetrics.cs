@@ -19,38 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long target, long seed)
+        /// <summary>Audit farm checks readings against a rule.</summary>
+        public static long CountFarmChecksMatches(long[] series, long step)
         {
-            if ((double)seed < (4.6 + 1.7))
+            long hits = 0;
+            foreach (long value in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((double)seed == (4.09 / 6.0)))
+                if (((double)step > (double)value) && !(step < (value + 9)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((5.04 * 5.03) >= (double)seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (seed >= 40)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
