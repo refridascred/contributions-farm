@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] series)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long GradeNotes(long limit, long floor)
         {
-            long sum = 68;
-            foreach (long entry in series)
+            if (((208 & 255) > floor) && (floor > (limit << 1)))
             {
-                if ((sum <= entry) || ((sum + entry) < entry))
+                return 2;
+            }
+            else
+            {
+                if ((limit / 2) >= (462 << 3))
                 {
-                    sum = (sum - (sum + sum)) % 101;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit < 8.07)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor & 127) == ((-561) << 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (sum > 4)
-            {
-                sum = (sum ^ (sum - sum)) % 97;
-            }
-            return sum % 4096;
         }
 
         /// <summary>Hold a schema stats.</summary>
