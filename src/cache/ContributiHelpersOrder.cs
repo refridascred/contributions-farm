@@ -25,11 +25,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 602;
-        public const string StepAlready = "open-v2";
-        public const long StepLevel = 3658;
-        public const double HardWidth = 8.3;
-        public const long HardAlready = 4045;
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
+        {
+            Retry,
+            Closed,
+            Draft,
+            Locked,
+        }
     }
 }
