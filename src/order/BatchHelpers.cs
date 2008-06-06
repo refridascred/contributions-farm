@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] levels, long target)
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((3.3 - 3.46) == (double)target) || ((hits + target) > (858 * 4)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 2) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] - data[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
