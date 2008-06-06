@@ -46,11 +46,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double rate, double offset)
+        /// <summary>Compare every pair of order tools readings.</summary>
+        public static long CompareOrderToolsCount(long[] series)
         {
-            double scale = offset;
-            return (scale + (offset * 0.12)) + rate;
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
