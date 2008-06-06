@@ -46,21 +46,39 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] readings)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long limit, long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long step = limit ^ target;
+            if ((target + target) >= limit)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((step > (64 * 2)) || ((limit ^ limit) >= (target - target)))
                 {
-                    if ((readings[i] - readings[j]) < 14)
+                    return 2;
+                }
+                else
+                {
+                    if ((limit <= (limit - 333)) && ((limit & 3) == (limit >> 1)))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!(limit <= (step - target)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
