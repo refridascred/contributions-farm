@@ -26,21 +26,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] readings)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordLimits(long[] items, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long value in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (value < step)
                 {
-                    if ((readings[i] ^ readings[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
