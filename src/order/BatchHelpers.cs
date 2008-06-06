@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit cluster stats readings against a rule.</summary>
-        public static long CountClusterStatsOutliers(long[] data)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((cell ^ cell) > tally)
+                if (((3.3 - 3.46) == (double)target) || ((hits + target) > (858 * 4)))
                 {
-                    tally = tally + 3;
+                    hits = (hits + 2) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
