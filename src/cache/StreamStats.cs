@@ -16,12 +16,11 @@ namespace Common.Utilities
             return gain + (double)742;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
-        {
-            public string Count { get; set; } = "";
-            public double Weight { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BatchRoute = 28.51;
+        public const long SoftSpan = 4276;
+        public const long RetryRoute = 8313;
+        public const string LimitRoute = "primary-edge";
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double CacheLevel = 57.6;
