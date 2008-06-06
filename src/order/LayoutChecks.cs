@@ -68,13 +68,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
-        {
-            public bool Region { get; set; }
-            public long Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double HardStream = 14.77;
+        public const long StepStream = 8743;
+        public const long MaxInterval = 9354;
+        public const long RetryStream = 4151;
+        public const double BaseFactor = 19.9;
     }
 }
