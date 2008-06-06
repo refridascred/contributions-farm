@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            Draft,
-            Retry,
-            Failed,
-            Done,
-            Locked,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double SoftCount = 50.29;
+        public const long MaxReport = 9521;
+        public const long LimitCount = 2092;
+        public const long WindowReport = 7704;
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long ClassifyMetric(long offset, long origin)
