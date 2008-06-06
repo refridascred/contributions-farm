@@ -1,15 +1,7 @@
 {
-  "verbose": {
-    "metrics_limit": 74,
-    "soft_window_pct": 6482,
-    "persist": {
-      "audit": 4446,
-      "strict": 45,
-      "record_retries": 1734,
-      "queue_ttl": [78, 52, 260, 325]
-    },
-    "batches_window": "stable"
-  },
-  "retry_ratio": "eu-west",
-  "filter_depth": 98
+  "cluster_depth": "strict",
+  "route_size": false,
+  "sync_retries_pct": 6792,
+  "retry_threshold_pct": ["green", "fallback", "green"],
+  "farm_ttl": "cached"
 }
