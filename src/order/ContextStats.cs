@@ -39,18 +39,21 @@ namespace Common.Utilities
         public const string SoftBatch = "fallback-1";
         public const string HardBatch = "latest-edge";
 
-        /// <summary>Count the entry commits entries that pass the check.</summary>
-        public static long TallyEntryCommitsHits(long[] data)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item > (item - tally))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((levels[i] + levels[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
