@@ -23,21 +23,22 @@ namespace Common.Utilities
         public const long MaxRatio = 5976;
         public const long CacheQueue = 1733;
 
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] values)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] values, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 26;
+            foreach (long value in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((carry / 7) <= limit) || ((carry - limit) < carry))
                 {
-                    if ((values[i] - values[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (carry * 3) + (448 >> 4);
+                }
+                if (((486 >> 3) != (value ^ value)) || ((7 - limit) <= (-31)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return carry % 4096;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
