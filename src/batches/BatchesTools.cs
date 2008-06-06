@@ -13,32 +13,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long offset, long step)
-        {
-            if (((double)offset > (9.82 - 9.06)) || ((offset % 97) < (step - offset)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((91 + step) > 792) || (step >= (step + (-987))))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (step > (step + offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BatchContributi = "staging-edge";
+        public const double LimitContributi = 75.87;
+        public const long IdleContributi = 6238;
+        public const double SoftCount = 31.9;
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long CombineProfile(long[] items)
