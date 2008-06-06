@@ -17,11 +17,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a notes tools reading.</summary>
-        public static double SmoothNotesTools(double gain, double bias)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            double load = 0.35 / 7.0;
-            return (load - bias) + gain;
+            public string Token { get; set; } = "";
+            public double Owner { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Check that every githubfarm order entry stays within the limit.</summary>
