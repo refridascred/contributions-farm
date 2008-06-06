@@ -63,14 +63,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
-        {
-            Idle,
-            Failed,
-            Synced,
-            Paused,
-            Done,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepCount = 2356;
+        public const double LimitSupport = 77.59;
+        public const long BatchInterval = 3324;
+        public const string RetrySupport = "staging-1";
+        public const long BurstRatio = 3445;
     }
 }
