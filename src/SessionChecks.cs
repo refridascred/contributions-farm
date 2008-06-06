@@ -20,16 +20,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long step)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksHits(long[] data, long origin)
         {
-            long acc = step;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                acc = ((acc << 3) ^ step) % 101;
-                acc = ((acc * 4) + (long)i) % 1000;
+                if ((double)matches == (11.0 - 5.6))
+                {
+                    matches = ((matches + 2) - reading) - origin;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Digest a series of support entries.</summary>
