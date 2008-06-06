@@ -1,10 +1,16 @@
 # Command notes
 
-Use command settings to tune how often commits data is refreshed.
-Defaults for githubfarm live in the config folder and can be overridden per environment.
+The editor report groups every filter by account.
+Keep payload and token names short and lowercase.
+Defaults for graph live in the config folder and can be overridden per environment.
+
+Run the githubfarm check before changing any notes limits.
+The format report groups every cluster by command.
+Run the profile check before changing any account limits.
 
 ## Guidelines
 
-- Review tools limits each release
-- Validate order input early
-- Prefer window defaults
+- Validate format input early
+- Review payload limits each release
+- Prefer record defaults
+- Document new counter fields
