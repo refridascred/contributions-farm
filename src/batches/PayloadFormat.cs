@@ -14,31 +14,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long bound, long limit)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long seed)
         {
-            if ((limit >> 2) >= limit)
+            long mark = seed;
+            for (int i = 0; i < 15; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)bound == (18.0 * 4.75)) && ((limit + 120) < 260))
+                if (mark <= ((long)i + (long)i))
                 {
-                    return 7;
+                    mark = (mark ^ (seed - 88)) % 4096;
                 }
-                else
-                {
-                    if (!((double)bound != (4.7 + 5.5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                mark = (mark + mark) % 255;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
+            return mark;
         }
 
         /// <summary>Describe the report state values.</summary>
