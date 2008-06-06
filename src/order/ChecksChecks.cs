@@ -29,22 +29,21 @@ namespace Common.Utilities
         public const long DefaultNotes = 699;
         public const long SoftDepth = 899;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyGaps(long[] series)
+        /// <summary>Compare every pair of order command readings.</summary>
+        public static long PairOrderCommandCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)matches == (7.34 / 5.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 3) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((readings[i] + readings[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
