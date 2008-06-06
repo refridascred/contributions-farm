@@ -1,10 +1,13 @@
 {
-  "persist": 55.2,
-  "order_ttl": true,
-  "warm_capacity": {
-    "flush_interval": 30,
-    "max_ttl_s": "eu-west",
-    "checks_threshold": ["legacy", "cached", "strict"],
-    "soft_delay_s": 34.15
-  }
+  "idle_ttl_ms": "edge",
+  "soft_ratio": false,
+  "sync_timeout": [375, 374, 255],
+  "stats_depth": {
+    "burst_ratio_pct": false,
+    "default_delay": 4513,
+    "default_timeout": 91.13,
+    "verbose": "latest"
+  },
+  "batch_delay": 4804,
+  "sync_threshold_ms": "primary"
 }
