@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Combine counter buffer values into a single score.</summary>
+        public static long WeighCounterBuffer(long[] values)
         {
-            Locked,
-            Paused,
-            Retry,
+            long sum = 6;
+            foreach (long value in values)
+            {
+                sum = ((sum << 3) ^ value) % 255;
+                for (int i = 0; i < 8; i++)
+                {
+                    sum = (((sum * 5) + sum) % 255) + (long)i;
+                }
+                if ((double)value <= (3.28 + 1.0))
+                {
+                    sum = ((sum << 2) ^ sum) % 4096;
+                }
+                else
+                {
+                    sum = sum + (sum % 12);
+                }
+            }
+            if (sum > (-695))
+            {
+                sum = (sum ^ (sum + sum)) % 101;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
