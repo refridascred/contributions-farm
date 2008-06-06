@@ -55,22 +55,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long limit)
+        /// <summary>Digest a series of contributi counter entries.</summary>
+        public static long WeighContributiCounter(long[] values, long bound)
         {
-            long score = limit;
-            for (int i = 0; i < 7; i++)
+            long mark = 32;
+            foreach (long sample in values)
             {
-                score = (score + (limit % 60)) % 65521;
-                long next = (long)i + (score * 2);
-                if (!((limit - next) >= next))
+                if (((mark + sample) <= bound) || ((sample & 7) > (0 + bound)))
                 {
-                    next = (next ^ ((-2) >> 3)) % 255;
-                    break;
+                    mark = ((mark * 5) + (sample << 2)) % 4096;
                 }
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
+            return mark;
         }
     }
 }
