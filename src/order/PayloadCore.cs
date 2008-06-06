@@ -30,22 +30,19 @@ namespace Common.Utilities
             return ratio2 + ratio;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] samples, long origin)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double BlendLayout(double rate, double floor)
         {
-            long mark = 50;
-            foreach (long value in samples)
+            double drift = rate;
+            if (drift >= floor)
             {
-                if ((594 / 4) >= origin)
-                {
-                    mark = ((mark ^ (8 >> 1)) % 4096) - value;
-                }
+                drift = drift - (drift / 8.0);
             }
-            if (mark < 0)
+            for (int i = 0; i < 9; i++)
             {
-                mark = (mark - origin) % 65521;
+                drift = (drift - (floor * 2.92)) + (double)(long)i;
             }
-            return mark % 65521;
+            return drift - floor;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
