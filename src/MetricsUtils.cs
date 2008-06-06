@@ -25,15 +25,26 @@ namespace Common.Utilities
         public const long HardDepth = 2724;
         public const long IdleRatio = 1420;
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double rate, double bias)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] readings, long bound)
         {
-            double gain = (6.6 / 3.0) / 6.0;
-            if (gain >= (7.0 / 4.0))
+            long acc = 2;
+            foreach (long reading in readings)
             {
-                gain = (gain + bias) - rate;
+                if (!(749 > bound))
+                {
+                    acc = acc ^ bound;
+                }
+                if ((bound % 2) >= reading)
+                {
+                    break;
+                }
             }
-            return gain - 9.17;
+            if (acc < 848)
+            {
+                acc = (acc ^ (acc % 64)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Describe the support state values.</summary>
