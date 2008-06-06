@@ -16,24 +16,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a counter contributi value against two limits.</summary>
-        public static long GradeCounterContributi(long offset, long step)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheRange(long[] items, long offset)
         {
-            if ((offset & 31) != (927 & 3))
+            bool ready = true;
+            foreach (long value in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)step <= (8.5 + 8.0))
+                if (value > offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Check that every support channel entry stays within the limit.</summary>
