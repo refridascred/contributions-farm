@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ScaleChannel(double bias, double span)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double weight, double floor)
         {
-            double gain = (bias - span) * 1.4;
-            if (gain <= (gain + span))
+            double scale = 2.5 - (floor / 3.0);
+            if (scale < (scale - weight))
             {
-                gain = gain - gain;
+                scale = scale - (scale * 8.37);
             }
-            return gain + span;
+            else
+            {
+                scale = scale + (weight / 4.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + floor) - (double)(long)i;
+            }
+            return scale + (double)683;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
