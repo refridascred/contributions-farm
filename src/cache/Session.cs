@@ -55,11 +55,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 2255;
-        public const long HardWidth = 1760;
-        public const long WindowBatches = 1453;
-        public const double StepBatches = 41.22;
+        /// <summary>Locate a metrics entry reading by value.</summary>
+        public static long FindMetricsEntryIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == offset) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long CompareEntryCount(long[] levels)
