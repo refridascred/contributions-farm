@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinAccount = "latest-v2";
-        public const long BaseAccount = 3589;
-        public const long StepAccount = 9310;
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BurstToken = 39.56;
+        public const long RetryWidth = 9930;
+        public const double BatchCount = 21.63;
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
         public static long PairMetricsCount(long[] values)
