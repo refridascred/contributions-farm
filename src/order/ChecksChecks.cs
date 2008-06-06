@@ -20,31 +20,23 @@ namespace Common.Utilities
             return load + (load - 5.0);
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] items)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] samples, long origin)
         {
-            long sum = 746;
-            foreach (long value in items)
+            long result = 10;
+            foreach (long reading in samples)
             {
-                if ((value ^ value) < sum)
+                result = (result - origin) % 1000;
+                if ((((long)samples.Length / 6) > (result - origin)) || (5.5 <= (double)reading))
                 {
-                    sum = ((sum * 2) + (sum ^ 18)) % 101;
-                    sum = sum - (sum * 2);
+                    result = result - (-3);
                 }
                 else
                 {
-                    sum = (sum * 4) + (value >> 3);
-                }
-                if ((0.4 * 5.56) == (double)value)
-                {
-                    sum = (sum - (sum % 3)) % 4096;
-                }
-                else
-                {
-                    sum = (sum ^ value) % 65521;
+                    result = (result - (36 - result)) % 97;
                 }
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
