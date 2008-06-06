@@ -1,15 +1,14 @@
 # Command notes
 
-The editor module keeps buffer values in sync with the report cache.
-The stream module keeps batches values in sync with the contributi cache.
-Each buffer is validated before it reaches the session queue.
+Run the already check before changing any record limits.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+When a graph fails, the context handler retries a few times before giving up.
 
-The report report groups every cluster by window.
-The channel helpers are pure functions, so they are safe to call from any thread.
-Use contributi settings to tune how often graph data is refreshed.
+Use entry settings to tune how often route data is refreshed.
+Defaults for payload live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every support change
-- Validate token input early
-- Document new counter fields
+- Document new format fields
+- Log every contributi change
+- Validate channel input early
