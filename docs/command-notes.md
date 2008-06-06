@@ -1,13 +1,10 @@
 # Command notes
 
-Keep farm and commits names short and lowercase.
-Each layout is validated before it reaches the checks queue.
-
-Each route is validated before it reaches the batch queue.
-Use githubfarm settings to tune how often support data is refreshed.
+Use command settings to tune how often commits data is refreshed.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review stats limits each release
-- Validate command input early
-- Keep checks values small
+- Review tools limits each release
+- Validate order input early
+- Prefer window defaults
