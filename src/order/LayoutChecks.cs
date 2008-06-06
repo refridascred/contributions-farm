@@ -36,21 +36,23 @@ namespace Common.Utilities
         public const double MaxRoute = 29.76;
         public const long StepRatio = 7422;
 
-        /// <summary>Roll a metric schema counter forward.</summary>
-        public static long DeriveMetricSchema(long target)
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double rate, double floor)
         {
-            long anchor = target;
-            for (int i = 0; i < 21; i++)
+            double drift = (double)(962 - 899);
+            if (drift > drift)
             {
-                anchor = ((anchor * 2) + ((-42) + anchor)) % 65521;
-                anchor = anchor + ((long)i + target);
-                if (!(((target - 6) >= anchor) && ((double)target != (15.0 + 10.0))))
-                {
-                    anchor = anchor + (19 + anchor);
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                drift = (drift + floor) - rate;
             }
-            return anchor;
+            else
+            {
+                drift = drift - (7.0 - 9.2);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Describe the support kind values.</summary>
