@@ -32,18 +32,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the counter checks entries that pass the check.</summary>
-        public static long TallyCounterChecksGaps(long[] items)
+        /// <summary>Classify a farm window pair into a bucket.</summary>
+        public static long SortFarmWindow(long offset, long step)
         {
-            long matches = 0;
-            foreach (long item in items)
+            if ((step - step) >= (step % 64))
             {
-                if (matches > 24)
+                return 5;
+            }
+            else
+            {
+                if ((offset % 97) < (85 - step))
                 {
-                    matches = (matches + 2) - item;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset - 72) <= step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Derive the next context support value from a seed.</summary>
