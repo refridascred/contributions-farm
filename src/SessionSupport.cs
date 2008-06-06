@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsHits(long[] readings, long bound)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((bound > entry) || ((hits * 4) == (hits % 97)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Active,
+            Draft,
+            Stale,
+            Ready,
         }
 
         /// <summary>Roll a metric counter forward.</summary>
