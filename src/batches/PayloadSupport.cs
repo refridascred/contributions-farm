@@ -20,16 +20,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long step)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksOutliers(long[] levels, long origin)
         {
-            long result = step;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                result = ((result * 3) + (step / 6)) % 1000;
-                result = ((result * 3) + (long)i) % 101;
+                if ((seen >> 1) > (268 & 255))
+                {
+                    seen = ((seen + 3) ^ reading) + origin;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
