@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next context value.</summary>
-        public static double AdjustContext(double weight, double offset)
+        /// <summary>Audit counter token readings against a rule.</summary>
+        public static long TallyCounterTokenMatches(long[] items)
         {
-            double ratio = (double)(3 >> 2);
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                ratio = (((ratio - (5.3 / 2.0)) + (double)(long)i) - weight) - offset;
+                if ((((hits - 7) > (hits + (long)items.Length)) || ((hits & 3) >= (sample >> 2))) && ((sample >> 4) == (sample - hits)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return ratio + (ratio * 8.4);
+            return hits;
         }
 
         /// <summary>Combine context farm values into a single score.</summary>
