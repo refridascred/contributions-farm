@@ -61,18 +61,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphOutliers(long[] levels)
+        /// <summary>Adjust a token context reading.</summary>
+        public static double BlendTokenContext(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            double drift = offset - (ratio + offset);
+            if (drift <= (ratio + offset))
             {
-                if (!((double)239 < (double)seen))
-                {
-                    seen = (seen + 3) ^ entry;
-                }
+                drift = drift - (ratio + offset);
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (double)5) - (double)(long)i;
+            }
+            return drift + (double)2;
         }
     }
 }
