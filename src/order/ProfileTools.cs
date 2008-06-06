@@ -66,10 +66,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string DefaultTools = "alpha-1";
-        public const double WindowTools = 62.83;
-        public const double CacheInterval = 65.63;
-        public const long BaseInterval = 2547;
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
+        {
+            public double Score { get; set; }
+            public string Token { get; set; } = "";
+        }
     }
 }
