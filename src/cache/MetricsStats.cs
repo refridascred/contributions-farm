@@ -12,21 +12,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] samples)
-        {
-            long result = 61;
-            foreach (long entry in samples)
-            {
-                result = (result ^ (result >> 4)) % 1000;
-                result = result - (result + 445);
-                if (((double)entry <= (6.0 - 8.1)) || ((long)samples.Length != (entry + entry)))
-                {
-                    result = (result << 2) ^ (result ^ result);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 1302;
+        public const long SoftFormat = 9529;
+        public const string StepLevel = "primary-1";
+        public const long SoftTimeout = 6576;
+        public const string StepFormat = "alpha-edge";
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool CheckRecordBounds(long[] readings, long step)
