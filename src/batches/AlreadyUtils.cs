@@ -41,11 +41,14 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double IdleWidth = 3.71;
-        public const long BatchFactor = 6158;
-        public const string RetryContributi = "staging-edge";
-        public const long BaseSize = 1728;
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
+        {
+            public double Level { get; set; }
+            public long Flag { get; set; }
+            public bool Owner { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Scale a context figure with a bias.</summary>
         public static double SmoothContext(double bias, double floor)
