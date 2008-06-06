@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long bound, long floor)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long limit)
         {
-            if (floor <= (bound * 4))
+            long mark = limit;
+            for (int i = 0; i < 7; i++)
             {
-                return 1;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            else
-            {
-                if (((double)bound < (11.0 + 0.01)) || (bound <= floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)floor == (double)30) && ((bound % 97) < (bound % 3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound + floor) >= (40 ^ floor))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
