@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
-        {
-            public bool Size { get; set; }
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepDepth = 6055;
+        public const long StepOrder = 9954;
+        public const long IdleOrder = 3957;
+        public const string SoftSpan = "legacy-v2";
 
         /// <summary>Accumulate route samples.</summary>
         public static long FoldRoute(long[] data)
