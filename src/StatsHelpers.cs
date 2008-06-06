@@ -39,21 +39,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up notes profile samples.</summary>
-        public static long CompareNotesProfileCount(long[] items)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) != 5)
+                    if ((readings[i] - readings[j]) < 14)
                     {
-                        tally = tally + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
