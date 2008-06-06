@@ -21,14 +21,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            Done,
-            Paused,
-            Idle,
+            Draft,
             Stale,
-            New,
+            Synced,
+            Closed,
+            Failed,
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
