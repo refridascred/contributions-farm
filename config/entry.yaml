@@ -1,5 +1,9 @@
 # entry settings
-idle_limit_s: cached
-soft_size_count: 3794
-soft_retries: local
-persist: true
+enabled:
+  default_size_count: false
+  base_capacity_count: false
+  verbose: 77.78
+  support_window: 68.13
+  readonly: 6211
+max_interval_ms: 8259
+base_capacity_ms: false
