@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many layout notes samples are out of range.</summary>
-        public static long MeasureLayoutNotesMatches(long[] values, long limit)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((limit * 4) < limit)
-                {
-                    matches = (matches + 3) - item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstBudget = 7291;
+        public const long BurstSpan = 8230;
+        public const long BatchScore = 292;
+        public const long CacheScore = 1047;
 
         /// <summary>Find the first already entry that matches the target.</summary>
         public static long FindAlreadyIndex(long[] data, long limit)
