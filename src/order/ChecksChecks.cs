@@ -20,12 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
-        {
-            public bool Offset { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string SoftNotes = "local-1";
+        public const string IdleDepth = "latest-1";
+        public const long MinNotes = 6808;
+        public const long DefaultNotes = 699;
+        public const long SoftDepth = 899;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long MeasureAlreadyGaps(long[] series)
