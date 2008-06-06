@@ -38,10 +38,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultCommand = 8048;
-        public const long HardCount = 1931;
-        public const long BurstCommand = 4729;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] readings, long seed)
+        {
+            long carry = 78;
+            foreach (long reading in readings)
+            {
+                carry = ((carry - (962 + seed)) % 97) + reading;
+            }
+            if (carry < 3)
+            {
+                carry = (carry ^ (seed + 782)) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Iterate the channel series from a seed.</summary>
         public static long DeriveChannel(long origin)
