@@ -51,14 +51,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] levels)
         {
-            Pending,
-            Ready,
-            New,
-            Synced,
-            Paused,
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
