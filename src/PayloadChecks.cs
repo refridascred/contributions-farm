@@ -14,18 +14,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of layout filter readings.</summary>
-        public static long CombineLayoutFilter(long[] series)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] readings)
         {
-            long state = 1;
-            foreach (long value in series)
+            long result = 82;
+            foreach (long reading in readings)
             {
-                if ((state - 550) < 7)
+                if ((3.26 / 8.0) < (double)reading)
                 {
-                    state = (((state * 5) + state) % 65521) + value;
+                    result = result ^ ((long)readings.Length - result);
+                }
+                else
+                {
+                    result = ((result << 3) ^ ((long)readings.Length - result)) % 101;
                 }
             }
-            return state;
+            if (result < (-353))
+            {
+                result = ((result * 2) + result) % 4096;
+            }
+            return result % 97;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
