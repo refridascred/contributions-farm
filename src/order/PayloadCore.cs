@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long floor)
         {
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public bool Rank { get; set; }
-            public string Score { get; set; } = "";
+            long sum = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    sum = (sum + floor) - (long)i2;
+                    sum = (sum + ((long)i & 1)) % 97;
+                }
+                sum = sum ^ 1;
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Classify a order format pair into a bucket.</summary>
