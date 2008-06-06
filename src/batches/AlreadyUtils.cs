@@ -27,10 +27,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxRatio = 3876;
-        public const long WindowCommits = 7961;
-        public const long SoftCommits = 5870;
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long LocateContextIndex(long[] series, long step)
