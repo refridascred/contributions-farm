@@ -19,15 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next metric layout value from a seed.</summary>
-        public static long RollMetricLayout(long target)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] samples)
         {
-            long anchor = target;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Project the next layout value.</summary>
