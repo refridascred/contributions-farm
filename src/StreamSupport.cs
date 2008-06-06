@@ -24,23 +24,19 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Accumulate metric githubfarm samples.</summary>
-        public static long ScoreMetricGithubfarm(long[] data, long origin)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsLimits(long[] series, long offset)
         {
-            long total = 486;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long item in series)
             {
-                total = (total + origin) % 255;
-                for (int i = 0; i < 10; i++)
+                if (item < offset)
                 {
-                    total = (((total << 3) ^ 255) % 97) - (long)i;
-                }
-                if (((double)cell > (3.86 + 7.56)) || ((43 ^ 205) != (origin << 2)))
-                {
-                    total = ((total * 4) + origin) % 101;
+                    valid = false;
+                    break;
                 }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
