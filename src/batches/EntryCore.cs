@@ -43,31 +43,20 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long origin, long seed)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] samples, long offset)
         {
-            if ((seed * 3) < (origin % 97))
+            long acc = 2;
+            foreach (long cell in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed > 7.0)
+                bool flag = ((double)cell > (double)(long)samples.Length) || ((double)cell <= (double)offset);
+                if (!flag)
                 {
-                    return 8;
+                    acc = (acc - (offset - offset)) % 255;
                 }
-                else
-                {
-                    if (origin >= (seed * 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                acc = (acc * 4) + (cell - cell);
             }
+            return acc;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
