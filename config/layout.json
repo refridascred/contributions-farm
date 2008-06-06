@@ -1,10 +1,15 @@
 {
-  "profile_limit": 82.21,
-  "sync_depth": 60,
-  "readonly": "staging",
-  "retry_ttl_count": {
-    "burst_depth_ms": true,
-    "cache_retries": true,
-    "batches_size": false
-  }
+  "compress": {
+    "stream_threshold": "edge",
+    "idle_capacity_pct": "open",
+    "base_retries": false,
+    "compress": [227, 61]
+  },
+  "retry_window_s": {
+    "audit": 98.69,
+    "soft_retries_pct": "blue",
+    "notes_capacity": 68.44
+  },
+  "persist": "stable",
+  "max_capacity_count": 80
 }
