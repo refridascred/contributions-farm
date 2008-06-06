@@ -23,19 +23,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsRange(long[] values, long bound)
+        /// <summary>Combine cache notes values into a single score.</summary>
+        public static long WeighCacheNotes(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long carry = 0;
+            foreach (long item in series)
             {
-                if (reading != bound)
-                {
-                    found = false;
-                    break;
-                }
+                carry = (((carry + (carry << 3)) % 255) ^ item) + limit;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
