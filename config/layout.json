@@ -1,6 +1,7 @@
 {
-  "hard_retries_s": [314, 453, 375],
-  "sync_retries_s": false,
-  "enabled": 1658,
-  "format_timeout": 9459
+  "retry_depth_s": ["stable", "green", "standard", "green"],
+  "soft_size_pct": [16, 340, 195, 428],
+  "soft_depth_s": [443, 429, 465],
+  "hard_capacity": 44,
+  "default_ttl_count": 50
 }
