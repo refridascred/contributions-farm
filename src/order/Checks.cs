@@ -44,12 +44,14 @@ namespace Common.Utilities
         public const long CacheSpan = 6182;
         public const long BaseRatio = 2494;
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            Retry,
-            Closed,
-            Paused,
+            Failed,
+            Pending,
+            Stale,
+            Ready,
+            Locked,
         }
     }
 }
