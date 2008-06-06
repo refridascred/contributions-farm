@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] readings, long seed)
         {
-            Locked,
-            Dropped,
-            Queued,
-            Synced,
-            Pending,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= seed) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a account options.</summary>
