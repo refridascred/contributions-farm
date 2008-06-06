@@ -16,11 +16,14 @@ namespace Common.Utilities
             return drift + (ratio - ratio);
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinContributi = 8416;
-        public const long StepDepth = 8626;
-        public const double DefaultContributi = 66.72;
-        public const long BaseBudget = 7146;
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
+        {
+            Synced,
+            Draft,
+            Stale,
+            Done,
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long WeighFormat(long[] items)
