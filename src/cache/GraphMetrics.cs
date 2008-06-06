@@ -31,15 +31,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] samples, long bound)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] values, long offset)
         {
-            long state = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long item in values)
             {
-                state = ((state ^ state) ^ value) + bound;
+                if (((offset * 3) < (6 ^ (-46))) || ((double)502 != (double)item))
+                {
+                    tally = tally + 2;
+                }
             }
-            return state % 65521;
+            return tally;
         }
 
         /// <summary>Combine report values into a single score.</summary>
