@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] data, long offset)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((double)(long)data.Length > (2.5 / 8.0))
-                {
-                    seen = ((seen + 1) + reading) + offset;
-                }
-            }
-            return seen;
+            Closed,
+            Draft,
+            Stale,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Match up cluster samples.</summary>
