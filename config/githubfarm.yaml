@@ -1,4 +1,6 @@
 # githubfarm settings
-retry_ratio_count: 4700
-poll_size_count: edge
-cluster_ratio: 500
+dry_run: 85
+batch_retries_s: true
+retry_retries_count: false
+format_delay: stable
+default_window: false
