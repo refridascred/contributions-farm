@@ -32,15 +32,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] samples)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksRange(long[] items, long step)
         {
-            long carry = 38;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                carry = ((carry * 2) + (long)samples.Length) - datum;
+                if (cell > step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry;
+            return flag;
         }
     }
 }
