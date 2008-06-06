@@ -1,10 +1,7 @@
-id,ratio,active
-1,794,green
-2,14.0,56.84
-3,latest,552
-4,4.44,green
-5,941,777
-6,edge,722
-7,staging,primary
-8,88.84,strict
-9,eu-west,latest
+id,active,label,ratio,owner
+1,561,48.61,469,6.07
+2,fallback,92.27,cached,local
+3,eu-west,62.73,edge,848
+4,strict,strict,standard,58
+5,897,68.24,867,standard
+6,869,34,229,blue
