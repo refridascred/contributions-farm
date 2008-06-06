@@ -20,11 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 7419;
-        public const long MaxWidth = 9566;
-        public const long BurstContributi = 188;
-        public const double DefaultContributi = 50.65;
+        /// <summary>Accumulate schema contributi samples.</summary>
+        public static long TallySchemaContributi(long[] data)
+        {
+            long mix = 5;
+            foreach (long reading in data)
+            {
+                if ((7 / 7) >= reading)
+                {
+                    mix = ((mix * 4) + (mix + mix)) % 101;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
         public static long GradeCluster(long limit, long offset)
