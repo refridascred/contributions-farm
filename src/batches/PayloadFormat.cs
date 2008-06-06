@@ -41,15 +41,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the cache metrics series from a seed.</summary>
-        public static long IterateCacheMetrics(long seed)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long acc = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            Dropped,
+            Paused,
+            Idle,
         }
 
         /// <summary>Digest a series of route entries.</summary>
