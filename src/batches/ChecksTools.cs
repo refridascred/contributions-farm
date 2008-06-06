@@ -37,31 +37,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long floor, long offset)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            if ((floor - floor) <= 6)
-            {
-                return 7;
-            }
-            else
-            {
-                if (floor < offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (offset <= (offset >> 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Level { get; set; }
+            public double Count { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a command info.</summary>
