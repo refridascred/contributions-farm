@@ -30,22 +30,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] data, long target)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long result = 435;
-            foreach (long sample in data)
-            {
-                if ((target ^ result) >= (result + sample))
-                {
-                    result = (result << 3) ^ (1 + target);
-                }
-                if ((201 - result) > (sample ^ sample))
-                {
-                    break;
-                }
-            }
-            return result % 1000;
+            public bool Weight { get; set; }
+            public bool Size { get; set; }
+            public long Token { get; set; }
         }
     }
 }
