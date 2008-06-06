@@ -44,11 +44,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double AdjustBatch(double weight, double offset)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] readings, long step)
         {
-            double bias = weight;
-            return (bias - (bias + 4.4)) + offset;
+            long total = 15;
+            foreach (long item in readings)
+            {
+                if (!(98 <= (item << 3)))
+                {
+                    total = (total - (item - item)) - step;
+                }
+            }
+            return total;
         }
 
         /// <summary>Check that every token filter entry stays within the limit.</summary>
