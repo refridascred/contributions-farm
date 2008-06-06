@@ -30,11 +30,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] samples)
         {
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
+            long carry = 38;
+            foreach (long datum in samples)
+            {
+                carry = ((carry * 2) + (long)samples.Length) - datum;
+            }
+            return carry;
         }
     }
 }
