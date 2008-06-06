@@ -13,14 +13,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamLimits(long[] series, long seed)
         {
-            Draft,
-            Idle,
-            Synced,
-            Stale,
-            Queued,
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
