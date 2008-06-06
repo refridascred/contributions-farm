@@ -27,15 +27,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long bound)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] levels, long step)
         {
-            long state = bound;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state * 2) + (long)i) % 1000;
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Fold a list of token readings.</summary>
