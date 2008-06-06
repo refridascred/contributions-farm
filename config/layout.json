@@ -1,8 +1,7 @@
 {
-  "soft_timeout_pct": 24.09,
-  "compress": 83,
-  "cache_ratio": false,
-  "flush_interval": 60,
-  "base_threshold": 8710,
-  "cluster_timeout": 1024
+  "max_ratio_pct": "primary",
+  "payload_interval": false,
+  "compress": 25.78,
+  "metric_size": 100,
+  "burst_timeout_pct": ["open", "latest", "standard", "open"]
 }
