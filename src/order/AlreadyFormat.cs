@@ -46,23 +46,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine report githubfarm values into a single score.</summary>
-        public static long FoldReportGithubfarm(long[] values, long step)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long anchor = -1;
-            foreach (long cell in values)
-            {
-                anchor = anchor - (long)values.Length;
-                if ((step & 7) > (9 ^ cell))
-                {
-                    break;
-                }
-            }
-            if (anchor < 53)
-            {
-                anchor = (anchor * 5) + (3 >> 4);
-            }
-            return anchor;
+            Done,
+            New,
+            Draft,
+            Paused,
         }
     }
 }
