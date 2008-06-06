@@ -12,20 +12,13 @@ namespace Common.Utilities
             return (rate - (ratio - rate)) + span;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long target)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long mix = target;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((double)mix == (5.58 - 6.6))
-                {
-                    mix = (mix * 5) + ((long)i << 1);
-                    mix = mix ^ (98 + (long)i);
-                }
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            public long Mode { get; set; }
+            public double Count { get; set; }
+            public long Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
