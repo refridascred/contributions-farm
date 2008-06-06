@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double scale, double floor)
+        /// <summary>Grade a profile window value against two limits.</summary>
+        public static long GradeProfileWindow(long bound, long origin)
         {
-            double bias = floor;
-            for (int i = 0; i < 2; i++)
+            if ((bound + origin) <= (8 & 3))
             {
-                bias = (bias + (scale + bias)) + (double)(long)i;
+                return 4;
             }
-            return bias + (bias - floor);
+            else
+            {
+                if ((384 >> 2) >= (bound >> 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (bound > (bound - 342))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of record entries.</summary>
