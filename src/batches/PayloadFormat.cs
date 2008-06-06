@@ -41,25 +41,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long target, long origin)
+        /// <summary>Iterate the cache metrics series from a seed.</summary>
+        public static long IterateCacheMetrics(long seed)
         {
-            long edge = target ^ origin;
-            if ((edge >> 4) >= edge)
+            long acc = seed;
+            for (int i = 0; i < 20; i++)
             {
-                return 4;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((edge * 4) == (target / 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Hold a session info.</summary>
