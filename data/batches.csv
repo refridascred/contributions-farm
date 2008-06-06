@@ -1,8 +1,9 @@
-id,score,label,rank
-1,132,389,32.15
-2,green,71.67,primary
-3,162,edge,209
-4,428,591,13.32
-5,840,408,252
-6,cached,latest,cached
-7,48.68,970,5.65
+id,owner,rank
+1,750,91.52
+2,edge,751
+3,64.81,strict
+4,staging,538
+5,183,46
+6,807,open
+7,open,196
+8,891,primary
