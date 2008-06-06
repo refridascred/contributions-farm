@@ -19,21 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of account buffer readings.</summary>
-        public static long PairAccountBufferCount(long[] values)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
+            public string Rank { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Check that every support channel entry stays within the limit.</summary>
