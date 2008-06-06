@@ -19,18 +19,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileGaps(long[] values, long limit)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((limit + seen) >= reading)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Count { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
