@@ -36,14 +36,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
-        {
-            Done,
-            Stale,
-            New,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardContributi = 8162;
+        public const long WindowFactor = 9040;
+        public const long RetryContributi = 3171;
     }
 }
