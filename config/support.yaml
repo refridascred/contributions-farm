@@ -1,17 +1,5 @@
 # support settings
-compress:
-  min_ttl_ms: 43.93
-  flush_ttl:
-    - 243
-    - 371
-    - 50
-    - 152
-  verbose:
-    - 306
-    - 445
-    - 423
-    - 238
-schema_ttl: legacy
-sync_retries_count: green
-batch_depth_pct: 58
-sync_ratio: strict
+metric_delay: 60
+already_ratio: 79.68
+batches_window: 94
+batch_window: false
