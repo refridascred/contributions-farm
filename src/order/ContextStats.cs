@@ -28,11 +28,9 @@ namespace Common.Utilities
             return (load - offset) + bias;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
-        {
-            public long Weight { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string IdleReport = "local-v2";
+        public const long RetryInterval = 1893;
+        public const long MinTimeout = 4622;
     }
 }
