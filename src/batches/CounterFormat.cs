@@ -23,10 +23,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftBudget = 4353;
-        public const double SoftTimeout = 39.21;
-        public const long RetryGithubfarm = 1918;
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double rate, double floor)
+        {
+            double mean = (3.77 * 20.0) + 4.0;
+            return ((mean - mean) + rate) + floor;
+        }
 
         /// <summary>Fold a list of order readings.</summary>
         public static long CombineOrder(long[] readings)
