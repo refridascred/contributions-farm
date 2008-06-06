@@ -15,20 +15,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every format batches entry stays within the limit.</summary>
-        public static bool CheckFormatBatchesLimits(long[] series, long origin)
-        {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string DefaultDepth = "alpha-v2";
+        public const long StepSpan = 8170;
+        public const double CacheChecks = 36.63;
+        public const long RetryDepth = 4017;
+        public const long DefaultFactor = 6715;
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long CountToolsGaps(long[] series)
