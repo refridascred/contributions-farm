@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountHits(long[] readings)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((7.5 - 4.5) <= (0.3 + 4.5))
+                if (values[i] > floor)
                 {
-                    hits = (hits + 2) + sample;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Adjust a window reading.</summary>
