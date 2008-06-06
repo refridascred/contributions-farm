@@ -14,13 +14,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Check that every support stats entry stays within the limit.</summary>
+        public static bool CheckSupportStatsLimits(long[] series, long seed)
         {
-            Synced,
-            Closed,
-            Stale,
-            Queued,
+            bool flag = true;
+            foreach (long value in series)
+            {
+                if (value > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
