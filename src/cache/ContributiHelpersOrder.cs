@@ -19,11 +19,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseSpan = 8106;
-        public const long MaxTools = 6379;
-        public const string CacheWidth = "alpha-edge";
-        public const long LimitSpan = 2576;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmMatches(long[] items, long bound)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (((datum * 4) <= datum) && ((bound * 4) >= (bound ^ 736)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long IdleAlready = 602;
