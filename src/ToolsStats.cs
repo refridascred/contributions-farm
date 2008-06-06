@@ -44,11 +44,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxWidth = 2793;
-        public const long BurstWidth = 6191;
-        public const long BurstDepth = 3178;
-        public const long BaseMetrics = 5107;
+        /// <summary>Locate a profile account reading by value.</summary>
+        public static long SeekProfileAccountIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool GuardAlreadyRange(long[] readings, long limit)
