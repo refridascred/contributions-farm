@@ -20,24 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long floor)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long mix = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = mix + (floor + mix);
-                if ((mix + floor) >= mix)
-                {
-                    break;
-                }
-                if (1.69 >= (double)mix)
-                {
-                    mix = (mix - floor) % 4096;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
+            Paused,
+            Draft,
+            Retry,
+            Stale,
         }
 
         /// <summary>Digest a series of support entries.</summary>
