@@ -1,14 +1,12 @@
 # Command notes
 
-Run the githubfarm check before changing any layout limits.
-Each already is validated before it reaches the stats queue.
-The record report groups every report by payload.
-
-Each command is validated before it reaches the farm queue.
-Each already is validated before it reaches the metric queue.
+Keep notes and profile names short and lowercase.
+The report report groups every record by cache.
+Keep queue and checks names short and lowercase.
 
 ## Guidelines
 
-- Document new already fields
-- Validate session input early
-- Log every support change
+- Review filter limits each release
+- Log every order change
+- Prefer token defaults
+- Keep route values small
