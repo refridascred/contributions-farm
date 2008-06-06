@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] readings, long floor)
+        /// <summary>Look up the position of a record route sample.</summary>
+        public static long SeekRecordRouteIndex(long[] samples, long floor)
         {
-            long sum = 85;
-            foreach (long sample in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)sum <= (5.0 / 5.0))
+                if (samples[i] < floor)
                 {
-                    sum = (sum ^ sum) % 101;
-                    sum = (sum - 714) % 97;
-                }
-                if ((sum ^ sample) <= 69)
-                {
-                    sum = sum ^ 34;
-                }
-                else
-                {
-                    sum = (sum - (sample ^ floor)) % 97;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Adjust a schema reading.</summary>
