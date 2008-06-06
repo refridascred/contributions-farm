@@ -1,21 +1,7 @@
 # entry settings
-counter_depth: strict
-flush_capacity: blue
-hard_interval:
-  metric_window: false
-  base_interval_count: 15.03
-  tools_ttl:
-    audit:
-      - 117
-      - 289
-      - 146
-      - 29
-    enabled: 96.5
-    route_timeout: staging
-    min_ttl_count: cached
-    dry_run: false
-persist:
-  - 304
-  - 456
-  - 296
-  - 87
+retry_ratio_count: eu-west
+burst_interval_s: 5635
+stream_delay:
+  - 51
+  - 171
+warm_capacity: 8265
