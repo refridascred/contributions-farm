@@ -59,20 +59,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = anchor + (offset * 4);
-                if ((anchor - anchor) > (anchor >> 5))
-                {
-                    anchor = (anchor ^ ((long)i & 3)) % 101;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double DefaultBuffer = 45.95;
+        public const long DefaultDepth = 4529;
+        public const long WindowTimeout = 1081;
+        public const double BurstScore = 51.91;
     }
 }
