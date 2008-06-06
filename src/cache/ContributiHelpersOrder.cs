@@ -25,32 +25,11 @@ namespace Common.Utilities
         public const string CacheWidth = "alpha-edge";
         public const long LimitSpan = 2576;
 
-        /// <summary>Grade a batches channel value against two limits.</summary>
-        public static long BucketBatchesChannel(long step, long seed)
-        {
-            long next = step + seed;
-            if (!((double)next >= (4.4 - 13.0)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (step > (next - 868))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step << 3) >= (seed - next))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 602;
+        public const string StepAlready = "open-v2";
+        public const long StepLevel = 3658;
+        public const double HardWidth = 8.3;
+        public const long HardAlready = 4045;
     }
 }
