@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphHits(long[] values)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long OverlapAlreadyCount(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((-786) >> 3) < (long)values.Length)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 1) + datum;
+                    if ((samples[i] ^ samples[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Adjust a record reading.</summary>
