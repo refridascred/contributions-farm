@@ -46,19 +46,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] readings, long seed)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextMatches(long[] values, long step)
         {
-            long carry = 78;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                carry = ((carry - (962 + seed)) % 97) + reading;
+                if ((((step + matches) != (568 & 127)) || ((double)datum > (double)98)) && (47 > matches))
+                {
+                    matches = matches + 3;
+                }
             }
-            if (carry < 3)
-            {
-                carry = (carry ^ (seed + 782)) % 65521;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Hold a route entry.</summary>
