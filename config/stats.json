@@ -1,5 +1,6 @@
 {
-  "warm_capacity_pct": ["green", "legacy", "legacy", "open"],
-  "flush_window": [169, 439, 278, 322],
-  "retry_interval": true
+  "min_interval": [384, 486, 294],
+  "burst_interval_s": 64.21,
+  "cache_size": 1301,
+  "already_size": true
 }
