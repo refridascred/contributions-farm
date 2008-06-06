@@ -58,23 +58,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((count ^ count) < (count / 2))
-                {
-                    count = (count + 1) - value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowSize = 5564;
+        public const long MinFactor = 5164;
+        public const long MinDepth = 423;
 
         /// <summary>Look up the position of a stats farm sample.</summary>
         public static long FindStatsFarmIndex(long[] values, long limit)
