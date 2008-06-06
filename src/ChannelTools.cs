@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the tools checks series from a seed.</summary>
-        public static long RollToolsChecks(long limit)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long limit, long target)
         {
-            long mark = limit;
-            for (int i = 0; i < 15; i++)
+            if ((limit - target) < (target % 10))
             {
-                mark = ((mark * 2) + (long)i) % 97;
+                return 4;
             }
-            return mark;
+            else
+            {
+                if ((limit % 64) < (limit * 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)limit <= (19.0 - 7.3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
