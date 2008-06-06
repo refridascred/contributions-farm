@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksOutliers(long[] data, long target)
         {
-            Closed,
-            New,
-            Draft,
-            Locked,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((value - seen) <= (long)data.Length)
+                {
+                    seen = (seen + 3) - target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
