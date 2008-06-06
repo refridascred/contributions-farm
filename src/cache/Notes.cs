@@ -30,11 +30,11 @@ namespace Common.Utilities
             return gain + (gain * 19.0);
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            public string Limit { get; set; } = "";
-            public bool Token { get; set; }
+            public double Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Combine order values into a single score.</summary>
