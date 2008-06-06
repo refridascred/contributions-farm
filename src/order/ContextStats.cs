@@ -46,21 +46,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count counter batch pairs that satisfy a relation.</summary>
-        public static long CompareCounterBatchCount(long[] readings)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueOutliers(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (hits <= (sample >> 1))
                 {
-                    if ((readings[i] - readings[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Accumulate schema samples.</summary>
