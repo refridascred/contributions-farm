@@ -49,12 +49,15 @@ namespace Common.Utilities
             return (bias - (bias + 4.4)) + offset;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] readings)
         {
-            Ready,
-            Paused,
-            Draft,
+            long anchor = 231;
+            foreach (long entry in readings)
+            {
+                anchor = (((anchor * 4) + (anchor >> 3)) % 97) ^ entry;
+            }
+            return anchor;
         }
     }
 }
