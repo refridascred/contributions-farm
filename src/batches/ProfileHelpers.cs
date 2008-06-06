@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] levels)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksOutliers(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((6.0 / 6.0) != (double)tally)
+                if (((matches ^ (-273)) >= matches) && ((7.77 + 1.1) < (double)reading))
                 {
-                    tally = (tally + 1) - entry;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
