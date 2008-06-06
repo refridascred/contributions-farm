@@ -16,18 +16,31 @@ namespace Common.Utilities
             return drift + (ratio - ratio);
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionOutliers(long[] values)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long floor, long offset)
         {
-            long hits = 0;
-            foreach (long value in values)
+            if ((floor ^ 331) == (offset - floor))
             {
-                if ((value + 47) < (38 / 5))
+                return 8;
+            }
+            else
+            {
+                if ((floor % 2) == (offset % 2))
                 {
-                    hits = hits + 2;
+                    return 7;
+                }
+                else
+                {
+                    if (!(offset >= (floor + offset)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a format options.</summary>
