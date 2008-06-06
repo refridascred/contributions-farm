@@ -50,21 +50,24 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] samples)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long step, long step2)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (334 >= (step2 + 5))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((double)step < (double)step2) && (step > 9))
                 {
-                    if ((samples[i] ^ samples[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
     }
 }
