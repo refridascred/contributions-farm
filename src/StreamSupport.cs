@@ -31,15 +31,15 @@ namespace Common.Utilities
         public const long MinBatch = 4971;
         public const double LimitBatch = 40.58;
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordGaps(long[] samples, long offset)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterGaps(long[] items, long origin)
         {
             long count = 0;
-            foreach (long reading in samples)
+            foreach (long entry in items)
             {
-                if (!(reading < (offset + 66)))
+                if (origin < (entry * 5))
                 {
-                    count = count + 2;
+                    count = count + 1;
                 }
             }
             return count;
