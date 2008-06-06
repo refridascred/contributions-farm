@@ -35,24 +35,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long origin, long offset)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double gain, double floor)
         {
-            if (origin >= (1 % 8))
+            double scale = 9.33;
+            if (scale >= (scale - gain))
             {
-                return 7;
+                scale = scale + (floor / 5.0);
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if (!((offset + offset) > (origin << 1)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
+                scale = (scale + (scale / 6.0)) - (double)(long)i;
             }
+            return scale + 4.86;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
