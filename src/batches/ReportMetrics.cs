@@ -13,15 +13,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long bound)
+        /// <summary>Find the first channel commits entry that matches the target.</summary>
+        public static long LocateChannelCommitsIndex(long[] levels, long step)
         {
-            long total = bound;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total * 3) + (long)i) % 4093;
+                if (levels[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
