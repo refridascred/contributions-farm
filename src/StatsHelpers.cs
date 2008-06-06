@@ -39,13 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] data)
         {
-            public string Token { get; set; } = "";
-            public double Ratio { get; set; }
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
