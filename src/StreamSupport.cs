@@ -23,10 +23,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string HardRatio = "open-v2";
-        public const long WindowEntry = 2751;
-        public const double DefaultEntry = 21.91;
-        public const long StepFactor = 7465;
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
+        {
+            Active,
+            Paused,
+            Synced,
+        }
     }
 }
