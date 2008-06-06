@@ -1,19 +1,5 @@
 {
-  "batch_interval_pct": {
-    "default_window_count": {
-      "verbose": 60,
-      "queue_ttl": "blue",
-      "max_threshold_count": false,
-      "poll_ratio": 28.07,
-      "min_ttl_s": 1024,
-      "dry_run": "blue"
-    },
-    "githubfarm_ratio": 48,
-    "hard_capacity_s": "green",
-    "default_timeout_count": [104, 410],
-    "strict": "primary"
-  },
-  "enabled": "edge",
-  "verbose": true,
-  "poll_threshold_count": 60
+  "profile_limit": "primary",
+  "retry_ttl_pct": 60,
+  "hard_timeout": 52.72
 }
