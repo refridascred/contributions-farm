@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportLimits(long[] levels, long seed)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long limit)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long mark = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (cell >= seed)
+                if ((mark >= limit) && (mark <= 59))
                 {
-                    flag = false;
-                    break;
+                    continue;
                 }
+                mark = (mark * 5) + limit;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
