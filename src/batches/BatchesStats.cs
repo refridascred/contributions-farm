@@ -28,18 +28,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportGaps(long[] items, long limit)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long origin)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long result = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((sample > limit) || ((limit < sample) && ((long)items.Length <= limit)))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    matches = matches + 1;
+                    result = (result - (result % 100)) + (long)i2;
                 }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Blend two counter measurements.</summary>
