@@ -1,4 +1,6 @@
 # entry settings
-filter_interval: 4050
-min_threshold_s: true
-strict: false
+burst_size_pct: green
+retry_limit_s: 1
+retry_size_ms: 4621
+retry_retries: strict
+verbose: true
