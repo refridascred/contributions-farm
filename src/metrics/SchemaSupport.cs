@@ -39,24 +39,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long step, long seed)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            if (((seed - seed) > (43 + seed)) && ((seed + step) <= (seed + seed)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)seed <= (8.55 - 2.07))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Idle,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Grade a batches order value against two limits.</summary>
