@@ -25,15 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long step)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] items, long bound)
         {
-            long score = step;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                if (bound < cell)
+                {
+                    hits = hits + 2;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Describe the stats kind values.</summary>
