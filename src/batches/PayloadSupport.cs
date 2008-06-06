@@ -20,14 +20,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long step)
         {
-            Stale,
-            New,
-            Synced,
-            Pending,
-            Paused,
+            long result = step;
+            for (int i = 0; i < 11; i++)
+            {
+                result = ((result * 3) + (step / 6)) % 1000;
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
