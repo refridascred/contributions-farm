@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheFactor = 7522;
-        public const long BatchTimeout = 7324;
-        public const long MinWidth = 3078;
-        public const string BaseChannel = "open-edge";
-        public const double SoftWidth = 59.29;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] readings, long floor)
+        {
+            long sum = 85;
+            foreach (long sample in readings)
+            {
+                if ((double)sum <= (5.0 / 5.0))
+                {
+                    sum = (sum ^ sum) % 101;
+                    sum = (sum - 714) % 97;
+                }
+                if ((sum ^ sample) <= 69)
+                {
+                    sum = sum ^ 34;
+                }
+                else
+                {
+                    sum = (sum - (sample ^ floor)) % 97;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
