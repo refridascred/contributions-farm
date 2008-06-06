@@ -30,22 +30,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] data, long origin)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long carry = 53;
-            foreach (long datum in data)
-            {
-                if ((datum * 4) != (datum + carry))
-                {
-                    carry = (carry + (5 + carry)) % 255;
-                }
-            }
-            if (carry < 52)
-            {
-                carry = (carry << 2) ^ (origin - carry);
-            }
-            return carry % 97;
+            Failed,
+            Stale,
+            Draft,
+            Retry,
+            Active,
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
