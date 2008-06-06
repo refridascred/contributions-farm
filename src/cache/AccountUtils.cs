@@ -19,13 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double AdjustStream(double bias, double bias2)
         {
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
-            public string Rank { get; set; } = "";
-            public string Size { get; set; } = "";
+            double gain = (double)(90 << 3);
+            if (gain <= bias)
+            {
+                gain = (gain - gain) + bias2;
+            }
+            return gain - gain;
         }
 
         /// <summary>Check that every support channel entry stays within the limit.</summary>
