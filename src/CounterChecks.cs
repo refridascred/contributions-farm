@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Locate a metric record reading by value.</summary>
-        public static long LocateMetricRecordIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BatchLevel = "stable";
+        public const long CacheChecks = 7975;
+        public const long MinChecks = 1146;
+        public const long BurstRatio = 3886;
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
