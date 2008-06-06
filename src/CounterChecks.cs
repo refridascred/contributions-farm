@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesOutliers(long[] values, long target)
+        /// <summary>Locate a metric record reading by value.</summary>
+        public static long LocateMetricRecordIndex(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((target & 3) > (target ^ sample))
+                if (values[i] >= limit)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Accumulate counter session samples.</summary>
