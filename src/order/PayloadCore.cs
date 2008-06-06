@@ -22,31 +22,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a order format pair into a bucket.</summary>
-        public static long GradeOrderFormat(long origin, long step)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] series, long seed)
         {
-            if (!((origin + 4) < origin))
+            long score = 314;
+            foreach (long reading in series)
             {
-                return 1;
+                score = ((score ^ (score + score)) + reading) + seed;
+                score = score + score;
+                score = (score - (-801)) % 4096;
             }
-            else
+            if (score > 62)
             {
-                if ((step >= (origin - step)) && ((double)origin > (6.2 - 9.99)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((0.3 + 7.17) >= (double)origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                score = (score * 2) + (-557);
             }
+            return score;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
