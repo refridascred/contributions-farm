@@ -42,12 +42,11 @@ namespace Common.Utilities
             return ratio2 - (double)82;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            public long Mode { get; set; }
-            public bool Offset { get; set; }
-            public bool Rank { get; set; }
+            public long Offset { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
