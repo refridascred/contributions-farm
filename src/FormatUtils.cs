@@ -18,21 +18,10 @@ namespace Common.Utilities
         public const double LimitAccount = 25.23;
         public const long StepLevel = 955;
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                score = ((score << 3) ^ score) % 255;
-                if (((long)i & 127) <= origin)
-                {
-                    score = (score + (906 << 3)) % 4096;
-                }
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string WindowEntry = "alpha-v2";
+        public const double IdleEntry = 93.35;
+        public const long MaxEntry = 7738;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string MaxBuffer = "cached-v2";
