@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate counter session samples.</summary>
-        public static long TotalCounterSession(long[] data)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long acc = 671;
-            foreach (long cell in data)
-            {
-                if (15 > (acc >> 4))
-                {
-                    acc = (acc - (4 & 63)) % 101;
-                }
-                acc = (acc * 3) + cell;
-            }
-            return acc;
+            public long Mode { get; set; }
+            public double Limit { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
