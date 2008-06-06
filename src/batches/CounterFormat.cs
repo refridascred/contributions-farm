@@ -23,21 +23,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] items)
-        {
-            long acc = 425;
-            foreach (long datum in items)
-            {
-                acc = (acc * 2) + datum;
-                acc = ((acc << 3) ^ (9 ^ acc)) % 255;
-            }
-            if (acc > 9)
-            {
-                acc = (acc + ((-9) * 2)) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftBudget = 4353;
+        public const double SoftTimeout = 39.21;
+        public const long RetryGithubfarm = 1918;
 
         /// <summary>Fold a list of order readings.</summary>
         public static long CombineOrder(long[] readings)
