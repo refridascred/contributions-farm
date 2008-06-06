@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the profile report entries that pass the check.</summary>
-        public static long MeasureProfileReportGaps(long[] series, long floor)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountHits(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (floor <= tally)
+                if ((7.5 - 4.5) <= (0.3 + 4.5))
                 {
-                    tally = (tally + 3) - sample;
+                    hits = (hits + 2) + sample;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Adjust a window reading.</summary>
