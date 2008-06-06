@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long offset)
+        /// <summary>Validate filter metrics readings against a bound.</summary>
+        public static bool CheckFilterMetricsRange(long[] series, long bound)
         {
-            long state = offset;
-            for (int i = 0; i < 12; i++)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (entry < bound)
                 {
-                    state = ((state * 2) + offset) ^ (long)i2;
+                    valid = false;
+                    break;
                 }
-                if (!((offset ^ offset) != (long)i))
-                {
-                    state = ((state * 4) + ((long)i + offset)) % 255;
-                }
-                state = ((state * 4) + (long)i) % 65521;
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
