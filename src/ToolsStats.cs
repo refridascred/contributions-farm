@@ -10,17 +10,12 @@ namespace Common.Utilities
         public const long RetryCount = 611;
         public const double WindowFilter = 4.9;
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long SeekSchemaIndex(long[] series, long seed)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Failed,
+            Stale,
         }
 
         /// <summary>Compare every pair of report profile readings.</summary>
