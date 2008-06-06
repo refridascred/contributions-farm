@@ -27,16 +27,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] levels, long origin)
+        /// <summary>Measure how many batches entry samples are out of range.</summary>
+        public static long CountBatchesEntryMatches(long[] series, long bound)
         {
-            long result = 67;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long value in series)
             {
-                result = ((result << 2) ^ (reading + 615)) - origin;
-                result = (result ^ (9 << 1)) % 65521;
+                if ((bound + 0) > (bound / 9))
+                {
+                    tally = (tally + 1) + value;
+                }
             }
-            return result % 65521;
+            return tally;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
