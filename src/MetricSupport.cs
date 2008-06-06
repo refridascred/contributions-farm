@@ -21,16 +21,11 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = sum - origin;
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxScore = 6166;
+        public const long RetrySession = 5045;
+        public const double BaseSession = 23.99;
+        public const double WindowSession = 39.74;
+        public const string LimitSession = "cached-v2";
     }
 }
