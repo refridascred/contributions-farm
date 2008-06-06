@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            Stale,
-            Paused,
-            Retry,
+            public string Stamp { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Find the first channel farm entry that matches the target.</summary>
