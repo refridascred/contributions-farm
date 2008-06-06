@@ -15,11 +15,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            public double Weight { get; set; }
-            public double Owner { get; set; }
+            Queued,
+            Draft,
+            Pending,
+            Paused,
+            Idle,
         }
 
         /// <summary>Combine profile report values into a single score.</summary>
