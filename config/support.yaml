@@ -1,9 +1,11 @@
 # support settings
-base_timeout: 71.5
-hard_depth_ms:
-  - 326
-  - 297
-  - 195
-cache_window: 5806
-base_window: 13.67
-persist: 500
+audit:
+  enabled: 12.81
+  max_threshold_ms: stable
+  persist: true
+  tools_limit: primary
+verbose: 8.43
+max_delay_count: staging
+compress: 74.67
+route_depth: false
+base_depth_count: fallback
