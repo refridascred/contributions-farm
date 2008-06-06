@@ -68,10 +68,16 @@ namespace Common.Utilities
         public const long CacheChannel = 6345;
         public const string BaseChannel = "alpha-v2";
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstTimeout = 9186;
-        public const long StepCluster = 9674;
-        public const long SoftTimeout = 4075;
+        /// <summary>Roll a batches commits counter forward.</summary>
+        public static long IterateBatchesCommits(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Locate a token order reading by value.</summary>
         public static long FindTokenOrderIndex(long[] series, long origin)
