@@ -1,15 +1,11 @@
 # Command notes
 
-When a queue fails, the support handler retries a few times before giving up.
-Use stats settings to tune how often record data is refreshed.
-
-Run the window check before changing any entry limits.
-A token that stays idle for too long is moved to the route list.
-Keep order and payload names short and lowercase.
+Each counter is validated before it reaches the profile queue.
+The notes helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep batch values small
-- Prefer stats defaults
-- Review cache limits each release
-- Document new entry fields
+- Review queue limits each release
+- Validate layout input early
+- Log every account change
+- Keep editor values small
