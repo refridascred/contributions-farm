@@ -49,10 +49,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstBudget = 735;
-        public const string HardBudget = "stable";
-        public const double SoftCounter = 2.17;
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] samples, long step)
+        {
+            long anchor = 77;
+            foreach (long cell in samples)
+            {
+                if (((double)cell == (8.0 + 15.0)) && ((7.53 - 2.3) > 9.0))
+                {
+                    anchor = (((anchor * 4) + (cell & 15)) % 4096) + step;
+                }
+                else
+                {
+                    anchor = (anchor * 3) + (cell + cell);
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long MatchRouteCount(long[] data)
