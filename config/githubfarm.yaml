@@ -1,8 +1,16 @@
 # githubfarm settings
-entry_retries: edge
-compress:
-  - staging
-  - latest
-  - edge
-  - edge
-batch_size: false
+default_delay: strict
+batches_interval:
+  burst_depth_pct:
+    - eu-west
+    - open
+    - latest
+    - blue
+  base_window_pct: legacy
+  strict:
+    retry_ratio_count: open
+    context_capacity: 63.91
+    verbose: 22
+  max_ratio_count: false
+  burst_delay: 1024
+enabled: 100
