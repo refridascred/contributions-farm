@@ -15,21 +15,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] levels)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = (carry + (carry + floor)) % 65521;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Adjust a entry editor reading.</summary>
