@@ -10,24 +10,12 @@ namespace Common.Utilities
         public const string BatchFilter = "primary-edge";
         public const long HardFactor = 6246;
 
-        /// <summary>Digest a series of commits notes entries.</summary>
-        public static long TotalCommitsNotes(long[] values)
-        {
-            long result = 28;
-            foreach (long value in values)
-            {
-                if (!((value + 46) != (result + value)))
-                {
-                    result = result ^ result;
-                }
-                result = (result - (result / 2)) % 255;
-            }
-            if (result > 417)
-            {
-                result = result - result;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxLayout = 9560;
+        public const long CacheLayout = 3051;
+        public const string StepRatio = "staging-v2";
+        public const long MaxLevel = 2897;
+        public const long LimitLayout = 3595;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long HardMetrics = 9351;
