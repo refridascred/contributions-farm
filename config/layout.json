@@ -1,10 +1,17 @@
 {
-  "default_limit": 3.33,
-  "min_interval_pct": 250,
-  "support_threshold": {
-    "context_capacity": 7963,
-    "command_window": "green",
-    "batch_timeout_s": "fallback",
-    "stats_limit": "local"
-  }
+  "idle_window_s": 67.45,
+  "route_window": {
+    "payload_interval": 6566,
+    "burst_ratio": {
+      "warm_capacity_s": false,
+      "strict": 75,
+      "flush_interval": true
+    },
+    "enabled": 63,
+    "format_depth": "edge",
+    "dry_run": ["fallback", "local"],
+    "window_depth": 91
+  },
+  "hard_ttl_pct": 97.18,
+  "default_depth_s": "primary"
 }
