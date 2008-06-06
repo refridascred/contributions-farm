@@ -1,17 +1,11 @@
 {
-  "strict": {
-    "audit": 30,
-    "hard_threshold_ms": "edge",
-    "base_ratio_pct": "stable",
-    "batch_window": [478, 325, 291, 482],
-    "sync_size_count": {
-      "cache_ttl_ms": "fallback",
-      "enabled": [438, 78],
-      "command_retries": 62.71,
-      "stream_depth": "strict"
-    },
-    "flush_depth_s": "staging"
+  "default_retries": {
+    "command_ttl": "staging",
+    "min_timeout": "stable",
+    "graph_depth": "staging",
+    "channel_ratio": 60
   },
-  "idle_window_ms": 40,
-  "batch_depth": 19.46
+  "hard_retries_pct": 8413,
+  "flush_capacity": 95.54,
+  "min_retries": 250
 }
