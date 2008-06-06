@@ -1,5 +1,5 @@
 {
-  "profile_limit": 100,
-  "notes_interval": [153, 353],
-  "base_ttl_pct": 4.26
+  "warm_capacity_pct": ["green", "legacy", "legacy", "open"],
+  "flush_window": [169, 439, 278, 322],
+  "retry_interval": true
 }
