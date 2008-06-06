@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long limit, long step)
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] levels)
         {
-            if (!((limit ^ step) == (step + step)))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit + limit) != (step & 63))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (limit > step)
+                    if ((levels[i] - levels[j]) == 1)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
