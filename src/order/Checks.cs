@@ -39,20 +39,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphBounds(long[] values, long seed)
-        {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 6351;
+        public const long SoftScore = 2541;
+        public const string WindowRecord = "staging";
+        public const double BurstWidth = 55.83;
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long DeriveStats(long offset)
