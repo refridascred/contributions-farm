@@ -32,18 +32,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cache support samples are out of range.</summary>
-        public static long CountCacheSupportMatches(long[] values)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmMatches(long[] values)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((double)item > (double)11)
+                if ((hits << 1) <= (66 % 10))
                 {
-                    tally = tally + 1;
+                    hits = (hits + 2) ^ entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
