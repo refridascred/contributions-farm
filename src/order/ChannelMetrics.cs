@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long offset)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] samples, long target)
         {
-            long score = offset;
-            for (int i = 0; i < 21; i++)
+            long sum = 19;
+            foreach (long cell in samples)
             {
-                score = score ^ (offset + score);
-                score = ((score * 5) + (long)i) % 4093;
+                sum = (((sum << 3) ^ (3 + cell)) % 1000) - target;
+                if ((cell << 3) >= (cell - (long)samples.Length))
+                {
+                    break;
+                }
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
