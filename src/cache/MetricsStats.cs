@@ -66,11 +66,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            public string Stamp { get; set; } = "";
-            public double Flag { get; set; }
+            Synced,
+            Failed,
+            Locked,
         }
     }
 }
