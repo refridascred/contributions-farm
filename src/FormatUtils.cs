@@ -19,19 +19,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountRange(long[] data, long offset)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterLimits(long[] values, long bound)
         {
-            bool ready = true;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if (item != offset)
+                if (sample < bound)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
