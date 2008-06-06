@@ -1,9 +1,23 @@
 # entry settings
-batch_ratio: green
-metric_capacity: open
-dry_run:
-  - 4
-  - 201
-  - 453
-hard_delay_s: 2049
-already_limit: 9.72
+editor_interval:
+  cache_interval: 250
+  window_timeout: true
+  idle_threshold_ms:
+    max_size_pct: 5
+    retry_delay_pct:
+      - 449
+      - 46
+    cache_limit: local
+  default_size_count: 100
+  flush_retries_count:
+    sync_delay_s: 16
+    hard_capacity_count: green
+    min_depth_s: primary
+  hard_delay_count: 1024
+soft_retries_ms: blue
+buffer_retries:
+  base_interval_ms: 80.82
+  retry_timeout: local
+  retry_limit_count: local
+  max_ratio_pct: 78.86
+persist: 12.88
