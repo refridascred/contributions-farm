@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterRange(long[] data, long floor)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Rank { get; set; }
+            public bool Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the farm mode values.</summary>
