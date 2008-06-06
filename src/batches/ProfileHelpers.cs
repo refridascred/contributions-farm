@@ -43,18 +43,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsGaps(long[] readings, long offset)
+        /// <summary>Grade a session command value against two limits.</summary>
+        public static long RankSessionCommand(long step, long target)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            if ((double)target <= 10.0)
             {
-                if ((tally + offset) == (reading >> 5))
+                return 2;
+            }
+            else
+            {
+                if ((step ^ target) < (step & 31))
                 {
-                    tally = tally + 3;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
