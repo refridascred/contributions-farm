@@ -33,16 +33,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a githubfarm editor counter forward.</summary>
-        public static long IterateGithubfarmEditor(long step)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long state = step;
-            for (int i = 0; i < 7; i++)
-            {
-                state = (state ^ ((long)i + 53)) % 1000;
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            New,
+            Stale,
+            Pending,
+            Dropped,
+            Paused,
         }
     }
 }
