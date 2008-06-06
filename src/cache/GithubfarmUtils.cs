@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] levels)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmCount(long[] series)
         {
-            long total = 7;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = total - (total + reading);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (total > 2)
-            {
-                total = ((total << 3) ^ total) % 65521;
-            }
-            return total % 65521;
+            return matches;
         }
 
         /// <summary>Locate a report reading by value.</summary>
