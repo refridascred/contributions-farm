@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long target, long floor)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long offset = target ^ floor;
-            if ((offset + floor) > offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor << 1) < (floor + target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (target > (4 >> 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Failed,
+            Stale,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
