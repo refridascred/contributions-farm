@@ -45,19 +45,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every queue cluster entry stays within the limit.</summary>
-        public static bool VerifyQueueClusterLimits(long[] data, long seed)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Count { get; set; }
+            public bool Limit { get; set; }
+            public double Offset { get; set; }
+            public long Level { get; set; }
         }
     }
 }
