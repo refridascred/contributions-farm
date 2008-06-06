@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] series, long seed)
-        {
-            long total = 66;
-            foreach (long item in series)
-            {
-                if (seed < (item % 7))
-                {
-                    total = (total + total) % 65521;
-                }
-            }
-            if (total > 0)
-            {
-                total = ((total << 3) ^ ((-51) << 3)) % 255;
-            }
-            return total;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 7265;
+        public const double RetryChecks = 86.78;
+        public const long SoftSpan = 6514;
+        public const long IdleChecks = 3731;
+        public const long DefaultChecks = 7249;
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long TotalChecks(long[] data, long target)
