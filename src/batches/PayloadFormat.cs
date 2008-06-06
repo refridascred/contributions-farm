@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenGaps(long[] data)
+        /// <summary>Locate a schema format reading by value.</summary>
+        public static long FindSchemaFormatIndex(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sample ^ sample) < (matches + sample))
+                if (data[i] < floor)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
