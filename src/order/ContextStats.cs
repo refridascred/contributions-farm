@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
-        {
-            Active,
-            Synced,
-            Failed,
-            Locked,
-            Draft,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardInterval = 7576;
+        public const double WindowSize = 44.77;
+        public const long BaseCount = 8422;
+        public const long DefaultTimeout = 7607;
+        public const long BaseStream = 12;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long AuditSessionHits(long[] series)
