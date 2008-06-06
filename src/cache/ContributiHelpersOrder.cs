@@ -22,13 +22,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportOutliers(long[] data)
         {
-            public double Total { get; set; }
-            public long Level { get; set; }
-            public bool Mode { get; set; }
-            public bool Token { get; set; }
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (((cell + 915) >= cell) && ((hits + hits) < cell))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
