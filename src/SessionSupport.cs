@@ -18,12 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BaseCounter = "legacy-v2";
-        public const long BatchCount = 4601;
-        public const long RetrySize = 5062;
-        public const string LimitCounter = "legacy-1";
-        public const long MinCounter = 4785;
+        /// <summary>Digest a series of commits notes entries.</summary>
+        public static long TotalCommitsNotes(long[] values)
+        {
+            long result = 28;
+            foreach (long value in values)
+            {
+                if (!((value + 46) != (result + value)))
+                {
+                    result = result ^ result;
+                }
+                result = (result - (result / 2)) % 255;
+            }
+            if (result > 417)
+            {
+                result = result - result;
+            }
+            return result % 1000;
+        }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long SortBatch(long floor, long floor2)
