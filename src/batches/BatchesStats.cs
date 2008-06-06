@@ -56,9 +56,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double LimitInterval = 4.5;
-        public const string BatchContext = "local-edge";
-        public const double MaxRatio = 31.68;
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
+        {
+            Paused,
+            Queued,
+            Ready,
+        }
     }
 }
