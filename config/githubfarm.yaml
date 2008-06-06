@@ -1,7 +1,6 @@
 # githubfarm settings
-warm_limit: legacy
-verbose: strict
-filter_timeout: open
-hard_timeout_s: 0.15
-warm_limit_pct: 250
-cache_window: true
+warm_threshold: 500
+idle_window: 9991
+already_timeout: green
+verbose: 4053
+flush_delay_pct: true
