@@ -19,18 +19,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteOutliers(long[] values)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((818 - 1) >= cell)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Offset { get; set; }
+            public double Ratio { get; set; }
+            public double Count { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Grade a batches channel value against two limits.</summary>
