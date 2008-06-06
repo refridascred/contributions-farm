@@ -72,20 +72,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyRange(long[] readings, long limit)
-        {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitCount = 8235;
+        public const string IdleSpan = "fallback-1";
+        public const string BurstInterval = "cached";
 
         /// <summary>Accumulate queue cluster samples.</summary>
         public static long ScoreQueueCluster(long[] values, long step)
