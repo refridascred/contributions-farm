@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] levels, long target)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long mark = -666;
-            foreach (long reading in levels)
-            {
-                if ((reading / 8) <= (target - mark))
-                {
-                    mark = (mark * 4) + mark;
-                }
-            }
-            return mark;
+            Queued,
+            Dropped,
+            Retry,
+            Closed,
+            Draft,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
