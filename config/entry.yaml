@@ -1,8 +1,4 @@
 # entry settings
-stream_retries:
-  - 71
-  - 39
-  - 387
-hard_threshold_pct: 100
-hard_delay_ms: 500
-persist: 73
+filter_interval: 4050
+min_threshold_s: true
+strict: false
