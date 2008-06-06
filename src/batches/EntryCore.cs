@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Blend two metrics metric measurements.</summary>
-        public static double SmoothMetricsMetric(double weight, double bias)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            double bias2 = (double)(16 ^ 12);
-            if (bias2 >= (double)7)
-            {
-                bias2 = (bias2 - weight) - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 - weight) + (double)(long)i;
-            }
-            return bias2 - (double)8;
+            public long Mode { get; set; }
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Compare every pair of counter already readings.</summary>
