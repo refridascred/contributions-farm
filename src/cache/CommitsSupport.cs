@@ -19,12 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-            public long Score { get; set; }
+            Idle,
+            Pending,
+            Done,
+            Queued,
+            Retry,
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
