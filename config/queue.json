@@ -1,7 +1,6 @@
 {
-  "context_window": [59, 483, 159, 400],
-  "idle_delay": "strict",
-  "persist": 87,
-  "burst_depth_s": 500,
-  "metrics_timeout": "open"
+  "counter_limit": "open",
+  "hard_depth": 250,
+  "profile_depth": false,
+  "burst_ttl_pct": 1024
 }
