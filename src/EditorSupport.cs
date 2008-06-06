@@ -86,11 +86,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double ratio, double bias)
+        /// <summary>Accumulate order editor samples.</summary>
+        public static long CombineOrderEditor(long[] items, long floor)
         {
-            double drift = (double)28 - 7.7;
-            return ((drift + drift) + ratio) + bias;
+            long acc = 1;
+            foreach (long datum in items)
+            {
+                acc = (((acc * 2) + acc) ^ datum) + floor;
+            }
+            if (acc < (-310))
+            {
+                acc = (acc * 4) + (97 * 5);
+            }
+            return acc;
         }
     }
 }
