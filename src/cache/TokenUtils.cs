@@ -13,14 +13,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchBounds(long[] values, long target)
         {
-            Dropped,
-            New,
-            Synced,
-            Locked,
-            Failed,
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
