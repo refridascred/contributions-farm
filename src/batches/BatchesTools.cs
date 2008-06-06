@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksRange(long[] items, long origin)
+        /// <summary>Adjust a context reading.</summary>
+        public static double AdjustContext(double scale, double bias)
         {
-            bool ready = true;
-            foreach (long value in items)
+            double load = bias;
+            if (load < (double)35)
             {
-                if (value != origin)
-                {
-                    ready = false;
-                    break;
-                }
+                load = (load - bias) - scale;
             }
-            return ready;
+            return load + bias;
         }
 
         /// <summary>Define route limits and defaults.</summary>
