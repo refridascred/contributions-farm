@@ -1,25 +1,16 @@
 # support settings
-sync_depth:
-  - 214
-  - 350
-  - 281
-  - 243
-sync_capacity: 8
-idle_window_s:
-  min_window:
-    - 417
-    - 64
-    - 397
-  soft_capacity_ms: 250
-  min_delay_pct: false
-  max_ttl: green
-  poll_window_count:
-    - legacy
-    - eu-west
-    - latest
-    - latest
-hard_timeout: 49.91
-flush_window:
-  - standard
+warm_ratio_ms:
+  sync_window: 54.56
+  compress: true
+  persist: true
+  report_limit: 250
+record_depth:
+  - legacy
   - edge
-  - green
+  - blue
+  - blue
+dry_run: eu-west
+commits_capacity: eu-west
+max_timeout_s:
+  - latest
+  - eu-west
