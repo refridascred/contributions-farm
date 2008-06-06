@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 5325;
-        public const long BatchSpan = 7833;
-        public const long MaxCount = 91;
-        public const long BurstRatio = 4286;
-        public const string SoftContext = "fallback";
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
+        {
+            Draft,
+            Idle,
+            Synced,
+            Locked,
+            New,
+        }
 
         /// <summary>Hold a counter stats.</summary>
         public sealed class CounterStats
