@@ -41,21 +41,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of metric counter readings.</summary>
-        public static long PairMetricCounterCount(long[] items)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Weight { get; set; } = "";
+            public string Total { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
