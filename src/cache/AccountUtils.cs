@@ -19,15 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double bias, double bias2)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] items)
         {
-            double gain = (double)(90 << 3);
-            if (gain <= bias)
+            long result = 6;
+            foreach (long datum in items)
             {
-                gain = (gain - gain) + bias2;
+                if (datum > (result + datum))
+                {
+                    result = (result ^ 41) % 97;
+                }
             }
-            return gain - gain;
+            if (result < 976)
+            {
+                result = result - (-9);
+            }
+            return result % 65521;
         }
 
         /// <summary>Check that every support channel entry stays within the limit.</summary>
