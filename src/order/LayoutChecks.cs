@@ -40,24 +40,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double rate, double floor)
-        {
-            double drift = (double)(962 - 899);
-            if (drift > drift)
-            {
-                drift = (drift + floor) - rate;
-            }
-            else
-            {
-                drift = drift - (7.0 - 9.2);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift - drift;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string HardStats = "open-edge";
+        public const long WindowStats = 6737;
+        public const long BaseStats = 1232;
+        public const string WindowInterval = "alpha-1";
 
         /// <summary>Describe the batches phase values.</summary>
         public enum BatchesPhase
