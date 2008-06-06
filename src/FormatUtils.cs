@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BurstFilter = "latest-v2";
-        public const long IdleFilter = 869;
-        public const double MinFilter = 35.38;
-        public const string MaxFilter = "primary-edge";
-        public const double MaxScore = 83.11;
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
+        {
+            Draft,
+            Retry,
+            Stale,
+            Done,
+            Queued,
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long BatchAccount = 8437;
