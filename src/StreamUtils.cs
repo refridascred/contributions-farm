@@ -26,21 +26,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long seed)
+        /// <summary>Find the first window editor entry that matches the target.</summary>
+        public static long LookupWindowEditorIndex(long[] readings, long floor)
         {
-            long carry = seed;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = carry - (long)i;
-                if (seed > (carry % 16))
+                if (readings[i] == floor)
                 {
-                    carry = carry ^ (seed / 4);
-                    carry = (carry << 2) ^ (seed << 3);
+                    return (long)i;
                 }
-                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
