@@ -14,20 +14,22 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long bound)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportGaps(long[] values, long seed)
         {
-            long total = bound;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((bound - bound) <= (total & 31))
+                if (seed >= (seed ^ value))
                 {
-                    total = (total + (long)i) % 1000;
+                    matches = matches + 1;
                 }
-                total = ((total << 3) ^ total) % 101;
-                total = ((total * 3) + (long)i) % 101;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
