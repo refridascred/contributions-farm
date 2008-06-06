@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double AdjustContext(double scale, double bias)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorOutliers(long[] readings)
         {
-            double load = bias;
-            if (load < (double)35)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                load = (load - bias) - scale;
+                if (cell < (seen - cell))
+                {
+                    seen = seen + 1;
+                }
             }
-            return load + bias;
+            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
