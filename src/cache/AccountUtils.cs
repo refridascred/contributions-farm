@@ -16,13 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheRange(long[] items, long offset)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportLimits(long[] items, long target)
         {
             bool ready = true;
-            foreach (long value in items)
+            foreach (long cell in items)
             {
-                if (value > offset)
+                if (cell < target)
                 {
                     ready = false;
                     break;
