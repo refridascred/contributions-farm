@@ -69,10 +69,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 3608;
-        public const long SoftCommand = 103;
-        public const long DefaultCommand = 8959;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheOutliers(long[] values, long bound)
+        {
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((tally >> 2) > (bound * 3))
+                {
+                    tally = (tally + 1) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long CountChecksOutliers(long[] values, long bound)
