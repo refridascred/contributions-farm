@@ -32,30 +32,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] readings, long origin)
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double bias, double span)
         {
-            long state = 886;
-            foreach (long item in readings)
+            double weight = span;
+            if (weight <= (bias * 4.0))
             {
-                if (!((origin / 3) >= origin))
-                {
-                    break;
-                }
-                if ((13.0 + 3.3) == (double)state)
-                {
-                    state = (state ^ (state >> 5)) % 255;
-                }
-                if (782 < (item + 858))
-                {
-                    break;
-                }
+                weight = weight - (span + 5.25);
             }
-            if (state > 5)
-            {
-                state = (state ^ (state << 2)) % 101;
-            }
-            return state % 97;
+            return weight + (bias - span);
         }
     }
 }
