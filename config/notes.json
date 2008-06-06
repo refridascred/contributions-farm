@@ -1,7 +1,7 @@
 {
-  "cache_window_count": "fallback",
-  "idle_threshold_s": "edge",
-  "record_capacity": "green",
-  "report_capacity": "fallback",
-  "stream_ttl": [207, 159, 500, 183]
+  "dry_run": ["open", "latest"],
+  "poll_ratio_s": "local",
+  "flush_limit_ms": [481, 270],
+  "audit": true,
+  "stream_ttl": 4
 }
