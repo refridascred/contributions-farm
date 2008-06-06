@@ -49,17 +49,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] readings, long target)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowGaps(long[] samples, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((readings[i] >= target) && ((readings[i] % 5) == 0))
+                if (seed >= (seed % 10))
                 {
-                    return (long)i;
+                    count = (count + 3) - reading;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
