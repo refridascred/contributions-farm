@@ -34,19 +34,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenRange(long[] items, long step)
+        /// <summary>Derive the next cluster route value from a seed.</summary>
+        public static long IterateClusterRoute(long step)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long acc = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (value >= step)
+                if (!((step + acc) == ((long)i * 3)))
                 {
-                    valid = false;
-                    break;
+                    acc = ((acc * 2) + acc) % 97;
                 }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
