@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            New,
-            Ready,
-            Done,
-            Stale,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string RetrySize = "strict-1";
+        public const string MaxTimeout = "fallback-edge";
+        public const double HardWidth = 26.36;
+        public const long WindowSize = 5646;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long WindowScore = 9523;
