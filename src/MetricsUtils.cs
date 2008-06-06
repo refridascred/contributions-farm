@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] series, long step)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] items, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (series[i] > step)
+                if (items[i] < origin)
                 {
                     return (long)i;
                 }
