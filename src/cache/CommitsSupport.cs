@@ -59,10 +59,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 4711;
-        public const long HardPayload = 4753;
-        public const long RetryWidth = 4685;
+        /// <summary>Measure how many stats format samples are out of range.</summary>
+        public static long MeasureStatsFormatHits(long[] samples, long bound)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (hits >= sample)
+                {
+                    hits = (hits + 3) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long FindPayloadIndex(long[] series, long bound)
