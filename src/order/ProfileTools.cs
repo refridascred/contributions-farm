@@ -75,18 +75,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmMatches(long[] levels, long target)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((3.0 + 9.4) > (7.52 + 6.7))
-                {
-                    count = ((count + 3) ^ entry) + target;
-                }
-            }
-            return count;
+            Synced,
+            Dropped,
+            Draft,
         }
     }
 }
