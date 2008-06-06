@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long offset)
+        /// <summary>Measure how many layout notes samples are out of range.</summary>
+        public static long MeasureLayoutNotesMatches(long[] values, long limit)
         {
-            long anchor = offset;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if ((limit * 4) < limit)
+                {
+                    matches = (matches + 3) - item;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Digest a series of support entries.</summary>
