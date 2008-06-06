@@ -38,10 +38,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string RetryReport = "latest-v2";
-        public const long CacheSpan = 6182;
-        public const long BaseRatio = 2494;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] data)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((double)seen < 2.7)
+                {
+                    seen = (seen + 2) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long CacheAlready = 2096;
