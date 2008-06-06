@@ -70,18 +70,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsGaps(long[] data, long limit)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (934 >= (entry >> 1))
-                {
-                    tally = (tally + 1) + limit;
-                }
-            }
-            return tally;
+            Idle,
+            Retry,
+            Done,
         }
     }
 }
