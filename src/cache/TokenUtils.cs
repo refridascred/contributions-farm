@@ -13,18 +13,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandGaps(long[] samples)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileRange(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if ((((value - count) >= (value >> 2)) && ((2 - value) > (15 / 4))) && !(value < (count % 100)))
+                if (datum >= seed)
                 {
-                    count = count + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
