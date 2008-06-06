@@ -1,14 +1,10 @@
 # githubfarm settings
-queue_timeout:
-  dry_run: false
-  cache_depth_ms: local
-  batch_threshold:
-    default_delay_ms: 43.16
-    base_ttl_count: 7
-    verbose: true
-  flush_threshold_pct: 59.72
-min_threshold_ms: true
-schema_interval: 56.63
-hard_capacity_pct: blue
-poll_delay: 5.17
-hard_limit_count: 250
+strict: legacy
+cache_window: fallback
+tools_limit:
+  contributi_retries: 30.85
+  burst_limit_s: 11
+  flush_capacity_ms: 1322
+min_interval_pct:
+  - local
+  - open
