@@ -33,13 +33,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Roll a githubfarm editor counter forward.</summary>
+        public static long IterateGithubfarmEditor(long step)
         {
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
-            public double Weight { get; set; }
-            public double Mode { get; set; }
+            long state = step;
+            for (int i = 0; i < 7; i++)
+            {
+                state = (state ^ ((long)i + 53)) % 1000;
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
         }
     }
 }
