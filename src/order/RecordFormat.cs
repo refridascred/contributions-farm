@@ -36,20 +36,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Combine token profile values into a single score.</summary>
-        public static long WeighTokenProfile(long[] values)
-        {
-            long sum = 57;
-            foreach (long reading in values)
-            {
-                sum = ((sum + (sum >> 3)) % 101) ^ reading;
-            }
-            if (sum < 27)
-            {
-                sum = sum ^ (sum >> 3);
-            }
-            return sum;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double LimitFilter = 21.27;
+        public const string StepFilter = "standard";
+        public const double BaseBudget = 5.14;
+        public const string BurstFilter = "open-edge";
+        public const double HardDepth = 17.47;
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long WeighMetric(long[] items)
