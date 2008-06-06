@@ -32,11 +32,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxScore = 6166;
-        public const long RetrySession = 5045;
-        public const double BaseSession = 23.99;
-        public const double WindowSession = 39.74;
-        public const string LimitSession = "cached-v2";
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
+        {
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
+            public double Label { get; set; }
+        }
     }
 }
