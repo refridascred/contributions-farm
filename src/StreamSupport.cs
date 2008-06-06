@@ -24,22 +24,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit checks report readings against a rule.</summary>
-        public static long MeasureChecksReportMatches(long[] items, long origin)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((datum + count) <= (datum + 377))
-                {
-                    count = (count + 1) - origin;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxChannel = 4769;
+        public const long BaseDepth = 9288;
+        public const double CacheChannel = 53.43;
+        public const double DefaultFactor = 84.37;
+        public const long BatchSize = 440;
     }
 }
