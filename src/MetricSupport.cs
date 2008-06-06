@@ -30,19 +30,25 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandRange(long[] data, long step)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long floor, long seed)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long span = floor + seed;
+            if (span > (floor & 255))
             {
-                if (sample >= step)
+                return 0;
+            }
+            else
+            {
+                if ((double)seed != (double)span)
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return ok;
         }
     }
 }
