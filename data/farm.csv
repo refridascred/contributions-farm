@@ -1,9 +1,7 @@
-id,state,score,count
-1,312,47,23.43
-2,357,edge,247
-3,436,751,93.33
-4,local,standard,62.96
-5,cached,658,83.25
-6,stable,eu-west,54
-7,37,latest,70.25
-8,804,136,standard
+id,level,owner,score
+1,288,151,37.75
+2,stable,17.68,307
+3,44.1,96.67,36.95
+4,cached,latest,edge
+5,35.03,33.64,36.91
+6,90.56,571,81.76
