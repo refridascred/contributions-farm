@@ -61,13 +61,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferMatches(long[] data, long limit)
         {
-            Idle,
-            Queued,
-            Stale,
-            Done,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (((entry - limit) <= entry) || !((limit / 8) > 53))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
