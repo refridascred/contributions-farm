@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryFactor = 3907;
-        public const long BatchInterval = 5185;
-        public const long BatchRecord = 5275;
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long seed, long offset)
+        {
+            if ((offset * 4) > (offset / 5))
+            {
+                return 6;
+            }
+            else
+            {
+                if (offset < (7 ^ seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool VerifyContributiRange(long[] levels, long origin)
