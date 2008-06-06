@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next metrics report value from a seed.</summary>
-        public static long DeriveMetricsReport(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                score = (score ^ score) % 1000;
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string StepSchema = "latest-1";
+        public const long IdleFactor = 9712;
+        public const long BatchBudget = 4218;
+        public const long RetrySize = 5805;
+        public const string CacheSchema = "stable-1";
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long SeekFilterIndex(long[] values, long offset)
