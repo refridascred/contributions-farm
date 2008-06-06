@@ -39,14 +39,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Adjust a graph reading.</summary>
+        public static double BlendGraph(double gain, double bias)
         {
-            Synced,
-            Locked,
-            Dropped,
-            Stale,
-            Active,
+            double ratio = bias;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = ((ratio - bias) - (double)(long)i) + gain;
+            }
+            return ratio + (double)6;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
