@@ -30,11 +30,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Locate a githubfarm already reading by value.</summary>
+        public static long LookupGithubfarmAlreadyIndex(long[] series, long offset)
         {
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= offset) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
