@@ -1,4 +1,23 @@
 # entry settings
-base_ttl_ms: 18
-burst_timeout_pct: stable
-retry_window_count: cached
+window_capacity: 71.44
+checks_window: standard
+account_size:
+  min_interval_pct: eu-west
+  idle_size_pct: standard
+  checks_limit: 500
+sync_threshold_s: 48.99
+compress: primary
+sync_delay:
+  enabled:
+    stream_interval: 6046
+    flush_limit_pct: 88.11
+    idle_size: stable
+    contributi_retries: 50
+    batch_timeout_ms: 5590
+  cache_interval_pct: 2672
+  window_limit:
+    - 330
+    - 201
+    - 433
+    - 170
+  sync_ratio: 14.75
