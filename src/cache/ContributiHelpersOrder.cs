@@ -35,13 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] values)
         {
-            public string Rank { get; set; } = "";
-            public double Region { get; set; }
-            public long Weight { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
