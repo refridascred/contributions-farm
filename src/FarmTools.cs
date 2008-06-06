@@ -21,19 +21,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next record channel value.</summary>
-        public static double BlendRecordChannel(double weight, double offset)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            double load = weight;
-            if (load < (double)743)
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + weight) + (double)(long)i;
-            }
-            return load + offset;
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
+            public string Count { get; set; } = "";
+            public bool Score { get; set; }
         }
     }
 }
