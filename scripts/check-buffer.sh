@@ -6,21 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
-BUFFER_LIMIT=75
-log "limit is ${BUFFER_LIMIT}"
-
 mode="${1:-latest}"
 case "${mode}" in
-    edge)
+    staging)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+BUFFER_LIMIT=85
+log "limit is ${BUFFER_LIMIT}"
+
+for item in edge local; do
+    log "checking ${item}"
+done
