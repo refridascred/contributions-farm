@@ -39,19 +39,22 @@ namespace Common.Utilities
         public const long CacheGraph = 6009;
         public const long RetryGraph = 4046;
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksRange(long[] levels, long step)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueOutliers(long[] values, long floor)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (entry != step)
+                if ((double)sample == (0.3 / 2.0))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 2) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Find the first stream githubfarm entry that matches the target.</summary>
