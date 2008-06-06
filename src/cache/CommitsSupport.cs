@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowBounds(long[] levels, long offset)
-        {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BatchScore = 84.94;
+        public const double BaseFactor = 70.04;
+        public const long RetryQueue = 1730;
+        public const long BatchFactor = 9260;
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long ClassifyStats(long step, long seed)
