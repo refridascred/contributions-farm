@@ -25,16 +25,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long origin)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long score = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                score = (score << 3) ^ (origin << 3);
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
