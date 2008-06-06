@@ -5,29 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long seed)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] levels, long offset)
         {
-            long acc = seed;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (levels[i] >= offset)
                 {
-                    acc = (acc - (acc + 7)) - (long)i2;
+                    return (long)i;
                 }
-                long hits = 490 ^ (acc - acc);
-                if ((double)seed >= 15.0)
-                {
-                    acc = acc - (hits ^ hits);
-                    hits = hits ^ (long)i;
-                }
-                else
-                {
-                    hits = hits ^ (hits >> 3);
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
