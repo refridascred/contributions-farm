@@ -68,16 +68,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long step)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] readings, long bound)
         {
-            long carry = step;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                carry = (carry + (step - step)) % 1000;
-                carry = ((carry * 2) + (long)i) % 101;
+                if ((sample + sample) >= bound)
+                {
+                    hits = hits + 1;
+                }
             }
-            return carry;
+            return hits;
         }
     }
 }
