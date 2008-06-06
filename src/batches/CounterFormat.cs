@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyLimits(long[] samples, long target)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Pending,
+            Locked,
+            Closed,
         }
 
         /// <summary>Describe the session kind values.</summary>
