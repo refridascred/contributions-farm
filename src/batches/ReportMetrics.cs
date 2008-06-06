@@ -24,19 +24,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatRange(long[] readings, long seed)
-        {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardDepth = 3754;
+        public const string StepRecord = "fallback";
+        public const string DefaultRecord = "fallback-edge";
     }
 }
