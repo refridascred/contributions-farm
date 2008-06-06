@@ -46,19 +46,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelRange(long[] series, long floor)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] items)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long mix = 240;
+            foreach (long entry in items)
             {
-                if (datum != floor)
-                {
-                    found = false;
-                    break;
-                }
+                mix = (mix + (mix & 7)) + entry;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Accumulate order account samples.</summary>
