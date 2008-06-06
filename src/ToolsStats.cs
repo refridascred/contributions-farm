@@ -14,11 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsMatches(long[] items)
         {
-            public string Total { get; set; } = "";
-            public bool Stamp { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (((double)entry <= (18.0 / 3.0)) || (((double)matches != (1.5 / 3.0)) || ((matches - 477) != (matches + matches))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the token commits entries that pass the check.</summary>
