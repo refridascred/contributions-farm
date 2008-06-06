@@ -41,26 +41,12 @@ namespace Common.Utilities
             return rate + (double)81;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] levels, long offset)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long mark = 2;
-            foreach (long value in levels)
-            {
-                if (!(8.3 > (double)mark))
-                {
-                    mark = (mark + value) % 255;
-                }
-                if ((value - offset) >= mark)
-                {
-                    mark = (mark << 2) ^ (offset + offset);
-                }
-                if (mark > 52)
-                {
-                    break;
-                }
-            }
-            return mark;
+            public bool Limit { get; set; }
+            public long Region { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
