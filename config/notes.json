@@ -1,17 +1,6 @@
 {
-  "channel_timeout": "green",
-  "warm_size": ["strict", "cached", "eu-west", "local"],
-  "strict": 6529,
-  "warm_ratio_count": {
-    "flush_threshold_count": {
-      "tools_retries": true,
-      "batch_delay_count": 53.1,
-      "batches_capacity": "local",
-      "stream_timeout": [217, 326, 160, 337],
-      "record_capacity": true
-    },
-    "contributi_limit": "legacy",
-    "persist": 84
-  },
-  "audit": 8117
+  "editor_limit": true,
+  "queue_ratio": "green",
+  "compress": "primary",
+  "dry_run": 43.28
 }
