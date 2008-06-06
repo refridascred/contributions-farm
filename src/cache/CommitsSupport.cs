@@ -57,17 +57,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a record metrics reading by value.</summary>
-        public static long SeekRecordMetricsIndex(long[] series, long bound)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == bound) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Ratio { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
