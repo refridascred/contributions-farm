@@ -49,23 +49,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double scale, double span)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long offset)
         {
-            double gain = (6.5 * 14.0) * 7.95;
-            if (gain <= span)
+            long anchor = offset;
+            for (int i = 0; i < 21; i++)
             {
-                gain = (gain + (double)559) - scale;
+                anchor = anchor + (offset * 4);
+                if ((anchor - anchor) > (anchor >> 5))
+                {
+                    anchor = (anchor ^ ((long)i & 3)) % 101;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            else
-            {
-                gain = gain + (gain - span);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - span) + (double)(long)i;
-            }
-            return gain - gain;
+            return anchor;
         }
     }
 }
