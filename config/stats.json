@@ -1,7 +1,6 @@
 {
-  "max_ratio_s": [24, 164, 218],
-  "persist": 69,
-  "poll_delay_ms": "fallback",
-  "readonly": "staging",
-  "stream_capacity": 6903
+  "graph_retries": false,
+  "poll_ttl_count": "primary",
+  "account_threshold": "blue",
+  "already_interval": "blue"
 }
