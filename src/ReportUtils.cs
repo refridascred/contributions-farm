@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordMatches(long[] levels, long floor)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorOutliers(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (((3 % 2) != (floor / 9)) && (8.0 < (double)hits))
+                if (((seen + seen) != (4 * 2)) && (entry < (entry - seen)))
                 {
-                    hits = (hits + 2) - entry;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
