@@ -25,12 +25,16 @@ namespace Common.Utilities
         public const long BurstFarm = 3894;
         public const string SoftFarm = "open-edge";
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long seed)
         {
-            Synced,
-            Locked,
-            Idle,
+            long score = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                score = (score * 3) + (seed >> 3);
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Define account limits and defaults.</summary>
