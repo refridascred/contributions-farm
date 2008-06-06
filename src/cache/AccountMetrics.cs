@@ -75,19 +75,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate format payload readings against a bound.</summary>
-        public static bool CheckFormatPayloadLimits(long[] items, long step)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            bool ready = true;
-            foreach (long cell in items)
-            {
-                if (cell > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Token { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public double Total { get; set; }
         }
     }
 }
