@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long DefaultTimeout = 7607;
         public const long BaseStream = 12;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((entry << 1) < (matches - entry))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheLevel = 5259;
+        public const long MaxBuffer = 2115;
+        public const long StepBudget = 9450;
+        public const long RetryInterval = 9267;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long TallyQueueOutliers(long[] values)
