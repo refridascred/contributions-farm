@@ -44,12 +44,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextGaps(long[] levels)
         {
-            Idle,
-            Retry,
-            Done,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (0 >= (reading ^ count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
