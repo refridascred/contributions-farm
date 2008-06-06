@@ -46,13 +46,12 @@ namespace Common.Utilities
             return ratio + (double)6;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            public bool Level { get; set; }
-            public bool Weight { get; set; }
-            public string Token { get; set; } = "";
-            public long Limit { get; set; }
+            Failed,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
