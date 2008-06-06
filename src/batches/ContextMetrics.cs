@@ -37,15 +37,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] series)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long MatchSupportCount(long[] series)
         {
-            long state = 31;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state * 5) + (item >> 4)) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state % 65521;
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
