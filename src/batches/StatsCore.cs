@@ -11,17 +11,21 @@ namespace Common.Utilities
         public const long BatchScore = 292;
         public const long CacheScore = 1047;
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] data, long limit)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (data[i] >= limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Locate a githubfarm already reading by value.</summary>
