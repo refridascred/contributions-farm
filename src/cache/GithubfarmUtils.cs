@@ -27,17 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] samples, long offset)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Limit { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit command readings against a rule.</summary>
