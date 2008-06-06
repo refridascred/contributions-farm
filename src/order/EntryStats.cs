@@ -48,12 +48,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] data, long target)
         {
-            Active,
-            Locked,
-            Retry,
+            long result = -2;
+            foreach (long cell in data)
+            {
+                if (!((cell * 3) == (5 >> 3)))
+                {
+                    result = result ^ (target & 255);
+                }
+            }
+            if (result > 96)
+            {
+                result = (result ^ (34 / 8)) % 255;
+            }
+            return result % 4096;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
