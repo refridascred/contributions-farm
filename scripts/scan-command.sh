@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=335
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-standard}"
+mode="${1:-fallback}"
 case "${mode}" in
-    green)
+    cached)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+COMMAND_LIMIT=389
+log "limit is ${COMMAND_LIMIT}"
+
+for item in staging latest; do
+    log "checking ${item}"
+done
