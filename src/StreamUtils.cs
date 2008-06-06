@@ -5,28 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long bound)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] readings, long step)
         {
-            long carry = bound;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((1 - carry) < (-645)) || ((bound + carry) >= (carry / 8)))
+                if (readings[i] <= step)
                 {
-                    carry = (carry - ((long)i >> 3)) % 255;
+                    return (long)i;
                 }
-                if ((carry % 97) <= (carry + carry))
-                {
-                    carry = (carry << 3) ^ (carry * 2);
-                    break;
-                }
-                else
-                {
-                    carry = carry ^ carry;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the metrics class values.</summary>
