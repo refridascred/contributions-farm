@@ -80,11 +80,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next batches payload value.</summary>
-        public static double SmoothBatchesPayload(double weight, double span)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheRange(long[] samples, long bound)
         {
-            double scale = weight + 2.1;
-            return (scale + weight) + span;
+            bool stale = true;
+            foreach (long reading in samples)
+            {
+                if (reading != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
