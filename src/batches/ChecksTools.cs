@@ -44,22 +44,15 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Audit account command readings against a rule.</summary>
-        public static long AuditAccountCommandHits(long[] readings, long target)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            double weight = (offset + offset) / 7.0;
+            for (int i = 0; i < 7; i++)
             {
-                if ((target / 6) >= (hits ^ target))
-                {
-                    hits = (hits + 2) ^ cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                weight = (weight + ratio) + (double)(long)i;
             }
-            return hits;
+            return weight + weight;
         }
     }
 }
