@@ -68,12 +68,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            public double Level { get; set; }
-            public bool Mode { get; set; }
-            public long Owner { get; set; }
+            Retry,
+            Stale,
+            Failed,
+            Done,
+            Dropped,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
