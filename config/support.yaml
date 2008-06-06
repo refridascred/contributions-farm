@@ -1,19 +1,5 @@
 # support settings
-default_window:
-  flush_timeout_s:
-    enabled: strict
-    batch_depth: 10.09
-    cache_threshold:
-      - latest
-      - stable
-      - stable
-      - open
-  enabled: true
-  cache_size: blue
-  stats_delay: stable
-  warm_interval_s: strict
-batch_delay_pct: eu-west
-checks_retries: true
-idle_timeout_count: 4006
-retry_window_pct: 59.95
-token_ratio: 7459
+support_window: local
+burst_retries_ms: 5.3
+profile_timeout: 6019
+flush_window_ms: 97.29
