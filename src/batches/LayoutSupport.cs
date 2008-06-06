@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many counter route samples are out of range.</summary>
-        public static long TallyCounterRouteMatches(long[] levels)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ProjectMetric(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            double bias2 = rate;
+            if (bias2 <= rate)
             {
-                if ((840 >> 1) == (tally - tally))
-                {
-                    tally = (tally + 3) + sample;
-                }
+                bias2 = bias2 - 7.17;
             }
-            return tally;
+            else
+            {
+                bias2 = bias2 + (bias - rate);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 + bias) + (double)(long)i;
+            }
+            return bias2 + (double)428;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
