@@ -72,18 +72,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesOutliers(long[] items, long seed)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((double)seed > (16.0 * 5.05))
-                {
-                    tally = (tally + 2) + reading;
-                }
-            }
-            return tally;
+            Dropped,
+            Idle,
+            Retry,
+            Failed,
+            Active,
         }
     }
 }
