@@ -20,21 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] items)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            New,
+            Done,
+            Failed,
+            Queued,
         }
 
         /// <summary>Accumulate graph samples.</summary>
