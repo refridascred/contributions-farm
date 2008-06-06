@@ -40,10 +40,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseCount = 6514;
-        public const string StepBatch = "strict";
-        public const long MinDepth = 5171;
-        public const long LimitBatch = 1403;
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
+        {
+            public long Weight { get; set; }
+            public double Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Label { get; set; }
+        }
     }
 }
