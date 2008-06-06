@@ -51,21 +51,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] series)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaLimits(long[] series, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (entry < seed)
                 {
-                    if ((series[i] + series[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
