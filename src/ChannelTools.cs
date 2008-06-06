@@ -12,19 +12,10 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((9.0 / 6.0) <= (double)entry)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxRatio = 2538;
+        public const double SoftFilter = 68.02;
+        public const string MaxFilter = "staging-1";
 
         /// <summary>Describe the tools status values.</summary>
         public enum ToolsStatus
