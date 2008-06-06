@@ -32,12 +32,20 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultTimeout = 6474;
-        public const double HardEntry = 77.0;
-        public const string SoftFactor = "primary-v2";
-        public const string MinInterval = "strict-v2";
-        public const double SoftCount = 1.36;
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterBounds(long[] values, long offset)
+        {
+            bool stale = true;
+            foreach (long item in values)
+            {
+                if (item != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double RetrySpan = 53.04;
