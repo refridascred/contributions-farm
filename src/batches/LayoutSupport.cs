@@ -40,13 +40,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
-        {
-            public bool Size { get; set; }
-            public double Token { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCommand = 8048;
+        public const long HardCount = 1931;
+        public const long BurstCommand = 4729;
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long TallyMetric(long[] series)
