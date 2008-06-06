@@ -65,18 +65,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] samples)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long acc = 758;
-            foreach (long sample in samples)
-            {
-                if ((double)sample < (10.0 + 7.27))
-                {
-                    acc = (acc + (acc - sample)) % 1000;
-                }
-            }
-            return acc;
+            public string Level { get; set; } = "";
+            public double Token { get; set; }
         }
     }
 }
