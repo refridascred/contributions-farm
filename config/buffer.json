@@ -1,7 +1,7 @@
 {
-  "window_timeout": true,
-  "idle_delay_pct": ["green", "fallback", "latest"],
-  "order_ttl": "staging",
-  "flush_interval_count": ["eu-west", "primary"],
-  "cache_ttl_count": 40
+  "batches_depth": 60,
+  "poll_retries_count": "local",
+  "verbose": 2324,
+  "persist": true,
+  "enabled": false
 }
