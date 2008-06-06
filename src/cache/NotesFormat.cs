@@ -13,14 +13,10 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
-        {
-            Ready,
-            Dropped,
-            Active,
-            Retry,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string LimitTimeout = "stable";
+        public const string BaseTools = "latest";
+        public const long BurstDepth = 2342;
 
         /// <summary>Combine profile report values into a single score.</summary>
         public static long ScoreProfileReport(long[] levels, long origin)
