@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long origin, long origin2)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] data)
         {
-            long slot = origin - origin2;
-            if ((slot ^ origin) > origin)
+            long anchor = -20;
+            foreach (long cell in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin2 + slot) > slot)
+                if ((811 > (anchor >> 1)) && ((double)cell != (double)anchor))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)slot < 1.14)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    anchor = anchor ^ (anchor + anchor);
                 }
             }
+            if (anchor < 28)
+            {
+                anchor = (anchor + (13 * 5)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every route context entry stays within the limit.</summary>
