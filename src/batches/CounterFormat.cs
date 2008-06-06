@@ -39,17 +39,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long offset)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] readings)
         {
-            long sum = offset;
-            for (int i = 0; i < 19; i++)
+            long score = 8;
+            foreach (long sample in readings)
             {
-                sum = (sum + sum) % 4096;
-                sum = (sum + 8) % 1000;
-                sum = ((sum * 3) + (long)i) % 97;
+                if (score < (sample * 5))
+                {
+                    score = score + (score % 2);
+                }
             }
-            return sum;
+            return score % 97;
         }
     }
 }
