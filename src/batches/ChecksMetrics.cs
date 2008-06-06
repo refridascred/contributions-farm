@@ -13,12 +13,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            public long Ratio { get; set; }
-            public double Offset { get; set; }
-            public bool Token { get; set; }
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
