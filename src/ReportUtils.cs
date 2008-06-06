@@ -16,12 +16,19 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double scale, double span)
         {
-            public bool Rank { get; set; }
-            public string Total { get; set; } = "";
-            public long Limit { get; set; }
+            double rate = (double)(51 & 1);
+            if (rate > (double)32)
+            {
+                rate = (rate + (span / 9.0)) - scale;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + span) - (double)(long)i;
+            }
+            return rate + (7.1 / 8.0);
         }
 
         /// <summary>Define farm limits and defaults.</summary>
