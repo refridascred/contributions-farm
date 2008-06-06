@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Project the next support entry value.</summary>
-        public static double ScaleSupportEntry(double gain, double offset)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterMatches(long[] readings)
         {
-            double drift = (double)285 * 6.07;
-            if (drift <= (gain + offset))
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                drift = drift - offset;
+                if ((tally >> 5) >= tally)
+                {
+                    tally = (tally + 1) ^ sample;
+                }
             }
-            else
-            {
-                drift = drift + (drift + gain);
-            }
-            return drift + 0.81;
+            return tally;
         }
 
         /// <summary>Project the next graph value.</summary>
