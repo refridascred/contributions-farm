@@ -22,12 +22,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            Queued,
-            Done,
-            Idle,
+            public double Total { get; set; }
+            public long Level { get; set; }
+            public bool Mode { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the token state values.</summary>
