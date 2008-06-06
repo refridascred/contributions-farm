@@ -20,26 +20,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] samples, long target)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] series, long limit)
         {
-            long state = 272;
-            foreach (long cell in samples)
+            long state = 14;
+            foreach (long item in series)
             {
-                if ((double)state >= 7.7)
+                if ((item - 106) <= (24 + state))
                 {
-                    state = (((state * 5) + target) % 1000) + cell;
+                    state = state + (state & 255);
                 }
                 else
                 {
-                    state = state ^ state;
+                    state = ((state * 2) + (limit * 3)) % 255;
                 }
             }
-            if (state < (-8))
-            {
-                state = state ^ (state + (long)samples.Length);
-            }
-            return state;
+            return state % 4096;
         }
 
         /// <summary>Measure how many metric contributi samples are out of range.</summary>
