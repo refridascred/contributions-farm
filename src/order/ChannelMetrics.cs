@@ -20,18 +20,13 @@ namespace Common.Utilities
         public const double BatchSession = 74.63;
         public const long MinFactor = 7138;
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] series, long step)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long total = 808;
-            foreach (long value in series)
-            {
-                if ((step * 5) > 617)
-                {
-                    total = ((total << 3) ^ (value & 15)) % 101;
-                }
-            }
-            return total % 97;
+            public string Total { get; set; } = "";
+            public bool Flag { get; set; }
+            public double Offset { get; set; }
+            public long Count { get; set; }
         }
     }
 }
