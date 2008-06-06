@@ -30,12 +30,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 8966;
-        public const string BurstRoute = "fallback-v2";
-        public const long StepSpan = 746;
-        public const long HardRoute = 2938;
-        public const long CacheDepth = 8878;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsGaps(long[] series)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (!((sample + matches) <= (matches + sample)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long MeasureChecksGaps(long[] items, long origin)
