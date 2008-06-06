@@ -1,34 +1,26 @@
 # entry settings
-warm_window_count:
-  min_window: 78.41
-  cache_depth_pct: 77.09
-  counter_delay: latest
-soft_timeout_count: false
-filter_window:
-  retry_depth:
-    audit: true
-    batch_interval_s: 37
-    batch_ratio:
-      - 168
-      - 438
-      - 104
-    min_size_pct: 87.5
-    persist: 100
-    farm_size: 98
-  retry_ratio_ms: true
-  cache_threshold: cached
-  metric_window: 500
-  strict:
-    base_ttl_pct: local
-    batch_threshold_count: local
-    min_size_count: false
-    batch_delay: green
-    dry_run: 5.02
-    strict: true
-  support_threshold: primary
-queue_timeout: 25
-readonly: strict
-profile_window:
-  - 265
-  - 211
-  - 498
+poll_size_ms: 60
+metric_timeout: 8
+burst_capacity_ms: 3597
+max_size_s: latest
+audit:
+  min_delay_ms:
+    base_size_count: 44.7
+    payload_ratio: 1024
+    dry_run: primary
+    verbose: legacy
+  audit:
+    hard_delay_s: true
+    hard_depth: 66.07
+    soft_window_pct: 88
+    poll_delay_count: true
+    idle_threshold_count: stable
+  contributi_ratio:
+    - fallback
+    - open
+    - stable
+  layout_depth: true
+max_retries:
+  - 376
+  - 307
+  - 360
