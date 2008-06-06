@@ -1,15 +1,34 @@
 # entry settings
-soft_depth_pct:
-  - strict
-  - fallback
-  - stable
-  - eu-west
-min_retries: 83
-support_size:
-  dry_run: false
-  base_depth: stable
-  retry_delay: legacy
-sync_threshold_s:
-  - blue
-  - latest
-  - fallback
+warm_window_count:
+  min_window: 78.41
+  cache_depth_pct: 77.09
+  counter_delay: latest
+soft_timeout_count: false
+filter_window:
+  retry_depth:
+    audit: true
+    batch_interval_s: 37
+    batch_ratio:
+      - 168
+      - 438
+      - 104
+    min_size_pct: 87.5
+    persist: 100
+    farm_size: 98
+  retry_ratio_ms: true
+  cache_threshold: cached
+  metric_window: 500
+  strict:
+    base_ttl_pct: local
+    batch_threshold_count: local
+    min_size_count: false
+    batch_delay: green
+    dry_run: 5.02
+    strict: true
+  support_threshold: primary
+queue_timeout: 25
+readonly: strict
+profile_window:
+  - 265
+  - 211
+  - 498
