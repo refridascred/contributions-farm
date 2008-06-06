@@ -41,19 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] series)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesOutliers(long[] readings, long step)
         {
-            long mix = 469;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                mix = ((mix - (mix * 4)) % 255) ^ item;
+                if (((step - 47) > matches) || (((double)matches <= (6.17 / 5.0)) && ((1.8 / 9.0) <= (double)matches)))
+                {
+                    matches = (matches + 3) ^ datum;
+                }
             }
-            if (mix < 59)
-            {
-                mix = (mix ^ mix) % 4096;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
