@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Grade a context filter value against two limits.</summary>
+        public static long RankContextFilter(long bound, long seed)
         {
-            Synced,
-            New,
-            Done,
-            Idle,
-            Closed,
+            if (((bound % 10) != (bound & 255)) || ((seed + seed) < 849))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((1 % 64) == (seed % 100))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((seed * 5) > seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (seed < (748 << 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a notes reading.</summary>
