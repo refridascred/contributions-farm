@@ -40,20 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] readings, long floor)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long step)
         {
-            long acc = 920;
-            foreach (long entry in readings)
+            long acc = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((entry & 7) <= ((long)readings.Length / 8)))
-                {
-                    acc = ((acc * 4) + (floor - acc)) % 101;
-                }
-                else
-                {
-                    acc = (acc + entry) % 1000;
-                }
+                acc = ((acc << 3) ^ step) % 101;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
             return acc;
         }
