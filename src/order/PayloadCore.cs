@@ -22,21 +22,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] series, long seed)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsHits(long[] data, long bound)
         {
-            long score = 314;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long value in data)
             {
-                score = ((score ^ (score + score)) + reading) + seed;
-                score = score + score;
-                score = (score - (-801)) % 4096;
+                if (!((double)(-507) == (double)bound))
+                {
+                    matches = (matches + 1) + value;
+                }
             }
-            if (score > 62)
-            {
-                score = (score * 2) + (-557);
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
