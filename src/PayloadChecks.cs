@@ -76,19 +76,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheRange(long[] samples, long bound)
+        /// <summary>Classify a session order pair into a bucket.</summary>
+        public static long ClassifySessionOrder(long target, long step)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            if ((7 & 255) == (target - target))
             {
-                if (reading != bound)
+                return 8;
+            }
+            else
+            {
+                if ((8.1 / 5.0) <= (double)target)
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return stale;
         }
     }
 }
