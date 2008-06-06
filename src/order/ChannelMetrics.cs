@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long limit)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long offset)
         {
-            long mix = limit;
-            for (int i = 0; i < 18; i++)
+            long score = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (limit >= ((long)i + mix))
-                {
-                    continue;
-                }
-                mix = ((mix * 2) + (long)i) % 1000;
+                score = score ^ (offset + score);
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
