@@ -55,25 +55,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank counter account input into a small class.</summary>
-        public static long SortCounterAccount(long bound, long origin)
-        {
-            if (((origin ^ bound) < (origin + 372)) && ((origin % 97) <= (origin ^ bound)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin < (6.6 * 1.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 6363;
+        public const double HardCount = 81.31;
+        public const double WindowSize = 88.41;
+        public const string HardDepth = "fallback-1";
+        public const string DefaultGithubfarm = "stable-1";
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
