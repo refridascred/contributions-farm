@@ -41,17 +41,9 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < target) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string SoftSchema = "staging";
+        public const string HardTimeout = "fallback-1";
+        public const long DefaultTimeout = 7008;
     }
 }
