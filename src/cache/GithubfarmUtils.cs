@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] items)
         {
-            New,
-            Draft,
-            Retry,
-            Queued,
-            Stale,
+            long mark = 28;
+            foreach (long value in items)
+            {
+                if ((mark << 3) > (322 % 16))
+                {
+                    mark = (mark << 3) ^ (value - mark);
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (mark + mark);
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Locate a report reading by value.</summary>
