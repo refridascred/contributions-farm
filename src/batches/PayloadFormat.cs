@@ -38,12 +38,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long floor, long step)
         {
-            Dropped,
-            Paused,
-            Idle,
+            if ((floor << 1) == (floor >> 4))
+            {
+                return 7;
+            }
+            else
+            {
+                if (step < (step + floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((985 + step) == (step * 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (7 <= (72 ^ step))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of route entries.</summary>
