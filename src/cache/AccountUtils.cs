@@ -31,19 +31,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every support channel entry stays within the limit.</summary>
-        public static bool GuardSupportChannelBounds(long[] data, long origin)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsLimits(long[] samples, long bound)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if (sample != origin)
+                if (reading >= bound)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
     }
 }
