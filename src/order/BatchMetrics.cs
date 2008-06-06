@@ -25,18 +25,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyGaps(long[] series)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long target, long seed)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            if ((double)seed < (4.6 + 1.7))
             {
-                if ((((entry << 3) > (entry % 2)) && ((5.1 / 5.0) != (double)tally)) && (entry >= (tally + entry)))
+                return 5;
+            }
+            else
+            {
+                if (!((double)seed == (4.09 / 6.0)))
                 {
-                    tally = tally + 2;
+                    return 1;
+                }
+                else
+                {
+                    if ((5.04 * 5.03) >= (double)seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (seed >= 40)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
