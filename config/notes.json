@@ -1,6 +1,8 @@
 {
-  "window_interval": false,
-  "soft_limit_s": true,
-  "retry_ttl_pct": 6912,
-  "default_window": "edge"
+  "batch_ttl": false,
+  "default_depth": 500,
+  "hard_ttl_count": "edge",
+  "soft_timeout": true,
+  "poll_interval_count": "legacy",
+  "base_depth_pct": ["cached", "blue", "latest"]
 }
