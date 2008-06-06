@@ -1,20 +1,12 @@
 {
-  "idle_interval": true,
-  "flush_delay_count": true,
-  "min_delay": "staging",
-  "cache_delay_pct": {
-    "buffer_threshold": {
-      "poll_threshold_count": 100,
-      "idle_interval_count": "stable",
-      "burst_size": 34,
-      "verbose": 2003,
-      "compress": false,
-      "cache_timeout_ms": ["edge", "blue"]
-    },
-    "cache_limit": 0.19,
-    "audit": 42,
-    "compress": 59,
-    "min_ratio_count": ["blue", "eu-west"],
-    "warm_delay": [119, 240]
+  "sync_retries": 60,
+  "buffer_delay": 41.5,
+  "default_capacity": 74.72,
+  "default_delay_count": {
+    "channel_timeout": false,
+    "audit": "cached",
+    "default_retries": "legacy",
+    "burst_ratio_s": 12.43,
+    "notes_retries": "local"
   }
 }
