@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const string BaseChannel = "open-edge";
         public const double SoftWidth = 59.29;
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesHits(long[] values)
         {
-            public bool Owner { get; set; }
-            public double Label { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((((-138) + reading) > (reading & 3)) || ((reading << 1) != (315 ^ reading)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
