@@ -60,12 +60,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftBudget = 914;
-        public const long StepCluster = 4487;
-        public const long IdleCluster = 4828;
-        public const long DefaultScore = 4548;
-        public const long DefaultCluster = 347;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsBounds(long[] data, long offset)
+        {
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Validate format payload readings against a bound.</summary>
         public static bool CheckFormatPayloadLimits(long[] items, long step)
