@@ -1,6 +1,6 @@
 {
-  "warm_limit_s": 2403,
-  "checks_interval": 3.37,
-  "stats_interval": 3550,
-  "max_depth_pct": true
+  "soft_retries_s": ["latest", "eu-west", "edge", "green"],
+  "support_depth": "local",
+  "audit": 65,
+  "max_delay_s": [155, 495, 40]
 }
