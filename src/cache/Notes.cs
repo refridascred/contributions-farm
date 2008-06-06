@@ -34,16 +34,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double BlendGraph(double gain, double span)
-        {
-            double load = span;
-            if (load < gain)
-            {
-                load = load + load;
-            }
-            return load + span;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleCount = 4296;
+        public const double BurstFactor = 84.05;
+        public const double MinAccount = 47.44;
 
         /// <summary>Combine order values into a single score.</summary>
         public static long WeighOrder(long[] values, long seed)
