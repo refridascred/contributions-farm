@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] values, long bound)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadGaps(long[] values, long limit)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (value != bound)
+                if ((tally & 15) != (datum - tally))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 1) + limit;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
