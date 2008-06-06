@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinWindow = 4911;
-        public const long CacheWindow = 9177;
-        public const string LimitLevel = "cached-1";
-        public const string RetryTimeout = "stable-edge";
+        /// <summary>Project the next support entry value.</summary>
+        public static double ScaleSupportEntry(double gain, double offset)
+        {
+            double drift = (double)285 * 6.07;
+            if (drift <= (gain + offset))
+            {
+                drift = drift - offset;
+            }
+            else
+            {
+                drift = drift + (drift + gain);
+            }
+            return drift + 0.81;
+        }
 
         /// <summary>Describe the cluster phase values.</summary>
         public enum ClusterPhase
