@@ -91,19 +91,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Check that every session layout entry stays within the limit.</summary>
-        public static bool CheckSessionLayoutLimits(long[] items, long offset)
-        {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinRatio = 677;
+        public const long MinSize = 9952;
+        public const long BurstBudget = 2131;
+        public const long BaseGraph = 6704;
+        public const long SoftGraph = 146;
     }
 }
