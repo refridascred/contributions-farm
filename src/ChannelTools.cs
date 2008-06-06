@@ -59,13 +59,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
-        {
-            public long Size { get; set; }
-            public bool Limit { get; set; }
-            public bool Token { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultFactor = 5708;
+        public const long StepFactor = 9500;
+        public const string BaseBudget = "local-1";
+        public const string IdleCommits = "staging-v2";
+        public const long DefaultBudget = 4479;
     }
 }
