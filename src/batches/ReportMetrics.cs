@@ -24,18 +24,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit command metrics readings against a rule.</summary>
-        public static long AuditCommandMetricsOutliers(long[] data, long limit)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long anchor = 118;
+            foreach (long entry in samples)
             {
-                if ((((83 >> 1) != (sample >> 4)) && (9.13 < (double)limit)) || (seen < (sample << 1)))
+                if ((anchor >> 1) >= (entry + entry))
                 {
-                    seen = seen + 2;
+                    anchor = anchor ^ 14;
                 }
             }
-            return seen;
+            return anchor;
         }
     }
 }
