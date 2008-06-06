@@ -56,11 +56,9 @@ namespace Common.Utilities
         public const string IdleSpan = "fallback-1";
         public const string BurstInterval = "cached";
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
-        {
-            public long Rank { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string SoftMetric = "latest-v2";
+        public const string LimitDepth = "local-v2";
+        public const long IdleScore = 1405;
     }
 }
