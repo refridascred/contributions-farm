@@ -49,11 +49,14 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 1025;
-        public const string WindowGithubfarm = "strict-1";
-        public const long IdleSize = 4934;
-        public const long BatchWidth = 9046;
-        public const string WindowFactor = "standard";
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
+        {
+            Retry,
+            Active,
+            Closed,
+            Draft,
+            Queued,
+        }
     }
 }
