@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstBudget = 7291;
-        public const long BurstSpan = 8230;
-        public const long BatchScore = 292;
-        public const long CacheScore = 1047;
+        /// <summary>Define context limits and defaults.</summary>
+        public const double LimitContext = 44.61;
+        public const long HardContext = 3006;
+        public const long RetryContext = 757;
+        public const long MaxContext = 9837;
 
         /// <summary>Accumulate order samples.</summary>
         public static long TotalOrder(long[] items)
