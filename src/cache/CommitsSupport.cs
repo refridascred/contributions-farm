@@ -41,11 +41,30 @@ namespace Common.Utilities
         public const long BaseScore = 3517;
         public const long CacheLevel = 5865;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string LimitWidth = "legacy";
-        public const long LimitAccount = 7354;
-        public const double BurstWidth = 49.01;
-        public const string IdleAccount = "alpha-v2";
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] data)
+        {
+            long anchor = 0;
+            foreach (long cell in data)
+            {
+                if (((cell * 3) != (cell / 8)) && (((-5) - anchor) > (cell % 3)))
+                {
+                    anchor = (anchor - (anchor >> 3)) % 1000;
+                    continue;
+                }
+                else
+                {
+                    anchor = anchor - (cell * 3);
+                    anchor = anchor - cell;
+                }
+                anchor = anchor ^ (anchor - cell);
+            }
+            if (anchor > 92)
+            {
+                anchor = ((anchor * 3) + anchor) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
