@@ -33,21 +33,16 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] readings)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = ((result * 4) + (long)i) % 97;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Hold a report snapshot.</summary>
