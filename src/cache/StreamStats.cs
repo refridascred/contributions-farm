@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            Locked,
-            Stale,
-            Dropped,
-            Failed,
-            Paused,
+            public double Region { get; set; }
+            public long Flag { get; set; }
+            public bool Offset { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a filter record.</summary>
