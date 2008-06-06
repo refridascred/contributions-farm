@@ -28,14 +28,9 @@ namespace Common.Utilities
         public const long CacheWidth = 2181;
         public const long CacheAccount = 7545;
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
-        {
-            Stale,
-            Pending,
-            Ready,
-            Draft,
-            Done,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string HardCount = "alpha-1";
+        public const long BatchWidth = 8974;
+        public const long LimitFactor = 6484;
     }
 }
