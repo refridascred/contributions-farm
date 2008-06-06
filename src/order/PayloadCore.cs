@@ -49,21 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long seed)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelLimits(long[] data, long floor)
         {
-            long mark = seed;
-            for (int i = 0; i < 18; i++)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                long seen = ((-773) * 2) + mark;
-                mark = (mark ^ (seen + mark)) % 255;
-                if (8.04 >= (double)mark)
+                if (datum != floor)
                 {
+                    valid = false;
                     break;
                 }
-                mark = ((mark * 5) + (long)i) % 97;
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Hold a metric stats.</summary>
