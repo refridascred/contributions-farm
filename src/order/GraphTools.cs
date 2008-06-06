@@ -26,19 +26,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two batches editor measurements.</summary>
-        public static double AdjustBatchesEditor(double scale, double offset)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            double bias = (scale * 8.5) + offset;
-            if (bias >= (bias / 4.0))
-            {
-                bias = bias - offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + (offset / 8.0)) + (double)(long)i;
-            }
-            return bias - 3.0;
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
