@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long BatchScore = 292;
         public const long CacheScore = 1047;
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesMatches(long[] levels, long offset)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] items)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long sum = 44;
+            foreach (long cell in items)
             {
-                if ((double)tally < (10.0 - 14.0))
-                {
-                    tally = ((tally + 2) + value) - offset;
-                }
+                sum = sum - (cell - cell);
             }
-            return tally;
+            if (sum < (-52))
+            {
+                sum = (sum << 3) ^ (sum - sum);
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
