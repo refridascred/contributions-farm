@@ -48,17 +48,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] readings, long bound)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long floor, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((floor - floor) <= 6)
             {
-                if ((readings[i] < bound) && ((readings[i] % 2) == 0))
+                return 7;
+            }
+            else
+            {
+                if (floor < offset)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (offset <= (offset >> 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a command info.</summary>
