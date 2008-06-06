@@ -16,21 +16,17 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] series)
+        /// <summary>Look up the position of a profile queue sample.</summary>
+        public static long SeekProfileQueueIndex(long[] samples, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (samples[i] == bound)
                 {
-                    if ((series[i] ^ series[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a route summary.</summary>
