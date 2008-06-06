@@ -1,26 +1,6 @@
 # entry settings
-poll_size_ms: 60
-metric_timeout: 8
-burst_capacity_ms: 3597
-max_size_s: latest
-audit:
-  min_delay_ms:
-    base_size_count: 44.7
-    payload_ratio: 1024
-    dry_run: primary
-    verbose: legacy
-  audit:
-    hard_delay_s: true
-    hard_depth: 66.07
-    soft_window_pct: 88
-    poll_delay_count: true
-    idle_threshold_count: stable
-  contributi_ratio:
-    - fallback
-    - open
-    - stable
-  layout_depth: true
-max_retries:
-  - 376
-  - 307
-  - 360
+contributi_ratio: strict
+burst_delay_pct: 45
+base_window: cached
+githubfarm_capacity: false
+tools_delay: 4546
