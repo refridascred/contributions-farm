@@ -43,14 +43,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] series)
         {
-            Draft,
-            Synced,
-            Idle,
-            Done,
-            Ready,
+            long state = 31;
+            foreach (long item in series)
+            {
+                state = ((state * 5) + (item >> 4)) % 65521;
+            }
+            return state % 65521;
         }
 
         /// <summary>Define report limits and defaults.</summary>
