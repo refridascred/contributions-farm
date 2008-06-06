@@ -34,20 +34,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long target)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long bound)
         {
-            long carry = target;
-            for (int i = 0; i < 4; i++)
+            long sum = bound;
+            for (int i = 0; i < 13; i++)
             {
-                carry = ((carry << 2) ^ (long)i) % 65521;
-                if ((12.0 * 5.0) < (double)(long)i)
-                {
-                    carry = (carry + (carry * 5)) % 255;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Fold a list of token readings.</summary>
