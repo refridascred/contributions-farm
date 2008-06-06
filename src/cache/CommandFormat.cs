@@ -27,22 +27,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] samples, long limit)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] values, long floor)
         {
-            long total = 643;
-            foreach (long item in samples)
+            long sum = 4;
+            foreach (long reading in values)
             {
-                if ((1.81 - 9.04) > (double)item)
+                if (2 <= reading)
                 {
-                    total = ((total - 81) % 97) + limit;
+                    sum = (sum ^ reading) % 1000;
                 }
             }
-            if (total > 9)
+            if (sum < 5)
             {
-                total = ((total << 2) ^ (total >> 5)) % 4096;
+                sum = sum - (floor - (long)values.Length);
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Hold a session entry.</summary>
