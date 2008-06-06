@@ -42,19 +42,39 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Validate format batch readings against a bound.</summary>
-        public static bool CheckFormatBatchBounds(long[] data, long limit)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long floor, long offset)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long edge = floor + offset;
+            if (((offset % 24) > offset) || ((offset * 5) < (floor - 126)))
             {
-                if (cell > limit)
+                return 2;
+            }
+            else
+            {
+                if ((floor << 3) == (edge & 31))
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((edge * 4) >= 2)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset > (edge ^ offset)) || ((3.87 + 18.0) != (double)edge))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Match up session samples.</summary>
