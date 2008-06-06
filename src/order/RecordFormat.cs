@@ -64,10 +64,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowSize = 5564;
-        public const long MinFactor = 5164;
-        public const long MinDepth = 423;
+        /// <summary>Compare every pair of entry contributi readings.</summary>
+        public static long PairEntryContributiCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long AuditSupportGaps(long[] samples, long origin)
