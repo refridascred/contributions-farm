@@ -57,11 +57,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultBudget = 5737;
-        public const double SoftSchema = 57.32;
-        public const long IdleDepth = 3831;
-        public const double StepSchema = 47.74;
-        public const long BaseSchema = 8081;
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
