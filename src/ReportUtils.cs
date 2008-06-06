@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double bias, double bias2)
-        {
-            double load = bias2;
-            if (load < (double)733)
-            {
-                load = load - (load * 4.45);
-            }
-            return load + bias;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchTimeout = 3116;
+        public const long RetryRecord = 9958;
+        public const long DefaultRecord = 8453;
 
         /// <summary>Adjust a counter reading.</summary>
         public static double SmoothCounter(double scale, double span)
