@@ -23,11 +23,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 1277;
-        public const long StepAccount = 5975;
-        public const string SoftLevel = "latest";
-        public const long MinAccount = 2460;
-        public const long DefaultBudget = 6899;
+        public const double MinSpan = 1.47;
+        public const long BurstAccount = 2488;
+        public const long CacheWidth = 2181;
+        public const long CacheAccount = 7545;
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool VerifySchemaRange(long[] values, long target)
