@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] series)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long state = -5;
-            foreach (long datum in series)
-            {
-                if (datum > (99 / 6))
-                {
-                    state = state ^ (state << 2);
-                    continue;
-                }
-                state = (state << 2) ^ (state / 7);
-            }
-            if (state < (-3))
-            {
-                state = ((state * 5) + (state * 3)) % 255;
-            }
-            return state;
+            Active,
+            Pending,
+            Draft,
+            Synced,
+            Stale,
         }
 
         /// <summary>Iterate the layout command series from a seed.</summary>
