@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long seed, long offset)
+        /// <summary>Measure how many counter route samples are out of range.</summary>
+        public static long TallyCounterRouteMatches(long[] levels)
         {
-            if ((offset * 4) > (offset / 5))
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (offset < (7 ^ seed))
+                if ((840 >> 1) == (tally - tally))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    tally = (tally + 3) + sample;
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
