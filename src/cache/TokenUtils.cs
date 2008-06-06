@@ -13,20 +13,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchBounds(long[] values, long target)
-        {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftInterval = 6224;
+        public const long MaxScore = 1565;
+        public const double BaseBatches = 38.4;
+        public const long SoftLevel = 2095;
+        public const long CacheBudget = 1107;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long HardContributi = 8162;
