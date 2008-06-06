@@ -15,19 +15,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double AdjustProfile(double bias, double span)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            double ratio = 8.2 + span;
-            if (ratio > (double)7)
-            {
-                ratio = ratio - (double)2;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (bias / 6.0)) + (double)(long)i;
-            }
-            return ratio - (span - bias);
+            public double Count { get; set; }
+            public double Flag { get; set; }
+            public string Weight { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
