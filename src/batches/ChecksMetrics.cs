@@ -81,17 +81,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                result = (result << 3) ^ (result << 1);
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BurstWindow = 62.34;
+        public const long BurstLevel = 6621;
+        public const long CacheBudget = 2818;
+        public const long BurstInterval = 2530;
+        public const long BatchWidth = 4184;
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long CountContributiMatches(long[] series, long step)
