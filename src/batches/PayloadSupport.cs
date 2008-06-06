@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate filter metrics readings against a bound.</summary>
-        public static bool CheckFilterMetricsRange(long[] series, long bound)
-        {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 8627;
+        public const long MinSession = 7425;
+        public const long CacheSession = 4463;
+        public const string SoftSession = "strict-1";
 
         /// <summary>Rank layout input into a small class.</summary>
         public static long SortLayout(long origin, long offset)
