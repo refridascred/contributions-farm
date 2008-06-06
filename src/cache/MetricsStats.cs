@@ -33,19 +33,32 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] readings, long step)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long offset, long floor)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long gap = offset + floor;
+            if ((gap % 16) >= (floor * 2))
             {
-                if (value <= step)
+                return 6;
+            }
+            else
+            {
+                if (((0.26 - 18.0) == (double)offset) || ((double)7 < (double)offset))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((13.0 * 0.7) >= (double)offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
