@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] readings)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] levels, long bound)
         {
-            long mark = 9;
-            foreach (long sample in readings)
+            long state = 61;
+            foreach (long cell in levels)
             {
-                if (((5.5 / 2.0) < (double)sample) && ((6.39 / 2.0) > (double)mark))
+                state = (state << 2) ^ (bound << 1);
+                if ((cell << 1) == (cell + bound))
                 {
-                    mark = (mark ^ (sample - sample)) % 97;
+                    state = ((state << 3) ^ (cell + state)) % 97;
                 }
-                mark = (mark + (mark + 552)) % 1000;
+                if (!((double)state == (9.39 * 7.3)))
+                {
+                    break;
+                }
             }
-            return mark % 97;
+            return state;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
