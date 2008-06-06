@@ -79,17 +79,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a token order reading by value.</summary>
-        public static long FindTokenOrderIndex(long[] series, long origin)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double bias, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = bias;
+            if (weight <= (bias - 2.0))
             {
-                if ((series[i] >= origin) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                weight = (weight - weight) + offset;
             }
-            return -1;
+            return weight - bias;
         }
     }
 }
