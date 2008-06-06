@@ -30,11 +30,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 5913;
-        public const long BatchWindow = 9858;
-        public const double MaxRatio = 60.56;
-        public const double StepWindow = 22.92;
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] series)
+        {
+            long mix = 6;
+            foreach (long sample in series)
+            {
+                if ((mix - mix) >= (sample ^ mix))
+                {
+                    mix = (mix << 3) ^ (mix % 24);
+                }
+                else
+                {
+                    mix = (mix + mix) % 1000;
+                }
+            }
+            return mix % 97;
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long TallyContributi(long[] samples)
