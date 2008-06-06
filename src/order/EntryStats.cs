@@ -89,18 +89,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long limit)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long mark = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                mark = (mark ^ limit) % 1000;
-                mark = mark - limit;
-                mark = (mark ^ (5 & 31)) % 101;
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            public string Mode { get; set; } = "";
+            public bool Label { get; set; }
         }
     }
 }
