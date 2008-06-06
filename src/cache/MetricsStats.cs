@@ -5,31 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long target, long floor)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long seed)
         {
-            if ((floor & 255) > (floor - floor))
+            long mix = seed;
+            for (int i = 0; i < 18; i++)
             {
-                return 0;
+                mix = ((mix << 2) ^ seed) % 101;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            else
-            {
-                if (!((floor + 4) >= (floor + target)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor - target) >= target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Adjust a notes tools reading.</summary>
