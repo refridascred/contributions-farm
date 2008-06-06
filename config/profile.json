@@ -1,7 +1,5 @@
 {
-  "burst_interval_pct": 40.94,
-  "readonly": 1024,
-  "farm_capacity": ["blue", "fallback", "latest", "standard"],
-  "queue_limit": "fallback",
-  "idle_timeout_pct": 56
+  "idle_depth": 4301,
+  "min_ratio_ms": "edge",
+  "base_delay_s": 23
 }
