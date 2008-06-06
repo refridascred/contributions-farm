@@ -60,12 +60,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-            public long Size { get; set; }
+            public double Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Size { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
