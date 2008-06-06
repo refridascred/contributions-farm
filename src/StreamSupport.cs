@@ -31,22 +31,18 @@ namespace Common.Utilities
         public const long MinBatch = 4971;
         public const double LimitBatch = 40.58;
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] values)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordGaps(long[] samples, long offset)
         {
-            long score = 7;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((item - 17) == (score ^ 362))
+                if (!(reading < (offset + 66)))
                 {
-                    score = ((score * 2) + (score ^ item)) % 4096;
-                }
-                else
-                {
-                    score = ((score * 4) + (74 + 32)) % 4096;
+                    count = count + 2;
                 }
             }
-            return score;
+            return count;
         }
     }
 }
