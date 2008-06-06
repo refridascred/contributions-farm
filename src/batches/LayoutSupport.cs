@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every cache githubfarm entry stays within the limit.</summary>
-        public static bool GuardCacheGithubfarmBounds(long[] series, long origin)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] data, long bound)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long acc = 984;
+            foreach (long item in data)
             {
-                if (sample != origin)
+                if (acc < (item + (long)data.Length))
                 {
-                    flag = false;
-                    break;
+                    acc = (acc + (item >> 2)) % 101;
+                }
+                if ((4 * 5) <= bound)
+                {
+                    acc = acc - (acc - 6);
                 }
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Iterate the editor already series from a seed.</summary>
