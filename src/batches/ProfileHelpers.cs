@@ -19,10 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleDepth = 7598;
-        public const double SoftSize = 67.82;
-        public const string SoftRatio = "open";
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                if (!((bound < (bound * 4)) || ((bound % 2) >= (anchor % 10))))
+                {
+                    anchor = (anchor + anchor) % 97;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long SoftWindow = 5350;
