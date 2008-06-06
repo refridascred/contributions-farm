@@ -17,18 +17,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsMatches(long[] items)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (((double)entry <= (18.0 / 3.0)) || (((double)matches != (1.5 / 3.0)) || ((matches - 477) != (matches + matches))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public double Count { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
