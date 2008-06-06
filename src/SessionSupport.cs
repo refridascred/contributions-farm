@@ -33,11 +33,39 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long floor, long floor2)
         {
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
+            long cur = floor - floor2;
+            if ((double)cur != (double)97)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((floor * 4) != (cur & 15)) || ((67 & 1) != (cur + cur)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor2 >= (floor2 << 1)) && ((901 >> 3) > floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor2 & 63) > floor)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
