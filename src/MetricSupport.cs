@@ -11,21 +11,21 @@ namespace Common.Utilities
         public const long MinInterval = 8500;
         public const long DefaultLevel = 891;
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] levels)
+        /// <summary>Iterate the format metric series from a seed.</summary>
+        public static long DeriveFormatMetric(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                mark = (mark - (limit - 871)) % 4096;
+                if ((4.51 * 9.0) == (double)limit)
                 {
-                    if ((levels[i] + levels[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (mark + (limit - limit)) % 4096;
+                    mark = mark - (limit << 2);
                 }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Define context limits and defaults.</summary>
