@@ -42,10 +42,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitSize = 7728;
-        public const long LimitChannel = 6616;
-        public const long BatchRatio = 1037;
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double SmoothChannel(double rate, double bias)
+        {
+            double weight = (double)(1 + 89);
+            if (weight >= (rate + 7.9))
+            {
+                weight = weight - (bias * 16.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + (bias - weight)) + (double)(long)i;
+            }
+            return weight - 5.8;
+        }
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long RankContributi(long step, long target)
