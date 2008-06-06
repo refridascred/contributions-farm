@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long step, long origin)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiGaps(long[] data)
         {
-            if ((step * 4) != (117 * 2))
+            long hits = 0;
+            foreach (long cell in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((8.05 / 4.0) <= (double)origin)
+                if (6.42 >= (double)cell)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((17.0 < (double)step) && ((step + origin) < origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Adjust a metric record reading.</summary>
