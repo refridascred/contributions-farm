@@ -22,31 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long target, long step)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandGaps(long[] samples)
         {
-            if (((step & 1) <= step) && (step <= (step ^ 525)))
+            long count = 0;
+            foreach (long value in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step / 6) < step)
+                if ((((value - count) >= (value >> 2)) && ((2 - value) > (15 / 4))) && !(value < (count % 100)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((18.0 / 5.0) > (double)step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
