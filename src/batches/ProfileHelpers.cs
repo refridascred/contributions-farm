@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] items)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long floor)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long carry = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (((matches ^ (-273)) >= matches) && ((7.77 + 1.1) < (double)reading))
+                long span = (6 - 3) - carry;
+                if (((span / 5) != ((long)i * 5)) && ((-578) >= (floor + floor)))
                 {
-                    matches = matches + 1;
+                    span = (span << 2) ^ ((long)i + 680);
+                    break;
                 }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
