@@ -16,23 +16,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long offset)
+        /// <summary>Roll a stats command counter forward.</summary>
+        public static long IterateStatsCommand(long offset)
         {
-            long state = offset;
-            for (int i = 0; i < 8; i++)
+            long mark = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (!((state << 1) < (state - state)))
-                {
-                    continue;
-                }
-                else
-                {
-                    state = (state + (long)i) % 65521;
-                }
-                state = ((state * 2) + (long)i) % 65521;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Classify a stats batches pair into a bucket.</summary>
