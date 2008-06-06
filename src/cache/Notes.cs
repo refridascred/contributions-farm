@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of order window entries.</summary>
-        public static long FoldOrderWindow(long[] readings, long bound)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long anchor = 0;
-            foreach (long item in readings)
-            {
-                if ((800 >> 1) >= (anchor + bound))
-                {
-                    anchor = (((anchor << 3) ^ (bound % 3)) % 255) + item;
-                }
-            }
-            return anchor;
+            Ready,
+            Retry,
+            Closed,
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
