@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] levels)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long result = 42;
-            foreach (long sample in levels)
-            {
-                result = (result << 2) ^ (sample / 2);
-                if (!((sample & 63) >= (result - sample)))
-                {
-                    result = ((result << 3) ^ (sample + result)) % 1000;
-                }
-            }
-            if (result < 5)
-            {
-                result = (result - (result / 4)) % 1000;
-            }
-            return result;
+            public long Level { get; set; }
+            public bool Weight { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
