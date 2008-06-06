@@ -1,5 +1,20 @@
 {
-  "dry_run": [312, 322, 108, 336],
-  "min_depth": 73.27,
-  "readonly": true
+  "idle_interval": true,
+  "flush_delay_count": true,
+  "min_delay": "staging",
+  "cache_delay_pct": {
+    "buffer_threshold": {
+      "poll_threshold_count": 100,
+      "idle_interval_count": "stable",
+      "burst_size": 34,
+      "verbose": 2003,
+      "compress": false,
+      "cache_timeout_ms": ["edge", "blue"]
+    },
+    "cache_limit": 0.19,
+    "audit": 42,
+    "compress": 59,
+    "min_ratio_count": ["blue", "eu-west"],
+    "warm_delay": [119, 240]
+  }
 }
