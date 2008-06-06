@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] levels, long offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionGaps(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((levels[i] > offset) && ((levels[i] % 5) != 0))
+                if ((count + count) < ((-5) + count))
                 {
-                    return (long)i;
+                    count = (count + 1) + reading;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
