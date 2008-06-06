@@ -46,16 +46,13 @@ namespace Common.Utilities
             return ratio + (double)6;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] series, long limit)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long carry = -187;
-            foreach (long datum in series)
-            {
-                carry = (carry - (carry / 6)) - limit;
-                carry = ((carry << 3) ^ (datum - carry)) % 255;
-            }
-            return carry % 4096;
+            public bool Level { get; set; }
+            public bool Weight { get; set; }
+            public string Token { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
