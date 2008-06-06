@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
+            Dropped,
+            Locked,
+            Synced,
+            Ready,
+            Queued,
         }
 
         /// <summary>Audit farm checks readings against a rule.</summary>
