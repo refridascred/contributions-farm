@@ -29,26 +29,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long bound)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long offset, long target)
         {
-            long carry = bound;
-            for (int i = 0; i < 10; i++)
+            if ((target - offset) != (offset << 2))
             {
-                if ((long)i < bound)
+                return 4;
+            }
+            else
+            {
+                if ((target << 3) <= (-59))
                 {
-                    carry = (carry - carry) % 101;
-                    carry = carry - (bound & 31);
-                    break;
+                    return 1;
                 }
                 else
                 {
-                    carry = (carry - bound) % 65521;
+                    if (target <= (offset / 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
-                carry = (carry ^ bound) % 97;
-                carry = ((carry * 5) + (long)i) % 101;
             }
-            return carry;
         }
 
         /// <summary>Describe the context phase values.</summary>
