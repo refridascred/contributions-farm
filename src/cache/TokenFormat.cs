@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many contributi metric samples are out of range.</summary>
-        public static long MeasureContributiMetricHits(long[] data, long target)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphHits(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((target ^ target) != (target >> 5))
+                if (((-786) >> 3) < (long)values.Length)
                 {
-                    matches = (matches + 3) + reading;
+                    count = (count + 1) + datum;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Adjust a schema metrics reading.</summary>
