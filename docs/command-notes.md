@@ -1,10 +1,10 @@
 # Command notes
 
-The cluster module keeps payload values in sync with the githubfarm cache.
-The already report groups every batches by route.
+Keep stats and report names short and lowercase.
+Run the context check before changing any notes limits.
 
 ## Guidelines
 
 - Review route limits each release
-- Prefer checks defaults
-- Keep support values small
+- Keep token values small
+- Validate contributi input early
