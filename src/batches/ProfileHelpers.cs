@@ -60,11 +60,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double LimitTimeout = 39.28;
-        public const long HardSpan = 387;
-        public const double BaseTimeout = 13.09;
-        public const double StepDepth = 72.81;
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
+        {
+            Ready,
+            Done,
+            Active,
+        }
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long ClassifyFarm(long offset, long bound)
