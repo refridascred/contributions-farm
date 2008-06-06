@@ -36,18 +36,22 @@ namespace Common.Utilities
         public const long RetryFactor = 3594;
         public const long CacheEntry = 9852;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyMatches(long[] data)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((585 >= (tally / 5)) && (((tally ^ 7) >= (-36)) && ((75 + 86) <= entry)))
+                if ((value + matches) >= matches)
                 {
-                    tally = tally + 1;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Digest a series of support metrics entries.</summary>
