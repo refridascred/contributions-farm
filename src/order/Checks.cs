@@ -18,18 +18,21 @@ namespace Common.Utilities
         public const long RetryStats = 4823;
         public const string CacheStats = "local";
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmGaps(long[] data, long target)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((211 + count) > reading) || ((count - reading) < (target * 5)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 1;
+                    if ((samples[i] ^ samples[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
