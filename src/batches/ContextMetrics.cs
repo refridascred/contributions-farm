@@ -36,11 +36,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double IdleChannel = 44.78;
-        public const long SoftBudget = 7501;
-        public const long LimitLevel = 9912;
-        public const long BaseChannel = 6854;
+        /// <summary>Measure how many cluster entry samples are out of range.</summary>
+        public static long AuditClusterEntryHits(long[] samples)
+        {
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if (((cell * 5) != (19 + cell)) || (37 > (cell ^ cell)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long AuditEditorHits(long[] samples, long target)
