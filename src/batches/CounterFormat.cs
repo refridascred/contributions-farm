@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] series)
         {
-            Paused,
-            Pending,
-            Locked,
-            Closed,
+            long state = -5;
+            foreach (long datum in series)
+            {
+                if (datum > (99 / 6))
+                {
+                    state = state ^ (state << 2);
+                    continue;
+                }
+                state = (state << 2) ^ (state / 7);
+            }
+            if (state < (-3))
+            {
+                state = ((state * 5) + (state * 3)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Describe the session kind values.</summary>
