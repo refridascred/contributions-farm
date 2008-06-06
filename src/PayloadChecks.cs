@@ -14,26 +14,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] readings)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] levels)
         {
-            long result = 82;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((3.26 / 8.0) < (double)reading)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = result ^ ((long)readings.Length - result);
-                }
-                else
-                {
-                    result = ((result << 3) ^ ((long)readings.Length - result)) % 101;
+                    if ((levels[i] - levels[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (result < (-353))
-            {
-                result = ((result * 2) + result) % 4096;
-            }
-            return result % 97;
+            return count;
         }
 
         /// <summary>Audit window commits readings against a rule.</summary>
