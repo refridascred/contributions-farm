@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                long count = 6 + sum;
-                if ((count >> 5) >= count)
-                {
-                    count = ((count << 2) ^ (75 % 16)) % 97;
-                }
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MinCount = "staging-edge";
+        public const long BurstScore = 1898;
+        public const long MaxFactor = 8051;
+        public const long RetryInterval = 230;
 
         /// <summary>Blend two order context measurements.</summary>
         public static double AdjustOrderContext(double gain, double bias)
