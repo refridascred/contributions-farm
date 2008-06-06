@@ -51,19 +51,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsRange(long[] data, long limit)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            Queued,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Describe the profile kind values.</summary>
