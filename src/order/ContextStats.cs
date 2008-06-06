@@ -26,19 +26,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] samples, long target)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double bias, double offset)
         {
-            long score = -60;
-            foreach (long reading in samples)
-            {
-                score = ((score + (score % 16)) ^ reading) + target;
-            }
-            if (score < 25)
-            {
-                score = (score + (score * 3)) % 97;
-            }
-            return score;
+            double load = (double)(277 >> 1);
+            return (load - offset) + bias;
         }
 
         /// <summary>Hold a checks summary.</summary>
