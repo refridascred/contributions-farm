@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
-        {
-            public long Count { get; set; }
-            public double Stamp { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 5878;
+        public const long WindowSchema = 344;
+        public const long BatchSchema = 7489;
 
         /// <summary>Match up profile samples.</summary>
         public static long CompareProfileCount(long[] items)
