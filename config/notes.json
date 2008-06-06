@@ -1,7 +1,6 @@
 {
-  "dry_run": ["open", "latest"],
-  "poll_ratio_s": "local",
-  "flush_limit_ms": [481, 270],
-  "audit": true,
-  "stream_ttl": 4
+  "window_interval": false,
+  "soft_limit_s": true,
+  "retry_ttl_pct": 6912,
+  "default_window": "edge"
 }
