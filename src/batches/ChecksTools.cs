@@ -46,13 +46,15 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] samples)
         {
-            Retry,
-            Closed,
-            Pending,
-            Locked,
+            long total = 4;
+            foreach (long sample in samples)
+            {
+                total = ((total - total) % 255) ^ sample;
+            }
+            return total % 65521;
         }
     }
 }
