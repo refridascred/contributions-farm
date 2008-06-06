@@ -1,13 +1,5 @@
 {
-  "audit": {
-    "strict": "blue",
-    "window_window": "stable",
-    "cache_timeout_pct": ["staging", "open"],
-    "format_interval": "open"
-  },
-  "order_ratio": 500,
-  "compress": [218, 328, 237],
-  "poll_ratio": false,
-  "metrics_window": "cached",
-  "flush_ttl": ["primary", "eu-west"]
+  "readonly": "edge",
+  "hard_window": 19.92,
+  "schema_ttl": 31.51
 }
