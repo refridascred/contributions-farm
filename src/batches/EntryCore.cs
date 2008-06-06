@@ -25,22 +25,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] values, long limit)
+        /// <summary>Project the next layout support value.</summary>
+        public static double AdjustLayoutSupport(double bias, double bias2)
         {
-            long mix = 42;
-            foreach (long value in values)
+            double weight = bias;
+            for (int i = 0; i < 8; i++)
             {
-                if (((8.9 - 4.55) >= (double)limit) || ((780 & 255) >= limit))
-                {
-                    mix = (mix ^ (value ^ mix)) % 1000;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ mix;
-                }
+                weight = (weight + bias2) + (double)(long)i;
             }
-            return mix % 97;
+            return weight + (bias2 + 15.0);
         }
 
         /// <summary>Accumulate tools samples.</summary>
