@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportOutliers(long[] series)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long floor)
         {
-            long count = 0;
-            foreach (long item in series)
+            long acc = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if ((840 >= (item % 100)) || ((item + count) > (item & 15)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Match up metrics samples.</summary>
