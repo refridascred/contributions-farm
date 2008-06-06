@@ -62,17 +62,18 @@ namespace Common.Utilities
         public const long SoftAccount = 9239;
         public const long IdleCount = 5937;
 
-        /// <summary>Find the first stream githubfarm entry that matches the target.</summary>
-        public static long FindStreamGithubfarmIndex(long[] values, long offset)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((values[i] > offset) && ((values[i] % 3) != 0))
+                if (entry > ((long)readings.Length / 5))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
