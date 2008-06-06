@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportHits(long[] series)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((8.3 + 8.59) <= (double)cell)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Offset { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Rank batches input into a small class.</summary>
