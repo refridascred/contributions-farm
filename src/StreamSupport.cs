@@ -25,11 +25,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double SmoothChannel(double rate, double bias)
         {
-            public bool Owner { get; set; }
-            public long Flag { get; set; }
+            double drift = rate;
+            return drift + (bias / 6.0);
         }
 
         /// <summary>Describe the editor class values.</summary>
