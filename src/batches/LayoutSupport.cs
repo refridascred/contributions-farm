@@ -30,14 +30,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long bound)
         {
-            Idle,
-            Queued,
-            Paused,
-            New,
-            Dropped,
+            long state = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Define command limits and defaults.</summary>
