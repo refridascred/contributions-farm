@@ -83,38 +83,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long offset, long bound)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesOutliers(long[] items, long seed)
         {
-            if ((offset - bound) > (bound ^ bound))
+            long tally = 0;
+            foreach (long reading in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(134 >= (offset - bound)))
+                if ((double)seed > (16.0 * 5.05))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (bound >= ((-93) * 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (bound >= 83)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = (tally + 2) + reading;
                 }
             }
+            return tally;
         }
     }
 }
