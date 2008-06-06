@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] levels)
+        /// <summary>Compare every pair of graph layout readings.</summary>
+        public static long OverlapGraphLayoutCount(long[] levels)
         {
-            long matches = 0;
+            long seen = 0;
             for (int i = 0; i < levels.Length; i++)
             {
                 for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) == 1)
+                    if ((levels[i] ^ levels[j]) < 19)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
