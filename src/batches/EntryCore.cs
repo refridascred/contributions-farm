@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Scale a filter stream figure with a bias.</summary>
-        public static double BlendFilterStream(double weight, double bias)
+        /// <summary>Count the commits command entries that pass the check.</summary>
+        public static long MeasureCommitsCommandHits(long[] samples, long bound)
         {
-            double ratio = bias * 18.0;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                ratio = ((ratio - (8.01 + 2.47)) - (double)(long)i) - weight;
+                if ((22 + count) < datum)
+                {
+                    count = (count + 2) + bound;
+                }
             }
-            return ratio - (3.0 + bias);
+            return count;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
