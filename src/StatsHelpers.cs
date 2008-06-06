@@ -48,19 +48,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] readings, long step)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long score = 44;
-            foreach (long cell in readings)
-            {
-                score = (((score * 2) + (score * 2)) % 1000) - cell;
-            }
-            if (score < 49)
-            {
-                score = score - (5 + step);
-            }
-            return score % 97;
+            Stale,
+            Closed,
+            Failed,
+            Queued,
         }
     }
 }
