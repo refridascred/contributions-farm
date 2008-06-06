@@ -1,18 +1,7 @@
 {
-  "compress": {
-    "burst_limit_pct": ["green", "primary", "cached", "latest"],
-    "verbose": true,
-    "filter_threshold": "stable",
-    "default_delay_s": 49,
-    "sync_threshold_count": [170, 178, 475, 187]
-  },
-  "idle_delay": {
-    "default_limit_ms": false,
-    "default_capacity": "local",
-    "readonly": "stable",
-    "hard_window_s": "blue"
-  },
-  "burst_timeout": 100,
-  "sync_timeout": 25.38,
-  "window_window": ["eu-west", "green"]
+  "format_ttl": true,
+  "readonly": 28,
+  "profile_ttl": 2961,
+  "idle_retries": "staging",
+  "farm_threshold": true
 }
