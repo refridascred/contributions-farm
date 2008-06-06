@@ -37,21 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long OverlapFormatCount(long[] data)
+        /// <summary>Validate notes cache readings against a bound.</summary>
+        public static bool GuardNotesCacheBounds(long[] data, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long value in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value > target)
                 {
-                    if ((data[i] - data[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
