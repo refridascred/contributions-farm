@@ -16,22 +16,21 @@ namespace Common.Utilities
             return ratio + (double)6;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionHits(long[] series, long target)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] values)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((seen % 5) < (item / 3)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 3) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((values[i] + values[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
