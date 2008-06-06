@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheStream = 2011;
-        public const long DefaultSize = 5977;
-        public const double HardLevel = 92.62;
-        public const string DefaultStream = "standard-edge";
-        public const string BurstRatio = "fallback-1";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchSize = 4731;
+        public const long RetryCount = 611;
+        public const double WindowFilter = 4.9;
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long TallyAlreadyMatches(long[] items, long seed)
