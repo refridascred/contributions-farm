@@ -11,12 +11,14 @@ namespace Common.Utilities
         public const string LimitLevel = "cached-1";
         public const string RetryTimeout = "stable-edge";
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double HardWidth = 26.89;
-        public const double StepStats = 42.41;
-        public const long HardStats = 1997;
-        public const long RetryStats = 4823;
-        public const string CacheStats = "local";
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
+        {
+            Failed,
+            Queued,
+            Locked,
+            New,
+        }
 
         /// <summary>Blend two buffer measurements.</summary>
         public static double ScaleBuffer(double scale, double offset)
