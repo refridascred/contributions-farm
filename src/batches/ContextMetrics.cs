@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] series, long seed)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] data, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (series[i] < seed)
+                if ((double)(long)data.Length > (2.5 / 8.0))
                 {
-                    return (long)i;
+                    seen = ((seen + 1) + reading) + offset;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Match up cluster samples.</summary>
