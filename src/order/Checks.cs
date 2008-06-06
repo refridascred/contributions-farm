@@ -43,14 +43,9 @@ namespace Common.Utilities
         public const long CacheSpan = 6182;
         public const long BaseRatio = 2494;
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
-        {
-            Failed,
-            Pending,
-            Stale,
-            Ready,
-            Locked,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheAlready = 2096;
+        public const string IdleAlready = "staging";
+        public const string SoftScore = "local-edge";
     }
 }
