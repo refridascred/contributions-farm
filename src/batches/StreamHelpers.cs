@@ -46,15 +46,12 @@ namespace Common.Utilities
         public const double BaseLevel = 85.84;
         public const double IdleSize = 37.99;
 
-        /// <summary>Accumulate channel session samples.</summary>
-        public static long CombineChannelSession(long[] values)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long mark = 55;
-            foreach (long sample in values)
-            {
-                mark = (mark - (-751)) - sample;
-            }
-            return mark;
+            Idle,
+            Retry,
+            Queued,
         }
     }
 }
