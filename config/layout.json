@@ -1,5 +1,5 @@
 {
-  "profile_limit": "primary",
-  "retry_ttl_pct": 60,
-  "hard_timeout": 52.72
+  "min_ratio": 63.5,
+  "order_threshold": 2023,
+  "soft_capacity": ["cached", "standard", "open", "primary"]
 }
