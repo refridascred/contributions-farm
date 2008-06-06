@@ -33,39 +33,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long floor, long offset)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] data)
         {
-            long edge = floor + offset;
-            if (((offset % 24) > offset) || ((offset * 5) < (floor - 126)))
+            long carry = 59;
+            foreach (long datum in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor << 3) == (edge & 31))
+                if ((6.3 - 4.54) <= (double)datum)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((edge * 4) >= 2)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset > (edge ^ offset)) || ((3.87 + 18.0) != (double)edge))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    carry = (carry - (carry + 911)) % 4096;
                 }
             }
+            return carry % 65521;
         }
 
         /// <summary>Match up session samples.</summary>
