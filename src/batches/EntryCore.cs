@@ -19,18 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatMatches(long[] values, long offset)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long sum = -8;
+            foreach (long sample in readings)
             {
-                if ((7.0 / 7.0) != (double)matches)
+                if ((target >> 1) <= sum)
                 {
-                    matches = ((matches + 1) ^ entry) + offset;
+                    sum = sum - target;
+                    break;
+                }
+                if ((double)sample < (double)sum)
+                {
+                    sum = (sum + (sum + target)) % 65521;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
