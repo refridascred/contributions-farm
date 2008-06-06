@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BurstSize = "strict-1";
-        public const long MinSize = 5195;
-        public const long BaseTimeout = 1295;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportRange(long[] data, long floor)
+        {
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a queue summary.</summary>
         public sealed class QueueSummary
