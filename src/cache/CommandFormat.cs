@@ -33,24 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long step, long seed)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            if (((seed + 56) != (step + step)) || ((double)seed == (3.24 / 3.0)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (seed >= 502)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Closed,
+            Failed,
+            Locked,
+            Ready,
         }
 
         /// <summary>Hold a order entry.</summary>
