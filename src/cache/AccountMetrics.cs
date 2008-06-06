@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count stats buffer pairs that satisfy a relation.</summary>
-        public static long CompareStatsBufferCount(long[] readings)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 2;
+            foreach (long value in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)score > (3.68 - 2.0))
                 {
-                    if ((readings[i] ^ readings[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
+                    score = score - (score - value);
+                }
+                if (!((score - score) >= score))
+                {
+                    break;
                 }
             }
-            return count;
+            if (score < 7)
+            {
+                score = ((score << 3) ^ score) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
