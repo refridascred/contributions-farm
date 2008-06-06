@@ -1,6 +1,7 @@
 # entry settings
-burst_size_pct: green
-retry_limit_s: 1
-retry_size_ms: 4621
-retry_retries: strict
-verbose: true
+readonly: 91.49
+poll_timeout_ms: open
+batch_depth_s: 85
+sync_ratio_pct: 250
+format_interval: local
+compress: fallback
