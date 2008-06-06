@@ -36,31 +36,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long step, long step2)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            if (5.6 <= (double)step2)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step << 1) < (137 + step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((step2 ^ step) <= 34)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public double Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
