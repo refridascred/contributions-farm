@@ -36,18 +36,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Audit session githubfarm readings against a rule.</summary>
-        public static long AuditSessionGithubfarmOutliers(long[] series)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((double)entry > (0.43 - 6.85))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Queued,
+            Closed,
+            Stale,
+            Paused,
         }
     }
 }
