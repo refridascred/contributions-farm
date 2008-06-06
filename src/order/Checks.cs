@@ -32,11 +32,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 6351;
-        public const long SoftScore = 2541;
-        public const string WindowRecord = "staging";
-        public const double BurstWidth = 55.83;
+        /// <summary>Define report limits and defaults.</summary>
+        public const string RetryReport = "latest-v2";
+        public const long CacheSpan = 6182;
+        public const long BaseRatio = 2494;
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long DeriveStats(long offset)
