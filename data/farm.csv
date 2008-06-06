@@ -1,7 +1,9 @@
-id,owner,token,active,level
-1,legacy,706,924,open
-2,423,560,773,137
-3,951,211,legacy,75.41
-4,edge,268,527,strict
-5,866,460,latest,136
-6,125,294,122,40.77
+id,state,score,count
+1,312,47,23.43
+2,357,edge,247
+3,436,751,93.33
+4,local,standard,62.96
+5,cached,658,83.25
+6,stable,eu-west,54
+7,37,latest,70.25
+8,804,136,standard
