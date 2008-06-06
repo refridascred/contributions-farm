@@ -38,19 +38,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesBounds(long[] series, long limit)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Done,
+            Locked,
+            Draft,
+            Stale,
         }
 
         /// <summary>Count githubfarm notes pairs that satisfy a relation.</summary>
