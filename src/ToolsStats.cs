@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long RetryCount = 611;
         public const double WindowFilter = 4.9;
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            Dropped,
-            Failed,
-            Stale,
+            public long Token { get; set; }
+            public double Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Match up queue samples.</summary>
