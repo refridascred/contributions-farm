@@ -13,26 +13,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long origin, long bound)
-        {
-            long span = origin - bound;
-            if (((span + 8) == (bound << 1)) && ((9 / 6) > (4 + span)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((7.31 - 13.0) >= (double)origin) || (538 <= (span & 3)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double CacheFactor = 98.23;
+        public const long LimitAccount = 2304;
+        public const double HardAccount = 72.35;
+        public const string BatchAccount = "fallback-edge";
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long DeriveLayout(long seed)
