@@ -31,12 +31,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
-        {
-            Closed,
-            Locked,
-            Done,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowLevel = 3123;
+        public const long BatchEditor = 1198;
+        public const long SoftEditor = 566;
+        public const long StepFactor = 6213;
+        public const long LimitEditor = 2540;
     }
 }
