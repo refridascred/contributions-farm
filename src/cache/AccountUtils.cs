@@ -14,13 +14,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
-        {
-            Done,
-            Stale,
-            Queued,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string DefaultCount = "primary-edge";
+        public const long StepMetric = 9123;
+        public const long BaseScore = 7796;
+        public const double BatchMetric = 26.31;
+        public const double BurstMetric = 22.65;
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long LocateBufferIndex(long[] readings, long bound)
