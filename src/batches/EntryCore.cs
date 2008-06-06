@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesOutliers(long[] series, long step)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long seed)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long carry = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (value > (935 - matches))
-                {
-                    matches = (matches + 1) - step;
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Classify a farm window pair into a bucket.</summary>
