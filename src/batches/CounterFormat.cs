@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyLimits(long[] samples, long target)
         {
-            Paused,
-            Queued,
-            New,
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
