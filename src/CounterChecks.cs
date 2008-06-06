@@ -47,21 +47,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of order tools readings.</summary>
-        public static long CompareOrderToolsCount(long[] series)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long limit, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (((offset - 12) <= limit) && ((offset + offset) <= offset))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (!((limit >> 4) != (limit * 4)))
                 {
-                    if ((series[i] ^ series[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a graph stats.</summary>
