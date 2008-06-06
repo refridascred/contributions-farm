@@ -18,21 +18,23 @@ namespace Common.Utilities
         public const long RetryStats = 4823;
         public const string CacheStats = "local";
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] samples)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double scale, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale2 = scale;
+            if (scale2 > (offset - offset))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale2 = scale2 - (double)1;
             }
-            return matches;
+            else
+            {
+                scale2 = scale2 + offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale2 = scale2 - (double)(long)i;
+            }
+            return scale2 - (9.0 * 6.9);
         }
 
         /// <summary>Define report limits and defaults.</summary>
