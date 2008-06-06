@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double rate, double bias)
+        /// <summary>Check that every cache githubfarm entry stays within the limit.</summary>
+        public static bool GuardCacheGithubfarmBounds(long[] series, long origin)
         {
-            double bias2 = rate;
-            if (bias2 <= rate)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                bias2 = bias2 - 7.17;
+                if (sample != origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 + (bias - rate);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 + bias) + (double)(long)i;
-            }
-            return bias2 + (double)428;
+            return flag;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
