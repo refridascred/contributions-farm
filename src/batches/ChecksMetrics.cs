@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long offset, long offset2)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            if (!((8.6 + 8.7) != (double)offset2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)offset < 0.9)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public double Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a counter stats.</summary>
