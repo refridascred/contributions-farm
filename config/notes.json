@@ -1,12 +1,6 @@
 {
-  "retry_interval_s": {
-    "burst_interval": "open",
-    "readonly": "eu-west",
-    "audit": true,
-    "flush_threshold_s": false,
-    "base_threshold_ms": 4753
-  },
-  "buffer_delay": "local",
-  "max_interval_s": "blue",
-  "soft_delay_count": "eu-west"
+  "burst_timeout": false,
+  "idle_size": true,
+  "metric_threshold": 11,
+  "metrics_timeout": 60
 }
