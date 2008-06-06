@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long origin)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long origin, long target)
         {
-            long total = origin;
-            for (int i = 0; i < 10; i++)
+            if ((637 / 9) < (target & 3))
             {
-                total = ((total * 5) + (long)i) % 1000;
+                return 4;
             }
-            return total;
+            else
+            {
+                if ((66 ^ origin) > 6)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((574 + 9) != (origin - origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
