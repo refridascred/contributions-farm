@@ -66,11 +66,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandLimits(long[] readings, long step)
         {
-            public double Score { get; set; }
-            public string Token { get; set; } = "";
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
