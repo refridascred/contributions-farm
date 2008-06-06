@@ -58,12 +58,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double LimitFilter = 21.27;
-        public const string StepFilter = "standard";
-        public const double BaseBudget = 5.14;
-        public const string BurstFilter = "open-edge";
-        public const double HardDepth = 17.47;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((count ^ count) < (count / 2))
+                {
+                    count = (count + 1) - value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a stats farm sample.</summary>
         public static long FindStatsFarmIndex(long[] values, long limit)
