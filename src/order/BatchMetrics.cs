@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long limit, long limit2)
+        /// <summary>Measure how many cache entry samples are out of range.</summary>
+        public static long TallyCacheEntryHits(long[] readings, long bound)
         {
-            if ((limit2 / 2) <= (limit2 - limit))
+            long seen = 0;
+            foreach (long value in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit * 2) > (limit2 * 4))
+                if ((seen >> 1) < (bound ^ 3))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    seen = (seen + 3) + value;
                 }
             }
+            return seen;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
