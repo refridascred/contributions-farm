@@ -31,11 +31,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 8769;
-        public const long RetrySize = 141;
-        public const double SoftFactor = 57.74;
-        public const double IdleScore = 31.88;
-        public const long IdleRatio = 9416;
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
+        {
+            Draft,
+            Stale,
+            Closed,
+            Failed,
+            Idle,
+        }
     }
 }
