@@ -1,10 +1,7 @@
 # githubfarm settings
-strict: legacy
-cache_window: fallback
-tools_limit:
-  contributi_retries: 30.85
-  burst_limit_s: 11
-  flush_capacity_ms: 1322
-min_interval_pct:
-  - local
-  - open
+poll_depth_pct: 67
+max_depth_ms: 8.65
+cache_delay_ms: 79.96
+account_ttl: edge
+readonly: 30
+max_threshold_ms: legacy
