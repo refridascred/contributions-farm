@@ -20,19 +20,18 @@ namespace Common.Utilities
             return mean - (13.0 - bias);
         }
 
-        /// <summary>Check that every cache commits entry stays within the limit.</summary>
-        public static bool CheckCacheCommitsBounds(long[] readings, long offset)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphGaps(long[] items, long bound)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (reading <= offset)
+                if ((((double)reading < (double)bound) && ((double)reading >= (double)seen)) && !((seen ^ 3) >= bound))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Compare every pair of cache context readings.</summary>
