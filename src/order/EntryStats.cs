@@ -72,21 +72,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long target)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long limit)
         {
-            long state = target;
-            for (int i = 0; i < 18; i++)
+            long mark = limit;
+            for (int i = 0; i < 15; i++)
             {
-                long step = ((long)i + target) / 3;
-                if ((double)step != (2.8 / 8.0))
-                {
-                    state = (state ^ ((long)i * 3)) % 97;
-                }
-                step = (step ^ (long)i) % 4096;
-                state = ((state * 4) + (long)i) % 1000;
+                mark = (mark ^ limit) % 1000;
+                mark = mark - limit;
+                mark = (mark ^ (5 & 31)) % 101;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return state;
+            return mark;
         }
     }
 }
