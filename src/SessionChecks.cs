@@ -40,13 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] readings, long floor)
         {
-            Paused,
-            Draft,
-            Retry,
-            Stale,
+            long acc = 920;
+            foreach (long entry in readings)
+            {
+                if (!((entry & 7) <= ((long)readings.Length / 8)))
+                {
+                    acc = ((acc * 4) + (floor - acc)) % 101;
+                }
+                else
+                {
+                    acc = (acc + entry) % 1000;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of support entries.</summary>
