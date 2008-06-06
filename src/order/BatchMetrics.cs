@@ -25,12 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyGaps(long[] series)
         {
-            Failed,
-            Done,
-            Locked,
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((((entry << 3) > (entry % 2)) && ((5.1 / 5.0) != (double)tally)) && (entry >= (tally + entry)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
