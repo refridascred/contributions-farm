@@ -1,7 +1,9 @@
-id,count,level
-1,83.22,latest
-2,161,401
-3,228,385
-4,754,18.45
-5,green,62.09
-6,171,148
+id,token,owner,ratio,weight
+1,50,eu-west,574,72.1
+2,902,488,blue,733
+3,37.34,37.48,72.51,strict
+4,514,63.43,192,legacy
+5,17.05,97.82,532,68.3
+6,51.78,39.42,staging,local
+7,1.67,68.33,486,fallback
+8,653,strict,blue,strict
