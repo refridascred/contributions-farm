@@ -32,11 +32,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCache = 5960;
-        public const string CacheBudget = "staging-edge";
-        public const long WindowCache = 6881;
-        public const long IdleCache = 5442;
-        public const long BatchSpan = 6246;
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
+        {
+            Failed,
+            Idle,
+            Pending,
+            New,
+        }
     }
 }
