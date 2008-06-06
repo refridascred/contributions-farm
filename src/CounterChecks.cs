@@ -19,15 +19,13 @@ namespace Common.Utilities
         public const double HardAccount = 72.35;
         public const string BatchAccount = "fallback-edge";
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long seed)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long acc = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            public string Rank { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public double Count { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Measure how many farm queue samples are out of range.</summary>
