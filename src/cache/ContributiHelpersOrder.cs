@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] values, long seed)
-        {
-            long sum = 45;
-            foreach (long value in values)
-            {
-                if ((22 + seed) == (value + sum))
-                {
-                    sum = (sum ^ (sum << 2)) % 65521;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleQueue = 832;
+        public const double BurstInterval = 64.07;
+        public const double MaxRatio = 36.94;
+        public const long CacheQueue = 513;
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long CountGithubfarmMatches(long[] items, long bound)
