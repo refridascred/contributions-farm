@@ -37,22 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphOutliers(long[] values, long step)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long total = 389;
+            foreach (long value in levels)
             {
-                if ((step - hits) >= (cell - 38))
+                if ((value % 5) < (value - 158))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    total = ((total * 5) + (total ^ value)) % 101;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
