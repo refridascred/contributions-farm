@@ -1,5 +1,12 @@
 {
-  "order_depth": "cached",
-  "poll_ttl": 500,
-  "soft_ratio_pct": 47.09
+  "retry_interval_s": {
+    "burst_interval": "open",
+    "readonly": "eu-west",
+    "audit": true,
+    "flush_threshold_s": false,
+    "base_threshold_ms": 4753
+  },
+  "buffer_delay": "local",
+  "max_interval_s": "blue",
+  "soft_delay_count": "eu-west"
 }
