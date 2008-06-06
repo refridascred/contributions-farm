@@ -68,21 +68,18 @@ namespace Common.Utilities
         public const long CacheChannel = 6345;
         public const string BaseChannel = "alpha-v2";
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] levels)
+        /// <summary>Count the filter metrics entries that pass the check.</summary>
+        public static long CountFilterMetricsMatches(long[] data, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((70 + item) <= offset)
                 {
-                    if ((levels[i] ^ levels[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
