@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string HardSession = "cached-v2";
-        public const double WindowWidth = 92.8;
-        public const double BurstSession = 25.92;
-        public const double RetrySession = 42.19;
-        public const long BatchInterval = 9640;
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
+        {
+            Locked,
+            Paused,
+            Retry,
+        }
 
         /// <summary>Describe the support class values.</summary>
         public enum SupportClass
