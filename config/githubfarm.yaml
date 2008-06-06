@@ -1,35 +1,4 @@
 # githubfarm settings
-retry_ttl_count:
-  window_capacity: 6368
-  dry_run: true
-  counter_ratio:
-    - 18
-    - 384
-  poll_threshold:
-    - 164
-    - 323
-    - 61
-  idle_retries_pct: standard
-already_timeout:
-  - 421
-  - 134
-  - 391
-counter_size: true
-cache_retries_count:
-  - 427
-  - 458
-cache_size:
-  stream_depth: 63
-  cache_retries: 6214
-  checks_size:
-    flush_ratio_pct: 21
-    notes_window: 1815
-    metrics_depth: 36.44
-  report_delay:
-    idle_size_count: 20.72
-    sync_ttl_count: stable
-    retry_ratio_pct: fallback
-    hard_ratio_pct: 60
-    default_ttl_count: false
-    retry_timeout_s: 98.11
-  sync_ratio: 6706
+hard_depth: green
+default_window_s: blue
+hard_threshold_s: true
