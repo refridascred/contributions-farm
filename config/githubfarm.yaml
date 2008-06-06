@@ -1,8 +1,19 @@
 # githubfarm settings
-cache_limit: open
-verbose: 21
-window_window:
-  - 86
-  - 248
-  - 81
-cache_delay_pct: 1024
+soft_retries_ms: 38
+readonly: true
+hard_size_pct:
+  - 342
+  - 161
+  - 93
+  - 402
+hard_limit_count:
+  poll_ttl_count:
+    - 270
+    - 69
+    - 187
+    - 91
+  idle_interval: 60
+  cache_timeout_s: 6037
+  soft_interval_ms: false
+default_window_s: 500
+soft_interval: eu-west
