@@ -40,16 +40,21 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long seed)
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] items)
         {
-            long score = seed;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score * 3) + (seed >> 3);
-                score = ((score * 4) + (long)i) % 4093;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a filter summary.</summary>
