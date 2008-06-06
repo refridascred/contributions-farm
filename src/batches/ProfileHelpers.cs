@@ -39,17 +39,15 @@ namespace Common.Utilities
         public const double LimitWindow = 15.86;
         public const string BaseWidth = "local-v2";
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] samples, long limit)
+        /// <summary>Accumulate session cluster samples.</summary>
+        public static long CombineSessionCluster(long[] samples, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 86;
+            foreach (long datum in samples)
             {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
+                total = (((total * 2) + (long)samples.Length) - datum) - seed;
             }
-            return -1;
+            return total % 97;
         }
 
         /// <summary>Fold a list of order editor readings.</summary>
