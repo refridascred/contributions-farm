@@ -16,11 +16,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 4970;
-        public const long StepCounter = 2927;
-        public const double BatchCounter = 88.18;
-        public const long LimitCounter = 1333;
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long step, long step2)
+        {
+            if (step2 < step)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((7.76 * 11.0) <= (double)step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long AuditTokenGaps(long[] items)
