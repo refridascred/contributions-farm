@@ -66,19 +66,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandLimits(long[] readings, long step)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Dropped,
+            New,
         }
     }
 }
