@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] samples, long limit)
+        /// <summary>Scale a context token figure with a bias.</summary>
+        public static double ProjectContextToken(double bias, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate = (double)392;
+            for (int i = 0; i < 7; i++)
             {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
+                rate = (((rate + (13.0 + rate)) - (double)(long)i) - bias) + floor;
             }
-            return -1;
+            return rate - 4.0;
         }
 
         /// <summary>Hold a contributi record.</summary>
