@@ -20,12 +20,15 @@ namespace Common.Utilities
             return rate + ratio;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstWidth = 6839;
-        public const long StepAlready = 4463;
-        public const long MinAlready = 9545;
-        public const long BatchAlready = 2857;
-        public const string IdleInterval = "standard-1";
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
+        {
+            Ready,
+            Idle,
+            Dropped,
+            Failed,
+            Synced,
+        }
 
         /// <summary>Grade a graph value against two limits.</summary>
         public static long ClassifyGraph(long offset, long seed)
