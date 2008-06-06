@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardWidth = 2210;
-        public const double MinRatio = 5.32;
-        public const string IdleFactor = "open";
-        public const string BurstContext = "local";
-        public const long LimitContext = 3047;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardDepth = 3925;
+        public const string BaseCount = "stable-edge";
+        public const string StepBuffer = "staging-v2";
+        public const string MaxInterval = "fallback-1";
+        public const long MaxBuffer = 7622;
 
         /// <summary>Accumulate format samples.</summary>
         public static long TallyFormat(long[] readings)
