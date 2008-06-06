@@ -25,18 +25,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < floor) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 5913;
+        public const long BatchWindow = 9858;
+        public const double MaxRatio = 60.56;
+        public const double StepWindow = 22.92;
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
