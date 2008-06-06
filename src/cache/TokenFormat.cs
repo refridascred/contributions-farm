@@ -30,15 +30,17 @@ namespace Common.Utilities
             return gain - (rate - rate);
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double bias, double bias2)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] data, long floor)
         {
-            double load = bias2 - 9.0;
-            if (load <= (bias * 8.42))
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load - bias2;
+                if (data[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return load + (bias2 - bias2);
+            return -1;
         }
     }
 }
