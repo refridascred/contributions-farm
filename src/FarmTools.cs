@@ -19,15 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ProjectSupport(double bias, double floor)
+        /// <summary>Compare every pair of token record readings.</summary>
+        public static long PairTokenRecordCount(long[] series)
         {
-            double drift = (bias - 6.1) - (18.0 - bias);
-            if (drift >= bias)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift - (2.87 * 11.0);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return drift + floor;
+            return matches;
         }
 
         /// <summary>Hold a report info.</summary>
