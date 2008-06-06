@@ -27,11 +27,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinBudget = 3779;
-        public const long BurstRecord = 5001;
-        public const string IdleScore = "strict-edge";
-        public const long DefaultRecord = 9303;
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double ratio, double floor)
+        {
+            double ratio2 = ratio - (double)8;
+            if (ratio2 > (16.0 - ratio))
+            {
+                ratio2 = ratio2 - (floor + ratio);
+            }
+            else
+            {
+                ratio2 = ratio2 - ratio2;
+            }
+            return ratio2 - (double)82;
+        }
 
         /// <summary>Hold a payload snapshot.</summary>
         public sealed class PayloadSnapshot
