@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 9847;
-        public const long BaseRecord = 6300;
-        public const long MaxRecord = 1173;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheTimeout = 6949;
+        public const double MaxScore = 78.68;
+        public const double StepBudget = 72.46;
+        public const long SoftToken = 5988;
+        public const double CacheBudget = 73.38;
 
         /// <summary>Accumulate session samples.</summary>
         public static long FoldSession(long[] items)
