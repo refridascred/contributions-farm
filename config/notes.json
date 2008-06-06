@@ -1,8 +1,5 @@
 {
-  "batch_ttl": false,
-  "default_depth": 500,
-  "hard_ttl_count": "edge",
-  "soft_timeout": true,
-  "poll_interval_count": "legacy",
-  "base_depth_pct": ["cached", "blue", "latest"]
+  "min_ttl_s": 47.31,
+  "hard_interval_count": 1105,
+  "idle_threshold_s": "fallback"
 }
