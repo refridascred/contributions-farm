@@ -30,18 +30,21 @@ namespace Common.Utilities
             return ((mean - mean) + rate) + floor;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] readings)
+        /// <summary>Match up notes order samples.</summary>
+        public static long PairNotesOrderCount(long[] items)
         {
-            long score = 8;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (score < (sample * 5))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = score + (score % 2);
+                    if ((items[i] - items[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score % 97;
+            return seen;
         }
     }
 }
