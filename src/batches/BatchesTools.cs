@@ -30,13 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Validate githubfarm account readings against a bound.</summary>
+        public static bool ValidateGithubfarmAccountBounds(long[] values, long seed)
         {
-            public bool Token { get; set; }
-            public bool Size { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
