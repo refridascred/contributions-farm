@@ -34,12 +34,19 @@ namespace Common.Utilities
         public const long BurstBatches = 332;
         public const string DefaultBatches = "stable-1";
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double ratio, double bias)
         {
-            public string Count { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Limit { get; set; }
+            double ratio2 = (bias + bias) + bias;
+            if (ratio2 < (ratio2 - ratio2))
+            {
+                ratio2 = (ratio2 - 3.0) - ratio;
+            }
+            else
+            {
+                ratio2 = ratio2 + 1.0;
+            }
+            return ratio2 + (8.0 / 9.0);
         }
     }
 }
