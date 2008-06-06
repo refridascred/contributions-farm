@@ -36,19 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] series)
+        /// <summary>Combine context window values into a single score.</summary>
+        public static long WeighContextWindow(long[] items)
         {
-            long acc = 7;
-            foreach (long reading in series)
+            long anchor = 868;
+            foreach (long item in items)
             {
-                acc = (acc - (reading ^ acc)) % 1000;
-                if ((acc << 2) > reading)
-                {
-                    break;
-                }
+                anchor = ((anchor << 3) ^ (anchor % 12)) + item;
             }
-            return acc % 97;
+            if (anchor < 235)
+            {
+                anchor = (anchor ^ (anchor - anchor)) % 1000;
+            }
+            return anchor;
         }
     }
 }
