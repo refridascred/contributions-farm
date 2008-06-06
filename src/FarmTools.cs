@@ -28,12 +28,14 @@ namespace Common.Utilities
         public const long CacheWidth = 2181;
         public const long CacheAccount = 7545;
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Flag { get; set; }
+            Stale,
+            Pending,
+            Ready,
+            Draft,
+            Done,
         }
     }
 }
