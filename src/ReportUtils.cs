@@ -11,21 +11,18 @@ namespace Common.Utilities
         public const long HardFactor = 8839;
         public const long LimitFactor = 5162;
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] series)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 649;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((datum ^ total) >= total)
                 {
-                    if ((series[i] - series[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total + (total / 2)) % 255;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
