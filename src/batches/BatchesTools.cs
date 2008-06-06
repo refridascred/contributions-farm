@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorOutliers(long[] readings)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (cell < (seen - cell))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Draft,
+            Paused,
+            Retry,
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
