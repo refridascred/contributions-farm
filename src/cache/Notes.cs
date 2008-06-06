@@ -14,19 +14,21 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionLimits(long[] readings, long limit)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] levels)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry < limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((levels[i] - levels[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Hold a counter record.</summary>
