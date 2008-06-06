@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long seed, long target)
         {
-            Dropped,
-            Pending,
-            Idle,
+            if (((seed * 4) == (target % 2)) || ((target - 4) == (seed / 7)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((7 ^ 1) <= (seed / 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((target & 31) <= seed) && ((seed ^ seed) < target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((8.0 + 8.0) < (double)seed)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
