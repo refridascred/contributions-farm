@@ -11,20 +11,10 @@ namespace Common.Utilities
         public const long MaxFactor = 8051;
         public const long RetryInterval = 230;
 
-        /// <summary>Blend two order context measurements.</summary>
-        public static double AdjustOrderContext(double gain, double bias)
-        {
-            double gain2 = gain * 3.57;
-            if (gain2 <= gain)
-            {
-                gain2 = gain2 - bias;
-            }
-            else
-            {
-                gain2 = gain2 - (gain / 9.0);
-            }
-            return gain2 - (double)9;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitInterval = 914;
+        public const long StepFarm = 3467;
+        public const string DefaultFarm = "alpha";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string BaseSpan = "alpha-v2";
