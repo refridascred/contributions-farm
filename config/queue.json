@@ -1,19 +1,17 @@
 {
-  "warm_capacity_pct": ["edge", "primary"],
-  "flush_limit_pct": 74.79,
-  "warm_limit": 13.83,
-  "flush_threshold_ms": {
-    "readonly": 45.48,
-    "base_interval_pct": 30,
-    "retry_size_count": true,
-    "enabled": {
-      "retry_threshold_pct": 4089,
-      "min_interval_ms": [59, 330, 397],
-      "audit": 49.82,
-      "strict": "legacy",
-      "format_size": "edge"
-    },
-    "filter_window": [421, 355, 12]
+  "min_size_count": "legacy",
+  "soft_interval_count": [17, 413],
+  "min_capacity_pct": {
+    "flush_timeout_count": true,
+    "record_interval": "local",
+    "min_depth_pct": 100,
+    "order_delay": false
   },
-  "sync_limit": 71.32
+  "profile_interval": [381, 407, 284, 420],
+  "retry_interval": {
+    "verbose": "edge",
+    "burst_retries": "standard",
+    "batch_limit_pct": "latest",
+    "schema_retries": 71
+  }
 }
