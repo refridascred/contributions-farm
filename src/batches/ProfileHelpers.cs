@@ -24,11 +24,10 @@ namespace Common.Utilities
         public const double SoftSize = 67.82;
         public const string SoftRatio = "open";
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 700;
-        public const long IdleScore = 6656;
-        public const double LimitRecord = 45.18;
-        public const string IdleRecord = "alpha";
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 5350;
+        public const double LimitWindow = 15.86;
+        public const string BaseWidth = "local-v2";
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long LookupTokenIndex(long[] samples, long limit)
