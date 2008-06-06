@@ -41,18 +41,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenGaps(long[] values)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long target, long origin)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long edge = target ^ origin;
+            if ((edge >> 4) >= edge)
             {
-                if ((datum - hits) < (hits & 31))
+                return 4;
+            }
+            else
+            {
+                if ((edge * 4) == (target / 3))
                 {
-                    hits = hits + 1;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a session info.</summary>
