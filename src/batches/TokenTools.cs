@@ -31,15 +31,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double ratio, double span)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long target, long limit)
         {
-            double scale = ratio / 7.0;
-            if (scale <= scale)
+            if (target >= (limit & 63))
             {
-                scale = (scale + (7.8 + 2.32)) + span;
+                return 0;
             }
-            return scale + (2.26 * 20.0);
+            else
+            {
+                if ((-12) < (limit / 7))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
