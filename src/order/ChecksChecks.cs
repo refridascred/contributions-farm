@@ -20,23 +20,18 @@ namespace Common.Utilities
             return load + (load - 5.0);
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] samples, long origin)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesMatches(long[] samples, long bound)
         {
-            long result = 10;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                result = (result - origin) % 1000;
-                if ((((long)samples.Length / 6) > (result - origin)) || (5.5 <= (double)reading))
+                if (((57 & 63) <= (count / 4)) || ((bound + entry) <= (count * 4)))
                 {
-                    result = result - (-3);
-                }
-                else
-                {
-                    result = (result - (36 - result)) % 97;
+                    count = count + 2;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Blend two order measurements.</summary>
