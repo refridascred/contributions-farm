@@ -48,15 +48,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Project the next route record value.</summary>
-        public static double BlendRouteRecord(double bias, double floor)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphBounds(long[] values, long seed)
         {
-            double mean = (bias + bias) * 0.08;
-            if (mean >= (floor - bias))
+            bool ok = true;
+            foreach (long sample in values)
             {
-                mean = mean + (bias / 3.0);
+                if (sample > seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mean + (8.5 - 7.2);
+            return ok;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
