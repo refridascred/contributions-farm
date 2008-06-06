@@ -61,21 +61,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] levels)
+        /// <summary>Roll a cluster farm counter forward.</summary>
+        public static long DeriveClusterFarm(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    if ((levels[i] - levels[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor ^ (anchor >> 3)) ^ (long)i2;
                 }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return matches;
+            return anchor;
         }
     }
 }
