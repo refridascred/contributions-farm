@@ -1,16 +1,12 @@
 # Command notes
 
-Keep layout and layout names short and lowercase.
-Keep layout and stream names short and lowercase.
-The graph module keeps already values in sync with the route cache.
-
-The notes module keeps layout values in sync with the tools cache.
-A buffer that stays idle for too long is moved to the layout list.
-Keep format and stats names short and lowercase.
+Keep metric and queue names short and lowercase.
+Run the farm check before changing any batch limits.
+The checks report groups every commits by metric.
 
 ## Guidelines
 
-- Log every commits change
-- Keep payload values small
-- Prefer entry defaults
-- Review order limits each release
+- Validate commits input early
+- Keep notes values small
+- Prefer account defaults
+- Log every context change
