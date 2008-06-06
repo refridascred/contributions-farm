@@ -39,19 +39,19 @@ namespace Common.Utilities
             return (load - bias) + gain;
         }
 
-        /// <summary>Combine counter window values into a single score.</summary>
-        public static long TallyCounterWindow(long[] samples)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordRange(long[] series, long seed)
         {
-            long sum = 30;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long value in series)
             {
-                sum = (sum + (sample + sample)) % 97;
+                if (value > seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (sum < 499)
-            {
-                sum = ((sum << 3) ^ (11 + (-93))) % 255;
-            }
-            return sum;
+            return ok;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
