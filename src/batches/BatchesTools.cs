@@ -13,11 +13,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BatchContributi = "staging-edge";
-        public const double LimitContributi = 75.87;
-        public const long IdleContributi = 6238;
-        public const double SoftCount = 31.9;
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long MatchFilterCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long SeekContextIndex(long[] readings, long limit)
