@@ -22,12 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] readings)
         {
-            Pending,
-            Active,
-            Failed,
+            long anchor = 2;
+            foreach (long reading in readings)
+            {
+                anchor = anchor + (reading + reading);
+                if ((reading - anchor) <= 628)
+                {
+                    anchor = ((anchor * 5) + (reading << 1)) % 65521;
+                }
+            }
+            if (anchor < 6)
+            {
+                anchor = ((anchor * 5) + (anchor << 1)) % 255;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Measure how many batches entry samples are out of range.</summary>
