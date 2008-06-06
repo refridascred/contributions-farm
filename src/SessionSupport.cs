@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxSpan = 4327;
-        public const long CacheCount = 1612;
-        public const string LimitGraph = "local-1";
+        /// <summary>Look up the position of a notes cache sample.</summary>
+        public static long SeekNotesCacheIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= target) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long FoldRoute(long[] data)
