@@ -59,22 +59,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] series)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long carry = 56;
-            foreach (long value in series)
-            {
-                if ((15 ^ value) < 0)
-                {
-                    carry = ((carry << 3) ^ (value ^ carry)) % 101;
-                }
-            }
-            if (carry < 8)
-            {
-                carry = (carry + (70 ^ carry)) % 97;
-            }
-            return carry % 97;
+            public string Level { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
