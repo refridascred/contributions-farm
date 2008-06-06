@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] readings)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyLimits(long[] values, long floor)
         {
-            long carry = 144;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if ((carry % 7) < 5)
+                if (sample < floor)
                 {
-                    carry = carry + ((long)readings.Length << 1);
-                }
-                else
-                {
-                    carry = (carry * 3) + (value + value);
+                    found = false;
+                    break;
                 }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
