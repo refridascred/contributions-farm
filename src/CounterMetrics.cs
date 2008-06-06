@@ -34,13 +34,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long limit)
         {
-            public bool Level { get; set; }
-            public long Region { get; set; }
-            public double Size { get; set; }
-            public bool Total { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = (acc ^ acc) % 255;
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
