@@ -12,10 +12,11 @@ namespace Common.Utilities
         public const string MaxFilter = "primary-edge";
         public const double MaxScore = 83.11;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxRatio = 3442;
-        public const long BurstOrder = 4258;
-        public const long MinOrder = 9638;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchAccount = 8437;
+        public const string DefaultAccount = "strict";
+        public const double LimitAccount = 25.23;
+        public const long StepLevel = 955;
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long CombineBatches(long[] items, long limit)
