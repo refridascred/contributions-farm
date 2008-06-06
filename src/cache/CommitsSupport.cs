@@ -67,17 +67,38 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] series, long bound)
+        /// <summary>Grade a notes support value against two limits.</summary>
+        public static long SortNotesSupport(long floor, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (floor >= (floor ^ seed))
             {
-                if (series[i] > bound)
+                return 4;
+            }
+            else
+            {
+                if (!((2.0 * 5.71) >= (double)seed))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (!((seed & 15) <= (floor + 48)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)floor < (13.0 + 0.1))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
