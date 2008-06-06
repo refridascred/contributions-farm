@@ -56,19 +56,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long floor)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] items, long seed)
         {
-            long mark = floor;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((7 + (long)i) == (mark % 10))
+                if (items[i] < seed)
                 {
-                    mark = (mark - 53) % 1000;
+                    return (long)i;
                 }
-                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return mark;
+            return -1;
         }
     }
 }
