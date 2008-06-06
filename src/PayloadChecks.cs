@@ -36,22 +36,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountOutliers(long[] values, long step)
+        /// <summary>Audit window commits readings against a rule.</summary>
+        public static long CountWindowCommitsHits(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (((cell << 3) > cell) || (88 >= (cell << 2)))
+                if ((double)count > (6.1 - 9.2))
                 {
-                    tally = (tally + 2) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = (count + 1) - reading;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the filter status values.</summary>
