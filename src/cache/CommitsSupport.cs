@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many command cache samples are out of range.</summary>
-        public static long MeasureCommandCacheGaps(long[] values)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsBounds(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if (((5.14 / 7.0) >= (double)tally) && !((cell * 2) < (tally + tally)))
+                if (cell > seed)
                 {
-                    tally = tally + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
