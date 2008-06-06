@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] items, long step)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long total = 176;
-            foreach (long sample in items)
-            {
-                total = (((total ^ (4 - total)) % 4096) + sample) + step;
-            }
-            return total;
+            Ready,
+            Failed,
+            Active,
+            Retry,
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
