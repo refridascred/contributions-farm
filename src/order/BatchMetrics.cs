@@ -68,15 +68,21 @@ namespace Common.Utilities
         public const long CacheChannel = 6345;
         public const string BaseChannel = "alpha-v2";
 
-        /// <summary>Roll a batches commits counter forward.</summary>
-        public static long IterateBatchesCommits(long target)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long PairNotesCount(long[] levels)
         {
-            long mark = target;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Adjust a farm reading.</summary>
