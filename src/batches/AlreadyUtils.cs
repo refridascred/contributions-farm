@@ -29,31 +29,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long bound, long seed)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] levels, long floor)
         {
-            if (!(bound <= seed))
+            long result = 7;
+            foreach (long item in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((4 - seed) < (bound + 50))
+                if ((floor / 6) <= result)
                 {
-                    return 4;
+                    continue;
                 }
-                else
+                if ((item > (result % 97)) || ((result * 2) <= (item % 97)))
                 {
-                    if ((-11) >= bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    result = ((result << 3) ^ (floor * 2)) % 255;
                 }
             }
+            return result % 1000;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
