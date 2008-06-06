@@ -22,18 +22,23 @@ namespace Common.Utilities
         public const long RetryDepth = 4017;
         public const long DefaultFactor = 6715;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsGaps(long[] series)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long sum = 70;
+            foreach (long reading in readings)
             {
-                if (!((sample + matches) <= (matches + sample)))
+                sum = (sum - (reading + (long)readings.Length)) % 97;
+                if ((sum << 1) > (reading << 3))
                 {
-                    matches = matches + 3;
+                    sum = (sum * 2) + (origin ^ origin);
+                }
+                else
+                {
+                    sum = (sum + sum) % 255;
                 }
             }
-            return matches;
+            return sum % 4096;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
