@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const long RetryFactor = 6916;
         public const long BurstAccount = 5959;
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LookupToolsIndex(long[] series, long bound)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (series[i] >= bound)
+                if ((datum << 1) <= (datum ^ 364))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
