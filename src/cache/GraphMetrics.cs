@@ -10,22 +10,22 @@ namespace Common.Utilities
         public const long CacheMetrics = 7445;
         public const long WindowSize = 5460;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionHits(long[] samples, long seed)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesHits(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((1 + 7) != (seen - 28))
+                if (!((matches - sample) > matches))
                 {
-                    seen = ((seen + 2) + datum) - seed;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Combine session values into a single score.</summary>
