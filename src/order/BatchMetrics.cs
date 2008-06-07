@@ -52,19 +52,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorLimits(long[] values, long offset)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] levels, long bound)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long state = 667;
+            foreach (long sample in levels)
             {
-                if (reading != offset)
-                {
-                    stale = false;
-                    break;
-                }
+                state = (((state * 2) + state) + sample) - bound;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Hold a checks record.</summary>
