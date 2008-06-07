@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] samples)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorMatches(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((double)value >= (4.7 / 9.0))
+                if (((double)194 > (double)limit) && ((matches - item) < item))
                 {
-                    count = count + 3;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
