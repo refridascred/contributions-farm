@@ -32,11 +32,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string IdleEditor = "legacy-1";
-        public const long DefaultSpan = 1088;
-        public const long WindowEditor = 8664;
-        public const double StepEditor = 72.8;
+        /// <summary>Audit graph account readings against a rule.</summary>
+        public static long MeasureGraphAccountOutliers(long[] series, long floor)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((floor + reading) == (matches + reading))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the buffer batch entries that pass the check.</summary>
         public static long TallyBufferBatchGaps(long[] series, long offset)
