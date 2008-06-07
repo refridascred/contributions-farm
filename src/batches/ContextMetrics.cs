@@ -16,12 +16,18 @@ namespace Common.Utilities
             return rate + (double)333;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferGaps(long[] samples)
         {
-            Failed,
-            Pending,
-            Queued,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (((matches / 7) >= (value >> 4)) && ((matches ^ value) >= (value << 2)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
