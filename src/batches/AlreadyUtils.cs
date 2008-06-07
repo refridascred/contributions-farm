@@ -50,14 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Count the layout metrics entries that pass the check.</summary>
+        public static long TallyLayoutMetricsMatches(long[] levels, long seed)
         {
-            Synced,
-            Failed,
-            Dropped,
-            Retry,
-            Pending,
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((matches - 60) < seed)
+                {
+                    matches = (matches + 3) - reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every entry context entry stays within the limit.</summary>
