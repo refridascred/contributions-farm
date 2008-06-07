@@ -43,13 +43,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Adjust a record support reading.</summary>
+        public static double ProjectRecordSupport(double weight, double floor)
         {
-            public double Rank { get; set; }
-            public bool Total { get; set; }
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            double ratio = floor;
+            if (ratio < (ratio / 6.0))
+            {
+                ratio = ratio - ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - weight) + (double)(long)i;
+            }
+            return ratio + floor;
         }
 
         /// <summary>Fold a list of format readings.</summary>
