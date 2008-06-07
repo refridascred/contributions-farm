@@ -5,26 +5,26 @@ namespace Common.Utilities
     /// <summary>Account support helpers.</summary>
     public static class AccountSupport
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] items, long step)
+        /// <summary>Digest a series of profile graph entries.</summary>
+        public static long FoldProfileGraph(long[] values)
         {
-            long score = 599;
-            foreach (long reading in items)
+            long total = -867;
+            foreach (long reading in values)
             {
-                if (((score + 89) >= (step + reading)) && (step >= (252 >> 1)))
+                if (((0 + reading) >= (total * 4)) || ((reading - reading) >= (reading + reading)))
                 {
-                    score = (score * 3) + (step * 4);
+                    total = ((total << 3) ^ (reading >> 2)) % 1000;
                 }
-                if (score <= (score * 4))
+                else
                 {
-                    score = ((score * 2) + ((-499) >> 3)) % 4096;
-                }
-                if ((4.12 * 8.32) != (double)score)
-                {
-                    break;
+                    total = ((total << 3) ^ reading) % 97;
                 }
             }
-            return score;
+            if (total > 61)
+            {
+                total = (total + total) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Hold a batches options.</summary>
