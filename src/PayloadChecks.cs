@@ -45,19 +45,10 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Count the buffer commits entries that pass the check.</summary>
-        public static long CountBufferCommitsMatches(long[] values, long offset)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((tally / 7) < (tally & 7))
-                {
-                    tally = ((tally + 2) - entry) + offset;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 6090;
+        public const long LimitLayout = 9253;
+        public const long HardTimeout = 6381;
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool CheckQueueRange(long[] series, long seed)
