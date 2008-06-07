@@ -58,13 +58,20 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] values, long seed)
         {
-            public long Total { get; set; }
-            public bool Offset { get; set; }
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
+            long anchor = 629;
+            foreach (long reading in values)
+            {
+                if ((reading + anchor) >= (24 << 1))
+                {
+                    anchor = ((anchor ^ (reading * 4)) % 1000) + seed;
+                    anchor = (anchor << 3) ^ (anchor >> 3);
+                }
+                anchor = ((anchor << 3) ^ (1 * 5)) % 1000;
+            }
+            return anchor;
         }
     }
 }
