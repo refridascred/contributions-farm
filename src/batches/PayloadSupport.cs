@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] samples)
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double weight, double offset)
         {
-            long score = 36;
-            foreach (long item in samples)
-            {
-                if ((item + score) < score)
-                {
-                    score = (score ^ (9 * 4)) % 97;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (item & 31)) % 255;
-                    score = score - 536;
-                }
-                if ((-42) < (item ^ score))
-                {
-                    score = score - (score - item);
-                }
-            }
-            if (score > 303)
-            {
-                score = score - (score * 3);
-            }
-            return score;
+            double ratio = offset;
+            return ratio + weight;
         }
 
         /// <summary>Grade a payload already value against two limits.</summary>
