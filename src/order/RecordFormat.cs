@@ -62,19 +62,19 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsRange(long[] samples, long floor)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextBounds(long[] values, long step)
         {
-            bool found = true;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                if (item <= floor)
+                if (cell >= step)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
     }
 }
