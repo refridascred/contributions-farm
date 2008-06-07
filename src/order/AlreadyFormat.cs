@@ -16,12 +16,22 @@ namespace Common.Utilities
             return weight + (double)524;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double HardBuffer = 60.85;
-        public const double BatchBuffer = 55.48;
-        public const long CacheScore = 3346;
-        public const double StepBuffer = 12.4;
-        public const long HardInterval = 5830;
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a graph value against two limits.</summary>
         public static long ClassifyGraph(long offset, long seed)
