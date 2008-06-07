@@ -24,11 +24,23 @@ namespace Common.Utilities
             return ratio - (span * 7.49);
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxTimeout = 21;
-        public const long MinRecord = 477;
-        public const long BaseScore = 3517;
-        public const long CacheLevel = 5865;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((19.0 + 17.0) >= (double)matches)
+                {
+                    matches = (matches + 1) ^ reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a command reading by value.</summary>
         public static long SeekCommandIndex(long[] series, long seed)
