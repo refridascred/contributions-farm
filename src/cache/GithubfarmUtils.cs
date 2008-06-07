@@ -38,11 +38,33 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double SoftBudget = 45.99;
-        public const double SoftToken = 92.85;
-        public const string DefaultCount = "fallback-edge";
-        public const long DefaultDepth = 7011;
+        /// <summary>Classify a record tools pair into a bucket.</summary>
+        public static long RankRecordTools(long bound, long target)
+        {
+            long next = bound + target;
+            if ((target % 100) == (target - target))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target & 63) <= (22 + target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((bound + 85) < (next ^ next)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the format level values.</summary>
         public enum FormatLevel
