@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountBounds(long[] levels, long offset)
+        /// <summary>Find the first githubfarm session entry that matches the target.</summary>
+        public static long FindGithubfarmSessionIndex(long[] samples, long step)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value >= offset)
+                if (samples[i] >= step)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
