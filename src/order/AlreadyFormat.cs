@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] readings, long bound)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (bound < (reading - matches))
+                if ((double)value >= (4.7 / 9.0))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
