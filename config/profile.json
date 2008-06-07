@@ -1,12 +1,6 @@
 {
-  "flush_window_ms": false,
-  "retry_interval": [26, 233, 273, 15],
-  "stats_capacity": 500,
-  "support_ratio": {
-    "schema_depth": false,
-    "max_timeout_count": [470, 213, 151, 216],
-    "record_ttl": ["latest", "cached"],
-    "retry_size_ms": 100,
-    "strict": false
-  }
+  "audit": false,
+  "min_ratio_pct": "eu-west",
+  "warm_retries_ms": true,
+  "idle_ratio_s": "blue"
 }
