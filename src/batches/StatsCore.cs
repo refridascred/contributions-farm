@@ -30,23 +30,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next order batches value from a seed.</summary>
-        public static long SeriesOrderBatches(long seed)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] data, long offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((sum + sum) != (seed >> 3)))
+                if (data[i] > offset)
                 {
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    sum = ((sum * 4) + (seed - seed)) % 4096;
-                }
-                sum = ((sum * 3) + (long)i) % 97;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
