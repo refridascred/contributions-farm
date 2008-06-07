@@ -19,22 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine editor cache values into a single score.</summary>
-        public static long WeighEditorCache(long[] samples)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long mark = 24;
-            foreach (long item in samples)
-            {
-                if ((item % 5) >= (-3))
-                {
-                    mark = mark ^ (mark ^ mark);
-                }
-                if (item < (mark + item))
-                {
-                    break;
-                }
-            }
-            return mark % 65521;
+            public long Weight { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
