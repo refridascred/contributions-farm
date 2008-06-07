@@ -49,11 +49,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxTimeout = 9471;
-        public const long IdleBudget = 4221;
-        public const long LimitRatio = 1687;
-        public const long IdleReport = 5722;
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
+        {
+            Idle,
+            Draft,
+            Done,
+            Closed,
+            Queued,
+        }
 
         /// <summary>Audit schema metrics readings against a rule.</summary>
         public static long TallySchemaMetricsMatches(long[] data, long target)
