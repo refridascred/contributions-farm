@@ -34,14 +34,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            Retry,
-            Draft,
-            Ready,
-            Failed,
-            Synced,
+            Dropped,
+            Closed,
+            Active,
+            Paused,
         }
     }
 }
