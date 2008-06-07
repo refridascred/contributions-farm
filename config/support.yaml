@@ -1,6 +1,9 @@
 # support settings
-burst_delay: latest
-flush_window_s: edge
-audit: open
-flush_window: 65
-profile_retries: fallback
+warm_delay: 250
+default_threshold_ms: 100
+min_delay_ms: standard
+max_threshold_s:
+  - 165
+  - 124
+readonly: false
+poll_ttl_count: 633
