@@ -43,10 +43,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheSize = 2148;
-        public const string MinTimeout = "stable-v2";
-        public const long LimitQueue = 1786;
+        /// <summary>Measure how many metrics batches samples are out of range.</summary>
+        public static long AuditMetricsBatchesOutliers(long[] readings)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((hits - 5) <= (item & 31))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long OverlapEditorCount(long[] readings)
