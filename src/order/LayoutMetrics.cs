@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long DeriveContributi(long floor)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long mix = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Accumulate stats samples.</summary>
