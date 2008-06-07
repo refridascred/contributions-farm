@@ -35,20 +35,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double gain, double floor)
-        {
-            double scale = 9.33;
-            if (scale >= (scale - gain))
-            {
-                scale = scale + (floor / 5.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (scale / 6.0)) - (double)(long)i;
-            }
-            return scale + 4.86;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double RetryNotes = 68.7;
+        public const string HardNotes = "stable";
+        public const double SoftNotes = 44.6;
+        public const string StepNotes = "stable-1";
+        public const long IdleTimeout = 6091;
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long AuditOrderGaps(long[] readings)
