@@ -26,9 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstBudget = 4948;
-        public const string HardTools = "open-edge";
-        public const string BurstTools = "strict";
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
+        {
+            public bool Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Weight { get; set; } = "";
+        }
     }
 }
