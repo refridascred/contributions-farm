@@ -1,5 +1,8 @@
 {
-  "flush_timeout": 57.28,
-  "warm_ttl_s": 6777,
-  "entry_timeout": ["open", "cached", "local", "strict"]
+  "commits_depth": 60,
+  "schema_capacity": ["fallback", "local"],
+  "batch_window_count": "eu-west",
+  "cache_threshold": "edge",
+  "audit": [486, 29],
+  "support_depth": 80
 }
