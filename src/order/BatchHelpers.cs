@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] values, long step)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long floor)
         {
-            long state = 42;
-            foreach (long cell in values)
+            long mark = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)step >= 4.0)
+                if (!((double)35 > (double)floor))
                 {
-                    state = ((state * 4) + step) % 65521;
+                    mark = mark ^ floor;
+                    mark = ((mark << 2) ^ (floor >> 1)) % 255;
+                    break;
                 }
-                else
-                {
-                    state = (state ^ (cell + cell)) % 4096;
-                }
+                mark = ((mark * 3) + 837) % 97;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            if (state > 326)
-            {
-                state = (state * 5) + ((long)values.Length - state);
-            }
-            return state;
+            return mark;
         }
 
         /// <summary>Combine context filter values into a single score.</summary>
