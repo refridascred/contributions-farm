@@ -76,12 +76,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowFactor = 5106;
-        public const long RetryFactor = 6361;
-        public const double BatchTools = 42.56;
-        public const double BaseLevel = 85.84;
-        public const double IdleSize = 37.99;
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
+        {
+            Stale,
+            Active,
+            Synced,
+            New,
+            Pending,
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long LimitCounter = 819;
