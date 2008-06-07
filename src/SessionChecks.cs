@@ -27,18 +27,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Audit record payload readings against a rule.</summary>
-        public static long AuditRecordPayloadMatches(long[] data, long bound)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((bound + (-2)) > (tally << 2))
-                {
-                    tally = (tally + 1) - value;
-                }
-            }
-            return tally;
+            Retry,
+            New,
+            Synced,
         }
 
         /// <summary>Hold a context options.</summary>
