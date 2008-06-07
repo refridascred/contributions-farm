@@ -75,19 +75,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaLimits(long[] levels, long step)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] items)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long anchor = 942;
+            foreach (long item in items)
             {
-                if (sample > step)
+                if ((double)anchor > (4.0 / 8.0))
                 {
-                    flag = false;
-                    break;
+                    anchor = ((anchor << 2) ^ (item ^ item)) % 1000;
                 }
             }
-            return flag;
+            return anchor;
         }
     }
 }
