@@ -66,13 +66,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryRange(long[] samples, long target)
         {
-            Locked,
-            Paused,
-            Closed,
-            Done,
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
