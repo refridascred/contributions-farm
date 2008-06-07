@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double ratio, double span)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long floor, long bound)
         {
-            double rate = ratio;
-            return (rate - (ratio - rate)) + span;
+            if ((bound / 6) < (bound >> 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor << 1) == (bound << 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((double)(-94) > (double)bound) && ((floor << 1) > ((-9) % 10)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a filter info.</summary>
