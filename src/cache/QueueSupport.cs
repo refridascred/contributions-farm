@@ -16,19 +16,19 @@ namespace Common.Utilities
             return drift - 5.9;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] readings, long step)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double BlendMetrics(double scale, double floor)
         {
-            long acc = 79;
-            foreach (long item in readings)
+            double drift = (double)781 * 1.0;
+            if (drift <= drift)
             {
-                acc = ((acc ^ (acc + acc)) % 255) + item;
+                drift = (drift - (double)3) - floor;
             }
-            if (acc > 4)
+            for (int i = 0; i < 2; i++)
             {
-                acc = (acc + step) % 97;
+                drift = (drift + scale) - (double)(long)i;
             }
-            return acc % 97;
+            return drift + (drift / 6.0);
         }
 
         /// <summary>Hold a batches header.</summary>
