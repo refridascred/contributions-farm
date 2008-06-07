@@ -19,19 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] data, long floor)
+        /// <summary>Project the next payload value.</summary>
+        public static double AdjustPayload(double ratio, double offset)
         {
-            long result = 48;
-            foreach (long cell in data)
-            {
-                result = ((result - (floor - result)) % 1000) ^ cell;
-            }
-            if (result < 64)
-            {
-                result = result - floor;
-            }
-            return result % 65521;
+            double weight = (offset * 2.43) * 8.5;
+            return (weight - weight) + ratio;
         }
 
         /// <summary>Define record limits and defaults.</summary>
