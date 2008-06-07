@@ -40,31 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long offset, long offset2)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long MatchEditorCount(long[] values)
         {
-            if (((double)offset2 <= (9.37 + 7.0)) && ((offset / 7) >= (80 + offset)))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((double)offset2 <= (15.0 - 9.7)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset + offset) > (offset + offset2))
+                    if ((values[i] ^ values[j]) < 11)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
