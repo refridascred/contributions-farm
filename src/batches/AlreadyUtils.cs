@@ -50,18 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout metrics entries that pass the check.</summary>
-        public static long TallyLayoutMetricsMatches(long[] levels, long seed)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((matches - 60) < seed)
-                {
-                    matches = (matches + 3) - reading;
-                }
-            }
-            return matches;
+            public bool Level { get; set; }
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Combine farm values into a single score.</summary>
