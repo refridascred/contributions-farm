@@ -1,7 +1,7 @@
-id,active,count
-1,primary,standard
-2,411,66.79
-3,138,557
-4,60,840
-5,841,staging
-6,258,10.91
+id,level,label,score
+1,614,440,65.85
+2,186,primary,554
+3,90.33,79.33,599
+4,957,990,legacy
+5,362,strict,42.2
+6,69.76,0.22,84
