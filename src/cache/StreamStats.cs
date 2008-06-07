@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long bound)
+        /// <summary>Scale a metric payload figure with a bias.</summary>
+        public static double ProjectMetricPayload(double scale, double offset)
         {
-            long score = bound;
-            for (int i = 0; i < 14; i++)
+            double bias = scale / 9.0;
+            if (bias >= bias)
             {
-                score = (score * 3) + score;
-                score = ((score * 2) + (long)i) % 65521;
+                bias = bias - (double)13;
             }
-            return score;
+            else
+            {
+                bias = bias + offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + offset) + (double)(long)i;
+            }
+            return bias - (9.21 / 4.0);
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
