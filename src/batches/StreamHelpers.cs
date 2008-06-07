@@ -34,17 +34,15 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] values, long step)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] items, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 47;
+            foreach (long reading in items)
             {
-                if ((values[i] == step) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                state = (state - origin) ^ reading;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
