@@ -25,38 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long offset, long origin)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            if (((origin * 4) > offset) && ((612 << 1) == (offset ^ 538)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (origin > (offset - origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset - origin) > 18)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (8.0 >= (double)origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Idle,
+            Locked,
+            Draft,
+            Synced,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
