@@ -1,6 +1,6 @@
 # entry settings
-burst_limit_pct: latest
-max_interval_count: stable
-order_size: edge
-min_size: 45
-entry_ratio: 48
+tools_threshold: cached
+poll_retries: 100
+strict: true
+hard_window_pct: legacy
+retry_capacity: false
