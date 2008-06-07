@@ -1,7 +1,12 @@
 # githubfarm settings
-sync_interval: 59.59
-burst_interval_count: 18.72
-checks_retries:
-  - legacy
-  - strict
-  - eu-west
+flush_limit_ms: 3287
+poll_capacity:
+  account_ttl: staging
+  flush_delay_ms: 10.97
+  poll_ttl_s:
+    persist: 60
+    strict: 250
+    retry_limit: strict
+    warm_delay_s: 15.53
+session_ttl: 2572
+idle_ratio_pct: false
