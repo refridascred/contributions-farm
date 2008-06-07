@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const long WindowGraph = 9047;
         public const long WindowSize = 2805;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BatchLevel = "standard";
-        public const long MinLevel = 919;
-        public const long WindowDepth = 6675;
-        public const string BaseInterval = "staging-1";
-        public const long DefaultSpan = 7544;
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
+        {
+            public double Score { get; set; }
+            public bool Flag { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long RankGithubfarm(long step, long bound)
