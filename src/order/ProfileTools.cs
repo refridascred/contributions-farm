@@ -39,18 +39,13 @@ namespace Common.Utilities
         public const double MinTimeout = 6.32;
         public const long BatchSupport = 9314;
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferOutliers(long[] data, long limit)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((limit & 15) != (count - value))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Draft,
+            Paused,
+            New,
+            Idle,
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
