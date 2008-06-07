@@ -51,12 +51,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] series, long seed)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] items, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (series[i] >= seed)
+                if (items[i] < step)
                 {
                     return (long)i;
                 }
