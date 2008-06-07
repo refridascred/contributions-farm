@@ -22,11 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            public string Weight { get; set; } = "";
-            public double Count { get; set; }
+            public bool Weight { get; set; }
+            public double Score { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Combine buffer entry values into a single score.</summary>
