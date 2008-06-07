@@ -14,18 +14,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadGaps(long[] items, long seed)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((hits - sample) > hits)
-                {
-                    hits = (hits + 2) + seed;
-                }
-            }
-            return hits;
+            public double Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
