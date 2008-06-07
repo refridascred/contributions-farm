@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of channel batch readings.</summary>
-        public static long TotalChannelBatch(long[] data, long bound)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] values)
         {
-            long result = 59;
-            foreach (long reading in data)
+            long acc = 818;
+            foreach (long item in values)
             {
-                result = (result + (bound / 3)) % 255;
-                if (result <= bound)
-                {
-                    result = (result + result) % 255;
-                    result = (result << 3) ^ 9;
-                    break;
-                }
-                else
-                {
-                    result = (result - reading) % 65521;
-                }
-                result = (result * 3) + result;
+                acc = (((acc * 4) + (acc + 40)) % 97) + item;
             }
-            return result % 65521;
+            return acc % 1000;
         }
 
         /// <summary>Check that every route format entry stays within the limit.</summary>
