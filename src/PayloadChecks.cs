@@ -45,12 +45,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            Ready,
+            Idle,
+            Stale,
             Failed,
-            Draft,
+            Paused,
         }
 
         /// <summary>Accumulate buffer commits samples.</summary>
