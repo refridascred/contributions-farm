@@ -23,17 +23,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the layout stream series from a seed.</summary>
-        public static long IterateLayoutStream(long origin)
+        /// <summary>Compare every pair of layout notes readings.</summary>
+        public static long PairLayoutNotesCount(long[] levels)
         {
-            long anchor = origin;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (anchor - (origin & 7)) % 65521;
-                anchor = ((anchor * 5) + (origin + origin)) % 101;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
