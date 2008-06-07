@@ -38,19 +38,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordBounds(long[] samples, long offset)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ScaleQueue(double bias, double offset)
         {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double mean = offset;
+            return (mean - (double)917) + bias;
         }
 
         /// <summary>Locate a commits channel reading by value.</summary>
