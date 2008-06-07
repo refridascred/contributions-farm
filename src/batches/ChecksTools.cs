@@ -29,18 +29,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatGaps(long[] levels, long step)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportMatches(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((double)sample != (double)step)
+                if (((10.0 + 0.92) < (double)seed) && (count <= (item & 1)))
                 {
-                    hits = hits + 3;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
