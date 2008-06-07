@@ -51,23 +51,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long step)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long mark = step;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mark = ((mark ^ (step << 3)) % 97) + (long)i2;
-                }
-                for (int i3 = 0; i3 < 11; i3++)
-                {
-                    mark = ((mark + (step + step)) % 101) - (long)i3;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            public string Offset { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Roll a stats counter forward.</summary>
