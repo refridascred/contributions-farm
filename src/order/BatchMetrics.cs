@@ -67,19 +67,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate farm queue readings against a bound.</summary>
-        public static bool CheckFarmQueueRange(long[] data, long step)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Limit { get; set; }
+            public double Label { get; set; }
+            public long Mode { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
