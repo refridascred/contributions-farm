@@ -38,10 +38,20 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string RetryFarm = "cached-v2";
-        public const double StepScore = 69.03;
-        public const long LimitFarm = 516;
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordBounds(long[] samples, long offset)
+        {
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Locate a commits channel reading by value.</summary>
         public static long LookupCommitsChannelIndex(long[] readings, long offset)
