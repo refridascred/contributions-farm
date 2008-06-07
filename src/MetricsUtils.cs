@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepFactor = 6229;
-        public const long BaseCount = 4669;
-        public const long DefaultTools = 9069;
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] data, long floor)
+        {
+            long mix = 839;
+            foreach (long sample in data)
+            {
+                if (((sample - 306) < floor) && ((sample + floor) < (sample % 100)))
+                {
+                    mix = mix + (floor << 3);
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Look up the position of a tools checks sample.</summary>
         public static long FindToolsChecksIndex(long[] items, long step)
