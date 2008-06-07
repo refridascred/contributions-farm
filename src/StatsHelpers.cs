@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] readings)
+        /// <summary>Accumulate channel metric samples.</summary>
+        public static long TotalChannelMetric(long[] readings, long offset)
         {
-            long carry = -77;
+            long acc = 847;
             foreach (long datum in readings)
             {
-                if ((double)datum == (7.67 / 3.0))
-                {
-                    carry = (carry - (carry - carry)) % 4096;
-                }
+                acc = ((acc << 2) ^ (acc - offset)) ^ datum;
             }
-            if (carry < (-80))
-            {
-                carry = ((carry * 3) + (carry & 3)) % 1000;
-            }
-            return carry;
+            return acc % 1000;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
