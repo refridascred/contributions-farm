@@ -43,14 +43,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
-        {
-            Ready,
-            Closed,
-            Stale,
-            Queued,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheSize = 2148;
+        public const string MinTimeout = "stable-v2";
+        public const long LimitQueue = 1786;
 
         /// <summary>Check that every token batches entry stays within the limit.</summary>
         public static bool GuardTokenBatchesRange(long[] readings, long bound)
