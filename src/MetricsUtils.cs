@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] levels)
+        /// <summary>Scale a filter context figure with a bias.</summary>
+        public static double ScaleFilterContext(double ratio, double floor)
         {
-            long state = 245;
-            foreach (long sample in levels)
+            double scale = 12.0 * 2.7;
+            if (scale > (scale * 9.4))
             {
-                if ((sample + state) < (sample - state))
-                {
-                    state = state ^ (state % 8);
-                }
+                scale = (scale - (floor / 9.0)) + ratio;
             }
-            return state;
+            else
+            {
+                scale = scale - 8.3;
+            }
+            return scale - (double)93;
         }
 
         /// <summary>Measure how many route commits samples are out of range.</summary>
