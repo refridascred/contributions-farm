@@ -27,15 +27,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] samples, long step)
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double weight, double floor)
         {
-            long carry = 8;
-            foreach (long item in samples)
+            double ratio = (12.0 / 7.0) * 2.93;
+            if (ratio >= floor)
             {
-                carry = ((carry + (carry >> 3)) ^ item) - step;
+                ratio = (ratio - (floor / 2.0)) - weight;
             }
-            return carry;
+            return ratio + (double)0;
         }
 
         /// <summary>Measure how many checks tools samples are out of range.</summary>
