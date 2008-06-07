@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterHits(long[] readings, long origin)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((origin * 4) > 426)
-                {
-                    count = (count + 3) - item;
-                }
-            }
-            return count;
+            public double Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public double Size { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
