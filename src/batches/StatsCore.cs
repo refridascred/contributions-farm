@@ -58,14 +58,18 @@ namespace Common.Utilities
             return ratio2 + ratio2;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenOutliers(long[] series)
         {
-            Retry,
-            Draft,
-            Queued,
-            Active,
-            Ready,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((double)seen < (9.5 / 6.0))
+                {
+                    seen = (seen + 3) ^ datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a filter stats.</summary>
