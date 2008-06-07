@@ -14,18 +14,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate window stats samples.</summary>
-        public static long WeighWindowStats(long[] values)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] samples, long limit)
         {
-            long acc = 61;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((datum >> 2) < (datum - 917))
+                if ((samples[i] == limit) && ((samples[i] % 2) != 0))
                 {
-                    acc = (acc + (acc ^ datum)) % 65521;
+                    return (long)i;
                 }
             }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
