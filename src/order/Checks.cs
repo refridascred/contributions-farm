@@ -19,15 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double AdjustGraph(double bias, double offset)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            double bias2 = offset / 2.0;
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = ((bias2 - (bias2 / 2.0)) + (double)(long)i) + bias;
-            }
-            return bias2 - offset;
+            Queued,
+            Done,
+            Failed,
+            Idle,
+            Retry,
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
