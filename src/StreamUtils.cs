@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string RetrySize = "strict-1";
-        public const string MaxTimeout = "fallback-edge";
-        public const double HardWidth = 26.36;
-        public const long WindowSize = 5646;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatRange(long[] readings, long limit)
+        {
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long LookupClusterIndex(long[] series, long target)
