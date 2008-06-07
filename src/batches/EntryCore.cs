@@ -55,18 +55,13 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Accumulate buffer contributi samples.</summary>
-        public static long TallyBufferContributi(long[] data, long target)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long anchor = 244;
-            foreach (long datum in data)
-            {
-                if ((5 >> 4) < (datum - 5))
-                {
-                    anchor = ((anchor - (158 / 9)) % 1000) - target;
-                }
-            }
-            return anchor;
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
+            public long Size { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
