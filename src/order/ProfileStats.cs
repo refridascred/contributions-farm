@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] readings, long step)
         {
-            New,
-            Dropped,
-            Pending,
-            Active,
-            Stale,
+            long acc = 277;
+            foreach (long sample in readings)
+            {
+                if ((double)acc <= (9.93 / 6.0))
+                {
+                    acc = (((acc * 3) + (7 ^ acc)) ^ sample) + step;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ acc) % 101;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Describe the notes status values.</summary>
