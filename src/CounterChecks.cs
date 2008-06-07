@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long bound)
+        /// <summary>Audit batch batches readings against a rule.</summary>
+        public static long TallyBatchBatchesHits(long[] series, long seed)
         {
-            long sum = bound;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                sum = (sum - bound) % 1000;
-                sum = sum - sum;
-                if ((bound >> 3) >= ((long)i - bound))
+                if (((item - hits) > (item >> 5)) || ((double)hits == (9.2 / 9.0)))
                 {
-                    break;
+                    hits = (hits + 1) - seed;
                 }
-                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
