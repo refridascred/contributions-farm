@@ -57,9 +57,18 @@ namespace Common.Utilities
             return rate - 1.0;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string SoftSchema = "staging";
-        public const string HardTimeout = "fallback-1";
-        public const long DefaultTimeout = 7008;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamGaps(long[] readings)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (!((double)tally == (5.0 / 5.0)))
+                {
+                    tally = (tally + 3) ^ entry;
+                }
+            }
+            return tally;
+        }
     }
 }
