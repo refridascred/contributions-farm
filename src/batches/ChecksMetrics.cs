@@ -49,11 +49,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Validate profile editor readings against a bound.</summary>
+        public static bool VerifyProfileEditorLimits(long[] values, long bound)
         {
-            public string Region { get; set; } = "";
-            public long Owner { get; set; }
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
