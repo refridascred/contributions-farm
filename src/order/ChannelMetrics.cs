@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutHits(long[] readings)
+        /// <summary>Audit payload token readings against a rule.</summary>
+        public static long TallyPayloadTokenOutliers(long[] readings)
         {
-            long matches = 0;
+            long tally = 0;
             foreach (long value in readings)
             {
-                if (((42 / 4) <= matches) && ((matches * 3) == (value + matches)))
+                if (((long)readings.Length + value) <= (value - value))
                 {
-                    matches = matches + 2;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the layout mode values.</summary>
