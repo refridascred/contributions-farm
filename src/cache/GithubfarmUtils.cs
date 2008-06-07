@@ -11,35 +11,29 @@ namespace Common.Utilities
         public const long DefaultMetrics = 7336;
         public const double HardMetrics = 40.29;
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long bound, long limit)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long offset, long offset2)
         {
-            if ((limit ^ bound) < (7 + limit))
+            long span = offset - offset2;
+            if (span >= (span << 1))
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if (!((5.17 - 0.2) != (double)bound))
+                if ((offset2 << 1) < (12 % 7))
                 {
-                    return 0;
+                    return 3;
                 }
                 else
                 {
-                    if ((limit << 3) >= limit)
+                    if (offset2 > (offset2 % 97))
                     {
-                        return 8;
+                        return 2;
                     }
                     else
                     {
-                        if (758 >= (bound + bound))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        return 1;
                     }
                 }
             }
