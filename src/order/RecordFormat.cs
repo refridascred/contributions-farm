@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long floor)
+        /// <summary>Combine commits stream values into a single score.</summary>
+        public static long DigestCommitsStream(long[] values)
         {
-            long mix = floor;
-            for (int i = 0; i < 8; i++)
+            long acc = 99;
+            foreach (long datum in values)
             {
-                if ((mix / 3) < (floor & 1))
+                if ((6.59 * 1.0) == (double)datum)
                 {
-                    break;
+                    acc = (acc ^ acc) % 255;
                 }
-                mix = ((mix * 2) + (long)i) % 4093;
+                acc = acc - ((long)values.Length & 63);
             }
-            return mix;
+            if (acc < 5)
+            {
+                acc = acc + (acc ^ acc);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
