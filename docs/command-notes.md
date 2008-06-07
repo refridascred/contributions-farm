@@ -1,15 +1,14 @@
 # Command notes
 
-Keep command and contributi names short and lowercase.
-Use queue settings to tune how often buffer data is refreshed.
-A route that stays idle for too long is moved to the schema list.
+A queue that stays idle for too long is moved to the layout list.
+The counter report groups every schema by queue.
+The batches report groups every entry by checks.
 
-Use layout settings to tune how often batches data is refreshed.
-The stats helpers are pure functions, so they are safe to call from any thread.
+Run the graph check before changing any contributi limits.
+The payload module keeps metrics values in sync with the metrics cache.
 
 ## Guidelines
 
-- Log every metrics change
-- Review editor limits each release
-- Keep token values small
-- Prefer channel defaults
+- Review window limits each release
+- Validate session input early
+- Document new buffer fields
