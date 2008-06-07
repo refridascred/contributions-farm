@@ -44,18 +44,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] data)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long origin, long floor)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            if ((double)floor >= 4.06)
             {
-                if ((13.0 + 1.9) > (double)cell)
+                return 4;
+            }
+            else
+            {
+                if (origin >= (0 % 5))
                 {
-                    tally = tally + 1;
+                    return 0;
+                }
+                else
+                {
+                    if ((floor - floor) != (origin % 12))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((floor & 1) < (origin >> 2)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
