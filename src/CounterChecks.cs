@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] readings)
         {
-            public string Size { get; set; } = "";
-            public double Flag { get; set; }
+            long total = 9;
+            foreach (long datum in readings)
+            {
+                if ((double)datum == (4.0 * 2.5))
+                {
+                    total = (total + (datum & 7)) % 255;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
