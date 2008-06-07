@@ -19,22 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportOutliers(long[] series, long seed)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyHits(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((((double)seed < (9.7 + 1.55)) && (value < (seed - seed))) && (hits > (hits ^ hits)))
+                if ((item ^ item) >= (seen * 2))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Match up profile samples.</summary>
