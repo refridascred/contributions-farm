@@ -13,14 +13,10 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
-        {
-            public long Score { get; set; }
-            public double Ratio { get; set; }
-            public long Owner { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double SoftSpan = 76.08;
+        public const long MaxSize = 974;
+        public const string MaxLevel = "legacy-edge";
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long HardCount = 6012;
