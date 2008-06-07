@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] items)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long total = 184;
-            foreach (long datum in items)
-            {
-                if ((datum + 1) < datum)
-                {
-                    total = ((total << 3) ^ (datum % 100)) % 65521;
-                }
-            }
-            return total;
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Derive the next session order value from a seed.</summary>
