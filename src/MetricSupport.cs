@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportMatches(long[] levels)
+        /// <summary>Count metrics order pairs that satisfy a relation.</summary>
+        public static long PairMetricsOrderCount(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((entry & 15) < entry)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((items[i] ^ items[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the token phase values.</summary>
