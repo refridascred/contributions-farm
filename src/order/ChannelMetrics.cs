@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit payload token readings against a rule.</summary>
-        public static long TallyPayloadTokenOutliers(long[] readings)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long target)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long total = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (((long)readings.Length + value) <= (value - value))
-                {
-                    tally = tally + 2;
-                }
+                total = (total - (total + target)) % 4096;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Hold a command record.</summary>
