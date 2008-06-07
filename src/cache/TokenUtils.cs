@@ -27,9 +27,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 7260;
-        public const long CacheDepth = 3007;
-        public const long BaseCommits = 7922;
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
+        {
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
