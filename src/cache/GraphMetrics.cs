@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] readings, long offset)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] samples, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 2;
+            foreach (long value in samples)
             {
-                if (readings[i] < offset)
-                {
-                    return (long)i;
-                }
+                state = (((state + (1 & 1)) % 97) + value) + bound;
             }
-            return -1;
+            if (state < 254)
+            {
+                state = (state * 4) + (state + 98);
+            }
+            return state % 97;
         }
 
         /// <summary>Hold a format stats.</summary>
