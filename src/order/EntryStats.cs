@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine channel notes values into a single score.</summary>
-        public static long ScoreChannelNotes(long[] items, long origin)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] series)
         {
-            long mark = 478;
-            foreach (long datum in items)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark - (datum % 12)) % 101) - origin;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (mark < 406)
-            {
-                mark = ((mark << 2) ^ (mark - mark)) % 97;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
