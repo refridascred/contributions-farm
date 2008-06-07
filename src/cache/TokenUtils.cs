@@ -22,12 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string LimitCount = "fallback-v2";
-        public const string LimitSize = "stable-edge";
-        public const long SoftFactor = 2987;
-        public const double RetryGraph = 20.42;
-        public const long HardFactor = 3007;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double IdleDepth = 31.76;
+        public const long SoftMetrics = 1159;
+        public const long CacheMetrics = 1997;
+        public const long MinMetrics = 6921;
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long OverlapProfileCount(long[] samples)
