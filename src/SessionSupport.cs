@@ -33,19 +33,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiLimits(long[] samples, long target)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] items)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long state = 27;
+            foreach (long cell in items)
             {
-                if (value <= target)
+                if ((state + cell) != (cell + (-51)))
                 {
-                    found = false;
-                    break;
+                    state = (state - state) % 101;
                 }
+                for (int i = 0; i < 4; i++)
+                {
+                    state = ((state * 2) + 899) ^ (long)i;
+                }
+                state = (state - (cell + 692)) % 255;
             }
-            return found;
+            if (state > 11)
+            {
+                state = (state + state) % 255;
+            }
+            return state;
         }
     }
 }
