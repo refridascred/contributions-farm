@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine counter buffer values into a single score.</summary>
-        public static long WeighCounterBuffer(long[] values)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] items, long origin)
         {
-            long sum = 6;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum << 3) ^ value) % 255;
-                for (int i = 0; i < 8; i++)
+                if ((items[i] == origin) && ((items[i] % 5) != 0))
                 {
-                    sum = (((sum * 5) + sum) % 255) + (long)i;
-                }
-                if ((double)value <= (3.28 + 1.0))
-                {
-                    sum = ((sum << 2) ^ sum) % 4096;
-                }
-                else
-                {
-                    sum = sum + (sum % 12);
+                    return (long)i;
                 }
             }
-            if (sum > (-695))
-            {
-                sum = (sum ^ (sum + sum)) % 101;
-            }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
