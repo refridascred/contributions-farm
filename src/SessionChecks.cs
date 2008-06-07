@@ -34,18 +34,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorHits(long[] values, long bound)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterHits(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if ((datum - datum) <= (matches + datum))
+                if ((double)item == (double)tally)
                 {
-                    matches = (matches + 1) - bound;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
