@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double ScaleQueue(double weight, double span)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] values, long floor)
         {
-            double drift = (weight - span) / 6.0;
-            if (drift <= 2.32)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                drift = drift - (weight / 5.0);
+                if (datum <= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return drift - 5.9;
+            return ready;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
