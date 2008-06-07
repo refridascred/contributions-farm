@@ -35,12 +35,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] series, long step)
         {
-            public bool Mode { get; set; }
-            public string Score { get; set; } = "";
-            public bool Owner { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= step) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
