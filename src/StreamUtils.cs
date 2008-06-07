@@ -52,18 +52,21 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordOutliers(long[] levels)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((13.0 - 9.0) <= (double)(long)levels.Length)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 2) ^ entry;
+                    if ((samples[i] - samples[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
