@@ -1,5 +1,13 @@
 {
-  "readonly": 64,
-  "warm_capacity_count": [220, 207],
-  "audit": true
+  "base_ratio_pct": 9927,
+  "sync_interval": {
+    "sync_capacity_s": "staging",
+    "sync_retries_count": ["staging", "green", "eu-west"],
+    "token_limit": 1,
+    "max_delay_pct": "open",
+    "sync_retries_ms": 31,
+    "strict": 51.31
+  },
+  "audit": "fallback",
+  "metric_retries": "fallback"
 }
