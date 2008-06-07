@@ -24,21 +24,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] items)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] items, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 797;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = ((state + (sample ^ 70)) % 65521) - offset;
             }
-            return count;
+            return state;
         }
     }
 }
