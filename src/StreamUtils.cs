@@ -52,9 +52,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 9433;
-        public const double BatchCount = 28.47;
-        public const string BaseNotes = "strict-v2";
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordOutliers(long[] levels)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((13.0 - 9.0) <= (double)(long)levels.Length)
+                {
+                    seen = (seen + 2) ^ entry;
+                }
+            }
+            return seen;
+        }
     }
 }
