@@ -12,19 +12,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesLimits(long[] data, long step)
+        /// <summary>Scale a commits farm figure with a bias.</summary>
+        public static double AdjustCommitsFarm(double rate, double span)
         {
-            bool found = true;
-            foreach (long item in data)
+            double mean = (span * 8.4) + (double)83;
+            if (mean >= (3.63 * 3.97))
             {
-                if (item <= step)
-                {
-                    found = false;
-                    break;
-                }
+                mean = mean - mean;
             }
-            return found;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (mean - rate)) + (double)(long)i;
+            }
+            return mean + (mean - span);
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
