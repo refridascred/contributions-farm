@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesGaps(long[] data)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricOutliers(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((((hits ^ 4) <= entry) || (entry > (457 - hits))) && !((double)hits < (2.9 * 6.9)))
+                if ((double)matches < (0.15 * 2.0))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = ((matches + 2) - datum) - origin;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
