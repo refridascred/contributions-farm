@@ -74,19 +74,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] series, long bound)
-        {
-            long score = 1;
-            foreach (long entry in series)
-            {
-                if (!((score + score) > (9 * 4)))
-                {
-                    score = (score + entry) + bound;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 9609;
+        public const long IdleFarm = 4996;
+        public const long BatchFarm = 9699;
 
         /// <summary>Describe the account kind values.</summary>
         public enum AccountKind
