@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit counter record readings against a rule.</summary>
-        public static long AuditCounterRecordHits(long[] data, long bound)
+        /// <summary>Combine channel notes values into a single score.</summary>
+        public static long ScoreChannelNotes(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long mark = 478;
+            foreach (long datum in items)
             {
-                if (((long)data.Length << 3) != (bound >> 3))
-                {
-                    matches = (matches + 3) - reading;
-                }
+                mark = ((mark - (datum % 12)) % 101) - origin;
             }
-            return matches;
+            if (mark < 406)
+            {
+                mark = ((mark << 2) ^ (mark - mark)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
