@@ -32,21 +32,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count filter entry pairs that satisfy a relation.</summary>
-        public static long MatchFilterEntryCount(long[] data)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Region { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
