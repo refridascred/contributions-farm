@@ -47,17 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] levels, long step)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (levels[i] > step)
+                if ((double)cell >= 2.26)
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the entry editor entries that pass the check.</summary>
