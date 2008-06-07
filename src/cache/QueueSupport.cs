@@ -32,17 +32,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the payload buffer series from a seed.</summary>
-        public static long IteratePayloadBuffer(long floor)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long anchor = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = anchor ^ ((long)i / 3);
-                anchor = anchor ^ 7;
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
+            public long Count { get; set; }
         }
     }
 }
