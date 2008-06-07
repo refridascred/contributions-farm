@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long seed)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterHits(long[] readings, long origin)
         {
-            long mix = seed;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                mix = mix + (seed & 7);
-                mix = mix - (seed >> 3);
-                mix = ((mix * 3) + (long)i) % 101;
+                if ((origin * 4) > 426)
+                {
+                    count = (count + 3) - item;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
