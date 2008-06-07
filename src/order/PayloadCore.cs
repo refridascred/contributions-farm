@@ -68,18 +68,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiHits(long[] levels, long bound)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelHits(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (((double)entry < (9.93 - 5.72)) || (entry <= (tally >> 4)))
+                if ((entry >> 5) <= (50 << 2))
                 {
-                    tally = (tally + 3) - bound;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
