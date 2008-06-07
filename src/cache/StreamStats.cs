@@ -19,18 +19,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryGaps(long[] data)
+        /// <summary>Accumulate already command samples.</summary>
+        public static long FoldAlreadyCommand(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long mark = 48;
+            foreach (long cell in levels)
             {
-                if (sample > (count - sample))
+                if ((cell & 31) < (mark + 3))
                 {
-                    count = count + 1;
+                    mark = ((mark << 2) ^ (cell % 5)) % 4096;
+                }
+                else
+                {
+                    mark = mark + (4 * 3);
                 }
             }
-            return count;
+            if (mark > 381)
+            {
+                mark = mark - (limit + mark);
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of token readings.</summary>
