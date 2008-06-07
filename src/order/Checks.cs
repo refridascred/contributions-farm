@@ -37,18 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutMatches(long[] data)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            double rate = bias;
+            if (rate < (double)517)
             {
-                if ((tally * 3) >= (tally & 1))
-                {
-                    tally = (tally + 2) ^ entry;
-                }
+                rate = rate + scale;
             }
-            return tally;
+            return rate - (scale - bias);
         }
     }
 }
