@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < limit) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxSize = 4567;
+        public const long BurstFilter = 9169;
+        public const long CacheFilter = 6804;
+        public const string LimitFilter = "alpha-v2";
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long TotalChecks(long[] data, long target)
