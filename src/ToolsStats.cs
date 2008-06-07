@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] items)
+        /// <summary>Derive the next commits account value from a seed.</summary>
+        public static long RollCommitsAccount(long seed)
         {
-            long mix = 59;
-            foreach (long datum in items)
+            long total = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if ((mix / 7) < mix)
+                total = (total + ((long)i + total)) % 255;
+                if ((long)i <= (total + seed))
                 {
-                    mix = (((mix << 3) ^ (mix + mix)) % 4096) ^ datum;
+                    total = total ^ (total - total);
                 }
+                else
+                {
+                    total = (total ^ total) % 101;
+                    total = (total - (total & 3)) % 255;
+                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return mix % 97;
+            return total;
         }
 
         /// <summary>Validate layout window readings against a bound.</summary>
