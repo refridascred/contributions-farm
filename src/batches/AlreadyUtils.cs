@@ -65,19 +65,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] readings)
-        {
-            long state = -636;
-            foreach (long cell in readings)
-            {
-                state = ((state + (-758)) % 101) ^ cell;
-            }
-            if (state < 272)
-            {
-                state = ((state * 4) + (state * 3)) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxLayout = 5792;
+        public const double DefaultLayout = 76.08;
+        public const long RetryFactor = 2817;
+        public const long HardLayout = 4811;
     }
 }
