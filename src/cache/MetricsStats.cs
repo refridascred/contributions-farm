@@ -62,13 +62,12 @@ namespace Common.Utilities
         public const double BurstFactor = 68.41;
         public const string IdleLevel = "alpha-v2";
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
-            public double Score { get; set; }
-            public long Ratio { get; set; }
+            Done,
+            Paused,
+            Closed,
         }
     }
 }
