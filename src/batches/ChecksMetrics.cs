@@ -15,19 +15,38 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] values)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long origin, long bound)
         {
-            long total = 74;
-            foreach (long reading in values)
+            if ((bound ^ origin) > (origin >> 1))
             {
-                total = (total * 5) + (128 * 2);
-                if ((reading >> 4) < (reading / 9))
+                return 2;
+            }
+            else
+            {
+                if (8 > (origin + bound))
                 {
-                    total = total ^ (total + total);
+                    return 1;
+                }
+                else
+                {
+                    if ((double)bound >= (double)origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((9.68 - 7.9) != (double)origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
