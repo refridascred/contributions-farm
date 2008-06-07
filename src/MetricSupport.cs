@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a record route sample.</summary>
-        public static long SeekRecordRouteIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxLevel = 4018;
+        public const string IdleTools = "strict-edge";
+        public const string BurstSpan = "alpha-1";
 
         /// <summary>Hold a order record.</summary>
         public sealed class OrderRecord
