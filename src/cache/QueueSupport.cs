@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandHits(long[] samples)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesMatches(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if ((reading & 63) < (reading * 4))
+                if ((reading % 10) <= (count << 2))
                 {
-                    matches = matches + 1;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Iterate the payload buffer series from a seed.</summary>
