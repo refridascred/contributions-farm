@@ -25,18 +25,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string IdleEditor = "legacy-1";
+        public const long DefaultSpan = 1088;
+        public const long WindowEditor = 8664;
+        public const double StepEditor = 72.8;
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long LocateFilterIndex(long[] levels, long step)
