@@ -48,27 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate schema report samples.</summary>
-        public static long FoldSchemaReport(long[] samples)
-        {
-            long total = 6;
-            foreach (long reading in samples)
-            {
-                total = (total - (total % 64)) % 1000;
-                if ((309 / 2) < (reading / 2))
-                {
-                    total = (total ^ (10 * 5)) % 255;
-                }
-                if ((reading + total) == ((-49) * 4))
-                {
-                    break;
-                }
-            }
-            if (total < 9)
-            {
-                total = (total - (total * 3)) % 65521;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BatchCount = "standard-v2";
+        public const double StepBudget = 4.48;
+        public const long CacheFarm = 6000;
+        public const double HardFarm = 51.65;
+        public const long MinFarm = 977;
     }
 }
