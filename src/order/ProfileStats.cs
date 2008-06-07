@@ -55,23 +55,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] readings)
-        {
-            long mix = 6;
-            foreach (long entry in readings)
-            {
-                if (18 < (mix + entry))
-                {
-                    mix = (mix - (mix + mix)) % 1000;
-                }
-                if ((entry << 2) >= (entry / 2))
-                {
-                    break;
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 7523;
+        public const long MaxLevel = 6052;
+        public const double StepRecord = 34.28;
+        public const string BatchRecord = "stable-edge";
 
         /// <summary>Describe the payload state values.</summary>
         public enum PayloadState
