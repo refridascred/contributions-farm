@@ -27,12 +27,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double scale, double span)
         {
-            public long Ratio { get; set; }
-            public long Token { get; set; }
-            public long Level { get; set; }
+            double bias = (double)(3 + (-5));
+            if (bias <= span)
+            {
+                bias = bias + (double)52;
+            }
+            return bias - (scale / 3.0);
         }
     }
 }
