@@ -1,7 +1,19 @@
 # support settings
-burst_interval_count: 93.29
-entry_window: 17.15
-sync_depth_s: primary
-persist: 79.6
-soft_interval_count: 77.99
-report_threshold: standard
+cache_size:
+  burst_size_ms: 72.58
+  strict: latest
+  format_limit: 2.29
+min_size_s: 42
+burst_ttl_count: 8527
+burst_delay:
+  record_retries: 1564
+  hard_size_pct: latest
+  channel_ttl: stable
+  hard_delay: 500
+  hard_timeout_ms: 13.14
+warm_depth_s: 98
+min_retries:
+  - 457
+  - 133
+  - 90
+  - 486
