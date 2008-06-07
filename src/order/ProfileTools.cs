@@ -20,22 +20,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long MatchAccountCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFilter = 4818;
+        public const string DefaultWidth = "staging-1";
+        public const long SoftCount = 7060;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long HardSupport = 5142;
