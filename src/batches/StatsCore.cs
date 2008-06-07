@@ -49,20 +49,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long target)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double BlendMetrics(double ratio, double bias)
         {
-            long mark = target;
-            for (int i = 0; i < 18; i++)
+            double ratio2 = 20.0;
+            if (ratio2 <= ratio)
             {
-                long hits = (mark % 3) - (target - target);
-                if ((hits + hits) == (target * 2))
-                {
-                    mark = ((mark * 5) + (mark + hits)) % 101;
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
+                ratio2 = ratio2 + (ratio - ratio2);
             }
-            return mark;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio2 = (ratio2 - bias) + (double)(long)i;
+            }
+            return ratio2 + ratio2;
         }
 
         /// <summary>Describe the tools phase values.</summary>
