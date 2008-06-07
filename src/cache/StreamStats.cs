@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            Ready,
-            Done,
-            Pending,
-            Idle,
+            public long Stamp { get; set; }
+            public double Owner { get; set; }
+            public string Level { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Grade a token value against two limits.</summary>
