@@ -1,7 +1,12 @@
 {
-  "enabled": 7691,
-  "entry_size": false,
-  "batches_window": ["stable", "legacy", "blue", "fallback"],
-  "verbose": [307, 357, 56],
-  "warm_timeout_pct": [135, 102]
+  "dry_run": 5851,
+  "strict": "cached",
+  "poll_depth": {
+    "sync_timeout": ["latest", "legacy"],
+    "readonly": "standard",
+    "retry_window_s": "stable",
+    "base_ratio_ms": 44
+  },
+  "burst_timeout_pct": 2541,
+  "enabled": 339
 }
