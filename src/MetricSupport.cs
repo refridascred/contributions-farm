@@ -14,12 +14,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheGaps(long[] samples, long floor)
         {
-            Done,
-            Pending,
-            Dropped,
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading + floor) <= (reading % 3))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the entry level values.</summary>
