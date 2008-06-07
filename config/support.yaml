@@ -1,12 +1,13 @@
 # support settings
-batches_interval: 4128
-min_delay_pct:
-  batch_window: legacy
-  persist: 2971
-  farm_ttl: false
-retry_timeout_count: 35.49
-enabled:
-  - staging
-  - stable
-  - staging
-  - latest
+graph_threshold: strict
+max_window_s:
+  already_ratio:
+    - green
+    - edge
+    - stable
+    - local
+  farm_interval: 33.25
+  hard_interval: staging
+  metrics_interval: 100
+  idle_window_s: standard
+idle_ttl_pct: 2344
