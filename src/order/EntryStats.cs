@@ -54,21 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] items)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterGaps(long[] readings, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (matches < (matches - origin))
                 {
-                    if ((items[i] + items[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 1) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
