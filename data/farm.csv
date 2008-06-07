@@ -1,8 +1,7 @@
-id,ratio,level
-1,standard,381
-2,943,909
-3,42.89,725
-4,blue,latest
-5,41.47,740
-6,333,834
-7,56.09,75.25
+id,label,weight
+1,staging,fallback
+2,759,737
+3,944,96.29
+4,edge,63.69
+5,strict,28.37
+6,13.98,196
