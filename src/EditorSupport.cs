@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] data)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] readings, long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 365;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i = 0; i < 7; i++)
                 {
-                    if ((data[i] + data[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
+                    mix = ((mix ^ ((long)i % 3)) % 101) - step;
+                    mix = mix + ((long)i ^ mix);
+                }
+                if ((double)mix <= (9.4 * 3.5))
+                {
+                    mix = (mix - (mix + sample)) % 1000;
                 }
             }
-            return count;
+            return mix % 97;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
