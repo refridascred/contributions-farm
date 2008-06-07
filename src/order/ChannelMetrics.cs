@@ -26,12 +26,31 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long bound, long floor)
         {
-            Dropped,
-            Active,
-            Paused,
+            if (!((floor / 2) <= (bound - (-66))))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((6 << 3) > (20 - floor)) || (floor <= (bound + 14)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((8.91 / 7.0) >= (double)floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
