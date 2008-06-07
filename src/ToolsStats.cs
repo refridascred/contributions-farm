@@ -26,19 +26,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate layout window readings against a bound.</summary>
-        public static bool GuardLayoutWindowBounds(long[] series, long floor)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            bool ready = true;
-            foreach (long reading in series)
-            {
-                if (reading <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Look up the position of a token sample.</summary>
