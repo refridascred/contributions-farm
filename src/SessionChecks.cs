@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many format notes samples are out of range.</summary>
-        public static long TallyFormatNotesGaps(long[] values, long step)
+        /// <summary>Scale a entry payload figure with a bias.</summary>
+        public static double ProjectEntryPayload(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long value in values)
+            double bias = (double)(27 ^ 603);
+            if (bias > (double)93)
             {
-                if (!((value / 9) <= (tally << 3)))
-                {
-                    tally = (tally + 2) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                bias = (bias + (scale * 17.0)) - offset;
             }
-            return tally;
+            else
+            {
+                bias = bias + scale;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = bias + (double)(long)i;
+            }
+            return bias - (double)24;
         }
 
         /// <summary>Look up the position of a metric farm sample.</summary>
