@@ -32,22 +32,30 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiGaps(long[] data, long offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] data)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long total = -902;
+            foreach (long sample in data)
             {
-                if ((3.89 - 4.5) > (7.0 * 0.91))
+                if (((double)sample >= (3.82 + 3.0)) || ((total ^ total) != (total - (long)data.Length)))
                 {
-                    count = ((count + 1) ^ entry) + offset;
+                    total = total ^ (total + sample);
                 }
                 else
                 {
-                    count = count - 1;
+                    total = ((total * 3) + (total + 8)) % 101;
+                }
+                if (!((133 - 32) < sample))
+                {
+                    break;
                 }
             }
-            return count;
+            if (total > 611)
+            {
+                total = (total ^ (total & 1)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
