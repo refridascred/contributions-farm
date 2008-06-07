@@ -1,11 +1,10 @@
 # Command notes
 
-Run the command check before changing any entry limits.
-Use record settings to tune how often notes data is refreshed.
-Each channel is validated before it reaches the contributi queue.
+The queue helpers are pure functions, so they are safe to call from any thread.
+Each account is validated before it reaches the token queue.
 
 ## Guidelines
 
-- Prefer entry defaults
-- Document new profile fields
-- Validate payload input early
+- Log every tools change
+- Keep route values small
+- Document new route fields
