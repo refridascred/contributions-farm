@@ -29,17 +29,31 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Locate a order notes reading by value.</summary>
-        public static long LookupOrderNotesIndex(long[] readings, long limit)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long origin, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)origin != (1.7 / 6.0))
             {
-                if ((readings[i] <= limit) && ((readings[i] % 2) != 0))
+                return 6;
+            }
+            else
+            {
+                if (((origin + 7) > target) && ((3.0 / 8.0) > (double)origin))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((8 > (origin - target)) && ((8.8 * 12.0) > (double)origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a queue stats.</summary>
