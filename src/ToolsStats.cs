@@ -60,22 +60,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] items, long origin)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsLimits(long[] items, long target)
         {
-            long acc = 478;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long value in items)
             {
-                if ((cell + (-93)) > (cell >> 4))
+                if (value != target)
                 {
-                    acc = ((acc << 2) ^ (cell - cell)) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            if (acc < 4)
-            {
-                acc = (acc ^ (origin ^ origin)) % 255;
-            }
-            return acc;
+            return found;
         }
     }
 }
