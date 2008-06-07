@@ -56,11 +56,18 @@ namespace Common.Utilities
         public const string LimitRecord = "open";
         public const long WindowRecord = 7750;
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyOutliers(long[] data)
         {
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((tally + datum) > (datum + datum))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
