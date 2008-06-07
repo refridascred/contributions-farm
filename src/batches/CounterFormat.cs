@@ -26,17 +26,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] levels, long offset)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 4;
+            foreach (long reading in readings)
             {
-                if (levels[i] >= offset)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 2) + reading) % 101;
             }
-            return -1;
+            return mix % 4096;
         }
     }
 }
