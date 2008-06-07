@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] items, long seed)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double AdjustAlready(double weight, double offset)
         {
-            long mix = 69;
-            foreach (long datum in items)
+            double ratio = offset;
+            if (ratio > 15.0)
             {
-                mix = ((mix ^ (datum - mix)) % 255) - seed;
+                ratio = (ratio - (double)736) - weight;
             }
-            if (mix > 518)
-            {
-                mix = (mix ^ (9 + mix)) % 1000;
-            }
-            return mix % 65521;
+            return ratio - (ratio / 4.0);
         }
 
         /// <summary>Scale a context session figure with a bias.</summary>
