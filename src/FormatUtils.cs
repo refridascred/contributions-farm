@@ -32,13 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            public long Mode { get; set; }
-            public double Count { get; set; }
-            public long Level { get; set; }
-            public long Weight { get; set; }
+            Active,
+            Synced,
+            Draft,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
