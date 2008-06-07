@@ -29,19 +29,11 @@ namespace Common.Utilities
             return mean + (bias + 9.66);
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] samples, long step)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Token { get; set; } = "";
+            public string Count { get; set; } = "";
         }
     }
 }
