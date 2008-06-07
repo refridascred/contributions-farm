@@ -5,35 +5,29 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long floor, long bound)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long offset, long floor)
         {
-            if (((17.0 - 3.2) > (double)bound) || ((floor >> 5) >= (floor + 61)))
+            long cur = offset ^ floor;
+            if ((cur - offset) < (offset % 7))
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if (floor >= (floor ^ (-80)))
+                if ((374 >= (7 + cur)) || ((8.1 * 7.7) > (double)offset))
                 {
-                    return 4;
+                    return 6;
                 }
                 else
                 {
-                    if ((bound >= (floor * 2)) && (floor <= (67 + bound)))
+                    if ((9.0 * 6.3) >= (double)cur)
                     {
-                        return 7;
+                        return 3;
                     }
                     else
                     {
-                        if ((double)bound >= (12.0 * 1.2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        return 7;
                     }
                 }
             }
