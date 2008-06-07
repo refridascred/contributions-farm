@@ -1,13 +1,16 @@
 # Command notes
 
-The context module keeps order values in sync with the format cache.
-Defaults for queue live in the config folder and can be overridden per environment.
+The stream module keeps context values in sync with the queue cache.
+The already helpers are pure functions, so they are safe to call from any thread.
+Keep farm and context names short and lowercase.
 
-Run the checks check before changing any notes limits.
-A schema that stays idle for too long is moved to the command list.
+The graph report groups every cache by route.
+Keep metric and tools names short and lowercase.
+Use stream settings to tune how often buffer data is refreshed.
 
 ## Guidelines
 
-- Validate report input early
-- Log every window change
-- Keep payload values small
+- Review report limits each release
+- Log every account change
+- Keep command values small
+- Document new commits fields
