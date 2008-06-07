@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const long BatchTimeout = 2402;
         public const string MinInterval = "alpha-1";
 
-        /// <summary>Blend two command route measurements.</summary>
-        public static double SmoothCommandRoute(double ratio, double span)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] values, long offset)
         {
-            double gain = (double)(411 * 3);
-            if (gain > 4.8)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                gain = ((gain + gain) - ratio) - span;
+                if ((84 * 4) < (offset / 9))
+                {
+                    seen = (seen + 2) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                gain = gain + (double)267;
-            }
-            return gain - (gain * 2.67);
+            return seen;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
