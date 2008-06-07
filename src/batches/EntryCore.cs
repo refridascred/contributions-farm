@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every cluster window entry stays within the limit.</summary>
-        public static bool ValidateClusterWindowLimits(long[] items, long bound)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            bool ready = true;
-            foreach (long cell in items)
-            {
-                if (cell > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Queued,
+            Dropped,
+            Paused,
+            Synced,
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
