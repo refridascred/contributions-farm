@@ -16,21 +16,18 @@ namespace Common.Utilities
             return weight + (double)524;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long CompareLayoutCount(long[] readings)
+        /// <summary>Count the checks cache entries that pass the check.</summary>
+        public static long AuditChecksCacheMatches(long[] values, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((3 + entry) != (limit >> 1))
                 {
-                    if ((readings[i] + readings[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
