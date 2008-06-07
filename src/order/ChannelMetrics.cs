@@ -19,14 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            Locked,
-            Synced,
-            Retry,
-            Closed,
-            New,
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the token state values.</summary>
