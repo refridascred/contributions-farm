@@ -10,18 +10,22 @@ namespace Common.Utilities
         public const long CacheMetrics = 7445;
         public const long WindowSize = 5460;
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] values, long bound)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionHits(long[] samples, long seed)
         {
-            long result = 21;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((bound - result) <= (entry << 2))
+                if ((1 + 7) != (seen - 28))
                 {
-                    result = (result - entry) % 255;
+                    seen = ((seen + 2) + datum) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return result % 1000;
+            return seen;
         }
 
         /// <summary>Combine session values into a single score.</summary>
