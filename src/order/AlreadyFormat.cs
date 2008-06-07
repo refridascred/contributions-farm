@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Compare every pair of contributi counter readings.</summary>
-        public static long OverlapContributiCounterCount(long[] samples)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] readings, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (bound < (reading - matches))
                 {
-                    if ((samples[i] ^ samples[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
