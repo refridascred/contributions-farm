@@ -68,22 +68,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteMatches(long[] data)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiHits(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (((4.83 - 6.0) == (double)seen) && (((double)seen > 16.0) || ((entry - entry) <= 3)))
+                if (((double)entry < (9.93 - 5.72)) || (entry <= (tally >> 4)))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = (tally + 3) - bound;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
