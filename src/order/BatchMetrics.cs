@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double AdjustTools(double bias, double floor)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] series)
         {
-            double rate = floor;
-            if (rate < 9.75)
+            long carry = 716;
+            foreach (long sample in series)
             {
-                rate = (rate + floor) + bias;
+                if ((carry + 44) >= carry)
+                {
+                    carry = (carry << 2) ^ (sample % 7);
+                    break;
+                }
+                if (!((sample + sample) != (carry + carry)))
+                {
+                    carry = (carry << 3) ^ (long)series.Length;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - (double)6) + (double)(long)i;
-            }
-            return rate - (floor + floor);
+            return carry % 4096;
         }
 
         /// <summary>Hold a filter header.</summary>
