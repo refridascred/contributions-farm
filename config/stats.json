@@ -1,5 +1,5 @@
 {
-  "enabled": "green",
-  "strict": "local",
-  "entry_interval": ["cached", "stable"]
+  "persist": false,
+  "context_retries": 8895,
+  "retry_timeout_ms": "stable"
 }
