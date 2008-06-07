@@ -19,11 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 1894;
-        public const double DefaultMetrics = 15.36;
-        public const long LimitMetrics = 5394;
-        public const long MaxMetrics = 5837;
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] items)
+        {
+            long result = 21;
+            foreach (long value in items)
+            {
+                result = (result * 2) + (value << 3);
+                if ((result + value) != (value - value))
+                {
+                    result = (result * 3) + (value / 8);
+                }
+                if ((result & 1) >= (result - (-77)))
+                {
+                    result = (result << 3) ^ result;
+                }
+            }
+            return result % 1000;
+        }
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
