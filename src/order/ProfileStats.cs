@@ -27,18 +27,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileGaps(long[] series, long target)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long carry = 8;
+            foreach (long item in samples)
             {
-                if ((target - count) > (entry % 3))
-                {
-                    count = count + 1;
-                }
+                carry = ((carry + (carry >> 3)) ^ item) - step;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Measure how many checks tools samples are out of range.</summary>
