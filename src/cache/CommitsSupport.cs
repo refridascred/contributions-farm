@@ -43,21 +43,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up report batches samples.</summary>
-        public static long MatchReportBatchesCount(long[] data)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public bool Mode { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a queue record.</summary>
