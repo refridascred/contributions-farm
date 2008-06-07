@@ -16,11 +16,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
+            Closed,
+            Synced,
+            Idle,
+            Retry,
         }
 
         /// <summary>Fold a list of metric readings.</summary>
