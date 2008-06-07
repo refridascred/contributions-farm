@@ -19,21 +19,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] values)
+        /// <summary>Iterate the counter channel series from a seed.</summary>
+        public static long RollCounterChannel(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)floor < (10.0 + 4.2))
                 {
-                    if ((values[i] - values[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total * 5) + floor;
                 }
+                else
+                {
+                    total = (total * 4) + (floor + total);
+                }
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    total = (total - (total / 4)) ^ (long)i2;
+                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Audit metric support readings against a rule.</summary>
