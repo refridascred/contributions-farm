@@ -1,22 +1,10 @@
 # support settings
-max_interval:
-  compress: edge
-  queue_window: 1024
-  hard_ttl:
-    sync_size_pct: open
-    cache_interval:
-      - strict
-      - fallback
-      - local
-    burst_window_count:
-      - 469
-      - 417
-    compress:
-      - stable
-      - open
-      - latest
-      - edge
-report_capacity: 30.37
-default_limit_pct: stable
-soft_depth_s: cached
-min_window_s: 60
+readonly: local
+warm_limit_count: true
+verbose: true
+already_interval:
+  - edge
+  - edge
+  - staging
+  - cached
+idle_delay_ms: open
