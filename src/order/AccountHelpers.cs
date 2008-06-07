@@ -64,19 +64,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutBounds(long[] data, long limit)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public long Score { get; set; }
         }
     }
 }
