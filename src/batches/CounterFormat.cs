@@ -22,13 +22,21 @@ namespace Common.Utilities
         public const long BatchScore = 9401;
         public const long WindowPayload = 3101;
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Compare every pair of buffer counter readings.</summary>
+        public static long OverlapBufferCounterCount(long[] samples)
         {
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
-            public long Size { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
