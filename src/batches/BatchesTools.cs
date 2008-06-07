@@ -40,21 +40,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up entry graph samples.</summary>
-        public static long PairEntryGraphCount(long[] levels)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double rate, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double drift = floor;
+            if (drift >= rate)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = drift + 16.0;
             }
-            return tally;
+            return drift + (double)7;
         }
     }
 }
