@@ -40,16 +40,13 @@ namespace Common.Utilities
             return gain - (gain * 2.67);
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long limit)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long score = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                score = (score * 5) + (limit / 2);
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            public bool Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public long Region { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
