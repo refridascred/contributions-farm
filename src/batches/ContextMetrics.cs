@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long limit, long origin)
         {
-            public double Ratio { get; set; }
-            public bool Total { get; set; }
+            if (((origin + origin) <= 888) && ((6.2 + 3.6) <= (double)limit))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit ^ origin) != (origin + 798))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin > (limit + limit)) || ((11 & 15) <= origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a batch format counter forward.</summary>
