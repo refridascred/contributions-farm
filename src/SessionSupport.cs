@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksBounds(long[] samples, long offset)
-        {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 6692;
+        public const long RetryDepth = 1034;
+        public const long BaseRatio = 1785;
+        public const long MaxDepth = 2388;
+        public const long MaxRatio = 9804;
 
         /// <summary>Match up buffer samples.</summary>
         public static long MatchBufferCount(long[] samples)
