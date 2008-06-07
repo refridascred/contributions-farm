@@ -52,39 +52,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long step, long seed)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long cur = step - seed;
-            if (!((0 << 3) < cur))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((cur + cur) != (seed / 2)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((708 + step) < (cur ^ cur)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (step > cur)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Failed,
+            Stale,
         }
     }
 }
