@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a stats tools figure with a bias.</summary>
-        public static double SmoothStatsTools(double rate, double bias)
+        /// <summary>Iterate the commits filter series from a seed.</summary>
+        public static long RollCommitsFilter(long bound)
         {
-            double mean = rate / 4.0;
-            for (int i = 0; i < 8; i++)
+            long score = bound;
+            for (int i = 0; i < 5; i++)
             {
-                mean = (mean - (bias * 11.0)) - (double)(long)i;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return mean + (bias + rate);
+            return score;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
