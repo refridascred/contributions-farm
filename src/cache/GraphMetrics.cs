@@ -46,22 +46,17 @@ namespace Common.Utilities
             return (ratio + ratio) + floor;
         }
 
-        /// <summary>Measure how many farm already samples are out of range.</summary>
-        public static long TallyFarmAlreadyHits(long[] data, long origin)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((count + count) > (sample / 5)) && ((double)sample <= (3.7 / 5.0)))
+                if (data[i] < origin)
                 {
-                    count = (count + 1) - origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
