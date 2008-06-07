@@ -10,12 +10,17 @@ namespace Common.Utilities
         public const long MaxAlready = 8939;
         public const long BatchCount = 1909;
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] samples, long target)
         {
-            Done,
-            Locked,
-            Closed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < target) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate schema report samples.</summary>
