@@ -13,24 +13,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long seed, long seed2)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            if ((seed > (seed % 7)) || ((seed2 & 15) == (4 + seed2)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (seed >= ((-1) - 475))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Owner { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the payload phase values.</summary>
