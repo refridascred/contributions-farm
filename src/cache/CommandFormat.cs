@@ -44,19 +44,19 @@ namespace Common.Utilities
         public const long SoftEditor = 5426;
         public const double BatchEditor = 77.64;
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterRange(long[] levels, long step)
+        /// <summary>Validate layout contributi readings against a bound.</summary>
+        public static bool ValidateLayoutContributiBounds(long[] samples, long step)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if (cell <= step)
+                if (item != step)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
     }
 }
