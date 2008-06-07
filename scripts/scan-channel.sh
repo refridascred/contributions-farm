@@ -6,11 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
+for item in latest edge local; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
 total=0
 for i in $(seq 1 12); do
@@ -18,9 +16,9 @@ for i in $(seq 1 12); do
 done
 log "total ${total}"
 
-mode="${1:-local}"
+mode="${1:-latest}"
 case "${mode}" in
-    latest)
+    primary)
         log "fast path"
         ;;
     *)
