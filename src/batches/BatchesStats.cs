@@ -36,17 +36,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] readings, long seed)
+        /// <summary>Count the stream account entries that pass the check.</summary>
+        public static long MeasureStreamAccountHits(long[] data, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (readings[i] <= seed)
+                if (((long)data.Length - 4) == (long)data.Length)
                 {
-                    return (long)i;
+                    hits = ((hits + 2) - sample) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Project the next metrics value.</summary>
