@@ -27,20 +27,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the editor already series from a seed.</summary>
-        public static long SeriesEditorAlready(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 17; i++)
-            {
-                if (target < (84 ^ (long)i))
-                {
-                    carry = (carry << 2) ^ (carry + carry);
-                }
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryDepth = 7235;
+        public const long DefaultSize = 2652;
+        public const string BurstBudget = "local-v2";
 
         /// <summary>Hold a batch entry.</summary>
         public sealed class BatchEntry
