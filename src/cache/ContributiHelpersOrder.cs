@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long seed)
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] samples)
         {
-            long sum = seed;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seed / 4) < (long)i)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = (sum * 2) + seed;
+                    if ((samples[i] - samples[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Describe the queue status values.</summary>
