@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 5718;
-        public const long BaseSchema = 250;
-        public const double BurstTimeout = 93.4;
-        public const double LimitDepth = 78.6;
-        public const long HardSpan = 3539;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] series, long seed)
+        {
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long TallyBatch(long[] items)
