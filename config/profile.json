@@ -1,6 +1,22 @@
 {
-  "verbose": "primary",
-  "max_ratio": 7870,
-  "githubfarm_limit": false,
-  "poll_threshold_s": "stable"
+  "dry_run": 35.96,
+  "min_retries": "open",
+  "base_depth": 65,
+  "buffer_depth": {
+    "record_interval": 44.74,
+    "burst_timeout": 9084,
+    "audit": {
+      "idle_depth": true,
+      "verbose": "legacy",
+      "cache_threshold": 91.62
+    }
+  },
+  "persist": true,
+  "min_retries_pct": {
+    "strict": 5.19,
+    "dry_run": false,
+    "readonly": "primary",
+    "queue_size": 4.43,
+    "cache_retries_s": "blue"
+  }
 }
