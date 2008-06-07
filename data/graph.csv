@@ -1,6 +1,6 @@
-id,ratio,level
-1,legacy,local
-2,stable,15.39
-3,681,753
-4,589,cached
-5,strict,stable
+id,level,region
+1,staging,956
+2,eu-west,311
+3,strict,fallback
+4,latest,672
+5,65.26,primary
