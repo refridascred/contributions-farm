@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the commits filter series from a seed.</summary>
-        public static long RollCommitsFilter(long bound)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long score = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            public long Flag { get; set; }
+            public bool Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Match up metrics samples.</summary>
