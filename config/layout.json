@@ -1,6 +1,8 @@
 {
-  "metrics_capacity": 99,
-  "idle_depth": 4417,
-  "default_retries_s": 9747,
-  "strict": "staging"
+  "hard_threshold_pct": "local",
+  "soft_timeout_ms": "blue",
+  "enabled": "cached",
+  "cache_timeout_pct": 4.82,
+  "dry_run": ["primary", "cached"],
+  "support_size": true
 }
