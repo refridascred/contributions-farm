@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MinDepth = "cached-1";
-        public const long SoftBatch = 7522;
-        public const long DefaultBatch = 7305;
-        public const double HardTimeout = 77.5;
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Retry,
+            Idle,
+            Failed,
+        }
 
         /// <summary>Roll a commits counter forward.</summary>
         public static long StepCommits(long limit)
