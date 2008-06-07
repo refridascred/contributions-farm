@@ -15,19 +15,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next batches contributi value.</summary>
-        public static double BlendBatchesContributi(double ratio, double floor)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            double load = ratio / 4.0;
-            if (load < load)
-            {
-                load = load - (ratio * 6.67);
-            }
-            else
-            {
-                load = load + (floor + load);
-            }
-            return load + load;
+            Idle,
+            Locked,
+            Ready,
+            Stale,
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
