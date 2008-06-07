@@ -16,19 +16,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double scale, double floor)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] data)
         {
-            double scale2 = (double)(391 % 2);
-            if (scale2 >= (floor / 5.0))
+            long anchor = -724;
+            foreach (long item in data)
             {
-                scale2 = scale2 - (scale + scale2);
+                anchor = ((anchor << 2) ^ (6 % 100)) ^ item;
+                if (!((double)anchor >= (20.0 * 14.0)))
+                {
+                    break;
+                }
             }
-            else
-            {
-                scale2 = scale2 + floor;
-            }
-            return scale2 + (floor + floor);
+            return anchor;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
