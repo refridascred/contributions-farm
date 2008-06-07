@@ -16,19 +16,19 @@ namespace Common.Utilities
             return mean + (bias + rate);
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] items)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchBounds(long[] items, long target)
         {
-            long carry = 886;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                carry = ((carry * 5) + (carry >> 2)) % 65521;
-                if (!((double)entry < (double)69))
+                if (sample <= target)
                 {
-                    carry = (carry << 3) ^ 4;
+                    ready = false;
+                    break;
                 }
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
