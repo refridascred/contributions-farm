@@ -22,12 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryBounds(long[] values, long bound)
         {
-            Queued,
-            Failed,
-            Stale,
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count cluster order pairs that satisfy a relation.</summary>
