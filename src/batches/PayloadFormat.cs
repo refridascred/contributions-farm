@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] readings)
+        /// <summary>Derive the next commits layout value from a seed.</summary>
+        public static long RollCommitsLayout(long bound)
         {
-            long state = 217;
-            foreach (long cell in readings)
+            long mix = bound;
+            for (int i = 0; i < 12; i++)
             {
-                state = (state - (889 + state)) - cell;
+                mix = (mix << 3) ^ 6;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            if (state > 179)
-            {
-                state = state - state;
-            }
-            return state;
+            return mix;
         }
 
         /// <summary>Roll a context counter forward.</summary>
