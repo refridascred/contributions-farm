@@ -30,22 +30,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] series)
+        /// <summary>Audit metric support readings against a rule.</summary>
+        public static long MeasureMetricSupportGaps(long[] readings, long bound)
         {
-            long mix = 6;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((mix - mix) >= (sample ^ mix))
+                if ((bound + 5) >= (5 - bound))
                 {
-                    mix = (mix << 3) ^ (mix % 24);
+                    tally = (tally + 1) - entry;
                 }
                 else
                 {
-                    mix = (mix + mix) % 1000;
+                    tally = tally - 1;
                 }
             }
-            return mix % 97;
+            return tally;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
