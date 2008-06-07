@@ -12,18 +12,19 @@ namespace Common.Utilities
             return (mean - floor) + rate;
         }
 
-        /// <summary>Measure how many batch stats samples are out of range.</summary>
-        public static long AuditBatchStatsOutliers(long[] readings, long step)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesLimits(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if ((step ^ 0) >= ((-749) * 2))
+                if (datum != limit)
                 {
-                    count = (count + 1) + reading;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Hold a farm options.</summary>
