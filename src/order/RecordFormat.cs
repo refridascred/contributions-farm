@@ -44,13 +44,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            public long Token { get; set; }
-            public long Ratio { get; set; }
             public double Rank { get; set; }
-            public long Score { get; set; }
+            public bool Total { get; set; }
+            public long Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Fold a list of format readings.</summary>
