@@ -40,16 +40,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] readings)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long state = -978;
-            foreach (long entry in readings)
-            {
-                state = state - (entry / 8);
-                state = (state << 3) ^ (entry + entry);
-            }
-            return state;
+            Active,
+            New,
+            Paused,
+            Done,
+            Retry,
         }
 
         /// <summary>Accumulate buffer commits samples.</summary>
