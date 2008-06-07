@@ -1,20 +1,5 @@
 {
-  "hard_timeout_ms": {
-    "strict": 18.73,
-    "cache_depth_pct": false,
-    "cache_threshold_s": 61
-  },
-  "channel_size": {
-    "readonly": "primary",
-    "report_limit": ["standard", "staging", "stable"],
-    "dry_run": "cached",
-    "format_limit": {
-      "batch_threshold_s": [118, 362],
-      "strict": "latest",
-      "idle_depth_ms": 55
-    },
-    "sync_size": [14, 188, 409],
-    "burst_capacity_ms": 33.12
-  },
-  "cache_depth": ["local", "edge", "green"]
+  "entry_depth": "standard",
+  "readonly": "open",
+  "sync_size_ms": 39
 }
