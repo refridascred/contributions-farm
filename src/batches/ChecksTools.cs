@@ -29,18 +29,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportMatches(long[] values, long seed)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if (((10.0 + 0.92) < (double)seed) && (count <= (item & 1)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            New,
+            Failed,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
