@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long bound)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryRange(long[] readings, long seed)
         {
-            long anchor = bound;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if ((bound + bound) > 438)
+                if (entry < seed)
                 {
-                    anchor = ((anchor * 3) + (bound << 3)) % 255;
+                    ok = false;
+                    break;
                 }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Project the next command value.</summary>
