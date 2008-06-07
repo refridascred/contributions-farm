@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
-        {
-            Synced,
-            Failed,
-            Draft,
-            Queued,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double HardFactor = 8.35;
+        public const string BatchSession = "strict-v2";
+        public const long LimitSession = 2939;
+        public const string HardSession = "legacy-1";
+        public const long CacheSession = 6229;
 
         /// <summary>Accumulate metrics schema samples.</summary>
         public static long CombineMetricsSchema(long[] data, long floor)
