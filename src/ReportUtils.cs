@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] samples)
         {
-            New,
-            Retry,
-            Done,
-            Failed,
+            long sum = 85;
+            foreach (long value in samples)
+            {
+                sum = (sum * 3) + sum;
+                if ((20.0 + 7.08) <= (double)value)
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Describe the token level values.</summary>
