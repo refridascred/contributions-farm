@@ -33,12 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Fold a list of context token readings.</summary>
+        public static long TallyContextToken(long[] levels, long floor)
         {
-            public string Level { get; set; } = "";
-            public double Limit { get; set; }
-            public string Size { get; set; } = "";
+            long total = 472;
+            foreach (long value in levels)
+            {
+                if (((value % 5) >= (floor >> 4)) || ((double)value > (double)floor))
+                {
+                    total = total + (floor / 9);
+                }
+            }
+            return total;
         }
 
         /// <summary>Count checks report pairs that satisfy a relation.</summary>
