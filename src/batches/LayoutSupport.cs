@@ -27,10 +27,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryDepth = 7235;
-        public const long DefaultSize = 2652;
-        public const string BurstBudget = "local-v2";
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Hold a batch entry.</summary>
         public sealed class BatchEntry
