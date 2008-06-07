@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheHits(long[] data, long origin)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long limit, long limit2)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long diff = limit - limit2;
+            if (((diff ^ limit2) <= (7 & 127)) || ((989 >> 2) < limit))
             {
-                if (!!((origin + 126) == (origin + origin)))
+                return 1;
+            }
+            else
+            {
+                if ((double)3 < (double)limit2)
                 {
-                    matches = (matches + 1) + entry;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)diff != (double)limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((limit2 / 8) > limit2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
