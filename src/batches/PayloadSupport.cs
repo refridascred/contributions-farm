@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long seed, long bound)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long diff = seed - bound;
-            if (((double)bound <= (9.5 - 2.01)) || (seed <= (bound % 16)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((9.0 + 9.5) > (double)seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((10.0 <= (double)diff) || ((bound / 4) > bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public long Flag { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the context class values.</summary>
