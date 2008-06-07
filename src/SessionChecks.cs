@@ -43,31 +43,21 @@ namespace Common.Utilities
         public const long BaseSize = 7454;
         public const long SoftAlready = 510;
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long origin, long floor)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] series)
         {
-            if ((7.7 - 2.66) != (double)floor)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (87 < floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)floor >= (double)111)
+                    if ((series[i] + series[j]) < 8)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
