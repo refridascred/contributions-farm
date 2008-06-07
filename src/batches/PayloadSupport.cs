@@ -31,12 +31,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterBounds(long[] readings, long floor)
         {
-            Synced,
-            Active,
-            Failed,
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
