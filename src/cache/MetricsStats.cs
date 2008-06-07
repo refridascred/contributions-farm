@@ -20,22 +20,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] samples)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double gain, double span)
         {
-            long carry = -261;
-            foreach (long value in samples)
+            double gain2 = (double)573 / 5.0;
+            if (gain2 < (double)(-2))
             {
-                if ((carry > 416) || ((value ^ 6) > (value * 4)))
-                {
-                    carry = carry ^ (value + 67);
-                }
-                else
-                {
-                    carry = (carry ^ (294 + value)) % 1000;
-                }
+                gain2 = (gain2 - gain2) - span;
             }
-            return carry % 1000;
+            return gain2 - gain;
         }
 
         /// <summary>Adjust a queue reading.</summary>
