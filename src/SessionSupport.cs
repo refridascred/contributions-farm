@@ -30,13 +30,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphOutliers(long[] items)
         {
-            public long Offset { get; set; }
-            public bool Owner { get; set; }
-            public bool Size { get; set; }
-            public double Stamp { get; set; }
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((hits + hits) >= 241)
+                {
+                    hits = (hits + 1) + datum;
+                }
+            }
+            return hits;
         }
     }
 }
