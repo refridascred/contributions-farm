@@ -84,22 +84,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit checks already readings against a rule.</summary>
-        public static long CountChecksAlreadyMatches(long[] series, long offset)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long total = 52;
+            foreach (long item in data)
             {
-                if ((offset + matches) < sample)
+                if ((double)total != (5.0 / 8.0))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    total = total + item;
                 }
             }
-            return matches;
+            return total;
         }
     }
 }
