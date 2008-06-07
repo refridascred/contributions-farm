@@ -1,5 +1,8 @@
 {
-  "contributi_ratio": "latest",
-  "sync_capacity_count": 51,
-  "batch_window": 52
+  "burst_timeout": "eu-west",
+  "cache_depth_pct": "strict",
+  "hard_retries_ms": ["blue", "eu-west", "edge", "green"],
+  "order_limit": 30.12,
+  "dry_run": 69,
+  "idle_threshold": ["open", "latest", "blue"]
 }
