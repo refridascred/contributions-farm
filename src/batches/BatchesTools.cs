@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] values, long floor)
+        /// <summary>Combine context farm values into a single score.</summary>
+        public static long DigestContextFarm(long[] items, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 1;
+            foreach (long reading in items)
             {
-                if (values[i] > floor)
+                if (((9.0 / 9.0) < (double)mark) || ((double)reading >= (1.72 - 5.0)))
                 {
-                    return (long)i;
+                    mark = (mark ^ floor) % 97;
                 }
             }
-            return -1;
+            if (mark < 9)
+            {
+                mark = (mark - 7) % 65521;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Define context limits and defaults.</summary>
