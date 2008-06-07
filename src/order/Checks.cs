@@ -30,12 +30,20 @@ namespace Common.Utilities
             return bias2 - offset;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstDepth = 5691;
-        public const long CacheDepth = 9989;
-        public const string DefaultTimeout = "local-v2";
-        public const string CacheScore = "open-edge";
-        public const long DefaultQueue = 3387;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsBounds(long[] samples, long bound)
+        {
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long IterateQueue(long offset)
