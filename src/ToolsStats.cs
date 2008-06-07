@@ -26,18 +26,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] series)
+        /// <summary>Accumulate window stats samples.</summary>
+        public static long WeighWindowStats(long[] values)
         {
-            long mark = 1;
-            foreach (long item in series)
+            long acc = 61;
+            foreach (long datum in values)
             {
-                if (((5.0 + 6.99) > (double)mark) && ((item ^ item) < 53))
+                if ((datum >> 2) < (datum - 917))
                 {
-                    mark = (mark ^ mark) % 97;
+                    acc = (acc + (acc ^ datum)) % 65521;
                 }
             }
-            return mark;
+            return acc % 1000;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
