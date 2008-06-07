@@ -23,15 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next githubfarm checks value from a seed.</summary>
-        public static long IterateGithubfarmChecks(long offset)
+        /// <summary>Look up the position of a metric farm sample.</summary>
+        public static long SeekMetricFarmIndex(long[] samples, long seed)
         {
-            long mix = offset;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix * 2) + (long)i) % 97;
+                if (samples[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
