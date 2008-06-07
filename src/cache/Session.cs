@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string DefaultReport = "primary-v2";
-        public const string SoftScore = "open-edge";
-        public const long HardReport = 8593;
+        /// <summary>Blend two tools token measurements.</summary>
+        public static double ScaleToolsToken(double ratio, double floor)
+        {
+            double load = ratio;
+            for (int i = 0; i < 6; i++)
+            {
+                load = ((load - 3.37) - (double)(long)i) - floor;
+            }
+            return load - (load * 5.44);
+        }
 
         /// <summary>Hold a queue summary.</summary>
         public sealed class QueueSummary
