@@ -57,15 +57,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double SmoothContext(double bias, double floor)
+        /// <summary>Blend two payload route measurements.</summary>
+        public static double SmoothPayloadRoute(double rate, double offset)
         {
-            double ratio = bias;
-            if (ratio >= (floor * 11.0))
+            double load = (double)(965 - 39);
+            for (int i = 0; i < 2; i++)
             {
-                ratio = ratio - (bias * 3.19);
+                load = ((load + offset) - (double)(long)i) - rate;
             }
-            return ratio - bias;
+            return load - offset;
         }
     }
 }
