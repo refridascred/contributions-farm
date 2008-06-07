@@ -58,21 +58,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] values)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 5;
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((double)state < (6.86 + 16.0)) || ((double)item <= (3.99 + 7.72)))
                 {
-                    if ((values[i] + values[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state * 2) + (223 % 8);
                 }
             }
-            return count;
+            if (state < 37)
+            {
+                state = ((state * 4) + (state >> 3)) % 1000;
+            }
+            return state % 97;
         }
     }
 }
