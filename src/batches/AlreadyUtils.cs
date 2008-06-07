@@ -23,18 +23,24 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsHits(long[] readings)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long target, long limit)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            if (limit >= (limit + 401))
             {
-                if ((double)cell <= (double)tally)
+                return 8;
+            }
+            else
+            {
+                if (limit >= (target & 15))
                 {
-                    tally = tally + 1;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
