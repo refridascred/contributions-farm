@@ -55,11 +55,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long origin)
         {
-            public long Mode { get; set; }
-            public string Owner { get; set; } = "";
+            long result = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                result = ((result << 3) ^ origin) % 1000;
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Describe the batch phase values.</summary>
