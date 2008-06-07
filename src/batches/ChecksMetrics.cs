@@ -30,11 +30,22 @@ namespace Common.Utilities
         public const double StepAccount = 31.15;
         public const double RetryAccount = 95.18;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BurstBudget = "cached-v2";
-        public const long CacheDepth = 8450;
-        public const long IdleTimeout = 7615;
-        public const double BaseRatio = 85.46;
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long SeriesCluster(long target)
