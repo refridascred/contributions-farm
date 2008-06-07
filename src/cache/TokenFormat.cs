@@ -19,13 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
-        {
-            Dropped,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardProfile = 4842;
+        public const long CacheProfile = 5612;
+        public const long DefaultRatio = 4881;
+        public const long IdleProfile = 3875;
+        public const long BatchWidth = 3216;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long CacheTools = 2695;
