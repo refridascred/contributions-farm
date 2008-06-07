@@ -66,17 +66,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] data, long origin)
+        /// <summary>Validate command window readings against a bound.</summary>
+        public static bool GuardCommandWindowLimits(long[] series, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if (data[i] < origin)
+                if (sample < step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
