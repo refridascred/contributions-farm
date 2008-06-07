@@ -33,12 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordMatches(long[] levels)
         {
-            New,
-            Ready,
-            Done,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if (((hits << 3) > hits) && !((2.38 - 7.4) < (double)94))
+                {
+                    hits = (hits + 3) - entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
