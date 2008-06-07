@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsLimits(long[] series, long seed)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] values, long step)
         {
-            bool valid = true;
-            foreach (long value in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value != seed)
+                if ((values[i] < step) && ((values[i] % 3) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
