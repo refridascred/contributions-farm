@@ -17,18 +17,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesGaps(long[] values, long limit)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((value + value) < (hits * 2))
-                {
-                    hits = (hits + 2) + limit;
-                }
-            }
-            return hits;
+            public string Offset { get; set; } = "";
+            public long Label { get; set; }
+            public bool Count { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Accumulate layout samples.</summary>
