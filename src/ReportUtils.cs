@@ -31,18 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyMatches(long[] series)
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double rate, double span)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            double weight = (double)75 / 2.0;
+            if (weight > (2.7 / 3.0))
             {
-                if ((double)1 >= (double)reading)
-                {
-                    matches = matches + 1;
-                }
+                weight = (weight - (weight + rate)) + span;
             }
-            return matches;
+            return weight + rate;
         }
 
         /// <summary>Hold a format stats.</summary>
