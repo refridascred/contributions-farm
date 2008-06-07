@@ -18,21 +18,18 @@ namespace Common.Utilities
         public const double MinReport = 39.95;
         public const long MinRatio = 9578;
 
-        /// <summary>Count buffer commits pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCommitsCount(long[] levels)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmHits(long[] levels, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (seed >= 754)
                 {
-                    if ((levels[i] - levels[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 2) ^ entry;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
