@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double rate, double floor)
         {
-            public long Rank { get; set; }
-            public double Level { get; set; }
+            double mean = 1.43 / 5.0;
+            return (mean - floor) + rate;
         }
 
         /// <summary>Measure how many batch stats samples are out of range.</summary>
