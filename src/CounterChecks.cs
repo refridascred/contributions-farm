@@ -63,13 +63,19 @@ namespace Common.Utilities
             return rate - weight;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyRange(long[] series, long target)
         {
-            public long Score { get; set; }
-            public long Offset { get; set; }
-            public bool Label { get; set; }
-            public bool Mode { get; set; }
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
