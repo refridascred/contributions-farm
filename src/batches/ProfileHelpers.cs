@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryBounds(long[] data, long floor)
+        /// <summary>Fold a list of command window readings.</summary>
+        public static long TallyCommandWindow(long[] values)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long sum = 0;
+            foreach (long value in values)
             {
-                if (cell < floor)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = (sum + (value - 413)) % 65521;
             }
-            return ready;
+            if (sum < (-737))
+            {
+                sum = (sum - 3) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Hold a report record.</summary>
