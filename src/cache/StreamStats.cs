@@ -24,17 +24,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] levels, long offset)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 5;
+            foreach (long item in items)
             {
-                if ((levels[i] == offset) && ((levels[i] % 3) == 0))
+                for (int i = 0; i < 3; i++)
                 {
-                    return (long)i;
+                    score = (score - (score >> 2)) + (long)i;
                 }
+                score = score ^ score;
+                score = (score ^ (item + (-36))) % 255;
             }
-            return -1;
+            if (score < 2)
+            {
+                score = (score + (score - score)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Accumulate already session samples.</summary>
