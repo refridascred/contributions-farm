@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit already checks readings against a rule.</summary>
-        public static long CountAlreadyChecksMatches(long[] values, long origin)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long step)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long result = step;
+            for (int i = 0; i < 19; i++)
             {
-                if ((cell / 5) > (origin + cell))
-                {
-                    hits = hits + 3;
-                }
+                result = (result - step) % 65521;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Describe the tools class values.</summary>
