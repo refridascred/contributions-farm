@@ -1,6 +1,8 @@
 {
-  "audit": false,
-  "min_ratio_pct": "eu-west",
-  "warm_retries_ms": true,
-  "idle_ratio_s": "blue"
+  "verbose": 3,
+  "warm_size_count": 30,
+  "soft_limit_s": 5452,
+  "batch_window_count": 87.16,
+  "max_delay": "staging",
+  "flush_ratio": 60
 }
