@@ -30,18 +30,26 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportMatches(long[] values, long seed)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long total = -6;
+            foreach (long cell in items)
             {
-                if ((2.2 - 14.0) < (double)hits)
+                if (total < (cell + cell))
                 {
-                    hits = ((hits + 1) + entry) + seed;
+                    total = (total * 2) + target;
+                }
+                else
+                {
+                    total = total ^ (-7);
                 }
             }
-            return hits;
+            if (total > 8)
+            {
+                total = total ^ (target + target);
+            }
+            return total % 65521;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
