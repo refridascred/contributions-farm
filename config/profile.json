@@ -1,13 +1,6 @@
 {
-  "base_delay_pct": {
-    "compress": 97,
-    "warm_interval_count": ["stable", "edge"],
-    "batch_limit_count": 3107,
-    "enabled": 21.5,
-    "idle_ratio_ms": false
-  },
-  "schema_ratio": "cached",
-  "verbose": "local",
-  "strict": "cached",
-  "sync_interval_pct": "cached"
+  "readonly": 39.13,
+  "retry_threshold_s": 5566,
+  "compress": true,
+  "soft_size_count": [317, 267, 287, 37]
 }
