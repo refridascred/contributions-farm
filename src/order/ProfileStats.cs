@@ -47,21 +47,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] readings)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double bias, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = floor;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain = (gain + bias) + (double)(long)i;
             }
-            return tally;
+            return gain + bias;
         }
 
         /// <summary>Hold a profile info.</summary>
