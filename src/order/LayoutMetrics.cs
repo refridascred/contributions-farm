@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string DefaultCache = "latest-edge";
-        public const long RetryCache = 603;
-        public const long BatchFactor = 4928;
-        public const string StepFactor = "fallback";
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesGaps(long[] data)
+        {
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((((hits ^ 4) <= entry) || (entry > (457 - hits))) && !((double)hits < (2.9 * 6.9)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const double MinToken = 50.15;
