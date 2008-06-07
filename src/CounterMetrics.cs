@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of farm context entries.</summary>
-        public static long CombineFarmContext(long[] levels)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenOutliers(long[] data, long origin)
         {
-            long sum = 944;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (reading >= (reading % 16))
+                if (71 >= (matches + origin))
                 {
-                    sum = (sum + (sum + reading)) % 97;
+                    matches = (matches + 2) ^ reading;
                 }
             }
-            if (sum > 7)
-            {
-                sum = (sum - (sum ^ sum)) % 255;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Blend two queue measurements.</summary>
