@@ -11,10 +11,13 @@ namespace Common.Utilities
         public const long CacheFilter = 6804;
         public const string LimitFilter = "alpha-v2";
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double LimitContributi = 54.51;
-        public const string HardContributi = "local";
-        public const long IdleInterval = 9966;
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
+        {
+            public string Level { get; set; } = "";
+            public double Limit { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double AdjustSession(double weight, double bias)
