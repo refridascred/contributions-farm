@@ -33,18 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] readings)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (!!((seen * 4) >= (seen >> 3)))
-                {
-                    seen = (seen + 2) + reading;
-                }
-            }
-            return seen;
+            New,
+            Ready,
+            Done,
         }
 
         /// <summary>Describe the farm state values.</summary>
