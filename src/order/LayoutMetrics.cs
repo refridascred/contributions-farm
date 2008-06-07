@@ -13,12 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] data)
         {
-            Paused,
-            Ready,
-            Idle,
+            long carry = 39;
+            foreach (long datum in data)
+            {
+                carry = carry ^ datum;
+                if ((datum - carry) < datum)
+                {
+                    carry = (carry * 4) + carry;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Accumulate format samples.</summary>
