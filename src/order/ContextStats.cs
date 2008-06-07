@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] series)
-        {
-            long sum = 465;
-            foreach (long entry in series)
-            {
-                if ((double)sum < (double)entry)
-                {
-                    sum = sum ^ sum;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (entry - (long)series.Length)) % 97;
-                }
-            }
-            if (sum > 569)
-            {
-                sum = (sum - (sum + 2)) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string SoftChecks = "fallback-edge";
+        public const long SoftRatio = 8644;
+        public const long CacheChecks = 4131;
+        public const long CacheSize = 2438;
 
         /// <summary>Count the farm stats entries that pass the check.</summary>
         public static long MeasureFarmStatsGaps(long[] readings)
