@@ -61,15 +61,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] values, long seed)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphMatches(long[] items, long floor)
         {
-            long result = 9;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                result = ((result ^ (sample & 15)) % 255) - seed;
+                if (!((double)matches < (9.0 - 0.55)))
+                {
+                    matches = ((matches + 3) + sample) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result;
+            return matches;
         }
     }
 }
