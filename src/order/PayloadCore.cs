@@ -22,39 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long origin, long target)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long delta = origin ^ target;
-            if (target < (origin >> 4))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin + origin) < delta)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (target <= (target >> 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)delta != (11.0 / 7.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Dropped,
+            Paused,
+            Draft,
+            Failed,
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
