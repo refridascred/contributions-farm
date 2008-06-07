@@ -29,11 +29,9 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double SmoothEntry(double gain, double bias)
-        {
-            double gain2 = bias * 14.0;
-            return gain2 + (gain * 19.0);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleLevel = 4556;
+        public const long DefaultWindow = 4693;
+        public const long StepWindow = 4795;
     }
 }
