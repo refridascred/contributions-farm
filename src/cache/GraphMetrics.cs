@@ -28,27 +28,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] items, long target)
-        {
-            long total = -6;
-            foreach (long cell in items)
-            {
-                if (total < (cell + cell))
-                {
-                    total = (total * 2) + target;
-                }
-                else
-                {
-                    total = total ^ (-7);
-                }
-            }
-            if (total > 8)
-            {
-                total = total ^ (target + target);
-            }
-            return total % 65521;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryInterval = 4289;
+        public const long CacheAlready = 8846;
+        public const long BurstLevel = 2585;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long SoftBudget = 7926;
