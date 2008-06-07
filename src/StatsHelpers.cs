@@ -66,19 +66,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteBounds(long[] data, long seed)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long step, long offset)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            if ((offset >> 1) <= offset)
             {
-                if (datum != seed)
+                return 6;
+            }
+            else
+            {
+                if (((double)offset < (0.9 * 1.0)) && (((-621) << 2) >= step))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return flag;
         }
     }
 }
