@@ -1,5 +1,7 @@
 # entry settings
-window_threshold: 30
-buffer_capacity: primary
-sync_ratio: false
-max_retries_s: blue
+tools_limit:
+  - 438
+  - 183
+  - 493
+retry_limit_pct: 5603
+default_depth_pct: false
