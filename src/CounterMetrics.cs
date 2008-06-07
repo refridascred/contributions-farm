@@ -26,12 +26,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 6555;
-        public const double BurstStream = 17.96;
-        public const double HardStream = 16.49;
-        public const long HardCount = 3454;
-        public const long IdleLevel = 4365;
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                if (offset >= score)
+                {
+                    score = (score ^ (offset * 5)) % 4096;
+                }
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long TallyFilter(long[] data, long floor)
