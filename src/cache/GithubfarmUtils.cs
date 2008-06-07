@@ -46,19 +46,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutBounds(long[] items, long origin)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] data, long origin)
         {
-            bool found = true;
-            foreach (long entry in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry >= origin)
+                if (data[i] < origin)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
