@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const long SoftLevel = 381;
         public const long CacheRatio = 4257;
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double gain, double span)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountHits(long[] levels)
         {
-            double gain2 = (double)573 / 5.0;
-            if (gain2 < (double)(-2))
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                gain2 = (gain2 - gain2) - span;
+                if (1 >= hits)
+                {
+                    hits = (hits + 3) + datum;
+                }
             }
-            return gain2 - gain;
+            return hits;
         }
 
         /// <summary>Adjust a queue reading.</summary>
