@@ -16,11 +16,32 @@ namespace Common.Utilities
             return drift + ratio;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double ratio, double floor)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long offset, long floor)
         {
-            double bias = (double)(6 << 1);
-            return (bias - floor) + ratio;
+            long lane = offset + floor;
+            if ((4.21 + 8.1) < (double)lane)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((lane << 1) == (offset * 5)) || ((floor ^ offset) < (lane >> 4)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor ^ 1) < floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
