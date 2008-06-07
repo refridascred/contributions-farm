@@ -23,18 +23,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate buffer batch samples.</summary>
-        public static long DigestBufferBatch(long[] samples, long floor)
+        /// <summary>Iterate the cache channel series from a seed.</summary>
+        public static long StepCacheChannel(long bound)
         {
-            long anchor = 95;
-            foreach (long sample in samples)
+            long score = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (anchor > (anchor << 2))
+                if ((4.51 / 6.0) < (double)bound)
                 {
-                    anchor = (((anchor << 3) ^ (sample - sample)) % 101) - floor;
+                    score = (score - (long)i) % 255;
+                    break;
                 }
+                score = (score + score) % 65521;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Hold a token info.</summary>
