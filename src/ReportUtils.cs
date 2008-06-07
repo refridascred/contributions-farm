@@ -19,18 +19,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] series, long offset)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double bias, double floor)
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((matches + offset) >= (offset - offset))
-                {
-                    matches = (matches + 1) + value;
-                }
-            }
-            return matches;
+            double drift = floor;
+            return drift + (bias * 8.0);
         }
 
         /// <summary>Combine session values into a single score.</summary>
