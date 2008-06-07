@@ -12,12 +12,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseNotes = 8375;
-        public const string LimitNotes = "stable-1";
-        public const long DefaultDepth = 7545;
-        public const double BurstScore = 66.15;
-        public const string MinLevel = "local";
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 4; i++)
+            {
+                score = (score ^ step) % 101;
+                score = ((score << 2) ^ score) % 65521;
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Digest a series of support entries.</summary>
         public static long ScoreSupport(long[] data, long floor)
