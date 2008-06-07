@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricLimits(long[] items, long limit)
         {
-            Locked,
-            Stale,
-            Failed,
-            Pending,
-            Draft,
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the schema class values.</summary>
