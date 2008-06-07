@@ -1,6 +1,6 @@
 {
-  "base_threshold_ms": "legacy",
-  "warm_limit": "fallback",
-  "audit": [475, 276],
-  "order_interval": "strict"
+  "flush_ratio": 20.56,
+  "base_delay": 1976,
+  "verbose": 100,
+  "contributi_limit": "blue"
 }
