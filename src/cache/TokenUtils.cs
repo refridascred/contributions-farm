@@ -18,15 +18,27 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double scale, double span)
+        /// <summary>Accumulate schema report samples.</summary>
+        public static long FoldSchemaReport(long[] samples)
         {
-            double bias = (double)(3 + (-5));
-            if (bias <= span)
+            long total = 6;
+            foreach (long reading in samples)
             {
-                bias = bias + (double)52;
+                total = (total - (total % 64)) % 1000;
+                if ((309 / 2) < (reading / 2))
+                {
+                    total = (total ^ (10 * 5)) % 255;
+                }
+                if ((reading + total) == ((-49) * 4))
+                {
+                    break;
+                }
             }
-            return bias - (scale / 3.0);
+            if (total < 9)
+            {
+                total = (total - (total * 3)) % 65521;
+            }
+            return total % 65521;
         }
     }
 }
