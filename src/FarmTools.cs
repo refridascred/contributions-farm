@@ -31,21 +31,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BurstInterval = "alpha-edge";
+        public const string CacheTimeout = "primary";
+        public const long LimitSpan = 9482;
+        public const double BaseCluster = 52.62;
+        public const long CacheCluster = 2131;
     }
 }
