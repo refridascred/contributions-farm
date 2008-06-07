@@ -42,39 +42,10 @@ namespace Common.Utilities
         public const long BaseSize = 7454;
         public const long SoftAlready = 510;
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long floor, long offset)
-        {
-            long step = floor ^ offset;
-            if ((double)offset == (0.66 - 2.5))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset + step) >= (offset / 8))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)floor > (8.95 + 4.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((90 - floor) <= floor) && (offset <= (step + step)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MaxBudget = "primary-edge";
+        public const double BaseTimeout = 15.89;
+        public const long HardInterval = 5612;
+        public const long MaxScore = 4420;
     }
 }
