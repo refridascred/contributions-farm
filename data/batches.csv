@@ -1,6 +1,10 @@
-id,label,region,weight
-1,cached,892,480
-2,standard,231,780
-3,846,19.85,fallback
-4,864,stable,95.65
-5,317,93,664
+id,level,state,ratio
+1,green,blue,12.57
+2,73.57,253,97.42
+3,95.11,88.88,275
+4,14.79,latest,76.02
+5,eu-west,blue,97.25
+6,stable,legacy,989
+7,300,24.43,837
+8,474,426,eu-west
+9,39.96,91,legacy
