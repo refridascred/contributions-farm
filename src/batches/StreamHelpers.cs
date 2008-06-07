@@ -12,12 +12,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] items, long step)
         {
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
-            public string Weight { get; set; } = "";
+            long mix = 18;
+            foreach (long sample in items)
+            {
+                mix = ((((mix << 3) ^ (283 / 4)) % 255) - sample) - step;
+            }
+            return mix;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
