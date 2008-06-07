@@ -16,24 +16,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long step, long step2)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ProjectQueue(double rate, double span)
         {
-            if (step2 < step)
+            double gain = span;
+            if (gain > (span * 4.63))
             {
-                return 5;
+                gain = gain - rate;
             }
-            else
-            {
-                if ((7.76 * 11.0) <= (double)step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return gain + (gain - 3.9);
         }
 
         /// <summary>Hold a editor record.</summary>
