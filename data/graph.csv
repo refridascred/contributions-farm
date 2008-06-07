@@ -1,10 +1,6 @@
-id,label,token
-1,staging,local
-2,773,open
-3,134,staging
-4,local,897
-5,legacy,98
-6,strict,379
-7,14.15,64.83
-8,190,21.45
-9,stable,edge
+id,active,level
+1,719,41.27
+2,41.32,strict
+3,541,275
+4,29.29,703
+5,585,871
