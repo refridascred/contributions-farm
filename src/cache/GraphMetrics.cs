@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Scale a stream contributi figure with a bias.</summary>
-        public static double SmoothStreamContributi(double gain, double floor)
-        {
-            double gain2 = floor + (floor / 2.0);
-            if (gain2 <= (gain + floor))
-            {
-                gain2 = gain2 - floor;
-            }
-            return gain2 + (gain2 + 5.0);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheInterval = 7725;
+        public const long CacheMetrics = 7445;
+        public const long WindowSize = 5460;
 
         /// <summary>Digest a series of route entries.</summary>
         public static long TallyRoute(long[] values, long bound)
