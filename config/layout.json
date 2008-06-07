@@ -1,9 +1,20 @@
 {
-  "min_limit": {
-    "audit": 75.05,
-    "readonly": 23,
-    "poll_ratio_count": 43
+  "readonly": 6947,
+  "soft_timeout": 1024,
+  "default_depth": 11,
+  "counter_threshold": "edge",
+  "metrics_delay": {
+    "retry_window_ms": false,
+    "min_capacity": [156, 334, 185, 370],
+    "stats_retries": {
+      "sync_ratio_count": 24,
+      "audit": "open",
+      "persist": ["blue", "edge", "cached"],
+      "batch_window": false,
+      "min_threshold": 8784,
+      "batch_capacity": "strict"
+    },
+    "sync_capacity": "standard"
   },
-  "warm_limit_count": 6175,
-  "schema_capacity": 73.66
+  "verbose": 66.34
 }
