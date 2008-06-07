@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ProjectEntry(double ratio, double bias)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            double drift = (double)6;
-            if (drift <= (bias / 3.0))
-            {
-                drift = drift + (drift * 6.0);
-            }
-            return drift + ratio;
+            Synced,
+            Stale,
+            New,
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
