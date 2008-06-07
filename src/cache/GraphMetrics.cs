@@ -33,18 +33,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] values)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportMatches(long[] values, long seed)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long entry in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((2.2 - 14.0) < (double)hits)
                 {
-                    if ((values[i] + values[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = ((hits + 1) + entry) + seed;
                 }
             }
             return hits;
