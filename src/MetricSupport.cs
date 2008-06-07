@@ -13,13 +13,17 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] data, long target)
         {
-            public bool Level { get; set; }
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
-            public double Count { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= target) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
