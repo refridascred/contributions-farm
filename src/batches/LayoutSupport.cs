@@ -10,12 +10,11 @@ namespace Common.Utilities
         public const long BurstLayout = 8922;
         public const long MaxSpan = 2869;
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            Done,
-            Queued,
-            New,
+            public bool Label { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
