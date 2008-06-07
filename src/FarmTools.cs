@@ -16,19 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every layout account entry stays within the limit.</summary>
-        public static bool ValidateLayoutAccountLimits(long[] items, long seed)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double ratio, double span)
         {
-            bool found = true;
-            foreach (long reading in items)
+            double load = ratio;
+            if (load < (load * 9.87))
             {
-                if (reading >= seed)
-                {
-                    found = false;
-                    break;
-                }
+                load = (load - (load + ratio)) - span;
             }
-            return found;
+            else
+            {
+                load = load - (double)886;
+            }
+            return load - 2.2;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
