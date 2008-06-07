@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long target)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsGaps(long[] readings, long seed)
         {
-            long total = target;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                total = (total - (total + target)) % 4096;
-                total = ((total * 4) + (long)i) % 4093;
+                if ((value + seed) >= seen)
+                {
+                    seen = seen + 1;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Hold a command record.</summary>
