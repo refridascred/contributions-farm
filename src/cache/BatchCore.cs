@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsHits(long[] levels, long target)
         {
-            Pending,
-            Draft,
-            Done,
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (datum > (datum % 24))
+                {
+                    seen = (seen + 1) + target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a window options.</summary>
