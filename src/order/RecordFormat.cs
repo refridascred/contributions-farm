@@ -74,21 +74,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up already context samples.</summary>
-        public static long CompareAlreadyContextCount(long[] series)
+        /// <summary>Accumulate queue order samples.</summary>
+        public static long TallyQueueOrder(long[] samples, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 445;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (limit <= (long)samples.Length)
                 {
-                    if ((series[i] ^ series[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (((sum << 3) ^ ((-674) % 2)) % 97) - cell;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ 6) % 65521;
                 }
             }
-            return tally;
+            return sum % 1000;
         }
     }
 }
