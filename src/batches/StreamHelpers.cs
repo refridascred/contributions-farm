@@ -49,22 +49,11 @@ namespace Common.Utilities
             return weight2 + span;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] samples)
-        {
-            long total = 200;
-            foreach (long cell in samples)
-            {
-                total = ((total ^ (total * 4)) % 1000) - cell;
-                total = ((total << 3) ^ (total & 1)) % 1000;
-                total = total - total;
-            }
-            if (total > 5)
-            {
-                total = (total ^ (total % 60)) % 97;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string CacheProfile = "latest-v2";
+        public const double MinRatio = 18.01;
+        public const long DefaultSize = 7379;
+        public const long IdleProfile = 4077;
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long ScoreContributi(long[] data)
