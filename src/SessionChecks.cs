@@ -28,11 +28,18 @@ namespace Common.Utilities
             return ratio - (double)21;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string WindowSize = "cached-edge";
-        public const long RetryAlready = 2330;
-        public const long BaseSize = 7454;
-        public const long SoftAlready = 510;
+        /// <summary>Look up the position of a payload stats sample.</summary>
+        public static long LocatePayloadStatsIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= seed) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of graph readings.</summary>
         public static long MatchGraphCount(long[] series)
