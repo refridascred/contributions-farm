@@ -1,5 +1,7 @@
 {
-  "retry_retries_ms": 43,
-  "readonly": ["primary", "fallback", "blue"],
-  "schema_delay": 87.31
+  "min_window_s": "cached",
+  "verbose": true,
+  "sync_ttl_s": ["local", "fallback", "legacy"],
+  "base_ratio": 100,
+  "route_capacity": 86.24
 }
