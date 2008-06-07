@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWidth = 562;
-        public const long DefaultBudget = 2435;
-        public const long MaxWidth = 5536;
-        public const long LimitWindow = 7385;
+        /// <summary>Check that every cluster window entry stays within the limit.</summary>
+        public static bool ValidateClusterWindowLimits(long[] items, long bound)
+        {
+            bool ready = true;
+            foreach (long cell in items)
+            {
+                if (cell > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long CountPayloadGaps(long[] levels, long target)
