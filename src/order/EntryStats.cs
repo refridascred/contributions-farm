@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueMatches(long[] samples)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (9.0 >= (double)count)
-                {
-                    count = (count + 2) + value;
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public long Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Rank batches support input into a small class.</summary>
