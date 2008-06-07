@@ -43,38 +43,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long offset, long floor)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            if (((double)offset <= (9.0 / 5.0)) && ((offset + offset) != (offset - offset)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((floor << 3) >= (157 >> 3)) && ((offset ^ 4) <= (94 % 7)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((141 >> 5) < floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset >= (floor % 97)) || ((floor & 255) != (floor * 2)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public bool Ratio { get; set; }
+            public double Token { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the report level values.</summary>
