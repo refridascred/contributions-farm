@@ -25,19 +25,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteBounds(long[] series, long seed)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
