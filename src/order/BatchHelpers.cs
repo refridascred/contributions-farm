@@ -24,18 +24,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] samples, long seed)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportHits(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (!((double)value == (0.2 / 2.0)))
+                if ((double)reading != (double)89)
                 {
-                    hits = (hits + 3) + seed;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
