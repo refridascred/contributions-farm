@@ -1,10 +1,16 @@
 # githubfarm settings
-hard_ttl: 80.28
-max_threshold_count:
-  - open
-  - open
-  - edge
-  - fallback
+retry_capacity_count:
+  - 326
+  - 64
 audit: false
-enabled: open
-counter_capacity: blue
+cache_ratio_pct:
+  layout_size: 73.61
+  max_delay: primary
+  report_timeout: 76.23
+  warm_size: staging
+  checks_ttl:
+    audit: 5
+    githubfarm_window: 1024
+    idle_delay_ms: 13
+  stats_depth: 9545
+already_ttl: 3361
