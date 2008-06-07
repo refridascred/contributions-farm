@@ -1,14 +1,11 @@
 # Command notes
 
-Keep farm and filter names short and lowercase.
-A cache that stays idle for too long is moved to the batches list.
-
-The command helpers are pure functions, so they are safe to call from any thread.
-The batches helpers are pure functions, so they are safe to call from any thread.
+Use already settings to tune how often already data is refreshed.
+Use layout settings to tune how often cache data is refreshed.
+When a metric fails, the already handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer commits defaults
-- Review filter limits each release
-- Keep profile values small
-- Document new report fields
+- Review window limits each release
+- Document new farm fields
+- Keep token values small
