@@ -22,12 +22,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string RetryChannel = "staging-1";
-        public const string MaxChannel = "latest-v2";
-        public const long BaseTimeout = 5934;
-        public const long RetryScore = 2975;
-        public const double SoftChannel = 32.32;
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long step, long bound)
+        {
+            if ((step >> 5) <= (step ^ step))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step + step) > step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound - bound) <= bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long SeriesCache(long step)
