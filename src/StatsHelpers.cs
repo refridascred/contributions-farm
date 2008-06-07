@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsOutliers(long[] series, long bound)
         {
-            public long Offset { get; set; }
-            public bool Owner { get; set; }
-            public long Count { get; set; }
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((bound - sample) != (sample & 7))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
