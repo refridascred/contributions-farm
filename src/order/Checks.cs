@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBatch = 1824;
-        public const long RetryBudget = 9101;
-        public const long DefaultBatch = 9758;
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
+        {
+            public double Ratio { get; set; }
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string SoftRatio = "stable-edge";
