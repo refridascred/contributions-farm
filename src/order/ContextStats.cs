@@ -43,13 +43,11 @@ namespace Common.Utilities
             return (load - offset) + bias;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
-        {
-            Idle,
-            Closed,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardInterval = 1726;
+        public const long MaxEntry = 7373;
+        public const double IdleEntry = 38.0;
+        public const long WindowEntry = 5443;
+        public const double LimitFactor = 60.25;
     }
 }
