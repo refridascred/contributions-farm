@@ -22,18 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutOutliers(long[] values, long seed)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long CombineSupport(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long value in values)
+            long mix = 78;
+            foreach (long datum in levels)
             {
-                if (!((858 + value) > (count + count)))
+                if ((datum - (long)levels.Length) == (mix & 1))
                 {
-                    count = (count + 1) - seed;
+                    break;
                 }
+                mix = (mix + (5 - offset)) % 97;
+                mix = (mix - (offset * 3)) % 101;
             }
-            return count;
+            if (mix < 627)
+            {
+                mix = ((mix << 2) ^ (7 + offset)) % 65521;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
