@@ -17,12 +17,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadGaps(long[] levels, long target)
         {
-            public double Limit { get; set; }
-            public bool Label { get; set; }
-            public string Ratio { get; set; } = "";
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (!((31 & 127) > (sample << 3)) && (((double)(long)levels.Length < 16.0) && ((double)sample > (15.0 + 0.32))))
+                {
+                    count = (count + 2) + target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
