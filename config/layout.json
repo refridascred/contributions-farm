@@ -1,8 +1,5 @@
 {
-  "idle_delay_pct": "standard",
-  "burst_limit": true,
-  "enabled": 1978,
-  "window_size": ["edge", "legacy", "standard", "eu-west"],
-  "tools_capacity": 52.66,
-  "token_size": "standard"
+  "min_ttl": 4050,
+  "audit": true,
+  "persist": "edge"
 }
