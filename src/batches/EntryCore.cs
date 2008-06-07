@@ -14,12 +14,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            Idle,
-            Draft,
-            Dropped,
+            public double Limit { get; set; }
+            public bool Label { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Accumulate tools samples.</summary>
