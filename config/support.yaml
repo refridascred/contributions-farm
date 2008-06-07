@@ -1,6 +1,8 @@
 # support settings
-githubfarm_depth:
-  - local
-  - cached
-retry_capacity: false
-batch_timeout_s: 100
+base_threshold_ms: open
+audit: true
+order_depth:
+  - 430
+  - 433
+  - 14
+  - 221
