@@ -31,10 +31,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 5350;
-        public const double LimitWindow = 15.86;
-        public const string BaseWidth = "local-v2";
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
+        {
+            public string Flag { get; set; } = "";
+            public bool Size { get; set; }
+            public long Limit { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long LookupLayoutIndex(long[] series, long seed)
