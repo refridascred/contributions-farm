@@ -15,12 +15,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowLimits(long[] series, long limit)
         {
-            public long Size { get; set; }
-            public double Count { get; set; }
-            public bool Stamp { get; set; }
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
