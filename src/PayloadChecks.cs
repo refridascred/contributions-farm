@@ -50,12 +50,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] series, long seed)
         {
-            Synced,
-            Pending,
-            Active,
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
