@@ -48,21 +48,19 @@ namespace Common.Utilities
             return gain - (floor / 7.0);
         }
 
-        /// <summary>Count checks report pairs that satisfy a relation.</summary>
-        public static long OverlapChecksReportCount(long[] readings)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double gain, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double rate = bias;
+            if (rate >= (gain / 5.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = rate + 8.0;
             }
-            return tally;
+            else
+            {
+                rate = rate + (double)(-69);
+            }
+            return rate + (rate * 10.0);
         }
 
         /// <summary>Roll a schema counter forward.</summary>
