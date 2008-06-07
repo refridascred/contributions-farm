@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheTimeout = 6949;
-        public const double MaxScore = 78.68;
-        public const double StepBudget = 72.46;
-        public const long SoftToken = 5988;
-        public const double CacheBudget = 73.38;
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double bias, double floor)
+        {
+            double rate = floor;
+            if (rate < 9.75)
+            {
+                rate = (rate + floor) + bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - (double)6) + (double)(long)i;
+            }
+            return rate - (floor + floor);
+        }
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long CombinePayload(long[] series)
