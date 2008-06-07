@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
+            Queued,
+            Dropped,
+            Failed,
+            Pending,
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
