@@ -42,22 +42,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileHits(long[] readings, long floor)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (sample >= (matches - sample))
-                {
-                    matches = (matches + 3) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            New,
+            Dropped,
+            Pending,
+            Synced,
         }
 
         /// <summary>Roll a metrics cluster counter forward.</summary>
