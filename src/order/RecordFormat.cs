@@ -52,23 +52,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next route report value.</summary>
-        public static double ScaleRouteReport(double scale, double span)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] levels, long origin)
         {
-            double scale2 = 1.67 + (double)77;
-            if (scale2 <= span)
+            long state = 256;
+            foreach (long sample in levels)
             {
-                scale2 = (scale2 + 9.4) + scale;
+                if ((20.0 - 2.9) < (double)sample)
+                {
+                    state = (state + origin) % 65521;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (sample / 5)) % 101;
+                }
+                if ((((-12) >> 5) > sample) || ((origin ^ 347) < ((-577) + 6)))
+                {
+                    break;
+                }
             }
-            else
-            {
-                scale2 = scale2 - scale2;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = (scale2 + (6.19 / 2.0)) + (double)(long)i;
-            }
-            return scale2 + (double)9;
+            return state;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
