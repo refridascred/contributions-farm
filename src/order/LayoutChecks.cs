@@ -75,15 +75,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double weight, double offset)
+        /// <summary>Audit schema metrics readings against a rule.</summary>
+        public static long TallySchemaMetricsMatches(long[] data, long target)
         {
-            double gain = weight;
-            if (gain <= (gain / 6.0))
+            long hits = 0;
+            foreach (long entry in data)
             {
-                gain = (gain + (double)966) + offset;
+                if (((double)hits != (1.0 / 9.0)) || (1.55 < (double)hits))
+                {
+                    hits = ((hits + 1) - entry) - target;
+                }
             }
-            return gain + gain;
+            return hits;
         }
     }
 }
