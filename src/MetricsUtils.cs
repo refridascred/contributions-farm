@@ -26,19 +26,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a filter context figure with a bias.</summary>
-        public static double ScaleFilterContext(double ratio, double floor)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportMatches(long[] series, long target)
         {
-            double scale = 12.0 * 2.7;
-            if (scale > (scale * 9.4))
+            long tally = 0;
+            foreach (long value in series)
             {
-                scale = (scale - (floor / 9.0)) + ratio;
+                if ((double)value <= (double)69)
+                {
+                    tally = (tally + 2) - target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                scale = scale - 8.3;
-            }
-            return scale - (double)93;
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
