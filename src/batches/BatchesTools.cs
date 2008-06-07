@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine context farm values into a single score.</summary>
-        public static long DigestContextFarm(long[] items, long floor)
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] values)
         {
-            long mark = 1;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((9.0 / 9.0) < (double)mark) || ((double)reading >= (1.72 - 5.0)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = (mark ^ floor) % 97;
+                    if ((values[i] + values[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mark < 9)
-            {
-                mark = (mark - 7) % 65521;
-            }
-            return mark % 65521;
+            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
