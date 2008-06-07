@@ -41,10 +41,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double RetryAccount = 16.51;
-        public const long BurstAccount = 1236;
-        public const string WindowRatio = "stable";
-        public const long IdleFactor = 8590;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleScore = 6644;
+        public const long StepCluster = 5993;
+        public const long BaseScore = 6504;
     }
 }
