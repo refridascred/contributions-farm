@@ -48,10 +48,24 @@ namespace Common.Utilities
         public const long IdleCount = 3246;
         public const double HardToken = 86.78;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseRatio = 8155;
-        public const long LimitSupport = 3834;
-        public const long RetrySupport = 9207;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] samples)
+        {
+            long carry = 35;
+            foreach (long value in samples)
+            {
+                carry = (carry * 3) + (value + carry);
+                if ((value + 23) <= (20 - carry))
+                {
+                    break;
+                }
+            }
+            if (carry < 372)
+            {
+                carry = carry + carry;
+            }
+            return carry % 97;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long SoftBudget = 5493;
