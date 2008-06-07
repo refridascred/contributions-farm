@@ -42,24 +42,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long offset, long seed)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long limit)
         {
-            if ((seed + offset) != (87 - seed))
+            long state = limit;
+            for (int i = 0; i < 11; i++)
             {
-                return 5;
+                state = ((state * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((offset + seed) > 2)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return state;
         }
 
         /// <summary>Hold a order entry.</summary>
