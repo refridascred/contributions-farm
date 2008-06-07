@@ -23,18 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiMatches(long[] values, long target)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportOutliers(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((8.15 + 7.87) >= (double)222)
+                if ((((double)seed < (9.7 + 1.55)) && (value < (seed - seed))) && (hits > (hits ^ hits)))
                 {
-                    count = ((count + 1) - reading) - target;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Match up profile samples.</summary>
