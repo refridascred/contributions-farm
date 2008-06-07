@@ -43,26 +43,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] items, long floor)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long offset)
         {
-            long carry = -718;
-            foreach (long entry in items)
+            long state = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (((59 + carry) == (entry % 16)) || (carry < entry))
-                {
-                    carry = ((carry * 5) + floor) % 101;
-                }
-                else
-                {
-                    carry = carry - (carry << 2);
-                }
+                state = (state ^ (3 % 64)) % 65521;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            if (carry < (-533))
-            {
-                carry = (carry + (floor >> 2)) % 1000;
-            }
-            return carry % 4096;
+            return state;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
