@@ -29,15 +29,21 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Combine buffer entry values into a single score.</summary>
-        public static long FoldBufferEntry(long[] series)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] series)
         {
-            long sum = 956;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum - (sum & 15)) + reading;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
     }
 }
