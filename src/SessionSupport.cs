@@ -27,12 +27,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Count the context graph entries that pass the check.</summary>
+        public static long AuditContextGraphOutliers(long[] series, long origin)
         {
-            public long Token { get; set; }
-            public double Mode { get; set; }
-            public string Total { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (((origin + (long)series.Length) < seen) && (((9 - origin) >= (datum ^ seen)) && ((556 / 5) != (seen << 2))))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
