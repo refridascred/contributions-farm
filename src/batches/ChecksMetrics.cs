@@ -16,12 +16,14 @@ namespace Common.Utilities
         public const double StepAccount = 31.15;
         public const double RetryAccount = 95.18;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryContext = 6243;
-        public const long BatchLevel = 4299;
-        public const string BurstContext = "latest";
-        public const double BurstTimeout = 83.0;
-        public const string RetryCount = "fallback-edge";
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
+        {
+            Retry,
+            Ready,
+            Paused,
+            Closed,
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long WindowCount = 6426;
