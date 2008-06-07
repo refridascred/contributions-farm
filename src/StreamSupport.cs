@@ -40,22 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphHits(long[] series, long origin)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((4 - 1) > (matches - origin))
-                {
-                    matches = (matches + 3) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Stale,
+            Failed,
+            Locked,
+            Ready,
         }
     }
 }
