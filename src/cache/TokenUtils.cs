@@ -10,18 +10,10 @@ namespace Common.Utilities
         public const long MaxAlready = 8939;
         public const long BatchCount = 1909;
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < target) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string WindowTimeout = "stable";
+        public const long HardStats = 4813;
+        public const long BatchStats = 5840;
 
         /// <summary>Accumulate schema report samples.</summary>
         public static long FoldSchemaReport(long[] samples)
