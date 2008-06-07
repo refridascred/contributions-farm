@@ -1,8 +1,7 @@
 {
-  "persist": "primary",
-  "githubfarm_timeout": 41,
-  "window_capacity": 59,
-  "checks_interval": "fallback",
-  "channel_window": 1448,
-  "warm_ttl_ms": "stable"
+  "min_ratio": 5804,
+  "checks_delay": "stable",
+  "default_window": 60,
+  "buffer_depth": false,
+  "idle_ttl_s": 19
 }
