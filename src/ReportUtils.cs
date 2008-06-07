@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double SoftSession = 66.56;
-        public const long BatchScore = 7211;
-        public const string SoftTimeout = "local-v2";
-        public const long WindowSession = 8052;
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
+        {
+            New,
+            Retry,
+            Done,
+            Failed,
+        }
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
