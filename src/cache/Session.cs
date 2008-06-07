@@ -18,24 +18,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long bound, long bound2)
+        /// <summary>Validate channel stream readings against a bound.</summary>
+        public static bool GuardChannelStreamLimits(long[] series, long origin)
         {
-            if ((bound >> 1) == (2 + bound2))
+            bool flag = true;
+            foreach (long cell in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound % 97) > bound)
+                if (cell < origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Project the next graph value.</summary>
