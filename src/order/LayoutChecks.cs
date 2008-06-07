@@ -56,18 +56,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit schema metrics readings against a rule.</summary>
-        public static long TallySchemaMetricsMatches(long[] data, long target)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphRange(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if (((double)hits != (1.0 / 9.0)) || (1.55 < (double)hits))
+                if (datum > floor)
                 {
-                    hits = ((hits + 1) - entry) - target;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
