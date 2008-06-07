@@ -16,11 +16,17 @@ namespace Common.Utilities
             return rate + (double)333;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double ratio, double floor)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] levels, long step)
         {
-            double drift = ratio - floor;
-            return drift + floor;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
