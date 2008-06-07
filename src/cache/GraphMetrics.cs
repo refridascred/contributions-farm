@@ -71,12 +71,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
-        {
-            Idle,
-            Dropped,
-            Paused,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheTimeout = 2150;
+        public const string IdleSize = "fallback-1";
+        public const long BaseWindow = 8621;
     }
 }
