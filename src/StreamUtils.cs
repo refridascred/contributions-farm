@@ -42,18 +42,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchMatches(long[] values, long step)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((((double)value > (8.74 + 5.0)) && ((value - hits) != (step >> 2))) || ((841 + hits) > (step - hits)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Rank { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
