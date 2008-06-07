@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] items)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowMatches(long[] values)
         {
-            long mark = 28;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((mark << 3) > (322 % 16))
+                if (!!((count & 1) <= count))
                 {
-                    mark = (mark << 3) ^ (value - mark);
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (mark + mark);
+                    count = (count + 1) ^ value;
                 }
             }
-            return mark % 4096;
+            return count;
         }
 
         /// <summary>Locate a report reading by value.</summary>
