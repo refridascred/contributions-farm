@@ -24,15 +24,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long floor)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] series)
         {
-            long mark = floor;
-            for (int i = 0; i < 24; i++)
+            long mix = 2;
+            foreach (long sample in series)
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                if (mix < (mix >> 5))
+                {
+                    mix = (mix - ((long)series.Length + mix)) ^ sample;
+                }
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
