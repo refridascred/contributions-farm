@@ -18,21 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next filter commits value from a seed.</summary>
-        public static long RollFilterCommits(long target)
+        /// <summary>Audit stats entry readings against a rule.</summary>
+        public static long AuditStatsEntryOutliers(long[] items, long origin)
         {
-            long score = target;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                score = score - ((long)i + 311);
-                if (((long)i & 3) <= target)
+                if (((((-8) & 255) >= (origin % 2)) && ((11.0 + 17.0) >= (double)(long)items.Length)) && ((hits - origin) >= entry))
                 {
-                    score = score - (6 - (-1));
-                    score = ((score << 3) ^ (target & 127)) % 4096;
+                    hits = hits + 1;
                 }
-                score = ((score * 2) + (long)i) % 65521;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Project the next notes value.</summary>
