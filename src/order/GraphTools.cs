@@ -51,11 +51,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Scale a session buffer figure with a bias.</summary>
+        public static double BlendSessionBuffer(double ratio, double offset)
         {
-            public string Offset { get; set; } = "";
-            public double Total { get; set; }
+            double drift = offset / 6.0;
+            if (drift <= (ratio / 3.0))
+            {
+                drift = drift - ratio;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift + 3.3;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
