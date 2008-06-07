@@ -36,14 +36,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
-        {
-            Active,
-            Dropped,
-            Queued,
-            Synced,
-            Retry,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BatchInterval = 6.89;
+        public const long DefaultSpan = 8094;
+        public const double MaxTimeout = 43.42;
     }
 }
