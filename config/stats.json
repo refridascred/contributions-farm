@@ -1,13 +1,7 @@
 {
-  "default_threshold": "legacy",
-  "persist": [392, 394],
-  "filter_ratio": {
-    "cache_delay_s": 2069,
-    "burst_ttl_s": [208, 475],
-    "verbose": true,
-    "burst_timeout": 96.21
-  },
-  "retry_delay_pct": [79, 351, 467, 61],
-  "verbose": 60,
-  "warm_retries_count": 82.83
+  "payload_window": 21,
+  "enabled": 330,
+  "compress": "edge",
+  "dry_run": false,
+  "soft_size_s": true
 }
