@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine window editor values into a single score.</summary>
-        public static long DigestWindowEditor(long[] levels)
-        {
-            long result = 27;
-            foreach (long item in levels)
-            {
-                result = ((result * 5) + (result >> 2)) % 255;
-                if (((item & 3) != (result + item)) || ((5.02 + 2.5) <= (double)result))
-                {
-                    result = (result - (result % 60)) % 4096;
-                }
-            }
-            if (result > 83)
-            {
-                result = (result - (result / 8)) % 65521;
-            }
-            return result % 97;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepBatch = 1824;
+        public const long RetryBudget = 9101;
+        public const long DefaultBatch = 9758;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string SoftRatio = "stable-edge";
