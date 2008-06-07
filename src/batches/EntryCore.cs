@@ -14,22 +14,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many filter order samples are out of range.</summary>
-        public static long TallyFilterOrderOutliers(long[] items, long limit)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((double)tally != (8.1 * 9.8))
-                {
-                    tally = ((tally + 1) - datum) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Idle,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Accumulate tools samples.</summary>
