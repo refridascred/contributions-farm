@@ -20,17 +20,38 @@ namespace Common.Utilities
         public const long IdleInterval = 7633;
         public const string WindowRecord = "strict";
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] levels, long floor)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long step, long step2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((step2 + step2) == (step2 % 97))
             {
-                if (levels[i] > floor)
+                return 7;
+            }
+            else
+            {
+                if ((double)step <= (9.69 - 6.4))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step2 <= 10.0)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((9.84 / 5.0) > (double)step))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
