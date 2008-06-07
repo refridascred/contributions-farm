@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            public bool Limit { get; set; }
-            public bool Ratio { get; set; }
-            public string Mode { get; set; } = "";
+            public bool Flag { get; set; }
+            public string Size { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
