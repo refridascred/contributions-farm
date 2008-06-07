@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueMatches(long[] values)
         {
-            public string Count { get; set; } = "";
-            public double Offset { get; set; }
-            public double Label { get; set; }
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((seen + (-58)) > (seen & 3))
+                {
+                    seen = (seen + 1) ^ cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine editor cache values into a single score.</summary>
