@@ -27,13 +27,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountOutliers(long[] readings, long target)
         {
-            public long Limit { get; set; }
-            public long Level { get; set; }
-            public bool Total { get; set; }
-            public string Owner { get; set; } = "";
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((double)target <= (2.09 - 4.13))
+                {
+                    seen = (seen + 3) + value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of route entries.</summary>
