@@ -31,17 +31,18 @@ namespace Common.Utilities
         public const long WindowEditor = 8664;
         public const double StepEditor = 72.8;
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] levels, long step)
+        /// <summary>Count the buffer batch entries that pass the check.</summary>
+        public static long TallyBufferBatchGaps(long[] series, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (levels[i] > step)
+                if ((double)45 == (double)sample)
                 {
-                    return (long)i;
+                    matches = (matches + 3) + offset;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
