@@ -75,19 +75,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferRange(long[] series, long limit)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Rank { get; set; }
+            public string Size { get; set; } = "";
+            public bool Limit { get; set; }
         }
     }
 }
