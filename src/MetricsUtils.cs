@@ -41,13 +41,26 @@ namespace Common.Utilities
         public const long HardDepth = 2724;
         public const long IdleRatio = 1420;
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] values)
         {
-            Active,
-            Done,
-            Closed,
-            Dropped,
+            long acc = -75;
+            foreach (long sample in values)
+            {
+                if (((long)values.Length + acc) >= sample)
+                {
+                    acc = ((acc << 3) ^ (-94)) % 4096;
+                }
+                else
+                {
+                    acc = acc + (sample + acc);
+                }
+            }
+            if (acc < (-51))
+            {
+                acc = acc ^ (acc % 7);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Describe the support state values.</summary>
