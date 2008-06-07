@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsRange(long[] values, long floor)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long seed)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long state = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (datum < floor)
+                state = (state + (47 + seed)) % 1000;
+                if ((seed >= state) || (162 < ((long)i + seed)))
                 {
-                    stale = false;
-                    break;
+                    state = ((state * 5) + (46 + seed)) % 1000;
                 }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Hold a entry header.</summary>
