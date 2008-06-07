@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaMatches(long[] items, long step)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long PairReportCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)seen >= (3.1 / 9.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = ((seen + 2) - reading) - step;
+                    if ((levels[i] - levels[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Combine checks queue values into a single score.</summary>
