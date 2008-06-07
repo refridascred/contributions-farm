@@ -1,5 +1,6 @@
 {
-  "retry_delay_pct": "stable",
-  "persist": 1024,
-  "burst_threshold": 2
+  "dry_run": "eu-west",
+  "flush_delay_pct": "strict",
+  "batch_limit_pct": false,
+  "default_capacity_count": ["latest", "edge", "edge"]
 }
