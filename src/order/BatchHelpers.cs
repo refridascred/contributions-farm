@@ -24,18 +24,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportHits(long[] levels)
+        /// <summary>Compare every pair of entry filter readings.</summary>
+        public static long CompareEntryFilterCount(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)reading != (double)89)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((data[i] - data[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
