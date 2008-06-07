@@ -22,11 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Compare every pair of batch buffer readings.</summary>
+        public static long PairBatchBufferCount(long[] samples)
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count buffer commits pairs that satisfy a relation.</summary>
