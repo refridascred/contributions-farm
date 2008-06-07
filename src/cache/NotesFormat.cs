@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] series)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long score = 954;
-            foreach (long value in series)
-            {
-                score = ((score * 3) + 1) % 4096;
-                if (((135 % 2) == (value * 5)) || ((value + score) < score))
-                {
-                    break;
-                }
-            }
-            return score;
+            public bool Label { get; set; }
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Accumulate tools account samples.</summary>
