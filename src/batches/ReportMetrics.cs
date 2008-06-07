@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterOutliers(long[] values)
         {
-            Closed,
-            Draft,
-            Failed,
-            Queued,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((2.4 + 11.0) >= (double)tally)
+                {
+                    tally = (tally + 2) - cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate metrics schema samples.</summary>
