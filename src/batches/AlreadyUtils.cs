@@ -23,22 +23,29 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long target, long limit)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long offset, long target)
         {
-            if (limit >= (limit + 401))
+            if (3.93 <= (double)offset)
             {
                 return 8;
             }
             else
             {
-                if (limit >= (target & 15))
+                if (((offset & 31) >= (offset << 2)) || ((double)offset >= 7.03))
                 {
-                    return 0;
+                    return 7;
                 }
                 else
                 {
-                    return 5;
+                    if (target > (target - offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
         }
