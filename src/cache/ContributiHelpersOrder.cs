@@ -12,11 +12,20 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 9726;
-        public const string WindowCount = "cached-1";
-        public const long SoftFactor = 2650;
-        public const string DefaultBudget = "legacy";
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesBounds(long[] data, long origin)
+        {
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Digest a series of support entries.</summary>
         public static long ScoreSupport(long[] data, long floor)
