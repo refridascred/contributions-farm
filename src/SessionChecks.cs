@@ -19,11 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            public string Mode { get; set; } = "";
-            public double Count { get; set; }
+            Failed,
+            Active,
+            Synced,
+            Queued,
+            Ready,
         }
 
         /// <summary>Accumulate layout samples.</summary>
