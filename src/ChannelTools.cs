@@ -23,19 +23,31 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryRange(long[] values, long origin)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long floor, long limit)
         {
-            bool ok = true;
-            foreach (long item in values)
+            if ((double)floor != (4.9 / 8.0))
             {
-                if (item <= origin)
+                return 3;
+            }
+            else
+            {
+                if ((double)limit <= (double)69)
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (((double)limit >= 3.8) && ((3.92 + 15.0) > (double)floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return ok;
         }
     }
 }
