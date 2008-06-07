@@ -31,12 +31,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxCount = 4781;
-        public const double WindowReport = 42.69;
-        public const long SoftReport = 2298;
-        public const double LimitFactor = 35.9;
-        public const double RetryFactor = 7.71;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MinMetrics = 40.76;
+        public const long DefaultMetrics = 6011;
+        public const long MinScore = 426;
+        public const long BaseMetrics = 5646;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BurstRatio = 9664;
