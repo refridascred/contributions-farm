@@ -27,18 +27,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] data)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (count <= (2 & 1))
-                {
-                    count = (count + 3) ^ item;
-                }
-            }
-            return count;
+            Done,
+            Active,
+            Failed,
         }
 
         /// <summary>Hold a filter record.</summary>
