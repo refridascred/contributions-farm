@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] items, long origin)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long seed)
         {
-            long result = 12;
-            foreach (long sample in items)
+            long mix = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)origin != (9.0 / 7.0))
-                {
-                    result = result + (result + 512);
-                }
-                else
-                {
-                    result = result ^ sample;
-                }
+                mix = mix + (seed & 7);
+                mix = mix - (seed >> 3);
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            if (result > 968)
-            {
-                result = ((result * 3) + result) % 1000;
-            }
-            return result;
+            return mix;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
