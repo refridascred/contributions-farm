@@ -1,12 +1,6 @@
 {
-  "payload_size": 53.97,
-  "schema_size": {
-    "strict": false,
-    "base_size_ms": 84,
-    "sync_window": 500,
-    "cache_size_count": 4,
-    "session_depth": 30
-  },
-  "warm_window_s": "cached",
-  "compress": "primary"
+  "base_threshold_ms": "legacy",
+  "warm_limit": "fallback",
+  "audit": [475, 276],
+  "order_interval": "strict"
 }
