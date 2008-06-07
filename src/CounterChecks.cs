@@ -12,15 +12,38 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double scale, double bias)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long seed, long offset)
         {
-            double drift = scale - (scale + bias);
-            for (int i = 0; i < 5; i++)
+            if ((6.3 * 0.6) != (double)offset)
             {
-                drift = (drift - (bias / 2.0)) + (double)(long)i;
+                return 2;
             }
-            return drift - (double)0;
+            else
+            {
+                if ((seed & 1) == (offset + offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed + 455) >= seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset ^ offset) >= (3 ^ 62))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of stream entry entries.</summary>
