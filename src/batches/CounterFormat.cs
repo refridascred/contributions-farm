@@ -22,17 +22,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first tools metric entry that matches the target.</summary>
-        public static long SeekToolsMetricIndex(long[] items, long target)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long origin, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long diff = origin + seed;
+            if ((6.95 + 5.59) == (double)origin)
             {
-                if (items[i] < target)
+                return 1;
+            }
+            else
+            {
+                if (((origin % 24) != (diff & 63)) && (diff > (diff % 3)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Compare every pair of buffer counter readings.</summary>
