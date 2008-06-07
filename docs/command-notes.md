@@ -1,14 +1,15 @@
 # Command notes
 
-The account module keeps session values in sync with the metrics cache.
-Run the route check before changing any payload limits.
+Defaults for command live in the config folder and can be overridden per environment.
+Each already is validated before it reaches the contributi queue.
 
-Run the token check before changing any batches limits.
-The graph helpers are pure functions, so they are safe to call from any thread.
+The batches report groups every record by command.
+Use graph settings to tune how often window data is refreshed.
+Each tools is validated before it reaches the account queue.
 
 ## Guidelines
 
-- Review session limits each release
-- Prefer window defaults
-- Validate support input early
-- Keep checks values small
+- Validate batch input early
+- Keep support values small
+- Review stream limits each release
+- Prefer account defaults
