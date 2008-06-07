@@ -18,18 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsHits(long[] levels, long target)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (datum > (datum % 24))
-                {
-                    seen = (seen + 1) + target;
-                }
-            }
-            return seen;
+            Retry,
+            Paused,
+            Failed,
+            Queued,
+            Pending,
         }
 
         /// <summary>Project the next notes value.</summary>
