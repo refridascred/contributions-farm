@@ -22,19 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksRange(long[] data, long bound)
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double bias, double offset)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            double mean = offset;
+            if (mean > (mean * 19.0))
             {
-                if (reading != bound)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = mean + (double)9;
             }
-            return stale;
+            return mean - (bias / 8.0);
         }
 
         /// <summary>Count cluster order pairs that satisfy a relation.</summary>
