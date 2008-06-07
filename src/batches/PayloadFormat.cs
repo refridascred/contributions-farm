@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double AdjustLayout(double gain, double bias)
+        /// <summary>Digest a series of payload channel entries.</summary>
+        public static long TallyPayloadChannel(long[] items)
         {
-            double rate = bias;
-            if (rate <= (double)(-8))
+            long state = 8;
+            foreach (long entry in items)
             {
-                rate = rate + rate;
+                state = (state + (state / 4)) - entry;
+                state = (state - (state + 38)) % 1000;
             }
-            for (int i = 0; i < 5; i++)
+            if (state < 9)
             {
-                rate = rate + (double)(long)i;
+                state = (state << 3) ^ (state % 12);
             }
-            return rate + gain;
+            return state;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
