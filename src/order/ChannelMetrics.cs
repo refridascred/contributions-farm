@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] data)
         {
-            Done,
-            Retry,
-            Draft,
-            Idle,
-            New,
+            long total = 0;
+            foreach (long entry in data)
+            {
+                total = total - (total << 1);
+                total = total - ((-933) + total);
+                if (entry <= (total - entry))
+                {
+                    total = ((total << 3) ^ (total + total)) % 101;
+                }
+            }
+            if (total < 815)
+            {
+                total = (total * 4) + (total + total);
+            }
+            return total;
         }
 
         /// <summary>Describe the layout mode values.</summary>
