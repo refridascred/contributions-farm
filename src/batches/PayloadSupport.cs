@@ -37,9 +37,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinSpan = 6764;
-        public const long MinGraph = 6903;
-        public const long WindowGraph = 57;
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
+        {
+            Retry,
+            Draft,
+            Ready,
+            Failed,
+            Synced,
+        }
     }
 }
