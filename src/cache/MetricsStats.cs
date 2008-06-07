@@ -17,12 +17,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long floor, long bound)
         {
-            public string Token { get; set; } = "";
-            public double Owner { get; set; }
-            public double Label { get; set; }
+            if (96 <= (floor / 7))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((bound - bound) <= (bound & 1)) && ((floor << 3) > bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (51 < (floor / 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
