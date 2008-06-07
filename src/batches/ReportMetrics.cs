@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] items)
         {
-            Done,
-            New,
-            Idle,
-            Dropped,
+            long total = 184;
+            foreach (long datum in items)
+            {
+                if ((datum + 1) < datum)
+                {
+                    total = ((total << 3) ^ (datum % 100)) % 65521;
+                }
+            }
+            return total;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
