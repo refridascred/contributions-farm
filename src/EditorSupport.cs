@@ -42,13 +42,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
-        {
-            Draft,
-            Stale,
-            Failed,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double DefaultMetric = 22.36;
+        public const double BatchDepth = 79.99;
+        public const long MaxCount = 9;
+        public const string HardInterval = "alpha-edge";
 
         /// <summary>Hold a stats stats.</summary>
         public sealed class StatsStats
