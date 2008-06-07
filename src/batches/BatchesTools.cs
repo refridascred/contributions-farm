@@ -23,26 +23,12 @@ namespace Common.Utilities
         public const double BaseRoute = 55.83;
         public const long MinFactor = 4775;
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] samples)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long score = 76;
-            foreach (long item in samples)
-            {
-                if ((item * 4) != (score - 91))
-                {
-                    score = (score ^ (score + score)) % 4096;
-                }
-                if ((item - 6) > (score + item))
-                {
-                    break;
-                }
-            }
-            if (score > 33)
-            {
-                score = ((score * 2) + (long)samples.Length) % 97;
-            }
-            return score;
+            Done,
+            Queued,
+            Idle,
         }
     }
 }
