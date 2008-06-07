@@ -45,23 +45,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next editor layout value from a seed.</summary>
-        public static long DeriveEditorLayout(long limit)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long mark = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((double)(long)i >= 6.0) || ((double)38 >= (double)limit))
-                {
-                    continue;
-                }
-                else
-                {
-                    mark = (mark ^ (mark + limit)) % 65521;
-                }
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            public string Limit { get; set; } = "";
+            public bool Token { get; set; }
+            public bool Mode { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
