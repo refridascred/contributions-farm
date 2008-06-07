@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BurstSpan = "open-edge";
-        public const long MaxAlready = 8939;
-        public const long BatchCount = 1909;
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
+        {
+            Retry,
+            Synced,
+            Ready,
+            Idle,
+            Dropped,
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string WindowTimeout = "stable";
