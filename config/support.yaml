@@ -1,24 +1,17 @@
 # support settings
-tools_limit: 1024
-enabled: cached
-persist: eu-west
-entry_size: 79.75
-burst_delay:
-  sync_window_ms:
-    metrics_window: local
-    default_depth_s: 13
-    enabled: false
-  strict: fallback
-  cache_threshold: 47
-  audit:
-    compress: 1024
-    default_limit: 60
-    idle_ratio:
-      - 152
-      - 295
-      - 431
-      - 375
-    burst_depth_s: legacy
-    cluster_ratio: staging
-  soft_threshold: latest
-warm_threshold: 13.76
+dry_run: primary
+base_capacity_count: 96.47
+strict:
+  sync_size:
+    - 348
+    - 492
+    - 338
+    - 419
+  metrics_size: 1024
+  idle_delay_ms: false
+  hard_interval_s: stable
+  cache_ttl_s: latest
+  burst_interval_ms: 2.1
+batch_timeout: 69
+readonly: true
+sync_retries_ms: 593
