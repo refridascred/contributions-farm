@@ -10,11 +10,14 @@ namespace Common.Utilities
         public const double BaseSpan = 2.75;
         public const long MinLevel = 7458;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MaxScore = 2.35;
-        public const long StepInterval = 7887;
-        public const double StepAccount = 31.15;
-        public const double RetryAccount = 95.18;
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
+        {
+            Paused,
+            New,
+            Ready,
+            Closed,
+        }
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
