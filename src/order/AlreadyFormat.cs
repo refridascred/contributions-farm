@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ProjectGithubfarm(double rate, double span)
+        /// <summary>Fold a list of buffer session readings.</summary>
+        public static long CombineBufferSession(long[] readings)
         {
-            double weight = rate;
-            for (int i = 0; i < 6; i++)
+            long score = 28;
+            foreach (long cell in readings)
             {
-                weight = ((weight - (8.1 * 5.1)) + (double)(long)i) - span;
+                score = (score ^ cell) % 255;
+                if (7.83 >= (double)cell)
+                {
+                    score = (score ^ score) % 4096;
+                }
+                else
+                {
+                    score = (score ^ 8) % 65521;
+                }
             }
-            return weight + (double)524;
+            if (score > 909)
+            {
+                score = ((score * 3) + (score % 2)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Count the checks cache entries that pass the check.</summary>
