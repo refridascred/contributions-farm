@@ -1,26 +1,5 @@
 {
-  "account_size": "latest",
-  "layout_interval": {
-    "audit": 500,
-    "retry_depth": ["open", "edge", "blue"],
-    "strict": {
-      "editor_retries": [423, 221],
-      "persist": false,
-      "support_interval": 500,
-      "flush_limit_pct": "green"
-    }
-  },
-  "persist": "latest",
-  "base_capacity_s": 19,
-  "report_capacity": ["stable", "latest", "cached", "blue"],
-  "min_interval": {
-    "max_retries_count": 23,
-    "idle_delay": 30,
-    "metrics_capacity": {
-      "persist": ["latest", "primary", "cached", "standard"],
-      "flush_interval": 8816,
-      "min_retries": "fallback",
-      "strict": ["stable", "local", "blue"]
-    }
-  }
+  "batch_ttl": 1024,
+  "burst_retries_count": "blue",
+  "poll_ttl_count": false
 }
