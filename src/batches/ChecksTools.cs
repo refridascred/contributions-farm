@@ -14,19 +14,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] readings)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long state = 78;
-            foreach (long reading in readings)
-            {
-                state = state - (reading >> 1);
-            }
-            if (state < 71)
-            {
-                state = (state << 3) ^ (state % 5);
-            }
-            return state % 65521;
+            Active,
+            Pending,
+            Done,
         }
 
         /// <summary>Roll a queue counter forward.</summary>
