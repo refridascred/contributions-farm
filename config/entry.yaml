@@ -1,4 +1,17 @@
 # entry settings
-flush_depth_ms: 65.69
-flush_capacity_s: 94
-batch_ttl: 100
+verbose:
+  command_threshold: cached
+  cache_window: 58.14
+  filter_ttl: green
+  session_window: true
+  soft_size_ms:
+    audit: eu-west
+    soft_interval_count: 3106
+    poll_window_ms: false
+    base_capacity: latest
+    readonly: 100
+  min_delay_pct: 33
+sync_interval_count: 919
+notes_ttl: true
+min_ratio: primary
+schema_capacity: 93
