@@ -19,21 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] levels)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double BlendMetric(double scale, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double bias = (7.0 + offset) * 2.2;
+            if (bias < (double)2)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias = bias - (scale * 10.0);
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = bias - (double)(long)i;
+            }
+            return bias - (3.44 + offset);
         }
 
         /// <summary>Match up profile samples.</summary>
