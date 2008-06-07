@@ -37,18 +37,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextHits(long[] samples, long limit)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry >> 2) < (limit + hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinSpan = 6764;
+        public const long MinGraph = 6903;
+        public const long WindowGraph = 57;
     }
 }
