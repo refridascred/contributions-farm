@@ -40,39 +40,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long seed, long origin)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaHits(long[] levels)
         {
-            long offset = seed - origin;
-            if ((double)seed >= 4.3)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin + offset) != (origin >> 2))
+                if ((long)levels.Length <= (datum & 31))
                 {
-                    return 0;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    if ((seed / 2) <= (offset ^ offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed + origin) <= (origin * 4))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
