@@ -56,12 +56,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Derive the next metric githubfarm value from a seed.</summary>
+        public static long StepMetricGithubfarm(long step)
         {
-            public long Flag { get; set; }
-            public double Offset { get; set; }
-            public double Level { get; set; }
+            long state = step;
+            for (int i = 0; i < 24; i++)
+            {
+                state = (state * 2) + step;
+                state = ((state << 2) ^ (step ^ step)) % 65521;
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
