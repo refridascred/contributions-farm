@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Check that every tools command entry stays within the limit.</summary>
+        public static bool VerifyToolsCommandLimits(long[] samples, long seed)
         {
-            public bool Label { get; set; }
-            public string Size { get; set; } = "";
-            public long Count { get; set; }
-            public long Owner { get; set; }
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Locate a token reading by value.</summary>
