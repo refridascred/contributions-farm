@@ -1,11 +1,9 @@
 {
-  "batch_capacity": {
-    "compress": ["green", "standard", "fallback"],
-    "enabled": false,
-    "min_depth": 68.4,
-    "cache_size_ms": "latest",
-    "verbose": "local"
+  "dry_run": "green",
+  "base_limit_count": {
+    "soft_window_count": true,
+    "dry_run": 15,
+    "retry_depth_count": false
   },
-  "base_retries_count": 500,
-  "base_depth_s": "blue"
+  "default_size_ms": "green"
 }
