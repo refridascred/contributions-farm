@@ -59,24 +59,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long step, long offset)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long CompareBatchesCount(long[] series)
         {
-            if ((offset >> 1) <= offset)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)offset < (0.9 * 1.0)) && (((-621) << 2) >= step))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    if ((series[i] ^ series[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
     }
 }
