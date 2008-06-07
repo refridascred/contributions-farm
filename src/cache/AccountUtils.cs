@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double rate, double bias)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportHits(long[] values)
         {
-            double mean = bias + bias;
-            if (mean < rate)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                mean = mean + rate;
+                if ((sample + sample) >= (matches % 3))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean + (mean - 1.7);
+            return matches;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
