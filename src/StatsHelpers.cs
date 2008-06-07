@@ -42,18 +42,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit counter stream readings against a rule.</summary>
-        public static long MeasureCounterStreamGaps(long[] values)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphRange(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if (!((entry - tally) > (tally + 940)) || ((double)entry > 7.96))
+                if (datum <= offset)
                 {
-                    tally = tally + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
