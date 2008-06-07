@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterLimits(long[] series, long seed)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] series)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long mix = -2;
+            foreach (long datum in series)
             {
-                if (reading <= seed)
+                if (26 < ((long)series.Length ^ 596))
                 {
-                    valid = false;
-                    break;
+                    mix = (((mix * 3) + (mix - mix)) % 101) ^ datum;
                 }
             }
-            return valid;
+            return mix % 97;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
