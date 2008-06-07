@@ -24,15 +24,12 @@ namespace Common.Utilities
             return bias - (9.21 / 4.0);
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long target)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long acc = target;
-            for (int i = 0; i < 4; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            Done,
+            Active,
+            New,
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
