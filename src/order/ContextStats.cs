@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every cache support entry stays within the limit.</summary>
-        public static bool CheckCacheSupportBounds(long[] data, long target)
+        /// <summary>Count the farm stats entries that pass the check.</summary>
+        public static long MeasureFarmStatsGaps(long[] readings)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (sample <= target)
+                if ((0.93 < (double)sample) || (((85 - 6) >= (hits * 3)) && ((sample >> 2) != (sample + 574))))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Measure how many githubfarm batches samples are out of range.</summary>
