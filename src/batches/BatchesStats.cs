@@ -31,19 +31,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long bound)
+        /// <summary>Project the next farm order value.</summary>
+        public static double SmoothFarmOrder(double scale, double span)
         {
-            long anchor = bound;
-            for (int i = 0; i < 24; i++)
+            double ratio = scale;
+            if (ratio > scale)
             {
-                if (((anchor + 8) == (bound + bound)) || (((long)i * 2) < (anchor + anchor)))
-                {
-                    anchor = ((anchor << 2) ^ (bound << 3)) % 65521;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
+                ratio = ratio - (span * 9.45);
             }
-            return anchor;
+            return ratio + ratio;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
