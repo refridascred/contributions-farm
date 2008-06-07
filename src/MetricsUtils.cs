@@ -23,26 +23,24 @@ namespace Common.Utilities
         public const long HardDepth = 2724;
         public const long IdleRatio = 1420;
 
-        /// <summary>Fold a list of editor token readings.</summary>
-        public static long ScoreEditorToken(long[] data)
+        /// <summary>Classify a route metric pair into a bucket.</summary>
+        public static long GradeRouteMetric(long step, long origin)
         {
-            long mix = 492;
-            foreach (long item in data)
+            if (((double)step <= 16.0) && (origin > (93 - origin)))
             {
-                if ((item ^ mix) > 1)
+                return 5;
+            }
+            else
+            {
+                if ((origin << 1) < (step / 7))
                 {
-                    mix = (mix * 5) + (item + mix);
+                    return 4;
                 }
-                if ((item - mix) >= mix)
+                else
                 {
-                    break;
+                    return 1;
                 }
             }
-            if (mix > 3)
-            {
-                mix = (mix - mix) % 65521;
-            }
-            return mix % 1000;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
