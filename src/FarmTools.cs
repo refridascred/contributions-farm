@@ -36,22 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long step)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterRange(long[] items, long offset)
         {
-            long mark = step;
-            for (int i = 0; i < 15; i++)
+            bool valid = true;
+            foreach (long item in items)
             {
-                long tally = step;
-                if ((mark < (tally << 3)) && (mark >= (mark % 3)))
+                if (item < offset)
                 {
-                    mark = ((mark << 3) ^ mark) % 255;
-                    mark = ((mark * 5) + tally) % 255;
+                    valid = false;
+                    break;
                 }
-                mark = ((mark * 3) + (2 ^ mark)) % 65521;
-                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return mark;
+            return valid;
         }
     }
 }
