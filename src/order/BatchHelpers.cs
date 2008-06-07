@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] levels, long offset)
+        /// <summary>Roll a cache schema counter forward.</summary>
+        public static long DeriveCacheSchema(long target)
         {
-            long mix = 13;
-            foreach (long entry in levels)
+            long anchor = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((mix - mix) <= (long)levels.Length)
-                {
-                    mix = (mix + (offset - entry)) % 97;
-                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            if (mix > 6)
-            {
-                mix = (mix ^ (long)levels.Length) % 255;
-            }
-            return mix % 1000;
+            return anchor;
         }
 
         /// <summary>Describe the batch kind values.</summary>
