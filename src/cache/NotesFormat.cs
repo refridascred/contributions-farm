@@ -21,20 +21,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] samples, long origin)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long acc = 9;
-            foreach (long item in samples)
-            {
-                acc = (acc << 3) ^ (acc - acc);
-                acc = (acc + acc) % 255;
-                if (!((acc + origin) != (acc * 2)))
-                {
-                    acc = (acc + (item - item)) % 1000;
-                }
-            }
-            return acc;
+            public long Token { get; set; }
+            public long Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public double Mode { get; set; }
         }
     }
 }
