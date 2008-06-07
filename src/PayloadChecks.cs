@@ -45,13 +45,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] readings)
         {
-            Idle,
-            Stale,
-            Failed,
-            Paused,
+            long state = -978;
+            foreach (long entry in readings)
+            {
+                state = state - (entry / 8);
+                state = (state << 3) ^ (entry + entry);
+            }
+            return state;
         }
 
         /// <summary>Accumulate buffer commits samples.</summary>
