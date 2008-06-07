@@ -1,13 +1,13 @@
 {
-  "base_ratio_pct": 9927,
-  "sync_interval": {
-    "sync_capacity_s": "staging",
-    "sync_retries_count": ["staging", "green", "eu-west"],
-    "token_limit": 1,
-    "max_delay_pct": "open",
-    "sync_retries_ms": 31,
-    "strict": 51.31
+  "default_threshold": "legacy",
+  "persist": [392, 394],
+  "filter_ratio": {
+    "cache_delay_s": 2069,
+    "burst_ttl_s": [208, 475],
+    "verbose": true,
+    "burst_timeout": 96.21
   },
-  "audit": "fallback",
-  "metric_retries": "fallback"
+  "retry_delay_pct": [79, 351, 467, 61],
+  "verbose": 60,
+  "warm_retries_count": 82.83
 }
