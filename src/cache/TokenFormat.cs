@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmHits(long[] samples)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportOutliers(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (((long)samples.Length / 2) > (value - value))
+                if (hits <= 1)
                 {
-                    count = count + 3;
+                    hits = ((hits + 3) + value) + bound;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
