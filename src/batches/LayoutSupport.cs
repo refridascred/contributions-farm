@@ -25,19 +25,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteBounds(long[] levels, long bound)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyGaps(long[] data)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (reading > bound)
+                if ((0.1 - 3.89) >= (double)entry)
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Locate a order reading by value.</summary>
