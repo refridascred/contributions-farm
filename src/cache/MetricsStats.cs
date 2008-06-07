@@ -26,12 +26,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] data, long seed)
         {
-            Ready,
-            Failed,
-            Paused,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
