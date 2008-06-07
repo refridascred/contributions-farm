@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] data)
-        {
-            long sum = 4;
-            foreach (long datum in data)
-            {
-                if ((datum % 5) <= (datum - sum))
-                {
-                    sum = ((sum << 3) ^ (datum * 5)) % 1000;
-                }
-            }
-            if (sum > 436)
-            {
-                sum = (sum + (sum + sum)) % 255;
-            }
-            return sum;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BurstSpan = "open-edge";
+        public const long MaxAlready = 8939;
+        public const long BatchCount = 1909;
 
         /// <summary>Match up session samples.</summary>
         public static long OverlapSessionCount(long[] readings)
