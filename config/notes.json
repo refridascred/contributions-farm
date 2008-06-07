@@ -1,16 +1,7 @@
 {
-  "flush_delay_s": "legacy",
-  "default_threshold_s": "open",
-  "retry_threshold_s": {
-    "strict": {
-      "session_limit": 100,
-      "default_delay_s": 8192,
-      "warm_threshold_ms": "eu-west"
-    },
-    "max_size_count": 8,
-    "flush_ratio_pct": "stable",
-    "cache_window_count": 39.71,
-    "warm_timeout_ms": "primary",
-    "warm_limit": "local"
-  }
+  "entry_depth": "blue",
+  "entry_threshold": false,
+  "base_ttl_count": false,
+  "audit": "staging",
+  "compress": false
 }
