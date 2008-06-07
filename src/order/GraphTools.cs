@@ -51,11 +51,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxSpan = 2824;
-        public const long MinCluster = 1704;
-        public const string BatchCluster = "cached-v2";
-        public const string DefaultTimeout = "latest-v2";
-        public const long StepCount = 4451;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] readings)
+        {
+            long result = 9;
+            foreach (long reading in readings)
+            {
+                if ((result ^ result) > result)
+                {
+                    result = (result + reading) % 1000;
+                }
+            }
+            return result;
+        }
     }
 }
