@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterMatches(long[] readings)
+        /// <summary>Combine window editor values into a single score.</summary>
+        public static long DigestWindowEditor(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long result = 27;
+            foreach (long item in levels)
             {
-                if ((tally >> 5) >= tally)
+                result = ((result * 5) + (result >> 2)) % 255;
+                if (((item & 3) != (result + item)) || ((5.02 + 2.5) <= (double)result))
                 {
-                    tally = (tally + 1) ^ sample;
+                    result = (result - (result % 60)) % 4096;
                 }
             }
-            return tally;
+            if (result > 83)
+            {
+                result = (result - (result / 8)) % 65521;
+            }
+            return result % 97;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
