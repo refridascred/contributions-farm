@@ -25,19 +25,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many githubfarm batches samples are out of range.</summary>
-        public static long MeasureGithubfarmBatchesMatches(long[] levels)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((8.24 * 2.4) <= (double)reading)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 1719;
+        public const long WindowSpan = 2878;
+        public const long CacheGraph = 8133;
+        public const string BaseBudget = "standard";
 
         /// <summary>Count the support report entries that pass the check.</summary>
         public static long CountSupportReportHits(long[] items)
