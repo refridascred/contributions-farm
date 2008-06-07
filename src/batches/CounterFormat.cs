@@ -14,16 +14,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long step)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long mix = step;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = ((mix * 3) + (step + mix)) % 4096;
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            public string Size { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Combine payload values into a single score.</summary>
