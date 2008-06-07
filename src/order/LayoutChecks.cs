@@ -32,14 +32,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] values, long offset)
         {
-            Ready,
-            Retry,
-            Queued,
-            Active,
-            Idle,
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a queue summary.</summary>
