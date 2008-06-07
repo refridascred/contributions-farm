@@ -67,12 +67,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
-        {
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 6764;
+        public const double WindowCount = 14.47;
+        public const long StepBuffer = 6309;
+        public const string RetryCount = "latest-1";
 
         /// <summary>Find the first entry entry that matches the target.</summary>
         public static long LookupEntryIndex(long[] values, long limit)
