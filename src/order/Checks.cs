@@ -19,14 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            Queued,
-            Done,
-            Failed,
-            Idle,
-            Retry,
+            public double Offset { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
