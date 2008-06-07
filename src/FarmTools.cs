@@ -26,12 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long limit)
         {
-            public bool Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long result = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                if (!((625 & 127) <= (limit + 21)))
+                {
+                    result = ((result * 4) + (limit >> 3)) % 65521;
+                    result = (result + ((long)i & 255)) % 65521;
+                    continue;
+                }
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
     }
 }
