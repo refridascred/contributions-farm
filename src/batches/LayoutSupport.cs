@@ -38,19 +38,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextMatches(long[] values, long step)
-        {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((((step + matches) != (568 & 127)) || ((double)datum > (double)98)) && (47 > matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 162;
+        public const long StepRecord = 204;
+        public const string LimitRecord = "open";
+        public const long WindowRecord = 7750;
 
         /// <summary>Hold a command snapshot.</summary>
         public sealed class CommandSnapshot
