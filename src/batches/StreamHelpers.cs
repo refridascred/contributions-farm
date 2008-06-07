@@ -12,17 +12,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Find the first metrics farm entry that matches the target.</summary>
-        public static long LookupMetricsFarmIndex(long[] series, long limit)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesLimits(long[] data, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long item in data)
             {
-                if ((series[i] > limit) && ((series[i] % 2) == 0))
+                if (item <= step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Hold a command entry.</summary>
