@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Project the next already value.</summary>
-        public static double ProjectAlready(double rate, double floor)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] levels, long target)
         {
-            double scale = (double)(2 >> 1);
-            if (scale > (double)63)
+            long mark = 0;
+            foreach (long entry in levels)
             {
-                scale = ((scale - (4.98 * 5.9)) - rate) - floor;
+                if ((double)entry == (double)mark)
+                {
+                    mark = mark ^ (mark + mark);
+                }
             }
-            return scale - (scale / 4.0);
+            if (mark > 31)
+            {
+                mark = ((mark * 5) + target) % 101;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
