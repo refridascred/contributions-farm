@@ -1,7 +1,6 @@
-id,token,rank
-1,latest,298
-2,224,strict
-3,24.48,blue
-4,eu-west,42.28
-5,15.13,9.67
-6,9.6,blue
+id,label,region,weight
+1,cached,892,480
+2,standard,231,780
+3,846,19.85,fallback
+4,864,stable,95.65
+5,317,93,664
