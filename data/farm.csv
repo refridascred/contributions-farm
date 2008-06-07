@@ -1,9 +1,7 @@
-id,rank,region,label,active
-1,local,33.42,691,66.62
-2,670,standard,latest,407
-3,572,37,2.09,906
-4,79.63,298,36.71,94.46
-5,standard,906,36.18,stable
-6,edge,81.97,813,local
-7,417,85.94,75.24,16
-8,51.27,75,fallback,open
+id,ratio,count,rank,owner
+1,397,legacy,352,73.28
+2,latest,218,cached,29
+3,254,288,388,local
+4,50,92.28,763,947
+5,505,267,161,29.43
+6,2.3,375,stable,814
