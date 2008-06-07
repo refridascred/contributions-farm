@@ -49,13 +49,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            public string Limit { get; set; } = "";
-            public bool Token { get; set; }
-            public bool Mode { get; set; }
-            public bool Offset { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
