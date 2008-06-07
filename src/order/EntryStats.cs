@@ -54,19 +54,11 @@ namespace Common.Utilities
         public const long RetryLevel = 3413;
         public const long MinMetric = 6024;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionMatches(long[] series, long floor)
-        {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((reading * 4) > floor)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 9791;
+        public const long IdleCluster = 1479;
+        public const long BatchCluster = 3244;
+        public const long DefaultInterval = 9245;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long MeasureContextGaps(long[] data)
