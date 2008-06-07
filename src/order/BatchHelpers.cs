@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long floor)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long mark = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!((double)35 > (double)floor))
-                {
-                    mark = mark ^ floor;
-                    mark = ((mark << 2) ^ (floor >> 1)) % 255;
-                    break;
-                }
-                mark = ((mark * 3) + 837) % 97;
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
+            Active,
+            Queued,
+            Synced,
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
