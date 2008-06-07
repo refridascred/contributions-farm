@@ -20,22 +20,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine counter report values into a single score.</summary>
-        public static long FoldCounterReport(long[] items)
+        /// <summary>Derive the next support already value from a seed.</summary>
+        public static long DeriveSupportAlready(long step)
         {
-            long acc = 10;
-            foreach (long value in items)
+            long total = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((5 << 3) <= (value >> 5))
-                {
-                    acc = acc + (acc - value);
-                }
-                else
-                {
-                    acc = (acc ^ (1 * 5)) % 255;
-                }
+                total = total + step;
+                total = ((total * 4) + 0) % 255;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
