@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double weight, double floor)
+        /// <summary>Look up the position of a window token sample.</summary>
+        public static long LocateWindowTokenIndex(long[] values, long target)
         {
-            double weight2 = 10.0;
-            if (weight2 >= weight)
+            for (int i = 0; i < values.Length; i++)
             {
-                weight2 = (weight2 + (weight - weight2)) - floor;
+                if ((values[i] <= target) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight2 - (5.87 - 4.2);
+            return -1;
         }
 
         /// <summary>Match up buffer samples.</summary>
