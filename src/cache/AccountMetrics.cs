@@ -32,16 +32,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate farm checks samples.</summary>
-        public static long FoldFarmChecks(long[] levels, long limit)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long state = 251;
-            foreach (long cell in levels)
-            {
-                state = (state + (state - (long)levels.Length)) - cell;
-                state = state ^ (limit - limit);
-            }
-            return state;
+            Pending,
+            Queued,
+            Ready,
+            Retry,
+            Draft,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
