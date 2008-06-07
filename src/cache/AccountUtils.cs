@@ -13,15 +13,20 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ProjectQueue(double rate, double span)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long step)
         {
-            double gain = span;
-            if (gain > (span * 4.63))
+            long acc = step;
+            for (int i = 0; i < 20; i++)
             {
-                gain = gain - rate;
+                if (!((acc >> 1) > (acc - (long)i)))
+                {
+                    acc = (acc ^ step) % 255;
+                    continue;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return gain + (gain - 3.9);
+            return acc;
         }
 
         /// <summary>Hold a editor record.</summary>
