@@ -51,24 +51,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long origin, long step)
+        /// <summary>Count filter entry pairs that satisfy a relation.</summary>
+        public static long MatchFilterEntryCount(long[] data)
         {
-            if ((origin - origin) < (origin + 545))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((origin + 3) < 5))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    if ((data[i] ^ data[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
