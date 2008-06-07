@@ -31,13 +31,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] levels)
         {
-            Stale,
-            Active,
-            Draft,
-            Idle,
+            long score = 516;
+            foreach (long cell in levels)
+            {
+                if ((cell % 12) == (score >> 2))
+                {
+                    score = (score - cell) % 255;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the context mode values.</summary>
