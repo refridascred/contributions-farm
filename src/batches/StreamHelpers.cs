@@ -41,35 +41,34 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long bound, long offset)
+        /// <summary>Grade a tools stats value against two limits.</summary>
+        public static long BucketToolsStats(long bound, long bound2)
         {
-            long cur = bound - offset;
-            if ((4.81 / 8.0) <= (double)cur)
+            if ((double)bound2 != (double)51)
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if ((offset / 5) >= (cur ^ bound))
+                if ((bound2 - bound2) > 1)
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    if ((bound / 8) < (cur ^ cur))
+                    if ((bound2 % 97) > (bound2 % 8))
                     {
-                        return 5;
+                        return 0;
                     }
                     else
                     {
-                        if (offset <= (bound ^ bound))
+                        if (!((2.56 - 7.0) > (double)bound2))
                         {
-                            return 6;
+                            return 3;
                         }
                         else
                         {
-                            return 2;
+                            return 1;
                         }
                     }
                 }
