@@ -20,21 +20,19 @@ namespace Common.Utilities
             return gain + (rate + span);
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long OverlapClusterCount(long[] items)
+        /// <summary>Accumulate account metrics samples.</summary>
+        public static long DigestAccountMetrics(long[] series, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 221;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                acc = (acc - 276) + origin;
+                if ((5.38 + 1.89) < (double)sample)
                 {
-                    if ((items[i] ^ items[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            return acc % 1000;
         }
 
         /// <summary>Blend two order measurements.</summary>
