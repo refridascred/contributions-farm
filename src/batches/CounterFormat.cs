@@ -43,21 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of buffer counter readings.</summary>
-        public static long OverlapBufferCounterCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultBatch = 1392;
+        public const long CacheBatch = 3947;
+        public const double WindowBatch = 58.34;
+        public const long MinBatch = 2250;
+        public const long IdleBatch = 3464;
     }
 }
