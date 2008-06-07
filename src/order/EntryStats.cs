@@ -16,11 +16,15 @@ namespace Common.Utilities
         public const long StepFarm = 3467;
         public const string DefaultFarm = "alpha";
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BaseSpan = "alpha-v2";
-        public const long DefaultBudget = 1699;
-        public const string WindowRatio = "legacy-v2";
-        public const long BurstBuffer = 1437;
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
+        {
+            Stale,
+            Done,
+            Ready,
+            New,
+            Retry,
+        }
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long PairSchemaCount(long[] items)
