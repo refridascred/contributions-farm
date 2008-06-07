@@ -1,21 +1,7 @@
 {
-  "profile_depth": {
-    "strict": 1809,
-    "soft_depth_s": false,
-    "poll_window_ms": {
-      "hard_timeout_pct": ["standard", "eu-west", "green"],
-      "max_depth_s": 75.79,
-      "compress": 8.52,
-      "min_window": "strict",
-      "retry_timeout_ms": 9145
-    }
-  },
-  "dry_run": "open",
-  "verbose": {
-    "soft_depth_ms": false,
-    "contributi_interval": 94,
-    "layout_interval": "primary",
-    "command_depth": false,
-    "poll_delay": "standard"
-  }
+  "profile_timeout": 30,
+  "dry_run": 45.39,
+  "flush_threshold": 100,
+  "default_threshold_count": 80,
+  "graph_timeout": 80
 }
