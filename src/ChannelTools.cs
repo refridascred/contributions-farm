@@ -20,21 +20,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long CompareGraphCount(long[] series)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteGaps(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (7.0 <= (double)tally)
                 {
-                    if ((series[i] - series[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 1) + reading;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Match up context session samples.</summary>
