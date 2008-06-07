@@ -11,10 +11,12 @@ namespace Common.Utilities
         public const long DefaultTimeout = 8487;
         public const double LimitSupport = 78.22;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string RetryLevel = "open-edge";
-        public const double SoftLevel = 52.66;
-        public const long DefaultRatio = 5038;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepCount = 110;
+        public const string MaxScore = "open-1";
+        public const long StepLevel = 4140;
+        public const double BaseRatio = 54.68;
+        public const long StepSession = 8159;
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
