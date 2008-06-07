@@ -33,18 +33,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsGaps(long[] items)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((matches + matches) == (cell >> 4))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Stale,
+            Pending,
+            Done,
+            Draft,
         }
 
         /// <summary>Describe the cluster status values.</summary>
