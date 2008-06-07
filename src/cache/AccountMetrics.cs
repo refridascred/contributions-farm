@@ -47,19 +47,21 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] samples, long floor)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading <= floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] + readings[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
