@@ -21,19 +21,21 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenBounds(long[] items, long origin)
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] data)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry < origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] ^ data[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Match up window samples.</summary>
