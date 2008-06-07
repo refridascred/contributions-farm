@@ -41,18 +41,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsMatches(long[] data, long seed)
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (((cell << 1) > (seed >> 5)) || ((seed / 6) > tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            double mean = (double)(6 + 740);
+            return ((mean - mean) + bias) + floor;
         }
 
         /// <summary>Rank format input into a small class.</summary>
