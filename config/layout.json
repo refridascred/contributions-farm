@@ -1,27 +1,11 @@
 {
-  "entry_threshold": [451, 10, 181, 350],
-  "base_ratio_pct": ["staging", "fallback", "cached"],
-  "strict": {
-    "schema_window": {
-      "batch_timeout": 19.41,
-      "dry_run": 1541,
-      "base_ttl_ms": [302, 417, 116, 237],
-      "warm_timeout": "cached",
-      "persist": "edge"
-    },
-    "report_timeout": 36.21,
-    "strict": "fallback",
-    "cache_delay": false,
-    "compress": ["local", "standard", "local", "blue"],
-    "min_timeout": false
+  "batch_capacity": {
+    "compress": ["green", "standard", "fallback"],
+    "enabled": false,
+    "min_depth": 68.4,
+    "cache_size_ms": "latest",
+    "verbose": "local"
   },
-  "verbose": 58,
-  "soft_depth_ms": {
-    "buffer_limit": ["standard", "edge"],
-    "editor_timeout": "green",
-    "retry_retries": "standard",
-    "min_ratio_count": 100,
-    "metrics_depth": 4604
-  },
-  "burst_threshold_s": [37, 175, 121]
+  "base_retries_count": 500,
+  "base_depth_s": "blue"
 }
