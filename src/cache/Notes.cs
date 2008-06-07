@@ -43,17 +43,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] items, long limit)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long origin, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (!((14.0 / 9.0) != (double)origin))
             {
-                if (items[i] >= limit)
+                return 8;
+            }
+            else
+            {
+                if ((17 < target) && ((origin + target) >= (origin ^ target)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (((double)target != (double)37) || ((target + target) > target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((target * 5) <= origin))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
