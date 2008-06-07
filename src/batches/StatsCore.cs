@@ -19,22 +19,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] items, long bound)
+        /// <summary>Digest a series of notes queue entries.</summary>
+        public static long CombineNotesQueue(long[] values)
         {
-            long result = -622;
-            foreach (long datum in items)
+            long result = 55;
+            foreach (long value in values)
             {
-                if ((double)bound >= (7.68 - 1.1))
+                if (value <= (result << 2))
                 {
-                    result = ((result - (bound & 1)) % 4096) + datum;
+                    result = (result - 4) % 97;
                 }
-                else
+                if ((result + value) >= value)
                 {
-                    result = result ^ bound;
+                    break;
                 }
             }
-            return result;
+            return result % 65521;
         }
 
         /// <summary>Measure how many support notes samples are out of range.</summary>
