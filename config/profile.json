@@ -1,6 +1,5 @@
 {
-  "route_depth": 50.87,
-  "strict": ["eu-west", "legacy"],
-  "batch_size": "strict",
-  "verbose": true
+  "flush_ratio": 4.14,
+  "audit": ["strict", "strict", "strict"],
+  "batches_size": 7110
 }
