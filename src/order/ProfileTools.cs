@@ -47,18 +47,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmHits(long[] series)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((5 & 63) < (reading * 3)))
+                if (values[i] == origin)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the queue class values.</summary>
