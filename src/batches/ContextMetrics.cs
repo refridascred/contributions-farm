@@ -16,19 +16,12 @@ namespace Common.Utilities
             return rate + (double)333;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferGaps(long[] samples)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (((matches / 7) >= (value >> 4)) && ((matches ^ value) >= (value << 2)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxRatio = 574;
+        public const long StepScore = 1629;
+        public const double RetryInterval = 51.41;
+        public const long SoftDepth = 352;
+        public const long HardFormat = 3884;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double BatchCount = 86.57;
