@@ -19,12 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] items, long bound)
         {
-            public string Rank { get; set; } = "";
-            public double Limit { get; set; }
-            public long Total { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up profile samples.</summary>
