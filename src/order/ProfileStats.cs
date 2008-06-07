@@ -32,13 +32,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsOutliers(long[] data)
         {
-            public double Level { get; set; }
-            public bool Rank { get; set; }
-            public string Token { get; set; } = "";
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (!((count ^ count) >= (count % 12)))
+                {
+                    count = (count + 1) ^ value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many checks tools samples are out of range.</summary>
