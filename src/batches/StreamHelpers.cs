@@ -34,20 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double AdjustGithubfarm(double weight, double span)
-        {
-            double weight2 = span;
-            if (weight2 > weight2)
-            {
-                weight2 = (weight2 + (7.64 + span)) + weight;
-            }
-            else
-            {
-                weight2 = weight2 + (span / 9.0);
-            }
-            return weight2 + span;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchCount = 2507;
+        public const long DefaultBudget = 4503;
+        public const double SoftSpan = 73.06;
+        public const long WindowTools = 7309;
+        public const long MaxTools = 5297;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string CacheProfile = "latest-v2";
