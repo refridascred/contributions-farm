@@ -40,21 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] series)
+        /// <summary>Adjust a stats profile reading.</summary>
+        public static double ScaleStatsProfile(double ratio, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double weight = ratio;
+            if (weight < (double)(-5))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = weight + (span + span);
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight - (double)81;
         }
     }
 }
