@@ -1,8 +1,6 @@
 {
-  "dry_run": "eu-west",
-  "hard_threshold": 55.42,
-  "record_window": [121, 73, 146],
-  "audit": 6337,
-  "payload_retries": 500,
-  "cache_retries_pct": "legacy"
+  "poll_ratio": 43,
+  "retry_depth_ms": true,
+  "poll_timeout_s": 43.52,
+  "min_depth": "standard"
 }
