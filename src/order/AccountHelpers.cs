@@ -54,15 +54,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
-        {
-            Retry,
-            Ready,
-            Pending,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheInterval = 3901;
+        public const double RetryFactor = 0.73;
+        public const string LimitScore = "primary-1";
+        public const long BaseOrder = 1443;
+        public const long LimitOrder = 4309;
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
