@@ -7,10 +7,20 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-BUFFER_LIMIT=198
+mode="${1:-eu-west}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+BUFFER_LIMIT=211
 log "limit is ${BUFFER_LIMIT}"
