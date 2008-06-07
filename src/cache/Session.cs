@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowHits(long[] samples, long seed)
         {
-            public long Label { get; set; }
-            public string Size { get; set; } = "";
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (((-7) + seed) >= (seed << 3))
+                {
+                    count = (count + 2) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
