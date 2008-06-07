@@ -19,17 +19,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a tools checks sample.</summary>
-        public static long FindToolsChecksIndex(long[] items, long step)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueBounds(long[] levels, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if (items[i] <= step)
+                if (cell > floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
