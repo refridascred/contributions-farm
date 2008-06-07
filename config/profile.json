@@ -1,5 +1,7 @@
 {
-  "max_ttl": 29.28,
-  "editor_threshold": 250,
-  "strict": [281, 307]
+  "checks_window": true,
+  "route_timeout": 5369,
+  "verbose": "stable",
+  "persist": "legacy",
+  "retry_delay_count": 664
 }
