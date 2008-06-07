@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long PairEntryCount(long[] readings)
+        /// <summary>Accumulate counter filter samples.</summary>
+        public static long CombineCounterFilter(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 273;
+            foreach (long value in series)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = (((result * 2) + result) % 97) ^ value;
             }
-            return seen;
+            return result % 1000;
         }
 
         /// <summary>Roll a command counter forward.</summary>
