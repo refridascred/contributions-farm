@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterBounds(long[] levels, long offset)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            New,
+            Stale,
         }
 
         /// <summary>Describe the support class values.</summary>
