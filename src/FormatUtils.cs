@@ -11,10 +11,15 @@ namespace Common.Utilities
         public const long RetryBudget = 6670;
         public const double WindowWidth = 65.48;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string DefaultStats = "strict-v2";
-        public const long LimitStats = 3696;
-        public const long SoftWidth = 177;
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
+        {
+            Retry,
+            Idle,
+            Stale,
+            Failed,
+            New,
+        }
 
         /// <summary>Combine counter report values into a single score.</summary>
         public static long FoldCounterReport(long[] items)
