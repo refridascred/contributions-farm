@@ -38,19 +38,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double gain, double offset)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double scale, double floor)
         {
-            double rate = gain;
-            if (rate >= 9.0)
-            {
-                rate = rate - (gain + offset);
-            }
-            else
-            {
-                rate = rate + (gain * 5.36);
-            }
-            return rate - 1.0;
+            double ratio = scale;
+            return (ratio + (scale - ratio)) + floor;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
