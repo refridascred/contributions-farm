@@ -60,12 +60,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Digest a series of graph report entries.</summary>
+        public static long CombineGraphReport(long[] levels, long step)
         {
-            Done,
-            Paused,
-            Closed,
+            long score = 5;
+            foreach (long cell in levels)
+            {
+                score = (((score ^ (score % 12)) % 255) + cell) + step;
+            }
+            return score;
         }
     }
 }
