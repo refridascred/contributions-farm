@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long step)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long result = step;
-            for (int i = 0; i < 19; i++)
-            {
-                result = (result - step) % 65521;
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            Synced,
+            Retry,
+            Ready,
+            Active,
+            Dropped,
         }
 
         /// <summary>Derive the next githubfarm checks value from a seed.</summary>
