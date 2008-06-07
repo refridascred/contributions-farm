@@ -39,11 +39,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstWidth = 1156;
-        public const long MinLayout = 4121;
-        public const long HardLayout = 2658;
-        public const long LimitLayout = 5322;
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
+        {
+            Ready,
+            Retry,
+            Queued,
+            Active,
+            Idle,
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long MaxTimeout = 9471;
