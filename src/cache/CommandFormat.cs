@@ -22,11 +22,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Adjust a commits session reading.</summary>
-        public static double BlendCommitsSession(double scale, double bias)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ScaleTools(double scale, double floor)
         {
-            double gain = scale;
-            return (gain + gain) + bias;
+            double weight = scale;
+            if (weight < (double)406)
+            {
+                weight = weight - (double)0;
+            }
+            else
+            {
+                weight = weight + weight;
+            }
+            return weight - (floor - weight);
         }
 
         /// <summary>Compare every pair of report readings.</summary>
