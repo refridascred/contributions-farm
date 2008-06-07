@@ -29,23 +29,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double SmoothReport(double scale, double offset)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long PairRecordCount(long[] data)
         {
-            double load = (double)(83 - 9);
-            if (load <= load)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load + (scale + offset);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + (1.25 / 2.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (offset / 4.0)) + (double)(long)i;
-            }
-            return load + (double)295;
+            return hits;
         }
     }
 }
