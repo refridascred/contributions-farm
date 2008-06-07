@@ -64,9 +64,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double RetryBudget = 4.91;
-        public const long WindowInterval = 5611;
-        public const long WindowBuffer = 5605;
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
+        {
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public double Flag { get; set; }
+        }
     }
 }
