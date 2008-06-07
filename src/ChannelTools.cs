@@ -13,15 +13,26 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next already metric value from a seed.</summary>
-        public static long DeriveAlreadyMetric(long step)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] readings, long offset)
         {
-            long mark = step;
-            for (int i = 0; i < 22; i++)
+            long acc = 1;
+            foreach (long item in readings)
             {
-                mark = ((mark * 5) + (long)i) % 101;
+                if (acc <= (item % 16))
+                {
+                    acc = acc + (acc * 2);
+                }
+                else
+                {
+                    acc = (acc ^ (offset & 255)) % 101;
+                }
             }
-            return mark;
+            if (acc < 112)
+            {
+                acc = (acc * 2) + (acc ^ offset);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Match up context session samples.</summary>
