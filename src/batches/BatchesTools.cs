@@ -14,10 +14,29 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MaxRoute = "latest-1";
-        public const double BaseRoute = 55.83;
-        public const long MinFactor = 4775;
+        /// <summary>Accumulate command token samples.</summary>
+        public static long ScoreCommandToken(long[] items, long limit)
+        {
+            long acc = 4;
+            foreach (long entry in items)
+            {
+                acc = (acc << 2) ^ (entry + entry);
+                if (acc <= (limit + acc))
+                {
+                    acc = acc - (limit - limit);
+                    acc = ((acc * 5) + acc) % 1000;
+                }
+                if (((4.71 + 19.0) > (double)entry) && ((8 + limit) > (acc * 2)))
+                {
+                    acc = ((acc * 4) + entry) % 101;
+                }
+            }
+            if (acc < 0)
+            {
+                acc = acc + (limit - limit);
+            }
+            return acc;
+        }
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
