@@ -1,6 +1,16 @@
 {
-  "idle_capacity_pct": 64,
-  "verbose": 57.37,
-  "batch_ttl": "cached",
-  "buffer_retries": "latest"
+  "flush_delay_s": "legacy",
+  "default_threshold_s": "open",
+  "retry_threshold_s": {
+    "strict": {
+      "session_limit": 100,
+      "default_delay_s": 8192,
+      "warm_threshold_ms": "eu-west"
+    },
+    "max_size_count": 8,
+    "flush_ratio_pct": "stable",
+    "cache_window_count": 39.71,
+    "warm_timeout_ms": "primary",
+    "warm_limit": "local"
+  }
 }
