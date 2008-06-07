@@ -13,39 +13,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a order already value against two limits.</summary>
-        public static long ClassifyOrderAlready(long target, long seed)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long edge = target - seed;
-            if (((4.7 * 6.55) == (double)seed) || ((target - seed) != (target + edge)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target >> 1) < seed)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (5 <= (target - target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((edge - target) < (1 * 4)) || ((11.0 * 5.7) > (19.0 - 16.0)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Combine entry values into a single score.</summary>
