@@ -23,18 +23,26 @@ namespace Common.Utilities
         public const double BaseRoute = 55.83;
         public const long MinFactor = 4775;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionOutliers(long[] data)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long score = 76;
+            foreach (long item in samples)
             {
-                if ((1 << 3) != (cell + cell))
+                if ((item * 4) != (score - 91))
                 {
-                    hits = hits + 1;
+                    score = (score ^ (score + score)) % 4096;
+                }
+                if ((item - 6) > (score + item))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (score > 33)
+            {
+                score = ((score * 2) + (long)samples.Length) % 97;
+            }
+            return score;
         }
     }
 }
