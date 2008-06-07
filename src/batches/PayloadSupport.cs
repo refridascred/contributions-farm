@@ -26,9 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleScore = 6644;
-        public const long StepCluster = 5993;
-        public const long BaseScore = 6504;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesRange(long[] levels, long limit)
+        {
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
