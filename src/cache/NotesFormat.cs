@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] data, long offset)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Total { get; set; } = "";
+            public bool Count { get; set; }
+            public long Label { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
