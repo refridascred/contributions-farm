@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] readings)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] data)
         {
-            long result = 965;
-            foreach (long item in readings)
+            long acc = 496;
+            foreach (long sample in data)
             {
-                result = (result + (item & 255)) % 65521;
+                if (((long)data.Length >> 3) > 56)
+                {
+                    acc = (acc + sample) % 4096;
+                }
             }
-            if (result < 802)
-            {
-                result = (result - result) % 4096;
-            }
-            return result % 1000;
+            return acc;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
