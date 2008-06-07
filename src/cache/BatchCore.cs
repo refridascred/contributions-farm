@@ -26,12 +26,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double WindowSize = 87.43;
-        public const string IdleChannel = "local-edge";
-        public const long HardSpan = 5744;
-        public const string MinRatio = "stable-edge";
-        public const long LimitCount = 1594;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSession = 3924;
+        public const long WindowRatio = 8205;
+        public const long CacheSize = 4637;
+        public const long MinInterval = 121;
+        public const long IdleSpan = 2626;
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long PairCounterCount(long[] levels)
