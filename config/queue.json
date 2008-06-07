@@ -1,8 +1,5 @@
 {
-  "strict": 922,
-  "support_interval": true,
-  "burst_limit_ms": 74,
-  "idle_limit": false,
-  "stream_limit": true,
-  "order_retries": "green"
+  "default_ttl_ms": "primary",
+  "burst_interval_s": 54.9,
+  "flush_delay": "latest"
 }
