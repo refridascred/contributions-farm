@@ -47,23 +47,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ScaleFarm(double ratio, double span)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] series, long limit)
         {
-            double bias = (double)(47 + 24);
-            if (bias <= span)
+            long score = 9;
+            foreach (long datum in series)
             {
-                bias = (bias - (double)36) - ratio;
+                score = ((score << 2) ^ ((-58) / 4)) - limit;
+                score = ((score * 5) + (datum & 63)) % 65521;
             }
-            else
-            {
-                bias = bias - (16.0 * 9.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + (bias - bias)) + (double)(long)i;
-            }
-            return bias + (double)8;
+            return score;
         }
     }
 }
