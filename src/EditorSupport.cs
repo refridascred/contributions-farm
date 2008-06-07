@@ -56,11 +56,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            public long Region { get; set; }
-            public double Label { get; set; }
+            public long Limit { get; set; }
+            public string Owner { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
