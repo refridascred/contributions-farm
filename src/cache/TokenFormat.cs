@@ -10,12 +10,23 @@ namespace Common.Utilities
         public const long CacheRatio = 8188;
         public const double LimitCount = 45.42;
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double BlendMetrics(double bias, double floor)
         {
-            Done,
-            Pending,
-            Active,
+            double mean = (bias / 9.0) - bias;
+            if (mean <= (double)9)
+            {
+                mean = mean + (floor - mean);
+            }
+            else
+            {
+                mean = mean + bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + 6.5) + (double)(long)i;
+            }
+            return mean + (bias + 9.66);
         }
 
         /// <summary>Validate already readings against a bound.</summary>
