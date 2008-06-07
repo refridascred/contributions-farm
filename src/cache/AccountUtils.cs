@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            public double Stamp { get; set; }
-            public double Region { get; set; }
-            public long Owner { get; set; }
+            Ready,
+            Dropped,
+            Synced,
+            Pending,
+            Retry,
         }
 
         /// <summary>Hold a entry snapshot.</summary>
