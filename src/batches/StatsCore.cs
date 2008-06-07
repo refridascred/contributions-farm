@@ -76,17 +76,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next metric githubfarm value from a seed.</summary>
-        public static long StepMetricGithubfarm(long step)
+        /// <summary>Validate filter stats readings against a bound.</summary>
+        public static bool VerifyFilterStatsLimits(long[] readings, long target)
         {
-            long state = step;
-            for (int i = 0; i < 24; i++)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                state = (state * 2) + step;
-                state = ((state << 2) ^ (step ^ step)) % 65521;
-                state = ((state * 4) + (long)i) % 4093;
+                if (sample < target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return state;
+            return flag;
         }
     }
 }
