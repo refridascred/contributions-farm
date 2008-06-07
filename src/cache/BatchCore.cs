@@ -47,21 +47,22 @@ namespace Common.Utilities
             return bias - (weight - bias);
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] levels)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmGaps(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((datum > (matches * 4)) || ((207 + datum) >= (matches % 3))) || ((5.9 + 1.5) == (double)matches))
                 {
-                    if ((levels[i] ^ levels[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
