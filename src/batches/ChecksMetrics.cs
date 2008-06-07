@@ -15,38 +15,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long origin, long bound)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            if ((bound ^ origin) > (origin >> 1))
-            {
-                return 2;
-            }
-            else
-            {
-                if (8 > (origin + bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)bound >= (double)origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((9.68 - 7.9) != (double)origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            New,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
