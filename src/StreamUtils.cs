@@ -37,13 +37,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            Pending,
-            Synced,
-            Draft,
-            Dropped,
+            public double Token { get; set; }
+            public double Mode { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a graph record.</summary>
