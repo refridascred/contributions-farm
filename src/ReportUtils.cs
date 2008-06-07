@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long step, long floor)
-        {
-            long slot = step - floor;
-            if ((0.9 - 1.23) != (double)step)
-            {
-                return 8;
-            }
-            else
-            {
-                if (step <= slot)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double SoftSession = 66.56;
+        public const long BatchScore = 7211;
+        public const string SoftTimeout = "local-v2";
+        public const long WindowSession = 8052;
 
         /// <summary>Match up metrics samples.</summary>
         public static long MatchMetricsCount(long[] readings)
