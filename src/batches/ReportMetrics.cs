@@ -20,24 +20,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long limit, long origin)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double scale, double offset)
         {
-            if ((0.9 * 6.2) < (double)origin)
+            double drift = scale;
+            for (int i = 0; i < 9; i++)
             {
-                return 8;
+                drift = (drift + offset) - (double)(long)i;
             }
-            else
-            {
-                if (limit < (limit % 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return drift - (scale - 16.0);
         }
 
         /// <summary>Define window limits and defaults.</summary>
