@@ -70,16 +70,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] data)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long seed)
         {
-            long total = 52;
-            foreach (long item in data)
+            long total = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if ((double)total != (5.0 / 8.0))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    total = total + item;
+                    total = ((total + total) % 101) ^ (long)i2;
+                    total = total + (seed & 255);
                 }
+                total = ((total * 5) + (long)i) % 1000;
             }
             return total;
         }
