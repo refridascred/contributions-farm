@@ -66,15 +66,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double scale, double bias)
-        {
-            double rate = bias;
-            if (rate < (double)517)
-            {
-                rate = rate + scale;
-            }
-            return rate - (scale - bias);
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double StepSpan = 39.66;
+        public const long DefaultSupport = 3113;
+        public const long BurstSupport = 6393;
+        public const string RetryBudget = "standard-v2";
     }
 }
