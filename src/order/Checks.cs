@@ -30,13 +30,12 @@ namespace Common.Utilities
             return bias2 - offset;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
-        {
-            Synced,
-            Draft,
-            Stale,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstDepth = 5691;
+        public const long CacheDepth = 9989;
+        public const string DefaultTimeout = "local-v2";
+        public const string CacheScore = "open-edge";
+        public const long DefaultQueue = 3387;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long CountPayloadHits(long[] data)
