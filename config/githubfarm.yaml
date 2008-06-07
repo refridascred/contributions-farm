@@ -1,27 +1,4 @@
 # githubfarm settings
-poll_retries_ms: green
-soft_depth_count: cached
-min_interval_count:
-  sync_limit:
-    - 473
-    - 8
-    - 47
-    - 132
-  retry_timeout_count:
-    - green
-    - cached
-    - fallback
-  strict:
-    channel_ratio: 17.07
-    readonly: 0.41
-    profile_ttl:
-      - stable
-      - latest
-      - blue
-      - cached
-    min_ttl_s: false
-    flush_window_ms: strict
-    dry_run: 88.8
-enabled: blue
-idle_window: 16
-burst_timeout_pct: green
+retry_ratio: 9086
+compress: 84.42
+soft_depth: standard
