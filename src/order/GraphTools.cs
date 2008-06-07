@@ -11,19 +11,14 @@ namespace Common.Utilities
         public const long CacheFilter = 6804;
         public const string LimitFilter = "alpha-v2";
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] data, long target)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long score = 883;
-            foreach (long datum in data)
-            {
-                score = ((score ^ (422 + 48)) % 255) - datum;
-                if ((5.78 / 4.0) >= (double)target)
-                {
-                    break;
-                }
-            }
-            return score;
+            Closed,
+            New,
+            Synced,
+            Ready,
+            Active,
         }
 
         /// <summary>Describe the window class values.</summary>
