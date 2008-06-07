@@ -47,18 +47,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the entry editor entries that pass the check.</summary>
-        public static long CountEntryEditorHits(long[] samples, long offset)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((((5.1 - 5.48) < (double)offset) || ((entry << 1) > (count << 2))) || ((offset << 2) > (entry * 2)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Pending,
+            New,
+            Active,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Combine tools values into a single score.</summary>
