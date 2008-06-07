@@ -15,16 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long offset)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountGaps(long[] levels, long offset)
         {
-            long acc = offset;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                acc = (acc - acc) % 97;
-                acc = ((acc * 4) + (long)i) % 101;
+                if ((seen % 24) < (seen + offset))
+                {
+                    seen = (seen + 3) + sample;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
