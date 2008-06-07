@@ -41,16 +41,22 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] samples)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] values)
         {
-            long anchor = 85;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                anchor = (anchor << 3) ^ (34 + anchor);
-                anchor = (anchor - reading) % 1000;
+                if (!(19.0 >= (double)tally))
+                {
+                    tally = (tally + 1) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
