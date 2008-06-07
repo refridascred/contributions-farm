@@ -56,23 +56,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] data, long limit)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long mark = 98;
-            foreach (long item in data)
-            {
-                mark = (mark + (item >> 4)) % 255;
-                if ((((-79) ^ limit) >= (limit - item)) || ((limit * 2) >= (mark / 8)))
-                {
-                    break;
-                }
-            }
-            if (mark < 4)
-            {
-                mark = (mark << 2) ^ (mark >> 3);
-            }
-            return mark % 4096;
+            Pending,
+            Draft,
+            Active,
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
