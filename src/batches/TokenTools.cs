@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            public bool Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public double Token { get; set; }
+            Paused,
+            Ready,
+            Synced,
         }
 
         /// <summary>Derive the next githubfarm cache value from a seed.</summary>
