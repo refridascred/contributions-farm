@@ -13,15 +13,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double bias, double span)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long offset)
         {
-            double ratio = span;
-            if (ratio > 15.0)
+            long state = offset;
+            for (int i = 0; i < 5; i++)
             {
-                ratio = (ratio + (7.7 * 6.07)) - bias;
+                state = ((state * 2) + (offset + state)) % 65521;
+                state = ((state << 3) ^ (state - (long)i)) % 101;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    state = (((state << 2) ^ ((long)i & 31)) % 65521) + (long)i2;
+                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return ratio - (span * 7.49);
+            return state;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
