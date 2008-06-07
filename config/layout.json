@@ -1,13 +1,5 @@
 {
-  "checks_delay": "green",
-  "base_limit_s": "local",
-  "metric_size": 30,
-  "retry_capacity_s": {
-    "buffer_window": "cached",
-    "batch_size_pct": false,
-    "idle_delay": false,
-    "hard_ttl": false,
-    "base_size_pct": [326, 26, 20, 353]
-  },
-  "idle_window": 80.96
+  "sync_timeout": "stable",
+  "checks_retries": "cached",
+  "soft_limit": "local"
 }
