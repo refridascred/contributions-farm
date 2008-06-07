@@ -46,16 +46,10 @@ namespace Common.Utilities
         public const long BatchBuffer = 1808;
         public const long DefaultFactor = 8455;
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double SmoothAccount(double ratio, double bias)
-        {
-            double ratio2 = bias - (ratio - ratio);
-            if (ratio2 >= (ratio2 + 2.9))
-            {
-                ratio2 = ratio2 + bias;
-            }
-            return ratio2 + bias;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepWidth = 3954;
+        public const long StepScore = 4660;
+        public const long MaxDepth = 1966;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long CountStreamGaps(long[] readings)
