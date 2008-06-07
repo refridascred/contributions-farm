@@ -42,13 +42,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Validate batches stream readings against a bound.</summary>
+        public static bool ValidateBatchesStreamLimits(long[] series, long origin)
         {
-            public bool Level { get; set; }
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
+            bool valid = true;
+            foreach (long sample in series)
+            {
+                if (sample >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
