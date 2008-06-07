@@ -12,17 +12,11 @@ namespace Common.Utilities
             return ((load - (double)7) + bias) + floor;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] levels, long bound)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == bound) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Limit { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Project the next command value.</summary>
