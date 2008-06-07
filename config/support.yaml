@@ -1,8 +1,10 @@
 # support settings
-base_threshold_ms: open
-audit: true
-order_depth:
-  - 430
-  - 433
-  - 14
-  - 221
+flush_retries_ms: 21.34
+account_size:
+  - local
+  - strict
+  - staging
+  - green
+dry_run:
+  - cached
+  - staging
