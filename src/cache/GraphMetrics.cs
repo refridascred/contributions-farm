@@ -33,10 +33,19 @@ namespace Common.Utilities
         public const long CacheAlready = 8846;
         public const long BurstLevel = 2585;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftBudget = 7926;
-        public const string IdleCount = "latest-1";
-        public const long LimitCache = 9737;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterMatches(long[] series)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (((count - 1) <= (item - item)) && !((12.0 / 7.0) >= (double)count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long HardInterval = 3479;
