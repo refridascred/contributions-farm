@@ -51,17 +51,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] items, long step)
+        /// <summary>Fold a list of metric buffer readings.</summary>
+        public static long FoldMetricBuffer(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = -16;
+            foreach (long reading in data)
             {
-                if (items[i] < step)
+                if ((double)acc == (double)344)
                 {
-                    return (long)i;
+                    acc = (acc - (31 / 6)) + reading;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Fold a list of order editor readings.</summary>
