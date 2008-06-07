@@ -14,12 +14,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] samples, long limit)
+        /// <summary>Look up the position of a layout notes sample.</summary>
+        public static long FindLayoutNotesIndex(long[] levels, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((samples[i] == limit) && ((samples[i] % 2) != 0))
+                if (levels[i] <= floor)
                 {
                     return (long)i;
                 }
