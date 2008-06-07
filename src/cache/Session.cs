@@ -29,20 +29,17 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long seed)
+        /// <summary>Locate a order notes reading by value.</summary>
+        public static long LookupOrderNotesIndex(long[] readings, long limit)
         {
-            long mix = seed;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix << 2) ^ seed) % 101;
-                if ((seed ^ (long)i) <= (seed - seed))
+                if ((readings[i] <= limit) && ((readings[i] % 2) != 0))
                 {
-                    mix = ((mix << 3) ^ (-575)) % 1000;
+                    return (long)i;
                 }
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a queue stats.</summary>
