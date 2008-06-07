@@ -69,18 +69,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the account commits entries that pass the check.</summary>
-        public static long MeasureAccountCommitsMatches(long[] items, long origin)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (sample <= (4 & 127))
-                {
-                    matches = (matches + 3) + origin;
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public double Rank { get; set; }
+            public long Count { get; set; }
         }
     }
 }
