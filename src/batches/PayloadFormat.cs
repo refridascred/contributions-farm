@@ -28,12 +28,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            public long Level { get; set; }
-            public bool Rank { get; set; }
-            public bool Weight { get; set; }
+            public long Label { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Blend two metric measurements.</summary>
