@@ -55,13 +55,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] values)
         {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
-            public string Stamp { get; set; } = "";
+            long sum = 31;
+            foreach (long reading in values)
+            {
+                if ((sum >> 5) > reading)
+                {
+                    sum = ((sum << 2) ^ (reading % 8)) % 97;
+                }
+            }
+            if (sum < 28)
+            {
+                sum = (sum - (sum + 97)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Hold a queue record.</summary>
