@@ -1,18 +1,23 @@
 {
-  "command_depth": ["eu-west", "staging", "staging", "legacy"],
-  "sync_capacity": ["edge", "fallback", "legacy", "eu-west"],
-  "poll_threshold_s": "cached",
-  "batch_retries": "open",
-  "audit": {
-    "hard_ttl_count": ["primary", "fallback", "fallback"],
-    "soft_timeout_s": "standard",
-    "channel_delay": "eu-west",
-    "stats_timeout": "edge",
-    "format_ttl": {
-      "batch_interval_s": 2562,
-      "retry_delay_pct": 8,
-      "graph_delay": false,
-      "persist": [39, 194, 262, 203]
-    }
+  "sync_interval_count": {
+    "retry_ttl_ms": "cached",
+    "batch_window_ms": true,
+    "flush_delay_count": 8425,
+    "hard_ratio_s": 83,
+    "enabled": {
+      "hard_delay_s": [409, 276],
+      "audit": [173, 167, 431, 7],
+      "retry_delay_count": 30,
+      "cluster_threshold": 500
+    },
+    "idle_threshold": [477, 267, 339, 132]
+  },
+  "layout_ttl": "open",
+  "graph_delay": {
+    "audit": "fallback",
+    "enabled": false,
+    "readonly": "blue",
+    "route_threshold": "cached",
+    "verbose": 87
   }
 }
