@@ -22,10 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultBudget = 6857;
-        public const double StepFilter = 77.9;
-        public const string DefaultFilter = "cached";
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksRange(long[] data, long bound)
+        {
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Count cluster order pairs that satisfy a relation.</summary>
         public static long MatchClusterOrderCount(long[] items)
