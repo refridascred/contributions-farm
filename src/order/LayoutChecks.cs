@@ -57,9 +57,37 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 4794;
-        public const long MaxSize = 1929;
-        public const long LimitAlready = 4004;
+        /// <summary>Derive the next cache command value from a seed.</summary>
+        public static long StepCacheCommand(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((limit << 2) == (state * 4))
+                {
+                    state = (state * 3) + (limit ^ (-9));
+                }
+                else
+                {
+                    state = (state ^ (9 * 2)) % 1000;
+                }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    state = (state - (state & 7)) % 101;
+                    state = (state ^ ((long)i2 << 1)) % 97;
+                }
+                if (state < (long)i)
+                {
+                    state = (state - (state & 127)) % 1000;
+                    state = (state * 3) + state;
+                }
+                else
+                {
+                    state = state - (state - state);
+                }
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
+        }
     }
 }
