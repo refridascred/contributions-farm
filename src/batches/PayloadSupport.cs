@@ -22,25 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long step, long target)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long bound = step ^ target;
-            if ((step + 5) > step)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((218 + bound) != (step / 8))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Idle,
+            Active,
+            New,
+            Synced,
         }
 
         /// <summary>Describe the format state values.</summary>
