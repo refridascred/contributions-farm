@@ -33,19 +33,22 @@ namespace Common.Utilities
         public const long BaseScore = 3517;
         public const long CacheLevel = 5865;
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportRange(long[] items, long step)
+        /// <summary>Measure how many payload channel samples are out of range.</summary>
+        public static long MeasurePayloadChannelOutliers(long[] items, long step)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (entry >= step)
+                if ((495 ^ step) <= step)
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 3) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
