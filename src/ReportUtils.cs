@@ -11,21 +11,12 @@ namespace Common.Utilities
         public const string SoftTimeout = "local-v2";
         public const long WindowSession = 8052;
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] readings)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Stale,
+            Locked,
+            New,
         }
 
         /// <summary>Hold a command info.</summary>
