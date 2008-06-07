@@ -28,15 +28,11 @@ namespace Common.Utilities
         public const long RetryContext = 8724;
         public const string CacheContext = "legacy";
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double rate, double floor)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            double drift = floor;
-            if (drift >= rate)
-            {
-                drift = drift + 16.0;
-            }
-            return drift + (double)7;
+            public long Region { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
