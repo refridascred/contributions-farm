@@ -22,25 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long origin, long seed)
+        /// <summary>Iterate the layout stream series from a seed.</summary>
+        public static long IterateLayoutStream(long origin)
         {
-            long diff = origin + seed;
-            if ((6.95 + 5.59) == (double)origin)
+            long anchor = origin;
+            for (int i = 0; i < 5; i++)
             {
-                return 1;
+                anchor = (anchor - (origin & 7)) % 65521;
+                anchor = ((anchor * 5) + (origin + origin)) % 101;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            else
-            {
-                if (((origin % 24) != (diff & 63)) && (diff > (diff % 3)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
