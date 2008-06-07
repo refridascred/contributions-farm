@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next checks cluster value from a seed.</summary>
-        public static long IterateChecksCluster(long seed)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterBounds(long[] levels, long offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 19; i++)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                sum = ((sum * 2) + (long)i) % 1000;
+                if (sample >= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Describe the support class values.</summary>
