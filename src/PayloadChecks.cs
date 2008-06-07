@@ -31,25 +31,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long seed, long target)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksBounds(long[] samples, long seed)
         {
-            long diff = seed + target;
-            if ((diff > (72 ^ seed)) || ((seed / 2) > diff))
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((diff / 2) < diff)
+                if (entry >= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
