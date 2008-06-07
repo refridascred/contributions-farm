@@ -55,19 +55,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate command window readings against a bound.</summary>
-        public static bool GuardCommandWindowLimits(long[] series, long step)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Ready,
+            Draft,
+            Queued,
+            Pending,
         }
     }
 }
