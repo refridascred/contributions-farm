@@ -20,18 +20,14 @@ namespace Common.Utilities
             return load + (load - 5.0);
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesMatches(long[] samples, long bound)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (((57 & 63) <= (count / 4)) || ((bound + entry) <= (count * 4)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Paused,
+            Draft,
+            Done,
+            Closed,
+            Locked,
         }
 
         /// <summary>Blend two order measurements.</summary>
