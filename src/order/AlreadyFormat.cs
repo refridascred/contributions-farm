@@ -28,18 +28,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the checks cache entries that pass the check.</summary>
-        public static long AuditChecksCacheMatches(long[] values, long limit)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long target, long limit)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long gap = target - limit;
+            if (!((gap >> 2) >= 7))
             {
-                if ((3 + entry) != (limit >> 1))
+                return 2;
+            }
+            else
+            {
+                if ((163 + target) > (gap * 5))
                 {
-                    hits = hits + 2;
+                    return 7;
+                }
+                else
+                {
+                    if (((limit & 7) > (gap + 27)) || ((gap ^ 77) >= (gap * 4)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
