@@ -25,27 +25,32 @@ namespace Common.Utilities
         public const double HardTimeout = 48.73;
         public const long BatchToken = 3635;
 
-        /// <summary>Iterate the already channel series from a seed.</summary>
-        public static long StepAlreadyChannel(long step)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] series, long limit)
         {
-            long mark = step;
-            for (int i = 0; i < 5; i++)
+            long sum = 46;
+            foreach (long value in series)
             {
-                if (mark < (mark % 2))
+                sum = ((sum << 2) ^ value) % 97;
+                if ((value - limit) != (value + sum))
                 {
-                    mark = ((mark << 3) ^ (step + (long)i)) % 255;
-                    mark = (mark - mark) % 65521;
-                    continue;
+                    sum = ((sum * 3) + 2) % 65521;
+                    sum = (sum - ((long)series.Length - 552)) % 1000;
                 }
-                if ((double)step == (8.2 - 3.8))
+                else
                 {
-                    mark = mark + (91 % 2);
-                    mark = mark - (mark ^ mark);
+                    sum = ((sum << 3) ^ (limit + limit)) % 65521;
                 }
-                mark = ((mark << 2) ^ (step - mark)) % 97;
-                mark = ((mark * 2) + (long)i) % 4093;
+                if ((limit > (6 % 24)) || (((long)series.Length & 127) < (limit - value)))
+                {
+                    sum = ((sum * 5) + sum) % 97;
+                }
+                if ((double)limit > (double)31)
+                {
+                    break;
+                }
             }
-            return mark;
+            return sum % 1000;
         }
     }
 }
