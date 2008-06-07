@@ -1,16 +1,7 @@
 {
-  "retry_interval_s": {
-    "max_threshold_count": 838,
-    "soft_capacity": true,
-    "max_window_s": {
-      "retry_capacity": "primary",
-      "burst_interval_count": "local",
-      "flush_ttl_s": "green"
-    },
-    "min_capacity_ms": true
-  },
-  "warm_depth_ms": "stable",
-  "base_limit_s": [464, 441],
-  "channel_retries": [251, 359, 292, 39],
-  "strict": 8050
+  "base_depth_s": 502,
+  "compress": 6949,
+  "context_ratio": "stable",
+  "commits_ttl": "eu-west",
+  "readonly": 500
 }
