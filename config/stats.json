@@ -1,5 +1,10 @@
 {
-  "account_interval": 92.04,
-  "max_ratio_ms": [41, 256, 116],
-  "idle_delay": "edge"
+  "min_threshold": true,
+  "tools_capacity": {
+    "token_retries": 62.39,
+    "base_ttl_ms": 500,
+    "persist": 75.03
+  },
+  "soft_capacity": "green",
+  "dry_run": "fallback"
 }
