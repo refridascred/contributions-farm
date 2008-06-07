@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextHits(long[] samples, long limit)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum / 6) <= datum)
-                {
-                    tally = (tally + 1) + limit;
-                }
-            }
-            return tally;
+            public long Mode { get; set; }
+            public double Score { get; set; }
+            public bool Total { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
