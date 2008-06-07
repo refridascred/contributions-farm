@@ -1,7 +1,13 @@
 {
-  "sync_capacity_ms": "strict",
-  "filter_timeout": "blue",
-  "audit": "local",
-  "enabled": 4790,
-  "retry_depth": "open"
+  "verbose": true,
+  "compress": "latest",
+  "account_size": 250,
+  "burst_window": {
+    "retry_limit_s": 58.88,
+    "soft_retries_ms": ["standard", "cached", "stable", "edge"],
+    "default_timeout_pct": "strict",
+    "idle_capacity_count": true,
+    "already_depth": 52.66
+  },
+  "batch_delay_count": "standard"
 }
