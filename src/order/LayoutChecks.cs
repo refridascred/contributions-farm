@@ -14,15 +14,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] data, long step)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long score = 175;
-            foreach (long reading in data)
-            {
-                score = ((score + score) - reading) - step;
-            }
-            return score % 1000;
+            public bool Offset { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a batches snapshot.</summary>
