@@ -30,10 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double IdleInterval = 38.94;
-        public const string MinGraph = "primary-1";
-        public const long StepGraph = 3248;
-        public const long IdleGraph = 1736;
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] levels, long step)
+        {
+            long anchor = 2;
+            foreach (long cell in levels)
+            {
+                anchor = (anchor + (anchor + cell)) % 4096;
+            }
+            if (anchor > 522)
+            {
+                anchor = (anchor ^ (step * 4)) % 4096;
+            }
+            return anchor % 1000;
+        }
     }
 }
