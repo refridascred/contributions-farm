@@ -38,18 +38,14 @@ namespace Common.Utilities
         public const string DefaultCount = "fallback-edge";
         public const long DefaultDepth = 7011;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandGaps(long[] values, long step)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (((-20) >> 2) == (sample % 3))
-                {
-                    count = (count + 2) + step;
-                }
-            }
-            return count;
+            Retry,
+            Draft,
+            New,
+            Failed,
+            Dropped,
         }
     }
 }
