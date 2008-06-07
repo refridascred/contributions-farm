@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] readings)
         {
-            Stale,
-            Retry,
-            New,
-            Dropped,
-            Ready,
+            long mark = 1;
+            foreach (long datum in readings)
+            {
+                mark = (((mark << 2) ^ mark) % 4096) ^ datum;
+            }
+            if (mark < 530)
+            {
+                mark = (mark ^ (mark >> 1)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Match up account samples.</summary>
