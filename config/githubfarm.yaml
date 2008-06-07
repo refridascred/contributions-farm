@@ -1,7 +1,20 @@
 # githubfarm settings
-hard_delay_ms: 2006
-sync_threshold_count: legacy
-enabled: green
-flush_ttl: 5540
-min_retries_count: latest
-min_interval_s: 60
+contributi_delay:
+  - 266
+  - 213
+compress: true
+strict:
+  - green
+  - standard
+cache_capacity_count: primary
+idle_ratio_count:
+  audit: primary
+  idle_retries_s: 94
+  stats_window:
+    - 449
+    - 387
+    - 118
+  enabled: true
+  cache_size: legacy
+  profile_depth: stable
+buffer_size: 2987
