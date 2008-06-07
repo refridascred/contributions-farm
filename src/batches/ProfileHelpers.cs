@@ -69,11 +69,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MaxRatio = "primary";
-        public const long HardWidth = 9484;
-        public const long WindowStats = 5965;
-        public const long BaseStats = 1799;
-        public const long BurstStats = 5557;
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == bound) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
