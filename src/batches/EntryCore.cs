@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double HardLayout = 75.98;
-        public const long WindowLayout = 1365;
-        public const string DefaultLayout = "primary-v2";
-        public const long MinLayout = 2568;
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
+        {
+            New,
+            Active,
+            Queued,
+            Locked,
+        }
 
         /// <summary>Project the next layout support value.</summary>
         public static double AdjustLayoutSupport(double bias, double bias2)
