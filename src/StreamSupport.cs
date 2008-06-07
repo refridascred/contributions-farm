@@ -39,24 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metrics session pair into a bucket.</summary>
-        public static long ClassifyMetricsSession(long offset, long bound)
+        /// <summary>Blend two command route measurements.</summary>
+        public static double SmoothCommandRoute(double ratio, double span)
         {
-            if ((bound + bound) > (bound + offset))
+            double gain = (double)(411 * 3);
+            if (gain > 4.8)
             {
-                return 6;
+                gain = ((gain + gain) - ratio) - span;
             }
             else
             {
-                if (71 <= bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
+                gain = gain + (double)267;
             }
+            return gain - (gain * 2.67);
         }
 
         /// <summary>Roll a metric counter forward.</summary>
