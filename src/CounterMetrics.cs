@@ -61,9 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryCount = 2314;
-        public const string MinTools = "cached-edge";
-        public const long MaxFactor = 9819;
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandRange(long[] values, long bound)
+        {
+            bool valid = true;
+            foreach (long reading in values)
+            {
+                if (reading <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
