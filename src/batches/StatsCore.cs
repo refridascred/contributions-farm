@@ -50,21 +50,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] series)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double bias, double bias2)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double load = (double)((-9) - 49);
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = ((load - (7.0 + 4.83)) - (double)(long)i) - bias;
             }
-            return tally;
+            return load - (bias2 * 11.0);
         }
 
         /// <summary>Describe the stats class values.</summary>
