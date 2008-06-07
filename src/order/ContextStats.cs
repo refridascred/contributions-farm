@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Blend two payload counter measurements.</summary>
-        public static double AdjustPayloadCounter(double ratio, double offset)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] series)
         {
-            double drift = offset;
-            if (drift <= 4.45)
+            long sum = 465;
+            foreach (long entry in series)
             {
-                drift = drift + 0.5;
+                if ((double)sum < (double)entry)
+                {
+                    sum = sum ^ sum;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (entry - (long)series.Length)) % 97;
+                }
             }
-            for (int i = 0; i < 7; i++)
+            if (sum > 569)
             {
-                drift = (drift + (ratio - drift)) - (double)(long)i;
+                sum = (sum - (sum + 2)) % 101;
             }
-            return drift - drift;
+            return sum;
         }
 
         /// <summary>Count the farm stats entries that pass the check.</summary>
