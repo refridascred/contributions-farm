@@ -37,10 +37,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double WindowSupport = 9.99;
-        public const string HardSupport = "fallback-edge";
-        public const long BatchSupport = 5195;
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
+        {
+            Done,
+            Active,
+            Paused,
+            Idle,
+            Failed,
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string CacheProfile = "latest-v2";
