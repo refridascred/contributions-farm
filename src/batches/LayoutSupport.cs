@@ -45,18 +45,18 @@ namespace Common.Utilities
         public const long BatchDepth = 1239;
         public const long SoftScore = 8871;
 
-        /// <summary>Measure how many session command samples are out of range.</summary>
-        public static long AuditSessionCommandGaps(long[] series)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorHits(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((count / 6) < count)
+                if (4 > (reading >> 4))
                 {
-                    count = (count + 1) + sample;
+                    matches = (matches + 2) - seed;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
