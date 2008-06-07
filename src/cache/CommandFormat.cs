@@ -23,22 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] series, long limit)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheBounds(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if ((((tally + limit) > (tally / 2)) && (746 >= tally)) || (78 > (limit + limit)))
+                if (item > target)
                 {
-                    tally = (tally + 3) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
