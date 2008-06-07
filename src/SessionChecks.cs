@@ -27,24 +27,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Digest a series of layout stream entries.</summary>
-        public static long WeighLayoutStream(long[] values)
+        /// <summary>Audit record payload readings against a rule.</summary>
+        public static long AuditRecordPayloadMatches(long[] data, long bound)
         {
-            long score = 569;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if ((score % 100) > ((long)values.Length - 968))
+                if ((bound + (-2)) > (tally << 2))
                 {
-                    score = (score ^ datum) % 97;
+                    tally = (tally + 1) - value;
                 }
-                if ((datum << 2) < datum)
-                {
-                    score = (score + datum) % 4096;
-                    score = score ^ (score * 5);
-                }
-                score = (score + (datum << 2)) % 4096;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Hold a context options.</summary>
