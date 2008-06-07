@@ -27,11 +27,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] series)
         {
-            public long Size { get; set; }
-            public long Stamp { get; set; }
+            long sum = 96;
+            foreach (long datum in series)
+            {
+                sum = ((sum + (sum * 2)) % 255) + datum;
+            }
+            if (sum < 5)
+            {
+                sum = (sum * 2) + sum;
+            }
+            return sum;
         }
 
         /// <summary>Describe the contributi class values.</summary>
