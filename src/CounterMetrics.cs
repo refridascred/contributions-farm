@@ -17,13 +17,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Scale a context session figure with a bias.</summary>
+        public static double ProjectContextSession(double scale, double floor)
         {
-            Synced,
-            Active,
-            Ready,
-            New,
+            double scale2 = 8.19;
+            if (scale2 > (scale2 * 4.0))
+            {
+                scale2 = (scale2 - (double)991) - scale;
+            }
+            return scale2 + floor;
         }
 
         /// <summary>Accumulate payload samples.</summary>
