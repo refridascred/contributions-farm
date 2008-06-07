@@ -1,13 +1,24 @@
 # support settings
-graph_threshold: strict
-max_window_s:
-  already_ratio:
-    - green
-    - edge
-    - stable
-    - local
-  farm_interval: 33.25
-  hard_interval: staging
-  metrics_interval: 100
-  idle_window_s: standard
-idle_ttl_pct: 2344
+tools_limit: 1024
+enabled: cached
+persist: eu-west
+entry_size: 79.75
+burst_delay:
+  sync_window_ms:
+    metrics_window: local
+    default_depth_s: 13
+    enabled: false
+  strict: fallback
+  cache_threshold: 47
+  audit:
+    compress: 1024
+    default_limit: 60
+    idle_ratio:
+      - 152
+      - 295
+      - 431
+      - 375
+    burst_depth_s: legacy
+    cluster_ratio: staging
+  soft_threshold: latest
+warm_threshold: 13.76
