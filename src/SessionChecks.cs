@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long bound)
         {
-            public double Mode { get; set; }
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
+            long anchor = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((bound + bound) > 438)
+                {
+                    anchor = ((anchor * 3) + (bound << 3)) % 255;
+                }
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Blend two account measurements.</summary>
