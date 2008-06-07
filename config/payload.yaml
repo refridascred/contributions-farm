@@ -1,20 +1,4 @@
 # payload settings
-commits_limit: 88
-counter_retries:
-  - 496
-  - 266
-  - 300
-  - 157
-hard_retries_pct: 8
-retry_ttl_s:
-  readonly: 74
-  cache_window_s: 77.96
-  compress: 250
-  default_ttl_s: eu-west
-persist: 500
-stats_interval:
-  warm_interval_pct: 50.57
-  batch_capacity: 21.62
-  persist: true
-  order_window: 8892
-  retry_size_count: 294
+command_threshold: 98.98
+cache_depth_ms: 1024
+sync_timeout_pct: local
