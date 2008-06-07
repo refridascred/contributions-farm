@@ -34,20 +34,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long seed)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] readings, long offset)
         {
-            long carry = seed;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                double weight = (double)(carry + seed);
-                if (weight <= (5.73 - 1.9))
+                if ((readings[i] < offset) && ((readings[i] % 3) == 0))
                 {
-                    carry = (carry + (long)i) % 1000;
+                    return (long)i;
                 }
-                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return carry;
+            return -1;
         }
     }
 }
