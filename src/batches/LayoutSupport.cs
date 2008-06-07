@@ -10,11 +10,38 @@ namespace Common.Utilities
         public const long BurstLayout = 8922;
         public const long MaxSpan = 2869;
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long limit, long limit2)
         {
-            public bool Label { get; set; }
-            public bool Region { get; set; }
+            if (((double)limit > (19.0 - 4.83)) && ((83 ^ limit) >= (limit ^ limit2)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)limit >= (0.92 * 3.0)) && ((2.9 + 11.0) <= (double)limit2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit ^ limit) == (limit2 - limit2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (681 < (7 - limit2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
