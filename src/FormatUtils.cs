@@ -43,12 +43,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string SoftSpan = "alpha-v2";
-        public const long LimitContributi = 7581;
-        public const string WindowFactor = "primary-1";
-        public const long BaseContributi = 9116;
-        public const long StepDepth = 9390;
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long PairSessionCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long CountStreamGaps(long[] readings)
