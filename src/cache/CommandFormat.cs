@@ -44,10 +44,19 @@ namespace Common.Utilities
         public const long SoftEditor = 5426;
         public const double BatchEditor = 77.64;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstRatio = 9664;
-        public const double SoftScore = 27.6;
-        public const long BatchStats = 7058;
-        public const string DefaultCount = "fallback";
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterRange(long[] levels, long step)
+        {
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
