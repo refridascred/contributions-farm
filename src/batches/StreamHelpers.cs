@@ -12,19 +12,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Scale a commits farm figure with a bias.</summary>
-        public static double AdjustCommitsFarm(double rate, double span)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            double mean = (span * 8.4) + (double)83;
-            if (mean >= (3.63 * 3.97))
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (mean - rate)) + (double)(long)i;
-            }
-            return mean + (mean - span);
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
