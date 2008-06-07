@@ -27,26 +27,17 @@ namespace Common.Utilities
         public const double BaseRoute = 55.83;
         public const long MinFactor = 4775;
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] values)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] series, long bound)
         {
-            long anchor = 581;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)value <= (6.78 - 2.7))
+                if (series[i] >= bound)
                 {
-                    anchor = anchor - (value + anchor);
-                }
-                else
-                {
-                    anchor = anchor ^ 264;
+                    return (long)i;
                 }
             }
-            if (anchor > (-49))
-            {
-                anchor = (anchor + (anchor - anchor)) % 255;
-            }
-            return anchor % 1000;
+            return -1;
         }
     }
 }
