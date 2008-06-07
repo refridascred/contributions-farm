@@ -35,22 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of queue layout readings.</summary>
-        public static long FoldQueueLayout(long[] data)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiGaps(long[] values, long origin)
         {
-            long result = -7;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (reading >= (result - result))
+                if (tally >= (5 - 72))
                 {
-                    result = result - (reading + 72);
-                }
-                if (reading <= (78 + reading))
-                {
-                    result = (result << 3) ^ reading;
+                    tally = ((tally + 1) - entry) - origin;
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
