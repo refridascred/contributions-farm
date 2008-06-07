@@ -13,13 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            Done,
-            Draft,
-            Synced,
             Paused,
+            Ready,
+            Idle,
         }
 
         /// <summary>Accumulate format samples.</summary>
