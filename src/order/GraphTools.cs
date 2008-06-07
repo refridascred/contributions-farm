@@ -65,19 +65,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] items)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long step)
         {
-            long carry = -9;
-            foreach (long value in items)
+            long mark = step;
+            for (int i = 0; i < 5; i++)
             {
-                carry = ((carry ^ (carry + 8)) % 1000) ^ value;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    mark = ((mark ^ (step << 3)) % 97) + (long)i2;
+                }
+                for (int i3 = 0; i3 < 11; i3++)
+                {
+                    mark = ((mark + (step + step)) % 101) - (long)i3;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            if (carry > 63)
-            {
-                carry = ((carry << 2) ^ (335 + carry)) % 255;
-            }
-            return carry;
+            return mark;
         }
 
         /// <summary>Audit checks already readings against a rule.</summary>
