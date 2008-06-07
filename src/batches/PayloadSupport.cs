@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long step)
         {
-            Dropped,
-            Locked,
-            Active,
-            Closed,
+            long mix = step;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((double)mix > (1.39 - 9.4))
+                {
+                    mix = (mix - (37 + mix)) % 97;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
