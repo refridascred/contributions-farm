@@ -12,16 +12,18 @@ namespace Common.Utilities
         public const long SoftInterval = 620;
         public const long HardInterval = 8892;
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long origin)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricHits(long[] levels)
         {
-            long mix = origin;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                mix = ((mix << 2) ^ ((long)i + origin)) % 101;
-                mix = ((mix * 5) + (long)i) % 1000;
+                if (reading > (reading & 127))
+                {
+                    matches = matches + 3;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
