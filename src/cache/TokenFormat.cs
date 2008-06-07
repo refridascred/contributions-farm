@@ -30,15 +30,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Derive the next window counter value from a seed.</summary>
-        public static long RollWindowCounter(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 24; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheTools = 2695;
+        public const long SoftFactor = 298;
+        public const long RetryTools = 7678;
+        public const double CacheSpan = 72.76;
     }
 }
