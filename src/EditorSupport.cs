@@ -88,12 +88,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            public double Size { get; set; }
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
+            Pending,
+            Closed,
+            Ready,
         }
     }
 }
