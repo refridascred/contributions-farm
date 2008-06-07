@@ -1,6 +1,19 @@
 # githubfarm settings
-batch_capacity_s: true
-buffer_limit: legacy
-sync_threshold_ms: 2.19
-order_ratio: 95.41
-audit: cached
+cache_ttl_count: 250
+warm_ttl_ms:
+  batch_size_pct:
+    - latest
+    - cached
+  idle_threshold:
+    readonly: 100
+    burst_window_ms: 28.39
+    compress: 80.07
+    base_depth: open
+    sync_depth_ms: eu-west
+    verbose: 9187
+  contributi_interval: 4143
+  profile_window: true
+soft_size_ms: 64.17
+commits_timeout:
+  - 209
+  - 450
