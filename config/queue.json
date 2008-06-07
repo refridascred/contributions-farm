@@ -1,20 +1,12 @@
 {
-  "burst_interval": 72.23,
-  "strict": [297, 72, 262, 498],
-  "base_limit": {
-    "sync_size": {
-      "sync_window": [387, 435],
-      "burst_size_pct": 1024,
-      "idle_limit_ms": [153, 236],
-      "cache_limit": ["standard", "local"],
-      "batch_limit_pct": 60
-    },
-    "commits_retries": {
-      "burst_capacity": true,
-      "contributi_depth": "legacy",
-      "audit": "primary"
-    },
-    "warm_capacity": 8627
+  "layout_interval": "green",
+  "burst_limit_s": {
+    "base_retries_count": "legacy",
+    "burst_ratio_count": "stable",
+    "min_limit": "eu-west",
+    "soft_capacity_ms": [329, 189, 185],
+    "idle_depth_ms": 86,
+    "soft_threshold_pct": 43.5
   },
-  "audit": "primary"
+  "enabled": 28.98
 }
