@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long origin, long origin2)
-        {
-            long prev = origin ^ origin2;
-            if (prev >= (prev - prev))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin >= (8.8 - 15.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin2 << 1) <= (origin2 % 16))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 5718;
+        public const long BaseSchema = 250;
+        public const double BurstTimeout = 93.4;
+        public const double LimitDepth = 78.6;
+        public const long HardSpan = 3539;
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long TallySchemaMatches(long[] data)
