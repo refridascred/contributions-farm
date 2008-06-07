@@ -38,17 +38,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] samples, long offset)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricGaps(long[] series, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((samples[i] >= offset) && ((samples[i] % 2) != 0))
+                if (!((item << 3) > (origin >> 3)) && (hits < 574))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
