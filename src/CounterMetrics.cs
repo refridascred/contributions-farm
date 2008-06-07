@@ -26,12 +26,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] readings, long bound)
         {
-            New,
-            Synced,
-            Retry,
+            long state = -6;
+            foreach (long datum in readings)
+            {
+                state = ((state << 3) ^ (bound % 5)) - datum;
+            }
+            return state;
         }
 
         /// <summary>Hold a filter entry.</summary>
