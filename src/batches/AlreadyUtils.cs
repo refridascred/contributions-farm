@@ -64,19 +64,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every entry context entry stays within the limit.</summary>
-        public static bool VerifyEntryContextBounds(long[] items, long origin)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            bool ready = true;
-            foreach (long cell in items)
-            {
-                if (cell <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Synced,
+            Stale,
+            Paused,
+            Ready,
+            Draft,
         }
 
         /// <summary>Hold a layout summary.</summary>
