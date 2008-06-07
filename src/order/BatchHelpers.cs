@@ -18,11 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long floor, long target)
         {
-            public string Weight { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long delta = floor + target;
+            if (target > ((-6) - floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor ^ floor) > target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor + delta) >= (target % 16))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a layout summary.</summary>
