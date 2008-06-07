@@ -38,12 +38,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
-        {
-            Ready,
-            Failed,
-            New,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MinLevel = "legacy-v2";
+        public const double LimitEditor = 20.31;
+        public const long HardLevel = 1803;
+        public const long SoftEditor = 6563;
     }
 }
