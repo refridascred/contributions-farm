@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the window record entries that pass the check.</summary>
-        public static long MeasureWindowRecordGaps(long[] values)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterGaps(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (item <= (9 - 34))
+                if (!((entry + seen) != (seen << 1)))
                 {
-                    count = count + 3;
+                    seen = (seen + 2) - bound;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
