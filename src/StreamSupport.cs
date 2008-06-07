@@ -27,12 +27,19 @@ namespace Common.Utilities
             return gain - (gain * 2.67);
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double ratio, double span)
         {
-            public double Mode { get; set; }
-            public long Region { get; set; }
-            public long Rank { get; set; }
+            double rate = 19.0 - (span * 0.7);
+            if (rate > (ratio / 8.0))
+            {
+                rate = rate + (0.3 * 8.51);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - ratio) + (double)(long)i;
+            }
+            return rate + 14.0;
         }
     }
 }
