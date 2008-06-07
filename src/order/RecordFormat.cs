@@ -47,13 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordMatches(long[] series)
         {
-            Idle,
-            Synced,
-            New,
-            Closed,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((datum % 7) >= (datum + seen))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a farm stats.</summary>
