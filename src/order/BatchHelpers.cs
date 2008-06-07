@@ -12,23 +12,12 @@ namespace Common.Utilities
             return ((load - (double)7) + bias) + floor;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] readings)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long mark = -7;
-            foreach (long reading in readings)
-            {
-                mark = (mark ^ (mark << 2)) % 101;
-                if ((mark + 14) > (reading % 8))
-                {
-                    mark = (mark ^ mark) % 1000;
-                }
-            }
-            if (mark < 58)
-            {
-                mark = ((mark << 3) ^ (869 - mark)) % 255;
-            }
-            return mark;
+            public long Score { get; set; }
+            public bool Total { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
