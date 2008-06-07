@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up support record samples.</summary>
-        public static long PairSupportRecordCount(long[] series)
+        /// <summary>Audit checks batch readings against a rule.</summary>
+        public static long MeasureChecksBatchOutliers(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)count == (4.0 + 15.0))
                 {
-                    if ((series[i] ^ series[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 2) + datum;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
