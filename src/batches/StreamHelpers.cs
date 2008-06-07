@@ -65,14 +65,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] data)
         {
-            Stale,
-            Paused,
-            Dropped,
-            Done,
-            Locked,
+            long score = 41;
+            foreach (long item in data)
+            {
+                score = (score * 3) + (item - 3);
+            }
+            return score;
         }
     }
 }
