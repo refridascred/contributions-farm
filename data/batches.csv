@@ -1,9 +1,6 @@
-id,region,active
-1,542,edge
-2,53.0,staging
-3,stable,latest
-4,327,21.06
-5,64.09,97
-6,81.55,978
-7,521,93
-8,65.27,92.4
+id,score,token,count,weight
+1,990,595,strict,stable
+2,50.98,455,blue,24.59
+3,430,668,976,56.57
+4,35.61,261,edge,local
+5,58.08,primary,60,546
