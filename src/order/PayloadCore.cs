@@ -30,17 +30,12 @@ namespace Common.Utilities
             return load + (load / 7.0);
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] levels, long floor)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Retry,
+            Failed,
         }
 
         /// <summary>Project the next payload value.</summary>
