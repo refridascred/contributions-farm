@@ -73,14 +73,11 @@ namespace Common.Utilities
         public const long BaseChecks = 636;
         public const long WindowChecks = 5862;
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            Draft,
-            Closed,
-            New,
-            Idle,
-            Synced,
+            public long Region { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a metric summary.</summary>
