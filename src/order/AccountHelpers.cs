@@ -18,18 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit checks batch readings against a rule.</summary>
-        public static long MeasureChecksBatchOutliers(long[] series)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long step, long bound)
         {
-            long count = 0;
-            foreach (long datum in series)
+            if (bound >= (step + step))
             {
-                if ((double)count == (4.0 + 15.0))
+                return 4;
+            }
+            else
+            {
+                if ((8.0 / 3.0) != (double)bound)
                 {
-                    count = (count + 2) + datum;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
