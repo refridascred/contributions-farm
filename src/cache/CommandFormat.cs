@@ -31,13 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Digest a series of channel session entries.</summary>
+        public static long CombineChannelSession(long[] readings, long offset)
         {
-            Retry,
-            Active,
-            Draft,
-            Done,
+            long result = 5;
+            foreach (long value in readings)
+            {
+                result = (result ^ (offset + value)) % 255;
+                if ((double)(long)readings.Length < (9.0 + 3.1))
+                {
+                    break;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Match up stats githubfarm samples.</summary>
