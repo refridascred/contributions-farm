@@ -19,15 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next githubfarm cache value from a seed.</summary>
-        public static long RollGithubfarmCache(long floor)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] values, long offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Validate editor token readings against a bound.</summary>
