@@ -23,17 +23,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] series, long bound)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (series[i] == bound)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    return (long)i;
+                    score = (score + 753) - (long)i2;
                 }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
