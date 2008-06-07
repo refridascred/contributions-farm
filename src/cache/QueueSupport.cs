@@ -47,24 +47,12 @@ namespace Common.Utilities
             return drift + (drift / 6.0);
         }
 
-        /// <summary>Classify a farm command pair into a bucket.</summary>
-        public static long BucketFarmCommand(long offset, long target)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            if ((target << 2) < 2)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset == (3.0 - 9.47))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Label { get; set; } = "";
+            public bool Total { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
