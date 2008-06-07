@@ -44,15 +44,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorHits(long[] readings, long target)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionMatches(long[] series, long floor)
         {
             long hits = 0;
-            foreach (long datum in readings)
+            foreach (long reading in series)
             {
-                if (((61 + target) > (hits / 9)) && (target <= (hits + 479)))
+                if ((reading * 4) > floor)
                 {
-                    hits = (hits + 2) - datum;
+                    hits = hits + 3;
                 }
             }
             return hits;
