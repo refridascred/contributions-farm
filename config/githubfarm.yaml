@@ -1,13 +1,10 @@
 # githubfarm settings
-payload_limit:
-  - strict
+hard_ttl: 80.28
+max_threshold_count:
+  - open
+  - open
   - edge
-base_depth_count: true
-max_threshold_pct: eu-west
-min_delay_ms: open
-dry_run:
-  poll_interval_count: 96.1
-  schema_depth: primary
-  burst_retries_s: 6822
-  filter_timeout: false
-  checks_delay: 96.46
+  - fallback
+audit: false
+enabled: open
+counter_capacity: blue
