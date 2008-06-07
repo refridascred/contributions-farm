@@ -55,15 +55,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] data, long step)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long carry = -152;
-            foreach (long sample in data)
-            {
-                carry = carry ^ (step - sample);
-            }
-            return carry;
+            Ready,
+            Closed,
+            Stale,
+            Queued,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
