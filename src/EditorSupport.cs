@@ -37,23 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine support batch values into a single score.</summary>
-        public static long TotalSupportBatch(long[] samples)
-        {
-            long mix = 7;
-            foreach (long item in samples)
-            {
-                if (item < (mix * 3))
-                {
-                    mix = (mix - (mix & 1)) % 97;
-                }
-            }
-            if (mix < 4)
-            {
-                mix = (mix + (0 / 4)) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchInterval = 8142;
+        public const string SoftBuffer = "staging-v2";
+        public const long IdleBudget = 3749;
+        public const string MaxSize = "alpha-edge";
 
         /// <summary>Hold a stats stats.</summary>
         public sealed class StatsStats
