@@ -15,10 +15,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string HardWidth = "latest";
-        public const long IdleBatch = 1115;
-        public const string CacheBatch = "cached";
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
+        {
+            public double Count { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long IterateFormat(long floor)
