@@ -28,25 +28,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long bound, long bound2)
-        {
-            if ((2.2 > (double)bound) && ((2.1 - 3.6) >= (double)bound2))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((bound2 - bound) <= bound) || (831 < bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string WindowBatches = "fallback-v2";
+        public const long IdleBatches = 7384;
+        public const long DefaultBatches = 5814;
+        public const string StepDepth = "fallback-edge";
+        public const string MaxBatches = "strict-edge";
 
         /// <summary>Match up report profile samples.</summary>
         public static long CompareReportProfileCount(long[] readings)
