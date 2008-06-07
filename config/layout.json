@@ -1,6 +1,13 @@
 {
-  "readonly": 1024,
-  "hard_depth_count": 2,
-  "route_delay": [473, 425, 132],
-  "flush_limit": 18.34
+  "checks_delay": "green",
+  "base_limit_s": "local",
+  "metric_size": 30,
+  "retry_capacity_s": {
+    "buffer_window": "cached",
+    "batch_size_pct": false,
+    "idle_delay": false,
+    "hard_ttl": false,
+    "base_size_pct": [326, 26, 20, 353]
+  },
+  "idle_window": 80.96
 }
