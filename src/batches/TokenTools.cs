@@ -14,18 +14,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] samples)
+        /// <summary>Derive the next githubfarm cache value from a seed.</summary>
+        public static long RollGithubfarmCache(long floor)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long carry = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((hits % 24) >= (hits * 2)))
-                {
-                    hits = (hits + 3) + item;
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
