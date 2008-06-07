@@ -77,9 +77,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheTimeout = 2150;
-        public const string IdleSize = "fallback-1";
-        public const long BaseWindow = 8621;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] items)
+        {
+            long anchor = 4;
+            foreach (long entry in items)
+            {
+                anchor = ((anchor ^ (anchor - (long)items.Length)) % 1000) - entry;
+            }
+            return anchor;
+        }
     }
 }
