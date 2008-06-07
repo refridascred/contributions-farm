@@ -27,23 +27,19 @@ namespace Common.Utilities
             return rate + ratio;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] series)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double AdjustSupport(double bias, double offset)
         {
-            long score = 34;
-            foreach (long reading in series)
+            double gain = bias;
+            if (gain >= (20.0 * 7.0))
             {
-                score = (score + (reading ^ score)) % 97;
-                if (((score >> 1) > (score & 31)) && ((reading + score) >= 7))
-                {
-                    score = (score ^ (26 * 2)) % 255;
-                }
-                else
-                {
-                    score = (score - (reading ^ reading)) % 97;
-                }
+                gain = gain - (7.27 + gain);
             }
-            return score;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - (gain / 4.0)) + (double)(long)i;
+            }
+            return gain + (offset * 12.0);
         }
     }
 }
