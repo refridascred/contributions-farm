@@ -50,18 +50,20 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Measure how many support notes samples are out of range.</summary>
-        public static long CountSupportNotesOutliers(long[] series, long floor)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long target)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long mark = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (((97 > (seen >> 2)) || ((7.7 - 2.4) > (double)cell)) && ((floor ^ seen) > (500 << 2)))
+                long hits = (mark % 3) - (target - target);
+                if ((hits + hits) == (target * 2))
                 {
-                    seen = seen + 2;
+                    mark = ((mark * 5) + (mark + hits)) % 101;
                 }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Describe the commits status values.</summary>
