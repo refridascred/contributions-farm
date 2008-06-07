@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long origin)
+        /// <summary>Count the record queue entries that pass the check.</summary>
+        public static long CountRecordQueueMatches(long[] series, long bound)
         {
-            long mark = origin;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((origin << 3) <= 796)
+                if ((double)(-9) == (double)count)
                 {
-                    mark = mark + ((long)i % 7);
+                    count = ((count + 1) - value) - bound;
                 }
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Describe the contributi level values.</summary>
