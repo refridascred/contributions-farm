@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxLevel = 4018;
-        public const string IdleTools = "strict-edge";
-        public const string BurstSpan = "alpha-1";
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
+        {
+            Dropped,
+            Locked,
+            Ready,
+            Paused,
+            Retry,
+        }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long BucketEntry(long origin, long step)
