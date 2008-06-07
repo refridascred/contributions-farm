@@ -42,17 +42,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a filter cache reading by value.</summary>
-        public static long SeekFilterCacheIndex(long[] items, long offset)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] samples, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if ((items[i] <= offset) && ((items[i] % 2) == 0))
+                if (reading <= floor)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
