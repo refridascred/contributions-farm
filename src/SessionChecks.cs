@@ -50,19 +50,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every layout metrics entry stays within the limit.</summary>
-        public static bool GuardLayoutMetricsBounds(long[] readings, long step)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] series)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry > step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] ^ series[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
