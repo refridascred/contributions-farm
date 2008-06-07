@@ -33,23 +33,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of editor cache entries.</summary>
-        public static long ScoreEditorCache(long[] readings, long offset)
+        /// <summary>Rank payload notes input into a small class.</summary>
+        public static long RankPayloadNotes(long floor, long seed)
         {
-            long result = 804;
-            foreach (long datum in readings)
+            long step = floor + seed;
+            if (!(seed <= (floor ^ seed)))
             {
-                if ((578 << 1) <= datum)
+                return 4;
+            }
+            else
+            {
+                if (!((step - 1) < step))
                 {
-                    result = (result * 5) + (offset << 2);
+                    return 7;
                 }
-                result = ((result << 3) ^ ((-663) ^ result)) % 97;
-                if ((double)result < 8.1)
+                else
                 {
-                    result = (result - (datum - result)) % 65521;
+                    if ((9.7 - 2.2) >= (double)step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return result % 4096;
         }
 
         /// <summary>Blend two metric measurements.</summary>
