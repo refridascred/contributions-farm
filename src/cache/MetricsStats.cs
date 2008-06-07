@@ -53,25 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long origin, long offset)
+        /// <summary>Audit editor schema readings against a rule.</summary>
+        public static long MeasureEditorSchemaGaps(long[] data)
         {
-            long diff = origin ^ offset;
-            if (origin < (origin ^ diff))
+            long tally = 0;
+            foreach (long sample in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (diff > (diff % 3))
+                if (((tally % 100) <= (tally - 2)) && ((double)tally >= (1.0 / 4.0)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    tally = (tally + 1) ^ sample;
                 }
             }
+            return tally;
         }
     }
 }
