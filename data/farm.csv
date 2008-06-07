@@ -1,7 +1,9 @@
-id,ratio,count,rank,owner
-1,397,legacy,352,73.28
-2,latest,218,cached,29
-3,254,288,388,local
-4,50,92.28,763,947
-5,505,267,161,29.43
-6,2.3,375,stable,814
+id,rank,state,level,token
+1,49,22.52,legacy,blue
+2,145,primary,243,407
+3,862,708,1.03,27.59
+4,905,947,9.89,327
+5,40.02,691,fallback,standard
+6,452,28.0,922,82.95
+7,310,eu-west,215,939
+8,98,10.1,legacy,73.42
