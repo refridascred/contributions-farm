@@ -19,19 +19,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long limit)
+        /// <summary>Measure how many layout context samples are out of range.</summary>
+        public static long CountLayoutContextGaps(long[] data)
         {
-            long result = limit;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((double)count >= 5.0)
                 {
-                    result = (result << 3) ^ (long)i2;
+                    count = (count + 2) - cell;
                 }
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
