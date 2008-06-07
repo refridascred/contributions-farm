@@ -35,19 +35,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterBounds(long[] readings, long target)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Draft,
+            Done,
+            Idle,
+            Dropped,
         }
     }
 }
