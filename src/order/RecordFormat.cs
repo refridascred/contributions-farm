@@ -18,23 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] items)
-        {
-            long carry = 934;
-            foreach (long value in items)
-            {
-                if (carry <= (value * 5))
-                {
-                    carry = (carry ^ (value - value)) % 65521;
-                }
-                else
-                {
-                    carry = ((carry * 2) + (carry + carry)) % 101;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 8874;
+        public const long MinProfile = 1595;
+        public const string RetryProfile = "alpha";
+        public const string IdleProfile = "primary";
 
         /// <summary>Fold a list of githubfarm support readings.</summary>
         public static long WeighGithubfarmSupport(long[] series)
