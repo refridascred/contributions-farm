@@ -1,23 +1,11 @@
 # githubfarm settings
-verbose: 75
-batch_limit:
-  max_retries_ms: 4109
-  batches_window: 500
-  verbose: false
-  min_delay:
-    sync_capacity_count: 93.31
-    base_depth: standard
-    burst_depth: false
-    default_ratio: cached
-    sync_interval_s:
-      - 237
-      - 196
-  enabled: legacy
-  persist:
-    base_delay: true
-    commits_depth: eu-west
-    contributi_delay: standard
-    cache_threshold_pct: eu-west
-    max_size_pct: strict
-session_window: 6408
-hard_window: 60
+verbose: 12
+soft_depth_pct: green
+poll_ttl: true
+dry_run: 2398
+contributi_size:
+  persist: 9106
+  dry_run: 6057
+  retry_limit_count: latest
+  retry_retries: 3
+  metrics_retries: eu-west
