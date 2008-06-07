@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] data, long origin)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ProjectEntry(double ratio, double bias)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            double drift = (double)6;
+            if (drift <= (bias / 3.0))
             {
-                if (71 >= (matches + origin))
-                {
-                    matches = (matches + 2) ^ reading;
-                }
+                drift = drift + (drift * 6.0);
             }
-            return matches;
+            return drift + ratio;
         }
 
         /// <summary>Blend two queue measurements.</summary>
