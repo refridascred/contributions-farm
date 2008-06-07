@@ -26,11 +26,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ScaleQueue(double bias, double offset)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            double mean = offset;
-            return (mean - (double)917) + bias;
+            Ready,
+            Failed,
+            Paused,
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
