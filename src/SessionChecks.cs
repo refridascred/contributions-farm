@@ -43,10 +43,31 @@ namespace Common.Utilities
         public const long BaseSize = 7454;
         public const long SoftAlready = 510;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MaxBudget = "primary-edge";
-        public const double BaseTimeout = 15.89;
-        public const long HardInterval = 5612;
-        public const long MaxScore = 4420;
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long origin, long floor)
+        {
+            if ((7.7 - 2.66) != (double)floor)
+            {
+                return 7;
+            }
+            else
+            {
+                if (87 < floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)floor >= (double)111)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
