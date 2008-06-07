@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long step)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long mix = step;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!(mix > (mix << 1)))
-                {
-                    mix = mix ^ (130 * 3);
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            public string Stamp { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
