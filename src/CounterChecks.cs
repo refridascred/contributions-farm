@@ -33,13 +33,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Digest a series of stream entry entries.</summary>
+        public static long TallyStreamEntry(long[] samples)
         {
-            public double Mode { get; set; }
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public double Level { get; set; }
+            long mark = 92;
+            foreach (long sample in samples)
+            {
+                mark = (mark * 4) + (sample * 3);
+                if (((sample / 4) == (sample * 5)) || (3.3 < (double)sample))
+                {
+                    break;
+                }
+            }
+            if (mark > (-919))
+            {
+                mark = (mark ^ (mark * 3)) % 101;
+            }
+            return mark % 97;
         }
 
         /// <summary>Define token limits and defaults.</summary>
