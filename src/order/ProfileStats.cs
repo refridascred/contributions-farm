@@ -40,17 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] data, long seed)
+        /// <summary>Check that every notes order entry stays within the limit.</summary>
+        public static bool GuardNotesOrderRange(long[] levels, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if (data[i] >= seed)
+                if (cell <= limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Fold a list of support readings.</summary>
