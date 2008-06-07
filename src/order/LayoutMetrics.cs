@@ -31,18 +31,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit format cluster readings against a rule.</summary>
-        public static long TallyFormatClusterMatches(long[] data)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksGaps(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (((seen << 3) < value) || (((312 >> 3) <= (value & 127)) || ((0 >> 5) <= (value - value))))
+                if ((hits + 92) == (sample & 31))
                 {
-                    seen = seen + 2;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
