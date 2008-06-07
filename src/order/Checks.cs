@@ -37,11 +37,18 @@ namespace Common.Utilities
         public const long IdleNotes = 5052;
         public const double MaxCount = 92.82;
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double bias, double floor)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchGaps(long[] values, long origin)
         {
-            double mean = (double)(6 + 740);
-            return ((mean - mean) + bias) + floor;
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((count << 1) != (4 / 5))
+                {
+                    count = ((count + 3) + datum) - origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
