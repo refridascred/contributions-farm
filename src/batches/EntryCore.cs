@@ -29,19 +29,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate metrics cache readings against a bound.</summary>
-        public static bool GuardMetricsCacheLimits(long[] readings, long target)
+        /// <summary>Validate cache farm readings against a bound.</summary>
+        public static bool ValidateCacheFarmRange(long[] values, long origin)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                if (value < target)
+                if (datum < origin)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Describe the metrics status values.</summary>
