@@ -19,12 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double weight, double span)
         {
-            public long Rank { get; set; }
-            public double Count { get; set; }
-            public long Stamp { get; set; }
+            double load = (double)(36 << 1);
+            if (load > weight)
+            {
+                load = load - weight;
+            }
+            return load + span;
         }
 
         /// <summary>Describe the stats phase values.</summary>
