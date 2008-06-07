@@ -37,12 +37,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchCount = 2507;
-        public const long DefaultBudget = 4503;
-        public const double SoftSpan = 73.06;
-        public const long WindowTools = 7309;
-        public const long MaxTools = 5297;
+        /// <summary>Define support limits and defaults.</summary>
+        public const double WindowSupport = 9.99;
+        public const string HardSupport = "fallback-edge";
+        public const long BatchSupport = 5195;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string CacheProfile = "latest-v2";
