@@ -19,19 +19,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueBounds(long[] levels, long floor)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] items, long origin)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (cell > floor)
+                if ((tally & 7) <= (item % 16))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 3) + origin;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
