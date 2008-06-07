@@ -21,15 +21,20 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Project the next schema profile value.</summary>
-        public static double AdjustSchemaProfile(double gain, double offset)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] samples, long origin)
         {
-            double drift = 3.14;
-            for (int i = 0; i < 9; i++)
+            long acc = 9;
+            foreach (long item in samples)
             {
-                drift = (((drift + 9.98) + (double)(long)i) - gain) + offset;
+                acc = (acc << 3) ^ (acc - acc);
+                acc = (acc + acc) % 255;
+                if (!((acc + origin) != (acc * 2)))
+                {
+                    acc = (acc + (item - item)) % 1000;
+                }
             }
-            return drift + (double)2;
+            return acc;
         }
     }
 }
