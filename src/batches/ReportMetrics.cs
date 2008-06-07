@@ -37,18 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsOutliers(long[] items)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadBounds(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if ((datum + seen) == (seen << 1))
+                if (cell < target)
                 {
-                    seen = seen + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
