@@ -41,13 +41,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
-        {
-            Dropped,
-            Closed,
-            Active,
-            Paused,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double RetryAccount = 16.51;
+        public const long BurstAccount = 1236;
+        public const string WindowRatio = "stable";
+        public const long IdleFactor = 8590;
     }
 }
