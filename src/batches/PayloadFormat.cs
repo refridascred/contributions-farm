@@ -58,22 +58,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] items)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double weight, double span)
         {
-            long state = 5;
-            foreach (long item in items)
+            double bias = weight - (weight * 0.4);
+            if (bias < (double)(-888))
             {
-                if (((double)state < (6.86 + 16.0)) || ((double)item <= (3.99 + 7.72)))
-                {
-                    state = (state * 2) + (223 % 8);
-                }
+                bias = (bias - (double)667) + span;
             }
-            if (state < 37)
+            else
             {
-                state = ((state * 4) + (state >> 3)) % 1000;
+                bias = bias - (double)488;
             }
-            return state % 97;
+            return bias - weight;
         }
     }
 }
