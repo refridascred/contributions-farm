@@ -1,6 +1,17 @@
 # githubfarm settings
-compress: true
-base_retries: 27
-order_depth: 97.56
-tools_window: cached
-default_interval_pct: fallback
+min_window_s:
+  commits_interval:
+    compress: 8786
+    contributi_capacity: 67.5
+    session_threshold: 3879
+    cluster_ttl: standard
+    flush_threshold_pct: 93
+  hard_capacity_count: fallback
+  soft_interval_count: 9903
+  cache_threshold_ms: 4064
+max_retries: staging
+cache_ratio_s:
+  - green
+  - blue
+  - eu-west
+  - blue
