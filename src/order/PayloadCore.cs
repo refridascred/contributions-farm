@@ -73,18 +73,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelHits(long[] data)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry >> 5) <= (50 << 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((levels[i] ^ levels[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
