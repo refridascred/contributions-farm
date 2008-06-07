@@ -20,21 +20,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] values)
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double scale, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = scale;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = ((mean - (double)897) + (double)(long)i) - floor;
             }
-            return hits;
+            return mean + (scale / 3.0);
         }
     }
 }
