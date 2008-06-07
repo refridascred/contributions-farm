@@ -56,11 +56,9 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftProfile = 4505;
-        public const long DefaultInterval = 7260;
-        public const string StepProfile = "alpha-v2";
-        public const double DefaultLevel = 56.67;
-        public const long MinProfile = 5954;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double SoftGraph = 77.67;
+        public const long CacheGraph = 6731;
+        public const long BatchBudget = 8746;
     }
 }
