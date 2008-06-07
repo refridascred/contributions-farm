@@ -46,19 +46,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] series, long step)
+        /// <summary>Audit window payload readings against a rule.</summary>
+        public static long MeasureWindowPayloadGaps(long[] levels, long seed)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (cell != step)
+                if (5 <= ((long)levels.Length + sample))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 1) + seed;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Fold a list of account readings.</summary>
