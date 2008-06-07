@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] readings)
+        /// <summary>Accumulate githubfarm support samples.</summary>
+        public static long DigestGithubfarmSupport(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 71;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((acc + cell) > cell) || (acc <= (cell + cell)))
                 {
-                    if ((readings[i] ^ readings[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc * 2) + acc;
+                }
+                else
+                {
+                    acc = acc - (104 + acc);
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
