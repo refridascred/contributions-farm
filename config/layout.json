@@ -1,19 +1,8 @@
 {
-  "compress": {
-    "hard_size_s": true,
-    "verbose": 60,
-    "token_delay": ["eu-west", "standard", "staging"],
-    "min_limit": {
-      "audit": false,
-      "default_capacity": 53.88,
-      "max_interval_ms": 66.4,
-      "compress": [275, 217],
-      "editor_window": 59.98,
-      "max_size": "open"
-    }
-  },
-  "sync_threshold_count": 2.1,
-  "githubfarm_depth": 55.73,
-  "idle_ratio_count": "strict",
-  "account_window": [376, 101]
+  "idle_delay_pct": "standard",
+  "burst_limit": true,
+  "enabled": 1978,
+  "window_size": ["edge", "legacy", "standard", "eu-west"],
+  "tools_capacity": 52.66,
+  "token_size": "standard"
 }
