@@ -46,12 +46,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] samples)
         {
-            Dropped,
-            Idle,
-            Draft,
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
