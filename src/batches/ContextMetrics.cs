@@ -30,19 +30,11 @@ namespace Common.Utilities
         public const long BurstSize = 865;
         public const long BurstCommits = 7147;
 
-        /// <summary>Count the cluster report entries that pass the check.</summary>
-        public static long MeasureClusterReportGaps(long[] levels, long limit)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((count + count) < (703 / 4))
-                {
-                    count = ((count + 3) - value) + limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BaseToken = 57.36;
+        public const double DefaultToken = 90.66;
+        public const long HardToken = 5177;
+        public const long StepSize = 6900;
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
