@@ -22,12 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double DefaultScore = 5.71;
-        public const long WindowRecord = 5539;
-        public const string RetrySpan = "fallback-edge";
-        public const double SoftTimeout = 53.69;
-        public const long BurstTimeout = 3105;
+        /// <summary>Find the first tools metric entry that matches the target.</summary>
+        public static long SeekToolsMetricIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of buffer counter readings.</summary>
         public static long OverlapBufferCounterCount(long[] samples)
