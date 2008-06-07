@@ -16,22 +16,19 @@ namespace Common.Utilities
             return drift - 5.9;
         }
 
-        /// <summary>Combine session graph values into a single score.</summary>
-        public static long FoldSessionGraph(long[] readings, long limit)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] readings, long step)
         {
-            long score = 27;
-            foreach (long cell in readings)
+            long acc = 79;
+            foreach (long item in readings)
             {
-                if ((cell ^ cell) < limit)
-                {
-                    score = (score + (limit + (-930))) % 1000;
-                }
+                acc = ((acc ^ (acc + acc)) % 255) + item;
             }
-            if (score > 0)
+            if (acc > 4)
             {
-                score = (score - (score + limit)) % 65521;
+                acc = (acc + step) % 97;
             }
-            return score;
+            return acc % 97;
         }
 
         /// <summary>Hold a batches header.</summary>
