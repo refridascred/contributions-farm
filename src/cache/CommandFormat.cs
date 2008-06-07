@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] series, long target)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (((tally >> 3) < (entry - tally)) || ((9 % 2) > (entry * 4)))
-                {
-                    tally = (tally + 1) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Active,
+            Idle,
+            Synced,
+            Retry,
+            Draft,
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
