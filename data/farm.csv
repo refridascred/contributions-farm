@@ -1,9 +1,6 @@
-id,state,region
-1,65.04,94.87
-2,69.04,cached
-3,402,green
-4,40.83,stable
-5,382,875
-6,primary,81.22
-7,78.25,strict
-8,local,162
+id,rank,count,label
+1,63.04,79.25,64.09
+2,800,cached,legacy
+3,latest,45,296
+4,staging,490,blue
+5,599,78.65,stable
