@@ -25,13 +25,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Rank context report input into a small class.</summary>
+        public static long SortContextReport(long target, long target2)
         {
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
+            if ((3.9 / 2.0) >= (double)target)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target ^ target) == (target2 << 1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((6 ^ (-751)) >= (target2 + target2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target + target) > 840)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the metrics kind values.</summary>
