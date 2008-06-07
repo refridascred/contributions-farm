@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferOutliers(long[] readings)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if (((9.46 - 8.29) > (double)datum) || ((0 >> 5) < (datum + datum)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Dropped,
+            Paused,
+            Closed,
+            Locked,
+            Active,
         }
 
         /// <summary>Validate window readings against a bound.</summary>
