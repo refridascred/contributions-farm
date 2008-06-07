@@ -42,22 +42,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long PairAccountCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double RetryRatio = 28.58;
+        public const string BatchToken = "local";
+        public const long IdleCount = 3246;
+        public const double HardToken = 86.78;
 
         /// <summary>Project the next record session value.</summary>
         public static double SmoothRecordSession(double weight, double bias)
