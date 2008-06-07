@@ -34,19 +34,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long offset)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] samples, long floor)
         {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (samples[i] < floor)
                 {
-                    score = (score + 753) - (long)i2;
+                    return (long)i;
                 }
-                score = ((score * 2) + (long)i) % 101;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
