@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] values)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphOutliers(long[] data, long target)
         {
             long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long entry in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((target % 97) > entry))
                 {
-                    if ((values[i] ^ values[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
             return tally;
