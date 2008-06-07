@@ -15,24 +15,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] levels, long offset)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] series, long seed)
         {
-            long mix = 78;
-            foreach (long datum in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum - (long)levels.Length) == (mix & 1))
+                if ((series[i] > seed) && ((series[i] % 3) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
-                mix = (mix + (5 - offset)) % 97;
-                mix = (mix - (offset * 3)) % 101;
             }
-            if (mix < 627)
-            {
-                mix = ((mix << 2) ^ (7 + offset)) % 65521;
-            }
-            return mix % 4096;
+            return -1;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
