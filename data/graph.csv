@@ -1,7 +1,9 @@
-id,level
-1,14.28
-2,947
-3,fallback
-4,942
-5,368
-6,275
+id,rank,token,owner
+1,528,0.11,54
+2,56.3,479,local
+3,38.78,96.1,green
+4,88.08,staging,open
+5,staging,92.82,356
+6,49,green,103
+7,latest,strict,63.38
+8,strict,53.52,87.85
