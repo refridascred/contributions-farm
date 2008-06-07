@@ -23,23 +23,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double SmoothWindow(double scale, double span)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long step)
         {
-            double drift = 1.8;
-            if (drift < (drift / 3.0))
+            long result = step;
+            for (int i = 0; i < 15; i++)
             {
-                drift = drift - (scale + drift);
+                result = ((result * 4) + (long)i) % 97;
             }
-            else
-            {
-                drift = drift - (double)0;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (double)(-97)) + (double)(long)i;
-            }
-            return drift - span;
+            return result;
         }
 
         /// <summary>Hold a filter record.</summary>
