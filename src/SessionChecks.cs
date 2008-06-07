@@ -23,15 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ScaleCommand(double scale, double bias)
+        /// <summary>Compare every pair of entry cache readings.</summary>
+        public static long PairEntryCacheCount(long[] items)
         {
-            double weight = 2.83;
-            for (int i = 0; i < 3; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = ((weight + (double)(-2)) + (double)(long)i) - bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return weight - (scale - 0.62);
+            return count;
         }
 
         /// <summary>Look up the position of a payload stats sample.</summary>
