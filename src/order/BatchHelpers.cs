@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a notes payload reading by value.</summary>
-        public static long LocateNotesPayloadIndex(long[] values, long floor)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double bias, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= floor) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = 18.0;
+            return ((load - (double)7) + bias) + floor;
         }
 
         /// <summary>Rank command input into a small class.</summary>
