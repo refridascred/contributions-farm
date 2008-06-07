@@ -37,9 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleLevel = 4556;
-        public const long DefaultWindow = 4693;
-        public const long StepWindow = 4795;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] items)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((datum + seen) == (seen << 1))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
