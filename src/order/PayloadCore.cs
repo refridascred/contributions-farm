@@ -40,15 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many already batches samples are out of range.</summary>
-        public static long MeasureAlreadyBatchesHits(long[] levels)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long OverlapSupportCount(long[] items)
         {
             long matches = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((long)levels.Length - matches) != (datum + matches))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((items[i] + items[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
