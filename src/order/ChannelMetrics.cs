@@ -13,15 +13,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long limit)
+        /// <summary>Roll a record window counter forward.</summary>
+        public static long SeriesRecordWindow(long seed)
         {
-            long total = limit;
-            for (int i = 0; i < 4; i++)
+            long result = seed;
+            for (int i = 0; i < 12; i++)
             {
-                total = ((total * 4) + (long)i) % 101;
+                long prev = (seed ^ (long)i) % 24;
+                prev = (prev << 2) ^ (result + seed);
+                result = ((result << 3) ^ prev) % 1000;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return total;
+            return result;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
