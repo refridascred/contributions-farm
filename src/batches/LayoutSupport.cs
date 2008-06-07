@@ -53,17 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] levels, long bound)
+        /// <summary>Measure how many session command samples are out of range.</summary>
+        public static long AuditSessionCommandGaps(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((levels[i] >= bound) && ((levels[i] % 2) == 0))
+                if ((count / 6) < count)
                 {
-                    return (long)i;
+                    count = (count + 1) + sample;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
