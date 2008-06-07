@@ -46,17 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a githubfarm command sample.</summary>
-        public static long LookupGithubfarmCommandIndex(long[] samples, long bound)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutBounds(long[] items, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if (samples[i] <= bound)
+                if (entry >= origin)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
