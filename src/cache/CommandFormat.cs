@@ -44,19 +44,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate layout contributi readings against a bound.</summary>
-        public static bool ValidateLayoutContributiBounds(long[] samples, long step)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] values, long offset)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (item != step)
+                if (((seen ^ offset) < (395 * 2)) && ((seen % 60) >= value))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
