@@ -41,11 +41,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double bias, double floor)
+        /// <summary>Roll a notes counter counter forward.</summary>
+        public static long DeriveNotesCounter(long target)
         {
-            double ratio = (double)611 + (bias / 9.0);
-            return (ratio + ratio) + floor;
+            long anchor = target;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((480 * 5) < anchor)
+                {
+                    anchor = (anchor + ((long)i >> 2)) % 97;
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
