@@ -21,18 +21,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] data)
+        /// <summary>Count the route cluster entries that pass the check.</summary>
+        public static long MeasureRouteClusterGaps(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (datum <= ((-11) ^ datum))
+                if (64 > hits)
                 {
-                    seen = seen + 1;
+                    hits = (hits + 3) ^ item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
