@@ -54,15 +54,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double BlendMetrics(double weight, double floor)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long origin, long offset)
         {
-            double mean = floor;
-            if (mean >= mean)
+            long delta = origin ^ offset;
+            if ((delta * 3) < (origin / 2))
             {
-                mean = mean - (floor + weight);
+                return 5;
             }
-            return mean + mean;
+            else
+            {
+                if (!((double)origin < 1.98))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((delta >> 5) == (offset & 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((delta - offset) == (origin << 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
