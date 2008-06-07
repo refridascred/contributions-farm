@@ -29,22 +29,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the session order entries that pass the check.</summary>
-        public static long MeasureSessionOrderMatches(long[] series)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatGaps(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (((double)count == (double)8) || ((count + count) > datum))
+                if ((double)sample != (double)step)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
