@@ -1,8 +1,7 @@
 {
-  "session_timeout": false,
-  "batch_ttl": [346, 128, 7],
-  "default_interval_count": true,
-  "poll_retries": ["legacy", "fallback", "standard", "latest"],
-  "sync_limit": true,
-  "cache_size": ["strict", "blue", "open", "open"]
+  "base_ttl_ms": 5931,
+  "compress": 34.64,
+  "max_retries": "green",
+  "max_size_count": "edge",
+  "contributi_size": 6883
 }
