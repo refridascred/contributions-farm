@@ -32,19 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate editor token readings against a bound.</summary>
-        public static bool GuardEditorTokenLimits(long[] values, long floor)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiGaps(long[] series, long origin)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (cell != floor)
+                if ((797 * 5) < (31 + origin))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 1) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
