@@ -33,19 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every notes order entry stays within the limit.</summary>
-        public static bool GuardNotesOrderRange(long[] levels, long limit)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Dropped,
+            Done,
+            Draft,
         }
 
         /// <summary>Match up entry samples.</summary>
