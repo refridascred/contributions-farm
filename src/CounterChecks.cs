@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            public long Mode { get; set; }
-            public double Score { get; set; }
-            public bool Total { get; set; }
-            public bool Rank { get; set; }
+            public double Rank { get; set; }
+            public string Size { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
