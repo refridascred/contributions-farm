@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxSize = 4567;
-        public const long BurstFilter = 9169;
-        public const long CacheFilter = 6804;
-        public const string LimitFilter = "alpha-v2";
+        /// <summary>Grade a token editor value against two limits.</summary>
+        public static long BucketTokenEditor(long target, long bound)
+        {
+            long next = target - bound;
+            if (((1.8 - 4.4) == (double)target) || (242 >= (bound % 97)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((next % 10) == (next * 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((6 >> 1) >= (bound & 127)) || ((target >> 1) <= next))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
