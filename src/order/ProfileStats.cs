@@ -47,12 +47,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            Dropped,
-            Failed,
-            Locked,
+            public long Total { get; set; }
+            public bool Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
