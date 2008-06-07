@@ -12,38 +12,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long seed, long offset)
+        /// <summary>Fold a list of token context readings.</summary>
+        public static long FoldTokenContext(long[] levels, long target)
         {
-            if ((6.3 * 0.6) != (double)offset)
+            long carry = 0;
+            foreach (long item in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed & 1) == (offset + offset))
+                if ((item * 5) == (carry - carry))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed + 455) >= seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset ^ offset) >= (3 ^ 62))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    carry = (carry * 5) + (73 + carry);
                 }
             }
+            if (carry < 52)
+            {
+                carry = carry ^ (769 - target);
+            }
+            return carry;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
