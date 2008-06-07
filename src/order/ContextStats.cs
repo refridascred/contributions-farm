@@ -42,12 +42,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long floor, long origin)
         {
-            public double Rank { get; set; }
-            public double Size { get; set; }
-            public bool Level { get; set; }
+            if (((double)origin <= (20.0 - 5.0)) || ((double)floor != (9.0 / 8.0)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((816 & 7) >= (floor + 983))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
