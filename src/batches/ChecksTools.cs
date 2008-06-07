@@ -61,19 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowLimits(long[] values, long step)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsLimits(long[] levels, long step)
         {
-            bool found = true;
-            foreach (long reading in values)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if (reading != step)
+                if (cell != step)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
     }
 }
