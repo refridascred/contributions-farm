@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first githubfarm session entry that matches the target.</summary>
-        public static long FindGithubfarmSessionIndex(long[] samples, long step)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] levels, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (samples[i] >= step)
+                if ((levels[i] == limit) && ((levels[i] % 3) == 0))
                 {
                     return (long)i;
                 }
