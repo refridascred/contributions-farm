@@ -20,19 +20,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double AdjustAccount(double rate, double span)
+        /// <summary>Project the next command value.</summary>
+        public static double ScaleCommand(double scale, double bias)
         {
-            double ratio = (double)(12 - 11);
-            if (ratio <= rate)
+            double weight = 2.83;
+            for (int i = 0; i < 3; i++)
             {
-                ratio = (ratio - rate) - span;
+                weight = ((weight + (double)(-2)) + (double)(long)i) - bias;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio - (double)21;
+            return weight - (scale - 0.62);
         }
 
         /// <summary>Look up the position of a payload stats sample.</summary>
