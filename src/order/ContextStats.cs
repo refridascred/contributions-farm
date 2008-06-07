@@ -25,11 +25,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxGraph = 1719;
-        public const long WindowSpan = 2878;
-        public const long CacheGraph = 8133;
-        public const string BaseBudget = "standard";
+        /// <summary>Adjust a githubfarm cluster reading.</summary>
+        public static double ScaleGithubfarmCluster(double bias, double bias2)
+        {
+            double scale = bias + bias2;
+            if (scale < bias)
+            {
+                scale = scale - bias2;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale - (double)74;
+        }
 
         /// <summary>Match up window samples.</summary>
         public static long PairWindowCount(long[] series)
