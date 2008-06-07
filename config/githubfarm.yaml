@@ -1,23 +1,7 @@
 # githubfarm settings
-hard_interval_ms: true
-compress: 15
-min_ratio_pct:
-  warm_window_s:
-    - open
-    - open
-    - strict
-  soft_ttl:
-    schema_depth: 96.19
-    strict: true
-    contributi_size: staging
-    compress: eu-west
-    min_delay_s: stable
-    session_capacity: true
-  soft_capacity: 17
-  soft_timeout_pct: strict
-  persist: 90
-  flush_limit_pct:
-    - 65
-    - 122
-    - 484
-    - 375
+sync_interval: 59.59
+burst_interval_count: 18.72
+checks_retries:
+  - legacy
+  - strict
+  - eu-west
