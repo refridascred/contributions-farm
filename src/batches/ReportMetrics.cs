@@ -14,13 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long limit)
         {
-            Active,
-            Locked,
-            Pending,
-            Paused,
+            long result = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    result = (result << 3) ^ (long)i2;
+                }
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
