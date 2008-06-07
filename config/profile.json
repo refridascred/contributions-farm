@@ -1,5 +1,8 @@
 {
-  "warm_window": 35.51,
-  "compress": true,
-  "retry_limit": 73.19
+  "retry_timeout_ms": "primary",
+  "retry_interval": 54.5,
+  "base_depth": 85.82,
+  "soft_interval_count": 25.3,
+  "cluster_size": false,
+  "cache_ratio_pct": "edge"
 }
