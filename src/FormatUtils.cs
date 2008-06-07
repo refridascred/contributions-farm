@@ -11,13 +11,13 @@ namespace Common.Utilities
         public const long RetryBudget = 6670;
         public const double WindowWidth = 65.48;
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            public long Owner { get; set; }
-            public double Total { get; set; }
-            public long Rank { get; set; }
-            public bool Stamp { get; set; }
+            Active,
+            Queued,
+            Synced,
+            Draft,
         }
 
         /// <summary>Combine counter report values into a single score.</summary>
