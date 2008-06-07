@@ -34,11 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double bias, double floor)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            double drift = floor;
-            return drift + (bias * 8.0);
+            Locked,
+            Stale,
+            Active,
         }
 
         /// <summary>Combine session values into a single score.</summary>
