@@ -41,32 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a token graph pair into a bucket.</summary>
-        public static long RankTokenGraph(long step, long seed)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double AdjustGithubfarm(double weight, double span)
         {
-            long delta = step ^ seed;
-            if ((delta * 4) >= (-55))
+            double weight2 = span;
+            if (weight2 > weight2)
             {
-                return 7;
+                weight2 = (weight2 + (7.64 + span)) + weight;
             }
             else
             {
-                if ((double)seed >= (6.1 / 8.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((delta ^ step) >= (seed * 5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                weight2 = weight2 + (span / 9.0);
             }
+            return weight2 + span;
         }
 
         /// <summary>Describe the filter mode values.</summary>
