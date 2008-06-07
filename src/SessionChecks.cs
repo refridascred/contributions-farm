@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryRange(long[] readings, long seed)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsOutliers(long[] series, long limit)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (entry < seed)
+                if ((tally >> 3) < (limit + limit))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 2) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Project the next command value.</summary>
