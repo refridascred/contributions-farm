@@ -41,15 +41,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] data, long floor)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyRange(long[] values, long origin)
         {
-            long result = 847;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                result = (result + (1 + reading)) + floor;
+                if (entry != origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return result;
+            return stale;
         }
     }
 }
