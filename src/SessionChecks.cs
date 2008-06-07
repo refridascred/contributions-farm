@@ -34,19 +34,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterHits(long[] readings)
-        {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((double)item == (double)tally)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string WindowSize = "cached-edge";
+        public const long RetryAlready = 2330;
+        public const long BaseSize = 7454;
+        public const long SoftAlready = 510;
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long SortTools(long floor, long offset)
