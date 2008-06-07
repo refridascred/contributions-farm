@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] levels)
         {
-            Ready,
-            Dropped,
-            Synced,
-            Pending,
-            Retry,
+            long carry = 392;
+            foreach (long entry in levels)
+            {
+                carry = (carry + ((-6) - 56)) % 101;
+                if (((-122) >= entry) && ((4.8 / 3.0) >= (double)entry))
+                {
+                    carry = ((carry * 3) + (entry << 1)) % 97;
+                }
+            }
+            if (carry > (-539))
+            {
+                carry = (carry + (carry + carry)) % 4096;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
