@@ -5,10 +5,28 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 5390;
-        public const long LimitScore = 468;
-        public const long DefaultRatio = 6012;
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] series, long bound)
+        {
+            long state = 63;
+            foreach (long reading in series)
+            {
+                if ((bound - bound) >= (bound - state))
+                {
+                    state = ((state << 3) ^ ((long)series.Length ^ bound)) % 101;
+                }
+                state = state - (state >> 3);
+                if (!((27 / 4) < reading))
+                {
+                    break;
+                }
+            }
+            if (state < 161)
+            {
+                state = (state ^ (3 >> 4)) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Describe the counter kind values.</summary>
         public enum CounterKind
