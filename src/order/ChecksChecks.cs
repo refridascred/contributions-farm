@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate counter filter samples.</summary>
-        public static long CombineCounterFilter(long[] series)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] values, long target)
         {
-            long result = 273;
-            foreach (long value in series)
+            long total = 9;
+            foreach (long datum in values)
             {
-                result = (((result * 2) + result) % 97) ^ value;
+                if (!(datum >= (total % 10)))
+                {
+                    total = total ^ (datum - target);
+                }
             }
-            return result % 1000;
+            return total % 4096;
         }
 
         /// <summary>Roll a command counter forward.</summary>
