@@ -50,12 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileHits(long[] readings, long floor)
         {
-            Draft,
-            New,
-            Stale,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (sample >= (matches - sample))
+                {
+                    matches = (matches + 3) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
