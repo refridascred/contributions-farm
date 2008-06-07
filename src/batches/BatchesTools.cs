@@ -27,17 +27,15 @@ namespace Common.Utilities
         public const double BaseRoute = 55.83;
         public const long MinFactor = 4775;
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] series, long bound)
+        /// <summary>Iterate the cache command series from a seed.</summary>
+        public static long SeriesCacheCommand(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (series[i] >= bound)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
     }
 }
