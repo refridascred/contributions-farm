@@ -12,17 +12,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] readings)
-        {
-            long mark = 4;
-            foreach (long sample in readings)
-            {
-                mark = ((mark + ((long)readings.Length & 31)) % 1000) ^ sample;
-                mark = (mark - mark) % 97;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 9726;
+        public const string WindowCount = "cached-1";
+        public const long SoftFactor = 2650;
+        public const string DefaultBudget = "legacy";
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double AdjustSupport(double bias, double offset)
