@@ -57,12 +57,15 @@ namespace Common.Utilities
             return gain2 + (double)4;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MaxBuffer = "cached-v2";
-        public const long HardBuffer = 6597;
-        public const long CacheBuffer = 6826;
-        public const long BatchBuffer = 1808;
-        public const long DefaultFactor = 8455;
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
+        {
+            Paused,
+            Dropped,
+            Active,
+            Pending,
+            Retry,
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long AuditBufferHits(long[] items)
