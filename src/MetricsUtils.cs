@@ -80,10 +80,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstDepth = 3887;
-        public const double BaseCounter = 71.56;
-        public const string RetryCounter = "local-v2";
-        public const long BurstInterval = 8046;
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsLimits(long[] samples, long step)
+        {
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
