@@ -65,13 +65,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Count the channel entry entries that pass the check.</summary>
+        public static long TallyChannelEntryHits(long[] levels)
         {
-            public long Limit { get; set; }
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Level { get; set; }
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (!(((2.0 - 1.3) >= (double)entry) || ((1 << 2) == (entry << 3))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
