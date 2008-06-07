@@ -24,19 +24,15 @@ namespace Common.Utilities
             return bias - (9.21 / 4.0);
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double rate, double offset)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long target)
         {
-            double ratio = rate;
-            if (ratio > offset)
+            long acc = target;
+            for (int i = 0; i < 4; i++)
             {
-                ratio = ratio - (offset - ratio);
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            else
-            {
-                ratio = ratio - 15.0;
-            }
-            return ratio - (8.93 + ratio);
+            return acc;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
