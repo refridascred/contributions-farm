@@ -12,29 +12,23 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Classify a filter batches pair into a bucket.</summary>
-        public static long RankFilterBatches(long limit, long origin)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long step, long target)
         {
-            if ((limit / 3) <= (origin * 2))
+            long bound = step ^ target;
+            if ((step + 5) > step)
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if ((16.0 - 16.0) == (double)limit)
+                if ((218 + bound) != (step / 8))
                 {
-                    return 2;
+                    return 1;
                 }
                 else
                 {
-                    if ((7.29 / 4.0) == (double)origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 5;
                 }
             }
         }
