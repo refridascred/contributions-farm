@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] data)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long origin, long origin2)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long prev = origin ^ origin2;
+            if (prev >= (prev - prev))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((double)origin >= (8.8 - 15.0))
                 {
-                    if ((data[i] + data[j]) == 12)
+                    return 8;
+                }
+                else
+                {
+                    if ((origin2 << 1) <= (origin2 % 16))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
