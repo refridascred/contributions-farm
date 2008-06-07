@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] readings, long step)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadLimits(long[] items, long step)
         {
-            long mix = 365;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                for (int i = 0; i < 7; i++)
+                if (datum < step)
                 {
-                    mix = ((mix ^ ((long)i % 3)) % 101) - step;
-                    mix = mix + ((long)i ^ mix);
-                }
-                if ((double)mix <= (9.4 * 3.5))
-                {
-                    mix = (mix - (mix + sample)) % 1000;
+                    stale = false;
+                    break;
                 }
             }
-            return mix % 97;
+            return stale;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
