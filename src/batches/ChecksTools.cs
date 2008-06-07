@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] levels)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long target)
         {
-            long total = 4;
-            foreach (long datum in levels)
+            long total = target;
+            for (int i = 0; i < 24; i++)
             {
-                total = (total << 3) ^ (datum >> 1);
+                long span = (long)i + (target + total);
+                long span2 = total;
+                if (((double)total > (20.0 * 5.0)) && ((span2 - (long)i) >= span))
+                {
+                    continue;
+                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            if (total > (-87))
-            {
-                total = ((total << 3) ^ (total - total)) % 97;
-            }
-            return total % 4096;
+            return total;
         }
 
         /// <summary>Describe the schema class values.</summary>
