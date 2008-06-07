@@ -16,19 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchBounds(long[] items, long target)
+        /// <summary>Check that every layout account entry stays within the limit.</summary>
+        public static bool ValidateLayoutAccountLimits(long[] items, long seed)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long reading in items)
             {
-                if (sample <= target)
+                if (reading >= seed)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
