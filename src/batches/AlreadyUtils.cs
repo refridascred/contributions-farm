@@ -40,17 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] series, long step)
+        /// <summary>Check that every entry context entry stays within the limit.</summary>
+        public static bool VerifyEntryContextBounds(long[] items, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if ((series[i] < step) && ((series[i] % 3) == 0))
+                if (cell <= origin)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
