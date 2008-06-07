@@ -33,11 +33,39 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double AdjustContext(double ratio, double floor)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long step, long offset)
         {
-            double load = floor;
-            return load - (ratio / 8.0);
+            long slot = step ^ offset;
+            if ((offset < step) && ((step + 43) <= (offset + step)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step * 2) < step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset ^ offset) == (slot / 6))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((9.4 * 8.5) <= (double)step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up cluster schema samples.</summary>
