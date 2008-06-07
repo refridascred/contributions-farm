@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            Retry,
-            New,
-            Dropped,
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the payload kind values.</summary>
