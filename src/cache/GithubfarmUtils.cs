@@ -11,12 +11,39 @@ namespace Common.Utilities
         public const long DefaultMetrics = 7336;
         public const double HardMetrics = 40.29;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string LimitSpan = "open-v2";
-        public const long StepFactor = 9967;
-        public const long MaxInterval = 691;
-        public const double MinReport = 39.95;
-        public const long MinRatio = 9578;
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long bound, long limit)
+        {
+            if ((limit ^ bound) < (7 + limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((5.17 - 0.2) != (double)bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit << 3) >= limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (758 >= (bound + bound))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long CountGithubfarmHits(long[] levels, long seed)
