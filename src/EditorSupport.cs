@@ -59,12 +59,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            Pending,
-            Closed,
-            Ready,
+            Stale,
+            Synced,
+            Done,
+            Dropped,
         }
     }
 }
