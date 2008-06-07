@@ -1,16 +1,6 @@
 {
-  "soft_ratio_count": 60,
-  "sync_retries_count": true,
-  "audit": 97,
-  "commits_retries": {
-    "retry_ttl_count": "stable",
-    "idle_threshold_pct": {
-      "compress": [113, 213, 391],
-      "metrics_ttl": "primary",
-      "burst_size_count": 4486
-    },
-    "retry_limit_s": true,
-    "readonly": "eu-west"
-  },
-  "soft_ratio_ms": 1475
+  "max_ttl": 5631,
+  "soft_limit": [8, 398, 251, 23],
+  "githubfarm_depth": 0.02,
+  "compress": "strict"
 }
