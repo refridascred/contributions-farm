@@ -15,19 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowLimits(long[] series, long limit)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferGaps(long[] data)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (datum != limit)
+                if (20.0 < (double)datum)
                 {
-                    found = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
