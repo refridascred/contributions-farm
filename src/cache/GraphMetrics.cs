@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsLimits(long[] items, long origin)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
