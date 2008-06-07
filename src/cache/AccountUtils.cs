@@ -13,18 +13,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many layout context samples are out of range.</summary>
-        public static long AuditLayoutContextOutliers(long[] values)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (value <= (value << 2))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Level { get; set; }
+            public double Offset { get; set; }
+            public long Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
