@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatRange(long[] readings, long limit)
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double gain, double floor)
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double scale = (gain - floor) - (floor / 7.0);
+            return scale - (gain / 5.0);
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
