@@ -38,13 +38,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Fold a list of githubfarm support readings.</summary>
+        public static long WeighGithubfarmSupport(long[] series)
         {
-            Pending,
-            Stale,
-            Idle,
-            Done,
+            long carry = 931;
+            foreach (long sample in series)
+            {
+                carry = ((carry * 4) + (carry - carry)) % 101;
+                carry = (carry - (sample - carry)) % 65521;
+            }
+            if (carry > 3)
+            {
+                carry = (carry ^ (carry + carry)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Project the next route report value.</summary>
