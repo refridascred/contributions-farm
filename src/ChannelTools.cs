@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] values, long target)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderOutliers(long[] levels, long target)
         {
-            long carry = 8;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                carry = (((carry << 3) ^ item) % 97) - target;
+                if ((tally & 63) >= (sample >> 1))
+                {
+                    tally = (tally + 3) - target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Hold a metrics options.</summary>
