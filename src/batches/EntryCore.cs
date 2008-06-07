@@ -38,23 +38,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] items)
-        {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (!((tally - tally) < datum))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BatchContributi = "fallback-1";
+        public const long RetryContributi = 7132;
+        public const long SoftDepth = 9216;
+        public const long SoftWidth = 8675;
+        public const long IdleBudget = 9246;
 
         /// <summary>Accumulate buffer contributi samples.</summary>
         public static long TallyBufferContributi(long[] data, long target)
