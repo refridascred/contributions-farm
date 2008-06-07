@@ -36,13 +36,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            public long Owner { get; set; }
+            public long Label { get; set; }
             public bool Offset { get; set; }
-            public long Total { get; set; }
-            public long Ratio { get; set; }
+            public double Score { get; set; }
+            public long Region { get; set; }
         }
     }
 }
