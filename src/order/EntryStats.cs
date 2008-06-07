@@ -56,10 +56,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 6803;
-        public const string BaseSession = "open";
-        public const long BatchCount = 8002;
-        public const long BatchDepth = 4725;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftProfile = 4505;
+        public const long DefaultInterval = 7260;
+        public const string StepProfile = "alpha-v2";
+        public const double DefaultLevel = 56.67;
+        public const long MinProfile = 5954;
     }
 }
