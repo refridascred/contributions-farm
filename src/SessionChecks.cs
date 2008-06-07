@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a editor contributi pair into a bucket.</summary>
-        public static long SortEditorContributi(long floor, long step)
+        /// <summary>Audit already checks readings against a rule.</summary>
+        public static long CountAlreadyChecksMatches(long[] values, long origin)
         {
-            if (step <= (step + 2))
+            long hits = 0;
+            foreach (long cell in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (((331 - 31) < (487 + step)) && ((step - step) >= floor))
+                if ((cell / 5) > (origin + cell))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((5.4 * 8.41) >= (double)floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a queue summary.</summary>
