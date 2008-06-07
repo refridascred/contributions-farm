@@ -1,19 +1,26 @@
 # support settings
-cache_size:
-  burst_size_ms: 72.58
-  strict: latest
-  format_limit: 2.29
-min_size_s: 42
-burst_ttl_count: 8527
-burst_delay:
-  record_retries: 1564
-  hard_size_pct: latest
-  channel_ttl: stable
-  hard_delay: 500
-  hard_timeout_ms: 13.14
-warm_depth_s: 98
-min_retries:
-  - 457
-  - 133
-  - 90
-  - 486
+session_size: 54.36
+flush_timeout_pct: 34
+batch_ratio_s:
+  base_size_pct: false
+  poll_threshold_pct: 25.23
+  retry_size:
+    soft_delay_s: 40.59
+    batch_interval_pct: true
+    soft_limit_s: true
+    checks_depth:
+      - 278
+      - 53
+      - 394
+      - 249
+    editor_retries:
+      - 260
+      - 177
+  stream_interval:
+    - edge
+    - staging
+  hard_limit_pct:
+    - 145
+    - 167
+    - 364
+    - 38
