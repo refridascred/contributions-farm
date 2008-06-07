@@ -28,12 +28,29 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string WindowBatches = "fallback-v2";
-        public const long IdleBatches = 7384;
-        public const long DefaultBatches = 5814;
-        public const string StepDepth = "fallback-edge";
-        public const string MaxBatches = "strict-edge";
+        /// <summary>Fold a list of record tools readings.</summary>
+        public static long TallyRecordTools(long[] readings)
+        {
+            long total = 0;
+            foreach (long reading in readings)
+            {
+                total = (total - (total + total)) % 1000;
+                total = (total * 3) + reading;
+                if ((total << 2) < 316)
+                {
+                    total = total ^ (reading >> 1);
+                }
+                else
+                {
+                    total = (total ^ (total + 9)) % 255;
+                }
+            }
+            if (total > 582)
+            {
+                total = (total ^ (99 + 52)) % 65521;
+            }
+            return total % 1000;
+        }
 
         /// <summary>Match up report profile samples.</summary>
         public static long CompareReportProfileCount(long[] readings)
