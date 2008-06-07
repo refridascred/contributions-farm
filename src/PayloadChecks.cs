@@ -21,19 +21,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksBounds(long[] samples, long seed)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsGaps(long[] data)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (entry >= seed)
+                if (datum <= ((-11) ^ datum))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
