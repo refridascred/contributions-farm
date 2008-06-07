@@ -64,18 +64,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileOutliers(long[] items)
+        /// <summary>Derive the next metric payload value from a seed.</summary>
+        public static long StepMetricPayload(long offset)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long state = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if ((175 / 8) < cell)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    tally = tally + 3;
+                    state = ((state - (state % 16)) % 97) ^ (long)i2;
                 }
+                state = state - offset;
+                state = ((state * 4) + (long)i) % 101;
             }
-            return tally;
+            return state;
         }
     }
 }
