@@ -1,8 +1,12 @@
 {
-  "hard_threshold_pct": "local",
-  "soft_timeout_ms": "blue",
-  "enabled": "cached",
-  "cache_timeout_pct": 4.82,
-  "dry_run": ["primary", "cached"],
-  "support_size": true
+  "burst_interval_ms": [186, 101],
+  "enabled": [189, 144, 101],
+  "account_size": 83.71,
+  "batch_delay": {
+    "retry_ttl_pct": 1524,
+    "readonly": false,
+    "batch_retries_s": 45.66,
+    "cache_delay_pct": 77.43
+  },
+  "sync_interval": false
 }
