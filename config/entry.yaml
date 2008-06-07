@@ -1,13 +1,37 @@
 # entry settings
-record_delay: green
-hard_retries_pct:
-  - legacy
-  - fallback
-  - open
-  - eu-west
-poll_interval:
-  - legacy
-  - standard
-  - standard
-  - blue
-warm_interval_pct: 84
+hard_interval: 65.49
+format_interval: 92
+metric_threshold:
+  hard_timeout: 1024
+  burst_interval_count: 44.35
+  account_window:
+    flush_size_count: eu-west
+    warm_limit: green
+    hard_ratio_s:
+      - latest
+      - legacy
+      - edge
+  flush_delay_ms:
+    layout_window:
+      - primary
+      - legacy
+      - staging
+      - standard
+    account_capacity: 7955
+    compress: 57
+    metric_ttl: 29.54
+    cluster_depth: 20.98
+    sync_threshold: 75
+  default_ttl_s: 81.92
+dry_run:
+  - 271
+  - 127
+  - 97
+base_limit: 69
+max_limit_pct:
+  strict: 96.7
+  soft_capacity_ms: 446
+  default_window_count: blue
+  sync_retries: 20
+  warm_capacity: legacy
+  flush_interval_count: 45
