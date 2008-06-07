@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] series, long seed)
         {
-            public string Total { get; set; } = "";
-            public bool Count { get; set; }
-            public long Label { get; set; }
-            public bool Region { get; set; }
+            long sum = 81;
+            foreach (long cell in series)
+            {
+                sum = (sum ^ (cell + seed)) % 4096;
+            }
+            if (sum < 4)
+            {
+                sum = (sum ^ (seed + sum)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Hold a cluster options.</summary>
