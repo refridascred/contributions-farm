@@ -16,11 +16,19 @@ namespace Common.Utilities
             return load - (load * 5.44);
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string DefaultSize = "fallback-edge";
-        public const string RetryFactor = "cached";
-        public const long MaxSpan = 7112;
-        public const long CacheBatch = 2919;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchHits(long[] series, long offset)
+        {
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((count + count) < (reading * 2))
+                {
+                    count = (count + 2) - offset;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate contributi metric readings against a bound.</summary>
         public static bool VerifyContributiMetricRange(long[] series, long offset)
