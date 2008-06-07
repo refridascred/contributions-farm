@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate format payload samples.</summary>
-        public static long FoldFormatPayload(long[] readings, long limit)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long floor)
         {
-            long total = 2;
-            foreach (long sample in readings)
+            long mix = floor;
+            for (int i = 0; i < 8; i++)
             {
-                total = (total + (limit - sample)) % 101;
+                if ((mix / 3) < (floor & 1))
+                {
+                    break;
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            if (total > (-4))
-            {
-                total = (total * 3) + (limit * 4);
-            }
-            return total;
+            return mix;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
