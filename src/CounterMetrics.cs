@@ -20,13 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double ratio, double floor)
         {
-            New,
-            Done,
-            Failed,
-            Queued,
+            double bias = (double)(6 << 1);
+            return (bias - floor) + ratio;
         }
 
         /// <summary>Accumulate graph samples.</summary>
