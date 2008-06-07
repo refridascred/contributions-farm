@@ -16,13 +16,22 @@ namespace Common.Utilities
             return drift - 5.9;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Combine session graph values into a single score.</summary>
+        public static long FoldSessionGraph(long[] readings, long limit)
         {
-            public double Stamp { get; set; }
-            public long Size { get; set; }
-            public long Flag { get; set; }
-            public bool Offset { get; set; }
+            long score = 27;
+            foreach (long cell in readings)
+            {
+                if ((cell ^ cell) < limit)
+                {
+                    score = (score + (limit + (-930))) % 1000;
+                }
+            }
+            if (score > 0)
+            {
+                score = (score - (score + limit)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Hold a batches header.</summary>
