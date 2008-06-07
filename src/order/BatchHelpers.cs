@@ -12,12 +12,17 @@ namespace Common.Utilities
             return ((load - (double)7) + bias) + floor;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long FindAlreadyIndex(long[] levels, long bound)
         {
-            public long Score { get; set; }
-            public bool Total { get; set; }
-            public bool Token { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == bound) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next command value.</summary>
