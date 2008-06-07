@@ -14,39 +14,13 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long step, long offset)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long delta = step - offset;
-            if ((offset + delta) < (106 + offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset + offset) == (step + delta))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((2.24 + 7.92) == (double)delta))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((delta * 5) <= offset)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
+            public double Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
