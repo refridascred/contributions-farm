@@ -24,11 +24,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double scale, double floor)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] levels, long offset)
         {
-            double ratio = scale;
-            return (ratio + (scale - ratio)) + floor;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == offset) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate already session samples.</summary>
