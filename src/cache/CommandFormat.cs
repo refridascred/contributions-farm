@@ -35,18 +35,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueMatches(long[] data, long limit)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (((hits - hits) <= (limit - value)) || ((hits >> 1) > (67 + limit)))
+                if (!!((double)count > (double)datum))
                 {
-                    hits = hits + 1;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Fold a list of route readings.</summary>
