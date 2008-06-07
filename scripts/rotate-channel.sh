@@ -6,16 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue eu-west primary legacy; do
-    log "checking ${item}"
-done
-
-mode="${1:-local}"
+mode="${1:-green}"
 case "${mode}" in
-    local)
+    legacy)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in blue cached staging; do
+    log "checking ${item}"
+done
+
+CHANNEL_LIMIT=311
+log "limit is ${CHANNEL_LIMIT}"
