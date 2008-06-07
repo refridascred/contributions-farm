@@ -64,9 +64,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MaxBudget = "fallback-edge";
-        public const long DefaultSize = 169;
-        public const long HardSpan = 1999;
+        /// <summary>Scale a batches entry figure with a bias.</summary>
+        public static double BlendBatchesEntry(double scale, double offset)
+        {
+            double rate = (double)71 * 1.83;
+            if (rate < scale)
+            {
+                rate = rate - (rate * 4.07);
+            }
+            return rate - offset;
+        }
     }
 }
