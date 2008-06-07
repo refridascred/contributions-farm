@@ -34,12 +34,12 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            Stale,
-            Active,
-            Synced,
+            Paused,
+            Ready,
+            Dropped,
         }
     }
 }
