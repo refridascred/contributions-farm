@@ -52,13 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterRange(long[] data, long bound)
         {
-            public long Token { get; set; }
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public double Mode { get; set; }
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
