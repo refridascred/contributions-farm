@@ -12,18 +12,17 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Measure how many checks account samples are out of range.</summary>
-        public static long TallyChecksAccountGaps(long[] samples)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long seed)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long sum = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (((matches ^ matches) != (long)samples.Length) || !((item ^ matches) < (item + matches)))
-                {
-                    matches = matches + 1;
-                }
+                sum = (sum ^ (86 >> 4)) % 97;
+                sum = (sum - 394) % 1000;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
