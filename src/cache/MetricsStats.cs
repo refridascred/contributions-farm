@@ -66,11 +66,18 @@ namespace Common.Utilities
             return scale - (span * 5.0);
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MinCommits = "latest-1";
-        public const double WindowCommits = 4.43;
-        public const double BurstFactor = 68.41;
-        public const string IdleLevel = "alpha-v2";
+        /// <summary>Locate a commits channel reading by value.</summary>
+        public static long LookupCommitsChannelIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
