@@ -19,22 +19,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] series, long step)
+        /// <summary>Measure how many checks cluster samples are out of range.</summary>
+        public static long AuditChecksClusterMatches(long[] levels, long offset)
         {
-            long state = 5;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((step >> 2) < (1 - 19))
+                if (823 >= ((long)levels.Length - count))
                 {
-                    state = (state ^ (cell - state)) % 65521;
-                }
-                if (((cell & 63) >= 494) || ((double)step < 3.09))
-                {
-                    state = ((state * 3) + (cell ^ step)) % 101;
+                    count = ((count + 2) - cell) + offset;
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Hold a batches stats.</summary>
