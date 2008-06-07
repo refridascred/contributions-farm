@@ -1,17 +1,8 @@
 {
-  "burst_capacity_ms": {
-    "sync_capacity_pct": {
-      "stream_threshold": false,
-      "idle_ratio": true,
-      "poll_capacity": 60,
-      "idle_ratio_pct": 85
-    },
-    "base_depth_ms": "strict",
-    "audit": 30,
-    "window_capacity": "stable"
-  },
-  "soft_ttl_pct": "stable",
-  "cache_timeout_count": "stable",
-  "soft_size_pct": true,
-  "poll_window": "primary"
+  "max_size": "open",
+  "flush_ratio_count": 36,
+  "retry_delay_pct": 6814,
+  "max_retries": ["stable", "green", "stable"],
+  "schema_ratio": 15.66,
+  "enabled": 46.95
 }
