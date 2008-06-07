@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                total = ((total * 2) + limit) % 1000;
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    total = (total ^ total) ^ (long)i2;
-                }
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 3956;
+        public const long DefaultQueue = 8111;
+        public const long MaxQueue = 9145;
+        public const long BaseQueue = 9535;
 
         /// <summary>Hold a queue summary.</summary>
         public sealed class QueueSummary
