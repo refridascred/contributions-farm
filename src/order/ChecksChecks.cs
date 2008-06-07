@@ -32,12 +32,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenGaps(long[] values)
         {
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
-            public double Region { get; set; }
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (!(382 > (value & 1)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
