@@ -16,32 +16,17 @@ namespace Common.Utilities
             return drift + ratio;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long offset, long floor)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] levels, long limit)
         {
-            long lane = offset + floor;
-            if ((4.21 + 8.1) < (double)lane)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((lane << 1) == (offset * 5)) || ((floor ^ offset) < (lane >> 4)))
+                if ((levels[i] >= limit) && ((levels[i] % 5) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor ^ 1) < floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
