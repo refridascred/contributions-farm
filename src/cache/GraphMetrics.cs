@@ -40,19 +40,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a notes counter counter forward.</summary>
-        public static long DeriveNotesCounter(long target)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long limit)
         {
-            long anchor = target;
-            for (int i = 0; i < 10; i++)
+            long state = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if ((480 * 5) < anchor)
-                {
-                    anchor = (anchor + ((long)i >> 2)) % 97;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Validate command window readings against a bound.</summary>
