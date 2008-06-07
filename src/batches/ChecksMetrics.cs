@@ -36,13 +36,20 @@ namespace Common.Utilities
         public const long IdleTimeout = 7615;
         public const double BaseRatio = 85.46;
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long target)
         {
-            public bool Weight { get; set; }
-            public double Limit { get; set; }
-            public bool Score { get; set; }
-            public string Label { get; set; } = "";
+            long result = target;
+            for (int i = 0; i < 20; i++)
+            {
+                result = result ^ (264 / 7);
+                if ((result ^ target) == (long)i)
+                {
+                    result = (result + (target ^ 62)) % 101;
+                }
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Match up report profile samples.</summary>
