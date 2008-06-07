@@ -59,16 +59,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] readings, long bound)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] items, long limit)
         {
-            long score = 871;
-            foreach (long cell in readings)
+            long sum = 73;
+            foreach (long datum in items)
             {
-                score = ((score - (bound + 282)) % 1000) - cell;
-                score = (score - (bound % 3)) % 255;
+                if ((4.0 - 5.0) >= (double)limit)
+                {
+                    sum = (((sum << 3) ^ (limit << 1)) % 255) + datum;
+                }
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
