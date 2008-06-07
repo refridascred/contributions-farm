@@ -29,31 +29,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long origin, long target)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileMatches(long[] data, long limit)
         {
-            if ((double)origin != (1.7 / 6.0))
+            long tally = 0;
+            foreach (long datum in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (((origin + 7) > target) && ((3.0 / 8.0) > (double)origin))
+                if ((tally >> 2) < (limit - datum))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((8 > (origin - target)) && ((8.8 * 12.0) > (double)origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a queue stats.</summary>
