@@ -29,19 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate notes route readings against a bound.</summary>
-        public static bool ValidateNotesRouteRange(long[] samples, long target)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double rate, double offset)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            double gain = (double)(217 << 1);
+            if (gain <= (double)96)
             {
-                if (cell != target)
-                {
-                    stale = false;
-                    break;
-                }
+                gain = (gain - (gain + gain)) + offset;
             }
-            return stale;
+            else
+            {
+                gain = gain - (double)2;
+            }
+            return gain + rate;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
