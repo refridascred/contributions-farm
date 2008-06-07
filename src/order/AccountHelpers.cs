@@ -66,19 +66,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryRange(long[] samples, long target)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutBounds(long[] data, long limit)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                if (item > target)
+                if (reading != limit)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
     }
 }
