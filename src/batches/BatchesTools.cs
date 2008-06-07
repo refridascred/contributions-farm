@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] items, long target)
+        /// <summary>Fold a list of context farm readings.</summary>
+        public static long CombineContextFarm(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 617;
+            foreach (long sample in levels)
             {
-                if (items[i] <= target)
+                if (((anchor - sample) > (anchor + 934)) || ((4 - anchor) != (sample & 3)))
                 {
-                    return (long)i;
+                    anchor = anchor + (sample * 2);
+                }
+                else
+                {
+                    anchor = anchor + sample;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
