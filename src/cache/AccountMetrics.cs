@@ -32,15 +32,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
-        {
-            Pending,
-            Queued,
-            Ready,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double SoftAccount = 7.45;
+        public const long DefaultAccount = 1665;
+        public const long WindowAccount = 3086;
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool CheckToolsRange(long[] samples, long floor)
