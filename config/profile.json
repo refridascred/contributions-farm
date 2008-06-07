@@ -1,20 +1,6 @@
 {
-  "counter_capacity": {
-    "contributi_limit": {
-      "max_size_pct": false,
-      "persist": 1024,
-      "min_window": true,
-      "cache_threshold_ms": "eu-west"
-    },
-    "min_size_s": {
-      "buffer_capacity": 500,
-      "cache_ttl": "edge",
-      "order_delay": 5831,
-      "metric_window": "legacy"
-    },
-    "min_depth_count": [315, 193, 321, 355]
-  },
-  "cache_delay": 17,
-  "hard_retries_pct": 69.34,
-  "sync_threshold": "local"
+  "verbose": "primary",
+  "max_ratio": 7870,
+  "githubfarm_limit": false,
+  "poll_threshold_s": "stable"
 }
