@@ -12,18 +12,26 @@ namespace Common.Utilities
         public const long SoftInterval = 620;
         public const long HardInterval = 8892;
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricHits(long[] levels)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long anchor = -4;
+            foreach (long datum in levels)
             {
-                if (reading > (reading & 127))
+                if ((floor >> 4) == (anchor + floor))
                 {
-                    matches = matches + 3;
+                    anchor = (anchor ^ (anchor << 2)) % 101;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (anchor / 4)) % 97;
+                }
+                if ((((long)levels.Length + floor) > floor) || ((floor + 74) >= (datum - datum)))
+                {
+                    break;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
