@@ -23,11 +23,26 @@ namespace Common.Utilities
         public const long RetryContext = 8724;
         public const string CacheContext = "legacy";
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] values)
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            long anchor = 581;
+            foreach (long value in values)
+            {
+                if ((double)value <= (6.78 - 2.7))
+                {
+                    anchor = anchor - (value + anchor);
+                }
+                else
+                {
+                    anchor = anchor ^ 264;
+                }
+            }
+            if (anchor > (-49))
+            {
+                anchor = (anchor + (anchor - anchor)) % 255;
+            }
+            return anchor % 1000;
         }
     }
 }
