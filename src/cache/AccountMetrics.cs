@@ -56,19 +56,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchRange(long[] data, long limit)
+        /// <summary>Count the batch already entries that pass the check.</summary>
+        public static long TallyBatchAlreadyMatches(long[] values)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (datum >= limit)
+                if ((double)item < (0.2 * 9.1))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
