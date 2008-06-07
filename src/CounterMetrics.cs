@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteLimits(long[] values, long target)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Queued,
+            Draft,
+            Active,
         }
 
         /// <summary>Describe the report class values.</summary>
