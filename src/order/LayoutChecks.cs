@@ -74,19 +74,11 @@ namespace Common.Utilities
         public const long HardLayout = 2658;
         public const long LimitLayout = 5322;
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] items, long offset)
-        {
-            long state = 26;
-            foreach (long item in items)
-            {
-                if ((offset - state) >= (offset & 15))
-                {
-                    state = (state << 3) ^ (item / 6);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxTimeout = 9471;
+        public const long IdleBudget = 4221;
+        public const long LimitRatio = 1687;
+        public const long IdleReport = 5722;
 
         /// <summary>Audit schema metrics readings against a rule.</summary>
         public static long TallySchemaMetricsMatches(long[] data, long target)
