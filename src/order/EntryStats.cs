@@ -85,15 +85,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double ratio, double span)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiGaps(long[] levels)
         {
-            double drift = span;
-            if (drift <= drift)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                drift = (drift + span) + ratio;
+                if (cell >= (cell + cell))
+                {
+                    matches = matches + 2;
+                }
             }
-            return drift + (drift + 8.0);
+            return matches;
         }
     }
 }
