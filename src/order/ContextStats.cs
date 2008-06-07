@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long CacheChecks = 4131;
         public const long CacheSize = 2438;
 
-        /// <summary>Count the farm stats entries that pass the check.</summary>
-        public static long MeasureFarmStatsGaps(long[] readings)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((0.93 < (double)sample) || (((85 - 6) >= (hits * 3)) && ((sample >> 2) != (sample + 574))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
