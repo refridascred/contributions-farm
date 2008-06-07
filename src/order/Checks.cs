@@ -37,22 +37,16 @@ namespace Common.Utilities
         public const string CacheScore = "open-edge";
         public const long DefaultQueue = 3387;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] data)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long offset)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long mix = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)seen < 2.7)
-                {
-                    seen = (seen + 2) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = mix + mix;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Rank format input into a small class.</summary>
