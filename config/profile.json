@@ -1,8 +1,7 @@
 {
-  "verbose": 3,
-  "warm_size_count": 30,
-  "soft_limit_s": 5452,
-  "batch_window_count": 87.16,
-  "max_delay": "staging",
-  "flush_ratio": 60
+  "cache_size_s": "eu-west",
+  "idle_capacity_count": true,
+  "min_interval_count": true,
+  "flush_timeout_count": 226,
+  "already_capacity": 63.03
 }
