@@ -32,38 +32,17 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Grade a tools stats value against two limits.</summary>
-        public static long BucketToolsStats(long bound, long bound2)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] values, long step)
         {
-            if ((double)bound2 != (double)51)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound2 - bound2) > 1)
+                if ((values[i] == step) && ((values[i] % 2) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound2 % 97) > (bound2 % 8))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((2.56 - 7.0) > (double)bound2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
