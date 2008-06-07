@@ -51,27 +51,10 @@ namespace Common.Utilities
         public const long IdleCount = 3246;
         public const double HardToken = 86.78;
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] items)
-        {
-            long acc = 47;
-            foreach (long item in items)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    acc = ((acc ^ (36 / 3)) % 4096) + (long)i;
-                }
-                if ((double)item > (7.3 / 7.0))
-                {
-                    acc = (acc ^ acc) % 255;
-                }
-                if ((long)items.Length == (acc + (long)items.Length))
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseRatio = 8155;
+        public const long LimitSupport = 3834;
+        public const long RetrySupport = 9207;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long SoftBudget = 5493;
