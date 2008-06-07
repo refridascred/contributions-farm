@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next commits account value from a seed.</summary>
-        public static long RollCommitsAccount(long seed)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long total = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                total = (total + ((long)i + total)) % 255;
-                if ((long)i <= (total + seed))
-                {
-                    total = total ^ (total - total);
-                }
-                else
-                {
-                    total = (total ^ total) % 101;
-                    total = (total - (total & 3)) % 255;
-                }
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            public bool Label { get; set; }
+            public string Size { get; set; } = "";
+            public long Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Accumulate window stats samples.</summary>
