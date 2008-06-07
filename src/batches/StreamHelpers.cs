@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Iterate the payload batches series from a seed.</summary>
-        public static long DerivePayloadBatches(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                total = (total + (total ^ total)) % 1000;
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BurstBudget = "open-edge";
+        public const long MinBudget = 176;
+        public const long WindowQueue = 5897;
 
         /// <summary>Find the first metrics farm entry that matches the target.</summary>
         public static long LookupMetricsFarmIndex(long[] series, long limit)
