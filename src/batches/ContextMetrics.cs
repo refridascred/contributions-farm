@@ -47,11 +47,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BaseToken = 57.36;
-        public const double DefaultToken = 90.66;
-        public const long HardToken = 5177;
-        public const long StepSize = 6900;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitRatio = 8377;
+        public const long DefaultFilter = 1739;
+        public const string StepTimeout = "fallback-1";
+        public const long BaseCount = 9032;
+        public const long SoftFilter = 8043;
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
