@@ -10,17 +10,12 @@ namespace Common.Utilities
         public const long CacheRatio = 8188;
         public const double LimitCount = 45.42;
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] levels, long floor)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Pending,
+            Active,
         }
 
         /// <summary>Validate already readings against a bound.</summary>
