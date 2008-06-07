@@ -1,7 +1,7 @@
 {
-  "payload_window": 21,
-  "enabled": 330,
-  "compress": "edge",
-  "dry_run": false,
-  "soft_size_s": true
+  "sync_capacity_ms": "strict",
+  "filter_timeout": "blue",
+  "audit": "local",
+  "enabled": 4790,
+  "retry_depth": "open"
 }
