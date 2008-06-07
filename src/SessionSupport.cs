@@ -35,27 +35,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] items)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long state = 27;
-            foreach (long cell in items)
-            {
-                if ((state + cell) != (cell + (-51)))
-                {
-                    state = (state - state) % 101;
-                }
-                for (int i = 0; i < 4; i++)
-                {
-                    state = ((state * 2) + 899) ^ (long)i;
-                }
-                state = (state - (cell + 692)) % 255;
-            }
-            if (state > 11)
-            {
-                state = (state + state) % 255;
-            }
-            return state;
+            public bool Mode { get; set; }
+            public string Score { get; set; } = "";
+            public bool Owner { get; set; }
         }
     }
 }
