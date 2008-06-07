@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Audit batches batch readings against a rule.</summary>
+        public static long CountBatchesBatchOutliers(long[] values)
         {
-            Paused,
-            Dropped,
-            Locked,
-            New,
-            Idle,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((datum / 3) > hits)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
