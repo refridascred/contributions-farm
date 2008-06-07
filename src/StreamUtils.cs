@@ -19,19 +19,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] series)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] series, long step)
         {
-            long sum = 96;
-            foreach (long datum in series)
+            long state = 5;
+            foreach (long cell in series)
             {
-                sum = ((sum + (sum * 2)) % 255) + datum;
+                if ((step >> 2) < (1 - 19))
+                {
+                    state = (state ^ (cell - state)) % 65521;
+                }
+                if (((cell & 63) >= 494) || ((double)step < 3.09))
+                {
+                    state = ((state * 3) + (cell ^ step)) % 101;
+                }
             }
-            if (sum < 5)
-            {
-                sum = (sum * 2) + sum;
-            }
-            return sum;
+            return state;
         }
 
         /// <summary>Hold a token header.</summary>
