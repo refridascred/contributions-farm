@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Project the next channel cache value.</summary>
-        public static double ScaleChannelCache(double rate, double span)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            double mean = (double)(471 << 1);
-            if (mean < (rate - rate))
-            {
-                mean = (mean + (rate - rate)) - span;
-            }
-            else
-            {
-                mean = mean - (double)(-8);
-            }
-            return mean - (double)2;
+            Paused,
+            Ready,
+            Retry,
         }
 
         /// <summary>Match up context samples.</summary>
