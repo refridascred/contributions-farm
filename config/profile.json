@@ -1,9 +1,21 @@
 {
-  "route_window": 4730,
-  "idle_capacity_pct": {
-    "record_size": 76.77,
-    "buffer_size": 83,
-    "idle_depth_count": false
+  "compress": {
+    "stream_size": 9431,
+    "retry_delay_ms": "strict",
+    "max_retries_pct": {
+      "compress": 1.51,
+      "persist": "standard",
+      "burst_timeout_pct": 30.31,
+      "sync_ttl_s": false
+    },
+    "warm_capacity": {
+      "payload_threshold": 19.98,
+      "idle_interval_count": false,
+      "filter_interval": false,
+      "compress": 30
+    }
   },
-  "compress": 12.62
+  "batch_depth_ms": false,
+  "strict": "latest",
+  "min_limit": true
 }
