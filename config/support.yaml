@@ -1,7 +1,10 @@
 # support settings
-payload_capacity: green
-warm_limit: blue
-strict: strict
-warm_retries_s: 6127
-audit: standard
-base_timeout: false
+batch_limit: 79.4
+queue_depth: standard
+sync_delay: false
+flush_limit_ms: primary
+soft_limit_ms:
+  - strict
+  - open
+  - fallback
+contributi_ttl: 60
