@@ -49,11 +49,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string HardNotes = "strict-edge";
-        public const long HardRatio = 6260;
-        public const double BaseNotes = 10.47;
-        public const long RetryFactor = 2178;
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
+        {
+            public long Total { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Audit schema metrics readings against a rule.</summary>
         public static long TallySchemaMetricsMatches(long[] data, long target)
