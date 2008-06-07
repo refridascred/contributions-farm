@@ -17,20 +17,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long step)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long anchor = step;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((8.8 / 5.0) <= (double)step)
-                {
-                    anchor = ((anchor << 3) ^ (anchor - anchor)) % 97;
-                    continue;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            Ready,
+            Synced,
+            Failed,
+            Idle,
+            Paused,
         }
 
         /// <summary>Hold a format record.</summary>
