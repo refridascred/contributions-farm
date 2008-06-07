@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] values)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsGaps(long[] levels, long bound)
         {
-            long carry = 544;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                carry = ((carry ^ (carry % 16)) % 4096) ^ value;
+                if (!((entry - seen) <= (seen >> 2)) || ((bound < (entry + bound)) || (9.0 >= (double)bound)))
+                {
+                    seen = seen + 1;
+                }
             }
-            if (carry > 23)
-            {
-                carry = ((carry * 3) + (carry + carry)) % 65521;
-            }
-            return carry % 97;
+            return seen;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
