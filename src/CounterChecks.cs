@@ -79,10 +79,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftBudget = 5493;
-        public const long RetryBudget = 3391;
-        public const string IdleCommand = "open-edge";
-        public const long BurstCommand = 875;
+        /// <summary>Audit cluster channel readings against a rule.</summary>
+        public static long TallyClusterChannelGaps(long[] samples)
+        {
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (cell <= (cell + 7))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
