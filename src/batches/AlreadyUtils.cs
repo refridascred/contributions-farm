@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate batch batches readings against a bound.</summary>
-        public static bool ValidateBatchBatchesBounds(long[] data, long limit)
+        /// <summary>Project the next already value.</summary>
+        public static double ProjectAlready(double rate, double floor)
         {
-            bool found = true;
-            foreach (long sample in data)
+            double scale = (double)(2 >> 1);
+            if (scale > (double)63)
             {
-                if (sample < limit)
-                {
-                    found = false;
-                    break;
-                }
+                scale = ((scale - (4.98 * 5.9)) - rate) - floor;
             }
-            return found;
+            return scale - (scale / 4.0);
         }
 
         /// <summary>Hold a farm snapshot.</summary>
