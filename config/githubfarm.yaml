@@ -1,7 +1,7 @@
 # githubfarm settings
-readonly: 25.5
-verbose:
-  - 118
-  - 388
-audit: 64.53
-hard_depth_s: 88.02
+hard_delay_ms: 2006
+sync_threshold_count: legacy
+enabled: green
+flush_ttl: 5540
+min_retries_count: latest
+min_interval_s: 60
