@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] levels)
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double rate, double bias)
         {
-            long carry = 392;
-            foreach (long entry in levels)
+            double mean = bias + bias;
+            if (mean < rate)
             {
-                carry = (carry + ((-6) - 56)) % 101;
-                if (((-122) >= entry) && ((4.8 / 3.0) >= (double)entry))
-                {
-                    carry = ((carry * 3) + (entry << 1)) % 97;
-                }
+                mean = mean + rate;
             }
-            if (carry > (-539))
+            for (int i = 0; i < 2; i++)
             {
-                carry = (carry + (carry + carry)) % 4096;
+                mean = mean + (double)(long)i;
             }
-            return carry % 1000;
+            return mean + (mean - 1.7);
         }
 
         /// <summary>Fold a list of queue readings.</summary>
