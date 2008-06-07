@@ -45,13 +45,10 @@ namespace Common.Utilities
             return scale - (double)93;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
-        {
-            Stale,
-            Pending,
-            Paused,
-            Locked,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstDepth = 3887;
+        public const double BaseCounter = 71.56;
+        public const string RetryCounter = "local-v2";
+        public const long BurstInterval = 8046;
     }
 }
