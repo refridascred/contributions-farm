@@ -28,21 +28,17 @@ namespace Common.Utilities
             return mean - (mean / 6.0);
         }
 
-        /// <summary>Compare every pair of notes session readings.</summary>
-        public static long MatchNotesSessionCount(long[] readings)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] values, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (values[i] >= seed)
                 {
-                    if ((readings[i] ^ readings[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Blend two metric measurements.</summary>
