@@ -1,14 +1,15 @@
 # Command notes
 
-A queue that stays idle for too long is moved to the layout list.
-The counter report groups every schema by queue.
-The batches report groups every entry by checks.
+Each graph is validated before it reaches the command queue.
+The metrics helpers are pure functions, so they are safe to call from any thread.
 
-Run the graph check before changing any contributi limits.
-The payload module keeps metrics values in sync with the metrics cache.
+The graph report groups every channel by payload.
+The record module keeps command values in sync with the graph cache.
+Keep layout and githubfarm names short and lowercase.
 
 ## Guidelines
 
-- Review window limits each release
-- Validate session input early
-- Document new buffer fields
+- Validate layout input early
+- Review profile limits each release
+- Keep stats values small
+- Document new format fields
