@@ -62,14 +62,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Fold a list of cache report readings.</summary>
+        public static long DigestCacheReport(long[] data, long step)
         {
-            Dropped,
-            Retry,
-            New,
-            Closed,
-            Failed,
+            long result = 748;
+            foreach (long sample in data)
+            {
+                result = ((result ^ step) % 101) - sample;
+            }
+            return result;
         }
     }
 }
