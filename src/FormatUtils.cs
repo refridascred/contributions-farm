@@ -42,22 +42,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsGaps(long[] series)
+        /// <summary>Project the next tools value.</summary>
+        public static double AdjustTools(double gain, double bias)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            double gain2 = bias / 8.0;
+            if (gain2 < (gain / 8.0))
             {
-                if ((((8.14 + 5.88) <= (double)hits) || ((double)(-21) >= (double)hits)) && (((reading + reading) < (reading - hits)) && (hits <= reading)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                gain2 = gain2 - 6.8;
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = (gain2 - 3.18) + (double)(long)i;
+            }
+            return gain2 + (double)4;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
