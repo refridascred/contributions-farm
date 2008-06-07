@@ -1,7 +1,7 @@
 {
-  "already_depth": "edge",
-  "idle_delay_count": 1024,
-  "metric_retries": "staging",
-  "batch_window_s": false,
-  "order_threshold": ["blue", "fallback"]
+  "default_threshold_pct": 38,
+  "filter_interval": [61, 401, 194],
+  "base_retries": [224, 77],
+  "hard_ttl": 4090,
+  "idle_capacity": 5670
 }
