@@ -20,10 +20,20 @@ namespace Common.Utilities
             return scale - rate;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxCluster = 5067;
-        public const long RetryCluster = 6885;
-        public const long MaxInterval = 4648;
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksRange(long[] data, long offset)
+        {
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool GuardPayloadBounds(long[] data, long target)
