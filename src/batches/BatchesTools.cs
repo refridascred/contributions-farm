@@ -33,23 +33,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double AdjustAlready(double bias, double span)
+        /// <summary>Project the next route batches value.</summary>
+        public static double ScaleRouteBatches(double gain, double floor)
         {
-            double scale = 6.07;
-            if (scale >= 3.48)
+            double ratio = (double)79 / 4.0;
+            if (ratio >= (0.24 / 5.0))
             {
-                scale = (scale + (double)856) - span;
+                ratio = ((ratio - 2.1) - gain) - floor;
             }
-            else
-            {
-                scale = scale + bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale + (bias * 6.0);
+            return ratio + (ratio / 8.0);
         }
     }
 }
