@@ -51,18 +51,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] data, long seed)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((item - 95) == (item ^ item))
-                {
-                    count = (count + 1) - seed;
-                }
-            }
-            return count;
+            Idle,
+            Ready,
+            Failed,
         }
 
         /// <summary>Count the channel entry entries that pass the check.</summary>
