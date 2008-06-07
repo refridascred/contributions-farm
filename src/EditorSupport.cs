@@ -80,17 +80,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first report schema entry that matches the target.</summary>
-        public static long LookupReportSchemaIndex(long[] data, long limit)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < limit) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public bool Size { get; set; }
+            public long Label { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
