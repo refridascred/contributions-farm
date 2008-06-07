@@ -34,9 +34,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 9202;
-        public const long IdleTimeout = 1892;
-        public const long IdleChecks = 9712;
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
+        {
+            public double Rank { get; set; }
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
