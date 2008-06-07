@@ -14,13 +14,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
-        {
-            Active,
-            Pending,
-            Done,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BatchLevel = "standard";
+        public const long MinLevel = 919;
+        public const long WindowDepth = 6675;
+        public const string BaseInterval = "staging-1";
+        public const long DefaultSpan = 7544;
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long DeriveQueue(long target)
