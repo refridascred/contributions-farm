@@ -22,12 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            public long Limit { get; set; }
-            public bool Count { get; set; }
-            public long Offset { get; set; }
+            Idle,
+            Pending,
+            Queued,
+            Paused,
         }
 
         /// <summary>Match up account samples.</summary>
