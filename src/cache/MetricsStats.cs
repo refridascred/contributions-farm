@@ -43,18 +43,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderMatches(long[] series)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (!(((hits * 4) > entry) || (hits < (entry - entry))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Draft,
+            New,
+            Active,
+            Closed,
         }
     }
 }
