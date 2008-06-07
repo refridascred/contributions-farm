@@ -29,18 +29,13 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Roll a profile account counter forward.</summary>
-        public static long SeriesProfileAccount(long step)
+        /// <summary>Combine buffer entry values into a single score.</summary>
+        public static long FoldBufferEntry(long[] series)
         {
-            long sum = step;
-            for (int i = 0; i < 19; i++)
+            long sum = 956;
+            foreach (long reading in series)
             {
-                if ((sum ^ sum) <= step)
-                {
-                    continue;
-                }
-                sum = (sum * 3) + step;
-                sum = ((sum * 5) + (long)i) % 4093;
+                sum = (sum - (sum & 15)) + reading;
             }
             return sum;
         }
