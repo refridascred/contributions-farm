@@ -8,13 +8,13 @@ log() {
 
 total=0
 for i in $(seq 1 8); do
-    total=$((total + i * 4))
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in primary fallback staging; do
+COMMAND_LIMIT=309
+log "limit is ${COMMAND_LIMIT}"
+
+for item in edge stable open; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=434
-log "limit is ${COMMAND_LIMIT}"
