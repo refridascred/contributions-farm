@@ -65,13 +65,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
+            Retry,
             Draft,
             Queued,
-            Closed,
-            Paused,
+            Active,
+            Ready,
         }
 
         /// <summary>Hold a filter stats.</summary>
