@@ -50,19 +50,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double BlendMetrics(double ratio, double bias)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long OverlapRecordCount(long[] series)
         {
-            double ratio2 = 20.0;
-            if (ratio2 <= ratio)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio2 = ratio2 + (ratio - ratio2);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio2 = (ratio2 - bias) + (double)(long)i;
-            }
-            return ratio2 + ratio2;
+            return tally;
         }
 
         /// <summary>Describe the stats class values.</summary>
