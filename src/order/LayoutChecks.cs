@@ -47,13 +47,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] samples, long seed)
         {
-            public long Total { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < seed) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit schema metrics readings against a rule.</summary>
