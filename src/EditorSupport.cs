@@ -37,11 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchInterval = 8142;
-        public const string SoftBuffer = "staging-v2";
-        public const long IdleBudget = 3749;
-        public const string MaxSize = "alpha-edge";
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
+        {
+            Pending,
+            Retry,
+            Locked,
+            Closed,
+            Draft,
+        }
 
         /// <summary>Hold a stats stats.</summary>
         public sealed class StatsStats
