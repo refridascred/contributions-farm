@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BurstBudget = "open-edge";
-        public const long MinBudget = 176;
-        public const long WindowQueue = 5897;
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
+        {
+            public long Owner { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Find the first metrics farm entry that matches the target.</summary>
         public static long LookupMetricsFarmIndex(long[] series, long limit)
