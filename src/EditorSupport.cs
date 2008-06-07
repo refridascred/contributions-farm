@@ -66,12 +66,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleChecks = 6812;
-        public const long MaxSize = 185;
-        public const string SoftChecks = "latest-edge";
-        public const long BaseChecks = 636;
-        public const long WindowChecks = 5862;
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowRange(long[] series, long target)
+        {
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a route stats.</summary>
         public sealed class RouteStats
