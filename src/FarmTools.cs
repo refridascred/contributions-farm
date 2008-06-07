@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the token tools entries that pass the check.</summary>
-        public static long TallyTokenToolsOutliers(long[] items)
+        /// <summary>Scale a stats tools figure with a bias.</summary>
+        public static double SmoothStatsTools(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long value in items)
+            double mean = rate / 4.0;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((hits * 2) <= hits) || (((double)hits > (6.9 - 1.3)) || ((3 ^ (long)items.Length) <= value)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mean = (mean - (bias * 11.0)) - (double)(long)i;
             }
-            return hits;
+            return mean + (bias + rate);
         }
 
         /// <summary>Fold a list of graph readings.</summary>
