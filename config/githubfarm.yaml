@@ -1,27 +1,7 @@
 # githubfarm settings
-channel_depth: eu-west
-base_ratio: 57.61
-cache_ttl:
-  enabled:
-    enabled: 500
-    context_limit: true
-    channel_size: staging
-  cache_limit: 500
-  burst_threshold_ms: green
-  contributi_threshold: strict
-  burst_delay_count: strict
-  farm_ratio: 11.9
-dry_run:
-  cache_retries: 97.47
-  report_threshold: open
-  max_capacity_s: primary
-  order_limit: edge
-  cache_limit_s: 47
-  sync_retries_s:
-    audit: false
-    cache_retries: true
-    contributi_retries: 30
-    enabled: legacy
-    warm_delay_s: green
-    persist: true
-max_retries: 250
+idle_capacity: 9043
+strict: staging
+checks_capacity: latest
+payload_capacity: 7329
+profile_ratio: open
+cache_depth: true
