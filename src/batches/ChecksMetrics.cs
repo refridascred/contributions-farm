@@ -45,19 +45,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Audit githubfarm context readings against a rule.</summary>
-        public static long TallyGithubfarmContextGaps(long[] levels, long origin)
-        {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (!!((origin ^ origin) >= origin))
-                {
-                    matches = (matches + 2) - reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BatchFormat = "legacy";
+        public const long BatchScore = 686;
+        public const long WindowFormat = 8720;
+        public const string SoftInterval = "strict-v2";
 
         /// <summary>Fold a list of account readings.</summary>
         public static long WeighAccount(long[] levels)
