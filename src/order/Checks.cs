@@ -56,9 +56,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheAlready = 2096;
-        public const string IdleAlready = "staging";
-        public const string SoftScore = "local-edge";
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
+        {
+            public double Label { get; set; }
+            public string Score { get; set; } = "";
+        }
     }
 }
