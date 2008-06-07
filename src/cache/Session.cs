@@ -22,19 +22,19 @@ namespace Common.Utilities
         public const long MaxSpan = 7112;
         public const long CacheBatch = 2919;
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double SmoothFilter(double bias, double bias2)
+        /// <summary>Validate contributi metric readings against a bound.</summary>
+        public static bool VerifyContributiMetricRange(long[] series, long offset)
         {
-            double mean = bias;
-            if (mean < bias2)
+            bool found = true;
+            foreach (long cell in series)
             {
-                mean = mean - (bias2 - 2.08);
+                if (cell != offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - (mean + mean);
+            return found;
         }
 
         /// <summary>Project the next graph value.</summary>
