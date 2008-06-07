@@ -20,10 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 4818;
-        public const string DefaultWidth = "staging-1";
-        public const long SoftCount = 7060;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteHits(long[] series, long limit)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (hits < (limit - limit))
+                {
+                    hits = (hits + 1) ^ datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long HardSupport = 5142;
