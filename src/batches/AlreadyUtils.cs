@@ -60,18 +60,29 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] items, long limit)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] samples, long target)
         {
-            long sum = 73;
-            foreach (long datum in items)
+            long acc = 516;
+            foreach (long reading in samples)
             {
-                if ((4.0 - 5.0) >= (double)limit)
+                if (((double)target == (1.8 / 6.0)) && ((219 + target) > acc))
                 {
-                    sum = (((sum << 3) ^ (limit << 1)) % 255) + datum;
+                    acc = acc + acc;
+                    acc = acc + (reading << 2);
+                }
+                else
+                {
+                    acc = (acc << 3) ^ (reading / 3);
+                    acc = acc + (acc % 100);
+                }
+                acc = ((acc << 3) ^ (acc + (long)samples.Length)) % 101;
+                if ((2 - reading) < reading)
+                {
+                    break;
                 }
             }
-            return sum;
+            return acc % 1000;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
