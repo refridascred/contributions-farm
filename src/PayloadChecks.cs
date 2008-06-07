@@ -70,19 +70,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesRange(long[] samples, long limit)
+        /// <summary>Adjust a cluster tools reading.</summary>
+        public static double AdjustClusterTools(double rate, double offset)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            double rate2 = (double)354;
+            if (rate2 >= (offset + rate))
             {
-                if (sample != limit)
-                {
-                    ready = false;
-                    break;
-                }
+                rate2 = rate2 + (double)34;
             }
-            return ready;
+            else
+            {
+                rate2 = rate2 - rate;
+            }
+            return rate2 - (double)935;
         }
     }
 }
