@@ -15,21 +15,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] samples)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                result = (result * 3) + (result + seed);
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    if ((samples[i] + samples[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (((result << 3) ^ (seed % 8)) % 4096) ^ (long)i2;
                 }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Hold a farm options.</summary>
