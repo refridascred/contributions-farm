@@ -37,17 +37,13 @@ namespace Common.Utilities
         public const long LimitOrder = 2916;
         public const string HardScore = "latest-edge";
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] data, long offset)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Locked,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Adjust a channel reading.</summary>
