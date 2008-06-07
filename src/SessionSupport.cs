@@ -20,14 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Match up buffer samples.</summary>
+        public static long MatchBufferCount(long[] samples)
         {
-            Ready,
-            Synced,
-            Failed,
-            Idle,
-            Paused,
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
