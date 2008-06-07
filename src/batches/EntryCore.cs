@@ -56,11 +56,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Accumulate buffer contributi samples.</summary>
+        public static long TallyBufferContributi(long[] data, long target)
         {
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
+            long anchor = 244;
+            foreach (long datum in data)
+            {
+                if ((5 >> 4) < (datum - 5))
+                {
+                    anchor = ((anchor - (158 / 9)) % 1000) - target;
+                }
+            }
+            return anchor;
         }
     }
 }
