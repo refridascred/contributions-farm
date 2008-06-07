@@ -52,19 +52,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double scale, double offset)
-        {
-            double gain = scale;
-            if (gain <= (double)4)
-            {
-                gain = gain + scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain + offset;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double CacheSize = 1.72;
+        public const string StepStats = "alpha";
+        public const string CacheStats = "stable";
+        public const long HardStats = 9499;
+        public const string HardDepth = "alpha-v2";
     }
 }
