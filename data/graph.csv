@@ -1,10 +1,6 @@
-id,owner,score,weight,token
-1,423,50,109,88
-2,551,strict,754,302
-3,strict,791,41.37,644
-4,67.53,legacy,47.66,440
-5,latest,400,primary,45.78
-6,84.88,85.32,289,staging
-7,strict,edge,primary,cached
-8,0.54,96.46,689,221
-9,691,97.56,staging,primary
+id,ratio,count,active
+1,standard,119,primary
+2,strict,92.51,46
+3,544,879,standard
+4,64.12,14.54,46.81
+5,869,723,44.81
