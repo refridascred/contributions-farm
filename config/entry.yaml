@@ -1,7 +1,17 @@
 # entry settings
-cache_interval_s: latest
-poll_limit_s: 60.97
-base_threshold_s: primary
-enabled: 100
-cache_depth_s: open
-filter_ratio: 3373
+max_interval_count:
+  entry_timeout: fallback
+  compress: false
+  max_limit_ms: 7767
+default_capacity_pct: 60.77
+enabled:
+  flush_capacity_s:
+    - 227
+    - 496
+  command_ttl:
+    cache_delay: legacy
+    audit: open
+    burst_timeout_count: 60
+    persist: green
+  poll_threshold_pct: true
+  sync_timeout_pct: 87.24
