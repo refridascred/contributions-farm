@@ -1,5 +1,7 @@
 {
-  "strict": 29.43,
-  "warm_ttl": "standard",
-  "warm_window_pct": 5383
+  "base_limit_pct": "standard",
+  "schema_window": 2.56,
+  "cache_window_ms": 521,
+  "soft_size_count": 76.0,
+  "githubfarm_ratio": "stable"
 }
