@@ -19,23 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit account tools readings against a rule.</summary>
-        public static long CountAccountToolsMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if (!((count << 1) > entry) || ((9 <= (count + entry)) && (count <= ((long)items.Length ^ 29))))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string SoftRatio = "stable-edge";
+        public const string BurstBuffer = "stable";
+        public const double BatchBuffer = 10.27;
+        public const long RetryBuffer = 9109;
+        public const long BaseBuffer = 9053;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long IdleSpan = 5934;
