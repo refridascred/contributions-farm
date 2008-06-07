@@ -32,11 +32,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Project the next notes value.</summary>
+        public static double ScaleNotes(double weight, double offset)
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
+            double bias = 20.0 / 2.0;
+            if (bias > (4.0 / 4.0))
+            {
+                bias = (bias - bias) - offset;
+            }
+            return bias - (weight - bias);
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
