@@ -1,5 +1,5 @@
 {
-  "default_limit": 250,
-  "token_interval": false,
-  "persist": 60
+  "account_interval": 92.04,
+  "max_ratio_ms": [41, 256, 116],
+  "idle_delay": "edge"
 }
