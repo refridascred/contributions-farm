@@ -39,11 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxFactor = 3197;
-        public const long LimitWidth = 1484;
-        public const string WindowCounter = "cached-1";
-        public const double BaseSize = 39.88;
-        public const string BurstWidth = "latest-edge";
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                score = (score * 5) + (limit / 2);
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
+        }
     }
 }
