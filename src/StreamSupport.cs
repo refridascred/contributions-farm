@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a layout checks pair into a bucket.</summary>
-        public static long SortLayoutChecks(long seed, long bound)
-        {
-            if ((bound + bound) != (bound + 65))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed + seed) >= bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed ^ bound) < (bound * 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (bound > (bound ^ bound))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseScore = 9651;
+        public const string WindowScore = "alpha";
+        public const double RetryContext = 36.81;
+        public const long BaseContext = 334;
+        public const string CacheContext = "latest-1";
 
         /// <summary>Blend two command route measurements.</summary>
         public static double SmoothCommandRoute(double ratio, double span)
