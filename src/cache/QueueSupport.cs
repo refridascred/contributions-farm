@@ -48,12 +48,22 @@ namespace Common.Utilities
             return drift + (drift / 6.0);
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Count the buffer notes entries that pass the check.</summary>
+        public static long CountBufferNotesGaps(long[] data)
         {
-            public string Mode { get; set; } = "";
-            public long Total { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((value - matches) > (value / 3))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
