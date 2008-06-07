@@ -23,11 +23,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BatchGithubfarm = 37.29;
-        public const long WindowGithubfarm = 4645;
-        public const long HardInterval = 8176;
-        public const long CacheGithubfarm = 9016;
+        /// <summary>Blend two context schema measurements.</summary>
+        public static double BlendContextSchema(double bias, double floor)
+        {
+            double scale = (double)(560 + (-5));
+            if (scale <= floor)
+            {
+                scale = scale + (floor * 5.78);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + (0.5 * 2.7)) + (double)(long)i;
+            }
+            return scale + (bias * 9.2);
+        }
 
         /// <summary>Validate editor route readings against a bound.</summary>
         public static bool ValidateEditorRouteBounds(long[] items, long offset)
