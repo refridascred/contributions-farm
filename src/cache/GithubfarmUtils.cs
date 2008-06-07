@@ -26,32 +26,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Classify a record tools pair into a bucket.</summary>
-        public static long RankRecordTools(long bound, long target)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long next = bound + target;
-            if ((target % 100) == (target - target))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target & 63) <= (22 + target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((bound + 85) < (next ^ next)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Closed,
+            Idle,
+            Pending,
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
