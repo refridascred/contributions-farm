@@ -1,10 +1,6 @@
-id,region,level
-1,321,88
-2,157,81.69
-3,edge,staging
-4,primary,199
-5,55.37,104
-6,stable,53
-7,96,standard
-8,410,513
-9,354,892
+id,level,label
+1,0.17,cached
+2,92.84,968
+3,fallback,843
+4,fallback,primary
+5,64.02,754
