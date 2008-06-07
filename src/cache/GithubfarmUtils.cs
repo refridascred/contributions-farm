@@ -22,22 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of batch buffer readings.</summary>
-        public static long PairBatchBufferCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string LimitSpan = "open-v2";
+        public const long StepFactor = 9967;
+        public const long MaxInterval = 691;
+        public const double MinReport = 39.95;
+        public const long MinRatio = 9578;
 
         /// <summary>Count buffer commits pairs that satisfy a relation.</summary>
         public static long OverlapBufferCommitsCount(long[] levels)
