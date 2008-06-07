@@ -61,11 +61,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long origin)
         {
-            public string Mode { get; set; } = "";
-            public bool Label { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                if (!((67 * 5) >= (acc + (-561))))
+                {
+                    acc = (acc - origin) % 1000;
+                }
+                acc = (acc * 5) + (acc + (long)i);
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
