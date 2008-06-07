@@ -31,11 +31,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 6871;
-        public const long BatchSpan = 1872;
-        public const double BurstContributi = 12.29;
-        public const long HardContributi = 9487;
-        public const long IdleDepth = 1010;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 7260;
+        public const long CacheDepth = 3007;
+        public const long BaseCommits = 7922;
     }
 }
