@@ -1,6 +1,17 @@
 {
-  "max_ttl": 5631,
-  "soft_limit": [8, 398, 251, 23],
-  "githubfarm_depth": 0.02,
-  "compress": "strict"
+  "poll_ttl_ms": 30.73,
+  "sync_interval_pct": "cached",
+  "strict": 60.0,
+  "compress": 60,
+  "verbose": [307, 26, 341],
+  "checks_window": {
+    "poll_limit": 250,
+    "cache_capacity": {
+      "min_retries_ms": 28.48,
+      "context_ratio": true,
+      "support_capacity": "standard"
+    },
+    "idle_depth_pct": false,
+    "burst_size": false
+  }
 }
