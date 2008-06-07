@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] data, long floor)
+        /// <summary>Scale a metrics graph figure with a bias.</summary>
+        public static double ProjectMetricsGraph(double weight, double bias)
         {
-            long mix = 3;
-            foreach (long sample in data)
+            double bias2 = bias - (weight - 16.0);
+            if (bias2 <= (double)870)
             {
-                if (floor >= (floor << 3))
-                {
-                    mix = ((mix << 2) ^ sample) % 65521;
-                }
+                bias2 = bias2 + bias;
             }
-            if (mix > (-66))
+            else
             {
-                mix = (mix * 3) + mix;
+                bias2 = bias2 + (double)82;
             }
-            return mix;
+            return bias2 - (17.0 / 6.0);
         }
 
         /// <summary>Combine queue values into a single score.</summary>
