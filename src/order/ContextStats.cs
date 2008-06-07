@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of context entry entries.</summary>
-        public static long ScoreContextEntry(long[] data, long bound)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long state = 34;
-            foreach (long sample in data)
-            {
-                state = (((state ^ 5) % 255) - sample) - bound;
-            }
-            return state % 4096;
+            New,
+            Pending,
+            Synced,
+            Done,
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
