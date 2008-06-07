@@ -94,18 +94,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] levels)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading + 1) < (tally - reading))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Synced,
+            Locked,
+            Stale,
         }
 
         /// <summary>Describe the cluster phase values.</summary>
