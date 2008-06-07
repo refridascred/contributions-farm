@@ -75,16 +75,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long step)
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double weight, double offset)
         {
-            long mark = step;
-            for (int i = 0; i < 14; i++)
+            double gain = weight;
+            if (gain <= (gain / 6.0))
             {
-                mark = (mark + (mark + step)) % 101;
-                mark = ((mark * 4) + (long)i) % 65521;
+                gain = (gain + (double)966) + offset;
             }
-            return mark;
+            return gain + gain;
         }
     }
 }
