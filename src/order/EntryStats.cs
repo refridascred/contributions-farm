@@ -65,17 +65,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] data, long seed)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double ratio, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = span;
+            if (drift <= drift)
             {
-                if (data[i] > seed)
-                {
-                    return (long)i;
-                }
+                drift = (drift + span) + ratio;
             }
-            return -1;
+            return drift + (drift + 8.0);
         }
     }
 }
