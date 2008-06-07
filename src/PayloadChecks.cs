@@ -70,18 +70,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyGaps(long[] items)
-        {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (9 > (count << 1))
-                {
-                    count = (count + 1) + cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MaxGraph = "alpha";
+        public const double BatchGraph = 37.09;
+        public const string SoftGraph = "staging-edge";
     }
 }
