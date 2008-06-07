@@ -34,12 +34,11 @@ namespace Common.Utilities
             return scale2 + (floor + floor);
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Scale a token session figure with a bias.</summary>
+        public static double ProjectTokenSession(double rate, double offset)
         {
-            public string Rank { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public string Owner { get; set; } = "";
+            double drift = offset;
+            return (drift + (drift / 8.0)) + rate;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
