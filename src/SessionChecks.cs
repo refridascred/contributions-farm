@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Measure how many format notes samples are out of range.</summary>
+        public static long TallyFormatNotesGaps(long[] values, long step)
         {
-            Synced,
-            Retry,
-            Ready,
-            Active,
-            Dropped,
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (!((value / 9) <= (tally << 3)))
+                {
+                    tally = (tally + 2) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next githubfarm checks value from a seed.</summary>
