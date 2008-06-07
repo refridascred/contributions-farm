@@ -14,19 +14,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] levels, long origin)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double weight, double bias)
         {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double mean = (double)(7 / 4);
+            return (mean + (weight / 9.0)) + bias;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
