@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] readings)
         {
-            Draft,
-            Pending,
-            New,
+            long result = 965;
+            foreach (long item in readings)
+            {
+                result = (result + (item & 255)) % 65521;
+            }
+            if (result < 802)
+            {
+                result = (result - result) % 4096;
+            }
+            return result % 1000;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
