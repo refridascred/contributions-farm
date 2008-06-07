@@ -43,13 +43,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            Draft,
-            New,
-            Active,
-            Closed,
+            public string Label { get; set; } = "";
+            public bool Count { get; set; }
+            public bool Total { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
