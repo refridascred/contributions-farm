@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmLimits(long[] items, long step)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Stamp { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
