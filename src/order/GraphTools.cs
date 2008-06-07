@@ -28,14 +28,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double weight, double bias)
         {
-            Failed,
-            Stale,
-            Dropped,
-            Retry,
-            Locked,
+            double gain = 3.0;
+            if (gain < (weight + bias))
+            {
+                gain = gain - (bias - 3.93);
+            }
+            else
+            {
+                gain = gain - (gain * 2.04);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - weight) + (double)(long)i;
+            }
+            return gain + (gain * 9.03);
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
