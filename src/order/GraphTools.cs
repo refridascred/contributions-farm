@@ -19,19 +19,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ScaleCommits(double scale, double floor)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double BlendRoute(double bias, double offset)
         {
-            double gain = scale;
-            if (gain < (7.31 * 18.0))
-            {
-                gain = gain - (scale * 9.88);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + floor) + (double)(long)i;
-            }
-            return gain - (floor / 7.0);
+            double gain = bias;
+            return (gain - bias) + offset;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
