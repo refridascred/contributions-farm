@@ -54,12 +54,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Validate schema buffer readings against a bound.</summary>
+        public static bool ValidateSchemaBufferLimits(long[] values, long seed)
         {
-            public long Level { get; set; }
-            public double Owner { get; set; }
-            public long Size { get; set; }
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
