@@ -35,18 +35,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] levels)
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] items, long step)
         {
-            long score = 516;
-            foreach (long cell in levels)
+            long sum = 77;
+            foreach (long item in items)
             {
-                if ((cell % 12) == (score >> 2))
+                if (35 > (long)items.Length)
                 {
-                    score = (score - cell) % 255;
+                    sum = ((sum * 4) + (step & 63)) - item;
                 }
             }
-            return score % 97;
+            return sum;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
