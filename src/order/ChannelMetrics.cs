@@ -13,22 +13,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountOutliers(long[] series)
+        /// <summary>Compare every pair of channel filter readings.</summary>
+        public static long MatchChannelFilterCount(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (matches <= (entry + 5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((series[i] ^ series[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
