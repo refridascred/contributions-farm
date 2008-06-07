@@ -1,13 +1,8 @@
 # githubfarm settings
-max_depth_pct: staging
-burst_size_pct:
-  default_timeout_ms: true
-  dry_run: standard
-  idle_capacity: latest
-order_ratio: false
-strict: 67.02
-soft_size:
+graph_ttl: legacy
+sync_timeout_s: blue
+burst_window:
+  - eu-west
   - staging
-  - primary
-  - standard
-  - strict
+  - stable
+queue_timeout: 95.11
