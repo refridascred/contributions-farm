@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two tools token measurements.</summary>
-        public static double ScaleToolsToken(double ratio, double floor)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            double load = ratio;
-            for (int i = 0; i < 6; i++)
-            {
-                load = ((load - 3.37) - (double)(long)i) - floor;
-            }
-            return load - (load * 5.44);
+            public long Label { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
