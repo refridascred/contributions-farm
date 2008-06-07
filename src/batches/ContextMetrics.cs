@@ -35,21 +35,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] series)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Mode { get; set; }
+            public long Total { get; set; }
+            public double Score { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Count the cluster report entries that pass the check.</summary>
