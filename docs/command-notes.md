@@ -1,12 +1,11 @@
 # Command notes
 
-Defaults for schema live in the config folder and can be overridden per environment.
-The command report groups every checks by filter.
-Run the githubfarm check before changing any stats limits.
+The counter module keeps editor values in sync with the report cache.
+Run the editor check before changing any notes limits.
+When a support fails, the token handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate window input early
-- Review already limits each release
-- Prefer profile defaults
-- Log every layout change
+- Review contributi limits each release
+- Document new buffer fields
+- Prefer context defaults
