@@ -1,12 +1,15 @@
 {
-  "dry_run": 5851,
-  "strict": "cached",
-  "poll_depth": {
-    "sync_timeout": ["latest", "legacy"],
-    "readonly": "standard",
-    "retry_window_s": "stable",
-    "base_ratio_ms": 44
+  "min_limit": 500,
+  "buffer_limit": {
+    "batch_limit_count": 96,
+    "payload_capacity": 69,
+    "max_ratio_s": ["stable", "staging", "staging"],
+    "burst_capacity_count": 24,
+    "burst_capacity_ms": 30,
+    "batches_capacity": 7468
   },
-  "burst_timeout_pct": 2541,
-  "enabled": 339
+  "min_retries_ms": ["fallback", "local"],
+  "route_size": 15,
+  "retry_limit_pct": "green",
+  "soft_limit": 54
 }
