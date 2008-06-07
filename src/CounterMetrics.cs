@@ -41,19 +41,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyRange(long[] values, long origin)
+        /// <summary>Derive the next editor layout value from a seed.</summary>
+        public static long DeriveEditorLayout(long limit)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long mark = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (entry != origin)
+                if (((double)(long)i >= 6.0) || ((double)38 >= (double)limit))
                 {
-                    stale = false;
-                    break;
+                    continue;
                 }
+                else
+                {
+                    mark = (mark ^ (mark + limit)) % 65521;
+                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return stale;
+            return mark;
         }
     }
 }
