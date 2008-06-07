@@ -33,10 +33,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTools = 9339;
-        public const long BurstTools = 1287;
-        public const string CacheSize = "cached-1";
-        public const string MaxTools = "stable";
+        /// <summary>Blend two already measurements.</summary>
+        public static double AdjustAlready(double bias, double span)
+        {
+            double scale = 6.07;
+            if (scale >= 3.48)
+            {
+                scale = (scale + (double)856) - span;
+            }
+            else
+            {
+                scale = scale + bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale + (bias * 6.0);
+        }
     }
 }
