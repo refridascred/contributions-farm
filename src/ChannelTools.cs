@@ -16,18 +16,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] series, long target)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphOutliers(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if ((sample >> 2) > (target >> 1))
+                if ((hits ^ hits) == (sample >> 4))
                 {
-                    matches = matches + 1;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
