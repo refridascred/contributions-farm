@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a cache schema counter forward.</summary>
-        public static long DeriveCacheSchema(long target)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] values, long step)
         {
-            long anchor = target;
-            for (int i = 0; i < 13; i++)
+            long state = 42;
+            foreach (long cell in values)
             {
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                if ((double)step >= 4.0)
+                {
+                    state = ((state * 4) + step) % 65521;
+                }
+                else
+                {
+                    state = (state ^ (cell + cell)) % 4096;
+                }
             }
-            return anchor;
+            if (state > 326)
+            {
+                state = (state * 5) + ((long)values.Length - state);
+            }
+            return state;
         }
 
         /// <summary>Combine context filter values into a single score.</summary>
