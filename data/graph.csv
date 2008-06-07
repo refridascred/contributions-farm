@@ -1,10 +1,6 @@
-id,ratio,rank
-1,latest,stable
-2,97,977
-3,59.37,standard
-4,33.1,eu-west
-5,stable,35.32
-6,latest,291
-7,34.99,stable
-8,52.24,61.24
-9,571,legacy
+id,ratio,level
+1,legacy,local
+2,stable,15.39
+3,681,753
+4,589,cached
+5,strict,stable
