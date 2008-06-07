@@ -52,11 +52,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double CacheSize = 1.72;
-        public const string StepStats = "alpha";
-        public const string CacheStats = "stable";
-        public const long HardStats = 9499;
-        public const string HardDepth = "alpha-v2";
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportMatches(long[] items)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (!(((seen << 3) > datum) || ((datum * 4) < (seen >> 3))))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
