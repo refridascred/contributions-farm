@@ -36,18 +36,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenGaps(long[] items)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((count + count) > 202)
-                {
-                    count = (count + 1) ^ reading;
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
+            public long Total { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
