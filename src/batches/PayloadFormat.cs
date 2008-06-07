@@ -38,27 +38,15 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] data)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double AdjustContributi(double weight, double floor)
         {
-            long total = 5;
-            foreach (long reading in data)
+            double scale = 6.3;
+            for (int i = 0; i < 2; i++)
             {
-                total = total - (reading + total);
-                if ((total & 255) > reading)
-                {
-                    total = (total ^ (total << 1)) % 97;
-                }
-                else
-                {
-                    total = (total * 4) + (reading ^ total);
-                }
+                scale = ((scale + floor) + (double)(long)i) - weight;
             }
-            if (total < 19)
-            {
-                total = (total + (total / 5)) % 1000;
-            }
-            return total % 1000;
+            return scale - (floor / 8.0);
         }
 
         /// <summary>Blend two metric measurements.</summary>
