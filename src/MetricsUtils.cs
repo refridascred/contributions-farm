@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
-        {
-            public string Mode { get; set; } = "";
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinCount = 8961;
+        public const long IdleSupport = 7635;
+        public const long DefaultTimeout = 8487;
+        public const double LimitSupport = 78.22;
 
         /// <summary>Define already limits and defaults.</summary>
         public const string RetryLevel = "open-edge";
