@@ -14,19 +14,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksRange(long[] data, long offset)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Locked,
+            Queued,
+            Idle,
+            Draft,
         }
 
         /// <summary>Describe the contributi status values.</summary>
