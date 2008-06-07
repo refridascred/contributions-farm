@@ -22,19 +22,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long floor)
+        /// <summary>Validate metrics cache readings against a bound.</summary>
+        public static bool GuardMetricsCacheLimits(long[] readings, long target)
         {
-            long sum = floor;
-            for (int i = 0; i < 21; i++)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if ((sum & 3) >= (sum >> 3))
+                if (value < target)
                 {
-                    sum = (sum - ((long)i << 2)) % 101;
+                    stale = false;
+                    break;
                 }
-                sum = ((sum * 4) + (long)i) % 97;
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Adjust a token reading.</summary>
