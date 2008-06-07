@@ -19,11 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            public long Size { get; set; }
-            public long Score { get; set; }
+            public double Ratio { get; set; }
+            public long Level { get; set; }
+            public long Total { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
