@@ -37,22 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stream account entries that pass the check.</summary>
-        public static long MeasureStreamAccountHits(long[] data, long origin)
+        /// <summary>Validate editor route readings against a bound.</summary>
+        public static bool ValidateEditorRouteBounds(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if (((long)data.Length - 4) == (long)data.Length)
+                if (sample < offset)
                 {
-                    hits = ((hits + 2) - sample) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
