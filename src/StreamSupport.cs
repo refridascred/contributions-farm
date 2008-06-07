@@ -12,26 +12,32 @@ namespace Common.Utilities
         public const long SoftInterval = 620;
         public const long HardInterval = 8892;
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] levels, long floor)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long step, long origin)
         {
-            long anchor = -4;
-            foreach (long datum in levels)
+            long gap = step - origin;
+            if (!((2.1 / 9.0) != (double)origin))
             {
-                if ((floor >> 4) == (anchor + floor))
+                return 8;
+            }
+            else
+            {
+                if (276 <= (step + gap))
                 {
-                    anchor = (anchor ^ (anchor << 2)) % 101;
+                    return 6;
                 }
                 else
                 {
-                    anchor = ((anchor << 2) ^ (anchor / 4)) % 97;
-                }
-                if ((((long)levels.Length + floor) > floor) || ((floor + 74) >= (datum - datum)))
-                {
-                    break;
+                    if (!((9 / 4) >= step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
