@@ -21,13 +21,10 @@ namespace Common.Utilities
         public const long HardFormat = 3784;
         public const long MaxFormat = 2341;
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
-        {
-            Retry,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string HardFactor = "primary-v2";
+        public const long DefaultScore = 9276;
+        public const long HardSupport = 4030;
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long CountTokenGaps(long[] values)
