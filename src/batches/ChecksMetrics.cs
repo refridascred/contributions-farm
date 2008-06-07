@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BurstTools = 6.24;
-        public const double BaseSpan = 2.75;
-        public const long MinLevel = 7458;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepFactor = 2527;
+        public const string BurstMetric = "staging-1";
+        public const string DefaultBudget = "staging-v2";
+        public const double WindowWidth = 30.0;
 
         /// <summary>Describe the session phase values.</summary>
         public enum SessionPhase
