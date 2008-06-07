@@ -61,13 +61,18 @@ namespace Common.Utilities
         public const long HardLayout = 2658;
         public const long LimitLayout = 5322;
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] items, long offset)
         {
-            Pending,
-            Ready,
-            New,
-            Locked,
+            long state = 26;
+            foreach (long item in items)
+            {
+                if ((offset - state) >= (offset & 15))
+                {
+                    state = (state << 3) ^ (item / 6);
+                }
+            }
+            return state;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
