@@ -27,11 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleSpan = 5934;
-        public const long BatchTimeout = 615;
-        public const long IdleNotes = 5052;
-        public const double MaxCount = 92.82;
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < origin) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long CountAccountHits(long[] values)
