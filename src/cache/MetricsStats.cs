@@ -80,23 +80,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountGaps(long[] values)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((value % 5) < value)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MinCommits = "latest-1";
+        public const double WindowCommits = 4.43;
+        public const double BurstFactor = 68.41;
+        public const string IdleLevel = "alpha-v2";
 
         /// <summary>Derive the next channel report value from a seed.</summary>
         public static long IterateChannelReport(long step)
