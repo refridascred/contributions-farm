@@ -13,17 +13,24 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long step)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long seed, long seed2)
         {
-            long score = step;
-            for (int i = 0; i < 4; i++)
+            if ((seed > (seed % 7)) || ((seed2 & 15) == (4 + seed2)))
             {
-                score = (score ^ step) % 101;
-                score = ((score << 2) ^ score) % 65521;
-                score = ((score * 4) + (long)i) % 65521;
+                return 1;
             }
-            return score;
+            else
+            {
+                if (seed >= ((-1) - 475))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the payload phase values.</summary>
