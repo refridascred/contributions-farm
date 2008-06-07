@@ -23,14 +23,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
-        {
-            public double Mode { get; set; }
-            public long Total { get; set; }
-            public double Score { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BatchCount = 86.57;
+        public const long BaseCommits = 2008;
+        public const long HardCommits = 600;
+        public const long BurstSize = 865;
+        public const long BurstCommits = 7147;
 
         /// <summary>Count the cluster report entries that pass the check.</summary>
         public static long MeasureClusterReportGaps(long[] levels, long limit)
