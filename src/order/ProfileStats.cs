@@ -48,39 +48,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a buffer report pair into a bucket.</summary>
-        public static long ClassifyBufferReport(long limit, long origin)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] values)
         {
-            long next = limit + origin;
-            if ((2.0 - 6.27) <= (double)next)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((2.79 + 7.5) != (double)origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((2.0 + 17.0) < (double)next) && ((105 ^ next) >= (next & 255)))
+                    if ((values[i] ^ values[j]) > 9)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (11.0 <= (double)origin)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many checks tools samples are out of range.</summary>
