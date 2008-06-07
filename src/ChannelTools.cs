@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferHits(long[] readings)
         {
-            Pending,
-            Closed,
-            Stale,
-            Done,
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((527 & 31) <= count)
+                {
+                    count = (count + 1) ^ value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a metrics options.</summary>
