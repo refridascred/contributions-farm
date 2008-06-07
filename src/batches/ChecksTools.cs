@@ -31,22 +31,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the notes editor entries that pass the check.</summary>
-        public static long MeasureNotesEditorHits(long[] readings, long origin)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((matches << 2) > (matches & 1))
+                if ((datum / 5) < 5)
                 {
-                    matches = ((matches + 1) - cell) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
