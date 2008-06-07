@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a payload tools value against two limits.</summary>
-        public static long ClassifyPayloadTools(long offset, long offset2)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long offset3 = offset + offset2;
-            if (((double)offset2 > (double)offset) || (offset < offset3))
-            {
-                return 6;
-            }
-            else
-            {
-                if (offset >= (offset3 + offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset2 * 2) != (205 / 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((offset2 >> 2) < (offset >> 2)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Queued,
+            Dropped,
+            Locked,
+            Closed,
         }
 
         /// <summary>Check that every notes order entry stays within the limit.</summary>
