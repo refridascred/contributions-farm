@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate already metric samples.</summary>
-        public static long DigestAlreadyMetric(long[] series, long offset)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsOutliers(long[] readings)
         {
-            long mark = 6;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                mark = (mark + (9 / 8)) % 4096;
-                mark = (mark << 2) ^ ((-43) >> 2);
-                if (((datum - offset) <= offset) || (mark < (datum - (-59))))
+                if (((87 & 7) >= count) || ((double)cell <= 17.0))
                 {
-                    break;
+                    count = count + 1;
                 }
             }
-            if (mark < 5)
-            {
-                mark = mark + (65 + offset);
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Blend two metric measurements.</summary>
