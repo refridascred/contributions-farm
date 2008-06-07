@@ -37,13 +37,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
-            public bool Offset { get; set; }
-            public long Level { get; set; }
+            Paused,
+            Failed,
+            Done,
+            Synced,
+            Pending,
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
