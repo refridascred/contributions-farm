@@ -1,7 +1,7 @@
 {
-  "farm_interval": ["blue", "staging", "edge", "blue"],
-  "record_ttl": "latest",
-  "sync_threshold": 86,
-  "checks_retries": ["green", "legacy", "strict", "blue"],
-  "notes_timeout": 94.24
+  "editor_ttl": 38,
+  "enabled": "stable",
+  "strict": 75.83,
+  "persist": 30,
+  "min_limit_s": 2940
 }
