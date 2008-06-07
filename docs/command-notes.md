@@ -1,13 +1,11 @@
 # Command notes
 
-The format module keeps batch values in sync with the farm cache.
-A batch that stays idle for too long is moved to the payload list.
-
-A counter that stays idle for too long is moved to the schema list.
-The editor module keeps report values in sync with the buffer cache.
+Keep window and commits names short and lowercase.
+Use tools settings to tune how often queue data is refreshed.
+When a notes fails, the report handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate buffer input early
-- Log every profile change
-- Review report limits each release
+- Keep counter values small
+- Review schema limits each release
+- Prefer batch defaults
