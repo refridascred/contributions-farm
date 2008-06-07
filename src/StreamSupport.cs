@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long bound, long step)
-        {
-            if ((double)bound != (3.9 / 7.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((0.5 * 3.0) > (double)step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinSize = 8999;
+        public const long SoftBudget = 3392;
+        public const string BurstLayout = "fallback-edge";
+        public const long BatchTimeout = 2402;
+        public const string MinInterval = "alpha-1";
 
         /// <summary>Blend two command route measurements.</summary>
         public static double SmoothCommandRoute(double ratio, double span)
