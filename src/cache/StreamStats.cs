@@ -14,12 +14,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BurstWidth = 6.47;
-        public const long IdleRatio = 9295;
-        public const double BaseTimeout = 46.65;
-        public const string RetryMetrics = "standard-v2";
-        public const double BurstInterval = 11.6;
+        /// <summary>Derive the next githubfarm support value from a seed.</summary>
+        public static long DeriveGithubfarmSupport(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                if (((long)i ^ acc) < (bound >> 2))
+                {
+                    acc = ((acc << 2) ^ acc) % 65521;
+                }
+                if (!((acc - bound) == (70 & 7)))
+                {
+                    acc = ((acc << 3) ^ (long)i) % 97;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Match up profile record samples.</summary>
         public static long OverlapProfileRecordCount(long[] series)
