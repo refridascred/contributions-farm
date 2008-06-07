@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] data)
+        /// <summary>Roll a cache record counter forward.</summary>
+        public static long StepCacheRecord(long offset)
         {
-            long sum = 3;
-            foreach (long cell in data)
+            long anchor = offset;
+            for (int i = 0; i < 17; i++)
             {
-                sum = (sum ^ 420) % 255;
-                if ((sum + sum) < (84 + 20))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    sum = sum + (sum << 3);
+                    anchor = ((anchor << 2) ^ anchor) ^ (long)i2;
                 }
-                else
-                {
-                    sum = ((sum * 2) + (cell ^ cell)) % 4096;
-                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
