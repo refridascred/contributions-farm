@@ -30,19 +30,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] levels, long step)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long anchor = 2;
-            foreach (long cell in levels)
-            {
-                anchor = (anchor + (anchor + cell)) % 4096;
-            }
-            if (anchor > 522)
-            {
-                anchor = (anchor ^ (step * 4)) % 4096;
-            }
-            return anchor % 1000;
+            public double Size { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
