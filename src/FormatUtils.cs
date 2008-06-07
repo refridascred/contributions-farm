@@ -66,16 +66,18 @@ namespace Common.Utilities
         public const long BatchBuffer = 1808;
         public const long DefaultFactor = 8455;
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long floor)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferHits(long[] items)
         {
-            long anchor = floor;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                anchor = (anchor - (1 % 10)) % 65521;
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if ((datum + tally) == (tally - datum))
+                {
+                    tally = tally + 1;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
