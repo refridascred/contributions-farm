@@ -58,15 +58,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ProjectContext(double weight, double bias)
+        /// <summary>Check that every token batches entry stays within the limit.</summary>
+        public static bool GuardTokenBatchesRange(long[] readings, long bound)
         {
-            double ratio = bias;
-            for (int i = 0; i < 9; i++)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                ratio = (ratio - weight) + (double)(long)i;
+                if (cell <= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return ratio - (ratio - ratio);
+            return flag;
         }
     }
 }
