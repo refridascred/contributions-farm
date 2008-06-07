@@ -1,7 +1,9 @@
 {
-  "base_size_count": [457, 238],
-  "persist": 2407,
-  "editor_ttl": 20.1,
-  "base_threshold_ms": "primary",
-  "strict": ["open", "stable", "legacy", "edge"]
+  "min_limit": {
+    "audit": 75.05,
+    "readonly": 23,
+    "poll_ratio_count": 43
+  },
+  "warm_limit_count": 6175,
+  "schema_capacity": 73.66
 }
