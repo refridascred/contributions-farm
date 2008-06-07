@@ -39,21 +39,22 @@ namespace Common.Utilities
             return bias - (3.44 + offset);
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] readings)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] series, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 29;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((item << 3) < item) && ((mark / 5) < item))
                 {
-                    if ((readings[i] + readings[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = mark ^ (bound - 2);
+                }
+                if (((double)item >= 2.0) || ((item & 63) >= 5))
+                {
+                    mark = mark - (bound / 4);
                 }
             }
-            return tally;
+            return mark;
         }
     }
 }
