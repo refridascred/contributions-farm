@@ -45,18 +45,22 @@ namespace Common.Utilities
             return (ratio + (scale - ratio)) + floor;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamGaps(long[] readings)
+        /// <summary>Accumulate already session samples.</summary>
+        public static long FoldAlreadySession(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long carry = 129;
+            foreach (long sample in values)
             {
-                if (!((double)tally == (5.0 / 5.0)))
+                if (8.0 >= (double)sample)
                 {
-                    tally = (tally + 3) ^ entry;
+                    carry = ((carry * 3) + sample) + bound;
+                }
+                else
+                {
+                    carry = (carry ^ 56) % 255;
                 }
             }
-            return tally;
+            return carry;
         }
     }
 }
