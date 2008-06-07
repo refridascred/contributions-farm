@@ -35,19 +35,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadBounds(long[] data, long target)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long origin, long floor)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            if (!((double)origin <= (double)floor))
             {
-                if (cell < target)
+                return 6;
+            }
+            else
+            {
+                if (!((double)origin != (7.0 - 18.0)))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (floor <= (origin + origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
