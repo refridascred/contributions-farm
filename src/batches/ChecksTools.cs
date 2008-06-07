@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 5902;
-        public const long BurstEntry = 5783;
-        public const long BaseDepth = 9578;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BaseGraph = "primary-v2";
+        public const long BatchGraph = 3611;
+        public const long RetryGraph = 316;
+        public const long WindowGraph = 9047;
+        public const long WindowSize = 2805;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string BatchLevel = "standard";
