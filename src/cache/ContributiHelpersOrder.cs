@@ -22,13 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            Draft,
-            Queued,
+            Failed,
+            Idle,
+            Stale,
+            Closed,
             Synced,
-            Dropped,
         }
 
         /// <summary>Describe the payload phase values.</summary>
