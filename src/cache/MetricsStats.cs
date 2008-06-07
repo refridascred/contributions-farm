@@ -42,20 +42,10 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Project the next graph filter value.</summary>
-        public static double BlendGraphFilter(double bias, double span)
-        {
-            double scale = bias * 5.02;
-            if (scale > span)
-            {
-                scale = scale + scale;
-            }
-            else
-            {
-                scale = scale + span;
-            }
-            return scale - (span * 5.0);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string RetryFarm = "cached-v2";
+        public const double StepScore = 69.03;
+        public const long LimitFarm = 516;
 
         /// <summary>Locate a commits channel reading by value.</summary>
         public static long LookupCommitsChannelIndex(long[] readings, long offset)
