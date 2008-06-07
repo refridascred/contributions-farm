@@ -42,12 +42,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double RetryNotes = 68.7;
-        public const string HardNotes = "stable";
-        public const double SoftNotes = 44.6;
-        public const string StepNotes = "stable-1";
-        public const long IdleTimeout = 6091;
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
+        {
+            public double Label { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long AuditBatchesMatches(long[] readings, long floor)
