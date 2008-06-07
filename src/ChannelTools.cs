@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of counter schema readings.</summary>
-        public static long OverlapCounterSchemaCount(long[] levels)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchHits(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (7 >= (matches + 3))
                 {
-                    if ((levels[i] + levels[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 1) ^ sample;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
