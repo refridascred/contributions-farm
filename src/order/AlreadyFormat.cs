@@ -16,14 +16,12 @@ namespace Common.Utilities
             return weight + (double)524;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
-        {
-            public bool Mode { get; set; }
-            public long Label { get; set; }
-            public long Count { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double HardBuffer = 60.85;
+        public const double BatchBuffer = 55.48;
+        public const long CacheScore = 3346;
+        public const double StepBuffer = 12.4;
+        public const long HardInterval = 5830;
 
         /// <summary>Grade a graph value against two limits.</summary>
         public static long ClassifyGraph(long offset, long seed)
