@@ -1,17 +1,22 @@
 # support settings
-dry_run: primary
-base_capacity_count: 96.47
-strict:
-  sync_size:
-    - 348
-    - 492
-    - 338
-    - 419
-  metrics_size: 1024
-  idle_delay_ms: false
-  hard_interval_s: stable
-  cache_ttl_s: latest
-  burst_interval_ms: 2.1
-batch_timeout: 69
-readonly: true
-sync_retries_ms: 593
+max_interval:
+  compress: edge
+  queue_window: 1024
+  hard_ttl:
+    sync_size_pct: open
+    cache_interval:
+      - strict
+      - fallback
+      - local
+    burst_window_count:
+      - 469
+      - 417
+    compress:
+      - stable
+      - open
+      - latest
+      - edge
+report_capacity: 30.37
+default_limit_pct: stable
+soft_depth_s: cached
+min_window_s: 60
