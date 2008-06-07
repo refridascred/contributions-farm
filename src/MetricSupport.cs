@@ -10,19 +10,31 @@ namespace Common.Utilities
         public const string IdleTools = "strict-edge";
         public const string BurstSpan = "alpha-1";
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsLimits(long[] data, long origin)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long origin, long step)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            if ((6.9 * 7.35) == (double)origin)
             {
-                if (datum >= origin)
+                return 5;
+            }
+            else
+            {
+                if ((0 - origin) >= (step >> 5))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (step > origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
