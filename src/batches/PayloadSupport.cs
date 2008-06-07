@@ -12,28 +12,28 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Grade a payload already value against two limits.</summary>
-        public static long SortPayloadAlready(long step, long bound)
+        /// <summary>Classify a filter batches pair into a bucket.</summary>
+        public static long RankFilterBatches(long limit, long origin)
         {
-            if (((step ^ bound) <= bound) || ((372 & 31) <= bound))
+            if ((limit / 3) <= (origin * 2))
             {
-                return 5;
+                return 7;
             }
             else
             {
-                if (bound <= (414 - step))
+                if ((16.0 - 16.0) == (double)limit)
                 {
-                    return 1;
+                    return 2;
                 }
                 else
                 {
-                    if ((step + (-254)) >= (2 * 2))
+                    if ((7.29 / 4.0) == (double)origin)
                     {
-                        return 0;
+                        return 5;
                     }
                     else
                     {
-                        return 3;
+                        return 0;
                     }
                 }
             }
