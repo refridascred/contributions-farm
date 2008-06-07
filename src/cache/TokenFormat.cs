@@ -27,14 +27,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] levels, long floor)
         {
-            Failed,
-            Dropped,
-            Paused,
-            Idle,
-            Synced,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
