@@ -14,12 +14,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            public long Level { get; set; }
-            public bool Mode { get; set; }
-            public long Count { get; set; }
+            Queued,
+            Failed,
+            Stale,
         }
 
         /// <summary>Count cluster order pairs that satisfy a relation.</summary>
