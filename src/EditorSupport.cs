@@ -42,14 +42,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            Pending,
-            Retry,
-            Locked,
-            Closed,
             Draft,
+            Stale,
+            Failed,
         }
 
         /// <summary>Hold a stats stats.</summary>
