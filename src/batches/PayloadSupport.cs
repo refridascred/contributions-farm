@@ -33,18 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordMatches(long[] levels)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (((hits << 3) > hits) && !((2.38 - 7.4) < (double)94))
-                {
-                    hits = (hits + 3) - entry;
-                }
-            }
-            return hits;
+            Ready,
+            New,
+            Idle,
         }
 
         /// <summary>Define account limits and defaults.</summary>
