@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
-        {
-            public double Ratio { get; set; }
-            public bool Owner { get; set; }
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double StepMetric = 37.74;
+        public const long WindowFactor = 8809;
+        public const string MaxMetric = "stable-1";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string SoftRatio = "stable-edge";
