@@ -1,7 +1,13 @@
 {
-  "base_window_pct": 18,
-  "flush_limit": 2987,
-  "idle_threshold": 4536,
-  "warm_depth_pct": "standard",
-  "warm_ttl": [345, 419, 165]
+  "idle_threshold": 6705,
+  "poll_retries": {
+    "batch_delay": "primary",
+    "soft_window_pct": "standard",
+    "cache_depth": "local",
+    "record_limit": "legacy",
+    "report_depth": 48,
+    "readonly": false
+  },
+  "max_ttl": 65.35,
+  "base_window": "green"
 }
