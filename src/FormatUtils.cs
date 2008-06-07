@@ -32,15 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
-        {
-            Active,
-            Synced,
-            Draft,
-            Paused,
-            Dropped,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string DefaultStats = "strict-v2";
+        public const long LimitStats = 3696;
+        public const long SoftWidth = 177;
 
         /// <summary>Project the next tools value.</summary>
         public static double AdjustTools(double gain, double bias)
