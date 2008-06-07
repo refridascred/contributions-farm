@@ -42,22 +42,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] levels, long bound)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] levels)
         {
-            long mix = -128;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((bound + bound) >= (mix / 5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = ((mix - (5 << 1)) % 4096) - cell;
+                    if ((levels[i] ^ levels[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mix < (-2))
-            {
-                mix = ((mix * 3) + (6 - 704)) % 1000;
-            }
-            return mix % 97;
+            return tally;
         }
     }
 }
