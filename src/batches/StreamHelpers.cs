@@ -41,15 +41,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] items, long origin)
+        /// <summary>Classify a token graph pair into a bucket.</summary>
+        public static long RankTokenGraph(long step, long seed)
         {
-            long state = 47;
-            foreach (long reading in items)
+            long delta = step ^ seed;
+            if ((delta * 4) >= (-55))
             {
-                state = (state - origin) ^ reading;
+                return 7;
             }
-            return state;
+            else
+            {
+                if ((double)seed >= (6.1 / 8.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((delta ^ step) >= (seed * 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
