@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadGaps(long[] data)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmLimits(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if ((double)tally > 5.3)
+                if (sample <= step)
                 {
-                    tally = (tally + 2) + cell;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
