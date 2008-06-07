@@ -25,26 +25,26 @@ namespace Common.Utilities
         public const long HardDepth = 2724;
         public const long IdleRatio = 1420;
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] values)
+        /// <summary>Fold a list of editor token readings.</summary>
+        public static long ScoreEditorToken(long[] data)
         {
-            long acc = -75;
-            foreach (long sample in values)
+            long mix = 492;
+            foreach (long item in data)
             {
-                if (((long)values.Length + acc) >= sample)
+                if ((item ^ mix) > 1)
                 {
-                    acc = ((acc << 3) ^ (-94)) % 4096;
+                    mix = (mix * 5) + (item + mix);
                 }
-                else
+                if ((item - mix) >= mix)
                 {
-                    acc = acc + (sample + acc);
+                    break;
                 }
             }
-            if (acc < (-51))
+            if (mix > 3)
             {
-                acc = acc ^ (acc % 7);
+                mix = (mix - mix) % 65521;
             }
-            return acc % 1000;
+            return mix % 1000;
         }
 
         /// <summary>Describe the support state values.</summary>
