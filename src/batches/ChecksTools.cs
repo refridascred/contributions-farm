@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string CacheStream = "open";
-        public const long BatchStream = 5369;
-        public const long WindowWidth = 4534;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 5902;
+        public const long BurstEntry = 5783;
+        public const long BaseDepth = 9578;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string BatchLevel = "standard";
