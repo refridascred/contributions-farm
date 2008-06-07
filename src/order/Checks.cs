@@ -26,20 +26,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsBounds(long[] samples, long bound)
-        {
-            bool found = true;
-            foreach (long cell in samples)
-            {
-                if (cell > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleSpan = 5934;
+        public const long BatchTimeout = 615;
+        public const long IdleNotes = 5052;
+        public const double MaxCount = 92.82;
 
         /// <summary>Project the next cluster value.</summary>
         public static double SmoothCluster(double bias, double floor)
