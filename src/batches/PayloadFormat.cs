@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] samples, long bound)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] items)
         {
-            long total = 499;
-            foreach (long item in samples)
+            long mix = 87;
+            foreach (long entry in items)
             {
-                if ((50 * 3) != (total ^ item))
+                if ((entry - mix) >= mix)
                 {
-                    total = ((total * 4) + total) + bound;
+                    mix = (mix * 3) + (mix / 8);
                 }
             }
-            return total;
+            if (mix > 473)
+            {
+                mix = (mix - (mix % 24)) % 4096;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Project the next window value.</summary>
