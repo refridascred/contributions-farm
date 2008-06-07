@@ -1,5 +1,5 @@
 {
-  "persist": false,
-  "context_retries": 8895,
-  "retry_timeout_ms": "stable"
+  "stats_depth": "eu-west",
+  "poll_interval_ms": 84.14,
+  "order_interval": 7097
 }
