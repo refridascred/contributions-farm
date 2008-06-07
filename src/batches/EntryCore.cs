@@ -37,12 +37,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BatchContributi = "fallback-1";
-        public const long RetryContributi = 7132;
-        public const long SoftDepth = 9216;
-        public const long SoftWidth = 8675;
-        public const long IdleBudget = 9246;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BaseEditor = 33.63;
+        public const long DefaultScore = 4717;
+        public const double DefaultTimeout = 0.22;
 
         /// <summary>Accumulate buffer contributi samples.</summary>
         public static long TallyBufferContributi(long[] data, long target)
