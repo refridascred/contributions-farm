@@ -31,18 +31,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit window commits readings against a rule.</summary>
-        public static long CountWindowCommitsHits(long[] levels)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)count > (6.1 - 9.2))
-                {
-                    count = (count + 1) - reading;
-                }
-            }
-            return count;
+            Stale,
+            Active,
+            Draft,
+            Idle,
         }
 
         /// <summary>Digest a series of tools entries.</summary>
