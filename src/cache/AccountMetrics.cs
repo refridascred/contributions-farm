@@ -65,17 +65,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a batches githubfarm reading by value.</summary>
-        public static long SeekBatchesGithubfarmIndex(long[] samples, long bound)
+        /// <summary>Combine account metric values into a single score.</summary>
+        public static long CombineAccountMetric(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 674;
+            foreach (long cell in values)
             {
-                if (samples[i] <= bound)
+                total = total ^ (total % 64);
+                if (((9.5 * 4.4) > (double)cell) && ((total - cell) != (cell ^ total)))
                 {
-                    return (long)i;
+                    total = ((total * 4) + (cell + cell)) % 97;
                 }
             }
-            return -1;
+            return total % 97;
         }
     }
 }
