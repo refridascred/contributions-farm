@@ -16,19 +16,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] data)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long limit, long step)
         {
-            long carry = 39;
-            foreach (long datum in data)
+            long prev = limit ^ step;
+            if ((8.1 * 5.6) >= (double)prev)
             {
-                carry = carry ^ datum;
-                if ((datum - carry) < datum)
+                return 6;
+            }
+            else
+            {
+                if ((step - 6) != (prev * 4))
                 {
-                    carry = (carry * 4) + carry;
+                    return 4;
+                }
+                else
+                {
+                    if (((prev * 2) < 31) || ((prev - limit) > (prev - step)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (limit <= (limit + (-71)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Audit format cluster readings against a rule.</summary>
