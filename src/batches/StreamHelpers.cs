@@ -17,22 +17,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] samples)
+        /// <summary>Find the first metrics farm entry that matches the target.</summary>
+        public static long LookupMetricsFarmIndex(long[] series, long limit)
         {
-            long result = 7;
-            foreach (long reading in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((9.0 + 15.0) >= (double)result) || ((716 * 4) < (reading - reading)))
+                if ((series[i] > limit) && ((series[i] % 2) == 0))
                 {
-                    result = ((result * 5) + (298 + reading)) % 1000;
-                }
-                if ((double)reading >= (5.0 / 9.0))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
