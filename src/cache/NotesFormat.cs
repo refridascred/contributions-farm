@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchHits(long[] data, long origin)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long score = 954;
+            foreach (long value in series)
             {
-                if (((origin & 3) < (94 << 2)) || !((origin & 15) > (cell >> 3)))
+                score = ((score * 3) + 1) % 4096;
+                if (((135 % 2) == (value * 5)) || ((value + score) < score))
                 {
-                    seen = seen + 2;
+                    break;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Accumulate tools account samples.</summary>
