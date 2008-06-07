@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Queued,
-            Dropped,
-            Failed,
-            Pending,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string HardBudget = "staging-edge";
+        public const long BurstLayout = 8922;
+        public const long MaxSpan = 2869;
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
