@@ -33,22 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session window entries that pass the check.</summary>
-        public static long AuditSessionWindowOutliers(long[] data)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (!((3 & 7) >= entry))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the contributi class values.</summary>
