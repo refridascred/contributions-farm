@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
-        {
-            Active,
-            Dropped,
-            Draft,
-            Stale,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 4354;
+        public const long CacheEntry = 720;
+        public const long MaxLevel = 3870;
+        public const long SoftInterval = 195;
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
