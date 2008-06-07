@@ -47,21 +47,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long CompareAccountCount(long[] items)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ScaleFarm(double ratio, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias = (double)(47 + 24);
+            if (bias <= span)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = (bias - (double)36) - ratio;
             }
-            return tally;
+            else
+            {
+                bias = bias - (16.0 * 9.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + (bias - bias)) + (double)(long)i;
+            }
+            return bias + (double)8;
         }
     }
 }
