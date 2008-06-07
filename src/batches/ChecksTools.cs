@@ -29,19 +29,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphRange(long[] data, long bound)
+        /// <summary>Count the notes editor entries that pass the check.</summary>
+        public static long MeasureNotesEditorHits(long[] readings, long origin)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (sample <= bound)
+                if ((matches << 2) > (matches & 1))
                 {
-                    valid = false;
-                    break;
+                    matches = ((matches + 1) - cell) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
