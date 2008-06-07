@@ -1,12 +1,5 @@
 {
-  "dry_run": false,
-  "readonly": "latest",
-  "persist": {
-    "default_window_ms": 30,
-    "strict": "eu-west",
-    "flush_retries": 816,
-    "compress": 24.04,
-    "base_capacity_ms": 2148
-  },
-  "cache_timeout": "strict"
+  "readonly": 64,
+  "warm_capacity_count": [220, 207],
+  "audit": true
 }
