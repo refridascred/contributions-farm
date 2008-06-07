@@ -40,23 +40,30 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] data)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] series, long seed)
         {
-            long score = 11;
-            foreach (long reading in data)
+            long mix = -58;
+            foreach (long reading in series)
             {
-                if ((reading % 12) >= score)
+                if ((mix + reading) <= seed)
                 {
-                    score = (score + (reading & 15)) % 255;
-                    score = (score ^ (reading - 54)) % 255;
+                    mix = ((mix << 3) ^ (reading & 3)) % 255;
                 }
-                if ((3 % 3) >= (long)data.Length)
+                else
                 {
-                    score = (score * 3) + reading;
+                    mix = (mix - ((long)series.Length & 15)) % 1000;
+                }
+                if ((reading ^ reading) >= (mix - reading))
+                {
+                    break;
                 }
             }
-            return score;
+            if (mix < 8)
+            {
+                mix = (mix - seed) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of account readings.</summary>
