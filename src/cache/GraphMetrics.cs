@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheInterval = 7725;
-        public const long CacheMetrics = 7445;
-        public const long WindowSize = 5460;
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
+        {
+            public bool Flag { get; set; }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long AuditBatchesHits(long[] levels)
