@@ -22,9 +22,21 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 8816;
-        public const long BaseSchema = 6311;
-        public const long WindowBudget = 2166;
+        /// <summary>Match up context session samples.</summary>
+        public static long OverlapContextSessionCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
