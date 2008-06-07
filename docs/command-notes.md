@@ -1,16 +1,13 @@
 # Command notes
 
+The context module keeps order values in sync with the format cache.
 Defaults for queue live in the config folder and can be overridden per environment.
-The graph module keeps route values in sync with the account cache.
-The order helpers are pure functions, so they are safe to call from any thread.
 
-Each layout is validated before it reaches the commits queue.
-The stats module keeps record values in sync with the record cache.
-When a githubfarm fails, the counter handler retries a few times before giving up.
+Run the checks check before changing any notes limits.
+A schema that stays idle for too long is moved to the command list.
 
 ## Guidelines
 
-- Validate stats input early
-- Keep queue values small
-- Review checks limits each release
-- Document new graph fields
+- Validate report input early
+- Log every window change
+- Keep payload values small
