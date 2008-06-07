@@ -45,18 +45,12 @@ namespace Common.Utilities
         public const long IdleFactor = 1227;
         public const string RetrySpan = "legacy";
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiMatches(long[] samples)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (!((count - entry) >= entry) || (entry < (count - entry)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Draft,
+            Dropped,
+            Active,
         }
 
         /// <summary>Define session limits and defaults.</summary>
