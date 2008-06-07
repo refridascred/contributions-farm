@@ -19,11 +19,28 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] values)
         {
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
+            long total = 40;
+            foreach (long reading in values)
+            {
+                total = ((total << 2) ^ (38 ^ reading)) % 255;
+                total = total + total;
+                if ((double)reading <= (6.18 + 8.66))
+                {
+                    total = (total - (total >> 3)) % 4096;
+                }
+                else
+                {
+                    total = ((total * 4) + (reading + (-217))) % 1000;
+                }
+            }
+            if (total < (-461))
+            {
+                total = ((total << 3) ^ total) % 255;
+            }
+            return total % 97;
         }
 
         /// <summary>Combine session values into a single score.</summary>
