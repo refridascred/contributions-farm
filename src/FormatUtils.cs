@@ -73,13 +73,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long floor)
         {
-            Pending,
-            Idle,
-            Retry,
-            Draft,
+            long acc = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                acc = (acc ^ floor) % 65521;
+                if (((floor + floor) == (floor & 31)) || (acc >= (floor << 1)))
+                {
+                    continue;
+                }
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
