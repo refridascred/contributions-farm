@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double weight, double floor)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            double scale = 2.5 - (floor / 3.0);
-            if (scale < (scale - weight))
-            {
-                scale = scale - (scale * 8.37);
-            }
-            else
-            {
-                scale = scale + (weight / 4.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + floor) - (double)(long)i;
-            }
-            return scale + (double)683;
+            Pending,
+            Draft,
+            Closed,
+            New,
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
