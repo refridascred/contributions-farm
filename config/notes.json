@@ -1,21 +1,8 @@
 {
-  "checks_ratio": false,
-  "audit": {
-    "audit": "primary",
-    "entry_capacity": 250,
-    "githubfarm_retries": 82.07,
-    "batch_limit": {
-      "cache_delay": "cached",
-      "session_delay": 2603,
-      "idle_ratio_count": false,
-      "enabled": "local",
-      "queue_retries": 1024,
-      "batch_delay": 60
-    },
-    "cache_capacity_ms": false,
-    "persist": 948
-  },
-  "persist": "open",
-  "batch_retries": "edge",
-  "default_interval": 7147
+  "idle_threshold": "green",
+  "verbose": "stable",
+  "filter_ratio": "open",
+  "readonly": 19.84,
+  "min_capacity_ms": 6597,
+  "metrics_window": 64.99
 }
