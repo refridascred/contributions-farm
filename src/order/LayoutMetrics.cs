@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double scale, double span)
-        {
-            double weight = scale / 6.0;
-            if (weight < (scale + 0.1))
-            {
-                weight = (weight + weight) + span;
-            }
-            else
-            {
-                weight = weight - (2.99 / 4.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + scale) + (double)(long)i;
-            }
-            return weight - (scale * 20.0);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string DefaultCache = "latest-edge";
+        public const long RetryCache = 603;
+        public const long BatchFactor = 4928;
+        public const string StepFactor = "fallback";
 
         /// <summary>Define token limits and defaults.</summary>
         public const double MinToken = 50.15;
