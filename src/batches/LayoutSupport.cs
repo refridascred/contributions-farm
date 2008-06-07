@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long offset)
         {
-            Stale,
-            Active,
-            Idle,
-            New,
+            long state = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                state = (state + (57 + (long)i)) % 101;
+                if ((state * 3) > (offset - state))
+                {
+                    state = (state ^ offset) % 4096;
+                }
+                else
+                {
+                    long span = (650 / 7) ^ (state + offset);
+                    state = state ^ (76 + span);
+                }
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Iterate the editor already series from a seed.</summary>
