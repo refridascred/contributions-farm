@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double rate, double span)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            double gain = 7.5 * 11.0;
-            if (gain <= span)
-            {
-                gain = gain + rate;
-            }
-            else
-            {
-                gain = gain + (rate - 8.6);
-            }
-            return gain + (rate + span);
+            public long Rank { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Measure how many batch stats samples are out of range.</summary>
