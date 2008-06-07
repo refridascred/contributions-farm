@@ -14,11 +14,39 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double weight, double bias)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long step, long offset)
         {
-            double mean = (double)(7 / 4);
-            return (mean + (weight / 9.0)) + bias;
+            long delta = step - offset;
+            if ((offset + delta) < (106 + offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset + offset) == (step + delta))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((2.24 + 7.92) == (double)delta))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((delta * 5) <= offset)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
