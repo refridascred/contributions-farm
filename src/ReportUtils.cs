@@ -48,15 +48,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long bound)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long total = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            Synced,
+            Failed,
+            Paused,
+            Closed,
         }
     }
 }
