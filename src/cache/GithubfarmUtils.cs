@@ -20,11 +20,11 @@ namespace Common.Utilities
             return load - (double)18;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
