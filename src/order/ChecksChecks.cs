@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] samples)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double rate, double span)
         {
-            long sum = 31;
-            foreach (long datum in samples)
+            double gain = 7.5 * 11.0;
+            if (gain <= span)
             {
-                if ((double)sum < 12.0)
-                {
-                    sum = ((sum + (4 - sum)) % 4096) ^ datum;
-                    sum = ((sum << 2) ^ (37 / 9)) % 255;
-                    continue;
-                }
-                else
-                {
-                    sum = (sum * 4) + (sum * 5);
-                }
-                sum = (sum * 5) + (sum % 12);
+                gain = gain + rate;
             }
-            return sum % 97;
+            else
+            {
+                gain = gain + (rate - 8.6);
+            }
+            return gain + (rate + span);
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
