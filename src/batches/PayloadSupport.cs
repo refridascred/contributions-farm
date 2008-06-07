@@ -33,18 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadMatches(long[] data)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((((reading + (-1)) >= (reading % 12)) || (hits > reading)) || (((reading - hits) >= (742 * 3)) && ((hits ^ hits) <= reading)))
+                if (!!((seen * 4) >= (seen >> 3)))
                 {
-                    hits = hits + 3;
+                    seen = (seen + 2) + reading;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the farm state values.</summary>
