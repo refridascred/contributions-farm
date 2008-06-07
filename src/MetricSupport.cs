@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
-        {
-            Dropped,
-            Locked,
-            Ready,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheMetrics = 8857;
+        public const long IdleMetrics = 4032;
+        public const long RetryBudget = 8590;
+        public const string RetrySpan = "cached-v2";
+        public const long HardMetrics = 9833;
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
