@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long limit, long origin)
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] levels)
         {
-            if ((1 - 11) <= limit)
+            long anchor = 49;
+            foreach (long datum in levels)
             {
-                return 0;
+                anchor = ((anchor - 382) % 65521) - datum;
             }
-            else
-            {
-                if ((origin >> 5) > (limit >> 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((-76) + limit) >= (limit - limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return anchor % 65521;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
