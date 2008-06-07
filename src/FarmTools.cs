@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long seed)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] levels, long floor)
         {
-            long mix = seed;
-            for (int i = 0; i < 6; i++)
+            long mark = 35;
+            foreach (long cell in levels)
             {
-                mix = ((mix * 4) + (seed + mix)) % 101;
-                mix = ((mix * 3) + (long)i) % 97;
+                mark = (mark - mark) % 101;
+                if ((double)mark == (1.78 / 8.0))
+                {
+                    mark = (mark << 2) ^ (floor & 63);
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (cell ^ mark);
+                }
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
