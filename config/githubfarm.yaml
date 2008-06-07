@@ -1,24 +1,11 @@
 # githubfarm settings
-audit: 8.56
-verbose:
-  persist:
-    min_timeout: blue
-    base_timeout_count:
-      - staging
-      - legacy
-      - staging
-    verbose:
-      - 374
-      - 317
-      - 147
-      - 429
-    poll_delay_count: 1024
-    hard_interval_s: 70
-  audit: 250
-  window_ratio: true
-dry_run: false
-window_delay: true
-hard_retries_pct:
-  - green
-  - cached
-persist: fallback
+compress: 8809
+base_threshold: 91.72
+default_ratio_count: true
+max_depth_pct:
+  - 156
+  - 83
+  - 214
+  - 417
+min_retries: blue
+readonly: 83.86
