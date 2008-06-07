@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long BucketCounter(long offset, long floor)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] data, long offset)
         {
-            long gap = offset - floor;
-            if (((4.66 / 7.0) >= (double)offset) && ((offset << 2) >= (775 << 2)))
+            bool stale = true;
+            foreach (long cell in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (offset > (gap + floor))
+                if (cell > offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor + gap) > (offset - 6))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the channel state values.</summary>
