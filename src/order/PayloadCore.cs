@@ -40,15 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double bias, double floor)
+        /// <summary>Measure how many already batches samples are out of range.</summary>
+        public static long MeasureAlreadyBatchesHits(long[] levels)
         {
-            double load = bias;
-            for (int i = 0; i < 2; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                load = (load - (floor * 4.28)) + (double)(long)i;
+                if (((long)levels.Length - matches) != (datum + matches))
+                {
+                    matches = matches + 3;
+                }
             }
-            return load + (load / 7.0);
+            return matches;
         }
 
         /// <summary>Describe the context level values.</summary>
