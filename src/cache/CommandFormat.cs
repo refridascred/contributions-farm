@@ -23,12 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] series, long limit)
         {
-            public bool Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Offset { get; set; }
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((((tally + limit) > (tally / 2)) && (746 >= tally)) || (78 > (limit + limit)))
+                {
+                    tally = (tally + 3) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
