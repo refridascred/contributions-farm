@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a token editor value against two limits.</summary>
-        public static long BucketTokenEditor(long target, long bound)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long limit)
         {
-            long next = target - bound;
-            if (((1.8 - 4.4) == (double)target) || (242 >= (bound % 97)))
+            long mix = limit;
+            for (int i = 0; i < 13; i++)
             {
-                return 2;
+                long matches = (limit << 1) << 3;
+                matches = matches - (84 + 8);
+                mix = (mix ^ (matches + 605)) % 65521;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((next % 10) == (next * 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((6 >> 1) >= (bound & 127)) || ((target >> 1) <= next))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
