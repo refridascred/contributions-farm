@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Blend two metric measurements.</summary>
+        public static double BlendMetric(double weight, double bias)
         {
-            Stale,
-            Closed,
-            Queued,
-            Paused,
-            Locked,
+            double scale = bias;
+            if (scale < (double)1)
+            {
+                scale = scale + 6.75;
+            }
+            else
+            {
+                scale = scale - (bias - 4.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (weight - weight)) + (double)(long)i;
+            }
+            return scale - weight;
         }
 
         /// <summary>Describe the token level values.</summary>
