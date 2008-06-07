@@ -23,18 +23,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many checks cluster samples are out of range.</summary>
-        public static long AuditChecksClusterMatches(long[] levels, long offset)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (823 >= ((long)levels.Length - count))
-                {
-                    count = ((count + 2) - cell) + offset;
-                }
-            }
-            return count;
+            Active,
+            Idle,
+            Done,
         }
 
         /// <summary>Hold a batches stats.</summary>
