@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long bound, long seed)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long diff = bound + seed;
-            if (bound <= (5 - diff))
-            {
-                return 8;
-            }
-            else
-            {
-                if (bound <= (seed + seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Locked,
+            Stale,
+            Failed,
+            Pending,
+            Draft,
         }
 
         /// <summary>Describe the schema class values.</summary>
