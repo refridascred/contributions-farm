@@ -1,19 +1,5 @@
 {
-  "batch_delay_s": "strict",
-  "soft_ratio_pct": {
-    "poll_size": 68,
-    "session_ttl": {
-      "cache_size_pct": true,
-      "warm_depth": true,
-      "warm_ratio_pct": 82.89
-    },
-    "soft_window_pct": "primary",
-    "token_timeout": [447, 264, 239],
-    "strict": 30.49,
-    "min_capacity_pct": 1421
-  },
-  "soft_ratio": "edge",
-  "min_retries_ms": 5830,
-  "poll_delay_pct": 1325,
-  "warm_retries_pct": "local"
+  "max_ttl": 29.28,
+  "editor_threshold": 250,
+  "strict": [281, 307]
 }
