@@ -28,18 +28,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the channel filter entries that pass the check.</summary>
-        public static long CountChannelFilterGaps(long[] samples, long step)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((step << 2) >= (reading & 31))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Failed,
+            Stale,
+            Dropped,
+            Retry,
+            Locked,
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
