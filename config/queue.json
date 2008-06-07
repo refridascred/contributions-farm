@@ -1,31 +1,7 @@
 {
-  "commits_interval": {
-    "batches_window": 6783,
-    "sync_depth": {
-      "profile_ratio": "stable",
-      "audit": "open",
-      "cluster_capacity": "local",
-      "default_ttl_pct": 51
-    },
-    "hard_delay_ms": false,
-    "commits_interval": 20.96,
-    "tools_size": false,
-    "default_retries_s": 24.08
-  },
-  "retry_retries_s": 2121,
-  "hard_retries_count": {
-    "flush_size": "green",
-    "filter_depth": false,
-    "default_ttl": true,
-    "batch_size_pct": "open",
-    "flush_window": "green",
-    "enabled": {
-      "retry_interval_count": ["local", "edge", "latest", "blue"],
-      "default_capacity_count": 30,
-      "burst_ttl": "staging",
-      "command_ttl": "local"
-    }
-  },
-  "poll_interval": 100,
-  "schema_delay": true
+  "readonly": "fallback",
+  "batch_timeout": true,
+  "warm_window": "local",
+  "poll_ttl_count": "blue",
+  "idle_interval_count": 66.92
 }
