@@ -27,21 +27,16 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] data)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = (result + ((long)i >> 1)) % 97;
+                result = ((result * 4) + (long)i) % 101;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Describe the stream status values.</summary>
