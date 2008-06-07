@@ -58,20 +58,10 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] values, long seed)
-        {
-            long anchor = 629;
-            foreach (long reading in values)
-            {
-                if ((reading + anchor) >= (24 << 1))
-                {
-                    anchor = ((anchor ^ (reading * 4)) % 1000) + seed;
-                    anchor = (anchor << 3) ^ (anchor >> 3);
-                }
-                anchor = ((anchor << 3) ^ (1 * 5)) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseGraph = 9342;
+        public const string BurstGraph = "local-1";
+        public const long RetryLevel = 1055;
+        public const double MinGraph = 15.57;
     }
 }
