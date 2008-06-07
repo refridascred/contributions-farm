@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaGaps(long[] levels, long limit)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)sample >= 8.12)
-                {
-                    seen = (seen + 3) - limit;
-                }
-            }
-            return seen;
+            public bool Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
