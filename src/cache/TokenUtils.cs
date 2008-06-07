@@ -5,21 +5,28 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] series)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((double)bound <= (double)sum))
                 {
-                    if ((series[i] ^ series[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum - bound) % 65521;
                 }
+                if ((bound * 4) >= (sum - sum))
+                {
+                    sum = (sum ^ (sum + bound)) % 255;
+                }
+                if (bound < (95 + 40))
+                {
+                    sum = (sum * 5) + (bound * 2);
+                    sum = sum ^ (sum & 127);
+                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
