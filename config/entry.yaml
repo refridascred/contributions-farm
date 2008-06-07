@@ -1,21 +1,9 @@
 # entry settings
-warm_retries: 48
-record_depth: 57.93
-batch_ttl_ms:
-  buffer_timeout: 32.49
-  strict:
-    - 201
-    - 175
-    - 129
-    - 245
-  flush_limit_s: 88
-  cache_threshold: 2347
-batch_depth_count:
-  strict: false
-  cluster_depth: local
-  token_depth: legacy
-  notes_limit:
-    base_ttl_count: 324
-    dry_run: 7896
-    command_ratio: legacy
-  compress: green
+burst_interval_pct: 1024
+hard_size_count: false
+sync_ratio_count: 29.77
+commits_limit: 1712
+verbose:
+  - 436
+  - 402
+  - 45
