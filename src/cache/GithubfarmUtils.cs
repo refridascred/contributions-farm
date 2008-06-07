@@ -29,18 +29,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesHits(long[] samples)
+        /// <summary>Count buffer commits pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCommitsCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((tally + cell) == (cell * 4))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((levels[i] - levels[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the stream status values.</summary>
