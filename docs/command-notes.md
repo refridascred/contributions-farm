@@ -1,11 +1,14 @@
 # Command notes
 
-Defaults for context live in the config folder and can be overridden per environment.
-Use batches settings to tune how often payload data is refreshed.
-The record module keeps channel values in sync with the order cache.
+Keep farm and filter names short and lowercase.
+A cache that stays idle for too long is moved to the batches list.
+
+The command helpers are pure functions, so they are safe to call from any thread.
+The batches helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer notes defaults
-- Validate already input early
-- Review token limits each release
+- Prefer commits defaults
+- Review filter limits each release
+- Keep profile values small
+- Document new report fields
