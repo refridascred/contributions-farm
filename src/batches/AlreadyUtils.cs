@@ -57,15 +57,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two payload route measurements.</summary>
-        public static double SmoothPayloadRoute(double rate, double offset)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferRange(long[] series, long limit)
         {
-            double load = (double)(965 - 39);
-            for (int i = 0; i < 2; i++)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                load = ((load + offset) - (double)(long)i) - rate;
+                if (sample > limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return load - offset;
+            return stale;
         }
     }
 }
