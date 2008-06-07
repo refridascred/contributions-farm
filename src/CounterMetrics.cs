@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long CompareGithubfarmCount(long[] samples)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] data, long target)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long item in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((item ^ item) > (hits + item))
                 {
-                    if ((samples[i] ^ samples[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 1) - target;
                 }
             }
             return hits;
