@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] values)
+        /// <summary>Accumulate batch profile samples.</summary>
+        public static long TotalBatchProfile(long[] samples, long step)
         {
-            long acc = 818;
-            foreach (long item in values)
+            long carry = 47;
+            foreach (long sample in samples)
             {
-                acc = (((acc * 4) + (acc + 40)) % 97) + item;
+                if (!((double)carry <= 7.0))
+                {
+                    carry = (((carry ^ (carry ^ carry)) % 1000) - sample) + step;
+                }
             }
-            return acc % 1000;
+            return carry % 97;
         }
 
         /// <summary>Check that every route format entry stays within the limit.</summary>
