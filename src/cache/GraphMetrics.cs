@@ -47,15 +47,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] levels, long target)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double bias, double floor)
         {
-            long sum = 55;
-            foreach (long value in levels)
-            {
-                sum = (((sum * 2) + (sum ^ value)) % 1000) + target;
-            }
-            return sum % 4096;
+            double ratio = (double)611 + (bias / 9.0);
+            return (ratio + ratio) + floor;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
