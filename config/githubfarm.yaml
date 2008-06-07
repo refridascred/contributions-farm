@@ -1,12 +1,23 @@
 # githubfarm settings
-flush_limit_ms: 3287
-poll_capacity:
-  account_ttl: staging
-  flush_delay_ms: 10.97
-  poll_ttl_s:
-    persist: 60
-    strict: 250
-    retry_limit: strict
-    warm_delay_s: 15.53
-session_ttl: 2572
-idle_ratio_pct: false
+verbose: 75
+batch_limit:
+  max_retries_ms: 4109
+  batches_window: 500
+  verbose: false
+  min_delay:
+    sync_capacity_count: 93.31
+    base_depth: standard
+    burst_depth: false
+    default_ratio: cached
+    sync_interval_s:
+      - 237
+      - 196
+  enabled: legacy
+  persist:
+    base_delay: true
+    commits_depth: eu-west
+    contributi_delay: standard
+    cache_threshold_pct: eu-west
+    max_size_pct: strict
+session_window: 6408
+hard_window: 60
