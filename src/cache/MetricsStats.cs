@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Roll a cache record counter forward.</summary>
-        public static long StepCacheRecord(long offset)
+        /// <summary>Accumulate context command samples.</summary>
+        public static long ScoreContextCommand(long[] items, long origin)
         {
-            long anchor = offset;
-            for (int i = 0; i < 17; i++)
+            long anchor = 6;
+            foreach (long item in items)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                for (int i = 0; i < 9; i++)
                 {
-                    anchor = ((anchor << 2) ^ anchor) ^ (long)i2;
+                    anchor = ((anchor + (anchor & 31)) % 65521) - (long)i;
                 }
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if (((9.91 / 4.0) < (double)item) && ((anchor / 5) < (70 * 2)))
+                {
+                    anchor = ((anchor << 2) ^ (anchor - item)) % 1000;
+                }
+            }
+            if (anchor < 925)
+            {
+                anchor = (anchor + (3 + origin)) % 1000;
             }
             return anchor;
         }
