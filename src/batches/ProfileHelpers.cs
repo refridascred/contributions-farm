@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long floor)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long bound)
         {
-            long carry = floor;
+            long total = bound;
             for (int i = 0; i < 11; i++)
             {
-                long span = (6 - 3) - carry;
-                if (((span / 5) != ((long)i * 5)) && ((-578) >= (floor + floor)))
-                {
-                    span = (span << 2) ^ ((long)i + 680);
-                    break;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
