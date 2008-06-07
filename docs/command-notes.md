@@ -1,15 +1,13 @@
 # Command notes
 
-The schema report groups every token by command.
-Use route settings to tune how often metric data is refreshed.
-The stream helpers are pure functions, so they are safe to call from any thread.
+The format module keeps batch values in sync with the farm cache.
+A batch that stays idle for too long is moved to the payload list.
 
-Run the schema check before changing any profile limits.
-Run the profile check before changing any record limits.
+A counter that stays idle for too long is moved to the schema list.
+The editor module keeps report values in sync with the buffer cache.
 
 ## Guidelines
 
-- Review session limits each release
-- Document new stream fields
-- Validate notes input early
-- Prefer profile defaults
+- Validate buffer input early
+- Log every profile change
+- Review report limits each release
