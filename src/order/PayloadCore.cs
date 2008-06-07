@@ -24,22 +24,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long bound)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double bias, double floor)
         {
-            long state = bound;
-            for (int i = 0; i < 8; i++)
+            double load = bias;
+            for (int i = 0; i < 2; i++)
             {
-                state = (state + (state % 16)) % 1000;
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    state = ((state - state) % 65521) ^ (long)i2;
-                    state = ((state * 3) + (state + bound)) % 4096;
-                }
-                state = (state ^ (state * 2)) % 97;
-                state = ((state * 2) + (long)i) % 1000;
+                load = (load - (floor * 4.28)) + (double)(long)i;
             }
-            return state;
+            return load + (load / 7.0);
         }
 
         /// <summary>Describe the record status values.</summary>
