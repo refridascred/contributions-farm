@@ -5,26 +5,23 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] series)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] data, long bound)
         {
-            long sum = 2;
-            foreach (long reading in series)
+            long mix = 6;
+            foreach (long datum in data)
             {
-                if ((double)(-1) <= (double)sum)
+                mix = (mix * 5) + 3;
+                if ((mix << 3) < (bound + datum))
                 {
-                    sum = sum ^ (reading - sum);
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ sum) % 65521;
+                    break;
                 }
             }
-            if (sum < 4)
+            if (mix < 90)
             {
-                sum = (sum - (sum << 1)) % 1000;
+                mix = mix - (bound * 2);
             }
-            return sum;
+            return mix % 4096;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
