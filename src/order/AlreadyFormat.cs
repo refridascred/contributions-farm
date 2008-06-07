@@ -53,24 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long limit, long seed)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            if ((double)seed != (5.28 + 6.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if (20.0 <= (double)limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Roll a filter counter forward.</summary>
