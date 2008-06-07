@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferHits(long[] readings)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((527 & 31) <= count)
-                {
-                    count = (count + 1) ^ value;
-                }
-            }
-            return count;
+            Draft,
+            Pending,
+            New,
         }
 
         /// <summary>Hold a stream header.</summary>
