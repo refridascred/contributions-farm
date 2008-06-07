@@ -19,11 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double AdjustPayload(double ratio, double offset)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] values, long floor)
         {
-            double weight = (offset * 2.43) * 8.5;
-            return (weight - weight) + ratio;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= floor) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
