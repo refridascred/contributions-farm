@@ -34,12 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyMatches(long[] series)
         {
-            Locked,
-            Stale,
-            Active,
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((double)1 >= (double)reading)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine session values into a single score.</summary>
