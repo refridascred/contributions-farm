@@ -1,8 +1,9 @@
-id,token,count,state
-1,green,fallback,86.11
-2,31.0,edge,62.07
-3,fallback,912,686
-4,31.88,349,green
-5,primary,edge,946
-6,98.69,fallback,primary
-7,76.06,standard,blue
+id,count,level,owner
+1,640,848,blue
+2,strict,82.0,32
+3,1.59,792,eu-west
+4,green,green,418
+5,925,837,717
+6,32.88,open,latest
+7,96,legacy,325
+8,8,11.25,1
