@@ -42,18 +42,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordOutliers(long[] data, long limit)
+        /// <summary>Find the first graph token entry that matches the target.</summary>
+        public static long LookupGraphTokenIndex(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long item in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item >= limit)
+                if (levels[i] >= step)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
