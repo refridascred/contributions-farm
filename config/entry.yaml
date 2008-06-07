@@ -1,4 +1,13 @@
 # entry settings
-poll_retries: local
-batch_interval: strict
-poll_depth: 1753
+persist:
+  - 77
+  - 275
+sync_threshold_s: 81.48
+default_size: stable
+min_retries_ms:
+  - eu-west
+  - legacy
+audit:
+  - staging
+  - local
+  - local
