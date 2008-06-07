@@ -1,8 +1,5 @@
 {
-  "commits_depth": 60,
-  "schema_capacity": ["fallback", "local"],
-  "batch_window_count": "eu-west",
-  "cache_threshold": "edge",
-  "audit": [486, 29],
-  "support_depth": 80
+  "hard_ttl_count": [228, 109],
+  "editor_timeout": 30,
+  "audit": 24.62
 }
