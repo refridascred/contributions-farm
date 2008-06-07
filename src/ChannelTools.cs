@@ -13,13 +13,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Derive the next already metric value from a seed.</summary>
+        public static long DeriveAlreadyMetric(long step)
         {
-            public double Ratio { get; set; }
-            public long Level { get; set; }
-            public long Total { get; set; }
-            public double Stamp { get; set; }
+            long mark = step;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Match up context session samples.</summary>
