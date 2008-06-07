@@ -19,22 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorOutliers(long[] samples)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long floor)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long mark = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if ((matches & 255) > value)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
