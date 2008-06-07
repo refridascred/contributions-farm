@@ -56,26 +56,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] levels, long seed)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long mark = 95;
-            foreach (long entry in levels)
-            {
-                if ((mark + 904) >= seed)
-                {
-                    mark = mark - entry;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ seed;
-                }
-            }
-            if (mark > 86)
-            {
-                mark = (mark ^ (mark ^ mark)) % 101;
-            }
-            return mark;
+            public long Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
