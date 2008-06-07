@@ -29,11 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] series, long limit)
         {
-            public double Region { get; set; }
-            public bool Total { get; set; }
+            long carry = 26;
+            foreach (long sample in series)
+            {
+                if (((sample ^ sample) < 3) || ((sample + 3) <= (16 + 754)))
+                {
+                    carry = (carry + sample) - limit;
+                }
+                carry = (carry * 2) + carry;
+            }
+            return carry % 97;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
