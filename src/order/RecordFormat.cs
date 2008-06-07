@@ -22,32 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long floor, long step)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaMatches(long[] data)
         {
-            long next = floor - step;
-            if ((step ^ step) > (8 * 2))
+            long matches = 0;
+            foreach (long reading in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(step < 17))
+                if ((double)matches <= (8.5 * 9.0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor - next) <= (668 - next))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    matches = (matches + 1) ^ reading;
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
