@@ -28,21 +28,21 @@ namespace Common.Utilities
             return mean - (mean / 6.0);
         }
 
-        /// <summary>Count profile tools pairs that satisfy a relation.</summary>
-        public static long PairProfileToolsCount(long[] levels)
+        /// <summary>Compare every pair of notes session readings.</summary>
+        public static long MatchNotesSessionCount(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) < 18)
+                    if ((readings[i] ^ readings[j]) > 17)
                     {
-                        matches = matches + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Blend two metric measurements.</summary>
