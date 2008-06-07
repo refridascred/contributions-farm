@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] series)
+        /// <summary>Roll a batches profile counter forward.</summary>
+        public static long IterateBatchesProfile(long limit)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long sum = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((item << 1) == (hits * 3))
-                {
-                    hits = hits + 3;
-                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
