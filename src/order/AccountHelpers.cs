@@ -45,13 +45,24 @@ namespace Common.Utilities
         public const long SoftSize = 2011;
         public const string StepScore = "fallback-edge";
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long origin, long origin2)
         {
-            public bool Weight { get; set; }
-            public bool Limit { get; set; }
-            public long Region { get; set; }
-            public string Label { get; set; } = "";
+            if ((origin2 & 7) > (origin ^ origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((origin2 - origin2) != (origin2 >> 1)) || ((double)origin >= 17.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the cluster phase values.</summary>
