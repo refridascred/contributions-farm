@@ -44,18 +44,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Fold a list of metric buffer readings.</summary>
-        public static long FoldMetricBuffer(long[] data)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long acc = -16;
-            foreach (long reading in data)
-            {
-                if ((double)acc == (double)344)
-                {
-                    acc = (acc - (31 / 6)) + reading;
-                }
-            }
-            return acc;
+            Stale,
+            Ready,
+            Draft,
         }
 
         /// <summary>Hold a notes summary.</summary>
