@@ -51,11 +51,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 162;
-        public const long StepRecord = 204;
-        public const string LimitRecord = "open";
-        public const long WindowRecord = 7750;
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long MeasureAlreadyOutliers(long[] data)
