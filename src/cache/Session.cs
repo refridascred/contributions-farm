@@ -16,12 +16,24 @@ namespace Common.Utilities
             return load - (load * 5.44);
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long floor)
         {
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    mark = ((mark + ((long)i - floor)) % 65521) - (long)i2;
+                }
+                bool found = (3.9 - 14.0) <= (double)floor;
+                if (!found)
+                {
+                    found = ((12.0 * 4.8) >= (double)mark) || ((double)floor <= (4.48 / 5.0));
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Validate channel stream readings against a bound.</summary>
