@@ -15,11 +15,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesHits(long[] items)
         {
-            public double Count { get; set; }
-            public bool Level { get; set; }
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (item > (item + item))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate metrics cache readings against a bound.</summary>
