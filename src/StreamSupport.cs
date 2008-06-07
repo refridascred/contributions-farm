@@ -27,19 +27,18 @@ namespace Common.Utilities
             return gain - (gain * 2.67);
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double ratio, double span)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountHits(long[] levels)
         {
-            double rate = 19.0 - (span * 0.7);
-            if (rate > (ratio / 8.0))
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                rate = rate + (0.3 * 8.51);
+                if (((long)levels.Length % 12) > hits)
+                {
+                    hits = (hits + 2) + sample;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - ratio) + (double)(long)i;
-            }
-            return rate + 14.0;
+            return hits;
         }
     }
 }
