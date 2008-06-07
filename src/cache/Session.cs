@@ -36,19 +36,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate channel stream readings against a bound.</summary>
-        public static bool GuardChannelStreamLimits(long[] series, long origin)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long step, long step2)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            if (((-30) & 31) > (step + step))
             {
-                if (cell < origin)
+                return 4;
+            }
+            else
+            {
+                if ((double)step2 >= (0.6 + 8.75))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)step2 > (3.0 - 6.78))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (1.0 <= (double)step)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Project the next graph value.</summary>
