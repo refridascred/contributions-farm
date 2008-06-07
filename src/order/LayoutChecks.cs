@@ -19,12 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
-        {
-            public bool Offset { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BaseCommits = 78.06;
+        public const long HardScore = 5105;
+        public const long StepCommits = 3423;
+        public const string LimitDepth = "staging-1";
+        public const long BatchCommits = 7046;
 
         /// <summary>Hold a batches snapshot.</summary>
         public sealed class BatchesSnapshot
