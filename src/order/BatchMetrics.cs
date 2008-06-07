@@ -62,18 +62,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the filter metrics entries that pass the check.</summary>
-        public static long CountFilterMetricsMatches(long[] data, long offset)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterRange(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if ((70 + item) <= offset)
+                if (reading != origin)
                 {
-                    hits = hits + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
