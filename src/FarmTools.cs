@@ -30,19 +30,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of already metrics entries.</summary>
-        public static long FoldAlreadyMetrics(long[] samples, long target)
-        {
-            long score = 6;
-            foreach (long reading in samples)
-            {
-                score = (score - (score ^ target)) - reading;
-            }
-            if (score < 116)
-            {
-                score = (score << 2) ^ (target / 8);
-            }
-            return score;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchFactor = 1137;
+        public const long MaxMetrics = 7035;
+        public const string BurstMetrics = "primary";
+        public const long MinInterval = 210;
     }
 }
