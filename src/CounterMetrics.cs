@@ -13,17 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] levels, long limit)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] data, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if ((levels[i] >= limit) && ((levels[i] % 5) == 0))
+                if (!((44 / 6) > bound))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + sample;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
