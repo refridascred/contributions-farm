@@ -19,22 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine editor context values into a single score.</summary>
-        public static long FoldEditorContext(long[] data)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long mix = 6;
-            foreach (long entry in data)
-            {
-                if (mix >= (mix << 1))
-                {
-                    mix = ((mix * 4) + entry) % 97;
-                }
-                else
-                {
-                    mix = mix - (239 * 4);
-                }
-            }
-            return mix;
+            public long Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a buffer entry.</summary>
