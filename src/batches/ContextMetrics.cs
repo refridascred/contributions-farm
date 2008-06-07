@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long MatchFilterCount(long[] data)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                acc = acc - (acc + 57);
+                long count = offset + acc;
+                if (acc >= (acc & 255))
                 {
-                    if ((data[i] - data[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = (acc + (acc - count)) % 4096;
                 }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
