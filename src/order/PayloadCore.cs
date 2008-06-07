@@ -57,12 +57,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            Done,
-            Retry,
-            Failed,
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
+            public bool Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
