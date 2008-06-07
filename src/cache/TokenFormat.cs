@@ -23,11 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            public bool Total { get; set; }
-            public long Region { get; set; }
+            Dropped,
+            Pending,
+            Stale,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
