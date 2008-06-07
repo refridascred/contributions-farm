@@ -30,25 +30,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long offset, long target)
-        {
-            long offset2 = offset ^ target;
-            if ((722 & 31) > (offset2 + offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((target << 2) <= (offset2 / 5)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double IdleInterval = 38.94;
+        public const string MinGraph = "primary-1";
+        public const long StepGraph = 3248;
+        public const long IdleGraph = 1736;
     }
 }
