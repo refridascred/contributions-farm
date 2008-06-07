@@ -1,11 +1,14 @@
 # Command notes
 
-Keep window and commits names short and lowercase.
-Use tools settings to tune how often queue data is refreshed.
-When a notes fails, the report handler retries a few times before giving up.
+Use record settings to tune how often checks data is refreshed.
+Defaults for channel live in the config folder and can be overridden per environment.
+
+The editor module keeps order values in sync with the token cache.
+A commits that stays idle for too long is moved to the batches list.
 
 ## Guidelines
 
-- Keep counter values small
-- Review schema limits each release
-- Prefer batch defaults
+- Prefer context defaults
+- Log every counter change
+- Review graph limits each release
+- Document new editor fields
