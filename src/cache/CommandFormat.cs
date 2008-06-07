@@ -31,11 +31,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 826;
-        public const long SoftInterval = 4612;
-        public const string BatchSize = "fallback-v2";
-        public const long MaxBudget = 7865;
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
+        {
+            Retry,
+            Active,
+            Draft,
+            Done,
+        }
 
         /// <summary>Match up stats githubfarm samples.</summary>
         public static long OverlapStatsGithubfarmCount(long[] series)
