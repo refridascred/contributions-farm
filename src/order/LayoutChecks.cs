@@ -51,22 +51,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaHits(long[] levels)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long origin, long step)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            if ((origin - origin) < (origin + 545))
             {
-                if ((long)levels.Length <= (datum & 31))
+                return 5;
+            }
+            else
+            {
+                if (!((origin + 3) < 5))
                 {
-                    hits = hits + 3;
+                    return 4;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
