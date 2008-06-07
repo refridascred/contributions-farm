@@ -19,21 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] values)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Stale,
+            Synced,
+            Ready,
+            Active,
+            Failed,
         }
 
         /// <summary>Accumulate support samples.</summary>
