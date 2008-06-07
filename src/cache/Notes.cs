@@ -43,16 +43,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long offset)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LocateCommitsIndex(long[] items, long limit)
         {
-            long state = offset;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (state ^ (3 % 64)) % 65521;
-                state = ((state * 5) + (long)i) % 4093;
+                if (items[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
