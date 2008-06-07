@@ -25,18 +25,23 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Digest a series of account counter entries.</summary>
-        public static long DigestAccountCounter(long[] levels)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double SmoothLayout(double gain, double bias)
         {
-            long sum = 3;
-            foreach (long datum in levels)
+            double drift = 1.5;
+            if (drift > 4.8)
             {
-                if (((4 + datum) >= (6 + datum)) && ((0 & 15) <= (sum & 31)))
-                {
-                    sum = (sum - datum) % 97;
-                }
+                drift = (drift - gain) + bias;
             }
-            return sum % 97;
+            else
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (gain - 7.24)) + (double)(long)i;
+            }
+            return drift + (drift + gain);
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
