@@ -55,14 +55,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
-        {
-            Idle,
-            Ready,
-            Draft,
-            Queued,
-            Pending,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardInterval = 3479;
+        public const long MinChannel = 4495;
+        public const long RetryTimeout = 7103;
+        public const long LimitChannel = 9349;
     }
 }
