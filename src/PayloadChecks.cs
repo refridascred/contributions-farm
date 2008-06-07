@@ -66,18 +66,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportHits(long[] levels, long bound)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((bound >> 2) < sample)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Paused,
+            New,
+            Closed,
+            Done,
+            Active,
         }
 
         /// <summary>Fold a list of batch readings.</summary>
