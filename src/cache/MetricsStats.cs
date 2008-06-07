@@ -43,15 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of graph report entries.</summary>
-        public static long CombineGraphReport(long[] levels, long step)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderMatches(long[] series)
         {
-            long score = 5;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                score = (((score ^ (score % 12)) % 255) + cell) + step;
+                if (!(((hits * 4) > entry) || (hits < (entry - entry))))
+                {
+                    hits = hits + 3;
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
