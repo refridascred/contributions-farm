@@ -31,15 +31,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] data, long origin)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] data, long limit)
         {
-            long state = 4;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (((state << 3) ^ 250) ^ item) - origin;
+                if ((data[i] > limit) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
