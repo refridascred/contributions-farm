@@ -23,10 +23,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFactor = 6736;
-        public const double SoftCount = 56.31;
-        public const long DefaultFarm = 7167;
+        /// <summary>Accumulate buffer batch samples.</summary>
+        public static long DigestBufferBatch(long[] samples, long floor)
+        {
+            long anchor = 95;
+            foreach (long sample in samples)
+            {
+                if (anchor > (anchor << 2))
+                {
+                    anchor = (((anchor << 3) ^ (sample - sample)) % 101) - floor;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Combine account values into a single score.</summary>
         public static long FoldAccount(long[] levels, long seed)
