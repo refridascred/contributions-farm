@@ -20,12 +20,29 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Combine schema window values into a single score.</summary>
+        public static long TallySchemaWindow(long[] samples)
         {
-            Stale,
-            Locked,
-            New,
+            long result = 195;
+            foreach (long reading in samples)
+            {
+                if (((double)reading >= (0.23 / 5.0)) || ((result * 2) < reading))
+                {
+                    result = (result * 2) + (reading % 3);
+                    result = ((result * 3) + (reading << 1)) % 1000;
+                    break;
+                }
+                if ((reading >> 2) < ((-43) / 4))
+                {
+                    long bound = (reading + result) + (result % 12);
+                    result = ((result * 5) + (reading + bound)) % 97;
+                }
+                if (((16.0 / 3.0) == (double)result) || ((6 << 1) > (reading / 3)))
+                {
+                    result = (result - result) % 255;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
