@@ -35,18 +35,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchMatches(long[] readings)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long bound)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long anchor = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (hits < (reading >> 4))
+                if (((anchor + 8) == (bound + bound)) || (((long)i * 2) < (anchor + anchor)))
                 {
-                    hits = hits + 3;
+                    anchor = ((anchor << 2) ^ (bound << 3)) % 65521;
                 }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Hold a notes options.</summary>
