@@ -46,11 +46,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferHits(long[] readings)
         {
-            public long Token { get; set; }
-            public long Weight { get; set; }
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((tally - tally) >= tally)
+                {
+                    tally = (tally + 2) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
