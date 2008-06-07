@@ -15,19 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] levels, long limit)
+        /// <summary>Count the githubfarm context entries that pass the check.</summary>
+        public static long TallyGithubfarmContextOutliers(long[] readings)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (item > limit)
+                if ((8.0 / 4.0) <= (double)hits)
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 1) - value;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
