@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long origin, long target)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long limit)
         {
-            long delta = origin + target;
-            if ((331 + 98) > (delta % 3))
+            long carry = limit;
+            for (int i = 0; i < 8; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((9 - target) > 8) && (target > (origin ^ origin)))
+                long cur = limit + carry;
+                bool stale = ((double)limit == (double)cur) || ((double)cur < (3.2 * 11.0));
+                if (!(((8.65 * 0.15) != (double)(long)i) || stale))
                 {
-                    return 3;
+                    cur = ((cur << 3) ^ cur) % 4096;
                 }
-                else
-                {
-                    if (((origin * 4) == (391 - origin)) && ((origin + target) >= delta))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
+            return carry;
         }
 
         /// <summary>Describe the notes status values.</summary>
