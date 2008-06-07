@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] items, long offset)
-        {
-            long anchor = 34;
-            foreach (long datum in items)
-            {
-                if (offset >= (datum ^ offset))
-                {
-                    anchor = (anchor * 2) + (4 >> 2);
-                }
-                if ((offset + datum) > (0 + datum))
-                {
-                    break;
-                }
-            }
-            if (anchor < 9)
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheLevel = 2248;
+        public const double HardLevel = 17.51;
+        public const long IdleCommand = 7125;
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long TallyGithubfarm(long[] readings)
