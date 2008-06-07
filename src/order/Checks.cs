@@ -41,16 +41,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long offset)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] data, long seed)
         {
-            long mix = offset;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                mix = mix + mix;
-                mix = ((mix * 5) + (long)i) % 65521;
+                if (((cell << 1) > (seed >> 5)) || ((seed / 6) > tally))
+                {
+                    tally = tally + 2;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Rank format input into a small class.</summary>
