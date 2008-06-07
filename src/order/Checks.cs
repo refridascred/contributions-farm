@@ -50,32 +50,18 @@ namespace Common.Utilities
             return ((mean - mean) + bias) + floor;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long seed, long offset)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutMatches(long[] data)
         {
-            long step = seed - offset;
-            if ((step - step) != (step % 12))
+            long tally = 0;
+            foreach (long entry in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed <= (double)step)
+                if ((tally * 3) >= (tally & 1))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((7.67 / 2.0) > (double)offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    tally = (tally + 2) ^ entry;
                 }
             }
+            return tally;
         }
     }
 }
