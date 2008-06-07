@@ -28,11 +28,17 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MinLevel = "primary";
-        public const long MaxChannel = 1767;
-        public const long IdleLevel = 1237;
-        public const long HardChannel = 2095;
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] values, long target)
+        {
+            long mark = 7;
+            foreach (long reading in values)
+            {
+                mark = mark - (reading & 63);
+                mark = mark + (target >> 4);
+            }
+            return mark;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string IdleTools = "staging";
