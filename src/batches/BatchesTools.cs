@@ -33,15 +33,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next route batches value.</summary>
-        public static double ScaleRouteBatches(double gain, double floor)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmMatches(long[] readings, long offset)
         {
-            double ratio = (double)79 / 4.0;
-            if (ratio >= (0.24 / 5.0))
+            long count = 0;
+            foreach (long entry in readings)
             {
-                ratio = ((ratio - 2.1) - gain) - floor;
+                if ((count >> 2) == (entry % 5))
+                {
+                    count = (count + 2) + offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return ratio + (ratio / 8.0);
+            return count;
         }
     }
 }
