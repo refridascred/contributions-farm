@@ -30,19 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueRange(long[] samples, long seed)
+        /// <summary>Audit already account readings against a rule.</summary>
+        public static long CountAlreadyAccountMatches(long[] samples)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (item < seed)
+                if ((((double)hits < (5.0 / 7.0)) || ((8.08 - 6.3) < (double)hits)) && (((double)entry > (3.3 * 13.0)) && ((hits & 31) < entry)))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
