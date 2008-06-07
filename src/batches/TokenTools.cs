@@ -30,32 +30,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a context entry value against two limits.</summary>
-        public static long BucketContextEntry(long offset, long limit)
+        /// <summary>Validate editor token readings against a bound.</summary>
+        public static bool GuardEditorTokenLimits(long[] values, long floor)
         {
-            long edge = offset - limit;
-            if ((edge << 3) == (limit % 7))
+            bool flag = true;
+            foreach (long cell in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (((edge + offset) < 163) && ((0.28 + 4.0) <= (double)offset))
+                if (cell != floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((edge > limit) && (limit < (73 << 3)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
