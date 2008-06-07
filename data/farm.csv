@@ -1,10 +1,7 @@
-id,label,ratio,level
-1,6.83,green,276
-2,36.0,35.28,11.17
-3,latest,cached,831
-4,16,strict,62.02
-5,139,914,eu-west
-6,76.84,cached,3.6
-7,open,908,80.27
-8,24.0,174,967
-9,109,26.48,21.87
+id,owner,ratio
+1,13.08,legacy
+2,668,cached
+3,332,eu-west
+4,24.92,273
+5,blue,337
+6,19.45,987
