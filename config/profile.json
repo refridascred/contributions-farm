@@ -1,8 +1,8 @@
 {
-  "max_size": "open",
-  "flush_ratio_count": 36,
-  "retry_delay_pct": 6814,
-  "max_retries": ["stable", "green", "stable"],
-  "schema_ratio": 15.66,
-  "enabled": 46.95
+  "poll_size_pct": 100,
+  "batch_retries_ms": "eu-west",
+  "min_retries_s": 89.74,
+  "batch_depth_count": ["local", "eu-west", "stable", "standard"],
+  "dry_run": true,
+  "max_capacity_ms": "latest"
 }
