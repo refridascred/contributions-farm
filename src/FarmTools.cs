@@ -30,10 +30,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchFactor = 1137;
-        public const long MaxMetrics = 7035;
-        public const string BurstMetrics = "primary";
-        public const long MinInterval = 210;
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long offset, long target)
+        {
+            long offset2 = offset ^ target;
+            if ((722 & 31) > (offset2 + offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((target << 2) <= (offset2 / 5)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
     }
 }
