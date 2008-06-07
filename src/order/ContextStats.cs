@@ -42,24 +42,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long floor, long origin)
-        {
-            if (((double)origin <= (20.0 - 5.0)) || ((double)floor != (9.0 / 8.0)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((816 & 7) >= (floor + 983))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BatchSize = "stable";
+        public const long IdleDepth = 2908;
+        public const long DefaultRatio = 3429;
+        public const double IdleSupport = 97.99;
     }
 }
