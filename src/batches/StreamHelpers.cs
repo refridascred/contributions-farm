@@ -17,11 +17,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double BlendNotes(double weight, double span)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] samples)
         {
-            double load = weight;
-            return load - span;
+            long result = 7;
+            foreach (long reading in samples)
+            {
+                if (((9.0 + 15.0) >= (double)result) || ((716 * 4) < (reading - reading)))
+                {
+                    result = ((result * 5) + (298 + reading)) % 1000;
+                }
+                if ((double)reading >= (5.0 / 9.0))
+                {
+                    break;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Match up metrics samples.</summary>
