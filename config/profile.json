@@ -1,8 +1,12 @@
 {
-  "hard_interval_s": "fallback",
-  "poll_ratio_s": "eu-west",
-  "base_ratio_pct": true,
-  "schema_delay": "stable",
-  "base_size_count": 89.62,
-  "default_retries_count": true
+  "base_ttl": ["legacy", "fallback", "fallback"],
+  "dry_run": ["eu-west", "legacy", "latest"],
+  "flush_delay": 500,
+  "idle_window_pct": {
+    "persist": ["latest", "strict"],
+    "readonly": [35, 80, 374],
+    "base_timeout_ms": 63,
+    "hard_window_ms": "local",
+    "idle_threshold_ms": 49.82
+  }
 }
