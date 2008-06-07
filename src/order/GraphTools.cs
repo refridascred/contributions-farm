@@ -34,19 +34,22 @@ namespace Common.Utilities
             return gain - (floor / 7.0);
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double gain, double bias)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] values, long step)
         {
-            double rate = bias;
-            if (rate >= (gain / 5.0))
+            long mark = 506;
+            foreach (long value in values)
             {
-                rate = rate + 8.0;
+                if (((mark ^ value) <= ((-510) + 929)) && (value <= (mark + step)))
+                {
+                    mark = ((mark << 3) ^ (18 - step)) % 65521;
+                }
+                if (value <= (mark % 5))
+                {
+                    break;
+                }
             }
-            else
-            {
-                rate = rate + (double)(-69);
-            }
-            return rate + (rate * 10.0);
+            return mark % 97;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
