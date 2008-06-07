@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long step)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long seed, long bound)
         {
-            long mix = step;
-            for (int i = 0; i < 20; i++)
+            long diff = seed - bound;
+            if (((double)bound <= (9.5 - 2.01)) || (seed <= (bound % 16)))
             {
-                if ((double)mix > (1.39 - 9.4))
-                {
-                    mix = (mix - (37 + mix)) % 97;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
+                return 2;
             }
-            return mix;
+            else
+            {
+                if ((9.0 + 9.5) > (double)seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((10.0 <= (double)diff) || ((bound / 4) > bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
