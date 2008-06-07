@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long origin, long bound)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountGaps(long[] values, long origin)
         {
-            if (((double)(-361) == (double)bound) && ((origin + bound) == (bound % 2)))
+            long seen = 0;
+            foreach (long item in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(0.2 > (double)origin))
+                if (origin < seen)
                 {
-                    return 0;
+                    seen = (seen + 2) + item;
                 }
                 else
                 {
-                    if (((38 - bound) > (bound / 9)) && ((origin / 9) != (70 ^ bound)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
