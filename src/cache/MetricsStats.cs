@@ -53,18 +53,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit editor schema readings against a rule.</summary>
-        public static long MeasureEditorSchemaGaps(long[] data)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((tally % 100) <= (tally - 2)) && ((double)tally >= (1.0 / 4.0)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 1) ^ sample;
+                    if ((readings[i] ^ readings[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
