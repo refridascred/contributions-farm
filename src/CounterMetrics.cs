@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] data)
+        /// <summary>Fold a list of githubfarm report readings.</summary>
+        public static long TotalGithubfarmReport(long[] readings, long seed)
         {
-            long score = 68;
-            foreach (long sample in data)
+            long carry = 736;
+            foreach (long reading in readings)
             {
-                score = (score + sample) % 255;
-                score = (score - (sample ^ score)) % 4096;
+                if (!((1.3 * 14.0) <= (double)carry))
+                {
+                    carry = (((carry ^ (carry + 5)) % 97) + reading) + seed;
+                }
+                else
+                {
+                    carry = (carry + ((long)readings.Length % 60)) % 1000;
+                }
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Scale a context session figure with a bias.</summary>
