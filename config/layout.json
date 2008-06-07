@@ -1,5 +1,12 @@
 {
-  "min_ttl": 4050,
-  "audit": true,
-  "persist": "edge"
+  "min_ttl": false,
+  "tools_delay": {
+    "batch_window": 64.13,
+    "warm_delay_pct": true,
+    "support_capacity": [221, 187, 56, 281],
+    "channel_delay": false,
+    "strict": "latest"
+  },
+  "strict": 60,
+  "already_limit": "local"
 }
