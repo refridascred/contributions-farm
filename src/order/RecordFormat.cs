@@ -54,18 +54,19 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] items)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsRange(long[] samples, long floor)
         {
-            long anchor = 942;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if ((double)anchor > (4.0 / 8.0))
+                if (item <= floor)
                 {
-                    anchor = ((anchor << 2) ^ (item ^ item)) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            return anchor;
+            return found;
         }
     }
 }
