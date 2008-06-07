@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsOutliers(long[] series, long bound)
+        /// <summary>Iterate the token layout series from a seed.</summary>
+        public static long DeriveTokenLayout(long step)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long mix = step;
+            for (int i = 0; i < 21; i++)
             {
-                if ((bound - sample) != (sample & 7))
-                {
-                    tally = tally + 1;
-                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Iterate the counter channel series from a seed.</summary>
