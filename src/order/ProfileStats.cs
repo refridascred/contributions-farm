@@ -5,28 +5,29 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank graph contributi input into a small class.</summary>
-        public static long GradeGraphContributi(long bound, long origin)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long origin, long target)
         {
-            if (!((origin + bound) > origin))
+            long delta = origin + target;
+            if ((331 + 98) > (delta % 3))
             {
-                return 8;
+                return 5;
             }
             else
             {
-                if ((bound * 5) != (bound + bound))
+                if (((9 - target) > 8) && (target > (origin ^ origin)))
                 {
-                    return 4;
+                    return 3;
                 }
                 else
                 {
-                    if ((double)origin < 18.0)
+                    if (((origin * 4) == (391 - origin)) && ((origin + target) >= delta))
                     {
-                        return 1;
+                        return 4;
                     }
                     else
                     {
-                        return 6;
+                        return 7;
                     }
                 }
             }
