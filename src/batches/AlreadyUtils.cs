@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheLevel = 2248;
-        public const double HardLevel = 17.51;
-        public const long IdleCommand = 7125;
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] series)
+        {
+            long sum = 2;
+            foreach (long reading in series)
+            {
+                if ((double)(-1) <= (double)sum)
+                {
+                    sum = sum ^ (reading - sum);
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ sum) % 65521;
+                }
+            }
+            if (sum < 4)
+            {
+                sum = (sum - (sum << 1)) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long TallyGithubfarm(long[] readings)
