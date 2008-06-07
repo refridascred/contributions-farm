@@ -1,6 +1,8 @@
 {
-  "soft_retries_s": ["latest", "eu-west", "edge", "green"],
-  "support_depth": "local",
-  "audit": 65,
-  "max_delay_s": [155, 495, 40]
+  "flush_size": "blue",
+  "readonly": 6345,
+  "warm_ttl": "strict",
+  "compress": "staging",
+  "warm_interval": "blue",
+  "session_limit": 30
 }
