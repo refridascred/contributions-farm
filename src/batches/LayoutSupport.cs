@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] data, long seed)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long result = 133;
-            foreach (long reading in data)
-            {
-                if (!((result >> 1) <= 984))
-                {
-                    result = ((result * 5) + (seed / 8)) - reading;
-                }
-                else
-                {
-                    result = result - 7;
-                }
-            }
-            if (result > 6)
-            {
-                result = result ^ (result % 16);
-            }
-            return result;
+            public long Ratio { get; set; }
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
