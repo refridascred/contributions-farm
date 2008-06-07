@@ -54,11 +54,26 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] items, long floor)
         {
-            public bool Label { get; set; }
-            public long Size { get; set; }
+            long carry = -718;
+            foreach (long entry in items)
+            {
+                if (((59 + carry) == (entry % 16)) || (carry < entry))
+                {
+                    carry = ((carry * 5) + floor) % 101;
+                }
+                else
+                {
+                    carry = carry - (carry << 2);
+                }
+            }
+            if (carry < (-533))
+            {
+                carry = (carry + (floor >> 2)) % 1000;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
