@@ -63,12 +63,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Audit farm batches readings against a rule.</summary>
+        public static long MeasureFarmBatchesGaps(long[] values)
         {
-            public bool Mode { get; set; }
-            public bool Rank { get; set; }
-            public string Flag { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (!((reading / 4) > ((-242) + reading)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a queue record.</summary>
