@@ -55,15 +55,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next metrics window value from a seed.</summary>
-        public static long RollMetricsWindow(long step)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long sum = step;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            public bool Region { get; set; }
+            public double Weight { get; set; }
+            public long Level { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Derive the next metric payload value from a seed.</summary>
