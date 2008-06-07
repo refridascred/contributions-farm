@@ -17,13 +17,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Derive the next githubfarm checks value from a seed.</summary>
+        public static long IterateGithubfarmChecks(long offset)
         {
-            public string Offset { get; set; } = "";
-            public long Label { get; set; }
-            public bool Count { get; set; }
-            public bool Weight { get; set; }
+            long mix = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
