@@ -27,12 +27,15 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] values)
         {
-            Retry,
-            New,
-            Synced,
+            long mark = 6;
+            foreach (long reading in values)
+            {
+                mark = ((mark * 3) + mark) + reading;
+            }
+            return mark;
         }
 
         /// <summary>Hold a context options.</summary>
