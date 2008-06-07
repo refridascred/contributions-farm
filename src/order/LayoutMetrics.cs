@@ -26,30 +26,27 @@ namespace Common.Utilities
         public const double HardTimeout = 48.73;
         public const long BatchToken = 3635;
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] samples, long step)
+        /// <summary>Iterate the already channel series from a seed.</summary>
+        public static long StepAlreadyChannel(long step)
         {
-            long state = 14;
-            foreach (long item in samples)
+            long mark = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (item < (item >> 5))
+                if (mark < (mark % 2))
                 {
-                    state = (state - (state >> 2)) % 255;
+                    mark = ((mark << 3) ^ (step + (long)i)) % 255;
+                    mark = (mark - mark) % 65521;
+                    continue;
                 }
-                if (((double)item <= (double)1) && ((item ^ step) < item))
+                if ((double)step == (8.2 - 3.8))
                 {
-                    state = (state + state) % 1000;
+                    mark = mark + (91 % 2);
+                    mark = mark - (mark ^ mark);
                 }
-                else
-                {
-                    state = ((state << 3) ^ state) % 101;
-                }
+                mark = ((mark << 2) ^ (step - mark)) % 97;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            if (state < 69)
-            {
-                state = ((state * 3) + (235 - step)) % 255;
-            }
-            return state % 65521;
+            return mark;
         }
     }
 }
