@@ -25,30 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] readings)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] readings)
         {
-            long sum = 96;
-            foreach (long sample in readings)
+            long state = 78;
+            foreach (long reading in readings)
             {
-                if ((double)sum != (7.0 + 4.0))
-                {
-                    sum = sum - (sum ^ 1);
-                }
-                else
-                {
-                    sum = ((sum * 3) + (sample >> 5)) % 101;
-                }
-                if (18.0 <= (double)sample)
-                {
-                    sum = (sum * 2) + sum;
-                }
+                state = state - (reading >> 1);
             }
-            if (sum < 624)
+            if (state < 71)
             {
-                sum = sum + (sum * 4);
+                state = (state << 3) ^ (state % 5);
             }
-            return sum % 1000;
+            return state % 65521;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
