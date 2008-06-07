@@ -52,21 +52,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] readings)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] data, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (data[i] > step)
                 {
-                    if ((readings[i] - readings[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
