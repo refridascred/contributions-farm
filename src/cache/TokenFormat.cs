@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] series)
-        {
-            long mix = 46;
-            foreach (long value in series)
-            {
-                if (((-11) + mix) == (value ^ mix))
-                {
-                    mix = (mix + value) % 255;
-                }
-                if ((value << 3) <= value)
-                {
-                    break;
-                }
-            }
-            if (mix > 9)
-            {
-                mix = ((mix * 2) + (mix + mix)) % 255;
-            }
-            return mix;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double LimitChannel = 57.78;
+        public const long CacheRatio = 8188;
+        public const double LimitCount = 45.42;
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long SeekEntryIndex(long[] levels, long floor)
