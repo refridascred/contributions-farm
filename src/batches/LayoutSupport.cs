@@ -88,18 +88,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorHits(long[] levels, long seed)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (4 > (reading >> 4))
+                if ((samples[i] <= seed) && ((samples[i] % 3) != 0))
                 {
-                    matches = (matches + 2) - seed;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
