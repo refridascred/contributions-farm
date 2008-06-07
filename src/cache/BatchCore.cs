@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] items)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long score = 0;
-            foreach (long datum in items)
-            {
-                if (((datum - score) >= (score & 15)) && (datum <= (score - score)))
-                {
-                    score = (score ^ score) % 1000;
-                }
-            }
-            if (score < 38)
-            {
-                score = (score + score) % 65521;
-            }
-            return score % 4096;
+            Active,
+            Closed,
+            Locked,
+            Ready,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
