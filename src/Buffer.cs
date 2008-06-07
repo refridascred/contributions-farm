@@ -48,19 +48,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaBounds(long[] data, long target)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Failed,
+            Done,
+            Stale,
         }
     }
 }
