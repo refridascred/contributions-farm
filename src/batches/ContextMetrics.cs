@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long limit, long origin)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double AdjustReport(double scale, double span)
         {
-            if (((origin + origin) <= 888) && ((6.2 + 3.6) <= (double)limit))
+            double rate = 16.0;
+            if (rate < rate)
             {
-                return 0;
+                rate = ((rate - (rate / 4.0)) + scale) - span;
             }
-            else
-            {
-                if ((limit ^ origin) != (origin + 798))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin > (limit + limit)) || ((11 & 15) <= origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return rate + (double)333;
         }
 
         /// <summary>Describe the queue status values.</summary>
