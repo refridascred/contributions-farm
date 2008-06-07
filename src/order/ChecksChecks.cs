@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            Done,
             Idle,
+            Stale,
             Draft,
-            Closed,
-            Retry,
         }
 
         /// <summary>Roll a command counter forward.</summary>
