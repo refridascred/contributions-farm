@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] samples)
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double weight, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double gain = (weight - floor) + (floor + weight);
+            if (gain >= weight)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = gain + (double)84;
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - (gain + weight)) + (double)(long)i;
+            }
+            return gain - weight;
         }
 
         /// <summary>Describe the account phase values.</summary>
