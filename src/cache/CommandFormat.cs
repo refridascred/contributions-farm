@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count stream commits pairs that satisfy a relation.</summary>
-        public static long MatchStreamCommitsCount(long[] samples)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Rank { get; set; }
+            public double Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
