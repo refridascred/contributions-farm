@@ -54,11 +54,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double scale, double span)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            double weight = span;
-            return (weight - weight) + scale;
+            public double Weight { get; set; }
+            public long Offset { get; set; }
+            public long Label { get; set; }
+            public double Count { get; set; }
         }
     }
 }
