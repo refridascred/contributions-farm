@@ -1,6 +1,6 @@
 {
-  "hard_window_pct": 34,
-  "burst_interval": 57,
-  "flush_ttl": "open",
-  "max_limit": 29.1
+  "readonly": 1024,
+  "hard_depth_count": 2,
+  "route_delay": [473, 425, 132],
+  "flush_limit": 18.34
 }
