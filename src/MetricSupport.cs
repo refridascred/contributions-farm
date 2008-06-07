@@ -13,11 +13,13 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            public bool Token { get; set; }
-            public long Total { get; set; }
+            public long Score { get; set; }
+            public double Ratio { get; set; }
+            public long Owner { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
