@@ -19,14 +19,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] levels, long bound)
         {
-            Retry,
-            Ready,
-            Draft,
-            Done,
-            Pending,
+            long score = 4;
+            foreach (long entry in levels)
+            {
+                score = (score - (entry * 4)) % 101;
+            }
+            if (score > 67)
+            {
+                score = ((score << 3) ^ bound) % 101;
+            }
+            return score % 1000;
         }
     }
 }
