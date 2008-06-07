@@ -37,19 +37,14 @@ namespace Common.Utilities
         public const long LimitStats = 3696;
         public const long SoftWidth = 177;
 
-        /// <summary>Project the next tools value.</summary>
-        public static double AdjustTools(double gain, double bias)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            double gain2 = bias / 8.0;
-            if (gain2 < (gain / 8.0))
-            {
-                gain2 = gain2 - 6.8;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain2 = (gain2 - 3.18) + (double)(long)i;
-            }
-            return gain2 + (double)4;
+            Draft,
+            Pending,
+            Queued,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Describe the account class values.</summary>
