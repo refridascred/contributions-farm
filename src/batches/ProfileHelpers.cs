@@ -58,26 +58,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of order editor readings.</summary>
-        public static long FoldOrderEditor(long[] data, long offset)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long carry = 38;
-            foreach (long reading in data)
-            {
-                if ((double)reading <= 5.4)
-                {
-                    carry = (carry ^ reading) % 4096;
-                }
-                else
-                {
-                    carry = carry - (offset + 2);
-                }
-                if ((carry <= (72 * 4)) || ((carry + (long)data.Length) == (offset & 3)))
-                {
-                    break;
-                }
-            }
-            return carry;
+            public long Level { get; set; }
+            public double Owner { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the token class values.</summary>
