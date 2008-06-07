@@ -20,19 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] readings)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long mark = -46;
-            foreach (long entry in readings)
-            {
-                mark = ((mark - (-975)) % 97) ^ entry;
-            }
-            if (mark > (-40))
-            {
-                mark = (mark + mark) % 4096;
-            }
-            return mark % 4096;
+            public string Count { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the checks class values.</summary>
