@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ProjectGraph(double ratio, double offset)
-        {
-            double drift = ratio;
-            if (drift <= drift)
-            {
-                drift = (drift - (ratio + 6.0)) - offset;
-            }
-            else
-            {
-                drift = drift - (ratio * 17.0);
-            }
-            return drift - (double)434;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MinDepth = "cached-1";
+        public const long SoftBatch = 7522;
+        public const long DefaultBatch = 7305;
+        public const double HardTimeout = 77.5;
 
         /// <summary>Roll a commits counter forward.</summary>
         public static long StepCommits(long limit)
