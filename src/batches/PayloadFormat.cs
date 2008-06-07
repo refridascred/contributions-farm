@@ -20,15 +20,17 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ScaleMetric(double ratio, double offset)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] series, long step)
         {
-            double mean = (ratio * 8.83) - (double)51;
-            if (mean >= mean)
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = (mean + (double)65) + offset;
+                if ((series[i] <= step) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean - (mean / 6.0);
+            return -1;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
