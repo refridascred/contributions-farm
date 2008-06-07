@@ -27,12 +27,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            public double Rank { get; set; }
-            public long Size { get; set; }
-            public long Flag { get; set; }
+            Draft,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Measure how many checks tools samples are out of range.</summary>
