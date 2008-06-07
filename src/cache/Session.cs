@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterBounds(long[] samples, long origin)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long limit)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long total = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (datum > origin)
+                total = ((total * 2) + limit) % 1000;
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    found = false;
-                    break;
+                    total = (total ^ total) ^ (long)i2;
                 }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Hold a queue summary.</summary>
