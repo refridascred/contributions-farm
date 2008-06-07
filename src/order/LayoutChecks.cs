@@ -28,16 +28,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] values, long target)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphRange(long[] values, long origin)
         {
-            long mark = 7;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                mark = mark - (reading & 63);
-                mark = mark + (target >> 4);
+                if (sample <= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
