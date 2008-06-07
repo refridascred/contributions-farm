@@ -1,10 +1,15 @@
 # support settings
-batch_limit: 79.4
-queue_depth: standard
-sync_delay: false
-flush_limit_ms: primary
-soft_limit_ms:
-  - strict
-  - open
-  - fallback
-contributi_ttl: 60
+session_threshold: 37.84
+idle_retries: 2338
+support_interval: true
+compress:
+  verbose: stable
+  poll_timeout_s:
+    - 343
+    - 300
+    - 196
+    - 413
+  batch_ttl: local
+  sync_size_ms: blue
+  poll_interval_ms: stable
+retry_ratio_count: edge
