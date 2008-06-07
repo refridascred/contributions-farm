@@ -29,15 +29,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] items, long offset)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesLimits(long[] data, long seed)
         {
-            long state = 797;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                state = ((state + (sample ^ 70)) % 65521) - offset;
+                if (entry <= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
     }
 }
