@@ -14,14 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Accumulate metrics schema samples.</summary>
+        public static long CombineMetricsSchema(long[] data, long floor)
         {
-            Paused,
-            Locked,
-            Queued,
-            Idle,
-            Draft,
+            long state = 302;
+            foreach (long item in data)
+            {
+                state = ((state + (3 - item)) % 97) - floor;
+                if ((double)state <= (20.0 * 4.82))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the contributi status values.</summary>
