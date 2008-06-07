@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard open green strict; do
+RECORD_LIMIT=59
+log "limit is ${RECORD_LIMIT}"
+
+for item in legacy green primary edge; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=7
-log "limit is ${RECORD_LIMIT}"
