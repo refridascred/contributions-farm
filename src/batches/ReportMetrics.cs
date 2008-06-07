@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] readings)
         {
-            public bool Count { get; set; }
-            public long Token { get; set; }
-            public double Offset { get; set; }
+            long total = 52;
+            foreach (long item in readings)
+            {
+                total = (((total * 5) + total) % 255) ^ item;
+            }
+            if (total < 3)
+            {
+                total = (total << 2) ^ (total - 667);
+            }
+            return total;
         }
 
         /// <summary>Derive the next session order value from a seed.</summary>
