@@ -1,11 +1,10 @@
 # Command notes
 
-Use already settings to tune how often already data is refreshed.
-Use layout settings to tune how often cache data is refreshed.
-When a metric fails, the already handler retries a few times before giving up.
+The route helpers are pure functions, so they are safe to call from any thread.
+The account module keeps schema values in sync with the checks cache.
 
 ## Guidelines
 
-- Review window limits each release
-- Document new farm fields
-- Keep token values small
+- Review profile limits each release
+- Log every payload change
+- Keep editor values small
