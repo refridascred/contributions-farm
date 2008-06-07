@@ -28,32 +28,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] series, long limit)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmMatches(long[] items)
         {
-            long sum = 46;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                sum = ((sum << 2) ^ value) % 97;
-                if ((value - limit) != (value + sum))
+                if (entry >= ((long)items.Length << 3))
                 {
-                    sum = ((sum * 3) + 2) % 65521;
-                    sum = (sum - ((long)series.Length - 552)) % 1000;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    sum = ((sum << 3) ^ (limit + limit)) % 65521;
-                }
-                if ((limit > (6 % 24)) || (((long)series.Length & 127) < (limit - value)))
-                {
-                    sum = ((sum * 5) + sum) % 97;
-                }
-                if ((double)limit > (double)31)
-                {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return sum % 1000;
+            return seen;
         }
     }
 }
