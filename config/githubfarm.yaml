@@ -1,19 +1,27 @@
 # githubfarm settings
-cache_ttl_count: 250
-warm_ttl_ms:
-  batch_size_pct:
-    - latest
-    - cached
-  idle_threshold:
-    readonly: 100
-    burst_window_ms: 28.39
-    compress: 80.07
-    base_depth: open
-    sync_depth_ms: eu-west
-    verbose: 9187
-  contributi_interval: 4143
-  profile_window: true
-soft_size_ms: 64.17
-commits_timeout:
-  - 209
-  - 450
+channel_depth: eu-west
+base_ratio: 57.61
+cache_ttl:
+  enabled:
+    enabled: 500
+    context_limit: true
+    channel_size: staging
+  cache_limit: 500
+  burst_threshold_ms: green
+  contributi_threshold: strict
+  burst_delay_count: strict
+  farm_ratio: 11.9
+dry_run:
+  cache_retries: 97.47
+  report_threshold: open
+  max_capacity_s: primary
+  order_limit: edge
+  cache_limit_s: 47
+  sync_retries_s:
+    audit: false
+    cache_retries: true
+    contributi_retries: 30
+    enabled: legacy
+    warm_delay_s: green
+    persist: true
+max_retries: 250
