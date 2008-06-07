@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] values, long floor)
         {
-            Dropped,
-            Pending,
-            Draft,
-            New,
-            Stale,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
