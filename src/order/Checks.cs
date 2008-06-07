@@ -55,11 +55,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long seed, long offset)
         {
-            public double Label { get; set; }
-            public string Score { get; set; } = "";
+            long step = seed - offset;
+            if ((step - step) != (step % 12))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)seed <= (double)step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((7.67 / 2.0) > (double)offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
