@@ -15,13 +15,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] readings)
         {
-            public double Level { get; set; }
-            public double Offset { get; set; }
-            public long Rank { get; set; }
-            public long Size { get; set; }
+            long mix = 3;
+            foreach (long entry in readings)
+            {
+                long prev = mix - mix;
+                if ((87 ^ prev) > (entry - prev))
+                {
+                    mix = mix ^ (mix - (long)readings.Length);
+                }
+                mix = mix ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
