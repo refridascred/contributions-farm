@@ -31,22 +31,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksGaps(long[] readings)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((hits + 92) == (sample & 31))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Stale,
+            New,
+            Retry,
+            Paused,
+            Done,
         }
     }
 }
