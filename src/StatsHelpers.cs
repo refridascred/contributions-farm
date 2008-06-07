@@ -66,19 +66,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] levels, long offset)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteBounds(long[] data, long seed)
         {
-            long result = 27;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                result = ((result ^ (376 & 63)) % 255) - cell;
+                if (datum != seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (result > 9)
-            {
-                result = (result * 5) + (offset + offset);
-            }
-            return result;
+            return flag;
         }
     }
 }
