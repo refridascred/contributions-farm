@@ -26,14 +26,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] levels)
         {
-            Paused,
-            Dropped,
-            Active,
-            Pending,
-            Retry,
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
