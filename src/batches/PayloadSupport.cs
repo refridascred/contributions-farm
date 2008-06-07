@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many tools counter samples are out of range.</summary>
-        public static long CountToolsCounterHits(long[] readings)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] series)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (80 > (item ^ 5))
+                if ((item << 1) == (hits * 3))
                 {
-                    seen = seen + 1;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
