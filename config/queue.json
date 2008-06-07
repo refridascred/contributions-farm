@@ -1,8 +1,5 @@
 {
-  "readonly": ["primary", "local", "primary", "eu-west"],
-  "contributi_limit": false,
-  "contributi_depth": 11,
-  "enabled": false,
-  "strict": false,
-  "compress": 1024
+  "audit": "eu-west",
+  "min_timeout_pct": 3001,
+  "stream_delay": 10
 }
