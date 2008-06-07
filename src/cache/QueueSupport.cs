@@ -5,29 +5,28 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long target, long origin)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long origin, long bound)
         {
-            long step = target - origin;
-            if ((origin > (target - step)) || ((7.9 / 2.0) < (double)target))
+            if (((double)(-361) == (double)bound) && ((origin + bound) == (bound % 2)))
             {
                 return 7;
             }
             else
             {
-                if (((6.0 * 2.35) < (double)step) || ((6 - step) < step))
+                if (!(0.2 > (double)origin))
                 {
                     return 0;
                 }
                 else
                 {
-                    if ((46 + target) == (target * 5))
+                    if (((38 - bound) > (bound / 9)) && ((origin / 9) != (70 ^ bound)))
                     {
-                        return 6;
+                        return 1;
                     }
                     else
                     {
-                        return 1;
+                        return 2;
                     }
                 }
             }
