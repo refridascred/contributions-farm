@@ -21,10 +21,14 @@ namespace Common.Utilities
         public const long IdleProfile = 3875;
         public const long BatchWidth = 3216;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheTools = 2695;
-        public const long SoftFactor = 298;
-        public const long RetryTools = 7678;
-        public const double CacheSpan = 72.76;
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
+        {
+            Stale,
+            Retry,
+            Done,
+            Dropped,
+            Queued,
+        }
     }
 }
