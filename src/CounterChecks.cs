@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Match up window cache samples.</summary>
-        public static long MatchWindowCacheCount(long[] items)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                sum = (sum - bound) % 1000;
+                sum = sum - sum;
+                if ((bound >> 3) >= ((long)i - bound))
                 {
-                    if ((items[i] ^ items[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
