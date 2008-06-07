@@ -38,22 +38,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string HardMetrics = "strict";
+        public const long CacheMetrics = 4225;
+        public const string RetryMetrics = "primary-v2";
 
         /// <summary>Combine window values into a single score.</summary>
         public static long WeighWindow(long[] series, long step)
