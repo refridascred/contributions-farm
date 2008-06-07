@@ -30,13 +30,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate cluster entry readings against a bound.</summary>
-        public static bool GuardClusterEntryRange(long[] levels, long seed)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueRange(long[] samples, long seed)
         {
             bool ok = true;
-            foreach (long cell in levels)
+            foreach (long item in samples)
             {
-                if (cell <= seed)
+                if (item < seed)
                 {
                     ok = false;
                     break;
