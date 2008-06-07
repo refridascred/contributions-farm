@@ -42,19 +42,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a stats profile reading.</summary>
-        public static double ScaleStatsProfile(double ratio, double span)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            double weight = ratio;
-            if (weight < (double)(-5))
-            {
-                weight = weight + (span + span);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight - (double)81;
+            public double Rank { get; set; }
+            public double Size { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
