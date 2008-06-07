@@ -28,21 +28,17 @@ namespace Common.Utilities
         public const long CacheMetrics = 1997;
         public const long MinMetrics = 6921;
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] samples)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] items, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((items[i] == origin) && ((items[i] % 2) != 0))
                 {
-                    if ((samples[i] ^ samples[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
