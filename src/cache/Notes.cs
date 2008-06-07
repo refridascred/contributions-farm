@@ -22,19 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] values, long bound)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderMatches(long[] series, long floor)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (cell > bound)
+                if (((item * 2) != (10 >> 3)) && (((floor - 1) >= matches) && ((0.9 + 9.24) == (double)(long)series.Length)))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Count cluster order pairs that satisfy a relation.</summary>
