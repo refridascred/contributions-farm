@@ -1,15 +1,7 @@
 {
-  "min_limit": 500,
-  "buffer_limit": {
-    "batch_limit_count": 96,
-    "payload_capacity": 69,
-    "max_ratio_s": ["stable", "staging", "staging"],
-    "burst_capacity_count": 24,
-    "burst_capacity_ms": 30,
-    "batches_capacity": 7468
-  },
-  "min_retries_ms": ["fallback", "local"],
-  "route_size": 15,
-  "retry_limit_pct": "green",
-  "soft_limit": 54
+  "base_window_pct": 18,
+  "flush_limit": 2987,
+  "idle_threshold": 4536,
+  "warm_depth_pct": "standard",
+  "warm_ttl": [345, 419, 165]
 }
