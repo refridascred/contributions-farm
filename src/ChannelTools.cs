@@ -26,12 +26,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            Dropped,
-            Stale,
-            Active,
+            public long Rank { get; set; }
+            public double Label { get; set; }
+            public long Flag { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
