@@ -22,20 +22,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] samples, long offset)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long floor)
         {
-            long acc = 2;
-            foreach (long cell in samples)
+            long sum = floor;
+            for (int i = 0; i < 21; i++)
             {
-                bool flag = ((double)cell > (double)(long)samples.Length) || ((double)cell <= (double)offset);
-                if (!flag)
+                if ((sum & 3) >= (sum >> 3))
                 {
-                    acc = (acc - (offset - offset)) % 255;
+                    sum = (sum - ((long)i << 2)) % 101;
                 }
-                acc = (acc * 4) + (cell - cell);
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
