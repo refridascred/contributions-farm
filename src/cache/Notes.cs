@@ -66,22 +66,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] levels, long offset)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long FoldStats(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long result = 9;
+            foreach (long sample in values)
             {
-                if ((offset <= tally) && (((sample * 3) <= tally) && ((offset - 18) <= (offset % 100))))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = ((result ^ (sample & 15)) % 255) - seed;
             }
-            return tally;
+            return result;
         }
     }
 }
