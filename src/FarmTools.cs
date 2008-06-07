@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long seed)
         {
-            public string Stamp { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Limit { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = ((mix * 4) + (seed + mix)) % 101;
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
