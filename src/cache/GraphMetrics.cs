@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Scale a stream contributi figure with a bias.</summary>
+        public static double SmoothStreamContributi(double gain, double floor)
         {
-            public bool Flag { get; set; }
-            public bool Mode { get; set; }
+            double gain2 = floor + (floor / 2.0);
+            if (gain2 <= (gain + floor))
+            {
+                gain2 = gain2 - floor;
+            }
+            return gain2 + (gain2 + 5.0);
         }
 
         /// <summary>Digest a series of route entries.</summary>
