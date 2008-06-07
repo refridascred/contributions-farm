@@ -26,21 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long limit)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long OverlapSupportCount(long[] data)
         {
-            long result = limit;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((625 & 127) <= (limit + 21)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = ((result * 4) + (limit >> 3)) % 65521;
-                    result = (result + ((long)i & 255)) % 65521;
-                    continue;
+                    if ((data[i] - data[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
+            return matches;
         }
     }
 }
