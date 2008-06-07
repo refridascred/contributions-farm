@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterLimits(long[] samples, long limit)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] values, long target)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if (item > limit)
+                if (item > target)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Describe the report class values.</summary>
