@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Validate session contributi readings against a bound.</summary>
+        public static bool GuardSessionContributiRange(long[] items, long bound)
         {
-            Queued,
-            Draft,
-            Active,
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the report class values.</summary>
