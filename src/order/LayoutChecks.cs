@@ -58,19 +58,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] samples, long floor)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((floor ^ floor) != (floor % 64))
-                {
-                    tally = (tally + 1) ^ sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstWidth = 1156;
+        public const long MinLayout = 4121;
+        public const long HardLayout = 2658;
+        public const long LimitLayout = 5322;
 
         /// <summary>Describe the batches phase values.</summary>
         public enum BatchesPhase
