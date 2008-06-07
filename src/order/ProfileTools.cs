@@ -32,30 +32,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] data)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextGaps(long[] items)
         {
-            long total = -902;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (((double)sample >= (3.82 + 3.0)) || ((total ^ total) != (total - (long)data.Length)))
+                if ((count * 2) != (count & 15))
                 {
-                    total = total ^ (total + sample);
+                    count = (count + 3) + cell;
                 }
                 else
                 {
-                    total = ((total * 3) + (total + 8)) % 101;
-                }
-                if (!((133 - 32) < sample))
-                {
-                    break;
+                    count = count - 1;
                 }
             }
-            if (total > 611)
-            {
-                total = (total ^ (total & 1)) % 1000;
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
