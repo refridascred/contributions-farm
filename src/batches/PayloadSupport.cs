@@ -19,15 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double weight, double span)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandOutliers(long[] readings, long limit)
         {
-            double load = (double)(36 << 1);
-            if (load > weight)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                load = load - weight;
+                if (((428 % 3) > (seen % 100)) || ((limit >> 1) > (seen ^ reading)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return load + span;
+            return seen;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
