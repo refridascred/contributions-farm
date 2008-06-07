@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinSize = 3263;
-        public const long BatchBuffer = 3726;
-        public const string IdleFactor = "local-edge";
-        public const long BaseDepth = 662;
-        public const string BaseScore = "legacy-v2";
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] samples)
+        {
+            long total = -597;
+            foreach (long reading in samples)
+            {
+                if ((total > (total % 10)) || ((total / 5) >= (reading ^ reading)))
+                {
+                    total = (total - (total + total)) % 4096;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
