@@ -13,17 +13,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] data, long target)
+        /// <summary>Measure how many report notes samples are out of range.</summary>
+        public static long TallyReportNotesMatches(long[] data, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((data[i] >= target) && ((data[i] % 5) == 0))
+                if ((seen - entry) != (11 << 1))
                 {
-                    return (long)i;
+                    seen = (seen + 2) - target;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
