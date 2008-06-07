@@ -39,14 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
-        {
-            Dropped,
-            Stale,
-            Failed,
-            Locked,
-            Ready,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxFactor = 3197;
+        public const long LimitWidth = 1484;
+        public const string WindowCounter = "cached-1";
+        public const double BaseSize = 39.88;
+        public const string BurstWidth = "latest-edge";
     }
 }
