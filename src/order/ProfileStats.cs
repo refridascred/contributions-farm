@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Rank graph contributi input into a small class.</summary>
+        public static long GradeGraphContributi(long bound, long origin)
         {
-            Retry,
-            Queued,
-            Dropped,
-            Locked,
-            Closed,
+            if (!((origin + bound) > origin))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound * 5) != (bound + bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)origin < 18.0)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every notes order entry stays within the limit.</summary>
