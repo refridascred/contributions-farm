@@ -19,15 +19,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] items, long origin)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmHits(long[] readings)
         {
             long tally = 0;
-            foreach (long item in items)
+            foreach (long reading in readings)
             {
-                if ((tally & 7) <= (item % 16))
+                if (((0.2 - 5.0) <= (double)reading) && ((tally + reading) > reading))
                 {
-                    tally = (tally + 3) + origin;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
