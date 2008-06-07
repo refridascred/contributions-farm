@@ -1,10 +1,17 @@
 {
-  "min_threshold": true,
-  "tools_capacity": {
-    "token_retries": 62.39,
-    "base_ttl_ms": 500,
-    "persist": 75.03
+  "stats_retries": 34.85,
+  "cluster_retries": 56.14,
+  "cache_limit": {
+    "notes_window": "local",
+    "filter_limit": [158, 50, 117, 66],
+    "strict": {
+      "warm_interval_ms": "strict",
+      "min_timeout_s": "legacy",
+      "cluster_window": "green",
+      "burst_window": ["local", "primary", "staging"],
+      "default_depth_s": 5868
+    },
+    "command_ratio": 22
   },
-  "soft_capacity": "green",
-  "dry_run": "fallback"
+  "base_size_pct": 1024
 }
