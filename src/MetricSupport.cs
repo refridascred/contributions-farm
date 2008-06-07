@@ -21,19 +21,10 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandRange(long[] samples, long limit)
-        {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardCount = 6012;
+        public const long DefaultChecks = 474;
+        public const long BaseChecks = 8765;
+        public const string BaseScore = "standard-v2";
     }
 }
