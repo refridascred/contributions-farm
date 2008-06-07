@@ -46,18 +46,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmHits(long[] levels, long seed)
+        /// <summary>Look up the position of a githubfarm command sample.</summary>
+        public static long LookupGithubfarmCommandIndex(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (seed >= 754)
+                if (samples[i] <= bound)
                 {
-                    tally = (tally + 2) ^ entry;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
