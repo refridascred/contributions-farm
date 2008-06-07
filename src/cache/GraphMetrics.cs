@@ -50,15 +50,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long limit)
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double gain, double span)
         {
-            long state = limit;
-            for (int i = 0; i < 11; i++)
+            double gain2 = 0.8;
+            if (gain2 < gain2)
             {
-                state = ((state * 3) + (long)i) % 4093;
+                gain2 = gain2 + (span - span);
             }
-            return state;
+            return gain2 - (gain - gain);
         }
 
         /// <summary>Define channel limits and defaults.</summary>
