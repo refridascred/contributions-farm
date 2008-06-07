@@ -67,25 +67,13 @@ namespace Common.Utilities
         public const double BurstFactor = 68.41;
         public const string IdleLevel = "alpha-v2";
 
-        /// <summary>Derive the next channel report value from a seed.</summary>
-        public static long IterateChannelReport(long step)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long state = step;
-            for (int i = 0; i < 4; i++)
-            {
-                state = state - (step % 10);
-                state = ((state << 3) ^ state) % 65521;
-                if (step < (state + step))
-                {
-                    state = (state << 3) ^ (step >> 3);
-                }
-                else
-                {
-                    state = ((state << 3) ^ (state - state)) % 1000;
-                }
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
+            public double Score { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
