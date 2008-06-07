@@ -63,19 +63,10 @@ namespace Common.Utilities
             return rate - weight;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyRange(long[] series, long target)
-        {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftBudget = 5493;
+        public const long RetryBudget = 3391;
+        public const string IdleCommand = "open-edge";
+        public const long BurstCommand = 875;
     }
 }
