@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of schema metric readings.</summary>
-        public static long ScoreSchemaMetric(long[] levels, long offset)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long offset)
         {
-            long sum = 6;
-            foreach (long datum in levels)
+            long mark = offset;
+            for (int i = 0; i < 7; i++)
             {
-                sum = (sum - datum) + offset;
+                mark = (mark ^ offset) % 101;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Describe the channel state values.</summary>
