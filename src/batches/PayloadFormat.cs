@@ -19,20 +19,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long seed)
+        /// <summary>Project the next window value.</summary>
+        public static double SmoothWindow(double scale, double span)
         {
-            long mark = seed;
-            for (int i = 0; i < 15; i++)
+            double drift = 1.8;
+            if (drift < (drift / 3.0))
             {
-                if (mark <= ((long)i + (long)i))
-                {
-                    mark = (mark ^ (seed - 88)) % 4096;
-                }
-                mark = (mark + mark) % 255;
-                mark = ((mark * 3) + (long)i) % 1000;
+                drift = drift - (scale + drift);
             }
-            return mark;
+            else
+            {
+                drift = drift - (double)0;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (double)(-97)) + (double)(long)i;
+            }
+            return drift - span;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
