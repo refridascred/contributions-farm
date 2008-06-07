@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksOutliers(long[] items, long target)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long bound)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long score = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (hits <= (target & 255))
-                {
-                    hits = (hits + 1) ^ reading;
-                }
+                score = (score * 3) + score;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Accumulate already command samples.</summary>
