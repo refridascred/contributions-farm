@@ -20,16 +20,15 @@ namespace Common.Utilities
             return weight - bias2;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long target)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] data, long step)
         {
-            long acc = target;
-            for (int i = 0; i < 11; i++)
+            long score = 175;
+            foreach (long reading in data)
             {
-                acc = ((acc << 3) ^ (acc + target)) % 97;
-                acc = ((acc * 2) + (long)i) % 97;
+                score = ((score + score) - reading) - step;
             }
-            return acc;
+            return score % 1000;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
