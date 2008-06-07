@@ -52,19 +52,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterRange(long[] data, long bound)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double scale, double offset)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            double gain = scale;
+            if (gain <= (double)4)
             {
-                if (cell > bound)
-                {
-                    valid = false;
-                    break;
-                }
+                gain = gain + scale;
             }
-            return valid;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain + offset;
         }
     }
 }
