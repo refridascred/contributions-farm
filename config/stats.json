@@ -1,19 +1,7 @@
 {
-  "cache_retries_ms": 60,
-  "max_timeout_pct": {
-    "sync_ttl": 250,
-    "batch_ratio": true,
-    "default_delay_s": "strict"
-  },
-  "warm_window": 62.63,
-  "retry_interval_ms": [125, 222, 102],
-  "min_ratio_s": "open",
-  "commits_ttl": {
-    "burst_retries_s": "cached",
-    "soft_size": "staging",
-    "persist": "local",
-    "compress": 60.53,
-    "burst_window_pct": "eu-west",
-    "farm_delay": 67
-  }
+  "batch_threshold_s": false,
+  "soft_threshold_ms": 7229,
+  "stats_limit": "strict",
+  "default_size_ms": false,
+  "max_size_s": [211, 407, 296, 82]
 }
