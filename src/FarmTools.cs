@@ -24,11 +24,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
-        {
-            public long Stamp { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFarm = 6311;
+        public const double LimitFactor = 2.68;
+        public const string HardInterval = "cached";
+        public const string CacheFarm = "staging-edge";
     }
 }
