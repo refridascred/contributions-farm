@@ -20,15 +20,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ProjectBatch(double scale, double offset)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            double drift = scale;
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + offset) - (double)(long)i;
-            }
-            return drift - (scale - 16.0);
+            Paused,
+            Draft,
+            Stale,
         }
 
         /// <summary>Define window limits and defaults.</summary>
