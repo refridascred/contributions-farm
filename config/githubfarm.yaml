@@ -1,4 +1,5 @@
 # githubfarm settings
-retry_ratio: 9086
-compress: 84.42
-soft_depth: standard
+route_depth: standard
+max_ttl_ms: eu-west
+sync_depth: true
+batches_timeout: 68.7
