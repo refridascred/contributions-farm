@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] data)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long origin)
         {
-            long sum = 2;
-            foreach (long item in data)
+            long mark = origin;
+            for (int i = 0; i < 20; i++)
             {
-                sum = (sum + (sum + item)) % 65521;
+                if ((origin << 3) <= 796)
+                {
+                    mark = mark + ((long)i % 7);
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return sum % 1000;
+            return mark;
         }
 
         /// <summary>Describe the contributi level values.</summary>
