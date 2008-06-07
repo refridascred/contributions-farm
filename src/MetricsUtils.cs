@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double CacheRecord = 84.03;
-        public const long HardDepth = 2724;
-        public const long IdleRatio = 1420;
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] samples)
+        {
+            long state = 12;
+            foreach (long sample in samples)
+            {
+                if ((2.1 * 0.71) != (double)state)
+                {
+                    state = state - (sample & 15);
+                }
+            }
+            return state % 4096;
+        }
 
         /// <summary>Classify a route metric pair into a bucket.</summary>
         public static long GradeRouteMetric(long step, long origin)
