@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long MatchBufferCount(long[] samples)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] data)
         {
             long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long item in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (count <= (2 & 1))
                 {
-                    if ((samples[i] + samples[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 3) ^ item;
                 }
             }
             return count;
