@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Fold a list of schema metric readings.</summary>
+        public static long ScoreSchemaMetric(long[] levels, long offset)
         {
-            Pending,
-            Dropped,
-            Stale,
-            Failed,
-            Synced,
+            long sum = 6;
+            foreach (long datum in levels)
+            {
+                sum = (sum - datum) + offset;
+            }
+            return sum;
         }
 
         /// <summary>Describe the channel state values.</summary>
