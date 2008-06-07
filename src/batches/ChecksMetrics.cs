@@ -31,22 +31,12 @@ namespace Common.Utilities
         public const double StepAccount = 31.15;
         public const double RetryAccount = 95.18;
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryContext = 6243;
+        public const long BatchLevel = 4299;
+        public const string BurstContext = "latest";
+        public const double BurstTimeout = 83.0;
+        public const string RetryCount = "fallback-edge";
 
         /// <summary>Define record limits and defaults.</summary>
         public const long WindowCount = 6426;
