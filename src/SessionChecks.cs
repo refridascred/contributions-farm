@@ -38,13 +38,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            public bool Limit { get; set; }
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
-            public long Score { get; set; }
+            public long Owner { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
