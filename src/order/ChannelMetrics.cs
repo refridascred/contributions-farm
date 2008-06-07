@@ -15,21 +15,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of channel filter readings.</summary>
-        public static long MatchChannelFilterCount(long[] series)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Locked,
+            Synced,
+            Retry,
+            Closed,
+            New,
         }
 
         /// <summary>Compare every pair of support readings.</summary>
