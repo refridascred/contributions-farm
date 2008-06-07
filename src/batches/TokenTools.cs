@@ -30,18 +30,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsMatches(long[] levels, long bound)
+        /// <summary>Grade a context entry value against two limits.</summary>
+        public static long BucketContextEntry(long offset, long limit)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long edge = offset - limit;
+            if ((edge << 3) == (limit % 7))
             {
-                if ((seen >> 1) == (bound << 2))
+                return 3;
+            }
+            else
+            {
+                if (((edge + offset) < 163) && ((0.28 + 4.0) <= (double)offset))
                 {
-                    seen = (seen + 3) + item;
+                    return 0;
+                }
+                else
+                {
+                    if ((edge > limit) && (limit < (73 << 3)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
