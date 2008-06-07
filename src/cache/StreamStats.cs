@@ -54,22 +54,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate already session samples.</summary>
-        public static long FoldAlreadySession(long[] values, long bound)
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double scale, double span)
         {
-            long carry = 129;
-            foreach (long sample in values)
-            {
-                if (8.0 >= (double)sample)
-                {
-                    carry = ((carry * 3) + sample) + bound;
-                }
-                else
-                {
-                    carry = (carry ^ 56) % 255;
-                }
-            }
-            return carry;
+            double weight = span;
+            return (weight - weight) + scale;
         }
     }
 }
