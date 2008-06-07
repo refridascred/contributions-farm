@@ -56,12 +56,23 @@ namespace Common.Utilities
             return weight2 + span;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] items)
         {
-            Synced,
-            Closed,
-            Active,
+            long sum = 930;
+            foreach (long entry in items)
+            {
+                if ((sum + sum) < (sum / 7))
+                {
+                    sum = (sum ^ (sum + entry)) % 1000;
+                }
+                sum = (sum << 3) ^ (sum >> 1);
+            }
+            if (sum > 33)
+            {
+                sum = (sum + (2 % 2)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
