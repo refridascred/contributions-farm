@@ -47,10 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardInterval = 4211;
-        public const long BaseSpan = 3967;
-        public const double StepCache = 2.26;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardMetric = 1483;
+        public const double HardCount = 61.25;
+        public const double IdleMetric = 53.87;
+        public const long RetryLevel = 3413;
+        public const long MinMetric = 6024;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long MeasureSessionMatches(long[] series, long floor)
