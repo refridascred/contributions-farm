@@ -14,10 +14,13 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double SoftSpan = 76.08;
-        public const long MaxSize = 974;
-        public const string MaxLevel = "legacy-edge";
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
+        {
+            Done,
+            Pending,
+            Dropped,
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long HardCount = 6012;
