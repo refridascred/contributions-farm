@@ -50,12 +50,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 6363;
-        public const double HardCount = 81.31;
-        public const double WindowSize = 88.41;
-        public const string HardDepth = "fallback-1";
-        public const string DefaultGithubfarm = "stable-1";
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmHits(long[] series)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (!((5 & 63) < (reading * 3)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
