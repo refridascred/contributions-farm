@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsGaps(long[] levels, long bound)
+        /// <summary>Classify a layout checks pair into a bucket.</summary>
+        public static long SortLayoutChecks(long seed, long bound)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            if ((bound + bound) != (bound + 65))
             {
-                if (!((entry - seen) <= (seen >> 2)) || ((bound < (entry + bound)) || (9.0 >= (double)bound)))
+                return 5;
+            }
+            else
+            {
+                if ((seed + seed) >= bound)
                 {
-                    seen = seen + 1;
+                    return 7;
+                }
+                else
+                {
+                    if ((seed ^ bound) < (bound * 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (bound > (bound ^ bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Classify a metrics session pair into a bucket.</summary>
