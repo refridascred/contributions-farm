@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long origin, long seed)
-        {
-            if ((origin & 3) >= (31 >> 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed * 3) < (origin - origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (seed >= (seed / 9))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BurstFactor = 89.97;
+        public const double MinInterval = 62.76;
+        public const long SoftWidth = 42;
+        public const long MinBatch = 610;
+        public const long IdleDepth = 5061;
 
         /// <summary>Combine editor context values into a single score.</summary>
         public static long FoldEditorContext(long[] data)
