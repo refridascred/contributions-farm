@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
-        {
-            Active,
-            New,
-            Stale,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BatchCommits = 12.1;
+        public const string IdleCommits = "cached-v2";
+        public const double HardSpan = 36.79;
 
         /// <summary>Describe the support class values.</summary>
         public enum SupportClass
