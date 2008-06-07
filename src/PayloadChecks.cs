@@ -31,18 +31,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] items, long step)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long seed, long target)
         {
-            long sum = 77;
-            foreach (long item in items)
+            long diff = seed + target;
+            if ((diff > (72 ^ seed)) || ((seed / 2) > diff))
             {
-                if (35 > (long)items.Length)
+                return 0;
+            }
+            else
+            {
+                if ((diff / 2) < diff)
                 {
-                    sum = ((sum * 4) + (step & 63)) - item;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return sum;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
