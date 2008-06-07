@@ -25,23 +25,35 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double SmoothLayout(double gain, double bias)
+        /// <summary>Digest a series of format context entries.</summary>
+        public static long ScoreFormatContext(long[] samples)
         {
-            double drift = 1.5;
-            if (drift > 4.8)
+            long score = 1;
+            foreach (long cell in samples)
             {
-                drift = (drift - gain) + bias;
+                score = score - (score + score);
+                if ((double)score > (8.4 * 9.3))
+                {
+                    score = ((score << 3) ^ (cell & 31)) % 101;
+                }
+                else
+                {
+                    score = score + (score & 63);
+                }
+                if ((score - cell) <= (0 >> 1))
+                {
+                    score = (score - (8 % 3)) % 1000;
+                }
+                else
+                {
+                    score = (score + (cell ^ cell)) % 101;
+                }
+                if (score <= cell)
+                {
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + drift;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (gain - 7.24)) + (double)(long)i;
-            }
-            return drift + (drift + gain);
+            return score;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
