@@ -40,12 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepCount = 110;
-        public const string MaxScore = "open-1";
-        public const long StepLevel = 4140;
-        public const double BaseRatio = 54.68;
-        public const long StepSession = 8159;
+        /// <summary>Look up the position of a tools checks sample.</summary>
+        public static long FindToolsChecksIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
