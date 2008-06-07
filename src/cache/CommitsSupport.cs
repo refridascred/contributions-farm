@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenGaps(long[] series, long origin)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((double)entry != (double)matches)
-                {
-                    matches = (matches + 2) - origin;
-                }
-            }
-            return matches;
+            Active,
+            New,
+            Idle,
+            Failed,
+            Locked,
         }
 
         /// <summary>Roll a counter counter forward.</summary>
