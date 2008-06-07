@@ -13,18 +13,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Measure how many report notes samples are out of range.</summary>
-        public static long TallyReportNotesMatches(long[] data, long target)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((seen - entry) != (11 << 1))
-                {
-                    seen = (seen + 2) - target;
-                }
-            }
-            return seen;
+            public bool Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
