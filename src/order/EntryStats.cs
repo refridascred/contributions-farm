@@ -54,23 +54,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterGaps(long[] readings, long origin)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (matches < (matches - origin))
-                {
-                    matches = (matches + 1) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardInterval = 4211;
+        public const long BaseSpan = 3967;
+        public const double StepCache = 2.26;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long MeasureSessionMatches(long[] series, long floor)
