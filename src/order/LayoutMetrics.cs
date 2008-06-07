@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a metrics graph figure with a bias.</summary>
-        public static double ProjectMetricsGraph(double weight, double bias)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long floor)
         {
-            double bias2 = bias - (weight - 16.0);
-            if (bias2 <= (double)870)
+            long mix = floor;
+            for (int i = 0; i < 14; i++)
             {
-                bias2 = bias2 + bias;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            else
-            {
-                bias2 = bias2 + (double)82;
-            }
-            return bias2 - (17.0 / 6.0);
+            return mix;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
