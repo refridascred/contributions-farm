@@ -20,11 +20,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            public string Limit { get; set; } = "";
-            public double Ratio { get; set; }
+            public bool Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Owner { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Blend two entry measurements.</summary>
