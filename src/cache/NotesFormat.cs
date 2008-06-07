@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long offset, long floor)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchHits(long[] data, long origin)
         {
-            long cur = offset ^ floor;
-            if ((cur - offset) < (offset % 7))
+            long seen = 0;
+            foreach (long cell in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((374 >= (7 + cur)) || ((8.1 * 7.7) > (double)offset))
+                if (((origin & 3) < (94 << 2)) || !((origin & 15) > (cell >> 3)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((9.0 * 6.3) >= (double)cur)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Accumulate tools account samples.</summary>
