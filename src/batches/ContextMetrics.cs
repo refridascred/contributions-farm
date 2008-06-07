@@ -32,18 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionOutliers(long[] series, long bound)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (((double)bound > (double)value) || ((bound + value) >= (value / 5)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Failed,
+            Pending,
+            Queued,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
