@@ -27,19 +27,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] readings)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] series, long origin)
         {
-            long state = 2;
-            foreach (long reading in readings)
+            long sum = 85;
+            foreach (long entry in series)
             {
-                state = (((state * 3) + (state - 830)) % 1000) - reading;
+                if (origin <= (952 & 1))
+                {
+                    sum = ((sum - (sum / 6)) % 65521) - entry;
+                }
             }
-            if (state > 870)
+            if (sum < 71)
             {
-                state = (state << 3) ^ (state << 1);
+                sum = sum ^ sum;
             }
-            return state;
+            return sum % 97;
         }
 
         /// <summary>Validate batches stream readings against a bound.</summary>
