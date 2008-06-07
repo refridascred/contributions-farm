@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double LimitContext = 44.61;
-        public const long HardContext = 3006;
-        public const long RetryContext = 757;
-        public const long MaxContext = 9837;
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
+        {
+            Idle,
+            Paused,
+            Dropped,
+            Locked,
+            Failed,
+        }
 
         /// <summary>Match up context samples.</summary>
         public static long PairContextCount(long[] items)
