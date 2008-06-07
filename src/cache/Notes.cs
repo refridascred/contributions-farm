@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            public string Limit { get; set; } = "";
-            public string Rank { get; set; } = "";
+            public long Level { get; set; }
+            public bool Mode { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count cluster order pairs that satisfy a relation.</summary>
