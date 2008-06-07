@@ -16,14 +16,19 @@ namespace Common.Utilities
         public const long StepFarm = 3467;
         public const string DefaultFarm = "alpha";
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Validate notes route readings against a bound.</summary>
+        public static bool ValidateNotesRouteRange(long[] samples, long target)
         {
-            Stale,
-            Done,
-            Ready,
-            New,
-            Retry,
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
