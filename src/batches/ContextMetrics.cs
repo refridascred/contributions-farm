@@ -32,15 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a batch format counter forward.</summary>
-        public static long SeriesBatchFormat(long step)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionOutliers(long[] series, long bound)
         {
-            long acc = step;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                acc = ((acc * 5) + (long)i) % 1000;
+                if (((double)bound > (double)value) || ((bound + value) >= (value / 5)))
+                {
+                    count = count + 1;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
