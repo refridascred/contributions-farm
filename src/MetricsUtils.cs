@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            Pending,
-            Locked,
-            Draft,
+            public string Mode { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
