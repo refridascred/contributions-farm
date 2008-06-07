@@ -25,19 +25,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a githubfarm cluster reading.</summary>
-        public static double ScaleGithubfarmCluster(double bias, double bias2)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] levels, long floor)
         {
-            double scale = bias + bias2;
-            if (scale < bias)
+            long mark = 4;
+            foreach (long sample in levels)
             {
-                scale = scale - bias2;
+                if ((sample + sample) >= (sample / 2))
+                {
+                    mark = ((mark * 3) + (mark / 2)) % 1000;
+                }
+                else
+                {
+                    mark = (mark + (4 + floor)) % 97;
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (mark < 33)
             {
-                scale = (scale + scale) + (double)(long)i;
+                mark = ((mark * 3) + (15 >> 1)) % 97;
             }
-            return scale - (double)74;
+            return mark;
         }
 
         /// <summary>Match up window samples.</summary>
