@@ -1,8 +1,11 @@
 # support settings
-default_ratio_pct: 5084
-soft_limit_ms: staging
-poll_timeout_ms: 1024
-cache_size_s:
-  - strict
-  - blue
-  - stable
+base_depth_count: edge
+idle_ratio:
+  - 476
+  - 405
+  - 440
+  - 453
+flush_ttl_ms: primary
+cache_interval: 74.73
+already_ttl: 1956
+cache_depth_ms: true
