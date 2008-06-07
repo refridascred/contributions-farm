@@ -21,26 +21,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] levels, long floor)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenBounds(long[] items, long origin)
         {
-            long mark = 4;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if ((sample + sample) >= (sample / 2))
+                if (entry < origin)
                 {
-                    mark = ((mark * 3) + (mark / 2)) % 1000;
-                }
-                else
-                {
-                    mark = (mark + (4 + floor)) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            if (mark < 33)
-            {
-                mark = ((mark * 3) + (15 >> 1)) % 97;
-            }
-            return mark;
+            return flag;
         }
 
         /// <summary>Match up window samples.</summary>
