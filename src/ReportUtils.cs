@@ -20,19 +20,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ProjectCommand(double weight, double bias)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutOutliers(long[] values, long seed)
         {
-            double load = weight;
-            if (load <= (bias / 5.0))
+            long count = 0;
+            foreach (long value in values)
             {
-                load = load - load;
+                if (!((858 + value) > (count + count)))
+                {
+                    count = (count + 1) - seed;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (double)611) + (double)(long)i;
-            }
-            return load - (load / 5.0);
+            return count;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
