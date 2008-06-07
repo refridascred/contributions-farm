@@ -26,28 +26,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] series, long floor)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long acc = 327;
-            foreach (long entry in series)
-            {
-                if ((acc + 976) >= (97 >> 5))
-                {
-                    acc = (acc + acc) % 255;
-                    acc = acc - entry;
-                }
-                else
-                {
-                    acc = (acc * 3) + (entry ^ 0);
-                }
-                acc = ((acc << 3) ^ 60) % 65521;
-            }
-            if (acc > 43)
-            {
-                acc = acc + (acc - floor);
-            }
-            return acc % 65521;
+            public long Owner { get; set; }
+            public string Size { get; set; } = "";
+            public double Region { get; set; }
         }
     }
 }
