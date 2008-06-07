@@ -20,22 +20,12 @@ namespace Common.Utilities
             return rate - (floor + floor);
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] series)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long score = 0;
-            foreach (long sample in series)
-            {
-                if ((score + score) < sample)
-                {
-                    score = (score * 5) + (9 & 31);
-                }
-            }
-            if (score > (-441))
-            {
-                score = score ^ (score & 1);
-            }
-            return score % 4096;
+            public long Count { get; set; }
+            public string Limit { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
