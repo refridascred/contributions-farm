@@ -1,6 +1,5 @@
 {
-  "report_ttl": [164, 492, 136, 398],
-  "cache_interval": true,
-  "readonly": "fallback",
-  "hard_delay_s": ["strict", "staging", "blue"]
+  "strict": 29.43,
+  "warm_ttl": "standard",
+  "warm_window_pct": 5383
 }
