@@ -28,11 +28,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long target)
         {
-            public long Label { get; set; }
-            public double Total { get; set; }
+            long result = target;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    result = result ^ ((long)i2 ^ target);
+                }
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Blend two metric measurements.</summary>
