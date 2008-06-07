@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long step)
+        /// <summary>Count stream commits pairs that satisfy a relation.</summary>
+        public static long MatchStreamCommitsCount(long[] samples)
         {
-            long state = step;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((state ^ step) > ((long)i + step)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = (state + (step & 15)) % 255;
+                    if ((samples[i] - samples[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                state = ((state * 2) + (long)i) % 4093;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
