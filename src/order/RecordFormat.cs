@@ -47,19 +47,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a record support reading.</summary>
-        public static double ProjectRecordSupport(double weight, double floor)
+        /// <summary>Project the next route report value.</summary>
+        public static double ScaleRouteReport(double scale, double span)
         {
-            double ratio = floor;
-            if (ratio < (ratio / 6.0))
+            double scale2 = 1.67 + (double)77;
+            if (scale2 <= span)
             {
-                ratio = ratio - ratio;
+                scale2 = (scale2 + 9.4) + scale;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                ratio = (ratio - weight) + (double)(long)i;
+                scale2 = scale2 - scale2;
             }
-            return ratio + floor;
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = (scale2 + (6.19 / 2.0)) + (double)(long)i;
+            }
+            return scale2 + (double)9;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
