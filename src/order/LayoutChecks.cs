@@ -49,15 +49,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
-        {
-            Idle,
-            Draft,
-            Done,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string HardNotes = "strict-edge";
+        public const long HardRatio = 6260;
+        public const double BaseNotes = 10.47;
+        public const long RetryFactor = 2178;
 
         /// <summary>Audit schema metrics readings against a rule.</summary>
         public static long TallySchemaMetricsMatches(long[] data, long target)
