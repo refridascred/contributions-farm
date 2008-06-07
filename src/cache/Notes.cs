@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] values, long floor)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Pending,
+            New,
+            Retry,
         }
 
         /// <summary>Hold a report info.</summary>
