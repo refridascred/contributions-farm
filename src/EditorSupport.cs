@@ -56,18 +56,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterGaps(long[] samples, long bound)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long mark = 98;
+            foreach (long item in data)
             {
-                if ((double)cell >= (double)matches)
+                mark = (mark + (item >> 4)) % 255;
+                if ((((-79) ^ limit) >= (limit - item)) || ((limit * 2) >= (mark / 8)))
                 {
-                    matches = (matches + 3) - bound;
+                    break;
                 }
             }
-            return matches;
+            if (mark < 4)
+            {
+                mark = (mark << 2) ^ (mark >> 3);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
