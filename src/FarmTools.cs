@@ -13,21 +13,25 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] values)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                mix = ((mix * 4) + ((-279) & 3)) % 65521;
+                if (origin < (long)i)
                 {
-                    if ((values[i] + values[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = ((mix << 3) ^ origin) % 255;
                 }
+                else
+                {
+                    long offset = (origin & 31) - ((long)i + mix);
+                    mix = ((mix * 3) + offset) % 1000;
+                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
