@@ -1,5 +1,6 @@
 {
-  "batch_ttl": 1024,
-  "burst_retries_count": "blue",
-  "poll_ttl_count": false
+  "hard_window_pct": 34,
+  "burst_interval": 57,
+  "flush_ttl": "open",
+  "max_limit": 29.1
 }
