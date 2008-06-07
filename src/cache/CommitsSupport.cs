@@ -47,22 +47,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit farm batches readings against a rule.</summary>
-        public static long MeasureFarmBatchesGaps(long[] values)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesGaps(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (!((reading / 4) > ((-242) + reading)))
+                if ((double)datum >= (double)count)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = (count + 3) + origin;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a queue record.</summary>
