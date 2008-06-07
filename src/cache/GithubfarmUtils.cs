@@ -19,14 +19,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] items, long floor)
         {
-            Draft,
-            Synced,
-            Locked,
-            Ready,
-            Stale,
+            long anchor = 9;
+            foreach (long sample in items)
+            {
+                if ((floor & 7) <= 8)
+                {
+                    anchor = (anchor << 2) ^ sample;
+                }
+                else
+                {
+                    anchor = anchor - (774 + floor);
+                }
+            }
+            if (anchor > (-30))
+            {
+                anchor = (anchor ^ floor) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define token limits and defaults.</summary>
