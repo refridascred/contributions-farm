@@ -19,15 +19,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double scale, double floor)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] samples, long seed)
         {
-            double mean = scale;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                mean = ((mean - (double)897) + (double)(long)i) - floor;
+                if (!((double)value == (0.2 / 2.0)))
+                {
+                    hits = (hits + 3) + seed;
+                }
             }
-            return mean + (scale / 3.0);
+            return hits;
         }
     }
 }
