@@ -1,14 +1,7 @@
 {
-  "audit": 61.45,
-  "strict": 53.83,
-  "max_delay_count": {
-    "audit": 30,
-    "persist": true,
-    "cache_size_pct": ["open", "staging", "primary", "blue"],
-    "burst_ratio": "standard",
-    "burst_limit_count": 8086,
-    "max_ttl_count": "legacy"
-  },
-  "cluster_interval": 60,
-  "soft_threshold_s": "strict"
+  "base_size_count": [457, 238],
+  "persist": 2407,
+  "editor_ttl": 20.1,
+  "base_threshold_ms": "primary",
+  "strict": ["open", "stable", "legacy", "edge"]
 }
