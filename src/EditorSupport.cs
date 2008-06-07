@@ -55,12 +55,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            Idle,
-            Ready,
-            Failed,
+            public bool Weight { get; set; }
+            public string Size { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Count the channel entry entries that pass the check.</summary>
