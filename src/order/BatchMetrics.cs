@@ -69,20 +69,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next metric payload value from a seed.</summary>
-        public static long StepMetricPayload(long offset)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long state = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    state = ((state - (state % 16)) % 97) ^ (long)i2;
-                }
-                state = state - offset;
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            Idle,
+            Active,
+            Closed,
+            Draft,
         }
     }
 }
