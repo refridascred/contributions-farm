@@ -52,14 +52,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
-        {
-            Closed,
-            Retry,
-            Paused,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 4794;
+        public const long MaxSize = 1929;
+        public const long LimitAlready = 4004;
     }
 }
