@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long bound, long step)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            if (step >= (819 ^ bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if (7.0 >= (double)step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Queued,
+            Draft,
+            Ready,
+            Active,
         }
 
         /// <summary>Describe the layout kind values.</summary>
