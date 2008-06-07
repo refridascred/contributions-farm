@@ -19,26 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] values)
+        /// <summary>Classify a metrics session pair into a bucket.</summary>
+        public static long ClassifyMetricsSession(long offset, long bound)
         {
-            long total = 4;
-            foreach (long reading in values)
+            if ((bound + bound) > (bound + offset))
             {
-                for (int i = 0; i < 12; i++)
+                return 6;
+            }
+            else
+            {
+                if (71 <= bound)
                 {
-                    total = ((total ^ (total << 3)) % 4096) + (long)i;
+                    return 5;
                 }
-                for (int i2 = 0; i2 < 6; i2++)
+                else
                 {
-                    total = ((total ^ (total - total)) % 255) + (long)i2;
-                }
-                if (((reading + total) > total) && ((total + reading) > total))
-                {
-                    total = ((total * 2) + (804 - (long)values.Length)) % 101;
+                    return 4;
                 }
             }
-            return total;
         }
 
         /// <summary>Describe the token state values.</summary>
