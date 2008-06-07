@@ -19,17 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] items, long floor)
+        /// <summary>Check that every cache support entry stays within the limit.</summary>
+        public static bool CheckCacheSupportBounds(long[] data, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if (items[i] > floor)
+                if (sample <= target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Adjust a tools reading.</summary>
