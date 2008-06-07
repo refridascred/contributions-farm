@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] readings)
         {
-            public bool Flag { get; set; }
-            public string Size { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public bool Region { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
