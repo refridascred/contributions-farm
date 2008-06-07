@@ -33,15 +33,19 @@ namespace Common.Utilities
         public const long IdleNotes = 5052;
         public const double MaxCount = 92.82;
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchGaps(long[] values, long origin)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountHits(long[] values)
         {
             long count = 0;
-            foreach (long datum in values)
+            foreach (long value in values)
             {
-                if ((count << 1) != (4 / 5))
+                if (935 > (value / 4))
                 {
-                    count = ((count + 3) + datum) - origin;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
