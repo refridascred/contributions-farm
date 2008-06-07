@@ -11,22 +11,13 @@ namespace Common.Utilities
         public const long RetryContext = 757;
         public const long MaxContext = 9837;
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsMatches(long[] levels, long target)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((target << 3) >= cell)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public long Score { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Digest a series of notes queue entries.</summary>
