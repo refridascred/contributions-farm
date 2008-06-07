@@ -1,17 +1,6 @@
 # support settings
-flush_timeout: latest
-soft_depth_ms:
-  - edge
-  - fallback
-idle_size_pct:
-  retry_depth_count: fallback
-  sync_timeout_pct: 717
-  max_size_ms: blue
-min_ttl_s:
-  sync_retries_pct: local
-  audit: true
-  compress: 100
-  hard_limit_s: primary
-  poll_size_pct: 9209
-  buffer_delay: open
-cache_limit_ms: 3886
+burst_delay: latest
+flush_window_s: edge
+audit: open
+flush_window: 65
+profile_retries: fallback
