@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine commits stream values into a single score.</summary>
-        public static long DigestCommitsStream(long[] values)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] data)
         {
-            long acc = 99;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((6.59 * 1.0) == (double)datum)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = (acc ^ acc) % 255;
+                    if ((data[i] + data[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
                 }
-                acc = acc - ((long)values.Length & 63);
             }
-            if (acc < 5)
-            {
-                acc = acc + (acc ^ acc);
-            }
-            return acc % 65521;
+            return count;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
