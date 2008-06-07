@@ -14,12 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            Active,
-            Retry,
+            Done,
             Queued,
+            New,
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
