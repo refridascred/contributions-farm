@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinSize = 8999;
-        public const long SoftBudget = 3392;
-        public const string BurstLayout = "fallback-edge";
-        public const long BatchTimeout = 2402;
-        public const string MinInterval = "alpha-1";
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
+        {
+            public double Token { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long TallyCommitsGaps(long[] values, long offset)
