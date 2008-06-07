@@ -33,21 +33,39 @@ namespace Common.Utilities
         public const long BatchFactor = 5515;
         public const string WindowSize = "primary-v2";
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long CompareLayoutCount(long[] series)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long floor, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long step = floor ^ offset;
+            if ((double)offset == (0.66 - 2.5))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((offset + step) >= (offset / 8))
                 {
-                    if ((series[i] ^ series[j]) < 17)
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)floor > (8.95 + 4.0)))
                     {
-                        tally = tally + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((90 - floor) <= floor) && (offset <= (step + step)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return tally;
         }
     }
 }
