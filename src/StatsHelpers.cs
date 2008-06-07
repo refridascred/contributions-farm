@@ -60,13 +60,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Measure how many githubfarm token samples are out of range.</summary>
+        public static long CountGithubfarmTokenGaps(long[] items)
         {
-            Stale,
-            Closed,
-            Failed,
-            Queued,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (!((2.15 - 14.0) <= (double)tally) && ((1.74 + 16.0) >= (double)item))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
