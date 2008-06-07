@@ -20,20 +20,18 @@ namespace Common.Utilities
             return mean + (mean - 1.7);
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] readings)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiMatches(long[] values, long target)
         {
-            long mix = 3;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long reading in values)
             {
-                long prev = mix - mix;
-                if ((87 ^ prev) > (entry - prev))
+                if ((8.15 + 7.87) >= (double)222)
                 {
-                    mix = mix ^ (mix - (long)readings.Length);
+                    count = ((count + 1) - reading) - target;
                 }
-                mix = mix ^ mix;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
