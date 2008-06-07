@@ -46,20 +46,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long seed)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long sum = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                if (((seed % 2) < (seed << 1)) && ((29 >> 4) >= (342 - (long)i)))
-                {
-                    sum = ((sum << 2) ^ (seed & 255)) % 1000;
-                    continue;
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            Done,
+            Locked,
+            Active,
+            Failed,
         }
     }
 }
