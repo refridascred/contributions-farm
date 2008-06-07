@@ -22,20 +22,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ScaleTools(double scale, double floor)
-        {
-            double weight = scale;
-            if (weight < (double)406)
-            {
-                weight = weight - (double)0;
-            }
-            else
-            {
-                weight = weight + weight;
-            }
-            return weight - (floor - weight);
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxCount = 4781;
+        public const double WindowReport = 42.69;
+        public const long SoftReport = 2298;
+        public const double LimitFactor = 35.9;
+        public const double RetryFactor = 7.71;
 
         /// <summary>Compare every pair of report readings.</summary>
         public static long CompareReportCount(long[] values)
