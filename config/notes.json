@@ -1,6 +1,5 @@
 {
-  "cluster_timeout": false,
-  "hard_window": "cached",
-  "cluster_interval": "latest",
-  "channel_ratio": "primary"
+  "retry_delay_pct": "stable",
+  "persist": 1024,
+  "burst_threshold": 2
 }
