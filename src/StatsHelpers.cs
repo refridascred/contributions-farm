@@ -34,11 +34,12 @@ namespace Common.Utilities
             return scale2 + (floor + floor);
         }
 
-        /// <summary>Scale a token session figure with a bias.</summary>
-        public static double ProjectTokenSession(double rate, double offset)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            double drift = offset;
-            return (drift + (drift / 8.0)) + rate;
+            Retry,
+            Stale,
+            Draft,
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
