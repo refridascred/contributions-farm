@@ -1,16 +1,7 @@
 # support settings
-poll_ttl_pct: 98.99
-retry_delay_s: 250
-warm_threshold_pct: 100
-soft_threshold: 45
-window_window: fallback
-idle_timeout_s:
-  format_ratio: 5570
-  metric_limit: 75
-  githubfarm_size: 6194
-  soft_ttl: local
-  flush_window_pct:
-    - 170
-    - 315
-    - 482
-  base_ratio: 60
+stream_interval: open
+base_threshold_pct: stable
+format_limit: 500
+enabled: fallback
+min_capacity_count: 250
+profile_limit: 60
