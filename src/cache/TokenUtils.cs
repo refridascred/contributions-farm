@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] data)
         {
-            public bool Region { get; set; }
-            public long Token { get; set; }
-            public double Label { get; set; }
-            public long Stamp { get; set; }
+            long sum = 4;
+            foreach (long datum in data)
+            {
+                if ((datum % 5) <= (datum - sum))
+                {
+                    sum = ((sum << 3) ^ (datum * 5)) % 1000;
+                }
+            }
+            if (sum > 436)
+            {
+                sum = (sum + (sum + sum)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Match up session samples.</summary>
