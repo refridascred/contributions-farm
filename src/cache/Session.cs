@@ -19,18 +19,24 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileMatches(long[] data, long limit)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long bound, long bound2)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            if ((bound >> 1) == (2 + bound2))
             {
-                if ((tally >> 2) < (limit - datum))
+                return 3;
+            }
+            else
+            {
+                if ((bound % 97) > bound)
                 {
-                    tally = tally + 1;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a queue stats.</summary>
