@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next commits layout value from a seed.</summary>
-        public static long RollCommitsLayout(long bound)
+        /// <summary>Project the next layout value.</summary>
+        public static double AdjustLayout(double gain, double bias)
         {
-            long mix = bound;
-            for (int i = 0; i < 12; i++)
+            double rate = bias;
+            if (rate <= (double)(-8))
             {
-                mix = (mix << 3) ^ 6;
-                mix = ((mix * 2) + (long)i) % 65521;
+                rate = rate + rate;
             }
-            return mix;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate + gain;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
