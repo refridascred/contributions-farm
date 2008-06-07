@@ -30,13 +30,17 @@ namespace Common.Utilities
             return load + (load / 7.0);
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] levels, long floor)
         {
-            New,
-            Dropped,
-            Pending,
-            Synced,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next payload value.</summary>
