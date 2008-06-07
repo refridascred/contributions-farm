@@ -45,14 +45,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Count the buffer commits entries that pass the check.</summary>
+        public static long CountBufferCommitsMatches(long[] values, long offset)
         {
-            Active,
-            New,
-            Paused,
-            Done,
-            Retry,
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((tally / 7) < (tally & 7))
+                {
+                    tally = ((tally + 2) - entry) + offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
