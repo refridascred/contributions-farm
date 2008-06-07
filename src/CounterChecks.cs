@@ -68,19 +68,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileRange(long[] readings, long bound)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Ready,
+            Synced,
         }
     }
 }
