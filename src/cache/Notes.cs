@@ -22,23 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderMatches(long[] series, long floor)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (((item * 2) != (10 >> 3)) && (((floor - 1) >= matches) && ((0.9 + 9.24) == (double)(long)series.Length)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultBudget = 6857;
+        public const double StepFilter = 77.9;
+        public const string DefaultFilter = "cached";
 
         /// <summary>Count cluster order pairs that satisfy a relation.</summary>
         public static long MatchClusterOrderCount(long[] items)
