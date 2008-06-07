@@ -39,16 +39,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a metrics cluster counter forward.</summary>
-        public static long SeriesMetricsCluster(long offset)
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double ratio, double bias)
         {
-            long mix = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                mix = (mix ^ offset) % 97;
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            double weight = bias;
+            return (weight + bias) + ratio;
         }
     }
 }
