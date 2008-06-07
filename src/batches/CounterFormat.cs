@@ -23,21 +23,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of layout notes readings.</summary>
-        public static long PairLayoutNotesCount(long[] levels)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = ((mix * 3) + (step + mix)) % 4096;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
