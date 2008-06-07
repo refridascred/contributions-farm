@@ -35,31 +35,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long offset, long target)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            if ((target - offset) != (offset << 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target << 3) <= (-59))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (target <= (offset / 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Draft,
+            Idle,
+            Stale,
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
