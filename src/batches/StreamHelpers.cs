@@ -35,15 +35,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] readings)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long MatchNotesCount(long[] items)
         {
             long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) > 8)
+                    if ((items[i] ^ items[j]) < 4)
                     {
                         matches = matches + 1;
                     }
