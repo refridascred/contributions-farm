@@ -7,14 +7,14 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-eu-west}"
+mode="${1:-open}"
 case "${mode}" in
-    latest)
+    stable)
         log "fast path"
         ;;
     *)
@@ -22,5 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-BUFFER_LIMIT=211
-log "limit is ${BUFFER_LIMIT}"
+for item in green strict legacy primary; do
+    log "checking ${item}"
+done
