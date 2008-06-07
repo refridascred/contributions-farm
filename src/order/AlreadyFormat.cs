@@ -55,21 +55,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] data)
+        /// <summary>Validate counter format readings against a bound.</summary>
+        public static bool ValidateCounterFormatRange(long[] items, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (sample != origin)
                 {
-                    if ((data[i] + data[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
