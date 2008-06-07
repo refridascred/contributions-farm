@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BatchCommits = 12.1;
-        public const string IdleCommits = "cached-v2";
-        public const double HardSpan = 36.79;
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
+        {
+            Stale,
+            Retry,
+            New,
+            Dropped,
+            Ready,
+        }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long TallyChecksHits(long[] series)
