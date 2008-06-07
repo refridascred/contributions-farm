@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] data, long floor)
         {
-            Paused,
-            Draft,
-            Ready,
-            Active,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
