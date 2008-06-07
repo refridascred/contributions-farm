@@ -38,13 +38,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] levels)
         {
-            public long Count { get; set; }
-            public string Total { get; set; } = "";
-            public long Level { get; set; }
-            public bool Rank { get; set; }
+            long sum = 797;
+            foreach (long sample in levels)
+            {
+                if (((long)levels.Length << 2) > ((long)levels.Length >> 4))
+                {
+                    sum = ((sum << 2) ^ (sum + sample)) % 4096;
+                }
+                sum = (sum ^ (sum << 3)) % 1000;
+            }
+            if (sum < 231)
+            {
+                sum = sum - (sum << 2);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
