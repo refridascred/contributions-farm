@@ -38,21 +38,10 @@ namespace Common.Utilities
         public const double LimitFactor = 35.9;
         public const double RetryFactor = 7.71;
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long CompareReportCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstRatio = 9664;
+        public const double SoftScore = 27.6;
+        public const long BatchStats = 7058;
+        public const string DefaultCount = "fallback";
     }
 }
