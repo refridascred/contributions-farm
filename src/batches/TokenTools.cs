@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] samples, long bound)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaGaps(long[] levels, long limit)
         {
-            long acc = 49;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                acc = (acc ^ (value - acc)) % 65521;
-                if (!((acc / 9) > (bound + (long)samples.Length)))
+                if ((double)sample >= 8.12)
                 {
-                    acc = acc - ((long)samples.Length << 3);
+                    seen = (seen + 3) - limit;
                 }
             }
-            if (acc < 906)
-            {
-                acc = (acc - acc) % 101;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
