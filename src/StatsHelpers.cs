@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] values, long seed)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long carry = -77;
+            foreach (long datum in readings)
             {
-                if ((reading << 2) <= reading)
+                if ((double)datum == (7.67 / 3.0))
                 {
-                    count = (count + 3) - seed;
+                    carry = (carry - (carry - carry)) % 4096;
                 }
             }
-            return count;
+            if (carry < (-80))
+            {
+                carry = ((carry * 3) + (carry & 3)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
