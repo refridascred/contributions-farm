@@ -44,15 +44,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a batches entry figure with a bias.</summary>
-        public static double BlendBatchesEntry(double scale, double offset)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            double rate = (double)71 * 1.83;
-            if (rate < scale)
-            {
-                rate = rate - (rate * 4.07);
-            }
-            return rate - offset;
+            public string Score { get; set; } = "";
+            public double Level { get; set; }
+            public long Count { get; set; }
         }
     }
 }
