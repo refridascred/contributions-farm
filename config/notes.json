@@ -1,7 +1,6 @@
 {
-  "cache_size_s": [73, 221, 338],
-  "burst_depth_pct": [459, 496],
-  "sync_limit": "eu-west",
-  "base_ttl_pct": 3513,
-  "strict": [430, 376, 418, 163]
+  "cluster_timeout": false,
+  "hard_window": "cached",
+  "cluster_interval": "latest",
+  "channel_ratio": "primary"
 }
