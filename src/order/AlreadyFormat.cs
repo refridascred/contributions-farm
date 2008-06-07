@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 2616;
-        public const long BaseDepth = 2208;
-        public const long MaxBudget = 2557;
-        public const long BatchScore = 3903;
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ProjectGithubfarm(double rate, double span)
+        {
+            double weight = rate;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = ((weight - (8.1 * 5.1)) + (double)(long)i) - span;
+            }
+            return weight + (double)524;
+        }
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
