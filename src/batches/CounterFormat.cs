@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the record queue entries that pass the check.</summary>
-        public static long CountRecordQueueMatches(long[] series, long bound)
+        /// <summary>Compare every pair of cache graph readings.</summary>
+        public static long MatchCacheGraphCount(long[] levels)
         {
-            long count = 0;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)(-9) == (double)count)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = ((count + 1) - value) - bound;
+                    if ((levels[i] ^ levels[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the contributi level values.</summary>
