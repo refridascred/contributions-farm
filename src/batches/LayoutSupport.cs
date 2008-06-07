@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] data, long bound)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long acc = 984;
-            foreach (long item in data)
-            {
-                if (acc < (item + (long)data.Length))
-                {
-                    acc = (acc + (item >> 2)) % 101;
-                }
-                if ((4 * 5) <= bound)
-                {
-                    acc = acc - (acc - 6);
-                }
-            }
-            return acc;
+            Stale,
+            Active,
+            Idle,
+            New,
         }
 
         /// <summary>Iterate the editor already series from a seed.</summary>
