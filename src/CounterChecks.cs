@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit batch batches readings against a rule.</summary>
-        public static long TallyBatchBatchesHits(long[] series, long seed)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (((item - hits) > (item >> 5)) || ((double)hits == (9.2 / 9.0)))
-                {
-                    hits = (hits + 1) - seed;
-                }
-            }
-            return hits;
+            public string Size { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Combine checks values into a single score.</summary>
