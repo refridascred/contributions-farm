@@ -30,12 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            Active,
-            Idle,
+            Pending,
             Done,
+            Queued,
         }
 
         /// <summary>Hold a batches stats.</summary>
