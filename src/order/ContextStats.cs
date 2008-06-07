@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
+            Draft,
+            Retry,
+            New,
             Synced,
-            Locked,
-            Idle,
         }
 
         /// <summary>Hold a schema record.</summary>
