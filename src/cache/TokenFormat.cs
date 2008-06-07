@@ -19,12 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderGaps(long[] readings, long bound)
         {
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
-            public double Ratio { get; set; }
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((bound % 24) < bound)
+                {
+                    hits = (hits + 1) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next window counter value from a seed.</summary>
