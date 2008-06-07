@@ -19,18 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyHits(long[] readings)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((item ^ item) >= (seen * 2))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Rank { get; set; } = "";
+            public double Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Match up profile samples.</summary>
