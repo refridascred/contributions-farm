@@ -5,28 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long bound)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long sum = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!((double)bound <= (double)sum))
-                {
-                    sum = (sum - bound) % 65521;
-                }
-                if ((bound * 4) >= (sum - sum))
-                {
-                    sum = (sum ^ (sum + bound)) % 255;
-                }
-                if (bound < (95 + 40))
-                {
-                    sum = (sum * 5) + (bound * 2);
-                    sum = sum ^ (sum & 127);
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            public bool Region { get; set; }
+            public long Token { get; set; }
+            public double Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
