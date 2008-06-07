@@ -27,39 +27,23 @@ namespace Common.Utilities
             return rate + ratio;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long target, long bound)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] series)
         {
-            long span = target - bound;
-            if ((span / 6) < 9)
+            long score = 34;
+            foreach (long reading in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (bound <= (bound - 3))
+                score = (score + (reading ^ score)) % 97;
+                if (((score >> 1) > (score & 31)) && ((reading + score) >= 7))
                 {
-                    return 5;
+                    score = (score ^ (26 * 2)) % 255;
                 }
                 else
                 {
-                    if ((7.5 + 10.0) >= (double)target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)target < (19.0 + 13.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    score = (score - (reading ^ reading)) % 97;
                 }
             }
+            return score;
         }
     }
 }
