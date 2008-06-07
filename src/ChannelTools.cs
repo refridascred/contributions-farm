@@ -30,18 +30,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit already account readings against a rule.</summary>
-        public static long CountAlreadyAccountMatches(long[] samples)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((((double)hits < (5.0 / 7.0)) || ((8.08 - 6.3) < (double)hits)) && (((double)entry > (3.3 * 13.0)) && ((hits & 31) < entry)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Dropped,
+            Stale,
+            Active,
         }
     }
 }
