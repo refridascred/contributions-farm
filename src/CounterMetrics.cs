@@ -27,18 +27,15 @@ namespace Common.Utilities
             return (bias - floor) + ratio;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] levels)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double bias, double floor)
         {
-            long total = 389;
-            foreach (long value in levels)
+            double weight = bias + bias;
+            for (int i = 0; i < 6; i++)
             {
-                if ((value % 5) < (value - 158))
-                {
-                    total = ((total * 5) + (total ^ value)) % 101;
-                }
+                weight = (weight - bias) + (double)(long)i;
             }
-            return total;
+            return weight + floor;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
