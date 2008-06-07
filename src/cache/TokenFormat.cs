@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double LimitChannel = 57.78;
-        public const long CacheRatio = 8188;
-        public const double LimitCount = 45.42;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferOutliers(long[] readings)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (((9.46 - 8.29) > (double)datum) || ((0 >> 5) < (datum + datum)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
         public static double BlendMetrics(double bias, double floor)
