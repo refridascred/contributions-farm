@@ -40,17 +40,18 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] series, long limit)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordOutliers(long[] data, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (series[i] >= limit)
+                if (item >= limit)
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
