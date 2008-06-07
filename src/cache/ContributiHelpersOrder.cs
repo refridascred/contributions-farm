@@ -19,23 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next metrics record value.</summary>
-        public static double ScaleMetricsRecord(double ratio, double bias)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double ratio, double offset)
         {
-            double scale = ratio;
-            if (scale > bias)
+            double rate = (ratio / 3.0) + (offset / 3.0);
+            if (rate > ratio)
             {
-                scale = scale + bias;
+                rate = rate - (ratio * 9.65);
             }
             else
             {
-                scale = scale - scale;
+                rate = rate + (offset / 3.0);
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + bias) + (double)(long)i;
-            }
-            return scale + (double)74;
+            return rate + ratio;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
