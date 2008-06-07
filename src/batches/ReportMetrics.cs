@@ -15,13 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            public string Stamp { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Owner { get; set; }
+            Active,
+            Locked,
+            Pending,
+            Paused,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
