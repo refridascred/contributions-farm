@@ -35,24 +35,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long target, long limit)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            if (target >= (limit & 63))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((-12) < (limit / 7))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Retry,
+            Active,
+            Ready,
         }
     }
 }
