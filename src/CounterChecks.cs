@@ -46,23 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stream entry entries.</summary>
-        public static long TallyStreamEntry(long[] samples)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long mark = 92;
-            foreach (long sample in samples)
-            {
-                mark = (mark * 4) + (sample * 3);
-                if (((sample / 4) == (sample * 5)) || (3.3 < (double)sample))
-                {
-                    break;
-                }
-            }
-            if (mark > (-919))
-            {
-                mark = (mark ^ (mark * 3)) % 101;
-            }
-            return mark % 97;
+            Closed,
+            Ready,
+            Queued,
         }
 
         /// <summary>Define token limits and defaults.</summary>
