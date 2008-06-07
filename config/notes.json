@@ -1,5 +1,12 @@
 {
-  "hard_ttl_count": [228, 109],
-  "editor_timeout": 30,
-  "audit": 24.62
+  "poll_timeout_ms": 60,
+  "audit": 14.57,
+  "min_ratio_count": 7,
+  "max_timeout": false,
+  "burst_depth": 6347,
+  "report_retries": {
+    "batch_limit": "blue",
+    "dry_run": "eu-west",
+    "filter_size": ["blue", "edge"]
+  }
 }
