@@ -34,18 +34,12 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Audit graph report readings against a rule.</summary>
-        public static long CountGraphReportGaps(long[] samples)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (((double)matches > (2.88 / 9.0)) && ((sample + matches) != (matches ^ matches)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Stale,
+            Active,
+            Synced,
         }
     }
 }
