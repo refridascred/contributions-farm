@@ -23,15 +23,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine context filter values into a single score.</summary>
-        public static long FoldContextFilter(long[] readings, long offset)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferGaps(long[] series)
         {
-            long state = 8;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                state = ((state << 2) ^ (state + entry)) + offset;
+                if (datum > (datum & 7))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state % 97;
+            return hits;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
