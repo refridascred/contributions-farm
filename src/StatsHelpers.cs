@@ -32,21 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] samples)
+        /// <summary>Combine editor context values into a single score.</summary>
+        public static long FoldEditorContext(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 6;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (mix >= (mix << 1))
                 {
-                    if ((samples[i] - samples[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = ((mix * 4) + entry) % 97;
+                }
+                else
+                {
+                    mix = mix - (239 * 4);
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Hold a buffer entry.</summary>
