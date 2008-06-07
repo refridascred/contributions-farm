@@ -25,13 +25,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteBounds(long[] levels, long bound)
         {
-            public long Size { get; set; }
-            public long Flag { get; set; }
-            public double Level { get; set; }
-            public string Limit { get; set; } = "";
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Locate a order reading by value.</summary>
