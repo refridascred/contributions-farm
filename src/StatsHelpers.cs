@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BurstFactor = 89.97;
-        public const double MinInterval = 62.76;
-        public const long SoftWidth = 42;
-        public const long MinBatch = 610;
-        public const long IdleDepth = 5061;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutMatches(long[] samples)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((5.14 + 17.0) <= (double)sample)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine editor context values into a single score.</summary>
         public static long FoldEditorContext(long[] data)
