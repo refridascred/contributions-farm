@@ -48,22 +48,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountHits(long[] values)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricHits(long[] samples)
         {
-            long count = 0;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (935 > (value / 4))
+                if ((tally << 1) < (4 + tally))
                 {
-                    count = count + 3;
+                    tally = (tally + 2) ^ sample;
                 }
                 else
                 {
-                    count = count - 1;
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define support limits and defaults.</summary>
