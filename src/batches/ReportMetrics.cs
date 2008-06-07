@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
+            Done,
+            New,
+            Idle,
             Dropped,
-            Queued,
-            Retry,
-            Failed,
-            Pending,
         }
 
         /// <summary>Describe the graph kind values.</summary>
