@@ -75,19 +75,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double AdjustTools(double bias, double floor)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamOutliers(long[] samples, long floor)
         {
-            double load = floor;
-            if (load < floor)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                load = (load - (12.0 * 4.48)) + bias;
+                if ((floor ^ floor) != (floor % 64))
+                {
+                    tally = (tally + 1) ^ sample;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load - 8.0;
+            return tally;
         }
 
         /// <summary>Describe the batches phase values.</summary>
