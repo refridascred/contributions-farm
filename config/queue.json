@@ -1,7 +1,10 @@
 {
-  "min_ratio": 5804,
-  "checks_delay": "stable",
-  "default_window": 60,
-  "buffer_depth": false,
-  "idle_ttl_s": 19
+  "enabled": {
+    "channel_retries": 72.68,
+    "cache_limit": 23,
+    "persist": true,
+    "strict": 86.86
+  },
+  "idle_delay_count": "stable",
+  "warm_ratio_s": 41.64
 }
