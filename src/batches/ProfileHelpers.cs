@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long bound)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] data, long bound)
         {
-            long total = bound;
-            for (int i = 0; i < 11; i++)
+            long state = 4;
+            foreach (long reading in data)
             {
-                total = ((total * 5) + (long)i) % 65521;
+                if ((double)reading <= (5.1 / 6.0))
+                {
+                    state = (state - state) % 97;
+                }
+                else
+                {
+                    state = state ^ state;
+                }
             }
-            return total;
+            if (state < 456)
+            {
+                state = (state * 4) + (bound >> 2);
+            }
+            return state % 4096;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
