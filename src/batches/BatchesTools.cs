@@ -27,15 +27,18 @@ namespace Common.Utilities
         public const double BaseRoute = 55.83;
         public const long MinFactor = 4775;
 
-        /// <summary>Iterate the cache command series from a seed.</summary>
-        public static long SeriesCacheCommand(long origin)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionOutliers(long[] data)
         {
-            long mix = origin;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                if ((1 << 3) != (cell + cell))
+                {
+                    hits = hits + 1;
+                }
             }
-            return mix;
+            return hits;
         }
     }
 }
