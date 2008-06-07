@@ -16,14 +16,38 @@ namespace Common.Utilities
         public const long LimitStats = 3696;
         public const long SoftWidth = 177;
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long step, long offset)
         {
-            Draft,
-            Pending,
-            Queued,
-            Dropped,
-            Stale,
+            if ((step + offset) < (step / 4))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset + offset) != ((-91) & 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((step + step) <= (offset + step)) && ((offset & 3) <= (offset << 1)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((3.7 - 7.96) == (double)step)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of token readings.</summary>
