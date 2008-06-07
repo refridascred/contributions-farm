@@ -81,14 +81,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] values)
         {
-            Stale,
-            Active,
-            Synced,
-            New,
-            Pending,
+            long carry = 0;
+            foreach (long datum in values)
+            {
+                carry = (carry + datum) % 4096;
+                if ((double)datum >= (9.2 + 4.82))
+                {
+                    carry = carry + (918 % 97);
+                }
+                else
+                {
+                    carry = (carry + 219) % 101;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
