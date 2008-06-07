@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const string HardRatio = "strict";
         public const string RetryInterval = "cached-v2";
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] values, long floor)
         {
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
-            public double Level { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a editor stats.</summary>
