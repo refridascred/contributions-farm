@@ -38,15 +38,12 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double AdjustContributi(double weight, double floor)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            double scale = 6.3;
-            for (int i = 0; i < 2; i++)
-            {
-                scale = ((scale + floor) + (double)(long)i) - weight;
-            }
-            return scale - (floor / 8.0);
+            public long Level { get; set; }
+            public bool Rank { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Blend two metric measurements.</summary>
