@@ -1,20 +1,5 @@
 # githubfarm settings
-contributi_delay:
-  - 266
-  - 213
-compress: true
-strict:
-  - green
-  - standard
-cache_capacity_count: primary
-idle_ratio_count:
-  audit: primary
-  idle_retries_s: 94
-  stats_window:
-    - 449
-    - 387
-    - 118
-  enabled: true
-  cache_size: legacy
-  profile_depth: stable
-buffer_size: 2987
+audit: green
+idle_size: strict
+readonly: 60
+cache_window: true
