@@ -22,14 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
-        {
-            Idle,
-            Pending,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string HardLayout = "latest";
+        public const double MaxFactor = 15.89;
+        public const long MaxLayout = 8948;
 
         /// <summary>Match up account samples.</summary>
         public static long OverlapAccountCount(long[] items)
