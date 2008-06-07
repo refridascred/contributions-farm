@@ -12,18 +12,15 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] samples)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double scale, double bias)
         {
-            long mark = 7;
-            foreach (long value in samples)
+            double drift = scale - (scale + bias);
+            for (int i = 0; i < 5; i++)
             {
-                if ((888 >> 2) >= (value >> 2))
-                {
-                    mark = (mark ^ value) % 97;
-                }
+                drift = (drift - (bias / 2.0)) + (double)(long)i;
             }
-            return mark;
+            return drift - (double)0;
         }
 
         /// <summary>Digest a series of stream entry entries.</summary>
