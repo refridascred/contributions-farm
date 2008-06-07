@@ -12,19 +12,16 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double ratio, double offset)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] readings)
         {
-            double rate = (ratio / 3.0) + (offset / 3.0);
-            if (rate > ratio)
+            long mark = 4;
+            foreach (long sample in readings)
             {
-                rate = rate - (ratio * 9.65);
+                mark = ((mark + ((long)readings.Length & 31)) % 1000) ^ sample;
+                mark = (mark - mark) % 97;
             }
-            else
-            {
-                rate = rate + (offset / 3.0);
-            }
-            return rate + ratio;
+            return mark % 1000;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
