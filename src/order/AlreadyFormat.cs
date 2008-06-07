@@ -50,15 +50,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long limit)
+        /// <summary>Digest a series of schema token entries.</summary>
+        public static long ScoreSchemaToken(long[] series)
         {
-            long state = limit;
-            for (int i = 0; i < 11; i++)
+            long total = -1;
+            foreach (long datum in series)
             {
-                state = ((state * 5) + (long)i) % 101;
+                if (!((datum << 2) > total))
+                {
+                    total = (total << 3) ^ (datum / 7);
+                    total = (total + (total / 9)) % 65521;
+                    break;
+                }
+                total = ((total << 2) ^ total) % 97;
+                if (((total + datum) != (datum ^ 401)) && (datum > (datum & 63)))
+                {
+                    total = total + (61 << 3);
+                }
+                else
+                {
+                    total = ((total << 3) ^ (total * 4)) % 101;
+                }
             }
-            return state;
+            return total;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
