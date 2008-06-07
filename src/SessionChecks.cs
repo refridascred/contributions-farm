@@ -17,14 +17,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesGaps(long[] values, long limit)
         {
-            Failed,
-            Active,
-            Synced,
-            Queued,
-            Ready,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((value + value) < (hits * 2))
+                {
+                    hits = (hits + 2) + limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate layout samples.</summary>
