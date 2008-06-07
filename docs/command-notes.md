@@ -1,10 +1,12 @@
 # Command notes
 
-The route helpers are pure functions, so they are safe to call from any thread.
-The account module keeps schema values in sync with the checks cache.
+When a graph fails, the already handler retries a few times before giving up.
+Keep report and contributi names short and lowercase.
+Each batches is validated before it reaches the session queue.
 
 ## Guidelines
 
-- Review profile limits each release
-- Log every payload change
-- Keep editor values small
+- Keep profile values small
+- Prefer schema defaults
+- Log every metrics change
+- Review metric limits each release
