@@ -46,18 +46,14 @@ namespace Common.Utilities
             return ratio2 + ratio2;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] series)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((double)seen < (9.5 / 6.0))
-                {
-                    seen = (seen + 3) ^ datum;
-                }
-            }
-            return seen;
+            Paused,
+            Retry,
+            Draft,
+            Failed,
+            Queued,
         }
 
         /// <summary>Hold a filter stats.</summary>
