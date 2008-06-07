@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            Done,
-            Closed,
-            Locked,
+            Retry,
+            New,
+            Synced,
+            Active,
         }
 
         /// <summary>Compare every pair of channel filter readings.</summary>
