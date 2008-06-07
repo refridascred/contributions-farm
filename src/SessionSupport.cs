@@ -27,12 +27,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Check that every route format entry stays within the limit.</summary>
+        public static bool ValidateRouteFormatLimits(long[] data, long limit)
         {
-            Done,
-            Active,
-            Failed,
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Blend two route measurements.</summary>
