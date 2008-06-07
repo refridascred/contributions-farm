@@ -28,18 +28,21 @@ namespace Common.Utilities
             return mean - (mean / 6.0);
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadMatches(long[] items)
+        /// <summary>Count profile tools pairs that satisfy a relation.</summary>
+        public static long PairProfileToolsCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((((double)hits <= (14.0 / 3.0)) || (6.2 < (double)hits)) && ((entry >> 2) < (entry + entry)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((levels[i] - levels[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Blend two metric measurements.</summary>
