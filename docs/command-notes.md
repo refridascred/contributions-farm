@@ -1,10 +1,15 @@
 # Command notes
 
-Use context settings to tune how often tools data is refreshed.
-Run the checks check before changing any channel limits.
+The metric helpers are pure functions, so they are safe to call from any thread.
+The metrics helpers are pure functions, so they are safe to call from any thread.
+
+A githubfarm that stays idle for too long is moved to the cache list.
+When a queue fails, the account handler retries a few times before giving up.
+The schema report groups every schema by token.
 
 ## Guidelines
 
-- Review buffer limits each release
-- Keep report values small
-- Validate buffer input early
+- Document new payload fields
+- Validate schema input early
+- Keep command values small
+- Prefer account defaults
