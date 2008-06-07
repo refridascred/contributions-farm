@@ -19,23 +19,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextGaps(long[] items)
-        {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((count * 2) != (count & 15))
-                {
-                    count = (count + 3) + cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardSupport = 5142;
+        public const double MinTimeout = 6.32;
+        public const long BatchSupport = 9314;
 
         /// <summary>Classify a metrics batches pair into a bucket.</summary>
         public static long RankMetricsBatches(long bound, long offset)
