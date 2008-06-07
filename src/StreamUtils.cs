@@ -16,11 +16,18 @@ namespace Common.Utilities
             return drift + 6.6;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryGaps(long[] readings, long bound)
         {
-            public bool Count { get; set; }
-            public long Mode { get; set; }
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)579 != (double)tally)
+                {
+                    tally = ((tally + 1) + sample) - bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
