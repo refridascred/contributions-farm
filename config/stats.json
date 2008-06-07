@@ -1,8 +1,7 @@
 {
-  "flush_size": "blue",
-  "readonly": 6345,
-  "warm_ttl": "strict",
-  "compress": "staging",
-  "warm_interval": "blue",
-  "session_limit": 30
+  "enabled": 7691,
+  "entry_size": false,
+  "batches_window": ["stable", "legacy", "blue", "fallback"],
+  "verbose": [307, 357, 56],
+  "warm_timeout_pct": [135, 102]
 }
