@@ -13,17 +13,11 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] items, long seed)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double bias, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = bias;
+            return (mean - (bias * 1.7)) + offset;
         }
 
         /// <summary>Match up counter samples.</summary>
