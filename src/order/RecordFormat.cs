@@ -12,11 +12,22 @@ namespace Common.Utilities
         public const double LimitDepth = 78.6;
         public const long HardSpan = 3539;
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] items)
         {
-            public long Flag { get; set; }
-            public long Token { get; set; }
+            long carry = 934;
+            foreach (long value in items)
+            {
+                if (carry <= (value * 5))
+                {
+                    carry = (carry ^ (value - value)) % 65521;
+                }
+                else
+                {
+                    carry = ((carry * 2) + (carry + carry)) % 101;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
