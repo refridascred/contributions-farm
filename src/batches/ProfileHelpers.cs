@@ -71,18 +71,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaMatches(long[] values)
-        {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (312 > (matches + matches))
-                {
-                    matches = (matches + 2) ^ datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepBudget = 6647;
+        public const long HardWidth = 8417;
+        public const string MaxTimeout = "local-edge";
     }
 }
