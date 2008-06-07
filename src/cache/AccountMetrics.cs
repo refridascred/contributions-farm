@@ -42,13 +42,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Locate a filter cache reading by value.</summary>
+        public static long SeekFilterCacheIndex(long[] items, long offset)
         {
-            public double Label { get; set; }
-            public long Size { get; set; }
-            public long Region { get; set; }
-            public double Limit { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= offset) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
