@@ -36,11 +36,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultBatch = 1392;
-        public const long CacheBatch = 3947;
-        public const double WindowBatch = 58.34;
-        public const long MinBatch = 2250;
-        public const long IdleBatch = 3464;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterBounds(long[] readings, long target)
+        {
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
