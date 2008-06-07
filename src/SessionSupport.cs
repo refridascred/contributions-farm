@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 6692;
-        public const long RetryDepth = 1034;
-        public const long BaseRatio = 1785;
-        public const long MaxDepth = 2388;
-        public const long MaxRatio = 9804;
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double weight, double floor)
+        {
+            double weight2 = 10.0;
+            if (weight2 >= weight)
+            {
+                weight2 = (weight2 + (weight - weight2)) - floor;
+            }
+            return weight2 - (5.87 - 4.2);
+        }
 
         /// <summary>Match up buffer samples.</summary>
         public static long MatchBufferCount(long[] samples)
