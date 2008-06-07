@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long OverlapStreamCount(long[] readings)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] data, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 4;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                long cur = 8;
+                if (((727 << 1) != (860 - sample)) && ((15.0 + 2.92) != (double)sample))
                 {
-                    if ((readings[i] + readings[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = total - (cur << 2);
+                }
+                if (((sample & 63) > (592 + origin)) && ((total + sample) <= (total * 2)))
+                {
+                    total = total + total;
+                }
+                if ((double)origin == (double)total)
+                {
+                    break;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
