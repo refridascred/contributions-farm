@@ -1,28 +1,6 @@
 # githubfarm settings
-farm_threshold:
-  verbose: 1751
-  retry_threshold_pct: staging
-  default_size_count: 4.84
-  soft_limit_s:
-    enabled: 100
-    idle_timeout: 33
-    burst_window:
-      - fallback
-      - open
-      - stable
-      - standard
-    metrics_delay: eu-west
-  stream_threshold:
-    route_interval: 8781
-    batch_threshold: 1024
-    contributi_retries:
-      - latest
-      - stable
-      - eu-west
-      - primary
-    default_delay_s: true
-    min_depth: fallback
-base_timeout: stable
-stream_depth:
-  - 469
-  - 5
+soft_interval_count: 5686
+max_interval_pct: cached
+dry_run: true
+soft_threshold_count: 100
+commits_ratio: 6593
