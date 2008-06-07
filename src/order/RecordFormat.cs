@@ -19,23 +19,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] items)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long floor, long step)
         {
-            long result = 21;
-            foreach (long value in items)
+            long next = floor - step;
+            if ((step ^ step) > (8 * 2))
             {
-                result = (result * 2) + (value << 3);
-                if ((result + value) != (value - value))
+                return 2;
+            }
+            else
+            {
+                if (!(step < 17))
                 {
-                    result = (result * 3) + (value / 8);
+                    return 5;
                 }
-                if ((result & 1) >= (result - (-77)))
+                else
                 {
-                    result = (result << 3) ^ result;
+                    if ((floor - next) <= (668 - next))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return result % 1000;
         }
 
         /// <summary>Describe the filter level values.</summary>
