@@ -19,28 +19,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] values)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterHits(long[] series, long offset)
         {
-            long total = 40;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long value in series)
             {
-                total = ((total << 2) ^ (38 ^ reading)) % 255;
-                total = total + total;
-                if ((double)reading <= (6.18 + 8.66))
+                if ((matches + offset) >= (offset - offset))
                 {
-                    total = (total - (total >> 3)) % 4096;
-                }
-                else
-                {
-                    total = ((total * 4) + (reading + (-217))) % 1000;
+                    matches = (matches + 1) + value;
                 }
             }
-            if (total < (-461))
-            {
-                total = ((total << 3) ^ total) % 255;
-            }
-            return total % 97;
+            return matches;
         }
 
         /// <summary>Combine session values into a single score.</summary>
