@@ -29,20 +29,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double ratio, double span)
-        {
-            double drift = 7.88;
-            if (drift > 7.7)
-            {
-                drift = drift + (span - ratio);
-            }
-            else
-            {
-                drift = drift + span;
-            }
-            return drift + drift;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxBatch = 9417;
+        public const string StepBatch = "strict-edge";
+        public const long CacheWidth = 3175;
+        public const long RetryBatch = 2766;
+        public const long WindowBatch = 3148;
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long MeasureContributiMatches(long[] samples)
