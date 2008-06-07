@@ -49,18 +49,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many batch notes samples are out of range.</summary>
-        public static long CountBatchNotesGaps(long[] items, long origin)
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long value in items)
+            double weight2 = (double)(18 >> 4);
+            for (int i = 0; i < 4; i++)
             {
-                if (((-2) * 4) == (origin & 255))
-                {
-                    seen = (seen + 3) + value;
-                }
+                weight2 = ((weight2 - 9.1) - (double)(long)i) + floor;
             }
-            return seen;
+            return weight2 + weight;
         }
 
         /// <summary>Accumulate buffer contributi samples.</summary>
