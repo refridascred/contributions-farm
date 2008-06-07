@@ -53,13 +53,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            public double Weight { get; set; }
-            public long Offset { get; set; }
-            public long Label { get; set; }
-            public double Count { get; set; }
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
