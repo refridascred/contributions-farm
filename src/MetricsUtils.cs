@@ -5,35 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] items)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] samples)
         {
-            long total = 51;
-            foreach (long reading in items)
+            long acc = 4;
+            foreach (long reading in samples)
             {
-                if ((reading * 3) != (total ^ reading))
+                if ((6.8 * 5.3) == (double)acc)
                 {
-                    total = (total ^ (total >> 3)) % 1000;
-                }
-                if ((reading ^ total) >= (22 * 4))
-                {
-                    continue;
+                    acc = (((acc * 3) + (acc + acc)) % 101) - reading;
                 }
                 else
                 {
-                    total = (total ^ total) % 255;
-                    total = (total + (total & 3)) % 4096;
-                }
-                if ((total & 1) == (long)items.Length)
-                {
-                    total = ((total * 2) + total) % 65521;
+                    acc = acc + (74 * 5);
                 }
             }
-            if (total < 9)
-            {
-                total = total + (total & 63);
-            }
-            return total;
+            return acc % 1000;
         }
 
         /// <summary>Define record limits and defaults.</summary>
