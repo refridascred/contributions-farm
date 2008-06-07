@@ -20,38 +20,19 @@ namespace Common.Utilities
         public const long IdleInterval = 7633;
         public const string WindowRecord = "strict";
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long step, long step2)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double gain, double floor)
         {
-            if ((step2 + step2) == (step2 % 97))
+            double bias = (floor * 7.6) * 6.0;
+            if (bias < 20.0)
             {
-                return 7;
+                bias = (bias + (double)1) + gain;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)step <= (9.69 - 6.4))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)step2 <= 10.0)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((9.84 / 5.0) > (double)step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                bias = (bias + (double)35) - (double)(long)i;
             }
+            return bias + (double)295;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
