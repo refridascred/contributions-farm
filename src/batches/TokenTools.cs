@@ -14,11 +14,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBuffer = 3958;
-        public const double DefaultLevel = 49.81;
-        public const long HardBuffer = 4574;
-        public const double RetryBuffer = 98.76;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] samples)
+        {
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (!((hits % 24) >= (hits * 2)))
+                {
+                    hits = (hits + 3) + item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
