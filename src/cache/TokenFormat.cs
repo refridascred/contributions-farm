@@ -40,10 +40,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 4490;
-        public const long SoftFactor = 9869;
-        public const long WindowFilter = 2510;
-        public const double BatchScore = 21.22;
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= floor) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
