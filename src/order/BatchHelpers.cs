@@ -16,13 +16,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long bound)
         {
-            New,
-            Closed,
-            Idle,
-            Paused,
+            long result = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                result = (result + (bound / 6)) % 255;
+                if (((long)i - bound) >= result)
+                {
+                    long matches = (result - 913) * 2;
+                    result = (result ^ matches) % 97;
+                }
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Blend two already measurements.</summary>
