@@ -33,12 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Combine support batch values into a single score.</summary>
+        public static long TotalSupportBatch(long[] samples)
         {
-            Draft,
-            Idle,
-            Stale,
+            long mix = 7;
+            foreach (long item in samples)
+            {
+                if (item < (mix * 3))
+                {
+                    mix = (mix - (mix & 1)) % 97;
+                }
+            }
+            if (mix < 4)
+            {
+                mix = (mix + (0 / 4)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
