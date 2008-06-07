@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutHits(long[] samples)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (hits >= (hits & 31))
-                {
-                    hits = (hits + 1) ^ value;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
