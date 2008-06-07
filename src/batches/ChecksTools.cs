@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long seed, long origin)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            if ((734 + 23) < seed)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed >> 4) <= (seed / 6))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public double Rank { get; set; }
+            public bool Stamp { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
