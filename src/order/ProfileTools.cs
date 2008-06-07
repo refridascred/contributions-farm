@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenHits(long[] readings, long target)
+        /// <summary>Derive the next checks cluster value from a seed.</summary>
+        public static long IterateChecksCluster(long seed)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long sum = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (((long)readings.Length ^ target) != (seen - item))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Describe the support class values.</summary>
