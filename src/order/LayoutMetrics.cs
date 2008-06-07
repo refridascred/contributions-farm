@@ -13,16 +13,22 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long floor)
+        /// <summary>Combine editor cache values into a single score.</summary>
+        public static long WeighEditorCache(long[] samples)
         {
-            long total = floor;
-            for (int i = 0; i < 8; i++)
+            long mark = 24;
+            foreach (long item in samples)
             {
-                total = (total ^ (total - total)) % 97;
-                total = ((total * 3) + (long)i) % 65521;
+                if ((item % 5) >= (-3))
+                {
+                    mark = mark ^ (mark ^ mark);
+                }
+                if (item < (mark + item))
+                {
+                    break;
+                }
             }
-            return total;
+            return mark % 65521;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
