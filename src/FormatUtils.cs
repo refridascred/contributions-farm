@@ -16,38 +16,22 @@ namespace Common.Utilities
         public const long LimitStats = 3696;
         public const long SoftWidth = 177;
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long step, long offset)
+        /// <summary>Combine counter report values into a single score.</summary>
+        public static long FoldCounterReport(long[] items)
         {
-            if ((step + offset) < (step / 4))
+            long acc = 10;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset + offset) != ((-91) & 3))
+                if ((5 << 3) <= (value >> 5))
                 {
-                    return 2;
+                    acc = acc + (acc - value);
                 }
                 else
                 {
-                    if (((step + step) <= (offset + step)) && ((offset & 3) <= (offset << 1)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((3.7 - 7.96) == (double)step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    acc = (acc ^ (1 * 5)) % 255;
                 }
             }
+            return acc;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
