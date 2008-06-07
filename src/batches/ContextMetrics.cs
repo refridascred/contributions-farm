@@ -52,11 +52,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstTimeout = 9748;
-        public const string WindowReport = "cached";
-        public const string CacheReport = "fallback-1";
-        public const long BurstReport = 3890;
+        /// <summary>Count the cluster report entries that pass the check.</summary>
+        public static long MeasureClusterReportGaps(long[] levels, long limit)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((count + count) < (703 / 4))
+                {
+                    count = ((count + 3) - value) + limit;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Roll a session counter forward.</summary>
         public static long DeriveSession(long seed)
