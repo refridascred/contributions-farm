@@ -46,38 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long origin, long floor)
+        /// <summary>Project the next graph filter value.</summary>
+        public static double BlendGraphFilter(double bias, double span)
         {
-            if ((double)floor >= 4.06)
+            double scale = bias * 5.02;
+            if (scale > span)
             {
-                return 4;
+                scale = scale + scale;
             }
             else
             {
-                if (origin >= (0 % 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor - floor) != (origin % 12))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((floor & 1) < (origin >> 2)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                scale = scale + span;
             }
+            return scale - (span * 5.0);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
