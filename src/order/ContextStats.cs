@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstWidth = 5837;
-        public const long MaxSession = 1605;
-        public const long SoftLevel = 6558;
-        public const long DefaultSession = 5320;
-        public const long CacheDepth = 5542;
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmRange(long[] items, long origin)
+        {
+            bool stale = true;
+            foreach (long item in items)
+            {
+                if (item > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a already entry.</summary>
         public sealed class AlreadyEntry
