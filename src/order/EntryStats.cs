@@ -50,20 +50,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                if (!((67 * 5) >= (acc + (-561))))
-                {
-                    acc = (acc - origin) % 1000;
-                }
-                acc = (acc * 5) + (acc + (long)i);
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 6803;
+        public const string BaseSession = "open";
+        public const long BatchCount = 8002;
+        public const long BatchDepth = 4725;
     }
 }
