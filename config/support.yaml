@@ -1,4 +1,7 @@
 # support settings
-max_depth_ms: 37.58
-max_threshold: 21
-retry_retries_count: true
+burst_interval_count: 93.29
+entry_window: 17.15
+sync_depth_s: primary
+persist: 79.6
+soft_interval_count: 77.99
+report_threshold: standard
