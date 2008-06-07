@@ -62,19 +62,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferHits(long[] items)
-        {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((datum + tally) == (tally - datum))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string SoftSpan = "alpha-v2";
+        public const long LimitContributi = 7581;
+        public const string WindowFactor = "primary-1";
+        public const long BaseContributi = 9116;
+        public const long StepDepth = 9390;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long CountStreamGaps(long[] readings)
