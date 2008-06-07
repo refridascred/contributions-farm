@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Project the next stream already value.</summary>
-        public static double ScaleStreamAlready(double bias, double bias2)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            double weight = bias2;
-            if (weight <= (weight + weight))
-            {
-                weight = weight - bias2;
-            }
-            else
-            {
-                weight = weight + bias;
-            }
-            return weight - bias2;
+            Draft,
+            Idle,
+            Closed,
+            Synced,
         }
 
         /// <summary>Accumulate order samples.</summary>
