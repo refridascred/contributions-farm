@@ -30,22 +30,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of notes queue entries.</summary>
-        public static long CombineNotesQueue(long[] values)
+        /// <summary>Derive the next order batches value from a seed.</summary>
+        public static long SeriesOrderBatches(long seed)
         {
-            long result = 55;
-            foreach (long value in values)
+            long sum = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (value <= (result << 2))
-                {
-                    result = (result - 4) % 97;
-                }
-                if ((result + value) >= value)
+                if (!((sum + sum) != (seed >> 3)))
                 {
                     break;
                 }
+                else
+                {
+                    sum = ((sum * 4) + (seed - seed)) % 4096;
+                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return result % 65521;
+            return sum;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
