@@ -1,7 +1,8 @@
 {
-  "base_depth_s": 502,
-  "compress": 6949,
-  "context_ratio": "stable",
-  "commits_ttl": "eu-west",
-  "readonly": 500
+  "strict": 922,
+  "support_interval": true,
+  "burst_limit_ms": 74,
+  "idle_limit": false,
+  "stream_limit": true,
+  "order_retries": "green"
 }
