@@ -20,18 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 3870;
+        public const double CacheGraph = 85.95;
+        public const long SoftFactor = 4440;
 
         /// <summary>Adjust a cache reading.</summary>
         public static double ScaleCache(double gain, double floor)
