@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueGaps(long[] series, long limit)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((limit <= entry) && ((limit >> 5) <= (tally / 4)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardAlready = 9463;
+        public const long WindowScore = 333;
+        public const long LimitWidth = 4183;
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long AuditGraphOutliers(long[] items)
