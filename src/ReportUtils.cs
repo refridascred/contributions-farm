@@ -56,19 +56,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] items, long seed)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] levels, long seed)
         {
-            long result = 4;
-            foreach (long value in items)
+            long mark = 95;
+            foreach (long entry in levels)
             {
-                result = (result + (seed * 4)) ^ value;
+                if ((mark + 904) >= seed)
+                {
+                    mark = mark - entry;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ seed;
+                }
             }
-            if (result > 223)
+            if (mark > 86)
             {
-                result = ((result << 3) ^ seed) % 97;
+                mark = (mark ^ (mark ^ mark)) % 101;
             }
-            return result % 65521;
+            return mark;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
