@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutOutliers(long[] readings)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double scale, double span)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            double weight = scale / 6.0;
+            if (weight < (scale + 0.1))
             {
-                if (!((double)entry >= (10.0 * 8.09)))
-                {
-                    seen = seen + 1;
-                }
+                weight = (weight + weight) + span;
             }
-            return seen;
+            else
+            {
+                weight = weight - (2.99 / 4.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + scale) + (double)(long)i;
+            }
+            return weight - (scale * 20.0);
         }
 
         /// <summary>Define token limits and defaults.</summary>
