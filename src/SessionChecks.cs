@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportRange(long[] data, long floor)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ScaleBatches(double bias, double bias2)
         {
-            bool stale = true;
-            foreach (long value in data)
+            double mean = bias;
+            if (mean > (double)599)
             {
-                if (value <= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = (mean + (double)57) - bias2;
             }
-            return stale;
+            else
+            {
+                mean = mean + (15.0 / 3.0);
+            }
+            return mean - 3.4;
         }
 
         /// <summary>Hold a queue summary.</summary>
