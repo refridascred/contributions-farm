@@ -45,19 +45,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double gain, double offset)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] levels, long bound)
         {
-            double weight = (double)(2 + 2);
-            if (weight >= gain)
+            long mix = -128;
+            foreach (long cell in levels)
             {
-                weight = weight + offset;
+                if ((bound + bound) >= (mix / 5))
+                {
+                    mix = ((mix - (5 << 1)) % 4096) - cell;
+                }
             }
-            for (int i = 0; i < 2; i++)
+            if (mix < (-2))
             {
-                weight = (weight - gain) + (double)(long)i;
+                mix = ((mix * 3) + (6 - 704)) % 1000;
             }
-            return weight - (gain + 0.3);
+            return mix % 97;
         }
     }
 }
