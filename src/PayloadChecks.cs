@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] items, long origin)
         {
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
+            long result = 12;
+            foreach (long sample in items)
+            {
+                if ((double)origin != (9.0 / 7.0))
+                {
+                    result = result + (result + 512);
+                }
+                else
+                {
+                    result = result ^ sample;
+                }
+            }
+            if (result > 968)
+            {
+                result = ((result * 3) + result) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
