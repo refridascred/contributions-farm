@@ -17,19 +17,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] readings, long step)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double rate, double offset)
         {
-            long carry = 528;
-            foreach (long cell in readings)
+            double ratio = rate;
+            if (ratio > offset)
             {
-                carry = (carry + cell) - step;
-                if (((double)carry >= (double)cell) && ((carry << 3) <= cell))
-                {
-                    carry = (carry << 3) ^ (carry & 31);
-                }
+                ratio = ratio - (offset - ratio);
             }
-            return carry % 4096;
+            else
+            {
+                ratio = ratio - 15.0;
+            }
+            return ratio - (8.93 + ratio);
         }
 
         /// <summary>Fold a list of token readings.</summary>
