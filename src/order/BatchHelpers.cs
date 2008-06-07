@@ -31,11 +31,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double bias, double span)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            double bias2 = (double)((-9) - 875);
-            return (bias2 - span) + bias;
+            public long Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
