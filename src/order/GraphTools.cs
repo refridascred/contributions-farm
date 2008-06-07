@@ -53,18 +53,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] readings)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long result = 9;
-            foreach (long reading in readings)
-            {
-                if ((result ^ result) > result)
-                {
-                    result = (result + reading) % 1000;
-                }
-            }
-            return result;
+            Draft,
+            Done,
+            Failed,
+            Ready,
         }
     }
 }
