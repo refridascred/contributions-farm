@@ -24,16 +24,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long origin)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] readings)
         {
-            long mix = origin;
-            for (int i = 0; i < 22; i++)
+            long mark = -46;
+            foreach (long entry in readings)
             {
-                mix = ((mix << 3) ^ 7) % 1000;
-                mix = ((mix * 2) + (long)i) % 97;
+                mark = ((mark - (-975)) % 97) ^ entry;
             }
-            return mix;
+            if (mark > (-40))
+            {
+                mark = (mark + mark) % 4096;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
