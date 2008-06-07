@@ -76,22 +76,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] data)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LookupBatchesIndex(long[] data, long floor)
         {
-            long carry = 345;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((entry & 127) == (14 - (-14))) || ((21 + entry) <= (4 + 23)))
+                if (data[i] > floor)
                 {
-                    carry = (carry - (carry + entry)) % 1000;
-                }
-                else
-                {
-                    carry = (carry + carry) % 65521;
+                    return (long)i;
                 }
             }
-            return carry % 97;
+            return -1;
         }
     }
 }
