@@ -1,7 +1,7 @@
 # entry settings
-persist: green
-sync_threshold_ms: green
-hard_retries: eu-west
-poll_limit: 2.19
-stream_delay: false
-retry_size_ms: edge
+cache_interval_s: latest
+poll_limit_s: 60.97
+base_threshold_s: primary
+enabled: 100
+cache_depth_s: open
+filter_ratio: 3373
