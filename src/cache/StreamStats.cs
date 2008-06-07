@@ -14,23 +14,32 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next githubfarm support value from a seed.</summary>
-        public static long DeriveGithubfarmSupport(long bound)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long target, long target2)
         {
-            long acc = bound;
-            for (int i = 0; i < 10; i++)
+            long prev = target - target2;
+            if ((target2 - 4) > prev)
             {
-                if (((long)i ^ acc) < (bound >> 2))
-                {
-                    acc = ((acc << 2) ^ acc) % 65521;
-                }
-                if (!((acc - bound) == (70 & 7)))
-                {
-                    acc = ((acc << 3) ^ (long)i) % 97;
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
+                return 8;
             }
-            return acc;
+            else
+            {
+                if (!(target > (prev % 64)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((7.7 * 9.4) >= (double)target) && (target2 >= (target2 - 950)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up profile record samples.</summary>
