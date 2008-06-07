@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long seed)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutHits(long[] samples)
         {
-            long mix = seed;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                mix = ((mix << 2) ^ seed) % 101;
-                mix = ((mix * 2) + (long)i) % 101;
+                if (hits >= (hits & 31))
+                {
+                    hits = (hits + 1) ^ value;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
