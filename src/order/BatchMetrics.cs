@@ -58,19 +58,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterRange(long[] series, long origin)
+        /// <summary>Validate farm queue readings against a bound.</summary>
+        public static bool CheckFarmQueueRange(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if (reading != origin)
+                if (item != step)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
