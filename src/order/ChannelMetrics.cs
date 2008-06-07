@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsGaps(long[] readings, long seed)
-        {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((value + seed) >= seen)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BatchFactor = 83.97;
+        public const double IdleGithubfarm = 93.78;
+        public const long LimitRatio = 5542;
 
         /// <summary>Hold a command record.</summary>
         public sealed class CommandRecord
