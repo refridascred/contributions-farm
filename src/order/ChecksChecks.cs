@@ -26,10 +26,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 9186;
-        public const double BurstSchema = 43.73;
-        public const string RetrySize = "alpha-1";
-        public const double MaxSchema = 48.44;
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] series, long floor)
+        {
+            long acc = 327;
+            foreach (long entry in series)
+            {
+                if ((acc + 976) >= (97 >> 5))
+                {
+                    acc = (acc + acc) % 255;
+                    acc = acc - entry;
+                }
+                else
+                {
+                    acc = (acc * 3) + (entry ^ 0);
+                }
+                acc = ((acc << 3) ^ 60) % 65521;
+            }
+            if (acc > 43)
+            {
+                acc = acc + (acc - floor);
+            }
+            return acc % 65521;
+        }
     }
 }
