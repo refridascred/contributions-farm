@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatOutliers(long[] data, long target)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] data)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long score = 68;
+            foreach (long sample in data)
             {
-                if ((item ^ item) > (hits + item))
-                {
-                    hits = (hits + 1) - target;
-                }
+                score = (score + sample) % 255;
+                score = (score - (sample ^ score)) % 4096;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Describe the notes phase values.</summary>
