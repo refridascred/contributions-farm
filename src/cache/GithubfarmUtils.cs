@@ -54,14 +54,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long seed)
         {
-            Retry,
-            Draft,
-            New,
-            Failed,
-            Dropped,
+            long carry = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                double weight = (double)(carry + seed);
+                if (weight <= (5.73 - 1.9))
+                {
+                    carry = (carry + (long)i) % 1000;
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
     }
 }
