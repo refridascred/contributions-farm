@@ -37,19 +37,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesLimits(long[] data, long seed)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double SmoothEntry(double gain, double bias)
         {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double gain2 = bias * 14.0;
+            return gain2 + (gain * 19.0);
         }
     }
 }
