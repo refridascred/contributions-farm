@@ -31,18 +31,21 @@ namespace Common.Utilities
         public const long CacheGraph = 8133;
         public const string BaseBudget = "standard";
 
-        /// <summary>Count the support report entries that pass the check.</summary>
-        public static long CountSupportReportHits(long[] items)
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell / 4) < (matches & 127))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((series[i] - series[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
