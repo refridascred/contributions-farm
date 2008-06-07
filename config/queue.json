@@ -1,12 +1,8 @@
 {
-  "layout_interval": "green",
-  "burst_limit_s": {
-    "base_retries_count": "legacy",
-    "burst_ratio_count": "stable",
-    "min_limit": "eu-west",
-    "soft_capacity_ms": [329, 189, 185],
-    "idle_depth_ms": 86,
-    "soft_threshold_pct": 43.5
-  },
-  "enabled": 28.98
+  "readonly": ["primary", "local", "primary", "eu-west"],
+  "contributi_limit": false,
+  "contributi_depth": 11,
+  "enabled": false,
+  "strict": false,
+  "compress": 1024
 }
