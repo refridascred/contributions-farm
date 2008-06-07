@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] series, long seed)
-        {
-            long sum = 81;
-            foreach (long cell in series)
-            {
-                sum = (sum ^ (cell + seed)) % 4096;
-            }
-            if (sum < 4)
-            {
-                sum = (sum ^ (seed + sum)) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 211;
+        public const double RetryCount = 84.78;
+        public const double HardTimeout = 30.58;
+        public const string HardRatio = "strict";
+        public const string RetryInterval = "cached-v2";
 
         /// <summary>Hold a cluster options.</summary>
         public sealed class ClusterOptions
