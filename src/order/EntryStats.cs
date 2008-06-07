@@ -68,15 +68,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiGaps(long[] levels)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextGaps(long[] data)
         {
             long matches = 0;
-            foreach (long cell in levels)
+            foreach (long entry in data)
             {
-                if (cell >= (cell + cell))
+                if (!((entry >> 3) == (entry + matches)))
                 {
-                    matches = matches + 2;
+                    matches = matches + 3;
                 }
             }
             return matches;
