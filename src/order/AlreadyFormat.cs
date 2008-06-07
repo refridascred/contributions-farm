@@ -59,11 +59,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 6764;
-        public const double WindowCount = 14.47;
-        public const long StepBuffer = 6309;
-        public const string RetryCount = "latest-1";
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
         public static long LookupEntryIndex(long[] values, long limit)
