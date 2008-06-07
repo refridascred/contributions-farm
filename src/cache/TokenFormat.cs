@@ -23,22 +23,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderGaps(long[] readings, long bound)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long target, long step)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long cur = target ^ step;
+            if ((cur / 3) < (cur + step))
             {
-                if ((bound % 24) < bound)
+                return 5;
+            }
+            else
+            {
+                if ((step < 42) || ((double)step > (9.85 + 0.43)))
                 {
-                    hits = (hits + 1) + reading;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((cur + step) <= 81)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (step < (step ^ target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Derive the next window counter value from a seed.</summary>
