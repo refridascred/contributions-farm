@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] samples, long bound)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long state = 2;
-            foreach (long value in samples)
-            {
-                state = (((state + (1 & 1)) % 97) + value) + bound;
-            }
-            if (state < 254)
-            {
-                state = (state * 4) + (state + 98);
-            }
-            return state % 97;
+            public bool Flag { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
