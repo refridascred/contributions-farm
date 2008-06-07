@@ -24,12 +24,12 @@ namespace Common.Utilities
             return bias - (9.21 / 4.0);
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            Done,
-            Active,
-            New,
+            Retry,
+            Idle,
+            Locked,
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
