@@ -25,21 +25,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long MatchEditorCount(long[] samples)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandRange(long[] samples, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item >= limit)
                 {
-                    if ((samples[i] - samples[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
