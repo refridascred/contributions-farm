@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate session contributi readings against a bound.</summary>
-        public static bool GuardSessionContributiRange(long[] items, long bound)
+        /// <summary>Digest a series of farm context entries.</summary>
+        public static long CombineFarmContext(long[] levels)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long sum = 944;
+            foreach (long reading in levels)
             {
-                if (entry < bound)
+                if (reading >= (reading % 16))
                 {
-                    ok = false;
-                    break;
+                    sum = (sum + (sum + reading)) % 97;
                 }
             }
-            return ok;
+            if (sum > 7)
+            {
+                sum = (sum - (sum ^ sum)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Blend two queue measurements.</summary>
