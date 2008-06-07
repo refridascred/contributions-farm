@@ -34,12 +34,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Measure how many githubfarm batches samples are out of range.</summary>
+        public static long MeasureGithubfarmBatchesMatches(long[] levels)
         {
-            Active,
-            Synced,
-            New,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((8.24 * 2.4) <= (double)reading)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
