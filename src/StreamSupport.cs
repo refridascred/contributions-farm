@@ -27,13 +27,12 @@ namespace Common.Utilities
             return gain - (gain * 2.67);
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            public bool Rank { get; set; }
-            public string Owner { get; set; } = "";
+            public double Mode { get; set; }
             public long Region { get; set; }
-            public bool Label { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
