@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphOutliers(long[] data, long target)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (!((target % 97) > entry))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitMetrics = 1898;
+        public const long BaseWidth = 5744;
+        public const long DefaultMetrics = 7336;
+        public const double HardMetrics = 40.29;
 
         /// <summary>Define report limits and defaults.</summary>
         public const string LimitSpan = "open-v2";
