@@ -23,21 +23,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] data)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] data, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 4;
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = (((state << 3) ^ 250) ^ item) - origin;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Adjust a stats profile reading.</summary>
