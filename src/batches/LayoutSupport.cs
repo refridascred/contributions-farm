@@ -65,11 +65,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheSpan = 5844;
-        public const long MaxCounter = 5658;
-        public const long BatchDepth = 1239;
-        public const long SoftScore = 8871;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] items)
+        {
+            long mix = 209;
+            foreach (long entry in items)
+            {
+                if ((0.83 / 5.0) > (double)mix)
+                {
+                    mix = ((mix * 2) + (entry + entry)) % 65521;
+                }
+                else
+                {
+                    mix = ((mix * 2) + (7 + entry)) % 1000;
+                }
+                mix = (mix ^ entry) % 1000;
+            }
+            if (mix < 91)
+            {
+                mix = (mix ^ (mix * 4)) % 97;
+            }
+            return mix % 97;
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long AuditEditorHits(long[] levels, long seed)
