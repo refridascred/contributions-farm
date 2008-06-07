@@ -19,13 +19,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Rank stats order input into a small class.</summary>
+        public static long BucketStatsOrder(long seed, long step)
         {
-            Paused,
-            Active,
-            Done,
-            Ready,
+            if ((36 ^ seed) > (seed - (-3)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (seed <= (624 - step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (78 <= (step >> 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed + seed) > step)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two order measurements.</summary>
