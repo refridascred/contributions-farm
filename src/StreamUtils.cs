@@ -48,19 +48,21 @@ namespace Common.Utilities
         public const string MinTimeout = "stable-v2";
         public const long LimitQueue = 1786;
 
-        /// <summary>Check that every token batches entry stays within the limit.</summary>
-        public static bool GuardTokenBatchesRange(long[] readings, long bound)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCount(long[] readings)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell <= bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
