@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] levels, long bound)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long carry = 3;
-            foreach (long entry in levels)
-            {
-                carry = ((carry + carry) - entry) - bound;
-            }
-            return carry;
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Roll a route counter forward.</summary>
