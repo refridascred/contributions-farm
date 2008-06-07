@@ -13,17 +13,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a metric farm sample.</summary>
-        public static long SeekMetricFarmIndex(long[] samples, long seed)
+        /// <summary>Blend two account measurements.</summary>
+        public static double AdjustAccount(double rate, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = (double)(12 - 11);
+            if (ratio <= rate)
             {
-                if (samples[i] < seed)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio - rate) - span;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio - (double)21;
         }
 
         /// <summary>Define already limits and defaults.</summary>
