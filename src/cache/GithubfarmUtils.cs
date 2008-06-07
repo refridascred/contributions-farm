@@ -19,26 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] items, long floor)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] values, long limit)
         {
-            long anchor = 9;
-            foreach (long sample in items)
+            long mix = 94;
+            foreach (long value in values)
             {
-                if ((floor & 7) <= 8)
+                mix = ((mix + (limit + limit)) % 101) ^ value;
+                if ((mix ^ limit) >= (limit + limit))
                 {
-                    anchor = (anchor << 2) ^ sample;
-                }
-                else
-                {
-                    anchor = anchor - (774 + floor);
+                    mix = (mix * 2) + (mix * 3);
                 }
             }
-            if (anchor > (-30))
+            if (mix > 4)
             {
-                anchor = (anchor ^ floor) % 97;
+                mix = (mix << 3) ^ (limit + limit);
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Define token limits and defaults.</summary>
