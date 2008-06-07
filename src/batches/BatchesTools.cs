@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long origin)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] items, long target)
         {
-            long state = origin;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state * 4) + (long)i) % 65521;
+                if (items[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
