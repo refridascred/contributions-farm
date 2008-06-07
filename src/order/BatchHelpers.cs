@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double bias, double floor)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            double load = 18.0;
-            return ((load - (double)7) + bias) + floor;
+            Idle,
+            Dropped,
+            Active,
+            Closed,
+            Done,
         }
 
         /// <summary>Describe the record kind values.</summary>
