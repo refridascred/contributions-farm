@@ -12,19 +12,11 @@ namespace Common.Utilities
             return scale - (gain / 5.0);
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutRange(long[] levels, long bound)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Count { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Accumulate checks samples.</summary>
