@@ -18,26 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] items)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long total = 32;
-            foreach (long value in items)
-            {
-                if ((total % 7) <= value)
-                {
-                    total = ((total << 2) ^ (total * 4)) % 255;
-                }
-                if (((total - value) == (total ^ value)) && ((double)value < (2.0 - 1.6)))
-                {
-                    break;
-                }
-            }
-            if (total < 812)
-            {
-                total = total ^ (65 / 7);
-            }
-            return total % 4096;
+            public string Limit { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Digest a series of account counter entries.</summary>
