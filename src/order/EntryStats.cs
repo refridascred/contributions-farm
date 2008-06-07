@@ -19,10 +19,40 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string HardLayout = "latest";
-        public const double MaxFactor = 15.89;
-        public const long MaxLayout = 8948;
+        /// <summary>Rank batches support input into a small class.</summary>
+        public static long SortBatchesSupport(long bound, long seed)
+        {
+            long cur = bound + seed;
+            if ((bound - cur) == (cur / 5))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)bound > (double)seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((bound * 3) != (bound - seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((double)bound != (double)seed))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up account samples.</summary>
         public static long OverlapAccountCount(long[] items)
