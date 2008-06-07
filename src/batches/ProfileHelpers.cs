@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] data, long bound)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] values, long limit)
         {
-            long state = 4;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                if ((double)reading <= (5.1 / 6.0))
+                if (datum >= limit)
                 {
-                    state = (state - state) % 97;
-                }
-                else
-                {
-                    state = state ^ state;
+                    ok = false;
+                    break;
                 }
             }
-            if (state < 456)
-            {
-                state = (state * 4) + (bound >> 2);
-            }
-            return state % 4096;
+            return ok;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
