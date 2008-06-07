@@ -10,21 +10,12 @@ namespace Common.Utilities
         public const long MaxAlready = 8939;
         public const long BatchCount = 1909;
 
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] readings)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Done,
+            Locked,
+            Closed,
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
