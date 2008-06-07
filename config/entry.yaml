@@ -1,9 +1,18 @@
 # entry settings
-idle_capacity_s: 500
-idle_depth_ms:
-  - 263
-  - 415
-  - 324
-  - 340
-idle_retries: 71.41
-cache_retries: fallback
+retry_window_pct:
+  default_ttl_s: 2002
+  record_delay:
+    burst_delay_ms: true
+    farm_window: 6799
+    strict: false
+  compress: 53.53
+audit: 55.11
+default_timeout_count: true
+default_threshold_s:
+  payload_delay: 1024
+  max_threshold_count: 1024
+  max_limit_s: 47.63
+default_interval: 82.18
+notes_timeout:
+  - 35
+  - 167
