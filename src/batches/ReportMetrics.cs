@@ -20,13 +20,10 @@ namespace Common.Utilities
             return scale - rate;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
-        {
-            public double Offset { get; set; }
-            public bool Total { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxCluster = 5067;
+        public const long RetryCluster = 6885;
+        public const long MaxInterval = 4648;
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool GuardPayloadBounds(long[] data, long target)
