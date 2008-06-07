@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double BlendMetric(double weight, double bias)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] data, long step)
         {
-            double scale = bias;
-            if (scale < (double)1)
+            long result = 8;
+            foreach (long item in data)
             {
-                scale = scale + 6.75;
+                result = (result << 2) ^ (step & 1);
+                if (((double)result >= (2.2 * 0.87)) || ((double)item > 2.3))
+                {
+                    result = ((result << 3) ^ (item + result)) % 4096;
+                }
+                else
+                {
+                    result = result - result;
+                }
+                result = (result * 4) + (step / 9);
             }
-            else
-            {
-                scale = scale - (bias - 4.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (weight - weight)) + (double)(long)i;
-            }
-            return scale - weight;
+            return result;
         }
 
         /// <summary>Define account limits and defaults.</summary>
