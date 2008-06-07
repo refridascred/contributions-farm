@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsOutliers(long[] readings)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueMatches(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (item > (hits * 2))
+                if ((step * 3) > (step ^ 615))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = (count + 1) + entry;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
