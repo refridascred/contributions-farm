@@ -20,21 +20,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of entry filter readings.</summary>
-        public static long CompareEntryFilterCount(long[] data)
+        /// <summary>Validate order record readings against a bound.</summary>
+        public static bool VerifyOrderRecordLimits(long[] levels, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (sample >= origin)
                 {
-                    if ((data[i] - data[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
