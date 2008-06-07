@@ -16,19 +16,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double ratio, double span)
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] values)
         {
-            double load = ratio;
-            if (load < (load * 9.87))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = (load - (load + ratio)) - span;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - (double)886;
-            }
-            return load - 2.2;
+            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
