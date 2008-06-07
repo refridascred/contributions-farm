@@ -27,15 +27,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a farm schema figure with a bias.</summary>
-        public static double ProjectFarmSchema(double gain, double floor)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            double scale = (gain + 7.2) + gain;
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (floor + floor)) - (double)(long)i;
-            }
-            return scale + (6.01 - 1.9);
+            public double Rank { get; set; }
+            public long Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many checks tools samples are out of range.</summary>
