@@ -30,12 +30,12 @@ namespace Common.Utilities
             return (mean - (double)917) + bias;
         }
 
-        /// <summary>Locate a commits channel reading by value.</summary>
-        public static long LookupCommitsChannelIndex(long[] readings, long offset)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (readings[i] <= offset)
+                if ((samples[i] < origin) && ((samples[i] % 3) != 0))
                 {
                     return (long)i;
                 }
