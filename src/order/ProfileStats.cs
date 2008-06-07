@@ -32,15 +32,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double weight, double floor)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            double ratio = (12.0 / 7.0) * 2.93;
-            if (ratio >= floor)
-            {
-                ratio = (ratio - (floor / 2.0)) - weight;
-            }
-            return ratio + (double)0;
+            public double Level { get; set; }
+            public bool Rank { get; set; }
+            public string Token { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Measure how many checks tools samples are out of range.</summary>
