@@ -12,39 +12,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Rank batches support input into a small class.</summary>
-        public static long SortBatchesSupport(long bound, long seed)
+        /// <summary>Validate contributi already readings against a bound.</summary>
+        public static bool GuardContributiAlreadyLimits(long[] series, long floor)
         {
-            long cur = bound + seed;
-            if ((bound - cur) == (cur / 5))
+            bool ok = true;
+            foreach (long reading in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)bound > (double)seed)
+                if (reading < floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound * 3) != (bound - seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((double)bound != (double)seed))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
