@@ -26,10 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxBudget = 514;
-        public const string BaseCount = "stable-edge";
-        public const long BurstReport = 6065;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 6555;
+        public const double BurstStream = 17.96;
+        public const double HardStream = 16.49;
+        public const long HardCount = 3454;
+        public const long IdleLevel = 4365;
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long TallyFilter(long[] data, long floor)
