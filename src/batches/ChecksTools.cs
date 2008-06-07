@@ -21,16 +21,21 @@ namespace Common.Utilities
         public const string BaseInterval = "staging-1";
         public const long DefaultSpan = 7544;
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long target)
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] readings)
         {
-            long acc = target;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = acc ^ (target * 4);
-                acc = ((acc * 2) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
