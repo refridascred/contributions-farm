@@ -31,17 +31,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] samples, long offset)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ProjectPayload(double bias, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias2 = (double)((-9) - 875);
+            return (bias2 - span) + bias;
         }
     }
 }
