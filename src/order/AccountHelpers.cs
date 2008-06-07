@@ -52,13 +52,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long seed)
         {
-            public long Limit { get; set; }
-            public bool Ratio { get; set; }
-            public double Token { get; set; }
-            public double Region { get; set; }
+            long result = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                result = ((result << 2) ^ seed) % 65521;
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Describe the report level values.</summary>
