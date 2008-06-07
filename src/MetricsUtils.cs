@@ -16,17 +16,14 @@ namespace Common.Utilities
         public const double SoftLevel = 52.66;
         public const long DefaultRatio = 5038;
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] series, long origin)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == origin) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Stale,
+            Failed,
+            Paused,
+            Queued,
         }
 
         /// <summary>Scale a filter context figure with a bias.</summary>
