@@ -26,22 +26,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] levels, long limit)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long mix = 25;
-            foreach (long entry in levels)
-            {
-                if (((entry - limit) > (entry % 60)) && ((double)limit < (4.7 + 0.4)))
-                {
-                    mix = (mix + limit) % 4096;
-                }
-            }
-            if (mix < 60)
-            {
-                mix = ((mix * 3) + ((long)levels.Length / 4)) % 255;
-            }
-            return mix % 4096;
+            New,
+            Synced,
+            Retry,
         }
 
         /// <summary>Hold a filter entry.</summary>
