@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            Active,
-            New,
-            Idle,
-            Failed,
-            Locked,
+            Dropped,
+            Closed,
+            Draft,
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
