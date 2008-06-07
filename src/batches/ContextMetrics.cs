@@ -12,14 +12,15 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Roll a batch format counter forward.</summary>
+        public static long SeriesBatchFormat(long step)
         {
-            Idle,
-            Ready,
-            Done,
-            Stale,
-            Pending,
+            long acc = step;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Hold a contributi options.</summary>
