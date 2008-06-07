@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long limit, long limit2)
+        /// <summary>Check that every counter format entry stays within the limit.</summary>
+        public static bool VerifyCounterFormatLimits(long[] series, long limit)
         {
-            long diff = limit - limit2;
-            if (((diff ^ limit2) <= (7 & 127)) || ((989 >> 2) < limit))
+            bool valid = true;
+            foreach (long item in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)3 < (double)limit2)
+                if (item < limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)diff != (double)limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((limit2 / 8) > limit2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
