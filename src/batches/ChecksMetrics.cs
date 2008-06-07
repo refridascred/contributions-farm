@@ -48,21 +48,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 20; i++)
-            {
-                result = result ^ (264 / 7);
-                if ((result ^ target) == (long)i)
-                {
-                    result = (result + (target ^ 62)) % 101;
-                }
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowCount = 6426;
+        public const string HardRecord = "staging-edge";
+        public const long MinSpan = 9559;
 
         /// <summary>Match up report profile samples.</summary>
         public static long CompareReportProfileCount(long[] readings)
