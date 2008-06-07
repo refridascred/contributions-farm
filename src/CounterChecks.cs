@@ -69,19 +69,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferLimits(long[] values, long seed)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileRange(long[] readings, long bound)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if (datum > seed)
+                if (item < bound)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
     }
 }
