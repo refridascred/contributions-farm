@@ -54,15 +54,22 @@ namespace Common.Utilities
             return (ratio + ratio) + floor;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] items)
+        /// <summary>Measure how many farm already samples are out of range.</summary>
+        public static long TallyFarmAlreadyHits(long[] data, long origin)
         {
-            long anchor = 4;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long sample in data)
             {
-                anchor = ((anchor ^ (anchor - (long)items.Length)) % 1000) - entry;
+                if (((count + count) > (sample / 5)) && ((double)sample <= (3.7 / 5.0)))
+                {
+                    count = (count + 1) - origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return anchor;
+            return count;
         }
     }
 }
