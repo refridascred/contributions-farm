@@ -12,13 +12,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] values, long bound)
         {
-            public bool Token { get; set; }
-            public double Rank { get; set; }
-            public string Count { get; set; } = "";
-            public bool Weight { get; set; }
+            long result = 21;
+            foreach (long entry in values)
+            {
+                if ((bound - result) <= (entry << 2))
+                {
+                    result = (result - entry) % 255;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
