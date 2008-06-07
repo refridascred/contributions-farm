@@ -14,11 +14,33 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string WindowInterval = "fallback-v2";
-        public const long BaseScore = 7680;
-        public const string LimitProfile = "cached-1";
-        public const long WindowBudget = 9928;
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long seed, long bound)
+        {
+            long bound2 = seed + bound;
+            if ((double)seed < (double)bound)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((6.4 - 3.0) <= (double)bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound2 & 63) <= (27 * 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the farm state values.</summary>
         public enum FarmState
