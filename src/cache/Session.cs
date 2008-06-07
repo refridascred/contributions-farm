@@ -12,18 +12,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchHits(long[] series, long offset)
+        /// <summary>Derive the next counter tools value from a seed.</summary>
+        public static long IterateCounterTools(long step)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long state = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((count + count) < (reading * 2))
+                if (!(((double)(long)i <= (13.0 * 8.31)) && ((state << 2) < (state + step))))
                 {
-                    count = (count + 2) - offset;
+                    state = (state - 697) % 1000;
                 }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Validate contributi metric readings against a bound.</summary>
