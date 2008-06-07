@@ -37,32 +37,18 @@ namespace Common.Utilities
         public const double MinTimeout = 6.32;
         public const long BatchSupport = 9314;
 
-        /// <summary>Classify a metrics batches pair into a bucket.</summary>
-        public static long RankMetricsBatches(long bound, long offset)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferOutliers(long[] data, long limit)
         {
-            long edge = bound - offset;
-            if (edge > (bound + edge))
+            long count = 0;
+            foreach (long value in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)offset != (8.6 / 5.0))
+                if ((limit & 15) != (count - value))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (edge <= (edge % 64))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
