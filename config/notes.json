@@ -1,7 +1,5 @@
 {
-  "filter_timeout": 75.4,
-  "schema_timeout": "standard",
-  "sync_delay_ms": 43.48,
-  "audit": false,
-  "batch_capacity": "eu-west"
+  "readonly": "open",
+  "batch_timeout_count": 64,
+  "flush_threshold_ms": 67
 }
