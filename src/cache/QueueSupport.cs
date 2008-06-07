@@ -21,12 +21,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Count support notes pairs that satisfy a relation.</summary>
+        public static long CompareSupportNotesCount(long[] items)
         {
-            public bool Weight { get; set; }
-            public double Score { get; set; }
-            public double Mode { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
