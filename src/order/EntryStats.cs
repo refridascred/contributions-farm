@@ -29,19 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double rate, double offset)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double ratio, double span)
         {
-            double gain = (double)(217 << 1);
-            if (gain <= (double)96)
+            double drift = 7.88;
+            if (drift > 7.7)
             {
-                gain = (gain - (gain + gain)) + offset;
+                drift = drift + (span - ratio);
             }
             else
             {
-                gain = gain - (double)2;
+                drift = drift + span;
             }
-            return gain + rate;
+            return drift + drift;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
