@@ -53,39 +53,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long origin, long offset)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesHits(long[] readings)
         {
-            long delta = origin ^ offset;
-            if ((delta * 3) < (origin / 2))
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((double)origin < 1.98))
+                if (!((reading / 9) <= seen))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((delta >> 5) == (offset & 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((delta - offset) == (origin << 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
     }
 }
