@@ -98,19 +98,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmLimits(long[] readings, long seed)
+        /// <summary>Derive the next channel report value from a seed.</summary>
+        public static long IterateChannelReport(long step)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long state = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (value != seed)
+                state = state - (step % 10);
+                state = ((state << 3) ^ state) % 65521;
+                if (step < (state + step))
                 {
-                    stale = false;
-                    break;
+                    state = (state << 3) ^ (step >> 3);
                 }
+                else
+                {
+                    state = ((state << 3) ^ (state - state)) % 1000;
+                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return stale;
+            return state;
         }
     }
 }
