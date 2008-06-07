@@ -20,19 +20,21 @@ namespace Common.Utilities
             return gain + (rate + span);
         }
 
-        /// <summary>Accumulate account metrics samples.</summary>
-        public static long DigestAccountMetrics(long[] series, long origin)
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] items)
         {
-            long acc = 221;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (acc - 276) + origin;
-                if ((5.38 + 1.89) < (double)sample)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] - items[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc % 1000;
+            return seen;
         }
 
         /// <summary>Blend two order measurements.</summary>
