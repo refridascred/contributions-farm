@@ -27,16 +27,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long seed)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesHits(long[] samples)
         {
-            long result = seed;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                result = (result + ((long)i >> 1)) % 97;
-                result = ((result * 4) + (long)i) % 101;
+                if ((tally + cell) == (cell * 4))
+                {
+                    tally = tally + 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Describe the stream status values.</summary>
