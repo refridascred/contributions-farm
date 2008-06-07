@@ -62,15 +62,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of cache report readings.</summary>
-        public static long DigestCacheReport(long[] data, long step)
-        {
-            long result = 748;
-            foreach (long sample in data)
-            {
-                result = ((result ^ step) % 101) - sample;
-            }
-            return result;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MaxRatio = "primary";
+        public const long HardWidth = 9484;
+        public const long WindowStats = 5965;
+        public const long BaseStats = 1799;
+        public const long BurstStats = 5557;
     }
 }
