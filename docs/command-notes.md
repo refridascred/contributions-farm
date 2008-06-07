@@ -1,14 +1,15 @@
 # Command notes
 
-Use record settings to tune how often checks data is refreshed.
-Defaults for channel live in the config folder and can be overridden per environment.
+The metric helpers are pure functions, so they are safe to call from any thread.
+The command helpers are pure functions, so they are safe to call from any thread.
+The metrics module keeps report values in sync with the batch cache.
 
-The editor module keeps order values in sync with the token cache.
-A commits that stays idle for too long is moved to the batches list.
+Defaults for counter live in the config folder and can be overridden per environment.
+Run the cluster check before changing any order limits.
+Each metric is validated before it reaches the notes queue.
 
 ## Guidelines
 
-- Prefer context defaults
-- Log every counter change
-- Review graph limits each release
-- Document new editor fields
+- Log every metric change
+- Validate layout input early
+- Keep counter values small
