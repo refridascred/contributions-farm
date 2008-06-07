@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the layout format entries that pass the check.</summary>
-        public static long CountLayoutFormatHits(long[] data, long offset)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if (((matches ^ 17) >= (matches + datum)) && ((double)matches >= (8.0 / 5.0)))
-                {
-                    matches = (matches + 3) - offset;
-                }
-            }
-            return matches;
+            public string Count { get; set; } = "";
+            public double Offset { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
