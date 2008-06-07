@@ -38,11 +38,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double ratio, double bias)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long seed, long origin)
         {
-            double weight = bias;
-            return (weight + bias) + ratio;
+            if ((7.79 * 11.0) > (double)origin)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed - origin) != (origin >> 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)27 != (double)origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
