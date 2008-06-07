@@ -19,19 +19,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] levels, long bound)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long MatchEditorCount(long[] samples)
         {
-            long score = 4;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (score - (entry * 4)) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (score > 67)
-            {
-                score = ((score << 3) ^ bound) % 101;
-            }
-            return score % 1000;
+            return hits;
         }
     }
 }
