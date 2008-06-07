@@ -16,13 +16,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] values, long limit)
         {
-            Closed,
-            Synced,
-            Idle,
-            Retry,
+            bool ok = true;
+            foreach (long item in values)
+            {
+                if (item > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
