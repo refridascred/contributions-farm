@@ -39,15 +39,15 @@ namespace Common.Utilities
         public const double SoftSpan = 38.2;
         public const long LimitContributi = 1253;
 
-        /// <summary>Measure how many metrics batches samples are out of range.</summary>
-        public static long AuditMetricsBatchesOutliers(long[] readings)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchMatches(long[] values, long step)
         {
             long hits = 0;
-            foreach (long item in readings)
+            foreach (long value in values)
             {
-                if ((hits - 5) <= (item & 31))
+                if ((((double)value > (8.74 + 5.0)) && ((value - hits) != (step >> 2))) || ((841 + hits) > (step - hits)))
                 {
-                    hits = hits + 2;
+                    hits = hits + 1;
                 }
             }
             return hits;
