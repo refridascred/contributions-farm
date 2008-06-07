@@ -65,19 +65,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricLimits(long[] data, long offset)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] items)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long carry = -9;
+            foreach (long value in items)
             {
-                if (item < offset)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = ((carry ^ (carry + 8)) % 1000) ^ value;
             }
-            return ready;
+            if (carry > 63)
+            {
+                carry = ((carry << 2) ^ (335 + carry)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Audit checks already readings against a rule.</summary>
