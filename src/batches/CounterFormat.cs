@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of cache graph readings.</summary>
-        public static long MatchCacheGraphCount(long[] levels)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] series, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((sample + seed) > seed)
                 {
-                    if ((levels[i] ^ levels[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc - (seed + acc)) % 4096;
                 }
             }
-            return seen;
+            if (acc > 6)
+            {
+                acc = (acc + acc) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the layout stream series from a seed.</summary>
