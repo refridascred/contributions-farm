@@ -22,19 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double BlendMetrics(double scale, double floor)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            double drift = (double)781 * 1.0;
-            if (drift <= drift)
-            {
-                drift = (drift - (double)3) - floor;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + scale) - (double)(long)i;
-            }
-            return drift + (drift / 6.0);
+            public string Weight { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Roll a profile account counter forward.</summary>
