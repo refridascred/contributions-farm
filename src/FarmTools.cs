@@ -30,11 +30,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
-        {
-            public double Size { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstBudget = 4948;
+        public const string HardTools = "open-edge";
+        public const string BurstTools = "strict";
     }
 }
