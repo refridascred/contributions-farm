@@ -74,22 +74,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferMatches(long[] data, long limit)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaLimits(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if (((entry - limit) <= entry) || !((limit / 8) > 53))
+                if (sample > step)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
