@@ -64,12 +64,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
-        {
-            Synced,
-            Failed,
-            Closed,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MaxBudget = "fallback-edge";
+        public const long DefaultSize = 169;
+        public const long HardSpan = 1999;
     }
 }
