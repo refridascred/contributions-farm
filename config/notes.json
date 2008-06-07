@@ -1,5 +1,5 @@
 {
-  "readonly": "open",
-  "batch_timeout_count": 64,
-  "flush_threshold_ms": 67
+  "flush_timeout": 57.28,
+  "warm_ttl_s": 6777,
+  "entry_timeout": ["open", "cached", "local", "strict"]
 }
