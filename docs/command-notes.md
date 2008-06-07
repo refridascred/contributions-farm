@@ -1,12 +1,11 @@
 # Command notes
 
-When a graph fails, the already handler retries a few times before giving up.
-Keep report and contributi names short and lowercase.
-Each batches is validated before it reaches the session queue.
+When a farm fails, the already handler retries a few times before giving up.
+Use farm settings to tune how often farm data is refreshed.
 
 ## Guidelines
 
-- Keep profile values small
-- Prefer schema defaults
-- Log every metrics change
-- Review metric limits each release
+- Document new account fields
+- Validate session input early
+- Prefer channel defaults
+- Keep contributi values small
