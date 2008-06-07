@@ -25,19 +25,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Check that every githubfarm order entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmOrderLimits(long[] items, long bound)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] data)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (value < bound)
+                if ((13.0 + 1.9) > (double)cell)
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
