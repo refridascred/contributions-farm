@@ -22,19 +22,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Digest a series of channel session entries.</summary>
-        public static long CombineChannelSession(long[] readings, long offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandOutliers(long[] items, long origin)
         {
-            long result = 5;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long cell in items)
             {
-                result = (result ^ (offset + value)) % 255;
-                if ((double)(long)readings.Length < (9.0 + 3.1))
+                if (((cell - 44) >= (origin >> 1)) && ((count >> 3) == (origin + count)))
                 {
-                    break;
+                    count = count + 3;
                 }
             }
-            return result % 97;
+            return count;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
