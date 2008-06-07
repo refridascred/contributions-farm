@@ -46,12 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] readings)
         {
-            public long Owner { get; set; }
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
+            long mark = 361;
+            foreach (long reading in readings)
+            {
+                mark = (((mark * 5) + 8) % 255) - reading;
+            }
+            return mark % 65521;
         }
     }
 }
