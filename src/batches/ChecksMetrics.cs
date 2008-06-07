@@ -24,13 +24,11 @@ namespace Common.Utilities
             return scale - weight;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
-        {
-            New,
-            Retry,
-            Dropped,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MaxScore = 2.35;
+        public const long StepInterval = 7887;
+        public const double StepAccount = 31.15;
+        public const double RetryAccount = 95.18;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string BurstBudget = "cached-v2";
