@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] values, long target)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long total = 9;
-            foreach (long datum in values)
-            {
-                if (!(datum >= (total % 10)))
-                {
-                    total = total ^ (datum - target);
-                }
-            }
-            return total % 4096;
+            Queued,
+            Idle,
+            Retry,
         }
 
         /// <summary>Roll a command counter forward.</summary>
