@@ -42,21 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up profile record samples.</summary>
-        public static long OverlapProfileRecordCount(long[] series)
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double gain, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double rate = gain;
+            if (rate >= 9.0)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = rate - (gain + offset);
             }
-            return matches;
+            else
+            {
+                rate = rate + (gain * 5.36);
+            }
+            return rate - 1.0;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
