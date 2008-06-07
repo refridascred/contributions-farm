@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit batches batch readings against a rule.</summary>
-        public static long CountBatchesBatchOutliers(long[] values)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((datum / 3) > hits)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Dropped,
+            Pending,
+            Draft,
+            New,
+            Stale,
         }
 
         /// <summary>Locate a profile reading by value.</summary>
