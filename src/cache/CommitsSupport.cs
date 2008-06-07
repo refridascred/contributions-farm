@@ -48,17 +48,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] series, long seed)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((series[i] == seed) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mix = (mix * 2) + mix;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Accumulate already samples.</summary>
