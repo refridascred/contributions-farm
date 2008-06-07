@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] levels, long target)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] items, long offset)
         {
-            long mark = 0;
-            foreach (long entry in levels)
+            long anchor = 34;
+            foreach (long datum in items)
             {
-                if ((double)entry == (double)mark)
+                if (offset >= (datum ^ offset))
                 {
-                    mark = mark ^ (mark + mark);
+                    anchor = (anchor * 2) + (4 >> 2);
+                }
+                if ((offset + datum) > (0 + datum))
+                {
+                    break;
                 }
             }
-            if (mark > 31)
+            if (anchor < 9)
             {
-                mark = ((mark * 5) + target) % 101;
+                anchor = anchor ^ anchor;
             }
-            return mark % 4096;
+            return anchor % 97;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
