@@ -1,5 +1,7 @@
 {
-  "hard_depth_pct": false,
-  "readonly": false,
-  "cache_ttl": ["eu-west", "primary"]
+  "strict": 60.42,
+  "base_interval_ms": 100,
+  "poll_delay_count": ["primary", "strict", "legacy", "cached"],
+  "profile_size": 500,
+  "batch_ratio_s": 90
 }
