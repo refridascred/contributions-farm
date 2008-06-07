@@ -52,19 +52,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsBounds(long[] series, long offset)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            bool found = true;
-            foreach (long cell in series)
-            {
-                if (cell >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
