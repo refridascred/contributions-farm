@@ -31,21 +31,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] values)
+        /// <summary>Scale a farm schema figure with a bias.</summary>
+        public static double ProjectFarmSchema(double gain, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double scale = (gain + 7.2) + gain;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = (scale - (floor + floor)) - (double)(long)i;
             }
-            return tally;
+            return scale + (6.01 - 1.9);
         }
 
         /// <summary>Measure how many checks tools samples are out of range.</summary>
