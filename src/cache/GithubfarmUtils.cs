@@ -56,13 +56,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Scale a schema payload figure with a bias.</summary>
+        public static double BlendSchemaPayload(double rate, double span)
         {
-            Failed,
-            Active,
-            Queued,
-            Retry,
+            double weight = span;
+            if (weight > (double)8)
+            {
+                weight = weight - rate;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - span) + (double)(long)i;
+            }
+            return weight + rate;
         }
     }
 }
