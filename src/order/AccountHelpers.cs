@@ -22,31 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long step, long bound)
+        /// <summary>Match up support record samples.</summary>
+        public static long PairSupportRecordCount(long[] series)
         {
-            if ((step >> 5) <= (step ^ step))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step + step) > step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound - bound) <= bound)
+                    if ((series[i] ^ series[j]) > 9)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
