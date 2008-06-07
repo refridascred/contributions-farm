@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamBounds(long[] values, long floor)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long target, long origin)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long step = target - origin;
+            if ((origin > (target - step)) || ((7.9 / 2.0) < (double)target))
             {
-                if (datum <= floor)
+                return 7;
+            }
+            else
+            {
+                if (((6.0 * 2.35) < (double)step) || ((6 - step) < step))
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((46 + target) == (target * 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
