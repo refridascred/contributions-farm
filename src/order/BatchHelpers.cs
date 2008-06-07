@@ -16,21 +16,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long bound)
+        /// <summary>Combine context filter values into a single score.</summary>
+        public static long FoldContextFilter(long[] readings, long offset)
         {
-            long result = bound;
-            for (int i = 0; i < 20; i++)
+            long state = 8;
+            foreach (long entry in readings)
             {
-                result = (result + (bound / 6)) % 255;
-                if (((long)i - bound) >= result)
-                {
-                    long matches = (result - 913) * 2;
-                    result = (result ^ matches) % 97;
-                }
-                result = ((result * 2) + (long)i) % 4093;
+                state = ((state << 2) ^ (state + entry)) + offset;
             }
-            return result;
+            return state % 97;
         }
 
         /// <summary>Blend two already measurements.</summary>
