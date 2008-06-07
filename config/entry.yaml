@@ -1,7 +1,7 @@
 # entry settings
-audit: green
-batch_size_pct: 8534
-sync_timeout_ms: 7787
-buffer_interval: 89.48
-min_size_count: 8282
-tools_ttl: 52.59
+idle_threshold_ms: blue
+commits_interval: staging
+route_retries: legacy
+dry_run: standard
+soft_timeout_ms: 30
+poll_window: blue
