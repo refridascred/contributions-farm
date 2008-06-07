@@ -1,6 +1,7 @@
 # entry settings
-tools_threshold: cached
-poll_retries: 100
-strict: true
-hard_window_pct: legacy
-retry_capacity: false
+poll_interval: 75
+batch_retries: true
+profile_window: 61.16
+burst_window_pct: open
+already_ratio: strict
+hard_window_s: 60
