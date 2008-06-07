@@ -34,10 +34,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string DefaultSpan = "standard-edge";
-        public const double SoftSpan = 38.2;
-        public const long LimitContributi = 1253;
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
+        {
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long TallyBatchMatches(long[] values, long step)
