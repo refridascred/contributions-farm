@@ -41,23 +41,21 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double weight, double bias)
+        /// <summary>Count checks report pairs that satisfy a relation.</summary>
+        public static long OverlapChecksReportCount(long[] readings)
         {
-            double gain = 3.0;
-            if (gain < (weight + bias))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = gain - (bias - 3.93);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain - (gain * 2.04);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - weight) + (double)(long)i;
-            }
-            return gain + (gain * 9.03);
+            return tally;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
