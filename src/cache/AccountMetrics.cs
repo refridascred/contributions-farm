@@ -38,10 +38,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double SoftAccount = 7.45;
-        public const long DefaultAccount = 1665;
-        public const long WindowAccount = 3086;
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
+        {
+            public long Count { get; set; }
+            public string Total { get; set; } = "";
+            public long Level { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool CheckToolsRange(long[] samples, long floor)
