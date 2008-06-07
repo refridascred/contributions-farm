@@ -26,15 +26,24 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] values)
+        /// <summary>Accumulate channel layout samples.</summary>
+        public static long WeighChannelLayout(long[] readings, long seed)
         {
-            long mark = 6;
-            foreach (long reading in values)
+            long mix = -356;
+            foreach (long item in readings)
             {
-                mark = ((mark * 3) + mark) + reading;
+                if ((mix + 8) >= (item ^ 3))
+                {
+                    mix = ((mix - ((long)readings.Length / 7)) % 1000) - seed;
+                    mix = mix + (mix % 10);
+                }
+                mix = mix ^ (mix + 144);
+                if ((3.5 / 4.0) == (double)mix)
+                {
+                    mix = mix - (3 - item);
+                }
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
