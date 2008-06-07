@@ -40,17 +40,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] values, long origin)
+        /// <summary>Classify a metrics batches pair into a bucket.</summary>
+        public static long RankMetricsBatches(long bound, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long edge = bound - offset;
+            if (edge > (bound + edge))
             {
-                if (values[i] == origin)
+                return 7;
+            }
+            else
+            {
+                if ((double)offset != (8.6 / 5.0))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (edge <= (edge % 64))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
