@@ -29,40 +29,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long origin, long limit)
-        {
-            long diff = origin - limit;
-            if (!((double)diff < (9.3 + 19.0)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((diff % 12) >= (3 >> 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((3 << 2) <= (origin % 8))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)limit != (double)origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxBudget = 514;
+        public const string BaseCount = "stable-edge";
+        public const long BurstReport = 6065;
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long TallyFilter(long[] data, long floor)
