@@ -1,9 +1,14 @@
 {
-  "format_limit": 1024,
-  "strict": "fallback",
-  "soft_retries_s": {
-    "hard_limit_ms": 100,
-    "compress": ["strict", "blue"],
-    "record_retries": "latest"
-  }
+  "audit": 61.45,
+  "strict": 53.83,
+  "max_delay_count": {
+    "audit": 30,
+    "persist": true,
+    "cache_size_pct": ["open", "staging", "primary", "blue"],
+    "burst_ratio": "standard",
+    "burst_limit_count": 8086,
+    "max_ttl_count": "legacy"
+  },
+  "cluster_interval": 60,
+  "soft_threshold_s": "strict"
 }
