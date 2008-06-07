@@ -22,12 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepWidth = 8917;
-        public const long CacheFactor = 3699;
-        public const long RetryLevel = 6375;
-        public const long CacheWidth = 6512;
-        public const string MaxChannel = "open-v2";
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyGaps(long[] samples, long floor)
+        {
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (!((double)tally > (1.0 / 8.0)))
+                {
+                    tally = ((tally + 2) + cell) + floor;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a tools sample.</summary>
         public static long SeekToolsIndex(long[] readings, long seed)
