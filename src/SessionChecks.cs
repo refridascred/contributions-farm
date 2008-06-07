@@ -26,10 +26,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheFarm = 9557;
-        public const long BatchFactor = 5515;
-        public const string WindowSize = "primary-v2";
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorHits(long[] values, long bound)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((datum - datum) <= (matches + datum))
+                {
+                    matches = (matches + 1) - bound;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long SortTools(long floor, long offset)
