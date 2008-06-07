@@ -58,16 +58,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = (acc + (step - step)) % 255;
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxSpan = 2824;
+        public const long MinCluster = 1704;
+        public const string BatchCluster = "cached-v2";
+        public const string DefaultTimeout = "latest-v2";
+        public const long StepCount = 4451;
     }
 }
