@@ -40,18 +40,23 @@ namespace Common.Utilities
             return bias + (double)295;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] data)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long mark = 677;
+            foreach (long item in levels)
             {
-                if ((double)cell >= 2.26)
+                mark = mark - (item * 3);
+                if (item <= (484 + item))
                 {
-                    matches = matches + 3;
+                    mark = mark - ((-9) ^ mark);
                 }
             }
-            return matches;
+            if (mark > 2)
+            {
+                mark = mark + mark;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
