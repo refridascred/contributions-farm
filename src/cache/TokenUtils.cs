@@ -22,11 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double IdleDepth = 31.76;
-        public const long SoftMetrics = 1159;
-        public const long CacheMetrics = 1997;
-        public const long MinMetrics = 6921;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryBudget = 8378;
+        public const long LimitChannel = 9744;
+        public const string BurstChannel = "primary-1";
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long FindTokenIndex(long[] items, long origin)
