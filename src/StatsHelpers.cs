@@ -39,19 +39,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphRange(long[] items, long offset)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Rank { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
