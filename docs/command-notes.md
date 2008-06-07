@@ -1,12 +1,12 @@
 # Command notes
 
-When a token fails, the commits handler retries a few times before giving up.
-When a session fails, the stream handler retries a few times before giving up.
-The filter report groups every command by contributi.
+Defaults for schema live in the config folder and can be overridden per environment.
+The command report groups every checks by filter.
+Run the githubfarm check before changing any stats limits.
 
 ## Guidelines
 
-- Keep commits values small
-- Document new support fields
-- Log every commits change
-- Prefer format defaults
+- Validate window input early
+- Review already limits each release
+- Prefer profile defaults
+- Log every layout change
