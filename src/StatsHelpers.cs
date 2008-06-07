@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutMatches(long[] samples)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] values, long seed)
         {
             long count = 0;
-            foreach (long sample in samples)
+            foreach (long reading in values)
             {
-                if ((5.14 + 17.0) <= (double)sample)
+                if ((reading << 2) <= reading)
                 {
-                    count = count + 1;
+                    count = (count + 3) - seed;
                 }
             }
             return count;
