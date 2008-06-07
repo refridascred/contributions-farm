@@ -11,14 +11,19 @@ namespace Common.Utilities
         public const long CacheFilter = 6804;
         public const string LimitFilter = "alpha-v2";
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterLimits(long[] series, long floor)
         {
-            Closed,
-            New,
-            Synced,
-            Ready,
-            Active,
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the window class values.</summary>
