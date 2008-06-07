@@ -28,18 +28,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricGaps(long[] series, long origin)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (!((item << 3) > (origin >> 3)) && (hits < 574))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Retry,
+            Stale,
+            Done,
         }
 
         /// <summary>Digest a series of window entries.</summary>
