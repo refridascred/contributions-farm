@@ -1,13 +1,4 @@
 # entry settings
-persist:
-  - 77
-  - 275
-sync_threshold_s: 81.48
-default_size: stable
-min_retries_ms:
-  - eu-west
-  - legacy
-audit:
-  - staging
-  - local
-  - local
+flush_depth_ms: 65.69
+flush_capacity_s: 94
+batch_ttl: 100
