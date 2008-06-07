@@ -23,17 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] series, long offset)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 886;
+            foreach (long entry in items)
             {
-                if ((series[i] == offset) && ((series[i] % 5) != 0))
+                carry = ((carry * 5) + (carry >> 2)) % 65521;
+                if (!((double)entry < (double)69))
                 {
-                    return (long)i;
+                    carry = (carry << 3) ^ 4;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
