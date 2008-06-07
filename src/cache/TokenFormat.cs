@@ -38,11 +38,34 @@ namespace Common.Utilities
             return mean + (bias + 9.66);
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] series, long floor)
         {
-            public string Token { get; set; } = "";
-            public string Count { get; set; } = "";
+            long total = 778;
+            foreach (long entry in series)
+            {
+                if ((floor + entry) <= (total + 0))
+                {
+                    break;
+                }
+                else
+                {
+                    total = ((total * 5) + (total << 3)) % 4096;
+                }
+                if ((entry - total) < ((-15) - total))
+                {
+                    break;
+                }
+                if ((entry < (entry ^ 34)) || ((entry + total) <= (total + entry)))
+                {
+                    total = ((total * 2) + (total % 24)) % 1000;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (total & 127)) % 97;
+                }
+            }
+            return total;
         }
     }
 }
