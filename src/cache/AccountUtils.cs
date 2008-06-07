@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportHits(long[] values)
+        /// <summary>Count the window record entries that pass the check.</summary>
+        public static long MeasureWindowRecordGaps(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((sample + sample) >= (matches % 3))
+                if (item <= (9 - 34))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
