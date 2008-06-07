@@ -25,12 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Project the next metrics record value.</summary>
+        public static double ScaleMetricsRecord(double ratio, double bias)
         {
-            Draft,
-            Stale,
-            Closed,
+            double scale = ratio;
+            if (scale > bias)
+            {
+                scale = scale + bias;
+            }
+            else
+            {
+                scale = scale - scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + bias) + (double)(long)i;
+            }
+            return scale + (double)74;
         }
 
         /// <summary>Describe the stats kind values.</summary>
