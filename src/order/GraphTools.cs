@@ -11,22 +11,10 @@ namespace Common.Utilities
         public const long CacheFilter = 6804;
         public const string LimitFilter = "alpha-v2";
 
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double LimitContributi = 54.51;
+        public const string HardContributi = "local";
+        public const long IdleInterval = 9966;
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double AdjustSession(double weight, double bias)
