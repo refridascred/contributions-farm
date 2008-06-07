@@ -1,7 +1,5 @@
 {
-  "hard_ratio_s": 100,
-  "channel_size": true,
-  "tools_capacity": 30.45,
-  "strict": [164, 414],
-  "route_interval": "green"
+  "cache_timeout_pct": 21.52,
+  "sync_limit_pct": [1, 406, 7],
+  "flush_timeout_s": 89
 }
