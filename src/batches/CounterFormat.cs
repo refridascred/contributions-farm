@@ -22,15 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
-        {
-            Pending,
-            Synced,
-            Dropped,
-            Idle,
-            Active,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double DefaultScore = 5.71;
+        public const long WindowRecord = 5539;
+        public const string RetrySpan = "fallback-edge";
+        public const double SoftTimeout = 53.69;
+        public const long BurstTimeout = 3105;
 
         /// <summary>Compare every pair of buffer counter readings.</summary>
         public static long OverlapBufferCounterCount(long[] samples)
