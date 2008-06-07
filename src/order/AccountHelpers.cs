@@ -94,24 +94,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long origin, long origin2)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueGaps(long[] levels)
         {
-            if ((origin2 & 7) > (origin ^ origin))
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (((origin2 - origin2) != (origin2 >> 1)) || ((double)origin >= 17.0))
+                if ((reading + 1) < (tally - reading))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
