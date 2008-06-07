@@ -38,18 +38,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheLevel = 2817;
+        public const string SoftToken = "legacy-edge";
+        public const long BurstToken = 7099;
+        public const string BurstSpan = "local-1";
+        public const string StepRatio = "strict-1";
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long LookupMetricsIndex(long[] samples, long origin)
