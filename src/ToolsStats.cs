@@ -26,31 +26,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a metrics commits value against two limits.</summary>
-        public static long SortMetricsCommits(long origin, long offset)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] series)
         {
-            if (!((double)origin <= 19.0))
+            long mark = 1;
+            foreach (long item in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((offset - origin) >= (origin + origin)))
+                if (((5.0 + 6.99) > (double)mark) && ((item ^ item) < 53))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset << 2) == (origin + origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    mark = (mark ^ mark) % 97;
                 }
             }
+            return mark;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
