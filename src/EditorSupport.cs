@@ -63,15 +63,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the channel entry entries that pass the check.</summary>
-        public static long TallyChannelEntryHits(long[] levels)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterGaps(long[] samples, long bound)
         {
             long matches = 0;
-            foreach (long entry in levels)
+            foreach (long cell in samples)
             {
-                if (!(((2.0 - 1.3) >= (double)entry) || ((1 << 2) == (entry << 3))))
+                if ((double)cell >= (double)matches)
                 {
-                    matches = matches + 3;
+                    matches = (matches + 3) - bound;
                 }
             }
             return matches;
