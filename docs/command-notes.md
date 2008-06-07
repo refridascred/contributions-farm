@@ -1,11 +1,15 @@
 # Command notes
 
-The layout report groups every batch by notes.
-A stats that stays idle for too long is moved to the queue list.
-Each record is validated before it reaches the schema queue.
+The schema report groups every token by command.
+Use route settings to tune how often metric data is refreshed.
+The stream helpers are pure functions, so they are safe to call from any thread.
+
+Run the schema check before changing any profile limits.
+Run the profile check before changing any record limits.
 
 ## Guidelines
 
-- Prefer githubfarm defaults
-- Validate cache input early
-- Document new command fields
+- Review session limits each release
+- Document new stream fields
+- Validate notes input early
+- Prefer profile defaults
