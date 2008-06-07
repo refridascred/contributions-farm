@@ -1,15 +1,15 @@
 # Command notes
 
-The metric helpers are pure functions, so they are safe to call from any thread.
-The command helpers are pure functions, so they are safe to call from any thread.
-The metrics module keeps report values in sync with the batch cache.
+When a counter fails, the buffer handler retries a few times before giving up.
+Defaults for context live in the config folder and can be overridden per environment.
 
-Defaults for counter live in the config folder and can be overridden per environment.
-Run the cluster check before changing any order limits.
-Each metric is validated before it reaches the notes queue.
+Run the batch check before changing any graph limits.
+A schema that stays idle for too long is moved to the farm list.
+When a farm fails, the report handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every metric change
-- Validate layout input early
-- Keep counter values small
+- Keep stream values small
+- Document new counter fields
+- Validate metric input early
+- Log every context change
