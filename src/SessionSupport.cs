@@ -30,18 +30,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the context graph entries that pass the check.</summary>
-        public static long AuditContextGraphOutliers(long[] series, long origin)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiLimits(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if (((origin + (long)series.Length) < seen) && (((9 - origin) >= (datum ^ seen)) && ((556 / 5) != (seen << 2))))
+                if (value <= target)
                 {
-                    seen = seen + 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
