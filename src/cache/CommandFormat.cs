@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long step)
         {
-            Active,
-            Idle,
-            Synced,
-            Retry,
-            Draft,
+            long state = step;
+            for (int i = 0; i < 4; i++)
+            {
+                if (!((state ^ step) > ((long)i + step)))
+                {
+                    state = (state + (step & 15)) % 255;
+                }
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
