@@ -35,13 +35,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Blend two route measurements.</summary>
+        public static double SmoothRoute(double ratio, double span)
         {
-            public double Score { get; set; }
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            double rate = (double)3 / 5.0;
+            if (rate >= span)
+            {
+                rate = rate - (ratio - ratio);
+            }
+            return rate + span;
         }
     }
 }
