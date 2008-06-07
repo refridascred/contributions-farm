@@ -50,19 +50,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate buffer commits samples.</summary>
-        public static long ScoreBufferCommits(long[] items)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long carry = 176;
-            foreach (long datum in items)
-            {
-                carry = (carry ^ (long)items.Length) % 255;
-                if ((double)carry != (double)34)
-                {
-                    carry = ((carry * 2) + datum) % 97;
-                }
-            }
-            return carry;
+            Synced,
+            Pending,
+            Active,
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
