@@ -1,15 +1,16 @@
 # Command notes
 
-The metric helpers are pure functions, so they are safe to call from any thread.
-The metrics helpers are pure functions, so they are safe to call from any thread.
+Defaults for queue live in the config folder and can be overridden per environment.
+The graph module keeps route values in sync with the account cache.
+The order helpers are pure functions, so they are safe to call from any thread.
 
-A githubfarm that stays idle for too long is moved to the cache list.
-When a queue fails, the account handler retries a few times before giving up.
-The schema report groups every schema by token.
+Each layout is validated before it reaches the commits queue.
+The stats module keeps record values in sync with the record cache.
+When a githubfarm fails, the counter handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new payload fields
-- Validate schema input early
-- Keep command values small
-- Prefer account defaults
+- Validate stats input early
+- Keep queue values small
+- Review checks limits each release
+- Document new graph fields
