@@ -55,19 +55,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate counter format readings against a bound.</summary>
-        public static bool ValidateCounterFormatRange(long[] items, long origin)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
