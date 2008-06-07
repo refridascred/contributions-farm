@@ -17,24 +17,17 @@ namespace Common.Utilities
         public const double SoftLevel = 52.66;
         public const long DefaultRatio = 5038;
 
-        /// <summary>Classify a route metric pair into a bucket.</summary>
-        public static long GradeRouteMetric(long step, long origin)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] series, long origin)
         {
-            if (((double)step <= 16.0) && (origin > (93 - origin)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin << 1) < (step / 7))
+                if ((series[i] == origin) && ((series[i] % 3) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Scale a filter context figure with a bias.</summary>
