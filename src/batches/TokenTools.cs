@@ -24,15 +24,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] readings, long seed)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long sum = 216;
-            foreach (long reading in readings)
-            {
-                sum = ((sum * 2) + (seed ^ 69)) ^ reading;
-            }
-            return sum;
+            Done,
+            Pending,
+            Paused,
         }
 
         /// <summary>Describe the notes level values.</summary>
