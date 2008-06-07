@@ -1,12 +1,9 @@
 {
-  "min_ttl": false,
-  "tools_delay": {
-    "batch_window": 64.13,
-    "warm_delay_pct": true,
-    "support_capacity": [221, 187, 56, 281],
-    "channel_delay": false,
-    "strict": "latest"
-  },
-  "strict": 60,
-  "already_limit": "local"
+  "format_limit": 1024,
+  "strict": "fallback",
+  "soft_retries_s": {
+    "hard_limit_ms": 100,
+    "compress": ["strict", "blue"],
+    "record_retries": "latest"
+  }
 }
