@@ -1,11 +1,7 @@
 {
-  "min_depth_count": 57.57,
-  "burst_retries": 1024,
-  "default_capacity": {
-    "command_ratio": 60.72,
-    "warm_ttl": ["fallback", "eu-west"],
-    "default_window_ms": false,
-    "account_retries": 30
-  },
-  "queue_window": 85
+  "window_depth": true,
+  "base_ratio_s": "primary",
+  "dry_run": 60,
+  "base_threshold_pct": ["open", "blue", "fallback", "strict"],
+  "notes_limit": 88.71
 }
