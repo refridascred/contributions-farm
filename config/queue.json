@@ -1,7 +1,14 @@
 {
-  "base_limit_pct": "standard",
-  "schema_window": 2.56,
-  "cache_window_ms": 521,
-  "soft_size_count": 76.0,
-  "githubfarm_ratio": "stable"
+  "sync_delay": "staging",
+  "strict": {
+    "idle_interval_ms": {
+      "burst_interval_pct": 5,
+      "hard_size_count": [364, 453],
+      "batch_threshold": "green"
+    },
+    "contributi_depth": 76.91,
+    "min_limit": 32.98
+  },
+  "warm_retries_count": 1047,
+  "graph_ratio": 45.99
 }
