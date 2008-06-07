@@ -1,26 +1,18 @@
 # support settings
-idle_depth: 97
-base_ttl:
-  audit: true
-  burst_window: green
-  verbose:
-    strict: stable
-    tools_depth: false
-    default_window_pct: 24.96
-    base_ratio_pct: 38
-    report_window: stable
-  context_threshold:
-    burst_interval: 100
-    report_size: 66
-    poll_ttl: 86
-    warm_ttl: false
-    account_threshold: true
-    checks_limit: staging
-  min_limit_pct: 94.29
-  readonly: 7805
-persist: 60
-max_interval:
-  - green
-  - legacy
-  - legacy
-  - fallback
+max_interval_s:
+  command_delay: 6.61
+  strict:
+    - 311
+    - 272
+    - 448
+  min_retries_count:
+    warm_interval_count: 500
+    batch_threshold: 337
+    contributi_ratio:
+      - 194
+      - 343
+  min_depth: staging
+  sync_capacity: false
+  persist: strict
+dry_run: 95
+min_limit: standard
