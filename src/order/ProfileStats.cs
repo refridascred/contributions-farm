@@ -58,10 +58,22 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseGraph = 9342;
-        public const string BurstGraph = "local-1";
-        public const long RetryLevel = 1055;
-        public const double MinGraph = 15.57;
+        /// <summary>Measure how many checks tools samples are out of range.</summary>
+        public static long CountChecksToolsOutliers(long[] readings, long floor)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum < 0) && ((floor / 5) >= 62))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
