@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmRange(long[] items, long origin)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsOutliers(long[] readings)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (item > origin)
+                if (item > (hits * 2))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
