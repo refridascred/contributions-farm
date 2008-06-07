@@ -51,19 +51,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowRange(long[] series, long target)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] data, long seed)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (reading >= target)
+                if ((item - 95) == (item ^ item))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 1) - seed;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Hold a cache record.</summary>
