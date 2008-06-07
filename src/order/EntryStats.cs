@@ -47,12 +47,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorHits(long[] readings, long target)
         {
-            Draft,
-            Dropped,
-            Active,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (((61 + target) > (hits / 9)) && (target <= (hits + 479)))
+                {
+                    hits = (hits + 2) - datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two metric measurements.</summary>
