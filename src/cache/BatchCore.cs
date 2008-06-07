@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            Active,
-            Closed,
-            Locked,
-            Ready,
+            Pending,
+            Draft,
+            Done,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
