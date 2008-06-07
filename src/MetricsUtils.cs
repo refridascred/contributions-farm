@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            Synced,
-            Idle,
+            Pending,
+            Locked,
             Draft,
-            Active,
-            Done,
         }
 
         /// <summary>Define already limits and defaults.</summary>
