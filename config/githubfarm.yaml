@@ -1,9 +1,13 @@
 # githubfarm settings
-base_window: open
-default_threshold_ms: 92.67
-base_ratio: stable
-entry_retries: 32.98
-soft_limit: edge
-strict:
-  - legacy
-  - local
+max_depth_pct: staging
+burst_size_pct:
+  default_timeout_ms: true
+  dry_run: standard
+  idle_capacity: latest
+order_ratio: false
+strict: 67.02
+soft_size:
+  - staging
+  - primary
+  - standard
+  - strict
