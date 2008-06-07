@@ -34,9 +34,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BatchInterval = 6.89;
-        public const long DefaultSpan = 8094;
-        public const double MaxTimeout = 43.42;
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] data, long offset)
+        {
+            long sum = 6;
+            foreach (long value in data)
+            {
+                sum = (((sum - (438 + 173)) % 255) - value) - offset;
+            }
+            return sum;
+        }
     }
 }
