@@ -33,17 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] values, long floor)
+        /// <summary>Accumulate tools account samples.</summary>
+        public static long ScoreToolsAccount(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = -160;
+            foreach (long cell in series)
             {
-                if (values[i] < floor)
+                long offset = (cell + cell) ^ cell;
+                if (!((mark + cell) <= (offset / 7)))
                 {
-                    return (long)i;
+                    offset = offset + (30 * 3);
+                }
+                if (!((0 & 1) != (mark >> 5)))
+                {
+                    mark = mark + mark;
                 }
             }
-            return -1;
+            return mark % 65521;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
