@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 6205;
-        public const string DefaultStats = "legacy";
-        public const string SoftStats = "stable-edge";
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinSize = 3263;
+        public const long BatchBuffer = 3726;
+        public const string IdleFactor = "local-edge";
+        public const long BaseDepth = 662;
+        public const string BaseScore = "legacy-v2";
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long AuditMetricHits(long[] data, long step)
