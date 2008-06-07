@@ -29,12 +29,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BatchCount = 86.57;
-        public const long BaseCommits = 2008;
-        public const long HardCommits = 600;
-        public const long BurstSize = 865;
-        public const long BurstCommits = 7147;
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = (acc - (acc * 5)) % 97;
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const double BaseToken = 57.36;
