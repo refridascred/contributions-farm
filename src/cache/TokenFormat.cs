@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit farm tools readings against a rule.</summary>
-        public static long AuditFarmToolsGaps(long[] levels, long floor)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (cell > (4 + 966))
-                {
-                    matches = (matches + 2) + floor;
-                }
-            }
-            return matches;
+            public bool Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
