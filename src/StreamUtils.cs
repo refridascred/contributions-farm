@@ -60,9 +60,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double RetryContributi = 4.71;
-        public const double HardLevel = 90.94;
-        public const long MinDepth = 6425;
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ProjectContext(double weight, double bias)
+        {
+            double ratio = bias;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - weight) + (double)(long)i;
+            }
+            return ratio - (ratio - ratio);
+        }
     }
 }
