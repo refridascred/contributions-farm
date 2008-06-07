@@ -1,8 +1,8 @@
 {
-  "burst_timeout": "eu-west",
-  "cache_depth_pct": "strict",
-  "hard_retries_ms": ["blue", "eu-west", "edge", "green"],
-  "order_limit": 30.12,
-  "dry_run": 69,
-  "idle_threshold": ["open", "latest", "blue"]
+  "dry_run": "eu-west",
+  "hard_threshold": 55.42,
+  "record_window": [121, 73, 146],
+  "audit": 6337,
+  "payload_retries": 500,
+  "cache_retries_pct": "legacy"
 }
