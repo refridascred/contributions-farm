@@ -15,31 +15,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long origin, long step)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            if ((6.9 * 7.35) == (double)origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((0 - origin) >= (step >> 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (step > origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public bool Level { get; set; }
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
