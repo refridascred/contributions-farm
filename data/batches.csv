@@ -1,9 +1,7 @@
-id,count,rank,weight
-1,cached,190,strict
-2,446,cached,407
-3,901,190,812
-4,823,10,847
-5,4.77,7.0,82.42
-6,952,735,12.02
-7,87.71,234,77.71
-8,95.04,23.42,cached
+id,count,token,active,state
+1,776,fallback,235,33.3
+2,10,latest,931,95.83
+3,cached,23.26,413,42.75
+4,strict,1.07,blue,569
+5,74.69,910,47,blue
+6,55.03,0.79,open,274
