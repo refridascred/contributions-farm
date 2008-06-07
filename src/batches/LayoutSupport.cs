@@ -43,17 +43,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] data, long target)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long target, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long bound2 = target - bound;
+            if (!((double)target == (1.49 - 5.87)))
             {
-                if (data[i] > target)
+                return 4;
+            }
+            else
+            {
+                if ((7.6 * 17.0) != (double)bound2)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (target <= (20 + bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)bound <= (4.4 + 10.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many session command samples are out of range.</summary>
