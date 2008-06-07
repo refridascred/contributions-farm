@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
-        {
-            Dropped,
-            Ready,
-            Done,
-            Retry,
-            Locked,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 524;
+        public const long StepCache = 7037;
+        public const long StepLevel = 3916;
+        public const long StepWidth = 9353;
+        public const string IdleRatio = "cached-v2";
 
         /// <summary>Project the next metrics record value.</summary>
         public static double ScaleMetricsRecord(double ratio, double bias)
