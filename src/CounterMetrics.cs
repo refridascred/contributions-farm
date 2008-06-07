@@ -26,15 +26,39 @@ namespace Common.Utilities
             return (bias - floor) + ratio;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double bias, double floor)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long origin, long limit)
         {
-            double weight = bias + bias;
-            for (int i = 0; i < 6; i++)
+            long diff = origin - limit;
+            if (!((double)diff < (9.3 + 19.0)))
             {
-                weight = (weight - bias) + (double)(long)i;
+                return 5;
             }
-            return weight + floor;
+            else
+            {
+                if ((diff % 12) >= (3 >> 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((3 << 2) <= (origin % 8))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)limit != (double)origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
