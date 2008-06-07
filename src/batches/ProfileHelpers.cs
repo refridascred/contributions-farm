@@ -20,19 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of command window readings.</summary>
-        public static long TallyCommandWindow(long[] values)
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] samples)
         {
-            long sum = 0;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (sum + (value - 413)) % 65521;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (sum < (-737))
-            {
-                sum = (sum - 3) % 255;
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Hold a report record.</summary>
