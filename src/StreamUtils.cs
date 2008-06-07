@@ -37,12 +37,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
-            public double Score { get; set; }
+            Pending,
+            Synced,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Hold a graph record.</summary>
