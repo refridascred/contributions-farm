@@ -60,10 +60,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetryTimeout = 385;
-        public const long SoftSize = 2011;
-        public const string StepScore = "fallback-edge";
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long offset, long floor)
+        {
+            if (((double)offset <= (9.0 / 5.0)) && ((offset + offset) != (offset - offset)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((floor << 3) >= (157 >> 3)) && ((offset ^ 4) <= (94 % 7)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((141 >> 5) < floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset >= (floor % 97)) || ((floor & 255) != (floor * 2)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long SortSchema(long origin, long origin2)
