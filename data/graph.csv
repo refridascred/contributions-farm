@@ -1,7 +1,7 @@
-id,level,label,state,ratio
-1,staging,19.44,stable,standard
-2,strict,121,stable,staging
-3,green,102,11.44,46.19
-4,38,37.8,917,24.81
-5,524,latest,standard,43.41
-6,strict,751,865,strict
+id,active,count
+1,primary,standard
+2,411,66.79
+3,138,557
+4,60,840
+5,841,staging
+6,258,10.91
