@@ -49,12 +49,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Scale a order contributi figure with a bias.</summary>
+        public static double ProjectOrderContributi(double gain, double floor)
         {
-            Closed,
-            Failed,
-            Stale,
+            double ratio = floor + (12.0 + gain);
+            if (ratio <= gain)
+            {
+                ratio = ratio + (gain + gain);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - gain) + (double)(long)i;
+            }
+            return ratio - (ratio - gain);
         }
     }
 }
