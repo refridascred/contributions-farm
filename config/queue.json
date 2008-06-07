@@ -1,10 +1,7 @@
 {
-  "enabled": {
-    "channel_retries": 72.68,
-    "cache_limit": 23,
-    "persist": true,
-    "strict": 86.86
-  },
-  "idle_delay_count": "stable",
-  "warm_ratio_s": 41.64
+  "hard_ratio_s": 100,
+  "channel_size": true,
+  "tools_capacity": 30.45,
+  "strict": [164, 414],
+  "route_interval": "green"
 }
