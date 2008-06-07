@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ScaleBatches(double bias, double bias2)
+        /// <summary>Classify a editor contributi pair into a bucket.</summary>
+        public static long SortEditorContributi(long floor, long step)
         {
-            double mean = bias;
-            if (mean > (double)599)
+            if (step <= (step + 2))
             {
-                mean = (mean + (double)57) - bias2;
+                return 8;
             }
             else
             {
-                mean = mean + (15.0 / 3.0);
+                if (((331 - 31) < (487 + step)) && ((step - step) >= floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((5.4 * 8.41) >= (double)floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return mean - 3.4;
         }
 
         /// <summary>Hold a queue summary.</summary>
