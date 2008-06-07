@@ -23,32 +23,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long offset, long bound)
+        /// <summary>Project the next schema profile value.</summary>
+        public static double AdjustSchemaProfile(double gain, double offset)
         {
-            long span = offset + bound;
-            if ((span ^ offset) > (span + 159))
+            double drift = 3.14;
+            for (int i = 0; i < 9; i++)
             {
-                return 6;
+                drift = (((drift + 9.98) + (double)(long)i) - gain) + offset;
             }
-            else
-            {
-                if ((2.5 * 9.66) < (double)bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((477 <= offset) || ((bound % 100) >= offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return drift + (double)2;
         }
     }
 }
