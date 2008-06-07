@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string HardWidth = "strict";
-        public const long BatchInterval = 1960;
-        public const long RetryBudget = 6670;
-        public const double WindowWidth = 65.48;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinPayload = 5390;
+        public const long LimitScore = 468;
+        public const long DefaultRatio = 6012;
 
         /// <summary>Describe the counter kind values.</summary>
         public enum CounterKind
