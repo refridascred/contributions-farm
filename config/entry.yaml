@@ -1,16 +1,13 @@
 # entry settings
-retry_threshold: stable
-soft_ttl_count: false
-min_threshold_ms:
-  enabled:
-    - 327
-    - 122
-    - 385
-  notes_timeout:
-    - 449
-    - 251
-    - 478
-  poll_size: 500
-  readonly: 7440
-  burst_ratio_ms: 42.97
-compress: stable
+record_delay: green
+hard_retries_pct:
+  - legacy
+  - fallback
+  - open
+  - eu-west
+poll_interval:
+  - legacy
+  - standard
+  - standard
+  - blue
+warm_interval_pct: 84
