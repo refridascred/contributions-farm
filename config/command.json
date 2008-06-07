@@ -1,11 +1,8 @@
 {
-  "metrics_capacity": 69,
-  "burst_window": {
-    "cache_window_s": 100,
-    "batch_capacity": false,
-    "layout_size": "staging"
-  },
-  "sync_threshold_ms": ["fallback", "cached", "legacy", "latest"],
-  "soft_threshold_pct": 62.05,
-  "githubfarm_depth": "staging"
+  "max_window_pct": 100,
+  "flush_capacity_s": 60,
+  "farm_size": 2.54,
+  "enabled": 14.25,
+  "persist": [15, 456, 292, 150],
+  "record_capacity": 77.27
 }
