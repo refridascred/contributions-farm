@@ -30,11 +30,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 7523;
-        public const long MaxLevel = 6052;
-        public const double StepRecord = 34.28;
-        public const string BatchRecord = "stable-edge";
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the payload state values.</summary>
         public enum PayloadState
