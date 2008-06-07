@@ -32,21 +32,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up context session samples.</summary>
-        public static long OverlapContextSessionCount(long[] readings)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] samples, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((samples[i] < floor) && ((samples[i] % 3) != 0))
                 {
-                    if ((readings[i] ^ readings[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
