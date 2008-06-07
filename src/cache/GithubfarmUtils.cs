@@ -36,14 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
-        {
-            public string Limit { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Size { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double SoftBudget = 45.99;
+        public const double SoftToken = 92.85;
+        public const string DefaultCount = "fallback-edge";
+        public const long DefaultDepth = 7011;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long CountCommandGaps(long[] values, long step)
