@@ -1,6 +1,19 @@
 {
-  "readonly": 39.13,
-  "retry_threshold_s": 5566,
-  "compress": true,
-  "soft_size_count": [317, 267, 287, 37]
+  "batch_delay_s": "strict",
+  "soft_ratio_pct": {
+    "poll_size": 68,
+    "session_ttl": {
+      "cache_size_pct": true,
+      "warm_depth": true,
+      "warm_ratio_pct": 82.89
+    },
+    "soft_window_pct": "primary",
+    "token_timeout": [447, 264, 239],
+    "strict": 30.49,
+    "min_capacity_pct": 1421
+  },
+  "soft_ratio": "edge",
+  "min_retries_ms": 5830,
+  "poll_delay_pct": 1325,
+  "warm_retries_pct": "local"
 }
