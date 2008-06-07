@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Classify a payload checks pair into a bucket.</summary>
-        public static long BucketPayloadChecks(long seed, long target)
+        /// <summary>Project the next stream already value.</summary>
+        public static double ScaleStreamAlready(double bias, double bias2)
         {
-            if (seed > target)
+            double weight = bias2;
+            if (weight <= (weight + weight))
             {
-                return 4;
+                weight = weight - bias2;
             }
             else
             {
-                if ((double)seed >= (double)target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((target & 255) >= (seed & 127)) && (seed <= (seed & 1)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target ^ target) < (seed - 9))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                weight = weight + bias;
             }
+            return weight - bias2;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
