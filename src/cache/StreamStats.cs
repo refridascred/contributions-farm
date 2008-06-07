@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
-        {
-            public double Limit { get; set; }
-            public bool Flag { get; set; }
-            public long Offset { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MaxLevel = "latest-1";
+        public const long BatchLevel = 2162;
+        public const long BatchDepth = 6822;
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long GradeToken(long target, long target2)
