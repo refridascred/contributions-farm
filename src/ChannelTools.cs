@@ -22,18 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphOutliers(long[] items)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionLimits(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if ((hits ^ hits) == (sample >> 4))
+                if (datum <= floor)
                 {
-                    hits = hits + 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Hold a contributi summary.</summary>
