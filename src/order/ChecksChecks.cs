@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double bias, double floor)
-        {
-            double load = (double)(9 * 2);
-            if (load > 3.0)
-            {
-                load = load + (floor * 6.3);
-            }
-            else
-            {
-                load = load - bias;
-            }
-            return load + (load - 5.0);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 6205;
+        public const string DefaultStats = "legacy";
+        public const string SoftStats = "stable-edge";
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
