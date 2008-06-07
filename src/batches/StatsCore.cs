@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Project the next channel cache value.</summary>
+        public static double ScaleChannelCache(double rate, double span)
         {
-            Idle,
-            Paused,
-            Dropped,
-            Locked,
-            Failed,
+            double mean = (double)(471 << 1);
+            if (mean < (rate - rate))
+            {
+                mean = (mean + (rate - rate)) - span;
+            }
+            else
+            {
+                mean = mean - (double)(-8);
+            }
+            return mean - (double)2;
         }
 
         /// <summary>Match up context samples.</summary>
