@@ -32,17 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] samples, long floor)
+        /// <summary>Validate cluster entry readings against a bound.</summary>
+        public static bool GuardClusterEntryRange(long[] levels, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if ((samples[i] < floor) && ((samples[i] % 3) != 0))
+                if (cell <= seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
