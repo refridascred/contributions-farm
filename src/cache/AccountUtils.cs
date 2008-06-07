@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] readings)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double gain, double floor)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            double scale = (double)(59 >> 2);
+            if (scale < scale)
             {
-                if (((87 & 7) >= count) || ((double)cell <= 17.0))
-                {
-                    count = count + 1;
-                }
+                scale = (scale - 8.65) + floor;
             }
-            return count;
+            else
+            {
+                scale = scale - gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (5.25 / 5.0)) + (double)(long)i;
+            }
+            return scale + (gain + 0.2);
         }
 
         /// <summary>Blend two metric measurements.</summary>
