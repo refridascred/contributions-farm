@@ -23,21 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of entry cache readings.</summary>
-        public static long PairEntryCacheCount(long[] items)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheRange(long[] data, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long item in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item < floor)
                 {
-                    if ((items[i] ^ items[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Look up the position of a payload stats sample.</summary>
