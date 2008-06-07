@@ -24,15 +24,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine window commits values into a single score.</summary>
-        public static long WeighWindowCommits(long[] data, long seed)
+        /// <summary>Count the session order entries that pass the check.</summary>
+        public static long MeasureSessionOrderMatches(long[] series)
         {
-            long mix = 4;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long datum in series)
             {
-                mix = (mix ^ (seed + 812)) + entry;
+                if (((double)count == (double)8) || ((count + count) > datum))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mix % 4096;
+            return count;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
