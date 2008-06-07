@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double AdjustReport(double scale, double span)
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] data)
         {
-            double rate = 16.0;
-            if (rate < rate)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = ((rate - (rate / 4.0)) + scale) - span;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return rate + (double)333;
+            return hits;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
