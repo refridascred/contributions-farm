@@ -36,21 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long OverlapSupportCount(long[] data)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                long tally = step;
+                if ((mark < (tally << 3)) && (mark >= (mark % 3)))
                 {
-                    if ((data[i] - data[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = ((mark << 3) ^ mark) % 255;
+                    mark = ((mark * 5) + tally) % 255;
                 }
+                mark = ((mark * 3) + (2 ^ mark)) % 65521;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return matches;
+            return mark;
         }
     }
 }
