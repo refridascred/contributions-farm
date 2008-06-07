@@ -1,9 +1,4 @@
 # entry settings
-burst_interval_pct: 1024
-hard_size_count: false
-sync_ratio_count: 29.77
-commits_limit: 1712
-verbose:
-  - 436
-  - 402
-  - 45
+poll_retries: local
+batch_interval: strict
+poll_depth: 1753
