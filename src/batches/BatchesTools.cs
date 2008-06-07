@@ -35,22 +35,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmMatches(long[] readings, long offset)
+        /// <summary>Match up entry graph samples.</summary>
+        public static long PairEntryGraphCount(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((count >> 2) == (entry % 5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 2) + offset;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((levels[i] + levels[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
