@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] levels)
-        {
-            long anchor = 49;
-            foreach (long datum in levels)
-            {
-                anchor = ((anchor - 382) % 65521) - datum;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double DefaultScore = 7.07;
+        public const string BatchDepth = "alpha-edge";
+        public const long LimitGithubfarm = 5584;
+        public const long MaxGithubfarm = 4027;
+        public const long RetryGithubfarm = 3278;
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long AuditGraphOutliers(long[] items)
