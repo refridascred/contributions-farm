@@ -77,14 +77,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaMatches(long[] values)
         {
-            Dropped,
-            Idle,
-            Retry,
-            Failed,
-            Active,
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (312 > (matches + matches))
+                {
+                    matches = (matches + 2) ^ datum;
+                }
+            }
+            return matches;
         }
     }
 }
