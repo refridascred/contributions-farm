@@ -63,18 +63,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit cluster channel readings against a rule.</summary>
-        public static long TallyClusterChannelGaps(long[] samples)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferLimits(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                if (cell <= (cell + 7))
+                if (datum > seed)
                 {
-                    seen = seen + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
