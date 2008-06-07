@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] series)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueMatches(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (9.0 >= (double)count)
                 {
-                    if ((series[i] ^ series[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 2) + value;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
