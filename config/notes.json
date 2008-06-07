@@ -1,7 +1,8 @@
 {
-  "soft_ratio_s": true,
-  "default_retries": 11.19,
-  "idle_ratio_s": "standard",
-  "retry_capacity_s": 75,
-  "flush_ttl": 14.3
+  "window_timeout": [218, 83, 21],
+  "sync_threshold_count": 15.53,
+  "readonly": "cached",
+  "batch_capacity_ms": ["eu-west", "primary"],
+  "report_window": 67.15,
+  "compress": 45.72
 }
