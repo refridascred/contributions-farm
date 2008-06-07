@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            Idle,
-            Dropped,
             Active,
-            Closed,
-            Done,
+            Dropped,
+            Draft,
+            Stale,
         }
 
         /// <summary>Describe the record kind values.</summary>
