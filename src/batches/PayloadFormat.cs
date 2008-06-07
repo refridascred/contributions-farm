@@ -33,17 +33,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LookupProfileIndex(long[] values, long seed)
+        /// <summary>Digest a series of editor cache entries.</summary>
+        public static long ScoreEditorCache(long[] readings, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 804;
+            foreach (long datum in readings)
             {
-                if (values[i] >= seed)
+                if ((578 << 1) <= datum)
                 {
-                    return (long)i;
+                    result = (result * 5) + (offset << 2);
+                }
+                result = ((result << 3) ^ ((-663) ^ result)) % 97;
+                if ((double)result < 8.1)
+                {
+                    result = (result - (datum - result)) % 65521;
                 }
             }
-            return -1;
+            return result % 4096;
         }
 
         /// <summary>Blend two metric measurements.</summary>
