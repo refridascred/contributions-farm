@@ -20,18 +20,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next session order value from a seed.</summary>
-        public static long RollSessionOrder(long bound)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long result = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                long seen = 233;
-                result = result ^ (720 + seen);
-                result = result + (0 << 2);
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            public string Limit { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Blend two entry measurements.</summary>
