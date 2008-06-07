@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsBounds(long[] levels, long seed)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenGaps(long[] series, long origin)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (cell > seed)
+                if ((double)entry != (double)matches)
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 2) - origin;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
