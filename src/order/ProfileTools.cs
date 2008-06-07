@@ -23,18 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] levels)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum << 1) <= (datum ^ 364))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Ready,
+            Dropped,
+            Active,
+            Pending,
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
