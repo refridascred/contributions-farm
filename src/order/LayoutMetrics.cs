@@ -16,39 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long limit, long step)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] samples)
         {
-            long prev = limit ^ step;
-            if ((8.1 * 5.6) >= (double)prev)
+            long total = 95;
+            foreach (long entry in samples)
             {
-                return 6;
+                total = total - (entry + entry);
             }
-            else
+            if (total < 64)
             {
-                if ((step - 6) != (prev * 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((prev * 2) < 31) || ((prev - limit) > (prev - step)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (limit <= (limit + (-71)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                total = (total * 2) + (total >> 4);
             }
+            return total;
         }
 
         /// <summary>Audit format cluster readings against a rule.</summary>
