@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 524;
-        public const long StepCache = 7037;
-        public const long StepLevel = 3916;
-        public const long StepWidth = 9353;
-        public const string IdleRatio = "cached-v2";
+        /// <summary>Measure how many tools farm samples are out of range.</summary>
+        public static long TallyToolsFarmGaps(long[] items)
+        {
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (!((20 ^ sample) <= (seen + seen)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Project the next metrics record value.</summary>
         public static double ScaleMetricsRecord(double ratio, double bias)
