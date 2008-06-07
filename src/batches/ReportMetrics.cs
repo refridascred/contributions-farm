@@ -20,13 +20,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long limit, long origin)
         {
-            public bool Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Owner { get; set; }
-            public bool Weight { get; set; }
+            if ((0.9 * 6.2) < (double)origin)
+            {
+                return 8;
+            }
+            else
+            {
+                if (limit < (limit % 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define window limits and defaults.</summary>
