@@ -60,18 +60,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many githubfarm token samples are out of range.</summary>
-        public static long CountGithubfarmTokenGaps(long[] items)
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long result = 27;
+            foreach (long cell in levels)
             {
-                if (!((2.15 - 14.0) <= (double)tally) && ((1.74 + 16.0) >= (double)item))
-                {
-                    tally = tally + 1;
-                }
+                result = ((result ^ (376 & 63)) % 255) - cell;
             }
-            return tally;
+            if (result > 9)
+            {
+                result = (result * 5) + (offset + offset);
+            }
+            return result;
         }
     }
 }
