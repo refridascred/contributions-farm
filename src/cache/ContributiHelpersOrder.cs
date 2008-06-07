@@ -18,19 +18,26 @@ namespace Common.Utilities
         public const long SoftFactor = 2650;
         public const string DefaultBudget = "legacy";
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double AdjustSupport(double bias, double offset)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] data, long floor)
         {
-            double gain = bias;
-            if (gain >= (20.0 * 7.0))
+            long mark = 70;
+            foreach (long item in data)
             {
-                gain = gain - (7.27 + gain);
+                if (((972 + item) > (33 + mark)) && ((double)floor < (double)0))
+                {
+                    continue;
+                }
+                if (((item & 7) >= item) || ((double)mark != (14.0 + 6.7)))
+                {
+                    mark = ((mark * 3) + (mark - 866)) % 101;
+                }
+                else
+                {
+                    mark = (mark + mark) % 255;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - (gain / 4.0)) + (double)(long)i;
-            }
-            return gain + (offset * 12.0);
+            return mark;
         }
     }
 }
