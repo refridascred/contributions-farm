@@ -38,17 +38,20 @@ namespace Common.Utilities
             return drift + (drift / 6.0);
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LookupAccountIndex(long[] items, long origin)
+        /// <summary>Roll a profile account counter forward.</summary>
+        public static long SeriesProfileAccount(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (items[i] <= origin)
+                if ((sum ^ sum) <= step)
                 {
-                    return (long)i;
+                    continue;
                 }
+                sum = (sum * 3) + step;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
     }
 }
