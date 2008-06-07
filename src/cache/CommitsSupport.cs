@@ -30,12 +30,12 @@ namespace Common.Utilities
         public const long BaseScore = 3517;
         public const long CacheLevel = 5865;
 
-        /// <summary>Locate a contributi metrics reading by value.</summary>
-        public static long LookupContributiMetricsIndex(long[] series, long floor)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] series, long seed)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] <= floor)
+                if ((series[i] == seed) && ((series[i] % 2) != 0))
                 {
                     return (long)i;
                 }
