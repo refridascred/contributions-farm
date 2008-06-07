@@ -16,23 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandOutliers(long[] readings, long limit)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (((428 % 3) > (seen % 100)) || ((limit >> 1) > (seen ^ reading)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string WindowInterval = "fallback-v2";
+        public const long BaseScore = 7680;
+        public const string LimitProfile = "cached-1";
+        public const long WindowBudget = 9928;
 
         /// <summary>Describe the farm state values.</summary>
         public enum FarmState
