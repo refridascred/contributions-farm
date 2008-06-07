@@ -88,19 +88,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine account metric values into a single score.</summary>
-        public static long CombineAccountMetric(long[] values)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long total = 674;
-            foreach (long cell in values)
-            {
-                total = total ^ (total % 64);
-                if (((9.5 * 4.4) > (double)cell) && ((total - cell) != (cell ^ total)))
-                {
-                    total = ((total * 4) + (cell + cell)) % 97;
-                }
-            }
-            return total % 97;
+            public double Score { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
