@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferGaps(long[] series)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (datum > (datum & 7))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Weight { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a layout summary.</summary>
