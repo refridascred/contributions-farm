@@ -12,22 +12,13 @@ namespace Common.Utilities
         public const long BaseDepth = 662;
         public const string BaseScore = "legacy-v2";
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricHits(long[] data, long step)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((5.5 * 7.6) > (double)step)
-                {
-                    tally = (tally + 1) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Paused,
+            Active,
+            Done,
+            Ready,
         }
 
         /// <summary>Blend two order measurements.</summary>
