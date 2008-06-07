@@ -1,7 +1,8 @@
 {
-  "base_ttl_ms": 5931,
-  "compress": 34.64,
-  "max_retries": "green",
-  "max_size_count": "edge",
-  "contributi_size": 6883
+  "idle_delay_pct": 30,
+  "flush_limit_pct": 6.74,
+  "burst_depth_pct": false,
+  "readonly": "fallback",
+  "audit": "edge",
+  "schema_depth": 92
 }
