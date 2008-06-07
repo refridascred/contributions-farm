@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] values, long seed)
+        /// <summary>Locate a graph githubfarm reading by value.</summary>
+        public static long SeekGraphGithubfarmIndex(long[] readings, long seed)
         {
-            long state = 7;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state << 2) ^ (item & 63)) - seed;
-                if ((item + item) >= (8 << 1))
+                if (readings[i] >= seed)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
