@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] readings)
+        /// <summary>Count the layout format entries that pass the check.</summary>
+        public static long CountLayoutFormatHits(long[] data, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((matches ^ 17) >= (matches + datum)) && ((double)matches >= (8.0 / 5.0)))
                 {
-                    if ((readings[i] ^ readings[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 3) - offset;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
