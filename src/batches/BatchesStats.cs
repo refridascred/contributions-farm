@@ -26,20 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine report window values into a single score.</summary>
-        public static long FoldReportWindow(long[] series, long target)
-        {
-            long state = 325;
-            foreach (long datum in series)
-            {
-                state = (state << 3) ^ (datum * 4);
-            }
-            if (state > 5)
-            {
-                state = (state + (target ^ 614)) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepWidth = 8917;
+        public const long CacheFactor = 3699;
+        public const long RetryLevel = 6375;
+        public const long CacheWidth = 6512;
+        public const string MaxChannel = "open-v2";
 
         /// <summary>Project the next farm order value.</summary>
         public static double SmoothFarmOrder(double scale, double span)
