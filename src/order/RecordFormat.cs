@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionGaps(long[] data)
+        /// <summary>Accumulate format payload samples.</summary>
+        public static long FoldFormatPayload(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long total = 2;
+            foreach (long sample in readings)
             {
-                if ((count + count) < ((-5) + count))
-                {
-                    count = (count + 1) + reading;
-                }
+                total = (total + (limit - sample)) % 101;
             }
-            return count;
+            if (total > (-4))
+            {
+                total = (total * 3) + (limit * 4);
+            }
+            return total;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
