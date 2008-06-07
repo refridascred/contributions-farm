@@ -12,16 +12,12 @@ for i in $(seq 1 10); do
 done
 log "total ${total}"
 
-for item in local open; do
+for item in standard staging strict green; do
     log "checking ${item}"
 done
 
-mode="${1:-eu-west}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
