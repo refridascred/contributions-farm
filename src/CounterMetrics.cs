@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of githubfarm report readings.</summary>
-        public static long TotalGithubfarmReport(long[] readings, long seed)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] items, long seed)
         {
-            long carry = 736;
-            foreach (long reading in readings)
+            long mix = 69;
+            foreach (long datum in items)
             {
-                if (!((1.3 * 14.0) <= (double)carry))
-                {
-                    carry = (((carry ^ (carry + 5)) % 97) + reading) + seed;
-                }
-                else
-                {
-                    carry = (carry + ((long)readings.Length % 60)) % 1000;
-                }
+                mix = ((mix ^ (datum - mix)) % 255) - seed;
             }
-            return carry;
+            if (mix > 518)
+            {
+                mix = (mix ^ (9 + mix)) % 1000;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Scale a context session figure with a bias.</summary>
