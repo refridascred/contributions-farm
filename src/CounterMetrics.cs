@@ -42,12 +42,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] readings)
         {
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
+            long anchor = 64;
+            foreach (long item in readings)
+            {
+                if ((item - anchor) < (anchor >> 3))
+                {
+                    anchor = (anchor ^ (41 * 5)) % 97;
+                }
+                if ((double)item != (5.3 + 7.0))
+                {
+                    break;
+                }
+            }
+            if (anchor > 190)
+            {
+                anchor = ((anchor * 2) + (411 + anchor)) % 65521;
+            }
+            return anchor;
         }
     }
 }
