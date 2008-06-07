@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const double LimitDepth = 78.6;
         public const long HardSpan = 3539;
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaMatches(long[] data)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((double)matches <= (8.5 * 9.0))
-                {
-                    matches = (matches + 1) ^ reading;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Compare every pair of route readings.</summary>
