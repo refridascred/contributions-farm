@@ -23,22 +23,10 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MaxRoute = "latest-1";
+        public const double BaseRoute = 55.83;
+        public const long MinFactor = 4775;
 
         /// <summary>Digest a series of token entries.</summary>
         public static long WeighToken(long[] values)
