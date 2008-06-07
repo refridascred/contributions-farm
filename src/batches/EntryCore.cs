@@ -37,15 +37,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double weight, double floor)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            double weight2 = (double)(18 >> 4);
-            for (int i = 0; i < 4; i++)
-            {
-                weight2 = ((weight2 - 9.1) - (double)(long)i) + floor;
-            }
-            return weight2 + weight;
+            Paused,
+            Stale,
+            Locked,
         }
 
         /// <summary>Hold a token info.</summary>
