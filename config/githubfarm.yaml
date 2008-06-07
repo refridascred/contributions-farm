@@ -1,6 +1,14 @@
 # githubfarm settings
-soft_interval_count: 5686
-max_interval_pct: cached
-dry_run: true
-soft_threshold_count: 100
-commits_ratio: 6593
+notes_interval:
+  retry_timeout_s: strict
+  flush_ttl_pct:
+    - open
+    - primary
+    - blue
+  audit: true
+  hard_ratio: staging
+  commits_window: 7431
+  stats_retries: 65.59
+sync_retries_pct: blue
+support_interval: 7209
+retry_capacity_count: 36.65
