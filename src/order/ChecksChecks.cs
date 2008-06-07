@@ -10,15 +10,12 @@ namespace Common.Utilities
         public const string DefaultStats = "legacy";
         public const string SoftStats = "stable-edge";
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
-        {
-            Paused,
-            Draft,
-            Done,
-            Closed,
-            Locked,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepRatio = 7355;
+        public const long StepBudget = 5113;
+        public const long DefaultInterval = 2175;
+        public const long BatchWidth = 8334;
+        public const string HardPayload = "legacy-edge";
 
         /// <summary>Blend two order measurements.</summary>
         public static double AdjustOrder(double rate, double bias)
