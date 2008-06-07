@@ -1,9 +1,6 @@
-id,token,owner,region
-1,fallback,521,178
-2,622,379,994
-3,97.63,latest,stable
-4,133,644,latest
-5,348,staging,738
-6,91.08,953,32.81
-7,open,standard,5.82
-8,724,12.7,204
+id,score,count,active
+1,173,193,21.61
+2,67,21.41,48.77
+3,38.99,30.44,35
+4,222,staging,33.47
+5,9.04,20.33,fallback
