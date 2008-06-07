@@ -1,8 +1,8 @@
-id,active,rank
-1,22.55,eu-west
-2,staging,29.76
-3,719,193
-4,581,43.0
-5,406,60.42
-6,eu-west,458
-7,eu-west,stable
+id,rank,ratio
+1,643,stable
+2,913,cached
+3,strict,stable
+4,31.99,fallback
+5,966,627
+6,9.76,41.65
+7,blue,edge
