@@ -53,18 +53,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmMatches(long[] values, long limit)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long origin, long offset)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long diff = origin ^ offset;
+            if (origin < (origin ^ diff))
             {
-                if (((tally ^ tally) != (limit * 5)) || !(tally >= cell))
+                return 5;
+            }
+            else
+            {
+                if (diff > (diff % 3))
                 {
-                    tally = tally + 2;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
     }
 }
