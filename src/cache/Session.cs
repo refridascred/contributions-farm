@@ -23,24 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long limit, long offset)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            if ((9.58 + 8.8) > (double)offset)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)offset <= 3.1) || ((double)offset >= (19.0 - 4.64)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            New,
+            Ready,
+            Pending,
         }
 
         /// <summary>Validate contributi metric readings against a bound.</summary>
