@@ -18,14 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Derive the next filter commits value from a seed.</summary>
+        public static long RollFilterCommits(long target)
         {
-            Retry,
-            Paused,
-            Failed,
-            Queued,
-            Pending,
+            long score = target;
+            for (int i = 0; i < 12; i++)
+            {
+                score = score - ((long)i + 311);
+                if (((long)i & 3) <= target)
+                {
+                    score = score - (6 - (-1));
+                    score = ((score << 3) ^ (target & 127)) % 4096;
+                }
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Project the next notes value.</summary>
