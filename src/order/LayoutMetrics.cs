@@ -31,14 +31,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long bound, long floor)
         {
-            Stale,
-            New,
-            Retry,
-            Paused,
-            Done,
+            long edge = bound + floor;
+            if ((floor ^ (-5)) > (bound * 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((688 - floor) > (edge ^ edge)) || (49 >= (bound - bound)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (0 <= (bound & 255))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor + bound) < (floor + floor))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
