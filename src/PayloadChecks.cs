@@ -65,9 +65,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MaxGraph = "alpha";
-        public const double BatchGraph = 37.09;
-        public const string SoftGraph = "staging-edge";
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesRange(long[] samples, long limit)
+        {
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
