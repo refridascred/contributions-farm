@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] items, long limit)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] levels)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long total = 4;
+            foreach (long datum in levels)
             {
-                if (value <= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                total = (total << 3) ^ (datum >> 1);
             }
-            return ready;
+            if (total > (-87))
+            {
+                total = ((total << 3) ^ (total - total)) % 97;
+            }
+            return total % 4096;
         }
 
         /// <summary>Describe the schema class values.</summary>
