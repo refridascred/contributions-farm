@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                score = ((score * 5) + ((long)i & 127)) % 97;
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWidth = 562;
+        public const long DefaultBudget = 2435;
+        public const long MaxWidth = 5536;
+        public const long LimitWindow = 7385;
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long CountPayloadGaps(long[] levels, long target)
