@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 211;
-        public const double RetryCount = 84.78;
-        public const double HardTimeout = 30.58;
-        public const string HardRatio = "strict";
-        public const string RetryInterval = "cached-v2";
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long floor, long bound)
+        {
+            if (((17.0 - 3.2) > (double)bound) || ((floor >> 5) >= (floor + 61)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (floor >= (floor ^ (-80)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound >= (floor * 2)) && (floor <= (67 + bound)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)bound >= (12.0 * 1.2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long FindProfileIndex(long[] values, long floor)
