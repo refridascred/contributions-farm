@@ -1,7 +1,7 @@
 {
-  "strict": 60.42,
-  "base_interval_ms": 100,
-  "poll_delay_count": ["primary", "strict", "legacy", "cached"],
-  "profile_size": 500,
-  "batch_ratio_s": 90
+  "already_depth": "edge",
+  "idle_delay_count": 1024,
+  "metric_retries": "staging",
+  "batch_window_s": false,
+  "order_threshold": ["blue", "fallback"]
 }
