@@ -16,11 +16,18 @@ namespace Common.Utilities
             return scale - (scale / 4.0);
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsHits(long[] readings)
         {
-            public bool Total { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)cell <= (double)tally)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
