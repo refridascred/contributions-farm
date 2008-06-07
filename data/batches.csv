@@ -1,7 +1,6 @@
-id,level,rank
-1,992,483
-2,38.28,74.2
-3,680,583
-4,76.0,292
-5,80.89,edge
-6,stable,local
+id,active,count,owner
+1,primary,standard,standard
+2,blue,17.71,69.29
+3,872,53.64,local
+4,70.36,439,cached
+5,green,eu-west,173
