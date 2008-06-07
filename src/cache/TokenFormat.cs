@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Audit farm tools readings against a rule.</summary>
+        public static long AuditFarmToolsGaps(long[] levels, long floor)
         {
-            Stale,
-            Done,
-            Retry,
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (cell > (4 + 966))
+                {
+                    matches = (matches + 2) + floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the editor phase values.</summary>
