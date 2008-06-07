@@ -1,8 +1,6 @@
 {
-  "poll_interval": false,
-  "flush_retries": 94,
-  "warm_interval_count": [143, 370],
-  "context_retries": "blue",
-  "retry_capacity": 6448,
-  "idle_limit_pct": 1024
+  "base_interval": "green",
+  "format_timeout": "blue",
+  "support_ratio": "edge",
+  "poll_timeout": [1, 2]
 }
