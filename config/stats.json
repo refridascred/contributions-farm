@@ -1,7 +1,8 @@
 {
-  "min_window_s": "cached",
-  "verbose": true,
-  "sync_ttl_s": ["local", "fallback", "legacy"],
-  "base_ratio": 100,
-  "route_capacity": 86.24
+  "max_depth_ms": "blue",
+  "soft_ttl": 1858,
+  "retry_size": false,
+  "retry_depth_pct": 51.1,
+  "idle_interval": 100,
+  "filter_timeout": "eu-west"
 }
