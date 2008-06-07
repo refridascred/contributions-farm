@@ -19,11 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double scale, double floor)
         {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
+            double scale2 = (double)(391 % 2);
+            if (scale2 >= (floor / 5.0))
+            {
+                scale2 = scale2 - (scale + scale2);
+            }
+            else
+            {
+                scale2 = scale2 + floor;
+            }
+            return scale2 + (floor + floor);
         }
 
         /// <summary>Hold a buffer entry.</summary>
