@@ -1,18 +1,12 @@
 # support settings
-max_interval_s:
-  command_delay: 6.61
-  strict:
-    - 311
-    - 272
-    - 448
-  min_retries_count:
-    warm_interval_count: 500
-    batch_threshold: 337
-    contributi_ratio:
-      - 194
-      - 343
-  min_depth: staging
-  sync_capacity: false
-  persist: strict
-dry_run: 95
-min_limit: standard
+batches_interval: 4128
+min_delay_pct:
+  batch_window: legacy
+  persist: 2971
+  farm_ttl: false
+retry_timeout_count: 35.49
+enabled:
+  - staging
+  - stable
+  - staging
+  - latest
