@@ -12,11 +12,13 @@ namespace Common.Utilities
             return ((load - (double)7) + bias) + floor;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            public bool Limit { get; set; }
-            public double Label { get; set; }
+            Failed,
+            New,
+            Active,
+            Draft,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
