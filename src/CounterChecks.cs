@@ -42,24 +42,21 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long limit, long offset)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long PairAccountCount(long[] data)
         {
-            if (((offset - 12) <= limit) && ((offset + offset) <= offset))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((limit >> 4) != (limit * 4)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    if ((data[i] ^ data[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Project the next record session value.</summary>
