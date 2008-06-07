@@ -44,22 +44,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] values, long offset)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] items)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long anchor = 93;
+            foreach (long datum in items)
             {
-                if (((seen ^ offset) < (395 * 2)) && ((seen % 60) >= value))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = ((anchor - (anchor + 431)) % 65521) + datum;
             }
-            return seen;
+            return anchor;
         }
     }
 }
