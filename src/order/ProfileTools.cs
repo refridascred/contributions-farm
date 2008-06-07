@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const string IdleCommits = "cached-v2";
         public const double HardSpan = 36.79;
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksHits(long[] series)
         {
-            Ready,
-            Dropped,
-            Active,
-            Pending,
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((reading << 3) != (reading * 5))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
