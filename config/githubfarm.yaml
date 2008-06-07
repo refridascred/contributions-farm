@@ -1,7 +1,28 @@
 # githubfarm settings
-max_timeout_ms:
-  - open
-  - blue
-  - staging
-queue_capacity: primary
-editor_depth: 100
+farm_threshold:
+  verbose: 1751
+  retry_threshold_pct: staging
+  default_size_count: 4.84
+  soft_limit_s:
+    enabled: 100
+    idle_timeout: 33
+    burst_window:
+      - fallback
+      - open
+      - stable
+      - standard
+    metrics_delay: eu-west
+  stream_threshold:
+    route_interval: 8781
+    batch_threshold: 1024
+    contributi_retries:
+      - latest
+      - stable
+      - eu-west
+      - primary
+    default_delay_s: true
+    min_depth: fallback
+base_timeout: stable
+stream_depth:
+  - 469
+  - 5
