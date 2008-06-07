@@ -74,19 +74,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextBounds(long[] values, long step)
+        /// <summary>Match up already context samples.</summary>
+        public static long CompareAlreadyContextCount(long[] series)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell >= step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] ^ series[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
