@@ -56,19 +56,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a cluster tools reading.</summary>
-        public static double AdjustClusterTools(double rate, double offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] data)
         {
-            double rate2 = (double)354;
-            if (rate2 >= (offset + rate))
+            long carry = 345;
+            foreach (long entry in data)
             {
-                rate2 = rate2 + (double)34;
+                if (((entry & 127) == (14 - (-14))) || ((21 + entry) <= (4 + 23)))
+                {
+                    carry = (carry - (carry + entry)) % 1000;
+                }
+                else
+                {
+                    carry = (carry + carry) % 65521;
+                }
             }
-            else
-            {
-                rate2 = rate2 - rate;
-            }
-            return rate2 - (double)935;
+            return carry % 97;
         }
     }
 }
