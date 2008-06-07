@@ -27,12 +27,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileGaps(long[] series, long target)
         {
-            Draft,
-            Retry,
-            Dropped,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((target - count) > (entry % 3))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many checks tools samples are out of range.</summary>
