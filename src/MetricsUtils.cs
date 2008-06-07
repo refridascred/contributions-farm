@@ -57,22 +57,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] levels, long bound)
+        /// <summary>Measure how many route commits samples are out of range.</summary>
+        public static long MeasureRouteCommitsOutliers(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if ((bound + (long)levels.Length) > entry)
+                if ((count ^ count) == (datum + count))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = (count + 2) + limit;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
