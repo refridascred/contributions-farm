@@ -15,13 +15,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            Failed,
-            Locked,
-            Closed,
-            Stale,
+            public string Offset { get; set; } = "";
+            public double Owner { get; set; }
+            public double Count { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Compare every pair of buffer counter readings.</summary>
