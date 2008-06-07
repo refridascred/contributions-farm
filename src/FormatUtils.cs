@@ -11,14 +11,13 @@ namespace Common.Utilities
         public const long RetryBudget = 6670;
         public const double WindowWidth = 65.48;
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            Retry,
-            Idle,
-            Stale,
-            Failed,
-            New,
+            public long Owner { get; set; }
+            public double Total { get; set; }
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Combine counter report values into a single score.</summary>
