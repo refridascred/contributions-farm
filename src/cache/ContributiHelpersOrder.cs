@@ -44,13 +44,39 @@ namespace Common.Utilities
             return scale + (double)74;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long target, long bound)
         {
-            Retry,
-            Closed,
-            Draft,
-            Locked,
+            long span = target - bound;
+            if ((span / 6) < 9)
+            {
+                return 6;
+            }
+            else
+            {
+                if (bound <= (bound - 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((7.5 + 10.0) >= (double)target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)target < (19.0 + 13.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
