@@ -20,18 +20,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountHits(long[] levels)
+        /// <summary>Validate schema cluster readings against a bound.</summary>
+        public static bool ValidateSchemaClusterRange(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if (((long)levels.Length % 12) > hits)
+                if (value > seed)
                 {
-                    hits = (hits + 2) + sample;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
