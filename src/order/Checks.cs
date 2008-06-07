@@ -19,11 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Audit account tools readings against a rule.</summary>
+        public static long CountAccountToolsMatches(long[] items)
         {
-            public double Offset { get; set; }
-            public string Owner { get; set; } = "";
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (!((count << 1) > entry) || ((9 <= (count + entry)) && (count <= ((long)items.Length ^ 29))))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
