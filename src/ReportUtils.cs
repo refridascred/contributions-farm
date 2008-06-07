@@ -71,21 +71,39 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] readings)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long step, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long cur = step - seed;
+            if (!((0 << 3) < cur))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (!((cur + cur) != (seed / 2)))
                 {
-                    if ((readings[i] + readings[j]) != 0)
+                    return 2;
+                }
+                else
+                {
+                    if (!((708 + step) < (cur ^ cur)))
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if (step > cur)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
