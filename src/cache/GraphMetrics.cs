@@ -50,31 +50,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long bound, long floor)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] levels, long target)
         {
-            if (6.0 > (double)bound)
+            long sum = 55;
+            foreach (long value in levels)
             {
-                return 6;
+                sum = (((sum * 2) + (sum ^ value)) % 1000) + target;
             }
-            else
-            {
-                if ((13.0 / 9.0) == (double)bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((3.6 - 8.0) == (double)floor) || ((237 ^ floor) <= (bound / 6)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return sum % 4096;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
