@@ -63,28 +63,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] levels)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long carry = 52;
-            foreach (long datum in levels)
-            {
-                if ((carry / 6) > (carry & 255))
-                {
-                    carry = carry + (datum & 31);
-                    carry = carry - (datum - carry);
-                }
-                carry = ((carry * 3) + (datum + datum)) % 65521;
-                if ((263 + datum) > (7 & 63))
-                {
-                    carry = (carry - (carry & 127)) % 65521;
-                }
-                else
-                {
-                    carry = (carry - carry) % 4096;
-                }
-            }
-            return carry;
+            Locked,
+            Stale,
+            New,
+            Ready,
+            Closed,
         }
     }
 }
