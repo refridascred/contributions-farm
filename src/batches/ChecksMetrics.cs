@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] data, long step)
-        {
-            long result = 8;
-            foreach (long item in data)
-            {
-                result = (result << 2) ^ (step & 1);
-                if (((double)result >= (2.2 * 0.87)) || ((double)item > 2.3))
-                {
-                    result = ((result << 3) ^ (item + result)) % 4096;
-                }
-                else
-                {
-                    result = result - result;
-                }
-                result = (result * 4) + (step / 9);
-            }
-            return result;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BurstTools = 6.24;
+        public const double BaseSpan = 2.75;
+        public const long MinLevel = 7458;
 
         /// <summary>Define account limits and defaults.</summary>
         public const double MaxScore = 2.35;
