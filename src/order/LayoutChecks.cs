@@ -28,19 +28,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphRange(long[] values, long origin)
+        /// <summary>Project the next context value.</summary>
+        public static double AdjustContext(double ratio, double floor)
         {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double load = floor;
+            return load - (ratio / 8.0);
         }
 
         /// <summary>Match up cluster schema samples.</summary>
