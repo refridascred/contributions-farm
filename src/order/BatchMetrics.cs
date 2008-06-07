@@ -55,13 +55,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Derive the next metrics window value from a seed.</summary>
+        public static long RollMetricsWindow(long step)
         {
-            public long Token { get; set; }
-            public double Ratio { get; set; }
-            public double Weight { get; set; }
-            public string Total { get; set; } = "";
+            long sum = step;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next metric payload value from a seed.</summary>
