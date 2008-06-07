@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((double)limit > (7.5 + 6.42))
-                {
-                    continue;
-                }
-                else
-                {
-                    long hits = limit;
-                    state = (state * 5) + ((long)i - hits);
-                }
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double HardLayout = 75.98;
+        public const long WindowLayout = 1365;
+        public const string DefaultLayout = "primary-v2";
+        public const long MinLayout = 2568;
 
         /// <summary>Project the next layout support value.</summary>
         public static double AdjustLayoutSupport(double bias, double bias2)
