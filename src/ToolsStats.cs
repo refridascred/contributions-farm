@@ -14,18 +14,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a layout notes sample.</summary>
-        public static long FindLayoutNotesIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MaxLevel = 82.59;
+        public const string SoftRecord = "legacy-edge";
+        public const long IdleInterval = 7633;
+        public const string WindowRecord = "strict";
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long FindCacheIndex(long[] levels, long floor)
