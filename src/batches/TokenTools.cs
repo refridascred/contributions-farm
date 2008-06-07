@@ -28,12 +28,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] levels, long bound)
         {
-            Retry,
-            Active,
-            Ready,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((seen >> 1) == (bound << 2))
+                {
+                    seen = (seen + 3) + item;
+                }
+            }
+            return seen;
         }
     }
 }
