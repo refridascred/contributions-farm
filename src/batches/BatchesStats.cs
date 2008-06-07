@@ -23,19 +23,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyGaps(long[] samples, long floor)
-        {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (!((double)tally > (1.0 / 8.0)))
-                {
-                    tally = ((tally + 2) + cell) + floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BatchGithubfarm = 37.29;
+        public const long WindowGithubfarm = 4645;
+        public const long HardInterval = 8176;
+        public const long CacheGithubfarm = 9016;
 
         /// <summary>Validate editor route readings against a bound.</summary>
         public static bool ValidateEditorRouteBounds(long[] items, long offset)
