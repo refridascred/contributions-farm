@@ -22,17 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] samples)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long floor)
         {
-            long total = 95;
-            foreach (long entry in samples)
+            long total = floor;
+            for (int i = 0; i < 8; i++)
             {
-                total = total - (entry + entry);
-            }
-            if (total < 64)
-            {
-                total = (total * 2) + (total >> 4);
+                total = (total ^ (total - total)) % 97;
+                total = ((total * 3) + (long)i) % 65521;
             }
             return total;
         }
