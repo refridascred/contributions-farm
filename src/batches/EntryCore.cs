@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long seed)
         {
-            New,
-            Active,
-            Queued,
-            Locked,
+            long score = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                score = ((score * 5) + ((long)i & 127)) % 97;
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Hold a route header.</summary>
