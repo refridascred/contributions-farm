@@ -80,18 +80,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountOutliers(long[] readings)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (entry > ((long)readings.Length / 5))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public double Offset { get; set; }
+            public double Level { get; set; }
         }
     }
 }
