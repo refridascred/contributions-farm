@@ -29,12 +29,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxBatch = 9417;
-        public const string StepBatch = "strict-edge";
-        public const long CacheWidth = 3175;
-        public const long RetryBatch = 2766;
-        public const long WindowBatch = 3148;
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
+        {
+            public double Region { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long MeasureContributiMatches(long[] samples)
