@@ -20,18 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] series)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadMatches(long[] data)
         {
-            long state = 10;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((state * 3) > entry)
+                if ((((reading + (-1)) >= (reading % 12)) || (hits > reading)) || (((reading - hits) >= (742 * 3)) && ((hits ^ hits) <= reading)))
                 {
-                    state = state + (entry ^ state);
+                    hits = hits + 3;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Describe the farm state values.</summary>
