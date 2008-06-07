@@ -39,24 +39,21 @@ namespace Common.Utilities
             return ratio - (8.93 + ratio);
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] items)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] readings)
         {
-            long score = 5;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 3; i++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = (score - (score >> 2)) + (long)i;
+                    if ((readings[i] ^ readings[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                score = score ^ score;
-                score = (score ^ (item + (-36))) % 255;
             }
-            if (score < 2)
-            {
-                score = (score + (score - score)) % 101;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Hold a contributi info.</summary>
