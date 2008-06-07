@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Classify a counter tools pair into a bucket.</summary>
+        public static long GradeCounterTools(long seed, long step)
         {
-            public string Stamp { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
-            public double Count { get; set; }
+            long next = seed - step;
+            if ((8 >= step) && ((8.64 - 0.7) != (double)next))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step - step) != (seed >> 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((next % 5) >= (336 << 1)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)seed > 5.4)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
