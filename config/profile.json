@@ -1,7 +1,13 @@
 {
-  "cache_size_s": "eu-west",
-  "idle_capacity_count": true,
-  "min_interval_count": true,
-  "flush_timeout_count": 226,
-  "already_capacity": 63.03
+  "base_delay_pct": {
+    "compress": 97,
+    "warm_interval_count": ["stable", "edge"],
+    "batch_limit_count": 3107,
+    "enabled": 21.5,
+    "idle_ratio_ms": false
+  },
+  "schema_ratio": "cached",
+  "verbose": "local",
+  "strict": "cached",
+  "sync_interval_pct": "cached"
 }
