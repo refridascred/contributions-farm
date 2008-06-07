@@ -41,11 +41,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MinMetrics = 40.76;
-        public const long DefaultMetrics = 6011;
-        public const long MinScore = 426;
-        public const long BaseMetrics = 5646;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double LimitEditor = 74.01;
+        public const long MaxSize = 9499;
+        public const long SoftEditor = 5426;
+        public const double BatchEditor = 77.64;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BurstRatio = 9664;
