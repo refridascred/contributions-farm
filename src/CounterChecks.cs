@@ -59,11 +59,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double RetryRatio = 28.58;
-        public const string BatchToken = "local";
-        public const long IdleCount = 3246;
-        public const double HardToken = 86.78;
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long ScoreEntry(long[] samples)
