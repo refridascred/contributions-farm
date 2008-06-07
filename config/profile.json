@@ -1,5 +1,8 @@
 {
-  "strict": 4430,
-  "default_delay_ms": 30,
-  "sync_delay": 22.17
+  "notes_limit": "green",
+  "strict": "staging",
+  "max_timeout_count": [450, 80, 480, 230],
+  "already_interval": 87,
+  "burst_ratio_pct": false,
+  "verbose": [35, 80, 329]
 }
