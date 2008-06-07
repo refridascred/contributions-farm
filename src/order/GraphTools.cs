@@ -28,11 +28,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Count the channel filter entries that pass the check.</summary>
+        public static long CountChannelFilterGaps(long[] samples, long step)
         {
-            public long Size { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((step << 2) >= (reading & 31))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
