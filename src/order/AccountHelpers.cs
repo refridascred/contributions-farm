@@ -54,12 +54,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheInterval = 3901;
-        public const double RetryFactor = 0.73;
-        public const string LimitScore = "primary-1";
-        public const long BaseOrder = 1443;
-        public const long LimitOrder = 4309;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetryTimeout = 385;
+        public const long SoftSize = 2011;
+        public const string StepScore = "fallback-edge";
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
