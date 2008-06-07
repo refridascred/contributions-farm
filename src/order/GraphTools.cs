@@ -19,11 +19,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double BlendRoute(double bias, double offset)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountOutliers(long[] readings, long target)
         {
-            double gain = bias;
-            return (gain - bias) + offset;
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (count > (target * 2))
+                {
+                    count = (count + 2) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
