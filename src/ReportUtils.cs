@@ -50,15 +50,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Digest a series of account notes entries.</summary>
-        public static long TallyAccountNotes(long[] series)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long bound)
         {
-            long result = 90;
-            foreach (long reading in series)
+            long total = bound;
+            for (int i = 0; i < 18; i++)
             {
-                result = (result + reading) % 255;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return result;
+            return total;
         }
     }
 }
