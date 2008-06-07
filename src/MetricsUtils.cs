@@ -47,18 +47,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] readings, long origin)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long state = 245;
+            foreach (long sample in levels)
             {
-                if ((origin << 2) <= ((long)readings.Length >> 4))
+                if ((sample + state) < (sample - state))
                 {
-                    tally = (tally + 1) ^ sample;
+                    state = state ^ (state % 8);
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
