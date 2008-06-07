@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate context command samples.</summary>
-        public static long ScoreContextCommand(long[] items, long origin)
-        {
-            long anchor = 6;
-            foreach (long item in items)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    anchor = ((anchor + (anchor & 31)) % 65521) - (long)i;
-                }
-                if (((9.91 / 4.0) < (double)item) && ((anchor / 5) < (70 * 2)))
-                {
-                    anchor = ((anchor << 2) ^ (anchor - item)) % 1000;
-                }
-            }
-            if (anchor < 925)
-            {
-                anchor = (anchor + (3 + origin)) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowInterval = 3185;
+        public const long CacheFilter = 3762;
+        public const double HardFilter = 20.19;
+        public const long SoftLevel = 381;
+        public const long CacheRatio = 4257;
 
         /// <summary>Blend two channel measurements.</summary>
         public static double ProjectChannel(double gain, double span)
