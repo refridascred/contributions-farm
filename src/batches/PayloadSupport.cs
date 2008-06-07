@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a batches profile counter forward.</summary>
-        public static long IterateBatchesProfile(long limit)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long sum = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
+            Dropped,
+            Locked,
+            Active,
+            Closed,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
