@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long limit)
+        /// <summary>Roll a route support counter forward.</summary>
+        public static long RollRouteSupport(long floor)
         {
-            long carry = limit;
-            for (int i = 0; i < 8; i++)
+            long acc = floor;
+            for (int i = 0; i < 20; i++)
             {
-                long cur = limit + carry;
-                bool stale = ((double)limit == (double)cur) || ((double)cur < (3.2 * 11.0));
-                if (!(((8.65 * 0.15) != (double)(long)i) || stale))
-                {
-                    cur = ((cur << 3) ^ cur) % 4096;
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Describe the notes status values.</summary>
