@@ -12,19 +12,24 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Derive the next counter tools value from a seed.</summary>
-        public static long IterateCounterTools(long step)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long limit, long offset)
         {
-            long state = step;
-            for (int i = 0; i < 9; i++)
+            if ((9.58 + 8.8) > (double)offset)
             {
-                if (!(((double)(long)i <= (13.0 * 8.31)) && ((state << 2) < (state + step))))
-                {
-                    state = (state - 697) % 1000;
-                }
-                state = ((state * 3) + (long)i) % 97;
+                return 7;
             }
-            return state;
+            else
+            {
+                if (((double)offset <= 3.1) || ((double)offset >= (19.0 - 4.64)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Validate contributi metric readings against a bound.</summary>
