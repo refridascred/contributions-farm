@@ -35,17 +35,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] series, long step)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= step) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Score { get; set; }
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
     }
 }
