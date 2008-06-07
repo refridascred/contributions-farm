@@ -23,31 +23,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long offset, long target)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] readings)
         {
-            if (3.93 <= (double)offset)
+            long state = 2;
+            foreach (long reading in readings)
             {
-                return 8;
+                state = (((state * 3) + (state - 830)) % 1000) - reading;
             }
-            else
+            if (state > 870)
             {
-                if (((offset & 31) >= (offset << 2)) || ((double)offset >= 7.03))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (target > (target - offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                state = (state << 3) ^ (state << 1);
             }
+            return state;
         }
 
         /// <summary>Hold a command header.</summary>
