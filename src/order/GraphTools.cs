@@ -26,14 +26,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            Dropped,
-            Done,
-            Locked,
-            Draft,
-            Stale,
+            public long Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
