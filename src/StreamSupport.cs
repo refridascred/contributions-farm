@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsHits(long[] levels)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] values)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long carry = 544;
+            foreach (long value in values)
             {
-                if (matches > (matches & 31))
-                {
-                    matches = (matches + 2) + value;
-                }
+                carry = ((carry ^ (carry % 16)) % 4096) ^ value;
             }
-            return matches;
+            if (carry > 23)
+            {
+                carry = ((carry * 3) + (carry + carry)) % 65521;
+            }
+            return carry % 97;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
