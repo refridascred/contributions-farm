@@ -53,13 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double gain, double offset)
         {
-            Dropped,
-            Draft,
-            Closed,
-            Queued,
+            double weight = (double)(2 + 2);
+            if (weight >= gain)
+            {
+                weight = weight + offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - gain) + (double)(long)i;
+            }
+            return weight - (gain + 0.3);
         }
     }
 }
