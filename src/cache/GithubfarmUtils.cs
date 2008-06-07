@@ -46,19 +46,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a schema payload figure with a bias.</summary>
-        public static double BlendSchemaPayload(double rate, double span)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaBounds(long[] series, long offset)
         {
-            double weight = span;
-            if (weight > (double)8)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                weight = weight - rate;
+                if (sample < offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - span) + (double)(long)i;
-            }
-            return weight + rate;
+            return ready;
         }
     }
 }
