@@ -1,5 +1,19 @@
 {
-  "sync_timeout": "stable",
-  "checks_retries": "cached",
-  "soft_limit": "local"
+  "enabled": 9959,
+  "queue_depth": true,
+  "cache_delay": "open",
+  "burst_size_s": {
+    "route_ratio": 59,
+    "sync_window": "fallback",
+    "flush_depth_ms": {
+      "batch_size_s": "open",
+      "cache_capacity": 95.78,
+      "compress": true,
+      "window_limit": 84.94,
+      "cache_threshold_ms": [220, 460, 72],
+      "notes_interval": 4689
+    },
+    "burst_retries_count": ["open", "primary"],
+    "default_delay_pct": 30
+  }
 }
