@@ -24,13 +24,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
-        {
-            Done,
-            Pending,
-            Paused,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowBuffer = 3958;
+        public const double DefaultLevel = 49.81;
+        public const long HardBuffer = 4574;
+        public const double RetryBuffer = 98.76;
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
