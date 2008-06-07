@@ -28,20 +28,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] values, long offset)
-        {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MinLevel = "primary";
+        public const long MaxChannel = 1767;
+        public const long IdleLevel = 1237;
+        public const long HardChannel = 2095;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string IdleTools = "staging";
