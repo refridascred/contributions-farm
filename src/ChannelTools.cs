@@ -16,17 +16,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] values, long target)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
