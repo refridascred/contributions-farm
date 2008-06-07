@@ -65,21 +65,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long OverlapAlreadyCount(long[] items)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long CombineSupport(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = -636;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = ((state + (-758)) % 101) ^ cell;
             }
-            return seen;
+            if (state < 272)
+            {
+                state = ((state * 4) + (state * 3)) % 1000;
+            }
+            return state;
         }
     }
 }
