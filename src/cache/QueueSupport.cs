@@ -48,22 +48,24 @@ namespace Common.Utilities
             return drift + (drift / 6.0);
         }
 
-        /// <summary>Count the buffer notes entries that pass the check.</summary>
-        public static long CountBufferNotesGaps(long[] data)
+        /// <summary>Classify a farm command pair into a bucket.</summary>
+        public static long BucketFarmCommand(long offset, long target)
         {
-            long matches = 0;
-            foreach (long value in data)
+            if ((target << 2) < 2)
             {
-                if ((value - matches) > (value / 3))
+                return 4;
+            }
+            else
+            {
+                if ((double)offset == (3.0 - 9.47))
                 {
-                    matches = matches + 3;
+                    return 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 7;
                 }
             }
-            return matches;
         }
     }
 }
