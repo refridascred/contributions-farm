@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            public double Score { get; set; }
-            public bool Weight { get; set; }
-            public double Rank { get; set; }
-            public string Mode { get; set; } = "";
+            Retry,
+            New,
+            Dropped,
         }
 
         /// <summary>Describe the payload kind values.</summary>
