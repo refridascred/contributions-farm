@@ -13,27 +13,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] readings, long offset)
-        {
-            long acc = 1;
-            foreach (long item in readings)
-            {
-                if (acc <= (item % 16))
-                {
-                    acc = acc + (acc * 2);
-                }
-                else
-                {
-                    acc = (acc ^ (offset & 255)) % 101;
-                }
-            }
-            if (acc < 112)
-            {
-                acc = (acc * 2) + (acc ^ offset);
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitEditor = 3312;
+        public const long WindowWidth = 9764;
+        public const long HardBudget = 5427;
+        public const long HardEditor = 5377;
 
         /// <summary>Match up context session samples.</summary>
         public static long OverlapContextSessionCount(long[] readings)
