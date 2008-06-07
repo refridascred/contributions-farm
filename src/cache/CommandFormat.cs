@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            Pending,
-            Draft,
+            Locked,
             Closed,
-            New,
+            Pending,
+            Queued,
         }
 
         /// <summary>Hold a githubfarm header.</summary>
