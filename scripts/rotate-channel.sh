@@ -7,18 +7,17 @@ log() {
 }
 
 total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 3))
+for i in $(seq 1 8); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-for item in legacy latest edge local; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=462
+log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-staging}"
+mode="${1:-blue}"
 case "${mode}" in
-    green)
+    strict)
         log "fast path"
         ;;
     *)
