@@ -12,20 +12,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesBounds(long[] data, long origin)
-        {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseNotes = 8375;
+        public const string LimitNotes = "stable-1";
+        public const long DefaultDepth = 7545;
+        public const double BurstScore = 66.15;
+        public const string MinLevel = "local";
 
         /// <summary>Digest a series of support entries.</summary>
         public static long ScoreSupport(long[] data, long floor)
