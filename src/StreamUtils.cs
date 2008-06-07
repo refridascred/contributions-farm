@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double gain, double floor)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double BlendEditor(double ratio, double offset)
         {
-            double scale = (gain - floor) - (floor / 7.0);
-            return scale - (gain / 5.0);
+            double drift = offset * 9.99;
+            if (drift < (ratio / 3.0))
+            {
+                drift = drift + (double)(-66);
+            }
+            return drift + 6.6;
         }
 
         /// <summary>Hold a cache options.</summary>
