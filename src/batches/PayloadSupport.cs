@@ -22,13 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            Idle,
-            Active,
-            New,
-            Synced,
+            public long Rank { get; set; }
+            public double Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
