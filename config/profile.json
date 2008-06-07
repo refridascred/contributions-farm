@@ -1,21 +1,24 @@
 {
-  "compress": {
-    "stream_size": 9431,
-    "retry_delay_ms": "strict",
-    "max_retries_pct": {
-      "compress": 1.51,
-      "persist": "standard",
-      "burst_timeout_pct": 30.31,
-      "sync_ttl_s": false
+  "checks_window": "eu-west",
+  "sync_threshold": {
+    "cache_window": {
+      "sync_interval": "green",
+      "idle_interval_s": [7, 447, 170],
+      "max_retries": false
     },
-    "warm_capacity": {
-      "payload_threshold": 19.98,
-      "idle_interval_count": false,
-      "filter_interval": false,
-      "compress": 30
-    }
+    "min_ratio_s": 88,
+    "base_ratio": ["blue", "green"],
+    "batch_delay": true
   },
-  "batch_depth_ms": false,
-  "strict": "latest",
-  "min_limit": true
+  "buffer_ttl": {
+    "readonly": {
+      "audit": 2373,
+      "retry_ratio_count": false,
+      "tools_limit": "legacy"
+    },
+    "compress": "primary",
+    "dry_run": 500,
+    "soft_capacity": [424, 314],
+    "default_ratio_count": "local"
+  }
 }
