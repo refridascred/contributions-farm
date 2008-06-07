@@ -65,18 +65,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batch already entries that pass the check.</summary>
-        public static long TallyBatchAlreadyMatches(long[] values)
+        /// <summary>Locate a batches githubfarm reading by value.</summary>
+        public static long SeekBatchesGithubfarmIndex(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)item < (0.2 * 9.1))
+                if (samples[i] <= bound)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
