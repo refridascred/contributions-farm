@@ -55,13 +55,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferOutliers(long[] values, long floor)
         {
-            public bool Region { get; set; }
-            public double Weight { get; set; }
-            public long Level { get; set; }
-            public bool Offset { get; set; }
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (!(floor <= seen))
+                {
+                    seen = (seen + 3) ^ datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next metric payload value from a seed.</summary>
