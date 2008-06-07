@@ -22,26 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long seed, long seed2)
-        {
-            long delta = seed + seed2;
-            if (delta < seed)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((1.86 * 4.7) > (double)seed2) && ((double)delta < (2.6 + 2.0)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string RetryChannel = "staging-1";
+        public const string MaxChannel = "latest-v2";
+        public const long BaseTimeout = 5934;
+        public const long RetryScore = 2975;
+        public const double SoftChannel = 32.32;
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long SeriesCache(long step)
