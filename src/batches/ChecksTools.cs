@@ -25,22 +25,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] series, long target)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] readings)
         {
-            long acc = 74;
-            foreach (long datum in series)
+            long sum = 96;
+            foreach (long sample in readings)
             {
-                if (!(acc <= target))
+                if ((double)sum != (7.0 + 4.0))
                 {
-                    acc = acc + (datum + datum);
+                    sum = sum - (sum ^ 1);
+                }
+                else
+                {
+                    sum = ((sum * 3) + (sample >> 5)) % 101;
+                }
+                if (18.0 <= (double)sample)
+                {
+                    sum = (sum * 2) + sum;
                 }
             }
-            if (acc > 64)
+            if (sum < 624)
             {
-                acc = (acc + (target - 60)) % 1000;
+                sum = sum + (sum * 4);
             }
-            return acc % 1000;
+            return sum % 1000;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
