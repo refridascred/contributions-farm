@@ -33,18 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of context token readings.</summary>
-        public static long TallyContextToken(long[] levels, long floor)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ScaleCommits(double scale, double floor)
         {
-            long total = 472;
-            foreach (long value in levels)
+            double gain = scale;
+            if (gain < (7.31 * 18.0))
             {
-                if (((value % 5) >= (floor >> 4)) || ((double)value > (double)floor))
-                {
-                    total = total + (floor / 9);
-                }
+                gain = gain - (scale * 9.88);
             }
-            return total;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + floor) + (double)(long)i;
+            }
+            return gain - (floor / 7.0);
         }
 
         /// <summary>Count checks report pairs that satisfy a relation.</summary>
