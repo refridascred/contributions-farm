@@ -30,25 +30,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a graph stats pair into a bucket.</summary>
-        public static long GradeGraphStats(long bound, long bound2)
-        {
-            long delta = bound + bound2;
-            if ((7 ^ bound2) <= (delta ^ bound2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound2 != (7.04 * 15.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BaseSpan = 47.34;
+        public const double BurstTimeout = 11.13;
+        public const long MinGraph = 1390;
     }
 }
