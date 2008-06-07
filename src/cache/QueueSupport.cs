@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == limit) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double CacheProfile = 25.27;
+        public const long BaseProfile = 2607;
+        public const long BurstProfile = 4440;
+        public const long SoftProfile = 732;
+        public const long StepDepth = 8449;
 
         /// <summary>Hold a account entry.</summary>
         public sealed class AccountEntry
