@@ -1,5 +1,9 @@
 {
-  "flush_ratio": 4.14,
-  "audit": ["strict", "strict", "strict"],
-  "batches_size": 7110
+  "route_window": 4730,
+  "idle_capacity_pct": {
+    "record_size": 76.77,
+    "buffer_size": 83,
+    "idle_depth_count": false
+  },
+  "compress": 12.62
 }
