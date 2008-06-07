@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteGaps(long[] values)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (7.0 <= (double)tally)
+                if ((sample >> 2) > (target >> 1))
                 {
-                    tally = (tally + 1) + reading;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
