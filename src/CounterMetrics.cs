@@ -16,18 +16,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportHits(long[] data, long bound)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (!((44 / 6) > bound))
-                {
-                    tally = (tally + 3) + sample;
-                }
-            }
-            return tally;
+            Synced,
+            Active,
+            Ready,
+            New,
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
