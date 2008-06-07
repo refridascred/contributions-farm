@@ -66,14 +66,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            New,
-            Active,
-            Closed,
-            Queued,
-            Dropped,
+            public bool Mode { get; set; }
+            public bool Rank { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a queue record.</summary>
