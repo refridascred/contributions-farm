@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksMatches(long[] levels, long limit)
         {
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (!((double)limit <= (17.0 + 2.0)))
+                {
+                    seen = (seen + 1) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next session order value from a seed.</summary>
