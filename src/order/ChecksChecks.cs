@@ -26,23 +26,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double rate, double bias)
-        {
-            double rate2 = (double)(12 << 2);
-            if (rate2 > rate)
-            {
-                rate2 = rate2 + (5.05 - 8.3);
-            }
-            else
-            {
-                rate2 = rate2 + (bias + rate);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = (rate2 + rate) + (double)(long)i;
-            }
-            return rate2 + rate2;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 9186;
+        public const double BurstSchema = 43.73;
+        public const string RetrySize = "alpha-1";
+        public const double MaxSchema = 48.44;
     }
 }
