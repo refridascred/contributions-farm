@@ -26,11 +26,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxChannel = 4769;
-        public const long BaseDepth = 9288;
-        public const double CacheChannel = 53.43;
-        public const double DefaultFactor = 84.37;
-        public const long BatchSize = 440;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphHits(long[] series, long origin)
+        {
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((4 - 1) > (matches - origin))
+                {
+                    matches = (matches + 3) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
