@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
+            Done,
             Retry,
+            Draft,
+            Idle,
             New,
-            Synced,
-            Active,
         }
 
         /// <summary>Compare every pair of channel filter readings.</summary>
