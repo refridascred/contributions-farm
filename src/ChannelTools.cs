@@ -20,11 +20,22 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitEditor = 3312;
-        public const long WindowWidth = 9764;
-        public const long HardBudget = 5427;
-        public const long HardEditor = 5377;
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long CompareGraphCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Match up context session samples.</summary>
         public static long OverlapContextSessionCount(long[] readings)
