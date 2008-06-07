@@ -17,15 +17,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long step)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ScaleMetric(double ratio, double offset)
         {
-            long result = step;
-            for (int i = 0; i < 15; i++)
+            double mean = (ratio * 8.83) - (double)51;
+            if (mean >= mean)
             {
-                result = ((result * 4) + (long)i) % 97;
+                mean = (mean + (double)65) + offset;
             }
-            return result;
+            return mean - (mean / 6.0);
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
