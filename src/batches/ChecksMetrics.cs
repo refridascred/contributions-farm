@@ -37,16 +37,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] levels, long seed)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long mark = 20;
-            foreach (long item in levels)
-            {
-                mark = ((mark * 5) + (mark % 100)) ^ item;
-                mark = mark + seed;
-            }
-            return mark % 65521;
+            public bool Weight { get; set; }
+            public double Limit { get; set; }
+            public bool Score { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
