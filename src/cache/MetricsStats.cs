@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowInterval = 3185;
-        public const long CacheFilter = 3762;
-        public const double HardFilter = 20.19;
-        public const long SoftLevel = 381;
-        public const long CacheRatio = 4257;
+        /// <summary>Measure how many account graph samples are out of range.</summary>
+        public static long AuditAccountGraphOutliers(long[] samples, long offset)
+        {
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (datum <= (219 + seen))
+                {
+                    seen = (seen + 1) + offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of session entries.</summary>
         public static long TallySession(long[] items, long bound)
