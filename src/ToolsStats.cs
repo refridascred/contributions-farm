@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] items)
         {
-            Stale,
-            Dropped,
-            Ready,
-            Queued,
-            Done,
+            long mix = 59;
+            foreach (long datum in items)
+            {
+                if ((mix / 7) < mix)
+                {
+                    mix = (((mix << 3) ^ (mix + mix)) % 4096) ^ datum;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
