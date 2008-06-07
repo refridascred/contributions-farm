@@ -17,26 +17,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate already command samples.</summary>
-        public static long FoldAlreadyCommand(long[] levels, long limit)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] readings, long step)
         {
-            long mark = 48;
-            foreach (long cell in levels)
+            long carry = 528;
+            foreach (long cell in readings)
             {
-                if ((cell & 31) < (mark + 3))
+                carry = (carry + cell) - step;
+                if (((double)carry >= (double)cell) && ((carry << 3) <= cell))
                 {
-                    mark = ((mark << 2) ^ (cell % 5)) % 4096;
-                }
-                else
-                {
-                    mark = mark + (4 * 3);
+                    carry = (carry << 3) ^ (carry & 31);
                 }
             }
-            if (mark > 381)
-            {
-                mark = mark - (limit + mark);
-            }
-            return mark;
+            return carry % 4096;
         }
 
         /// <summary>Fold a list of token readings.</summary>
