@@ -46,10 +46,17 @@ namespace Common.Utilities
         public const long BatchBuffer = 1808;
         public const long DefaultFactor = 8455;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepWidth = 3954;
-        public const long StepScore = 4660;
-        public const long MaxDepth = 1966;
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = (anchor - (1 % 10)) % 65521;
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long CountStreamGaps(long[] readings)
