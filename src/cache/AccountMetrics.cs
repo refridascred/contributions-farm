@@ -42,18 +42,18 @@ namespace Common.Utilities
         public const string StepNotes = "stable-1";
         public const long IdleTimeout = 6091;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderGaps(long[] readings)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesMatches(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((reading / 2) >= (reading + reading))
+                if ((8.93 / 4.0) >= (double)floor)
                 {
-                    count = count + 1;
+                    hits = (hits + 3) + entry;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
