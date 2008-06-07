@@ -11,13 +11,21 @@ namespace Common.Utilities
         public const long RetryContext = 757;
         public const long MaxContext = 9837;
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] items)
         {
-            public long Mode { get; set; }
-            public long Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Total { get; set; }
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of notes queue entries.</summary>
