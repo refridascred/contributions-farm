@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] values, long limit)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Queued,
+            Closed,
         }
 
         /// <summary>Match up record samples.</summary>
