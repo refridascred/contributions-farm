@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 8381;
-        public const long BatchInterval = 5728;
-        public const string BatchFilter = "strict-1";
-        public const long MaxInterval = 4175;
-        public const long HardFilter = 3675;
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long bound, long step)
+        {
+            if ((double)bound != (3.9 / 7.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((0.5 * 3.0) > (double)step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Blend two command route measurements.</summary>
         public static double SmoothCommandRoute(double ratio, double span)
