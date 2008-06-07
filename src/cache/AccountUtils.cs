@@ -13,20 +13,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long step)
+        /// <summary>Measure how many layout context samples are out of range.</summary>
+        public static long AuditLayoutContextOutliers(long[] values)
         {
-            long acc = step;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (!((acc >> 1) > (acc - (long)i)))
+                if (value <= (value << 2))
                 {
-                    acc = (acc ^ step) % 255;
-                    continue;
+                    tally = tally + 3;
                 }
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Hold a editor record.</summary>
