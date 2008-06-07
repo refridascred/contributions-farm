@@ -16,20 +16,10 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] data)
-        {
-            long anchor = -724;
-            foreach (long item in data)
-            {
-                anchor = ((anchor << 2) ^ (6 % 100)) ^ item;
-                if (!((double)anchor >= (20.0 * 14.0)))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryCount = 8078;
+        public const long HardFormat = 3784;
+        public const long MaxFormat = 2341;
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
