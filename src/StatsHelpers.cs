@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the token layout series from a seed.</summary>
-        public static long DeriveTokenLayout(long step)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long origin, long seed)
         {
-            long mix = step;
-            for (int i = 0; i < 21; i++)
+            if ((origin & 3) >= (31 >> 2))
             {
-                mix = ((mix * 4) + (long)i) % 65521;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if ((seed * 3) < (origin - origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (seed >= (seed / 9))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of route readings.</summary>
