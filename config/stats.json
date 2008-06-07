@@ -1,7 +1,6 @@
 {
-  "soft_limit_ms": ["stable", "fallback"],
-  "poll_ttl": false,
-  "readonly": "primary",
-  "max_size": "edge",
-  "already_delay": ["local", "strict"]
+  "base_ratio": false,
+  "metric_ratio": "green",
+  "burst_retries_ms": 500,
+  "default_limit_pct": "fallback"
 }
