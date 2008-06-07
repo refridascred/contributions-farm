@@ -50,29 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of schema token entries.</summary>
-        public static long ScoreSchemaToken(long[] series)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long total = -1;
-            foreach (long datum in series)
-            {
-                if (!((datum << 2) > total))
-                {
-                    total = (total << 3) ^ (datum / 7);
-                    total = (total + (total / 9)) % 65521;
-                    break;
-                }
-                total = ((total << 2) ^ total) % 97;
-                if (((total + datum) != (datum ^ 401)) && (datum > (datum & 63)))
-                {
-                    total = total + (61 << 3);
-                }
-                else
-                {
-                    total = ((total << 3) ^ (total * 4)) % 101;
-                }
-            }
-            return total;
+            Failed,
+            Done,
+            Stale,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
