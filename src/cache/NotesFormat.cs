@@ -34,12 +34,32 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long offset, long bound)
         {
-            Paused,
-            Ready,
-            Dropped,
+            long span = offset + bound;
+            if ((span ^ offset) > (span + 159))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((2.5 * 9.66) < (double)bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((477 <= offset) || ((bound % 100) >= offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
