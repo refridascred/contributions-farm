@@ -53,12 +53,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
-        {
-            Synced,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BaseChecks = "legacy-edge";
+        public const long LimitChecks = 1292;
+        public const string CacheFactor = "strict";
     }
 }
