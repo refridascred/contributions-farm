@@ -32,9 +32,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinWidth = 7354;
-        public const double BurstBatch = 84.41;
-        public const double DefaultCount = 9.85;
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            Retry,
+            Ready,
+            Draft,
+            Done,
+            Pending,
+        }
     }
 }
