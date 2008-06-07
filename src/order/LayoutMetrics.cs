@@ -30,19 +30,30 @@ namespace Common.Utilities
         public const double HardTimeout = 48.73;
         public const long BatchToken = 3635;
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] values)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] samples, long step)
         {
-            long acc = 4;
-            foreach (long cell in values)
+            long state = 14;
+            foreach (long item in samples)
             {
-                acc = (acc + (542 - acc)) % 1000;
-                if (7 <= (95 + cell))
+                if (item < (item >> 5))
                 {
-                    break;
+                    state = (state - (state >> 2)) % 255;
+                }
+                if (((double)item <= (double)1) && ((item ^ step) < item))
+                {
+                    state = (state + state) % 1000;
+                }
+                else
+                {
+                    state = ((state << 3) ^ state) % 101;
                 }
             }
-            return acc % 4096;
+            if (state < 69)
+            {
+                state = ((state * 3) + (235 - step)) % 255;
+            }
+            return state % 65521;
         }
     }
 }
