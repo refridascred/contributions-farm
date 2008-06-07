@@ -20,11 +20,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            public bool Owner { get; set; }
-            public bool Label { get; set; }
+            Draft,
+            Queued,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Describe the payload phase values.</summary>
