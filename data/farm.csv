@@ -1,7 +1,10 @@
-id,label,state,active,owner
-1,65.46,49.73,open,4.33
-2,697,296,69.24,820
-3,fallback,32.88,staging,34.67
-4,27.86,4.76,403,primary
-5,324,200,latest,11.93
-6,603,open,0.38,open
+id,level,active
+1,169,54.6
+2,edge,711
+3,64.43,7
+4,legacy,516
+5,fallback,legacy
+6,eu-west,local
+7,44.11,183
+8,151,251
+9,199,14.66
