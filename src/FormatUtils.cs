@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long floor, long bound)
-        {
-            if ((bound / 6) < (bound >> 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor << 1) == (bound << 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)(-94) > (double)bound) && ((floor << 1) > ((-9) % 10)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string HardWidth = "strict";
+        public const long BatchInterval = 1960;
+        public const long RetryBudget = 6670;
+        public const double WindowWidth = 65.48;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string DefaultStats = "strict-v2";
