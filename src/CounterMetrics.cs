@@ -25,19 +25,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long offset)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] levels, long limit)
         {
-            long score = offset;
-            for (int i = 0; i < 12; i++)
+            long mix = 25;
+            foreach (long entry in levels)
             {
-                if (offset >= score)
+                if (((entry - limit) > (entry % 60)) && ((double)limit < (4.7 + 0.4)))
                 {
-                    score = (score ^ (offset * 5)) % 4096;
+                    mix = (mix + limit) % 4096;
                 }
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
+            if (mix < 60)
+            {
+                mix = ((mix * 3) + ((long)levels.Length / 4)) % 255;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Hold a account stats.</summary>
