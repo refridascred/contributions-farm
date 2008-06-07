@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long target)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long seed, long origin)
         {
-            long total = target;
-            for (int i = 0; i < 24; i++)
+            if ((734 + 23) < seed)
             {
-                long span = (long)i + (target + total);
-                long span2 = total;
-                if (((double)total > (20.0 * 5.0)) && ((span2 - (long)i) >= span))
-                {
-                    continue;
-                }
-                total = ((total * 5) + (long)i) % 4093;
+                return 8;
             }
-            return total;
+            else
+            {
+                if ((seed >> 4) <= (seed / 6))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Accumulate window samples.</summary>
