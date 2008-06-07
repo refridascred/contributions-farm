@@ -52,18 +52,13 @@ namespace Common.Utilities
             return scale - (double)93;
         }
 
-        /// <summary>Measure how many route commits samples are out of range.</summary>
-        public static long MeasureRouteCommitsOutliers(long[] data, long limit)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((count ^ count) == (datum + count))
-                {
-                    count = (count + 2) + limit;
-                }
-            }
-            return count;
+            Stale,
+            Pending,
+            Paused,
+            Locked,
         }
     }
 }
