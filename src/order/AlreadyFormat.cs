@@ -57,21 +57,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long limit)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterHits(long[] series, long seed)
         {
-            long sum = limit;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((sum % 16) == (limit + (long)i))
+                if ((hits - hits) > (hits << 3))
                 {
-                    sum = ((sum * 4) + (sum << 3)) % 255;
-                    sum = sum + (limit + limit);
+                    hits = ((hits + 3) ^ item) + seed;
                 }
-                sum = sum ^ sum;
-                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return sum;
+            return hits;
         }
     }
 }
