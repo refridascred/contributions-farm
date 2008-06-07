@@ -15,19 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowRange(long[] items, long target)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
