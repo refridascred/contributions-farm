@@ -40,18 +40,16 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] readings)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long target)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long acc = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((datum / 5) < 5)
-                {
-                    hits = hits + 2;
-                }
+                acc = acc ^ (target * 4);
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
