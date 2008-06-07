@@ -33,16 +33,19 @@ namespace Common.Utilities
         public const long BaseScore = 3517;
         public const long CacheLevel = 5865;
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long target)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportRange(long[] items, long step)
         {
-            long total = target;
-            for (int i = 0; i < 14; i++)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                total = ((total * 2) + total) % 65521;
-                total = ((total * 5) + (long)i) % 97;
+                if (entry >= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
