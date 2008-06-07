@@ -1,8 +1,7 @@
 {
-  "max_limit_count": "eu-west",
-  "flush_depth_s": [355, 276, 69],
-  "dry_run": 78,
-  "default_timeout_s": "standard",
-  "hard_delay_pct": 250,
-  "batch_ratio": "green"
+  "compress": "cached",
+  "cache_window": 6.45,
+  "burst_ttl": ["strict", "strict"],
+  "cluster_retries": "cached",
+  "context_depth": 87
 }
