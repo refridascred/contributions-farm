@@ -58,19 +58,26 @@ namespace Common.Utilities
         public const long IdleCount = 3246;
         public const double HardToken = 86.78;
 
-        /// <summary>Project the next record session value.</summary>
-        public static double SmoothRecordSession(double weight, double bias)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] items)
         {
-            double rate = (double)(93 >> 2);
-            if (rate < (double)89)
+            long acc = 47;
+            foreach (long item in items)
             {
-                rate = (rate - 7.66) - bias;
+                for (int i = 0; i < 8; i++)
+                {
+                    acc = ((acc ^ (36 / 3)) % 4096) + (long)i;
+                }
+                if ((double)item > (7.3 / 7.0))
+                {
+                    acc = (acc ^ acc) % 255;
+                }
+                if ((long)items.Length == (acc + (long)items.Length))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + weight) + (double)(long)i;
-            }
-            return rate - weight;
+            return acc;
         }
 
         /// <summary>Define command limits and defaults.</summary>
