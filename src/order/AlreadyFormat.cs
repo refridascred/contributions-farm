@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of buffer session readings.</summary>
-        public static long CombineBufferSession(long[] readings)
+        /// <summary>Compare every pair of contributi counter readings.</summary>
+        public static long OverlapContributiCounterCount(long[] samples)
         {
-            long score = 28;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (score ^ cell) % 255;
-                if (7.83 >= (double)cell)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = (score ^ score) % 4096;
-                }
-                else
-                {
-                    score = (score ^ 8) % 65521;
+                    if ((samples[i] ^ samples[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (score > 909)
-            {
-                score = ((score * 3) + (score % 2)) % 97;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
