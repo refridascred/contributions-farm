@@ -52,15 +52,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] data, long step)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] readings)
         {
-            long sum = 393;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum ^ (step * 4)) % 101) - entry;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
