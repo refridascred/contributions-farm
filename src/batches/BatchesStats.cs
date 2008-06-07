@@ -29,15 +29,17 @@ namespace Common.Utilities
         public const long CacheWidth = 6512;
         public const string MaxChannel = "open-v2";
 
-        /// <summary>Project the next farm order value.</summary>
-        public static double SmoothFarmOrder(double scale, double span)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] readings, long seed)
         {
-            double ratio = scale;
-            if (ratio > scale)
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = ratio - (span * 9.45);
+                if (readings[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return ratio + ratio;
+            return -1;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
