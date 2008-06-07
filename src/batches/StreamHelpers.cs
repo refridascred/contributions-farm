@@ -49,23 +49,21 @@ namespace Common.Utilities
             return weight2 + span;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] items)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] samples)
         {
-            long sum = 930;
-            foreach (long entry in items)
+            long total = 200;
+            foreach (long cell in samples)
             {
-                if ((sum + sum) < (sum / 7))
-                {
-                    sum = (sum ^ (sum + entry)) % 1000;
-                }
-                sum = (sum << 3) ^ (sum >> 1);
+                total = ((total ^ (total * 4)) % 1000) - cell;
+                total = ((total << 3) ^ (total & 1)) % 1000;
+                total = total - total;
             }
-            if (sum > 33)
+            if (total > 5)
             {
-                sum = (sum + (2 % 2)) % 97;
+                total = (total ^ (total % 60)) % 97;
             }
-            return sum;
+            return total % 4096;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
