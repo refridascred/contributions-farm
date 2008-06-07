@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MinCount = "staging-edge";
-        public const long BurstScore = 1898;
-        public const long MaxFactor = 8051;
-        public const long RetryInterval = 230;
+        /// <summary>Audit counter record readings against a rule.</summary>
+        public static long AuditCounterRecordHits(long[] data, long bound)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (((long)data.Length << 3) != (bound >> 3))
+                {
+                    matches = (matches + 3) - reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long AuditProfileHits(long[] series)
