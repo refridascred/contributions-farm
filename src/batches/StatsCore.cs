@@ -46,15 +46,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double bias, double bias2)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            double load = (double)((-9) - 49);
-            for (int i = 0; i < 4; i++)
-            {
-                load = ((load - (7.0 + 4.83)) - (double)(long)i) - bias;
-            }
-            return load - (bias2 * 11.0);
+            Dropped,
+            Idle,
+            Draft,
         }
 
         /// <summary>Digest a series of queue entries.</summary>
