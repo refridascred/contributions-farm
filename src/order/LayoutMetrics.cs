@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MinToken = 50.15;
-        public const double BurstFactor = 54.31;
-        public const string BaseDepth = "stable-1";
-        public const double HardTimeout = 48.73;
-        public const long BatchToken = 3635;
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
+        {
+            Done,
+            Draft,
+            Synced,
+            Paused,
+        }
 
         /// <summary>Accumulate format samples.</summary>
         public static long CombineFormat(long[] series, long limit)
