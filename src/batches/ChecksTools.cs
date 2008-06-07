@@ -29,13 +29,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphRange(long[] data, long bound)
         {
-            New,
-            Failed,
-            Dropped,
-            Queued,
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
