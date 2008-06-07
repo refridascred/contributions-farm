@@ -30,11 +30,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double LimitEditor = 74.01;
-        public const long MaxSize = 9499;
-        public const long SoftEditor = 5426;
-        public const double BatchEditor = 77.64;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueMatches(long[] data, long limit)
+        {
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (((hits - hits) <= (limit - value)) || ((hits >> 1) > (67 + limit)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate layout contributi readings against a bound.</summary>
         public static bool ValidateLayoutContributiBounds(long[] samples, long step)
