@@ -22,13 +22,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] series, long target)
         {
-            Stale,
-            Failed,
-            Ready,
-            Active,
+            long acc = 74;
+            foreach (long datum in series)
+            {
+                if (!(acc <= target))
+                {
+                    acc = acc + (datum + datum);
+                }
+            }
+            if (acc > 64)
+            {
+                acc = (acc + (target - 60)) % 1000;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
