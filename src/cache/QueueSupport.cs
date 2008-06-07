@@ -37,13 +37,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Iterate the payload buffer series from a seed.</summary>
+        public static long IteratePayloadBuffer(long floor)
         {
-            Ready,
-            New,
-            Queued,
-            Failed,
+            long anchor = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = anchor ^ ((long)i / 3);
+                anchor = anchor ^ 7;
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
     }
 }
