@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] items)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheHits(long[] data, long origin)
         {
-            long carry = 60;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                carry = ((carry + carry) % 101) + cell;
-                if ((carry ^ carry) >= (carry + carry))
+                if (!!((origin + 126) == (origin + origin)))
                 {
-                    carry = (carry + carry) % 97;
-                }
-                else
-                {
-                    carry = carry + carry;
+                    matches = (matches + 1) + entry;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
