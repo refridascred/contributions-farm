@@ -20,21 +20,18 @@ namespace Common.Utilities
             return gain + (rate + span);
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] items)
+        /// <summary>Measure how many batch stats samples are out of range.</summary>
+        public static long AuditBatchStatsOutliers(long[] readings, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((step ^ 0) >= ((-749) * 2))
                 {
-                    if ((items[i] - items[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 1) + reading;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Blend two order measurements.</summary>
