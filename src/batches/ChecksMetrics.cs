@@ -56,14 +56,9 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
-        {
-            Locked,
-            Stale,
-            New,
-            Ready,
-            Closed,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double RetryBudget = 4.91;
+        public const long WindowInterval = 5611;
+        public const long WindowBuffer = 5605;
     }
 }
