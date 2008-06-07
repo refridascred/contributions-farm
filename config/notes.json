@@ -1,8 +1,5 @@
 {
-  "idle_delay_pct": 30,
-  "flush_limit_pct": 6.74,
-  "burst_depth_pct": false,
-  "readonly": "fallback",
-  "audit": "edge",
-  "schema_depth": 92
+  "contributi_ratio": "latest",
+  "sync_capacity_count": 51,
+  "batch_window": 52
 }
