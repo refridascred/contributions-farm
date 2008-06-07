@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaMatches(long[] items, long step)
         {
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Level { get; set; }
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((double)seen >= (3.1 / 9.0))
+                {
+                    seen = ((seen + 2) - reading) - step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine checks queue values into a single score.</summary>
