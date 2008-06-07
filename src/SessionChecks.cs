@@ -50,11 +50,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Check that every layout metrics entry stays within the limit.</summary>
+        public static bool GuardLayoutMetricsBounds(long[] readings, long step)
         {
-            public long Owner { get; set; }
-            public string Level { get; set; } = "";
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
