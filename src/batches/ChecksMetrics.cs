@@ -38,19 +38,14 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Validate profile editor readings against a bound.</summary>
-        public static bool VerifyProfileEditorLimits(long[] values, long bound)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Queued,
+            Locked,
+            Synced,
+            Pending,
         }
 
         /// <summary>Hold a order entry.</summary>
