@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double CacheProfile = 25.27;
-        public const long BaseProfile = 2607;
-        public const long BurstProfile = 4440;
-        public const long SoftProfile = 732;
-        public const long StepDepth = 8449;
+        /// <summary>Project the next queue value.</summary>
+        public static double ScaleQueue(double weight, double span)
+        {
+            double drift = (weight - span) / 6.0;
+            if (drift <= 2.32)
+            {
+                drift = drift - (weight / 5.0);
+            }
+            return drift - 5.9;
+        }
 
         /// <summary>Hold a account entry.</summary>
         public sealed class AccountEntry
