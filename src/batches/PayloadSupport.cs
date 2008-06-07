@@ -14,32 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long seed, long bound)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] series)
         {
-            long bound2 = seed + bound;
-            if ((double)seed < (double)bound)
+            long state = 10;
+            foreach (long entry in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((6.4 - 3.0) <= (double)bound)
+                if ((state * 3) > entry)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound2 & 63) <= (27 * 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    state = state + (entry ^ state);
                 }
             }
+            return state;
         }
 
         /// <summary>Describe the farm state values.</summary>
