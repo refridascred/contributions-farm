@@ -5,27 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] data, long origin)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long total = 4;
-            foreach (long sample in data)
-            {
-                long cur = 8;
-                if (((727 << 1) != (860 - sample)) && ((15.0 + 2.92) != (double)sample))
-                {
-                    total = total - (cur << 2);
-                }
-                if (((sample & 63) > (592 + origin)) && ((total + sample) <= (total * 2)))
-                {
-                    total = total + total;
-                }
-                if ((double)origin == (double)total)
-                {
-                    break;
-                }
-            }
-            return total;
+            Locked,
+            Active,
+            Stale,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
