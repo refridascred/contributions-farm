@@ -10,32 +10,18 @@ namespace Common.Utilities
         public const long BatchLevel = 2162;
         public const long BatchDepth = 6822;
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long target, long target2)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryGaps(long[] data)
         {
-            long prev = target - target2;
-            if ((target2 - 4) > prev)
+            long count = 0;
+            foreach (long sample in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(target > (prev % 64)))
+                if (sample > (count - sample))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((7.7 * 9.4) >= (double)target) && (target2 >= (target2 - 950)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
