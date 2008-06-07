@@ -47,21 +47,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] readings)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public double Ratio { get; set; }
+            public double Weight { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Derive the next metric payload value from a seed.</summary>
