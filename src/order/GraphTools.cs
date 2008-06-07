@@ -50,13 +50,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Audit checks already readings against a rule.</summary>
+        public static long CountChecksAlreadyMatches(long[] series, long offset)
         {
-            Draft,
-            Done,
-            Failed,
-            Ready,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((offset + matches) < sample)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
