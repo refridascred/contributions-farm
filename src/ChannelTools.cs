@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit metrics batch readings against a rule.</summary>
-        public static long AuditMetricsBatchOutliers(long[] levels)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueGaps(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((reading + (-985)) >= (count >> 2))
+                if ((limit <= entry) && ((limit >> 5) <= (tally / 4)))
                 {
-                    count = count + 1;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
