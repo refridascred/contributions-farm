@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinCount = 8961;
-        public const long IdleSupport = 7635;
-        public const long DefaultTimeout = 8487;
-        public const double LimitSupport = 78.22;
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
+        {
+            Stale,
+            Locked,
+            Synced,
+            Closed,
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long StepCount = 110;
