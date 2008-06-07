@@ -1,6 +1,6 @@
-id,level,label
-1,0.17,cached
-2,92.84,968
-3,fallback,843
-4,fallback,primary
-5,64.02,754
+id,region,rank
+1,local,140
+2,337,304
+3,727,325
+4,985,198
+5,872,eu-west
