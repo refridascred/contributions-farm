@@ -1,6 +1,5 @@
 {
-  "flush_ratio_ms": [210, 201],
-  "compress": false,
-  "window_ttl": "staging",
-  "hard_interval": [77, 413]
+  "burst_window": "edge",
+  "idle_ttl_pct": 2083,
+  "min_depth_s": false
 }
