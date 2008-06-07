@@ -1,7 +1,25 @@
 # entry settings
-tools_limit:
-  - 438
-  - 183
-  - 493
-retry_limit_pct: 5603
-default_depth_pct: false
+order_limit: 60
+base_capacity_pct:
+  - strict
+  - staging
+  - standard
+  - staging
+burst_size_ms: legacy
+dry_run: open
+hard_timeout_pct:
+  - staging
+  - stable
+  - edge
+  - strict
+checks_delay:
+  soft_threshold_count: latest
+  min_capacity_s: 43.22
+  cache_ttl_pct: 7307
+  flush_timeout_count:
+    soft_retries_pct: fallback
+    idle_window: 250
+    token_depth:
+      - fallback
+      - strict
+  idle_limit_pct: latest
