@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double rate, double span)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            double scale = span;
-            if (scale <= (0.5 * 9.5))
-            {
-                scale = scale + (span / 4.0);
-            }
-            else
-            {
-                scale = scale + scale;
-            }
-            return scale - rate;
+            Closed,
+            Draft,
+            Failed,
+            Queued,
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
