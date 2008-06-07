@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double StepMetric = 37.74;
-        public const long WindowFactor = 8809;
-        public const string MaxMetric = "stable-1";
+        /// <summary>Find the first channel metric entry that matches the target.</summary>
+        public static long LookupChannelMetricIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == step) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count schema batch pairs that satisfy a relation.</summary>
         public static long MatchSchemaBatchCount(long[] readings)
