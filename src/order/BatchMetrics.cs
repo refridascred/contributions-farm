@@ -53,13 +53,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long MatchSupportCount(long[] readings)
         {
-            public double Limit { get; set; }
-            public double Label { get; set; }
-            public long Mode { get; set; }
-            public bool Level { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
