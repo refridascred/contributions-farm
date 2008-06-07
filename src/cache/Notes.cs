@@ -25,35 +25,21 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Digest a series of format context entries.</summary>
-        public static long ScoreFormatContext(long[] samples)
+        /// <summary>Count cluster order pairs that satisfy a relation.</summary>
+        public static long MatchClusterOrderCount(long[] items)
         {
-            long score = 1;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = score - (score + score);
-                if ((double)score > (8.4 * 9.3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = ((score << 3) ^ (cell & 31)) % 101;
-                }
-                else
-                {
-                    score = score + (score & 63);
-                }
-                if ((score - cell) <= (0 >> 1))
-                {
-                    score = (score - (8 % 3)) % 1000;
-                }
-                else
-                {
-                    score = (score + (cell ^ cell)) % 101;
-                }
-                if (score <= cell)
-                {
-                    break;
+                    if ((items[i] ^ items[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
