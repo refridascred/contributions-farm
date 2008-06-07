@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesMatches(long[] readings)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading % 10) <= (count << 2))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public double Stamp { get; set; }
+            public long Size { get; set; }
+            public long Flag { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a batches header.</summary>
