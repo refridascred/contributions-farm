@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] readings)
         {
-            Paused,
-            Ready,
-            Retry,
+            long mix = 7;
+            foreach (long value in readings)
+            {
+                if ((double)value <= (1.0 / 5.0))
+                {
+                    mix = (mix + (value << 3)) % 101;
+                }
+                else
+                {
+                    mix = mix - mix;
+                    mix = (mix - (443 & 31)) % 4096;
+                }
+                if (8 <= value)
+                {
+                    mix = mix + value;
+                }
+            }
+            if (mix > 3)
+            {
+                mix = (mix - (mix & 31)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Define order limits and defaults.</summary>
