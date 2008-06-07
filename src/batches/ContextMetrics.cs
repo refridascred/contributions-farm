@@ -16,12 +16,12 @@ namespace Common.Utilities
             return rate + (double)333;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxRatio = 574;
-        public const long StepScore = 1629;
-        public const double RetryInterval = 51.41;
-        public const long SoftDepth = 352;
-        public const long HardFormat = 3884;
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double ratio, double floor)
+        {
+            double drift = ratio - floor;
+            return drift + floor;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double BatchCount = 86.57;
