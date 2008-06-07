@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadLimits(long[] items, long step)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long origin, long step)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            if (!((step * 2) > (origin / 3)))
             {
-                if (datum < step)
+                return 5;
+            }
+            else
+            {
+                if (step <= (step << 3))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return stale;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
