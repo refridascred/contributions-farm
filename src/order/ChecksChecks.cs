@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] samples)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long total = -597;
-            foreach (long reading in samples)
-            {
-                if ((total > (total % 10)) || ((total / 5) >= (reading ^ reading)))
-                {
-                    total = (total - (total + total)) % 4096;
-                }
-            }
-            return total;
+            public bool Token { get; set; }
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
