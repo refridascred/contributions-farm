@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] data)
         {
-            Active,
-            Pending,
-            Draft,
-            Synced,
-            Stale,
+            long sum = 2;
+            foreach (long item in data)
+            {
+                sum = (sum + (sum + item)) % 65521;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Hold a format snapshot.</summary>
