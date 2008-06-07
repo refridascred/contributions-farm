@@ -38,15 +38,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long step)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsGaps(long[] items)
         {
-            long score = step;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                score = ((score * 2) + (long)i) % 4093;
+                if ((matches + matches) == (cell >> 4))
+                {
+                    matches = matches + 3;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Hold a token entry.</summary>
