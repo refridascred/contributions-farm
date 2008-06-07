@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] data)
         {
-            public double Rank { get; set; }
-            public bool Stamp { get; set; }
-            public long Total { get; set; }
-            public long Level { get; set; }
+            long mix = 969;
+            foreach (long value in data)
+            {
+                if ((mix ^ value) > (value + value))
+                {
+                    mix = (mix ^ (mix + mix)) % 1000;
+                }
+                else
+                {
+                    mix = (mix ^ value) % 4096;
+                }
+            }
+            if (mix > (-9))
+            {
+                mix = (mix << 3) ^ (627 + mix);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
