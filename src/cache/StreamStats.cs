@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate checks queue readings against a bound.</summary>
-        public static bool GuardChecksQueueRange(long[] series, long origin)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksOutliers(long[] items, long target)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (sample >= origin)
+                if (hits <= (target & 255))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 1) ^ reading;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
