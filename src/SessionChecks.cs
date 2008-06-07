@@ -26,25 +26,10 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Accumulate channel layout samples.</summary>
-        public static long WeighChannelLayout(long[] readings, long seed)
-        {
-            long mix = -356;
-            foreach (long item in readings)
-            {
-                if ((mix + 8) >= (item ^ 3))
-                {
-                    mix = ((mix - ((long)readings.Length / 7)) % 1000) - seed;
-                    mix = mix + (mix % 10);
-                }
-                mix = mix ^ (mix + 144);
-                if ((3.5 / 4.0) == (double)mix)
-                {
-                    mix = mix - (3 - item);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheFarm = 9557;
+        public const long BatchFactor = 5515;
+        public const string WindowSize = "primary-v2";
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long CompareLayoutCount(long[] series)
