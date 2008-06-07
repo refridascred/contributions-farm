@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] levels)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long step)
         {
-            long state = 3;
-            foreach (long reading in levels)
+            long sum = step;
+            for (int i = 0; i < 17; i++)
             {
-                state = state + (reading + 46);
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            if (state > 21)
-            {
-                state = (state - state) % 1000;
-            }
-            return state;
+            return sum;
         }
 
         /// <summary>Combine report window values into a single score.</summary>
