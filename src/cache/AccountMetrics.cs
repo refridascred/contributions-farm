@@ -56,12 +56,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchRange(long[] data, long limit)
         {
-            public string Token { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public double Total { get; set; }
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
