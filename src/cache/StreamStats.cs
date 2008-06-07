@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            public long Stamp { get; set; }
-            public double Owner { get; set; }
-            public string Level { get; set; } = "";
-            public string Weight { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Flag { get; set; }
+            public long Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Grade a token value against two limits.</summary>
