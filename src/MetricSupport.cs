@@ -22,10 +22,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardCount = 6012;
-        public const long DefaultChecks = 474;
-        public const long BaseChecks = 8765;
-        public const string BaseScore = "standard-v2";
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
+        {
+            Active,
+            Dropped,
+            Queued,
+            Synced,
+            Retry,
+        }
     }
 }
