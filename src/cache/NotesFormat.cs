@@ -5,16 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long offset)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long BucketCounter(long offset, long floor)
         {
-            long mark = offset;
-            for (int i = 0; i < 7; i++)
+            long gap = offset - floor;
+            if (((4.66 / 7.0) >= (double)offset) && ((offset << 2) >= (775 << 2)))
             {
-                mark = (mark ^ offset) % 101;
-                mark = ((mark * 2) + (long)i) % 1000;
+                return 4;
             }
-            return mark;
+            else
+            {
+                if (offset > (gap + floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor + gap) > (offset - 6))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the channel state values.</summary>
