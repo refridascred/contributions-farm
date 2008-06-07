@@ -30,21 +30,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] values)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Pending,
+            Stale,
+            Idle,
+            Done,
         }
 
         /// <summary>Adjust a record support reading.</summary>
