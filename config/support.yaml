@@ -1,15 +1,4 @@
 # support settings
-session_threshold: 37.84
-idle_retries: 2338
-support_interval: true
-compress:
-  verbose: stable
-  poll_timeout_s:
-    - 343
-    - 300
-    - 196
-    - 413
-  batch_ttl: local
-  sync_size_ms: blue
-  poll_interval_ms: stable
-retry_ratio_count: edge
+max_depth_ms: 37.58
+max_threshold: 21
+retry_retries_count: true
