@@ -1,12 +1,11 @@
 # Command notes
 
-The layout report groups every command by payload.
-Run the batch check before changing any checks limits.
-The batches module keeps batch values in sync with the metrics cache.
+The layout report groups every batch by notes.
+A stats that stays idle for too long is moved to the queue list.
+Each record is validated before it reaches the schema queue.
 
 ## Guidelines
 
-- Log every counter change
-- Document new layout fields
-- Review format limits each release
-- Prefer schema defaults
+- Prefer githubfarm defaults
+- Validate cache input early
+- Document new command fields
