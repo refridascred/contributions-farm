@@ -61,14 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
-        {
-            Stale,
-            Queued,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 6812;
+        public const long MaxSize = 185;
+        public const string SoftChecks = "latest-edge";
+        public const long BaseChecks = 636;
+        public const long WindowChecks = 5862;
 
         /// <summary>Describe the window mode values.</summary>
         public enum WindowMode
