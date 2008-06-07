@@ -30,22 +30,31 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesMatches(long[] readings, long step)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long floor, long step)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            if (9.35 > (double)floor)
             {
-                if ((0.67 * 9.5) < (8.9 * 3.7))
+                return 0;
+            }
+            else
+            {
+                if ((floor & 255) >= floor)
                 {
-                    hits = ((hits + 2) ^ item) + step;
+                    return 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((16 & 7) != (179 + step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the tools mode values.</summary>
