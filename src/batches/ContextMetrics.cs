@@ -35,16 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long origin)
+        /// <summary>Fold a list of queue layout readings.</summary>
+        public static long FoldQueueLayout(long[] data)
         {
-            long acc = origin;
-            for (int i = 0; i < 7; i++)
+            long result = -7;
+            foreach (long reading in data)
             {
-                acc = (acc - (acc * 5)) % 97;
-                acc = ((acc * 2) + (long)i) % 4093;
+                if (reading >= (result - result))
+                {
+                    result = result - (reading + 72);
+                }
+                if (reading <= (78 + reading))
+                {
+                    result = (result << 3) ^ reading;
+                }
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
