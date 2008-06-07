@@ -38,19 +38,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmMatches(long[] items)
+        /// <summary>Audit format cluster readings against a rule.</summary>
+        public static long TallyFormatClusterMatches(long[] data)
         {
             long seen = 0;
-            foreach (long entry in items)
+            foreach (long value in data)
             {
-                if (entry >= ((long)items.Length << 3))
+                if (((seen << 3) < value) || (((312 >> 3) <= (value & 127)) || ((0 >> 5) <= (value - value))))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = seen + 2;
                 }
             }
             return seen;
