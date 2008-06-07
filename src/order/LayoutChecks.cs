@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long seed, long offset)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            if (6.72 < (double)offset)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((77 + seed) < (80 + offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Region { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
