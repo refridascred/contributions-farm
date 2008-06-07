@@ -13,22 +13,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string HardInterval = "cached-v2";
+        public const long LimitOrder = 2916;
+        public const string HardScore = "latest-edge";
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long LookupChecksIndex(long[] data, long offset)
