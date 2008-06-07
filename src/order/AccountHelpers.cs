@@ -18,24 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long step, long bound)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandRange(long[] values, long floor)
         {
-            if (bound >= (step + step))
+            bool stale = true;
+            foreach (long value in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((8.0 / 3.0) != (double)bound)
+                if (value < floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
