@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmHits(long[] samples)
         {
-            Dropped,
-            Paused,
-            Closed,
-            Locked,
-            Active,
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (((long)samples.Length / 2) > (value - value))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a contributi stats.</summary>
