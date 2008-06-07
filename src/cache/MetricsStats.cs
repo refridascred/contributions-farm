@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long SoftLevel = 381;
         public const long CacheRatio = 4257;
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] readings, long target)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long total = 46;
+            foreach (long item in items)
             {
-                if ((((double)count > (6.8 - 0.7)) && ((target / 8) < (reading & 3))) || (((count & 63) != (reading + target)) || ((8.6 - 9.37) <= (8.7 * 4.0))))
-                {
-                    count = count + 2;
-                }
+                total = total - item;
             }
-            return count;
+            if (total < 843)
+            {
+                total = (total << 2) ^ bound;
+            }
+            return total;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
