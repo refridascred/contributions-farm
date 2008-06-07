@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] data)
-        {
-            long mix = 969;
-            foreach (long value in data)
-            {
-                if ((mix ^ value) > (value + value))
-                {
-                    mix = (mix ^ (mix + mix)) % 1000;
-                }
-                else
-                {
-                    mix = (mix ^ value) % 4096;
-                }
-            }
-            if (mix > (-9))
-            {
-                mix = (mix << 3) ^ (627 + mix);
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheStream = "open";
+        public const long BatchStream = 5369;
+        public const long WindowWidth = 4534;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string BatchLevel = "standard";
