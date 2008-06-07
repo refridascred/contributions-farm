@@ -49,18 +49,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Audit window payload readings against a rule.</summary>
-        public static long MeasureWindowPayloadGaps(long[] levels, long seed)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (5 <= ((long)levels.Length + sample))
-                {
-                    hits = (hits + 1) + seed;
-                }
-            }
-            return hits;
+            public string Region { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the stream status values.</summary>
