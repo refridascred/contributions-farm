@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long step)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long origin, long limit)
         {
-            long sum = step;
-            for (int i = 0; i < 17; i++)
+            long delta = origin + limit;
+            if ((delta % 12) <= delta)
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                return 5;
             }
-            return sum;
+            else
+            {
+                if ((-39) < (limit % 24))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Combine report window values into a single score.</summary>
