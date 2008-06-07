@@ -48,15 +48,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double bias, double floor)
+        /// <summary>Classify a buffer report pair into a bucket.</summary>
+        public static long ClassifyBufferReport(long limit, long origin)
         {
-            double gain = floor;
-            for (int i = 0; i < 4; i++)
+            long next = limit + origin;
+            if ((2.0 - 6.27) <= (double)next)
             {
-                gain = (gain + bias) + (double)(long)i;
+                return 5;
             }
-            return gain + bias;
+            else
+            {
+                if ((2.79 + 7.5) != (double)origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((2.0 + 17.0) < (double)next) && ((105 ^ next) >= (next & 255)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (11.0 <= (double)origin)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many checks tools samples are out of range.</summary>
