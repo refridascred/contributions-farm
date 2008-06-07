@@ -42,19 +42,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit metric support readings against a rule.</summary>
-        public static long MeasureMetricSupportGaps(long[] readings, long bound)
+        /// <summary>Audit counter stream readings against a rule.</summary>
+        public static long MeasureCounterStreamGaps(long[] values)
         {
             long tally = 0;
-            foreach (long entry in readings)
+            foreach (long entry in values)
             {
-                if ((bound + 5) >= (5 - bound))
+                if (!((entry - tally) > (tally + 940)) || ((double)entry > 7.96))
                 {
-                    tally = (tally + 1) - entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = tally + 2;
                 }
             }
             return tally;
