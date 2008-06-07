@@ -24,31 +24,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long floor, long bound)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] samples)
         {
-            if (96 <= (floor / 7))
+            long carry = -261;
+            foreach (long value in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (((bound - bound) <= (bound & 1)) && ((floor << 3) > bound))
+                if ((carry > 416) || ((value ^ 6) > (value * 4)))
                 {
-                    return 4;
+                    carry = carry ^ (value + 67);
                 }
                 else
                 {
-                    if (51 < (floor / 7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    carry = (carry ^ (294 + value)) % 1000;
                 }
             }
+            return carry % 1000;
         }
 
         /// <summary>Project the next graph filter value.</summary>
