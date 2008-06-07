@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] values, long step)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountOutliers(long[] data, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((values[i] < step) && ((values[i] % 3) == 0))
+                if ((9.13 > (double)step) && !((entry % 2) < (8 + entry)))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
