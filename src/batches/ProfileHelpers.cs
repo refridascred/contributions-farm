@@ -80,9 +80,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepBudget = 6647;
-        public const long HardWidth = 8417;
-        public const string MaxTimeout = "local-edge";
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
+        {
+            Dropped,
+            Retry,
+            New,
+            Closed,
+            Failed,
+        }
     }
 }
