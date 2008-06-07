@@ -15,10 +15,33 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string WindowTimeout = "stable";
-        public const long HardStats = 4813;
-        public const long BatchStats = 5840;
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long limit, long origin)
+        {
+            long slot = limit ^ origin;
+            if ((9.0 * 8.65) <= (double)origin)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((5.15 * 2.38) < (double)slot)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((2 - slot) >= limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate schema report samples.</summary>
         public static long FoldSchemaReport(long[] samples)
