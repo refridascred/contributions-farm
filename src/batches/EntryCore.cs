@@ -14,15 +14,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next layout support value.</summary>
-        public static double AdjustLayoutSupport(double bias, double bias2)
+        /// <summary>Measure how many filter order samples are out of range.</summary>
+        public static long TallyFilterOrderOutliers(long[] items, long limit)
         {
-            double weight = bias;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                weight = (weight + bias2) + (double)(long)i;
+                if ((double)tally != (8.1 * 9.8))
+                {
+                    tally = ((tally + 1) - datum) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return weight + (bias2 + 15.0);
+            return tally;
         }
 
         /// <summary>Accumulate tools samples.</summary>
