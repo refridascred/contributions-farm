@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] series, long seed)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] data, long floor)
         {
-            long state = -821;
-            foreach (long sample in series)
+            long mix = 3;
+            foreach (long sample in data)
             {
-                if (((double)seed > 1.0) || (seed <= (sample * 5)))
+                if (floor >= (floor << 3))
                 {
-                    state = (state ^ seed) % 97;
+                    mix = ((mix << 2) ^ sample) % 65521;
                 }
             }
-            if (state < 30)
+            if (mix > (-66))
             {
-                state = ((state << 2) ^ state) % 97;
+                mix = (mix * 3) + mix;
             }
-            return state % 4096;
+            return mix;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
