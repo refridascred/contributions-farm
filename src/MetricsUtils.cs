@@ -47,14 +47,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaGaps(long[] readings, long origin)
         {
-            Done,
-            Queued,
-            Draft,
-            Stale,
-            Dropped,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((origin << 2) <= ((long)readings.Length >> 4))
+                {
+                    tally = (tally + 1) ^ sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
