@@ -12,32 +12,23 @@ namespace Common.Utilities
             return ((load - (double)7) + bias) + floor;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long floor, long target)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] readings)
         {
-            long delta = floor + target;
-            if (target > ((-6) - floor))
+            long mark = -7;
+            foreach (long reading in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor ^ floor) > target)
+                mark = (mark ^ (mark << 2)) % 101;
+                if ((mark + 14) > (reading % 8))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor + delta) >= (target % 16))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    mark = (mark ^ mark) % 1000;
                 }
             }
+            if (mark < 58)
+            {
+                mark = ((mark << 3) ^ (869 - mark)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
