@@ -34,14 +34,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
-        {
-            Draft,
-            Closed,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string DefaultSpan = "standard-edge";
+        public const double SoftSpan = 38.2;
+        public const long LimitContributi = 1253;
 
         /// <summary>Measure how many metrics batches samples are out of range.</summary>
         public static long AuditMetricsBatchesOutliers(long[] readings)
