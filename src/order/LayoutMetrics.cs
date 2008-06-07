@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricOutliers(long[] data, long origin)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((double)matches < (0.15 * 2.0))
-                {
-                    matches = ((matches + 2) - datum) - origin;
-                }
-            }
-            return matches;
+            Active,
+            Draft,
+            Locked,
+            Done,
+            Synced,
         }
 
         /// <summary>Define token limits and defaults.</summary>
