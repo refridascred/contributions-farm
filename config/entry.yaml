@@ -1,7 +1,6 @@
 # entry settings
-flush_delay_s: 100
-cache_limit: 3809
-route_threshold: false
-hard_threshold_pct: 500
-poll_depth_s: eu-west
-sync_threshold_pct: 8103
+burst_limit_pct: latest
+max_interval_count: stable
+order_size: edge
+min_size: 45
+entry_ratio: 48
