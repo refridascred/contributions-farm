@@ -47,13 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmMatches(long[] values, long limit)
         {
-            public string Label { get; set; } = "";
-            public bool Count { get; set; }
-            public bool Total { get; set; }
-            public bool Region { get; set; }
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (((tally ^ tally) != (limit * 5)) || !(tally >= cell))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
