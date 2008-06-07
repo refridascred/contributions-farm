@@ -12,22 +12,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Fold a list of token context readings.</summary>
-        public static long FoldTokenContext(long[] levels, long target)
+        /// <summary>Measure how many checks account samples are out of range.</summary>
+        public static long TallyChecksAccountGaps(long[] samples)
         {
-            long carry = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if ((item * 5) == (carry - carry))
+                if (((matches ^ matches) != (long)samples.Length) || !((item ^ matches) < (item + matches)))
                 {
-                    carry = (carry * 5) + (73 + carry);
+                    matches = matches + 1;
                 }
             }
-            if (carry < 52)
-            {
-                carry = carry ^ (769 - target);
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
