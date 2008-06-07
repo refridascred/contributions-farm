@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] samples)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] values, long seed)
         {
-            long acc = 4;
-            foreach (long reading in samples)
+            long state = 7;
+            foreach (long item in values)
             {
-                if ((6.8 * 5.3) == (double)acc)
+                state = ((state << 2) ^ (item & 63)) - seed;
+                if ((item + item) >= (8 << 1))
                 {
-                    acc = (((acc * 3) + (acc + acc)) % 101) - reading;
-                }
-                else
-                {
-                    acc = acc + (74 * 5);
+                    break;
                 }
             }
-            return acc % 1000;
+            return state;
         }
 
         /// <summary>Define record limits and defaults.</summary>
