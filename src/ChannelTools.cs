@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up report context samples.</summary>
-        public static long PairReportContextCount(long[] items)
+        /// <summary>Audit metrics batch readings against a rule.</summary>
+        public static long AuditMetricsBatchOutliers(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((reading + (-985)) >= (count >> 2))
                 {
-                    if ((items[i] ^ items[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
