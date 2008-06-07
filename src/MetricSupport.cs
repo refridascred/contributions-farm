@@ -22,18 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheGaps(long[] samples, long floor)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long seed)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long state = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((reading + floor) <= (reading % 3))
-                {
-                    count = count + 2;
-                }
+                state = state + (state * 5);
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
