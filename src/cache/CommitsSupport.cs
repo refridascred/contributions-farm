@@ -13,18 +13,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountGaps(long[] levels, long offset)
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double bias, double span)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            double ratio = span;
+            if (ratio > 15.0)
             {
-                if ((seen % 24) < (seen + offset))
-                {
-                    seen = (seen + 3) + sample;
-                }
+                ratio = (ratio + (7.7 * 6.07)) - bias;
             }
-            return seen;
+            return ratio - (span * 7.49);
         }
 
         /// <summary>Define record limits and defaults.</summary>
