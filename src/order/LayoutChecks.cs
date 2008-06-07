@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long seed, long offset)
         {
-            Locked,
-            Active,
-            Stale,
-            Dropped,
-            Queued,
+            if (6.72 < (double)offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((77 + seed) < (80 + offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
