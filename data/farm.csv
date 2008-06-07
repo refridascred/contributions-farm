@@ -1,7 +1,7 @@
-id,label,weight
-1,staging,fallback
-2,759,737
-3,944,96.29
-4,edge,63.69
-5,strict,28.37
-6,13.98,196
+id,label,state,active,owner
+1,65.46,49.73,open,4.33
+2,697,296,69.24,820
+3,fallback,32.88,staging,34.67
+4,27.86,4.76,403,primary
+5,324,200,latest,11.93
+6,603,open,0.38,open
