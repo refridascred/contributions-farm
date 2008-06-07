@@ -14,31 +14,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Rank record token input into a small class.</summary>
-        public static long ClassifyRecordToken(long limit, long seed)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyLimits(long[] items, long limit)
         {
-            if ((limit & 3) <= limit)
+            bool found = true;
+            foreach (long reading in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit % 60) == (seed >> 2))
+                if (reading > limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((11.0 / 9.0) == (double)limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
