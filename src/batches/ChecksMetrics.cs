@@ -49,30 +49,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] series, long seed)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] values, long limit)
         {
-            long mix = -58;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((mix + reading) <= seed)
+                if (values[i] == limit)
                 {
-                    mix = ((mix << 3) ^ (reading & 3)) % 255;
-                }
-                else
-                {
-                    mix = (mix - ((long)series.Length & 15)) % 1000;
-                }
-                if ((reading ^ reading) >= (mix - reading))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mix < 8)
-            {
-                mix = (mix - seed) % 97;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Fold a list of account readings.</summary>
