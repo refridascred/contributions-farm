@@ -23,21 +23,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long MatchNotesCount(long[] items)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public long Level { get; set; }
+            public bool Total { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Grade a tools stats value against two limits.</summary>
