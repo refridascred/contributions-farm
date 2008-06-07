@@ -1,5 +1,13 @@
 {
-  "compress": true,
-  "min_window_s": "latest",
-  "idle_timeout_s": 1024
+  "poll_ratio_ms": 14.7,
+  "strict": ["green", "cached"],
+  "warm_retries_count": 40.93,
+  "counter_timeout": true,
+  "session_capacity": {
+    "dry_run": 4939,
+    "max_retries_pct": 981,
+    "warm_window": 4446,
+    "batch_ratio_pct": "open",
+    "compress": 76.79
+  }
 }
