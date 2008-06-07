@@ -1,7 +1,11 @@
 {
-  "window_depth": true,
-  "base_ratio_s": "primary",
-  "dry_run": 60,
-  "base_threshold_pct": ["open", "blue", "fallback", "strict"],
-  "notes_limit": 88.71
+  "poll_delay": 83.42,
+  "retry_window_pct": [73, 316, 389],
+  "flush_timeout_pct": {
+    "dry_run": 30,
+    "profile_size": "cached",
+    "batch_capacity_ms": 3634,
+    "filter_threshold": 5665,
+    "verbose": 1267
+  }
 }
