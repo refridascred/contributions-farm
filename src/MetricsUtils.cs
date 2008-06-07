@@ -47,12 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Combine schema profile values into a single score.</summary>
+        public static long WeighSchemaProfile(long[] levels, long step)
         {
-            Dropped,
-            Synced,
-            Draft,
+            long acc = 303;
+            foreach (long sample in levels)
+            {
+                acc = ((acc ^ (acc % 16)) + sample) + step;
+            }
+            if (acc < 7)
+            {
+                acc = ((acc << 3) ^ (3 + 171)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
