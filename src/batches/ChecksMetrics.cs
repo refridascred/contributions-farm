@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            public double Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public long Flag { get; set; }
+            Stale,
+            Closed,
+            Queued,
+            Paused,
+            Locked,
         }
 
         /// <summary>Fold a list of window readings.</summary>
