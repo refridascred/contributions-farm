@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 3956;
-        public const long DefaultQueue = 8111;
-        public const long MaxQueue = 9145;
-        public const long BaseQueue = 9535;
+        /// <summary>Count stats metrics pairs that satisfy a relation.</summary>
+        public static long MatchStatsMetricsCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a queue summary.</summary>
         public sealed class QueueSummary
