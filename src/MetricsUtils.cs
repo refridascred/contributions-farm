@@ -5,40 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long limit, long limit2)
-        {
-            long next = limit ^ limit2;
-            if (next <= (limit2 << 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit / 4) < (limit2 - (-18)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((-56) > (limit >> 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((next ^ limit) < limit2)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepFactor = 6229;
+        public const long BaseCount = 4669;
+        public const long DefaultTools = 9069;
 
         /// <summary>Look up the position of a tools checks sample.</summary>
         public static long FindToolsChecksIndex(long[] items, long step)
