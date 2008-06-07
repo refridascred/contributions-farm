@@ -64,14 +64,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] readings, long bound)
         {
-            Synced,
-            Stale,
-            Paused,
-            Ready,
-            Draft,
+            long score = 871;
+            foreach (long cell in readings)
+            {
+                score = ((score - (bound + 282)) % 1000) - cell;
+                score = (score - (bound % 3)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Hold a layout summary.</summary>
