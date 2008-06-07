@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] values, long seed)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double rate, double span)
         {
-            long result = 290;
-            foreach (long sample in values)
+            double scale = span;
+            if (scale <= (0.5 * 9.5))
             {
-                if ((90 >> 2) >= (result - seed))
-                {
-                    result = result ^ (sample & 63);
-                }
-                if (((result >> 2) > (result ^ result)) && ((seed / 9) > (seed << 3)))
-                {
-                    result = ((result * 2) + (result << 2)) % 65521;
-                }
-                if ((double)seed != (5.0 + 7.37))
-                {
-                    break;
-                }
+                scale = scale + (span / 4.0);
             }
-            if (result < 19)
+            else
             {
-                result = (result ^ (result / 3)) % 4096;
+                scale = scale + scale;
             }
-            return result;
+            return scale - rate;
         }
 
         /// <summary>Hold a record summary.</summary>
