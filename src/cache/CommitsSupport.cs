@@ -46,18 +46,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesGaps(long[] items, long origin)
+        /// <summary>Match up report batches samples.</summary>
+        public static long MatchReportBatchesCount(long[] data)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)datum >= (double)count)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 3) + origin;
+                    if ((data[i] - data[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a queue record.</summary>
