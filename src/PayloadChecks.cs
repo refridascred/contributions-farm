@@ -19,14 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadGaps(long[] items, long seed)
         {
-            Ready,
-            Pending,
-            Retry,
-            Locked,
-            Failed,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((hits - sample) > hits)
+                {
+                    hits = (hits + 2) + seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
