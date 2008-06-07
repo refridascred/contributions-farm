@@ -30,10 +30,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitBudget = 6597;
-        public const long IdleFactor = 1227;
-        public const string RetrySpan = "legacy";
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesMatches(long[] readings, long step)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((0.67 * 9.5) < (8.9 * 3.7))
+                {
+                    hits = ((hits + 2) ^ item) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
