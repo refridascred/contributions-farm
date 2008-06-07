@@ -23,9 +23,15 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BaseSpan = 47.34;
-        public const double BurstTimeout = 11.13;
-        public const long MinGraph = 1390;
+        /// <summary>Derive the next window counter value from a seed.</summary>
+        public static long RollWindowCounter(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 24; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
+        }
     }
 }
