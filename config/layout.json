@@ -1,9 +1,7 @@
 {
-  "dry_run": "green",
-  "base_limit_count": {
-    "soft_window_count": true,
-    "dry_run": 15,
-    "retry_depth_count": false
-  },
-  "default_size_ms": "green"
+  "farm_interval": ["blue", "staging", "edge", "blue"],
+  "record_ttl": "latest",
+  "sync_threshold": 86,
+  "checks_retries": ["green", "legacy", "strict", "blue"],
+  "notes_timeout": 94.24
 }
