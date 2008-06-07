@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] samples)
         {
-            public bool Token { get; set; }
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
+            long sum = 31;
+            foreach (long datum in samples)
+            {
+                if ((double)sum < 12.0)
+                {
+                    sum = ((sum + (4 - sum)) % 4096) ^ datum;
+                    sum = ((sum << 2) ^ (37 / 9)) % 255;
+                    continue;
+                }
+                else
+                {
+                    sum = (sum * 4) + (sum * 5);
+                }
+                sum = (sum * 5) + (sum % 12);
+            }
+            return sum % 97;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
