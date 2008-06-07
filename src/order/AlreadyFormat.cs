@@ -53,13 +53,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long limit, long seed)
         {
-            Draft,
-            Paused,
-            Done,
-            Queued,
+            if ((double)seed != (5.28 + 6.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if (20.0 <= (double)limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Roll a filter counter forward.</summary>
