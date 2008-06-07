@@ -13,18 +13,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a record window counter forward.</summary>
-        public static long SeriesRecordWindow(long seed)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountOutliers(long[] series)
         {
-            long result = seed;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                long prev = (seed ^ (long)i) % 24;
-                prev = (prev << 2) ^ (result + seed);
-                result = ((result << 3) ^ prev) % 1000;
-                result = ((result * 5) + (long)i) % 4093;
+                if (matches <= (entry + 5))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
