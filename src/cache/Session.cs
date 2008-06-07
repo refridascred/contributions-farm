@@ -53,12 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            public double Count { get; set; }
-            public bool Offset { get; set; }
-            public long Size { get; set; }
+            Dropped,
+            Draft,
+            Closed,
+            Queued,
         }
     }
 }
