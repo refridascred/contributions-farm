@@ -34,17 +34,11 @@ namespace Common.Utilities
         public const long LimitChannel = 9744;
         public const string BurstChannel = "primary-1";
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long FindTokenIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == origin) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 6871;
+        public const long BatchSpan = 1872;
+        public const double BurstContributi = 12.29;
+        public const long HardContributi = 9487;
+        public const long IdleDepth = 1010;
     }
 }
