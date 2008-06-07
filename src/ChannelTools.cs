@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] data)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] items, long step)
         {
-            long acc = 496;
-            foreach (long sample in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((long)data.Length >> 3) > 56)
+                if (items[i] <= step)
                 {
-                    acc = (acc + sample) % 4096;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
