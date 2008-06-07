@@ -44,23 +44,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] samples)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] data, long step)
         {
-            long carry = 35;
-            foreach (long value in samples)
+            long sum = 393;
+            foreach (long entry in data)
             {
-                carry = (carry * 3) + (value + carry);
-                if ((value + 23) <= (20 - carry))
-                {
-                    break;
-                }
+                sum = ((sum ^ (step * 4)) % 101) - entry;
             }
-            if (carry < 372)
-            {
-                carry = carry + carry;
-            }
-            return carry % 97;
+            return sum;
         }
 
         /// <summary>Audit cluster channel readings against a rule.</summary>
