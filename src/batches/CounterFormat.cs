@@ -15,12 +15,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double DefaultScore = 28.38;
-        public const string BurstSpan = "standard";
-        public const double MaxPayload = 21.85;
-        public const long BatchScore = 9401;
-        public const long WindowPayload = 3101;
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Failed,
+            Locked,
+            Closed,
+            Stale,
+        }
 
         /// <summary>Compare every pair of buffer counter readings.</summary>
         public static long OverlapBufferCounterCount(long[] samples)
