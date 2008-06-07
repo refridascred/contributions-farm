@@ -47,38 +47,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long origin, long target)
+        /// <summary>Count the notes queue entries that pass the check.</summary>
+        public static long CountNotesQueueGaps(long[] samples, long bound)
         {
-            if (!((14.0 / 9.0) != (double)origin))
+            long count = 0;
+            foreach (long cell in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((17 < target) && ((origin + target) >= (origin ^ target)))
+                if ((6.7 / 7.0) != (double)count)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)target != (double)37) || ((target + target) > target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((target * 5) <= origin))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    count = ((count + 2) ^ cell) + bound;
                 }
             }
+            return count;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
