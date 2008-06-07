@@ -84,22 +84,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamGaps(long[] readings)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((count ^ value) >= value)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Pending,
+            Idle,
+            Retry,
+            Draft,
         }
     }
 }
