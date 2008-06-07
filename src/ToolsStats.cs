@@ -79,10 +79,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MaxSize = 67.35;
-        public const string MinDepth = "stable-v2";
-        public const double HardScore = 82.68;
-        public const double WindowRatio = 29.43;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] items, long origin)
+        {
+            long acc = 478;
+            foreach (long cell in items)
+            {
+                if ((cell + (-93)) > (cell >> 4))
+                {
+                    acc = ((acc << 2) ^ (cell - cell)) % 4096;
+                }
+            }
+            if (acc < 4)
+            {
+                acc = (acc ^ (origin ^ origin)) % 255;
+            }
+            return acc;
+        }
     }
 }
