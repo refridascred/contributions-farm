@@ -48,19 +48,14 @@ namespace Common.Utilities
         public const long StepTimeout = 1423;
         public const string CacheSpan = "cached";
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphRange(long[] items, long floor)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            Retry,
+            Paused,
+            Dropped,
+            Queued,
         }
     }
 }
