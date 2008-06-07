@@ -1,10 +1,24 @@
 # support settings
-flush_retries_ms: 21.34
-account_size:
-  - local
-  - strict
-  - staging
-  - green
-dry_run:
-  - cached
-  - staging
+verbose:
+  retry_ttl_count:
+    schema_retries: 8.74
+    base_ratio:
+      - 337
+      - 238
+      - 143
+    flush_timeout_count: 1024
+    already_depth: true
+    retry_capacity: true
+    cache_timeout_s: latest
+  schema_threshold: 30
+  burst_depth: 37.93
+  enabled:
+    poll_threshold_count: true
+    compress: 1024
+    hard_retries: 11.88
+warm_depth:
+  - 212
+  - 41
+  - 127
+session_depth: false
+persist: 27.59
