@@ -40,10 +40,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BaseEditor = 33.63;
-        public const long DefaultScore = 4717;
-        public const double DefaultTimeout = 0.22;
+        /// <summary>Measure how many batch notes samples are out of range.</summary>
+        public static long CountBatchNotesGaps(long[] items, long origin)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (((-2) * 4) == (origin & 255))
+                {
+                    seen = (seen + 3) + value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate buffer contributi samples.</summary>
         public static long TallyBufferContributi(long[] data, long target)
