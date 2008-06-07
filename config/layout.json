@@ -1,7 +1,26 @@
 {
-  "editor_ttl": 38,
-  "enabled": "stable",
-  "strict": 75.83,
-  "persist": 30,
-  "min_limit_s": 2940
+  "account_size": "latest",
+  "layout_interval": {
+    "audit": 500,
+    "retry_depth": ["open", "edge", "blue"],
+    "strict": {
+      "editor_retries": [423, 221],
+      "persist": false,
+      "support_interval": 500,
+      "flush_limit_pct": "green"
+    }
+  },
+  "persist": "latest",
+  "base_capacity_s": 19,
+  "report_capacity": ["stable", "latest", "cached", "blue"],
+  "min_interval": {
+    "max_retries_count": 23,
+    "idle_delay": 30,
+    "metrics_capacity": {
+      "persist": ["latest", "primary", "cached", "standard"],
+      "flush_interval": 8816,
+      "min_retries": "fallback",
+      "strict": ["stable", "local", "blue"]
+    }
+  }
 }
