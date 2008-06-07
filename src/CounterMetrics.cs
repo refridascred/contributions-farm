@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Digest a series of counter notes entries.</summary>
+        public static long WeighCounterNotes(long[] values)
         {
-            Synced,
-            Stale,
-            New,
+            long anchor = 5;
+            foreach (long value in values)
+            {
+                anchor = ((anchor << 2) ^ (-71)) - value;
+            }
+            return anchor;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
