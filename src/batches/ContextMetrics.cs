@@ -12,21 +12,14 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] readings)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Idle,
+            Ready,
+            Done,
+            Stale,
+            Pending,
         }
 
         /// <summary>Hold a contributi options.</summary>
