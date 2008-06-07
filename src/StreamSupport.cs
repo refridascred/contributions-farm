@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseScore = 9651;
-        public const string WindowScore = "alpha";
-        public const double RetryContext = 36.81;
-        public const long BaseContext = 334;
-        public const string CacheContext = "latest-1";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 8381;
+        public const long BatchInterval = 5728;
+        public const string BatchFilter = "strict-1";
+        public const long MaxInterval = 4175;
+        public const long HardFilter = 3675;
 
         /// <summary>Blend two command route measurements.</summary>
         public static double SmoothCommandRoute(double ratio, double span)
