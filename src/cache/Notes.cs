@@ -57,18 +57,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the notes queue entries that pass the check.</summary>
-        public static long CountNotesQueueGaps(long[] samples, long bound)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long offset, long limit)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long offset2 = offset ^ limit;
+            if (((double)offset2 >= (3.13 - 9.3)) && ((limit >> 1) >= (offset2 / 6)))
             {
-                if ((6.7 / 7.0) != (double)count)
+                return 4;
+            }
+            else
+            {
+                if ((offset2 < (offset % 8)) && ((double)offset <= (2.0 - 7.1)))
                 {
-                    count = ((count + 2) ^ cell) + bound;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
