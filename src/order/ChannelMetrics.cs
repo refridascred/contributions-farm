@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] data)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutHits(long[] readings)
         {
-            long total = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                total = total - (total << 1);
-                total = total - ((-933) + total);
-                if (entry <= (total - entry))
+                if (((42 / 4) <= matches) && ((matches * 3) == (value + matches)))
                 {
-                    total = ((total << 3) ^ (total + total)) % 101;
+                    matches = matches + 2;
                 }
             }
-            if (total < 815)
-            {
-                total = (total * 4) + (total + total);
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Describe the layout mode values.</summary>
