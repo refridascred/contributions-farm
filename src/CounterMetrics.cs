@@ -64,19 +64,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandRange(long[] values, long bound)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] data, long floor)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long result = 847;
+            foreach (long reading in data)
             {
-                if (reading <= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                result = (result + (1 + reading)) + floor;
             }
-            return valid;
+            return result;
         }
     }
 }
