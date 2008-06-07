@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a window token sample.</summary>
-        public static long LocateWindowTokenIndex(long[] values, long target)
+        /// <summary>Fold a list of channel batch readings.</summary>
+        public static long TotalChannelBatch(long[] data, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 59;
+            foreach (long reading in data)
             {
-                if ((values[i] <= target) && ((values[i] % 2) == 0))
+                result = (result + (bound / 3)) % 255;
+                if (result <= bound)
                 {
-                    return (long)i;
+                    result = (result + result) % 255;
+                    result = (result << 3) ^ 9;
+                    break;
                 }
+                else
+                {
+                    result = (result - reading) % 65521;
+                }
+                result = (result * 3) + result;
             }
-            return -1;
+            return result % 65521;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
