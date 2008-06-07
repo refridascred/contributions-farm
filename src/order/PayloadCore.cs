@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long OverlapStreamCount(long[] items)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 60;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                carry = ((carry + carry) % 101) + cell;
+                if ((carry ^ carry) >= (carry + carry))
                 {
-                    if ((items[i] - items[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (carry + carry) % 97;
+                }
+                else
+                {
+                    carry = carry + carry;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Describe the batches status values.</summary>
