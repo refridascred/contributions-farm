@@ -44,14 +44,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            Idle,
+            Failed,
+            Active,
             Queued,
-            Paused,
-            Dropped,
-            Ready,
+            Retry,
         }
     }
 }
