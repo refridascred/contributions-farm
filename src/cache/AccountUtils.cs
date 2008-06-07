@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long offset)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long total = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            public double Stamp { get; set; }
+            public double Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
