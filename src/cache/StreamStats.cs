@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string MaxLevel = "latest-1";
-        public const long BatchLevel = 2162;
-        public const long BatchDepth = 6822;
+        /// <summary>Validate checks queue readings against a bound.</summary>
+        public static bool GuardChecksQueueRange(long[] series, long origin)
+        {
+            bool ok = true;
+            foreach (long sample in series)
+            {
+                if (sample >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long MeasureEntryGaps(long[] data)
