@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorHits(long[] values, long origin)
+        /// <summary>Validate payload metric readings against a bound.</summary>
+        public static bool CheckPayloadMetricRange(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long value in data)
             {
-                if (((value + origin) > (hits * 2)) && (((origin - hits) <= value) && (origin > (191 - (long)values.Length))))
+                if (value < bound)
                 {
-                    hits = hits + 3;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
