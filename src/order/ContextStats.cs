@@ -36,9 +36,17 @@ namespace Common.Utilities
             return (load - offset) + bias;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string IdleReport = "local-v2";
-        public const long RetryInterval = 1893;
-        public const long MinTimeout = 4622;
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
