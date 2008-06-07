@@ -19,12 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public bool Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the token state values.</summary>
