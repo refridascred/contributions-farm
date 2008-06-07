@@ -16,27 +16,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the counter channel series from a seed.</summary>
-        public static long RollCounterChannel(long floor)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] samples)
         {
-            long total = floor;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)floor < (10.0 + 4.2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = (total * 5) + floor;
+                    if ((samples[i] - samples[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    total = (total * 4) + (floor + total);
-                }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    total = (total - (total / 4)) ^ (long)i2;
-                }
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Hold a buffer entry.</summary>
