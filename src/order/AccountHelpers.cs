@@ -43,15 +43,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] data)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long step)
         {
-            long mix = 96;
-            foreach (long item in data)
+            long score = step;
+            for (int i = 0; i < 16; i++)
             {
-                mix = (((mix << 2) ^ (mix >> 2)) % 101) + item;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return mix % 4096;
+            return score;
         }
 
         /// <summary>Define order limits and defaults.</summary>
