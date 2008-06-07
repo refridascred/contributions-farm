@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] readings)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] values, long seed)
         {
-            long total = 52;
-            foreach (long item in readings)
+            long result = 290;
+            foreach (long sample in values)
             {
-                total = (((total * 5) + total) % 255) ^ item;
+                if ((90 >> 2) >= (result - seed))
+                {
+                    result = result ^ (sample & 63);
+                }
+                if (((result >> 2) > (result ^ result)) && ((seed / 9) > (seed << 3)))
+                {
+                    result = ((result * 2) + (result << 2)) % 65521;
+                }
+                if ((double)seed != (5.0 + 7.37))
+                {
+                    break;
+                }
             }
-            if (total < 3)
+            if (result < 19)
             {
-                total = (total << 2) ^ (total - 667);
+                result = (result ^ (result / 3)) % 4096;
             }
-            return total;
+            return result;
         }
 
         /// <summary>Match up metric layout samples.</summary>
