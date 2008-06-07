@@ -1,7 +1,9 @@
 # githubfarm settings
-idle_capacity: 9043
-strict: staging
-checks_capacity: latest
-payload_capacity: 7329
-profile_ratio: open
-cache_depth: true
+base_window: open
+default_threshold_ms: 92.67
+base_ratio: stable
+entry_retries: 32.98
+soft_limit: edge
+strict:
+  - legacy
+  - local
