@@ -26,12 +26,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Grade a metrics commits value against two limits.</summary>
+        public static long SortMetricsCommits(long origin, long offset)
         {
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
-            public bool Mode { get; set; }
+            if (!((double)origin <= 19.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((offset - origin) >= (origin + origin)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset << 2) == (origin + origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a token sample.</summary>
