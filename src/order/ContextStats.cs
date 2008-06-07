@@ -34,11 +34,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double bias, double offset)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            double load = (double)(277 >> 1);
-            return (load - offset) + bias;
+            Active,
+            Synced,
+            New,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
