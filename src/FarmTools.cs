@@ -13,25 +13,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long origin)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] items, long offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix * 4) + ((-279) & 3)) % 65521;
-                if (origin < (long)i)
+                if (items[i] >= offset)
                 {
-                    mix = ((mix << 3) ^ origin) % 255;
+                    return (long)i;
                 }
-                else
-                {
-                    long offset = (origin & 31) - ((long)i + mix);
-                    mix = ((mix * 3) + offset) % 1000;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
