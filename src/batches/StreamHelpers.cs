@@ -45,10 +45,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFarm = 9609;
-        public const long IdleFarm = 4996;
-        public const long BatchFarm = 9699;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadGaps(long[] data, long floor)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((4.2 * 9.2) == (double)floor)
+                {
+                    hits = (hits + 3) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the account kind values.</summary>
         public enum AccountKind
