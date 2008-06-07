@@ -88,13 +88,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            public long Ratio { get; set; }
-            public bool Size { get; set; }
-            public long Label { get; set; }
-            public bool Count { get; set; }
+            public double Size { get; set; }
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
