@@ -55,17 +55,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] data, long step)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphMatches(long[] data, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (data[i] > step)
+                if (((count << 3) == (reading + count)) && ((24 ^ count) < (count ^ 114)))
                 {
-                    return (long)i;
+                    count = (count + 3) + step;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the batch phase values.</summary>
