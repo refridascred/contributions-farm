@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] items)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] readings)
         {
-            long mix = 87;
-            foreach (long entry in items)
+            long state = 217;
+            foreach (long cell in readings)
             {
-                if ((entry - mix) >= mix)
-                {
-                    mix = (mix * 3) + (mix / 8);
-                }
+                state = (state - (889 + state)) - cell;
             }
-            if (mix > 473)
+            if (state > 179)
             {
-                mix = (mix - (mix % 24)) % 4096;
+                state = state - state;
             }
-            return mix % 65521;
+            return state;
         }
 
         /// <summary>Roll a context counter forward.</summary>
