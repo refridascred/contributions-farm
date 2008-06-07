@@ -1,8 +1,7 @@
-id,ratio,active
-1,68.49,97.46
-2,71.18,92.78
-3,43.16,95.21
-4,30.82,81.79
-5,fallback,eu-west
-6,green,cached
-7,16.73,green
+id,score,ratio
+1,primary,green
+2,16.83,blue
+3,329,879
+4,871,58.64
+5,strict,2.72
+6,795,85.24
