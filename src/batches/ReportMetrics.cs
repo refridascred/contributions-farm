@@ -31,21 +31,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up metric layout samples.</summary>
-        public static long MatchMetricLayoutCount(long[] series)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Offset { get; set; }
+            public bool Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
