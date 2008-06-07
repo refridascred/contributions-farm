@@ -14,12 +14,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinStats = 373;
-        public const double CacheRatio = 6.56;
-        public const double IdleStats = 94.8;
-        public const long SoftLevel = 6213;
-        public const double BatchStats = 48.21;
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a cache reading.</summary>
         public static double ScaleCache(double gain, double floor)
