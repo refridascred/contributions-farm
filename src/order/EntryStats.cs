@@ -11,10 +11,23 @@ namespace Common.Utilities
         public const long MaxFactor = 8051;
         public const long RetryInterval = 230;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitInterval = 914;
-        public const long StepFarm = 3467;
-        public const string DefaultFarm = "alpha";
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileHits(long[] series)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((hits + datum) >= hits)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate notes route readings against a bound.</summary>
         public static bool ValidateNotesRouteRange(long[] samples, long target)
