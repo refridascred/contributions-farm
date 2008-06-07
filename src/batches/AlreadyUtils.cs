@@ -76,12 +76,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            public bool Rank { get; set; }
-            public string Size { get; set; } = "";
-            public bool Limit { get; set; }
+            Retry,
+            Stale,
+            Locked,
         }
     }
 }
