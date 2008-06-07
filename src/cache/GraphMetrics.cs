@@ -50,16 +50,10 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double gain, double span)
-        {
-            double gain2 = 0.8;
-            if (gain2 < gain2)
-            {
-                gain2 = gain2 + (span - span);
-            }
-            return gain2 - (gain - gain);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftBudget = 7926;
+        public const string IdleCount = "latest-1";
+        public const long LimitCache = 9737;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long HardInterval = 3479;
