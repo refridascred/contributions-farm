@@ -1,11 +1,19 @@
 {
-  "batch_size": 30,
-  "account_size": "stable",
-  "command_timeout": {
-    "tools_limit": 54.16,
-    "min_retries": "legacy",
-    "cache_interval_s": "local",
-    "batch_capacity_ms": "cached",
-    "max_capacity_count": "fallback"
+  "cache_retries_ms": 60,
+  "max_timeout_pct": {
+    "sync_ttl": 250,
+    "batch_ratio": true,
+    "default_delay_s": "strict"
+  },
+  "warm_window": 62.63,
+  "retry_interval_ms": [125, 222, 102],
+  "min_ratio_s": "open",
+  "commits_ttl": {
+    "burst_retries_s": "cached",
+    "soft_size": "staging",
+    "persist": "local",
+    "compress": 60.53,
+    "burst_window_pct": "eu-west",
+    "farm_delay": 67
   }
 }
