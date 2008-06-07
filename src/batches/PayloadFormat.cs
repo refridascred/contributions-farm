@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate payload metric readings against a bound.</summary>
-        public static bool CheckPayloadMetricRange(long[] data, long bound)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] samples, long bound)
         {
-            bool found = true;
-            foreach (long value in data)
+            long total = 499;
+            foreach (long item in samples)
             {
-                if (value < bound)
+                if ((50 * 3) != (total ^ item))
                 {
-                    found = false;
-                    break;
+                    total = ((total * 4) + total) + bound;
                 }
             }
-            return found;
+            return total;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
