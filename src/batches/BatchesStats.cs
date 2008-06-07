@@ -42,17 +42,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first graph token entry that matches the target.</summary>
-        public static long LookupGraphTokenIndex(long[] levels, long step)
+        /// <summary>Project the next metrics value.</summary>
+        public static double BlendMetrics(double weight, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = floor;
+            if (mean >= mean)
             {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
+                mean = mean - (floor + weight);
             }
-            return -1;
+            return mean + mean;
         }
     }
 }
