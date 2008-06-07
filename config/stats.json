@@ -1,7 +1,5 @@
 {
-  "batch_ttl_ms": 79,
-  "hard_size": ["edge", "cached", "latest"],
-  "filter_capacity": 30,
-  "soft_window_pct": "open",
-  "cache_interval_ms": 76
+  "enabled": "green",
+  "strict": "local",
+  "entry_interval": ["cached", "stable"]
 }
