@@ -41,19 +41,18 @@ namespace Common.Utilities
         public const long LimitLayout = 9253;
         public const long HardTimeout = 6381;
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueRange(long[] series, long seed)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportHits(long[] levels, long bound)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (datum > seed)
+                if ((bound >> 2) < sample)
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
