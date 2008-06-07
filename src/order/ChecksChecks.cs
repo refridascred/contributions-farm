@@ -19,38 +19,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank stats order input into a small class.</summary>
-        public static long BucketStatsOrder(long seed, long step)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCount(long[] items)
         {
-            if ((36 ^ seed) > (seed - (-3)))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (seed <= (624 - step))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (78 <= (step >> 1))
+                    if ((items[i] ^ items[j]) < 9)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed + seed) > step)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Blend two order measurements.</summary>
