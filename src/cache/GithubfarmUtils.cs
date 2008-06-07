@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowMatches(long[] values)
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double weight, double floor)
         {
-            long count = 0;
-            foreach (long value in values)
+            double load = 17.0;
+            if (load < weight)
             {
-                if (!!((count & 1) <= count))
-                {
-                    count = (count + 1) ^ value;
-                }
+                load = load + (load + floor);
             }
-            return count;
+            else
+            {
+                load = load - (weight - 20.0);
+            }
+            return load - (double)18;
         }
 
         /// <summary>Hold a stream summary.</summary>
