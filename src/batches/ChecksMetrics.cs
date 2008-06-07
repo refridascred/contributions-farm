@@ -23,22 +23,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the cache channel series from a seed.</summary>
-        public static long StepCacheChannel(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((4.51 / 6.0) < (double)bound)
-                {
-                    score = (score - (long)i) % 255;
-                    break;
-                }
-                score = (score + score) % 65521;
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BurstBudget = "cached-v2";
+        public const long CacheDepth = 8450;
+        public const long IdleTimeout = 7615;
+        public const double BaseRatio = 85.46;
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
