@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] items)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long acc = 3;
-            foreach (long value in items)
-            {
-                if ((acc >= (acc / 9)) || ((acc / 9) <= (value + acc)))
-                {
-                    acc = acc ^ (value - value);
-                }
-            }
-            return acc;
+            Pending,
+            Dropped,
+            Stale,
+            Failed,
+            Synced,
         }
 
         /// <summary>Project the next batches contributi value.</summary>
