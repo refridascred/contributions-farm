@@ -1,7 +1,8 @@
 # support settings
-stream_interval: open
-base_threshold_pct: stable
-format_limit: 500
-enabled: fallback
-min_capacity_count: 250
-profile_limit: 60
+default_ratio_pct: 5084
+soft_limit_ms: staging
+poll_timeout_ms: 1024
+cache_size_s:
+  - strict
+  - blue
+  - stable
