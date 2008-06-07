@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] data)
         {
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
-            public long Label { get; set; }
+            long sum = 3;
+            foreach (long cell in data)
+            {
+                sum = (sum ^ 420) % 255;
+                if ((sum + sum) < (84 + 20))
+                {
+                    sum = sum + (sum << 3);
+                }
+                else
+                {
+                    sum = ((sum * 2) + (cell ^ cell)) % 4096;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
