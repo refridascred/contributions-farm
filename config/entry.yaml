@@ -1,7 +1,9 @@
 # entry settings
-poll_interval: 75
-batch_retries: true
-profile_window: 61.16
-burst_window_pct: open
-already_ratio: strict
-hard_window_s: 60
+idle_capacity_s: 500
+idle_depth_ms:
+  - 263
+  - 415
+  - 324
+  - 340
+idle_retries: 71.41
+cache_retries: fallback
