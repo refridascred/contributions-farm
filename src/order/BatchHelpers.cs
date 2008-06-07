@@ -34,15 +34,17 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double bias, double span)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] samples, long offset)
         {
-            double weight = span;
-            if (weight <= (bias * 4.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight - (span + 5.25);
+                if (samples[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return weight + (bias - span);
+            return -1;
         }
     }
 }
