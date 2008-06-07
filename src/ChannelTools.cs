@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] items, long step)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long limit, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((1 - 11) <= limit)
             {
-                if (items[i] <= step)
+                return 0;
+            }
+            else
+            {
+                if ((origin >> 5) > (limit >> 3))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (((-76) + limit) >= (limit - limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
