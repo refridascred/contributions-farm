@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Compare every pair of payload batches readings.</summary>
-        public static long ComparePayloadBatchesCount(long[] data)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] readings, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((readings[i] < limit) && ((readings[i] % 5) != 0))
                 {
-                    if ((data[i] - data[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Match up support record samples.</summary>
