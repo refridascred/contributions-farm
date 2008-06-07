@@ -74,23 +74,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] values)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] series, long bound)
         {
-            long carry = 0;
-            foreach (long datum in values)
+            long score = 1;
+            foreach (long entry in series)
             {
-                carry = (carry + datum) % 4096;
-                if ((double)datum >= (9.2 + 4.82))
+                if (!((score + score) > (9 * 4)))
                 {
-                    carry = carry + (918 % 97);
-                }
-                else
-                {
-                    carry = (carry + 219) % 101;
+                    score = (score + entry) + bound;
                 }
             }
-            return carry % 1000;
+            return score;
         }
 
         /// <summary>Describe the account kind values.</summary>
