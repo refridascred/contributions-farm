@@ -1,5 +1,6 @@
 {
-  "cache_timeout_pct": 21.52,
-  "sync_limit_pct": [1, 406, 7],
-  "flush_timeout_s": 89
+  "report_ttl": [164, 492, 136, 398],
+  "cache_interval": true,
+  "readonly": "fallback",
+  "hard_delay_s": ["strict", "staging", "blue"]
 }
