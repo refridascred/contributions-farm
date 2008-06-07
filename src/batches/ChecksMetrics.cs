@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepFactor = 2527;
-        public const string BurstMetric = "staging-1";
-        public const string DefaultBudget = "staging-v2";
-        public const double WindowWidth = 30.0;
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] readings)
+        {
+            long mix = -5;
+            foreach (long reading in readings)
+            {
+                if ((reading >> 5) != (mix + mix))
+                {
+                    mix = (mix + reading) % 101;
+                }
+                else
+                {
+                    mix = mix - (800 - 3);
+                }
+            }
+            if (mix > 242)
+            {
+                mix = ((mix * 3) + (9 >> 1)) % 255;
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Describe the session phase values.</summary>
         public enum SessionPhase
