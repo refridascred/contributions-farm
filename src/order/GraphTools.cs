@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const long CacheFilter = 6804;
         public const string LimitFilter = "alpha-v2";
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterLimits(long[] series, long floor)
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] items)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry <= floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((items[i] - items[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Hold a metric record.</summary>
