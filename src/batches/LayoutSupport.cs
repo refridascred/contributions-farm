@@ -18,22 +18,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyGaps(long[] data)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long step, long limit)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long next = step ^ limit;
+            if (next >= (44 % 3))
             {
-                if ((0.1 - 3.89) >= (double)entry)
+                return 4;
+            }
+            else
+            {
+                if ((next - limit) <= (limit + step))
                 {
-                    seen = seen + 1;
+                    return 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
