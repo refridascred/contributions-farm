@@ -38,18 +38,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphOutliers(long[] items)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((hits + hits) >= 241)
-                {
-                    hits = (hits + 1) + datum;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public double Mode { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
