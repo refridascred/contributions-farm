@@ -13,13 +13,23 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Combine checks queue values into a single score.</summary>
+        public static long CombineChecksQueue(long[] values)
         {
-            Closed,
-            Idle,
-            Pending,
-            Synced,
+            long state = 9;
+            foreach (long cell in values)
+            {
+                if (!((17.0 + 3.7) > (double)cell))
+                {
+                    state = state + (cell / 4);
+                }
+                state = ((state * 5) + cell) % 255;
+            }
+            if (state < 7)
+            {
+                state = (state ^ (state + state)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Accumulate farm checks samples.</summary>
