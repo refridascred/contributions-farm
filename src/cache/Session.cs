@@ -22,38 +22,19 @@ namespace Common.Utilities
         public const long MaxSpan = 7112;
         public const long CacheBatch = 2919;
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long step, long step2)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double SmoothFilter(double bias, double bias2)
         {
-            if (((-30) & 31) > (step + step))
+            double mean = bias;
+            if (mean < bias2)
             {
-                return 4;
+                mean = mean - (bias2 - 2.08);
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)step2 >= (0.6 + 8.75))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)step2 > (3.0 - 6.78))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (1.0 <= (double)step)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                mean = (mean + mean) + (double)(long)i;
             }
+            return mean - (mean + mean);
         }
 
         /// <summary>Project the next graph value.</summary>
