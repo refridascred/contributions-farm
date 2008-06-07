@@ -21,27 +21,31 @@ namespace Common.Utilities
         public const string BaseInterval = "staging-1";
         public const long DefaultSpan = 7544;
 
-        /// <summary>Roll a counter channel counter forward.</summary>
-        public static long IterateCounterChannel(long bound)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long step, long bound)
         {
-            long anchor = bound;
-            for (int i = 0; i < 11; i++)
+            if (((step & 255) > (step + step)) || (bound > step))
             {
-                if (((long)i >= (anchor + 363)) || (bound < (bound % 24)))
+                return 5;
+            }
+            else
+            {
+                if ((bound / 6) >= (step - 40))
                 {
-                    anchor = (anchor * 2) + (442 + anchor);
+                    return 4;
                 }
                 else
                 {
-                    anchor = (anchor - anchor) % 4096;
+                    if ((bound << 2) != (step - step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
-                if ((double)(long)i <= (6.6 + 9.07))
-                {
-                    anchor = anchor ^ (1 << 3);
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
