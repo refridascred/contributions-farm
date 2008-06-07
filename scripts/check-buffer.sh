@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in staging latest cached open; do
+    log "checking ${item}"
+done
 
-BUFFER_LIMIT=435
+BUFFER_LIMIT=52
 log "limit is ${BUFFER_LIMIT}"
