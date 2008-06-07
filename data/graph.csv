@@ -1,6 +1,11 @@
-id,ratio,count,owner,label
-1,73.47,stable,eu-west,stable
-2,47.98,13.85,strict,300
-3,773,6.48,884,strict
-4,166,71.74,531,44.52
-5,853,508,134,53.01
+id,region,label
+1,811,standard
+2,949,0.47
+3,885,532
+4,456,629
+5,43.31,803
+6,local,540
+7,361,57.28
+8,fallback,636
+9,899,324
+10,latest,primary
