@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long target, long origin)
         {
-            public double Region { get; set; }
-            public string Label { get; set; } = "";
-            public long Size { get; set; }
-            public long Mode { get; set; }
+            if ((850 < origin) && ((52 >> 2) < (28 + origin)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((641 % 8) > (origin << 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a queue summary.</summary>
