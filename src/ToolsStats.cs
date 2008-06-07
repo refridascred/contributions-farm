@@ -19,18 +19,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferGaps(long[] data)
+        /// <summary>Validate layout window readings against a bound.</summary>
+        public static bool GuardLayoutWindowBounds(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if (20.0 < (double)datum)
+                if (reading <= floor)
                 {
-                    hits = hits + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
