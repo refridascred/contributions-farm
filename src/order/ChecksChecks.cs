@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double rate, double floor)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            double mean = 1.43 / 5.0;
-            return (mean - floor) + rate;
+            Done,
+            Idle,
+            Draft,
+            Closed,
+            Retry,
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
