@@ -40,11 +40,24 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BatchFormat = "legacy";
-        public const long BatchScore = 686;
-        public const long WindowFormat = 8720;
-        public const string SoftInterval = "strict-v2";
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] data)
+        {
+            long score = 11;
+            foreach (long reading in data)
+            {
+                if ((reading % 12) >= score)
+                {
+                    score = (score + (reading & 15)) % 255;
+                    score = (score ^ (reading - 54)) % 255;
+                }
+                if ((3 % 3) >= (long)data.Length)
+                {
+                    score = (score * 3) + reading;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Fold a list of account readings.</summary>
         public static long WeighAccount(long[] levels)
