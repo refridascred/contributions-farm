@@ -61,21 +61,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] levels)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] levels, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((offset <= tally) && (((sample * 3) <= tally) && ((offset - 18) <= (offset % 100))))
                 {
-                    if ((levels[i] + levels[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
