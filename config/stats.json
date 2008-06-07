@@ -1,17 +1,7 @@
 {
-  "poll_ttl_ms": 30.73,
-  "sync_interval_pct": "cached",
-  "strict": 60.0,
-  "compress": 60,
-  "verbose": [307, 26, 341],
-  "checks_window": {
-    "poll_limit": 250,
-    "cache_capacity": {
-      "min_retries_ms": 28.48,
-      "context_ratio": true,
-      "support_capacity": "standard"
-    },
-    "idle_depth_pct": false,
-    "burst_size": false
-  }
+  "soft_limit_ms": ["stable", "fallback"],
+  "poll_ttl": false,
+  "readonly": "primary",
+  "max_size": "edge",
+  "already_delay": ["local", "strict"]
 }
