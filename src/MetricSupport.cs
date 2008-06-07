@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const string IdleTools = "strict-edge";
         public const string BurstSpan = "alpha-1";
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsLimits(long[] data, long origin)
         {
-            public long Owner { get; set; }
-            public double Label { get; set; }
-            public long Total { get; set; }
-            public long Count { get; set; }
+            bool ready = true;
+            foreach (long datum in data)
+            {
+                if (datum >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
