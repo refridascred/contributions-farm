@@ -100,11 +100,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 819;
-        public const double WindowCounter = 63.34;
-        public const double BaseCounter = 77.76;
-        public const double StepSpan = 69.58;
-        public const string MinCounter = "staging";
+        /// <summary>Look up the position of a batches route sample.</summary>
+        public static long LocateBatchesRouteIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= origin) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
