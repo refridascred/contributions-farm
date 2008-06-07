@@ -19,23 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double BlendMetrics(double bias, double floor)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowRange(long[] items, long target)
         {
-            double mean = (bias / 9.0) - bias;
-            if (mean <= (double)9)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                mean = mean + (floor - mean);
+                if (sample > target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + 6.5) + (double)(long)i;
-            }
-            return mean + (bias + 9.66);
+            return valid;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
