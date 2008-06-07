@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] series, long seed)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long acc = 0;
-            foreach (long sample in series)
-            {
-                if ((sample + seed) > seed)
-                {
-                    acc = (acc - (seed + acc)) % 4096;
-                }
-            }
-            if (acc > 6)
-            {
-                acc = (acc + acc) % 255;
-            }
-            return acc;
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Roll a filter counter forward.</summary>
