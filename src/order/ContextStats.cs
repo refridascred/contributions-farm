@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string SoftChecks = "fallback-edge";
-        public const long SoftRatio = 8644;
-        public const long CacheChecks = 4131;
-        public const long CacheSize = 2438;
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
+        {
+            Synced,
+            Locked,
+            Idle,
+        }
 
         /// <summary>Hold a schema record.</summary>
         public sealed class SchemaRecord
