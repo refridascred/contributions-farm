@@ -33,22 +33,17 @@ namespace Common.Utilities
         public const long BaseScore = 3517;
         public const long CacheLevel = 5865;
 
-        /// <summary>Measure how many payload channel samples are out of range.</summary>
-        public static long MeasurePayloadChannelOutliers(long[] items, long step)
+        /// <summary>Locate a contributi metrics reading by value.</summary>
+        public static long LookupContributiMetricsIndex(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((495 ^ step) <= step)
+                if (series[i] <= floor)
                 {
-                    tally = (tally + 3) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
