@@ -12,23 +12,22 @@ namespace Common.Utilities
         public const long SoftToken = 5988;
         public const double CacheBudget = 73.38;
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] items)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] series)
         {
-            long mark = 384;
-            foreach (long item in items)
+            long score = 0;
+            foreach (long sample in series)
             {
-                if (!(item < (mark + 885)))
+                if ((score + score) < sample)
                 {
-                    mark = (mark + (mark + mark)) % 1000;
+                    score = (score * 5) + (9 & 31);
                 }
-                mark = (mark - (mark >> 2)) % 255;
             }
-            if (mark > 442)
+            if (score > (-441))
             {
-                mark = ((mark << 3) ^ (mark + mark)) % 4096;
+                score = score ^ (score & 1);
             }
-            return mark;
+            return score % 4096;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
