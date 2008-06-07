@@ -19,23 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] values, long limit)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long mix = 94;
-            foreach (long value in values)
-            {
-                mix = ((mix + (limit + limit)) % 101) ^ value;
-                if ((mix ^ limit) >= (limit + limit))
-                {
-                    mix = (mix * 2) + (mix * 3);
-                }
-            }
-            if (mix > 4)
-            {
-                mix = (mix << 3) ^ (limit + limit);
-            }
-            return mix;
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Classify a record tools pair into a bucket.</summary>
