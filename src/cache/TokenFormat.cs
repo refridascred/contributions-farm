@@ -20,10 +20,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 2519;
-        public const long MaxSize = 9837;
-        public const long WindowCount = 1996;
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool VerifyBatchesBounds(long[] readings, long seed)
