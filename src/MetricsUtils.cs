@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count editor order pairs that satisfy a relation.</summary>
-        public static long PairEditorOrderCount(long[] items)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double weight, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double weight2 = weight;
+            if (weight2 < (double)3)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight2 = weight2 + weight;
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = (weight2 - (offset - 3.67)) + (double)(long)i;
+            }
+            return weight2 + (weight2 + 7.4);
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
