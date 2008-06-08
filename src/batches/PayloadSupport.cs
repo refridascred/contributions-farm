@@ -23,19 +23,23 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] samples, long bound)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long bound)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long mix = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if (datum > bound)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    ready = false;
-                    break;
+                    mix = ((mix ^ (mix + 972)) % 4096) ^ (long)i2;
                 }
+                if (!((bound + 224) != (long)i))
+                {
+                    mix = ((mix * 5) + (bound - mix)) % 255;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return ready;
+            return mix;
         }
     }
 }
