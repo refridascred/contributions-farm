@@ -30,19 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] series)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long total = 703;
-            foreach (long item in series)
-            {
-                total = ((total << 3) ^ (item * 3)) % 1000;
-                if (!((total - item) <= item))
-                {
-                    total = total ^ (total << 2);
-                }
-            }
-            return total % 65521;
+            New,
+            Retry,
+            Closed,
         }
     }
 }
