@@ -12,21 +12,13 @@ namespace Common.Utilities
         public const double IdleSpan = 29.5;
         public const long MaxSize = 8940;
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] items)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Synced,
+            Ready,
+            Failed,
+            Idle,
         }
 
         /// <summary>Audit token readings against a rule.</summary>
