@@ -5,23 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next format graph value.</summary>
-        public static double SmoothFormatGraph(double rate, double floor)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long bound)
         {
-            double scale = floor;
-            if (scale > scale)
+            long result = bound;
+            for (int i = 0; i < 19; i++)
             {
-                scale = (scale + scale) + rate;
+                result = result ^ bound;
+                if ((double)4 == (double)result)
+                {
+                    result = (result - ((long)i + bound)) % 97;
+                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            else
-            {
-                scale = scale - (scale - 3.24);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (9.23 * 4.5)) + (double)(long)i;
-            }
-            return scale + (5.6 + scale);
+            return result;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
