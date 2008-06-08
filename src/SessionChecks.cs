@@ -51,9 +51,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchSize = 9087;
-        public const double MaxWidth = 54.99;
-        public const double StepWidth = 13.98;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultOrder = 1345;
+        public const long CacheWidth = 1272;
+        public const double IdleWidth = 18.95;
+        public const double CacheOrder = 19.81;
+        public const long IdleOrder = 390;
     }
 }
