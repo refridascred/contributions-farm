@@ -30,21 +30,10 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double StepMetrics = 36.55;
+        public const long CacheMetrics = 1636;
+        public const long BaseMetrics = 3115;
+        public const string StepBudget = "cached-1";
     }
 }
