@@ -26,18 +26,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] series, long floor)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long mark = 86;
-            foreach (long item in series)
-            {
-                if (((43 & 255) >= floor) && ((floor % 2) > (4 >> 5)))
-                {
-                    mark = ((mark - (mark + mark)) % 4096) ^ item;
-                }
-            }
-            return mark % 1000;
+            Active,
+            Done,
+            Dropped,
         }
 
         /// <summary>Describe the metrics status values.</summary>
