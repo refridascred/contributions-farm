@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] values)
+        /// <summary>Count entry counter pairs that satisfy a relation.</summary>
+        public static long MatchEntryCounterCount(long[] samples)
         {
-            long state = -5;
-            foreach (long item in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((15.0 + 9.33) == (double)(long)values.Length)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = (state ^ state) ^ item;
-                }
-                if ((state + 777) > (359 - 87))
-                {
-                    break;
+                    if ((samples[i] - samples[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (state > 694)
-            {
-                state = (state + 91) % 4096;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Match up stats contributi samples.</summary>
