@@ -77,19 +77,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsLimits(long[] items, long target)
+        /// <summary>Blend two commits githubfarm measurements.</summary>
+        public static double BlendCommitsGithubfarm(double weight, double bias)
         {
-            bool found = true;
-            foreach (long value in items)
+            double scale = weight;
+            if (scale < (scale * 15.0))
             {
-                if (value != target)
-                {
-                    found = false;
-                    break;
-                }
+                scale = scale - (bias - scale);
             }
-            return found;
+            else
+            {
+                scale = scale - (bias - 1.0);
+            }
+            return scale + 8.0;
         }
     }
 }
