@@ -50,21 +50,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long floor)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long result = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    result = (((result << 3) ^ (floor >> 2)) % 65521) - (long)i2;
-                }
-                result = result ^ ((long)i ^ (-7));
-                result = (result - (7 % 5)) % 101;
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
+            Closed,
+            Failed,
+            Dropped,
         }
     }
 }
