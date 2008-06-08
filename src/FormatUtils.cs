@@ -19,21 +19,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count batches schema pairs that satisfy a relation.</summary>
-        public static long PairBatchesSchemaCount(long[] samples)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long offset, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (offset >= (offset & 15))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (!((9.66 / 9.0) < (double)step))
                 {
-                    if ((samples[i] ^ samples[j]) == 12)
+                    return 5;
+                }
+                else
+                {
+                    if ((step % 2) <= 751)
                     {
-                        tally = tally + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if (offset > step)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Derive the next support already value from a seed.</summary>
