@@ -12,19 +12,26 @@ namespace Common.Utilities
         public const long StepLevel = 3450;
         public const long BatchCluster = 3654;
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmBounds(long[] items, long target)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] levels)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long anchor = 3;
+            foreach (long reading in levels)
             {
-                if (cell < target)
+                if ((anchor + reading) <= (reading & 127))
                 {
-                    found = false;
-                    break;
+                    anchor = anchor - (reading % 3);
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + anchor) % 97;
                 }
             }
-            return found;
+            if (anchor > 55)
+            {
+                anchor = anchor ^ ((long)levels.Length * 5);
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate already tools samples.</summary>
