@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 4536;
-        public const double MaxFactor = 52.32;
-        public const string WindowFactor = "standard";
-        public const long SoftFactor = 8765;
-        public const long WindowSize = 4127;
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > target) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long BaseInterval = 3856;
