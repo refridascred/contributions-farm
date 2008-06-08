@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
+            Paused,
+            Stale,
+            Pending,
+            Synced,
+            Done,
         }
 
         /// <summary>Hold a format info.</summary>
