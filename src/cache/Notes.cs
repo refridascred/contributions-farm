@@ -18,10 +18,19 @@ namespace Common.Utilities
         public const long WindowFilter = 6366;
         public const long WindowSpan = 1389;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryInterval = 6620;
-        public const double LimitStats = 0.3;
-        public const long StepScore = 1192;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksOutliers(long[] items)
+        {
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((item % 7) < (item + count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a profile support pair into a bucket.</summary>
         public static long GradeProfileSupport(long limit, long origin)
