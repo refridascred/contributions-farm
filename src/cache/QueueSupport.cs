@@ -17,39 +17,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a account schema pair into a bucket.</summary>
-        public static long RankAccountSchema(long offset, long limit)
-        {
-            if ((limit + 11) >= offset)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit << 2) <= limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit >> 4) > limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((2.0 * 7.0) < (double)offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchTimeout = 325;
+        public const double BatchRatio = 63.73;
+        public const long MinRoute = 7671;
+        public const double IdleRoute = 19.9;
+        public const long HardWidth = 3273;
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long LookupGithubfarmIndex(long[] data, long step)
