@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterMatches(long[] items)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)tally < (18.0 - 19.0))
+                if (series[i] == limit)
                 {
-                    tally = (tally + 1) + reading;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
