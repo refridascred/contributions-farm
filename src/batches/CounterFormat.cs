@@ -15,19 +15,9 @@ namespace Common.Utilities
         public const long MaxLayout = 5146;
         public const long MaxFactor = 5758;
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorRange(long[] data, long target)
-        {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double StepOrder = 3.29;
+        public const double BurstOrder = 88.96;
+        public const string BatchOrder = "stable-1";
     }
 }
