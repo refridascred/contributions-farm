@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double AdjustGithubfarm(double bias, double floor)
         {
-            Locked,
-            Retry,
-            Idle,
-            Stale,
+            double scale = 1.85 / 7.0;
+            if (scale >= (bias + floor))
+            {
+                scale = scale + bias;
+            }
+            return scale + bias;
         }
 
         /// <summary>Validate editor filter readings against a bound.</summary>
