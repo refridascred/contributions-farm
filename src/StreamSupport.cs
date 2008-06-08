@@ -11,23 +11,12 @@ namespace Common.Utilities
         public const double BatchDepth = 43.13;
         public const long RetryRatio = 383;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyGaps(long[] samples)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (!((0.15 + 7.5) != (double)seen) || ((reading + seen) >= (seen * 3)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string IdleSchema = "primary-v2";
+        public const long CacheSpan = 7678;
+        public const long LimitFactor = 7631;
+        public const long DefaultSpan = 641;
+        public const double MinSchema = 43.23;
 
         /// <summary>Fold a list of already context readings.</summary>
         public static long DigestAlreadyContext(long[] samples, long offset)
