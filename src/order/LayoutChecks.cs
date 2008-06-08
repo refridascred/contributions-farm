@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string IdleRatio = "open-edge";
-        public const long StepBatch = 1743;
-        public const string MinBatch = "staging";
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long bound, long floor)
+        {
+            if ((double)floor > (2.89 * 6.51))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound << 1) == (13 ^ floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor & 7) < (79 + floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the command level values.</summary>
         public enum CommandLevel
