@@ -1,6 +1,20 @@
 # support settings
-dry_run: 60
-audit: 60
-verbose: edge
-poll_depth_count: true
-flush_size: cached
+base_ratio_s:
+  burst_depth:
+    sync_timeout: true
+    checks_window: stable
+    dry_run: 73.84
+    enabled: 5588
+    account_retries:
+      - 64
+      - 240
+      - 447
+  batch_timeout_ms: 71
+  hard_delay_pct: 2229
+  warm_retries: stable
+order_interval: false
+strict:
+  - 85
+  - 227
+  - 186
+  - 181
