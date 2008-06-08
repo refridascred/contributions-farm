@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every counter format entry stays within the limit.</summary>
-        public static bool VerifyCounterFormatLimits(long[] series, long limit)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Limit { get; set; } = "";
+            public bool Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the counter class values.</summary>
