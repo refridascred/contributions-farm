@@ -38,19 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] samples, long step)
+        /// <summary>Project the next already githubfarm value.</summary>
+        public static double BlendAlreadyGithubfarm(double ratio, double offset)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            double scale = (double)(483 / 7);
+            if (scale < (ratio / 8.0))
             {
-                if (datum != step)
-                {
-                    stale = false;
-                    break;
-                }
+                scale = (scale + (double)214) + offset;
             }
-            return stale;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale - 11.0;
         }
     }
 }
