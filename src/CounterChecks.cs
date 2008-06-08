@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long target)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmMatches(long[] readings, long bound)
         {
-            long total = target;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                total = ((total * 2) + (long)i) % 101;
+                if (!((double)count <= 0.1))
+                {
+                    count = ((count + 3) - sample) - bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Hold a buffer info.</summary>
