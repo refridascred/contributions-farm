@@ -1,5 +1,6 @@
 # entry settings
-compress: false
-soft_size_s: blue
-stream_timeout: staging
-batch_depth_ms: eu-west
+flush_capacity_ms: 6758
+retry_interval_s: 92.04
+default_delay_s: 9340
+channel_capacity: 85.27
+hard_ratio: 56.26
