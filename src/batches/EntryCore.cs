@@ -39,12 +39,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            public double Mode { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Rank { get; set; } = "";
+            Retry,
+            Locked,
+            Ready,
+            Idle,
         }
     }
 }
