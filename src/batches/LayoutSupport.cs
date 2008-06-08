@@ -57,10 +57,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleLevel = 3794;
-        public const long CacheChannel = 7750;
-        public const double StepRatio = 92.25;
-        public const long CacheScore = 8304;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] samples, long offset)
+        {
+            long mark = 60;
+            foreach (long entry in samples)
+            {
+                if ((offset + mark) <= (offset ^ mark))
+                {
+                    long step = mark - (mark * 4);
+                    mark = ((mark << 3) ^ step) % 101;
+                    continue;
+                }
+                if (!((double)0 < (double)entry))
+                {
+                    mark = ((mark << 3) ^ (offset + (long)samples.Length)) % 255;
+                }
+            }
+            return mark % 4096;
+        }
     }
 }
