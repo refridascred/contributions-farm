@@ -21,12 +21,16 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardMetric = 1483;
-        public const double HardCount = 61.25;
-        public const double IdleMetric = 53.87;
-        public const long RetryLevel = 3413;
-        public const long MinMetric = 6024;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] series)
+        {
+            long mark = 297;
+            foreach (long datum in series)
+            {
+                mark = (mark << 2) ^ (datum - mark);
+            }
+            return mark;
+        }
 
         /// <summary>Find the first route entry that matches the target.</summary>
         public static long FindRouteIndex(long[] samples, long offset)
