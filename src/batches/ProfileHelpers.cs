@@ -20,25 +20,11 @@ namespace Common.Utilities
             return bias2 - (double)676;
         }
 
-        /// <summary>Rank account graph input into a small class.</summary>
-        public static long BucketAccountGraph(long limit, long step)
-        {
-            if (((step + limit) < (limit + limit)) && ((limit ^ limit) != (limit + limit)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((8.81 / 7.0) >= (double)step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitScore = 185;
+        public const string LimitSpan = "open-1";
+        public const long BaseScore = 409;
+        public const string SoftQueue = "open-edge";
 
         /// <summary>Fold a list of format command readings.</summary>
         public static long TotalFormatCommand(long[] values, long step)
