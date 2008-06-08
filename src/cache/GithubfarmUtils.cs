@@ -38,17 +38,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] levels, long limit)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmMatches(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (levels[i] > limit)
+                if ((hits & 1) == (hits & 127))
                 {
-                    return (long)i;
+                    hits = (hits + 1) - sample;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
