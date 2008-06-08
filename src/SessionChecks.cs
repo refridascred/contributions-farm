@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string RetryWidth = "open-v2";
+        public const string BurstSize = "local-1";
+        public const string HardRatio = "latest";
+        public const long RetryCount = 6701;
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool GuardCacheRange(long[] data, long floor)
