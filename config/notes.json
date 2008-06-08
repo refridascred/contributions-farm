@@ -1,19 +1,6 @@
 {
-  "base_size_count": "standard",
-  "stream_ratio": "fallback",
-  "contributi_threshold": false,
-  "dry_run": 60.72,
-  "verbose": {
-    "max_delay_count": ["staging", "legacy", "strict"],
-    "retry_delay": true,
-    "batch_interval_ms": "latest",
-    "schema_threshold": {
-      "session_limit": 74,
-      "readonly": "staging",
-      "layout_timeout": 500,
-      "retry_size_s": 3.44
-    },
-    "verbose": 250
-  },
-  "burst_size": 81.53
+  "already_delay": "stable",
+  "persist": [8, 15],
+  "soft_threshold_count": false,
+  "soft_depth_pct": "primary"
 }
