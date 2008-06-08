@@ -43,24 +43,12 @@ namespace Common.Utilities
             return mean - (bias / 8.0);
         }
 
-        /// <summary>Digest a series of already filter entries.</summary>
-        public static long CombineAlreadyFilter(long[] data)
-        {
-            long total = 12;
-            foreach (long sample in data)
-            {
-                if ((total + total) >= total)
-                {
-                    total = (total + (total & 255)) % 4096;
-                }
-                total = ((total * 2) + (sample + sample)) % 255;
-            }
-            if (total < 3)
-            {
-                total = (total * 5) + (total + 2);
-            }
-            return total;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCounter = 7368;
+        public const long BaseCounter = 6437;
+        public const long BatchCounter = 2553;
+        public const string MaxCounter = "strict-1";
+        public const double WindowSpan = 24.28;
 
         /// <summary>Rank token input into a small class.</summary>
         public static long BucketToken(long offset, long limit)
