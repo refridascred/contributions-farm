@@ -28,14 +28,11 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            Queued,
-            Draft,
-            Dropped,
-            New,
-            Synced,
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
