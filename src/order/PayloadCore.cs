@@ -25,18 +25,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] values, long seed)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenRange(long[] samples, long offset)
         {
-            long carry = 2;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if ((seed <= (carry - sample)) || ((carry / 7) <= seed))
+                if (sample > offset)
                 {
-                    carry = ((carry * 4) + (carry - sample)) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
