@@ -1,6 +1,7 @@
 {
-  "verbose": 33.65,
-  "farm_ratio": 1.01,
-  "min_capacity_ms": 34.33,
-  "enabled": 56
+  "channel_interval": true,
+  "enabled": false,
+  "sync_retries_s": 6634,
+  "soft_depth": true,
+  "sync_ratio": 60
 }
