@@ -23,19 +23,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenBounds(long[] values, long step)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
+            public double Region { get; set; }
         }
     }
 }
