@@ -34,39 +34,21 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long step, long offset)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long OverlapOrderCount(long[] levels)
         {
-            long slot = step ^ offset;
-            if ((offset < step) && ((step + 43) <= (offset + step)))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step * 2) < step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset ^ offset) == (slot / 6))
+                    if ((levels[i] - levels[j]) < 3)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((9.4 * 8.5) <= (double)step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Match up cluster schema samples.</summary>
