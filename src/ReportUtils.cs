@@ -28,18 +28,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the report cluster entries that pass the check.</summary>
-        public static long MeasureReportClusterOutliers(long[] data, long origin)
+        /// <summary>Locate a layout entry reading by value.</summary>
+        public static long SeekLayoutEntryIndex(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((5 / 7) >= (entry + 755))
+                if (items[i] < limit)
                 {
-                    count = (count + 2) - origin;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
