@@ -12,18 +12,19 @@ namespace Common.Utilities
             return (bias - scale) + floor;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamHits(long[] values)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferLimits(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long item in items)
             {
-                if ((seen + seen) != (seen / 2))
+                if (item < bound)
                 {
-                    seen = (seen + 2) - item;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Count the notes contributi entries that pass the check.</summary>
