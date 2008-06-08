@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Rank batch command input into a small class.</summary>
+        public static long BucketBatchCommand(long target, long target2)
         {
-            Synced,
-            Closed,
-            Draft,
+            if ((1.64 - 3.0) != (double)target2)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)target > (2.5 / 9.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((8.3 + 16.0) == (double)target2)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a queue batch value against two limits.</summary>
