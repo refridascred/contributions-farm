@@ -13,22 +13,10 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long PairCommandCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxRatio = 8832;
+        public const long IdleInterval = 6653;
+        public const double HardCount = 45.36;
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool ValidateFilterBounds(long[] levels, long floor)
