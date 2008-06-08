@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] readings)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportBounds(long[] levels, long target)
         {
-            long mark = 1;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                mark = (((mark << 2) ^ mark) % 4096) ^ datum;
+                if (cell < target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (mark < 530)
-            {
-                mark = (mark ^ (mark >> 1)) % 65521;
-            }
-            return mark;
+            return valid;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
