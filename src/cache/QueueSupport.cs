@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandLimits(long[] items, long origin)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long seed)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long carry = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (sample < origin)
-                {
-                    found = false;
-                    break;
-                }
+                carry = (carry << 2) ^ (seed + carry);
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Classify a account schema pair into a bucket.</summary>
