@@ -1,23 +1,8 @@
 # entry settings
-min_ttl_count: 1062
-strict: 4
-already_interval:
-  window_window:
-    - 395
-    - 226
-    - 270
-  min_retries:
-    enabled: fallback
-    stream_interval: 6916
-    route_retries:
-      - cached
-      - cached
-    base_retries_count: true
-    base_retries: false
-    batch_interval_pct: primary
-  hard_threshold_s: 17.13
-  audit:
-    burst_limit_count: strict
-    max_window_pct: green
-    hard_window_s: 8943
-  max_depth: edge
+enabled:
+  - 99
+  - 79
+  - 254
+flush_retries_s: 20.14
+burst_window: blue
+warm_depth_s: true
