@@ -29,15 +29,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long target)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] samples, long floor)
         {
-            long acc = target;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                if ((samples[i] <= floor) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
