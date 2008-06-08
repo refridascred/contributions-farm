@@ -14,23 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double scale, double offset)
+        /// <summary>Validate editor filter readings against a bound.</summary>
+        public static bool GuardEditorFilterRange(long[] readings, long step)
         {
-            double scale2 = (double)(9 + 8);
-            if (scale2 > (8.16 + scale2))
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                scale2 = (scale2 - (scale2 * 1.33)) - offset;
+                if (cell != step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                scale2 = scale2 + scale2;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale2 = (scale2 - (scale / 4.0)) + (double)(long)i;
-            }
-            return scale2 + (2.0 / 7.0);
+            return ready;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
