@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double LimitDepth = 26.56;
-        public const string LimitStats = "primary";
-        public const long SoftLevel = 2473;
-        public const long HardWidth = 4876;
-        public const double WindowStats = 8.37;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftSize = 8706;
+        public const long LimitChecks = 980;
+        public const long IdleCount = 263;
+        public const long StepChecks = 7552;
 
         /// <summary>Adjust a token githubfarm reading.</summary>
         public static double BlendTokenGithubfarm(double gain, double bias)
