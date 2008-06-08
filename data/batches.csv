@@ -1,6 +1,6 @@
-id,region,count,state,weight
-1,latest,807,35.13,green
-2,6.06,749,primary,5.13
-3,590,263,778,588
-4,617,565,legacy,368
-5,3.45,460,423,565
+id,owner,active
+1,833,74.93
+2,staging,eu-west
+3,624,41.28
+4,strict,cached
+5,eu-west,706
