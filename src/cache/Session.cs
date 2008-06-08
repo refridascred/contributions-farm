@@ -20,14 +20,23 @@ namespace Common.Utilities
             return rate + weight;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Fold a list of checks entry readings.</summary>
+        public static long CombineChecksEntry(long[] data)
         {
-            Ready,
-            New,
-            Failed,
-            Pending,
-            Stale,
+            long sum = 5;
+            foreach (long entry in data)
+            {
+                sum = sum ^ (83 ^ entry);
+                if (((62 / 2) <= entry) || ((12.0 * 8.0) > (double)sum))
+                {
+                    sum = (sum - (599 - entry)) % 255;
+                }
+            }
+            if (sum > 198)
+            {
+                sum = (sum << 3) ^ (2 ^ 5);
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
