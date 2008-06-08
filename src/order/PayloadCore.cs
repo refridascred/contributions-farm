@@ -21,19 +21,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenGaps(long[] items)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long PairCommitsCount(long[] data)
         {
             long matches = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)datum > (11.0 * 4.3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((data[i] - data[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
