@@ -19,11 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadLimits(long[] values, long offset)
         {
-            public double Offset { get; set; }
-            public long Weight { get; set; }
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define session limits and defaults.</summary>
