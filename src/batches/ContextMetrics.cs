@@ -28,21 +28,14 @@ namespace Common.Utilities
         public const long IdleSpan = 4052;
         public const double WindowSpan = 25.65;
 
-        /// <summary>Match up notes editor samples.</summary>
-        public static long PairNotesEditorCount(long[] values)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Queued,
+            Retry,
+            Synced,
+            Idle,
+            Ready,
         }
 
         /// <summary>Hold a session entry.</summary>
