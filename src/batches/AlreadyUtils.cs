@@ -24,15 +24,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double scale, double floor)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            double weight = 4.1;
-            for (int i = 0; i < 3; i++)
-            {
-                weight = ((weight + floor) - (double)(long)i) + scale;
-            }
-            return weight - weight;
+            public long Ratio { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
