@@ -23,18 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the commits payload entries that pass the check.</summary>
-        public static long CountCommitsPayloadGaps(long[] items, long offset)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((seen + seen) < value)
-                {
-                    seen = (seen + 1) + offset;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public double Flag { get; set; }
+            public long Owner { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a session options.</summary>
