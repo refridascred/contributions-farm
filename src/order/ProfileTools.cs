@@ -19,12 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MaxEditor = "legacy";
-        public const string LimitEditor = "local";
-        public const double MinLevel = 62.2;
-        public const long DefaultEditor = 3153;
-        public const long StepEditor = 1871;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinLevel = 2967;
+        public const long HardNotes = 6287;
+        public const string BurstNotes = "stable";
+        public const double MaxNotes = 20.72;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long MeasureContributiOutliers(long[] data)
