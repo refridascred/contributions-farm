@@ -45,19 +45,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every editor stats entry stays within the limit.</summary>
-        public static bool CheckEditorStatsLimits(long[] samples, long bound)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] levels, long floor)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long state = 78;
+            foreach (long datum in levels)
             {
-                if (cell != bound)
-                {
-                    found = false;
-                    break;
-                }
+                state = ((state ^ (floor / 2)) % 101) ^ datum;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
