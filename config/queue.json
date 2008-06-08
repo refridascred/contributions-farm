@@ -1,8 +1,11 @@
 {
-  "max_ratio": "stable",
-  "checks_depth": ["edge", "staging", "latest"],
-  "flush_delay": false,
-  "warm_retries": 49,
-  "readonly": ["stable", "blue"],
-  "flush_size_pct": "latest"
+  "cluster_size": "cached",
+  "cache_capacity": "open",
+  "burst_threshold_pct": 14,
+  "flush_threshold_s": {
+    "verbose": 6919,
+    "batch_ratio_pct": 3514,
+    "burst_size": 59.15,
+    "base_limit": 85.81
+  }
 }
