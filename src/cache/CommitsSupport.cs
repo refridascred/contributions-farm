@@ -30,21 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of tools cache readings.</summary>
-        public static long OverlapToolsCacheCount(long[] levels)
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double rate, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = (double)(40 + 4);
+            if (ratio > (double)91)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = (ratio + (double)7) - rate;
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (floor * 5.0)) + (double)(long)i;
+            }
+            return ratio + 12.0;
         }
 
         /// <summary>Compare every pair of account layout readings.</summary>
