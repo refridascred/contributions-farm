@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const string MinEntry = "standard-edge";
         public const long LimitEntry = 9787;
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double ratio, double bias)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] series, long floor)
         {
-            double ratio2 = (4.4 * 3.4) - (double)96;
-            if (ratio2 <= ratio)
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio2 = ratio2 + bias;
+                if (series[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 - ratio2;
-            }
-            return ratio2 - (2.6 * 9.8);
+            return -1;
         }
 
         /// <summary>Hold a record record.</summary>
