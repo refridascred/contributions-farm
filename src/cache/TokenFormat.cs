@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] levels)
+        /// <summary>Check that every cluster record entry stays within the limit.</summary>
+        public static bool CheckClusterRecordBounds(long[] values, long bound)
         {
-            long mix = 495;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long value in values)
             {
-                mix = ((mix << 3) ^ datum) % 97;
+                if (value >= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix % 65521;
+            return stale;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
