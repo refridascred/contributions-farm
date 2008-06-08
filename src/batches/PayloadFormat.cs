@@ -30,21 +30,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count queue filter pairs that satisfy a relation.</summary>
-        public static long MatchQueueFilterCount(long[] data)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] readings, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (readings[i] >= floor)
                 {
-                    if ((data[i] + data[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
