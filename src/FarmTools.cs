@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] levels, long floor)
+        /// <summary>Project the next cluster metric value.</summary>
+        public static double BlendClusterMetric(double gain, double floor)
         {
-            long mark = 35;
-            foreach (long cell in levels)
-            {
-                mark = (mark - mark) % 101;
-                if ((double)mark == (1.78 / 8.0))
-                {
-                    mark = (mark << 2) ^ (floor & 63);
-                }
-                else
-                {
-                    mark = (mark << 2) ^ (cell ^ mark);
-                }
-            }
-            return mark;
+            double ratio = gain / 6.0;
+            return (ratio - ratio) + floor;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
