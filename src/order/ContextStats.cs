@@ -19,12 +19,31 @@ namespace Common.Utilities
         public const long IdleRatio = 5741;
         public const long MinCommand = 3878;
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long target, long step)
         {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public string Mode { get; set; } = "";
+            if ((6.0 + 3.42) == (double)step)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((step * 3) > (target * 3)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((target & 255) <= (step & 7)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a commits stats counter forward.</summary>
