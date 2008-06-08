@@ -26,10 +26,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 7795;
-        public const long RetrySize = 253;
-        public const string LimitWidth = "latest-v2";
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
+        {
+            public double Count { get; set; }
+            public double Limit { get; set; }
+            public bool Level { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Describe the queue status values.</summary>
         public enum QueueStatus
