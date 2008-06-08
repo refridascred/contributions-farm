@@ -33,12 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            public double Token { get; set; }
-            public long Size { get; set; }
-            public long Count { get; set; }
+            public long Mode { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
