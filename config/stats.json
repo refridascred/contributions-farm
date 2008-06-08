@@ -1,22 +1,5 @@
 {
-  "warm_retries_ms": {
-    "soft_threshold_pct": "stable",
-    "max_delay_ms": 7777,
-    "persist": {
-      "poll_capacity": 303,
-      "burst_size_s": "strict",
-      "soft_ratio_count": "primary",
-      "max_depth_s": true
-    },
-    "base_capacity_pct": 65.95,
-    "default_depth": "edge",
-    "strict": {
-      "persist": true,
-      "cache_size_s": "blue",
-      "record_ratio": true,
-      "batch_ttl": [80, 287]
-    }
-  },
-  "idle_window": ["staging", "standard"],
-  "strict": false
+  "burst_size_pct": [207, 350, 289],
+  "readonly": [347, 168],
+  "soft_limit_count": 81.58
 }
