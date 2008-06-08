@@ -27,19 +27,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutBounds(long[] items, long target)
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double rate, double span)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            double ratio = rate;
+            if (ratio < 2.2)
             {
-                if (sample > target)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio = (ratio - rate) - span;
             }
-            return flag;
+            else
+            {
+                ratio = ratio + 5.67;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
