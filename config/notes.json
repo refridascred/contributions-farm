@@ -1,6 +1,7 @@
 {
-  "base_ttl": "stable",
-  "session_ratio": 250,
-  "flush_retries": 1024,
-  "max_timeout_count": 52
+  "retry_threshold_pct": false,
+  "warm_ttl": [6, 351],
+  "readonly": "local",
+  "cache_threshold_count": 68.59,
+  "burst_interval_s": true
 }
