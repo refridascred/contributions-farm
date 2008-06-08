@@ -41,17 +41,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] data, long seed)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ScaleReport(double scale, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double bias = span;
+            if (bias > (3.1 - 6.71))
             {
-                if ((data[i] == seed) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                bias = (bias + (double)2) + scale;
             }
-            return -1;
+            else
+            {
+                bias = bias + span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias + (span + bias);
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
