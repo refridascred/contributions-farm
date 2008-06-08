@@ -93,28 +93,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] levels)
+        /// <summary>Check that every token record entry stays within the limit.</summary>
+        public static bool VerifyTokenRecordLimits(long[] series, long origin)
         {
-            long acc = 485;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                acc = (acc ^ acc) % 255;
-                acc = (acc - acc) % 97;
-                if ((4.14 - 4.0) > (double)reading)
+                if (reading < origin)
                 {
-                    acc = (acc - (reading >> 4)) % 255;
-                }
-                else
-                {
-                    acc = (acc ^ (acc - 6)) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            if (acc < 134)
-            {
-                acc = (acc + (acc - acc)) % 4096;
-            }
-            return acc;
+            return ok;
         }
     }
 }
