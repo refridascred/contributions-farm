@@ -35,12 +35,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            Done,
-            Failed,
-            Retry,
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Fold a list of record tools readings.</summary>
