@@ -24,16 +24,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long bound)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesBounds(long[] readings, long seed)
         {
-            long score = bound;
-            for (int i = 0; i < 17; i++)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                score = (score * 3) + (bound ^ score);
-                score = ((score * 5) + (long)i) % 65521;
+                if (item >= seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score;
+            return valid;
         }
     }
 }
