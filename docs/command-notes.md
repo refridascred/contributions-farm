@@ -1,12 +1,10 @@
 # Command notes
 
-Use window settings to tune how often payload data is refreshed.
-Use batches settings to tune how often commits data is refreshed.
-The route module keeps profile values in sync with the notes cache.
+Keep batches and farm names short and lowercase.
+Each batch is validated before it reaches the counter queue.
 
 ## Guidelines
 
-- Document new format fields
-- Review counter limits each release
-- Validate githubfarm input early
-- Keep editor values small
+- Prefer queue defaults
+- Keep already values small
+- Document new cluster fields
