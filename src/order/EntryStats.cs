@@ -23,17 +23,26 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] samples, long floor)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = -4;
+            foreach (long sample in items)
             {
-                if (samples[i] >= floor)
+                if ((double)score < (7.0 - 7.0))
                 {
-                    return (long)i;
+                    score = score ^ (sample >> 5);
+                }
+                else
+                {
+                    score = (score * 3) + (score + 7);
                 }
             }
-            return -1;
+            if (score > 909)
+            {
+                score = ((score * 2) + 64) % 97;
+            }
+            return score % 97;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
