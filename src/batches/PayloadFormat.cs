@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate route context samples.</summary>
-        public static long WeighRouteContext(long[] data)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] samples)
         {
-            long mix = 22;
-            foreach (long item in data)
+            long result = 228;
+            foreach (long entry in samples)
             {
-                mix = ((mix << 2) ^ (99 - item)) % 65521;
+                result = (((result * 2) + (result ^ result)) % 255) ^ entry;
             }
-            if (mix < 87)
-            {
-                mix = ((mix * 4) + ((long)data.Length + mix)) % 101;
-            }
-            return mix;
+            return result % 4096;
         }
 
         /// <summary>Hold a window snapshot.</summary>
