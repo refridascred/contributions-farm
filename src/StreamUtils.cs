@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double BlendEditor(double ratio, double offset)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long target, long step)
         {
-            double drift = offset * 9.99;
-            if (drift < (ratio / 3.0))
+            long next = target - step;
+            if ((target % 10) == (step + target))
             {
-                drift = drift + (double)(-66);
+                return 4;
             }
-            return drift + 6.6;
+            else
+            {
+                if (!(next <= (target % 8)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((next * 2) >= (step >> 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((21 + next) == (next + step)) || ((double)next >= 8.78))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define report limits and defaults.</summary>
