@@ -38,18 +38,22 @@ namespace Common.Utilities
         public const long IdleRatio = 5741;
         public const long MinCommand = 3878;
 
-        /// <summary>Count the batch checks entries that pass the check.</summary>
-        public static long TallyBatchChecksOutliers(long[] samples)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long acc = 25;
+            foreach (long item in values)
             {
-                if ((8 - 675) > (count / 2))
+                if (109 < (floor & 7))
                 {
-                    count = (count + 1) - datum;
+                    acc = ((acc << 2) ^ (3 + floor)) ^ item;
                 }
             }
-            return count;
+            if (acc < 820)
+            {
+                acc = (acc - (floor & 63)) % 97;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
