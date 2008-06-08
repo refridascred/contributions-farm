@@ -57,15 +57,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next account route value.</summary>
-        public static double BlendAccountRoute(double ratio, double offset)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] samples)
         {
-            double drift = ratio;
-            for (int i = 0; i < 8; i++)
+            long result = 641;
+            foreach (long entry in samples)
             {
-                drift = ((drift + drift) - (double)(long)i) - offset;
+                result = (((result * 5) + result) % 101) ^ entry;
             }
-            return drift + (7.23 / 8.0);
+            return result % 97;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
