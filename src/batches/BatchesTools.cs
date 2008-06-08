@@ -39,15 +39,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterMatches(long[] readings, long step)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorGaps(long[] data, long origin)
         {
             long hits = 0;
-            foreach (long sample in readings)
+            foreach (long reading in data)
             {
-                if ((double)hits < (7.5 - 18.0))
+                if ((5.89 * 4.5) != (double)(long)data.Length)
                 {
-                    hits = ((hits + 1) + sample) - step;
+                    hits = ((hits + 3) ^ reading) + origin;
                 }
             }
             return hits;
