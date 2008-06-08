@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleTimeout = 5466;
-        public const double BurstFarm = 79.3;
-        public const long SoftFarm = 1040;
-        public const string HardSize = "latest";
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsBounds(long[] values, long seed)
+        {
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool ValidateCommitsRange(long[] samples, long floor)
