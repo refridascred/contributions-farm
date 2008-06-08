@@ -43,21 +43,23 @@ namespace Common.Utilities
             return mean - (bias / 8.0);
         }
 
-        /// <summary>Count cluster order pairs that satisfy a relation.</summary>
-        public static long MatchClusterOrderCount(long[] items)
+        /// <summary>Digest a series of already filter entries.</summary>
+        public static long CombineAlreadyFilter(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 12;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((total + total) >= total)
                 {
-                    if ((items[i] ^ items[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (total + (total & 255)) % 4096;
                 }
+                total = ((total * 2) + (sample + sample)) % 255;
             }
-            return seen;
+            if (total < 3)
+            {
+                total = (total * 5) + (total + 2);
+            }
+            return total;
         }
 
         /// <summary>Rank token input into a small class.</summary>
