@@ -35,11 +35,20 @@ namespace Common.Utilities
             return gain - (offset + 10.0);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftInterval = 2114;
-        public const long SoftContext = 9610;
-        public const long StepContext = 9122;
-        public const long MaxContext = 9230;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] series, long limit)
+        {
+            long score = -66;
+            foreach (long sample in series)
+            {
+                score = ((score - (sample * 2)) % 65521) - limit;
+            }
+            if (score < 341)
+            {
+                score = (score ^ (-5)) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Describe the support class values.</summary>
         public enum SupportClass
