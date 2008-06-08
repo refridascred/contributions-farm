@@ -39,19 +39,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsRange(long[] readings, long seed)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] items, long seed)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long score = 24;
+            foreach (long cell in items)
             {
-                if (value < seed)
+                if ((cell << 3) <= seed)
                 {
-                    flag = false;
-                    break;
+                    score = (score ^ (928 % 2)) % 65521;
+                }
+                else
+                {
+                    score = (score * 4) + (173 + cell);
                 }
             }
-            return flag;
+            return score;
         }
     }
 }
