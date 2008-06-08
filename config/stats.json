@@ -1,5 +1,6 @@
 {
-  "poll_retries_count": [393, 136, 178],
-  "persist": false,
-  "compress": "fallback"
+  "hard_size": 31,
+  "session_interval": true,
+  "poll_limit": ["open", "stable"],
+  "flush_retries_count": 4.44
 }
