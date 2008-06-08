@@ -96,13 +96,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
-            public double Level { get; set; }
-            public long Score { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Ratio { get; set; }
         }
     }
 }
