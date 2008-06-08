@@ -20,32 +20,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long target, long bound)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsRange(long[] data, long step)
         {
-            long cur = target ^ bound;
-            if ((4 + 67) != (target / 3))
+            bool valid = true;
+            foreach (long entry in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)cur > (8.1 / 3.0))
+                if (entry >= step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((828 - cur) < (bound + 11)) && ((bound % 7) <= bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
