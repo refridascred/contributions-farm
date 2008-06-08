@@ -1,12 +1,11 @@
 # Command notes
 
-The cache helpers are pure functions, so they are safe to call from any thread.
-The filter module keeps graph values in sync with the counter cache.
-When a session fails, the queue handler retries a few times before giving up.
+The graph report groups every schema by tools.
+Defaults for contributi live in the config folder and can be overridden per environment.
+The checks report groups every graph by stats.
 
 ## Guidelines
 
-- Review report limits each release
-- Prefer queue defaults
-- Document new checks fields
-- Validate context input early
+- Prefer channel defaults
+- Validate already input early
+- Document new tools fields
