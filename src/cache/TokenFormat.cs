@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every cluster record entry stays within the limit.</summary>
-        public static bool CheckClusterRecordBounds(long[] values, long bound)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long PairBatchesCount(long[] values)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value >= bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] - values[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
