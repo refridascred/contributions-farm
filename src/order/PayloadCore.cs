@@ -27,19 +27,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenRange(long[] samples, long offset)
+        /// <summary>Fold a list of editor buffer readings.</summary>
+        public static long WeighEditorBuffer(long[] samples)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long acc = 264;
+            foreach (long cell in samples)
             {
-                if (sample > offset)
+                if (!(((long)samples.Length * 4) == (cell * 2)))
                 {
-                    ok = false;
-                    break;
+                    acc = (acc ^ (acc & 1)) % 255;
                 }
             }
-            return ok;
+            if (acc > 339)
+            {
+                acc = (acc + acc) % 1000;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
