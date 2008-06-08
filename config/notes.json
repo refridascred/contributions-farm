@@ -1,15 +1,6 @@
 {
-  "burst_timeout_s": {
-    "hard_size_pct": true,
-    "cache_delay_s": {
-      "idle_interval_s": "eu-west",
-      "max_ratio_count": false,
-      "readonly": false,
-      "compress": "standard"
-    },
-    "flush_capacity_pct": 1024
-  },
-  "hard_timeout_pct": 57.49,
-  "profile_threshold": 1024,
-  "cache_capacity_s": false
+  "base_ttl": "stable",
+  "session_ratio": 250,
+  "flush_retries": 1024,
+  "max_timeout_count": 52
 }
