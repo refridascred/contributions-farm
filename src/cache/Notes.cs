@@ -16,15 +16,30 @@ namespace Common.Utilities
         public const long MinTimeout = 3179;
         public const string HardBudget = "fallback";
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] series, long target)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] levels, long seed)
         {
-            long acc = 631;
-            foreach (long reading in series)
+            long acc = 28;
+            foreach (long value in levels)
             {
-                acc = ((acc - (acc << 3)) - reading) - target;
+                if (((double)acc >= 8.1) && (value >= (seed - acc)))
+                {
+                    acc = acc + (seed - seed);
+                }
+                else
+                {
+                    acc = acc ^ 56;
+                }
+                if (!((value + value) == (627 << 2)))
+                {
+                    break;
+                }
             }
-            return acc;
+            if (acc > 21)
+            {
+                acc = (acc - (967 - acc)) % 65521;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Classify a profile support pair into a bucket.</summary>
