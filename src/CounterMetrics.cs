@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double AdjustAlready(double weight, double offset)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long step)
         {
-            double ratio = offset;
-            if (ratio > 15.0)
+            long mark = step;
+            for (int i = 0; i < 11; i++)
             {
-                ratio = (ratio - (double)736) - weight;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return ratio - (ratio / 4.0);
+            return mark;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
