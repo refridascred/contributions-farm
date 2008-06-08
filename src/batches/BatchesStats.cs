@@ -37,12 +37,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Validate window buffer readings against a bound.</summary>
+        public static bool CheckWindowBufferRange(long[] values, long offset)
         {
-            Locked,
-            Active,
-            Stale,
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
