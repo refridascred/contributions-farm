@@ -1,23 +1,7 @@
 {
-  "min_limit": {
-    "verbose": 9258,
-    "default_threshold_pct": true,
-    "queue_ratio": ["blue", "standard"],
-    "retry_delay_ms": ["staging", "latest"]
-  },
-  "context_interval": 500,
-  "idle_delay_ms": ["edge", "latest", "blue", "latest"],
-  "hard_threshold_count": "green",
-  "default_threshold": {
-    "hard_ttl": "open",
-    "min_ratio_pct": ["edge", "stable"],
-    "stats_ttl": 67,
-    "burst_ratio_pct": "staging",
-    "audit": {
-      "strict": "cached",
-      "checks_ttl": 3974,
-      "persist": true,
-      "cluster_ratio": 8849
-    }
-  }
+  "sync_ratio_s": true,
+  "record_interval": 500,
+  "soft_depth": 8977,
+  "audit": 67.6,
+  "retry_limit": [14, 297]
 }
