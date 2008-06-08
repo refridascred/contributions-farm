@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many already schema samples are out of range.</summary>
-        public static long AuditAlreadySchemaMatches(long[] data)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if (!((reading * 2) >= tally))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Stale,
+            Ready,
+            Done,
+            Failed,
+            Idle,
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
