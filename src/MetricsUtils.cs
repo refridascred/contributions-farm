@@ -50,19 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine schema profile values into a single score.</summary>
-        public static long WeighSchemaProfile(long[] levels, long step)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphGaps(long[] series, long origin)
         {
-            long acc = 303;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                acc = ((acc ^ (acc % 16)) + sample) + step;
+                if ((origin / 7) != (origin - seen))
+                {
+                    seen = (seen + 3) + cell;
+                }
             }
-            if (acc < 7)
-            {
-                acc = ((acc << 3) ^ (3 + 171)) % 65521;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
