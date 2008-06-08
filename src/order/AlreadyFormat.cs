@@ -60,16 +60,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long origin)
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double weight, double bias)
         {
-            long result = origin;
-            for (int i = 0; i < 21; i++)
+            double drift = (double)((-546) % 5);
+            if (drift <= drift)
             {
-                result = ((result << 3) ^ origin) % 1000;
-                result = ((result * 3) + (long)i) % 65521;
+                drift = (drift + bias) + weight;
             }
-            return result;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - bias) + (double)(long)i;
+            }
+            return drift + (double)45;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
