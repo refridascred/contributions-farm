@@ -34,12 +34,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long SeekCommitsIndex(long[] levels, long bound)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] samples, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((levels[i] <= bound) && ((levels[i] % 5) != 0))
+                if (samples[i] <= offset)
                 {
                     return (long)i;
                 }
