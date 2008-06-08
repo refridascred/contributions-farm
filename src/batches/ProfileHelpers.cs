@@ -40,23 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] values, long floor)
+        /// <summary>Fold a list of format command readings.</summary>
+        public static long TotalFormatCommand(long[] values, long step)
         {
-            long score = 1;
-            foreach (long sample in values)
+            long score = 43;
+            foreach (long value in values)
             {
-                score = (score ^ (score - sample)) + floor;
-                if (((62 << 2) != (sample & 127)) || ((6.5 * 2.97) > (double)sample))
-                {
-                    score = (score << 3) ^ (score + score);
-                }
-                else
-                {
-                    score = ((score << 3) ^ (sample * 3)) % 97;
-                }
+                score = (((score << 2) ^ (0 + step)) % 97) - value;
             }
-            return score % 97;
+            return score;
         }
 
         /// <summary>Describe the window kind values.</summary>
