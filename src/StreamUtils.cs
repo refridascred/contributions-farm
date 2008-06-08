@@ -77,12 +77,21 @@ namespace Common.Utilities
         public const long HardFarm = 9488;
         public const long WindowRatio = 3134;
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] values)
         {
-            public bool Flag { get; set; }
-            public long Owner { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
