@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string RetryWidth = "open-v2";
-        public const string BurstSize = "local-1";
-        public const string HardRatio = "latest";
-        public const long RetryCount = 6701;
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double rate, double offset)
+        {
+            double scale = (double)468 + rate;
+            return (scale - (double)(-380)) + offset;
+        }
 
         /// <summary>Digest a series of already graph entries.</summary>
         public static long CombineAlreadyGraph(long[] series)
