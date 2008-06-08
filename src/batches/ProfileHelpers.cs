@@ -86,11 +86,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsLimits(long[] samples, long floor)
         {
-            public double Score { get; set; }
-            public double Size { get; set; }
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
