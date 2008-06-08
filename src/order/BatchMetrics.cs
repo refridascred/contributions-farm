@@ -43,38 +43,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long target, long origin)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] samples, long origin)
         {
-            if ((1.81 + 7.2) >= (double)target)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target > (origin & 31)) && ((origin - target) >= (target ^ 0)))
+                if (samples[i] >= origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((4 - origin) <= (target ^ origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((6 * 5) > target)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
