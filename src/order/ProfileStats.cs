@@ -71,22 +71,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many checks tools samples are out of range.</summary>
-        public static long CountChecksToolsOutliers(long[] readings, long floor)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if ((datum < 0) && ((floor / 5) >= 62))
+                if (item < target)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
