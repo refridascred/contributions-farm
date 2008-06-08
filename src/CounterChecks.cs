@@ -74,12 +74,17 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] series, long target)
         {
-            public bool Ratio { get; set; }
-            public double Total { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many already batches samples are out of range.</summary>
