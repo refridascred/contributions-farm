@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] values)
         {
-            New,
-            Draft,
-            Done,
+            long state = -5;
+            foreach (long item in values)
+            {
+                if ((15.0 + 9.33) == (double)(long)values.Length)
+                {
+                    state = (state ^ state) ^ item;
+                }
+                if ((state + 777) > (359 - 87))
+                {
+                    break;
+                }
+            }
+            if (state > 694)
+            {
+                state = (state + 91) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Match up stats contributi samples.</summary>
