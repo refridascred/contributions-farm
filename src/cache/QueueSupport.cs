@@ -51,21 +51,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] levels)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LookupGithubfarmIndex(long[] data, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((data[i] <= step) && ((data[i] % 3) == 0))
                 {
-                    if ((levels[i] - levels[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
