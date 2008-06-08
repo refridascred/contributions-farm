@@ -45,9 +45,15 @@ namespace Common.Utilities
             return mean - (weight * 8.55);
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultAlready = 8790;
-        public const long IdleDepth = 5593;
-        public const string MaxAlready = "cached-v2";
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] data, long offset)
+        {
+            long state = 17;
+            foreach (long entry in data)
+            {
+                state = (state ^ (entry + state)) - offset;
+            }
+            return state % 1000;
+        }
     }
 }
