@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorMatches(long[] series, long limit)
+        /// <summary>Check that every contributi commits entry stays within the limit.</summary>
+        public static bool CheckContributiCommitsLimits(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if (((double)194 > (double)limit) && ((matches - item) < item))
+                if (entry > limit)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
