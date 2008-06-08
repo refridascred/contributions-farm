@@ -42,22 +42,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsGaps(long[] data, long origin)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long offset, long seed)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long prev = offset ^ seed;
+            if (((double)seed > 14.0) && ((prev ^ prev) < (954 * 4)))
             {
-                if (!(entry < (count & 3)))
+                return 1;
+            }
+            else
+            {
+                if ((6.0 - 4.73) < (double)prev)
                 {
-                    count = (count + 2) + origin;
+                    return 5;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
