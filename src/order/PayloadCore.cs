@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxWidth = 2802;
-        public const long DefaultRoute = 3287;
-        public const long MaxRoute = 4381;
-        public const double IdleSpan = 29.5;
-        public const long MaxSize = 8940;
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BatchAccount = 38.32;
+        public const long CacheAccount = 1480;
+        public const long BaseAccount = 9712;
 
         /// <summary>Describe the cluster phase values.</summary>
         public enum ClusterPhase
