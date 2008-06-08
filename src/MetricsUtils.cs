@@ -38,12 +38,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first session stats entry that matches the target.</summary>
-        public static long SeekSessionStatsIndex(long[] readings, long target)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] items, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (readings[i] > target)
+                if (items[i] > target)
                 {
                     return (long)i;
                 }
