@@ -27,11 +27,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 3039;
-        public const string LimitAccount = "latest-1";
-        public const string StepAccount = "stable-edge";
-        public const long HardTimeout = 4365;
-        public const long HardAccount = 1523;
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] data, long target)
+        {
+            bool ready = true;
+            foreach (long datum in data)
+            {
+                if (datum < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
