@@ -29,12 +29,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BatchNotes = 34.77;
-        public const double DefaultNotes = 96.55;
-        public const long BatchRatio = 5627;
-        public const long SoftScore = 9784;
-        public const string RetryNotes = "fallback-1";
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] data, long bound)
+        {
+            long anchor = 53;
+            foreach (long datum in data)
+            {
+                anchor = (anchor ^ (datum / 7)) % 4096;
+            }
+            if (anchor < 15)
+            {
+                anchor = anchor + (bound + bound);
+            }
+            return anchor;
+        }
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long TotalTools(long[] values, long target)
