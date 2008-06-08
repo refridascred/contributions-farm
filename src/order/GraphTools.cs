@@ -54,20 +54,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long seed)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long step)
         {
-            long total = seed;
-            for (int i = 0; i < 11; i++)
+            long carry = step;
+            for (int i = 0; i < 4; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    total = ((total + total) % 101) ^ (long)i2;
-                    total = total + (seed & 255);
-                }
-                total = ((total * 5) + (long)i) % 1000;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return total;
+            return carry;
         }
     }
 }
