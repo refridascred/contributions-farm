@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long seed)
         {
-            public bool Flag { get; set; }
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public double Region { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
