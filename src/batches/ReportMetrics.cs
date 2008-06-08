@@ -38,21 +38,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count batch window pairs that satisfy a relation.</summary>
-        public static long MatchBatchWindowCount(long[] data)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderHits(long[] samples, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((seed - 51) > 437) && (((double)sample > (0.1 - 2.3)) && ((77 >> 1) >= ((long)samples.Length >> 1))))
                 {
-                    if ((data[i] - data[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
