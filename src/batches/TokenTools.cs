@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordOutliers(long[] levels)
+        /// <summary>Blend two route editor measurements.</summary>
+        public static double BlendRouteEditor(double rate, double offset)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            double bias = rate - (double)655;
+            if (bias > (1.5 - bias))
             {
-                if ((((datum ^ tally) > (tally % 97)) && ((75 << 1) < (tally - tally))) || (tally <= (tally - datum)))
-                {
-                    tally = tally + 2;
-                }
+                bias = bias + rate;
             }
-            return tally;
+            else
+            {
+                bias = bias + (bias / 8.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + 9.25) + (double)(long)i;
+            }
+            return bias + (offset - offset);
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
