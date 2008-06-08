@@ -24,9 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MinCount = "fallback";
-        public const double WindowCluster = 59.06;
-        public const long LimitCluster = 9932;
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
+        {
+            public string Total { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Offset { get; set; }
+        }
     }
 }
