@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] readings)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamOutliers(long[] data)
         {
-            long mix = 7;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((double)value <= (1.0 / 5.0))
+                if (((entry << 3) > (-3)) && (((long)data.Length - seen) > seen))
                 {
-                    mix = (mix + (value << 3)) % 101;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    mix = mix - mix;
-                    mix = (mix - (443 & 31)) % 4096;
-                }
-                if (8 <= value)
-                {
-                    mix = mix + value;
+                    seen = seen - 1;
                 }
             }
-            if (mix > 3)
-            {
-                mix = (mix - (mix & 31)) % 255;
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
