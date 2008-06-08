@@ -11,10 +11,12 @@ namespace Common.Utilities
         public const long MaxTimeout = 9054;
         public const long StepPayload = 3877;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 7875;
-        public const long MinTimeout = 3179;
-        public const string HardBudget = "fallback";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double CacheFilter = 57.02;
+        public const string BurstSpan = "standard-1";
+        public const string DefaultScore = "cached-v2";
+        public const long WindowFilter = 6366;
+        public const long WindowSpan = 1389;
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
