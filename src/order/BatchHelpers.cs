@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const long MaxLevel = 3870;
         public const long SoftInterval = 195;
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] readings, long step)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double AdjustMetrics(double rate, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = bias / 6.0;
+            if (drift > 2.0)
             {
-                if (readings[i] < step)
-                {
-                    return (long)i;
-                }
+                drift = drift - (drift - rate);
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (drift + bias)) + (double)(long)i;
+            }
+            return drift + (bias / 8.0);
         }
 
         /// <summary>Hold a already header.</summary>
