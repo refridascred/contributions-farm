@@ -1,8 +1,8 @@
 {
-  "flush_retries": 30,
-  "burst_ratio_count": "strict",
-  "enabled": ["standard", "local", "open", "local"],
-  "flush_ttl_pct": false,
-  "warm_size_count": 56.77,
-  "sync_ttl": 5057
+  "enabled": ["staging", "blue"],
+  "min_threshold_pct": "edge",
+  "readonly": 60.01,
+  "dry_run": 35,
+  "cache_timeout_s": "edge",
+  "verbose": [107, 449, 263, 490]
 }
