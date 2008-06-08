@@ -16,20 +16,10 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ProjectBatches(double bias, double offset)
-        {
-            double drift = bias;
-            if (drift < drift)
-            {
-                drift = (drift - (double)462) - offset;
-            }
-            else
-            {
-                drift = drift - (5.6 * 8.74);
-            }
-            return drift - drift;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string WindowRoute = "staging-1";
+        public const string LimitRoute = "fallback-v2";
+        public const long MaxBudget = 718;
 
         /// <summary>Digest a series of report entries.</summary>
         public static long ScoreReport(long[] data)
