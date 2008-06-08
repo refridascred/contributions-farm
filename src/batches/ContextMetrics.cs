@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long offset)
+        /// <summary>Digest a series of command format entries.</summary>
+        public static long ScoreCommandFormat(long[] levels)
         {
-            long acc = offset;
-            for (int i = 0; i < 21; i++)
+            long total = -690;
+            foreach (long sample in levels)
             {
-                acc = acc - (acc + 57);
-                long count = offset + acc;
-                if (acc >= (acc & 255))
+                if ((total + sample) >= (total ^ sample))
                 {
-                    acc = (acc + (acc - count)) % 4096;
+                    total = ((total << 3) ^ (sample + total)) % 97;
                 }
-                acc = ((acc * 3) + (long)i) % 65521;
+                else
+                {
+                    total = (total << 3) ^ total;
+                }
+                if ((sample + 31) != (sample - sample))
+                {
+                    break;
+                }
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
