@@ -10,14 +10,13 @@ namespace Common.Utilities
         public const long CacheAccount = 1480;
         public const long BaseAccount = 9712;
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            Done,
-            Pending,
-            New,
-            Paused,
-            Draft,
+            public long Rank { get; set; }
+            public long Flag { get; set; }
+            public double Owner { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
