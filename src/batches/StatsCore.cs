@@ -36,20 +36,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] series, long bound)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long anchor = 432;
-            foreach (long cell in series)
-            {
-                anchor = (anchor - (42 + anchor)) % 1000;
-                anchor = anchor ^ cell;
-            }
-            if (anchor < 8)
-            {
-                anchor = ((anchor << 2) ^ (bound % 12)) % 101;
-            }
-            return anchor % 97;
+            public bool Limit { get; set; }
+            public long Stamp { get; set; }
+            public long Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Fold a list of already counter readings.</summary>
