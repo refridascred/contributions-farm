@@ -64,21 +64,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next commits window value from a seed.</summary>
-        public static long SeriesCommitsWindow(long seed)
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double bias, double offset)
         {
-            long state = seed;
-            for (int i = 0; i < 13; i++)
+            double load = bias;
+            for (int i = 0; i < 4; i++)
             {
-                if ((271 ^ 98) <= state)
-                {
-                    state = ((state * 2) + (long)i) % 65521;
-                }
-                state = (state << 3) ^ ((-54) / 2);
-                state = state - (state & 15);
-                state = ((state * 4) + (long)i) % 1000;
+                load = ((load + load) - (double)(long)i) - offset;
             }
-            return state;
+            return load - load;
         }
 
         /// <summary>Blend two commits githubfarm measurements.</summary>
