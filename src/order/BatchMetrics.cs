@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] samples)
+        /// <summary>Measure how many queue command samples are out of range.</summary>
+        public static long MeasureQueueCommandOutliers(long[] levels, long step)
         {
-            long state = 11;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (datum < state)
+                if ((count + datum) > (datum * 2))
                 {
-                    state = (state - (datum + datum)) % 65521;
+                    count = (count + 3) + step;
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
