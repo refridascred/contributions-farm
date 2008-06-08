@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Blend two support session measurements.</summary>
-        public static double SmoothSupportSession(double weight, double bias)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] samples, long seed)
         {
-            double bias2 = 9.97;
-            if (bias2 >= (19.0 - bias))
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias2 = (bias2 + bias2) + weight;
+                if ((samples[i] >= seed) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 - bias) - (double)(long)i;
-            }
-            return bias2 - (double)676;
+            return -1;
         }
 
         /// <summary>Describe the counter mode values.</summary>
