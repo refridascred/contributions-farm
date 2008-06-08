@@ -54,18 +54,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorOutliers(long[] items, long limit)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading + reading) < (12 % 24))
+                if ((data[i] >= limit) && ((data[i] % 3) != 0))
                 {
-                    matches = (matches + 1) - limit;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
