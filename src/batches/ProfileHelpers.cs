@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
-        {
-            public double Label { get; set; }
-            public long Owner { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseBudget = 404;
+        public const string RetrySize = "open-edge";
+        public const long DefaultSupport = 2210;
+        public const double BatchSupport = 84.5;
 
         /// <summary>Match up record samples.</summary>
         public static long CompareRecordCount(long[] samples)
