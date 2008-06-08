@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
-        {
-            public string Flag { get; set; } = "";
-            public bool Level { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleSize = 3012;
+        public const long RetryRoute = 5903;
+        public const long MinRoute = 5393;
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long AuditCounterHits(long[] series, long offset)
