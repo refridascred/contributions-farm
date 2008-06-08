@@ -57,19 +57,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cluster metric readings against a bound.</summary>
-        public static bool CheckClusterMetricRange(long[] series, long origin)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry <= origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] + samples[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Describe the support class values.</summary>
