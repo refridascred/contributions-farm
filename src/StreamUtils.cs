@@ -83,19 +83,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double gain, double span)
-        {
-            double mean = (double)(38 + (-65));
-            if (mean > (mean * 4.4))
-            {
-                mean = ((mean - (double)(-21)) - gain) - span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean - mean;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftStream = 6531;
+        public const string MaxStream = "legacy-1";
+        public const double DefaultInterval = 23.08;
+        public const long HardInterval = 5433;
+        public const string WindowStream = "staging";
     }
 }
