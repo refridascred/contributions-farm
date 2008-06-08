@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long offset, long origin)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double SmoothRecord(double scale, double floor)
         {
-            if ((offset * 3) == (offset & 31))
+            double drift = (double)31 - (5.81 * 14.0);
+            if (drift >= (drift - scale))
             {
-                return 7;
+                drift = (drift + scale) + floor;
             }
             else
             {
-                if ((origin + 70) != (offset + origin))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
+                drift = drift - (scale / 4.0);
             }
+            return drift - 5.0;
         }
 
         /// <summary>Hold a counter summary.</summary>
