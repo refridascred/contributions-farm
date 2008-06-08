@@ -18,16 +18,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the channel session series from a seed.</summary>
-        public static long StepChannelSession(long origin)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long mark = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                mark = ((mark << 3) ^ (5 * 5)) % 97;
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            New,
+            Synced,
+            Pending,
         }
 
         /// <summary>Fold a list of format readings.</summary>
