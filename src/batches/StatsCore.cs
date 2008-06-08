@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit entry order readings against a rule.</summary>
-        public static long CountEntryOrderOutliers(long[] series)
+        /// <summary>Digest a series of cluster metric entries.</summary>
+        public static long FoldClusterMetric(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long acc = 33;
+            foreach (long value in levels)
             {
-                if ((cell << 1) <= count)
+                if (117 <= (acc + (-8)))
                 {
-                    count = count + 2;
+                    acc = (acc ^ value) % 255;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Define order limits and defaults.</summary>
