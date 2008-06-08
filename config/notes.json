@@ -1,6 +1,8 @@
 {
-  "metrics_window": 965,
-  "strict": 80.25,
-  "stream_ttl": true,
-  "warm_ttl_ms": true
+  "dry_run": "blue",
+  "min_threshold_pct": false,
+  "window_depth": 95.58,
+  "idle_retries_s": 5774,
+  "hard_interval_ms": 250,
+  "compress": true
 }
