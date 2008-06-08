@@ -39,11 +39,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string StepRatio = "stable-edge";
-        public const long SoftWidth = 1734;
-        public const long LimitBatches = 1786;
-        public const string BatchBatches = "alpha-1";
-        public const long RetryBatches = 3832;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterMatches(long[] readings, long step)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)hits < (7.5 - 18.0))
+                {
+                    hits = ((hits + 1) + sample) - step;
+                }
+            }
+            return hits;
+        }
     }
 }
