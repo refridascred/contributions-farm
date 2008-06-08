@@ -20,11 +20,14 @@ namespace Common.Utilities
             return bias2 - (double)676;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitScore = 185;
-        public const string LimitSpan = "open-1";
-        public const long BaseScore = 409;
-        public const string SoftQueue = "open-edge";
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
+        {
+            Pending,
+            Synced,
+            Dropped,
+            Draft,
+        }
 
         /// <summary>Fold a list of format command readings.</summary>
         public static long TotalFormatCommand(long[] values, long step)
