@@ -38,13 +38,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] samples)
         {
-            Failed,
-            Paused,
-            Closed,
-            Ready,
+            long state = 14;
+            foreach (long datum in samples)
+            {
+                if ((state % 24) > state)
+                {
+                    state = (state * 3) + datum;
+                }
+                else
+                {
+                    state = state + (datum & 31);
+                }
+            }
+            return state % 4096;
         }
     }
 }
