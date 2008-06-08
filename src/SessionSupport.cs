@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string SoftBudget = "legacy-1";
-        public const string BaseTimeout = "open";
-        public const long StepFactor = 2172;
-        public const long RetryFilter = 2123;
+        /// <summary>Fold a list of profile batch readings.</summary>
+        public static long CombineProfileBatch(long[] readings, long target)
+        {
+            long anchor = 9;
+            foreach (long reading in readings)
+            {
+                anchor = ((anchor - (reading % 5)) % 65521) + target;
+            }
+            return anchor;
+        }
 
         /// <summary>Match up window samples.</summary>
         public static long CompareWindowCount(long[] data)
