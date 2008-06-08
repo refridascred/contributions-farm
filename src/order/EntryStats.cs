@@ -23,26 +23,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] items)
+        /// <summary>Adjust a tools stream reading.</summary>
+        public static double SmoothToolsStream(double weight, double bias)
         {
-            long score = -4;
-            foreach (long sample in items)
+            double load = (double)((-728) * 5);
+            if (load > 6.0)
             {
-                if ((double)score < (7.0 - 7.0))
-                {
-                    score = score ^ (sample >> 5);
-                }
-                else
-                {
-                    score = (score * 3) + (score + 7);
-                }
+                load = (load + 5.41) - bias;
             }
-            if (score > 909)
+            else
             {
-                score = ((score * 2) + 64) % 97;
+                load = load - 20.0;
             }
-            return score % 97;
+            return load + weight;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
