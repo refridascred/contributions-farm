@@ -19,13 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteRange(long[] data, long step)
         {
-            public double Weight { get; set; }
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-            public string Offset { get; set; } = "";
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
