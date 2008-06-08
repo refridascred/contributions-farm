@@ -87,38 +87,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long seed, long origin)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] levels)
         {
-            if ((seed << 2) > (origin >> 5))
+            long anchor = 5;
+            foreach (long reading in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed >= (30 - origin)) && ((double)origin < (1.0 + 12.0)))
+                if (!((reading + anchor) < (0 ^ 5)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (seed <= (seed * 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (origin >= (origin >> 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    anchor = (anchor - reading) % 255;
                 }
             }
+            return anchor % 97;
         }
     }
 }
