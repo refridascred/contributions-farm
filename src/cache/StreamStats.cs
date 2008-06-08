@@ -49,11 +49,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Derive the next cluster entry value from a seed.</summary>
+        public static long SeriesClusterEntry(long bound)
         {
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
+            long total = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((total + bound) <= (total << 3))
+                {
+                    total = ((total << 2) ^ (bound - (long)i)) % 101;
+                    total = total ^ (total << 1);
+                }
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
