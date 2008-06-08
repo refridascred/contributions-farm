@@ -36,19 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a queue account figure with a bias.</summary>
-        public static double ScaleQueueAccount(double scale, double floor)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsMatches(long[] series, long floor)
         {
-            double bias = floor;
-            if (bias <= scale)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                bias = bias + bias;
+                if (((-2) - 3) < (hits - hits))
+                {
+                    hits = ((hits + 2) + sample) + floor;
+                }
             }
-            else
-            {
-                bias = bias - (3.0 - 9.0);
-            }
-            return bias + (floor - 1.45);
+            return hits;
         }
 
         /// <summary>Compare every pair of account layout readings.</summary>
