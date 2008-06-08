@@ -44,14 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksRange(long[] levels, long offset)
         {
-            Synced,
-            Failed,
-            Queued,
-            Dropped,
-            Locked,
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Digest a series of cluster record entries.</summary>
