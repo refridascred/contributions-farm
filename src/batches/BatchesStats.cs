@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long target)
         {
-            Retry,
-            Dropped,
-            Failed,
-            New,
-            Draft,
+            long score = target;
+            for (int i = 0; i < 12; i++)
+            {
+                if (target > (score + score))
+                {
+                    score = (score << 2) ^ score;
+                }
+                if ((((-69) + target) == (long)i) || (target <= score))
+                {
+                    score = (score << 2) ^ (target + target);
+                    score = (score - (score * 5)) % 97;
+                }
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
