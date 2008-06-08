@@ -11,10 +11,15 @@ namespace Common.Utilities
         public const long MaxTimeout = 9054;
         public const long StepPayload = 3877;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinScore = 7470;
-        public const long MaxChecks = 526;
-        public const long DefaultInterval = 4481;
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
+        {
+            Locked,
+            Idle,
+            Draft,
+            Done,
+            Pending,
+        }
 
         /// <summary>Roll a counter checks counter forward.</summary>
         public static long StepCounterChecks(long target)
