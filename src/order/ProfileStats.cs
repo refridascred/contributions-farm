@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] readings, long step)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long origin, long floor)
         {
-            long acc = 277;
-            foreach (long sample in readings)
+            long gap = origin ^ floor;
+            if ((1.9 - 1.5) >= (double)gap)
             {
-                if ((double)acc <= (9.93 / 6.0))
+                return 7;
+            }
+            else
+            {
+                if ((gap >= (origin - origin)) && ((6.06 - 7.0) != (double)origin))
                 {
-                    acc = (((acc * 3) + (7 ^ acc)) ^ sample) + step;
+                    return 3;
                 }
                 else
                 {
-                    acc = ((acc << 2) ^ acc) % 101;
+                    if ((2.98 / 3.0) >= (5.0 / 2.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return acc % 65521;
         }
 
         /// <summary>Rank format input into a small class.</summary>
