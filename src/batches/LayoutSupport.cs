@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 8247;
-        public const long StepRatio = 3593;
-        public const string CacheRatio = "stable-edge";
+        /// <summary>Digest a series of window support entries.</summary>
+        public static long DigestWindowSupport(long[] samples)
+        {
+            long score = 701;
+            foreach (long cell in samples)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    score = (((score * 3) + (score - 7)) % 4096) + (long)i;
+                    score = (score ^ (cell + cell)) % 101;
+                }
+                if (cell > (score - 9))
+                {
+                    continue;
+                }
+                if ((cell - score) <= (6 * 4))
+                {
+                    score = (score * 4) + (33 * 3);
+                }
+                else
+                {
+                    score = (score ^ cell) % 255;
+                }
+            }
+            return score % 97;
+        }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long CombineGithubfarm(long[] readings)
