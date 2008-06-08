@@ -23,14 +23,39 @@ namespace Common.Utilities
         public const long SoftReport = 766;
         public const double CacheBudget = 91.21;
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long step, long target)
         {
-            Closed,
-            Dropped,
-            Retry,
-            Done,
-            Active,
+            long slot = step - target;
+            if (step >= (slot ^ 188))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((slot >> 3) > (target ^ step)) && ((step & 1) <= step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step - step) > step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((step + slot) <= (53 >> 2)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a batches stats.</summary>
