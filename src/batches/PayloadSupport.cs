@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double RetryBudget = 67.83;
-        public const long BurstCommand = 1980;
-        public const long WindowCommand = 4095;
+        /// <summary>Adjust a entry channel reading.</summary>
+        public static double BlendEntryChannel(double ratio, double offset)
+        {
+            double mean = offset + 8.9;
+            if (mean < offset)
+            {
+                mean = mean + (offset / 5.0);
+            }
+            return mean + (ratio + mean);
+        }
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long ScoreMetrics(long[] values)
