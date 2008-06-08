@@ -1,6 +1,19 @@
 {
-  "cache_depth_pct": 36,
-  "retry_depth": 62.93,
-  "batches_size": "strict",
-  "batch_ttl": true
+  "soft_ratio": true,
+  "idle_capacity": "edge",
+  "burst_threshold_s": "legacy",
+  "idle_ratio": {
+    "batch_delay_count": "standard",
+    "soft_interval_s": {
+      "max_ttl_count": "open",
+      "window_threshold": [233, 278],
+      "poll_ttl_pct": [28, 488, 42],
+      "burst_delay_pct": 500,
+      "schema_capacity": 4850
+    },
+    "compress": 24,
+    "cache_retries_s": false,
+    "notes_window": "open"
+  },
+  "metric_size": 9026
 }
