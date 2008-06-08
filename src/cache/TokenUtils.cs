@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long seed, long bound)
+        /// <summary>Combine commits tools values into a single score.</summary>
+        public static long WeighCommitsTools(long[] data)
         {
-            if (((-4) * 5) <= seed)
+            long mark = 91;
+            foreach (long datum in data)
             {
-                return 4;
+                mark = (mark ^ (25 / 9)) ^ datum;
             }
-            else
+            if (mark > 562)
             {
-                if (((seed & 63) < (323 * 3)) && ((6.7 - 0.1) >= (double)bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
+                mark = mark - (9 + mark);
             }
+            return mark % 65521;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
