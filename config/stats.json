@@ -1,5 +1,13 @@
 {
-  "burst_size_pct": [207, 350, 289],
-  "readonly": [347, 168],
-  "soft_limit_count": 81.58
+  "burst_window_s": "green",
+  "cluster_interval": 250,
+  "soft_interval_pct": "stable",
+  "persist": {
+    "profile_window": false,
+    "max_limit": true,
+    "default_threshold": "cached",
+    "min_timeout_count": [298, 49],
+    "audit": "eu-west",
+    "cache_limit_ms": "legacy"
+  }
 }
