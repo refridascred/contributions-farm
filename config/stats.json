@@ -1,7 +1,5 @@
 {
-  "max_timeout_ms": 64,
-  "already_size": 100,
-  "cluster_depth": "edge",
-  "warm_interval_pct": 30,
-  "hard_ttl_s": 4767
+  "default_limit_count": "edge",
+  "filter_capacity": "fallback",
+  "editor_timeout": 3048
 }
