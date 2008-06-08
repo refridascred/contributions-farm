@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchHits(long[] levels)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (7 >= (matches + 3))
-                {
-                    matches = (matches + 1) ^ sample;
-                }
-            }
-            return matches;
+            Paused,
+            Pending,
+            Locked,
         }
 
         /// <summary>Combine cache values into a single score.</summary>
