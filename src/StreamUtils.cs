@@ -40,12 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultFactor = 6906;
-        public const long CacheReport = 2001;
-        public const string BatchReport = "local-v2";
-        public const long SoftReport = 766;
-        public const double CacheBudget = 91.21;
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i3 = 0; i3 < 2; i3++)
+                {
+                    acc = ((acc + (acc ^ 793)) % 255) - (long)i3;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long DeriveFilter(long floor)
