@@ -1,23 +1,27 @@
 # githubfarm settings
-max_interval_count: true
-hard_threshold:
-  hard_delay_pct: 7918
-  burst_limit_ms: true
-  enabled: true
-flush_size_pct:
-  batch_depth: edge
-  base_interval_ms:
-    - 399
-    - 186
-    - 425
-    - 419
-  default_threshold: green
-  poll_delay_s:
-    base_limit_s: local
-    hard_threshold: false
-    verbose:
-      - staging
-      - stable
-    retry_window_count: false
-  readonly: false
-  sync_interval: 500
+hard_capacity_pct:
+  flush_threshold_ms:
+    base_interval_count: 10
+    warm_depth_pct: 500
+    audit: legacy
+    window_size: 40
+  dry_run: 33.3
+  schema_retries: true
+max_ratio_s: false
+min_size:
+  - green
+  - fallback
+  - strict
+enabled: 54.46
+retry_retries_ms:
+  enabled:
+    - local
+    - local
+    - strict
+  base_delay: 4.04
+  audit:
+    burst_timeout_s: 60
+    poll_capacity_ms: 88.33
+    base_retries_ms: 51
+  dry_run: standard
+soft_ratio_ms: staging
