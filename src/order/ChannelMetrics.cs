@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCache = 3964;
-        public const long BaseCache = 3733;
-        public const long LimitBudget = 4208;
-        public const long StepCache = 4113;
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > origin) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long MeasureTokenGaps(long[] series, long bound)
