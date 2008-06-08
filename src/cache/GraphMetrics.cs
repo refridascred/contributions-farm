@@ -19,30 +19,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long floor, long bound)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long bound, long offset)
         {
-            if ((bound << 1) < (bound % 7))
+            if ((double)bound <= (6.5 - 3.1))
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if ((floor + 896) > (floor + 83))
+                if ((offset ^ offset) < (offset + bound))
                 {
-                    return 5;
+                    return 4;
                 }
                 else
                 {
-                    if (bound >= 670)
+                    if ((bound / 9) == (bound - offset))
                     {
-                        return 1;
+                        return 7;
                     }
                     else
                     {
-                        if ((bound ^ floor) < floor)
+                        if (((bound & 127) > (bound + bound)) && ((double)bound > (9.0 * 9.5)))
                         {
-                            return 7;
+                            return 8;
                         }
                         else
                         {
