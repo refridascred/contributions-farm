@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamGaps(long[] items)
-        {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((reading < (hits + 3)) && ((reading >> 4) < (reading ^ reading)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 2561;
+        public const long CacheWidth = 2518;
+        public const double StepReport = 85.03;
+        public const string MinReport = "alpha-v2";
+        public const long BurstReport = 9783;
 
         /// <summary>Hold a buffer snapshot.</summary>
         public sealed class BufferSnapshot
