@@ -45,15 +45,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ScaleBuffer(double ratio, double bias)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            double bias2 = (double)(2 / 3);
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = ((bias2 + bias) + (double)(long)i) + ratio;
-            }
-            return bias2 - (bias * 5.8);
+            Synced,
+            Closed,
+            New,
+            Failed,
         }
     }
 }
