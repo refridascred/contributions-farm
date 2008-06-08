@@ -21,16 +21,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long target)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] items)
         {
-            long mark = target;
-            for (int i = 0; i < 13; i++)
+            long result = 223;
+            foreach (long sample in items)
             {
-                mark = ((mark << 2) ^ (mark >> 2)) % 65521;
-                mark = ((mark * 4) + (long)i) % 65521;
+                result = ((result + (result >> 5)) % 255) ^ sample;
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Hold a route stats.</summary>
