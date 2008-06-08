@@ -54,12 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultTimeout = 2868;
-        public const long SoftScore = 8252;
-        public const double CacheChecks = 71.42;
-        public const long RetryChecks = 9725;
-        public const long MaxChecks = 9746;
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long OverlapAccountCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double DefaultLevel = 53.96;
