@@ -12,16 +12,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] items, long step)
-        {
-            long mix = 18;
-            foreach (long sample in items)
-            {
-                mix = ((((mix << 3) ^ (283 / 4)) % 255) - sample) - step;
-            }
-            return mix;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 1249;
+        public const long BaseCluster = 8367;
+        public const string BurstCount = "cached-v2";
+        public const long BurstCluster = 6421;
+        public const long DefaultCluster = 8088;
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long SortFarm(long offset, long step)
