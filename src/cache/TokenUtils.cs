@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] samples)
+        /// <summary>Compare every pair of batches graph readings.</summary>
+        public static long CompareBatchesGraphCount(long[] items)
         {
-            long carry = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((6.3 * 0.8) != (double)sample) || ((sample ^ carry) < (carry - sample)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (carry << 2) ^ (0 - 827);
-                }
-                if ((double)sample != (8.53 * 3.05))
-                {
-                    break;
+                    if ((items[i] + items[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry % 4096;
+            return count;
         }
 
         /// <summary>Describe the account level values.</summary>
