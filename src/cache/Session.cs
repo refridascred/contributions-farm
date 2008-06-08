@@ -13,19 +13,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Check that every commits entry entry stays within the limit.</summary>
-        public static bool ValidateCommitsEntryRange(long[] items, long step)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Queued,
+            Failed,
+            New,
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
