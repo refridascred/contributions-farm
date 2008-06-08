@@ -21,10 +21,33 @@ namespace Common.Utilities
         public const double HardMetrics = 37.81;
         public const long LimitCount = 4953;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BaseCluster = "alpha";
-        public const string SoftCluster = "cached-1";
-        public const string LimitInterval = "local";
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long floor, long origin)
+        {
+            long span = floor - origin;
+            if ((origin & 255) == ((-786) ^ origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((27 <= origin) && ((floor + span) == (floor + floor)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor ^ 11) > (span + (-39)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Project the next format value.</summary>
         public static double ScaleFormat(double gain, double floor)
