@@ -34,17 +34,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] values, long seed)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ScaleStream(double weight, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = floor;
+            if (gain > gain)
             {
-                if ((values[i] >= seed) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                gain = gain - (double)939;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (weight + gain)) + (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Derive the next profile filter value from a seed.</summary>
