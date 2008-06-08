@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public bool Total { get; set; }
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a channel snapshot.</summary>
