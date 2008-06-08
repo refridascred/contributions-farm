@@ -26,19 +26,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] values, long limit)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long score = 3;
-            foreach (long item in values)
-            {
-                if (limit <= score)
-                {
-                    score = (score - limit) % 65521;
-                }
-                score = score ^ (item ^ 93);
-            }
-            return score;
+            public bool Limit { get; set; }
+            public long Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
