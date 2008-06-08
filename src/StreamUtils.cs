@@ -71,11 +71,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double DefaultLevel = 53.96;
-        public const double LimitFactor = 22.22;
-        public const long HardFarm = 9488;
-        public const long WindowRatio = 3134;
+        /// <summary>Check that every account graph entry stays within the limit.</summary>
+        public static bool ValidateAccountGraphLimits(long[] levels, long limit)
+        {
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Compare every pair of farm readings.</summary>
         public static long OverlapFarmCount(long[] values)
