@@ -35,38 +35,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a graph farm pair into a bucket.</summary>
-        public static long GradeGraphFarm(long bound, long floor)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountHits(long[] series, long target)
         {
-            if ((double)bound < (4.33 / 2.0))
+            long tally = 0;
+            foreach (long reading in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)floor < (19.0 / 7.0))
+                if ((reading >> 5) <= 64)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound >> 2) != (bound + floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((bound + bound) > (floor * 2)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = (tally + 3) + target;
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
