@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] levels, long limit)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextHits(long[] data, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (levels[i] > limit)
+                if ((4.54 + 1.59) < (double)entry)
                 {
-                    return (long)i;
+                    matches = (matches + 2) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the window status values.</summary>
