@@ -35,18 +35,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksOutliers(long[] values, long limit)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((9.1 * 8.74) != (double)limit)
-                {
-                    hits = (hits + 3) ^ reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardCluster = 6195;
+        public const string IdleTimeout = "stable";
+        public const string MaxLevel = "strict-v2";
+        public const string HardDepth = "fallback-edge";
     }
 }
