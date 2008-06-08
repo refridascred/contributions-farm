@@ -32,18 +32,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] series)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if (!((4 ^ 1) > sample))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Active,
+            Ready,
+            Locked,
+            Dropped,
+            Done,
         }
 
         /// <summary>Project the next batch value.</summary>
