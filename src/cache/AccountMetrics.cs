@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long PairReportCount(long[] levels)
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double weight, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double gain = floor + (weight / 7.0);
+            if (gain <= (double)2)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain = gain - floor;
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - (weight + 6.8)) - (double)(long)i;
+            }
+            return gain + floor;
         }
 
         /// <summary>Combine checks queue values into a single score.</summary>
