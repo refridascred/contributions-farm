@@ -1,6 +1,15 @@
 # entry settings
-flush_capacity_ms: 6758
-retry_interval_s: 92.04
-default_delay_s: 9340
-channel_capacity: 85.27
-hard_ratio: 56.26
+cache_timeout_s: 67
+idle_size_ms: standard
+cache_depth_count: 63
+warm_delay_pct: true
+farm_depth:
+  cache_limit:
+    - 1
+    - 283
+  default_window_count: edge
+  report_depth: 2902
+  metric_delay: false
+  retry_depth: latest
+  cache_size_ms: fallback
+cache_ttl: strict
