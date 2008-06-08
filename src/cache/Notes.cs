@@ -46,32 +46,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long step, long offset)
+        /// <summary>Project the next batch value.</summary>
+        public static double BlendBatch(double rate, double offset)
         {
-            long cur = step + offset;
-            if ((step + cur) > (offset + 8))
+            double mean = (double)91 - (offset + rate);
+            if (mean > (offset * 2.17))
             {
-                return 5;
+                mean = mean + 7.0;
             }
-            else
-            {
-                if (5.0 >= (double)step)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((62 >= cur) && ((offset - cur) > step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return mean + (rate + offset);
         }
     }
 }
