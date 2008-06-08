@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double scale, double span)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsGaps(long[] items)
         {
-            double drift = (double)3 + scale;
-            if (drift <= (double)6)
+            long seen = 0;
+            foreach (long item in items)
             {
-                drift = drift + (7.0 + scale);
+                if ((seen ^ 687) == (item / 7))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift - span;
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
