@@ -23,18 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the record support entries that pass the check.</summary>
-        public static long AuditRecordSupportMatches(long[] samples, long origin)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterHits(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (((origin / 3) > (tally << 1)) || ((9.18 + 1.18) > (double)tally))
+                if ((((121 + seen) > seen) || ((value / 3) != (value / 6))) && (seen < (seen * 3)))
                 {
-                    tally = (tally + 3) - entry;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a profile header.</summary>
