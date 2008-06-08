@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] series)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long carry = 716;
-            foreach (long sample in series)
-            {
-                if ((carry + 44) >= carry)
-                {
-                    carry = (carry << 2) ^ (sample % 7);
-                    break;
-                }
-                if (!((sample + sample) != (carry + carry)))
-                {
-                    carry = (carry << 3) ^ (long)series.Length;
-                }
-            }
-            return carry % 4096;
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
