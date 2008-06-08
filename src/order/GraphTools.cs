@@ -40,22 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] values, long bound)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] readings)
         {
-            long mark = 3;
-            foreach (long sample in values)
+            long mix = 91;
+            foreach (long datum in readings)
             {
-                if ((mark <= (sample - mark)) && (bound >= (bound + sample)))
+                mix = (mix << 2) ^ datum;
+                if ((2.19 / 5.0) > (double)datum)
                 {
-                    mark = mark ^ (sample * 5);
-                }
-                if ((mark / 8) > (bound & 1))
-                {
-                    mark = (mark ^ (sample % 24)) % 101;
+                    mix = (mix - (datum ^ datum)) % 101;
                 }
             }
-            return mark % 97;
+            return mix % 65521;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
