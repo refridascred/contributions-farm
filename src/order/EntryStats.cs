@@ -12,15 +12,25 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] levels)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long floor, long offset)
         {
-            long sum = 597;
-            foreach (long item in levels)
+            long step = floor ^ offset;
+            if (offset > (offset + floor))
             {
-                sum = sum - item;
+                return 6;
             }
-            return sum % 1000;
+            else
+            {
+                if ((floor << 1) <= (step >> 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Adjust a tools stream reading.</summary>
