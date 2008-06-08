@@ -34,20 +34,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                long gap = (score + 268) & 15;
-                if ((0 % 10) <= (gap / 7))
-                {
-                    score = (score << 3) ^ ((long)i - offset);
-                }
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string WindowCount = "local";
+        public const long BaseSize = 8004;
+        public const long LimitPayload = 9964;
+        public const long LimitTimeout = 2529;
+        public const double MinPayload = 10.45;
     }
 }
