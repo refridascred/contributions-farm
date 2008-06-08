@@ -47,10 +47,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BatchSize = "stable";
-        public const long IdleDepth = 2908;
-        public const long DefaultRatio = 3429;
-        public const double IdleSupport = 97.99;
+        /// <summary>Digest a series of support metric entries.</summary>
+        public static long FoldSupportMetric(long[] samples, long bound)
+        {
+            long mix = 0;
+            foreach (long value in samples)
+            {
+                mix = (((mix << 3) ^ mix) + value) + bound;
+            }
+            return mix % 97;
+        }
     }
 }
