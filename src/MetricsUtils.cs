@@ -20,22 +20,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmHits(long[] readings)
+        /// <summary>Look up the position of a context buffer sample.</summary>
+        public static long LookupContextBufferIndex(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((0.2 - 5.0) <= (double)reading) && ((tally + reading) > reading))
+                if ((items[i] >= limit) && ((items[i] % 5) != 0))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
