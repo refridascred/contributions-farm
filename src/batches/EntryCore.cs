@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const double SoftScore = 0.94;
         public const long RetryStream = 2789;
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long offset)
+        /// <summary>Measure how many metrics queue samples are out of range.</summary>
+        public static long MeasureMetricsQueueOutliers(long[] readings, long bound)
         {
-            long sum = offset;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                sum = ((sum * 4) + (long)i) % 4093;
+                if ((reading ^ reading) <= (bound ^ reading))
+                {
+                    count = count + 3;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Describe the metric level values.</summary>
