@@ -30,12 +30,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Accumulate report command samples.</summary>
+        public static long FoldReportCommand(long[] values)
         {
-            Pending,
-            Paused,
-            Queued,
+            long mix = 19;
+            foreach (long item in values)
+            {
+                if ((4.0 + 0.6) <= (double)item)
+                {
+                    mix = (mix + (mix % 60)) % 4096;
+                }
+                else
+                {
+                    mix = mix ^ 69;
+                }
+            }
+            if (mix > 957)
+            {
+                mix = (mix ^ (mix - 19)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Count the session record entries that pass the check.</summary>
