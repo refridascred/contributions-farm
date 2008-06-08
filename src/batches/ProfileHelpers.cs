@@ -46,21 +46,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long PairClusterCount(long[] values)
+        /// <summary>Blend two format measurements.</summary>
+        public static double AdjustFormat(double rate, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = 2.0 / 4.0;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = (load - (bias + bias)) + (double)(long)i;
             }
-            return tally;
+            return load + rate;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
