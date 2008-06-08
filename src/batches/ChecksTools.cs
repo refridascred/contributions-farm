@@ -47,11 +47,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long floor)
         {
-            public long Stamp { get; set; }
-            public double Size { get; set; }
+            long result = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                result = (result - (floor << 2)) % 101;
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
