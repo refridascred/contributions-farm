@@ -13,19 +13,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksBounds(long[] readings, long step)
+        /// <summary>Roll a filter metrics counter forward.</summary>
+        public static long IterateFilterMetrics(long origin)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long anchor = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (sample <= step)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = (anchor + ((long)i / 7)) % 255;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Hold a context entry.</summary>
