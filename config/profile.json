@@ -1,5 +1,10 @@
 {
-  "sync_capacity_s": 81.02,
-  "min_limit_count": "legacy",
-  "compress": ["cached", "strict", "eu-west"]
+  "enabled": 321,
+  "default_retries_s": {
+    "record_capacity": "stable",
+    "verbose": "legacy",
+    "enabled": 7288
+  },
+  "channel_interval": 11,
+  "flush_ratio": "legacy"
 }
