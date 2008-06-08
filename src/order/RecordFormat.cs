@@ -24,21 +24,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] items)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] items, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((carry + value) >= value))
                 {
-                    if ((items[i] + items[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry << 2) ^ (offset % 7)) % 101;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Fold a list of githubfarm support readings.</summary>
