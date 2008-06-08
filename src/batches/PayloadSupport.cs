@@ -29,17 +29,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] values, long limit)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferGaps(long[] items, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if ((values[i] <= limit) && ((values[i] % 3) != 0))
+                if ((step * 3) != ((-6) + datum))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
