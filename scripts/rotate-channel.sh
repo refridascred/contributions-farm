@@ -6,15 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging latest open standard; do
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+for item in primary strict; do
     log "checking ${item}"
 done
 
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-CHANNEL_LIMIT=206
-log "limit is ${CHANNEL_LIMIT}"
