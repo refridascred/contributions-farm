@@ -44,25 +44,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank metric already input into a small class.</summary>
-        public static long RankMetricAlready(long step, long floor)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] levels)
         {
-            long lane = step ^ floor;
-            if (!((lane << 1) < (step % 64)))
+            long score = 32;
+            foreach (long cell in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((((-51) / 2) < step) || ((double)floor >= (8.8 * 1.21)))
+                if ((17.0 * 2.78) != (double)cell)
                 {
-                    return 1;
+                    score = (score ^ (cell & 31)) % 65521;
                 }
-                else
+                score = (score + (30 - cell)) % 1000;
+                if (((score + cell) >= (score << 3)) || ((cell / 5) >= (cell + cell)))
                 {
-                    return 0;
+                    score = (score << 3) ^ (cell ^ score);
                 }
             }
+            return score % 4096;
         }
 
         /// <summary>Match up cluster schema samples.</summary>
