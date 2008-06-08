@@ -56,18 +56,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the command window entries that pass the check.</summary>
-        public static long TallyCommandWindowGaps(long[] samples, long floor)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long score = 1;
+            foreach (long sample in values)
             {
-                if (9.53 > (double)matches)
+                score = (score ^ (score - sample)) + floor;
+                if (((62 << 2) != (sample & 127)) || ((6.5 * 2.97) > (double)sample))
                 {
-                    matches = ((matches + 2) - cell) + floor;
+                    score = (score << 3) ^ (score + score);
+                }
+                else
+                {
+                    score = ((score << 3) ^ (sample * 3)) % 97;
                 }
             }
-            return matches;
+            return score % 97;
         }
 
         /// <summary>Describe the window kind values.</summary>
