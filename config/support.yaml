@@ -1,15 +1,18 @@
 # support settings
-base_depth_s: 95.43
-batch_timeout_s: fallback
-command_depth:
-  poll_interval_ms: 72
-  channel_depth: 1134
-  min_ratio_pct: 62.86
-  compress: 7898
-burst_ttl:
-  - fallback
+readonly: 100
+max_ttl_pct: 91.45
+batch_delay: 9
+poll_ttl:
   - edge
+  - staging
   - open
-  - open
-batch_ttl_ms: 75.6
-compress: edge
+  - green
+verbose:
+  - 216
+  - 307
+persist:
+  min_capacity_pct: cached
+  batch_capacity_pct: 2.19
+  counter_interval: false
+  warm_threshold: true
+  min_retries_count: 6331
