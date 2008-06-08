@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] data)
+        /// <summary>Validate contributi metrics readings against a bound.</summary>
+        public static bool CheckContributiMetricsBounds(long[] series, long floor)
         {
-            long acc = 6;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if ((double)acc < 3.41)
+                if (item < floor)
                 {
-                    acc = ((acc ^ (acc ^ acc)) % 97) + reading;
+                    flag = false;
+                    break;
                 }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
