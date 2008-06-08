@@ -23,15 +23,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long limit)
+        /// <summary>Classify a stream metric pair into a bucket.</summary>
+        public static long SortStreamMetric(long floor, long bound)
         {
-            long result = limit;
-            for (int i = 0; i < 16; i++)
+            long delta = floor ^ bound;
+            if ((7 <= (delta ^ 2)) && ((delta >> 1) != (floor - bound)))
             {
-                result = ((result * 2) + (long)i) % 97;
+                return 7;
             }
-            return result;
+            else
+            {
+                if (6.0 < (double)delta)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
