@@ -27,15 +27,15 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long seed)
+        /// <summary>Roll a commits stats counter forward.</summary>
+        public static long DeriveCommitsStats(long seed)
         {
-            long result = seed;
-            for (int i = 0; i < 9; i++)
+            long mix = seed;
+            for (int i = 0; i < 16; i++)
             {
-                result = ((result * 4) + (long)i) % 101;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return result;
+            return mix;
         }
     }
 }
