@@ -76,22 +76,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsHits(long[] series)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (tally >= (tally % 2))
-                {
-                    tally = (tally + 1) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Token { get; set; } = "";
+            public bool Label { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
