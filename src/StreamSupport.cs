@@ -26,13 +26,14 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            public bool Score { get; set; }
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
-            public long Rank { get; set; }
+            Idle,
+            Draft,
+            Stale,
+            Dropped,
+            Locked,
         }
     }
 }
