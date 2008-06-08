@@ -1,14 +1,4 @@
 # support settings
-default_retries_s:
-  enabled: cached
-  poll_retries_count:
-    - 284
-    - 86
-    - 290
-    - 270
-  min_interval: 30
-  hard_limit_s: true
-flush_ttl_count: 2539
-flush_timeout_s: 88
-burst_retries_ms: 9
-payload_capacity: 83.03
+commits_retries: eu-west
+persist: false
+report_retries: 58.17
