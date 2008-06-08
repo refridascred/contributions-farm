@@ -33,16 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long target)
+        /// <summary>Accumulate account support samples.</summary>
+        public static long TallyAccountSupport(long[] samples)
         {
-            long anchor = target;
-            for (int i = 0; i < 10; i++)
+            long carry = -281;
+            foreach (long datum in samples)
             {
-                anchor = (anchor + (83 / 5)) % 97;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                carry = ((carry << 2) ^ (carry << 1)) - datum;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Combine format values into a single score.</summary>
