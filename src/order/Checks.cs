@@ -42,22 +42,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyOutliers(long[] values, long limit)
-        {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((matches + 85) >= (matches << 1))
-                {
-                    matches = ((matches + 2) + cell) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCache = 6227;
+        public const long BurstCache = 776;
+        public const long WindowCache = 9415;
+        public const long BaseCache = 724;
     }
 }
