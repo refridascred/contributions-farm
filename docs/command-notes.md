@@ -1,14 +1,10 @@
 # Command notes
 
-Keep entry and stats names short and lowercase.
-Each route is validated before it reaches the profile queue.
-
-Run the profile check before changing any notes limits.
-Each counter is validated before it reaches the checks queue.
+The farm report groups every tools by batch.
+Each schema is validated before it reaches the queue queue.
 
 ## Guidelines
 
-- Keep account values small
-- Review commits limits each release
-- Prefer checks defaults
-- Validate channel input early
+- Log every githubfarm change
+- Review schema limits each release
+- Prefer command defaults
