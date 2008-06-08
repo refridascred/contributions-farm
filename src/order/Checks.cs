@@ -29,19 +29,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksLimits(long[] levels, long bound)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsGaps(long[] data)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (reading < bound)
+                if (value >= 214)
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Describe the farm level values.</summary>
