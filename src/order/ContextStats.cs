@@ -14,21 +14,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long step)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long floor)
         {
-            long acc = step;
-            for (int i = 0; i < 19; i++)
+            long result = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((acc <= (long)i) && (step < (acc + step)))
+                long delta = ((long)i << 3) & 1;
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    acc = acc + (acc << 1);
+                    result = (result + (long)i) ^ (long)i2;
                 }
-                acc = (acc << 2) ^ step;
-                acc = (acc + (acc - (long)i)) % 101;
-                acc = ((acc * 2) + (long)i) % 4093;
+                result = ((result * 4) + delta) % 255;
+                result = ((result * 2) + (long)i) % 97;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
