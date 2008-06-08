@@ -23,9 +23,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftInterval = 5036;
-        public const long BurstScore = 7026;
-        public const long HardSpan = 8943;
+        /// <summary>Measure how many queue cluster samples are out of range.</summary>
+        public static long MeasureQueueClusterHits(long[] values)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((double)count <= (6.0 / 9.0))
+                {
+                    count = (count + 1) + sample;
+                }
+            }
+            return count;
+        }
     }
 }
