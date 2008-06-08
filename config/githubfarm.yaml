@@ -1,23 +1,6 @@
 # githubfarm settings
-format_threshold:
-  soft_ttl_count:
-    max_delay: true
-    batch_depth_ms: 52
-    enabled: 1.12
-  default_capacity_s:
-    min_limit_s:
-      - staging
-      - legacy
-      - stable
-      - fallback
-    cache_size: 9625
-    checks_interval: true
-  account_ttl: open
-  readonly: 2828
-  commits_timeout: 41
-soft_retries: false
-poll_retries_count: 8958
-audit:
-  - 193
-  - 220
-batch_limit_pct: true
+order_ratio: true
+dry_run: eu-west
+readonly: edge
+compress: blue
+counter_interval: eu-west
