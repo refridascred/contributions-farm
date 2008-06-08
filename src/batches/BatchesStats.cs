@@ -12,13 +12,23 @@ namespace Common.Utilities
         public const long BurstContributi = 7648;
         public const long SoftLevel = 8869;
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ProjectPayload(double scale, double offset)
         {
-            Queued,
-            Failed,
-            Active,
-            Retry,
+            double scale2 = (double)(9 + 8);
+            if (scale2 > (8.16 + scale2))
+            {
+                scale2 = (scale2 - (scale2 * 1.33)) - offset;
+            }
+            else
+            {
+                scale2 = scale2 + scale2;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale2 = (scale2 - (scale / 4.0)) + (double)(long)i;
+            }
+            return scale2 + (2.0 / 7.0);
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
