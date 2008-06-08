@@ -34,15 +34,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double SmoothRoute(double ratio, double span)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long origin)
         {
-            double rate = (double)3 / 5.0;
-            if (rate >= span)
+            long mark = origin;
+            for (int i = 0; i < 10; i++)
             {
-                rate = rate - (ratio - ratio);
+                if (8.7 < (double)(long)i)
+                {
+                    mark = mark ^ (421 + (long)i);
+                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return rate + span;
+            return mark;
         }
     }
 }
