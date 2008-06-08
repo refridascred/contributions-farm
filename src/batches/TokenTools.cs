@@ -39,19 +39,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double rate, double bias)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatMatches(long[] items, long origin)
         {
-            double scale = rate;
-            if (scale > (5.6 * 6.0))
+            long tally = 0;
+            foreach (long cell in items)
             {
-                scale = (scale + scale) + bias;
+                if (!((origin ^ 2) >= (cell ^ tally)))
+                {
+                    tally = tally + 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + 3.8) - (double)(long)i;
-            }
-            return scale - (rate - scale);
+            return tally;
         }
     }
 }
