@@ -12,11 +12,24 @@ namespace Common.Utilities
         public const string MinReport = "alpha-v2";
         public const long BurstReport = 9783;
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] values)
         {
-            public double Label { get; set; }
-            public string Owner { get; set; } = "";
+            long total = 7;
+            foreach (long reading in values)
+            {
+                long cur = reading;
+                total = (total * 3) + (cur << 1);
+                if (reading > (reading / 8))
+                {
+                    total = (total ^ (951 - total)) % 101;
+                }
+                else
+                {
+                    total = (total + (reading >> 4)) % 97;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Define support limits and defaults.</summary>
