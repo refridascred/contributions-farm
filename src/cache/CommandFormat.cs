@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileHits(long[] series)
+        /// <summary>Roll a schema cluster counter forward.</summary>
+        public static long DeriveSchemaCluster(long floor)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long carry = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if ((double)entry > (6.4 - 14.0))
+                if ((long)i >= (carry * 4))
                 {
-                    tally = tally + 2;
+                    break;
                 }
+                if (!((carry % 2) < (floor & 31)))
+                {
+                    carry = (carry * 4) + (long)i;
+                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Describe the metric class values.</summary>
