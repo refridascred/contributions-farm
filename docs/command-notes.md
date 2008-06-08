@@ -1,12 +1,12 @@
 # Command notes
 
-Defaults for profile live in the config folder and can be overridden per environment.
-The format report groups every account by support.
-Each payload is validated before it reaches the profile queue.
+The command report groups every record by buffer.
+Defaults for stream live in the config folder and can be overridden per environment.
+The window module keeps record values in sync with the context cache.
 
 ## Guidelines
 
-- Validate notes input early
-- Review account limits each release
-- Prefer stats defaults
-- Document new farm fields
+- Keep entry values small
+- Review counter limits each release
+- Log every metrics change
+- Validate tools input early
