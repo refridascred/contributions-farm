@@ -1,13 +1,6 @@
 {
-  "command_retries": 60,
-  "support_depth": false,
-  "dry_run": 51,
-  "flush_limit_s": "primary",
-  "default_depth": {
-    "base_interval_s": ["strict", "blue"],
-    "hard_delay": "local",
-    "poll_window_ms": 11,
-    "base_capacity_s": 100,
-    "poll_threshold_ms": 7191
-  }
+  "min_window_pct": 15.91,
+  "batch_threshold_pct": 6.29,
+  "strict": true,
+  "hard_window_count": 90
 }
