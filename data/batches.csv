@@ -1,7 +1,9 @@
-id,token,level,region
-1,712,blue,staging
-2,primary,34,51.36
-3,191,12.05,484
-4,364,edge,open
-5,blue,82.67,blue
-6,standard,246,local
+id,owner,weight,region
+1,350,419,local
+2,44.89,edge,19.53
+3,latest,86.18,31.0
+4,148,400,748
+5,82.57,standard,strict
+6,293,65.56,932
+7,green,93.92,primary
+8,eu-west,812,standard
