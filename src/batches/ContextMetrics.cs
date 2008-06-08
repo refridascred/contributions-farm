@@ -76,13 +76,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsMatches(long[] items, long limit)
         {
-            Done,
-            Locked,
-            Active,
-            Failed,
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((value << 2) > value)
+                {
+                    hits = (hits + 2) + limit;
+                }
+            }
+            return hits;
         }
     }
 }
