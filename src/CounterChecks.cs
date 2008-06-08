@@ -59,14 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Count the session account entries that pass the check.</summary>
+        public static long CountSessionAccountGaps(long[] readings)
         {
-            Locked,
-            Draft,
-            Stale,
-            New,
-            Paused,
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((double)item < 2.9)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a command entry.</summary>
