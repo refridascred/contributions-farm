@@ -36,13 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesMatches(long[] samples, long offset)
         {
-            public bool Level { get; set; }
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
-            public long Total { get; set; }
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)offset != (6.7 + 5.1))
+                {
+                    count = (count + 3) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a route record.</summary>
