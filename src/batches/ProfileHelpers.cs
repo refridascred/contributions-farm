@@ -58,20 +58,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate schema buffer readings against a bound.</summary>
-        public static bool ValidateSchemaBufferLimits(long[] values, long seed)
-        {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double HardProfile = 30.55;
+        public const long MinRatio = 3846;
+        public const double MaxProfile = 16.49;
+        public const long IdleCount = 7089;
+        public const long WindowRatio = 2837;
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long RankChecks(long floor, long step)
