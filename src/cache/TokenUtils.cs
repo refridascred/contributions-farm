@@ -23,17 +23,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] readings, long limit)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > limit) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Stale,
+            Closed,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
