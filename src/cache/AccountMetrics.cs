@@ -28,19 +28,15 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Derive the next profile contributi value from a seed.</summary>
-        public static long DeriveProfileContributi(long offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] readings)
         {
-            long result = offset;
-            for (int i = 0; i < 12; i++)
+            long mix = 62;
+            foreach (long reading in readings)
             {
-                if (!((6.96 - 0.71) <= (double)offset))
-                {
-                    result = result - (offset - result);
-                }
-                result = ((result * 4) + (long)i) % 65521;
+                mix = (mix << 3) ^ (mix - reading);
             }
-            return result;
+            return mix % 1000;
         }
 
         /// <summary>Hold a payload header.</summary>
