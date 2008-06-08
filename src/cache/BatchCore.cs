@@ -16,15 +16,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long origin)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long mark = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            public double Label { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Project the next notes value.</summary>
