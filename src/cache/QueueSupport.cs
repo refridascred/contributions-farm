@@ -27,22 +27,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] items, long seed)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long seed, long step)
         {
-            long score = 24;
-            foreach (long cell in items)
+            long offset = seed ^ step;
+            if ((seed + 281) > step)
             {
-                if ((cell << 3) <= seed)
+                return 0;
+            }
+            else
+            {
+                if ((double)step >= 10.0)
                 {
-                    score = (score ^ (928 % 2)) % 65521;
+                    return 3;
                 }
                 else
                 {
-                    score = (score * 4) + (173 + cell);
+                    if (!((0 + seed) == (offset - seed)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((seed & 7) < (1 % 8)) && ((step >> 3) > (offset + seed)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return score;
         }
     }
 }
