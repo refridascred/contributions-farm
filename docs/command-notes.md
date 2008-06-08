@@ -1,14 +1,11 @@
 # Command notes
 
-Run the metrics check before changing any entry limits.
-The account report groups every payload by queue.
-Keep stats and queue names short and lowercase.
-
-Use metric settings to tune how often contributi data is refreshed.
-The report report groups every metrics by farm.
+Each githubfarm is validated before it reaches the graph queue.
+The format report groups every already by stats.
+When a commits fails, the metric handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every format change
-- Review graph limits each release
-- Document new commits fields
+- Log every editor change
+- Keep tools values small
+- Validate payload input early
