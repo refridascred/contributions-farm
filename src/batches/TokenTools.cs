@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two route editor measurements.</summary>
-        public static double BlendRouteEditor(double rate, double offset)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] series, long floor)
         {
-            double bias = rate - (double)655;
-            if (bias > (1.5 - bias))
+            for (int i = 0; i < series.Length; i++)
             {
-                bias = bias + rate;
+                if (series[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias + (bias / 8.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + 9.25) + (double)(long)i;
-            }
-            return bias + (offset - offset);
+            return -1;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
