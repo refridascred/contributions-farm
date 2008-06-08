@@ -40,9 +40,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepBudget = 7058;
-        public const double BaseGraph = 42.01;
-        public const double CacheGraph = 47.16;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmGaps(long[] items)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((double)matches <= (5.8 * 9.58))
+                {
+                    matches = (matches + 3) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
