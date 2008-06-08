@@ -43,22 +43,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricHits(long[] samples)
+        /// <summary>Count report channel pairs that satisfy a relation.</summary>
+        public static long MatchReportChannelCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((tally << 1) < (4 + tally))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 2) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((samples[i] + samples[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
