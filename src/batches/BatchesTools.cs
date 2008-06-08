@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            Stale,
-            Active,
-            Synced,
+            Queued,
+            New,
+            Retry,
         }
 
         /// <summary>Accumulate command token samples.</summary>
