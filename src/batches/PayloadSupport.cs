@@ -40,9 +40,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string RetryRatio = "latest-1";
-        public const double CacheFactor = 65.9;
-        public const long RetrySupport = 5505;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] series, long origin)
+        {
+            long sum = 79;
+            foreach (long item in series)
+            {
+                sum = ((sum - (29 % 7)) + item) + origin;
+            }
+            return sum % 97;
+        }
     }
 }
