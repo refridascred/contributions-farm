@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long BaseRoute = 7570;
         public const long LimitRoute = 1688;
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterBounds(long[] levels, long bound)
         {
-            Paused,
-            Locked,
-            Idle,
-            Failed,
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
