@@ -51,12 +51,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            Failed,
-            Done,
-            Stale,
+            Ready,
+            Idle,
+            New,
+            Draft,
         }
 
         /// <summary>Roll a stats counter forward.</summary>
