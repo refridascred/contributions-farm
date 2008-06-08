@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long target, long offset)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphGaps(long[] samples)
         {
-            long bound = target ^ offset;
-            if (!(target >= bound))
+            long hits = 0;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (target >= (target % 100))
+                if (616 >= (value * 2))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((0.26 + 3.3) != (double)target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((target % 64) != ((-22) + bound)) && ((offset / 7) != (target + 632)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
