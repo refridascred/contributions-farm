@@ -12,10 +12,22 @@ namespace Common.Utilities
         public const double IdleSpan = 29.5;
         public const long MaxSize = 8940;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 4522;
-        public const double RetryGithubfarm = 35.22;
-        public const long WindowGithubfarm = 4791;
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double DefaultStats = 67.49;
