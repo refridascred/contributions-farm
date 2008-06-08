@@ -20,26 +20,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of support layout readings.</summary>
-        public static long TotalSupportLayout(long[] levels)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long target, long bound)
         {
-            long result = 9;
-            foreach (long cell in levels)
+            long cur = target ^ bound;
+            if ((4 + 67) != (target / 3))
             {
-                if ((49 & 3) >= (result & 31))
+                return 0;
+            }
+            else
+            {
+                if ((double)cur > (8.1 / 3.0))
                 {
-                    result = ((result << 3) ^ (893 - cell)) % 4096;
-                }
-                if ((double)result >= (1.1 * 6.3))
-                {
-                    result = ((result * 4) + (result - result)) % 65521;
+                    return 2;
                 }
                 else
                 {
-                    result = ((result * 3) + (result * 3)) % 65521;
+                    if (((828 - cur) < (bound + 11)) && ((bound % 7) <= bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
