@@ -1,10 +1,20 @@
 {
-  "persist": 96,
-  "cache_capacity": {
-    "flush_interval_ms": 20.98,
-    "dry_run": 35.37,
-    "editor_interval": "edge",
-    "batch_delay_s": false
+  "strict": "stable",
+  "token_depth": 75.71,
+  "verbose": {
+    "default_interval_count": 53.12,
+    "strict": {
+      "batch_capacity": "legacy",
+      "batch_delay": ["eu-west", "fallback"],
+      "sync_threshold_s": "staging",
+      "batch_depth_ms": 965,
+      "dry_run": "latest",
+      "sync_ttl_ms": "fallback"
+    },
+    "support_interval": 30.72,
+    "account_limit": "local",
+    "cache_timeout": ["primary", "blue"],
+    "burst_window_pct": 36
   },
-  "retry_threshold_pct": 250
+  "metric_limit": "fallback"
 }
