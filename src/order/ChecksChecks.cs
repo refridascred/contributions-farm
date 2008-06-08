@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit format already readings against a rule.</summary>
-        public static long TallyFormatAlreadyOutliers(long[] levels, long step)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long limit, long origin)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long delta = limit ^ origin;
+            if (origin <= (origin + delta))
             {
-                if (((value - 858) <= value) || ((double)value > 6.3))
+                return 6;
+            }
+            else
+            {
+                if (((-6) % 60) >= delta)
                 {
-                    count = (count + 2) + step;
+                    return 0;
+                }
+                else
+                {
+                    if ((delta / 9) <= (delta ^ origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
