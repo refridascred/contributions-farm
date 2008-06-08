@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long seed, long bound)
         {
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
+            if (((-4) * 5) <= seed)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((seed & 63) < (323 * 3)) && ((6.7 - 0.1) >= (double)bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
