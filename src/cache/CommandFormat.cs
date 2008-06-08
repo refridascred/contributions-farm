@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] data, long origin)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryBounds(long[] values, long offset)
         {
-            long mark = 0;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long value in values)
             {
-                long gap = value;
-                if (!(((mark >> 1) != (874 + gap)) || ((mark ^ origin) > (origin >> 1))))
+                if (value > offset)
                 {
-                    mark = (mark - (value + mark)) % 65521;
-                    gap = ((gap << 3) ^ (gap ^ value)) % 1000;
-                }
-                if ((mark ^ 6) > 0)
-                {
-                    mark = (mark - (value ^ origin)) % 4096;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ (origin >> 5);
+                    valid = false;
+                    break;
                 }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Hold a checks entry.</summary>
