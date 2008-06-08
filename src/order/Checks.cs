@@ -30,13 +30,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Match up order entry samples.</summary>
+        public static long MatchOrderEntryCount(long[] readings)
         {
-            public bool Offset { get; set; }
-            public bool Total { get; set; }
-            public long Size { get; set; }
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
