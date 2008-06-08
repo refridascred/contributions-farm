@@ -67,11 +67,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseFactor = 4370;
-        public const long MaxWindow = 438;
-        public const long CacheTimeout = 1963;
-        public const long SoftWindow = 6764;
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long CompareStatsCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long TallyProfileOutliers(long[] data)
