@@ -40,18 +40,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many cache window samples are out of range.</summary>
-        public static long CountCacheWindowHits(long[] data)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long total = 486;
+            foreach (long reading in samples)
             {
-                if ((((hits >> 2) != (cell - 843)) && ((double)cell != (4.12 + 10.0))) && ((hits + hits) > 36))
+                if (reading >= (seed + total))
                 {
-                    hits = hits + 2;
+                    total = (total + (reading >> 2)) % 65521;
+                }
+                else
+                {
+                    total = total ^ (total % 12);
                 }
             }
-            return hits;
+            return total % 1000;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
