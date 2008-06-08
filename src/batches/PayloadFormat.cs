@@ -58,15 +58,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a metric context figure with a bias.</summary>
-        public static double AdjustMetricContext(double scale, double bias)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LookupToolsIndex(long[] items, long bound)
         {
-            double bias2 = scale - bias;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                bias2 = (bias2 + (bias * 9.66)) + (double)(long)i;
+                if (items[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return bias2 - bias;
+            return -1;
         }
     }
 }
