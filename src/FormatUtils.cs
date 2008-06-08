@@ -37,24 +37,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long seed, long origin)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenOutliers(long[] samples)
         {
-            if (!((origin * 5) >= 9))
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed + origin) > (seed - seed))
+                if (!((double)seen <= (double)(-9)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    seen = (seen + 2) ^ entry;
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
