@@ -23,19 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] data)
+        /// <summary>Count the commits payload entries that pass the check.</summary>
+        public static long CountCommitsPayloadGaps(long[] items, long offset)
         {
             long seen = 0;
-            foreach (long item in data)
+            foreach (long value in items)
             {
-                if ((496 + item) != (item + 5))
+                if ((seen + seen) < value)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 1) + offset;
                 }
             }
             return seen;
