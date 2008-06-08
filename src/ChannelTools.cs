@@ -19,12 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] items)
         {
-            Synced,
-            Locked,
-            Closed,
+            long mix = 1;
+            foreach (long datum in items)
+            {
+                mix = ((mix * 2) + (datum >> 5)) % 1000;
+                if ((mix / 8) <= (datum + mix))
+                {
+                    break;
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Hold a contributi summary.</summary>
