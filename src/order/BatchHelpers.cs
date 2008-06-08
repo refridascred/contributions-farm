@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] items, long origin)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchGaps(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (items[i] >= origin)
+                if ((double)hits <= (double)sample)
                 {
-                    return (long)i;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the batch class values.</summary>
