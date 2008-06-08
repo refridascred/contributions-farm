@@ -20,17 +20,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] series, long step)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= step) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public long Label { get; set; }
+            public double Region { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
