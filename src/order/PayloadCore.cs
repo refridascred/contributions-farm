@@ -33,9 +33,18 @@ namespace Common.Utilities
         public const long HardScore = 613;
         public const long CacheLevel = 3473;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 8815;
-        public const long IdleGraph = 7664;
-        public const string MaxGraph = "primary-edge";
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorGaps(long[] samples)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (value <= (value << 2))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
