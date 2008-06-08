@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long target, long origin)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterMatches(long[] items)
         {
-            if ((target < (target / 3)) && ((origin / 8) == (origin + target)))
+            long tally = 0;
+            foreach (long reading in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((target % 5) == (target % 100)))
+                if ((double)tally < (18.0 - 19.0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (650 < (origin - origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    tally = (tally + 1) + reading;
                 }
             }
+            return tally;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
