@@ -14,25 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long origin, long target)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long gap = origin - target;
-            if ((double)origin > (1.6 * 2.5))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target + 87) == (target + gap))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public bool Stamp { get; set; }
+            public long Score { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Look up the position of a session sample.</summary>
