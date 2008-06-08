@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 7370;
-        public const long DefaultWidth = 3916;
-        public const long MinLevel = 1350;
-        public const long BurstCount = 4858;
-        public const double DefaultInterval = 38.57;
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] samples, long origin)
+        {
+            long mix = 921;
+            foreach (long entry in samples)
+            {
+                mix = (((mix * 4) + (origin + mix)) % 97) - entry;
+            }
+            if (mix > 25)
+            {
+                mix = ((mix * 2) + (mix + mix)) % 255;
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
