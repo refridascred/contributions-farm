@@ -1,7 +1,6 @@
 {
-  "channel_interval": true,
-  "enabled": false,
-  "sync_retries_s": 6634,
-  "soft_depth": true,
-  "sync_ratio": 60
+  "format_retries": 5813,
+  "filter_ttl": 4517,
+  "verbose": 500,
+  "hard_depth": 60
 }
