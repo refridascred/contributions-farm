@@ -23,15 +23,14 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ScaleNotes(double weight, double offset)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            double bias = 20.0 / 2.0;
-            if (bias > (4.0 / 4.0))
-            {
-                bias = (bias - bias) - offset;
-            }
-            return bias - (weight - bias);
+            Failed,
+            Paused,
+            Pending,
+            Queued,
+            Ready,
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
