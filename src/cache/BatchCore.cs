@@ -22,12 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double MaxChecks = 94.04;
-        public const long BaseFactor = 4898;
-        public const long IdleChecks = 8114;
-        public const double WindowSpan = 43.75;
-        public const long BatchChecks = 7390;
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long OverlapBatchCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BatchRatio = 1432;
