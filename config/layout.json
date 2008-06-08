@@ -1,8 +1,13 @@
 {
-  "verbose": 500,
-  "flush_retries_ms": true,
-  "hard_interval": 94,
-  "default_ttl_s": "stable",
-  "burst_size_s": true,
-  "audit": "green"
+  "session_size": 9168,
+  "retry_interval": {
+    "commits_ttl": 48.55,
+    "dry_run": 8438,
+    "default_retries_pct": "staging",
+    "retry_ttl": 9264,
+    "persist": [239, 308, 461, 120]
+  },
+  "batch_ratio": "blue",
+  "base_threshold_ms": 69,
+  "min_threshold_ms": 2
 }
