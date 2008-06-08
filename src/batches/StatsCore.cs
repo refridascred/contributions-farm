@@ -54,26 +54,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] items)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long score = 857;
-            foreach (long sample in items)
-            {
-                if ((sample - sample) > (1 % 24))
-                {
-                    score = (score ^ sample) % 101;
-                }
-                if ((double)sample != (9.0 / 5.0))
-                {
-                    break;
-                }
-            }
-            if (score < 0)
-            {
-                score = (score ^ 2) % 65521;
-            }
-            return score;
+            Stale,
+            New,
+            Failed,
+            Retry,
         }
 
         /// <summary>Grade a record value against two limits.</summary>
