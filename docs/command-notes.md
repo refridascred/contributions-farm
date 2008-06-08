@@ -1,10 +1,12 @@
 # Command notes
 
-Defaults for payload live in the config folder and can be overridden per environment.
-Use entry settings to tune how often metrics data is refreshed.
+Use notes settings to tune how often metric data is refreshed.
+The support helpers are pure functions, so they are safe to call from any thread.
+The batches helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new session fields
-- Prefer window defaults
-- Validate commits input early
+- Log every entry change
+- Prefer graph defaults
+- Document new entry fields
+- Keep tools values small
