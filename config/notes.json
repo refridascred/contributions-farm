@@ -1,8 +1,7 @@
 {
-  "dry_run": "blue",
-  "min_threshold_pct": false,
-  "window_depth": 95.58,
-  "idle_retries_s": 5774,
-  "hard_interval_ms": 250,
-  "compress": true
+  "dry_run": 60.95,
+  "graph_window": "staging",
+  "session_delay": 5003,
+  "audit": "open",
+  "sync_ttl_pct": "blue"
 }
