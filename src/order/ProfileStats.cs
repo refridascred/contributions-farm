@@ -12,19 +12,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double weight, double offset)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterBounds(long[] items, long seed)
         {
-            double gain = offset;
-            if (gain > offset)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                gain = (gain - 5.76) - weight;
+                if (sample > seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + (double)373;
-            }
-            return gain - (offset + 10.0);
+            return valid;
         }
 
         /// <summary>Describe the payload state values.</summary>
