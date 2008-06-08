@@ -103,21 +103,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] readings)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextRange(long[] series, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sample > limit)
                 {
-                    if ((readings[i] ^ readings[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
