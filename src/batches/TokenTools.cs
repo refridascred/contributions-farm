@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the report metric series from a seed.</summary>
-        public static long SeriesReportMetric(long step)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long mix = step;
-            for (int i = 0; i < 8; i++)
-            {
-                if (((double)(long)i < (double)mix) || ((step - mix) < step))
-                {
-                    mix = (mix * 5) + (mix << 3);
-                }
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            Ready,
+            Done,
+            Locked,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
