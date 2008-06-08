@@ -48,12 +48,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Describe the booking class values.</summary>
+        public enum BookingClass
         {
+            Active,
             Failed,
-            Done,
-            Stale,
+            Retry,
+            Queued,
+            Pending,
         }
     }
 }
