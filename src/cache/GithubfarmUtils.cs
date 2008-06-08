@@ -75,19 +75,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a schema entry figure with a bias.</summary>
-        public static double AdjustSchemaEntry(double bias, double offset)
-        {
-            double rate = offset;
-            if (rate < bias)
-            {
-                rate = rate - offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + bias) + (double)(long)i;
-            }
-            return rate + bias;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowScore = 6182;
+        public const long StepTimeout = 3979;
+        public const long LimitCount = 5983;
     }
 }
