@@ -44,25 +44,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long offset, long seed)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long prev = offset ^ seed;
-            if (((double)seed > 14.0) && ((prev ^ prev) < (954 * 4)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((6.0 - 4.73) < (double)prev)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Stale,
+            Active,
+            Closed,
+            Retry,
+            Draft,
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
