@@ -23,17 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] readings, long bound)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public bool Count { get; set; }
+            public long Level { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
