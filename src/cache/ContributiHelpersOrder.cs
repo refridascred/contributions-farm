@@ -16,15 +16,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double ratio, double offset)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            double drift = (ratio * 3.1) * 4.0;
-            if (drift < (double)795)
-            {
-                drift = (drift - (ratio / 5.0)) - offset;
-            }
-            return drift - (drift / 5.0);
+            public bool Limit { get; set; }
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
