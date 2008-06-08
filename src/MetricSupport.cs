@@ -12,19 +12,14 @@ namespace Common.Utilities
             return (bias - scale) + floor;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferLimits(long[] items, long bound)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Synced,
+            Closed,
+            Active,
+            Paused,
         }
 
         /// <summary>Count the notes contributi entries that pass the check.</summary>
