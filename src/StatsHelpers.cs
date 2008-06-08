@@ -64,18 +64,14 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterGaps(long[] levels, long target)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (!(((18 >> 2) >= (entry * 4)) && ((tally + tally) <= entry)))
-                {
-                    tally = (tally + 2) - target;
-                }
-            }
-            return tally;
+            Failed,
+            Dropped,
+            Ready,
+            Done,
+            Paused,
         }
     }
 }
