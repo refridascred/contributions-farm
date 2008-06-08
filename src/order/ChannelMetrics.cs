@@ -23,18 +23,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] items)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaOutliers(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if ((seen + seen) == (entry % 3))
+                if ((350 & 127) < (entry + 649))
                 {
-                    seen = seen + 1;
+                    matches = (matches + 1) - bound;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
