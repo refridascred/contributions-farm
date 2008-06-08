@@ -32,12 +32,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueHits(long[] samples)
         {
-            public string Owner { get; set; } = "";
-            public double Offset { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (hits > reading)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
