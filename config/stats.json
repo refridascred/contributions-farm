@@ -1,14 +1,17 @@
 {
-  "profile_depth": "strict",
-  "hard_ttl_count": {
-    "retry_threshold_pct": false,
-    "buffer_depth": "fallback",
-    "audit": 6497,
-    "editor_ratio": [69, 162, 292],
-    "route_ratio": "cached"
+  "payload_limit": {
+    "audit": true,
+    "support_capacity": 60,
+    "batch_ttl": "eu-west",
+    "channel_window": false,
+    "window_window": false
   },
-  "max_retries": true,
-  "flush_window_ms": true,
-  "filter_ttl": 250,
-  "entry_delay": "legacy"
+  "sync_capacity": {
+    "idle_ratio_count": 60,
+    "context_limit": "eu-west",
+    "idle_depth_count": "green"
+  },
+  "command_limit": "strict",
+  "session_depth": 1024,
+  "account_delay": false
 }
