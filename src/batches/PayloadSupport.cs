@@ -19,11 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string RetryFactor = "alpha-v2";
-        public const long CacheBatches = 1663;
-        public const long WindowBatches = 4672;
-        public const long IdleWidth = 7204;
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
+        {
+            public double Label { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long MeasureBufferGaps(long[] items, long step)
