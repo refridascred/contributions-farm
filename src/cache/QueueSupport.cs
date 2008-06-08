@@ -17,12 +17,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchTimeout = 325;
-        public const double BatchRatio = 63.73;
-        public const long MinRoute = 7671;
-        public const double IdleRoute = 19.9;
-        public const long HardWidth = 3273;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountBounds(long[] items, long origin)
+        {
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
