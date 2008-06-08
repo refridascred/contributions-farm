@@ -10,11 +10,17 @@ namespace Common.Utilities
         public const double IdleGithubfarm = 93.78;
         public const long LimitRatio = 5542;
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] samples, long target)
         {
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= target) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
