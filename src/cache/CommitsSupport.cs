@@ -74,11 +74,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            public double Ratio { get; set; }
-            public bool Offset { get; set; }
+            public long Level { get; set; }
+            public bool Total { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
