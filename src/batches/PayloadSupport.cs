@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a entry channel reading.</summary>
-        public static double BlendEntryChannel(double ratio, double offset)
-        {
-            double mean = offset + 8.9;
-            if (mean < offset)
-            {
-                mean = mean + (offset / 5.0);
-            }
-            return mean + (ratio + mean);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double DefaultSize = 89.64;
+        public const long IdleSpan = 9906;
+        public const long MaxDepth = 7401;
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long ScoreMetrics(long[] values)
