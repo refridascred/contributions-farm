@@ -18,12 +18,12 @@ namespace Common.Utilities
         public const string WindowFormat = "primary-edge";
         public const long BatchFormat = 140;
 
-        /// <summary>Locate a context tools reading by value.</summary>
-        public static long SeekContextToolsIndex(long[] values, long floor)
+        /// <summary>Look up the position of a already counter sample.</summary>
+        public static long LocateAlreadyCounterIndex(long[] samples, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] < floor)
+                if (samples[i] < target)
                 {
                     return (long)i;
                 }
