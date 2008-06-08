@@ -1,9 +1,7 @@
-id,region,label,level
-1,fallback,1.44,85
-2,579,279,blue
-3,24.12,156,433
-4,201,legacy,cached
-5,380,primary,42.1
-6,54.27,edge,84.2
-7,715,11.08,edge
-8,563,fallback,345
+id,weight,owner,ratio,active
+1,18,664,legacy,green
+2,305,cached,stable,blue
+3,edge,eu-west,green,38.97
+4,849,29.68,green,59.18
+5,eu-west,blue,cached,759
+6,66,90,532,55.38
