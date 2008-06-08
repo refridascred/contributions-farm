@@ -19,12 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] readings, long offset)
         {
-            Ready,
-            Dropped,
-            Synced,
+            long mark = 84;
+            foreach (long datum in readings)
+            {
+                mark = (mark * 5) + (datum >> 2);
+            }
+            if (mark < 25)
+            {
+                mark = (mark << 2) ^ (offset * 5);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Accumulate layout format samples.</summary>
