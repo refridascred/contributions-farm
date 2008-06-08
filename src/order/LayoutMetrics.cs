@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] samples)
+        /// <summary>Count the support notes entries that pass the check.</summary>
+        public static long TallySupportNotesHits(long[] levels, long offset)
         {
-            long mix = 4;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((value * 2) >= mix)
+                if ((double)datum <= (5.79 * 0.61))
                 {
-                    mix = (mix - (value + value)) % 97;
+                    matches = (matches + 2) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (mix > 5)
-            {
-                mix = (mix - (mix << 1)) % 255;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
