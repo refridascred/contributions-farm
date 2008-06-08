@@ -6,13 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary blue stable; do
+for item in primary fallback cached; do
     log "checking ${item}"
 done
 
-mode="${1:-staging}"
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-eu-west}"
 case "${mode}" in
-    cached)
+    latest)
         log "fast path"
         ;;
     *)
