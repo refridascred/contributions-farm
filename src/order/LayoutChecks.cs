@@ -32,16 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] readings)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long acc = 60;
-            foreach (long datum in readings)
-            {
-                acc = acc - (8 + datum);
-                acc = (acc - (datum * 5)) % 4096;
-            }
-            return acc;
+            Dropped,
+            Synced,
+            Paused,
         }
 
         /// <summary>Describe the notes class values.</summary>
