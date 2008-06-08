@@ -23,18 +23,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterMatches(long[] values, long bound)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long offset, long step)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long span = offset + step;
+            if ((step - span) < (span - offset))
             {
-                if ((sample & 7) >= bound)
+                return 7;
+            }
+            else
+            {
+                if (12 <= (9 + step))
                 {
-                    hits = hits + 2;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a report header.</summary>
