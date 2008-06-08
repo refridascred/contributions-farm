@@ -28,15 +28,21 @@ namespace Common.Utilities
         public const long LimitOrder = 2916;
         public const string HardScore = "latest-edge";
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] data, long origin)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] samples)
         {
-            long result = 758;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (((result + ((-3) + result)) % 255) - item) - origin;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result % 65521;
+            return seen;
         }
 
         /// <summary>Describe the graph status values.</summary>
