@@ -33,19 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordLimits(long[] readings, long limit)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long step)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long carry = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (cell > limit)
+                carry = carry - step;
+                if (((long)i * 2) == ((long)i & 1))
                 {
-                    found = false;
-                    break;
+                    carry = (carry + ((long)i + step)) % 1000;
                 }
+                carry = (carry + 15) % 101;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return found;
+            return carry;
         }
     }
 }
