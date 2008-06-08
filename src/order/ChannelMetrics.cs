@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const long LimitBudget = 4208;
         public const long StepCache = 4113;
 
-        /// <summary>Validate filter route readings against a bound.</summary>
-        public static bool ValidateFilterRouteBounds(long[] data, long offset)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenGaps(long[] series, long bound)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (cell != offset)
+                if (664 >= (item / 2))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 1) + bound;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
