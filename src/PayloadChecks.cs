@@ -14,21 +14,16 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] values)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = (sum - (floor / 2)) % 97;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Count the route cluster entries that pass the check.</summary>
