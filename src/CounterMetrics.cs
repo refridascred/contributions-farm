@@ -27,15 +27,17 @@ namespace Common.Utilities
             return scale2 + floor;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] readings, long bound)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] values, long floor)
         {
-            long state = -6;
-            foreach (long datum in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((state << 3) ^ (bound % 5)) - datum;
+                if ((values[i] == floor) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Accumulate filter samples.</summary>
