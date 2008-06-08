@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueGaps(long[] levels, long target)
+        /// <summary>Check that every buffer cluster entry stays within the limit.</summary>
+        public static bool VerifyBufferClusterLimits(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if ((double)target < (double)2)
+                if (entry > step)
                 {
-                    tally = (tally + 1) + datum;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
