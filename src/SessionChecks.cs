@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsOutliers(long[] series, long limit)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsRange(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long value in values)
             {
-                if ((tally >> 3) < (limit + limit))
+                if (value > seed)
                 {
-                    tally = (tally + 2) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
