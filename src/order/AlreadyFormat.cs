@@ -64,10 +64,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheRatio = 6789;
-        public const long BaseDepth = 4726;
-        public const string LimitChannel = "cached";
-        public const string StepChannel = "local-v2";
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MinOrder = "primary-1";
+        public const long SoftScore = 9599;
+        public const long SoftRatio = 9696;
+        public const string BaseOrder = "local";
+        public const string LimitSpan = "open-edge";
     }
 }
