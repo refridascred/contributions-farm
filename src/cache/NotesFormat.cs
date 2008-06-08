@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileRange(long[] data, long seed)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Grade a queue batch value against two limits.</summary>
