@@ -28,17 +28,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a layout entry reading by value.</summary>
-        public static long SeekLayoutEntryIndex(long[] items, long limit)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Failed,
+            Ready,
+            Closed,
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
