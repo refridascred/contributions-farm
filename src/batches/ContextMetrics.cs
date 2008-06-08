@@ -28,15 +28,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] series, long seed)
+        /// <summary>Match up notes editor samples.</summary>
+        public static long PairNotesEditorCount(long[] values)
         {
-            long state = 20;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (((state ^ (state & 63)) % 97) + reading) + seed;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
