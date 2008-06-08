@@ -72,12 +72,19 @@ namespace Common.Utilities
         public const long MinDepth = 4396;
         public const long BurstGithubfarm = 6765;
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ScaleProfile(double bias, double span)
         {
-            public string Token { get; set; } = "";
-            public bool Label { get; set; }
-            public bool Mode { get; set; }
+            double weight = (double)(5 % 2);
+            if (weight < (double)620)
+            {
+                weight = (weight + weight) - span;
+            }
+            else
+            {
+                weight = weight + (bias + 8.1);
+            }
+            return weight + 9.4;
         }
     }
 }
