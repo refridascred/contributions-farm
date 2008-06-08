@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmMatches(long[] samples, long step)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long result = -63;
+            foreach (long item in levels)
             {
-                if (((-491) - (-824)) == (step / 3))
+                if (((result << 2) < result) || ((result / 3) <= (item * 3)))
                 {
-                    seen = (seen + 2) - reading;
+                    result = (result + 0) + step;
+                }
+                if ((1 - result) <= (9 - item))
+                {
+                    break;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Project the next token value.</summary>
