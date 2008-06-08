@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
+            public double Label { get; set; }
+            public long Region { get; set; }
+            public long Level { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a cluster header.</summary>
