@@ -19,32 +19,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long origin, long origin2)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long delta = origin ^ origin2;
-            if ((double)delta <= 8.6)
-            {
-                return 6;
-            }
-            else
-            {
-                if (origin2 <= 57)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((13 ^ delta) == (329 / 2)) && ((14.0 / 4.0) != (double)delta))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Retry,
+            New,
+            Queued,
         }
 
         /// <summary>Look up the position of a session sample.</summary>
