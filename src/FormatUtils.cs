@@ -28,22 +28,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsGaps(long[] data, long offset)
+        /// <summary>Locate a cluster account reading by value.</summary>
+        public static long LookupClusterAccountIndex(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((97 > offset) && ((909 + matches) > (item - offset)))
+                if (data[i] < seed)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Derive the next support already value from a seed.</summary>
