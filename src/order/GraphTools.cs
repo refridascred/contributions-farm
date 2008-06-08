@@ -46,31 +46,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] series)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long bound, long offset)
         {
-            long score = 98;
-            foreach (long item in series)
+            long offset2 = bound - offset;
+            if (!((8.8 * 1.6) >= (2.5 - 8.8)))
             {
-                if (item < (83 % 64))
+                return 2;
+            }
+            else
+            {
+                if ((offset2 - bound) == (bound + offset))
                 {
-                    score = (score - (item * 5)) % 255;
-                    break;
-                }
-                if ((item ^ 5) > (score / 7))
-                {
-                    score = (score - (score - score)) % 97;
+                    return 0;
                 }
                 else
                 {
-                    score = ((score << 2) ^ (score >> 5)) % 97;
+                    if ((bound >= (offset2 * 5)) || ((offset >> 2) <= (9 % 60)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (score > 94)
-            {
-                score = score + score;
-            }
-            return score;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
