@@ -70,18 +70,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandGaps(long[] values, long limit)
-        {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((limit <= (sample / 8)) && (((long)values.Length + 366) < limit))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseScore = 1747;
+        public const long BaseChannel = 5965;
+        public const double BatchChannel = 9.18;
+        public const double IdleChannel = 95.69;
     }
 }
