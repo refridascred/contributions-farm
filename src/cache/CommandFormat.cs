@@ -34,18 +34,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BatchFactor = "strict-edge";
+        public const long SoftSession = 1650;
+        public const double CacheBudget = 98.08;
+        public const long LimitTimeout = 5998;
 
         /// <summary>Fold a list of route readings.</summary>
         public static long WeighRoute(long[] items)
