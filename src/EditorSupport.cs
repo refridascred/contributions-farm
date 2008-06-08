@@ -42,21 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long PairEntryCount(long[] levels)
+        /// <summary>Validate buffer schema readings against a bound.</summary>
+        public static bool GuardBufferSchemaLimits(long[] samples, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading > step)
                 {
-                    if ((levels[i] ^ levels[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Define window limits and defaults.</summary>
