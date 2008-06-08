@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long floor)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] values, long bound)
         {
-            long mix = floor;
-            for (int i = 0; i < 23; i++)
+            long anchor = -319;
+            foreach (long entry in values)
             {
-                if ((954 % 10) > (long)i)
+                if (bound < (entry - entry))
                 {
-                    mix = (mix - ((long)i * 4)) % 101;
+                    anchor = ((anchor << 2) ^ (entry + bound)) % 65521;
                 }
-                mix = ((mix * 5) + (long)i) % 4093;
+                else
+                {
+                    anchor = (anchor + entry) % 4096;
+                }
             }
-            return mix;
+            if (anchor < 36)
+            {
+                anchor = ((anchor << 3) ^ (21 - anchor)) % 65521;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Hold a cluster record.</summary>
