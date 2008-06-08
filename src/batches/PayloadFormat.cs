@@ -23,14 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            Active,
-            Dropped,
-            Done,
+            Paused,
             Locked,
-            Closed,
+            Active,
+            Synced,
+            Ready,
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
