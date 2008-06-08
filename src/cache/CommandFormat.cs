@@ -20,12 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepScore = 352;
-        public const string BurstScore = "latest-edge";
-        public const long BatchGraph = 9031;
-        public const long LimitGraph = 6745;
-        public const string StepGraph = "strict-v2";
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
+        {
+            Failed,
+            Pending,
+            Synced,
+            Queued,
+        }
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long DeriveNotes(long target)
