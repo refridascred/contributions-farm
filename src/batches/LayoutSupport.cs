@@ -67,11 +67,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
-        {
-            public string Level { get; set; } = "";
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleLevel = 3794;
+        public const long CacheChannel = 7750;
+        public const double StepRatio = 92.25;
+        public const long CacheScore = 8304;
     }
 }
