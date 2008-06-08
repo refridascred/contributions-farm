@@ -12,17 +12,39 @@ namespace Common.Utilities
         public const long HardInterval = 5728;
         public const long HardSize = 2159;
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long seed)
+        /// <summary>Grade a editor order value against two limits.</summary>
+        public static long GradeEditorOrder(long bound, long step)
         {
-            long sum = seed;
-            for (int i = 0; i < 20; i++)
+            long offset = bound + step;
+            if ((step + bound) <= offset)
             {
-                sum = (sum ^ (86 >> 4)) % 97;
-                sum = (sum - 394) % 1000;
-                sum = ((sum * 2) + (long)i) % 1000;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if ((step - offset) < (bound << 1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((2.56 + 7.96) != (double)offset) || ((double)step >= (1.1 + 4.0)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)step > (8.53 + 10.0)) && ((double)step >= (double)bound))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
