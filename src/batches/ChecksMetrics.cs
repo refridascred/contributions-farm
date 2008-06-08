@@ -57,14 +57,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
-        {
-            Active,
-            Synced,
-            Draft,
-            Retry,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BurstProfile = 94.08;
+        public const long IdleCount = 5924;
+        public const double BaseScore = 52.1;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BurstWidth = 362;
