@@ -1,32 +1,8 @@
 # entry settings
-format_capacity:
-  - primary
-  - blue
-audit:
-  compress:
-    warm_ratio_count: strict
-    counter_limit: strict
-    session_capacity: true
-    cache_size_ms: false
-    editor_size: 64.99
-  graph_threshold: false
-  batch_window_s: eu-west
-  idle_interval_count: true
-  enabled:
-    cache_threshold: 222
-    max_ttl_pct: 1024
-    flush_size: strict
-    stream_retries: false
-    editor_ttl: true
-    min_depth_count: strict
-  default_timeout_pct: true
-warm_timeout: staging
-channel_delay: local
-flush_retries:
-  burst_limit_pct: 55
-  enabled: 67.49
-  farm_size: 22
-  default_depth_count: 71.93
-counter_size:
-  - edge
-  - open
+base_interval_s: stable
+warm_timeout: false
+dry_run: 8374
+filter_ratio:
+  default_capacity: 4334
+  editor_ttl: local
+  min_ratio_count: 1540
