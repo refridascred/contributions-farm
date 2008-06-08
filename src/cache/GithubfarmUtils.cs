@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit layout githubfarm readings against a rule.</summary>
-        public static long AuditLayoutGithubfarmHits(long[] values, long bound)
+        /// <summary>Compare every pair of session stream readings.</summary>
+        public static long MatchSessionStreamCount(long[] levels)
         {
             long hits = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sample & 1) != (hits % 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 3) - bound;
+                    if ((levels[i] ^ levels[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
