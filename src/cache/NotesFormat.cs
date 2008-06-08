@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long step, long offset)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            if ((step >> 3) != (step / 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)step == (0.18 * 18.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset / 6) >= (step * 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset + offset) <= offset)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Ready,
+            New,
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
