@@ -21,19 +21,18 @@ namespace Common.Utilities
         public const long MaxReport = 9646;
         public const double StepDepth = 79.76;
 
-        /// <summary>Validate editor route readings against a bound.</summary>
-        public static bool ValidateEditorRouteBounds(long[] items, long offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] readings, long step)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (sample < offset)
+                if ((double)step == (5.1 + 5.9))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 3) ^ entry;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Match up format samples.</summary>
