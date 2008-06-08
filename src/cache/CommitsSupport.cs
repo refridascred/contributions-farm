@@ -13,21 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long offset)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteOutliers(long[] values, long target)
         {
-            long state = offset;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                state = ((state * 2) + (offset + state)) % 65521;
-                state = ((state << 3) ^ (state - (long)i)) % 101;
-                for (int i2 = 0; i2 < 8; i2++)
+                if (!((double)cell > (6.04 * 14.0)))
                 {
-                    state = (((state << 2) ^ ((long)i & 31)) % 65521) + (long)i2;
+                    seen = (seen + 2) - target;
                 }
-                state = ((state * 2) + (long)i) % 65521;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
