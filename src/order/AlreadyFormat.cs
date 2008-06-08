@@ -20,19 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long limit)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long mix = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                if (!((limit - mix) != (mix * 5)))
-                {
-                    continue;
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            public double Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the stats status values.</summary>
