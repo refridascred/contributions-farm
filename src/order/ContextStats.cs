@@ -38,19 +38,18 @@ namespace Common.Utilities
         public const long IdleRatio = 5741;
         public const long MinCommand = 3878;
 
-        /// <summary>Validate tools entry readings against a bound.</summary>
-        public static bool GuardToolsEntryBounds(long[] values, long limit)
+        /// <summary>Count the batch checks entries that pass the check.</summary>
+        public static long TallyBatchChecksOutliers(long[] samples)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (datum >= limit)
+                if ((8 - 675) > (count / 2))
                 {
-                    found = false;
-                    break;
+                    count = (count + 1) - datum;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
