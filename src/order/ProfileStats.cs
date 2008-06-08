@@ -27,13 +27,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long seed)
         {
-            Idle,
-            Failed,
-            Ready,
-            Locked,
+            long mix = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Describe the stats level values.</summary>
