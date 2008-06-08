@@ -25,19 +25,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsRange(long[] data, long step)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Score { get; set; }
+            public long Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
