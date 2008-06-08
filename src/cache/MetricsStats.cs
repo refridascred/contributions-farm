@@ -36,18 +36,27 @@ namespace Common.Utilities
         public const long LimitRatio = 8839;
         public const long BaseBudget = 651;
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordGaps(long[] readings, long target)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long offset)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long total = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (!((item + target) > hits))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    hits = hits + 1;
+                    total = ((total * 4) + (offset + total)) + (long)i2;
                 }
+                if (((total ^ offset) < offset) && (total >= offset))
+                {
+                    continue;
+                }
+                else
+                {
+                    total = ((total * 2) + (offset % 12)) % 101;
+                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
