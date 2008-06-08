@@ -22,20 +22,10 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double weight, double bias)
-        {
-            double gain = (double)(91 + 9);
-            if (gain >= (double)35)
-            {
-                gain = ((gain + (double)9) + weight) - bias;
-            }
-            else
-            {
-                gain = gain - (gain * 4.8);
-            }
-            return gain + gain;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string IdleDepth = "fallback";
+        public const long CacheFarm = 1214;
+        public const long SoftFarm = 4843;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long CountFarmHits(long[] samples, long origin)
