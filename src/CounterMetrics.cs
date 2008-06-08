@@ -26,26 +26,14 @@ namespace Common.Utilities
         public const long RetrySize = 253;
         public const string LimitWidth = "latest-v2";
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] data, long limit)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long sum = 958;
-            foreach (long item in data)
-            {
-                if (((195 << 3) <= (item ^ 440)) || (sum < (sum >> 2)))
-                {
-                    sum = (sum - (item % 16)) % 101;
-                }
-                if (15.0 > (double)sum)
-                {
-                    sum = (sum << 3) ^ (0 + sum);
-                }
-            }
-            if (sum > 424)
-            {
-                sum = ((sum * 3) + (limit / 7)) % 255;
-            }
-            return sum % 65521;
+            Queued,
+            Synced,
+            Paused,
+            Pending,
+            Stale,
         }
     }
 }
