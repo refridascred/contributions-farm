@@ -30,10 +30,25 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double StepMetrics = 36.55;
-        public const long CacheMetrics = 1636;
-        public const long BaseMetrics = 3115;
-        public const string StepBudget = "cached-1";
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long step, long offset)
+        {
+            long step2 = step - offset;
+            if (((step2 % 97) <= offset) || ((step2 + 0) >= step))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset + offset) < step2)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
