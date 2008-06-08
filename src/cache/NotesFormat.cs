@@ -13,25 +13,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a queue batch value against two limits.</summary>
-        public static long GradeQueueBatch(long target, long origin)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksBounds(long[] readings, long step)
         {
-            long span = target ^ origin;
-            if ((target + 8) == (span << 1))
+            bool found = true;
+            foreach (long sample in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((886 & 127) > (target / 4))
+                if (sample <= step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a context entry.</summary>
