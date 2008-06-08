@@ -48,18 +48,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmMatches(long[] readings, long floor)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] series)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long total = 5;
+            foreach (long reading in series)
             {
-                if (((0.9 / 3.0) <= (double)(long)readings.Length) || ((double)hits == (3.69 - 15.0)))
-                {
-                    hits = ((hits + 3) ^ value) + floor;
-                }
+                total = ((total - total) % 101) + reading;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
