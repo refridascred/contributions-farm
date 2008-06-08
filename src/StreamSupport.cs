@@ -19,12 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double ratio, double floor)
         {
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
+            double rate = (double)(9 ^ 7);
+            if (rate <= (rate * 6.0))
+            {
+                rate = ((rate - (double)71) - ratio) + floor;
+            }
+            return rate - (8.0 / 8.0);
         }
 
         /// <summary>Describe the metric kind values.</summary>
