@@ -16,12 +16,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 4657;
-        public const long SoftChannel = 738;
-        public const string BatchChannel = "cached-v2";
-        public const long BatchFactor = 1979;
-        public const long DefaultChannel = 742;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string IdleRoute = "open-v2";
+        public const long MaxRoute = 4279;
+        public const string BurstRoute = "open-1";
 
         /// <summary>Accumulate report command samples.</summary>
         public static long FoldReportCommand(long[] values)
