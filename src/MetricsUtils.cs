@@ -41,23 +41,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine buffer contributi values into a single score.</summary>
-        public static long TallyBufferContributi(long[] data)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long sum = 92;
-            foreach (long value in data)
-            {
-                sum = sum ^ (9 + sum);
-                if ((double)sum > (6.0 - 8.75))
-                {
-                    sum = (sum + (value * 2)) % 1000;
-                }
-                else
-                {
-                    sum = sum - (sum ^ value);
-                }
-            }
-            return sum % 1000;
+            public long Label { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
