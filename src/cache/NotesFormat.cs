@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BatchRatio = 52.54;
-        public const string LimitInterval = "cached-1";
-        public const double StepStats = 78.59;
-        public const long LimitSpan = 5597;
-        public const long RetryStats = 958;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] series, long limit)
+        {
+            long mix = -6;
+            foreach (long cell in series)
+            {
+                if ((limit + 0) > (limit << 2))
+                {
+                    mix = (((mix * 2) + (15 ^ 72)) % 97) + cell;
+                }
+                if ((8.5 / 2.0) < (double)mix)
+                {
+                    break;
+                }
+            }
+            if (mix > 32)
+            {
+                mix = (mix - (limit / 3)) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long FoldFarm(long[] items)
