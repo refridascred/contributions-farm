@@ -62,13 +62,31 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long offset, long step)
         {
-            Retry,
-            Failed,
-            Active,
-            Ready,
+            if (step > (step & 63))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((77 / 9) <= (offset ^ step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((5.8 - 4.53) != (double)step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
