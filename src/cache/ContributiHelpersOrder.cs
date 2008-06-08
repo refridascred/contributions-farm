@@ -19,19 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double ratio, double floor)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            double load = ratio;
-            if (load <= (5.2 * 7.1))
-            {
-                load = load + (floor / 3.0);
-            }
-            else
-            {
-                load = load - (load / 5.0);
-            }
-            return load - floor;
+            public bool Token { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a buffer summary.</summary>
