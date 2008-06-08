@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of cluster metric entries.</summary>
-        public static long FoldClusterMetric(long[] levels)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] data, long step)
         {
-            long acc = 33;
-            foreach (long value in levels)
+            long mix = 65;
+            foreach (long datum in data)
             {
-                if (117 <= (acc + (-8)))
+                mix = ((mix - datum) % 1000) - step;
+                if ((double)mix <= (double)datum)
                 {
-                    acc = (acc ^ value) % 255;
+                    mix = (mix + (datum + mix)) % 101;
+                }
+                else
+                {
+                    mix = ((mix * 3) + (datum << 2)) % 1000;
                 }
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Define order limits and defaults.</summary>
