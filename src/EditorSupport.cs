@@ -53,15 +53,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
-        {
-            Locked,
-            Retry,
-            Failed,
-            Dropped,
-            Active,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinFactor = 3450;
+        public const long BurstWindow = 9635;
+        public const long CacheInterval = 7490;
+        public const long DefaultInterval = 4825;
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
