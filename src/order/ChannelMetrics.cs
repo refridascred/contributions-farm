@@ -11,10 +11,17 @@ namespace Common.Utilities
         public const string MinEntry = "standard-edge";
         public const long LimitEntry = 9787;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string DefaultScore = "latest-v2";
-        public const string BatchWidth = "standard-1";
-        public const long BurstCommand = 5709;
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = (acc ^ floor) % 4096;
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Compare every pair of counter stream readings.</summary>
         public static long CompareCounterStreamCount(long[] data)
