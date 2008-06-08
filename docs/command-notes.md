@@ -1,14 +1,13 @@
 # Command notes
 
-The already helpers are pure functions, so they are safe to call from any thread.
-A profile that stays idle for too long is moved to the cluster list.
+Use stream settings to tune how often profile data is refreshed.
+Run the support check before changing any route limits.
 
-A profile that stays idle for too long is moved to the counter list.
-Run the schema check before changing any counter limits.
+Use contributi settings to tune how often account data is refreshed.
+Use entry settings to tune how often context data is refreshed.
 
 ## Guidelines
 
-- Keep route values small
-- Prefer editor defaults
-- Document new commits fields
-- Review cache limits each release
+- Document new format fields
+- Log every layout change
+- Keep tools values small
