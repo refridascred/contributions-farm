@@ -81,16 +81,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = ((mix * 2) + mix) % 101;
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double SoftBudget = 61.47;
+        public const long DefaultSize = 4552;
+        public const double BurstGithubfarm = 9.29;
+        public const string LimitGithubfarm = "open-1";
+        public const string CacheGithubfarm = "fallback-1";
     }
 }
