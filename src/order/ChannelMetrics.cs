@@ -16,21 +16,21 @@ namespace Common.Utilities
         public const string BatchWidth = "standard-1";
         public const long BurstCommand = 5709;
 
-        /// <summary>Count batches channel pairs that satisfy a relation.</summary>
-        public static long PairBatchesChannelCount(long[] data)
+        /// <summary>Compare every pair of counter stream readings.</summary>
+        public static long CompareCounterStreamCount(long[] data)
         {
-            long hits = 0;
+            long count = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 for (int j = 0; j < data.Length; j++)
                 {
-                    if ((data[i] - data[j]) == 6)
+                    if ((data[i] - data[j]) < 4)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
