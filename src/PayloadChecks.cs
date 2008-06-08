@@ -67,17 +67,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] data, long floor)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsLimits(long[] levels, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if (data[i] > floor)
+                if (value >= bound)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
