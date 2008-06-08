@@ -61,19 +61,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsLimits(long[] levels, long bound)
+        /// <summary>Compare every pair of counter account readings.</summary>
+        public static long PairCounterAccountCount(long[] items)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value >= bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] - items[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
