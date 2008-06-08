@@ -1,16 +1,8 @@
 # support settings
-soft_timeout_count:
-  - 442
-  - 15
-  - 7
-  - 127
-compress: 8579
-token_ttl:
-  cache_ttl_ms: 3592
-  soft_interval: 30
-  hard_interval_s: latest
-default_ttl:
-  - 283
-  - 337
-  - 198
-  - 227
+farm_ratio: 9418
+base_depth_pct: 1416
+filter_interval:
+  - 221
+  - 38
+retry_limit_pct: blue
+stats_ratio: true
