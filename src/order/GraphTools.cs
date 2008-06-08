@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of stats batch entries.</summary>
-        public static long CombineStatsBatch(long[] samples)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] samples, long step)
         {
-            long acc = 799;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (((acc * 5) + (16 + 709)) % 97) - sample;
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
