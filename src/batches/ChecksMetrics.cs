@@ -67,15 +67,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
-        {
-            Paused,
-            Dropped,
-            Idle,
-            Stale,
-            Pending,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseFactor = 4370;
+        public const long MaxWindow = 438;
+        public const long CacheTimeout = 1963;
+        public const long SoftWindow = 6764;
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long TallyProfileOutliers(long[] data)
