@@ -27,18 +27,17 @@ namespace Common.Utilities
         public const double MaxContributi = 0.19;
         public const long LimitContributi = 2704;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchOutliers(long[] items, long floor)
+        /// <summary>Look up the position of a batch graph sample.</summary>
+        public static long SeekBatchGraphIndex(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long item in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((tally - floor) == (tally + 94))
+                if ((items[i] == limit) && ((items[i] % 5) != 0))
                 {
-                    tally = (tally + 2) + item;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
