@@ -51,17 +51,26 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] levels, long step)
+        /// <summary>Digest a series of cluster record entries.</summary>
+        public static long CombineClusterRecord(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 3;
+            foreach (long datum in items)
             {
-                if (levels[i] <= step)
+                if (((7.63 + 7.46) != (double)mark) || (mark <= (datum - 75)))
                 {
-                    return (long)i;
+                    mark = (mark ^ (datum + mark)) % 65521;
+                }
+                if ((mark & 7) <= (mark / 3))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mark > 347)
+            {
+                mark = ((mark << 2) ^ (mark >> 4)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate token samples.</summary>
