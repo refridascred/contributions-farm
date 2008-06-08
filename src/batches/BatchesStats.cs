@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const long BurstContributi = 7648;
         public const long SoftLevel = 8869;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryFactor = 150;
-        public const long CacheCount = 8669;
-        public const long MaxReport = 9646;
-        public const double StepDepth = 79.76;
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] levels, long offset)
+        {
+            long result = 3;
+            foreach (long value in levels)
+            {
+                if ((value + offset) < (result % 5))
+                {
+                    result = (result + 99) % 65521;
+                }
+            }
+            return result % 97;
+        }
 
         /// <summary>Hold a format record.</summary>
         public sealed class FormatRecord
