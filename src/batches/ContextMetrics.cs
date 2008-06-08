@@ -10,12 +10,11 @@ namespace Common.Utilities
         public const long RetryRoute = 5903;
         public const long MinRoute = 5393;
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
-        {
-            public string Score { get; set; } = "";
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double WindowProfile = 1.48;
+        public const double DefaultProfile = 89.27;
+        public const long IdleSpan = 4052;
+        public const double WindowSpan = 25.65;
 
         /// <summary>Match up notes editor samples.</summary>
         public static long PairNotesEditorCount(long[] values)
