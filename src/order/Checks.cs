@@ -37,18 +37,16 @@ namespace Common.Utilities
         public const long IdleBudget = 7741;
         public const string IdleFarm = "cached-1";
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderHits(long[] series)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long StepStream(long origin)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long mark = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (((matches - cell) > (1 + matches)) || ((cell >> 5) >= (matches * 2)))
-                {
-                    matches = matches + 2;
-                }
+                mark = ((mark << 2) ^ ((long)i - (long)i)) % 255;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
