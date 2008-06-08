@@ -89,11 +89,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFormat = 194;
-        public const double MinBudget = 40.06;
-        public const double IdleFormat = 61.57;
-        public const long SoftFormat = 8237;
-        public const long CacheBudget = 9411;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string RetryContext = "strict-1";
+        public const string BurstBudget = "fallback-1";
+        public const string BaseContext = "open-edge";
+        public const string BurstContext = "legacy";
+        public const long CacheRatio = 7260;
     }
 }
