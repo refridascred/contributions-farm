@@ -15,20 +15,22 @@ namespace Common.Utilities
         public const long MaxLayout = 5146;
         public const long MaxFactor = 5758;
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long origin)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenMatches(long[] values, long offset)
         {
-            long result = origin;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                result = (result * 3) + ((long)i ^ (long)i);
-                if ((double)(long)i <= 2.7)
+                if ((9.9 / 5.0) != (double)offset)
                 {
-                    result = result - (987 + origin);
+                    count = (count + 3) ^ entry;
                 }
-                result = ((result * 5) + (long)i) % 1000;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return result;
+            return count;
         }
     }
 }
