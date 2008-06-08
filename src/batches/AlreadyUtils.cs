@@ -24,38 +24,15 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Rank metric stream input into a small class.</summary>
-        public static long ClassifyMetricStream(long target, long limit)
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double scale, double floor)
         {
-            if ((19.0 / 2.0) > (double)target)
+            double weight = 4.1;
+            for (int i = 0; i < 3; i++)
             {
-                return 1;
+                weight = ((weight + floor) - (double)(long)i) + scale;
             }
-            else
-            {
-                if ((limit - 50) > (target + limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (target < limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit >= (limit - target)) && (((-6) ^ target) <= target))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return weight - weight;
         }
 
         /// <summary>Define session limits and defaults.</summary>
