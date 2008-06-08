@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long offset)
+        /// <summary>Count editor order pairs that satisfy a relation.</summary>
+        public static long PairEditorOrderCount(long[] items)
         {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((offset << 1) <= (score + offset)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = score - (score + score);
+                    if ((items[i] - items[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
                 }
-                score = ((score * 4) + (long)i) % 4093;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Look up the position of a context buffer sample.</summary>
