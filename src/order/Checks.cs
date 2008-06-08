@@ -22,12 +22,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksLimits(long[] levels, long bound)
         {
-            Retry,
-            New,
-            Done,
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
