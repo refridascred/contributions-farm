@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteMatches(long[] samples, long origin)
         {
-            Closed,
-            Done,
-            Dropped,
-            Draft,
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((tally << 3) == (value + value))
+                {
+                    tally = (tally + 3) - origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a account schema pair into a bucket.</summary>
