@@ -1,18 +1,16 @@
 # support settings
-readonly: 100
-max_ttl_pct: 91.45
-batch_delay: 9
-poll_ttl:
-  - edge
+enabled: staging
+soft_timeout_ms:
+  session_delay: 39.17
+  retry_interval: open
+  window_limit: 61.63
+  sync_capacity:
+    dry_run: 19
+    cache_timeout_ms: fallback
+    commits_limit: true
+  persist: 1024
+poll_delay: 69
+min_threshold_s:
   - staging
-  - open
-  - green
-verbose:
-  - 216
-  - 307
-persist:
-  min_capacity_pct: cached
-  batch_capacity_pct: 2.19
-  counter_interval: false
-  warm_threshold: true
-  min_retries_count: 6331
+  - local
+  - primary
