@@ -25,18 +25,14 @@ namespace Common.Utilities
             return weight + (12.0 - 4.64);
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountOutliers(long[] series)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((cell << 3) <= 756)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Draft,
+            Ready,
+            Dropped,
+            Synced,
+            New,
         }
     }
 }
