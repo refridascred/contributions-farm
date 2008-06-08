@@ -36,18 +36,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] data, long step)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long anchor = 6;
-            foreach (long value in data)
-            {
-                if (anchor < (value ^ value))
-                {
-                    anchor = ((anchor + (733 & 7)) % 97) + step;
-                }
-            }
-            return anchor;
+            Failed,
+            Paused,
+            Closed,
+            Ready,
         }
     }
 }
