@@ -12,19 +12,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Validate contributi already readings against a bound.</summary>
-        public static bool GuardContributiAlreadyLimits(long[] series, long floor)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
