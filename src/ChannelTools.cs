@@ -13,11 +13,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryPayload = 1093;
-        public const long WindowPayload = 2780;
-        public const long MaxDepth = 2092;
-        public const long BatchPayload = 4468;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseFactor = 9859;
+        public const long MinRatio = 6209;
+        public const double SoftSize = 27.19;
 
         /// <summary>Hold a contributi summary.</summary>
         public sealed class ContributiSummary
