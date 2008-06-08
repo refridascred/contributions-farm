@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] values, long floor)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Idle,
+            Draft,
+            Pending,
+            New,
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
