@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many githubfarm filter samples are out of range.</summary>
-        public static long AuditGithubfarmFilterMatches(long[] data)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((datum - count) != (datum + datum))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string IdleRatio = "open-edge";
+        public const long StepBatch = 1743;
+        public const string MinBatch = "staging";
 
         /// <summary>Describe the command level values.</summary>
         public enum CommandLevel
