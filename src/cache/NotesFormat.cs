@@ -40,19 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsBounds(long[] items, long step)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] data, long target)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long sum = 46;
+            foreach (long value in data)
             {
-                if (item >= step)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = (((sum ^ (sum << 1)) % 4096) + value) + target;
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Hold a order record.</summary>
