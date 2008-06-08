@@ -1,8 +1,9 @@
-id,count,ratio
-1,890,277
-2,standard,27.3
-3,legacy,legacy
-4,63.71,27.11
-5,63.71,primary
-6,27.69,38.96
-7,94.57,29.19
+id,active,owner,token,label
+1,105,strict,latest,99
+2,831,24.88,local,5.73
+3,238,502,edge,fallback
+4,89,63.53,506,blue
+5,42.74,9,green,2.9
+6,677,57.98,37.14,852
+7,90.78,806,open,72.75
+8,green,992,legacy,46.57
