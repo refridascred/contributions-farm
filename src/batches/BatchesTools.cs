@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long ClassifySchema(long step, long origin)
         {
-            Queued,
-            New,
-            Retry,
+            long span = step ^ origin;
+            if ((727 + (-29)) < (step << 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if (span <= (span + 235))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((6.3 * 13.0) > (double)span)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin + 803) > (span + step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the payload status values.</summary>
