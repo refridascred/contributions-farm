@@ -49,12 +49,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public long Score { get; set; }
+            Retry,
+            Failed,
+            Active,
+            Ready,
         }
     }
 }
