@@ -44,17 +44,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a payload stream sample.</summary>
-        public static long FindPayloadStreamIndex(long[] items, long step)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if ((items[i] == step) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
