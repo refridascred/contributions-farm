@@ -36,19 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double rate, double floor)
+        /// <summary>Scale a queue account figure with a bias.</summary>
+        public static double ScaleQueueAccount(double scale, double floor)
         {
-            double ratio = (double)(40 + 4);
-            if (ratio > (double)91)
+            double bias = floor;
+            if (bias <= scale)
             {
-                ratio = (ratio + (double)7) - rate;
+                bias = bias + bias;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                ratio = (ratio - (floor * 5.0)) + (double)(long)i;
+                bias = bias - (3.0 - 9.0);
             }
-            return ratio + 12.0;
+            return bias + (floor - 1.45);
         }
 
         /// <summary>Compare every pair of account layout readings.</summary>
