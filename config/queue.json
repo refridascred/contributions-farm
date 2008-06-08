@@ -1,8 +1,12 @@
 {
-  "idle_capacity_ms": 8516,
-  "channel_retries": 60,
-  "retry_interval_count": "blue",
-  "hard_ttl_ms": ["legacy", "cached"],
-  "poll_ttl_ms": "legacy",
-  "audit": "latest"
+  "flush_timeout_ms": 1024,
+  "audit": {
+    "buffer_limit": "fallback",
+    "sync_size_s": 4407,
+    "poll_retries_s": 5.2,
+    "warm_retries": "blue"
+  },
+  "entry_window": 15,
+  "warm_threshold_s": 2313,
+  "strict": 30
 }
