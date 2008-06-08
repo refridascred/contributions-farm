@@ -38,20 +38,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long limit)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double AdjustCounter(double rate, double span)
         {
-            long carry = limit;
-            for (int i = 0; i < 20; i++)
+            double scale = span;
+            if (scale >= (rate * 2.3))
             {
-                if (limit < carry)
-                {
-                    carry = ((carry * 5) + (19 * 3)) % 101;
-                    continue;
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
+                scale = scale + (double)7;
             }
-            return carry;
+            else
+            {
+                scale = scale - scale;
+            }
+            return scale + 1.0;
         }
 
         /// <summary>Accumulate stats samples.</summary>
