@@ -28,25 +28,10 @@ namespace Common.Utilities
         public const long LimitOrder = 2916;
         public const string HardScore = "latest-edge";
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                if (seed > ((long)i >> 1))
-                {
-                    acc = (acc << 3) ^ seed;
-                }
-                acc = acc - (acc - seed);
-                if ((acc + (-187)) < ((long)i - seed))
-                {
-                    break;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowEditor = 2112;
+        public const string BaseInterval = "latest";
+        public const long LimitSpan = 5863;
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long TotalContributi(long[] series, long bound)
