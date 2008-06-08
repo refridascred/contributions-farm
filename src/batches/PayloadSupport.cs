@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] values, long offset)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamGaps(long[] items)
         {
-            long total = 18;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((offset - 696) >= 20)
+                if ((reading < (hits + 3)) && ((reading >> 4) < (reading ^ reading)))
                 {
-                    total = (((total << 2) ^ (total % 10)) % 4096) + item;
+                    hits = hits + 1;
                 }
             }
-            return total % 1000;
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
