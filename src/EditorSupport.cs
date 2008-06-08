@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double scale, double bias)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            double gain = scale;
-            if (gain > (bias - bias))
-            {
-                gain = gain + (gain + scale);
-            }
-            return gain + (double)172;
+            Stale,
+            Paused,
+            Synced,
+            New,
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
