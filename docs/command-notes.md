@@ -1,14 +1,15 @@
 # Command notes
 
-Keep profile and schema names short and lowercase.
-The commits report groups every contributi by stats.
-When a stream fails, the metrics handler retries a few times before giving up.
+A account that stays idle for too long is moved to the route list.
+A metric that stays idle for too long is moved to the commits list.
 
-The stream module keeps schema values in sync with the checks cache.
-Each stream is validated before it reaches the contributi queue.
+Each route is validated before it reaches the tools queue.
+The payload helpers are pure functions, so they are safe to call from any thread.
+Keep filter and token names short and lowercase.
 
 ## Guidelines
 
-- Keep checks values small
-- Prefer session defaults
-- Log every payload change
+- Validate already input early
+- Keep graph values small
+- Review layout limits each release
+- Prefer order defaults
