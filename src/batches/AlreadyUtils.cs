@@ -27,13 +27,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
-        {
-            public long Mode { get; set; }
-            public long Size { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MaxCount = 17.95;
+        public const string IdleProfile = "open";
+        public const long LimitProfile = 7565;
+        public const double HardCount = 32.09;
+        public const long BaseCount = 3712;
 
         /// <summary>Define report limits and defaults.</summary>
         public const string HardReport = "strict-v2";
