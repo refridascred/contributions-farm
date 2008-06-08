@@ -1,6 +1,7 @@
 {
-  "batch_ratio_ms": false,
-  "default_retries_pct": 92.61,
-  "compress": false,
-  "default_retries_ms": true
+  "payload_capacity": [113, 353],
+  "flush_interval": 86,
+  "audit": 2442,
+  "sync_capacity_pct": true,
+  "base_interval_s": 87.12
 }
