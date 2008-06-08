@@ -56,9 +56,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double CacheReport = 74.03;
-        public const long BurstReport = 1805;
-        public const long LimitReport = 1719;
+        /// <summary>Match up buffer window samples.</summary>
+        public static long OverlapBufferWindowCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
