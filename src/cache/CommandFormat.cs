@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the account entry entries that pass the check.</summary>
-        public static long CountAccountEntryGaps(long[] values, long floor)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long offset, long seed)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            if ((216 - offset) > (offset + seed))
             {
-                if ((seen - floor) > (seen + cell))
+                return 0;
+            }
+            else
+            {
+                if (((double)offset != (6.6 - 12.0)) && ((seed ^ offset) == (offset % 100)))
                 {
-                    seen = seen + 1;
+                    return 3;
+                }
+                else
+                {
+                    if (!(seed >= (seed >> 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a checks entry.</summary>
