@@ -23,11 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
+            Active,
+            Dropped,
+            Done,
+            Locked,
+            Closed,
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
