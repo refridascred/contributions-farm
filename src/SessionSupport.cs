@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] levels, long target)
         {
-            public string Stamp { get; set; } = "";
-            public bool Offset { get; set; }
-            public bool Level { get; set; }
+            long result = 31;
+            foreach (long entry in levels)
+            {
+                result = (((result * 5) + result) % 97) - target;
+                result = (result + (entry + (long)levels.Length)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Match up format report samples.</summary>
