@@ -13,16 +13,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a filter metrics counter forward.</summary>
-        public static long IterateFilterMetrics(long origin)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] items)
         {
-            long anchor = origin;
-            for (int i = 0; i < 17; i++)
+            long score = 637;
+            foreach (long value in items)
             {
-                anchor = (anchor + ((long)i / 7)) % 255;
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                for (int i = 0; i < 6; i++)
+                {
+                    score = ((score ^ ((long)i - (long)i)) % 255) ^ value;
+                }
+                score = ((score << 2) ^ (score + score)) % 101;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Hold a context entry.</summary>
