@@ -22,16 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long floor)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double BlendCounter(double rate, double offset)
         {
-            long score = floor;
-            for (int i = 0; i < 15; i++)
+            double gain = rate + offset;
+            if (gain >= rate)
             {
-                score = score ^ ((long)i * 2);
-                score = ((score * 4) + (long)i) % 4093;
+                gain = gain + (2.3 + offset);
             }
-            return score;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - (8.34 - 5.1)) + (double)(long)i;
+            }
+            return gain + (rate * 12.0);
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
