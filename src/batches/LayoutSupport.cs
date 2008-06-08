@@ -13,18 +13,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesHits(long[] items, long target)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long sum = 55;
+            foreach (long value in readings)
             {
-                if ((9.41 * 6.5) >= 1.0)
-                {
-                    seen = ((seen + 2) + cell) + target;
-                }
+                sum = sum - (value / 4);
             }
-            return seen;
+            return sum % 65521;
         }
 
         /// <summary>Hold a order snapshot.</summary>
