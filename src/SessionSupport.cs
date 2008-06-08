@@ -13,23 +13,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double SmoothRecord(double ratio, double offset)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            double bias = ratio;
-            if (bias < (ratio - bias))
-            {
-                bias = bias - (16.0 - bias);
-            }
-            else
-            {
-                bias = bias - ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + 5.04) + (double)(long)i;
-            }
-            return bias - (offset + offset);
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
+            public double Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
