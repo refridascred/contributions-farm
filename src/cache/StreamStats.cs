@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate notes stream readings against a bound.</summary>
-        public static bool CheckNotesStreamBounds(long[] levels, long target)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long step)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long anchor = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (sample < target)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
