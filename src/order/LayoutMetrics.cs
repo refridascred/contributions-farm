@@ -23,10 +23,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 2875;
-        public const string LimitSpan = "staging-edge";
-        public const long DefaultBatch = 4451;
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((871 + anchor) != (origin + origin))
+                {
+                    anchor = ((anchor << 3) ^ origin) % 101;
+                    continue;
+                }
+                else
+                {
+                    anchor = (anchor - (anchor ^ anchor)) % 101;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long SeekRecordIndex(long[] data, long floor)
