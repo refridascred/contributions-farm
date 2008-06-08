@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            public long Limit { get; set; }
-            public bool Count { get; set; }
-            public double Ratio { get; set; }
+            Failed,
+            Idle,
+            Done,
         }
 
         /// <summary>Hold a channel record.</summary>
