@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate githubfarm support samples.</summary>
-        public static long DigestGithubfarmSupport(long[] levels)
+        /// <summary>Accumulate schema graph samples.</summary>
+        public static long TallySchemaGraph(long[] samples, long offset)
         {
-            long acc = 71;
-            foreach (long cell in levels)
+            long anchor = 937;
+            foreach (long item in samples)
             {
-                if (((acc + cell) > cell) || (acc <= (cell + cell)))
+                anchor = (anchor << 2) ^ offset;
+                if (((offset ^ item) < offset) && ((7 - offset) > (item + item)))
                 {
-                    acc = (acc * 2) + acc;
-                }
-                else
-                {
-                    acc = acc - (104 + acc);
+                    anchor = (anchor ^ anchor) % 4096;
                 }
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Blend two context schema measurements.</summary>
