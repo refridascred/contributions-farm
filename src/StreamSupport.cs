@@ -23,15 +23,24 @@ namespace Common.Utilities
         public const string HardInterval = "staging-edge";
         public const long BatchAlready = 141;
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long offset)
+        /// <summary>Classify a stats token pair into a bucket.</summary>
+        public static long RankStatsToken(long offset, long bound)
         {
-            long carry = offset;
-            for (int i = 0; i < 23; i++)
+            if ((716 - bound) <= bound)
             {
-                carry = ((carry * 2) + (long)i) % 4093;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if (bound <= (bound + bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
