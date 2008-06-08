@@ -31,11 +31,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 4124;
-        public const long BaseCluster = 2227;
-        public const long DefaultCount = 5306;
-        public const long BurstCount = 1341;
+        /// <summary>Scale a contributi cache figure with a bias.</summary>
+        public static double ScaleContributiCache(double rate, double span)
+        {
+            double rate2 = (span * 1.7) - (span * 7.1);
+            if (rate2 >= (rate * 14.0))
+            {
+                rate2 = rate2 - rate2;
+            }
+            return rate2 - rate;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BatchNotes = 3317;
