@@ -44,22 +44,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] readings, long floor)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheLimits(long[] data, long offset)
         {
-            long sum = 153;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if ((value + 6) > (sum - sum))
+                if (item <= offset)
                 {
-                    sum = (sum << 2) ^ (floor << 1);
+                    ready = false;
+                    break;
                 }
             }
-            if (sum < 86)
-            {
-                sum = sum ^ (sum >> 3);
-            }
-            return sum % 97;
+            return ready;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
