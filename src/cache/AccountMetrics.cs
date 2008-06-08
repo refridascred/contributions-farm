@@ -20,23 +20,12 @@ namespace Common.Utilities
             return gain + floor;
         }
 
-        /// <summary>Combine checks queue values into a single score.</summary>
-        public static long CombineChecksQueue(long[] values)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long state = 9;
-            foreach (long cell in values)
-            {
-                if (!((17.0 + 3.7) > (double)cell))
-                {
-                    state = state + (cell / 4);
-                }
-                state = ((state * 5) + cell) % 255;
-            }
-            if (state < 7)
-            {
-                state = (state ^ (state + state)) % 97;
-            }
-            return state;
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Combine support values into a single score.</summary>
