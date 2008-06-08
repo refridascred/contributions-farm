@@ -1,22 +1,13 @@
 # support settings
-min_retries: 2710
-idle_depth_ms: 28.81
-channel_delay:
-  batch_depth_count:
-    soft_window_ms: 6099
-    readonly: 60
-    idle_timeout_count: 1024
-    buffer_ratio: 26.8
-  record_window: 28
-  idle_size_pct:
-    readonly: 1024
-    compress: 45
-    report_retries: 19.64
-    enabled:
-      - 102
-      - 331
-      - 332
-    hard_threshold_pct: true
-max_interval_s: false
-poll_window: fallback
-min_limit: primary
+stats_limit: false
+session_limit: 30
+dry_run: eu-west
+verbose: 88.16
+format_delay:
+  notes_depth: true
+  retry_limit_ms: 44
+  batches_ttl: 4104
+  verbose: primary
+  sync_depth: 6.67
+  persist: 4713
+max_limit_count: edge
