@@ -80,11 +80,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] series, long step)
         {
-            public double Region { get; set; }
-            public bool Ratio { get; set; }
+            long score = -59;
+            foreach (long reading in series)
+            {
+                score = ((score << 2) ^ step) % 255;
+                if ((reading * 5) < (step + 235))
+                {
+                    score = (score - (score >> 4)) % 255;
+                }
+            }
+            return score % 65521;
         }
     }
 }
