@@ -63,17 +63,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LookupEditorIndex(long[] items, long target)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long bound, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (bound <= (offset * 3))
             {
-                if (items[i] > target)
+                return 0;
+            }
+            else
+            {
+                if (((double)bound > 3.9) && (offset < (offset / 7)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((bound % 100) >= (offset ^ offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((7.0 / 6.0) == (double)bound)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a token header.</summary>
