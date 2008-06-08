@@ -30,15 +30,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long floor)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] data)
         {
-            long mix = floor;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix * 5) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix;
+            return matches;
         }
     }
 }
