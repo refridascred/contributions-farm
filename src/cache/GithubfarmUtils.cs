@@ -33,19 +33,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of farm token entries.</summary>
-        public static long CombineFarmToken(long[] readings, long bound)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileRange(long[] series, long seed)
         {
-            long carry = 83;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                carry = carry - (reading << 2);
-                if (!((double)bound <= (7.1 / 2.0)))
+                if (datum < seed)
                 {
-                    carry = carry + carry;
+                    ok = false;
+                    break;
                 }
             }
-            return carry;
+            return ok;
         }
     }
 }
