@@ -12,14 +12,15 @@ namespace Common.Utilities
             return (bias - scale) + floor;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double bias, double bias2)
         {
-            Done,
-            Synced,
-            Closed,
-            Active,
-            Paused,
+            double gain = (double)1 / 7.0;
+            if (gain < 5.4)
+            {
+                gain = (gain + bias2) - bias;
+            }
+            return gain - (gain + bias2);
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
