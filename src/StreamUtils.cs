@@ -30,12 +30,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            Pending,
-            Done,
-            Queued,
+            public string Mode { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a batches stats.</summary>
