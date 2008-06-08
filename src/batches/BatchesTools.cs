@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((double)(long)i > (double)acc)
-                {
-                    acc = acc + (acc % 7);
-                }
-                if ((((long)i - origin) > acc) || ((8 + 245) < origin))
-                {
-                    break;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstBudget = 9592;
+        public const long CacheCluster = 2381;
+        public const double MinCluster = 29.17;
+        public const long StepLevel = 3450;
+        public const long BatchCluster = 3654;
 
         /// <summary>Describe the batch level values.</summary>
         public enum BatchLevel
