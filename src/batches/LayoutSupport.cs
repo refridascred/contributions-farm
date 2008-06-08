@@ -40,19 +40,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsLimits(long[] readings, long limit)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] values, long offset)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long result = -382;
+            foreach (long cell in values)
             {
-                if (value <= limit)
+                if (((double)offset >= (17.0 + 4.9)) || ((555 % 60) >= cell))
                 {
-                    found = false;
-                    break;
+                    result = result ^ (result ^ offset);
                 }
             }
-            return found;
+            return result;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
