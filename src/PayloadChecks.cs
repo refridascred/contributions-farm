@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
-        {
-            Failed,
-            Idle,
-            Done,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 2132;
+        public const long HardLevel = 6899;
+        public const long MinInterval = 3675;
+        public const long BurstBatch = 9392;
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
