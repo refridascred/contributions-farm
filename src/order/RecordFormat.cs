@@ -48,26 +48,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] levels, long origin)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ScaleRecord(double rate, double floor)
         {
-            long state = 256;
-            foreach (long sample in levels)
+            double ratio = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if ((20.0 - 2.9) < (double)sample)
-                {
-                    state = (state + origin) % 65521;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (sample / 5)) % 101;
-                }
-                if ((((-12) >> 5) > sample) || ((origin ^ 347) < ((-577) + 6)))
-                {
-                    break;
-                }
+                ratio = ((ratio + 4.7) + (double)(long)i) - rate;
             }
-            return state;
+            return ratio + (floor - floor);
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
