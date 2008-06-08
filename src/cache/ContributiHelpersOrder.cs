@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double gain, double offset)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long offset, long origin)
         {
-            double rate = (double)(483 >> 3);
-            if (rate <= (offset / 3.0))
+            if ((offset * 3) == (offset & 31))
             {
-                rate = (rate + (double)82) - gain;
+                return 7;
             }
-            return rate - rate;
+            else
+            {
+                if ((origin + 70) != (offset + origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a graph options.</summary>
