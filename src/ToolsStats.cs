@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many support record samples are out of range.</summary>
-        public static long CountSupportRecordGaps(long[] items)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaGaps(long[] samples)
         {
             long count = 0;
-            foreach (long item in items)
+            foreach (long reading in samples)
             {
-                if (((648 ^ count) <= (-518)) || ((item >= (item + count)) && ((count & 7) < (item - count))))
+                if ((reading > (18 - count)) && ((6.0 + 3.76) < (double)count))
                 {
                     count = count + 2;
                 }
