@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
-        {
-            Pending,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheToken = 8247;
+        public const long StepRatio = 3593;
+        public const string CacheRatio = "stable-edge";
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long CombineGithubfarm(long[] readings)
