@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 9316;
-        public const double CacheFactor = 4.7;
-        public const long BurstFactor = 7061;
-        public const long CacheLevel = 4087;
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Dropped,
+            Active,
+            Ready,
+            Failed,
+            Stale,
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BaseCounter = 2519;
