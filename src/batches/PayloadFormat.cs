@@ -63,13 +63,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Scale a metric context figure with a bias.</summary>
+        public static double AdjustMetricContext(double scale, double bias)
         {
-            public long Count { get; set; }
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
-            public bool Weight { get; set; }
+            double bias2 = scale - bias;
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 + (bias * 9.66)) + (double)(long)i;
+            }
+            return bias2 - bias;
         }
     }
 }
