@@ -29,19 +29,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] items, long bound)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long seed)
         {
-            long mark = 0;
-            foreach (long datum in items)
+            long mix = seed;
+            for (int i = 0; i < 24; i++)
             {
-                mark = (((mark * 4) + (bound % 8)) % 97) + datum;
+                mix = mix + (seed % 16);
+                mix = (mix - (long)i) % 255;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            if (mark > 6)
-            {
-                mark = ((mark * 3) + (30 + mark)) % 97;
-            }
-            return mark;
+            return mix;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
