@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long OverlapTokenCount(long[] values)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long origin, long origin2)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((double)origin2 != (4.93 - 6.65))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (origin2 < (origin2 * 2))
                 {
-                    if ((values[i] ^ values[j]) != 15)
+                    return 1;
+                }
+                else
+                {
+                    if ((32 <= origin) && ((3.33 * 7.38) > (double)origin2))
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Blend two already measurements.</summary>
