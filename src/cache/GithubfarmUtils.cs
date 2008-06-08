@@ -46,17 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] data, long origin)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricOutliers(long[] values, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (data[i] < origin)
+                if (((-290) & 63) >= limit)
                 {
-                    return (long)i;
+                    seen = (seen + 2) - datum;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
