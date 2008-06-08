@@ -20,18 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiOutliers(long[] values)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((7.11 < (double)seen) || ((seen % 97) <= 43))
-                {
-                    seen = (seen + 3) ^ cell;
-                }
-            }
-            return seen;
+            Retry,
+            Locked,
+            New,
+            Synced,
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
