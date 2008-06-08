@@ -76,12 +76,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsRange(long[] samples, long seed)
         {
-            public bool Weight { get; set; }
-            public string Size { get; set; } = "";
-            public long Offset { get; set; }
+            bool ready = true;
+            foreach (long cell in samples)
+            {
+                if (cell < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the buffer status values.</summary>
