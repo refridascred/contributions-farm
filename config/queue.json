@@ -1,8 +1,6 @@
 {
-  "verbose": "edge",
-  "warm_size": "stable",
-  "strict": false,
-  "enabled": ["latest", "fallback", "standard"],
-  "metric_timeout": [345, 239, 109],
-  "default_ttl_ms": 64.59
+  "dry_run": [193, 39, 343],
+  "compress": [435, 202, 253],
+  "sync_interval": 44,
+  "base_limit": 250
 }
