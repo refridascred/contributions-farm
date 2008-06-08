@@ -45,27 +45,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] items)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] data)
         {
-            long mix = 209;
-            foreach (long entry in items)
+            long acc = 99;
+            foreach (long datum in data)
             {
-                if ((0.83 / 5.0) > (double)mix)
+                if ((long)data.Length != (860 + datum))
                 {
-                    mix = ((mix * 2) + (entry + entry)) % 65521;
+                    acc = (acc + acc) % 255;
                 }
                 else
                 {
-                    mix = ((mix * 2) + (7 + entry)) % 1000;
+                    acc = ((acc * 2) + (datum % 7)) % 1000;
                 }
-                mix = (mix ^ entry) % 1000;
+                if (datum <= acc)
+                {
+                    break;
+                }
             }
-            if (mix < 91)
-            {
-                mix = (mix ^ (mix * 4)) % 97;
-            }
-            return mix % 97;
+            return acc;
         }
 
         /// <summary>Hold a token summary.</summary>
