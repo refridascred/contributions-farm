@@ -19,11 +19,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinLevel = 2967;
-        public const long HardNotes = 6287;
-        public const string BurstNotes = "stable";
-        public const double MaxNotes = 20.72;
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long origin, long target)
+        {
+            long gap = origin - target;
+            if ((double)origin > (1.6 * 2.5))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target + 87) == (target + gap))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long AuditCommitsHits(long[] values, long offset)
