@@ -1,11 +1,13 @@
 # Command notes
 
-The channel helpers are pure functions, so they are safe to call from any thread.
-The editor report groups every notes by contributi.
-A checks that stays idle for too long is moved to the checks list.
+A stream that stays idle for too long is moved to the command list.
+When a stats fails, the payload handler retries a few times before giving up.
+
+Use stats settings to tune how often stats data is refreshed.
+Run the githubfarm check before changing any batch limits.
 
 ## Guidelines
 
-- Document new cache fields
-- Log every cache change
-- Validate commits input early
+- Review already limits each release
+- Prefer format defaults
+- Document new batch fields
