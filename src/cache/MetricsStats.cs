@@ -49,17 +49,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] data, long limit)
+        /// <summary>Fold a list of format entry readings.</summary>
+        public static long TotalFormatEntry(long[] levels, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 17;
+            foreach (long entry in levels)
             {
-                if ((data[i] >= limit) && ((data[i] % 3) != 0))
+                if ((4.4 / 2.0) == (double)carry)
                 {
-                    return (long)i;
+                    carry = (((carry ^ carry) % 101) - entry) - origin;
                 }
             }
-            return -1;
+            return carry;
         }
     }
 }
