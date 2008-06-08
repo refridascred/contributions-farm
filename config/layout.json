@@ -1,22 +1,8 @@
 {
-  "burst_limit_count": "green",
-  "dry_run": {
-    "dry_run": 76.73,
-    "min_threshold_ms": [303, 386, 434],
-    "warm_retries_ms": 567
-  },
-  "cache_interval": false,
-  "persist": 48,
-  "strict": true,
-  "soft_window_s": {
-    "max_depth_s": "open",
-    "compress": [245, 48],
-    "enabled": {
-      "stream_capacity": true,
-      "max_capacity_ms": 59.72,
-      "soft_depth_s": true,
-      "strict": ["open", "edge", "cached", "staging"],
-      "checks_interval": 100
-    }
-  }
+  "verbose": 500,
+  "flush_retries_ms": true,
+  "hard_interval": 94,
+  "default_ttl_s": "stable",
+  "burst_size_s": true,
+  "audit": "green"
 }
