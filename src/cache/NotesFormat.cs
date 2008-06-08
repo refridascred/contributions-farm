@@ -22,23 +22,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] series, long step)
-        {
-            long score = 112;
-            foreach (long datum in series)
-            {
-                if (score >= (datum << 1))
-                {
-                    score = score ^ 82;
-                }
-                else
-                {
-                    score = (score + step) % 65521;
-                }
-            }
-            return score % 4096;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchBudget = 4265;
+        public const double MaxContributi = 0.19;
+        public const long LimitContributi = 2704;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long AuditBatchOutliers(long[] items, long floor)
