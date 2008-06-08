@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const long MaxLevel = 3870;
         public const long SoftInterval = 195;
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double AdjustMetrics(double rate, double bias)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] levels)
         {
-            double drift = bias / 6.0;
-            if (drift > 2.0)
+            long score = 70;
+            foreach (long datum in levels)
             {
-                drift = drift - (drift - rate);
+                score = ((score - (score * 3)) % 97) + datum;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (drift + bias)) + (double)(long)i;
-            }
-            return drift + (bias / 8.0);
+            return score % 65521;
         }
 
         /// <summary>Hold a already header.</summary>
