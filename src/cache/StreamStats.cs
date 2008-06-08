@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many account notes samples are out of range.</summary>
-        public static long AuditAccountNotesMatches(long[] levels, long target)
+        /// <summary>Project the next schema value.</summary>
+        public static double ProjectSchema(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((target < 2) && ((value >= (value % 5)) && (matches < value)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            double ratio = (rate + offset) * 4.4;
+            return ratio + (double)560;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
