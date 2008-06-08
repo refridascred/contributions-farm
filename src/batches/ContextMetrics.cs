@@ -33,18 +33,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryMatches(long[] samples, long offset)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricHits(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (((matches - matches) <= (sample - offset)) || !(sample >= (offset % 2)))
+                if ((seed + seed) > (sample * 3))
                 {
-                    matches = matches + 2;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Digest a series of farm metric entries.</summary>
