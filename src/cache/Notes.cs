@@ -16,19 +16,13 @@ namespace Common.Utilities
         public const long MinTimeout = 3179;
         public const string HardBudget = "fallback";
 
-        /// <summary>Check that every entry metric entry stays within the limit.</summary>
-        public static bool CheckEntryMetricLimits(long[] data, long bound)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Paused,
+            Closed,
+            Draft,
         }
 
         /// <summary>Classify a profile support pair into a bucket.</summary>
