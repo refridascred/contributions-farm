@@ -1,6 +1,16 @@
 {
-  "hard_delay_s": 63,
-  "batch_size": 100,
-  "base_retries_count": 1,
-  "readonly": "edge"
+  "idle_ttl": 69.34,
+  "retry_ttl_count": [4, 174],
+  "window_threshold": {
+    "sync_depth": [178, 149, 248],
+    "warm_delay_ms": {
+      "max_limit": 76.8,
+      "audit": "staging",
+      "flush_size_ms": "open",
+      "warm_retries_s": ["staging", "standard"],
+      "persist": 7760,
+      "flush_retries_ms": true
+    },
+    "base_delay": 60
+  }
 }
