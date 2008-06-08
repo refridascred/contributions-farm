@@ -34,15 +34,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] series, long target)
+        /// <summary>Audit format editor readings against a rule.</summary>
+        public static long MeasureFormatEditorOutliers(long[] items, long floor)
         {
-            long acc = 779;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long value in items)
             {
-                acc = ((((acc * 2) + acc) % 65521) ^ datum) - target;
+                if (!((value << 1) <= (hits ^ value)))
+                {
+                    hits = (hits + 3) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
