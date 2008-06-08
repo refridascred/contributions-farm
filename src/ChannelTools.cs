@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long bound)
+        /// <summary>Locate a buffer cache reading by value.</summary>
+        public static long LocateBufferCacheIndex(long[] readings, long floor)
         {
-            long result = bound;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = result ^ bound;
-                if ((double)4 == (double)result)
+                if (readings[i] > floor)
                 {
-                    result = (result - ((long)i + bound)) % 97;
+                    return (long)i;
                 }
-                result = ((result * 2) + (long)i) % 65521;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Grade a report stream value against two limits.</summary>
