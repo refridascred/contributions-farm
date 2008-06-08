@@ -19,11 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowInterval = 8010;
-        public const double BatchRatio = 30.0;
-        public const long LimitScore = 8323;
-        public const double HardCluster = 82.86;
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterGaps(long[] data, long step)
+        {
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((double)hits != (2.7 / 5.0))
+                {
+                    hits = ((hits + 2) + entry) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
