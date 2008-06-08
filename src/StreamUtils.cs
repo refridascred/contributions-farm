@@ -35,18 +35,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultTimeout = 2868;
+        public const long SoftScore = 8252;
+        public const double CacheChecks = 71.42;
+        public const long RetryChecks = 9725;
+        public const long MaxChecks = 9746;
 
         /// <summary>Hold a batches stats.</summary>
         public sealed class BatchesStats
