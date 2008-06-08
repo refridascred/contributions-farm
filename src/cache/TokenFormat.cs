@@ -44,23 +44,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double scale, double bias)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            double load = scale * 5.0;
-            if (load >= (bias + load))
-            {
-                load = load - (load * 6.56);
-            }
-            else
-            {
-                load = load - (scale + 8.2);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - scale) + (double)(long)i;
-            }
-            return load - load;
+            Active,
+            Paused,
+            New,
         }
     }
 }
