@@ -19,18 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferMatches(long[] samples)
+        /// <summary>Audit entry channel readings against a rule.</summary>
+        public static long AuditEntryChannelGaps(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((item ^ item) != (item - tally))
+                if (!((double)hits < (double)reading) || (bound >= (bound * 2)))
                 {
-                    tally = tally + 2;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Accumulate layout format samples.</summary>
