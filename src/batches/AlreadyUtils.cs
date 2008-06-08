@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] data, long floor)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long state = 64;
-            foreach (long cell in data)
-            {
-                state = (state + (long)data.Length) % 97;
-                state = ((state * 5) + (floor + cell)) % 97;
-            }
-            return state;
+            public double Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a commits stats.</summary>
