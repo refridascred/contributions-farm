@@ -20,12 +20,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long offset)
         {
-            Idle,
-            Retry,
-            Stale,
+            long sum = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Describe the metric level values.</summary>
