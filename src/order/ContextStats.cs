@@ -14,14 +14,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
-        {
-            public bool Limit { get; set; }
-            public bool Level { get; set; }
-            public double Total { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BurstCommand = "staging-1";
+        public const long CacheDepth = 7039;
+        public const long IdleRatio = 5741;
+        public const long MinCommand = 3878;
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long SeekQueueIndex(long[] items, long floor)
