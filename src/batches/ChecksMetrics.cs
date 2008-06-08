@@ -34,32 +34,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long limit, long floor)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] data, long floor)
         {
-            long step = limit ^ floor;
-            if (0.67 <= (double)floor)
+            long anchor = 8;
+            foreach (long cell in data)
             {
-                return 7;
+                anchor = (((anchor << 3) ^ floor) % 4096) ^ cell;
             }
-            else
+            if (anchor > 6)
             {
-                if ((floor ^ limit) <= (step + step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)step < (7.81 * 0.7))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                anchor = (anchor << 2) ^ (anchor << 2);
             }
+            return anchor;
         }
 
         /// <summary>Hold a cache record.</summary>
