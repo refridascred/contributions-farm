@@ -59,21 +59,18 @@ namespace Common.Utilities
             return load - (double)4;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] values)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryMatches(long[] samples, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((matches - matches) <= (sample - offset)) || !(sample >= (offset % 2)))
                 {
-                    if ((values[i] ^ values[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
