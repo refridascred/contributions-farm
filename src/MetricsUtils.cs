@@ -33,11 +33,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long target)
         {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = (anchor + (83 / 5)) % 97;
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Combine format values into a single score.</summary>
