@@ -64,17 +64,39 @@ namespace Common.Utilities
             return bias + (span + bias);
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] values, long offset)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long target, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long lane = target ^ limit;
+            if ((limit % 8) < 384)
             {
-                if ((values[i] <= offset) && ((values[i] % 3) != 0))
+                return 2;
+            }
+            else
+            {
+                if (((double)lane <= 5.6) || (lane > (48 << 1)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((limit + limit) != (9 * 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((144 + target) == (limit << 1))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
