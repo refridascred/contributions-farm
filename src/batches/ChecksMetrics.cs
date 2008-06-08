@@ -51,16 +51,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the route farm series from a seed.</summary>
-        public static long IterateRouteFarm(long offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] data)
         {
-            long state = offset;
-            for (int i = 0; i < 11; i++)
+            long sum = 582;
+            foreach (long item in data)
             {
-                state = state + (offset << 2);
-                state = ((state * 2) + (long)i) % 4093;
+                if (item <= (item & 63))
+                {
+                    sum = (sum - sum) % 65521;
+                }
             }
-            return state;
+            if (sum > 82)
+            {
+                sum = ((sum * 4) + sum) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
