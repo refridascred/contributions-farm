@@ -46,22 +46,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] samples, long seed)
+        /// <summary>Grade a cache stream value against two limits.</summary>
+        public static long ClassifyCacheStream(long step, long step2)
         {
-            long total = 486;
-            foreach (long reading in samples)
+            long next = step ^ step2;
+            if ((next + step) >= (6 & 1))
             {
-                if (reading >= (seed + total))
+                return 0;
+            }
+            else
+            {
+                if (((next + step2) >= (next % 100)) || ((step2 + step) <= (step2 & 3)))
                 {
-                    total = (total + (reading >> 2)) % 65521;
+                    return 4;
                 }
                 else
                 {
-                    total = total ^ (total % 12);
+                    return 1;
                 }
             }
-            return total % 1000;
         }
 
         /// <summary>Describe the metric status values.</summary>
