@@ -27,17 +27,16 @@ namespace Common.Utilities
             return scale2 + floor;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] values, long floor)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((values[i] == floor) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                result = (result + (153 % 60)) % 1000;
+                result = ((result * 4) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Count the session record entries that pass the check.</summary>
