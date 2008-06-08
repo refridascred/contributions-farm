@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] values, long offset)
         {
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
+            long total = 18;
+            foreach (long item in values)
+            {
+                if ((offset - 696) >= 20)
+                {
+                    total = (((total << 2) ^ (total % 10)) % 4096) + item;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
