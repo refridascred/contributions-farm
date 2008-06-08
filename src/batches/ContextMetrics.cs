@@ -44,10 +44,21 @@ namespace Common.Utilities
         public const long DefaultMetric = 6871;
         public const long WindowMetric = 9366;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double DefaultDepth = 58.7;
-        public const long MaxFactor = 2590;
-        public const double WindowTools = 76.1;
-        public const long HardTools = 1734;
+        /// <summary>Compare every pair of account support readings.</summary>
+        public static long PairAccountSupportCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
