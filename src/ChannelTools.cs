@@ -41,18 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] items)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double ratio, double floor)
         {
-            long count = 0;
-            foreach (long value in items)
+            double rate = floor;
+            if (rate > floor)
             {
-                if (!((count / 6) >= count))
-                {
-                    count = (count + 2) + value;
-                }
+                rate = rate + (5.0 - ratio);
             }
-            return count;
+            else
+            {
+                rate = rate + (floor * 3.92);
+            }
+            return rate + 1.8;
         }
     }
 }
