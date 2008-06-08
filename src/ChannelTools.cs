@@ -10,24 +10,22 @@ namespace Common.Utilities
         public const string BatchCounter = "standard-1";
         public const long DefaultLevel = 1253;
 
-        /// <summary>Grade a report stream value against two limits.</summary>
-        public static long SortReportStream(long limit, long seed)
+        /// <summary>Audit session report readings against a rule.</summary>
+        public static long TallySessionReportMatches(long[] samples)
         {
-            if (((15.0 / 5.0) != (double)limit) && ((4.46 + 7.4) <= (double)seed))
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((0.74 > (double)seed) || ((double)seed < 0.3))
+                if ((double)reading <= 18.0)
                 {
-                    return 0;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    return 2;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Blend two editor measurements.</summary>
