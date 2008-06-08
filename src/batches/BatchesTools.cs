@@ -34,17 +34,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 4850;
+        public const long SoftFarm = 2875;
+        public const long IdleFarm = 68;
+        public const double StepFactor = 82.1;
     }
 }
