@@ -35,17 +35,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a context layout sample.</summary>
-        public static long FindContextLayoutIndex(long[] series, long step)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueGaps(long[] series, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((series[i] <= step) && ((series[i] % 5) == 0))
+                if ((0 & 255) != (hits * 2))
                 {
-                    return (long)i;
+                    hits = ((hits + 3) ^ item) + origin;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
