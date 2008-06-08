@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const string MinEntry = "standard-edge";
         public const long LimitEntry = 9787;
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double rate, double span)
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double ratio, double bias)
         {
-            double scale = span / 6.0;
-            if (scale <= rate)
+            double ratio2 = (4.4 * 3.4) - (double)96;
+            if (ratio2 <= ratio)
             {
-                scale = scale - (double)0;
+                ratio2 = ratio2 + bias;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                scale = (scale - (span + rate)) + (double)(long)i;
+                ratio2 = ratio2 - ratio2;
             }
-            return scale - scale;
+            return ratio2 - (2.6 * 9.8);
         }
 
         /// <summary>Hold a profile stats.</summary>
