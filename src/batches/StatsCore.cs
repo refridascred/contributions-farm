@@ -50,27 +50,26 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long limit)
+        /// <summary>Fold a list of already counter readings.</summary>
+        public static long CombineAlreadyCounter(long[] series, long limit)
         {
-            long mix = limit;
-            for (int i = 0; i < 10; i++)
+            long mark = 66;
+            foreach (long entry in series)
             {
-                if ((mix ^ mix) > (limit + limit))
+                if ((entry + 53) >= (entry - entry))
                 {
-                    mix = (mix + ((-3) >> 5)) % 101;
+                    mark = (mark * 5) + entry;
                 }
-                if (((mix + mix) >= (long)i) || ((limit + limit) == (limit * 3)))
+                if ((entry - (-9)) > (limit - limit))
                 {
-                    mix = mix - limit;
+                    mark = (mark << 3) ^ entry;
                 }
                 else
                 {
-                    mix = mix - (limit + mix);
+                    mark = mark ^ limit;
                 }
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
