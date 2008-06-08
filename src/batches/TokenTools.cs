@@ -33,14 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] values)
         {
-            New,
-            Closed,
-            Queued,
-            Retry,
-            Done,
+            long acc = -983;
+            foreach (long entry in values)
+            {
+                acc = ((acc + ((-59) >> 3)) % 4096) + entry;
+            }
+            if (acc > 84)
+            {
+                acc = (acc ^ (acc + acc)) % 4096;
+            }
+            return acc % 4096;
         }
     }
 }
