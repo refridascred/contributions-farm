@@ -65,16 +65,21 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] levels)
+        /// <summary>Derive the next commits window value from a seed.</summary>
+        public static long SeriesCommitsWindow(long seed)
         {
-            long total = 50;
-            foreach (long entry in levels)
+            long state = seed;
+            for (int i = 0; i < 13; i++)
             {
-                total = total ^ (entry % 10);
-                total = total + (9 - entry);
+                if ((271 ^ 98) <= state)
+                {
+                    state = ((state * 2) + (long)i) % 65521;
+                }
+                state = (state << 3) ^ ((-54) / 2);
+                state = state - (state & 15);
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Blend two commits githubfarm measurements.</summary>
