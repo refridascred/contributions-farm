@@ -16,19 +16,16 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Validate token record readings against a bound.</summary>
-        public static bool ValidateTokenRecordRange(long[] data, long floor)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long floor)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long score = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (item != floor)
-                {
-                    ready = false;
-                    break;
-                }
+                score = score ^ ((long)i * 2);
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
