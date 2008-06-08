@@ -51,18 +51,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmMatches(long[] samples)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long floor)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long result = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((hits & 1) == (hits & 127))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    hits = (hits + 1) - sample;
+                    result = (((result << 3) ^ (floor >> 2)) % 65521) - (long)i2;
                 }
+                result = result ^ ((long)i ^ (-7));
+                result = (result - (7 % 5)) % 101;
+                result = ((result * 4) + (long)i) % 101;
             }
-            return hits;
+            return result;
         }
     }
 }
