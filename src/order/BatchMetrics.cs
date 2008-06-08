@@ -32,15 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] samples)
+        /// <summary>Combine counter stats values into a single score.</summary>
+        public static long WeighCounterStats(long[] data)
         {
-            long carry = 954;
-            foreach (long datum in samples)
+            long sum = 72;
+            foreach (long datum in data)
             {
-                carry = ((carry + (876 << 3)) % 255) - datum;
+                if ((double)datum < 3.8)
+                {
+                    sum = ((sum * 4) + (24 >> 4)) % 97;
+                }
+                else
+                {
+                    sum = (sum - (886 * 3)) % 255;
+                }
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Locate a format reading by value.</summary>
