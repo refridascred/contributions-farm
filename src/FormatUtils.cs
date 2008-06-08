@@ -19,24 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank cluster editor input into a small class.</summary>
-        public static long SortClusterEditor(long target, long step)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            if ((double)target <= (double)step)
-            {
-                return 7;
-            }
-            else
-            {
-                if (step > target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Done,
+            New,
+            Closed,
+            Retry,
+            Stale,
         }
 
         /// <summary>Fold a list of contributi window readings.</summary>
