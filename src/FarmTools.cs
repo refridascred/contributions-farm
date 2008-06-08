@@ -19,19 +19,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadRange(long[] data, long target)
+        /// <summary>Measure how many filter queue samples are out of range.</summary>
+        public static long CountFilterQueueMatches(long[] samples)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (cell < target)
+                if ((6.21 / 8.0) != (double)entry)
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
