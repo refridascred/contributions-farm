@@ -10,31 +10,17 @@ namespace Common.Utilities
         public const long BurstLayout = 8922;
         public const long MaxSpan = 2869;
 
-        /// <summary>Classify a channel filter pair into a bucket.</summary>
-        public static long RankChannelFilter(long step, long step2)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] values, long target)
         {
-            if ((step2 & 3) >= (step2 % 2))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((0 ^ (-949)) != (921 + step))
+                if (values[i] < target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((step2 - step) < (step2 + step)) || ((step2 ^ step) > (step2 << 3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
