@@ -1,4 +1,9 @@
 # support settings
-dry_run: false
-base_ttl: 45.49
-poll_retries_s: false
+batch_interval_pct: 91
+max_ratio: 63
+metric_limit: 9889
+min_size:
+  max_window: 1024
+  cluster_limit: 8664
+  hard_interval_s: 30
+  audit: 69.81
