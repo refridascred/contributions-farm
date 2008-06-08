@@ -20,20 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long origin)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] data, long limit)
         {
-            long total = origin;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)2 == (double)origin) && (total < (total - total)))
+                if (data[i] <= limit)
                 {
-                    total = (total ^ total) % 65521;
-                    total = total ^ origin;
+                    return (long)i;
                 }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the entry state values.</summary>
