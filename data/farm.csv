@@ -1,9 +1,6 @@
-id,ratio,count
-1,578,865
-2,latest,278
-3,79.42,67.8
-4,eu-west,stable
-5,957,59.91
-6,400,standard
-7,5.59,staging
-8,193,strict
+id,count,owner
+1,stable,green
+2,eu-west,488
+3,19.4,primary
+4,107,92.28
+5,80,21
