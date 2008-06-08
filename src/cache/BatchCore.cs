@@ -45,12 +45,19 @@ namespace Common.Utilities
             return bias - (weight - bias);
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsLimits(long[] data, long origin)
         {
-            public long Level { get; set; }
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
