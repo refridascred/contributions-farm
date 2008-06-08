@@ -5,29 +5,29 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long origin, long floor)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long floor, long step)
         {
-            long gap = origin ^ floor;
-            if ((1.9 - 1.5) >= (double)gap)
+            long offset = floor - step;
+            if ((offset & 1) >= (offset / 7))
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if ((gap >= (origin - origin)) && ((6.06 - 7.0) != (double)origin))
+                if (!((double)step <= (double)floor))
                 {
-                    return 3;
+                    return 6;
                 }
                 else
                 {
-                    if ((2.98 / 3.0) >= (5.0 / 2.0))
+                    if (step <= (step / 6))
                     {
-                        return 1;
+                        return 4;
                     }
                     else
                     {
-                        return 2;
+                        return 1;
                     }
                 }
             }
