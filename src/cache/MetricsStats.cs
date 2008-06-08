@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] items)
+        /// <summary>Iterate the counter farm series from a seed.</summary>
+        public static long StepCounterFarm(long floor)
         {
-            long anchor = 4;
-            foreach (long value in items)
+            long carry = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if ((anchor << 2) < (value - value))
-                {
-                    anchor = anchor - (value + anchor);
-                }
+                carry = carry ^ ((long)i + carry);
+                carry = carry - (67 - floor);
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Iterate the channel session series from a seed.</summary>
