@@ -20,11 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BurstCommand = "staging-1";
-        public const long CacheDepth = 7039;
-        public const long IdleRatio = 5741;
-        public const long MinCommand = 3878;
+        /// <summary>Define session limits and defaults.</summary>
+        public const string CacheSession = "staging-v2";
+        public const long StepSession = 6634;
+        public const long SoftSpan = 5264;
 
         /// <summary>Digest a series of checks githubfarm entries.</summary>
         public static long TallyChecksGithubfarm(long[] levels)
