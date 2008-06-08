@@ -50,18 +50,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchHits(long[] items)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long total = 972;
+            foreach (long reading in samples)
             {
-                if ((double)count <= (5.88 + 16.0))
+                total = total ^ (total & 63);
+                if (((total >> 2) > (offset + reading)) || ((total & 15) < (48 / 4)))
                 {
-                    count = (count + 3) ^ sample;
+                    total = total - reading;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
