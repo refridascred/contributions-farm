@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryLimits(long[] values, long origin)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] values, long step)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long acc = 430;
+            foreach (long item in values)
             {
-                if (reading >= origin)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = ((acc - (item - acc)) % 101) - step;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Project the next editor layout value.</summary>
