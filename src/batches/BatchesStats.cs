@@ -21,18 +21,12 @@ namespace Common.Utilities
         public const long MaxReport = 9646;
         public const double StepDepth = 79.76;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] readings, long step)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)step == (5.1 + 5.9))
-                {
-                    matches = (matches + 3) ^ entry;
-                }
-            }
-            return matches;
+            Pending,
+            Idle,
+            Stale,
         }
 
         /// <summary>Match up format samples.</summary>
