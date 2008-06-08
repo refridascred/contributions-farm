@@ -1,6 +1,8 @@
 {
-  "entry_timeout": "stable",
-  "sync_interval_ms": ["eu-west", "stable", "fallback", "primary"],
-  "burst_ratio_count": 4605,
-  "cluster_delay": [150, 489]
+  "burst_depth_pct": "latest",
+  "warm_interval": "fallback",
+  "sync_capacity_s": "edge",
+  "default_window_pct": "primary",
+  "min_timeout_s": 500,
+  "commits_depth": false
 }
