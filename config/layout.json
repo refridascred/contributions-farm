@@ -1,5 +1,5 @@
 {
-  "idle_retries": 8531,
-  "verbose": 633,
-  "min_timeout_s": "stable"
+  "flush_timeout_pct": ["eu-west", "staging", "strict"],
+  "verbose": 5537,
+  "githubfarm_limit": "latest"
 }
