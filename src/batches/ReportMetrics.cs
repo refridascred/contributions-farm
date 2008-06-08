@@ -14,12 +14,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Fold a list of profile format readings.</summary>
+        public static long FoldProfileFormat(long[] items, long limit)
         {
-            public string Limit { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
+            long mark = 635;
+            foreach (long reading in items)
+            {
+                mark = (((mark - (82 + (long)items.Length)) % 65521) - reading) + limit;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
