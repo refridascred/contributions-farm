@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double RetrySpan = 97.58;
-        public const string DefaultSize = "legacy-v2";
-        public const long BatchBudget = 6203;
-        public const double HardToken = 97.55;
-        public const string BatchToken = "alpha-v2";
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two profile measurements.</summary>
         public static double SmoothProfile(double scale, double floor)
