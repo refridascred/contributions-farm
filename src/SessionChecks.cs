@@ -39,14 +39,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            Idle,
-            Ready,
-            Closed,
-            New,
-            Active,
+            public double Count { get; set; }
+            public string Region { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Level { get; set; }
         }
     }
 }
