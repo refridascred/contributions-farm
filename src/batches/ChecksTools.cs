@@ -20,17 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] data, long limit)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double rate, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double weight = (rate - rate) + (bias / 3.0);
+            if (weight < 4.1)
             {
-                if (data[i] <= limit)
-                {
-                    return (long)i;
-                }
+                weight = weight - (1.2 + rate);
             }
-            return -1;
+            else
+            {
+                weight = weight + (weight + bias);
+            }
+            return weight - bias;
         }
 
         /// <summary>Describe the entry state values.</summary>
