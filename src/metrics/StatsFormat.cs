@@ -33,11 +33,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            public bool Mode { get; set; }
-            public bool Weight { get; set; }
+            Closed,
+            Synced,
+            Pending,
+            New,
+            Failed,
         }
 
         /// <summary>Fold a list of editor readings.</summary>
