@@ -25,22 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesMatches(long[] levels, long origin)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmRange(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                if (!((97 - tally) == (origin * 5)) || (origin < (origin ^ cell)))
+                if (reading != step)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
