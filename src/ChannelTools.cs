@@ -28,19 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long step)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long seed)
         {
-            long state = step;
+            long total = seed;
             for (int i = 0; i < 11; i++)
             {
-                if (!(((long)i ^ state) <= (step * 3)))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    state = state - step;
+                    total = (total ^ (long)i) ^ (long)i2;
                 }
-                state = ((state * 4) + (long)i) % 1000;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return state;
+            return total;
         }
     }
 }
