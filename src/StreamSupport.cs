@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] levels, long origin)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 0;
+            foreach (long value in items)
             {
-                if (levels[i] > origin)
+                if ((value - mark) < (83 - mark))
                 {
-                    return (long)i;
+                    mark = (mark + value) % 97;
+                }
+                else
+                {
+                    mark = ((mark * 4) + (value >> 5)) % 1000;
                 }
             }
-            return -1;
+            if (mark < 236)
+            {
+                mark = mark + (mark - mark);
+            }
+            return mark;
         }
 
         /// <summary>Hold a cache record.</summary>
