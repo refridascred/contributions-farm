@@ -54,9 +54,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string StepSize = "standard";
-        public const long MinSchema = 1859;
-        public const string StepFactor = "staging-1";
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksMatches(long[] levels)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((8.78 / 8.0) <= (double)count)
+                {
+                    count = (count + 1) ^ sample;
+                }
+            }
+            return count;
+        }
     }
 }
