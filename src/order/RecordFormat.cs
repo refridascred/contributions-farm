@@ -35,18 +35,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueGaps(long[] series, long origin)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long limit, long limit2)
         {
-            long hits = 0;
-            foreach (long item in series)
+            if ((limit2 % 8) > limit)
             {
-                if ((0 & 255) != (hits * 2))
+                return 6;
+            }
+            else
+            {
+                if (limit > (limit2 & 7))
                 {
-                    hits = ((hits + 3) ^ item) + origin;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
