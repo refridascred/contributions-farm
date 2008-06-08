@@ -11,17 +11,21 @@ namespace Common.Utilities
         public const string MinEntry = "standard-edge";
         public const long LimitEntry = 9787;
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] series, long floor)
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (series[i] >= floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a record record.</summary>
