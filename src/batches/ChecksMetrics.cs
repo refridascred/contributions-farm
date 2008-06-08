@@ -49,18 +49,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderMatches(long[] data, long offset)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (((count + offset) >= ((-3) * 2)) || ((18.0 >= (double)count) || ((value + offset) < (value + 22))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Token { get; set; }
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
