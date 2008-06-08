@@ -29,10 +29,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double DefaultStats = 67.49;
-        public const long HardScore = 613;
-        public const long CacheLevel = 3473;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenGaps(long[] items)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((double)datum > (11.0 * 4.3))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const double IdleBudget = 26.48;
