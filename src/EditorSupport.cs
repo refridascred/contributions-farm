@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
+            Paused,
+            Draft,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Describe the commits class values.</summary>
