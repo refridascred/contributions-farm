@@ -23,12 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] data)
         {
-            New,
-            Ready,
-            Pending,
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((496 + item) != (item + 5))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a session options.</summary>
