@@ -21,12 +21,13 @@ namespace Common.Utilities
         public const long MaxReport = 9646;
         public const double StepDepth = 79.76;
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            Pending,
-            Idle,
-            Stale,
+            public long Level { get; set; }
+            public string Token { get; set; } = "";
+            public double Region { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Match up format samples.</summary>
