@@ -1,15 +1,14 @@
 # Command notes
 
-Defaults for account live in the config folder and can be overridden per environment.
-The window report groups every format by stats.
+Keep entry and stats names short and lowercase.
+Each route is validated before it reaches the profile queue.
 
-Run the order check before changing any channel limits.
-Use farm settings to tune how often command data is refreshed.
-Use buffer settings to tune how often batch data is refreshed.
+Run the profile check before changing any notes limits.
+Each counter is validated before it reaches the checks queue.
 
 ## Guidelines
 
-- Prefer profile defaults
 - Keep account values small
-- Log every layout change
-- Review schema limits each release
+- Review commits limits each release
+- Prefer checks defaults
+- Validate channel input early
