@@ -1,17 +1,7 @@
 {
-  "stats_delay": {
-    "dry_run": "green",
-    "window_capacity": 60,
-    "strict": "local",
-    "base_timeout": true,
-    "cache_size_pct": false
-  },
-  "warm_retries": 8910,
-  "queue_capacity": 83.64,
-  "burst_limit": false,
-  "report_limit": {
-    "profile_retries": 14.93,
-    "cache_size_pct": true,
-    "sync_timeout_pct": 44
-  }
+  "burst_interval_ms": 9791,
+  "warm_timeout_ms": ["primary", "primary", "fallback"],
+  "strict": false,
+  "batch_limit_s": "strict",
+  "verbose": 97.24
 }
