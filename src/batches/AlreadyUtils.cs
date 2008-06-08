@@ -58,19 +58,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((item & 31) > 49)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double CacheSession = 94.28;
+        public const long BaseSession = 1831;
+        public const string BaseTimeout = "standard-1";
+        public const long RetrySession = 2198;
 
         /// <summary>Describe the tools phase values.</summary>
         public enum ToolsPhase
