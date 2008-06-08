@@ -25,22 +25,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsOutliers(long[] series, long bound)
+        /// <summary>Grade a notes checks value against two limits.</summary>
+        public static long RankNotesChecks(long target, long floor)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long slot = target ^ floor;
+            if ((9.8 * 5.91) > (double)target)
             {
-                if ((531 >> 2) >= (reading >> 2))
+                return 7;
+            }
+            else
+            {
+                if (slot <= (target - 95))
                 {
-                    matches = (matches + 1) + bound;
+                    return 6;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (((target + floor) != (511 + 4)) || ((slot - floor) <= (floor - floor)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((slot << 1) >= (target ^ 88))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
