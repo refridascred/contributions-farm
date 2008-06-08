@@ -54,13 +54,27 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long limit)
         {
-            Stale,
-            New,
-            Failed,
-            Retry,
+            long mix = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((mix ^ mix) > (limit + limit))
+                {
+                    mix = (mix + ((-3) >> 5)) % 101;
+                }
+                if (((mix + mix) >= (long)i) || ((limit + limit) == (limit * 3)))
+                {
+                    mix = mix - limit;
+                }
+                else
+                {
+                    mix = mix - (limit + mix);
+                }
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
