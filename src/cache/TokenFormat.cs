@@ -23,11 +23,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            public long Count { get; set; }
-            public long Offset { get; set; }
+            Done,
+            Paused,
+            Draft,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Describe the entry status values.</summary>
