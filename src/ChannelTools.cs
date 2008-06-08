@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionLimits(long[] samples, long floor)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Locked,
+            Closed,
         }
 
         /// <summary>Hold a contributi summary.</summary>
