@@ -46,21 +46,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long PairTokenCount(long[] samples)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaBounds(long[] readings, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (sample > bound)
                 {
-                    if ((samples[i] + samples[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
