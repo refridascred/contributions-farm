@@ -45,14 +45,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
-        {
-            Queued,
-            Failed,
-            Pending,
-            Done,
-            Locked,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardFarm = 4451;
+        public const double RetryFarm = 32.17;
+        public const long MinFarm = 7997;
+        public const double IdleFarm = 17.53;
     }
 }
