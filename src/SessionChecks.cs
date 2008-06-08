@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of window route entries.</summary>
-        public static long DigestWindowRoute(long[] levels)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long mix = 3;
-            foreach (long reading in levels)
-            {
-                mix = mix ^ (reading & 1);
-            }
-            return mix % 4096;
+            public long Offset { get; set; }
+            public long Flag { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
