@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiGaps(long[] readings, long origin)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((1.0 + 9.0) < (double)origin)
-                {
-                    count = (count + 3) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardInterval = 6849;
+        public const long BaseScore = 1351;
+        public const long BurstRatio = 63;
+        public const string RetryStream = "primary-edge";
 
         /// <summary>Describe the editor status values.</summary>
         public enum EditorStatus
