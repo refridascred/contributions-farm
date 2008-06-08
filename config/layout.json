@@ -1,14 +1,5 @@
 {
-  "idle_depth": ["staging", "blue"],
-  "stream_ratio": "fallback",
-  "poll_interval_pct": 61,
-  "min_window_s": {
-    "flush_ratio_pct": "legacy",
-    "idle_limit_count": "edge",
-    "burst_depth_count": true,
-    "sync_size": 77,
-    "retry_size": false
-  },
-  "poll_retries": "standard",
-  "cache_threshold": [311, 359, 306, 390]
+  "base_threshold_s": "standard",
+  "soft_retries": 60,
+  "format_retries": 500
 }
