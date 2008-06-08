@@ -59,22 +59,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileOutliers(long[] data)
-        {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((cell + (-8)) < (tally % 7))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstWidth = 362;
+        public const long SoftDepth = 856;
+        public const long HardFarm = 5132;
+        public const string DefaultFarm = "local-1";
+        public const string BurstSize = "alpha";
     }
 }
