@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open local fallback staging; do
-    log "checking ${item}"
-done
-
-RECORD_LIMIT=47
+RECORD_LIMIT=490
 log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-stable}"
+mode="${1:-blue}"
 case "${mode}" in
-    latest)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in latest primary; do
+    log "checking ${item}"
+done
