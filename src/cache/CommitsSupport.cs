@@ -45,15 +45,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] values)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] data, long target)
         {
-            long acc = 748;
-            foreach (long cell in values)
+            long mix = 5;
+            foreach (long datum in data)
             {
-                acc = (acc - (4 % 8)) ^ cell;
+                if (((mix + target) < (datum << 2)) || ((mix - datum) < target))
+                {
+                    mix = (mix - target) % 97;
+                }
+                else
+                {
+                    mix = (mix * 4) + (datum + target);
+                }
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Describe the command phase values.</summary>
