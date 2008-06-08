@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a entry farm reading by value.</summary>
-        public static long SeekEntryFarmIndex(long[] samples, long step)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmMatches(long[] samples, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (samples[i] == step)
+                if (((-491) - (-824)) == (step / 3))
                 {
-                    return (long)i;
+                    seen = (seen + 2) - reading;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Project the next token value.</summary>
