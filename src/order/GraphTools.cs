@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] series)
+        /// <summary>Digest a series of stats batch entries.</summary>
+        public static long CombineStatsBatch(long[] samples)
         {
-            long acc = 56;
-            foreach (long item in series)
+            long acc = 799;
+            foreach (long sample in samples)
             {
-                if ((item + acc) >= acc)
-                {
-                    acc = acc - (72 + item);
-                }
-                else
-                {
-                    acc = (acc - acc) % 65521;
-                }
-                if (!((item ^ item) > item))
-                {
-                    break;
-                }
+                acc = (((acc * 5) + (16 + 709)) % 97) - sample;
             }
             return acc;
         }
