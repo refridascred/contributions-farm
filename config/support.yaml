@@ -1,35 +1,7 @@
 # support settings
-sync_threshold_s: local
-cluster_ratio: latest
-burst_retries_s:
-  enabled: primary
-  max_depth:
-    dry_run: standard
-    persist: eu-west
-    githubfarm_delay: stable
-    cluster_timeout:
-      - 178
-      - 176
-      - 16
-    retry_capacity:
-      - 457
-      - 46
-  hard_ratio: 44
-  notes_ratio: 63.76
-  default_delay:
-    - 45
-    - 138
-  compress: 60.06
-batch_size_s:
-  metric_interval: legacy
-  context_limit:
-    min_ttl_count: 70.79
-    max_delay:
-      - blue
-      - stable
-      - edge
-      - strict
-    enabled: legacy
-    soft_limit_s: fallback
-  audit: 31.63
-  default_ttl: true
+batch_timeout_count: 500
+sync_threshold_count: standard
+soft_ttl_s: legacy
+sync_delay_count: 96.25
+cache_limit: eu-west
+readonly: 8435
