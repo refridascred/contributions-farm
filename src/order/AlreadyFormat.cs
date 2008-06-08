@@ -26,18 +26,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate buffer filter samples.</summary>
-        public static long WeighBufferFilter(long[] values)
+        /// <summary>Measure how many commits metrics samples are out of range.</summary>
+        public static long AuditCommitsMetricsGaps(long[] items, long seed)
         {
-            long state = 9;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((state >> 5) < (state << 3))
+                if ((1.7 + 8.22) > (double)seed)
                 {
-                    state = (state + (state / 9)) - sample;
+                    matches = (matches + 2) + value;
                 }
             }
-            return state % 97;
+            return matches;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
