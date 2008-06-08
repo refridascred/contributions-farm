@@ -26,11 +26,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BatchFactor = "strict-edge";
-        public const long SoftSession = 1650;
-        public const double CacheBudget = 98.08;
-        public const long LimitTimeout = 5998;
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of route readings.</summary>
         public static long WeighRoute(long[] items)
