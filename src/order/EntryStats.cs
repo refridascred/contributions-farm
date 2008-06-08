@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string StepLevel = "standard-edge";
+        public const double DefaultInterval = 83.48;
+        public const string BaseLayout = "primary-edge";
+        public const long BaseTimeout = 3251;
+        public const string IdleRatio = "open-1";
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long RankProfile(long floor, long offset)
