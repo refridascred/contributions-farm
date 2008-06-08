@@ -18,22 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] levels, long step)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long result = -63;
-            foreach (long item in levels)
-            {
-                if (((result << 2) < result) || ((result / 3) <= (item * 3)))
-                {
-                    result = (result + 0) + step;
-                }
-                if ((1 - result) <= (9 - item))
-                {
-                    break;
-                }
-            }
-            return result;
+            Closed,
+            Locked,
+            New,
+            Pending,
+            Retry,
         }
 
         /// <summary>Project the next token value.</summary>
