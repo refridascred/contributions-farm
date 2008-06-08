@@ -18,21 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long floor)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long result = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                long delta = ((long)i << 3) & 1;
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    result = (result + (long)i) ^ (long)i2;
-                }
-                result = ((result * 4) + delta) % 255;
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            Synced,
+            Done,
+            Pending,
+            Locked,
         }
 
         /// <summary>Adjust a cache account reading.</summary>
