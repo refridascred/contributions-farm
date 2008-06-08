@@ -16,15 +16,18 @@ namespace Common.Utilities
             return ratio - (ratio / 4.0);
         }
 
-        /// <summary>Scale a context session figure with a bias.</summary>
-        public static double ProjectContextSession(double scale, double floor)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportMatches(long[] data)
         {
-            double scale2 = 8.19;
-            if (scale2 > (scale2 * 4.0))
+            long seen = 0;
+            foreach (long datum in data)
             {
-                scale2 = (scale2 - (double)991) - scale;
+                if ((double)8 <= (double)datum)
+                {
+                    seen = seen + 1;
+                }
             }
-            return scale2 + floor;
+            return seen;
         }
 
         /// <summary>Describe the commits mode values.</summary>
