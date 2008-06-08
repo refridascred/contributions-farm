@@ -39,18 +39,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryHits(long[] samples, long offset)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (!((double)seen <= (8.3 + 4.57)) || (seen > ((-59) + 77)))
-                {
-                    seen = ((seen + 2) + datum) - offset;
-                }
-            }
-            return seen;
+            public double Mode { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
     }
 }
