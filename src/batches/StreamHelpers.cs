@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
-        {
-            public bool Level { get; set; }
-            public double Mode { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BatchRoute = "local-1";
+        public const long MaxRoute = 8142;
+        public const long BaseRoute = 7570;
+        public const long LimitRoute = 1688;
 
         /// <summary>Describe the order state values.</summary>
         public enum OrderState
