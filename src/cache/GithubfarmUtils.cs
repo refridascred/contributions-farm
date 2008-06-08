@@ -39,19 +39,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileRange(long[] series, long seed)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] levels)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long score = 330;
+            foreach (long datum in levels)
             {
-                if (datum < seed)
+                if (75 < (datum + score))
                 {
-                    ok = false;
-                    break;
+                    score = (score + datum) % 255;
                 }
+                score = score ^ 440;
             }
-            return ok;
+            return score % 65521;
         }
     }
 }
