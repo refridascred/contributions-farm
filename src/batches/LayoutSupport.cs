@@ -31,25 +31,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long step, long limit)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long next = step ^ limit;
-            if (next >= (44 % 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((next - limit) <= (limit + step))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Level { get; set; }
+            public long Score { get; set; }
+            public long Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
