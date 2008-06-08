@@ -1,7 +1,6 @@
 {
-  "retry_threshold_pct": false,
-  "warm_ttl": [6, 351],
-  "readonly": "local",
-  "cache_threshold_count": 68.59,
-  "burst_interval_s": true
+  "entry_timeout": "stable",
+  "sync_interval_ms": ["eu-west", "stable", "fallback", "primary"],
+  "burst_ratio_count": 4605,
+  "cluster_delay": [150, 489]
 }
