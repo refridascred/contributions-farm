@@ -5,39 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long step, long origin)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long origin)
         {
-            long span = step ^ origin;
-            if ((727 + (-29)) < (step << 2))
+            long acc = origin;
+            for (int i = 0; i < 18; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (span <= (span + 235))
+                if ((double)(long)i > (double)acc)
                 {
-                    return 6;
+                    acc = acc + (acc % 7);
                 }
-                else
+                if ((((long)i - origin) > acc) || ((8 + 245) < origin))
                 {
-                    if ((6.3 * 13.0) > (double)span)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((origin + 803) > (span + step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    break;
                 }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
+            return acc;
         }
 
         /// <summary>Validate entry profile readings against a bound.</summary>
