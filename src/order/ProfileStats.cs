@@ -20,13 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Match up context counter samples.</summary>
+        public static long MatchContextCounterCount(long[] readings)
         {
-            Dropped,
-            Ready,
-            Active,
-            New,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate schema cache samples.</summary>
