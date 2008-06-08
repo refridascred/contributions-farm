@@ -1,6 +1,6 @@
 {
-  "max_ttl": ["edge", "staging", "blue", "local"],
-  "flush_retries_pct": 745,
-  "githubfarm_depth": false,
-  "tools_depth": true
+  "cache_depth_pct": 36,
+  "retry_depth": 62.93,
+  "batches_size": "strict",
+  "batch_ttl": true
 }
