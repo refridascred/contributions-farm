@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowRange(long[] levels, long origin)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileHits(long[] series)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (value < origin)
+                if ((double)entry > (6.4 - 14.0))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Describe the metric class values.</summary>
