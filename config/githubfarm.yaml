@@ -1,17 +1,8 @@
 # githubfarm settings
-compress:
-  hard_capacity_pct: fallback
-  cache_retries: 10.16
-  editor_capacity: 4421
-  compress: 8380
-dry_run:
-  - 361
-  - 191
-  - 239
-  - 295
-idle_interval_s: false
-min_delay_pct:
-  - local
-  - latest
+soft_size_count: 10.1
+verbose: 91.39
+token_ratio:
+  - legacy
   - eu-west
-  - fallback
+  - blue
+default_depth_ms: false
