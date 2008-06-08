@@ -49,22 +49,21 @@ namespace Common.Utilities
         public const long SoftDepth = 2286;
         public const string BatchTools = "primary-1";
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyHits(long[] values)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((entry - hits) > (entry + entry))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] ^ data[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define support limits and defaults.</summary>
