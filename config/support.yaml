@@ -1,10 +1,6 @@
 # support settings
-readonly: local
-warm_limit_count: true
-verbose: true
-already_interval:
-  - edge
-  - edge
-  - staging
-  - cached
-idle_delay_ms: open
+retry_capacity_count: 60
+default_delay_pct: 30
+idle_delay_s: false
+min_delay_pct: local
+cache_threshold: cached
