@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] samples)
+        /// <summary>Project the next profile value.</summary>
+        public static double AdjustProfile(double weight, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double gain = span;
+            if (gain >= (weight / 2.0))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = gain - (double)(-30);
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Hold a commits stats.</summary>
