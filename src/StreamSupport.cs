@@ -18,13 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
-        {
-            Idle,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseAlready = 4625;
+        public const string HardInterval = "staging-edge";
+        public const long BatchAlready = 141;
 
         /// <summary>Validate schema cluster readings against a bound.</summary>
         public static bool ValidateSchemaClusterRange(long[] levels, long seed)
