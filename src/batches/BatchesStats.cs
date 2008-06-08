@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] items)
         {
-            Dropped,
-            Pending,
-            Done,
-            Draft,
-            Retry,
+            long result = 4;
+            foreach (long entry in items)
+            {
+                if (entry <= (result ^ entry))
+                {
+                    result = (result * 2) + ((long)items.Length + entry);
+                }
+                else
+                {
+                    result = result ^ 524;
+                }
+            }
+            return result;
         }
 
         /// <summary>Define report limits and defaults.</summary>
