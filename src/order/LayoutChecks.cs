@@ -27,21 +27,22 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] samples)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsGaps(long[] data, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(entry < (count & 3)))
                 {
-                    if ((samples[i] ^ samples[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 2) + origin;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Digest a series of record entries.</summary>
