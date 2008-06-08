@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 4656;
-        public const string LimitBudget = "fallback-edge";
-        public const string WindowFactor = "legacy";
-        public const double StepBudget = 83.27;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardFactor = 9451;
+        public const long RetryNotes = 3601;
+        public const long DefaultNotes = 8074;
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long RollContributi(long floor)
