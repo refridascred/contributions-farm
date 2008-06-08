@@ -1,4 +1,15 @@
 # githubfarm settings
-burst_size_pct: 43.96
-base_timeout: local
-flush_retries: standard
+soft_timeout_pct:
+  - 360
+  - 251
+  - 109
+sync_interval:
+  compress: false
+  batch_timeout: 53
+  verbose: 7315
+  soft_limit: blue
+  base_size_s:
+    - open
+    - strict
+    - cached
+warm_threshold_s: strict
