@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long floor, long step)
-        {
-            long bound = floor ^ step;
-            if ((step + 707) >= (bound * 4))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((step * 2) > (step & 31)) && (step < (step + (-662))))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor >> 2) >= (step & 255))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((bound + floor) > bound) && (floor > (bound + bound)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstDepth = 5331;
+        public const double BatchSpan = 47.94;
+        public const long IdleChannel = 8601;
+        public const long LimitFactor = 5770;
+        public const long MinChannel = 6237;
 
         /// <summary>Fold a list of token readings.</summary>
         public static long TallyToken(long[] data, long target)
