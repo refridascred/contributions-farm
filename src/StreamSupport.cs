@@ -23,24 +23,22 @@ namespace Common.Utilities
         public const string HardInterval = "staging-edge";
         public const long BatchAlready = 141;
 
-        /// <summary>Classify a stats token pair into a bucket.</summary>
-        public static long RankStatsToken(long offset, long bound)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] samples, long step)
         {
-            if ((716 - bound) <= bound)
+            long mix = 8;
+            foreach (long value in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (bound <= (bound + bound))
+                if (((12.0 + 2.0) > (double)step) && ((double)step != (8.2 / 4.0)))
                 {
-                    return 3;
+                    mix = (((mix << 2) ^ mix) % 101) + value;
                 }
                 else
                 {
-                    return 4;
+                    mix = mix - 473;
                 }
             }
+            return mix;
         }
     }
 }
