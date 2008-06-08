@@ -1,8 +1,8 @@
 {
-  "githubfarm_capacity": 8471,
-  "idle_delay_ms": 30.1,
-  "compress": 39.8,
-  "dry_run": false,
-  "flush_window_pct": 60,
-  "retry_depth_s": true
+  "dry_run": true,
+  "soft_timeout_count": 82,
+  "retry_limit": 9904,
+  "retry_limit_pct": 500,
+  "counter_depth": 39,
+  "audit": true
 }
