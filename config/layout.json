@@ -1,13 +1,6 @@
 {
-  "burst_window_pct": "cached",
-  "retry_interval_ms": ["staging", "strict"],
-  "poll_ratio_ms": "eu-west",
-  "idle_threshold_ms": {
-    "strict": 47.75,
-    "idle_ratio_pct": "cached",
-    "hard_timeout_s": "staging",
-    "default_ttl_s": 60,
-    "persist": "blue",
-    "max_timeout_ms": 67.64
-  }
+  "verbose": 33.65,
+  "farm_ratio": 1.01,
+  "min_capacity_ms": 34.33,
+  "enabled": 56
 }
