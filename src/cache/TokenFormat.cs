@@ -23,25 +23,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a stream metric pair into a bucket.</summary>
-        public static long SortStreamMetric(long floor, long bound)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long delta = floor ^ bound;
-            if ((7 <= (delta ^ 2)) && ((delta >> 1) != (floor - bound)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (6.0 < (double)delta)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the entry status values.</summary>
