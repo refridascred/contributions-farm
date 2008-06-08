@@ -36,17 +36,15 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] levels, long seed)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (levels[i] < seed)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
