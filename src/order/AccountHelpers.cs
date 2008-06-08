@@ -28,19 +28,19 @@ namespace Common.Utilities
             return rate - scale;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesRange(long[] levels, long seed)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long seed)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long carry = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (entry <= seed)
+                if ((77 & 15) > (seed + seed))
                 {
-                    stale = false;
-                    break;
+                    carry = ((carry << 3) ^ (carry ^ carry)) % 101;
                 }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
