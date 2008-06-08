@@ -27,19 +27,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a cache account reading.</summary>
-        public static double SmoothCacheAccount(double rate, double span)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] items, long floor)
         {
-            double ratio = (double)48;
-            if (ratio < ratio)
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = (ratio - rate) - span;
+                if (items[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - rate) - (double)(long)i;
-            }
-            return ratio - ratio;
+            return -1;
         }
 
         /// <summary>Digest a series of support metric entries.</summary>
