@@ -50,11 +50,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyRange(long[] data, long bound)
         {
-            public double Weight { get; set; }
-            public bool Offset { get; set; }
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Classify a order window pair into a bucket.</summary>
