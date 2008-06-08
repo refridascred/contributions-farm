@@ -75,9 +75,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowScore = 6182;
-        public const long StepTimeout = 3979;
-        public const long LimitCount = 5983;
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
+        {
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
+            public long Count { get; set; }
+            public double Offset { get; set; }
+        }
     }
 }
