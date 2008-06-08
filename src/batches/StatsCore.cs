@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many channel batches samples are out of range.</summary>
-        public static long CountChannelBatchesOutliers(long[] series)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long value in series)
+            double ratio = (double)((-2) << 2);
+            if (ratio < (double)3)
             {
-                if (((445 << 1) > value) && ((12.0 * 0.41) == (double)tally))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                ratio = (ratio + (double)(-36)) - bias;
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (scale / 3.0)) - (double)(long)i;
+            }
+            return ratio - (double)(-7);
         }
 
         /// <summary>Hold a order entry.</summary>
