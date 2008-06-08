@@ -28,32 +28,24 @@ namespace Common.Utilities
         public const long LimitOrder = 2916;
         public const string HardScore = "latest-edge";
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long step, long step2)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long seed)
         {
-            long lane = step ^ step2;
-            if ((lane & 1) > (step2 ^ lane))
+            long acc = seed;
+            for (int i = 0; i < 20; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((step % 97) <= (776 + lane)) && (5 < step))
+                if (seed > ((long)i >> 1))
                 {
-                    return 0;
+                    acc = (acc << 3) ^ seed;
                 }
-                else
+                acc = acc - (acc - seed);
+                if ((acc + (-187)) < ((long)i - seed))
                 {
-                    if (!((double)lane > (0.41 / 8.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    break;
                 }
+                acc = ((acc * 5) + (long)i) % 101;
             }
+            return acc;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
