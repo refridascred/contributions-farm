@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiGaps(long[] samples)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long limit, long target)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long prev = limit + target;
+            if ((limit + target) <= (target + target))
             {
-                if ((hits % 24) >= (entry << 2))
+                return 8;
+            }
+            else
+            {
+                if (((double)limit <= 3.75) && (prev > (target >> 2)))
                 {
-                    hits = hits + 3;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Roll a account counter forward.</summary>
