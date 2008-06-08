@@ -20,15 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long floor)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterBounds(long[] items, long offset)
         {
-            long result = floor;
-            for (int i = 0; i < 21; i++)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                result = ((result * 2) + (long)i) % 101;
+                if (sample >= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
