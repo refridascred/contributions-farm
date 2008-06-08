@@ -26,22 +26,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] samples, long step)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long mix = 8;
-            foreach (long value in samples)
-            {
-                if (((12.0 + 2.0) > (double)step) && ((double)step != (8.2 / 4.0)))
-                {
-                    mix = (((mix << 2) ^ mix) % 101) + value;
-                }
-                else
-                {
-                    mix = mix - 473;
-                }
-            }
-            return mix;
+            public bool Score { get; set; }
+            public long Flag { get; set; }
+            public string Token { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
