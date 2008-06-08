@@ -20,18 +20,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] series, long limit)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (hits < (limit - limit))
+                if ((levels[i] <= target) && ((levels[i] % 3) == 0))
                 {
-                    hits = (hits + 1) ^ datum;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
