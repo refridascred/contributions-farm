@@ -52,13 +52,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
-        {
-            Synced,
-            Ready,
-            Closed,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double SoftLevel = 48.52;
+        public const long MaxSize = 9089;
+        public const long MaxSpan = 1775;
+        public const double CacheCount = 95.45;
+        public const long BaseSession = 9448;
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
