@@ -35,23 +35,14 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Accumulate layout format samples.</summary>
-        public static long TallyLayoutFormat(long[] samples)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long result = 714;
-            foreach (long cell in samples)
-            {
-                result = ((result << 3) ^ (result << 1)) % 97;
-                if ((double)cell > (5.3 * 5.48))
-                {
-                    result = (result << 2) ^ 440;
-                }
-                if ((double)cell <= (0.89 - 8.6))
-                {
-                    break;
-                }
-            }
-            return result % 4096;
+            Synced,
+            New,
+            Draft,
+            Done,
+            Idle,
         }
     }
 }
