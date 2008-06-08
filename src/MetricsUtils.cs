@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every buffer cluster entry stays within the limit.</summary>
-        public static bool VerifyBufferClusterLimits(long[] items, long step)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ProjectTools(double rate, double floor)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            double ratio = floor;
+            if (ratio < (double)33)
             {
-                if (entry > step)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = (ratio - (floor * 6.7)) + rate;
             }
-            return stale;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + floor) - (double)(long)i;
+            }
+            return ratio - (9.75 / 6.0);
         }
 
         /// <summary>Describe the metrics phase values.</summary>
