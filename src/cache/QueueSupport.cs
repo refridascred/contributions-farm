@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmBounds(long[] items, long offset)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long seed)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long result = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (entry != offset)
-                {
-                    stale = false;
-                    break;
-                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Count support notes pairs that satisfy a relation.</summary>
