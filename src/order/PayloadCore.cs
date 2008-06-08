@@ -14,13 +14,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
-        {
-            Synced,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowDepth = 4007;
+        public const long MinInterval = 7221;
+        public const double CacheTimeout = 15.83;
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long TallyCounter(long[] values)
