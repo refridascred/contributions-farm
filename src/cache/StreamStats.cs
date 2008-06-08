@@ -35,21 +35,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] readings)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double ratio, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double mean = (double)(632 & 3);
+            if (mean <= ratio)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = mean + (ratio - ratio);
             }
-            return hits;
+            else
+            {
+                mean = mean + offset;
+            }
+            return mean + (mean + mean);
         }
 
         /// <summary>Look up the position of a session sample.</summary>
