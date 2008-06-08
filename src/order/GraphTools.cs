@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] samples, long step)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long floor, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((floor ^ seed) >= floor)
             {
-                if (samples[i] < step)
+                return 6;
+            }
+            else
+            {
+                if ((floor + floor) >= 925)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (((floor / 8) >= (floor + seed)) || ((2.0 / 9.0) < (double)floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor - floor) <= (floor / 2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
