@@ -1,5 +1,8 @@
 {
-  "dry_run": false,
-  "enabled": [130, 431, 243],
-  "report_delay": "standard"
+  "token_capacity": "eu-west",
+  "strict": "open",
+  "sync_limit_pct": 250,
+  "record_interval": 11,
+  "dry_run": "blue",
+  "entry_depth": "blue"
 }
