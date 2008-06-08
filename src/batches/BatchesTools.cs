@@ -40,13 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Validate entry profile readings against a bound.</summary>
+        public static bool CheckEntryProfileLimits(long[] series, long bound)
         {
-            Idle,
-            Locked,
-            Paused,
-            Closed,
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
