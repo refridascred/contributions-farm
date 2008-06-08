@@ -71,24 +71,11 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long limit, long target)
-        {
-            if ((147 & 31) >= (limit % 60))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target >> 5) == (target - target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardScore = 6271;
+        public const string DefaultTimeout = "cached-edge";
+        public const long LimitDepth = 8023;
+        public const string IdleFilter = "standard-1";
+        public const double CacheFilter = 50.91;
     }
 }
