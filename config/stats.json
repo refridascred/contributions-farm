@@ -1,7 +1,8 @@
 {
-  "burst_interval_ms": 9791,
-  "warm_timeout_ms": ["primary", "primary", "fallback"],
-  "strict": false,
-  "batch_limit_s": "strict",
-  "verbose": 97.24
+  "channel_size": ["fallback", "latest", "strict"],
+  "base_capacity_count": 43.25,
+  "batch_depth_s": "latest",
+  "persist": 2588,
+  "window_window": "open",
+  "sync_ratio": 8654
 }
