@@ -72,32 +72,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long target, long origin)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] levels, long target)
         {
-            long delta = target ^ origin;
-            if (!((origin << 2) >= delta))
+            long anchor = 460;
+            foreach (long value in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (((delta - delta) >= (7 - target)) || (39 > origin))
+                anchor = (((anchor * 4) + (anchor - anchor)) % 101) + value;
+                anchor = (anchor + target) % 1000;
+                if ((double)anchor < (5.0 * 7.0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)delta != (double)target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    break;
                 }
             }
+            return anchor % 65521;
         }
     }
 }
