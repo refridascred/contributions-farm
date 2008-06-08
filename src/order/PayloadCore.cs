@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < origin) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxWidth = 2802;
+        public const long DefaultRoute = 3287;
+        public const long MaxRoute = 4381;
+        public const double IdleSpan = 29.5;
+        public const long MaxSize = 8940;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long BaseGithubfarm = 4522;
