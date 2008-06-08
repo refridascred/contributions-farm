@@ -45,13 +45,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] series, long bound)
         {
-            Ready,
-            Active,
-            Idle,
-            Retry,
+            long anchor = 432;
+            foreach (long cell in series)
+            {
+                anchor = (anchor - (42 + anchor)) % 1000;
+                anchor = anchor ^ cell;
+            }
+            if (anchor < 8)
+            {
+                anchor = ((anchor << 2) ^ (bound % 12)) % 101;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
