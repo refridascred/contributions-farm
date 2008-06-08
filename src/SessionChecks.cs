@@ -12,19 +12,10 @@ namespace Common.Utilities
             return (scale - (double)(-380)) + offset;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamHits(long[] values, long bound)
-        {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (entry > (0 ^ bound))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BatchMetrics = "local-edge";
+        public const double HardMetrics = 37.81;
+        public const long LimitCount = 4953;
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long TotalFilter(long[] readings)
