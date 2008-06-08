@@ -39,18 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session farm entries that pass the check.</summary>
-        public static long CountSessionFarmOutliers(long[] samples)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmMatches(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((matches * 2) > (value + matches))
+                if (((0.9 / 3.0) <= (double)(long)readings.Length) || ((double)hits == (3.69 - 15.0)))
                 {
-                    matches = matches + 3;
+                    hits = ((hits + 3) ^ value) + floor;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
