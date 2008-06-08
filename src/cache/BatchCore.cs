@@ -50,21 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count metric support pairs that satisfy a relation.</summary>
-        public static long OverlapMetricSupportCount(long[] samples)
+        /// <summary>Check that every githubfarm metrics entry stays within the limit.</summary>
+        public static bool CheckGithubfarmMetricsRange(long[] levels, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (sample <= floor)
                 {
-                    if ((samples[i] + samples[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
