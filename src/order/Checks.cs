@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            Idle,
-            Draft,
-            Synced,
-            Active,
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
