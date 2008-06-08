@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] values, long bound)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long anchor = -319;
-            foreach (long entry in values)
-            {
-                if (bound < (entry - entry))
-                {
-                    anchor = ((anchor << 2) ^ (entry + bound)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor + entry) % 4096;
-                }
-            }
-            if (anchor < 36)
-            {
-                anchor = ((anchor << 3) ^ (21 - anchor)) % 65521;
-            }
-            return anchor % 1000;
+            Ready,
+            Locked,
+            Paused,
         }
 
         /// <summary>Describe the tools phase values.</summary>
