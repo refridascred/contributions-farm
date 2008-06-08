@@ -27,15 +27,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] data, long bound)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long anchor = 9;
-            foreach (long sample in data)
-            {
-                anchor = ((anchor - (anchor + anchor)) ^ sample) - bound;
-            }
-            return anchor % 1000;
+            New,
+            Idle,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
