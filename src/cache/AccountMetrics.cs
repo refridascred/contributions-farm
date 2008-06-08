@@ -20,13 +20,12 @@ namespace Common.Utilities
             return gain + floor;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
-        {
-            public long Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string DefaultCount = "cached";
+        public const string RetryFactor = "cached-1";
+        public const long CacheSize = 8050;
+        public const string HardBudget = "stable";
+        public const string SoftLayout = "stable-1";
 
         /// <summary>Derive the next profile contributi value from a seed.</summary>
         public static long DeriveProfileContributi(long offset)
