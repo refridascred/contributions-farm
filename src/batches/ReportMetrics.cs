@@ -19,24 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long target, long bound)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long offset)
         {
-            if (bound >= ((-4) & 7))
+            long mix = offset;
+            for (int i = 0; i < 13; i++)
             {
-                return 2;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((9.27 + 0.26) < (double)bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return mix;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
