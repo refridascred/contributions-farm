@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] readings, long seed)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmOutliers(long[] series)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((seed & 31) != (seen >> 2))
+                if ((((value + value) >= value) && ((value % 100) > (value >> 5))) || !(value > (hits + hits)))
                 {
-                    seen = (seen + 2) + value;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
