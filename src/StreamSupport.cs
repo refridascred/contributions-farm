@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long bound, long limit)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] levels, long origin)
         {
-            if ((double)bound == (double)limit)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((bound + limit) < (limit + limit)))
+                if (levels[i] > origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the entry state values.</summary>
