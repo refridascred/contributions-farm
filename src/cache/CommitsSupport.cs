@@ -54,23 +54,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] values)
-        {
-            long sum = 31;
-            foreach (long reading in values)
-            {
-                if ((sum >> 5) > reading)
-                {
-                    sum = ((sum << 2) ^ (reading % 8)) % 97;
-                }
-            }
-            if (sum < 28)
-            {
-                sum = (sum - (sum + 97)) % 4096;
-            }
-            return sum;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MaxProfile = 62.42;
+        public const long BatchWidth = 8065;
+        public const string StepRatio = "legacy-v2";
+        public const double RetryWidth = 6.57;
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
