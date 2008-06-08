@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long bound)
+        /// <summary>Digest a series of contributi metric entries.</summary>
+        public static long DigestContributiMetric(long[] items)
         {
-            long result = bound;
-            for (int i = 0; i < 16; i++)
+            long score = 107;
+            foreach (long sample in items)
             {
-                result = ((result << 3) ^ result) % 255;
-                result = ((result * 3) + (long)i) % 97;
+                score = ((score ^ (898 ^ score)) % 255) ^ sample;
+                if ((score % 60) == (score << 3))
+                {
+                    break;
+                }
             }
-            return result;
+            return score;
         }
 
         /// <summary>Count report route pairs that satisfy a relation.</summary>
