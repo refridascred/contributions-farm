@@ -1,8 +1,8 @@
 {
-  "channel_size": ["fallback", "latest", "strict"],
-  "base_capacity_count": 43.25,
-  "batch_depth_s": "latest",
-  "persist": 2588,
-  "window_window": "open",
-  "sync_ratio": 8654
+  "retry_ratio": "cached",
+  "strict": 5399,
+  "soft_interval": 250,
+  "retry_window": "legacy",
+  "verbose": "open",
+  "min_depth": true
 }
