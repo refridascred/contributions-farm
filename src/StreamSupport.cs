@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const double BatchDepth = 43.13;
         public const long RetryRatio = 383;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string IdleSchema = "primary-v2";
-        public const long CacheSpan = 7678;
-        public const long LimitFactor = 7631;
-        public const long DefaultSpan = 641;
-        public const double MinSchema = 43.23;
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of already context readings.</summary>
         public static long DigestAlreadyContext(long[] samples, long offset)
