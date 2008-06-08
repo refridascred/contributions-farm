@@ -43,18 +43,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count report channel pairs that satisfy a relation.</summary>
-        public static long MatchReportChannelCount(long[] samples)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderHits(long[] series)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long cell in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((matches - cell) > (1 + matches)) || ((cell >> 5) >= (matches * 2)))
                 {
-                    if ((samples[i] + samples[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
             return matches;
