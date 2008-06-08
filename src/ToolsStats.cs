@@ -46,23 +46,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] levels)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksRange(long[] values, long origin)
         {
-            long mark = 677;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                mark = mark - (item * 3);
-                if (item <= (484 + item))
+                if (datum >= origin)
                 {
-                    mark = mark - ((-9) ^ mark);
+                    valid = false;
+                    break;
                 }
             }
-            if (mark > 2)
-            {
-                mark = mark + mark;
-            }
-            return mark % 4096;
+            return valid;
         }
 
         /// <summary>Derive the next commits window value from a seed.</summary>
