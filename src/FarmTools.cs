@@ -28,19 +28,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsLimits(long[] levels, long target)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Synced,
+            Pending,
+            Retry,
         }
     }
 }
