@@ -30,17 +30,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] data, long floor)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
     }
 }
