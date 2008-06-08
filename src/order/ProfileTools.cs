@@ -69,18 +69,31 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksMatches(long[] levels)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long origin, long limit)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            if (3.53 >= (double)limit)
             {
-                if ((8.78 / 8.0) <= (double)count)
+                return 5;
+            }
+            else
+            {
+                if ((origin + limit) > (origin * 3))
                 {
-                    count = (count + 1) ^ sample;
+                    return 0;
+                }
+                else
+                {
+                    if (((origin ^ limit) > limit) || ((7 >> 4) >= (origin - limit)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return count;
         }
     }
 }
