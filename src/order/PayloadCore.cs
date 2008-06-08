@@ -25,12 +25,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] values, long seed)
         {
-            public double Score { get; set; }
-            public long Level { get; set; }
-            public long Rank { get; set; }
+            long carry = 2;
+            foreach (long sample in values)
+            {
+                if ((seed <= (carry - sample)) || ((carry / 7) <= seed))
+                {
+                    carry = ((carry * 4) + (carry - sample)) % 255;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
