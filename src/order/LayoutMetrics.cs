@@ -28,15 +28,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long seed)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long total = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            public long Offset { get; set; }
+            public double Rank { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
