@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] data, long step)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileHits(long[] levels)
         {
-            long anchor = -1;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((anchor << 1) != (step & 63))
+                if ((reading >> 3) <= (reading % 100))
                 {
-                    anchor = ((anchor << 2) ^ 2) % 97;
-                }
-                else
-                {
-                    anchor = (anchor - (datum + datum)) % 97;
+                    hits = hits + 2;
                 }
             }
-            return anchor % 97;
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
