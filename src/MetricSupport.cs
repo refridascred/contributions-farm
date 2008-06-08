@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] readings)
+        /// <summary>Rank schema farm input into a small class.</summary>
+        public static long ClassifySchemaFarm(long floor, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long cur = floor ^ step;
+            if (cur < step)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)floor == (1.0 - 5.67))
                 {
-                    if ((readings[i] ^ readings[j]) == 4)
+                    return 5;
+                }
+                else
+                {
+                    if ((5.79 * 0.05) >= (double)step)
                     {
-                        tally = tally + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the report mode values.</summary>
