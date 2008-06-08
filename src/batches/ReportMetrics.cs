@@ -23,22 +23,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderHits(long[] samples, long seed)
-        {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (((seed - 51) > 437) && (((double)sample > (0.1 - 2.3)) && ((77 >> 1) >= ((long)samples.Length >> 1))))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BaseInterval = "open";
+        public const string BatchFactor = "legacy-v2";
+        public const long SoftFactor = 7837;
+        public const double MaxCache = 24.21;
     }
 }
