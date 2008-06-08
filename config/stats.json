@@ -1,7 +1,12 @@
 {
-  "route_ttl": true,
-  "base_ratio_s": [290, 220],
-  "metric_size": "latest",
-  "checks_ttl": true,
-  "context_size": "standard"
+  "sync_threshold": {
+    "min_threshold_pct": 35.68,
+    "cache_depth": false,
+    "idle_window_s": 1024,
+    "idle_ratio": 250,
+    "sync_delay_ms": ["local", "local", "blue", "edge"],
+    "already_threshold": 82.67
+  },
+  "dry_run": "local",
+  "audit": 156
 }
