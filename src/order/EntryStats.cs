@@ -47,19 +47,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutRange(long[] levels, long target)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] series, long origin)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long mix = 390;
+            foreach (long sample in series)
             {
-                if (reading != target)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = (mix - sample) + origin;
             }
-            return ok;
+            return mix % 4096;
         }
     }
 }
