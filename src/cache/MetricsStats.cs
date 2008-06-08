@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Iterate the counter farm series from a seed.</summary>
-        public static long StepCounterFarm(long floor)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long carry = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                carry = carry ^ ((long)i + carry);
-                carry = carry - (67 - floor);
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
+            public long Rank { get; set; }
+            public double Score { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Look up the position of a window sample.</summary>
