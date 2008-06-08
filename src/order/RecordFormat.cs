@@ -54,38 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long target, long offset)
+        /// <summary>Derive the next profile filter value from a seed.</summary>
+        public static long SeriesProfileFilter(long step)
         {
-            if ((target + target) == (offset - target))
+            long state = step;
+            for (int i = 0; i < 8; i++)
             {
-                return 0;
+                state = ((state * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((target - target) <= target)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((4.3 - 8.22) == (double)target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)offset <= (4.16 + 7.1))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Define context limits and defaults.</summary>
