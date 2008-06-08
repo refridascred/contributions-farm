@@ -14,19 +14,17 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyLimits(long[] items, long limit)
+        /// <summary>Look up the position of a format metric sample.</summary>
+        public static long FindFormatMetricIndex(long[] data, long seed)
         {
-            bool found = true;
-            foreach (long reading in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading > limit)
+                if (data[i] == seed)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
