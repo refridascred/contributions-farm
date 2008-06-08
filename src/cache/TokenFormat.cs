@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmOutliers(long[] series)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long mix = 495;
+            foreach (long datum in levels)
             {
-                if ((((value + value) >= value) && ((value % 100) > (value >> 5))) || !(value > (hits + hits)))
-                {
-                    hits = hits + 3;
-                }
+                mix = ((mix << 3) ^ datum) % 97;
             }
-            return hits;
+            return mix % 65521;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
