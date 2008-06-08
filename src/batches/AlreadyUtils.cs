@@ -42,19 +42,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Validate batches stream readings against a bound.</summary>
-        public static bool ValidateBatchesStreamLimits(long[] series, long origin)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksMatches(long[] readings)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (sample >= origin)
+                if ((item & 31) > 49)
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
