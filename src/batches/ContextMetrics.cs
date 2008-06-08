@@ -37,19 +37,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricHits(long[] levels, long seed)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((seed + seed) > (sample * 3))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string StepCount = "open-1";
+        public const long BurstDepth = 790;
+        public const long MaxMetric = 7193;
+        public const long DefaultMetric = 6871;
+        public const long WindowMetric = 9366;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double DefaultDepth = 58.7;
