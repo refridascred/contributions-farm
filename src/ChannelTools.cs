@@ -13,20 +13,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] items)
-        {
-            long mix = 1;
-            foreach (long datum in items)
-            {
-                mix = ((mix * 2) + (datum >> 5)) % 1000;
-                if ((mix / 8) <= (datum + mix))
-                {
-                    break;
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 430;
+        public const long WindowSpan = 9619;
+        public const double LimitLevel = 97.58;
 
         /// <summary>Hold a contributi summary.</summary>
         public sealed class ContributiSummary
