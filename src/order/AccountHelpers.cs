@@ -57,12 +57,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            Locked,
-            Draft,
-            Synced,
+            Pending,
+            Active,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Validate counter context readings against a bound.</summary>
