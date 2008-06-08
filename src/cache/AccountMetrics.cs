@@ -68,20 +68,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] samples, long limit)
+        /// <summary>Digest a series of commits payload entries.</summary>
+        public static long TallyCommitsPayload(long[] items)
         {
-            long mix = -95;
-            foreach (long cell in samples)
+            long mark = 6;
+            foreach (long cell in items)
             {
-                mix = mix ^ (mix << 3);
-                mix = (mix + (cell + 46)) % 4096;
-                if ((cell - limit) < (cell + 2))
+                if ((cell + cell) <= (cell + mark))
+                {
+                    mark = (mark << 3) ^ cell;
+                }
+                else
+                {
+                    mark = ((mark * 2) + (cell + mark)) % 4096;
+                }
+                mark = ((mark * 2) + ((-931) << 1)) % 97;
+                if (2 <= (mark - mark))
                 {
                     break;
                 }
             }
-            return mix % 97;
+            return mark % 65521;
         }
     }
 }
