@@ -37,18 +37,15 @@ namespace Common.Utilities
         public const long CacheAlready = 8846;
         public const long BurstLevel = 2585;
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterMatches(long[] series)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] series, long target)
         {
-            long count = 0;
-            foreach (long item in series)
+            long acc = 779;
+            foreach (long datum in series)
             {
-                if (((count - 1) <= (item - item)) && !((12.0 / 7.0) >= (double)count))
-                {
-                    count = count + 2;
-                }
+                acc = ((((acc * 2) + acc) % 65521) ^ datum) - target;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
