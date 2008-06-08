@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] readings)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long mark = -2;
-            foreach (long cell in readings)
-            {
-                if (!((5.5 + 3.26) <= (double)cell))
-                {
-                    mark = (mark * 3) + (mark + mark);
-                }
-            }
-            return mark;
+            Stale,
+            Done,
+            Retry,
+            New,
         }
 
         /// <summary>Measure how many filter queue samples are out of range.</summary>
