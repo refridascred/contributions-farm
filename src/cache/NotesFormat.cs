@@ -14,11 +14,23 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double ratio, double span)
         {
-            public long Ratio { get; set; }
-            public long Total { get; set; }
+            double weight = (double)(259 + (-29));
+            if (weight >= (ratio / 3.0))
+            {
+                weight = weight - ratio;
+            }
+            else
+            {
+                weight = weight + span;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + span) + (double)(long)i;
+            }
+            return weight - (span * 9.8);
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
