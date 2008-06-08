@@ -39,13 +39,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            Synced,
-            Ready,
-            Paused,
-            Locked,
+            Stale,
+            Dropped,
+            Done,
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
