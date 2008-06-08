@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate contributi metrics readings against a bound.</summary>
-        public static bool CheckContributiMetricsBounds(long[] series, long floor)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long target, long origin)
         {
-            bool flag = true;
-            foreach (long item in series)
+            if ((target < (target / 3)) && ((origin / 8) == (origin + target)))
             {
-                if (item < floor)
+                return 3;
+            }
+            else
+            {
+                if (!((target % 5) == (target % 100)))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (650 < (origin - origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
