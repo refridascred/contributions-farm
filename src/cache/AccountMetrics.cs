@@ -42,12 +42,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 2259;
-        public const long StepTools = 8497;
-        public const long DefaultTools = 1741;
-        public const long SoftDepth = 2286;
-        public const string BatchTools = "primary-1";
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= origin) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of graph readings.</summary>
         public static long MatchGraphCount(long[] data)
