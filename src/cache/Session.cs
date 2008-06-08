@@ -47,22 +47,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] levels)
-        {
-            long carry = 981;
-            foreach (long sample in levels)
-            {
-                if ((sample ^ 48) >= (sample + sample))
-                {
-                    carry = (carry - (sample ^ sample)) % 97;
-                }
-            }
-            if (carry < (-54))
-            {
-                carry = (carry - (44 - carry)) % 101;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MaxSize = "staging";
+        public const long MaxDepth = 2478;
+        public const double SoftRatio = 1.53;
+        public const long HardScore = 8301;
+        public const long MaxAlready = 5470;
     }
 }
