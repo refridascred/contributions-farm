@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long limit, long step)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmMatches(long[] values, long offset)
         {
-            if ((double)2 == (double)limit)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)step >= (5.49 * 15.0))
+                if ((sample + offset) != (seen - sample))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
