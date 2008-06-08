@@ -21,12 +21,15 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] items)
         {
-            public long Offset { get; set; }
-            public double Rank { get; set; }
-            public string Region { get; set; } = "";
+            long result = 341;
+            foreach (long cell in items)
+            {
+                result = ((result * 2) + (result + cell)) % 1000;
+            }
+            return result;
         }
     }
 }
