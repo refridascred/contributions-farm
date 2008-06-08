@@ -14,11 +14,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BaseGithubfarm = 11.28;
-        public const long BatchBudget = 8805;
-        public const double CacheGithubfarm = 25.09;
-        public const long IdleGithubfarm = 2238;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string StepLayout = "fallback-1";
+        public const double RetryLevel = 61.64;
+        public const string CacheLayout = "legacy-edge";
+        public const long IdleRatio = 1295;
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long MeasureTokenMatches(long[] values, long offset)
