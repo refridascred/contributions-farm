@@ -59,12 +59,22 @@ namespace Common.Utilities
             return load - (double)4;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitRatio = 8377;
-        public const long DefaultFilter = 1739;
-        public const string StepTimeout = "fallback-1";
-        public const long BaseCount = 9032;
-        public const long SoftFilter = 8043;
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
