@@ -33,22 +33,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] values, long step)
+        /// <summary>Look up the position of a payload stream sample.</summary>
+        public static long FindPayloadStreamIndex(long[] items, long step)
         {
-            long mark = 506;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((mark ^ value) <= ((-510) + 929)) && (value <= (mark + step)))
+                if ((items[i] == step) && ((items[i] % 3) == 0))
                 {
-                    mark = ((mark << 3) ^ (18 - step)) % 65521;
-                }
-                if (value <= (mark % 5))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Scale a session buffer figure with a bias.</summary>
