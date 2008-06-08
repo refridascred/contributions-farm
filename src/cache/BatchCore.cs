@@ -22,14 +22,26 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] readings, long bound)
         {
-            Failed,
-            Paused,
-            Pending,
-            Queued,
-            Ready,
+            long carry = 93;
+            foreach (long value in readings)
+            {
+                if (!((carry * 5) >= (carry - value)))
+                {
+                    carry = (carry ^ value) % 1000;
+                }
+                else
+                {
+                    carry = (carry + value) % 4096;
+                }
+                if ((value << 3) >= (bound >> 4))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
