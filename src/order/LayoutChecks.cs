@@ -60,15 +60,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long bound)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchHits(long[] items)
         {
-            long score = bound;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                score = ((score * 3) + (long)i) % 65521;
+                if ((double)count <= (5.88 + 16.0))
+                {
+                    count = (count + 3) ^ sample;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
