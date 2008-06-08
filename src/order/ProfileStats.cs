@@ -23,13 +23,20 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] levels, long seed)
         {
-            Paused,
-            Dropped,
-            Done,
-            Draft,
+            long anchor = 12;
+            foreach (long datum in levels)
+            {
+                anchor = anchor ^ (datum * 2);
+                anchor = (anchor << 2) ^ (datum % 8);
+                if ((79 + seed) != (seed + seed))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
