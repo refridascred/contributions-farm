@@ -19,11 +19,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double BlendRecord(double rate, double span)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            double mean = 8.0 / 5.0;
-            return ((mean - (mean / 8.0)) + rate) + span;
+            Queued,
+            Synced,
+            New,
         }
 
         /// <summary>Look up the position of a payload stream sample.</summary>
