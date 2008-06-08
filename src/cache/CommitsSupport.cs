@@ -47,19 +47,12 @@ namespace Common.Utilities
         public const double WindowBudget = 69.12;
         public const long BatchMetric = 2759;
 
-        /// <summary>Validate session notes readings against a bound.</summary>
-        public static bool GuardSessionNotesLimits(long[] samples, long offset)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Stale,
+            Draft,
+            Queued,
         }
 
         /// <summary>Blend two queue route measurements.</summary>
