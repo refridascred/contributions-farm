@@ -18,13 +18,10 @@ namespace Common.Utilities
         public const long WindowFilter = 6366;
         public const long WindowSpan = 1389;
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
-        {
-            public string Region { get; set; } = "";
-            public bool Total { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryInterval = 6620;
+        public const double LimitStats = 0.3;
+        public const long StepScore = 1192;
 
         /// <summary>Classify a profile support pair into a bucket.</summary>
         public static long GradeProfileSupport(long limit, long origin)
