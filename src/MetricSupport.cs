@@ -25,13 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Roll a editor stream counter forward.</summary>
+        public static long RollEditorStream(long step)
         {
-            Retry,
-            Closed,
-            Pending,
-            Active,
+            long state = step;
+            for (int i = 0; i < 16; i++)
+            {
+                state = state - state;
+                state = ((state << 2) ^ (long)i) % 1000;
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
     }
 }
