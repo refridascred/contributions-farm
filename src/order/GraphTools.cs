@@ -62,9 +62,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BaseTools = "staging";
-        public const double DefaultTools = 92.87;
-        public const long WindowTools = 3830;
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
+        {
+            public double Count { get; set; }
+            public long Rank { get; set; }
+        }
     }
 }
