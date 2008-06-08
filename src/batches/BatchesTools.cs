@@ -24,19 +24,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate entry profile readings against a bound.</summary>
-        public static bool CheckEntryProfileLimits(long[] series, long bound)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            Done,
+            Locked,
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
