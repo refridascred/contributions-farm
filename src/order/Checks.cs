@@ -29,18 +29,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsGaps(long[] data)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value >= 214)
+                if ((values[i] == offset) && ((values[i] % 3) == 0))
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the farm level values.</summary>
