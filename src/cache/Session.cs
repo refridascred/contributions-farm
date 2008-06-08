@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] series)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] samples, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((entry + carry) < (carry + entry))
                 {
-                    if ((series[i] + series[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = (((carry * 5) + (entry + entry)) % 4096) + offset;
                 }
             }
-            return hits;
+            return carry % 4096;
         }
 
         /// <summary>Describe the record level values.</summary>
