@@ -23,19 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] items, long bound)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] samples, long step)
         {
-            long total = 46;
-            foreach (long item in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = total - item;
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            if (total < 843)
-            {
-                total = (total << 2) ^ bound;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
