@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportLimits(long[] series, long origin)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Project the next stats value.</summary>
