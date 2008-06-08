@@ -59,19 +59,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextRange(long[] series, long limit)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterGaps(long[] levels, long target)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (sample > limit)
+                if (!(((18 >> 2) >= (entry * 4)) && ((tally + tally) <= entry)))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 2) - target;
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
