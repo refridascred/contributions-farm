@@ -49,11 +49,18 @@ namespace Common.Utilities
         public const long StepNotes = 2997;
         public const double SoftSpan = 96.83;
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryOutliers(long[] data)
         {
-            public long Offset { get; set; }
-            public double Label { get; set; }
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((double)tally != (double)sample)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
