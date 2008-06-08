@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double scale, double offset)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            double bias = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + (scale + offset)) + (double)(long)i;
-            }
-            return bias + scale;
+            Idle,
+            Draft,
+            Synced,
+            Active,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
