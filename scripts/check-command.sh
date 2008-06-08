@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest stable; do
-    log "checking ${item}"
-done
-
-mode="${1:-legacy}"
+mode="${1:-green}"
 case "${mode}" in
-    fallback)
+    latest)
         log "fast path"
         ;;
     *)
@@ -20,5 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-COMMAND_LIMIT=373
-log "limit is ${COMMAND_LIMIT}"
+for item in blue cached; do
+    log "checking ${item}"
+done
