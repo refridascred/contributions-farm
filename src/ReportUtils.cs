@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long bound)
         {
-            Retry,
-            Idle,
-            Draft,
-            Pending,
-            New,
+            long result = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                result = ((result << 3) ^ result) % 255;
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Count report route pairs that satisfy a relation.</summary>
