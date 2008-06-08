@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next schema value.</summary>
-        public static double ProjectSchema(double rate, double offset)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            double ratio = (rate + offset) * 4.4;
-            return ratio + (double)560;
+            Queued,
+            Done,
+            Pending,
         }
 
         /// <summary>Hold a stream info.</summary>
