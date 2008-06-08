@@ -34,15 +34,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ScaleCommand(double scale, double offset)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaCount(long[] samples)
         {
-            double rate = scale;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = (rate + 8.0) + (double)(long)i;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return rate + (offset / 6.0);
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
