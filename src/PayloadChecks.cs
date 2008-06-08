@@ -19,18 +19,15 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksGaps(long[] values)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double rate, double span)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            double mean = (rate / 2.0) - rate;
+            for (int i = 0; i < 4; i++)
             {
-                if ((sample >> 4) > hits)
-                {
-                    hits = hits + 3;
-                }
+                mean = ((mean + (mean - rate)) + (double)(long)i) - span;
             }
-            return hits;
+            return mean + (double)70;
         }
 
         /// <summary>Count the cluster cache entries that pass the check.</summary>
