@@ -58,21 +58,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] samples)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Weight { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
