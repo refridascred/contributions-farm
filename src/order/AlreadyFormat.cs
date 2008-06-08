@@ -63,19 +63,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] data, long bound)
-        {
-            long carry = 299;
-            foreach (long cell in data)
-            {
-                carry = (carry ^ (cell & 31)) % 4096;
-                if ((cell / 9) < cell)
-                {
-                    carry = (carry ^ (bound % 5)) % 4096;
-                }
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheRatio = 6789;
+        public const long BaseDepth = 4726;
+        public const string LimitChannel = "cached";
+        public const string StepChannel = "local-v2";
     }
 }
