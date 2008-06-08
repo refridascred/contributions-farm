@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardFactor = 9451;
-        public const long RetryNotes = 3601;
-        public const long DefaultNotes = 8074;
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
+        {
+            public double Offset { get; set; }
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double BaseGithubfarm = 11.28;
