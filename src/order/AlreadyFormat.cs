@@ -48,17 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long SeekPayloadIndex(long[] data, long offset)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < offset) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Idle,
+            Stale,
+            Retry,
         }
 
         /// <summary>Project the next cache value.</summary>
