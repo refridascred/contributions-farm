@@ -18,22 +18,24 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of editor buffer readings.</summary>
-        public static long WeighEditorBuffer(long[] samples)
+        /// <summary>Rank support payload input into a small class.</summary>
+        public static long BucketSupportPayload(long offset, long bound)
         {
-            long acc = 264;
-            foreach (long cell in samples)
+            if (((double)offset != (2.4 + 2.0)) && ((bound ^ 0) > (offset - bound)))
             {
-                if (!(((long)samples.Length * 4) == (cell * 2)))
+                return 1;
+            }
+            else
+            {
+                if (((bound + offset) > bound) && (offset >= (offset & 1)))
                 {
-                    acc = (acc ^ (acc & 1)) % 255;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (acc > 339)
-            {
-                acc = (acc + acc) % 1000;
-            }
-            return acc % 4096;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
