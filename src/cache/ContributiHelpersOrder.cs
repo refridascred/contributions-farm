@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long limit)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double bias, double floor)
         {
-            long mark = limit;
-            for (int i = 0; i < 16; i++)
+            double load = floor * 6.2;
+            if (load >= load)
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                load = (load - (double)124) - bias;
             }
-            return mark;
+            else
+            {
+                load = load + (load - load);
+            }
+            return load - (double)0;
         }
 
         /// <summary>Hold a stats stats.</summary>
