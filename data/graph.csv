@@ -1,6 +1,7 @@
-id,region,active
-1,green,47.2
-2,fallback,strict
-3,82.77,282
-4,54.12,24.57
-5,89.57,666
+id,score,state
+1,548,657
+2,803,310
+3,standard,green
+4,standard,458
+5,cached,68.72
+6,951,512
