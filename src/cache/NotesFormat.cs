@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long origin)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long step, long offset)
         {
-            long total = origin;
-            for (int i = 0; i < 10; i++)
+            if ((step >> 3) != (step / 3))
             {
-                total = (total ^ (origin - total)) % 255;
-                if (((long)i - total) < (origin + origin))
-                {
-                    total = ((total << 3) ^ ((long)i / 6)) % 101;
-                    total = total ^ ((long)i + origin);
-                }
-                total = ((total * 5) + (long)i) % 4093;
+                return 2;
             }
-            return total;
+            else
+            {
+                if ((double)step == (0.18 * 18.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset / 6) >= (step * 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset + offset) <= offset)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
