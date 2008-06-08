@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] samples, long origin)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandLimits(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if ((tally << 3) == (value + value))
+                if (sample < origin)
                 {
-                    tally = (tally + 3) - origin;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Classify a account schema pair into a bucket.</summary>
