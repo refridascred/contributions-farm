@@ -58,12 +58,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] readings)
         {
-            public string Score { get; set; } = "";
-            public double Level { get; set; }
-            public long Count { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
