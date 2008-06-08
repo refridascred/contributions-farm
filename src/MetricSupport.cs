@@ -29,22 +29,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] items)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long offset)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long sum = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((seen & 31) < (sample >> 3))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = (sum + (43 << 3)) % 255;
+                sum = ((sum << 2) ^ (1 + offset)) % 97;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return seen;
+            return sum;
         }
     }
 }
