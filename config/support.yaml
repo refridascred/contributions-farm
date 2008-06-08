@@ -1,15 +1,14 @@
 # support settings
-sync_delay_pct: 30
-burst_window:
-  min_ttl_count: eu-west
-  audit:
-    farm_ratio: edge
-    sync_size_pct: true
-    retry_retries_ms: 41.48
-  batch_size: 8607
-sync_depth_ms: 24.99
-default_depth_pct: 100
-batch_capacity_s:
-  - 238
-  - 187
-command_ttl: 36.94
+default_retries_s:
+  enabled: cached
+  poll_retries_count:
+    - 284
+    - 86
+    - 290
+    - 270
+  min_interval: 30
+  hard_limit_s: true
+flush_ttl_count: 2539
+flush_timeout_s: 88
+burst_retries_ms: 9
+payload_capacity: 83.03
