@@ -32,22 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutGaps(long[] levels, long target)
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long carry = 954;
+            foreach (long datum in samples)
             {
-                if (((target / 2) <= (seen >> 2)) || !((target + seen) != (value * 2)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = ((carry + (876 << 3)) % 255) - datum;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
