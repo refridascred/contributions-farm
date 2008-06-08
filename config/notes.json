@@ -1,5 +1,5 @@
 {
-  "enabled": 7257,
-  "base_limit_s": "cached",
-  "stats_delay": "cached"
+  "min_retries_pct": 1024,
+  "context_limit": 16.24,
+  "idle_retries_s": [134, 288, 263, 456]
 }
