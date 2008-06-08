@@ -28,21 +28,32 @@ namespace Common.Utilities
         public const long LimitOrder = 2916;
         public const string HardScore = "latest-edge";
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] samples)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long step, long step2)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long lane = step ^ step2;
+            if ((lane & 1) > (step2 ^ lane))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((step % 97) <= (776 + lane)) && (5 < step))
                 {
-                    if ((samples[i] ^ samples[j]) == 7)
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)lane > (0.41 / 8.0)))
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
