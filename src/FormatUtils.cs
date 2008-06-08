@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] series, long bound)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaHits(long[] series, long limit)
         {
-            long state = 63;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((bound - bound) >= (bound - state))
+                if (((long)series.Length > (limit >> 1)) && (((seen % 5) <= (limit % 97)) || ((seen + limit) >= seen)))
                 {
-                    state = ((state << 3) ^ ((long)series.Length ^ bound)) % 101;
-                }
-                state = state - (state >> 3);
-                if (!((27 / 4) < reading))
-                {
-                    break;
+                    seen = (seen + 3) ^ cell;
                 }
             }
-            if (state < 161)
-            {
-                state = (state ^ (3 >> 4)) % 65521;
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Locate a cluster account reading by value.</summary>
