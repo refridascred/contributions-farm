@@ -59,21 +59,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine support cluster values into a single score.</summary>
-        public static long TallySupportCluster(long[] values, long target)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] data, long floor)
         {
-            long score = 8;
-            foreach (long reading in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (((score << 3) ^ score) % 97) - target;
-                score = score ^ reading;
-                score = (score ^ reading) % 65521;
+                if (data[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            if (score > 62)
-            {
-                score = (score << 3) ^ (score / 3);
-            }
-            return score;
+            return -1;
         }
     }
 }
