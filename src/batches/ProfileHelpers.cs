@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Blend two support session measurements.</summary>
+        public static double SmoothSupportSession(double weight, double bias)
         {
-            Failed,
-            Queued,
-            Draft,
-            Pending,
+            double bias2 = 9.97;
+            if (bias2 >= (19.0 - bias))
+            {
+                bias2 = (bias2 + bias2) + weight;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 - bias) - (double)(long)i;
+            }
+            return bias2 - (double)676;
         }
 
         /// <summary>Rank account graph input into a small class.</summary>
