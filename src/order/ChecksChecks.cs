@@ -11,23 +11,19 @@ namespace Common.Utilities
         public const long SoftFarm = 1040;
         public const string HardSize = "latest";
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] values, long seed)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsRange(long[] samples, long floor)
         {
-            long total = 634;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                total = (total ^ (429 - seed)) % 1000;
-                if (((value * 2) > seed) && (25 < (17 - value)))
+                if (sample >= floor)
                 {
-                    total = ((total * 4) + (seed % 5)) % 65521;
-                }
-                if (!((6.4 / 3.0) > (double)value))
-                {
+                    found = false;
                     break;
                 }
             }
-            return total;
+            return found;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
