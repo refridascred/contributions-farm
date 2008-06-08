@@ -53,18 +53,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesHits(long[] readings)
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((reading / 9) <= seen))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((levels[i] ^ levels[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
