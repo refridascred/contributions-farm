@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextBounds(long[] data, long bound)
+        /// <summary>Project the next format graph value.</summary>
+        public static double SmoothFormatGraph(double rate, double floor)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            double scale = floor;
+            if (scale > scale)
             {
-                if (datum > bound)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = (scale + scale) + rate;
             }
-            return valid;
+            else
+            {
+                scale = scale - (scale - 3.24);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (9.23 * 4.5)) + (double)(long)i;
+            }
+            return scale + (5.6 + scale);
         }
 
         /// <summary>Define stream limits and defaults.</summary>
