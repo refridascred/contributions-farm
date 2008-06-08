@@ -13,13 +13,14 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
-            public double Count { get; set; }
-            public long Owner { get; set; }
+            Stale,
+            Failed,
+            Paused,
+            Locked,
+            Retry,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
