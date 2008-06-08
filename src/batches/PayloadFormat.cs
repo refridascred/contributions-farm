@@ -33,10 +33,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BatchCounter = 88.93;
-        public const long StepTimeout = 3181;
-        public const long HardWidth = 9719;
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double ratio, double floor)
+        {
+            double drift = floor;
+            if (drift > (ratio - 1.22))
+            {
+                drift = drift - (double)99;
+            }
+            else
+            {
+                drift = drift + floor;
+            }
+            return drift + 10.0;
+        }
 
         /// <summary>Hold a stats header.</summary>
         public sealed class StatsHeader
