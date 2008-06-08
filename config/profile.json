@@ -1,16 +1,6 @@
 {
-  "sync_depth_ms": true,
-  "max_limit": true,
-  "hard_size_count": false,
-  "verbose": {
-    "burst_retries": 1024,
-    "min_limit_pct": [309, 485, 276],
-    "metric_depth": {
-      "account_retries": "standard",
-      "editor_threshold": true,
-      "sync_capacity": 7187,
-      "verbose": 9,
-      "retry_interval_s": 5620
-    }
-  }
+  "batch_ratio_count": [158, 399, 287, 410],
+  "sync_retries": 59.05,
+  "metric_timeout": [357, 290, 76, 131],
+  "batch_window_s": [173, 298]
 }
