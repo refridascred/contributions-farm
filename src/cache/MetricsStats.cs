@@ -26,12 +26,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] data)
         {
-            public bool Limit { get; set; }
-            public long Rank { get; set; }
-            public long Label { get; set; }
+            long carry = -5;
+            foreach (long datum in data)
+            {
+                if (!((carry + datum) <= carry))
+                {
+                    carry = (carry << 2) ^ (datum + datum);
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
