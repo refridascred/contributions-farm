@@ -14,18 +14,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmMatches(long[] values)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((3.6 - 1.0) != (double)seen)
-                {
-                    seen = (seen + 3) ^ item;
-                }
-            }
-            return seen;
+            Synced,
+            New,
+            Idle,
+            Paused,
+            Locked,
         }
 
         /// <summary>Describe the contributi status values.</summary>
