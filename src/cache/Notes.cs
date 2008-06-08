@@ -83,22 +83,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextMatches(long[] levels)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long offset, long offset2)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            if (2 >= (offset ^ 1))
             {
-                if (!((entry << 1) < (matches << 3)))
+                return 2;
+            }
+            else
+            {
+                if (0 >= offset2)
                 {
-                    matches = matches + 1;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 3;
                 }
             }
-            return matches;
         }
     }
 }
