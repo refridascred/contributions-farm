@@ -12,18 +12,14 @@ namespace Common.Utilities
         public const long BurstContributi = 7648;
         public const long SoftLevel = 8869;
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] levels, long offset)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long result = 3;
-            foreach (long value in levels)
-            {
-                if ((value + offset) < (result % 5))
-                {
-                    result = (result + 99) % 65521;
-                }
-            }
-            return result % 97;
+            Done,
+            Stale,
+            Synced,
+            Dropped,
+            New,
         }
 
         /// <summary>Blend two farm contributi measurements.</summary>
