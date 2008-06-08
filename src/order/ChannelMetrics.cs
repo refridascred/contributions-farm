@@ -14,26 +14,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long bound, long bound2)
-        {
-            long gap = bound + bound2;
-            if (bound2 > (gap << 1))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((1.0 / 9.0) <= (double)gap)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultScore = "latest-v2";
+        public const string BatchWidth = "standard-1";
+        public const long BurstCommand = 5709;
 
         /// <summary>Count batches channel pairs that satisfy a relation.</summary>
         public static long PairBatchesChannelCount(long[] data)
