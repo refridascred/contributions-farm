@@ -26,18 +26,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] data)
+        /// <summary>Check that every profile command entry stays within the limit.</summary>
+        public static bool CheckProfileCommandRange(long[] series, long bound)
         {
-            long carry = -5;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if (!((carry + datum) <= carry))
+                if (item > bound)
                 {
-                    carry = (carry << 2) ^ (datum + datum);
+                    stale = false;
+                    break;
                 }
             }
-            return carry % 97;
+            return stale;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
