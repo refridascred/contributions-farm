@@ -25,19 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmRange(long[] levels, long step)
+        /// <summary>Count the window session entries that pass the check.</summary>
+        public static long AuditWindowSessionOutliers(long[] readings, long origin)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (reading != step)
+                if ((64 / 8) >= origin)
                 {
-                    flag = false;
-                    break;
+                    count = (count + 3) - reading;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
