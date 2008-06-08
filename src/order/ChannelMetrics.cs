@@ -14,15 +14,25 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] values)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long bound, long bound2)
         {
-            long state = 5;
-            foreach (long item in values)
+            long gap = bound + bound2;
+            if (bound2 > (gap << 1))
             {
-                state = ((state - (state - state)) % 4096) ^ item;
+                return 8;
             }
-            return state;
+            else
+            {
+                if ((1.0 / 9.0) <= (double)gap)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Validate notes window readings against a bound.</summary>
