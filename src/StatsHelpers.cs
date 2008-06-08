@@ -55,25 +55,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a cache stream value against two limits.</summary>
-        public static long ClassifyCacheStream(long step, long step2)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long limit)
         {
-            long next = step ^ step2;
-            if ((next + step) >= (6 & 1))
+            long mix = limit;
+            for (int i = 0; i < 10; i++)
             {
-                return 0;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if (((next + step2) >= (next % 100)) || ((step2 + step) <= (step2 & 3)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return mix;
         }
 
         /// <summary>Define already limits and defaults.</summary>
