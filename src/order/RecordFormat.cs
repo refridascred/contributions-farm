@@ -24,11 +24,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 8874;
-        public const long MinProfile = 1595;
-        public const string RetryProfile = "alpha";
-        public const string IdleProfile = "primary";
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of githubfarm support readings.</summary>
         public static long WeighGithubfarmSupport(long[] series)
