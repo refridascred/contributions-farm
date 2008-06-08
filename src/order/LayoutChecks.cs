@@ -71,13 +71,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double weight, double offset)
         {
-            Idle,
-            Draft,
-            Active,
-            Synced,
+            double drift = (double)(78 + 1);
+            for (int i = 0; i < 5; i++)
+            {
+                drift = ((drift + drift) + (double)(long)i) - offset;
+            }
+            return drift + weight;
         }
     }
 }
