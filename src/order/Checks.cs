@@ -22,21 +22,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up order entry samples.</summary>
-        public static long MatchOrderEntryCount(long[] readings)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Roll a stream counter forward.</summary>
