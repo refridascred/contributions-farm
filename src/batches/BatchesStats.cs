@@ -22,19 +22,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two farm contributi measurements.</summary>
-        public static double ScaleFarmContributi(double ratio, double floor)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorLimits(long[] values, long floor)
         {
-            double bias = (double)(2 * 5);
-            if (bias < (double)903)
+            bool flag = true;
+            foreach (long value in values)
             {
-                bias = (bias + (floor + floor)) - ratio;
+                if (value > floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias - bias;
-            }
-            return bias - (7.0 - floor);
+            return flag;
         }
 
         /// <summary>Describe the contributi class values.</summary>
