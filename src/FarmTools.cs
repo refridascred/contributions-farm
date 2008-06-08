@@ -27,22 +27,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many context stats samples are out of range.</summary>
-        public static long AuditContextStatsMatches(long[] series, long bound)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (((double)item > (double)bound) && !((seen - bound) > ((-48) + seen)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 3730;
+        public const string LimitFactor = "fallback";
+        public const long IdleChannel = 4170;
+        public const long MinChannel = 8395;
     }
 }
