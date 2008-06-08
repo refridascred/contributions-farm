@@ -1,13 +1,6 @@
 # support settings
-stats_limit: false
-session_limit: 30
-dry_run: eu-west
-verbose: 88.16
-format_delay:
-  notes_depth: true
-  retry_limit_ms: 44
-  batches_ttl: 4104
-  verbose: primary
-  sync_depth: 6.67
-  persist: 4713
-max_limit_count: edge
+dry_run: 60
+audit: 60
+verbose: edge
+poll_depth_count: true
+flush_size: cached
