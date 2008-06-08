@@ -20,17 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] levels, long target)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] series, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 875;
+            foreach (long sample in series)
             {
-                if ((levels[i] <= target) && ((levels[i] % 3) == 0))
+                carry = (((carry * 4) + (carry & 127)) % 101) ^ sample;
+                if ((45 >> 3) > floor)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return carry % 1000;
         }
 
         /// <summary>Hold a window info.</summary>
