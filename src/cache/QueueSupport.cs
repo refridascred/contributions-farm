@@ -24,17 +24,19 @@ namespace Common.Utilities
         public const double IdleRoute = 19.9;
         public const long HardWidth = 3273;
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] data, long step)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadBounds(long[] samples, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if ((data[i] <= step) && ((data[i] % 3) == 0))
+                if (cell <= step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
