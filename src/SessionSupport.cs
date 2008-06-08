@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of profile batch readings.</summary>
-        public static long CombineProfileBatch(long[] readings, long target)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long anchor = 9;
-            foreach (long reading in readings)
-            {
-                anchor = ((anchor - (reading % 5)) % 65521) + target;
-            }
-            return anchor;
+            public string Stamp { get; set; } = "";
+            public bool Offset { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Accumulate record batches samples.</summary>
