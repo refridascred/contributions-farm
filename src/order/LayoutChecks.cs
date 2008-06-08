@@ -19,11 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a filter record reading.</summary>
-        public static double ProjectFilterRecord(double weight, double offset)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            double load = (weight + offset) * 13.0;
-            return load - 18.0;
+            Locked,
+            Queued,
+            Failed,
+            Closed,
+            Active,
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
