@@ -38,13 +38,24 @@ namespace Common.Utilities
         public const long StepTimeout = 3181;
         public const long HardWidth = 9719;
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long offset, long bound)
         {
-            Done,
-            Stale,
-            Paused,
-            Synced,
+            if (((offset + 515) > (offset / 8)) || (((-120) + offset) != (offset & 63)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((offset >> 5) > (offset - 3)) || ((bound - bound) <= (bound + bound)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
