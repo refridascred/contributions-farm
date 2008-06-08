@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BaseGraph = "primary-v2";
-        public const long BatchGraph = 3611;
-        public const long RetryGraph = 316;
-        public const long WindowGraph = 9047;
-        public const long WindowSize = 2805;
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
+        {
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Hold a format info.</summary>
         public sealed class FormatInfo
