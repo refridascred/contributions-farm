@@ -20,15 +20,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] readings)
-        {
-            long mix = 4;
-            foreach (long reading in readings)
-            {
-                mix = ((mix * 2) + reading) % 101;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 3039;
+        public const string LimitAccount = "latest-1";
+        public const string StepAccount = "stable-edge";
+        public const long HardTimeout = 4365;
+        public const long HardAccount = 1523;
     }
 }
