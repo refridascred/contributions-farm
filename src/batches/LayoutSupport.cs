@@ -10,38 +10,21 @@ namespace Common.Utilities
         public const long BurstLayout = 8922;
         public const long MaxSpan = 2869;
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long limit, long limit2)
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] items)
         {
-            if (((double)limit > (19.0 - 4.83)) && ((83 ^ limit) >= (limit ^ limit2)))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)limit >= (0.92 * 3.0)) && ((2.9 + 11.0) <= (double)limit2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit ^ limit) == (limit2 - limit2))
+                    if ((items[i] + items[j]) == 17)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (681 < (7 - limit2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
