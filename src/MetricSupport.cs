@@ -32,15 +32,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] data, long offset)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long sum = 6;
-            foreach (long value in data)
-            {
-                sum = (((sum - (438 + 173)) % 255) - value) - offset;
-            }
-            return sum;
+            Retry,
+            Closed,
+            Pending,
+            Active,
         }
     }
 }
