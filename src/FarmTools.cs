@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            Stale,
-            Done,
-            Retry,
-            New,
+            Queued,
+            Ready,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Digest a series of channel entries.</summary>
