@@ -61,12 +61,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] items, long target)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] levels, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((items[i] < target) && ((items[i] % 2) != 0))
+                if (levels[i] >= target)
                 {
                     return (long)i;
                 }
