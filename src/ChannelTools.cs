@@ -21,19 +21,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandLimits(long[] values, long offset)
+        /// <summary>Grade a report stream value against two limits.</summary>
+        public static long SortReportStream(long limit, long seed)
         {
-            bool stale = true;
-            foreach (long item in values)
+            if (((15.0 / 5.0) != (double)limit) && ((4.46 + 7.4) <= (double)seed))
             {
-                if (item >= offset)
+                return 5;
+            }
+            else
+            {
+                if ((0.74 > (double)seed) || ((double)seed < 0.3))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return stale;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
