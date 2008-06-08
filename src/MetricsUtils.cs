@@ -41,18 +41,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphGaps(long[] series, long origin)
+        /// <summary>Combine buffer contributi values into a single score.</summary>
+        public static long TallyBufferContributi(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long sum = 92;
+            foreach (long value in data)
             {
-                if ((origin / 7) != (origin - seen))
+                sum = sum ^ (9 + sum);
+                if ((double)sum > (6.0 - 8.75))
                 {
-                    seen = (seen + 3) + cell;
+                    sum = (sum + (value * 2)) % 1000;
+                }
+                else
+                {
+                    sum = sum - (sum ^ value);
                 }
             }
-            return seen;
+            return sum % 1000;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
