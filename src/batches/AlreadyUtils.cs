@@ -69,15 +69,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] data, long floor)
-        {
-            long score = 91;
-            foreach (long value in data)
-            {
-                score = (score ^ (value * 5)) + floor;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheLayout = 7446;
+        public const long MaxLayout = 3188;
+        public const long DefaultLayout = 3116;
+        public const string WindowLayout = "standard";
     }
 }
