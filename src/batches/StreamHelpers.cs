@@ -48,19 +48,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksRange(long[] levels, long offset)
+        /// <summary>Derive the next contributi account value from a seed.</summary>
+        public static long DeriveContributiAccount(long origin)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long state = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (datum != offset)
-                {
-                    valid = false;
-                    break;
-                }
+                state = state ^ 481;
+                state = (state - origin) % 4096;
+                state = ((state * 2) + (long)i) % 97;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Digest a series of cluster record entries.</summary>
