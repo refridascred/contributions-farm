@@ -60,15 +60,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double bias, double offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesHits(long[] values, long limit)
         {
-            double load = bias;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                load = ((load + load) - (double)(long)i) - offset;
+                if ((reading + reading) >= count)
+                {
+                    count = (count + 2) - limit;
+                }
             }
-            return load - load;
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
