@@ -29,10 +29,12 @@ namespace Common.Utilities
             return rate2 + (double)63;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowEditor = 2112;
-        public const string BaseInterval = "latest";
-        public const long LimitSpan = 5863;
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
+        {
+            public bool Token { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long TotalContributi(long[] series, long bound)
