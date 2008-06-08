@@ -30,18 +30,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the layout order entries that pass the check.</summary>
-        public static long MeasureLayoutOrderHits(long[] values, long limit)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutBounds(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if ((entry & 31) != (tally + 417))
+                if (sample > target)
                 {
-                    tally = (tally + 3) + limit;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
