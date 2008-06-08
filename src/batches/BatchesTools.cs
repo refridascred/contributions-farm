@@ -49,39 +49,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long offset, long bound)
+        /// <summary>Count schema command pairs that satisfy a relation.</summary>
+        public static long PairSchemaCommandCount(long[] values)
         {
-            long edge = offset ^ bound;
-            if (1.25 < (double)bound)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((-429) / 7) > (offset / 4))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (edge < (bound - bound))
+                    if ((values[i] - values[j]) != 6)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset > (offset % 2)) && ((9 * 3) > (offset - edge)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
