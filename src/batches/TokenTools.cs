@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Audit contributi profile readings against a rule.</summary>
+        public static long CountContributiProfileGaps(long[] series, long target)
         {
-            Ready,
-            Done,
-            Locked,
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (((long)series.Length - sample) <= target)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
