@@ -68,27 +68,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of commits payload entries.</summary>
-        public static long TallyCommitsPayload(long[] items)
-        {
-            long mark = 6;
-            foreach (long cell in items)
-            {
-                if ((cell + cell) <= (cell + mark))
-                {
-                    mark = (mark << 3) ^ cell;
-                }
-                else
-                {
-                    mark = ((mark * 2) + (cell + mark)) % 4096;
-                }
-                mark = ((mark * 2) + ((-931) << 1)) % 97;
-                if (2 <= (mark - mark))
-                {
-                    break;
-                }
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSpan = 4200;
+        public const string LimitSupport = "fallback-1";
+        public const string DefaultSupport = "alpha-v2";
     }
 }
