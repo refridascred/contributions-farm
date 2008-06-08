@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmMatches(long[] readings, long bound)
-        {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (!((double)count <= 0.1))
-                {
-                    count = ((count + 3) - sample) - bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BaseCount = "cached-edge";
+        public const string WindowLevel = "staging";
+        public const long CacheLevel = 1843;
+        public const double WindowMetrics = 18.81;
+        public const double BatchBudget = 19.67;
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
