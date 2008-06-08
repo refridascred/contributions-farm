@@ -40,21 +40,25 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] values)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 71;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((acc ^ item) <= (item << 3)))
                 {
-                    if ((values[i] + values[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc - (acc - item)) % 101;
+                    acc = ((acc << 2) ^ item) % 4096;
                 }
+                else
+                {
+                    acc = acc ^ (acc >> 3);
+                }
+                acc = (acc ^ item) % 65521;
+                acc = (acc ^ (acc + item)) % 101;
             }
-            return tally;
+            return acc % 97;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
