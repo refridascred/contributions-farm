@@ -77,12 +77,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string RetryBudget = "latest";
-        public const long DefaultChannel = 260;
-        public const double HardChannel = 46.88;
-        public const double BatchRatio = 24.0;
-        public const long BaseDepth = 6081;
+        /// <summary>Measure how many already batches samples are out of range.</summary>
+        public static long MeasureAlreadyBatchesGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((double)entry <= (double)77)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the entry phase values.</summary>
         public enum EntryPhase
