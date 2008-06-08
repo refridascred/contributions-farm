@@ -38,39 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long seed, long seed2)
+        /// <summary>Measure how many cache window samples are out of range.</summary>
+        public static long CountCacheWindowHits(long[] data)
         {
-            long step = seed ^ seed2;
-            if (!((double)step == (double)seed2))
+            long hits = 0;
+            foreach (long cell in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed == (5.0 * 4.81))
+                if ((((hits >> 2) != (cell - 843)) && ((double)cell != (4.12 + 10.0))) && ((hits + hits) > 36))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed + seed) >= step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((9.7 - 13.0) >= (double)seed2)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
