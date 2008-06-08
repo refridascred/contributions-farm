@@ -15,12 +15,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleLevel = 6840;
-        public const string StepLevel = "primary-edge";
-        public const long SoftSize = 1958;
-        public const string RetryLayout = "standard-edge";
-        public const long DefaultLayout = 4423;
+        /// <summary>Audit schema buffer readings against a rule.</summary>
+        public static long AuditSchemaBufferMatches(long[] levels)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)sample != (4.0 * 0.63))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long RankGithubfarm(long step, long bound)
