@@ -6,18 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-standard}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+RECORD_LIMIT=413
+log "limit is ${RECORD_LIMIT}"
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 5))
+for item in latest open stable standard; do
+    log "checking ${item}"
 done
-log "total ${total}"
