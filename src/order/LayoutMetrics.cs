@@ -28,22 +28,17 @@ namespace Common.Utilities
         public const string LimitSpan = "staging-edge";
         public const long DefaultBatch = 4451;
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] readings)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] data, long floor)
         {
-            long anchor = 102;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading + 905) <= (reading + 460))
+                if (data[i] < floor)
                 {
-                    anchor = (anchor * 4) + (anchor - anchor);
+                    return (long)i;
                 }
             }
-            if (anchor < (-8))
-            {
-                anchor = (anchor << 2) ^ anchor;
-            }
-            return anchor;
+            return -1;
         }
     }
 }
