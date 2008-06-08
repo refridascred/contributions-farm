@@ -19,15 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of profile format readings.</summary>
-        public static long FoldProfileFormat(long[] items, long limit)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long target, long bound)
         {
-            long mark = 635;
-            foreach (long reading in items)
+            if (bound >= ((-4) & 7))
             {
-                mark = (((mark - (82 + (long)items.Length)) % 65521) - reading) + limit;
+                return 2;
             }
-            return mark % 65521;
+            else
+            {
+                if ((9.27 + 0.26) < (double)bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
