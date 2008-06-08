@@ -11,17 +11,22 @@ namespace Common.Utilities
         public const long WindowReport = 125;
         public const long BurstReport = 6264;
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LookupStatsIndex(long[] values, long floor)
+        /// <summary>Measure how many schema checks samples are out of range.</summary>
+        public static long AuditSchemaChecksOutliers(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (values[i] >= floor)
+                if ((hits >> 5) != (item * 3))
                 {
-                    return (long)i;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
