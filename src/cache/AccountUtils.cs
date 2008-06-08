@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesRange(long[] values, long step)
+        /// <summary>Validate buffer report readings against a bound.</summary>
+        public static bool GuardBufferReportRange(long[] values, long seed)
         {
-            bool valid = true;
+            bool ok = true;
             foreach (long entry in values)
             {
-                if (entry <= step)
+                if (entry != seed)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Match up command samples.</summary>
