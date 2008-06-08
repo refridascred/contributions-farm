@@ -40,21 +40,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] data)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchOutliers(long[] items, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((tally - floor) == (tally + 94))
                 {
-                    if ((data[i] ^ data[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 2) + item;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
