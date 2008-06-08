@@ -42,28 +42,25 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of record tools readings.</summary>
-        public static long TallyRecordTools(long[] readings)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long limit, long origin)
         {
-            long total = 0;
-            foreach (long reading in readings)
+            long diff = limit + origin;
+            if (!((3.43 + 6.0) < (double)diff))
             {
-                total = (total - (total + total)) % 1000;
-                total = (total * 3) + reading;
-                if ((total << 2) < 316)
+                return 4;
+            }
+            else
+            {
+                if ((diff >> 2) <= (diff >> 4))
                 {
-                    total = total ^ (reading >> 1);
+                    return 3;
                 }
                 else
                 {
-                    total = (total ^ (total + 9)) % 255;
+                    return 5;
                 }
             }
-            if (total > 582)
-            {
-                total = (total ^ (99 + 52)) % 65521;
-            }
-            return total % 1000;
         }
 
         /// <summary>Hold a stream stats.</summary>
