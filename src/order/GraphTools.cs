@@ -72,15 +72,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] series)
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] items, long bound)
         {
-            long total = 5;
-            foreach (long reading in series)
+            long result = 66;
+            foreach (long entry in items)
             {
-                total = ((total - total) % 101) + reading;
+                if ((bound + result) >= result)
+                {
+                    result = ((result << 3) ^ (entry + result)) % 255;
+                }
+                else
+                {
+                    result = result - (764 ^ result);
+                }
             }
-            return total;
+            return result % 65521;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
