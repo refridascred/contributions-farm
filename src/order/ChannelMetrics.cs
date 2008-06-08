@@ -52,12 +52,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] items)
         {
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
-            public double Region { get; set; }
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((seen + seen) == (entry % 3))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
