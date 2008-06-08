@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
+mode="${1:-blue}"
 case "${mode}" in
-    primary)
+    stable)
         log "fast path"
         ;;
     *)
@@ -16,6 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in latest staging eu-west; do
+for item in eu-west primary; do
     log "checking ${item}"
 done
