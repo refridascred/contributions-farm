@@ -40,23 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double AdjustCommand(double weight, double span)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            double load = weight;
-            if (load < span)
-            {
-                load = load + (double)60;
-            }
-            else
-            {
-                load = load - (load - span);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (3.99 - weight)) - (double)(long)i;
-            }
-            return load - (double)4;
+            public long Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
