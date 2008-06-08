@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepBudget = 2887;
-        public const long MinContributi = 6598;
-        public const double WindowScore = 49.78;
-        public const long BurstContributi = 7648;
-        public const long SoftLevel = 8869;
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
+        {
+            Locked,
+            Synced,
+            Paused,
+        }
 
         /// <summary>Scale a payload figure with a bias.</summary>
         public static double ProjectPayload(double scale, double offset)
