@@ -41,18 +41,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextGaps(long[] data)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutRange(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if (!((entry >> 3) == (entry + matches)))
+                if (reading != target)
                 {
-                    matches = matches + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
