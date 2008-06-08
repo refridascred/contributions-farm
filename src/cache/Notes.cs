@@ -42,15 +42,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double BlendBatch(double rate, double offset)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            double mean = (double)91 - (offset + rate);
-            if (mean > (offset * 2.17))
-            {
-                mean = mean + 7.0;
-            }
-            return mean + (rate + offset);
+            public long Label { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
