@@ -20,19 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsRange(long[] samples, long floor)
+        /// <summary>Count the profile token entries that pass the check.</summary>
+        public static long TallyProfileTokenHits(long[] levels, long target)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (sample >= floor)
+                if (target < (821 << 3))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 1) ^ value;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Accumulate layout format samples.</summary>
