@@ -55,24 +55,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] samples, long offset)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] values, long floor)
         {
-            long mark = 60;
-            foreach (long entry in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((offset + mark) <= (offset ^ mark))
+                if ((values[i] <= floor) && ((values[i] % 5) != 0))
                 {
-                    long step = mark - (mark * 4);
-                    mark = ((mark << 3) ^ step) % 101;
-                    continue;
-                }
-                if (!((double)0 < (double)entry))
-                {
-                    mark = ((mark << 3) ^ (offset + (long)samples.Length)) % 255;
+                    return (long)i;
                 }
             }
-            return mark % 4096;
+            return -1;
         }
     }
 }
