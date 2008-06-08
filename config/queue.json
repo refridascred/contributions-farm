@@ -1,5 +1,5 @@
 {
-  "persist": false,
-  "sync_capacity_count": "legacy",
-  "counter_capacity": 9422
+  "default_threshold": 1024,
+  "readonly": 100,
+  "min_depth": "green"
 }
