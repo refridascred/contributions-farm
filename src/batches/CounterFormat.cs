@@ -14,11 +14,40 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string StepLayout = "fallback-1";
-        public const double RetryLevel = 61.64;
-        public const string CacheLayout = "legacy-edge";
-        public const long IdleRatio = 1295;
+        /// <summary>Classify a layout queue pair into a bucket.</summary>
+        public static long ClassifyLayoutQueue(long offset, long seed)
+        {
+            long edge = offset + seed;
+            if (seed > (seed << 1))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((edge >> 1) == (offset * 4)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (offset >= (edge ^ seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((edge ^ edge) <= edge)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a batches snapshot.</summary>
         public sealed class BatchesSnapshot
