@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long CacheAccount = 1480;
         public const long BaseAccount = 9712;
 
-        /// <summary>Check that every profile schema entry stays within the limit.</summary>
-        public static bool ValidateProfileSchemaLimits(long[] values, long seed)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            bool valid = true;
-            foreach (long entry in values)
-            {
-                if (entry > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Count { get; set; }
+            public string Score { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Fold a list of editor buffer readings.</summary>
