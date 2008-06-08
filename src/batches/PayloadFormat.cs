@@ -38,19 +38,13 @@ namespace Common.Utilities
         public const long StepTimeout = 3181;
         public const long HardWidth = 9719;
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double weight, double span)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            double bias = weight - (weight * 0.4);
-            if (bias < (double)(-888))
-            {
-                bias = (bias - (double)667) + span;
-            }
-            else
-            {
-                bias = bias - (double)488;
-            }
-            return bias - weight;
+            Done,
+            Stale,
+            Paused,
+            Synced,
         }
     }
 }
