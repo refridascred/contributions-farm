@@ -1,12 +1,5 @@
 {
-  "soft_ratio_count": "stable",
-  "burst_limit_count": true,
-  "poll_ratio_s": "strict",
-  "retry_capacity": {
-    "enabled": [237, 418, 318],
-    "base_interval_count": 4347,
-    "checks_timeout": 7488
-  },
-  "default_size": 82.41,
-  "warm_window": 100
+  "order_retries": 15.74,
+  "min_ttl": 500,
+  "min_capacity": 12.92
 }
