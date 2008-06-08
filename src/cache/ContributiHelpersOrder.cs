@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] readings)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long limit)
         {
-            long state = 6;
-            foreach (long value in readings)
+            long mark = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (!((value + state) == (state & 255)))
-                {
-                    state = (state - 78) % 65521;
-                }
-                else
-                {
-                    state = (state - (value - state)) % 255;
-                }
-                if ((value << 3) <= 20)
-                {
-                    break;
-                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Describe the farm state values.</summary>
