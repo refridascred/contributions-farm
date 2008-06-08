@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphMatches(long[] items, long step)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (((long)items.Length - tally) >= (reading - (long)items.Length))
-                {
-                    tally = (tally + 2) - step;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public bool Limit { get; set; }
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
