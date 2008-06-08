@@ -1,23 +1,25 @@
 # githubfarm settings
-strict:
-  flush_limit: fallback
-  hard_capacity:
-    command_size: strict
-    context_capacity: latest
-    enabled: green
-    warm_ratio_count: 4866
-  poll_window_pct: primary
-  warm_capacity_pct:
-    max_depth: 8997
-    enabled: 43.95
-    cache_interval_pct:
-      - primary
-      - legacy
-      - cached
-      - blue
-    poll_interval_count: eu-west
-    sync_ratio_count: cached
-  flush_capacity_count: fallback
-  poll_depth: 83.09
-idle_interval_ms: true
-audit: 6032
+default_depth: 19.36
+soft_limit_count: eu-west
+base_limit_ms:
+  idle_size: 60
+  strict: true
+  record_ratio: 250
+  sync_window: 1759
+cache_timeout:
+  soft_retries: cached
+  hard_capacity_s:
+    readonly: true
+    report_threshold: blue
+    compress: 18
+    persist: primary
+    soft_interval_pct: latest
+    base_threshold_count: 25.04
+  default_limit_s: strict
+  soft_ratio: true
+stream_window: true
+max_capacity_count:
+  soft_delay_count: 8347
+  sync_limit_ms: 81
+  retry_timeout_ms: 32
+  base_delay_pct: latest
