@@ -70,10 +70,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseScore = 1747;
-        public const long BaseChannel = 5965;
-        public const double BatchChannel = 9.18;
-        public const double IdleChannel = 95.69;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchFormat = 194;
+        public const double MinBudget = 40.06;
+        public const double IdleFormat = 61.57;
+        public const long SoftFormat = 8237;
+        public const long CacheBudget = 9411;
     }
 }
