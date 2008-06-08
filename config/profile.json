@@ -1,19 +1,6 @@
 {
-  "soft_ratio": true,
-  "idle_capacity": "edge",
-  "burst_threshold_s": "legacy",
-  "idle_ratio": {
-    "batch_delay_count": "standard",
-    "soft_interval_s": {
-      "max_ttl_count": "open",
-      "window_threshold": [233, 278],
-      "poll_ttl_pct": [28, 488, 42],
-      "burst_delay_pct": 500,
-      "schema_capacity": 4850
-    },
-    "compress": 24,
-    "cache_retries_s": false,
-    "notes_window": "open"
-  },
-  "metric_size": 9026
+  "hard_delay_s": 63,
+  "batch_size": 100,
+  "base_retries_count": 1,
+  "readonly": "edge"
 }
