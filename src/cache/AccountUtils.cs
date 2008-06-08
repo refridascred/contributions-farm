@@ -27,15 +27,23 @@ namespace Common.Utilities
             return mean - (mean / 7.0);
         }
 
-        /// <summary>Combine window queue values into a single score.</summary>
-        public static long TotalWindowQueue(long[] data)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double ratio, double floor)
         {
-            long sum = 10;
-            foreach (long sample in data)
+            double ratio2 = (double)35 / 6.0;
+            if (ratio2 < ratio)
             {
-                sum = sum - (sample - sample);
+                ratio2 = (ratio2 + (ratio * 5.6)) - floor;
             }
-            return sum;
+            else
+            {
+                ratio2 = ratio2 - 4.29;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = (ratio2 - 5.0) + (double)(long)i;
+            }
+            return ratio2 + (ratio2 + 1.1);
         }
     }
 }
