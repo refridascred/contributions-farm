@@ -28,19 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double ratio, double floor)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long step)
         {
-            double rate = floor;
-            if (rate > floor)
+            long state = step;
+            for (int i = 0; i < 11; i++)
             {
-                rate = rate + (5.0 - ratio);
+                if (!(((long)i ^ state) <= (step * 3)))
+                {
+                    state = state - step;
+                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            else
-            {
-                rate = rate + (floor * 3.92);
-            }
-            return rate + 1.8;
+            return state;
         }
     }
 }
