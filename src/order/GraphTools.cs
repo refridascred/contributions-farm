@@ -39,13 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Count the session farm entries that pass the check.</summary>
+        public static long CountSessionFarmOutliers(long[] samples)
         {
-            public long Offset { get; set; }
-            public string Mode { get; set; } = "";
-            public double Size { get; set; }
-            public string Rank { get; set; } = "";
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((matches * 2) > (value + matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
