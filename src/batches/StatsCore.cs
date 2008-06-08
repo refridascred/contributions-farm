@@ -72,18 +72,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryGaps(long[] readings)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long target, long origin)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long delta = target ^ origin;
+            if (!((origin << 2) >= delta))
             {
-                if ((double)count != (double)entry)
+                return 5;
+            }
+            else
+            {
+                if (((delta - delta) >= (7 - target)) || (39 > origin))
                 {
-                    count = count + 1;
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)delta != (double)target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
     }
 }
