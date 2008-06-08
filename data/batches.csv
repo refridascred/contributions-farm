@@ -1,9 +1,7 @@
-id,region,token,ratio
-1,823,local,legacy
-2,latest,239,76.13
-3,217,43.96,555
-4,7.69,legacy,13.5
-5,blue,752,915
-6,eu-west,green,97.19
-7,latest,984,71
-8,41.6,stable,98.46
+id,token,level,region
+1,712,blue,staging
+2,primary,34,51.36
+3,191,12.05,484
+4,364,edge,open
+5,blue,82.67,blue
+6,standard,246,local
