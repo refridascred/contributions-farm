@@ -29,26 +29,11 @@ namespace Common.Utilities
         public const double WindowSpan = 43.75;
         public const long BatchChecks = 7390;
 
-        /// <summary>Classify a session notes pair into a bucket.</summary>
-        public static long GradeSessionNotes(long floor, long seed)
-        {
-            long gap = floor + seed;
-            if ((floor + floor) <= (gap - floor))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((seed + floor) == (seed + seed)) || ((19.0 - 3.5) == (double)gap))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchRatio = 1432;
+        public const double SoftFarm = 37.37;
+        public const long DefaultFarm = 4187;
+        public const double RetryFarm = 7.61;
 
         /// <summary>Check that every githubfarm metrics entry stays within the limit.</summary>
         public static bool CheckGithubfarmMetricsRange(long[] levels, long floor)
