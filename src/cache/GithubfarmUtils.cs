@@ -20,21 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] values)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
