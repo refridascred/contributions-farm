@@ -19,18 +19,9 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferGaps(long[] items, long step)
-        {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((step * 3) != ((-6) + datum))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string RetryRatio = "latest-1";
+        public const double CacheFactor = 65.9;
+        public const long RetrySupport = 5505;
     }
 }
