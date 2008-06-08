@@ -1,12 +1,23 @@
 # githubfarm settings
-sync_limit_pct: true
-contributi_limit: cached
-batch_interval:
-  - strict
-  - edge
-  - open
-  - strict
-hard_delay_count:
-  - open
-  - latest
-  - open
+strict:
+  flush_limit: fallback
+  hard_capacity:
+    command_size: strict
+    context_capacity: latest
+    enabled: green
+    warm_ratio_count: 4866
+  poll_window_pct: primary
+  warm_capacity_pct:
+    max_depth: 8997
+    enabled: 43.95
+    cache_interval_pct:
+      - primary
+      - legacy
+      - cached
+      - blue
+    poll_interval_count: eu-west
+    sync_ratio_count: cached
+  flush_capacity_count: fallback
+  poll_depth: 83.09
+idle_interval_ms: true
+audit: 6032
