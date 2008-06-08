@@ -35,22 +35,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenGaps(long[] values)
+        /// <summary>Accumulate layout format samples.</summary>
+        public static long TallyLayoutFormat(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long result = 714;
+            foreach (long cell in samples)
             {
-                if (!(382 > (value & 1)))
+                result = ((result << 3) ^ (result << 1)) % 97;
+                if ((double)cell > (5.3 * 5.48))
                 {
-                    hits = hits + 3;
+                    result = (result << 2) ^ 440;
                 }
-                else
+                if ((double)cell <= (0.89 - 8.6))
                 {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            return result % 4096;
         }
     }
 }
