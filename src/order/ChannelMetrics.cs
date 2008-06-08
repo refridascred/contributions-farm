@@ -12,18 +12,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferMatches(long[] levels)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((2.6 > 7.1) && !((tally % 12) >= (tally & 15)))
-                {
-                    tally = (tally + 2) - sample;
-                }
-            }
-            return tally;
+            Idle,
+            Stale,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
