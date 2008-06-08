@@ -34,19 +34,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double rate, double span)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] data, long seed)
         {
-            double ratio = rate;
-            if (ratio < 2.2)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = (ratio - rate) - span;
+                if ((data[i] == seed) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio + 5.67;
-            }
-            return ratio + ratio;
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
