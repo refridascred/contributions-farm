@@ -19,12 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string DefaultCount = "cached";
-        public const string RetryFactor = "cached-1";
-        public const long CacheSize = 8050;
-        public const string HardBudget = "stable";
-        public const string SoftLayout = "stable-1";
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
+        {
+            public double Weight { get; set; }
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Derive the next profile contributi value from a seed.</summary>
         public static long DeriveProfileContributi(long offset)
