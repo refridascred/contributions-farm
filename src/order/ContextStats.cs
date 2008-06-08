@@ -26,15 +26,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Digest a series of support metric entries.</summary>
-        public static long FoldSupportMetric(long[] samples, long bound)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyGaps(long[] readings, long floor)
         {
-            long mix = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                mix = (((mix << 3) ^ mix) + value) + bound;
+                if (!(floor >= (datum * 4)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return mix % 97;
+            return hits;
         }
     }
 }
