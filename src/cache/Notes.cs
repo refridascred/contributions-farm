@@ -18,13 +18,12 @@ namespace Common.Utilities
         public const long WindowFilter = 6366;
         public const long WindowSpan = 1389;
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            Locked,
-            Paused,
-            Closed,
-            Draft,
+            public string Region { get; set; } = "";
+            public bool Total { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Classify a profile support pair into a bucket.</summary>
