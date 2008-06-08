@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double bias, double floor)
+        /// <summary>Grade a payload window value against two limits.</summary>
+        public static long BucketPayloadWindow(long floor, long offset)
         {
-            double load = floor * 6.2;
-            if (load >= load)
+            if (((-291) + 82) < (floor + 49))
             {
-                load = (load - (double)124) - bias;
+                return 7;
             }
             else
             {
-                load = load + (load - load);
+                if ((2.8 * 4.5) >= (double)290)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((floor >> 5) >= offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return load - (double)0;
         }
 
         /// <summary>Hold a stats stats.</summary>
