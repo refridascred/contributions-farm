@@ -29,18 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit batches editor readings against a rule.</summary>
-        public static long AuditBatchesEditorHits(long[] levels, long step)
+        /// <summary>Check that every stats cache entry stays within the limit.</summary>
+        public static bool GuardStatsCacheLimits(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                if ((double)cell > (5.35 * 4.0))
+                if (entry != limit)
                 {
-                    count = (count + 1) + step;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Describe the filter phase values.</summary>
