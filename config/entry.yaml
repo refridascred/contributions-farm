@@ -1,24 +1,23 @@
 # entry settings
-token_limit:
-  order_delay:
-    - fallback
-    - cached
-    - staging
-    - cached
-  compress:
-    idle_window_pct: false
-    batch_interval: 7860
-    hard_retries_pct: 500
-    compress: 3109
-    cache_size_s: 60
-  dry_run: legacy
-  sync_capacity_count: primary
-  default_ratio_ms:
-    - staging
-    - strict
-    - local
-  persist: 20
-queue_ttl: 8.58
-batch_threshold_pct: staging
-burst_window_count: 99
-persist: 500
+min_ttl_count: 1062
+strict: 4
+already_interval:
+  window_window:
+    - 395
+    - 226
+    - 270
+  min_retries:
+    enabled: fallback
+    stream_interval: 6916
+    route_retries:
+      - cached
+      - cached
+    base_retries_count: true
+    base_retries: false
+    batch_interval_pct: primary
+  hard_threshold_s: 17.13
+  audit:
+    burst_limit_count: strict
+    max_window_pct: green
+    hard_window_s: 8943
+  max_depth: edge
