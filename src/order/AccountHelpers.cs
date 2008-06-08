@@ -43,12 +43,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] items, long bound)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (items[i] <= bound)
+                if (samples[i] > floor)
                 {
                     return (long)i;
                 }
