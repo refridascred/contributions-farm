@@ -16,10 +16,39 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string WindowRoute = "staging-1";
-        public const string LimitRoute = "fallback-v2";
-        public const long MaxBudget = 718;
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long bound, long bound2)
+        {
+            if ((bound2 * 5) != (bound >> 1))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((19.0 * 1.9) < (double)bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((223 - bound2) > bound2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((bound2 << 3) <= (bound + bound2)) && ((5 - bound2) <= (bound2 & 7)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of report entries.</summary>
         public static long ScoreReport(long[] data)
