@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] data, long floor)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long offset)
         {
-            long mix = 839;
-            foreach (long sample in data)
+            long score = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (((sample - 306) < floor) && ((sample + floor) < (sample % 100)))
+                if (!((offset << 1) <= (score + offset)))
                 {
-                    mix = mix + (floor << 3);
+                    score = score - (score + score);
                 }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
