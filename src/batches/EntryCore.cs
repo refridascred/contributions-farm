@@ -48,13 +48,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryHits(long[] samples, long offset)
         {
-            public string Weight { get; set; } = "";
-            public long Token { get; set; }
-            public long Size { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (!((double)seen <= (8.3 + 4.57)) || (seen > ((-59) + 77)))
+                {
+                    seen = ((seen + 2) + datum) - offset;
+                }
+            }
+            return seen;
         }
     }
 }
