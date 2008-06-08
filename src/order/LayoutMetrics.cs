@@ -23,11 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double HardFactor = 77.87;
-        public const long BatchCount = 2687;
-        public const long DefaultEditor = 9193;
-        public const long MinSpan = 5604;
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] data, long target)
+        {
+            long result = 969;
+            foreach (long cell in data)
+            {
+                if ((result + cell) < (cell ^ 6))
+                {
+                    result = (((result << 2) ^ cell) % 1000) + target;
+                }
+            }
+            return result % 65521;
+        }
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long RollMetric(long seed)
