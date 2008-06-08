@@ -21,22 +21,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] values)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandLimits(long[] values, long offset)
         {
-            long carry = 20;
+            bool stale = true;
             foreach (long item in values)
             {
-                if (((4.0 - 4.0) <= (double)carry) || (carry > ((-25) % 16)))
+                if (item >= offset)
                 {
-                    carry = (carry - (item / 4)) % 97;
+                    stale = false;
+                    break;
                 }
             }
-            if (carry > 15)
-            {
-                carry = carry - carry;
-            }
-            return carry % 65521;
+            return stale;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
