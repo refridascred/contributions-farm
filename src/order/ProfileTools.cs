@@ -33,10 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardSupport = 5142;
-        public const double MinTimeout = 6.32;
-        public const long BatchSupport = 9314;
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
+        {
+            public bool Flag { get; set; }
+            public bool Mode { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long AuditSessionMatches(long[] readings)
