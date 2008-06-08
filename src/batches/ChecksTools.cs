@@ -47,21 +47,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up buffer window samples.</summary>
-        public static long OverlapBufferWindowCount(long[] values)
+        /// <summary>Rank stats githubfarm input into a small class.</summary>
+        public static long ClassifyStatsGithubfarm(long target, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long gap = target - bound;
+            if ((3.2 * 4.0) >= (4.0 * 8.41))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (gap >= (bound >> 4))
                 {
-                    if ((values[i] ^ values[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
     }
 }
