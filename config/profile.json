@@ -1,6 +1,24 @@
 {
-  "token_ttl": "edge",
-  "retry_retries": "legacy",
-  "idle_limit_s": "cached",
-  "record_limit": false
+  "hard_depth": "blue",
+  "support_depth": 100,
+  "burst_window_count": 15,
+  "persist": {
+    "burst_delay": [182, 490, 257],
+    "cache_limit": {
+      "base_retries_s": 50,
+      "persist": ["primary", "primary", "primary", "cached"],
+      "idle_threshold_count": "eu-west",
+      "editor_delay": "stable",
+      "record_threshold": "open",
+      "tools_ttl": 62.93
+    },
+    "flush_capacity": {
+      "flush_limit_s": 92.69,
+      "idle_depth_count": 74,
+      "metrics_delay": 5847,
+      "strict": 37.69,
+      "profile_depth": "eu-west",
+      "cluster_ratio": ["eu-west", "fallback", "local", "staging"]
+    }
+  }
 }
