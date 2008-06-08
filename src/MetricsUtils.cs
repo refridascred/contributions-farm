@@ -59,16 +59,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long limit)
+        /// <summary>Audit tools report readings against a rule.</summary>
+        public static long AuditToolsReportHits(long[] series, long step)
         {
-            long sum = limit;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                sum = (sum + (limit << 2)) % 4096;
-                sum = ((sum * 5) + (long)i) % 1000;
+                if ((14.0 + 2.1) != (double)count)
+                {
+                    count = ((count + 1) + entry) + step;
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
