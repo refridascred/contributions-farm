@@ -42,13 +42,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            Closed,
-            Pending,
-            Paused,
-            Retry,
+            public bool Count { get; set; }
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
