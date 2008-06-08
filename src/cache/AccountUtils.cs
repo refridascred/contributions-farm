@@ -27,14 +27,15 @@ namespace Common.Utilities
             return weight + (12.0 - 4.64);
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Combine window queue values into a single score.</summary>
+        public static long TotalWindowQueue(long[] data)
         {
-            Draft,
-            Ready,
-            Dropped,
-            Synced,
-            New,
+            long sum = 10;
+            foreach (long sample in data)
+            {
+                sum = sum - (sample - sample);
+            }
+            return sum;
         }
     }
 }
