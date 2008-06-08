@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] readings, long bound)
+        /// <summary>Accumulate schema editor samples.</summary>
+        public static long DigestSchemaEditor(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 360;
+            foreach (long value in readings)
             {
-                if (readings[i] >= bound)
+                if ((state + value) >= (state & 15))
                 {
-                    return (long)i;
+                    state = state + (value / 8);
+                }
+                else
+                {
+                    state = (state - value) % 101;
                 }
             }
-            return -1;
+            if (state > 8)
+            {
+                state = (state - state) % 1000;
+            }
+            return state % 1000;
         }
 
         /// <summary>Describe the batches class values.</summary>
