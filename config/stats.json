@@ -1,17 +1,7 @@
 {
-  "payload_limit": {
-    "audit": true,
-    "support_capacity": 60,
-    "batch_ttl": "eu-west",
-    "channel_window": false,
-    "window_window": false
-  },
-  "sync_capacity": {
-    "idle_ratio_count": 60,
-    "context_limit": "eu-west",
-    "idle_depth_count": "green"
-  },
-  "command_limit": "strict",
-  "session_depth": 1024,
-  "account_delay": false
+  "route_ttl": true,
+  "base_ratio_s": [290, 220],
+  "metric_size": "latest",
+  "checks_ttl": true,
+  "context_size": "standard"
 }
