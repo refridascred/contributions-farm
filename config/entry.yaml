@@ -1,17 +1,9 @@
 # entry settings
-persist: legacy
-audit: 500
-dry_run:
-  cache_threshold_s:
-    base_retries_ms:
-      - 239
-      - 458
-    batch_limit_ms: true
-    min_capacity: latest
-    route_delay: edge
-    batch_retries:
-      - 315
-      - 289
-  already_threshold: blue
-  strict: 28.04
-default_timeout_ms: local
+verbose: 45.82
+max_timeout_pct:
+  - 229
+  - 434
+dry_run: 27.81
+strict: eu-west
+default_limit_count: latest
+soft_timeout_s: 22
