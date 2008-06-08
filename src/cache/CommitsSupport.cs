@@ -45,22 +45,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] data, long target)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long target, long target2)
         {
-            long mix = 5;
-            foreach (long datum in data)
+            long span = target ^ target2;
+            if ((double)target == (4.23 * 5.53))
             {
-                if (((mix + target) < (datum << 2)) || ((mix - datum) < target))
+                return 5;
+            }
+            else
+            {
+                if (((span / 4) == (target2 & 31)) && ((1 + target2) >= span))
                 {
-                    mix = (mix - target) % 97;
+                    return 1;
                 }
                 else
                 {
-                    mix = (mix * 4) + (datum + target);
+                    if ((double)target != (19.0 * 6.39))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((span < (53 ^ 8)) && ((target >> 2) >= (target >> 4)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Describe the command phase values.</summary>
