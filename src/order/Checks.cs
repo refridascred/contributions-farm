@@ -40,23 +40,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] items)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyOutliers(long[] values, long limit)
         {
-            long result = 558;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                result = ((result * 3) + (value / 2)) % 255;
-                if (!((16.0 / 7.0) > (double)result))
+                if ((matches + 85) >= (matches << 1))
                 {
-                    result = (result + (result + result)) % 97;
+                    matches = ((matches + 2) + cell) - limit;
                 }
-                if ((result * 4) < (result % 64))
+                else
                 {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            return result % 65521;
+            return matches;
         }
     }
 }
