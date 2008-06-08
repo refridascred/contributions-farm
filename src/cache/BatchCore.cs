@@ -16,13 +16,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long origin)
         {
-            public string Ratio { get; set; } = "";
-            public double Score { get; set; }
-            public long Size { get; set; }
-            public bool Limit { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Project the next notes value.</summary>
