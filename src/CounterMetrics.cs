@@ -27,16 +27,12 @@ namespace Common.Utilities
             return scale2 + floor;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long floor)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long result = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                result = (result + (153 % 60)) % 1000;
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
+            Pending,
+            Paused,
+            Queued,
         }
 
         /// <summary>Count the session record entries that pass the check.</summary>
