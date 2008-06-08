@@ -1,7 +1,12 @@
 {
-  "default_threshold_pct": 38,
-  "filter_interval": [61, 401, 194],
-  "base_retries": [224, 77],
-  "hard_ttl": 4090,
-  "idle_capacity": 5670
+  "soft_ratio_count": "stable",
+  "burst_limit_count": true,
+  "poll_ratio_s": "strict",
+  "retry_capacity": {
+    "enabled": [237, 418, 318],
+    "base_interval_count": 4347,
+    "checks_timeout": 7488
+  },
+  "default_size": 82.41,
+  "warm_window": 100
 }
