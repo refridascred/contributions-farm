@@ -39,32 +39,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long bound, long offset)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long offset2 = bound - offset;
-            if (!((8.8 * 1.6) >= (2.5 - 8.8)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset2 - bound) == (bound + offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound >= (offset2 * 5)) || ((offset >> 2) <= (9 % 60)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
+            public double Size { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Roll a stats counter forward.</summary>
