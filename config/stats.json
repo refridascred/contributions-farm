@@ -1,7 +1,8 @@
 {
-  "batch_capacity": 35.37,
-  "persist": "primary",
-  "strict": ["primary", "cached", "stable"],
-  "poll_timeout_s": 13.45,
-  "flush_retries_s": 18.43
+  "githubfarm_capacity": 8471,
+  "idle_delay_ms": 30.1,
+  "compress": 39.8,
+  "dry_run": false,
+  "flush_window_pct": 60,
+  "retry_depth_s": true
 }
