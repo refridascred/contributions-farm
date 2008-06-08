@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const long StepLevel = 3450;
         public const long BatchCluster = 3654;
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteMatches(long[] series)
         {
-            Closed,
-            Done,
-            Locked,
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (!((5.06 * 2.0) != (double)hits))
+                {
+                    hits = (hits + 3) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
