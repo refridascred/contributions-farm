@@ -28,27 +28,10 @@ namespace Common.Utilities
         public const long MaxMetrics = 3909;
         public const string MinMetrics = "local";
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] values)
-        {
-            long sum = 303;
-            foreach (long value in values)
-            {
-                if (!((sum * 4) >= (sum << 3)))
-                {
-                    sum = (sum - value) % 255;
-                }
-                if ((value >> 2) == (value + sum))
-                {
-                    sum = ((sum << 3) ^ (value ^ value)) % 97;
-                }
-            }
-            if (sum < 26)
-            {
-                sum = (sum + (sum << 2)) % 4096;
-            }
-            return sum;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double DefaultStats = 67.49;
+        public const long HardScore = 613;
+        public const long CacheLevel = 3473;
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long BucketCommits(long seed, long origin)
