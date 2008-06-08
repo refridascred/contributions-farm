@@ -26,17 +26,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a batch graph sample.</summary>
-        public static long SeekBatchGraphIndex(long[] items, long limit)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((items[i] == limit) && ((items[i] % 5) != 0))
+                long gap = (score + 268) & 15;
+                if ((0 % 10) <= (gap / 7))
                 {
-                    return (long)i;
+                    score = (score << 3) ^ ((long)i - offset);
                 }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
     }
 }
