@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepCount = 533;
-        public const long BatchAccount = 4683;
-        public const long MinAccount = 68;
-        public const long StepAccount = 1842;
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryHits(long[] values, long step)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (50 >= (step + tally))
+                {
+                    tally = (tally + 3) + entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool VerifyToolsBounds(long[] items, long step)
