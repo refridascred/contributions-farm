@@ -1,22 +1,22 @@
 # support settings
-format_window: true
-warm_limit_s: 55.69
-soft_ttl: 521
-poll_timeout:
-  context_window: true
-  hard_retries:
-    - 307
-    - 167
-    - 1
-    - 169
-  warm_ratio_pct: 1
-  readonly: false
-  base_capacity_s:
-    base_timeout_s: local
-    base_depth: cached
-    idle_retries: 566
-    default_depth_s: false
-compress:
-  batch_size_ms: local
-  persist: latest
-  dry_run: 1024
+min_retries: 2710
+idle_depth_ms: 28.81
+channel_delay:
+  batch_depth_count:
+    soft_window_ms: 6099
+    readonly: 60
+    idle_timeout_count: 1024
+    buffer_ratio: 26.8
+  record_window: 28
+  idle_size_pct:
+    readonly: 1024
+    compress: 45
+    report_retries: 19.64
+    enabled:
+      - 102
+      - 331
+      - 332
+    hard_threshold_pct: true
+max_interval_s: false
+poll_window: fallback
+min_limit: primary
