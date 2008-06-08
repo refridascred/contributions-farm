@@ -13,19 +13,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every route format entry stays within the limit.</summary>
-        public static bool ValidateRouteFormatLimits(long[] data, long limit)
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] data)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item >= limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] ^ data[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Rank window input into a small class.</summary>
