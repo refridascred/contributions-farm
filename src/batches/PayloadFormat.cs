@@ -38,24 +38,13 @@ namespace Common.Utilities
         public const long StepTimeout = 3181;
         public const long HardWidth = 9719;
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long offset, long bound)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            if (((offset + 515) > (offset / 8)) || (((-120) + offset) != (offset & 63)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((offset >> 5) > (offset - 3)) || ((bound - bound) <= (bound + bound)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Count { get; set; }
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
