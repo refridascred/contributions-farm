@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double weight, double offset)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueGaps(long[] levels, long target)
         {
-            double weight2 = weight;
-            if (weight2 < (double)3)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                weight2 = weight2 + weight;
+                if ((double)target < (double)2)
+                {
+                    tally = (tally + 1) + datum;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = (weight2 - (offset - 3.67)) + (double)(long)i;
-            }
-            return weight2 + (weight2 + 7.4);
+            return tally;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
