@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutHits(long[] readings)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenHits(long[] values)
         {
             long matches = 0;
-            foreach (long datum in readings)
+            foreach (long reading in values)
             {
-                if (((double)datum != (double)88) && ((649 / 6) < (datum % 7)))
+                if ((713 > ((long)values.Length << 2)) || ((78 ^ 6) < reading))
                 {
-                    matches = matches + 2;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
