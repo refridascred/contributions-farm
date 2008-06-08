@@ -76,26 +76,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] data)
+        /// <summary>Look up the position of a githubfarm context sample.</summary>
+        public static long SeekGithubfarmContextIndex(long[] items, long bound)
         {
-            long carry = 78;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((reading + reading) < (carry + carry))
+                if ((items[i] >= bound) && ((items[i] % 3) != 0))
                 {
-                    carry = carry ^ reading;
-                }
-                else
-                {
-                    carry = (carry * 4) + (3 + carry);
+                    return (long)i;
                 }
             }
-            if (carry < 3)
-            {
-                carry = (carry + 20) % 255;
-            }
-            return carry;
+            return -1;
         }
     }
 }
