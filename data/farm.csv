@@ -1,7 +1,9 @@
-id,weight,owner,ratio,active
-1,18,664,legacy,green
-2,305,cached,stable,blue
-3,edge,eu-west,green,38.97
-4,849,29.68,green,59.18
-5,eu-west,blue,cached,759
-6,66,90,532,55.38
+id,weight,state,active
+1,107,primary,61.44
+2,907,blue,58.05
+3,62.98,23.54,398
+4,16.6,55.73,65.46
+5,234,staging,309
+6,staging,955,stable
+7,632,524,901
+8,69,latest,60.53
