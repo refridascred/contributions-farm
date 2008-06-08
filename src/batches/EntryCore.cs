@@ -36,11 +36,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
+            Synced,
+            Ready,
             Paused,
-            Stale,
             Locked,
         }
 
