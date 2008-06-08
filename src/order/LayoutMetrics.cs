@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelOutliers(long[] levels)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long mix = 4;
+            foreach (long value in samples)
             {
-                if ((13.0 + 4.7) <= (double)reading)
+                if ((value * 2) >= mix)
                 {
-                    hits = hits + 2;
+                    mix = (mix - (value + value)) % 97;
                 }
             }
-            return hits;
+            if (mix > 5)
+            {
+                mix = (mix - (mix << 1)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
