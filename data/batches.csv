@@ -1,9 +1,7 @@
-id,ratio,token,score
-1,local,679,edge
-2,279,646,cached
-3,21.66,966,183
-4,80.26,eu-west,11.01
-5,6.2,601,16
-6,220,96.42,open
-7,standard,blue,638
-8,standard,strict,851
+id,level,token
+1,668,521
+2,24.68,611
+3,open,239
+4,69.04,55.87
+5,staging,local
+6,90.87,35.17
