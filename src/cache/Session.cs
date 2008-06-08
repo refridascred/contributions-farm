@@ -13,13 +13,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            Retry,
-            Queued,
-            Failed,
-            New,
+            Pending,
+            Closed,
+            Locked,
+            Draft,
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
