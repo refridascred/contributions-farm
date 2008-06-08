@@ -1,9 +1,7 @@
 {
-  "strict": "stable",
-  "cluster_capacity": {
-    "max_retries_count": 47.02,
-    "min_delay_s": [148, 371, 110],
-    "burst_size_pct": 1725
-  },
-  "enabled": 9181
+  "order_window": 82.87,
+  "compress": "standard",
+  "batch_limit": 85,
+  "batch_depth": 250,
+  "persist": ["primary", "local", "local", "standard"]
 }
