@@ -27,18 +27,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit graph account readings against a rule.</summary>
-        public static long MeasureGraphAccountOutliers(long[] series, long floor)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((floor + reading) == (matches + reading))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((data[i] ^ data[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count the buffer batch entries that pass the check.</summary>
