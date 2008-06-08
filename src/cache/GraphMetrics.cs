@@ -29,18 +29,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsHits(long[] items)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((((6 + 159) == (entry / 6)) || (((long)items.Length % 10) != (entry / 2))) && ((entry ^ entry) != (6 - entry)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Idle,
+            Synced,
+            Closed,
+            Queued,
         }
 
         /// <summary>Digest a series of commits entries.</summary>
