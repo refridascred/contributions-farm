@@ -48,13 +48,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            Synced,
-            Pending,
-            Idle,
-            Done,
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
+            public long Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a cluster summary.</summary>
