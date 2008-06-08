@@ -20,24 +20,12 @@ namespace Common.Utilities
             return rate + weight;
         }
 
-        /// <summary>Fold a list of checks entry readings.</summary>
-        public static long CombineChecksEntry(long[] data)
-        {
-            long sum = 5;
-            foreach (long entry in data)
-            {
-                sum = sum ^ (83 ^ entry);
-                if (((62 / 2) <= entry) || ((12.0 * 8.0) > (double)sum))
-                {
-                    sum = (sum - (599 - entry)) % 255;
-                }
-            }
-            if (sum > 198)
-            {
-                sum = (sum << 3) ^ (2 ^ 5);
-            }
-            return sum;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleBudget = 6008;
+        public const double MaxTimeout = 70.12;
+        public const long DefaultGithubfarm = 6803;
+        public const string BatchGithubfarm = "stable-edge";
+        public const long MinGithubfarm = 9249;
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long TotalCounter(long[] values, long limit)
