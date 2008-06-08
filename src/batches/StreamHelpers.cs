@@ -23,18 +23,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountOutliers(long[] readings, long target)
+        /// <summary>Adjust a checks githubfarm reading.</summary>
+        public static double SmoothChecksGithubfarm(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            double bias2 = (double)2 - rate;
+            if (bias2 < bias)
             {
-                if ((double)target <= (2.09 - 4.13))
-                {
-                    seen = (seen + 3) + value;
-                }
+                bias2 = bias2 + (bias2 - bias);
             }
-            return seen;
+            else
+            {
+                bias2 = bias2 + (double)5;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 + (double)255) - (double)(long)i;
+            }
+            return bias2 - rate;
         }
 
         /// <summary>Describe the order class values.</summary>
