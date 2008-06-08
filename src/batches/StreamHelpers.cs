@@ -23,18 +23,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterHits(long[] samples)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((((121 + seen) > seen) || ((value / 3) != (value / 6))) && (seen < (seen * 3)))
+                if (readings[i] < bound)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a report header.</summary>
