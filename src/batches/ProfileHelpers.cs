@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            Dropped,
-            Queued,
-            Closed,
+            public double Label { get; set; }
+            public long Owner { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Match up record samples.</summary>
