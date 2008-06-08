@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] values, long step)
-        {
-            long acc = 430;
-            foreach (long item in values)
-            {
-                acc = ((acc - (item - acc)) % 101) - step;
-            }
-            return acc;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double RetrySpan = 97.58;
+        public const string DefaultSize = "legacy-v2";
+        public const long BatchBudget = 6203;
+        public const double HardToken = 97.55;
+        public const string BatchToken = "alpha-v2";
 
         /// <summary>Blend two profile measurements.</summary>
         public static double SmoothProfile(double scale, double floor)
