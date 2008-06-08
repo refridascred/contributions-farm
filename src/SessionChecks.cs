@@ -34,39 +34,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long offset, long seed)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] items)
         {
-            long delta = offset - seed;
-            if ((seed / 4) <= 1)
+            long result = 722;
+            foreach (long cell in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset ^ 40) < (seed & 3))
+                if (9.9 < (double)result)
                 {
-                    return 1;
+                    result = result ^ cell;
+                    continue;
                 }
-                else
+                if (!(result >= (cell >> 4)))
                 {
-                    if ((delta - offset) > (seed >> 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((-95) & 15) < (seed - seed))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    result = result + (result - cell);
                 }
             }
+            if (result < 8)
+            {
+                result = (result * 5) + result;
+            }
+            return result % 4096;
         }
 
         /// <summary>Describe the cache status values.</summary>
