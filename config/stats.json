@@ -1,8 +1,19 @@
 {
-  "dry_run": true,
-  "soft_timeout_count": 82,
-  "retry_limit": 9904,
-  "retry_limit_pct": 500,
-  "counter_depth": 39,
-  "audit": true
+  "max_ratio": "legacy",
+  "compress": 3363,
+  "report_size": [270, 352, 442],
+  "poll_retries": {
+    "base_interval_count": true,
+    "audit": "local",
+    "compress": 48,
+    "poll_timeout": [257, 121, 151, 48],
+    "batch_size_pct": {
+      "poll_ratio_count": 35.1,
+      "report_interval": "latest",
+      "soft_delay_ms": "cached",
+      "stream_retries": [307, 90, 23, 284],
+      "idle_interval_ms": "cached"
+    },
+    "default_limit_ms": true
+  }
 }
