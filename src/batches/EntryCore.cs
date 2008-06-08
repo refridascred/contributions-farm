@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long BurstCount = 4858;
         public const double DefaultInterval = 38.57;
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesHits(long[] items)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (item > (item + item))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Idle,
+            Retry,
+            Stale,
         }
 
         /// <summary>Describe the metric level values.</summary>
