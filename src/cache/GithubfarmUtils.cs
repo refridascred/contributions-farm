@@ -39,19 +39,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] levels)
+        /// <summary>Scale a schema entry figure with a bias.</summary>
+        public static double AdjustSchemaEntry(double bias, double offset)
         {
-            long score = 330;
-            foreach (long datum in levels)
+            double rate = offset;
+            if (rate < bias)
             {
-                if (75 < (datum + score))
-                {
-                    score = (score + datum) % 255;
-                }
-                score = score ^ 440;
+                rate = rate - offset;
             }
-            return score % 65521;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + bias) + (double)(long)i;
+            }
+            return rate + bias;
         }
     }
 }
