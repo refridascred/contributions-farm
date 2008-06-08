@@ -15,12 +15,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] samples, long offset)
         {
-            public double Owner { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            long state = 7;
+            foreach (long reading in samples)
+            {
+                if ((offset * 4) != (reading >> 3))
+                {
+                    state = ((state * 4) + (293 >> 5)) % 4096;
+                }
+            }
+            return state;
         }
 
         /// <summary>Locate a format reading by value.</summary>
