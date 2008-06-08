@@ -35,13 +35,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Look up the position of a context layout sample.</summary>
+        public static long FindContextLayoutIndex(long[] series, long step)
         {
-            public bool Rank { get; set; }
-            public double Stamp { get; set; }
-            public long Weight { get; set; }
-            public string Flag { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= step) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of session readings.</summary>
