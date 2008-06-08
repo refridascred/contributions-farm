@@ -1,5 +1,5 @@
 {
-  "sync_timeout_s": "standard",
-  "warm_interval_pct": "latest",
-  "audit": [118, 115]
+  "poll_capacity_pct": "local",
+  "readonly": true,
+  "hard_limit_s": 23
 }
