@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsBounds(long[] series, long offset)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileMatches(long[] series, long seed)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (item < offset)
+                if ((seed % 10) >= tally)
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 3) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Describe the commits class values.</summary>
