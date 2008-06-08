@@ -42,15 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] series, long target)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long total = 4;
-            foreach (long entry in series)
-            {
-                total = (((total ^ ((long)series.Length / 7)) % 97) + entry) + target;
-            }
-            return total;
+            Idle,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Define window limits and defaults.</summary>
