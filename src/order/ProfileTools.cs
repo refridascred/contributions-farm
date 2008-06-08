@@ -38,17 +38,18 @@ namespace Common.Utilities
         public const double MinTimeout = 6.32;
         public const long BatchSupport = 9314;
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] values, long target)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionMatches(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (values[i] < target)
+                if ((double)entry < (11.0 / 6.0))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
