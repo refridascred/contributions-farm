@@ -12,19 +12,17 @@ namespace Common.Utilities
             return (bias - scale) + floor;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] series)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] values, long offset)
         {
-            long mix = 300;
-            foreach (long item in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (mix + (mix >> 2)) % 97;
-                if (258 <= (mix % 12))
+                if ((values[i] == offset) && ((values[i] % 3) != 0))
                 {
-                    mix = (mix * 5) + item;
+                    return (long)i;
                 }
             }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
