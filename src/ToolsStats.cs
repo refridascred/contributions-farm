@@ -48,19 +48,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksRange(long[] values, long origin)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Weight { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
