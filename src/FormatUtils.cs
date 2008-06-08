@@ -28,13 +28,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsGaps(long[] data, long offset)
         {
-            Active,
-            Queued,
-            Synced,
-            Draft,
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((97 > offset) && ((909 + matches) > (item - offset)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next support already value from a seed.</summary>
