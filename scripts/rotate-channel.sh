@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
+mode="${1:-eu-west}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in standard edge fallback; do
+CHANNEL_LIMIT=437
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in staging primary; do
     log "checking ${item}"
 done
