@@ -6,17 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=158
-log "limit is ${RECORD_LIMIT}"
+for item in cached legacy; do
+    log "checking ${item}"
+done
+
+mode="${1:-local}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
