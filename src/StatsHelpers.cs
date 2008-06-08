@@ -64,14 +64,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            Failed,
-            Dropped,
-            Ready,
-            Done,
             Paused,
+            Synced,
+            Active,
+            Closed,
         }
     }
 }
