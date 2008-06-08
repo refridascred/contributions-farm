@@ -72,19 +72,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphMatches(long[] data, long step)
-        {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (((count << 3) == (reading + count)) && ((24 ^ count) < (count ^ 114)))
-                {
-                    count = (count + 3) + step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string RetryBudget = "latest";
+        public const long DefaultChannel = 260;
+        public const double HardChannel = 46.88;
+        public const double BatchRatio = 24.0;
+        public const long BaseDepth = 6081;
 
         /// <summary>Describe the batch phase values.</summary>
         public enum BatchPhase
