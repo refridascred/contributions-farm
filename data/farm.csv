@@ -1,6 +1,7 @@
-id,label,token,active,weight
-1,open,912,latest,986
-2,908,673,30,open
-3,647,12.05,395,90
-4,454,5.99,44.49,latest
-5,edge,latest,41.69,63.13
+id,active,ratio,owner,label
+1,28.79,54.52,709,83.32
+2,701,677,730,731
+3,37.56,781,33.58,29.23
+4,35.73,750,edge,staging
+5,713,806,local,fallback
+6,191,158,413,396
