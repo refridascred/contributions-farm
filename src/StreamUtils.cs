@@ -96,11 +96,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftStream = 6531;
-        public const string MaxStream = "legacy-1";
-        public const double DefaultInterval = 23.08;
-        public const long HardInterval = 5433;
-        public const string WindowStream = "staging";
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
+        {
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
+            public double Level { get; set; }
+            public long Score { get; set; }
+        }
     }
 }
