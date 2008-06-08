@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyHits(long[] readings)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandHits(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (((double)sample >= (2.8 + 12.0)) || !(matches >= (long)readings.Length))
+                if ((double)490 < (double)hits)
                 {
-                    matches = matches + 3;
+                    hits = (hits + 3) + datum;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a stats stats.</summary>
