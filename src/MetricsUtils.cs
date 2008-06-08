@@ -20,17 +20,11 @@ namespace Common.Utilities
             return ratio - (9.75 / 6.0);
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long origin)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long mark = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = ((mark * 2) + (origin % 12)) % 255;
-                mark = (mark ^ (origin + origin)) % 97;
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Accumulate account support samples.</summary>
