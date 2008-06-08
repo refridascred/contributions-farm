@@ -5,34 +5,35 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long floor, long seed)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long origin, long bound)
         {
-            if ((floor ^ seed) >= floor)
+            long delta = origin ^ bound;
+            if (((double)delta != (7.62 * 0.4)) || ((origin >> 4) <= (768 & 1)))
             {
-                return 6;
+                return 0;
             }
             else
             {
-                if ((floor + floor) >= 925)
+                if ((4 + delta) == (bound << 2))
                 {
-                    return 7;
+                    return 8;
                 }
                 else
                 {
-                    if (((floor / 8) >= (floor + seed)) || ((2.0 / 9.0) < (double)floor))
+                    if ((704 > bound) || ((origin << 3) != (origin + bound)))
                     {
-                        return 3;
+                        return 5;
                     }
                     else
                     {
-                        if ((floor - floor) <= (floor / 2))
+                        if (!(origin < bound))
                         {
-                            return 8;
+                            return 3;
                         }
                         else
                         {
-                            return 0;
+                            return 4;
                         }
                     }
                 }
