@@ -1,5 +1,4 @@
 # githubfarm settings
-flush_interval: 39.35
-sync_limit: true
-warm_capacity: 6
-farm_threshold: blue
+enabled: primary
+default_ratio: false
+soft_size_pct: 5766
