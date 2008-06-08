@@ -91,13 +91,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] levels)
         {
-            Draft,
-            Queued,
-            Retry,
-            Idle,
+            long acc = 485;
+            foreach (long reading in levels)
+            {
+                acc = (acc ^ acc) % 255;
+                acc = (acc - acc) % 97;
+                if ((4.14 - 4.0) > (double)reading)
+                {
+                    acc = (acc - (reading >> 4)) % 255;
+                }
+                else
+                {
+                    acc = (acc ^ (acc - 6)) % 101;
+                }
+            }
+            if (acc < 134)
+            {
+                acc = (acc + (acc - acc)) % 4096;
+            }
+            return acc;
         }
     }
 }
