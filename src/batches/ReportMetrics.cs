@@ -14,13 +14,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-            public bool Level { get; set; }
-            public long Owner { get; set; }
+            public double Token { get; set; }
+            public long Level { get; set; }
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define cache limits and defaults.</summary>
