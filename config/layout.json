@@ -1,5 +1,16 @@
 {
-  "poll_capacity_pct": "local",
-  "readonly": true,
-  "hard_limit_s": 23
+  "readonly": "primary",
+  "metrics_ttl": {
+    "burst_ttl_ms": ["eu-west", "open", "legacy", "edge"],
+    "burst_threshold_count": ["legacy", "stable", "staging", "latest"],
+    "metric_limit": 100,
+    "session_interval": {
+      "cache_delay": 63.0,
+      "token_threshold": 9184,
+      "warm_retries": "staging",
+      "min_threshold": 250,
+      "enabled": "edge"
+    }
+  },
+  "warm_ratio_count": 250
 }
