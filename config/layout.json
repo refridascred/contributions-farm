@@ -1,6 +1,5 @@
 {
-  "base_delay": "open",
-  "audit": "staging",
-  "hard_delay_s": ["fallback", "green", "strict"],
-  "retry_limit_count": "latest"
+  "channel_depth": 250,
+  "soft_interval_pct": "blue",
+  "default_size": 89.14
 }
