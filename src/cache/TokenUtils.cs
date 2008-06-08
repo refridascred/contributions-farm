@@ -25,11 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BurstScore = "staging-v2";
-        public const long BatchScore = 9335;
-        public const long LimitFilter = 8456;
-        public const long CacheScore = 3920;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] levels)
+        {
+            long sum = 95;
+            foreach (long cell in levels)
+            {
+                if (10 > (74 + sum))
+                {
+                    sum = (sum ^ (cell - cell)) % 97;
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long TallyCommandMatches(long[] series)
