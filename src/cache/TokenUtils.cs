@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two layout payload measurements.</summary>
-        public static double ScaleLayoutPayload(double rate, double span)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            double ratio = span;
-            if (ratio <= (ratio + span))
-            {
-                ratio = ratio + rate;
-            }
-            else
-            {
-                ratio = ratio - (ratio / 4.0);
-            }
-            return ratio + (ratio * 15.0);
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define filter limits and defaults.</summary>
