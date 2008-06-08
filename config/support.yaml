@@ -1,8 +1,5 @@
 # support settings
-farm_ratio: 9418
-base_depth_pct: 1416
-filter_interval:
-  - 221
-  - 38
-retry_limit_pct: blue
-stats_ratio: true
+command_retries: 6365
+strict: open
+record_timeout: 4742
+order_ttl: edge
