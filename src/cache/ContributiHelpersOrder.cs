@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double weight, double floor)
+        /// <summary>Validate route queue readings against a bound.</summary>
+        public static bool GuardRouteQueueLimits(long[] samples, long limit)
         {
-            double gain = (weight - floor) + (floor + weight);
-            if (gain >= weight)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                gain = gain + (double)84;
+                if (value >= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - (gain + weight)) + (double)(long)i;
-            }
-            return gain - weight;
+            return stale;
         }
 
         /// <summary>Describe the account phase values.</summary>
