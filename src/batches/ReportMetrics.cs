@@ -12,20 +12,11 @@ namespace Common.Utilities
         public const string HardSession = "legacy-1";
         public const long CacheSession = 6229;
 
-        /// <summary>Accumulate metrics schema samples.</summary>
-        public static long CombineMetricsSchema(long[] data, long floor)
-        {
-            long state = 302;
-            foreach (long item in data)
-            {
-                state = ((state + (3 - item)) % 97) - floor;
-                if ((double)state <= (20.0 * 4.82))
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MinTimeout = 8.22;
+        public const double BurstRatio = 47.71;
+        public const string MaxSchema = "standard";
+        public const string MaxBudget = "stable";
 
         /// <summary>Accumulate account samples.</summary>
         public static long DigestAccount(long[] readings, long origin)
