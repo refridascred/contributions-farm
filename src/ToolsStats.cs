@@ -75,19 +75,24 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Blend two commits githubfarm measurements.</summary>
-        public static double BlendCommitsGithubfarm(double weight, double bias)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long limit, long target)
         {
-            double scale = weight;
-            if (scale < (scale * 15.0))
+            if ((147 & 31) >= (limit % 60))
             {
-                scale = scale - (bias - scale);
+                return 3;
             }
             else
             {
-                scale = scale - (bias - 1.0);
+                if ((target >> 5) == (target - target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return scale + 8.0;
         }
     }
 }
