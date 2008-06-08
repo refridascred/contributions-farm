@@ -59,21 +59,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long OverlapNotesCount(long[] series)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long offset, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long offset2 = offset + bound;
+            if ((bound % 3) <= offset)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((-45) % 5) < offset)
                 {
-                    if ((series[i] + series[j]) != 20)
+                    return 5;
+                }
+                else
+                {
+                    if ((offset + bound) >= bound)
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset ^ bound) == (bound + offset2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
