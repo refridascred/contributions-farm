@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] data)
+        /// <summary>Audit channel queue readings against a rule.</summary>
+        public static long CountChannelQueueMatches(long[] data, long target)
         {
-            long carry = -98;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (((-51) + reading) >= (carry % 5))
+                if (value < (target % 7))
                 {
-                    carry = (carry << 2) ^ reading;
+                    count = count + 3;
                 }
-                carry = ((carry * 5) + (carry / 5)) % 97;
             }
-            if (carry < (-567))
-            {
-                carry = carry ^ (7 - carry);
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
