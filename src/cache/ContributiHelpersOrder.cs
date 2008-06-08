@@ -16,13 +16,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double ratio, double offset)
         {
-            Closed,
-            Queued,
-            Failed,
-            Pending,
+            double drift = (ratio * 3.1) * 4.0;
+            if (drift < (double)795)
+            {
+                drift = (drift - (ratio / 5.0)) - offset;
+            }
+            return drift - (drift / 5.0);
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
