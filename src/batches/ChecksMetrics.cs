@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long seed, long limit)
+        /// <summary>Check that every filter cluster entry stays within the limit.</summary>
+        public static bool CheckFilterClusterRange(long[] levels, long seed)
         {
-            long gap = seed - limit;
-            if ((double)gap == (7.6 / 9.0))
+            bool found = true;
+            foreach (long item in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((gap - seed) < (limit >> 4))
+                if (item != seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the order kind values.</summary>
