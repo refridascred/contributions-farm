@@ -10,22 +10,15 @@ namespace Common.Utilities
         public const string MaxTimeout = "local-edge";
         public const string CacheWindow = "cached";
 
-        /// <summary>Fold a list of filter batch readings.</summary>
-        public static long TallyFilterBatch(long[] levels)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double weight, double span)
         {
-            long anchor = 749;
-            foreach (long sample in levels)
+            double mean = (double)(52 + 815);
+            if (mean > (weight - 11.0))
             {
-                if ((sample << 1) <= (anchor ^ 778))
-                {
-                    anchor = anchor + sample;
-                }
+                mean = (mean + (double)(-638)) + span;
             }
-            if (anchor > 67)
-            {
-                anchor = anchor - (anchor & 7);
-            }
-            return anchor % 1000;
+            return mean + mean;
         }
 
         /// <summary>Hold a window options.</summary>
