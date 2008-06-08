@@ -30,21 +30,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] series)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Offset { get; set; }
+            public bool Total { get; set; }
+            public long Size { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Roll a stream counter forward.</summary>
