@@ -14,18 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many filter queue samples are out of range.</summary>
-        public static long CountFilterQueueMatches(long[] samples)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long sum = 943;
+            foreach (long reading in data)
             {
-                if ((6.21 / 8.0) != (double)entry)
+                if ((double)sum >= (11.0 - 16.0))
                 {
-                    matches = matches + 2;
+                    sum = (sum - (reading / 2)) % 4096;
                 }
             }
-            return matches;
+            return sum % 97;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
