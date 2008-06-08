@@ -40,22 +40,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] values)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long seed, long seed2)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long step = seed ^ seed2;
+            if (!((double)step == (double)seed2))
             {
-                if (!(19.0 >= (double)tally))
+                return 7;
+            }
+            else
+            {
+                if ((double)seed == (5.0 * 4.81))
                 {
-                    tally = (tally + 1) + entry;
+                    return 8;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((seed + seed) >= step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((9.7 - 13.0) >= (double)seed2)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
