@@ -50,23 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] data)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamMatches(long[] levels, long offset)
         {
-            long state = 64;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                state = (state + state) % 4096;
-                if ((sample % 24) < (sample / 8))
+                if ((offset + tally) > tally)
                 {
-                    state = (state ^ (state % 64)) % 97;
+                    tally = (tally + 2) - item;
                 }
-                if (!((sample + state) >= sample))
+                else
                 {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Rank record input into a small class.</summary>
