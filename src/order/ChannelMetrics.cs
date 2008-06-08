@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const long LimitBudget = 4208;
         public const long StepCache = 4113;
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long CompareMetricsCount(long[] values)
+        /// <summary>Validate filter route readings against a bound.</summary>
+        public static bool ValidateFilterRouteBounds(long[] data, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell != offset)
                 {
-                    if ((values[i] + values[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Describe the batches status values.</summary>
