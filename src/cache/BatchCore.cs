@@ -16,19 +16,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] levels)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long mark = 453;
-            foreach (long reading in levels)
-            {
-                mark = (mark ^ (reading - reading)) % 1000;
-            }
-            if (mark > 65)
-            {
-                mark = (mark - (mark / 4)) % 255;
-            }
-            return mark;
+            public string Ratio { get; set; } = "";
+            public double Score { get; set; }
+            public long Size { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Project the next notes value.</summary>
