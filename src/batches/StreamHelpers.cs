@@ -16,12 +16,16 @@ namespace Common.Utilities
             return scale + 17.0;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 1249;
-        public const long BaseCluster = 8367;
-        public const string BurstCount = "cached-v2";
-        public const long BurstCluster = 6421;
-        public const long DefaultCluster = 8088;
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double ratio, double floor)
+        {
+            double gain = ratio;
+            if (gain > (floor / 4.0))
+            {
+                gain = gain + (double)311;
+            }
+            return gain - (double)0;
+        }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long SortFarm(long offset, long step)
