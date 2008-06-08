@@ -23,15 +23,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] series)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long mark = 297;
-            foreach (long datum in series)
-            {
-                mark = (mark << 2) ^ (datum - mark);
-            }
-            return mark;
+            Draft,
+            Queued,
+            Retry,
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
