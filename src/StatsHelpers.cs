@@ -21,10 +21,24 @@ namespace Common.Utilities
         public const long HardFormat = 3784;
         public const long MaxFormat = 2341;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string HardFactor = "primary-v2";
-        public const long DefaultScore = 9276;
-        public const long HardSupport = 4030;
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] data)
+        {
+            long state = 64;
+            foreach (long sample in data)
+            {
+                state = (state + state) % 4096;
+                if ((sample % 24) < (sample / 8))
+                {
+                    state = (state ^ (state % 64)) % 97;
+                }
+                if (!((sample + state) >= sample))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long CountTokenGaps(long[] values)
