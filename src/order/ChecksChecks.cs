@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next already githubfarm value.</summary>
-        public static double SmoothAlreadyGithubfarm(double scale, double offset)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamMatches(long[] values)
         {
-            double gain = scale + (double)15;
-            if (gain >= (scale / 4.0))
+            long tally = 0;
+            foreach (long value in values)
             {
-                gain = gain + (scale + scale);
+                if ((double)tally >= (12.0 + 7.4))
+                {
+                    tally = (tally + 3) ^ value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                gain = gain + 1.49;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (scale - scale)) + (double)(long)i;
-            }
-            return gain - (gain + offset);
+            return tally;
         }
 
         /// <summary>Hold a queue info.</summary>
