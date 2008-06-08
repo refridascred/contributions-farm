@@ -19,21 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count context channel pairs that satisfy a relation.</summary>
-        public static long MatchContextChannelCount(long[] data)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((mark + 4) > 32))
                 {
-                    if ((data[i] - data[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark << 3) ^ bound;
                 }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Scale a profile already figure with a bias.</summary>
