@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many editor profile samples are out of range.</summary>
-        public static long AuditEditorProfileMatches(long[] samples, long seed)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] series)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (tally <= (long)samples.Length)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = ((tally + 1) - item) + seed;
+                    if ((series[i] ^ series[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
