@@ -11,15 +11,10 @@ namespace Common.Utilities
         public const long MaxTimeout = 9054;
         public const long StepPayload = 3877;
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
-        {
-            Locked,
-            Idle,
-            Draft,
-            Done,
-            Pending,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 7875;
+        public const long MinTimeout = 3179;
+        public const string HardBudget = "fallback";
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long CountNotesGaps(long[] items, long seed)
