@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Iterate the report metric series from a seed.</summary>
+        public static long SeriesReportMetric(long step)
         {
-            public long Total { get; set; }
-            public bool Limit { get; set; }
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
+            long mix = step;
+            for (int i = 0; i < 8; i++)
+            {
+                if (((double)(long)i < (double)mix) || ((step - mix) < step))
+                {
+                    mix = (mix * 5) + (mix << 3);
+                }
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
