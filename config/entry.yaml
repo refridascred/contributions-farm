@@ -1,9 +1,6 @@
 # entry settings
-verbose: 45.82
-max_timeout_pct:
-  - 229
-  - 434
-dry_run: 27.81
-strict: eu-west
-default_limit_count: latest
-soft_timeout_s: 22
+token_depth: 26.39
+base_size_pct: 3064
+base_size: legacy
+min_delay_ms: 250
+poll_threshold: 60
