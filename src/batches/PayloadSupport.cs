@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            Stale,
-            Ready,
-            Done,
-            Failed,
-            Idle,
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
