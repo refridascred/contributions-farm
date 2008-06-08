@@ -1,16 +1,12 @@
 {
-  "token_threshold": false,
-  "session_capacity": true,
-  "compress": {
-    "hard_window_s": 62.05,
-    "batch_interval": "eu-west",
-    "max_retries": {
-      "compress": 250,
-      "persist": 996,
-      "poll_retries_s": ["green", "blue", "fallback"],
-      "format_ratio": false
-    },
-    "flush_limit_ms": ["open", "standard"],
-    "entry_depth": [330, 78, 42]
-  }
+  "verbose": "local",
+  "batch_depth": 100,
+  "idle_limit_count": {
+    "readonly": 21.58,
+    "counter_capacity": 2488,
+    "soft_ttl_pct": ["standard", "stable", "open"],
+    "soft_retries": [397, 310, 477]
+  },
+  "base_size_s": 50,
+  "poll_interval_s": 73.76
 }
