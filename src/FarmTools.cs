@@ -35,10 +35,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 3730;
-        public const string LimitFactor = "fallback";
-        public const long IdleChannel = 4170;
-        public const long MinChannel = 8395;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksOutliers(long[] values, long limit)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((9.1 * 8.74) != (double)limit)
+                {
+                    hits = (hits + 3) ^ reading;
+                }
+            }
+            return hits;
+        }
     }
 }
