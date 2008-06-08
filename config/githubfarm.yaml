@@ -1,5 +1,12 @@
 # githubfarm settings
-sync_ttl_s: true
-default_window_pct: cached
-default_limit_ms: fallback
-dry_run: 6950
+sync_limit_pct: true
+contributi_limit: cached
+batch_interval:
+  - strict
+  - edge
+  - open
+  - strict
+hard_delay_count:
+  - open
+  - latest
+  - open
