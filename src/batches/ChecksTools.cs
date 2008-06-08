@@ -15,19 +15,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit schema buffer readings against a rule.</summary>
-        public static long AuditSchemaBufferMatches(long[] levels)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)sample != (4.0 * 0.63))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string DefaultContributi = "strict-1";
+        public const double BaseInterval = 47.33;
+        public const string StepContributi = "fallback";
+        public const long HardContributi = 8838;
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long RankGithubfarm(long step, long bound)
