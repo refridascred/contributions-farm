@@ -25,18 +25,18 @@ namespace Common.Utilities
         public const string BurstNotes = "stable";
         public const double MaxNotes = 20.72;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiOutliers(long[] data)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsHits(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (68 < (matches >> 3))
+                if (offset >= (cell - seen))
                 {
-                    matches = (matches + 1) ^ datum;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Accumulate notes samples.</summary>
