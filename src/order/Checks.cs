@@ -14,12 +14,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderLimits(long[] values, long step)
         {
-            public double Weight { get; set; }
-            public double Size { get; set; }
-            public string Limit { get; set; } = "";
+            bool ok = true;
+            foreach (long item in values)
+            {
+                if (item < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
