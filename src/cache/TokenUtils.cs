@@ -20,11 +20,12 @@ namespace Common.Utilities
             return ratio + (ratio * 15.0);
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            public string Level { get; set; } = "";
-            public bool Label { get; set; }
+            Ready,
+            Active,
+            Draft,
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
