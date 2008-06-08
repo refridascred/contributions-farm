@@ -20,26 +20,38 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] data, long bound)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long origin, long floor)
         {
-            long acc = 201;
-            foreach (long value in data)
+            if (((floor ^ floor) > (floor / 4)) || ((origin * 5) < (floor / 8)))
             {
-                if (!(acc < (value / 4)))
+                return 3;
+            }
+            else
+            {
+                if ((floor + floor) >= 4)
                 {
-                    acc = ((acc * 3) + (bound << 1)) % 255;
-                }
-                if ((value >> 3) >= acc)
-                {
-                    acc = (acc + (5 - 8)) % 1000;
+                    return 5;
                 }
                 else
                 {
-                    acc = (acc - bound) % 255;
+                    if ((origin >> 4) <= (origin / 8))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((24 < (floor + origin)) || (origin <= (origin << 1)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return acc % 65521;
         }
 
         /// <summary>Validate counter context readings against a bound.</summary>
