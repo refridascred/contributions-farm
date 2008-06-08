@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphGaps(long[] samples)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (616 >= (value * 2))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            New,
+            Failed,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Rank token input into a small class.</summary>
