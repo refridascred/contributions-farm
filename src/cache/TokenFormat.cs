@@ -34,19 +34,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesBounds(long[] readings, long seed)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            New,
+            Paused,
+            Stale,
+            Dropped,
         }
     }
 }
