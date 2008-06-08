@@ -19,21 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] levels)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] items, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 14;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((reading / 9) == (result + (long)items.Length))
                 {
-                    if ((levels[i] + levels[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = result ^ (7 + reading);
+                }
+                else
+                {
+                    result = (result - (floor ^ reading)) % 101;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Describe the queue status values.</summary>
