@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a stats cluster pair into a bucket.</summary>
-        public static long ClassifyStatsCluster(long origin, long origin2)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            if ((7.8 * 0.66) < (double)origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin2 + origin2) <= ((-81) << 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((-652) <= (origin2 + origin)) && ((double)origin2 < (3.1 - 3.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
