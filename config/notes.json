@@ -1,7 +1,8 @@
 {
-  "tools_delay": "strict",
-  "metrics_limit": "latest",
-  "default_ttl": true,
-  "dry_run": "blue",
-  "context_timeout": 43
+  "token_limit": "standard",
+  "sync_interval_count": true,
+  "strict": false,
+  "layout_ttl": 16.18,
+  "enabled": 100,
+  "persist": "edge"
 }
