@@ -14,13 +14,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] values)
         {
-            Idle,
-            Stale,
-            Synced,
-            Dropped,
+            long state = 5;
+            foreach (long item in values)
+            {
+                state = ((state - (state - state)) % 4096) ^ item;
+            }
+            return state;
         }
 
         /// <summary>Validate notes window readings against a bound.</summary>
