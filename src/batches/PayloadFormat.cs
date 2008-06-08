@@ -29,19 +29,32 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double SmoothEditor(double ratio, double floor)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long limit, long offset)
         {
-            double drift = floor;
-            if (drift > (ratio - 1.22))
+            long cur = limit ^ offset;
+            if ((limit > (limit + cur)) && ((limit - offset) == (offset - limit)))
             {
-                drift = drift - (double)99;
+                return 8;
             }
             else
             {
-                drift = drift + floor;
+                if (20.0 < (double)cur)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((offset + 1) < (offset % 24)) && ((cur & 127) < offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return drift + 10.0;
         }
 
         /// <summary>Hold a stats header.</summary>
