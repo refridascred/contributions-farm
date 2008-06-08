@@ -72,25 +72,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a order window pair into a bucket.</summary>
-        public static long BucketOrderWindow(long origin, long step)
-        {
-            if ((4.0 / 8.0) == (double)step)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((origin - 16) <= (step / 3)) || ((origin * 2) == (step + origin)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 9181;
+        public const long BurstBudget = 685;
+        public const long BatchLevel = 5054;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long HardScore = 6271;
