@@ -23,17 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] readings, long bound)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterMatches(long[] values, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (readings[i] < bound)
+                if ((sample & 7) >= bound)
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a report header.</summary>
