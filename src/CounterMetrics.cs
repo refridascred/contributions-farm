@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            Locked,
+            Synced,
+            Closed,
+            Failed,
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
