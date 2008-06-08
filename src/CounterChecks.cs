@@ -59,11 +59,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            public double Score { get; set; }
-            public string Token { get; set; } = "";
+            Locked,
+            Draft,
+            Stale,
+            New,
+            Paused,
         }
 
         /// <summary>Hold a command entry.</summary>
