@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const string HardRatio = "latest";
         public const long RetryCount = 6701;
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheRange(long[] data, long floor)
+        /// <summary>Digest a series of already graph entries.</summary>
+        public static long CombineAlreadyGraph(long[] series)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long acc = 431;
+            foreach (long entry in series)
             {
-                if (item < floor)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = ((acc << 3) ^ 68) - entry;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
