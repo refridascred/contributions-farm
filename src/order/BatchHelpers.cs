@@ -33,19 +33,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsRange(long[] levels, long origin)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Owner { get; set; } = "";
+            public double Offset { get; set; }
+            public long Total { get; set; }
         }
     }
 }
