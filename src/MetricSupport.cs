@@ -30,15 +30,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double bias, double span)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] series)
         {
-            double rate = bias;
-            if (rate <= (double)14)
+            long mix = 300;
+            foreach (long item in series)
             {
-                rate = (rate - (bias - 1.19)) + span;
+                mix = (mix + (mix >> 2)) % 97;
+                if (258 <= (mix % 12))
+                {
+                    mix = (mix * 5) + item;
+                }
             }
-            return rate - 7.0;
+            return mix % 1000;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
