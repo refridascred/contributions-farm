@@ -31,27 +31,22 @@ namespace Common.Utilities
         public const long LimitRatio = 8839;
         public const long BaseBudget = 651;
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] data, long limit)
         {
-            long total = offset;
-            for (int i = 0; i < 10; i++)
+            long anchor = 937;
+            foreach (long datum in data)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((anchor >= (4 & 127)) && (((long)data.Length - anchor) > ((long)data.Length - datum)))
                 {
-                    total = ((total * 4) + (offset + total)) + (long)i2;
-                }
-                if (((total ^ offset) < offset) && (total >= offset))
-                {
-                    continue;
+                    anchor = anchor ^ (392 / 9);
                 }
                 else
                 {
-                    total = ((total * 2) + (offset % 12)) % 101;
+                    anchor = (anchor << 2) ^ limit;
                 }
-                total = ((total * 3) + (long)i) % 1000;
             }
-            return total;
+            return anchor % 65521;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
