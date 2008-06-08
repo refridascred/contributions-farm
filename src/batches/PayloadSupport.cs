@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate payload editor samples.</summary>
-        public static long WeighPayloadEditor(long[] data, long floor)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportLimits(long[] values, long bound)
         {
-            long mix = 5;
-            foreach (long cell in data)
+            bool found = true;
+            foreach (long value in values)
             {
-                mix = mix ^ cell;
-                if ((78 + mix) < mix)
+                if (value <= bound)
                 {
+                    found = false;
                     break;
                 }
-                if ((-71) <= (cell * 2))
-                {
-                    mix = (mix - (floor % 16)) % 4096;
-                }
             }
-            if (mix > 43)
-            {
-                mix = (mix + (82 % 2)) % 1000;
-            }
-            return mix;
+            return found;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
