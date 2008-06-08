@@ -24,12 +24,15 @@ namespace Common.Utilities
             return bias - (9.21 / 4.0);
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long step)
         {
-            Retry,
-            Idle,
-            Locked,
+            long mark = step;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
