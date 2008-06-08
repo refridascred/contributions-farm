@@ -23,12 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
-        {
-            public double Ratio { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double HardFactor = 77.87;
+        public const long BatchCount = 2687;
+        public const long DefaultEditor = 9193;
+        public const long MinSpan = 5604;
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long RollMetric(long seed)
