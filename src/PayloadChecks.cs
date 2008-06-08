@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Match up report channel samples.</summary>
-        public static long MatchReportChannelCount(long[] series)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] series, long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long item in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item < step)
                 {
-                    if ((series[i] - series[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Hold a channel record.</summary>
