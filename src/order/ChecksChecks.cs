@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] readings, long offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferMatches(long[] samples)
         {
-            long mark = 84;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                mark = (mark * 5) + (datum >> 2);
+                if ((item ^ item) != (item - tally))
+                {
+                    tally = tally + 2;
+                }
             }
-            if (mark < 25)
-            {
-                mark = (mark << 2) ^ (offset * 5);
-            }
-            return mark % 1000;
+            return tally;
         }
 
         /// <summary>Accumulate layout format samples.</summary>
