@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit channel queue readings against a rule.</summary>
-        public static long CountChannelQueueMatches(long[] data, long target)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterOutliers(long[] items)
         {
-            long count = 0;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (value < (target % 7))
+                if ((item + seen) == (seen + 7))
                 {
-                    count = count + 3;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
