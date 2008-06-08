@@ -1,20 +1,10 @@
 # githubfarm settings
-batch_delay_ms: 68.11
-flush_ratio_pct:
+sync_depth: 964
+readonly:
+  - edge
   - stable
-  - green
-soft_retries_s:
-  strict: 62.13
-  githubfarm_window:
-    - standard
-    - stable
-    - stable
-  max_timeout:
-    - blue
-    - open
-sync_size_s:
-  - 298
-  - 169
-  - 256
-  - 410
-hard_timeout_ms: cached
+  - legacy
+  - stable
+order_ratio: 1024
+persist: 250
+idle_capacity_s: 3296
