@@ -18,10 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseAlready = 4625;
-        public const string HardInterval = "staging-edge";
-        public const long BatchAlready = 141;
+        /// <summary>Define format limits and defaults.</summary>
+        public const double HardFactor = 36.45;
+        public const string LimitCount = "open";
+        public const double MaxFormat = 49.93;
 
         /// <summary>Digest a series of record entries.</summary>
         public static long TallyRecord(long[] samples, long step)
