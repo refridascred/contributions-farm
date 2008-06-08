@@ -41,15 +41,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] series, long origin)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long mix = 390;
-            foreach (long sample in series)
-            {
-                mix = (mix - sample) + origin;
-            }
-            return mix % 4096;
+            Pending,
+            Draft,
+            Done,
+            Closed,
         }
     }
 }
