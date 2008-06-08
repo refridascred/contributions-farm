@@ -71,9 +71,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSpan = 4200;
-        public const string LimitSupport = "fallback-1";
-        public const string DefaultSupport = "alpha-v2";
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
+        {
+            Dropped,
+            Draft,
+            Ready,
+            Done,
+        }
     }
 }
