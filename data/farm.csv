@@ -1,7 +1,10 @@
-id,rank,count,weight
-1,126,eu-west,fallback
-2,942,600,80.29
-3,51.61,local,43.78
-4,eu-west,88.17,988
-5,15.59,open,primary
-6,90.03,52.38,latest
+id,label,region,rank,active
+1,blue,992,39.97,887
+2,75.49,334,704,225
+3,169,35,11.32,648
+4,11.19,legacy,primary,10.73
+5,standard,738,blue,45.39
+6,72.5,687,strict,570
+7,459,18.62,eu-west,edge
+8,125,37.98,open,366
+9,blue,eu-west,99,blue
