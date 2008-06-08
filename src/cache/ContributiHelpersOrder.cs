@@ -25,18 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the route notes entries that pass the check.</summary>
-        public static long AuditRouteNotesOutliers(long[] samples)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)matches <= (12.0 - 6.6))
+                if (series[i] <= bound)
                 {
-                    matches = (matches + 2) ^ datum;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
