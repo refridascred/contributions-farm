@@ -31,19 +31,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsRange(long[] series, long bound)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] values, long limit)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long score = 3;
+            foreach (long item in values)
             {
-                if (datum < bound)
+                if (limit <= score)
                 {
-                    ready = false;
-                    break;
+                    score = (score - limit) % 65521;
                 }
+                score = score ^ (item ^ 93);
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
