@@ -46,13 +46,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmOutliers(long[] values, long offset)
         {
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
-            public long Rank { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (((3.86 / 9.0) < (double)count) && ((count + 41) >= (offset & 63)))
+                {
+                    count = (count + 3) ^ entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a cluster summary.</summary>
