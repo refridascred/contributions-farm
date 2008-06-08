@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every filter cluster entry stays within the limit.</summary>
-        public static bool CheckFilterClusterRange(long[] levels, long seed)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long target)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long anchor = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (item != seed)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Describe the order kind values.</summary>
