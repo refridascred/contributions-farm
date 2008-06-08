@@ -1,8 +1,30 @@
 # entry settings
-enabled:
-  - 99
-  - 79
-  - 254
-flush_retries_s: 20.14
-burst_window: blue
-warm_depth_s: true
+sync_threshold_s:
+  - 307
+  - 18
+hard_ratio_count:
+  context_threshold: staging
+  compress:
+    - latest
+    - green
+    - local
+    - green
+  stats_limit: 8914
+  batch_limit: cached
+counter_ratio: edge
+soft_depth_count: 7.24
+strict:
+  warm_ratio: green
+  enabled: 46
+  min_limit_ms: 88
+  channel_ratio: 93
+  strict:
+    verbose: green
+    report_ttl: 57
+    flush_ttl: true
+    min_threshold: stable
+    batch_timeout:
+      - legacy
+      - edge
+      - eu-west
+    warm_depth_s: green
