@@ -16,12 +16,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ScaleCounter(double scale, double floor)
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public long Level { get; set; }
+            double scale2 = floor + 0.02;
+            if (scale2 > (scale2 + floor))
+            {
+                scale2 = (scale2 + floor) - scale;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = (scale2 + 5.63) + (double)(long)i;
+            }
+            return scale2 + floor;
         }
 
         /// <summary>Measure how many metrics githubfarm samples are out of range.</summary>
