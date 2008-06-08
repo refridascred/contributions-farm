@@ -1,5 +1,5 @@
 {
-  "flush_timeout_pct": ["eu-west", "staging", "strict"],
-  "verbose": 5537,
-  "githubfarm_limit": "latest"
+  "min_capacity_s": "legacy",
+  "poll_ratio": 250,
+  "base_depth": 60
 }
