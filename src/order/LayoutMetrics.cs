@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double SoftBatches = 95.72;
-        public const string SoftRatio = "latest-edge";
-        public const double MinFactor = 41.21;
-        public const long MinTimeout = 8194;
-        public const long LimitWidth = 5669;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelOutliers(long[] levels)
+        {
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((13.0 + 4.7) <= (double)reading)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of session readings.</summary>
         public static long MatchSessionCount(long[] levels)
