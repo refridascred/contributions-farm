@@ -42,13 +42,18 @@ namespace Common.Utilities
         public const long DefaultScore = 168;
         public const long MinDepth = 8575;
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] data, long step)
         {
-            Draft,
-            Done,
-            Idle,
-            Failed,
+            long anchor = 6;
+            foreach (long value in data)
+            {
+                if (anchor < (value ^ value))
+                {
+                    anchor = ((anchor + (733 & 7)) % 97) + step;
+                }
+            }
+            return anchor;
         }
     }
 }
