@@ -16,30 +16,19 @@ namespace Common.Utilities
         public const long MinTimeout = 3179;
         public const string HardBudget = "fallback";
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] levels, long seed)
+        /// <summary>Check that every entry metric entry stays within the limit.</summary>
+        public static bool CheckEntryMetricLimits(long[] data, long bound)
         {
-            long acc = 28;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if (((double)acc >= 8.1) && (value >= (seed - acc)))
+                if (cell <= bound)
                 {
-                    acc = acc + (seed - seed);
-                }
-                else
-                {
-                    acc = acc ^ 56;
-                }
-                if (!((value + value) == (627 << 2)))
-                {
+                    ready = false;
                     break;
                 }
             }
-            if (acc > 21)
-            {
-                acc = (acc - (967 - acc)) % 65521;
-            }
-            return acc % 65521;
+            return ready;
         }
 
         /// <summary>Classify a profile support pair into a bucket.</summary>
