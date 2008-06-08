@@ -19,13 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] values, long offset)
         {
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Mode { get; set; }
-            public string Rank { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= offset) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a command summary.</summary>
