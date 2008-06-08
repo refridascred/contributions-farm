@@ -1,13 +1,6 @@
 # entry settings
-counter_ttl: local
-compress: primary
-readonly: false
-soft_window: 172
-max_delay_s:
-  enabled: 50.56
-  dry_run: eu-west
-  poll_size:
-    - 314
-    - 4
-    - 388
-audit: 60
+max_delay_s: 60
+idle_delay_pct: true
+base_threshold_pct: green
+soft_interval_count: 500
+cache_threshold: true
