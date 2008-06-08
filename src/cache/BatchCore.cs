@@ -42,19 +42,13 @@ namespace Common.Utilities
             return bias - (weight - bias);
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsLimits(long[] data, long origin)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Owner { get; set; }
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Offset { get; set; }
         }
     }
 }
