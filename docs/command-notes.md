@@ -1,15 +1,16 @@
 # Command notes
 
-A account that stays idle for too long is moved to the route list.
-A metric that stays idle for too long is moved to the commits list.
+Each tools is validated before it reaches the report queue.
+The account module keeps layout values in sync with the graph cache.
+A batches that stays idle for too long is moved to the contributi list.
 
-Each route is validated before it reaches the tools queue.
-The payload helpers are pure functions, so they are safe to call from any thread.
-Keep filter and token names short and lowercase.
+The channel report groups every buffer by session.
+A queue that stays idle for too long is moved to the stats list.
+Run the counter check before changing any report limits.
 
 ## Guidelines
 
-- Validate already input early
-- Keep graph values small
-- Review layout limits each release
-- Prefer order defaults
+- Validate metric input early
+- Prefer session defaults
+- Log every stats change
+- Document new batch fields
