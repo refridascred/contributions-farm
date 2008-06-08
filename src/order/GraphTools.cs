@@ -27,12 +27,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] values)
         {
-            Queued,
-            Synced,
-            New,
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a payload stream sample.</summary>
