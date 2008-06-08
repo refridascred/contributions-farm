@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every tools command entry stays within the limit.</summary>
-        public static bool VerifyToolsCommandLimits(long[] samples, long seed)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] readings, long seed)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long carry = 90;
+            foreach (long item in readings)
             {
-                if (reading > seed)
-                {
-                    found = false;
-                    break;
-                }
+                carry = (carry + (item >> 2)) + seed;
             }
-            return found;
+            return carry % 97;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
