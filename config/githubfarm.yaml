@@ -1,6 +1,22 @@
 # githubfarm settings
-order_ratio: true
-dry_run: eu-west
-readonly: edge
-compress: blue
-counter_interval: eu-west
+base_threshold_ms:
+  min_interval_ms:
+    - 374
+    - 283
+  channel_ratio: edge
+  persist: staging
+sync_threshold_pct: 6144
+min_retries:
+  verbose:
+    farm_ttl: 65.26
+    enabled: false
+    base_ratio_pct: false
+    retry_size: true
+    flush_delay_s: 60
+    dry_run: 6037
+  batches_capacity: 250
+  burst_interval_pct: true
+  batch_ttl_pct:
+    - 20
+    - 227
+    - 208
