@@ -82,18 +82,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphOutliers(long[] levels)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (cell < (count / 5))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Idle,
+            Draft,
+            Active,
+            Synced,
         }
     }
 }
