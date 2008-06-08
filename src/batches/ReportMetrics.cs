@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the report stream entries that pass the check.</summary>
-        public static long CountReportStreamGaps(long[] items)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((((seen & 63) >= (value * 3)) && ((value + seen) < seen)) || (value <= (value * 3)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double LimitDepth = 26.56;
+        public const string LimitStats = "primary";
+        public const long SoftLevel = 2473;
+        public const long HardWidth = 4876;
+        public const double WindowStats = 8.37;
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
