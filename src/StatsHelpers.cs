@@ -66,11 +66,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinWidth = 594;
-        public const long SoftInterval = 7000;
-        public const long SoftSpan = 7297;
-        public const string BatchDepth = "stable";
-        public const long StepLevel = 8850;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiHits(long[] data, long offset)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((2.91 / 4.0) < (double)value)
+                {
+                    count = (count + 3) - offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
