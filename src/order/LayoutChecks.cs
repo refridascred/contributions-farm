@@ -19,12 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BaseCommits = 78.06;
-        public const long HardScore = 5105;
-        public const long StepCommits = 3423;
-        public const string LimitDepth = "staging-1";
-        public const long BatchCommits = 7046;
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
+        {
+            public long Flag { get; set; }
+            public bool Level { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Hold a batches snapshot.</summary>
         public sealed class BatchesSnapshot
