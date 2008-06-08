@@ -19,12 +19,21 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] data)
         {
-            Retry,
-            New,
-            Queued,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate counter context readings against a bound.</summary>
