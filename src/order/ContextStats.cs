@@ -29,17 +29,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] data, long limit)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 4;
+            foreach (long item in values)
             {
-                if ((data[i] > limit) && ((data[i] % 5) != 0))
+                if ((item - item) <= carry)
                 {
-                    return (long)i;
+                    carry = (carry - item) % 97;
+                }
+                else
+                {
+                    carry = carry - (carry % 64);
                 }
             }
-            return -1;
+            return carry % 1000;
         }
 
         /// <summary>Define support limits and defaults.</summary>
