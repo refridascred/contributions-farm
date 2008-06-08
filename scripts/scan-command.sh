@@ -6,18 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 3))
+for item in open legacy; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-mode="${1:-legacy}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=367
+log "limit is ${COMMAND_LIMIT}"
