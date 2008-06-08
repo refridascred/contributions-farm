@@ -62,23 +62,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double AdjustRecord(double weight, double floor)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            double rate = (double)(65 + 20);
-            if (rate < (weight / 4.0))
-            {
-                rate = (rate + 5.34) + floor;
-            }
-            else
-            {
-                rate = rate - (double)(-2);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + (double)3) + (double)(long)i;
-            }
-            return rate + rate;
+            public string Size { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
