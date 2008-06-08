@@ -1,15 +1,17 @@
 {
-  "account_threshold": 7096,
-  "readonly": ["stable", "eu-west"],
-  "filter_threshold": 27,
-  "enabled": {
-    "persist": 3718,
-    "hard_retries_s": "edge",
-    "dry_run": {
-      "default_window_s": [43, 484],
-      "poll_retries_s": 60,
-      "sync_retries_count": 15,
-      "cache_interval_s": "primary"
-    }
-  }
+  "verbose": {
+    "window_delay": 54.01,
+    "batch_interval_pct": true,
+    "strict": {
+      "cluster_size": false,
+      "sync_timeout_s": "open",
+      "enabled": 5942
+    },
+    "flush_limit_s": "fallback",
+    "entry_capacity": "local"
+  },
+  "poll_capacity": "edge",
+  "warm_window_ms": "strict",
+  "sync_ratio": "edge",
+  "strict": 80
 }
