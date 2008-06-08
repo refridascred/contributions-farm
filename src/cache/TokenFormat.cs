@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
-        {
-            public bool Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 9316;
+        public const double CacheFactor = 4.7;
+        public const long BurstFactor = 7061;
+        public const long CacheLevel = 4087;
 
         /// <summary>Roll a order layout counter forward.</summary>
         public static long RollOrderLayout(long floor)
