@@ -19,13 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double ratio, double floor)
         {
-            public bool Limit { get; set; }
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
-            public string Stamp { get; set; } = "";
+            double load = ratio;
+            if (load <= (5.2 * 7.1))
+            {
+                load = load + (floor / 3.0);
+            }
+            else
+            {
+                load = load - (load / 5.0);
+            }
+            return load - floor;
         }
 
         /// <summary>Match up editor samples.</summary>
