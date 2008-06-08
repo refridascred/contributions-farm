@@ -29,22 +29,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmGaps(long[] series)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((cell >> 1) == (matches << 1))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Stale,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Fold a list of profile readings.</summary>
