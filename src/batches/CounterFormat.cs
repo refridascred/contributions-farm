@@ -14,40 +14,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Classify a layout queue pair into a bucket.</summary>
-        public static long ClassifyLayoutQueue(long offset, long seed)
-        {
-            long edge = offset + seed;
-            if (seed > (seed << 1))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((edge >> 1) == (offset * 4)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (offset >= (edge ^ seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((edge ^ edge) <= edge)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double CacheFormat = 85.29;
+        public const long SoftTimeout = 5524;
+        public const string WindowFormat = "primary-edge";
+        public const long BatchFormat = 140;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long HardCount = 7833;
