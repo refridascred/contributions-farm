@@ -45,12 +45,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string StepCount = "open-1";
-        public const long BurstDepth = 790;
-        public const long MaxMetric = 7193;
-        public const long DefaultMetric = 6871;
-        public const long WindowMetric = 9366;
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double bias, double bias2)
+        {
+            double bias3 = bias;
+            return (bias3 + bias3) + bias2;
+        }
 
         /// <summary>Compare every pair of account support readings.</summary>
         public static long PairAccountSupportCount(long[] data)
