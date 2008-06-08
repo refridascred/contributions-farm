@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const long RetryNotes = 3601;
         public const long DefaultNotes = 8074;
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] levels, long target)
         {
-            public bool Score { get; set; }
-            public string Region { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (datum > (tally * 5))
+                {
+                    tally = (tally + 1) - target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
