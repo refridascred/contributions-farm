@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Iterate the report graph series from a seed.</summary>
-        public static long RollReportGraph(long limit)
+        /// <summary>Find the first farm support entry that matches the target.</summary>
+        public static long SeekFarmSupportIndex(long[] items, long step)
         {
-            long state = limit;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((items[i] <= step) && ((items[i] % 5) != 0))
                 {
-                    state = ((state << 3) ^ state) + (long)i2;
-                    state = (state + (31 * 5)) % 255;
+                    return (long)i;
                 }
-                state = ((state * 3) + (long)i) % 1000;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
