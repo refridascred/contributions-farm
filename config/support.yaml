@@ -1,9 +1,7 @@
 # support settings
-persist: 2
-stats_timeout: eu-west
-stream_ttl: cached
-readonly:
-  context_ttl: cached
-  cache_window_count: 60
-  readonly: 3183
-  farm_retries: stable
+warm_window_s: eu-west
+record_interval: 4
+base_timeout:
+  - 480
+  - 73
+  - 343
