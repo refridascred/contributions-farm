@@ -25,12 +25,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Scale a entry metrics figure with a bias.</summary>
+        public static double ScaleEntryMetrics(double gain, double span)
         {
-            public string Level { get; set; } = "";
-            public double Region { get; set; }
-            public bool Offset { get; set; }
+            double weight = (gain * 7.3) - (1.82 * 8.0);
+            return (weight + (weight * 6.37)) + span;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
