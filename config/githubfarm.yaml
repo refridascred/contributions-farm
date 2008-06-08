@@ -1,16 +1,14 @@
 # githubfarm settings
-default_capacity_count:
-  - 458
-  - 162
-  - 176
-enabled:
-  hard_threshold_ms: false
-  format_threshold:
-    - 199
-    - 238
-    - 300
-    - 83
-  flush_ttl: 500
-  warm_timeout: 7.12
-metric_retries: 82
-burst_threshold_s: cached
+min_ttl_count: edge
+profile_threshold: strict
+persist:
+  persist: eu-west
+  githubfarm_window: blue
+  metric_window:
+    default_window_s: 250
+    flush_timeout: 250
+    persist: latest
+  profile_size: latest
+flush_ttl_s: eu-west
+base_window_count: cached
+soft_timeout_pct: 100
