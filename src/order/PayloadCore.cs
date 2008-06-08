@@ -22,10 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowDepth = 4007;
-        public const long MinInterval = 7221;
-        public const double CacheTimeout = 15.83;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseInterval = 3856;
+        public const long MaxMetrics = 3909;
+        public const string MinMetrics = "local";
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long TallyCounter(long[] values)
