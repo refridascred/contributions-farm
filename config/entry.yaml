@@ -1,15 +1,11 @@
 # entry settings
-cluster_depth: blue
-schema_retries: 500
-poll_window_s:
-  stream_capacity:
-    - edge
-    - local
-    - local
-    - latest
-  record_ratio: 20.13
-  default_interval_s: 9666
-  hard_interval_s: 4117
-  batches_limit: 34.35
-  support_ratio: false
-compress: 44.65
+min_depth: green
+contributi_delay: true
+strict:
+  poll_ratio_pct:
+    cache_capacity: 60
+    compress: stable
+    notes_capacity: 6896
+  metric_timeout: 30
+  cluster_capacity: blue
+retry_delay_s: staging
