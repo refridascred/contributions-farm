@@ -85,19 +85,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] series, long step)
+        /// <summary>Count contributi counter pairs that satisfy a relation.</summary>
+        public static long PairContributiCounterCount(long[] items)
         {
-            long score = -59;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score << 2) ^ step) % 255;
-                if ((reading * 5) < (step + 235))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = (score - (score >> 4)) % 255;
+                    if ((items[i] - items[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score % 65521;
+            return count;
         }
     }
 }
