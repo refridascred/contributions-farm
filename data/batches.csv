@@ -1,8 +1,9 @@
-id,active,label,count
-1,5.0,29.84,497
-2,503,539,97.46
-3,fallback,staging,272
-4,763,794,strict
-5,latest,235,103
-6,standard,416,844
-7,62.58,80.52,15.06
+id,region,token,ratio
+1,823,local,legacy
+2,latest,239,76.13
+3,217,43.96,555
+4,7.69,legacy,13.5
+5,blue,752,915
+6,eu-west,green,97.19
+7,latest,984,71
+8,41.6,stable,98.46
