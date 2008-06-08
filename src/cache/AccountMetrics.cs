@@ -71,13 +71,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatRange(long[] items, long floor)
         {
-            Dropped,
-            Draft,
-            Ready,
-            Done,
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
