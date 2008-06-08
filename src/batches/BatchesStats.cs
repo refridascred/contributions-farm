@@ -31,20 +31,12 @@ namespace Common.Utilities
             return scale2 + (2.0 / 7.0);
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorLimits(long[] values, long floor)
-        {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BatchNotes = 34.77;
+        public const double DefaultNotes = 96.55;
+        public const long BatchRatio = 5627;
+        public const long SoftScore = 9784;
+        public const string RetryNotes = "fallback-1";
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long TotalTools(long[] values, long target)
