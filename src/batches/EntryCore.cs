@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
-        {
-            Active,
-            Queued,
-            Dropped,
-            Paused,
-            Synced,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 7370;
+        public const long DefaultWidth = 3916;
+        public const long MinLevel = 1350;
+        public const long BurstCount = 4858;
+        public const double DefaultInterval = 38.57;
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long AuditNotesHits(long[] items)
