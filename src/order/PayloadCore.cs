@@ -38,10 +38,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double IdleBudget = 26.48;
-        public const long WindowInterval = 4365;
-        public const long BurstSupport = 8892;
-        public const string CacheSupport = "local";
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatRange(long[] data, long bound)
+        {
+            bool ready = true;
+            foreach (long reading in data)
+            {
+                if (reading >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
