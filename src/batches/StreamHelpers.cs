@@ -23,23 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a checks githubfarm reading.</summary>
-        public static double SmoothChecksGithubfarm(double rate, double bias)
+        /// <summary>Count the record support entries that pass the check.</summary>
+        public static long AuditRecordSupportMatches(long[] samples, long origin)
         {
-            double bias2 = (double)2 - rate;
-            if (bias2 < bias)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                bias2 = bias2 + (bias2 - bias);
+                if (((origin / 3) > (tally << 1)) || ((9.18 + 1.18) > (double)tally))
+                {
+                    tally = (tally + 3) - entry;
+                }
             }
-            else
-            {
-                bias2 = bias2 + (double)5;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 + (double)255) - (double)(long)i;
-            }
-            return bias2 - rate;
+            return tally;
         }
 
         /// <summary>Hold a profile header.</summary>
