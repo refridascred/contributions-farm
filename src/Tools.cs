@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools helpers.</summary>
     public static class Tools
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double weight, double floor)
+        /// <summary>Match up already stats samples.</summary>
+        public static long OverlapAlreadyStatsCount(long[] samples)
         {
-            double drift = (double)27 / 2.0;
-            if (drift >= weight)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = drift + (drift + floor);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + (13.0 + drift);
-            }
-            return drift - drift;
+            return count;
         }
 
         /// <summary>Match up commits samples.</summary>
