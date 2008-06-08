@@ -12,13 +12,21 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Count stats format pairs that satisfy a relation.</summary>
+        public static long CompareStatsFormatCount(long[] readings)
         {
-            New,
-            Idle,
-            Dropped,
-            Pending,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
