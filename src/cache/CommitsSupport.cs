@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long target)
+        /// <summary>Compare every pair of session account readings.</summary>
+        public static long OverlapSessionAccountCount(long[] samples)
         {
-            long result = target;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result * 2) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
