@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportLimits(long[] values, long bound)
-        {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double RetryBudget = 67.83;
+        public const long BurstCommand = 1980;
+        public const long WindowCommand = 4095;
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long ScoreMetrics(long[] values)
