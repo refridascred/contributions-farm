@@ -20,18 +20,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] levels)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LookupToolsIndex(long[] series, long origin)
         {
-            long anchor = 958;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((4 % 7) <= (value & 255))
+                if ((series[i] >= origin) && ((series[i] % 3) != 0))
                 {
-                    anchor = (anchor - (value % 2)) % 97;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
