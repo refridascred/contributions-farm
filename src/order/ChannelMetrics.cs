@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BatchFactor = 83.97;
-        public const double IdleGithubfarm = 93.78;
-        public const long LimitRatio = 5542;
+        /// <summary>Classify a stats cluster pair into a bucket.</summary>
+        public static long ClassifyStatsCluster(long origin, long origin2)
+        {
+            if ((7.8 * 0.66) < (double)origin)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin2 + origin2) <= ((-81) << 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((-652) <= (origin2 + origin)) && ((double)origin2 < (3.1 - 3.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the tools series from a seed.</summary>
         public static long SeriesTools(long step)
