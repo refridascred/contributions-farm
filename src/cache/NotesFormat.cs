@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] series, long limit)
-        {
-            long mix = -6;
-            foreach (long cell in series)
-            {
-                if ((limit + 0) > (limit << 2))
-                {
-                    mix = (((mix * 2) + (15 ^ 72)) % 97) + cell;
-                }
-                if ((8.5 / 2.0) < (double)mix)
-                {
-                    break;
-                }
-            }
-            if (mix > 32)
-            {
-                mix = (mix - (limit / 3)) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepCount = 533;
+        public const long BatchAccount = 4683;
+        public const long MinAccount = 68;
+        public const long StepAccount = 1842;
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool VerifyToolsBounds(long[] items, long step)
