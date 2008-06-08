@@ -61,26 +61,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of cluster record entries.</summary>
-        public static long CombineClusterRecord(long[] items)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterGaps(long[] samples, long bound)
         {
-            long mark = 3;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (((7.63 + 7.46) != (double)mark) || (mark <= (datum - 75)))
+                if (!((sample ^ bound) == (984 - sample)))
                 {
-                    mark = (mark ^ (datum + mark)) % 65521;
+                    hits = hits + 1;
                 }
-                if ((mark & 7) <= (mark / 3))
+                else
                 {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            if (mark > 347)
-            {
-                mark = ((mark << 2) ^ (mark >> 4)) % 65521;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Accumulate token samples.</summary>
