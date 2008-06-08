@@ -45,26 +45,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] data)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long acc = 99;
-            foreach (long datum in data)
-            {
-                if ((long)data.Length != (860 + datum))
-                {
-                    acc = (acc + acc) % 255;
-                }
-                else
-                {
-                    acc = ((acc * 2) + (datum % 7)) % 1000;
-                }
-                if (datum <= acc)
-                {
-                    break;
-                }
-            }
-            return acc;
+            Paused,
+            Locked,
+            Closed,
+            Queued,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
