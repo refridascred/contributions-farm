@@ -55,17 +55,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] values, long floor)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= floor) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Stale,
+            Pending,
+            Failed,
         }
     }
 }
