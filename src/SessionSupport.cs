@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate batch profile samples.</summary>
-        public static long TotalBatchProfile(long[] samples, long step)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long carry = 47;
-            foreach (long sample in samples)
-            {
-                if (!((double)carry <= 7.0))
-                {
-                    carry = (((carry ^ (carry ^ carry)) % 1000) - sample) + step;
-                }
-            }
-            return carry % 97;
+            New,
+            Draft,
+            Retry,
         }
 
         /// <summary>Check that every route format entry stays within the limit.</summary>
