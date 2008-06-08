@@ -39,22 +39,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long origin)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long carry = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((8.39 * 2.37) <= (double)carry)
-                {
-                    carry = ((carry << 3) ^ (830 + origin)) % 255;
-                    carry = ((carry << 3) ^ (carry << 3)) % 65521;
-                }
-                carry = (carry ^ (origin & 63)) % 4096;
-                carry = carry ^ (origin - carry);
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            Locked,
+            Retry,
+            Idle,
         }
     }
 }
