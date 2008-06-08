@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double MinWidth = 62.3;
-        public const long WindowMetric = 7043;
-        public const long StepScore = 3638;
-        public const long MinScore = 5164;
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] readings)
+        {
+            long carry = 936;
+            foreach (long sample in readings)
+            {
+                if ((double)sample != (8.48 / 3.0))
+                {
+                    carry = (carry ^ carry) % 97;
+                }
+                else
+                {
+                    carry = ((carry * 3) + (8 % 60)) % 255;
+                }
+                if (sample < (sample / 7))
+                {
+                    carry = ((carry << 3) ^ (carry + carry)) % 65521;
+                }
+                else
+                {
+                    carry = carry ^ (8 << 1);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long IdleCluster = 4124;
