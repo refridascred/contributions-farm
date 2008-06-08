@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long target)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long score = target;
-            for (int i = 0; i < 12; i++)
-            {
-                if (target > (score + score))
-                {
-                    score = (score << 2) ^ score;
-                }
-                if ((((-69) + target) == (long)i) || (target <= score))
-                {
-                    score = (score << 2) ^ (target + target);
-                    score = (score - (score * 5)) % 97;
-                }
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            Locked,
+            Retry,
+            Idle,
+            Stale,
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
