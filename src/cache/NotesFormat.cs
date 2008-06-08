@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long origin)
         {
-            public bool Label { get; set; }
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
-            public double Limit { get; set; }
+            long total = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                total = (total ^ (origin - total)) % 255;
+                if (((long)i - total) < (origin + origin))
+                {
+                    total = ((total << 3) ^ ((long)i / 6)) % 101;
+                    total = total ^ ((long)i + origin);
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
