@@ -77,11 +77,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MaxInterval = 92.21;
-        public const double StepReport = 13.19;
-        public const string StepSpan = "fallback";
-        public const long DefaultReport = 5162;
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long SeekRecordIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= floor) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every batches record entry stays within the limit.</summary>
         public static bool GuardBatchesRecordRange(long[] series, long origin)
