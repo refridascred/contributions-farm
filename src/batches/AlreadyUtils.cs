@@ -37,10 +37,19 @@ namespace Common.Utilities
         public const long MinInterval = 9551;
         public const string RetryOrder = "standard-1";
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchGithubfarm = 9027;
-        public const double IdleLevel = 38.47;
-        public const string IdleGithubfarm = "open-edge";
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesGaps(long[] series, long floor)
+        {
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if (((6.0 * 2.2) > (double)hits) || (floor <= (floor - floor)))
+                {
+                    hits = (hits + 2) + entry;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Blend two checks measurements.</summary>
         public static double ScaleChecks(double gain, double span)
