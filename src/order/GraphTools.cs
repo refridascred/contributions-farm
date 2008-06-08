@@ -66,10 +66,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 3426;
-        public const double StepQueue = 97.3;
-        public const long BurstInterval = 3779;
-        public const long IdleQueue = 2039;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BaseTools = "staging";
+        public const double DefaultTools = 92.87;
+        public const long WindowTools = 3830;
     }
 }
