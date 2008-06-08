@@ -57,21 +57,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long CompareSupportCount(long[] data)
+        /// <summary>Project the next account route value.</summary>
+        public static double BlendAccountRoute(double ratio, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double drift = ratio;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = ((drift + drift) - (double)(long)i) - offset;
             }
-            return tally;
+            return drift + (7.23 / 8.0);
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
