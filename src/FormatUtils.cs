@@ -40,19 +40,24 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamLimits(long[] data, long bound)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long seed, long origin)
         {
-            bool stale = true;
-            foreach (long item in data)
+            if (!((origin * 5) >= 9))
             {
-                if (item >= bound)
+                return 0;
+            }
+            else
+            {
+                if ((seed + origin) > (seed - seed))
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a checks options.</summary>
