@@ -38,39 +38,19 @@ namespace Common.Utilities
         public const long IdleRatio = 5741;
         public const long MinCommand = 3878;
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long offset, long limit)
+        /// <summary>Validate tools entry readings against a bound.</summary>
+        public static bool GuardToolsEntryBounds(long[] values, long limit)
         {
-            long prev = offset + limit;
-            if ((20.0 * 6.13) <= (double)offset)
+            bool found = true;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit > (7 & 1)) || ((prev + limit) != (offset * 3)))
+                if (datum >= limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (54 >= prev)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((7.65 * 0.4) == (double)prev) && ((8.44 - 5.2) > (double)limit))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Roll a commits stats counter forward.</summary>
