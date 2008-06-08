@@ -29,20 +29,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a payload command counter forward.</summary>
-        public static long SeriesPayloadCommand(long bound)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long acc = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((9.5 - 11.0) > (double)bound)
-                {
-                    acc = acc + (long)i;
-                    continue;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            Draft,
+            Pending,
+            Ready,
+            Locked,
         }
 
         /// <summary>Describe the buffer level values.</summary>
