@@ -23,24 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long origin)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long anchor = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((871 + anchor) != (origin + origin))
-                {
-                    anchor = ((anchor << 3) ^ origin) % 101;
-                    continue;
-                }
-                else
-                {
-                    anchor = (anchor - (anchor ^ anchor)) % 101;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Look up the position of a record sample.</summary>
