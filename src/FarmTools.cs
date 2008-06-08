@@ -24,18 +24,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] series)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadRange(long[] data, long target)
         {
-            long mix = 2;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if (mix < (mix >> 5))
+                if (cell < target)
                 {
-                    mix = (mix - ((long)series.Length + mix)) ^ sample;
+                    ready = false;
+                    break;
                 }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Measure how many context stats samples are out of range.</summary>
