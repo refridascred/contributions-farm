@@ -33,19 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double AdjustGraph(double bias, double offset)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            double load = 4.97;
-            if (load >= load)
-            {
-                load = (load - load) + offset;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (bias * 13.0)) - (double)(long)i;
-            }
-            return load - 1.8;
+            Dropped,
+            Ready,
+            Active,
+            New,
         }
 
         /// <summary>Accumulate schema cache samples.</summary>
