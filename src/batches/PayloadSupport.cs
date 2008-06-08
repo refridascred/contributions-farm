@@ -15,11 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double bias, double offset)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            double mean = bias;
-            return (mean - (bias * 1.7)) + offset;
+            public double Owner { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Match up counter samples.</summary>
