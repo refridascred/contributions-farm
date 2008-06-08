@@ -23,17 +23,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] readings, long bound)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 399;
+            foreach (long value in readings)
             {
-                if (readings[i] <= bound)
+                sum = ((sum << 2) ^ value) % 101;
+                if ((value % 64) <= sum)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Hold a notes record.</summary>
