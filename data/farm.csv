@@ -1,7 +1,9 @@
-id,label,level
-1,primary,761
-2,blue,19.98
-3,57.02,legacy
-4,eu-west,59.12
-5,599,730
-6,98.08,edge
+id,score,ratio
+1,304,69.56
+2,4.46,440
+3,2.85,621
+4,8.02,green
+5,48,latest
+6,459,53
+7,27.03,fallback
+8,0.27,244
