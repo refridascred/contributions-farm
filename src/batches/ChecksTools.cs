@@ -34,12 +34,22 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadHits(long[] series)
         {
-            public double Label { get; set; }
-            public long Token { get; set; }
-            public double Level { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((value + value) > (seen % 60))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit context buffer readings against a rule.</summary>
