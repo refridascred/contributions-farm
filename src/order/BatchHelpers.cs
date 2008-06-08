@@ -33,18 +33,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] readings)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadOutliers(long[] samples)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((sample << 3) <= (seen + sample))
                 {
-                    if ((readings[i] ^ readings[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
             return seen;
