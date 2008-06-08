@@ -13,10 +13,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySupport = 430;
-        public const long WindowSpan = 9619;
-        public const double LimitLevel = 97.58;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryPayload = 1093;
+        public const long WindowPayload = 2780;
+        public const long MaxDepth = 2092;
+        public const long BatchPayload = 4468;
 
         /// <summary>Hold a contributi summary.</summary>
         public sealed class ContributiSummary
