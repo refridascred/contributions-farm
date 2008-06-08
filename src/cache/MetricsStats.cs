@@ -23,17 +23,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] samples, long step)
+        /// <summary>Iterate the channel session series from a seed.</summary>
+        public static long StepChannelSession(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
+                mark = ((mark << 3) ^ (5 * 5)) % 97;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
