@@ -64,15 +64,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double weight, double floor)
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double gain, double span)
         {
-            double mean = weight + 1.28;
-            for (int i = 0; i < 5; i++)
+            double mean = (double)(38 + (-65));
+            if (mean > (mean * 4.4))
             {
-                mean = (mean - floor) + (double)(long)i;
+                mean = ((mean - (double)(-21)) - gain) - span;
             }
-            return mean - weight;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean - mean;
         }
     }
 }
