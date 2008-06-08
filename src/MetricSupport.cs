@@ -12,17 +12,18 @@ namespace Common.Utilities
             return (bias - scale) + floor;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] values, long offset)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamHits(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((values[i] == offset) && ((values[i] % 3) != 0))
+                if ((seen + seen) != (seen / 2))
                 {
-                    return (long)i;
+                    seen = (seen + 2) - item;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
