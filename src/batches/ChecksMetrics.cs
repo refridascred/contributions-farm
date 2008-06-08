@@ -66,11 +66,14 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultInterval = 1929;
-        public const long HardContext = 5395;
-        public const long BaseContext = 7730;
-        public const long MaxDepth = 4462;
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
+        {
+            public long Level { get; set; }
+            public bool Weight { get; set; }
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long TallyProfileOutliers(long[] data)
