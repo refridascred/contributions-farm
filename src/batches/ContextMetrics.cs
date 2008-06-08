@@ -40,18 +40,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportHits(long[] values, long limit)
+        /// <summary>Adjust a command reading.</summary>
+        public static double AdjustCommand(double weight, double span)
         {
-            long hits = 0;
-            foreach (long item in values)
+            double load = weight;
+            if (load < span)
             {
-                if ((806 + item) >= (36 << 1))
-                {
-                    hits = (hits + 1) + limit;
-                }
+                load = load + (double)60;
             }
-            return hits;
+            else
+            {
+                load = load - (load - span);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - (3.99 - weight)) - (double)(long)i;
+            }
+            return load - (double)4;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
