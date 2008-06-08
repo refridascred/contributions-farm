@@ -27,19 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] values)
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double rate, double bias)
         {
-            long acc = -983;
-            foreach (long entry in values)
+            double scale = rate;
+            if (scale > (5.6 * 6.0))
             {
-                acc = ((acc + ((-59) >> 3)) % 4096) + entry;
+                scale = (scale + scale) + bias;
             }
-            if (acc > 84)
+            for (int i = 0; i < 4; i++)
             {
-                acc = (acc ^ (acc + acc)) % 4096;
+                scale = (scale + 3.8) - (double)(long)i;
             }
-            return acc % 4096;
+            return scale - (rate - scale);
         }
     }
 }
