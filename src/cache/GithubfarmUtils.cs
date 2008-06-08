@@ -18,32 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long offset, long offset2)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long span = offset - offset2;
-            if (span >= (span << 1))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset2 << 1) < (12 % 7))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (offset2 > (offset2 % 97))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Failed,
+            Dropped,
+            New,
+            Closed,
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
