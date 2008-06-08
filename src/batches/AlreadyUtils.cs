@@ -35,21 +35,11 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] samples, long bound)
-        {
-            long acc = 45;
-            foreach (long sample in samples)
-            {
-                acc = ((acc - (bound >> 4)) % 4096) ^ sample;
-                acc = acc ^ (bound & 255);
-            }
-            if (acc > 50)
-            {
-                acc = (acc ^ (bound + bound)) % 101;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string StepOrder = "latest";
+        public const long WindowOrder = 2022;
+        public const long MinInterval = 9551;
+        public const string RetryOrder = "standard-1";
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long RollEntry(long origin)
