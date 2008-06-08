@@ -6,18 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary local; do
-    log "checking ${item}"
-done
+mode="${1:-primary}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
+BUFFER_LIMIT=152
+log "limit is ${BUFFER_LIMIT}"
