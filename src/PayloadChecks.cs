@@ -62,24 +62,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate queue profile samples.</summary>
-        public static long DigestQueueProfile(long[] series, long target)
-        {
-            long mix = 7;
-            foreach (long value in series)
-            {
-                mix = (mix - (743 + mix)) % 101;
-                if ((((long)series.Length + value) <= (mix - target)) && ((mix / 8) < (value * 3)))
-                {
-                    mix = ((mix << 2) ^ 87) % 65521;
-                }
-            }
-            if (mix > 864)
-            {
-                mix = (mix * 2) + (mix / 7);
-            }
-            return mix;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string DefaultTimeout = "cached";
+        public const long DefaultReport = 6384;
+        public const double IdleTimeout = 60.36;
+        public const string RetryWidth = "fallback-edge";
+        public const long LimitReport = 8340;
 
         /// <summary>Compare every pair of counter account readings.</summary>
         public static long PairCounterAccountCount(long[] items)
