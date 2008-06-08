@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionGaps(long[] samples)
         {
-            public double Rank { get; set; }
-            public string Size { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (!((entry - entry) < (-70)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
