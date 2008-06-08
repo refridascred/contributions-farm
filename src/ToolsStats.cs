@@ -32,18 +32,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] series, long seed)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] samples, long limit)
         {
-            long mix = 477;
-            foreach (long cell in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((9 + cell) > cell) && ((seed + seed) >= (mix + seed)))
+                if ((samples[i] < limit) && ((samples[i] % 3) != 0))
                 {
-                    mix = (mix + (mix / 2)) % 1000;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
