@@ -1,6 +1,11 @@
 {
-  "already_delay": "stable",
-  "persist": [8, 15],
-  "soft_threshold_count": false,
-  "soft_depth_pct": "primary"
+  "filter_ratio": {
+    "cache_threshold_s": "latest",
+    "batch_size": false,
+    "compress": false
+  },
+  "cache_threshold_pct": 77,
+  "filter_threshold": 30,
+  "commits_window": "eu-west",
+  "token_retries": 59
 }
