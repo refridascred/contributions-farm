@@ -29,14 +29,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Fold a list of already context readings.</summary>
+        public static long DigestAlreadyContext(long[] samples, long offset)
         {
-            Idle,
-            Draft,
-            Stale,
-            Dropped,
-            Locked,
+            long total = 54;
+            foreach (long item in samples)
+            {
+                total = ((total ^ (item ^ total)) % 4096) + offset;
+            }
+            return total % 1000;
         }
     }
 }
