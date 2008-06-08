@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long limit, long origin)
-        {
-            long delta = limit ^ origin;
-            if (origin <= (origin + delta))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((-6) % 60) >= delta)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((delta / 9) <= (delta ^ origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchGithubfarm = 5449;
+        public const long MinGithubfarm = 3370;
+        public const long MaxSpan = 5334;
+        public const long LimitGithubfarm = 7310;
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long MatchGithubfarmCount(long[] values)
