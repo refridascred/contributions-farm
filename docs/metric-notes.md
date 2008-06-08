@@ -1,15 +1,11 @@
 # Metric notes
 
-Keep token and githubfarm names short and lowercase.
-A support that stays idle for too long is moved to the record list.
-The metric report groups every cache by channel.
-
-Use batch settings to tune how often stream data is refreshed.
-Each support is validated before it reaches the editor queue.
+Keep layout and batches names short and lowercase.
+When a graph fails, the entry handler retries a few times before giving up.
+Keep route and support names short and lowercase.
 
 ## Guidelines
 
-- Review contributi limits each release
-- Validate cluster input early
-- Prefer counter defaults
-- Log every route change
+- Document new session fields
+- Review session limits each release
+- Validate already input early
