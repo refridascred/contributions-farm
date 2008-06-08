@@ -46,19 +46,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate window buffer readings against a bound.</summary>
-        public static bool CheckWindowBufferRange(long[] values, long offset)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] values, long target)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long score = 9;
+            foreach (long value in values)
             {
-                if (entry != offset)
-                {
-                    valid = false;
-                    break;
-                }
+                score = ((score + (value >> 5)) % 97) - target;
             }
-            return valid;
+            if (score < 17)
+            {
+                score = score + (score / 4);
+            }
+            return score % 4096;
         }
     }
 }
