@@ -37,21 +37,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] series)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long score = -816;
-            foreach (long datum in series)
-            {
-                score = score - (datum + score);
-                score = ((score * 4) + (score % 64)) % 255;
-                score = score ^ ((long)series.Length << 2);
-            }
-            if (score > 8)
-            {
-                score = (score << 2) ^ score;
-            }
-            return score;
+            public string Owner { get; set; } = "";
+            public bool Label { get; set; }
+            public double Total { get; set; }
         }
     }
 }
