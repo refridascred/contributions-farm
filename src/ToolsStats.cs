@@ -23,19 +23,18 @@ namespace Common.Utilities
         public const string BaseScore = "local-edge";
         public const double IdleRatio = 62.69;
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double gain, double floor)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesHits(long[] data, long step)
         {
-            double bias = (floor * 7.6) * 6.0;
-            if (bias < 20.0)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                bias = (bias + (double)1) + gain;
+                if (entry < (step / 8))
+                {
+                    matches = matches + 2;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + (double)35) - (double)(long)i;
-            }
-            return bias + (double)295;
+            return matches;
         }
 
         /// <summary>Digest a series of window entries.</summary>
