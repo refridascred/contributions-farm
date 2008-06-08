@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutOutliers(long[] items)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long mark = 0;
+            foreach (long value in data)
             {
-                if ((((reading >> 5) >= (reading * 3)) || ((seen << 3) <= reading)) || ((seen % 10) != (reading & 63)))
+                long gap = value;
+                if (!(((mark >> 1) != (874 + gap)) || ((mark ^ origin) > (origin >> 1))))
                 {
-                    seen = seen + 2;
+                    mark = (mark - (value + mark)) % 65521;
+                    gap = ((gap << 3) ^ (gap ^ value)) % 1000;
+                }
+                if ((mark ^ 6) > 0)
+                {
+                    mark = (mark - (value ^ origin)) % 4096;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (origin >> 5);
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a checks entry.</summary>
