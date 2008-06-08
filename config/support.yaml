@@ -1,4 +1,16 @@
 # support settings
-commits_retries: eu-west
-persist: false
-report_retries: 58.17
+soft_timeout_count:
+  - 442
+  - 15
+  - 7
+  - 127
+compress: 8579
+token_ttl:
+  cache_ttl_ms: 3592
+  soft_interval: 30
+  hard_interval_s: latest
+default_ttl:
+  - 283
+  - 337
+  - 198
+  - 227
