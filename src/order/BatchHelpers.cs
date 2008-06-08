@@ -11,13 +11,17 @@ namespace Common.Utilities
         public const long MaxLevel = 3870;
         public const long SoftInterval = 195;
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LookupGraphIndex(long[] readings, long step)
         {
-            Failed,
-            New,
-            Active,
-            Draft,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate order record readings against a bound.</summary>
