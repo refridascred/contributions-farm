@@ -34,21 +34,13 @@ namespace Common.Utilities
             return load - floor;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] data)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Flag { get; set; }
+            public long Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public string Region { get; set; } = "";
         }
     }
 }
