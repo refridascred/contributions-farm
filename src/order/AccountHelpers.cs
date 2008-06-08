@@ -57,15 +57,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] samples)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long result = 641;
-            foreach (long entry in samples)
-            {
-                result = (((result * 5) + result) % 101) ^ entry;
-            }
-            return result % 97;
+            Locked,
+            Draft,
+            Synced,
         }
 
         /// <summary>Validate counter context readings against a bound.</summary>
