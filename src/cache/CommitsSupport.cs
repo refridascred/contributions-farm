@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterLimits(long[] values, long bound)
+        /// <summary>Locate a token window reading by value.</summary>
+        public static long FindTokenWindowIndex(long[] items, long floor)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry < bound)
+                if ((items[i] < floor) && ((items[i] % 2) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
