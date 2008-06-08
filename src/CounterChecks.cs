@@ -63,11 +63,17 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Look up the position of a stats commits sample.</summary>
+        public static long LookupStatsCommitsIndex(long[] samples, long step)
         {
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
