@@ -31,18 +31,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountHits(long[] series, long target)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            double weight = rate / 5.0;
+            if (weight < bias)
             {
-                if ((reading >> 5) <= 64)
-                {
-                    tally = (tally + 3) + target;
-                }
+                weight = weight + (4.9 + bias);
             }
-            return tally;
+            else
+            {
+                weight = weight + bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + (2.92 / 6.0)) + (double)(long)i;
+            }
+            return weight - (rate / 2.0);
         }
 
         /// <summary>Accumulate filter samples.</summary>
