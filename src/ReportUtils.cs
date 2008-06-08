@@ -28,13 +28,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Find the first githubfarm counter entry that matches the target.</summary>
+        public static long LocateGithubfarmCounterIndex(long[] values, long floor)
         {
-            Done,
-            Failed,
-            Ready,
-            Closed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
