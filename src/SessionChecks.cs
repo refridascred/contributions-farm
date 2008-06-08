@@ -38,17 +38,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a payload stats sample.</summary>
-        public static long LocatePayloadStatsIndex(long[] samples, long seed)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= seed) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Dropped,
+            New,
         }
 
         /// <summary>Define order limits and defaults.</summary>
