@@ -47,12 +47,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Digest a series of farm token entries.</summary>
+        public static long CombineFarmToken(long[] readings, long bound)
         {
-            Closed,
-            Retry,
-            Dropped,
+            long carry = 83;
+            foreach (long reading in readings)
+            {
+                carry = carry - (reading << 2);
+                if (!((double)bound <= (7.1 / 2.0)))
+                {
+                    carry = carry + carry;
+                }
+            }
+            return carry;
         }
     }
 }
