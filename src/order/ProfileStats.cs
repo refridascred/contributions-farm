@@ -33,38 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long bound, long offset)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            if (offset >= 408)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound - offset) < (bound << 1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((-68) - offset) <= offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound / 3) != (offset + bound))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public double Token { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
