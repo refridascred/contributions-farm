@@ -27,21 +27,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] data)
+        /// <summary>Accumulate already tools samples.</summary>
+        public static long ScoreAlreadyTools(long[] data, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 212;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (seed < datum)
                 {
-                    if ((data[i] + data[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score << 3) ^ 82;
+                }
+                else
+                {
+                    score = ((score << 3) ^ score) % 1000;
                 }
             }
-            return matches;
+            return score;
         }
     }
 }
