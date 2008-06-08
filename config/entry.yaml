@@ -1,8 +1,20 @@
 # entry settings
-commits_retries:
-  - 53
-  - 118
-enabled: standard
-min_threshold_pct: 33.9
-warm_window: 250
-filter_ttl: 62.31
+flush_threshold_ms:
+  - 217
+  - 427
+  - 233
+  - 19
+soft_size_s: cached
+base_ttl: 78.26
+min_timeout_pct: local
+sync_threshold_ms:
+  cache_threshold: 63
+  flush_timeout_s: 1024
+  soft_depth:
+    enabled: 81
+    min_timeout_s: strict
+    base_window: 100
+    dry_run: eu-west
+    report_depth: green
+  account_delay: false
+cache_threshold: 28
