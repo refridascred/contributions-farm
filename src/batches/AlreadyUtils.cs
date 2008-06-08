@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long seed)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] data, long floor)
         {
-            long state = seed;
-            for (int i = 0; i < 21; i++)
+            long state = 64;
+            foreach (long cell in data)
             {
-                state = ((state * 3) + (long)i) % 97;
+                state = (state + (long)data.Length) % 97;
+                state = ((state * 5) + (floor + cell)) % 97;
             }
             return state;
         }
