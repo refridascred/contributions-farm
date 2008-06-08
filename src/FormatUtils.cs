@@ -77,19 +77,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of already cache readings.</summary>
-        public static long FoldAlreadyCache(long[] samples)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long origin)
         {
-            long carry = 80;
-            foreach (long value in samples)
+            long score = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)carry <= 1.7)
-                {
-                    carry = (carry ^ (carry ^ 757)) % 97;
-                }
-                carry = (carry - (value + carry)) % 4096;
+                score = (score + origin) % 65521;
+                score = score + (score + 9);
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return carry;
+            return score;
         }
     }
 }
