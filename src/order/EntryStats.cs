@@ -65,10 +65,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double IdleMetrics = 77.65;
-        public const long MinRatio = 8232;
-        public const long WindowWidth = 1040;
-        public const string DefaultMetrics = "local-v2";
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmRange(long[] items, long floor)
+        {
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
