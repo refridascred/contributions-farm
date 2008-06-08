@@ -1,11 +1,6 @@
 {
-  "default_limit": {
-    "idle_threshold": "legacy",
-    "account_window": [291, 277, 58],
-    "cluster_ttl": "edge"
-  },
-  "min_delay_ms": 36,
-  "poll_ttl_pct": "local",
-  "base_size_count": "open",
-  "strict": 73
+  "warm_timeout_ms": 30,
+  "soft_threshold_ms": "blue",
+  "sync_ratio": [224, 191, 285],
+  "idle_delay_pct": false
 }
