@@ -20,21 +20,26 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] data)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] data, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 201;
+            foreach (long value in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!(acc < (value / 4)))
                 {
-                    if ((data[i] ^ data[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = ((acc * 3) + (bound << 1)) % 255;
+                }
+                if ((value >> 3) >= acc)
+                {
+                    acc = (acc + (5 - 8)) % 1000;
+                }
+                else
+                {
+                    acc = (acc - bound) % 255;
                 }
             }
-            return seen;
+            return acc % 65521;
         }
 
         /// <summary>Validate counter context readings against a bound.</summary>
