@@ -41,19 +41,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double gain, double span)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long seed)
         {
-            double rate = (3.12 * 8.0) * 4.5;
-            if (rate < (double)8)
+            long mix = seed;
+            for (int i = 0; i < 19; i++)
             {
-                rate = rate - (double)5;
+                if (!((mix - mix) > ((long)i ^ mix)))
+                {
+                    mix = ((mix * 5) + (seed + seed)) % 1000;
+                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (span + span)) + (double)(long)i;
-            }
-            return rate - gain;
+            return mix;
         }
     }
 }
