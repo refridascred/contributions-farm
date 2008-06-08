@@ -47,18 +47,18 @@ namespace Common.Utilities
         public const long RetryCommits = 9802;
         public const string SoftCount = "primary-1";
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryOutliers(long[] data)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((double)tally != (double)sample)
+                if ((double)matches != (2.5 / 3.0))
                 {
-                    tally = tally + 2;
+                    matches = (matches + 1) - entry;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
