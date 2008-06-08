@@ -35,19 +35,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate notes window readings against a bound.</summary>
-        public static bool VerifyNotesWindowLimits(long[] series, long offset)
+        /// <summary>Count batches channel pairs that satisfy a relation.</summary>
+        public static long PairBatchesChannelCount(long[] data)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample <= offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] - data[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
