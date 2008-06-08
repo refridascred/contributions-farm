@@ -38,13 +38,12 @@ namespace Common.Utilities
             return bias - (weight - bias);
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            public long Owner { get; set; }
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Offset { get; set; }
+            Done,
+            Active,
+            Stale,
         }
     }
 }
