@@ -1,8 +1,22 @@
 {
-  "base_size_ms": 91.51,
-  "batch_interval": 23.39,
-  "strict": ["cached", "stable", "blue"],
-  "idle_threshold_pct": 76.07,
-  "command_limit": "stable",
-  "poll_interval_ms": false
+  "warm_retries_ms": {
+    "soft_threshold_pct": "stable",
+    "max_delay_ms": 7777,
+    "persist": {
+      "poll_capacity": 303,
+      "burst_size_s": "strict",
+      "soft_ratio_count": "primary",
+      "max_depth_s": true
+    },
+    "base_capacity_pct": 65.95,
+    "default_depth": "edge",
+    "strict": {
+      "persist": true,
+      "cache_size_s": "blue",
+      "record_ratio": true,
+      "batch_ttl": [80, 287]
+    }
+  },
+  "idle_window": ["staging", "standard"],
+  "strict": false
 }
