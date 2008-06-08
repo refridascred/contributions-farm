@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long step)
         {
-            Dropped,
-            Active,
-            Ready,
-            Failed,
-            Stale,
+            long acc = step;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((step + step) >= ((-330) + step))
+                {
+                    continue;
+                }
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
