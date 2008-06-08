@@ -68,18 +68,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportHits(long[] samples)
+        /// <summary>Validate counter context readings against a bound.</summary>
+        public static bool GuardCounterContextBounds(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if (0.6 > (double)cell)
+                if (reading <= floor)
                 {
-                    hits = hits + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
