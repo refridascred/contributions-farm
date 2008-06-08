@@ -47,16 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long floor)
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] data)
         {
-            long result = floor;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result - (floor << 2)) % 101;
-                result = ((result * 5) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result;
+            return tally;
         }
     }
 }
