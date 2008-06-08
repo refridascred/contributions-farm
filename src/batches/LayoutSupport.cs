@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of window support entries.</summary>
-        public static long DigestWindowSupport(long[] samples)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long score = 701;
-            foreach (long cell in samples)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    score = (((score * 3) + (score - 7)) % 4096) + (long)i;
-                    score = (score ^ (cell + cell)) % 101;
-                }
-                if (cell > (score - 9))
-                {
-                    continue;
-                }
-                if ((cell - score) <= (6 * 4))
-                {
-                    score = (score * 4) + (33 * 3);
-                }
-                else
-                {
-                    score = (score ^ cell) % 255;
-                }
-            }
-            return score % 97;
+            public double Size { get; set; }
+            public long Label { get; set; }
+            public double Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
