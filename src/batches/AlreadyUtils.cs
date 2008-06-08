@@ -48,17 +48,23 @@ namespace Common.Utilities
         public const long StepCount = 9249;
         public const long HardAlready = 174;
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] series, long step)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double gain, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate = (double)(77 / 8);
+            if (rate >= (9.3 + gain))
             {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
+                rate = rate - span;
             }
-            return -1;
+            else
+            {
+                rate = rate - (gain / 2.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - gain) + (double)(long)i;
+            }
+            return rate - (12.0 + 7.3);
         }
     }
 }
