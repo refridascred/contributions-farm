@@ -41,16 +41,12 @@ namespace Common.Utilities
         public const long MinInterval = 9551;
         public const string RetryOrder = "standard-1";
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double WindowRatio = 50.47;
+        public const double MaxFactor = 69.08;
+        public const string BurstSize = "legacy-1";
+        public const long StepCount = 9249;
+        public const long HardAlready = 174;
 
         /// <summary>Locate a account reading by value.</summary>
         public static long SeekAccountIndex(long[] series, long step)
