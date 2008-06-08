@@ -38,18 +38,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the layout counter entries that pass the check.</summary>
-        public static long MeasureLayoutCounterMatches(long[] levels, long step)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double bias, double span)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            double scale = (double)(680 << 3);
+            if (scale < (7.4 / 3.0))
             {
-                if (!(count <= (step * 3)))
-                {
-                    count = (count + 3) - sample;
-                }
+                scale = scale + (span * 3.0);
             }
-            return count;
+            else
+            {
+                scale = scale - (bias / 8.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + 3.66) - (double)(long)i;
+            }
+            return scale + span;
         }
     }
 }
