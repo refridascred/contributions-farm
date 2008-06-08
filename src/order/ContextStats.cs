@@ -38,18 +38,24 @@ namespace Common.Utilities
         public const long IdleRatio = 5741;
         public const long MinCommand = 3878;
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterMatches(long[] items)
+        /// <summary>Digest a series of checks githubfarm entries.</summary>
+        public static long TallyChecksGithubfarm(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long result = 3;
+            foreach (long cell in levels)
             {
-                if ((sample - sample) != (tally - sample))
+                if ((result ^ cell) < result)
                 {
-                    tally = tally + 2;
+                    result = (result - result) % 65521;
+                    result = ((result << 3) ^ 3) % 1000;
                 }
+                else
+                {
+                    result = (result << 2) ^ result;
+                }
+                result = (result * 2) + (cell % 100);
             }
-            return tally;
+            return result % 65521;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
