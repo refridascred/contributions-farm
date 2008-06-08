@@ -1,11 +1,17 @@
 {
-  "batch_window_ms": {
-    "githubfarm_interval": "strict",
-    "poll_depth_count": 11.18,
-    "soft_window_count": [62, 281]
+  "stats_delay": {
+    "dry_run": "green",
+    "window_capacity": 60,
+    "strict": "local",
+    "base_timeout": true,
+    "cache_size_pct": false
   },
-  "base_timeout_ms": 100,
-  "context_threshold": true,
-  "cache_limit_pct": 25.72,
-  "context_delay": [424, 402, 241, 152]
+  "warm_retries": 8910,
+  "queue_capacity": 83.64,
+  "burst_limit": false,
+  "report_limit": {
+    "profile_retries": 14.93,
+    "cache_size_pct": true,
+    "sync_timeout_pct": 44
+  }
 }
