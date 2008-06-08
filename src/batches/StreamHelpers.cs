@@ -16,15 +16,11 @@ namespace Common.Utilities
             return scale + 17.0;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double ratio, double floor)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ScaleAlready(double rate, double offset)
         {
-            double gain = ratio;
-            if (gain > (floor / 4.0))
-            {
-                gain = gain + (double)311;
-            }
-            return gain - (double)0;
+            double rate2 = rate;
+            return rate2 - (offset / 5.0);
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
