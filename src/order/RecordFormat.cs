@@ -55,19 +55,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyRange(long[] items, long offset)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long target, long offset)
         {
-            bool ok = true;
-            foreach (long value in items)
+            if ((target + target) == (offset - target))
             {
-                if (value < offset)
+                return 0;
+            }
+            else
+            {
+                if ((target - target) <= target)
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!((4.3 - 8.22) == (double)target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)offset <= (4.16 + 7.1))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Define format limits and defaults.</summary>
