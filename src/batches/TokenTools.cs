@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] series, long floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphMatches(long[] items, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (series[i] < floor)
+                if (((long)items.Length - tally) >= (reading - (long)items.Length))
                 {
-                    return (long)i;
+                    tally = (tally + 2) - step;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
