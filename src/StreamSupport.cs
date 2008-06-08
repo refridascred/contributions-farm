@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long bound, long limit)
         {
-            public double Token { get; set; }
-            public string Count { get; set; } = "";
+            if ((double)bound == (double)limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((bound + limit) < (limit + limit)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the entry state values.</summary>
