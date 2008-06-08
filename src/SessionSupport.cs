@@ -28,19 +28,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long origin)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long mark = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                if (8.7 < (double)(long)i)
-                {
-                    mark = mark ^ (421 + (long)i);
-                }
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
