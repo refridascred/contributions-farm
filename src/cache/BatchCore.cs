@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long PairSupportCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BaseGraph = "fallback-1";
+        public const long RetryGraph = 8570;
+        public const long CacheWidth = 2113;
+        public const long WindowGraph = 2586;
 
         /// <summary>Locate a command reading by value.</summary>
         public static long LookupCommandIndex(long[] samples, long step)
