@@ -34,21 +34,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count metric queue pairs that satisfy a relation.</summary>
-        public static long CompareMetricQueueCount(long[] series)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordLimits(long[] readings, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell > limit)
                 {
-                    if ((series[i] - series[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
