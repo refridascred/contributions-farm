@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryLimits(long[] data, long step)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] levels)
         {
-            bool found = true;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (item > step)
+                if ((double)seen > (16.0 / 7.0))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 3) + datum;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Hold a queue info.</summary>
