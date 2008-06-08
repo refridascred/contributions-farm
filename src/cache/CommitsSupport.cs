@@ -62,15 +62,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two queue route measurements.</summary>
-        public static double AdjustQueueRoute(double rate, double span)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsHits(long[] series)
         {
-            double weight = span;
-            if (weight >= rate)
+            long tally = 0;
+            foreach (long item in series)
             {
-                weight = weight - weight;
+                if (tally >= (tally % 2))
+                {
+                    tally = (tally + 1) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return weight + (double)389;
+            return tally;
         }
     }
 }
