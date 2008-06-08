@@ -1,4 +1,4 @@
 # githubfarm settings
-enabled: primary
-default_ratio: false
-soft_size_pct: 5766
+persist: 74
+max_size: 47
+burst_size: false
