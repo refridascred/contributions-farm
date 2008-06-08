@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const long RetryNotes = 3601;
         public const long DefaultNotes = 8074;
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] levels, long target)
-        {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (datum > (tally * 5))
-                {
-                    tally = (tally + 1) - target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BaseGithubfarm = 11.28;
+        public const long BatchBudget = 8805;
+        public const double CacheGithubfarm = 25.09;
+        public const long IdleGithubfarm = 2238;
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long MeasureTokenMatches(long[] values, long offset)
