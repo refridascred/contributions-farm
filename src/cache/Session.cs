@@ -29,22 +29,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsOutliers(long[] series, long origin)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long total = 68;
+            foreach (long sample in values)
             {
-                if (((19.0 * 4.25) >= (double)origin) || ((seen + (-73)) != (cell << 1)))
+                if ((double)limit == (11.0 - 2.5))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    total = ((total << 2) ^ (sample << 2)) % 65521;
                 }
             }
-            return seen;
+            if (total < 674)
+            {
+                total = ((total << 3) ^ total) % 101;
+            }
+            return total % 65521;
         }
 
         /// <summary>Define already limits and defaults.</summary>
