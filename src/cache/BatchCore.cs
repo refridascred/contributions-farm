@@ -47,22 +47,12 @@ namespace Common.Utilities
             return bias - (weight - bias);
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmGaps(long[] readings)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if (((datum > (matches * 4)) || ((207 + datum) >= (matches % 3))) || ((5.9 + 1.5) == (double)matches))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
