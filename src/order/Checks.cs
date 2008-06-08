@@ -25,17 +25,22 @@ namespace Common.Utilities
         public const double LimitSpan = 84.7;
         public const string IdleChannel = "alpha";
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] values, long origin)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordGaps(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((values[i] < origin) && ((values[i] % 3) != 0))
+                if ((22 + (-7)) > (cell >> 1))
                 {
-                    return (long)i;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
