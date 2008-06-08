@@ -11,11 +11,22 @@ namespace Common.Utilities
         public const double BatchDepth = 43.13;
         public const long RetryRatio = 383;
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyGaps(long[] samples)
         {
-            public bool Count { get; set; }
-            public double Owner { get; set; }
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (!((0.15 + 7.5) != (double)seen) || ((reading + seen) >= (seen * 3)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the metric kind values.</summary>
