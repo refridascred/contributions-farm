@@ -68,11 +68,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
-        {
-            public long Offset { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double DefaultLevel = 64.79;
+        public const long BatchSupport = 9303;
+        public const long BaseSupport = 6255;
+        public const double RetrySupport = 70.85;
     }
 }
