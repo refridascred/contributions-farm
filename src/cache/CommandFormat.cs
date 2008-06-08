@@ -36,17 +36,15 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LookupTokenIndex(long[] samples, long step)
+        /// <summary>Fold a list of session metric readings.</summary>
+        public static long DigestSessionMetric(long[] levels, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 405;
+            foreach (long value in levels)
             {
-                if (samples[i] <= step)
-                {
-                    return (long)i;
-                }
+                score = ((score + score) - value) + step;
             }
-            return -1;
+            return score;
         }
     }
 }
