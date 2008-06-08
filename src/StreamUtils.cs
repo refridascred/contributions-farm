@@ -71,19 +71,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every account graph entry stays within the limit.</summary>
-        public static bool ValidateAccountGraphLimits(long[] levels, long limit)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Ready,
+            Synced,
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
