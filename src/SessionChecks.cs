@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double rate, double offset)
+        /// <summary>Digest a series of window route entries.</summary>
+        public static long DigestWindowRoute(long[] levels)
         {
-            double scale = (double)468 + rate;
-            return (scale - (double)(-380)) + offset;
+            long mix = 3;
+            foreach (long reading in levels)
+            {
+                mix = mix ^ (reading & 1);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
