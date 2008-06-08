@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of layout metric entries.</summary>
-        public static long CombineLayoutMetric(long[] series, long target)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] readings, long seed)
         {
-            long mark = 449;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if ((457 << 3) > value)
+                if ((seed & 31) != (seen >> 2))
                 {
-                    mark = mark - ((long)series.Length + mark);
-                }
-                else
-                {
-                    mark = (mark ^ (target + value)) % 101;
+                    seen = (seen + 2) + value;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
