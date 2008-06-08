@@ -37,18 +37,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphOutliers(long[] levels)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((item & 31) < (36 & 255))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BurstTimeout = "standard-1";
+        public const double BatchCommand = 64.84;
+        public const double BurstCommand = 38.01;
+        public const long LimitCount = 9929;
     }
 }
