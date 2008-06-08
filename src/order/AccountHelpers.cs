@@ -64,31 +64,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long offset, long step)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportHits(long[] samples)
         {
-            if (step > (step & 63))
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((77 / 9) <= (offset ^ step))
+                if (0.6 > (double)cell)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((5.8 - 4.53) != (double)step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
     }
 }
