@@ -12,12 +12,23 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftChannel = 9090;
-        public const double BaseChannel = 69.93;
-        public const long DefaultChannel = 602;
-        public const double LimitSpan = 84.7;
-        public const string IdleChannel = "alpha";
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] series)
+        {
+            long sum = 2;
+            foreach (long reading in series)
+            {
+                if ((reading * 2) < (sum % 100))
+                {
+                    sum = sum + (sum + sum);
+                }
+                if ((sum + sum) < reading)
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long CacheFactor = 9324;
