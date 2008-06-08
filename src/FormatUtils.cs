@@ -45,17 +45,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] levels, long origin)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamLimits(long[] data, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if ((levels[i] <= origin) && ((levels[i] % 5) == 0))
+                if (item >= bound)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
