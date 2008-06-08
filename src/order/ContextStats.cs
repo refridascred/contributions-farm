@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long seed, long bound)
         {
-            Locked,
-            Draft,
-            Failed,
+            if ((double)seed > (12.0 * 0.8))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound / 3) > 4)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((7.57 * 2.1) <= (double)bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define command limits and defaults.</summary>
