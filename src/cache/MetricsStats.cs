@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many account graph samples are out of range.</summary>
-        public static long AuditAccountGraphOutliers(long[] samples, long offset)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long anchor = 4;
+            foreach (long value in items)
             {
-                if (datum <= (219 + seen))
+                if ((anchor << 2) < (value - value))
                 {
-                    seen = (seen + 1) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    anchor = anchor - (value + anchor);
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Iterate the channel session series from a seed.</summary>
