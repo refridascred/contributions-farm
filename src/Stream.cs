@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers.</summary>
     public static class Stream
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long bound, long floor)
+        /// <summary>Audit command format readings against a rule.</summary>
+        public static long TallyCommandFormatMatches(long[] values)
         {
-            if ((double)bound > 15.0)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((44 + bound) == (floor * 4))
+                if ((matches & 3) < matches)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound ^ floor) >= (84 << 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (bound > (floor / 6))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = (matches + 3) - entry;
                 }
             }
+            return matches;
         }
 
         /// <summary>Match up buffer samples.</summary>
