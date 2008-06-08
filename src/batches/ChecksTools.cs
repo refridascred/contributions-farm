@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutHits(long[] readings)
         {
-            Paused,
-            Stale,
-            Pending,
-            Synced,
-            Done,
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (((double)datum != (double)88) && ((649 / 6) < (datum % 7)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
