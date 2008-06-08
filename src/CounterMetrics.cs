@@ -13,12 +13,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] series, long step)
         {
-            Paused,
-            Failed,
-            Idle,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < step) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
