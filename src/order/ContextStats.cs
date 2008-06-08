@@ -38,28 +38,36 @@ namespace Common.Utilities
         public const long IdleRatio = 5741;
         public const long MinCommand = 3878;
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long target, long step)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long offset, long limit)
         {
-            if ((6.0 + 3.42) == (double)step)
+            long prev = offset + limit;
+            if ((20.0 * 6.13) <= (double)offset)
             {
-                return 2;
+                return 8;
             }
             else
             {
-                if (!((step * 3) > (target * 3)))
+                if ((limit > (7 & 1)) || ((prev + limit) != (offset * 3)))
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
-                    if (!((target & 255) <= (step & 7)))
+                    if (54 >= prev)
                     {
                         return 6;
                     }
                     else
                     {
-                        return 4;
+                        if (((7.65 * 0.4) == (double)prev) && ((8.44 - 5.2) > (double)limit))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
