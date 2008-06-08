@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Find the first farm support entry that matches the target.</summary>
-        public static long SeekFarmSupportIndex(long[] items, long step)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 19; i++)
             {
-                if ((items[i] <= step) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                acc = acc - (acc & 1);
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
