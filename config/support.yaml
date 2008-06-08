@@ -1,12 +1,15 @@
 # support settings
-base_threshold: eu-west
-cache_limit_pct: 500
-batch_delay:
-  - blue
-  - eu-west
-base_depth: 250
-githubfarm_depth:
-  - standard
-  - local
-  - eu-west
-  - cached
+support_threshold: 90.05
+cache_window_s: 6409
+default_timeout_s:
+  strict:
+    - 347
+    - 397
+    - 163
+  max_limit: staging
+  default_ratio_pct: true
+  max_timeout:
+    - latest
+    - strict
+    - cached
+    - standard
