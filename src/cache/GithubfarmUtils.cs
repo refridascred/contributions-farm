@@ -47,9 +47,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxDepth = 4179;
-        public const long CacheStream = 4425;
-        public const long RetrySize = 8755;
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
+        {
+            Closed,
+            Retry,
+            Dropped,
+        }
     }
 }
