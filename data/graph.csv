@@ -1,11 +1,6 @@
-id,score,count
-1,47.86,73.06
-2,25.43,279
-3,edge,44.24
-4,837,standard
-5,935,eu-west
-6,68.3,eu-west
-7,299,primary
-8,primary,latest
-9,304,68.55
-10,200,181
+id,score,token
+1,470,745
+2,fallback,228
+3,46.88,19
+4,677,787
+5,11.77,latest
