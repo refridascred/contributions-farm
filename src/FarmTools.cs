@@ -38,10 +38,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFarm = 6311;
-        public const double LimitFactor = 2.68;
-        public const string HardInterval = "cached";
-        public const string CacheFarm = "staging-edge";
+        /// <summary>Measure how many context stats samples are out of range.</summary>
+        public static long AuditContextStatsMatches(long[] series, long bound)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (((double)item > (double)bound) && !((seen - bound) > ((-48) + seen)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
