@@ -5,16 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long seed)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long limit)
         {
-            long carry = seed;
-            for (int i = 0; i < 16; i++)
+            long total = limit;
+            for (int i = 0; i < 21; i++)
             {
-                carry = (carry << 2) ^ (seed + carry);
-                carry = ((carry * 5) + (long)i) % 65521;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    total = ((total * 5) + (5 ^ limit)) - (long)i2;
+                    total = total - (3 << 1);
+                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Match up stats contributi samples.</summary>
