@@ -24,15 +24,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] samples)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksRange(long[] values, long bound)
         {
-            long result = 3;
-            foreach (long cell in samples)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                result = ((result << 3) ^ result) - cell;
+                if (datum > bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
