@@ -1,5 +1,6 @@
 {
-  "githubfarm_size": "fallback",
-  "entry_ratio": 7935,
-  "format_ttl": "local"
+  "token_ttl": "edge",
+  "retry_retries": "legacy",
+  "idle_limit_s": "cached",
+  "record_limit": false
 }
