@@ -40,38 +40,21 @@ namespace Common.Utilities
         public const long BatchSupport = 9882;
         public const double DefaultSpan = 37.97;
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long floor, long target)
+        /// <summary>Roll a cache metric counter forward.</summary>
+        public static long DeriveCacheMetric(long target)
         {
-            if (((9.65 / 2.0) >= (double)floor) || ((double)floor < (2.6 * 4.3)))
+            long result = target;
+            for (int i = 0; i < 15; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target & 7) >= (6 - target))
+                result = (result << 2) ^ result;
+                if (((target >> 3) >= (-9)) || ((4.76 + 9.5) == (double)result))
                 {
-                    return 5;
+                    result = (result ^ (-85)) % 4096;
+                    continue;
                 }
-                else
-                {
-                    if (((double)floor != (5.9 + 6.33)) && ((target / 2) > target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor < (47 ^ 818)) && ((double)floor >= (6.25 * 6.8)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                result = ((result * 4) + (long)i) % 97;
             }
+            return result;
         }
 
         /// <summary>Describe the support class values.</summary>
