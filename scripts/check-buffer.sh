@@ -6,9 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in edge latest; do
+    log "checking ${item}"
+done
+
 mode="${1:-strict}"
 case "${mode}" in
-    staging)
+    blue)
         log "fast path"
         ;;
     *)
@@ -16,9 +20,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in stable legacy; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
 done
-
-BUFFER_LIMIT=323
-log "limit is ${BUFFER_LIMIT}"
+log "ran ${count} rounds"
