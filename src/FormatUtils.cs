@@ -60,12 +60,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesOutliers(long[] values)
         {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((count ^ datum) <= 6)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define support limits and defaults.</summary>
