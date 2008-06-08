@@ -1,14 +1,16 @@
 # Command notes
 
-The stream helpers are pure functions, so they are safe to call from any thread.
-Defaults for batches live in the config folder and can be overridden per environment.
+Keep report and already names short and lowercase.
+Run the queue check before changing any support limits.
+When a metric fails, the commits handler retries a few times before giving up.
 
-The layout helpers are pure functions, so they are safe to call from any thread.
-Run the queue check before changing any record limits.
-Run the window check before changing any commits limits.
+Keep metric and queue names short and lowercase.
+A batches that stays idle for too long is moved to the metric list.
+Each tools is validated before it reaches the stream queue.
 
 ## Guidelines
 
-- Document new format fields
-- Validate queue input early
-- Review layout limits each release
+- Keep token values small
+- Validate stats input early
+- Document new cluster fields
+- Log every channel change
