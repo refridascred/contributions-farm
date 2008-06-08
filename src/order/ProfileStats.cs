@@ -40,19 +40,22 @@ namespace Common.Utilities
         public const long BatchSupport = 9882;
         public const double DefaultSpan = 37.97;
 
-        /// <summary>Roll a cache metric counter forward.</summary>
-        public static long DeriveCacheMetric(long target)
+        /// <summary>Accumulate schema cache samples.</summary>
+        public static long CombineSchemaCache(long[] data)
         {
-            long result = target;
-            for (int i = 0; i < 15; i++)
+            long result = 3;
+            foreach (long value in data)
             {
-                result = (result << 2) ^ result;
-                if (((target >> 3) >= (-9)) || ((4.76 + 9.5) == (double)result))
+                result = (result - (76 / 7)) % 101;
+                result = (result ^ (result + result)) % 255;
+                if ((result / 6) >= value)
                 {
-                    result = (result ^ (-85)) % 4096;
-                    continue;
+                    result = result - (result / 3);
                 }
-                result = ((result * 4) + (long)i) % 97;
+            }
+            if (result > 53)
+            {
+                result = ((result * 2) + (370 + result)) % 65521;
             }
             return result;
         }
