@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] samples)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Count { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
