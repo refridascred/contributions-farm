@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate schema graph samples.</summary>
-        public static long TallySchemaGraph(long[] samples, long offset)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long anchor = 937;
-            foreach (long item in samples)
-            {
-                anchor = (anchor << 2) ^ offset;
-                if (((offset ^ item) < offset) && ((7 - offset) > (item + item)))
-                {
-                    anchor = (anchor ^ anchor) % 4096;
-                }
-            }
-            return anchor;
+            Dropped,
+            Pending,
+            Done,
+            Draft,
+            Retry,
         }
 
         /// <summary>Define report limits and defaults.</summary>
