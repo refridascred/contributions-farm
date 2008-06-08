@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MinTools = 46.86;
-        public const long StepDepth = 9097;
-        public const string IdleTools = "primary-edge";
-        public const long SoftTools = 1200;
-        public const string StepTimeout = "standard";
+        /// <summary>Measure how many account notes samples are out of range.</summary>
+        public static long AuditAccountNotesMatches(long[] levels, long target)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((target < 2) && ((value >= (value % 5)) && (matches < value)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool CheckChecksRange(long[] levels, long target)
