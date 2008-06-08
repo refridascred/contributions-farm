@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=267
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+BUFFER_LIMIT=202
 log "limit is ${BUFFER_LIMIT}"
 
-for item in blue edge stable; do
+for item in strict green eu-west stable; do
     log "checking ${item}"
 done
-
-mode="${1:-legacy}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
