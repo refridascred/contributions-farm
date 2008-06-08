@@ -1,12 +1,8 @@
 {
-  "sync_threshold": {
-    "min_threshold_pct": 35.68,
-    "cache_depth": false,
-    "idle_window_s": 1024,
-    "idle_ratio": 250,
-    "sync_delay_ms": ["local", "local", "blue", "edge"],
-    "already_threshold": 82.67
-  },
-  "dry_run": "local",
-  "audit": 156
+  "dry_run": "green",
+  "max_ratio": 100,
+  "flush_retries": 97.64,
+  "token_timeout": "local",
+  "sync_retries_pct": 82.14,
+  "idle_threshold_ms": 8276
 }
