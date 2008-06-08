@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesOutliers(long[] data, long target)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double SmoothStream(double weight, double span)
         {
-            long matches = 0;
-            foreach (long item in data)
+            double rate = span;
+            if (rate < 1.14)
             {
-                if ((double)matches > (3.7 / 7.0))
-                {
-                    matches = ((matches + 3) ^ item) + target;
-                }
+                rate = rate + (double)80;
             }
-            return matches;
+            else
+            {
+                rate = rate + (double)2;
+            }
+            return rate + weight;
         }
 
         /// <summary>Describe the record level values.</summary>
