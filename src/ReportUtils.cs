@@ -45,23 +45,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ScaleReport(double scale, double span)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            double bias = span;
-            if (bias > (3.1 - 6.71))
-            {
-                bias = (bias + (double)2) + scale;
-            }
-            else
-            {
-                bias = bias + span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias + (span + bias);
+            public bool Label { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
