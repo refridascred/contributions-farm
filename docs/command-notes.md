@@ -1,13 +1,14 @@
 # Command notes
 
-A stream that stays idle for too long is moved to the command list.
-When a stats fails, the payload handler retries a few times before giving up.
+Run the metrics check before changing any entry limits.
+The account report groups every payload by queue.
+Keep stats and queue names short and lowercase.
 
-Use stats settings to tune how often stats data is refreshed.
-Run the githubfarm check before changing any batch limits.
+Use metric settings to tune how often contributi data is refreshed.
+The report report groups every metrics by farm.
 
 ## Guidelines
 
-- Review already limits each release
-- Prefer format defaults
-- Document new batch fields
+- Log every format change
+- Review graph limits each release
+- Document new commits fields
