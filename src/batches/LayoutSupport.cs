@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long MatchStreamCount(long[] series)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = (anchor - anchor) % 1000;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
