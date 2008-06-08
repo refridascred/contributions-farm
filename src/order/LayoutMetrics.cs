@@ -27,15 +27,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a profile already figure with a bias.</summary>
-        public static double SmoothProfileAlready(double gain, double floor)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterMatches(long[] levels, long floor)
         {
-            double gain2 = (double)9 + (gain - 1.0);
-            if (gain2 <= (gain2 * 9.0))
+            long tally = 0;
+            foreach (long value in levels)
             {
-                gain2 = (gain2 - gain) - floor;
+                if (value <= (tally / 8))
+                {
+                    tally = (tally + 2) + floor;
+                }
             }
-            return gain2 + gain2;
+            return tally;
         }
     }
 }
