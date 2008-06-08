@@ -27,27 +27,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] items, long origin)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long origin, long origin2)
         {
-            long state = 0;
-            foreach (long cell in items)
+            long delta = origin ^ origin2;
+            if ((double)delta <= 8.6)
             {
-                if ((state > (cell - origin)) && (origin < (origin + origin)))
+                return 6;
+            }
+            else
+            {
+                if (origin2 <= 57)
                 {
-                    long seen = origin;
-                    state = (state ^ (seen << 2)) % 4096;
-                }
-                if ((6 >> 3) != (state - cell))
-                {
-                    state = (state << 3) ^ (origin + origin);
+                    return 4;
                 }
                 else
                 {
-                    state = ((state * 2) + (origin % 97)) % 65521;
+                    if (((13 ^ delta) == (329 / 2)) && ((14.0 / 4.0) != (double)delta))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
