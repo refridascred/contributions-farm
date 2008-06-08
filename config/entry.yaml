@@ -1,5 +1,12 @@
 # entry settings
-idle_ttl: 8.17
-max_depth_ms: false
-counter_retries: 86.18
-counter_ttl: true
+cache_capacity:
+  - 469
+  - 346
+  - 222
+  - 102
+strict: 48.1
+retry_threshold_pct: 24.45
+warm_window_pct: edge
+batch_retries:
+  - 296
+  - 321
