@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            public long Token { get; set; }
-            public bool Region { get; set; }
-            public long Rank { get; set; }
+            Paused,
+            Closed,
+            Done,
         }
 
         /// <summary>Blend two context measurements.</summary>
