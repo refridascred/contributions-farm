@@ -16,21 +16,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long MatchFilterCount(long[] values)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] values, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 3;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((mark <= (sample - mark)) && (bound >= (bound + sample)))
                 {
-                    if ((values[i] + values[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = mark ^ (sample * 5);
+                }
+                if ((mark / 8) > (bound & 1))
+                {
+                    mark = (mark ^ (sample % 24)) % 101;
                 }
             }
-            return seen;
+            return mark % 97;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
