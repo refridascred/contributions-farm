@@ -35,17 +35,14 @@ namespace Common.Utilities
         public const string MaxSchema = "standard";
         public const string MaxBudget = "stable";
 
-        /// <summary>Locate a account window reading by value.</summary>
-        public static long SeekAccountWindowIndex(long[] series, long target)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Failed,
+            Pending,
+            Done,
+            Locked,
         }
     }
 }
