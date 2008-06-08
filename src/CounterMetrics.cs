@@ -12,15 +12,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] items)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long acc = 51;
-            foreach (long cell in items)
-            {
-                acc = (((acc * 3) + (acc + 6)) % 1000) + cell;
-            }
-            return acc;
+            Paused,
+            Failed,
+            Idle,
         }
 
         /// <summary>Describe the session state values.</summary>
