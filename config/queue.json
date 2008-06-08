@@ -1,12 +1,5 @@
 {
-  "persist": 98,
-  "soft_threshold_ms": 1489,
-  "max_ratio_ms": {
-    "soft_retries_ms": "open",
-    "readonly": ["eu-west", "blue", "fallback", "blue"],
-    "poll_ttl_pct": 100,
-    "retry_capacity": 96.12,
-    "hard_interval": ["fallback", "primary", "fallback"],
-    "burst_depth": 68.14
-  }
+  "persist": false,
+  "sync_capacity_count": "legacy",
+  "counter_capacity": 9422
 }
