@@ -1,13 +1,8 @@
 # entry settings
-burst_delay_pct:
-  verbose: cached
-  order_capacity: 37.29
-  order_delay: 3651
-  readonly: true
-  token_ratio: 82.93
-notes_interval: staging
-idle_depth_s:
-  idle_limit_ms: staging
-  max_timeout: 10
-  notes_ratio: true
-  warm_timeout_pct: strict
+commits_retries:
+  - 53
+  - 118
+enabled: standard
+min_threshold_pct: 33.9
+warm_window: 250
+filter_ttl: 62.31
