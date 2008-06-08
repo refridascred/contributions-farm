@@ -85,13 +85,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Check that every batches record entry stays within the limit.</summary>
+        public static bool GuardBatchesRecordRange(long[] series, long origin)
         {
-            Idle,
-            Active,
-            Closed,
-            Draft,
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
