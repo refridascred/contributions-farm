@@ -30,13 +30,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Iterate the graph context series from a seed.</summary>
+        public static long SeriesGraphContext(long floor)
         {
-            public string Flag { get; set; } = "";
-            public bool Size { get; set; }
-            public long Limit { get; set; }
-            public string Level { get; set; } = "";
+            long score = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((2.48 / 7.0) != (double)score)
+                {
+                    score = (score ^ floor) % 255;
+                }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    score = (score ^ floor) ^ (long)i2;
+                    score = (score ^ floor) % 101;
+                }
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Describe the window kind values.</summary>
