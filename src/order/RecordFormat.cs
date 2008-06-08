@@ -24,18 +24,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] items, long offset)
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] samples)
         {
-            long carry = 0;
-            foreach (long value in items)
+            long result = 3;
+            foreach (long cell in samples)
             {
-                if (!((carry + value) >= value))
-                {
-                    carry = ((carry << 2) ^ (offset % 7)) % 101;
-                }
+                result = ((result << 3) ^ result) - cell;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Fold a list of githubfarm support readings.</summary>
