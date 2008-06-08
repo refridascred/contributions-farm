@@ -15,10 +15,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string LimitSpan = "staging";
-        public const double HardCount = 33.29;
-        public const long SoftSupport = 1505;
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                result = (result + ((long)i + floor)) % 255;
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long CombinePayload(long[] items, long seed)
