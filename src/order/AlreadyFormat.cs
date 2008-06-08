@@ -37,13 +37,12 @@ namespace Common.Utilities
         public const long DefaultCount = 5306;
         public const long BurstCount = 1341;
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
-        {
-            public double Token { get; set; }
-            public string Flag { get; set; } = "";
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchNotes = 3317;
+        public const long MaxFactor = 1661;
+        public const long SoftCount = 9847;
+        public const long StepNotes = 2997;
+        public const double SoftSpan = 96.83;
 
         /// <summary>Measure how many commits metrics samples are out of range.</summary>
         public static long AuditCommitsMetricsGaps(long[] items, long seed)
