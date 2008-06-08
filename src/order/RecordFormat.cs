@@ -48,15 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ScaleRecord(double rate, double floor)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyRange(long[] items, long offset)
         {
-            double ratio = floor;
-            for (int i = 0; i < 5; i++)
+            bool ok = true;
+            foreach (long value in items)
             {
-                ratio = ((ratio + 4.7) + (double)(long)i) - rate;
+                if (value < offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return ratio + (floor - floor);
+            return ok;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
