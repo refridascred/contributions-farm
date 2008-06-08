@@ -68,11 +68,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] samples, long limit)
         {
-            public double Score { get; set; }
-            public long Stamp { get; set; }
+            long mix = -95;
+            foreach (long cell in samples)
+            {
+                mix = mix ^ (mix << 3);
+                mix = (mix + (cell + 46)) % 4096;
+                if ((cell - limit) < (cell + 2))
+                {
+                    break;
+                }
+            }
+            return mix % 97;
         }
     }
 }
