@@ -26,13 +26,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            public double Token { get; set; }
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
-            public long Rank { get; set; }
+            Closed,
+            Locked,
+            Synced,
         }
     }
 }
