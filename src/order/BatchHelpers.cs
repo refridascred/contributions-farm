@@ -28,22 +28,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueHits(long[] samples)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (hits > reading)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Ready,
+            Retry,
+            Idle,
+            New,
+            Queued,
         }
     }
 }
