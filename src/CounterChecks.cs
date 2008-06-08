@@ -83,18 +83,11 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyOutliers(long[] values)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (hits < (item + item))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
