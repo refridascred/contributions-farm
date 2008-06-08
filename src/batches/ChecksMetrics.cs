@@ -48,10 +48,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BurstProfile = 94.08;
-        public const long IdleCount = 5924;
-        public const double BaseScore = 52.1;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderMatches(long[] data, long offset)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (((count + offset) >= ((-3) * 2)) || ((18.0 >= (double)count) || ((value + offset) < (value + 22))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BurstWidth = 362;
