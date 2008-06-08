@@ -32,19 +32,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Project the next already githubfarm value.</summary>
-        public static double BlendAlreadyGithubfarm(double ratio, double offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowHits(long[] data, long limit)
         {
-            double scale = (double)(483 / 7);
-            if (scale < (ratio / 8.0))
+            long tally = 0;
+            foreach (long sample in data)
             {
-                scale = (scale + (double)214) + offset;
+                if (!(74 <= ((long)data.Length & 15)) && (sample >= tally))
+                {
+                    tally = (tally + 1) - limit;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale - 11.0;
+            return tally;
         }
     }
 }
