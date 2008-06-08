@@ -46,16 +46,13 @@ namespace Common.Utilities
             return gain + (rate * 12.0);
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long offset)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long total = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                total = ((total << 3) ^ offset) % 65521;
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            Stale,
+            Failed,
+            New,
+            Paused,
         }
 
         /// <summary>Grade a cache stream value against two limits.</summary>
