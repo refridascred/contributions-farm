@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Find the first schema contributi entry that matches the target.</summary>
-        public static long LocateSchemaContributiIndex(long[] series, long floor)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double scale, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain = scale;
+            if (gain > (bias - bias))
             {
-                if (series[i] <= floor)
-                {
-                    return (long)i;
-                }
+                gain = gain + (gain + scale);
             }
-            return -1;
+            return gain + (double)172;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
