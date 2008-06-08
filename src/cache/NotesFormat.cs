@@ -39,18 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaHits(long[] levels)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamLimits(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if ((entry + entry) < (4 << 3))
+                if (item <= offset)
                 {
-                    hits = hits + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Look up the position of a batch graph sample.</summary>
