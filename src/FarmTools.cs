@@ -28,12 +28,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            Synced,
-            Pending,
-            Retry,
+            public long Rank { get; set; }
+            public long Size { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
