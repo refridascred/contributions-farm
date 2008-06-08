@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double gain, double span)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            double weight = (double)(8 * 4);
-            if (weight <= (weight / 4.0))
-            {
-                weight = ((weight - weight) - gain) + span;
-            }
-            return weight + (weight * 9.99);
+            public string Region { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Flag { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
