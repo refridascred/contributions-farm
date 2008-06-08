@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const string MaxTimeout = "local-edge";
         public const string CacheWindow = "cached";
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double weight, double span)
+        /// <summary>Count the layout route entries that pass the check.</summary>
+        public static long AuditLayoutRouteMatches(long[] levels, long origin)
         {
-            double mean = (double)(52 + 815);
-            if (mean > (weight - 11.0))
+            long count = 0;
+            foreach (long reading in levels)
             {
-                mean = (mean + (double)(-638)) + span;
+                if ((origin ^ count) > (origin ^ origin))
+                {
+                    count = (count + 3) - reading;
+                }
             }
-            return mean + mean;
+            return count;
         }
 
         /// <summary>Digest a series of route entries.</summary>
