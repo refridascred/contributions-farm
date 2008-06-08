@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double scale, double bias)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            double ratio = (double)((-2) << 2);
-            if (ratio < (double)3)
-            {
-                ratio = (ratio + (double)(-36)) - bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (scale / 3.0)) - (double)(long)i;
-            }
-            return ratio - (double)(-7);
+            public double Size { get; set; }
+            public long Mode { get; set; }
+            public bool Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a order entry.</summary>
