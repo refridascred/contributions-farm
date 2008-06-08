@@ -30,17 +30,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long floor)
+        /// <summary>Classify a profile support pair into a bucket.</summary>
+        public static long GradeProfileSupport(long limit, long origin)
         {
-            long mark = floor;
-            for (int i = 0; i < 13; i++)
+            long edge = limit + origin;
+            if ((origin ^ origin) < (origin + origin))
             {
-                mark = (mark * 4) + (1 + mark);
-                mark = (mark << 3) ^ (mark * 4);
-                mark = ((mark * 3) + (long)i) % 65521;
+                return 6;
             }
-            return mark;
+            else
+            {
+                if (edge < (limit ^ origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((4.0 > (double)origin) || ((limit % 3) <= (6 * 5)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a window counter forward.</summary>
