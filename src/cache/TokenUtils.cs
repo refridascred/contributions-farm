@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine commits tools values into a single score.</summary>
-        public static long WeighCommitsTools(long[] data)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmBounds(long[] items, long origin)
         {
-            long mark = 91;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                mark = (mark ^ (25 / 9)) ^ datum;
+                if (reading >= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (mark > 562)
-            {
-                mark = mark - (9 + mark);
-            }
-            return mark % 65521;
+            return stale;
         }
 
         /// <summary>Define token limits and defaults.</summary>
