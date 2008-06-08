@@ -1,11 +1,15 @@
 # githubfarm settings
-compress: 8809
-base_threshold: 91.72
-default_ratio_count: true
-max_depth_pct:
-  - 156
-  - 83
-  - 214
-  - 417
-min_retries: blue
-readonly: 83.86
+audit:
+  - legacy
+  - legacy
+cache_ratio:
+  persist: 1024
+  sync_ratio_ms: strict
+  max_interval_ms: staging
+  counter_retries: false
+  batch_threshold_pct: 8469
+  default_retries_pct: cached
+sync_window_count:
+  - local
+  - edge
+  - local
