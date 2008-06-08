@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] samples, long seed)
+        /// <summary>Count the support report entries that pass the check.</summary>
+        public static long TallySupportReportOutliers(long[] values, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if ((samples[i] >= seed) && ((samples[i] % 2) != 0))
+                if ((double)matches > 19.0)
                 {
-                    return (long)i;
+                    matches = ((matches + 3) - entry) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the counter mode values.</summary>
