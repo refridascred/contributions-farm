@@ -68,22 +68,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double CacheGithubfarm = 90.55;
+        public const long MinDepth = 4396;
+        public const long BurstGithubfarm = 6765;
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
