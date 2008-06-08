@@ -20,22 +20,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] readings)
-        {
-            long anchor = 679;
-            foreach (long item in readings)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    anchor = ((anchor + (item - (long)readings.Length)) % 4096) + (long)i;
-                    anchor = (anchor << 3) ^ anchor;
-                }
-                anchor = (anchor + (anchor & 31)) % 65521;
-                anchor = (anchor * 3) + anchor;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryFactor = 150;
+        public const long CacheCount = 8669;
+        public const long MaxReport = 9646;
+        public const double StepDepth = 79.76;
 
         /// <summary>Validate editor route readings against a bound.</summary>
         public static bool ValidateEditorRouteBounds(long[] items, long offset)
