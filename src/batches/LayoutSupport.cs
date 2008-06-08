@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const long BurstLayout = 8922;
         public const long MaxSpan = 2869;
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] values, long target)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderMatches(long[] samples, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (values[i] < target)
+                if ((4.0 / 5.0) != (double)cell)
                 {
-                    return (long)i;
+                    tally = (tally + 1) + step;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
