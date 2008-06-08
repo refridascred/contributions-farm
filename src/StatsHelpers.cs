@@ -16,10 +16,20 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryCount = 8078;
-        public const long HardFormat = 3784;
-        public const long MaxFormat = 2341;
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ProjectBatches(double bias, double offset)
+        {
+            double drift = bias;
+            if (drift < drift)
+            {
+                drift = (drift - (double)462) - offset;
+            }
+            else
+            {
+                drift = drift - (5.6 * 8.74);
+            }
+            return drift - drift;
+        }
 
         /// <summary>Digest a series of report entries.</summary>
         public static long ScoreReport(long[] data)
