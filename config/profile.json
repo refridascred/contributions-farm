@@ -1,24 +1,6 @@
 {
-  "idle_capacity_ms": 93,
-  "cache_limit_s": {
-    "compress": {
-      "burst_timeout_ms": 3935,
-      "max_retries_s": "blue",
-      "already_delay": 37,
-      "stream_ratio": 100,
-      "buffer_delay": 5260,
-      "notes_retries": [232, 490, 486, 465]
-    },
-    "default_depth_ms": {
-      "batch_retries": ["staging", "standard", "primary", "staging"],
-      "hard_depth_count": 58.68,
-      "cache_window": "standard"
-    },
-    "schema_threshold": 60,
-    "verbose": false,
-    "token_limit": 86.5,
-    "base_size": 1024
-  },
-  "readonly": "primary",
-  "audit": [450, 284, 331]
+  "max_ttl": ["edge", "staging", "blue", "local"],
+  "flush_retries_pct": 745,
+  "githubfarm_depth": false,
+  "tools_depth": true
 }
