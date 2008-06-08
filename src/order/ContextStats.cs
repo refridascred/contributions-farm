@@ -53,15 +53,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a commits stats counter forward.</summary>
-        public static long DeriveCommitsStats(long seed)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] series, long floor)
         {
-            long mix = seed;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                if ((series[i] > floor) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
