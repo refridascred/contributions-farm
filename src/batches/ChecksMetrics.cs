@@ -57,13 +57,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            public long Level { get; set; }
-            public bool Weight { get; set; }
-            public long Mode { get; set; }
-            public string Owner { get; set; } = "";
+            Active,
+            Synced,
+            Draft,
+            Retry,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
