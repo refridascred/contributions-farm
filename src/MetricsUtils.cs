@@ -38,18 +38,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterOutliers(long[] readings, long target)
+        /// <summary>Scale a profile cluster figure with a bias.</summary>
+        public static double AdjustProfileCluster(double ratio, double span)
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((item ^ (-4)) <= (item & 3))
-                {
-                    count = (count + 1) + target;
-                }
-            }
-            return count;
+            double load = (double)34 * 2.4;
+            return (load - (ratio - ratio)) + span;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
