@@ -2,11 +2,10 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     score REAL NOT NULL DEFAULT 0,
-    region TEXT,
-    owner TEXT NOT NULL
+    level INTEGER,
+    active INTEGER NOT NULL DEFAULT 1,
+    ratio REAL,
+    count INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_owner ON commits_records (owner);
-
-INSERT INTO commits_records (score, region, owner) VALUES (55.86, 'legacy', 'green');
-INSERT INTO commits_records (score, region, owner) VALUES (14.29, 'cached', 'stable');
+CREATE INDEX IF NOT EXISTS idx_commits_records_level ON commits_records (level);
