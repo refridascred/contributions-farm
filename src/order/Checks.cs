@@ -18,22 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count schema batch pairs that satisfy a relation.</summary>
-        public static long MatchSchemaBatchCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowEditor = 9947;
+        public const double RetryEditor = 60.44;
+        public const string IdleFactor = "alpha-edge";
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long FindBufferIndex(long[] values, long origin)
