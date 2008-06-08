@@ -31,23 +31,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double rate, double bias)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long limit, long step)
         {
-            double weight = rate / 5.0;
-            if (weight < bias)
+            if ((double)44 <= (double)limit)
             {
-                weight = weight + (4.9 + bias);
+                return 6;
             }
             else
             {
-                weight = weight + bias;
+                if (step < (step + step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + (2.92 / 6.0)) + (double)(long)i;
-            }
-            return weight - (rate / 2.0);
         }
 
         /// <summary>Accumulate filter samples.</summary>
