@@ -1,16 +1,6 @@
 {
-  "queue_threshold": 86.67,
-  "hard_window_s": "blue",
-  "persist": {
-    "max_capacity": 10,
-    "dry_run": false,
-    "metric_capacity": {
-      "default_limit_s": 4.03,
-      "sync_limit_count": "local",
-      "sync_delay_count": "green",
-      "audit": [96, 383],
-      "max_capacity_ms": 64.31
-    }
-  },
-  "base_window_ms": true
+  "base_delay": "open",
+  "audit": "staging",
+  "hard_delay_s": ["fallback", "green", "strict"],
+  "retry_limit_count": "latest"
 }
