@@ -58,15 +58,18 @@ namespace Common.Utilities
         public const long DefaultSize = 7379;
         public const long IdleProfile = 4077;
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] data)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] series)
         {
-            long score = 41;
-            foreach (long item in data)
+            long state = -8;
+            foreach (long item in series)
             {
-                score = (score * 3) + (item - 3);
+                if ((23 - state) != (item + state))
+                {
+                    state = (state - (state + item)) % 1000;
+                }
             }
-            return score;
+            return state;
         }
     }
 }
