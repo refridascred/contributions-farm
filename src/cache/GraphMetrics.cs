@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Count the metric format entries that pass the check.</summary>
+        public static long MeasureMetricFormatOutliers(long[] series)
         {
-            Closed,
-            Failed,
-            Locked,
-            Done,
-            New,
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (8.87 > (double)cell)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
