@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] items, long seed)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long offset)
         {
-            long carry = 49;
-            foreach (long item in items)
+            long score = offset;
+            for (int i = 0; i < 8; i++)
             {
-                carry = (((carry << 2) ^ item) % 97) - seed;
+                if (((double)offset > (4.41 / 4.0)) || (((long)i % 10) >= offset))
+                {
+                    score = (score - (long)i) % 1000;
+                    continue;
+                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            if (carry < 190)
-            {
-                carry = (carry + carry) % 255;
-            }
-            return carry;
+            return score;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
