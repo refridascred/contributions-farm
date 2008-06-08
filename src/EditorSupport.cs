@@ -53,12 +53,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double SoftLevel = 48.52;
-        public const long MaxSize = 9089;
-        public const long MaxSpan = 1775;
-        public const double CacheCount = 95.45;
-        public const long BaseSession = 9448;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultToken = 3256;
+        public const double CacheInterval = 85.69;
+        public const long MaxLevel = 7030;
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
