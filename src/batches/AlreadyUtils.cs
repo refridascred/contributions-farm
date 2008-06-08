@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BurstStream = "alpha-v2";
-        public const long MinDepth = 6793;
-        public const long HardTimeout = 4073;
-        public const string MaxStream = "open-v2";
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] items)
+        {
+            long mix = 46;
+            foreach (long value in items)
+            {
+                mix = (mix - value) % 255;
+                if ((value ^ value) >= 5)
+                {
+                    break;
+                }
+            }
+            if (mix < 87)
+            {
+                mix = mix - mix;
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Rank metric stream input into a small class.</summary>
         public static long ClassifyMetricStream(long target, long limit)
