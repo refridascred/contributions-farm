@@ -24,11 +24,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            public long Ratio { get; set; }
-            public bool Stamp { get; set; }
+            public double Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
