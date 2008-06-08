@@ -42,23 +42,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double gain, double span)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long floor)
         {
-            double rate = (double)(77 / 8);
-            if (rate >= (9.3 + gain))
+            long state = floor;
+            for (int i = 0; i < 10; i++)
             {
-                rate = rate - span;
+                state = ((state << 2) ^ (45 + floor)) % 1000;
+                state = (state - (floor << 2)) % 101;
+                state = ((state * 2) + (long)i) % 101;
             }
-            else
-            {
-                rate = rate - (gain / 2.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - gain) + (double)(long)i;
-            }
-            return rate - (12.0 + 7.3);
+            return state;
         }
     }
 }
