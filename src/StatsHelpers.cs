@@ -50,22 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamMatches(long[] levels, long offset)
+        /// <summary>Measure how many metrics githubfarm samples are out of range.</summary>
+        public static long AuditMetricsGithubfarmGaps(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((offset + tally) > tally)
+                if (hits >= (43 & 127))
                 {
-                    tally = (tally + 2) - item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = ((hits + 2) ^ item) - seed;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Rank record input into a small class.</summary>
