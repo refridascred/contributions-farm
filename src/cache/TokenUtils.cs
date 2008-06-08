@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] series)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] samples)
         {
-            long mix = -2;
-            foreach (long datum in series)
+            long carry = 0;
+            foreach (long sample in samples)
             {
-                if (26 < ((long)series.Length ^ 596))
+                if (((6.3 * 0.8) != (double)sample) || ((sample ^ carry) < (carry - sample)))
                 {
-                    mix = (((mix * 3) + (mix - mix)) % 101) ^ datum;
+                    carry = (carry << 2) ^ (0 - 827);
+                }
+                if ((double)sample != (8.53 * 3.05))
+                {
+                    break;
                 }
             }
-            return mix % 97;
+            return carry % 4096;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
