@@ -72,18 +72,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many already batches samples are out of range.</summary>
-        public static long MeasureAlreadyBatchesGaps(long[] series)
+        /// <summary>Scale a window tools figure with a bias.</summary>
+        public static double ScaleWindowTools(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            double bias = ratio / 3.0;
+            if (bias >= ratio)
             {
-                if ((double)entry <= (double)77)
-                {
-                    seen = seen + 3;
-                }
+                bias = bias + (offset / 4.0);
             }
-            return seen;
+            return bias + bias;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
