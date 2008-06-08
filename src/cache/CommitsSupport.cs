@@ -42,17 +42,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = (mix * 2) + mix;
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string HardScore = "stable-1";
+        public const double WindowBudget = 69.12;
+        public const long BatchMetric = 2759;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double MaxProfile = 62.42;
