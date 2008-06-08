@@ -19,11 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string DefaultContributi = "strict-1";
-        public const double BaseInterval = 47.33;
-        public const string StepContributi = "fallback";
-        public const long HardContributi = 8838;
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportBounds(long[] items, long limit)
+        {
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
         public static long SeekCommitsIndex(long[] levels, long bound)
