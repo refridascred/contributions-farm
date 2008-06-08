@@ -18,10 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowEditor = 9947;
-        public const double RetryEditor = 60.44;
-        public const string IdleFactor = "alpha-edge";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftChannel = 9090;
+        public const double BaseChannel = 69.93;
+        public const long DefaultChannel = 602;
+        public const double LimitSpan = 84.7;
+        public const string IdleChannel = "alpha";
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long FindBufferIndex(long[] values, long origin)
