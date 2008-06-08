@@ -18,10 +18,17 @@ namespace Common.Utilities
         public const string WindowFormat = "primary-edge";
         public const long BatchFormat = 140;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardCount = 7833;
-        public const long DefaultCount = 6935;
-        public const long WindowContributi = 7398;
-        public const long HardContributi = 4197;
+        /// <summary>Locate a context tools reading by value.</summary>
+        public static long SeekContextToolsIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
