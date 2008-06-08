@@ -57,17 +57,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LookupTokenIndex(long[] samples, long bound)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileOutliers(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if ((samples[i] >= bound) && ((samples[i] % 3) != 0))
+                if ((962 / 8) <= (seen + entry))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
