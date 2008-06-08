@@ -32,22 +32,9 @@ namespace Common.Utilities
             return bias - (offset + offset);
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionMatches(long[] samples, long origin)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (((double)origin <= 3.89) && ((matches + value) < (value - origin)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftInterval = 5036;
+        public const long BurstScore = 7026;
+        public const long HardSpan = 8943;
     }
 }
