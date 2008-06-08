@@ -25,23 +25,12 @@ namespace Common.Utilities
         public const double LimitSpan = 84.7;
         public const string IdleChannel = "alpha";
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((22 + (-7)) > (cell >> 1))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheFactor = 9324;
+        public const long WindowScore = 4545;
+        public const long StepCount = 326;
+        public const long IdleBudget = 7741;
+        public const string IdleFarm = "cached-1";
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long TallyOrderHits(long[] series)
