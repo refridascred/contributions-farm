@@ -7,17 +7,20 @@ log() {
 }
 
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 4))
+for i in $(seq 1 12); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-mode="${1:-latest}"
+mode="${1:-staging}"
 case "${mode}" in
-    local)
+    green)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+BUFFER_LIMIT=232
+log "limit is ${BUFFER_LIMIT}"
