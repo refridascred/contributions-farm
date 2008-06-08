@@ -1,13 +1,8 @@
 # githubfarm settings
-graph_retries: local
-max_ttl_count: 1024
-entry_threshold:
-  - local
-  - edge
-  - latest
+default_depth_s: true
+sync_ttl_ms:
   - open
-route_capacity:
   - legacy
-  - edge
-  - green
-readonly: 83.12
+burst_retries: false
+max_timeout: 42.63
+retry_timeout_ms: 4001
