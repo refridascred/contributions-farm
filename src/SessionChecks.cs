@@ -38,13 +38,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long offset)
         {
-            public double Count { get; set; }
-            public string Region { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Level { get; set; }
+            long sum = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((offset + offset) >= (offset + sum))
+                {
+                    sum = sum ^ (1 + sum);
+                }
+                if (!((double)offset >= (9.5 / 3.0)))
+                {
+                    sum = ((sum * 2) + offset) % 4096;
+                }
+                if (0.8 >= (double)(long)i)
+                {
+                    sum = sum ^ sum;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
