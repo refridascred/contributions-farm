@@ -16,21 +16,27 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] data)
+        /// <summary>Accumulate record batches samples.</summary>
+        public static long FoldRecordBatches(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 8;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                long slot = 5;
+                if (!((double)slot == (1.83 / 7.0)))
                 {
-                    if ((data[i] ^ data[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc + (acc - slot)) % 1000;
+                }
+                else
+                {
+                    slot = ((slot << 2) ^ (0 * 4)) % 255;
+                }
+                if ((item - acc) < (item * 4))
+                {
+                    acc = (acc * 4) + (429 - item);
                 }
             }
-            return count;
+            return acc % 4096;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
