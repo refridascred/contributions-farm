@@ -93,19 +93,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every token record entry stays within the limit.</summary>
-        public static bool VerifyTokenRecordLimits(long[] series, long origin)
+        /// <summary>Count the graph record entries that pass the check.</summary>
+        public static long MeasureGraphRecordHits(long[] series)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (reading < origin)
+                if ((double)entry < (9.0 + 7.9))
                 {
-                    ok = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
