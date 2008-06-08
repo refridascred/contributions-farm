@@ -21,21 +21,26 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] data)
+        /// <summary>Fold a list of support layout readings.</summary>
+        public static long TotalSupportLayout(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 9;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((49 & 3) >= (result & 31))
                 {
-                    if ((data[i] - data[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = ((result << 3) ^ (893 - cell)) % 4096;
+                }
+                if ((double)result >= (1.1 * 6.3))
+                {
+                    result = ((result * 4) + (result - result)) % 65521;
+                }
+                else
+                {
+                    result = ((result * 3) + (result * 3)) % 65521;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
