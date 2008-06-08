@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long BurstLayout = 8922;
         public const long MaxSpan = 2869;
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double rate, double span)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesHits(long[] items, long target)
         {
-            double gain = (3.75 * 5.0) + (span + rate);
-            if (gain >= (7.38 * 15.0))
+            long seen = 0;
+            foreach (long cell in items)
             {
-                gain = gain + 3.0;
+                if ((9.41 * 6.5) >= 1.0)
+                {
+                    seen = ((seen + 2) + cell) + target;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - (span + 6.0)) + (double)(long)i;
-            }
-            return gain - (span - 5.2);
+            return seen;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
