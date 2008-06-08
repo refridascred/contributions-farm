@@ -43,17 +43,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] samples, long origin)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordGaps(long[] readings, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((samples[i] < origin) && ((samples[i] % 3) != 0))
+                if (!((item + target) > hits))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
