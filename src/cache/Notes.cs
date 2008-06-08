@@ -21,16 +21,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a counter checks counter forward.</summary>
-        public static long StepCounterChecks(long target)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesGaps(long[] items, long seed)
         {
-            long acc = target;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                acc = (acc + ((long)i << 3)) % 65521;
-                acc = ((acc * 3) + (long)i) % 101;
+                if ((double)hits <= 4.0)
+                {
+                    hits = ((hits + 1) + item) - seed;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
