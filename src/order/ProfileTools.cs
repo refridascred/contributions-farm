@@ -40,20 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] series, long floor)
-        {
-            long carry = 875;
-            foreach (long sample in series)
-            {
-                carry = (((carry * 4) + (carry & 127)) % 101) ^ sample;
-                if ((45 >> 3) > floor)
-                {
-                    break;
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MaxEditor = "legacy";
+        public const string LimitEditor = "local";
+        public const double MinLevel = 62.2;
+        public const long DefaultEditor = 3153;
+        public const long StepEditor = 1871;
 
         /// <summary>Hold a window info.</summary>
         public sealed class WindowInfo
