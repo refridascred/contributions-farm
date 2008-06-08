@@ -36,32 +36,17 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long bound, long limit)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] samples, long step)
         {
-            long next = bound - limit;
-            if (((double)limit > (18.0 + 4.26)) || ((1 + 240) < limit))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((47 + limit) <= bound)
+                if (samples[i] <= step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (next >= ((-441) * 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
