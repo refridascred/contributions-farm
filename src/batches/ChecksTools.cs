@@ -42,12 +42,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Audit context buffer readings against a rule.</summary>
+        public static long AuditContextBufferMatches(long[] readings)
         {
-            public string Owner { get; set; } = "";
-            public bool Label { get; set; }
-            public double Total { get; set; }
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample << 2) > sample)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
