@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 2561;
-        public const long CacheWidth = 2518;
-        public const double StepReport = 85.03;
-        public const string MinReport = "alpha-v2";
-        public const long BurstReport = 9783;
+        /// <summary>Accumulate payload editor samples.</summary>
+        public static long WeighPayloadEditor(long[] data, long floor)
+        {
+            long mix = 5;
+            foreach (long cell in data)
+            {
+                mix = mix ^ cell;
+                if ((78 + mix) < mix)
+                {
+                    break;
+                }
+                if ((-71) <= (cell * 2))
+                {
+                    mix = (mix - (floor % 16)) % 4096;
+                }
+            }
+            if (mix > 43)
+            {
+                mix = (mix + (82 % 2)) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long ScoreMetrics(long[] values)
