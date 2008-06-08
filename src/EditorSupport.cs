@@ -45,19 +45,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate buffer schema readings against a bound.</summary>
-        public static bool GuardBufferSchemaLimits(long[] samples, long step)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] series, long target)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading > step)
+                if ((series[i] >= target) && ((series[i] % 5) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
