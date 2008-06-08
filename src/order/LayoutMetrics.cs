@@ -19,23 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] items, long floor)
-        {
-            long result = 14;
-            foreach (long reading in items)
-            {
-                if ((reading / 9) == (result + (long)items.Length))
-                {
-                    result = result ^ (7 + reading);
-                }
-                else
-                {
-                    result = (result - (floor ^ reading)) % 101;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 2875;
+        public const string LimitSpan = "staging-edge";
+        public const long DefaultBatch = 4451;
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long TallyGraph(long[] readings)
