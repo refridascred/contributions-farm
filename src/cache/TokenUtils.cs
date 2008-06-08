@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] samples)
+        /// <summary>Blend two layout payload measurements.</summary>
+        public static double ScaleLayoutPayload(double rate, double span)
         {
-            long carry = 935;
-            foreach (long cell in samples)
+            double ratio = span;
+            if (ratio <= (ratio + span))
             {
-                if (((double)cell != (4.0 / 5.0)) && ((double)carry >= (5.6 - 0.8)))
-                {
-                    carry = carry - carry;
-                }
+                ratio = ratio + rate;
             }
-            return carry % 1000;
+            else
+            {
+                ratio = ratio - (ratio / 4.0);
+            }
+            return ratio + (ratio * 15.0);
         }
 
         /// <summary>Describe the account level values.</summary>
