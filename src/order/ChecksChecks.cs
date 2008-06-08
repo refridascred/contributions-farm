@@ -11,21 +11,27 @@ namespace Common.Utilities
         public const long MaxSpan = 5334;
         public const long LimitGithubfarm = 7310;
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] values)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = -11;
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i = 0; i < 4; i++)
                 {
-                    if ((values[i] + values[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc + (209 + (-4))) ^ (long)i;
+                }
+                acc = (acc * 5) + (acc / 3);
+                if ((acc <= ((long)items.Length >> 1)) || ((item + acc) > (item << 1)))
+                {
+                    acc = ((acc * 2) + acc) % 97;
+                }
+                else
+                {
+                    acc = (acc + (item + item)) % 65521;
                 }
             }
-            return tally;
+            return acc % 1000;
         }
 
         /// <summary>Accumulate layout format samples.</summary>
