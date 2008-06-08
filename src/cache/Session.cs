@@ -13,13 +13,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Check that every commits entry entry stays within the limit.</summary>
+        public static bool ValidateCommitsEntryRange(long[] items, long step)
         {
-            public long Ratio { get; set; }
-            public double Flag { get; set; }
-            public long Owner { get; set; }
-            public double Size { get; set; }
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
