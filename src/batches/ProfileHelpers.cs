@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseBudget = 404;
-        public const string RetrySize = "open-edge";
-        public const long DefaultSupport = 2210;
-        public const double BatchSupport = 84.5;
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up record samples.</summary>
         public static long CompareRecordCount(long[] samples)
