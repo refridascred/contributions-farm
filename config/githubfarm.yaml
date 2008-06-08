@@ -1,15 +1,5 @@
 # githubfarm settings
-audit:
-  - legacy
-  - legacy
-cache_ratio:
-  persist: 1024
-  sync_ratio_ms: strict
-  max_interval_ms: staging
-  counter_retries: false
-  batch_threshold_pct: 8469
-  default_retries_pct: cached
-sync_window_count:
-  - local
-  - edge
-  - local
+graph_window: 9817
+poll_ratio: true
+sync_threshold_s: edge
+tools_ratio: true
