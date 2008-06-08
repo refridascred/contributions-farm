@@ -45,20 +45,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] items, long step)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long carry = 56;
-            foreach (long value in items)
-            {
-                carry = ((carry ^ (step - 18)) % 4096) - value;
-                carry = ((carry << 3) ^ (carry & 3)) % 65521;
-            }
-            if (carry < 1)
-            {
-                carry = carry ^ (carry - 9);
-            }
-            return carry;
+            Pending,
+            Retry,
+            New,
         }
     }
 }
