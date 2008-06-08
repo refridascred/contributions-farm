@@ -20,25 +20,13 @@ namespace Common.Utilities
             return rate2 - (offset / 5.0);
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long offset, long step)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long span = offset + step;
-            if ((step - span) < (span - offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if (12 <= (9 + step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            New,
+            Ready,
+            Done,
+            Draft,
         }
 
         /// <summary>Derive the next contributi account value from a seed.</summary>
