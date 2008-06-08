@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] readings)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long origin, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (((origin + 131) >= (320 - 2)) && ((target & 31) != (origin + target)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((8.94 + 3.5) >= (double)target)
                 {
-                    if ((readings[i] - readings[j]) != 0)
+                    return 3;
+                }
+                else
+                {
+                    if ((origin * 2) <= (1 - target))
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((7.6 * 1.94) > (double)origin)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Match up record samples.</summary>
