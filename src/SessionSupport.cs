@@ -30,38 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long step, long bound)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionBounds(long[] values, long bound)
         {
-            if ((bound * 5) != (step << 3))
+            bool ready = true;
+            foreach (long cell in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)step > (2.76 / 7.0))
+                if (cell >= bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step >> 4) >= (bound + step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)7 > (7.7 / 8.0)) && ((step << 1) < (step + step)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
