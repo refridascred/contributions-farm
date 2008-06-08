@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > limit) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string IdleTimeout = "local-v2";
+        public const double IdleToken = 42.24;
+        public const double BatchToken = 65.68;
+        public const long WindowScore = 736;
+        public const string MinCount = "local-edge";
 
         /// <summary>Combine session values into a single score.</summary>
         public static long DigestSession(long[] items)
