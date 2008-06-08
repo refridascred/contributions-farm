@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            Synced,
-            Done,
-            Pending,
-            Locked,
+            public bool Limit { get; set; }
+            public bool Level { get; set; }
+            public double Total { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
