@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long StepLevel = 3450;
         public const long BatchCluster = 3654;
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double BlendSession(double bias, double bias2)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmBounds(long[] items, long target)
         {
-            double load = bias2;
-            if (load >= (double)289)
+            bool found = true;
+            foreach (long cell in items)
             {
-                load = (load + 11.0) - bias;
+                if (cell < target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (bias2 + bias2)) + (double)(long)i;
-            }
-            return load + (bias2 + 3.9);
+            return found;
         }
 
         /// <summary>Match up route samples.</summary>
