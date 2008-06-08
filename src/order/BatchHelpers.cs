@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long offset)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] items, long origin)
         {
-            long score = offset;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)offset > (4.41 / 4.0)) || (((long)i % 10) >= offset))
+                if (items[i] >= origin)
                 {
-                    score = (score - (long)i) % 1000;
-                    continue;
+                    return (long)i;
                 }
-                score = ((score * 3) + (long)i) % 65521;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Digest a series of token entries.</summary>
