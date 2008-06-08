@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenHits(long[] values)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((713 > ((long)values.Length << 2)) || ((78 ^ 6) < reading))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
