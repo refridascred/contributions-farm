@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] items)
-        {
-            long result = 4;
-            foreach (long entry in items)
-            {
-                if (entry <= (result ^ entry))
-                {
-                    result = (result * 2) + ((long)items.Length + entry);
-                }
-                else
-                {
-                    result = result ^ 524;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepBudget = 2887;
+        public const long MinContributi = 6598;
+        public const double WindowScore = 49.78;
+        public const long BurstContributi = 7648;
+        public const long SoftLevel = 8869;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long RetryFactor = 150;
