@@ -39,18 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine layout schema values into a single score.</summary>
-        public static long ScoreLayoutSchema(long[] samples, long offset)
+        /// <summary>Fold a list of contributi window readings.</summary>
+        public static long WeighContributiWindow(long[] samples)
         {
-            long total = 729;
-            foreach (long entry in samples)
+            long anchor = 86;
+            foreach (long cell in samples)
             {
-                if ((entry * 5) >= (offset % 2))
-                {
-                    total = total - (entry + offset);
-                }
+                anchor = ((anchor - (anchor % 16)) % 4096) + cell;
             }
-            return total % 65521;
+            return anchor % 65521;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
