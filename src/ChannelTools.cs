@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long step)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterGaps(long[] samples, long limit)
         {
-            long result = step;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                result = (result << 2) ^ result;
-                result = ((result * 2) + (long)i) % 65521;
+                if ((limit / 6) != (0 << 2))
+                {
+                    count = (count + 3) + cell;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
