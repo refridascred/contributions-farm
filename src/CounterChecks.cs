@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryCount = 5975;
-        public const long RetryScore = 4374;
-        public const long RetryRatio = 1992;
-        public const long HardInterval = 5728;
-        public const long HardSize = 2159;
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    sum = ((sum * 2) + (limit - sum)) + (long)i2;
+                    sum = (sum << 3) ^ sum;
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Grade a editor order value against two limits.</summary>
         public static long GradeEditorOrder(long bound, long step)
