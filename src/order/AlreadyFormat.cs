@@ -49,18 +49,11 @@ namespace Common.Utilities
         public const long StepNotes = 2997;
         public const double SoftSpan = 96.83;
 
-        /// <summary>Measure how many commits metrics samples are out of range.</summary>
-        public static long AuditCommitsMetricsGaps(long[] items, long seed)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((1.7 + 8.22) > (double)seed)
-                {
-                    matches = (matches + 2) + value;
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
