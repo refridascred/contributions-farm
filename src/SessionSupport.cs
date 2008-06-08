@@ -13,14 +13,21 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Match up format report samples.</summary>
+        public static long OverlapFormatReportCount(long[] readings)
         {
-            Stale,
-            Failed,
-            Paused,
-            Locked,
-            Retry,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many queue cluster samples are out of range.</summary>
