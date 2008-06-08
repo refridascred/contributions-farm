@@ -15,9 +15,20 @@ namespace Common.Utilities
         public const long MaxLayout = 5146;
         public const long MaxFactor = 5758;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double StepOrder = 3.29;
-        public const double BurstOrder = 88.96;
-        public const string BatchOrder = "stable-1";
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                result = (result * 3) + ((long)i ^ (long)i);
+                if ((double)(long)i <= 2.7)
+                {
+                    result = result - (987 + origin);
+                }
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
+        }
     }
 }
