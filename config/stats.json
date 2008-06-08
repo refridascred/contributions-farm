@@ -1,7 +1,7 @@
 {
-  "hard_retries_count": "blue",
-  "default_ttl": 25.37,
-  "sync_retries": 3388,
-  "warm_limit_pct": "latest",
-  "already_interval": 56.46
+  "max_timeout_ms": 64,
+  "already_size": 100,
+  "cluster_depth": "edge",
+  "warm_interval_pct": 30,
+  "hard_ttl_s": 4767
 }
