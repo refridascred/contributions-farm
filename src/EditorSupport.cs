@@ -14,21 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] series)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiOutliers(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((7.11 < (double)seen) || ((seen % 97) <= 43))
                 {
-                    if ((series[i] + series[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 3) ^ cell;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
