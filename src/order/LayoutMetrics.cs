@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the support notes entries that pass the check.</summary>
-        public static long TallySupportNotesHits(long[] levels, long offset)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadHits(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((double)datum <= (5.79 * 0.61))
+                if ((15.0 >= (double)tally) || ((seed ^ sample) >= (tally - seed)))
                 {
-                    matches = (matches + 2) - offset;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Fold a list of filter batch readings.</summary>
