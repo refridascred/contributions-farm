@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long limit, long target)
-        {
-            long prev = limit + target;
-            if ((limit + target) <= (target + target))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)limit <= 3.75) && (prev > (target >> 2)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxSize = 6423;
+        public const string IdleFilter = "standard-v2";
+        public const long MinInterval = 9067;
+        public const string SoftFilter = "latest-v2";
+        public const long WindowFilter = 813;
 
         /// <summary>Roll a account counter forward.</summary>
         public static long StepAccount(long floor)
