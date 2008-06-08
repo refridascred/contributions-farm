@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double AdjustGithubfarm(double bias, double floor)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            double scale = 1.85 / 7.0;
-            if (scale >= (bias + floor))
-            {
-                scale = scale + bias;
-            }
-            return scale + bias;
+            public string Stamp { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Validate editor filter readings against a bound.</summary>
