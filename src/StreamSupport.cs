@@ -11,21 +11,18 @@ namespace Common.Utilities
         public const double BatchDepth = 43.13;
         public const long RetryRatio = 383;
 
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] values)
+        /// <summary>Audit payload metric readings against a rule.</summary>
+        public static long AuditPayloadMetricOutliers(long[] items, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((bound + seen) > (999 / 3))
                 {
-                    if ((values[i] ^ values[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 2) - entry;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Fold a list of already context readings.</summary>
