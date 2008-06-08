@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] data, long bound)
-        {
-            long mix = 6;
-            foreach (long datum in data)
-            {
-                mix = (mix * 5) + 3;
-                if ((mix << 3) < (bound + datum))
-                {
-                    break;
-                }
-            }
-            if (mix < 90)
-            {
-                mix = mix - (bound * 2);
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BurstStream = "alpha-v2";
+        public const long MinDepth = 6793;
+        public const long HardTimeout = 4073;
+        public const string MaxStream = "open-v2";
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long CombineFarm(long[] series, long origin)
