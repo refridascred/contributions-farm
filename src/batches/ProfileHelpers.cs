@@ -68,12 +68,31 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long step, long bound)
         {
-            Synced,
-            Locked,
-            Pending,
+            if ((double)step > (5.9 * 9.78))
+            {
+                return 4;
+            }
+            else
+            {
+                if (673 <= (56 + step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((814 - bound) < (bound + step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
