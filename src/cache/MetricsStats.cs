@@ -31,20 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every profile command entry stays within the limit.</summary>
-        public static bool CheckProfileCommandRange(long[] series, long bound)
-        {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string SoftBuffer = "latest-edge";
+        public const double DefaultWidth = 0.08;
+        public const long StepBuffer = 9267;
+        public const long IdleBudget = 7515;
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long LookupMetricsIndex(long[] samples, long origin)
