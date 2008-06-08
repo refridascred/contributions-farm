@@ -65,31 +65,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long floor, long step)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            if ((step ^ step) >= (step ^ 23))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((floor + step) >= floor) && (floor < step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step + floor) != (floor ^ step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Synced,
+            Locked,
+            Pending,
         }
     }
 }
