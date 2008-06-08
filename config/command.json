@@ -1,8 +1,19 @@
 {
-  "max_window_pct": 100,
-  "flush_capacity_s": 60,
-  "farm_size": 2.54,
-  "enabled": 14.25,
-  "persist": [15, 456, 292, 150],
-  "record_capacity": 77.27
+  "hard_window": true,
+  "payload_depth": 4407,
+  "account_window": 67.32,
+  "warm_window_pct": "edge",
+  "max_size_ms": {
+    "poll_window": 1024,
+    "cache_ttl_ms": false,
+    "strict": "cached",
+    "compress": "legacy",
+    "max_size_pct": {
+      "readonly": 36,
+      "command_window": 42.17,
+      "flush_interval": 4089,
+      "idle_limit_pct": "strict",
+      "compress": "local"
+    }
+  }
 }
