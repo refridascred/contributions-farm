@@ -1,19 +1,11 @@
 {
-  "idle_size_s": {
-    "poll_size_s": 57.04,
-    "idle_size": false,
-    "cache_threshold": true
+  "batch_window_ms": {
+    "githubfarm_interval": "strict",
+    "poll_depth_count": 11.18,
+    "soft_window_count": [62, 281]
   },
-  "audit": true,
-  "account_depth": true,
-  "flush_depth_ms": {
-    "max_retries": {
-      "base_delay_count": 6867,
-      "retry_limit": ["green", "strict", "cached"],
-      "soft_ratio": "cached"
-    },
-    "max_ratio": true,
-    "commits_depth": false
-  },
-  "sync_ratio_pct": ["local", "local", "eu-west", "latest"]
+  "base_timeout_ms": 100,
+  "context_threshold": true,
+  "cache_limit_pct": 25.72,
+  "context_delay": [424, 402, 241, 152]
 }
