@@ -34,11 +34,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string WindowCount = "local";
-        public const long BaseSize = 8004;
-        public const long LimitPayload = 9964;
-        public const long LimitTimeout = 2529;
-        public const double MinPayload = 10.45;
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
+        {
+            public double Mode { get; set; }
+            public double Weight { get; set; }
+            public long Flag { get; set; }
+            public double Rank { get; set; }
+        }
     }
 }
