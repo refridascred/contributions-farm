@@ -39,17 +39,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] samples, long offset)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double bias, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double weight = (floor + floor) * 6.2;
+            if (weight < floor)
             {
-                if (samples[i] <= offset)
-                {
-                    return (long)i;
-                }
+                weight = weight + (bias / 9.0);
             }
-            return -1;
+            else
+            {
+                weight = weight + (floor - weight);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight - bias;
         }
 
         /// <summary>Rank stats githubfarm input into a small class.</summary>
