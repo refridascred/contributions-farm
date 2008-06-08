@@ -37,22 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] series, long bound)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterBounds(long[] levels, long floor)
         {
-            long mark = 29;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if (((item << 3) < item) && ((mark / 5) < item))
+                if (value > floor)
                 {
-                    mark = mark ^ (bound - 2);
-                }
-                if (((double)item >= 2.0) || ((item & 63) >= 5))
-                {
-                    mark = mark - (bound / 4);
+                    valid = false;
+                    break;
                 }
             }
-            return mark;
+            return valid;
         }
     }
 }
