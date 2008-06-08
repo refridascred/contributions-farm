@@ -28,12 +28,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long step, long bound)
         {
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
+            if ((bound * 5) != (step << 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)step > (2.76 / 7.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step >> 4) >= (bound + step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)7 > (7.7 / 8.0)) && ((step << 1) < (step + step)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
