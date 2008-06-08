@@ -31,11 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string SoftBuffer = "latest-edge";
-        public const double DefaultWidth = 0.08;
-        public const long StepBuffer = 9267;
-        public const long IdleBudget = 7515;
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = ((sum << 3) ^ (sum & 31)) % 1000;
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long LookupMetricsIndex(long[] samples, long origin)
