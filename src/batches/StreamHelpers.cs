@@ -44,11 +44,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            public double Label { get; set; }
-            public double Rank { get; set; }
+            Synced,
+            Failed,
+            Queued,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Digest a series of cluster record entries.</summary>
