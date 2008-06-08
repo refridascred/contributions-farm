@@ -33,14 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
-        {
-            public long Mode { get; set; }
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MinSupport = 48.19;
+        public const double WindowSpan = 40.03;
+        public const double WindowSupport = 93.78;
+        public const long BatchSupport = 9882;
+        public const double DefaultSpan = 37.97;
 
         /// <summary>Classify a profile pair into a bucket.</summary>
         public static long SortProfile(long floor, long target)
