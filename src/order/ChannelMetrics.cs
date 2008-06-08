@@ -28,12 +28,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutGaps(long[] data, long origin)
         {
-            public long Region { get; set; }
-            public string Label { get; set; } = "";
-            public string Size { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((9.1 / 4.0) < (double)cell)
+                {
+                    matches = (matches + 1) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
