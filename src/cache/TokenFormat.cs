@@ -23,14 +23,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long floor)
         {
-            Done,
-            Paused,
-            Draft,
-            Dropped,
-            Synced,
+            long result = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Describe the entry status values.</summary>
