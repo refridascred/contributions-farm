@@ -12,19 +12,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Adjust a token githubfarm reading.</summary>
-        public static double BlendTokenGithubfarm(double gain, double bias)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteBounds(long[] samples, long origin)
         {
-            double ratio = gain;
-            if (ratio > (double)72)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                ratio = (ratio - (double)(-5)) - bias;
+                if (reading != origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + gain) + (double)(long)i;
-            }
-            return ratio - ratio;
+            return ok;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
