@@ -19,15 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double ratio, double floor)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            double rate = (double)(9 ^ 7);
-            if (rate <= (rate * 6.0))
-            {
-                rate = ((rate - (double)71) - ratio) + floor;
-            }
-            return rate - (8.0 / 8.0);
+            public bool Count { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the metric kind values.</summary>
