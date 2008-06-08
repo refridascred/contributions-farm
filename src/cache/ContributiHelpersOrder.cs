@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate route queue readings against a bound.</summary>
-        public static bool GuardRouteQueueLimits(long[] samples, long limit)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] readings)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long state = 6;
+            foreach (long value in readings)
             {
-                if (value >= limit)
+                if (!((value + state) == (state & 255)))
                 {
-                    stale = false;
+                    state = (state - 78) % 65521;
+                }
+                else
+                {
+                    state = (state - (value - state)) % 255;
+                }
+                if ((value << 3) <= 20)
+                {
                     break;
                 }
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Describe the account phase values.</summary>
