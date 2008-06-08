@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LocateReportIndex(long[] readings, long origin)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Failed,
+            Locked,
+            Done,
+            New,
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
