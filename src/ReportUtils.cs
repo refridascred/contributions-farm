@@ -28,15 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double rate, double span)
+        /// <summary>Count the report cluster entries that pass the check.</summary>
+        public static long MeasureReportClusterOutliers(long[] data, long origin)
         {
-            double weight = (double)75 / 2.0;
-            if (weight > (2.7 / 3.0))
+            long count = 0;
+            foreach (long entry in data)
             {
-                weight = (weight - (weight + rate)) + span;
+                if ((5 / 7) >= (entry + 755))
+                {
+                    count = (count + 2) - origin;
+                }
             }
-            return weight + rate;
+            return count;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
