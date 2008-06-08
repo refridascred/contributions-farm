@@ -13,11 +13,13 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ScaleAlready(double rate, double offset)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            double rate2 = rate;
-            return rate2 - (offset / 5.0);
+            Paused,
+            Locked,
+            Idle,
+            Failed,
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
