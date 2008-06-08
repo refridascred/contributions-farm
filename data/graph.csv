@@ -1,11 +1,6 @@
-id,rank,weight,active
-1,98.91,474,252
-2,56,open,59.8
-3,legacy,196,primary
-4,green,61.08,fallback
-5,local,242,57.79
-6,standard,staging,50.92
-7,825,320,open
-8,664,10.91,90.44
-9,open,905,0.59
-10,edge,475,local
+id,token,state,weight,active
+1,147,604,12.9,198
+2,476,fallback,79.99,eu-west
+3,399,58.44,edge,967
+4,cached,legacy,legacy,blue
+5,239,815,strict,latest
