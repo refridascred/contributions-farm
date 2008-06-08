@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileMatches(long[] series)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsBounds(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if ((double)(long)series.Length > (0.9 * 3.2))
+                if (reading > step)
                 {
-                    hits = (hits + 3) + reading;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
