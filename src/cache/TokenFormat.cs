@@ -24,14 +24,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long bound)
         {
-            Stale,
-            Retry,
-            Done,
-            Dropped,
-            Queued,
+            long score = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                score = (score * 3) + (bound ^ score);
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
