@@ -58,17 +58,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LookupToolsIndex(long[] items, long bound)
+        /// <summary>Count queue filter pairs that satisfy a relation.</summary>
+        public static long MatchQueueFilterCount(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] == bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] + data[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
