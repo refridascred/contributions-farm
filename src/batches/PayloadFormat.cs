@@ -21,15 +21,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] data)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long mark = 8;
-            foreach (long datum in data)
-            {
-                mark = ((mark ^ (mark * 3)) % 4096) ^ datum;
-            }
-            return mark % 97;
+            Dropped,
+            Active,
+            Pending,
+            Stale,
         }
 
         /// <summary>Count queue filter pairs that satisfy a relation.</summary>
