@@ -19,19 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadLimits(long[] values, long offset)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            bool ok = true;
-            foreach (long reading in values)
-            {
-                if (reading <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Size { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
