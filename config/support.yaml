@@ -1,4 +1,15 @@
 # support settings
-dry_run: 79
-default_size_pct: 7
-token_retries: false
+sync_delay_pct: 30
+burst_window:
+  min_ttl_count: eu-west
+  audit:
+    farm_ratio: edge
+    sync_size_pct: true
+    retry_retries_ms: 41.48
+  batch_size: 8607
+sync_depth_ms: 24.99
+default_depth_pct: 100
+batch_capacity_s:
+  - 238
+  - 187
+command_ttl: 36.94
