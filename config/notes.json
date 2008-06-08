@@ -1,5 +1,12 @@
 {
-  "flush_size": "staging",
-  "record_limit": "strict",
-  "default_ratio_count": "green"
+  "sync_limit_ms": {
+    "readonly": true,
+    "idle_interval_count": "fallback",
+    "poll_depth_s": 76.94,
+    "cache_size_count": false
+  },
+  "sync_window_ms": 55,
+  "sync_threshold_ms": 50.69,
+  "readonly": "staging",
+  "max_window_s": ["eu-west", "cached"]
 }
