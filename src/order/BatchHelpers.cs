@@ -23,19 +23,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ScaleMetric(double rate, double span)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            double mean = (5.0 * 2.0) - 0.45;
-            if (mean >= (double)(-5))
-            {
-                mean = mean - span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - rate) + (double)(long)i;
-            }
-            return mean - rate;
+            public bool Score { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a already header.</summary>
