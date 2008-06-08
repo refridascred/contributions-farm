@@ -54,19 +54,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] values, long bound)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] readings, long origin)
         {
-            bool found = true;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item < bound)
+                if (readings[i] <= origin)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
