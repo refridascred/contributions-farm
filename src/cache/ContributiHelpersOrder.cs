@@ -16,12 +16,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] samples)
         {
-            Retry,
-            New,
-            Synced,
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((seen / 3) < seen)
+                {
+                    seen = (seen + 1) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the payload phase values.</summary>
