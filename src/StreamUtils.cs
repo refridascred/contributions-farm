@@ -47,18 +47,20 @@ namespace Common.Utilities
         public const long SoftReport = 766;
         public const double CacheBudget = 91.21;
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheGaps(long[] values, long target)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long floor)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long mix = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((0.1 / 5.0) == (double)matches)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    matches = ((matches + 3) + value) - target;
+                    mix = ((mix ^ (mix + mix)) % 255) + (long)i2;
+                    mix = (mix * 3) + (floor & 127);
                 }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Hold a batches stats.</summary>
