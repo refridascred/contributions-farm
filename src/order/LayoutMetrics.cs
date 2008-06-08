@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueMatches(long[] values)
-        {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((seen + (-58)) > (seen & 3))
-                {
-                    seen = (seen + 1) ^ cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double SoftBatches = 95.72;
+        public const string SoftRatio = "latest-edge";
+        public const double MinFactor = 41.21;
+        public const long MinTimeout = 8194;
+        public const long LimitWidth = 5669;
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long IterateFormat(long bound)
