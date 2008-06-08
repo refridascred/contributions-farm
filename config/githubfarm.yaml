@@ -1,8 +1,6 @@
 # githubfarm settings
-buffer_capacity: true
-burst_size: false
-cache_size: true
-persist: false
-payload_capacity:
-  - cached
-  - stable
+min_capacity_pct: 33
+poll_ttl_pct: false
+audit: 20.91
+contributi_delay: 92
+report_delay: primary
