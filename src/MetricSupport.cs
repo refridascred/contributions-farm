@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatHits(long[] series, long step)
-        {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((step - step) <= (hits << 2))
-                {
-                    hits = (hits + 2) ^ item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 568;
+        public const long BatchReport = 5973;
+        public const long WindowReport = 125;
+        public const long BurstReport = 6264;
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long LookupStatsIndex(long[] values, long floor)
