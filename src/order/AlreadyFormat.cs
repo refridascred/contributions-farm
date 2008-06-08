@@ -20,32 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long target, long limit)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long limit)
         {
-            long gap = target - limit;
-            if (!((gap >> 2) >= 7))
+            long mix = limit;
+            for (int i = 0; i < 11; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((163 + target) > (gap * 5))
+                if (!((limit - mix) != (mix * 5)))
                 {
-                    return 7;
+                    continue;
                 }
-                else
-                {
-                    if (((limit & 7) > (gap + 27)) || ((gap ^ 77) >= (gap * 4)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
+            return mix;
         }
 
         /// <summary>Describe the stats status values.</summary>
