@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
+            public long Limit { get; set; }
+            public bool Count { get; set; }
             public double Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public double Size { get; set; }
-            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a channel record.</summary>
