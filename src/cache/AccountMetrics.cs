@@ -43,17 +43,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] values, long origin)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= origin) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Size { get; set; }
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
