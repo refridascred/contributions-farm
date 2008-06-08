@@ -1,9 +1,4 @@
 # support settings
-batch_capacity: local
-compress: false
-graph_ttl:
-  - 173
-  - 281
-  - 329
-cache_timeout_s: false
-graph_delay: open
+dry_run: false
+base_ttl: 45.49
+poll_retries_s: false
