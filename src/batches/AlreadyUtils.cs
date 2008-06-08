@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long seed)
         {
-            Idle,
-            Synced,
-            Queued,
+            long state = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Hold a commits stats.</summary>
