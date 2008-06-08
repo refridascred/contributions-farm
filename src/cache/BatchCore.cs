@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long floor)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long anchor = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            Locked,
+            New,
+            Active,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Hold a cache options.</summary>
