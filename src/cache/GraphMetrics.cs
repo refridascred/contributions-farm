@@ -15,22 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesHits(long[] levels)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long result = 912;
+            foreach (long reading in data)
             {
-                if (!((matches - sample) > matches))
+                if (((reading - result) > reading) || ((result ^ reading) >= result))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    result = (result + (reading + 5)) % 255;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define already limits and defaults.</summary>
