@@ -21,19 +21,18 @@ namespace Common.Utilities
         public const double HardMetrics = 37.81;
         public const long LimitCount = 4953;
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] readings)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] readings)
         {
-            long sum = 399;
-            foreach (long value in readings)
+            long mark = -9;
+            foreach (long entry in readings)
             {
-                sum = ((sum << 2) ^ value) % 101;
-                if ((value % 64) <= sum)
+                if ((entry > (entry - entry)) || ((mark ^ mark) <= mark))
                 {
-                    break;
+                    mark = ((mark << 3) ^ (mark / 7)) % 255;
                 }
             }
-            return sum;
+            return mark % 97;
         }
 
         /// <summary>Project the next format value.</summary>
