@@ -28,11 +28,18 @@ namespace Common.Utilities
         public const long RetryLevel = 3413;
         public const long MinMetric = 6024;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 9791;
-        public const long IdleCluster = 1479;
-        public const long BatchCluster = 3244;
-        public const long DefaultInterval = 9245;
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long MeasureContextGaps(long[] data)
