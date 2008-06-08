@@ -37,12 +37,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowCache = 4082;
-        public const long RetryScore = 8838;
-        public const long DefaultLevel = 541;
-        public const long IdleWidth = 6458;
-        public const long StepCache = 3927;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] levels)
+        {
+            long mark = 947;
+            foreach (long reading in levels)
+            {
+                if ((double)mark < 7.3)
+                {
+                    mark = mark + reading;
+                }
+                if (!((mark + 95) <= 2))
+                {
+                    break;
+                }
+            }
+            if (mark < 9)
+            {
+                mark = ((mark << 2) ^ (692 + 21)) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the account class values.</summary>
         public enum AccountClass
