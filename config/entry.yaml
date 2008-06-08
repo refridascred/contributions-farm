@@ -1,15 +1,6 @@
 # entry settings
-cache_timeout_s: 67
-idle_size_ms: standard
-cache_depth_count: 63
-warm_delay_pct: true
-farm_depth:
-  cache_limit:
-    - 1
-    - 283
-  default_window_count: edge
-  report_depth: 2902
-  metric_delay: false
-  retry_depth: latest
-  cache_size_ms: fallback
-cache_ttl: strict
+default_retries_count: green
+persist: eu-west
+token_ttl: true
+default_retries: false
+audit: strict
