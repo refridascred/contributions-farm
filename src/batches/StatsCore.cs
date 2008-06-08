@@ -39,18 +39,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsMatches(long[] data, long floor)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((reading ^ count) != (count / 9))
-                {
-                    count = (count + 2) + floor;
-                }
-            }
-            return count;
+            Ready,
+            Active,
+            Idle,
+            Retry,
         }
 
         /// <summary>Describe the stats mode values.</summary>
