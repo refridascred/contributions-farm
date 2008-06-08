@@ -22,15 +22,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the notes contributi entries that pass the check.</summary>
-        public static long CountNotesContributiMatches(long[] samples)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyHits(long[] items)
         {
             long seen = 0;
-            foreach (long value in samples)
+            foreach (long sample in items)
             {
-                if (seen >= value)
+                if ((seen & 31) < (sample >> 3))
                 {
                     seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
