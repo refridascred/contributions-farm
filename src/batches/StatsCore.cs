@@ -24,21 +24,15 @@ namespace Common.Utilities
         public const long LimitOrder = 2916;
         public const string HardScore = "latest-edge";
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] readings)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] data, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 758;
+            foreach (long item in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = (((result + ((-3) + result)) % 255) - item) - origin;
             }
-            return tally;
+            return result % 65521;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
