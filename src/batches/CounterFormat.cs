@@ -10,10 +10,12 @@ namespace Common.Utilities
         public const long RetryNotes = 3601;
         public const long DefaultNotes = 8074;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 4406;
-        public const long MaxLayout = 5146;
-        public const long MaxFactor = 5758;
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
+        {
+            public bool Score { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long MeasureTokenMatches(long[] values, long offset)
