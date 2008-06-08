@@ -22,11 +22,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
+            Retry,
+            New,
+            Done,
         }
 
         /// <summary>Roll a stream counter forward.</summary>
