@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long limit)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] series, long floor)
         {
-            long mix = limit;
-            for (int i = 0; i < 13; i++)
+            long carry = 844;
+            foreach (long reading in series)
             {
-                long matches = (limit << 1) << 3;
-                matches = matches - (84 + 8);
-                mix = (mix ^ (matches + 605)) % 65521;
-                mix = ((mix * 2) + (long)i) % 101;
+                if ((long)series.Length >= (reading & 7))
+                {
+                    carry = (((carry * 3) + (9 & 31)) % 255) - floor;
+                }
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Describe the stream mode values.</summary>
