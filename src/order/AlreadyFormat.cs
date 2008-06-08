@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every contributi commits entry stays within the limit.</summary>
-        public static bool CheckContributiCommitsLimits(long[] values, long limit)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamBounds(long[] items, long seed)
         {
             bool found = true;
-            foreach (long entry in values)
+            foreach (long item in items)
             {
-                if (entry > limit)
+                if (item < seed)
                 {
                     found = false;
                     break;
