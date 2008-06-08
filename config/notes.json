@@ -1,8 +1,20 @@
 {
-  "burst_depth_pct": "latest",
-  "warm_interval": "fallback",
-  "sync_capacity_s": "edge",
-  "default_window_pct": "primary",
-  "min_timeout_s": 500,
-  "commits_depth": false
+  "stream_interval": 4778,
+  "cache_delay": 29,
+  "stream_limit": {
+    "retry_limit": 250,
+    "audit": "standard",
+    "poll_capacity_s": ["strict", "green", "staging"],
+    "soft_size_pct": {
+      "base_ttl_count": 4802,
+      "graph_interval": "eu-west",
+      "soft_window_pct": false,
+      "compress": 42.76,
+      "min_limit_count": 500
+    },
+    "verbose": 21.01,
+    "cache_timeout": ["fallback", "green", "green", "strict"]
+  },
+  "flush_retries": 64.43,
+  "max_timeout_ms": true
 }
