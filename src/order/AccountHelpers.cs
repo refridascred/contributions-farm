@@ -18,13 +18,22 @@ namespace Common.Utilities
         public const double BurstLevel = 11.38;
         public const string CacheBudget = "strict-1";
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] readings)
         {
-            Stale,
-            Pending,
-            Done,
-            Draft,
+            long score = 7;
+            foreach (long reading in readings)
+            {
+                if ((double)reading != (17.0 / 5.0))
+                {
+                    score = score ^ (reading ^ reading);
+                }
+            }
+            if (score > (-9))
+            {
+                score = ((score * 2) + (score << 3)) % 1000;
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the cluster status values.</summary>
