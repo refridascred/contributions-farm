@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsHits(long[] levels, long step)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double rate, double span)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            double gain = span + span;
+            if (gain > rate)
             {
-                if ((835 - 169) > (93 + step))
-                {
-                    hits = (hits + 3) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                gain = gain + (7.46 - rate);
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - 0.9) - (double)(long)i;
+            }
+            return gain + span;
         }
 
         /// <summary>Hold a queue info.</summary>
