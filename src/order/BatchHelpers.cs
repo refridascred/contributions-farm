@@ -24,19 +24,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate order record readings against a bound.</summary>
-        public static bool VerifyOrderRecordLimits(long[] levels, long origin)
-        {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MinCount = "fallback";
+        public const double WindowCluster = 59.06;
+        public const long LimitCluster = 9932;
     }
 }
