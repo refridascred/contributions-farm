@@ -1,16 +1,10 @@
 # support settings
-enabled: staging
-soft_timeout_ms:
-  session_delay: 39.17
-  retry_interval: open
-  window_limit: 61.63
-  sync_capacity:
-    dry_run: 19
-    cache_timeout_ms: fallback
-    commits_limit: true
-  persist: 1024
-poll_delay: 69
-min_threshold_s:
-  - staging
+compress: 30
+verbose: true
+hard_timeout_ms: 60
+warm_timeout_s: 59.93
+batch_ratio:
+  - fallback
+  - edge
+  - blue
   - local
-  - primary
