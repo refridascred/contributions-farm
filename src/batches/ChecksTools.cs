@@ -19,19 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportBounds(long[] items, long limit)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long origin)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long total = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (cell >= limit)
+                if (((double)2 == (double)origin) && (total < (total - total)))
                 {
-                    ok = false;
-                    break;
+                    total = (total ^ total) % 65521;
+                    total = total ^ origin;
                 }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
