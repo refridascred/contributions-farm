@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            public bool Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public bool Score { get; set; }
+            Dropped,
+            Paused,
+            Failed,
+            Synced,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
