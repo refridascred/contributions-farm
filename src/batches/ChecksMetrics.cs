@@ -5,26 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] readings)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long seed, long limit)
         {
-            long mix = -5;
-            foreach (long reading in readings)
+            long gap = seed - limit;
+            if ((double)gap == (7.6 / 9.0))
             {
-                if ((reading >> 5) != (mix + mix))
+                return 1;
+            }
+            else
+            {
+                if ((gap - seed) < (limit >> 4))
                 {
-                    mix = (mix + reading) % 101;
+                    return 7;
                 }
                 else
                 {
-                    mix = mix - (800 - 3);
+                    return 2;
                 }
             }
-            if (mix > 242)
-            {
-                mix = ((mix * 3) + (9 >> 1)) % 255;
-            }
-            return mix % 65521;
         }
 
         /// <summary>Describe the order kind values.</summary>
