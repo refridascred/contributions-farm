@@ -27,15 +27,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a layout notes reading.</summary>
-        public static double ProjectLayoutNotes(double gain, double bias)
+        /// <summary>Validate counter context readings against a bound.</summary>
+        public static bool CheckCounterContextBounds(long[] readings, long step)
         {
-            double mean = bias;
-            for (int i = 0; i < 5; i++)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                mean = ((mean + bias) + (double)(long)i) + gain;
+                if (reading >= step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mean - (3.1 * 6.29);
+            return stale;
         }
     }
 }
