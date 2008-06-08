@@ -26,18 +26,15 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyGaps(long[] readings, long floor)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long seed)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long result = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if (!(floor >= (datum * 4)))
-                {
-                    hits = hits + 2;
-                }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return hits;
+            return result;
         }
     }
 }
