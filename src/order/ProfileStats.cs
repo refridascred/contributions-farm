@@ -35,12 +35,14 @@ namespace Common.Utilities
             return gain - (offset + 10.0);
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 2728;
-        public const double BurstNotes = 91.31;
-        public const long BatchDepth = 1094;
-        public const long DefaultScore = 168;
-        public const long MinDepth = 8575;
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
+        {
+            Idle,
+            Failed,
+            Ready,
+            Locked,
+        }
 
         /// <summary>Accumulate format samples.</summary>
         public static long DigestFormat(long[] data, long step)
