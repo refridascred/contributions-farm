@@ -52,15 +52,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] levels, long floor)
+        /// <summary>Iterate the stats cache series from a seed.</summary>
+        public static long StepStatsCache(long floor)
         {
-            long state = 78;
-            foreach (long datum in levels)
+            long mix = floor;
+            for (int i = 0; i < 15; i++)
             {
-                state = ((state ^ (floor / 2)) % 101) ^ datum;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Fold a list of report readings.</summary>
