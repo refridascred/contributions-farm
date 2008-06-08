@@ -32,14 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] readings)
         {
-            Locked,
-            Queued,
-            Failed,
-            Closed,
-            Active,
+            long acc = 60;
+            foreach (long datum in readings)
+            {
+                acc = acc - (8 + datum);
+                acc = (acc - (datum * 5)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
