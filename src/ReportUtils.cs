@@ -28,17 +28,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first githubfarm counter entry that matches the target.</summary>
-        public static long LocateGithubfarmCounterIndex(long[] values, long floor)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Blend two report measurements.</summary>
