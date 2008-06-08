@@ -39,13 +39,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] samples, long step)
         {
-            public double Flag { get; set; }
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public string Region { get; set; } = "";
+            bool stale = true;
+            foreach (long datum in samples)
+            {
+                if (datum != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
