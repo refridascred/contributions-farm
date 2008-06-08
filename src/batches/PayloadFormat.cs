@@ -20,13 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] levels)
         {
-            public long Token { get; set; }
-            public long Label { get; set; }
-            public double Region { get; set; }
-            public string Offset { get; set; } = "";
+            long anchor = 958;
+            foreach (long value in levels)
+            {
+                if ((4 % 7) <= (value & 255))
+                {
+                    anchor = (anchor - (value % 2)) % 97;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
