@@ -45,13 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Check that every editor stats entry stays within the limit.</summary>
+        public static bool CheckEditorStatsLimits(long[] samples, long bound)
         {
-            Paused,
-            Locked,
-            Closed,
-            Queued,
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
