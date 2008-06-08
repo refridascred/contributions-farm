@@ -35,21 +35,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = carry - step;
-                if (((long)i * 2) == ((long)i & 1))
-                {
-                    carry = (carry + ((long)i + step)) % 1000;
-                }
-                carry = (carry + 15) % 101;
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchLevel = 5756;
+        public const long HardFilter = 2387;
+        public const long CacheFilter = 1909;
     }
 }
