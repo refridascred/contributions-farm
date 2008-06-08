@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountOutliers(long[] data, long step)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long carry = -98;
+            foreach (long reading in data)
             {
-                if ((9.13 > (double)step) && !((entry % 2) < (8 + entry)))
+                if (((-51) + reading) >= (carry % 5))
                 {
-                    matches = matches + 2;
+                    carry = (carry << 2) ^ reading;
                 }
+                carry = ((carry * 5) + (carry / 5)) % 97;
             }
-            return matches;
+            if (carry < (-567))
+            {
+                carry = carry ^ (7 - carry);
+            }
+            return carry;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
