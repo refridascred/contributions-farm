@@ -39,21 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] samples)
+        /// <summary>Rank account graph input into a small class.</summary>
+        public static long BucketAccountGraph(long limit, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (((step + limit) < (limit + limit)) && ((limit ^ limit) != (limit + limit)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((8.81 / 7.0) >= (double)step)
                 {
-                    if ((samples[i] ^ samples[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
