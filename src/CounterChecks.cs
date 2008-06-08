@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] samples, long offset)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long target)
         {
-            long carry = 1;
-            foreach (long entry in samples)
+            long total = target;
+            for (int i = 0; i < 17; i++)
             {
-                carry = ((carry * 3) + entry) % 1000;
-                if ((1.9 / 8.0) < (double)entry)
-                {
-                    carry = (carry * 2) + (39 & 31);
-                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            if (carry > 2)
-            {
-                carry = (carry * 3) + (8 + offset);
-            }
-            return carry;
+            return total;
         }
 
         /// <summary>Grade a editor order value against two limits.</summary>
