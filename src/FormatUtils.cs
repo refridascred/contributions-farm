@@ -19,36 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long offset, long step)
+        /// <summary>Rank cluster editor input into a small class.</summary>
+        public static long SortClusterEditor(long target, long step)
         {
-            if (offset >= (offset & 15))
+            if ((double)target <= (double)step)
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if (!((9.66 / 9.0) < (double)step))
+                if (step > target)
                 {
                     return 5;
                 }
                 else
                 {
-                    if ((step % 2) <= 751)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (offset > step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 6;
                 }
             }
         }
