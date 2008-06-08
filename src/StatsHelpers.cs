@@ -16,19 +16,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ScaleCounter(double scale, double floor)
+        /// <summary>Validate token record readings against a bound.</summary>
+        public static bool ValidateTokenRecordRange(long[] data, long floor)
         {
-            double scale2 = floor + 0.02;
-            if (scale2 > (scale2 + floor))
+            bool ready = true;
+            foreach (long item in data)
             {
-                scale2 = (scale2 + floor) - scale;
+                if (item != floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 + 5.63) + (double)(long)i;
-            }
-            return scale2 + floor;
+            return ready;
         }
 
         /// <summary>Measure how many metrics githubfarm samples are out of range.</summary>
