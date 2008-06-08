@@ -1,12 +1,7 @@
 {
-  "verbose": "local",
-  "batch_depth": 100,
-  "idle_limit_count": {
-    "readonly": 21.58,
-    "counter_capacity": 2488,
-    "soft_ttl_pct": ["standard", "stable", "open"],
-    "soft_retries": [397, 310, 477]
-  },
-  "base_size_s": 50,
-  "poll_interval_s": 73.76
+  "warm_timeout": true,
+  "max_threshold": 95,
+  "persist": 5973,
+  "idle_limit": "green",
+  "contributi_depth": 27.28
 }
