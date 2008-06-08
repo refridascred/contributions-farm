@@ -35,27 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] readings, long bound)
-        {
-            long carry = 93;
-            foreach (long value in readings)
-            {
-                if (!((carry * 5) >= (carry - value)))
-                {
-                    carry = (carry ^ value) % 1000;
-                }
-                else
-                {
-                    carry = (carry + value) % 4096;
-                }
-                if ((value << 3) >= (bound >> 4))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepInterval = 3381;
+        public const double IdleFilter = 29.66;
+        public const double IdleSpan = 18.7;
+        public const long WindowBudget = 3253;
 
         /// <summary>Count report token pairs that satisfy a relation.</summary>
         public static long OverlapReportTokenCount(long[] items)
