@@ -1,6 +1,5 @@
 # githubfarm settings
-notes_timeout: 15
-max_threshold: false
-checks_ttl: strict
-readonly: local
-enabled: false
+already_window: 7208
+flush_threshold_s: legacy
+cache_ttl: 79.79
+poll_ttl_s: false
