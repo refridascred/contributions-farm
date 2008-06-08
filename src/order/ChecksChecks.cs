@@ -19,18 +19,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the profile token entries that pass the check.</summary>
-        public static long TallyProfileTokenHits(long[] levels, long target)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (target < (821 << 3))
-                {
-                    tally = (tally + 1) ^ value;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Accumulate layout format samples.</summary>
