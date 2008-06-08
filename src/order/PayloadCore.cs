@@ -28,18 +28,10 @@ namespace Common.Utilities
         public const long HardScore = 613;
         public const long CacheLevel = 3473;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (value <= (value << 2))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double IdleBudget = 26.48;
+        public const long WindowInterval = 4365;
+        public const long BurstSupport = 8892;
+        public const string CacheSupport = "local";
     }
 }
