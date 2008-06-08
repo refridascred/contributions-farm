@@ -12,19 +12,21 @@ namespace Common.Utilities
         public const long MinTimeout = 8194;
         public const long LimitWidth = 5669;
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long bound)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] levels)
         {
-            long mark = bound;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((mark + 4) > 32))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = (mark << 3) ^ bound;
+                    if ((levels[i] + levels[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
