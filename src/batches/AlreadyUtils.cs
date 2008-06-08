@@ -28,19 +28,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ProjectStats(double gain, double span)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            double mean = (gain - gain) - span;
-            if (mean < gain)
-            {
-                mean = mean - span;
-            }
-            else
-            {
-                mean = mean - (gain / 8.0);
-            }
-            return mean + 15.0;
+            Queued,
+            Dropped,
+            Draft,
+            Idle,
+            Ready,
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
