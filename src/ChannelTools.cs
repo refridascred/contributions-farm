@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long step)
         {
-            Paused,
-            Pending,
-            Locked,
+            long result = step;
+            for (int i = 0; i < 16; i++)
+            {
+                result = (result << 2) ^ result;
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
