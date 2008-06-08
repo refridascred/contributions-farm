@@ -38,17 +38,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] items, long target)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterOutliers(long[] readings, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (items[i] > target)
+                if ((item ^ (-4)) <= (item & 3))
                 {
-                    return (long)i;
+                    count = (count + 1) + target;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
