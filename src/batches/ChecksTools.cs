@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            public bool Size { get; set; }
+            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
