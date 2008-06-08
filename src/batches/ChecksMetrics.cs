@@ -16,12 +16,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long step, long limit)
         {
-            Active,
-            Queued,
-            Locked,
+            long cur = step - limit;
+            if ((limit - step) < (936 - step))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)cur == (double)limit) && ((9.18 / 7.0) >= (double)step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (5 >= cur)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (648 >= (cur & 3))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the route farm series from a seed.</summary>
