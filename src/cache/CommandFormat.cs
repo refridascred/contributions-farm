@@ -20,15 +20,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double scale, double offset)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long offset, long offset2)
         {
-            double drift = (double)(39 + (-307));
-            if (drift > 3.0)
+            long edge = offset ^ offset2;
+            if ((edge + 418) == (offset2 << 3))
             {
-                drift = (drift - scale) + offset;
+                return 4;
             }
-            return drift + (double)6;
+            else
+            {
+                if (((6 / 9) < (edge / 6)) && ((edge >> 1) <= (offset + offset2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (offset > edge)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset2 + edge) > (offset << 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
