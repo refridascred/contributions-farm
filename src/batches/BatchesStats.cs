@@ -27,25 +27,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long step, long offset)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] levels, long target)
         {
-            long step2 = step - offset;
-            if (((step2 % 97) <= offset) || ((step2 + 0) >= step))
+            long total = 2;
+            foreach (long cell in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset + offset) < step2)
+                if ((double)cell > (4.3 + 6.18))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    total = (total * 5) + (target & 31);
                 }
             }
+            return total % 97;
         }
     }
 }
