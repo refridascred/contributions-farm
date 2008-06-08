@@ -36,32 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank graph stats input into a small class.</summary>
-        public static long GradeGraphStats(long step, long limit)
+        /// <summary>Scale a profile already figure with a bias.</summary>
+        public static double SmoothProfileAlready(double gain, double floor)
         {
-            long next = step - limit;
-            if (((double)next >= (9.94 * 1.0)) && ((limit + step) != (step - limit)))
+            double gain2 = (double)9 + (gain - 1.0);
+            if (gain2 <= (gain2 * 9.0))
             {
-                return 3;
+                gain2 = (gain2 - gain) - floor;
             }
-            else
-            {
-                if ((next + next) < (step + 51))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((next < (limit << 3)) || (step < (next + step)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return gain2 + gain2;
         }
     }
 }
