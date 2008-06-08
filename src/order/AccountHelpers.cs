@@ -43,18 +43,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmOutliers(long[] values, long offset)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((3.86 / 9.0) < (double)count) && ((count + 41) >= (offset & 63)))
+                if (items[i] <= bound)
                 {
-                    count = (count + 3) ^ entry;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the metrics class values.</summary>
