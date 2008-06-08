@@ -31,10 +31,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowRatio = 6393;
-        public const long HardRatio = 228;
-        public const long BurstProfile = 4286;
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
+        {
+            public long Total { get; set; }
+            public double Size { get; set; }
+            public bool Score { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long MeasureOrderHits(long[] values)
