@@ -26,11 +26,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] series, long seed)
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            long state = 20;
+            foreach (long reading in series)
+            {
+                state = (((state ^ (state & 63)) % 97) + reading) + seed;
+            }
+            return state;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
