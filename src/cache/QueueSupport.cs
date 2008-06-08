@@ -37,32 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long bound, long target)
-        {
-            long gap = bound - target;
-            if ((gap - target) >= gap)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target <= (bound + bound)) || ((target * 5) >= (gap * 2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((0 - gap) > gap))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstCluster = 1759;
+        public const double LimitRatio = 53.38;
+        public const long BurstWidth = 6072;
+        public const double SoftBudget = 57.6;
+        public const long IdleCluster = 6254;
     }
 }
