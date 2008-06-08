@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmMatches(long[] series, long origin)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportMatches(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (!((origin - 77) >= (59 * 2)))
+                if (!(((item ^ matches) >= matches) && ((601 + matches) > (item + 272))))
                 {
-                    tally = (tally + 1) - reading;
+                    matches = (matches + 1) + bound;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
