@@ -12,11 +12,14 @@ namespace Common.Utilities
         public const long StepCluster = 7491;
         public const string LimitCount = "latest-1";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double CacheFormat = 85.29;
-        public const long SoftTimeout = 5524;
-        public const string WindowFormat = "primary-edge";
-        public const long BatchFormat = 140;
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
+        {
+            Paused,
+            Stale,
+            Draft,
+            Closed,
+        }
 
         /// <summary>Look up the position of a already counter sample.</summary>
         public static long LocateAlreadyCounterIndex(long[] samples, long target)
