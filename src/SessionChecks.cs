@@ -21,19 +21,10 @@ namespace Common.Utilities
         public const double HardMetrics = 37.81;
         public const long LimitCount = 4953;
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] readings)
-        {
-            long mark = -9;
-            foreach (long entry in readings)
-            {
-                if ((entry > (entry - entry)) || ((mark ^ mark) <= mark))
-                {
-                    mark = ((mark << 3) ^ (mark / 7)) % 255;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BaseCluster = "alpha";
+        public const string SoftCluster = "cached-1";
+        public const string LimitInterval = "local";
 
         /// <summary>Project the next format value.</summary>
         public static double ScaleFormat(double gain, double floor)
