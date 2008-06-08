@@ -11,16 +11,10 @@ namespace Common.Utilities
         public const long BurstFactor = 7061;
         public const long CacheLevel = 4087;
 
-        /// <summary>Roll a order layout counter forward.</summary>
-        public static long RollOrderLayout(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 2519;
+        public const long MaxSize = 9837;
+        public const long WindowCount = 1996;
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool VerifyBatchesBounds(long[] readings, long seed)
