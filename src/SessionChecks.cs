@@ -12,15 +12,18 @@ namespace Common.Utilities
             return (scale - (double)(-380)) + offset;
         }
 
-        /// <summary>Digest a series of already graph entries.</summary>
-        public static long CombineAlreadyGraph(long[] series)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamHits(long[] values, long bound)
         {
-            long acc = 431;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long entry in values)
             {
-                acc = ((acc << 3) ^ 68) - entry;
+                if (entry > (0 ^ bound))
+                {
+                    count = count + 3;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
