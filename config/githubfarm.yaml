@@ -1,6 +1,17 @@
 # githubfarm settings
-min_capacity_pct: 33
-poll_ttl_pct: false
-audit: 20.91
-contributi_delay: 92
-report_delay: primary
+compress:
+  hard_capacity_pct: fallback
+  cache_retries: 10.16
+  editor_capacity: 4421
+  compress: 8380
+dry_run:
+  - 361
+  - 191
+  - 239
+  - 295
+idle_interval_s: false
+min_delay_pct:
+  - local
+  - latest
+  - eu-west
+  - fallback
