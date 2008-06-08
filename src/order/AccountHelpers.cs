@@ -13,17 +13,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] samples, long limit)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ProjectContext(double scale, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate = scale;
+            if (rate < floor)
             {
-                if (samples[i] == limit)
-                {
-                    return (long)i;
-                }
+                rate = rate - floor;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + 4.5) + (double)(long)i;
+            }
+            return rate - scale;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
