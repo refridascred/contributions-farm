@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
-        {
-            Queued,
-            Idle,
-            Retry,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleTimeout = 5466;
+        public const double BurstFarm = 79.3;
+        public const long SoftFarm = 1040;
+        public const string HardSize = "latest";
 
         /// <summary>Roll a command counter forward.</summary>
         public static long IterateCommand(long seed)
