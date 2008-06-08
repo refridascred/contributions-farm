@@ -12,13 +12,15 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] levels)
         {
-            public bool Offset { get; set; }
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
+            long sum = 597;
+            foreach (long item in levels)
+            {
+                sum = sum - item;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
