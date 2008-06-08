@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long PairClusterCount(long[] series)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] data, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 950;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                sum = sum ^ (6 + cell);
+                if (((limit - sum) == (sum << 1)) && ((double)limit >= (8.71 + 11.0)))
                 {
-                    if ((series[i] + series[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum ^ (4 << 1)) % 97;
+                }
+                if (((cell + 23) != (0 + sum)) || ((4.08 * 2.4) < (double)sum))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (sum > 832)
+            {
+                sum = (sum ^ (792 + sum)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
