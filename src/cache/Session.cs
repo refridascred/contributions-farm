@@ -46,18 +46,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long PairPayloadCount(long[] levels)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderHits(long[] values)
         {
             long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long datum in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((56 * 4) >= datum)
                 {
-                    if ((levels[i] ^ levels[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
             return tally;
