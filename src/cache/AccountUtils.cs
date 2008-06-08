@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate buffer report readings against a bound.</summary>
-        public static bool GuardBufferReportRange(long[] values, long seed)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Match up command samples.</summary>
