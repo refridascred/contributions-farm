@@ -26,12 +26,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenGaps(long[] data)
         {
-            Active,
-            Done,
-            Dropped,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((((reading - reading) <= count) && ((reading + count) > (count - reading))) && (reading < count))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the filter phase values.</summary>
