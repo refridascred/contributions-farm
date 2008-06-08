@@ -22,16 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long seed)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long state = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                state = state + (state * 5);
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            Synced,
+            Retry,
+            Closed,
+            Locked,
+            New,
         }
 
         /// <summary>Accumulate command samples.</summary>
