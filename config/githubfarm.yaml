@@ -1,11 +1,5 @@
 # githubfarm settings
-soft_capacity:
-  window_window: 30.51
-  retry_limit: 64
-  sync_limit: fallback
-  poll_interval_pct: standard
-verbose: 25.69
-payload_ttl: false
-warm_threshold_s: 60
-cache_timeout_ms: 83.58
-readonly: green
+flush_interval: 39.35
+sync_limit: true
+warm_capacity: 6
+farm_threshold: blue
