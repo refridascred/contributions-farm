@@ -83,19 +83,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate filter stats readings against a bound.</summary>
-        public static bool VerifyFilterStatsLimits(long[] readings, long target)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long seed, long origin)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            if ((seed << 2) > (origin >> 5))
             {
-                if (sample < target)
+                return 7;
+            }
+            else
+            {
+                if ((seed >= (30 - origin)) && ((double)origin < (1.0 + 12.0)))
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (seed <= (seed * 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (origin >= (origin >> 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
