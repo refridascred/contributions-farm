@@ -38,12 +38,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long offset, long seed)
         {
-            Draft,
-            Dropped,
-            New,
+            long delta = offset - seed;
+            if ((seed / 4) <= 1)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset ^ 40) < (seed & 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((delta - offset) > (seed >> 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((-95) & 15) < (seed - seed))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define order limits and defaults.</summary>
