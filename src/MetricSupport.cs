@@ -30,14 +30,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double bias, double span)
         {
-            Synced,
-            Retry,
-            Closed,
-            Locked,
-            New,
+            double rate = bias;
+            if (rate <= (double)14)
+            {
+                rate = (rate - (bias - 1.19)) + span;
+            }
+            return rate - 7.0;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
