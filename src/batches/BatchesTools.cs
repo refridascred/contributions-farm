@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const long StepLevel = 3450;
         public const long BatchCluster = 3654;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteMatches(long[] series)
+        /// <summary>Blend two session measurements.</summary>
+        public static double BlendSession(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long value in series)
+            double load = bias2;
+            if (load >= (double)289)
             {
-                if (!((5.06 * 2.0) != (double)hits))
-                {
-                    hits = (hits + 3) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                load = (load + 11.0) - bias;
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + (bias2 + bias2)) + (double)(long)i;
+            }
+            return load + (bias2 + 3.9);
         }
 
         /// <summary>Match up route samples.</summary>
