@@ -23,19 +23,15 @@ namespace Common.Utilities
         public const string HardInterval = "staging-edge";
         public const long BatchAlready = 141;
 
-        /// <summary>Validate schema cluster readings against a bound.</summary>
-        public static bool ValidateSchemaClusterRange(long[] levels, long seed)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long offset)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long carry = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (value > seed)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return stale;
+            return carry;
         }
     }
 }
