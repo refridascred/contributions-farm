@@ -1,15 +1,4 @@
 # support settings
-support_threshold: 90.05
-cache_window_s: 6409
-default_timeout_s:
-  strict:
-    - 347
-    - 397
-    - 163
-  max_limit: staging
-  default_ratio_pct: true
-  max_timeout:
-    - latest
-    - strict
-    - cached
-    - standard
+dry_run: 79
+default_size_pct: 7
+token_retries: false
