@@ -1,13 +1,6 @@
 {
-  "default_ratio": true,
-  "soft_retries_ms": {
-    "queue_threshold": false,
-    "graph_depth": "staging",
-    "min_threshold_count": ["staging", "latest"],
-    "stream_capacity": 1024,
-    "cache_ratio_s": 8.01,
-    "max_interval_ms": [46, 191, 228, 269]
-  },
-  "verbose": 5326,
-  "poll_threshold_ms": ["green", "green"]
+  "metrics_window": 965,
+  "strict": 80.25,
+  "stream_ttl": true,
+  "warm_ttl_ms": true
 }
