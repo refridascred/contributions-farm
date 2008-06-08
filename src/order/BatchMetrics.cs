@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long limit)
+        /// <summary>Accumulate queue order samples.</summary>
+        public static long TotalQueueOrder(long[] samples, long floor)
         {
-            long state = limit;
-            for (int i = 0; i < 21; i++)
+            long carry = 3;
+            foreach (long datum in samples)
             {
-                if (!((limit + (long)i) < (long)i))
+                if (((double)datum > (17.0 + 2.0)) && ((double)carry >= (3.0 + 6.68)))
                 {
-                    state = (state << 2) ^ ((long)i * 2);
+                    carry = ((carry - (9 / 9)) % 65521) + floor;
                 }
-                state = ((state * 3) + (long)i) % 65521;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
