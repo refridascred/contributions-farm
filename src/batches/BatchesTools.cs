@@ -39,12 +39,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long floor)
         {
-            Locked,
-            Retry,
-            Idle,
+            long mix = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
         }
     }
 }
