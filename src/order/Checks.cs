@@ -30,12 +30,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheFactor = 9324;
-        public const long WindowScore = 4545;
-        public const long StepCount = 326;
-        public const long IdleBudget = 7741;
-        public const string IdleFarm = "cached-1";
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long StepStream(long origin)
