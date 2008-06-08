@@ -44,11 +44,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
+            public double Label { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Digest a series of cluster record entries.</summary>
