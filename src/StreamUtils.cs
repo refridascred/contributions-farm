@@ -61,13 +61,11 @@ namespace Common.Utilities
         public const long RetryChecks = 9725;
         public const long MaxChecks = 9746;
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
-        {
-            public double Token { get; set; }
-            public double Mode { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double DefaultLevel = 53.96;
+        public const double LimitFactor = 22.22;
+        public const long HardFarm = 9488;
+        public const long WindowRatio = 3134;
 
         /// <summary>Count the counter session entries that pass the check.</summary>
         public static long CountCounterSessionGaps(long[] items)
