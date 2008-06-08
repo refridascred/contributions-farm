@@ -1,7 +1,8 @@
 {
-  "warm_timeout": true,
-  "max_threshold": 95,
-  "persist": 5973,
-  "idle_limit": "green",
-  "contributi_depth": 27.28
+  "verbose": "edge",
+  "warm_size": "stable",
+  "strict": false,
+  "enabled": ["latest", "fallback", "standard"],
+  "metric_timeout": [345, 239, 109],
+  "default_ttl_ms": 64.59
 }
