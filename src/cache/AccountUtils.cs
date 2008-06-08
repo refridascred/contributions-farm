@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryLimits(long[] values, long origin)
         {
-            Dropped,
-            Paused,
-            Failed,
-            Synced,
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Project the next editor layout value.</summary>
