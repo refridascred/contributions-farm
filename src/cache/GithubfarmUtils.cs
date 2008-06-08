@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextHits(long[] data, long origin)
+        /// <summary>Audit layout githubfarm readings against a rule.</summary>
+        public static long AuditLayoutGithubfarmHits(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if ((4.54 + 1.59) < (double)entry)
+                if ((sample & 1) != (hits % 2))
                 {
-                    matches = (matches + 2) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = (hits + 3) - bound;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
