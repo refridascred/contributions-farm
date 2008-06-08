@@ -58,21 +58,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] readings)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorOutliers(long[] items, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((reading + reading) < (12 % 24))
                 {
-                    if ((readings[i] ^ readings[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 1) - limit;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
