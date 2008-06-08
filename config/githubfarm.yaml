@@ -1,4 +1,32 @@
 # githubfarm settings
-metrics_limit: 100
-profile_ratio: false
-burst_limit_s: green
+cluster_size:
+  window_threshold: legacy
+  warm_capacity_ms:
+    - 242
+    - 297
+  default_ttl_pct: 70.12
+  notes_capacity: primary
+  flush_capacity_s:
+    retry_delay_s: 29.34
+    burst_timeout_pct: 100
+    base_capacity_ms: true
+    flush_capacity:
+      - 414
+      - 338
+      - 351
+      - 140
+    cache_depth_count: 89.13
+    persist: green
+  cache_interval_count:
+    hard_interval_s: 31.65
+    channel_retries: 500
+    burst_depth_ms: eu-west
+    audit: true
+    readonly: 7845
+window_threshold: staging
+poll_depth: 10.0
+commits_limit:
+  - green
+  - blue
+verbose: false
+soft_size: 1024
