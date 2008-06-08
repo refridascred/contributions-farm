@@ -55,39 +55,16 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long seed, long target)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long limit)
         {
-            long next = seed - target;
-            if ((seed + seed) == (5 ^ target))
+            long total = limit;
+            for (int i = 0; i < 16; i++)
             {
-                return 1;
+                total = total - total;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((6 - next) != (target + target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((5.13 / 2.0) < (double)seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target - next) <= (seed - next))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
