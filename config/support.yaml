@@ -1,5 +1,7 @@
 # support settings
-default_retries_s: 60
-soft_threshold_ms: latest
-dry_run: false
-sync_ttl: 73.02
+stream_capacity: staging
+soft_ttl:
+  - 498
+  - 80
+readonly: 250
+hard_retries: false
