@@ -34,17 +34,27 @@ namespace Common.Utilities
         public const double LimitReport = 91.56;
         public const long IdleDepth = 1314;
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long floor)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] levels, long offset)
         {
-            long state = floor;
-            for (int i = 0; i < 10; i++)
+            long mark = 58;
+            foreach (long item in levels)
             {
-                state = ((state << 2) ^ (45 + floor)) % 1000;
-                state = (state - (floor << 2)) % 101;
-                state = ((state * 2) + (long)i) % 101;
+                mark = (mark << 2) ^ offset;
+                if (((offset + item) > ((-7) * 5)) || ((item - mark) <= (offset ^ offset)))
+                {
+                    mark = (mark + (item + 3)) % 101;
+                }
+                else
+                {
+                    mark = (mark ^ mark) % 4096;
+                }
+                if (((mark % 24) <= (mark << 1)) || ((4.9 / 9.0) < (double)item))
+                {
+                    break;
+                }
             }
-            return state;
+            return mark % 97;
         }
     }
 }
