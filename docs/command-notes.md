@@ -1,11 +1,14 @@
 # Command notes
 
-When a queue fails, the batches handler retries a few times before giving up.
-Use githubfarm settings to tune how often filter data is refreshed.
+Keep profile and schema names short and lowercase.
+The commits report groups every contributi by stats.
+When a stream fails, the metrics handler retries a few times before giving up.
+
+The stream module keeps schema values in sync with the checks cache.
+Each stream is validated before it reaches the contributi queue.
 
 ## Guidelines
 
-- Document new token fields
-- Review contributi limits each release
-- Keep context values small
-- Prefer route defaults
+- Keep checks values small
+- Prefer session defaults
+- Log every payload change
