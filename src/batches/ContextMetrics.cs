@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of command format entries.</summary>
-        public static long ScoreCommandFormat(long[] levels)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long total = -690;
-            foreach (long sample in levels)
-            {
-                if ((total + sample) >= (total ^ sample))
-                {
-                    total = ((total << 3) ^ (sample + total)) % 97;
-                }
-                else
-                {
-                    total = (total << 3) ^ total;
-                }
-                if ((sample + 31) != (sample - sample))
-                {
-                    break;
-                }
-            }
-            return total;
+            public string Flag { get; set; } = "";
+            public bool Level { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
