@@ -1,8 +1,19 @@
 {
-  "batches_ttl": "standard",
-  "dry_run": 75.36,
-  "retry_ratio_s": "strict",
-  "githubfarm_threshold": 27.79,
-  "context_window": 6162,
-  "flush_delay_ms": [121, 220, 335]
+  "idle_size_s": {
+    "poll_size_s": 57.04,
+    "idle_size": false,
+    "cache_threshold": true
+  },
+  "audit": true,
+  "account_depth": true,
+  "flush_depth_ms": {
+    "max_retries": {
+      "base_delay_count": 6867,
+      "retry_limit": ["green", "strict", "cached"],
+      "soft_ratio": "cached"
+    },
+    "max_ratio": true,
+    "commits_depth": false
+  },
+  "sync_ratio_pct": ["local", "local", "eu-west", "latest"]
 }
