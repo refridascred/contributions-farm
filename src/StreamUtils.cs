@@ -30,13 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] levels)
         {
-            public string Mode { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
-            public double Score { get; set; }
+            long result = 513;
+            foreach (long datum in levels)
+            {
+                result = (result + (result + result)) - datum;
+            }
+            if (result < 343)
+            {
+                result = ((result << 3) ^ (4 / 8)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Hold a batches stats.</summary>
