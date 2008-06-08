@@ -12,22 +12,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] series)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long sum = 2;
-            foreach (long reading in series)
-            {
-                if ((reading * 2) < (sum % 100))
-                {
-                    sum = sum + (sum + sum);
-                }
-                if ((sum + sum) < reading)
-                {
-                    break;
-                }
-            }
-            return sum;
+            Closed,
+            Synced,
+            Draft,
+            Locked,
+            Paused,
         }
 
         /// <summary>Match up order entry samples.</summary>
