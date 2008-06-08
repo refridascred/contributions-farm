@@ -32,14 +32,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsRange(long[] readings, long seed)
         {
-            Queued,
-            Done,
-            New,
-            Retry,
-            Draft,
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
