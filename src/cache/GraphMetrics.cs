@@ -49,10 +49,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string SoftSpan = "stable-1";
-        public const double WindowCount = 19.81;
-        public const long SoftGithubfarm = 5940;
-        public const long BurstGithubfarm = 8611;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultAlready = 8790;
+        public const long IdleDepth = 5593;
+        public const string MaxAlready = "cached-v2";
     }
 }
