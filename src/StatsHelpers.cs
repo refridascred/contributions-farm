@@ -70,13 +70,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
-        {
-            Paused,
-            Synced,
-            Active,
-            Closed,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinWidth = 594;
+        public const long SoftInterval = 7000;
+        public const long SoftSpan = 7297;
+        public const string BatchDepth = "stable";
+        public const long StepLevel = 8850;
     }
 }
