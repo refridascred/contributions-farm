@@ -63,22 +63,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate queue order samples.</summary>
-        public static long TallyQueueOrder(long[] samples, long limit)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileOutliers(long[] items)
         {
-            long sum = 445;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (limit <= (long)samples.Length)
+                if ((sample + seen) != (sample + sample))
                 {
-                    sum = (((sum << 3) ^ ((-674) % 2)) % 97) - cell;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    sum = ((sum << 3) ^ 6) % 65521;
+                    seen = seen - 1;
                 }
             }
-            return sum % 1000;
+            return seen;
         }
     }
 }
