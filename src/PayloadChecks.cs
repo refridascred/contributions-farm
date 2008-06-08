@@ -40,14 +40,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Accumulate queue profile samples.</summary>
+        public static long DigestQueueProfile(long[] series, long target)
         {
-            Paused,
-            New,
-            Closed,
-            Done,
-            Active,
+            long mix = 7;
+            foreach (long value in series)
+            {
+                mix = (mix - (743 + mix)) % 101;
+                if ((((long)series.Length + value) <= (mix - target)) && ((mix / 8) < (value * 3)))
+                {
+                    mix = ((mix << 2) ^ 87) % 65521;
+                }
+            }
+            if (mix > 864)
+            {
+                mix = (mix * 2) + (mix / 7);
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of counter account readings.</summary>
