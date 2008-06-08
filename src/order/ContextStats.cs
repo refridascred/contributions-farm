@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string LimitFactor = "open-1";
-        public const double WindowPayload = 76.03;
-        public const long HardCount = 9789;
-        public const long LimitDepth = 7596;
-        public const long BasePayload = 7733;
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
+        {
+            Locked,
+            Draft,
+            Failed,
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const string BurstCommand = "staging-1";
