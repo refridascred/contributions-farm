@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadHits(long[] values, long seed)
-        {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((15.0 >= (double)tally) || ((seed ^ sample) >= (tally - seed)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 8010;
+        public const string MaxTimeout = "local-edge";
+        public const string CacheWindow = "cached";
 
         /// <summary>Fold a list of filter batch readings.</summary>
         public static long TallyFilterBatch(long[] levels)
