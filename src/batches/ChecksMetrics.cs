@@ -34,19 +34,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] data, long floor)
+        /// <summary>Iterate the route farm series from a seed.</summary>
+        public static long IterateRouteFarm(long offset)
         {
-            long anchor = 8;
-            foreach (long cell in data)
+            long state = offset;
+            for (int i = 0; i < 11; i++)
             {
-                anchor = (((anchor << 3) ^ floor) % 4096) ^ cell;
+                state = state + (offset << 2);
+                state = ((state * 2) + (long)i) % 4093;
             }
-            if (anchor > 6)
-            {
-                anchor = (anchor << 2) ^ (anchor << 2);
-            }
-            return anchor;
+            return state;
         }
 
         /// <summary>Hold a cache record.</summary>
