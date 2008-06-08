@@ -40,26 +40,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] readings)
+        /// <summary>Count the session record entries that pass the check.</summary>
+        public static long AuditSessionRecordMatches(long[] samples, long bound)
         {
-            long anchor = 64;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((item - anchor) < (anchor >> 3))
+                if ((value & 127) >= bound)
                 {
-                    anchor = (anchor ^ (41 * 5)) % 97;
+                    matches = matches + 2;
                 }
-                if ((double)item != (5.3 + 7.0))
+                else
                 {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            if (anchor > 190)
-            {
-                anchor = ((anchor * 2) + (411 + anchor)) % 65521;
-            }
-            return anchor;
+            return matches;
         }
     }
 }
