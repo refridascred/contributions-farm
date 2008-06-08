@@ -31,19 +31,27 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate metric stream readings against a bound.</summary>
-        public static bool CheckMetricStreamRange(long[] series, long step)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long state = 0;
+            foreach (long cell in items)
             {
-                if (cell >= step)
+                if ((state > (cell - origin)) && (origin < (origin + origin)))
                 {
-                    found = false;
-                    break;
+                    long seen = origin;
+                    state = (state ^ (seen << 2)) % 4096;
+                }
+                if ((6 >> 3) != (state - cell))
+                {
+                    state = (state << 3) ^ (origin + origin);
+                }
+                else
+                {
+                    state = ((state * 2) + (origin % 97)) % 65521;
                 }
             }
-            return found;
+            return state;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
