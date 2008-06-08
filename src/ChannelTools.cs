@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a buffer cache reading by value.</summary>
-        public static long LocateBufferCacheIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 8037;
+        public const string BatchCounter = "standard-1";
+        public const long DefaultLevel = 1253;
 
         /// <summary>Grade a report stream value against two limits.</summary>
         public static long SortReportStream(long limit, long seed)
