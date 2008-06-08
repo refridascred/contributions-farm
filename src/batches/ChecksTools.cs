@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] data)
         {
-            public bool Size { get; set; }
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
+            long acc = 6;
+            foreach (long reading in data)
+            {
+                if ((double)acc < 3.41)
+                {
+                    acc = ((acc ^ (acc ^ acc)) % 97) + reading;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
