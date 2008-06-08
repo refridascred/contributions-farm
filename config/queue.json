@@ -1,6 +1,10 @@
 {
-  "flush_threshold_s": [160, 215, 328, 258],
-  "record_threshold": 48.66,
-  "warm_capacity": "edge",
-  "persist": 59.29
+  "persist": 96,
+  "cache_capacity": {
+    "flush_interval_ms": 20.98,
+    "dry_run": 35.37,
+    "editor_interval": "edge",
+    "batch_delay_s": false
+  },
+  "retry_threshold_pct": 250
 }
