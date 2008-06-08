@@ -1,8 +1,5 @@
 {
-  "checks_window": 53.35,
-  "idle_window_count": 2903,
-  "cache_depth": "staging",
-  "order_timeout": false,
-  "persist": "standard",
-  "min_limit": "edge"
+  "checks_depth": "open",
+  "persist": true,
+  "flush_window_ms": true
 }
