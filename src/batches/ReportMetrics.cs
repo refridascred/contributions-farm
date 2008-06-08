@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Count the report stream entries that pass the check.</summary>
+        public static long CountReportStreamGaps(long[] items)
         {
-            Active,
-            Closed,
-            Dropped,
-            Done,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((((seen & 63) >= (value * 3)) && ((value + seen) < seen)) || (value <= (value * 3)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of profile format readings.</summary>
