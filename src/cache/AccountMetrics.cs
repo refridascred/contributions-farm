@@ -50,15 +50,19 @@ namespace Common.Utilities
         public const long SoftDepth = 2286;
         public const string BatchTools = "primary-1";
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesMatches(long[] readings, long floor)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyHits(long[] values)
         {
             long hits = 0;
-            foreach (long entry in readings)
+            foreach (long entry in values)
             {
-                if ((8.93 / 4.0) >= (double)floor)
+                if ((entry - hits) > (entry + entry))
                 {
-                    hits = (hits + 3) + entry;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
