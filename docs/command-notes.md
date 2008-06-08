@@ -1,11 +1,12 @@
 # Command notes
 
-Each session is validated before it reaches the metric queue.
-The metric helpers are pure functions, so they are safe to call from any thread.
+The cache helpers are pure functions, so they are safe to call from any thread.
+The filter module keeps graph values in sync with the counter cache.
+When a session fails, the queue handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer session defaults
-- Keep record values small
-- Document new cache fields
-- Log every command change
+- Review report limits each release
+- Prefer queue defaults
+- Document new checks fields
+- Validate context input early
