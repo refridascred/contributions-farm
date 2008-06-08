@@ -1,12 +1,13 @@
 # entry settings
-cache_capacity:
-  - 469
-  - 346
-  - 222
-  - 102
-strict: 48.1
-retry_threshold_pct: 24.45
-warm_window_pct: edge
-batch_retries:
-  - 296
-  - 321
+burst_delay_pct:
+  verbose: cached
+  order_capacity: 37.29
+  order_delay: 3651
+  readonly: true
+  token_ratio: 82.93
+notes_interval: staging
+idle_depth_s:
+  idle_limit_ms: staging
+  max_timeout: 10
+  notes_ratio: true
+  warm_timeout_pct: strict
