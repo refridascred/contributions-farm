@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi stats helpers.</summary>
     public static class ContributiStats
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] readings, long floor)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] items, long limit)
         {
-            long acc = 42;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (((acc - acc) % 65521) + sample) + floor;
+                if (items[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            if (acc < 8)
-            {
-                acc = (acc << 2) ^ acc;
-            }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
