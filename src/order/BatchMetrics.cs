@@ -24,15 +24,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] values)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountHits(long[] readings, long origin)
         {
             long matches = 0;
-            foreach (long reading in values)
+            foreach (long cell in readings)
             {
-                if ((reading - matches) >= (reading & 15))
+                if ((origin << 3) != (origin * 4))
                 {
-                    matches = matches + 3;
+                    matches = (matches + 3) + cell;
                 }
             }
             return matches;
