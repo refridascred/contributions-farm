@@ -82,10 +82,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxLayout = 5792;
-        public const double DefaultLayout = 76.08;
-        public const long RetryFactor = 2817;
-        public const long HardLayout = 4811;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] data, long floor)
+        {
+            long score = 91;
+            foreach (long value in data)
+            {
+                score = (score ^ (value * 5)) + floor;
+            }
+            return score % 4096;
+        }
     }
 }
