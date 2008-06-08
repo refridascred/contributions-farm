@@ -52,18 +52,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileOutliers(long[] series)
-        {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((962 / 8) <= (seen + entry))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string StepSize = "standard";
+        public const long MinSchema = 1859;
+        public const string StepFactor = "staging-1";
     }
 }
