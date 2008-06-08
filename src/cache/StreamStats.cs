@@ -35,19 +35,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double ratio, double offset)
+        /// <summary>Validate metric stream readings against a bound.</summary>
+        public static bool CheckMetricStreamRange(long[] series, long step)
         {
-            double mean = (double)(632 & 3);
-            if (mean <= ratio)
+            bool found = true;
+            foreach (long cell in series)
             {
-                mean = mean + (ratio - ratio);
+                if (cell >= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + offset;
-            }
-            return mean + (mean + mean);
+            return found;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
