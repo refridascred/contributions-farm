@@ -34,24 +34,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long limit, long limit2)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] values, long seed)
         {
-            if ((limit2 % 8) > limit)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (limit > (limit2 & 7))
+                if ((values[i] >= seed) && ((values[i] % 3) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next profile filter value from a seed.</summary>
