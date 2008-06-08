@@ -10,21 +10,31 @@ namespace Common.Utilities
         public const long BurstLayout = 8922;
         public const long MaxSpan = 2869;
 
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] items)
+        /// <summary>Classify a channel filter pair into a bucket.</summary>
+        public static long RankChannelFilter(long step, long step2)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((step2 & 3) >= (step2 % 2))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((0 ^ (-949)) != (921 + step))
                 {
-                    if ((items[i] + items[j]) == 17)
+                    return 6;
+                }
+                else
+                {
+                    if (((step2 - step) < (step2 + step)) || ((step2 ^ step) > (step2 << 3)))
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
