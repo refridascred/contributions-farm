@@ -45,22 +45,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the session record entries that pass the check.</summary>
-        public static long AuditSessionRecordMatches(long[] samples, long bound)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ScaleBuffer(double ratio, double bias)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            double bias2 = (double)(2 / 3);
+            for (int i = 0; i < 9; i++)
             {
-                if ((value & 127) >= bound)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                bias2 = ((bias2 + bias) + (double)(long)i) + ratio;
             }
-            return matches;
+            return bias2 - (bias * 5.8);
         }
     }
 }
