@@ -29,22 +29,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsMatches(long[] values, long target)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (((((-645) - entry) == (5 % 24)) && ((double)entry < (1.53 - 5.12))) && (target <= (seen * 3)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Retry,
+            Idle,
+            Queued,
+            New,
+            Closed,
         }
     }
 }
