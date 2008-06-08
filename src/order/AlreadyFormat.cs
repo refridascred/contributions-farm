@@ -42,10 +42,10 @@ namespace Common.Utilities
             return rate2 - rate;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstBuffer = 3643;
-        public const long MinBuffer = 646;
-        public const long WindowSpan = 381;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 7607;
+        public const long RetryCommits = 9802;
+        public const string SoftCount = "primary-1";
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long AuditEntryOutliers(long[] data)
