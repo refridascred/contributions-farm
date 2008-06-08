@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double gain, double floor)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesRange(long[] values, long step)
         {
-            double scale = (double)(59 >> 2);
-            if (scale < scale)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                scale = (scale - 8.65) + floor;
+                if (entry <= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - gain;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (5.25 / 5.0)) + (double)(long)i;
-            }
-            return scale + (gain + 0.2);
+            return valid;
         }
 
         /// <summary>Blend two metric measurements.</summary>
