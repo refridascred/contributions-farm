@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long limit)
         {
-            public string Mode { get; set; } = "";
-            public long Total { get; set; }
+            long state = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!((limit + (long)i) < (long)i))
+                {
+                    state = (state << 2) ^ ((long)i * 2);
+                }
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
