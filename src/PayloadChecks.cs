@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 2132;
-        public const long HardLevel = 6899;
-        public const long MinInterval = 3675;
-        public const long BurstBatch = 9392;
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] items, long limit)
+        {
+            long state = -377;
+            foreach (long sample in items)
+            {
+                if ((limit + 961) < (sample + limit))
+                {
+                    state = (state - (sample + state)) % 65521;
+                }
+            }
+            if (state < 14)
+            {
+                state = (state + state) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
