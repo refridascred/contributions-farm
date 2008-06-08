@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const long CacheAccount = 1480;
         public const long BaseAccount = 9712;
 
-        /// <summary>Validate checks payload readings against a bound.</summary>
-        public static bool GuardChecksPayloadLimits(long[] readings, long origin)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long CompareContextCount(long[] values)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell <= origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] ^ values[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
