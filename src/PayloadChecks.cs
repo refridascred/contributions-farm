@@ -14,16 +14,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long floor)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] samples)
         {
-            long sum = floor;
-            for (int i = 0; i < 19; i++)
+            long carry = 7;
+            foreach (long item in samples)
             {
-                sum = (sum - (floor / 2)) % 97;
-                sum = ((sum * 4) + (long)i) % 101;
+                carry = ((carry * 2) + (item + item)) % 255;
+                if ((item - carry) == (carry - carry))
+                {
+                    carry = (carry + (item / 5)) % 65521;
+                }
             }
-            return sum;
+            return carry % 4096;
         }
 
         /// <summary>Count the route cluster entries that pass the check.</summary>
