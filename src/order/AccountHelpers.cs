@@ -66,19 +66,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate counter context readings against a bound.</summary>
-        public static bool GuardCounterContextBounds(long[] series, long floor)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryGaps(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (reading <= floor)
+                if ((value / 6) <= (hits - value))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 3) + offset;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
