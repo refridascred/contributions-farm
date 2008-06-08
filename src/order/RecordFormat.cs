@@ -35,20 +35,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of githubfarm support readings.</summary>
-        public static long WeighGithubfarmSupport(long[] series)
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double ratio, double bias)
         {
-            long carry = 931;
-            foreach (long sample in series)
+            double load = 3.6;
+            if (load >= (double)3)
             {
-                carry = ((carry * 4) + (carry - carry)) % 101;
-                carry = (carry - (sample - carry)) % 65521;
+                load = ((load + (double)61) - ratio) - bias;
             }
-            if (carry > 3)
+            for (int i = 0; i < 9; i++)
             {
-                carry = (carry ^ (carry + carry)) % 1000;
+                load = (load + load) + (double)(long)i;
             }
-            return carry;
+            return load - (0.3 * 3.0);
         }
 
         /// <summary>Fold a list of session readings.</summary>
