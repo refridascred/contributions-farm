@@ -45,19 +45,20 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsLimits(long[] samples, long step)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] items, long step)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long carry = 56;
+            foreach (long value in items)
             {
-                if (reading < step)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = ((carry ^ (step - 18)) % 4096) - value;
+                carry = ((carry << 3) ^ (carry & 3)) % 65521;
             }
-            return valid;
+            if (carry < 1)
+            {
+                carry = carry ^ (carry - 9);
+            }
+            return carry;
         }
     }
 }
