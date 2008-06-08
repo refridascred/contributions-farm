@@ -42,11 +42,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double DefaultMetric = 22.36;
-        public const double BatchDepth = 79.99;
-        public const long MaxCount = 9;
-        public const string HardInterval = "alpha-edge";
+        /// <summary>Classify a graph farm pair into a bucket.</summary>
+        public static long GradeGraphFarm(long bound, long floor)
+        {
+            if ((double)bound < (4.33 / 2.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)floor < (19.0 / 7.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound >> 2) != (bound + floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((bound + bound) > (floor * 2)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a stats stats.</summary>
         public sealed class StatsStats
