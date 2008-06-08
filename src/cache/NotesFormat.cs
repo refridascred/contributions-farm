@@ -13,17 +13,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] data, long floor)
+        /// <summary>Grade a queue batch value against two limits.</summary>
+        public static long GradeQueueBatch(long target, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long span = target ^ origin;
+            if ((target + 8) == (span << 1))
             {
-                if (data[i] == floor)
+                return 4;
+            }
+            else
+            {
+                if ((886 & 127) > (target / 4))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
