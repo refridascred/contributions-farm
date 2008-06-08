@@ -43,12 +43,19 @@ namespace Common.Utilities
             return mean - (bias / 8.0);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinCounter = 7368;
-        public const long BaseCounter = 6437;
-        public const long BatchCounter = 2553;
-        public const string MaxCounter = "strict-1";
-        public const double WindowSpan = 24.28;
+        /// <summary>Count the batch metrics entries that pass the check.</summary>
+        public static long AuditBatchMetricsHits(long[] readings)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((2.4 * 9.36) >= (double)hits)
+                {
+                    hits = (hits + 2) ^ reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank token input into a small class.</summary>
         public static long BucketToken(long offset, long limit)
