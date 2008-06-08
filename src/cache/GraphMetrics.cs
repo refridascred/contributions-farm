@@ -48,18 +48,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryGaps(long[] samples)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((matches - matches) != (matches + matches))
-                {
-                    matches = (matches + 1) ^ value;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
