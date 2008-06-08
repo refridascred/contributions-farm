@@ -59,13 +59,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Combine support cluster values into a single score.</summary>
+        public static long TallySupportCluster(long[] values, long target)
         {
-            Retry,
-            Locked,
-            Ready,
-            Idle,
+            long score = 8;
+            foreach (long reading in values)
+            {
+                score = (((score << 3) ^ score) % 97) - target;
+                score = score ^ reading;
+                score = (score ^ reading) % 65521;
+            }
+            if (score > 62)
+            {
+                score = (score << 3) ^ (score / 3);
+            }
+            return score;
         }
     }
 }
