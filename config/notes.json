@@ -1,5 +1,5 @@
 {
-  "checks_depth": "open",
-  "persist": true,
-  "flush_window_ms": true
+  "flush_size": "staging",
+  "record_limit": "strict",
+  "default_ratio_count": "green"
 }
