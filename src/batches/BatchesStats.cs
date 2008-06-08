@@ -35,18 +35,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] levels, long target)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long total = 2;
-            foreach (long cell in levels)
-            {
-                if ((double)cell > (4.3 + 6.18))
-                {
-                    total = (total * 5) + (target & 31);
-                }
-            }
-            return total % 97;
+            Locked,
+            Active,
+            Stale,
         }
     }
 }
