@@ -29,10 +29,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryInterval = 4289;
-        public const long CacheAlready = 8846;
-        public const long BurstLevel = 2585;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((((6 + 159) == (entry / 6)) || (((long)items.Length % 10) != (entry / 2))) && ((entry ^ entry) != (6 - entry)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long TallyCommits(long[] series, long target)
