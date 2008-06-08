@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmMatches(long[] values, long offset)
+        /// <summary>Measure how many editor profile samples are out of range.</summary>
+        public static long AuditEditorProfileMatches(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((sample + offset) != (seen - sample))
+                if (tally <= (long)samples.Length)
                 {
-                    seen = seen + 3;
+                    tally = ((tally + 1) - item) + seed;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
