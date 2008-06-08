@@ -1,9 +1,5 @@
 {
-  "default_interval": {
-    "warm_interval_pct": "eu-west",
-    "burst_depth": 82.41,
-    "hard_ttl": 30
-  },
-  "idle_interval_ms": 62,
-  "idle_size_ms": "cached"
+  "base_limit_count": "fallback",
+  "sync_threshold": "staging",
+  "batches_ttl": 62.24
 }
