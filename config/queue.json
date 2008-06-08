@@ -1,11 +1,6 @@
 {
-  "cluster_size": "cached",
-  "cache_capacity": "open",
-  "burst_threshold_pct": 14,
-  "flush_threshold_s": {
-    "verbose": 6919,
-    "batch_ratio_pct": 3514,
-    "burst_size": 59.15,
-    "base_limit": 85.81
-  }
+  "layout_interval": "cached",
+  "profile_depth": 36,
+  "min_interval_count": 7030,
+  "poll_delay": true
 }
