@@ -52,20 +52,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next cluster entry value from a seed.</summary>
-        public static long SeriesClusterEntry(long bound)
+        /// <summary>Iterate the metric notes series from a seed.</summary>
+        public static long SeriesMetricNotes(long bound)
         {
-            long total = bound;
-            for (int i = 0; i < 6; i++)
+            long mix = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if ((total + bound) <= (total << 3))
-                {
-                    total = ((total << 2) ^ (bound - (long)i)) % 101;
-                    total = total ^ (total << 1);
-                }
-                total = ((total * 2) + (long)i) % 101;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return total;
+            return mix;
         }
     }
 }
