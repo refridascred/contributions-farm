@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Rank tools metrics input into a small class.</summary>
+        public static long SortToolsMetrics(long limit, long target)
         {
-            public string Mode { get; set; } = "";
-            public string Score { get; set; } = "";
+            long step = limit ^ target;
+            if ((double)target <= (20.0 * 14.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((limit + step) >= (limit - limit)) && (1.92 < (double)target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(((-5) - step) <= limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (target >= (step >> 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count stats format pairs that satisfy a relation.</summary>
