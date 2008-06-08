@@ -1,19 +1,6 @@
 {
-  "max_ratio": "legacy",
-  "compress": 3363,
-  "report_size": [270, 352, 442],
-  "poll_retries": {
-    "base_interval_count": true,
-    "audit": "local",
-    "compress": 48,
-    "poll_timeout": [257, 121, 151, 48],
-    "batch_size_pct": {
-      "poll_ratio_count": 35.1,
-      "report_interval": "latest",
-      "soft_delay_ms": "cached",
-      "stream_retries": [307, 90, 23, 284],
-      "idle_interval_ms": "cached"
-    },
-    "default_limit_ms": true
-  }
+  "buffer_retries": 12,
+  "warm_retries_ms": 100,
+  "persist": "fallback",
+  "window_depth": 5047
 }
