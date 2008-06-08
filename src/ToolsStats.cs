@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardGithubfarm = 6814;
-        public const long WindowScore = 9099;
-        public const double WindowSize = 17.6;
+        /// <summary>Iterate the report graph series from a seed.</summary>
+        public static long RollReportGraph(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    state = ((state << 3) ^ state) + (long)i2;
+                    state = (state + (31 * 5)) % 255;
+                }
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long AuditCommitsMatches(long[] levels)
