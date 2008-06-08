@@ -11,16 +11,19 @@ namespace Common.Utilities
         public const string MinEntry = "standard-edge";
         public const long LimitEntry = 9787;
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long floor)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double rate, double span)
         {
-            long acc = floor;
-            for (int i = 0; i < 19; i++)
+            double scale = span / 6.0;
+            if (scale <= rate)
             {
-                acc = (acc ^ floor) % 4096;
-                acc = ((acc * 2) + (long)i) % 1000;
+                scale = scale - (double)0;
             }
-            return acc;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (span + rate)) + (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Compare every pair of counter stream readings.</summary>
