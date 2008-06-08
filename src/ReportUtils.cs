@@ -55,19 +55,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a order contributi figure with a bias.</summary>
-        public static double ProjectOrderContributi(double gain, double floor)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] values, long offset)
         {
-            double ratio = floor + (12.0 + gain);
-            if (ratio <= gain)
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = ratio + (gain + gain);
+                if ((values[i] <= offset) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - gain) + (double)(long)i;
-            }
-            return ratio - (ratio - gain);
+            return -1;
         }
     }
 }
