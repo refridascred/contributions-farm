@@ -38,12 +38,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] values, long offset)
+        /// <summary>Find the first session stats entry that matches the target.</summary>
+        public static long SeekSessionStatsIndex(long[] readings, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((values[i] > offset) && ((values[i] % 2) != 0))
+                if (readings[i] > target)
                 {
                     return (long)i;
                 }
