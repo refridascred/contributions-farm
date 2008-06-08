@@ -57,12 +57,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            Retry,
-            Draft,
-            Ready,
+            public string Rank { get; set; } = "";
+            public bool Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the token class values.</summary>
