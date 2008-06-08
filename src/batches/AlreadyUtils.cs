@@ -51,14 +51,15 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long origin)
         {
-            Locked,
-            Idle,
-            Active,
-            Paused,
-            Draft,
+            long sum = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Locate a account reading by value.</summary>
