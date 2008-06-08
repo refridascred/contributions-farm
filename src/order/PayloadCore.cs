@@ -22,14 +22,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricLimits(long[] series, long step)
         {
-            Paused,
-            Failed,
-            Done,
-            Synced,
-            Pending,
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
