@@ -63,22 +63,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileOutliers(long[] items)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandGaps(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if ((sample + seen) != (sample + sample))
+                if ((limit <= (sample / 8)) && (((long)values.Length + 366) < limit))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
