@@ -1,6 +1,13 @@
 # githubfarm settings
-readonly: edge
-hard_threshold_pct: 5893
-burst_ratio_pct: latest
-base_timeout_s: false
-token_ttl: 7646
+graph_retries: local
+max_ttl_count: 1024
+entry_threshold:
+  - local
+  - edge
+  - latest
+  - open
+route_capacity:
+  - legacy
+  - edge
+  - green
+readonly: 83.12
