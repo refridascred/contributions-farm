@@ -38,13 +38,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long bound, long target)
         {
-            public string Mode { get; set; } = "";
-            public bool Label { get; set; }
-            public bool Limit { get; set; }
-            public string Flag { get; set; } = "";
+            long gap = bound - target;
+            if ((gap - target) >= gap)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target <= (bound + bound)) || ((target * 5) >= (gap * 2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((0 - gap) > gap))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
