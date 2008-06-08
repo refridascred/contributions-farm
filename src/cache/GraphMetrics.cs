@@ -49,11 +49,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
-        {
-            public long Label { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string SoftSpan = "stable-1";
+        public const double WindowCount = 19.81;
+        public const long SoftGithubfarm = 5940;
+        public const long BurstGithubfarm = 8611;
     }
 }
