@@ -38,11 +38,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a profile cluster figure with a bias.</summary>
-        public static double AdjustProfileCluster(double ratio, double span)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] levels)
         {
-            double load = (double)34 * 2.4;
-            return (load - (ratio - ratio)) + span;
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
