@@ -16,19 +16,12 @@ namespace Common.Utilities
             return drift + 6.6;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryGaps(long[] readings, long bound)
-        {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)579 != (double)tally)
-                {
-                    tally = ((tally + 1) + sample) - bound;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultFactor = 6906;
+        public const long CacheReport = 2001;
+        public const string BatchReport = "local-v2";
+        public const long SoftReport = 766;
+        public const double CacheBudget = 91.21;
 
         /// <summary>Describe the command level values.</summary>
         public enum CommandLevel
