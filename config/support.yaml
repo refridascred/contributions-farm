@@ -1,8 +1,9 @@
 # support settings
-warm_window_s: 222
-poll_window:
-  - 367
-  - 355
-  - 272
-  - 149
-min_size_count: 73.71
+persist: 2
+stats_timeout: eu-west
+stream_ttl: cached
+readonly:
+  context_ttl: cached
+  cache_window_count: 60
+  readonly: 3183
+  farm_retries: stable
