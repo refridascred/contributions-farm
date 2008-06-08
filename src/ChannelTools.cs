@@ -24,11 +24,23 @@ namespace Common.Utilities
             return scale + (5.6 + scale);
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowFactor = 711;
-        public const long CacheBuffer = 4525;
-        public const long RetryBuffer = 9972;
-        public const long DefaultBuffer = 72;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] values)
+        {
+            long carry = 20;
+            foreach (long item in values)
+            {
+                if (((4.0 - 4.0) <= (double)carry) || (carry > ((-25) % 16)))
+                {
+                    carry = (carry - (item / 4)) % 97;
+                }
+            }
+            if (carry > 15)
+            {
+                carry = carry - carry;
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Describe the stats state values.</summary>
         public enum StatsState
