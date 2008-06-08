@@ -22,18 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a entry queue reading by value.</summary>
-        public static long SeekEntryQueueIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= limit) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double MaxChecks = 94.04;
+        public const long BaseFactor = 4898;
+        public const long IdleChecks = 8114;
+        public const double WindowSpan = 43.75;
+        public const long BatchChecks = 7390;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double HardStats = 58.82;
