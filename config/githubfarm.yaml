@@ -1,22 +1,19 @@
 # githubfarm settings
-cache_delay_s:
-  checks_capacity:
-    hard_ttl: 2295
-    batch_timeout_s: legacy
-    audit: staging
-    verbose: false
-  hard_retries_s:
-    - strict
-    - green
-    - blue
-    - eu-west
-  order_interval:
-    - blue
-    - green
-    - latest
-    - primary
-  default_depth_s: primary
-  max_ratio_s: cached
-report_window: true
-idle_limit_s: false
-batches_delay: 95.81
+cache_ttl:
+  batches_size: blue
+  persist: 75
+  idle_delay_s: latest
+  poll_size: 60
+  flush_depth: standard
+  warm_ttl: open
+hard_interval:
+  - open
+  - legacy
+  - edge
+cluster_threshold: 250
+batch_ratio_count:
+  cache_limit: local
+  cluster_delay: cached
+  sync_size_count: 4188
+  batch_limit: true
+  channel_limit: true
