@@ -91,21 +91,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count contributi counter pairs that satisfy a relation.</summary>
-        public static long PairContributiCounterCount(long[] items)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double weight, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double mean = weight + 1.28;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = (mean - floor) + (double)(long)i;
             }
-            return count;
+            return mean - weight;
         }
     }
 }
