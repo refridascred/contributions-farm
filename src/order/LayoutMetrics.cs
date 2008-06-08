@@ -36,11 +36,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BurstRatio = 22.56;
-        public const long DefaultSize = 6010;
-        public const string IdleTimeout = "staging-v2";
-        public const long CacheRecord = 452;
-        public const long BaseRecord = 5550;
+        /// <summary>Rank graph stats input into a small class.</summary>
+        public static long GradeGraphStats(long step, long limit)
+        {
+            long next = step - limit;
+            if (((double)next >= (9.94 * 1.0)) && ((limit + step) != (step - limit)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((next + next) < (step + 51))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((next < (limit << 3)) || (step < (next + step)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
