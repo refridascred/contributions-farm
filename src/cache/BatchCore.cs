@@ -29,10 +29,26 @@ namespace Common.Utilities
         public const double WindowSpan = 43.75;
         public const long BatchChecks = 7390;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double HardStats = 58.82;
-        public const double MinStats = 84.18;
-        public const double MinSpan = 71.49;
+        /// <summary>Classify a session notes pair into a bucket.</summary>
+        public static long GradeSessionNotes(long floor, long seed)
+        {
+            long gap = floor + seed;
+            if ((floor + floor) <= (gap - floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((seed + floor) == (seed + seed)) || ((19.0 - 3.5) == (double)gap))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Count metric support pairs that satisfy a relation.</summary>
         public static long OverlapMetricSupportCount(long[] samples)
