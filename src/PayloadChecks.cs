@@ -36,22 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate editor schema samples.</summary>
-        public static long TallyEditorSchema(long[] values)
+        /// <summary>Count the cluster cache entries that pass the check.</summary>
+        public static long AuditClusterCacheHits(long[] samples, long bound)
         {
-            long state = 8;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((double)state != (9.0 * 20.0))
+                if ((double)seen != (double)bound)
                 {
-                    state = ((state - (state - 58)) % 101) - reading;
+                    seen = (seen + 2) ^ cell;
                 }
             }
-            if (state < 366)
-            {
-                state = (state ^ state) % 255;
-            }
-            return state % 65521;
+            return seen;
         }
 
         /// <summary>Accumulate queue profile samples.</summary>
