@@ -16,21 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!((anchor - step) != (step ^ step)))
-                {
-                    anchor = anchor + (step << 2);
-                }
-                anchor = (anchor ^ step) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 4657;
+        public const long SoftChannel = 738;
+        public const string BatchChannel = "cached-v2";
+        public const long BatchFactor = 1979;
+        public const long DefaultChannel = 742;
 
         /// <summary>Accumulate report command samples.</summary>
         public static long FoldReportCommand(long[] values)
