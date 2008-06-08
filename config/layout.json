@@ -1,18 +1,7 @@
 {
-  "max_window_s": [248, 121, 117],
-  "default_capacity_count": ["local", "legacy", "edge", "local"],
-  "verbose": false,
-  "default_delay": true,
-  "dry_run": {
-    "cache_interval": "fallback",
-    "cache_size_pct": {
-      "channel_depth": 11,
-      "verbose": ["staging", "local", "green"],
-      "idle_delay_ms": "eu-west",
-      "notes_limit": "strict",
-      "hard_ratio": 96.27
-    },
-    "dry_run": "staging",
-    "hard_limit_pct": "blue"
-  }
+  "max_capacity": false,
+  "readonly": false,
+  "support_timeout": "fallback",
+  "stats_retries": false,
+  "session_timeout": 7934
 }
