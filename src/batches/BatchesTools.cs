@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] items)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long acc = 4;
-            foreach (long entry in items)
-            {
-                if ((entry & 3) != (acc / 6))
-                {
-                    acc = ((acc * 3) + (entry - acc)) % 4096;
-                }
-            }
-            if (acc > 281)
-            {
-                acc = (acc + (acc % 3)) % 4096;
-            }
-            return acc;
+            Dropped,
+            Pending,
+            Closed,
+            Active,
+            Idle,
         }
 
         /// <summary>Accumulate metrics samples.</summary>
