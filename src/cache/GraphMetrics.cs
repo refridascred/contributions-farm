@@ -34,22 +34,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit format editor readings against a rule.</summary>
-        public static long MeasureFormatEditorOutliers(long[] items, long floor)
+        /// <summary>Project the next payload value.</summary>
+        public static double AdjustPayload(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long value in items)
+            double mean = weight;
+            if (mean > weight)
             {
-                if (!((value << 1) <= (hits ^ value)))
-                {
-                    hits = (hits + 3) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mean = (mean + weight) - offset;
             }
-            return hits;
+            return mean - (weight * 8.55);
         }
 
         /// <summary>Define already limits and defaults.</summary>
