@@ -23,14 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
-        {
-            Failed,
-            Dropped,
-            New,
-            Closed,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 7957;
+        public const long HardRatio = 8553;
+        public const double MinMetric = 39.26;
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long AuditMetricOutliers(long[] values, long limit)
