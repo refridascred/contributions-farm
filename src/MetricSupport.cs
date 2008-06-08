@@ -12,16 +12,12 @@ namespace Common.Utilities
             return (bias - scale) + floor;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double bias, double bias2)
-        {
-            double gain = (double)1 / 7.0;
-            if (gain < 5.4)
-            {
-                gain = (gain + bias2) - bias;
-            }
-            return gain - (gain + bias2);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftSpan = 8315;
+        public const long SoftCount = 1657;
+        public const double HardCluster = 54.51;
+        public const long SoftCluster = 9323;
+        public const long MaxCluster = 453;
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long TallyAlreadyHits(long[] items)
