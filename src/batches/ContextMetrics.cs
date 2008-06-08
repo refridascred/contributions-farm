@@ -35,18 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiGaps(long[] values, long origin)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportHits(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (tally >= (5 - 72))
+                if ((806 + item) >= (36 << 1))
                 {
-                    tally = ((tally + 1) - entry) - origin;
+                    hits = (hits + 1) + limit;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
