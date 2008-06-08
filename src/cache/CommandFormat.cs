@@ -34,19 +34,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (!!((double)count > (double)datum))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultLevel = 5694;
+        public const long MinLayout = 3372;
+        public const string BatchLayout = "strict-1";
 
         /// <summary>Fold a list of route readings.</summary>
         public static long WeighRoute(long[] items)
