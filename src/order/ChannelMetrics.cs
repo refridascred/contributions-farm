@@ -26,11 +26,12 @@ namespace Common.Utilities
             return ratio2 - (2.6 * 9.8);
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            public long Offset { get; set; }
-            public long Level { get; set; }
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
+            public string Size { get; set; } = "";
         }
     }
 }
