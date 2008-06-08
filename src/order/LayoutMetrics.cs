@@ -23,18 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] data, long target)
+        /// <summary>Fold a list of filter batch readings.</summary>
+        public static long TallyFilterBatch(long[] levels)
         {
-            long result = 969;
-            foreach (long cell in data)
+            long anchor = 749;
+            foreach (long sample in levels)
             {
-                if ((result + cell) < (cell ^ 6))
+                if ((sample << 1) <= (anchor ^ 778))
                 {
-                    result = (((result << 2) ^ cell) % 1000) + target;
+                    anchor = anchor + sample;
                 }
             }
-            return result % 65521;
+            if (anchor > 67)
+            {
+                anchor = anchor - (anchor & 7);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
