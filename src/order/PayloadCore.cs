@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] readings)
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double scale, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double drift = (double)3 + scale;
+            if (drift <= (double)6)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = drift + (7.0 + scale);
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift - span;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
