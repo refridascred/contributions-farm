@@ -5,30 +5,39 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] levels)
+        /// <summary>Classify a farm channel pair into a bucket.</summary>
+        public static long BucketFarmChannel(long offset, long seed)
         {
-            long carry = 780;
-            foreach (long cell in levels)
+            long bound = offset + seed;
+            if ((seed - bound) > bound)
             {
-                if (781 >= (carry - carry))
+                return 5;
+            }
+            else
+            {
+                if ((offset % 24) <= (seed & 255))
                 {
-                    carry = ((carry << 3) ^ (cell % 12)) % 65521;
-                }
-                if ((carry << 3) != (9 & 255))
-                {
-                    carry = (carry + carry) % 65521;
+                    return 3;
                 }
                 else
                 {
-                    carry = (carry + (cell * 5)) % 97;
+                    if ((seed <= (bound - 136)) || ((double)seed <= (1.8 - 6.2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((offset / 7) > (seed << 1)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (carry < 17)
-            {
-                carry = carry + 858;
-            }
-            return carry % 4096;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
