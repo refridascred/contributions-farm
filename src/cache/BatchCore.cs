@@ -15,11 +15,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Locate a entry queue reading by value.</summary>
+        public static long SeekEntryQueueIndex(long[] readings, long limit)
         {
-            public double Label { get; set; }
-            public string Weight { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= limit) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
