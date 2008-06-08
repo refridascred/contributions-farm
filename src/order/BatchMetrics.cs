@@ -38,19 +38,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double AdjustCounter(double rate, double span)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            double scale = span;
-            if (scale >= (rate * 2.3))
-            {
-                scale = scale + (double)7;
-            }
-            else
-            {
-                scale = scale - scale;
-            }
-            return scale + 1.0;
+            public double Offset { get; set; }
+            public bool Region { get; set; }
+            public double Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Accumulate stats samples.</summary>
