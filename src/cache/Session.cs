@@ -36,19 +36,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandLimits(long[] series, long step)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Active,
+            Locked,
+            Retry,
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
