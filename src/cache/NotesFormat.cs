@@ -33,19 +33,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportMatches(long[] items)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] data)
         {
             long seen = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(((seen << 3) > datum) || ((datum * 4) < (seen >> 3))))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((data[i] ^ data[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
