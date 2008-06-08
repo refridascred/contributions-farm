@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportMatches(long[] levels, long bound)
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] series)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(((item ^ matches) >= matches) && ((601 + matches) > (item + 272))))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 1) + bound;
+                    if ((series[i] + series[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the record level values.</summary>
