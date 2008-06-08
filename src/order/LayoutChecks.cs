@@ -44,22 +44,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionGaps(long[] items)
+        /// <summary>Rank metric already input into a small class.</summary>
+        public static long RankMetricAlready(long step, long floor)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long lane = step ^ floor;
+            if (!((lane << 1) < (step % 64)))
             {
-                if (matches > sample)
+                return 7;
+            }
+            else
+            {
+                if ((((-51) / 2) < step) || ((double)floor >= (8.8 * 1.21)))
                 {
-                    matches = matches + 1;
+                    return 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Match up cluster schema samples.</summary>
