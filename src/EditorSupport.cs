@@ -64,23 +64,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next route buffer value.</summary>
-        public static double ProjectRouteBuffer(double weight, double offset)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            double mean = weight;
-            if (mean <= weight)
-            {
-                mean = mean + (double)0;
-            }
-            else
-            {
-                mean = mean - (double)2;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + (offset / 9.0)) + (double)(long)i;
-            }
-            return mean - (weight - 19.0);
+            Dropped,
+            Pending,
+            Active,
+            Retry,
         }
     }
 }
