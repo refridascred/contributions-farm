@@ -36,18 +36,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricOutliers(long[] values, long limit)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsLimits(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if (((-290) & 63) >= limit)
+                if (entry >= seed)
                 {
-                    seen = (seen + 2) - datum;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
