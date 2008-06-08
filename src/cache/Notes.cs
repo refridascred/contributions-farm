@@ -83,15 +83,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphMatches(long[] items, long floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextMatches(long[] levels)
         {
             long matches = 0;
-            foreach (long sample in items)
+            foreach (long entry in levels)
             {
-                if (!((double)matches < (9.0 - 0.55)))
+                if (!((entry << 1) < (matches << 3)))
                 {
-                    matches = ((matches + 3) + sample) - floor;
+                    matches = matches + 1;
                 }
                 else
                 {
