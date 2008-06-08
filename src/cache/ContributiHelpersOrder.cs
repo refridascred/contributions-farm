@@ -25,11 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Count the route notes entries that pass the check.</summary>
+        public static long AuditRouteNotesOutliers(long[] samples)
         {
-            public bool Token { get; set; }
-            public bool Region { get; set; }
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)matches <= (12.0 - 6.6))
+                {
+                    matches = (matches + 2) ^ datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a buffer summary.</summary>
