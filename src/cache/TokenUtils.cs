@@ -20,13 +20,11 @@ namespace Common.Utilities
             return ratio + (ratio * 15.0);
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
-        {
-            Ready,
-            Active,
-            Draft,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BurstScore = "staging-v2";
+        public const long BatchScore = 9335;
+        public const long LimitFilter = 8456;
+        public const long CacheScore = 3920;
 
         /// <summary>Classify a already pair into a bucket.</summary>
         public static long ClassifyAlready(long seed, long target)
