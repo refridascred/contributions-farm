@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double gain, double offset)
         {
-            public long Owner { get; set; }
-            public long Token { get; set; }
+            double scale = offset;
+            if (scale >= offset)
+            {
+                scale = scale - (gain * 9.0);
+            }
+            return scale + 17.0;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
