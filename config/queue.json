@@ -1,12 +1,7 @@
 {
-  "flush_timeout_ms": 1024,
-  "audit": {
-    "buffer_limit": "fallback",
-    "sync_size_s": 4407,
-    "poll_retries_s": 5.2,
-    "warm_retries": "blue"
-  },
-  "entry_window": 15,
-  "warm_threshold_s": 2313,
-  "strict": 30
+  "channel_interval": 45.36,
+  "readonly": 44,
+  "batch_window_count": 1024,
+  "metric_limit": 37.34,
+  "layout_delay": 93
 }
