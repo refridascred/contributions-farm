@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterGaps(long[] samples, long limit)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextBounds(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if ((limit / 6) != (0 << 2))
+                if (datum > bound)
                 {
-                    count = (count + 3) + cell;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
