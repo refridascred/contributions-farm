@@ -13,21 +13,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Match up filter already samples.</summary>
-        public static long CompareFilterAlreadyCount(long[] levels)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] samples, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (samples[i] == limit)
                 {
-                    if ((levels[i] + levels[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
