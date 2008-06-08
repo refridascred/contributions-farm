@@ -1,5 +1,11 @@
 {
-  "channel_depth": 250,
-  "soft_interval_pct": "blue",
-  "default_size": 89.14
+  "commits_delay": {
+    "soft_interval": ["cached", "open", "green"],
+    "min_ttl_count": 44,
+    "flush_size_s": true,
+    "warm_interval_count": ["cached", "open", "edge", "eu-west"],
+    "strict": 51
+  },
+  "sync_limit_pct": "eu-west",
+  "hard_size": 5022
 }
