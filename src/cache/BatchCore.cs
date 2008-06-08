@@ -41,21 +41,16 @@ namespace Common.Utilities
         public const double IdleSpan = 18.7;
         public const long WindowBudget = 3253;
 
-        /// <summary>Count report token pairs that satisfy a relation.</summary>
-        public static long OverlapReportTokenCount(long[] items)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = (mark ^ mark) % 4096;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return hits;
+            return mark;
         }
     }
 }
