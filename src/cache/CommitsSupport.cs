@@ -47,10 +47,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string HardScore = "stable-1";
-        public const double WindowBudget = 69.12;
-        public const long BatchMetric = 2759;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] values)
+        {
+            long acc = 748;
+            foreach (long cell in values)
+            {
+                acc = (acc - (4 % 8)) ^ cell;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the command phase values.</summary>
         public enum CommandPhase
