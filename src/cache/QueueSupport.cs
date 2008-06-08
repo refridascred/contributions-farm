@@ -17,19 +17,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountBounds(long[] items, long origin)
+        /// <summary>Match up stats contributi samples.</summary>
+        public static long MatchStatsContributiCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value != origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
