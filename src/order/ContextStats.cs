@@ -31,22 +31,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] values)
+        /// <summary>Adjust a cache account reading.</summary>
+        public static double SmoothCacheAccount(double rate, double span)
         {
-            long carry = 4;
-            foreach (long item in values)
+            double ratio = (double)48;
+            if (ratio < ratio)
             {
-                if ((item - item) <= carry)
-                {
-                    carry = (carry - item) % 97;
-                }
-                else
-                {
-                    carry = carry - (carry % 64);
-                }
+                ratio = (ratio - rate) - span;
             }
-            return carry % 1000;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - rate) - (double)(long)i;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Digest a series of support metric entries.</summary>
