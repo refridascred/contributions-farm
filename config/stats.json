@@ -1,5 +1,14 @@
 {
-  "batch_delay_s": false,
-  "flush_window_ms": 9,
-  "burst_timeout_pct": 6697
+  "profile_depth": "strict",
+  "hard_ttl_count": {
+    "retry_threshold_pct": false,
+    "buffer_depth": "fallback",
+    "audit": 6497,
+    "editor_ratio": [69, 162, 292],
+    "route_ratio": "cached"
+  },
+  "max_retries": true,
+  "flush_window_ms": true,
+  "filter_ttl": 250,
+  "entry_delay": "legacy"
 }
