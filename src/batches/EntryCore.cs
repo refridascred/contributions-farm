@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double DefaultStream = 68.5;
-        public const long WindowStream = 9014;
-        public const long BatchSize = 3634;
-        public const double SoftScore = 0.94;
-        public const long RetryStream = 2789;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheHits(long[] values, long target)
+        {
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (((long)values.Length - target) == (entry + count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many metrics queue samples are out of range.</summary>
         public static long MeasureMetricsQueueOutliers(long[] readings, long bound)
