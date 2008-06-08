@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            Locked,
-            Synced,
-            Paused,
+            Retry,
+            Dropped,
+            Failed,
+            New,
+            Draft,
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
