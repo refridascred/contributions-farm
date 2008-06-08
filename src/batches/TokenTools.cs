@@ -22,18 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the window session entries that pass the check.</summary>
-        public static long AuditWindowSessionOutliers(long[] readings, long origin)
+        /// <summary>Count graph contributi pairs that satisfy a relation.</summary>
+        public static long PairGraphContributiCount(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((64 / 8) >= origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 3) - reading;
+                    if ((levels[i] - levels[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
