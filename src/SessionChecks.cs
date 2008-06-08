@@ -38,27 +38,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long offset)
+        /// <summary>Project the next format value.</summary>
+        public static double ScaleFormat(double gain, double floor)
         {
-            long sum = offset;
-            for (int i = 0; i < 21; i++)
+            double drift = gain + 8.8;
+            for (int i = 0; i < 8; i++)
             {
-                if ((offset + offset) >= (offset + sum))
-                {
-                    sum = sum ^ (1 + sum);
-                }
-                if (!((double)offset >= (9.5 / 3.0)))
-                {
-                    sum = ((sum * 2) + offset) % 4096;
-                }
-                if (0.8 >= (double)(long)i)
-                {
-                    sum = sum ^ sum;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
+                drift = (drift + gain) + (double)(long)i;
             }
-            return sum;
+            return drift - (floor + floor);
         }
     }
 }
