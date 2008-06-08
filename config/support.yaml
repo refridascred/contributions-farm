@@ -1,6 +1,22 @@
 # support settings
-batch_timeout_ms: 62
-burst_capacity_count:
-  - 294
-  - 201
-soft_retries_count: green
+format_window: true
+warm_limit_s: 55.69
+soft_ttl: 521
+poll_timeout:
+  context_window: true
+  hard_retries:
+    - 307
+    - 167
+    - 1
+    - 169
+  warm_ratio_pct: 1
+  readonly: false
+  base_capacity_s:
+    base_timeout_s: local
+    base_depth: cached
+    idle_retries: 566
+    default_depth_s: false
+compress:
+  batch_size_ms: local
+  persist: latest
+  dry_run: 1024
