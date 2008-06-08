@@ -21,12 +21,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchDepth = 5804;
-        public const long CacheMetrics = 1213;
-        public const double IdleMetrics = 93.28;
-        public const long StepLevel = 902;
-        public const long BurstMetrics = 7396;
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = ((mark << 2) ^ (mark >> 2)) % 65521;
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long MatchBatchCount(long[] readings)
