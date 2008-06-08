@@ -51,13 +51,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long SeekPayloadIndex(long[] data, long offset)
         {
-            Ready,
-            Idle,
-            New,
-            Draft,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < offset) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next cache value.</summary>
