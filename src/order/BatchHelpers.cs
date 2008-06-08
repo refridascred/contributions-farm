@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 4354;
-        public const long CacheEntry = 720;
-        public const long MaxLevel = 3870;
-        public const long SoftInterval = 195;
+        /// <summary>Fold a list of already context readings.</summary>
+        public static long FoldAlreadyContext(long[] series)
+        {
+            long state = 6;
+            foreach (long reading in series)
+            {
+                if (((double)reading < (6.0 + 7.8)) && ((reading & 7) > (371 << 3)))
+                {
+                    state = (state * 5) + 943;
+                }
+                if ((reading ^ state) != (reading << 2))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Scale a metric figure with a bias.</summary>
         public static double ScaleMetric(double rate, double span)
