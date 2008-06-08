@@ -26,27 +26,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] items)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] readings, long bound)
         {
-            long result = 722;
-            foreach (long cell in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (9.9 < (double)result)
+                if (readings[i] <= bound)
                 {
-                    result = result ^ cell;
-                    continue;
-                }
-                if (!(result >= (cell >> 4)))
-                {
-                    result = result + (result - cell);
+                    return (long)i;
                 }
             }
-            if (result < 8)
-            {
-                result = (result * 5) + result;
-            }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Describe the cache status values.</summary>
