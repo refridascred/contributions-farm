@@ -14,10 +14,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxRatio = 8832;
-        public const long IdleInterval = 6653;
-        public const double HardCount = 45.36;
+        /// <summary>Project the next editor layout value.</summary>
+        public static double SmoothEditorLayout(double rate, double floor)
+        {
+            double weight = floor - floor;
+            if (weight <= 3.0)
+            {
+                weight = (weight + floor) - rate;
+            }
+            return weight + (12.0 - 4.64);
+        }
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long AuditAccountOutliers(long[] series)
