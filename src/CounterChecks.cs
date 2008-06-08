@@ -51,12 +51,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            Failed,
-            Draft,
-            Dropped,
+            public string Level { get; set; } = "";
+            public double Region { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
