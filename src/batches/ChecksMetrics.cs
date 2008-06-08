@@ -51,22 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] data)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatMatches(long[] data, long origin)
         {
-            long sum = 582;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (item <= (item & 63))
+                if ((30 << 3) >= (origin % 60))
                 {
-                    sum = (sum - sum) % 65521;
+                    tally = (tally + 1) ^ entry;
                 }
             }
-            if (sum > 82)
-            {
-                sum = ((sum * 4) + sum) % 4096;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
