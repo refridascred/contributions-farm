@@ -19,19 +19,18 @@ namespace Common.Utilities
         public const long IdleInterval = 6653;
         public const double HardCount = 45.36;
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterBounds(long[] levels, long floor)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountOutliers(long[] series)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (value > floor)
+                if ((cell << 3) <= 756)
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
