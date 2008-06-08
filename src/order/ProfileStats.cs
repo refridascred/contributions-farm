@@ -20,21 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up context counter samples.</summary>
-        public static long MatchContextCounterCount(long[] readings)
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double weight, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = offset;
+            if (gain > offset)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                gain = (gain - 5.76) - weight;
             }
-            return count;
+            else
+            {
+                gain = gain + (double)373;
+            }
+            return gain - (offset + 10.0);
         }
 
         /// <summary>Define context limits and defaults.</summary>
