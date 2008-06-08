@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BatchSize = 11.58;
-        public const double BurstQueue = 45.64;
-        public const double BaseCount = 53.84;
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
+        {
+            Failed,
+            Queued,
+            Draft,
+            Pending,
+        }
 
         /// <summary>Rank account graph input into a small class.</summary>
         public static long BucketAccountGraph(long limit, long step)
