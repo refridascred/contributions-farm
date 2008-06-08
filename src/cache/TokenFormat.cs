@@ -14,22 +14,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] series, long step)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmMatches(long[] values)
         {
-            long state = 58;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (131 >= (state & 63))
+                if ((3.6 - 1.0) != (double)seen)
                 {
-                    state = ((state * 5) + (item + step)) % 65521;
+                    seen = (seen + 3) ^ item;
                 }
             }
-            if (state > 9)
-            {
-                state = state - (step & 15);
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Describe the contributi status values.</summary>
