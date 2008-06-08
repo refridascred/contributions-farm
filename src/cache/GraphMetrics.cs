@@ -46,15 +46,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double AdjustPayload(double weight, double offset)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] samples, long bound)
         {
-            double mean = weight;
-            if (mean > weight)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = (mean + weight) - offset;
+                if ((samples[i] <= bound) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean - (weight * 8.55);
+            return -1;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
