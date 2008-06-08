@@ -55,20 +55,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long floor)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] samples)
         {
-            long mix = floor;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (sample > (sample % 8))
                 {
-                    mix = ((mix ^ (mix + mix)) % 255) + (long)i2;
-                    mix = (mix * 3) + (floor & 127);
+                    count = count + 3;
                 }
-                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Hold a batches stats.</summary>
