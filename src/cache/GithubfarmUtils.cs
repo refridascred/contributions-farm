@@ -22,15 +22,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next context already value from a seed.</summary>
-        public static long IterateContextAlready(long floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelMatches(long[] items)
         {
-            long mark = floor;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                if (!!((count - cell) < (cell << 3)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
