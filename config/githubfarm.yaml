@@ -1,4 +1,6 @@
 # githubfarm settings
-poll_ratio_count: 60
-audit: false
-max_ratio: 12.04
+notes_timeout: 15
+max_threshold: false
+checks_ttl: strict
+readonly: local
+enabled: false
