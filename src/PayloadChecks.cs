@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsLimits(long[] series, long step)
-        {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BatchRoute = 90.83;
+        public const double SoftRoute = 60.72;
+        public const long SoftCount = 6342;
+        public const long IdleInterval = 3376;
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
