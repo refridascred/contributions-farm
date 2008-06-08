@@ -1,6 +1,12 @@
 # support settings
-soft_ttl: 88.98
-token_timeout: 30
-metric_capacity: false
-enabled: primary
-soft_delay: 74.74
+base_threshold: eu-west
+cache_limit_pct: 500
+batch_delay:
+  - blue
+  - eu-west
+base_depth: 250
+githubfarm_depth:
+  - standard
+  - local
+  - eu-west
+  - cached
