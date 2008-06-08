@@ -29,17 +29,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long seed)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] items, long seed)
         {
-            long mix = seed;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                mix = mix + (seed % 16);
-                mix = (mix - (long)i) % 255;
-                mix = ((mix * 2) + (long)i) % 1000;
+                if ((tally + item) >= (-51))
+                {
+                    tally = (tally + 3) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
