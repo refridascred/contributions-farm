@@ -37,19 +37,18 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ScaleSchema(double gain, double span)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmHits(long[] samples, long origin)
         {
-            double rate = 7.66 + gain;
-            if (rate >= span)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                rate = rate - (rate - rate);
+                if ((double)origin > 9.0)
+                {
+                    hits = (hits + 2) ^ item;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - (gain - span)) + (double)(long)i;
-            }
-            return rate + rate;
+            return hits;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
