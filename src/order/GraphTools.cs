@@ -83,11 +83,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamGaps(long[] values)
         {
-            public double Count { get; set; }
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((matches % 24) > datum)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
