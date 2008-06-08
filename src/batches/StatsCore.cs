@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] data)
+        /// <summary>Audit entry order readings against a rule.</summary>
+        public static long CountEntryOrderOutliers(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (((entry << 3) > (-3)) && (((long)data.Length - seen) > seen))
+                if ((cell << 1) <= count)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
