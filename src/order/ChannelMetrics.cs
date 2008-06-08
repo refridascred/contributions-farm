@@ -26,14 +26,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsMatches(long[] values, long target)
         {
-            Done,
-            Retry,
-            Active,
-            New,
-            Draft,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (((((-645) - entry) == (5 % 24)) && ((double)entry < (1.53 - 5.12))) && (target <= (seen * 3)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
