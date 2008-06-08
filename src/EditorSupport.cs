@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double rate, double bias)
+        /// <summary>Find the first schema contributi entry that matches the target.</summary>
+        public static long LocateSchemaContributiIndex(long[] series, long floor)
         {
-            double bias2 = 7.8;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                bias2 = ((bias2 + (double)2) + (double)(long)i) + rate;
+                if (series[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return bias2 - bias;
+            return -1;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
