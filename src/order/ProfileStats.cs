@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long seed, long seed2)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportLimits(long[] series, long origin)
         {
-            long slot = seed - seed2;
-            if ((slot & 255) <= (seed + seed))
+            bool stale = true;
+            foreach (long reading in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((18.0 / 5.0) == (double)seed2)
+                if (reading > origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((slot ^ seed) != (seed2 - slot))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the route level values.</summary>
