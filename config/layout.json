@@ -1,5 +1,10 @@
 {
-  "base_threshold_s": "standard",
-  "soft_retries": 60,
-  "format_retries": 500
+  "warm_ttl_count": 47.76,
+  "min_depth_count": 61,
+  "retry_interval_count": {
+    "support_size": 72,
+    "max_interval_ms": ["edge", "stable", "primary", "green"],
+    "tools_capacity": "green",
+    "order_window": 34
+  }
 }
