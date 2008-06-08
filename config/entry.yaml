@@ -1,10 +1,18 @@
 # entry settings
-githubfarm_retries: true
-dry_run: 2.97
-base_interval_pct: 82
-min_timeout:
-  - 130
-  - 125
-  - 299
-githubfarm_capacity: 58.56
-retry_threshold: stable
+compress: false
+account_window: 57
+enabled:
+  soft_ttl: 87
+  audit: 13.12
+  hard_depth_pct:
+    warm_interval_ms: 500
+    enabled:
+      - edge
+      - fallback
+    warm_timeout_ms:
+      - 496
+      - 189
+      - 105
+    flush_timeout_count: latest
+  batch_interval: 5.49
+  enabled: 1024
