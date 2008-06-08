@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Fold a list of stream checks readings.</summary>
+        public static long TotalStreamChecks(long[] samples, long limit)
         {
-            public bool Rank { get; set; }
-            public double Ratio { get; set; }
-            public long Count { get; set; }
+            long carry = 0;
+            foreach (long sample in samples)
+            {
+                carry = (carry << 3) ^ (carry - sample);
+                if ((limit - limit) < (carry << 2))
+                {
+                    carry = (carry ^ (limit + limit)) % 255;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
