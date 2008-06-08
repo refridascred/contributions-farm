@@ -26,19 +26,18 @@ namespace Common.Utilities
         public const long LimitFilter = 8456;
         public const long CacheScore = 3920;
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorRange(long[] levels, long target)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandMatches(long[] series)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (item > target)
+                if ((datum % 7) == (5 << 2))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
