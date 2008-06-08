@@ -12,14 +12,32 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long step, long target)
         {
-            Closed,
-            Synced,
-            Draft,
-            Locked,
-            Paused,
+            long gap = step ^ target;
+            if (!((945 + gap) <= gap))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)target >= (double)6) || ((4.0 - 10.0) < (double)step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)gap > (7.0 + 9.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
