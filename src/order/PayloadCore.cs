@@ -18,10 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseInterval = 3856;
-        public const long MaxMetrics = 3909;
-        public const string MinMetrics = "local";
+        /// <summary>Define session limits and defaults.</summary>
+        public const string HardSession = "staging-1";
+        public const string CacheScore = "fallback";
+        public const long MinInterval = 853;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double DefaultStats = 67.49;
