@@ -35,11 +35,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long limit, long floor)
         {
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
+            long step = limit ^ floor;
+            if (0.67 <= (double)floor)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor ^ limit) <= (step + step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)step < (7.81 * 0.7))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a cache record.</summary>
