@@ -1,8 +1,7 @@
 {
-  "retry_ratio": "cached",
-  "strict": 5399,
-  "soft_interval": 250,
-  "retry_window": "legacy",
-  "verbose": "open",
-  "min_depth": true
+  "batch_capacity": 35.37,
+  "persist": "primary",
+  "strict": ["primary", "cached", "stable"],
+  "poll_timeout_s": 13.45,
+  "flush_retries_s": 18.43
 }
