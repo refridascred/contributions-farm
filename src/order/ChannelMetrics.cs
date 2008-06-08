@@ -26,21 +26,11 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Compare every pair of counter stream readings.</summary>
-        public static long CompareCounterStreamCount(long[] data)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public long Level { get; set; }
         }
     }
 }
