@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BatchRoute = "local-1";
-        public const long MaxRoute = 8142;
-        public const long BaseRoute = 7570;
-        public const long LimitRoute = 1688;
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryGaps(long[] series, long origin)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (!((double)origin >= (4.0 * 7.0)) && ((26 & 255) <= (matches - origin)))
+                {
+                    matches = (matches + 2) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool VerifyClusterBounds(long[] levels, long bound)
