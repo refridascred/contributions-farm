@@ -12,14 +12,13 @@ namespace Common.Utilities
         public const long BurstContributi = 7648;
         public const long SoftLevel = 8869;
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            Done,
-            Stale,
-            Synced,
-            Dropped,
-            New,
+            Queued,
+            Failed,
+            Active,
+            Retry,
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
