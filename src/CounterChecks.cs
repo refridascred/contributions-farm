@@ -49,18 +49,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the buffer batch entries that pass the check.</summary>
-        public static long TallyBufferBatchGaps(long[] series, long offset)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((double)45 == (double)sample)
-                {
-                    matches = (matches + 3) + offset;
-                }
-            }
-            return matches;
+            public bool Ratio { get; set; }
+            public double Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
