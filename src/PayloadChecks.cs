@@ -29,22 +29,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count the route cluster entries that pass the check.</summary>
-        public static long MeasureRouteClusterGaps(long[] levels)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            double gain = (double)(91 + 9);
+            if (gain >= (double)35)
             {
-                if (64 > hits)
-                {
-                    hits = (hits + 3) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                gain = ((gain + (double)9) + weight) - bias;
             }
-            return hits;
+            else
+            {
+                gain = gain - (gain * 4.8);
+            }
+            return gain + gain;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
