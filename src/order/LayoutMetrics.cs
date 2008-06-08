@@ -36,39 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long bound, long floor)
-        {
-            long edge = bound + floor;
-            if ((floor ^ (-5)) > (bound * 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((688 - floor) > (edge ^ edge)) || (49 >= (bound - bound)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (0 <= (bound & 255))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor + bound) < (floor + floor))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BurstRatio = 22.56;
+        public const long DefaultSize = 6010;
+        public const string IdleTimeout = "staging-v2";
+        public const long CacheRecord = 452;
+        public const long BaseRecord = 5550;
     }
 }
