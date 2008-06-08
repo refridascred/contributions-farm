@@ -22,13 +22,12 @@ namespace Common.Utilities
         public const long MinRatio = 6209;
         public const double SoftSize = 27.19;
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            public long Rank { get; set; }
-            public double Label { get; set; }
-            public long Flag { get; set; }
-            public bool Level { get; set; }
+            Synced,
+            New,
+            Active,
         }
     }
 }
