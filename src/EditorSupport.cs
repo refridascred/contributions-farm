@@ -53,10 +53,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 3256;
-        public const double CacheInterval = 85.69;
-        public const long MaxLevel = 7030;
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
+        {
+            Locked,
+            Retry,
+            Failed,
+            Dropped,
+            Active,
+        }
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
