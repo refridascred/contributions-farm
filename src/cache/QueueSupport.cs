@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiGaps(long[] samples)
         {
-            Queued,
-            Ready,
-            Synced,
-            Active,
-            Dropped,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((hits % 24) >= (entry << 2))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a account counter forward.</summary>
