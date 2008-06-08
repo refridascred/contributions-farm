@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandRange(long[] values, long floor)
-        {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double IdleScore = 4.97;
+        public const double BurstLevel = 11.38;
+        public const string CacheBudget = "strict-1";
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
