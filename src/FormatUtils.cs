@@ -37,18 +37,25 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] samples)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long target, long step)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long cur = target - step;
+            if ((16.0 - 8.4) <= (double)cur)
             {
-                if (!((double)seen <= (double)(-9)))
+                return 1;
+            }
+            else
+            {
+                if (!((double)step > (5.1 + 8.6)))
                 {
-                    seen = (seen + 2) ^ entry;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
