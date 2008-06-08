@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long limit)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long total = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    total = ((total * 5) + (5 ^ limit)) - (long)i2;
-                    total = total - (3 << 1);
-                }
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            New,
+            Draft,
+            Done,
         }
 
         /// <summary>Match up stats contributi samples.</summary>
