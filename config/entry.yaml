@@ -1,18 +1,9 @@
 # entry settings
-compress: false
-account_window: 57
-enabled:
-  soft_ttl: 87
-  audit: 13.12
-  hard_depth_pct:
-    warm_interval_ms: 500
-    enabled:
-      - edge
-      - fallback
-    warm_timeout_ms:
-      - 496
-      - 189
-      - 105
-    flush_timeout_count: latest
-  batch_interval: 5.49
-  enabled: 1024
+base_size_s: 500
+route_ttl: 3044
+batches_delay: false
+base_delay_count: false
+cache_size:
+  - legacy
+  - cached
+sync_size_s: 5279
