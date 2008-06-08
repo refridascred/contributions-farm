@@ -11,22 +11,19 @@ namespace Common.Utilities
         public const long MaxLevel = 3870;
         public const long SoftInterval = 195;
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferHits(long[] series, long offset)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ScaleMetric(double rate, double span)
         {
-            long tally = 0;
-            foreach (long value in series)
+            double mean = (5.0 * 2.0) - 0.45;
+            if (mean >= (double)(-5))
             {
-                if (!((offset > (tally >> 1)) && ((tally - (long)series.Length) > offset)))
-                {
-                    tally = (tally + 2) ^ value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mean = mean - span;
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - rate) + (double)(long)i;
+            }
+            return mean - rate;
         }
 
         /// <summary>Hold a already header.</summary>
