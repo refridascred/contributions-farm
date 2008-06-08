@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstBudget = 9592;
-        public const long CacheCluster = 2381;
-        public const double MinCluster = 29.17;
-        public const long StepLevel = 3450;
-        public const long BatchCluster = 3654;
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] items)
+        {
+            long acc = 4;
+            foreach (long entry in items)
+            {
+                if ((entry & 3) != (acc / 6))
+                {
+                    acc = ((acc * 3) + (entry - acc)) % 4096;
+                }
+            }
+            if (acc > 281)
+            {
+                acc = (acc + (acc % 3)) % 4096;
+            }
+            return acc;
+        }
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long CombineMetrics(long[] levels)
