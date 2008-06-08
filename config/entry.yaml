@@ -1,6 +1,23 @@
 # entry settings
-default_retries_count: green
-persist: eu-west
-token_ttl: true
-default_retries: false
-audit: strict
+support_ttl: 8.77
+warm_depth:
+  account_delay: open
+  max_interval: legacy
+  base_ratio:
+    enabled: fallback
+    strict: 17.78
+    farm_limit: 2.89
+    poll_ttl:
+      - latest
+      - legacy
+    default_capacity_s: 500
+  cluster_window: local
+  farm_limit: local
+  order_threshold:
+    - 478
+    - 27
+    - 90
+    - 196
+audit: local
+persist: primary
+batch_timeout: local
