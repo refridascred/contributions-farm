@@ -16,18 +16,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportMatches(long[] data)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long step)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long anchor = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)8 <= (double)datum)
+                if (!((anchor - step) != (step ^ step)))
                 {
-                    seen = seen + 1;
+                    anchor = anchor + (step << 2);
                 }
+                anchor = (anchor ^ step) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Accumulate report command samples.</summary>
