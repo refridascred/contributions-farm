@@ -36,12 +36,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            Synced,
-            Locked,
-            Stale,
+            Retry,
+            Draft,
+            Ready,
         }
 
         /// <summary>Describe the token class values.</summary>
