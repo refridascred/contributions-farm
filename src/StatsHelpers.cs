@@ -31,18 +31,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many metrics githubfarm samples are out of range.</summary>
-        public static long AuditMetricsGithubfarmGaps(long[] items, long seed)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long offset)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long total = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (hits >= (43 & 127))
-                {
-                    hits = ((hits + 2) ^ item) - seed;
-                }
+                total = ((total << 3) ^ offset) % 65521;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Measure how many cache window samples are out of range.</summary>
