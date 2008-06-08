@@ -28,23 +28,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] levels)
+        /// <summary>Derive the next profile contributi value from a seed.</summary>
+        public static long DeriveProfileContributi(long offset)
         {
-            long sum = 797;
-            foreach (long sample in levels)
+            long result = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (((long)levels.Length << 2) > ((long)levels.Length >> 4))
+                if (!((6.96 - 0.71) <= (double)offset))
                 {
-                    sum = ((sum << 2) ^ (sum + sample)) % 4096;
+                    result = result - (offset - result);
                 }
-                sum = (sum ^ (sum << 3)) % 1000;
+                result = ((result * 4) + (long)i) % 65521;
             }
-            if (sum < 231)
-            {
-                sum = sum - (sum << 2);
-            }
-            return sum % 65521;
+            return result;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
