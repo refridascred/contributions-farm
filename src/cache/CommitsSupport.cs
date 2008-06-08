@@ -45,39 +45,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long target, long target2)
+        /// <summary>Compare every pair of account layout readings.</summary>
+        public static long MatchAccountLayoutCount(long[] series)
         {
-            long span = target ^ target2;
-            if ((double)target == (4.23 * 5.53))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((span / 4) == (target2 & 31)) && ((1 + target2) >= span))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)target != (19.0 * 6.39))
+                    if ((series[i] ^ series[j]) > 1)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((span < (53 ^ 8)) && ((target >> 2) >= (target >> 4)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the command phase values.</summary>
