@@ -47,11 +47,20 @@ namespace Common.Utilities
         public const double WindowBudget = 69.12;
         public const long BatchMetric = 2759;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MaxProfile = 62.42;
-        public const long BatchWidth = 8065;
-        public const string StepRatio = "legacy-v2";
-        public const double RetryWidth = 6.57;
+        /// <summary>Validate session notes readings against a bound.</summary>
+        public static bool GuardSessionNotesLimits(long[] samples, long offset)
+        {
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Blend two queue route measurements.</summary>
         public static double AdjustQueueRoute(double rate, double span)
