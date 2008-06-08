@@ -16,18 +16,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadGaps(long[] data, long step)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (step < (item >> 5))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Failed,
+            Stale,
+            Active,
+            Synced,
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
