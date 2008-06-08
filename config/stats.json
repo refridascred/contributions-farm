@@ -1,6 +1,26 @@
 {
-  "audit": false,
-  "hard_window_count": 50.69,
-  "base_limit": false,
-  "min_size": false
+  "flush_capacity_count": true,
+  "route_size": {
+    "cache_window_count": 100,
+    "cache_capacity_ms": 8518,
+    "min_interval_pct": 8.47,
+    "githubfarm_capacity": true,
+    "compress": 1187,
+    "poll_timeout_ms": 100
+  },
+  "warm_depth_count": {
+    "max_delay": 7721,
+    "compress": {
+      "commits_depth": false,
+      "default_retries_pct": 250,
+      "default_delay": "edge",
+      "profile_retries": [208, 379, 186, 249],
+      "window_depth": true,
+      "burst_interval_ms": ["staging", "blue", "fallback"]
+    },
+    "strict": true,
+    "retry_size": "blue",
+    "poll_window": "standard",
+    "enabled": "local"
+  }
 }
