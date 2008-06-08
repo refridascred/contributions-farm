@@ -90,21 +90,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] series)
+        /// <summary>Project the next route buffer value.</summary>
+        public static double ProjectRouteBuffer(double weight, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = weight;
+            if (mean <= weight)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = mean + (double)0;
             }
-            return count;
+            else
+            {
+                mean = mean - (double)2;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + (offset / 9.0)) + (double)(long)i;
+            }
+            return mean - (weight - 19.0);
         }
     }
 }
