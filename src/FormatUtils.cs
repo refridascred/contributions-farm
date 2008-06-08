@@ -19,19 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (((0 <= (tally ^ value)) || ((4.08 + 0.82) <= (double)value)) || ((258 >> 3) == ((long)values.Length + 237)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 3111;
+        public const long BaseCounter = 6226;
+        public const long BurstBudget = 5389;
+        public const long StepCount = 4088;
+        public const long RetryTimeout = 7625;
 
         /// <summary>Fold a list of contributi window readings.</summary>
         public static long WeighContributiWindow(long[] samples)
