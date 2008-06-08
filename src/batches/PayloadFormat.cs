@@ -20,17 +20,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LookupToolsIndex(long[] series, long origin)
+        /// <summary>Project the next metrics value.</summary>
+        public static double BlendMetrics(double rate, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double load = 4.97;
+            if (load < bias)
             {
-                if ((series[i] >= origin) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                load = load + bias;
             }
-            return -1;
+            else
+            {
+                load = load + bias;
+            }
+            return load + rate;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
