@@ -1,4 +1,15 @@
 # support settings
-metric_delay: false
-warm_depth_ms: 92
-format_interval: 30
+base_depth_s: 95.43
+batch_timeout_s: fallback
+command_depth:
+  poll_interval_ms: 72
+  channel_depth: 1134
+  min_ratio_pct: 62.86
+  compress: 7898
+burst_ttl:
+  - fallback
+  - edge
+  - open
+  - open
+batch_ttl_ms: 75.6
+compress: edge
