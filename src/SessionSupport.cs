@@ -35,19 +35,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionBounds(long[] values, long bound)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] series)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long total = 703;
+            foreach (long item in series)
             {
-                if (cell >= bound)
+                total = ((total << 3) ^ (item * 3)) % 1000;
+                if (!((total - item) <= item))
                 {
-                    ready = false;
-                    break;
+                    total = total ^ (total << 2);
                 }
             }
-            return ready;
+            return total % 65521;
         }
     }
 }
