@@ -1,6 +1,11 @@
-id,count,token
-1,759,515
-2,94.09,55.23
-3,961,open
-4,99,549
-5,latest,blue
+id,token,ratio,active,state
+1,cached,191,cached,edge
+2,primary,867,707,local
+3,772,981,edge,standard
+4,open,stable,45.78,green
+5,13.14,13.49,eu-west,46.22
+6,77.87,893,188,open
+7,cached,strict,latest,5.18
+8,eu-west,659,48.05,66.74
+9,845,51.69,legacy,standard
+10,legacy,41.1,local,8.35
