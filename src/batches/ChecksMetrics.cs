@@ -27,13 +27,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            Paused,
-            New,
-            Ready,
-            Closed,
+            Active,
+            Queued,
+            Locked,
         }
 
         /// <summary>Describe the batches state values.</summary>
