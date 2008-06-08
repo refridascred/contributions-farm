@@ -1,22 +1,5 @@
 # support settings
-commits_limit:
-  - 128
-  - 46
-base_ttl:
-  idle_limit_s: 44
-  soft_size_count: 3441
-  support_size: green
-  checks_window: 6983
-  channel_depth:
-    - 237
-    - 355
-  cache_interval_ms: 53
-burst_size:
-  sync_interval_count: true
-  warm_ttl: 1024
-  burst_window_s: edge
-burst_limit: stable
-batch_limit_s:
-  - open
-  - strict
-base_size_pct: fallback
+default_retries_s: 60
+soft_threshold_ms: latest
+dry_run: false
+sync_ttl: 73.02
