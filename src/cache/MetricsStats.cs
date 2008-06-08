@@ -30,23 +30,12 @@ namespace Common.Utilities
         public const long LimitRatio = 8839;
         public const long BaseBudget = 651;
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] data, long limit)
-        {
-            long anchor = 937;
-            foreach (long datum in data)
-            {
-                if ((anchor >= (4 & 127)) && (((long)data.Length - anchor) > ((long)data.Length - datum)))
-                {
-                    anchor = anchor ^ (392 / 9);
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ limit;
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheLevel = 3632;
+        public const long WindowSchema = 4212;
+        public const long StepRatio = 7226;
+        public const double HardWidth = 55.85;
+        public const long MinSchema = 1617;
 
         /// <summary>Fold a list of format entry readings.</summary>
         public static long TotalFormatEntry(long[] levels, long origin)
