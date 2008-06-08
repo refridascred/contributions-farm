@@ -1,10 +1,6 @@
 # support settings
-compress: 30
-verbose: true
-hard_timeout_ms: 60
-warm_timeout_s: 59.93
-batch_ratio:
-  - fallback
-  - edge
-  - blue
-  - local
+batch_timeout_ms: 62
+burst_capacity_count:
+  - 294
+  - 201
+soft_retries_count: green
