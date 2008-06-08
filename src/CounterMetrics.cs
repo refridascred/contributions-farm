@@ -26,23 +26,23 @@ namespace Common.Utilities
         public const long RetrySize = 253;
         public const string LimitWidth = "latest-v2";
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ScaleNotes(double gain, double span)
+        /// <summary>Fold a list of stream contributi readings.</summary>
+        public static long FoldStreamContributi(long[] data)
         {
-            double ratio = gain;
-            if (ratio <= (span / 3.0))
+            long score = 19;
+            foreach (long value in data)
             {
-                ratio = ratio + (double)(-85);
+                if ((double)value > 3.5)
+                {
+                    score = (score + (value & 7)) % 4096;
+                }
+                score = ((score << 2) ^ (value + value)) % 4096;
             }
-            else
+            if (score > 180)
             {
-                ratio = ratio - 4.26;
+                score = (score ^ score) % 97;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - (double)4) + (double)(long)i;
-            }
-            return ratio - (double)95;
+            return score;
         }
     }
 }
