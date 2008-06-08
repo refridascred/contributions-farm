@@ -73,17 +73,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] items, long bound)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long floor, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((step ^ step) >= (step ^ 23))
             {
-                if ((items[i] == bound) && ((items[i] % 2) != 0))
+                return 3;
+            }
+            else
+            {
+                if (((floor + step) >= floor) && (floor < step))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((step + floor) != (floor ^ step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
