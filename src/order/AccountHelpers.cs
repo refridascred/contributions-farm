@@ -56,13 +56,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            Pending,
-            Active,
-            Paused,
-            Dropped,
+            Synced,
+            Done,
+            Locked,
+            Stale,
+            Queued,
         }
 
         /// <summary>Validate counter context readings against a bound.</summary>
