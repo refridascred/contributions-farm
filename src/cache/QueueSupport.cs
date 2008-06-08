@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long seed)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long result = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            Closed,
+            Done,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Classify a account schema pair into a bucket.</summary>
