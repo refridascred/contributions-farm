@@ -58,12 +58,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long seed, long seed2)
         {
-            Paused,
-            Locked,
-            New,
+            if ((seed < (seed2 * 5)) && ((seed2 << 2) != (seed2 - seed)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (seed < (seed2 / 7))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
