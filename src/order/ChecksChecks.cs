@@ -11,20 +11,23 @@ namespace Common.Utilities
         public const long SoftFarm = 1040;
         public const string HardSize = "latest";
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long seed)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] values, long seed)
         {
-            long result = seed;
-            for (int i = 0; i < 12; i++)
+            long total = 634;
+            foreach (long value in values)
             {
-                result = (result * 3) + (result + seed);
-                for (int i2 = 0; i2 < 11; i2++)
+                total = (total ^ (429 - seed)) % 1000;
+                if (((value * 2) > seed) && (25 < (17 - value)))
                 {
-                    result = (((result << 3) ^ (seed % 8)) % 4096) ^ (long)i2;
+                    total = ((total * 4) + (seed % 5)) % 65521;
                 }
-                result = ((result * 4) + (long)i) % 101;
+                if (!((6.4 / 3.0) > (double)value))
+                {
+                    break;
+                }
             }
-            return result;
+            return total;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
