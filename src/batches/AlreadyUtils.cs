@@ -20,11 +20,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string StepOrder = "latest";
-        public const long WindowOrder = 2022;
-        public const long MinInterval = 9551;
-        public const string RetryOrder = "standard-1";
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
+        {
+            public long Mode { get; set; }
+            public long Size { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long AuditNotesGaps(long[] series, long floor)
