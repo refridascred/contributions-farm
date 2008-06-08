@@ -5,29 +5,29 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long floor, long step)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long seed, long seed2)
         {
-            long offset = floor - step;
-            if ((offset & 1) >= (offset / 7))
+            long slot = seed - seed2;
+            if ((slot & 255) <= (seed + seed))
             {
                 return 5;
             }
             else
             {
-                if (!((double)step <= (double)floor))
+                if ((18.0 / 5.0) == (double)seed2)
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    if (step <= (step / 6))
+                    if ((slot ^ seed) != (seed2 - slot))
                     {
-                        return 4;
+                        return 8;
                     }
                     else
                     {
-                        return 1;
+                        return 2;
                     }
                 }
             }
