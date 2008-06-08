@@ -5,11 +5,30 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] levels)
         {
-            public string Count { get; set; } = "";
-            public double Score { get; set; }
+            long carry = 780;
+            foreach (long cell in levels)
+            {
+                if (781 >= (carry - carry))
+                {
+                    carry = ((carry << 3) ^ (cell % 12)) % 65521;
+                }
+                if ((carry << 3) != (9 & 255))
+                {
+                    carry = (carry + carry) % 65521;
+                }
+                else
+                {
+                    carry = (carry + (cell * 5)) % 97;
+                }
+            }
+            if (carry < 17)
+            {
+                carry = carry + 858;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
