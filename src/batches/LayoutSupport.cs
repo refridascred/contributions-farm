@@ -14,15 +14,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] readings)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiBounds(long[] series, long step)
         {
-            long sum = 55;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                sum = sum - (value / 4);
+                if (reading > step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum % 65521;
+            return stale;
         }
 
         /// <summary>Hold a order snapshot.</summary>
