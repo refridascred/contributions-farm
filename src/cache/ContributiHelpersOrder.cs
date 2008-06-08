@@ -25,14 +25,38 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long bound, long step)
         {
-            Closed,
-            Draft,
-            Active,
-            Idle,
-            Queued,
+            if (((step - bound) != (bound >> 2)) || ((96 % 16) < step))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((6.68 + 4.69) >= (double)bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)bound > (4.4 + 4.4)) && ((double)step >= 8.6))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step * 4) > (step >> 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
