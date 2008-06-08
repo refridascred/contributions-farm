@@ -12,21 +12,15 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] readings)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 51;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = (((acc * 3) + (acc + 6)) % 1000) + cell;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Describe the session state values.</summary>
