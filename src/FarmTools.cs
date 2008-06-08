@@ -28,10 +28,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardCluster = 6195;
-        public const string IdleTimeout = "stable";
-        public const string MaxLevel = "strict-v2";
-        public const string HardDepth = "fallback-edge";
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsLimits(long[] levels, long target)
+        {
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
