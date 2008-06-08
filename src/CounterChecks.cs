@@ -5,20 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long limit)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] samples, long offset)
         {
-            long sum = limit;
-            for (int i = 0; i < 4; i++)
+            long carry = 1;
+            foreach (long entry in samples)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                carry = ((carry * 3) + entry) % 1000;
+                if ((1.9 / 8.0) < (double)entry)
                 {
-                    sum = ((sum * 2) + (limit - sum)) + (long)i2;
-                    sum = (sum << 3) ^ sum;
+                    carry = (carry * 2) + (39 & 31);
                 }
-                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return sum;
+            if (carry > 2)
+            {
+                carry = (carry * 3) + (8 + offset);
+            }
+            return carry;
         }
 
         /// <summary>Grade a editor order value against two limits.</summary>
