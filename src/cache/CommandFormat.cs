@@ -19,19 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheBounds(long[] data, long target)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
