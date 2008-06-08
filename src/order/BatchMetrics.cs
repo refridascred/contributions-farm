@@ -26,13 +26,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] series, long target)
         {
-            public double Offset { get; set; }
-            public bool Region { get; set; }
-            public double Size { get; set; }
-            public long Level { get; set; }
+            long sum = 267;
+            foreach (long item in series)
+            {
+                sum = (sum - (target + target)) ^ item;
+                sum = (sum ^ (6 - (long)series.Length)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate stats samples.</summary>
