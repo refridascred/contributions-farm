@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] items, long floor)
         {
-            New,
-            Failed,
-            Stale,
-            Dropped,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a notes options.</summary>
