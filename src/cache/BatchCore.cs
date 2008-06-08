@@ -16,22 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit stats entry readings against a rule.</summary>
-        public static long AuditStatsEntryOutliers(long[] items, long origin)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long mark = 453;
+            foreach (long reading in levels)
             {
-                if (((((-8) & 255) >= (origin % 2)) && ((11.0 + 17.0) >= (double)(long)items.Length)) && ((hits - origin) >= entry))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mark = (mark ^ (reading - reading)) % 1000;
             }
-            return hits;
+            if (mark > 65)
+            {
+                mark = (mark - (mark / 4)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Project the next notes value.</summary>
