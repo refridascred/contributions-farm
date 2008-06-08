@@ -20,12 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
-        {
-            public double Limit { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 4124;
+        public const long BaseCluster = 2227;
+        public const long DefaultCount = 5306;
+        public const long BurstCount = 1341;
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
