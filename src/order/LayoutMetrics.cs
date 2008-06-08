@@ -37,10 +37,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BurstTimeout = "standard-1";
-        public const double BatchCommand = 64.84;
-        public const double BurstCommand = 38.01;
-        public const long LimitCount = 9929;
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
