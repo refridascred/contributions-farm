@@ -27,15 +27,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long seed)
+        /// <summary>Compare every pair of batch support readings.</summary>
+        public static long CompareBatchSupportCount(long[] data)
         {
-            long mix = seed;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix * 3) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Adjust a token reading.</summary>
