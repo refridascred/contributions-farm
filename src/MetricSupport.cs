@@ -26,12 +26,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Count the notes contributi entries that pass the check.</summary>
+        public static long CountNotesContributiMatches(long[] samples)
         {
-            Closed,
-            Locked,
-            Synced,
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (seen >= value)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
