@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long origin, long step)
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double rate, double bias)
         {
-            if (!((step * 2) > (origin / 3)))
+            double bias2 = 7.8;
+            for (int i = 0; i < 8; i++)
             {
-                return 5;
+                bias2 = ((bias2 + (double)2) + (double)(long)i) + rate;
             }
-            else
-            {
-                if (step <= (step << 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return bias2 - bias;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
