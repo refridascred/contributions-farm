@@ -16,39 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a editor order value against two limits.</summary>
-        public static long GradeEditorOrder(long bound, long step)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long offset = bound + step;
-            if ((step + bound) <= offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step - offset) < (bound << 1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((2.56 + 7.96) != (double)offset) || ((double)step >= (1.1 + 4.0)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)step > (8.53 + 10.0)) && ((double)step >= (double)bound))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public bool Token { get; set; }
+            public double Level { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a report entry.</summary>
