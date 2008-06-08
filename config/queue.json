@@ -1,7 +1,6 @@
 {
-  "payload_capacity": [113, 353],
-  "flush_interval": 86,
-  "audit": 2442,
-  "sync_capacity_pct": true,
-  "base_interval_s": 87.12
+  "compress": "green",
+  "idle_size_s": 58.27,
+  "sync_retries_s": "latest",
+  "metrics_threshold": 500
 }
