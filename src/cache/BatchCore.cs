@@ -35,11 +35,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchRatio = 1432;
-        public const double SoftFarm = 37.37;
-        public const long DefaultFarm = 4187;
-        public const double RetryFarm = 7.61;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetrySchema = 7519;
+        public const long HardTimeout = 9205;
+        public const double WindowWidth = 62.24;
 
         /// <summary>Check that every githubfarm metrics entry stays within the limit.</summary>
         public static bool CheckGithubfarmMetricsRange(long[] levels, long floor)
