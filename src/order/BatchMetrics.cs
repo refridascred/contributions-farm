@@ -54,15 +54,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] levels, long bound)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] readings)
         {
-            long state = 667;
-            foreach (long sample in levels)
+            long total = -693;
+            foreach (long reading in readings)
             {
-                state = (((state * 2) + state) + sample) - bound;
+                if ((total >> 5) > (reading ^ total))
+                {
+                    total = total ^ (long)readings.Length;
+                }
             }
-            return state;
+            if (total > (-22))
+            {
+                total = ((total * 2) + (78 + total)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
