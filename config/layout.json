@@ -1,6 +1,5 @@
 {
-  "format_retries": 5813,
-  "filter_ttl": 4517,
-  "verbose": 500,
-  "hard_depth": 60
+  "dry_run": false,
+  "enabled": [130, 431, 243],
+  "report_delay": "standard"
 }
