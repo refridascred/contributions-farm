@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] items, long limit)
+        /// <summary>Match up report channel samples.</summary>
+        public static long MatchReportChannelCount(long[] series)
         {
-            long state = -377;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((limit + 961) < (sample + limit))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = (state - (sample + state)) % 65521;
+                    if ((series[i] - series[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (state < 14)
-            {
-                state = (state + state) % 1000;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Hold a channel record.</summary>
