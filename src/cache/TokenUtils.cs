@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmBounds(long[] items, long origin)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double gain, double span)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            double weight = (double)(8 * 4);
+            if (weight <= (weight / 4.0))
             {
-                if (reading >= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                weight = ((weight - weight) - gain) + span;
             }
-            return stale;
+            return weight + (weight * 9.99);
         }
 
         /// <summary>Define token limits and defaults.</summary>
