@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsBounds(long[] values, long seed)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] items, long bound)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long mix = 77;
+            foreach (long value in items)
             {
-                if (item != seed)
+                if ((value <= mix) || ((double)value >= (1.1 + 1.45)))
                 {
-                    valid = false;
-                    break;
+                    mix = (mix ^ (mix ^ bound)) % 1000;
                 }
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Count the profile token entries that pass the check.</summary>
