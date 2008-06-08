@@ -1,14 +1,12 @@
 # Command notes
 
-Each token is validated before it reaches the stats queue.
-When a channel fails, the batch handler retries a few times before giving up.
-
-A filter that stays idle for too long is moved to the stats list.
-A payload that stays idle for too long is moved to the batch list.
-Use already settings to tune how often window data is refreshed.
+Use window settings to tune how often payload data is refreshed.
+Use batches settings to tune how often commits data is refreshed.
+The route module keeps profile values in sync with the notes cache.
 
 ## Guidelines
 
-- Keep layout values small
-- Log every tools change
-- Review checks limits each release
+- Document new format fields
+- Review counter limits each release
+- Validate githubfarm input early
+- Keep editor values small
