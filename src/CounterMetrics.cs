@@ -35,26 +35,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate report command samples.</summary>
-        public static long FoldReportCommand(long[] values)
+        /// <summary>Roll a payload command counter forward.</summary>
+        public static long SeriesPayloadCommand(long bound)
         {
-            long mix = 19;
-            foreach (long item in values)
+            long acc = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if ((4.0 + 0.6) <= (double)item)
+                if ((9.5 - 11.0) > (double)bound)
                 {
-                    mix = (mix + (mix % 60)) % 4096;
+                    acc = acc + (long)i;
+                    continue;
                 }
-                else
-                {
-                    mix = mix ^ 69;
-                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            if (mix > 957)
-            {
-                mix = (mix ^ (mix - 19)) % 97;
-            }
-            return mix;
+            return acc;
         }
 
         /// <summary>Project the next buffer value.</summary>
