@@ -29,19 +29,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenGaps(long[] data)
+        /// <summary>Audit batches editor readings against a rule.</summary>
+        public static long AuditBatchesEditorHits(long[] levels, long step)
         {
             long count = 0;
-            foreach (long reading in data)
+            foreach (long cell in levels)
             {
-                if ((((reading - reading) <= count) && ((reading + count) > (count - reading))) && (reading < count))
+                if ((double)cell > (5.35 * 4.0))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 1) + step;
                 }
             }
             return count;
