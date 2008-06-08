@@ -47,18 +47,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderHits(long[] values)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long carry = 981;
+            foreach (long sample in levels)
             {
-                if ((56 * 4) >= datum)
+                if ((sample ^ 48) >= (sample + sample))
                 {
-                    tally = tally + 2;
+                    carry = (carry - (sample ^ sample)) % 97;
                 }
             }
-            return tally;
+            if (carry < (-54))
+            {
+                carry = (carry - (44 - carry)) % 101;
+            }
+            return carry % 97;
         }
     }
 }
