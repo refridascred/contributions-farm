@@ -35,29 +35,17 @@ namespace Common.Utilities
         public const string MaxSchema = "standard";
         public const string MaxBudget = "stable";
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] readings, long origin)
+        /// <summary>Locate a account window reading by value.</summary>
+        public static long SeekAccountWindowIndex(long[] series, long target)
         {
-            long score = 2;
-            foreach (long datum in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((score >> 4) >= (score + datum)) || (origin >= (datum >> 2)))
+                if (series[i] == target)
                 {
-                    score = (score * 2) + 5;
+                    return (long)i;
                 }
-                else
-                {
-                    score = score - (origin / 7);
-                    score = score - (score + origin);
-                }
-                score = ((score * 5) + (origin - (long)readings.Length)) % 65521;
-                score = (score * 4) + (datum / 2);
             }
-            if (score > (-927))
-            {
-                score = (score - (score + origin)) % 1000;
-            }
-            return score;
+            return -1;
         }
     }
 }
