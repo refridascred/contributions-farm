@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] items)
-        {
-            long mark = 0;
-            foreach (long value in items)
-            {
-                if ((mark % 24) >= (mark + value))
-                {
-                    mark = mark - value;
-                }
-                if ((mark << 3) <= value)
-                {
-                    mark = mark + (value << 1);
-                }
-                else
-                {
-                    mark = (mark ^ (mark + value)) % 97;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 6814;
+        public const long WindowScore = 9099;
+        public const double WindowSize = 17.6;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long AuditCommitsMatches(long[] levels)
