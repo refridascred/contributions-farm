@@ -49,11 +49,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
-        {
-            public long Flag { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardCount = 7833;
+        public const long DefaultCount = 6935;
+        public const long WindowContributi = 7398;
+        public const long HardContributi = 4197;
     }
 }
