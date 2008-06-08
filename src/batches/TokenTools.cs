@@ -39,18 +39,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatMatches(long[] items, long origin)
-        {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (!((origin ^ 2) >= (cell ^ tally)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepBudget = 7058;
+        public const double BaseGraph = 42.01;
+        public const double CacheGraph = 47.16;
     }
 }
