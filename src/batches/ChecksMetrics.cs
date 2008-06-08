@@ -66,22 +66,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultInterval = 1929;
+        public const long HardContext = 5395;
+        public const long BaseContext = 7730;
+        public const long MaxDepth = 4462;
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long TallyProfileOutliers(long[] data)
