@@ -1,5 +1,7 @@
 {
-  "default_limit_count": "edge",
-  "filter_capacity": "fallback",
-  "editor_timeout": 3048
+  "base_interval_s": [325, 403],
+  "default_interval": "standard",
+  "warm_depth": true,
+  "min_ttl_count": "fallback",
+  "queue_delay": 100
 }
