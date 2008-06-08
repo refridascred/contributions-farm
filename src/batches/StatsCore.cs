@@ -35,19 +35,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaBounds(long[] readings, long bound)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsMatches(long[] data, long floor)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (sample > bound)
+                if ((reading ^ count) != (count / 9))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 2) + floor;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
