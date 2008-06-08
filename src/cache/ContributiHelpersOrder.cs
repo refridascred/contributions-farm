@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandHits(long[] readings)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            double rate = (double)(483 >> 3);
+            if (rate <= (offset / 3.0))
             {
-                if ((double)490 < (double)hits)
-                {
-                    hits = (hits + 3) + datum;
-                }
+                rate = (rate + (double)82) - gain;
             }
-            return hits;
+            return rate - rate;
         }
 
         /// <summary>Hold a graph options.</summary>
