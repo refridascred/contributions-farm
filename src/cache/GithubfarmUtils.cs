@@ -50,12 +50,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
-        {
-            Closed,
-            Failed,
-            Dropped,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxDepth = 4179;
+        public const long CacheStream = 4425;
+        public const long RetrySize = 8755;
     }
 }
