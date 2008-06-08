@@ -79,12 +79,13 @@ namespace Common.Utilities
         public const double BatchRatio = 24.0;
         public const long BaseDepth = 6081;
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            Stale,
-            Ready,
-            Synced,
+            Draft,
+            Queued,
+            Retry,
+            Idle,
         }
     }
 }
