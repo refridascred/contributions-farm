@@ -52,15 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the stats cache series from a seed.</summary>
-        public static long StepStatsCache(long floor)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsLimits(long[] readings, long limit)
         {
-            long mix = floor;
-            for (int i = 0; i < 15; i++)
+            bool found = true;
+            foreach (long value in readings)
             {
-                mix = ((mix * 2) + (long)i) % 101;
+                if (value <= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Fold a list of report readings.</summary>
