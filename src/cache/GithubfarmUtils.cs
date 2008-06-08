@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            Ready,
-            Locked,
-            Paused,
+            public string Mode { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the tools phase values.</summary>
