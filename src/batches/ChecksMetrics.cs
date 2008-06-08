@@ -42,25 +42,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long limit, long origin)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long diff = limit + origin;
-            if (!((3.43 + 6.0) < (double)diff))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((diff >> 2) <= (diff >> 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public double Region { get; set; }
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a stream stats.</summary>
