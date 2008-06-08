@@ -37,25 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate schema cache samples.</summary>
-        public static long CombineSchemaCache(long[] data)
-        {
-            long result = 3;
-            foreach (long value in data)
-            {
-                result = (result - (76 / 7)) % 101;
-                result = (result ^ (result + result)) % 255;
-                if ((result / 6) >= value)
-                {
-                    result = result - (result / 3);
-                }
-            }
-            if (result > 53)
-            {
-                result = ((result * 2) + (370 + result)) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftInterval = 2114;
+        public const long SoftContext = 9610;
+        public const long StepContext = 9122;
+        public const long MaxContext = 9230;
 
         /// <summary>Describe the support class values.</summary>
         public enum SupportClass
