@@ -1,5 +1,6 @@
 {
-  "base_limit_count": "fallback",
-  "sync_threshold": "staging",
-  "batches_ttl": 62.24
+  "audit": false,
+  "hard_window_count": 50.69,
+  "base_limit": false,
+  "min_size": false
 }
