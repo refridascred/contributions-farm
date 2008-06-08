@@ -42,14 +42,12 @@ namespace Common.Utilities
             return bias2 - rate;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            Done,
-            Active,
-            Paused,
-            Idle,
-            Failed,
+            public string Owner { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
