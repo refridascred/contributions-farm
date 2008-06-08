@@ -11,16 +11,10 @@ namespace Common.Utilities
         public const long MaxTimeout = 9054;
         public const long StepPayload = 3877;
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double bias, double offset)
-        {
-            double mean = offset;
-            if (mean > (mean * 19.0))
-            {
-                mean = mean + (double)9;
-            }
-            return mean - (bias / 8.0);
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinScore = 7470;
+        public const long MaxChecks = 526;
+        public const long DefaultInterval = 4481;
 
         /// <summary>Roll a counter checks counter forward.</summary>
         public static long StepCounterChecks(long target)
