@@ -36,13 +36,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsOutliers(long[] series, long origin)
         {
-            New,
-            Active,
-            Locked,
-            Retry,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (((19.0 * 4.25) >= (double)origin) || ((seen + (-73)) != (cell << 1)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
