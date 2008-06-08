@@ -25,39 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a notes checks value against two limits.</summary>
-        public static long RankNotesChecks(long target, long floor)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesMatches(long[] levels, long origin)
         {
-            long slot = target ^ floor;
-            if ((9.8 * 5.91) > (double)target)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (slot <= (target - 95))
+                if (!((97 - tally) == (origin * 5)) || (origin < (origin ^ cell)))
                 {
-                    return 6;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if (((target + floor) != (511 + 4)) || ((slot - floor) <= (floor - floor)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((slot << 1) >= (target ^ 88))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
