@@ -10,13 +10,14 @@ namespace Common.Utilities
         public const long CacheAccount = 1480;
         public const long BaseAccount = 9712;
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            Synced,
-            Ready,
-            Failed,
-            Idle,
+            Done,
+            Pending,
+            New,
+            Paused,
+            Draft,
         }
 
         /// <summary>Fold a list of support layout readings.</summary>
