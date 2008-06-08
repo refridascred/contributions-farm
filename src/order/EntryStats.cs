@@ -45,19 +45,10 @@ namespace Common.Utilities
             return rate + (offset / 6.0);
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!((mix - mix) > ((long)i ^ mix)))
-                {
-                    mix = ((mix * 5) + (seed + seed)) % 1000;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double IdleMetrics = 77.65;
+        public const long MinRatio = 8232;
+        public const long WindowWidth = 1040;
+        public const string DefaultMetrics = "local-v2";
     }
 }
