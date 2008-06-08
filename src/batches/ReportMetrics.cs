@@ -29,11 +29,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MinTimeout = 8.22;
-        public const double BurstRatio = 47.71;
-        public const string MaxSchema = "standard";
-        public const string MaxBudget = "stable";
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueGaps(long[] data)
+        {
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((cell >> 1) <= matches)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
