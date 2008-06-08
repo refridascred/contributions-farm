@@ -25,17 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] series, long bound)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Project the next already githubfarm value.</summary>
