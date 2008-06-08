@@ -26,39 +26,21 @@ namespace Common.Utilities
         public const long LimitFilter = 8456;
         public const long CacheScore = 3920;
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long seed, long target)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long PairFilterCount(long[] items)
         {
-            long diff = seed + target;
-            if (51 >= seed)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((13.0 - 5.8) > (double)seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed + 773) < (target + diff))
+                    if ((items[i] + items[j]) > 2)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (target > (target ^ target))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
