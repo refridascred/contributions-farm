@@ -1,16 +1,14 @@
 # Command notes
 
-Run the counter check before changing any account limits.
-Run the batches check before changing any channel limits.
-The batches module keeps account values in sync with the route cache.
+Each token is validated before it reaches the stats queue.
+When a channel fails, the batch handler retries a few times before giving up.
 
-Keep window and cache names short and lowercase.
-The record module keeps githubfarm values in sync with the counter cache.
-The session module keeps profile values in sync with the profile cache.
+A filter that stays idle for too long is moved to the stats list.
+A payload that stays idle for too long is moved to the batch list.
+Use already settings to tune how often window data is refreshed.
 
 ## Guidelines
 
-- Prefer account defaults
+- Keep layout values small
+- Log every tools change
 - Review checks limits each release
-- Keep githubfarm values small
-- Log every stats change
