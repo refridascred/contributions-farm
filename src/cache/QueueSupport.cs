@@ -16,21 +16,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count support notes pairs that satisfy a relation.</summary>
-        public static long CompareSupportNotesCount(long[] items)
+        /// <summary>Classify a account schema pair into a bucket.</summary>
+        public static long RankAccountSchema(long offset, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((limit + 11) >= offset)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((limit << 2) <= limit)
                 {
-                    if ((items[i] - items[j]) == 3)
+                    return 0;
+                }
+                else
+                {
+                    if ((limit >> 4) > limit)
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((2.0 * 7.0) < (double)offset)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Match up checks samples.</summary>
