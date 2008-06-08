@@ -19,17 +19,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a already counter sample.</summary>
-        public static long LocateAlreadyCounterIndex(long[] samples, long target)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Offset { get; set; }
+            public double Size { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
