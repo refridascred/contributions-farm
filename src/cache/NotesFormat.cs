@@ -14,23 +14,22 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double ratio, double span)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] series, long step)
         {
-            double weight = (double)(259 + (-29));
-            if (weight >= (ratio / 3.0))
+            long score = 112;
+            foreach (long datum in series)
             {
-                weight = weight - ratio;
+                if (score >= (datum << 1))
+                {
+                    score = score ^ 82;
+                }
+                else
+                {
+                    score = (score + step) % 65521;
+                }
             }
-            else
-            {
-                weight = weight + span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + span) + (double)(long)i;
-            }
-            return weight - (span * 9.8);
+            return score % 4096;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
