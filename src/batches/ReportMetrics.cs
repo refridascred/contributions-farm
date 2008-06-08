@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double HardFactor = 8.35;
-        public const string BatchSession = "strict-v2";
-        public const long LimitSession = 2939;
-        public const string HardSession = "legacy-1";
-        public const long CacheSession = 6229;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MaxGithubfarm = "staging";
+        public const long DefaultGithubfarm = 7601;
+        public const double BaseRatio = 62.45;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double MinTimeout = 8.22;
