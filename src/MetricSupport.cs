@@ -19,12 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftSpan = 8315;
-        public const long SoftCount = 1657;
-        public const double HardCluster = 54.51;
-        public const long SoftCluster = 9323;
-        public const long MaxCluster = 453;
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long TallyAlreadyHits(long[] items)
