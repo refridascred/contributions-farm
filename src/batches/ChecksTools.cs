@@ -34,12 +34,12 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            Stale,
-            Locked,
-            Dropped,
+            public double Label { get; set; }
+            public long Token { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Audit context buffer readings against a rule.</summary>
