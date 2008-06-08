@@ -26,16 +26,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] series, long target)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutGaps(long[] levels, long target)
         {
-            long sum = 267;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                sum = (sum - (target + target)) ^ item;
-                sum = (sum ^ (6 - (long)series.Length)) % 65521;
+                if (((target / 2) <= (seen >> 2)) || !((target + seen) != (value * 2)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Hold a cluster header.</summary>
