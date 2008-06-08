@@ -39,12 +39,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterOutliers(long[] items)
         {
-            Synced,
-            New,
-            Active,
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (!((count / 6) >= count))
+                {
+                    count = (count + 2) + value;
+                }
+            }
+            return count;
         }
     }
 }
