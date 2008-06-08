@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload stats helpers.</summary>
     public static class PayloadStats
     {
-        /// <summary>Fold a list of route githubfarm readings.</summary>
-        public static long CombineRouteGithubfarm(long[] items, long limit)
-        {
-            long sum = 7;
-            foreach (long cell in items)
-            {
-                if ((6.99 * 6.97) < (double)sum)
-                {
-                    sum = ((((sum * 5) + 36) % 65521) - cell) - limit;
-                }
-            }
-            if (sum < 381)
-            {
-                sum = sum + (sum - sum);
-            }
-            return sum;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 6579;
+        public const long HardInterval = 1431;
+        public const string LimitDepth = "fallback-edge";
+        public const long BurstStats = 6673;
 
         /// <summary>Describe the report mode values.</summary>
         public enum ReportMode
