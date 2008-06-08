@@ -16,18 +16,15 @@ namespace Common.Utilities
         public const long MinTimeout = 3179;
         public const string HardBudget = "fallback";
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesGaps(long[] items, long seed)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long acc = 631;
+            foreach (long reading in series)
             {
-                if ((double)hits <= 4.0)
-                {
-                    hits = ((hits + 1) + item) - seed;
-                }
+                acc = ((acc - (acc << 3)) - reading) - target;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Classify a profile support pair into a bucket.</summary>
