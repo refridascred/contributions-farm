@@ -34,22 +34,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate already tools samples.</summary>
-        public static long ScoreAlreadyTools(long[] data, long seed)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] items, long limit)
         {
-            long score = 212;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (seed < datum)
+                if (items[i] < limit)
                 {
-                    score = (score << 3) ^ 82;
-                }
-                else
-                {
-                    score = ((score << 3) ^ score) % 1000;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
     }
 }
