@@ -39,16 +39,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long limit)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] readings)
         {
-            long total = limit;
-            for (int i = 0; i < 16; i++)
+            long anchor = 877;
+            foreach (long entry in readings)
             {
-                total = total - total;
-                total = ((total * 3) + (long)i) % 4093;
+                if (!((entry - (long)readings.Length) > (anchor * 4)))
+                {
+                    anchor = anchor - (entry + anchor);
+                }
+                anchor = (anchor * 4) + entry;
             }
-            return total;
+            return anchor % 1000;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
