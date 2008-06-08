@@ -10,22 +10,11 @@ namespace Common.Utilities
         public const long RetryRoute = 5903;
         public const long MinRoute = 5393;
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterHits(long[] series, long offset)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((datum < (offset / 6)) || ((6 << 2) >= ((long)series.Length - 8)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Score { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Match up notes editor samples.</summary>
