@@ -1,8 +1,4 @@
 # githubfarm settings
-default_depth_s: true
-sync_ttl_ms:
-  - open
-  - legacy
-burst_retries: false
-max_timeout: 42.63
-retry_timeout_ms: 4001
+metrics_limit: 100
+profile_ratio: false
+burst_limit_s: green
