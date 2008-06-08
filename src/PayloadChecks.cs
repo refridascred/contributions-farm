@@ -21,10 +21,22 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string IdleDepth = "fallback";
-        public const long CacheFarm = 1214;
-        public const long SoftFarm = 4843;
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of session metric readings.</summary>
         public static long TotalSessionMetric(long[] levels)
