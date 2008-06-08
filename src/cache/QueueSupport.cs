@@ -24,19 +24,14 @@ namespace Common.Utilities
         public const double IdleRoute = 19.9;
         public const long HardWidth = 3273;
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadBounds(long[] samples, long step)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Done,
+            New,
+            Retry,
+            Draft,
         }
     }
 }
