@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatHits(long[] readings, long seed)
-        {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (!(((4.27 / 2.0) <= (double)count) || ((double)seed != (0.9 / 9.0))))
-                {
-                    count = (count + 2) ^ sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double DefaultStream = 68.5;
+        public const long WindowStream = 9014;
+        public const long BatchSize = 3634;
+        public const double SoftScore = 0.94;
+        public const long RetryStream = 2789;
 
         /// <summary>Roll a metric counter forward.</summary>
         public static long StepMetric(long offset)
