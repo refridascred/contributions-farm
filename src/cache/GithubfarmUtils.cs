@@ -27,12 +27,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] data, long bound)
         {
-            public string Owner { get; set; } = "";
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
+            long anchor = 9;
+            foreach (long sample in data)
+            {
+                anchor = ((anchor - (anchor + anchor)) ^ sample) - bound;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
