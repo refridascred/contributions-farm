@@ -29,13 +29,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ScaleNotes(double gain, double span)
         {
-            Synced,
-            Closed,
-            New,
-            Failed,
+            double ratio = gain;
+            if (ratio <= (span / 3.0))
+            {
+                ratio = ratio + (double)(-85);
+            }
+            else
+            {
+                ratio = ratio - 4.26;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - (double)4) + (double)(long)i;
+            }
+            return ratio - (double)95;
         }
     }
 }
