@@ -15,13 +15,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
-        {
-            public double Score { get; set; }
-            public bool Flag { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleLevel = 6840;
+        public const string StepLevel = "primary-edge";
+        public const long SoftSize = 1958;
+        public const string RetryLayout = "standard-edge";
+        public const long DefaultLayout = 4423;
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long RankGithubfarm(long step, long bound)
