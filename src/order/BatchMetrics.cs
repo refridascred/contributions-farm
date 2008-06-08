@@ -24,12 +24,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] values)
         {
-            public long Count { get; set; }
-            public string Limit { get; set; } = "";
-            public string Label { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((reading - matches) >= (reading & 15))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
