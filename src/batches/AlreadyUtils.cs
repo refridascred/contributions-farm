@@ -28,18 +28,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesGaps(long[] series, long floor)
+        /// <summary>Project the next stats value.</summary>
+        public static double ProjectStats(double gain, double span)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            double mean = (gain - gain) - span;
+            if (mean < gain)
             {
-                if (((6.0 * 2.2) > (double)hits) || (floor <= (floor - floor)))
-                {
-                    hits = (hits + 2) + entry;
-                }
+                mean = mean - span;
             }
-            return hits;
+            else
+            {
+                mean = mean - (gain / 8.0);
+            }
+            return mean + 15.0;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
