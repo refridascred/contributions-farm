@@ -28,13 +28,21 @@ namespace Common.Utilities
         public const long LimitOrder = 2916;
         public const string HardScore = "latest-edge";
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] readings)
         {
-            Active,
-            Locked,
-            Pending,
-            Dropped,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
