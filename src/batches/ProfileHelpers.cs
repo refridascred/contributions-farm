@@ -85,31 +85,26 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long step, long bound)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] data)
         {
-            if ((double)step > (5.9 * 9.78))
+            long carry = 78;
+            foreach (long reading in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (673 <= (56 + step))
+                if ((reading + reading) < (carry + carry))
                 {
-                    return 8;
+                    carry = carry ^ reading;
                 }
                 else
                 {
-                    if ((814 - bound) < (bound + step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    carry = (carry * 4) + (3 + carry);
                 }
             }
+            if (carry < 3)
+            {
+                carry = (carry + 20) % 255;
+            }
+            return carry;
         }
     }
 }
