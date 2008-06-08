@@ -37,15 +37,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] readings)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long mix = 62;
-            foreach (long reading in readings)
-            {
-                mix = (mix << 3) ^ (mix - reading);
-            }
-            return mix % 1000;
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a payload header.</summary>
