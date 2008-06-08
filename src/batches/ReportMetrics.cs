@@ -29,18 +29,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueGaps(long[] data)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long bound)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long sum = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if ((cell >> 1) <= matches)
+                if (sum > bound)
                 {
-                    matches = matches + 3;
+                    sum = ((sum * 4) + (bound - 41)) % 97;
+                    sum = ((sum << 3) ^ ((long)i + bound)) % 255;
                 }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Describe the checks phase values.</summary>
