@@ -1,6 +1,21 @@
 {
-  "layout_interval": "cached",
-  "profile_depth": 36,
-  "min_interval_count": 7030,
-  "poll_delay": true
+  "layout_interval": {
+    "default_delay": 93.66,
+    "enabled": "legacy",
+    "verbose": true,
+    "warm_window_count": 14
+  },
+  "soft_interval_pct": false,
+  "flush_size_count": 250,
+  "max_ratio": {
+    "warm_delay_pct": 45.26,
+    "window_delay": {
+      "min_ratio": 5133,
+      "flush_capacity": 2785,
+      "soft_capacity_ms": 88
+    },
+    "min_capacity": true
+  },
+  "account_ttl": true,
+  "buffer_ratio": 60
 }
