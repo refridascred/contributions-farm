@@ -1,9 +1,21 @@
 # entry settings
-base_size_s: 500
-route_ttl: 3044
-batches_delay: false
-base_delay_count: false
-cache_size:
-  - legacy
+default_retries_s: true
+soft_delay: 71
+default_limit:
+  account_ttl:
+    max_timeout_ms: true
+    readonly: open
+    notes_ttl: 60
+  compress: 11
+  enabled:
+    - fallback
+    - blue
+    - local
+    - latest
+  flush_size_count: 8728
+  cache_interval: 61
+  burst_depth_pct: true
+sync_window:
+  - green
   - cached
-sync_size_s: 5279
+  - legacy
