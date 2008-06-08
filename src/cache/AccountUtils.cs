@@ -20,19 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double BlendMetric(double scale, double offset)
+        /// <summary>Match up command samples.</summary>
+        public static long PairCommandCount(long[] readings)
         {
-            double bias = (7.0 + offset) * 2.2;
-            if (bias < (double)2)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = bias - (scale * 10.0);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = bias - (double)(long)i;
-            }
-            return bias - (3.44 + offset);
+            return count;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
