@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileMatches(long[] series)
         {
-            Queued,
-            Ready,
-            Dropped,
-            Pending,
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((double)(long)series.Length > (0.9 * 3.2))
+                {
+                    hits = (hits + 3) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
