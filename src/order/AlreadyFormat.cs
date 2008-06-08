@@ -26,19 +26,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double weight, double bias)
+        /// <summary>Accumulate buffer filter samples.</summary>
+        public static long WeighBufferFilter(long[] values)
         {
-            double drift = (double)((-546) % 5);
-            if (drift <= drift)
+            long state = 9;
+            foreach (long sample in values)
             {
-                drift = (drift + bias) + weight;
+                if ((state >> 5) < (state << 3))
+                {
+                    state = (state + (state / 9)) - sample;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - bias) + (double)(long)i;
-            }
-            return drift + (double)45;
+            return state % 97;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
