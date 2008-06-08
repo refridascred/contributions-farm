@@ -39,17 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next support already value from a seed.</summary>
-        public static long DeriveSupportAlready(long step)
+        /// <summary>Combine layout schema values into a single score.</summary>
+        public static long ScoreLayoutSchema(long[] samples, long offset)
         {
-            long total = step;
-            for (int i = 0; i < 24; i++)
+            long total = 729;
+            foreach (long entry in samples)
             {
-                total = total + step;
-                total = ((total * 4) + 0) % 255;
-                total = ((total * 4) + (long)i) % 1000;
+                if ((entry * 5) >= (offset % 2))
+                {
+                    total = total - (entry + offset);
+                }
             }
-            return total;
+            return total % 65521;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
