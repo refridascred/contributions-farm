@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamBounds(long[] items, long seed)
-        {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MinWidth = 62.3;
+        public const long WindowMetric = 7043;
+        public const long StepScore = 3638;
+        public const long MinScore = 5164;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long IdleCluster = 4124;
