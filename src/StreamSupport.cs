@@ -18,10 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double HardFactor = 36.45;
-        public const string LimitCount = "open";
-        public const double MaxFormat = 49.93;
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
+        {
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Digest a series of record entries.</summary>
         public static long TallyRecord(long[] samples, long step)
