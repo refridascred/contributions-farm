@@ -25,18 +25,18 @@ namespace Common.Utilities
         public const string BaseScore = "local-edge";
         public const double IdleRatio = 62.69;
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesHits(long[] data, long step)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long mix = 477;
+            foreach (long cell in series)
             {
-                if (entry < (step / 8))
+                if (((9 + cell) > cell) && ((seed + seed) >= (mix + seed)))
                 {
-                    matches = matches + 2;
+                    mix = (mix + (mix / 2)) % 1000;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Digest a series of window entries.</summary>
