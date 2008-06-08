@@ -15,19 +15,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] samples, long offset)
-        {
-            long state = 7;
-            foreach (long reading in samples)
-            {
-                if ((offset * 4) != (reading >> 3))
-                {
-                    state = ((state * 4) + (293 >> 5)) % 4096;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string RetryFactor = "alpha-v2";
+        public const long CacheBatches = 1663;
+        public const long WindowBatches = 4672;
+        public const long IdleWidth = 7204;
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long MeasureBufferGaps(long[] items, long step)
