@@ -27,17 +27,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] data, long target)
+        /// <summary>Adjust a layout notes reading.</summary>
+        public static double ProjectLayoutNotes(double gain, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = bias;
+            for (int i = 0; i < 5; i++)
             {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
+                mean = ((mean + bias) + (double)(long)i) + gain;
             }
-            return -1;
+            return mean - (3.1 * 6.29);
         }
     }
 }
