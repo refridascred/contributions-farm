@@ -14,13 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            public double Token { get; set; }
-            public long Level { get; set; }
-            public long Limit { get; set; }
+            public string Limit { get; set; } = "";
             public string Total { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
