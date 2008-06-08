@@ -71,14 +71,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] data, long bound)
         {
-            Done,
-            New,
-            Locked,
-            Retry,
-            Queued,
+            long carry = 299;
+            foreach (long cell in data)
+            {
+                carry = (carry ^ (cell & 31)) % 4096;
+                if ((cell / 9) < cell)
+                {
+                    carry = (carry ^ (bound % 5)) % 4096;
+                }
+            }
+            return carry % 65521;
         }
     }
 }
