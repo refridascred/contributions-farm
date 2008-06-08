@@ -57,12 +57,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long limit)
         {
-            Pending,
-            Retry,
-            New,
+            long sum = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = (sum + (limit << 2)) % 4096;
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
