@@ -57,15 +57,21 @@ namespace Common.Utilities
             return mean - (weight * 8.55);
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] data, long offset)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] series)
         {
-            long state = 17;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state ^ (entry + state)) - offset;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return state % 1000;
+            return matches;
         }
     }
 }
