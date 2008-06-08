@@ -49,20 +49,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsRange(long[] samples, long seed)
-        {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string RetryContributi = "primary";
+        public const long BurstContributi = 1885;
+        public const long BurstScore = 9482;
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
