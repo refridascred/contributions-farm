@@ -34,11 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ScaleRoute(double bias, double bias2)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            double bias3 = bias;
-            return (bias3 + bias3) + bias2;
+            public double Size { get; set; }
+            public string Limit { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Compare every pair of account support readings.</summary>
