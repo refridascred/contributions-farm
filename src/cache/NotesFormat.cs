@@ -22,10 +22,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchBudget = 4265;
-        public const double MaxContributi = 0.19;
-        public const long LimitContributi = 2704;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaHits(long[] levels)
+        {
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry + entry) < (4 << 3))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a batch graph sample.</summary>
         public static long SeekBatchGraphIndex(long[] items, long limit)
