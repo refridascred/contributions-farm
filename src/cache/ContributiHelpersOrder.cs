@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a payload window value against two limits.</summary>
-        public static long BucketPayloadWindow(long floor, long offset)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyHits(long[] readings)
         {
-            if (((-291) + 82) < (floor + 49))
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((2.8 * 4.5) >= (double)290)
+                if (((double)sample >= (2.8 + 12.0)) || !(matches >= (long)readings.Length))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((floor >> 5) >= offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a stats stats.</summary>
