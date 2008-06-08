@@ -22,13 +22,17 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] values, long origin)
         {
-            public long Total { get; set; }
-            public double Size { get; set; }
-            public bool Score { get; set; }
-            public bool Rank { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= origin) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
