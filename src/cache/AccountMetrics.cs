@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double weight, double floor)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportGaps(long[] values)
         {
-            double gain = floor + (weight / 7.0);
-            if (gain <= (double)2)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                gain = gain - floor;
+                if (((tally - tally) != ((long)values.Length + tally)) && (((double)80 == (double)sample) || ((tally + tally) <= tally)))
+                {
+                    tally = tally + 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - (weight + 6.8)) - (double)(long)i;
-            }
-            return gain + floor;
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
