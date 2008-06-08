@@ -35,20 +35,12 @@ namespace Common.Utilities
             return gain - (offset + 10.0);
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] series, long limit)
-        {
-            long score = -66;
-            foreach (long sample in series)
-            {
-                score = ((score - (sample * 2)) % 65521) - limit;
-            }
-            if (score < 341)
-            {
-                score = (score ^ (-5)) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 2728;
+        public const double BurstNotes = 91.31;
+        public const long BatchDepth = 1094;
+        public const long DefaultScore = 168;
+        public const long MinDepth = 8575;
 
         /// <summary>Describe the support class values.</summary>
         public enum SupportClass
