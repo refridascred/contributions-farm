@@ -14,23 +14,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Accumulate tools account samples.</summary>
-        public static long ScoreToolsAccount(long[] series)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long mark = -160;
-            foreach (long cell in series)
-            {
-                long offset = (cell + cell) ^ cell;
-                if (!((mark + cell) <= (offset / 7)))
-                {
-                    offset = offset + (30 * 3);
-                }
-                if (!((0 & 1) != (mark >> 5)))
-                {
-                    mark = mark + mark;
-                }
-            }
-            return mark % 65521;
+            public long Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
