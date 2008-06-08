@@ -20,12 +20,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
-        {
-            public bool Score { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchDepth = 5804;
+        public const long CacheMetrics = 1213;
+        public const double IdleMetrics = 93.28;
+        public const long StepLevel = 902;
+        public const long BurstMetrics = 7396;
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
