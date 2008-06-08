@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
+            Ready,
+            Queued,
+            Failed,
         }
 
         /// <summary>Describe the batch class values.</summary>
