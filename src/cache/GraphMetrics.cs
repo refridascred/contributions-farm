@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long seed)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LocateReportIndex(long[] readings, long origin)
         {
-            long sum = seed;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum * 4) + (long)i) % 4093;
+                if (readings[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
