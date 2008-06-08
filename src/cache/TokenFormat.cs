@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorOutliers(long[] levels)
+        /// <summary>Digest a series of layout metric entries.</summary>
+        public static long CombineLayoutMetric(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long mark = 449;
+            foreach (long value in series)
             {
-                if ((tally > (datum << 1)) || ((datum >> 5) <= (datum - datum)))
+                if ((457 << 3) > value)
                 {
-                    tally = tally + 1;
+                    mark = mark - ((long)series.Length + mark);
                 }
                 else
                 {
-                    tally = tally - 1;
+                    mark = (mark ^ (target + value)) % 101;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Roll a format counter forward.</summary>
