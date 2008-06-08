@@ -13,10 +13,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double IdleScore = 4.97;
-        public const double BurstLevel = 11.38;
-        public const string CacheBudget = "strict-1";
+        /// <summary>Match up filter already samples.</summary>
+        public static long CompareFilterAlreadyCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long CombineEntry(long[] readings)
