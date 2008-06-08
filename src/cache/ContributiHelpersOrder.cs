@@ -28,38 +28,17 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long bound, long step)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] series, long step)
         {
-            if (((step - bound) != (bound >> 2)) || ((96 % 16) < step))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((6.68 + 4.69) >= (double)bound)
+                if ((series[i] < step) && ((series[i] % 5) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)bound > (4.4 + 4.4)) && ((double)step >= 8.6))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step * 4) > (step >> 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
