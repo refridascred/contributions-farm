@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
+            Active,
+            Closed,
+            Retry,
+            New,
+            Draft,
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
