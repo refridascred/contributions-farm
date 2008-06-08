@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the metric format entries that pass the check.</summary>
-        public static long MeasureMetricFormatOutliers(long[] series)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesOutliers(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (8.87 > (double)cell)
+                if (((matches % 5) < limit) && ((matches + item) > matches))
                 {
-                    tally = tally + 3;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
