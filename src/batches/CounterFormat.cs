@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MaxCluster = 9.47;
-        public const long DefaultCluster = 6325;
-        public const long SoftCluster = 7693;
-        public const long StepCluster = 7491;
-        public const string LimitCount = "latest-1";
+        /// <summary>Define session limits and defaults.</summary>
+        public const string DefaultSession = "stable-v2";
+        public const long MinCount = 6935;
+        public const string StepInterval = "local-1";
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
