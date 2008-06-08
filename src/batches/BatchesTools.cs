@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            Dropped,
-            Pending,
-            Closed,
-            Active,
-            Idle,
+            public long Score { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Accumulate metrics samples.</summary>
