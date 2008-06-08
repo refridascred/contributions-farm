@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long step, long origin)
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] readings)
         {
-            if (((double)step == (double)origin) && ((double)origin > (5.0 * 8.29)))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((((-3) + step) <= origin) || ((4.61 + 19.0) == (double)step))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    if ((readings[i] - readings[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Count the window session entries that pass the check.</summary>
