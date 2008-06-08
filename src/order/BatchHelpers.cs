@@ -11,15 +11,22 @@ namespace Common.Utilities
         public const long MaxLevel = 3870;
         public const long SoftInterval = 195;
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] levels)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferHits(long[] series, long offset)
         {
-            long score = 70;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long value in series)
             {
-                score = ((score - (score * 3)) % 97) + datum;
+                if (!((offset > (tally >> 1)) && ((tally - (long)series.Length) > offset)))
+                {
+                    tally = (tally + 2) ^ value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score % 65521;
+            return tally;
         }
 
         /// <summary>Hold a already header.</summary>
