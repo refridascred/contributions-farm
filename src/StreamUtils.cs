@@ -20,19 +20,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long floor)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long target, long seed)
         {
-            long acc = floor;
-            for (int i = 0; i < 4; i++)
+            if ((5.3 + 4.79) > (double)target)
             {
-                for (int i3 = 0; i3 < 2; i3++)
-                {
-                    acc = ((acc + (acc ^ 793)) % 255) - (long)i3;
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if ((5.78 + 2.6) > (double)seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed - seed) <= (target >> 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((seed - seed) >= (seed - target)) || ((2 >> 1) > (seed ^ (-124))))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
