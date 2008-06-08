@@ -21,32 +21,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long limit, long offset)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] data)
         {
-            long cur = limit ^ offset;
-            if ((limit > (limit + cur)) && ((limit - offset) == (offset - limit)))
+            long mark = 8;
+            foreach (long datum in data)
             {
-                return 8;
+                mark = ((mark ^ (mark * 3)) % 4096) ^ datum;
             }
-            else
-            {
-                if (20.0 < (double)cur)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((offset + 1) < (offset % 24)) && ((cur & 127) < offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return mark % 97;
         }
 
         /// <summary>Count queue filter pairs that satisfy a relation.</summary>
