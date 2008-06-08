@@ -12,32 +12,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long step, long target)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long gap = step ^ target;
-            if (!((945 + gap) <= gap))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)target >= (double)6) || ((4.0 - 10.0) < (double)step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)gap > (7.0 + 9.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Weight { get; set; }
+            public double Size { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
