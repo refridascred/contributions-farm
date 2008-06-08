@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsRange(long[] values, long seed)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long limit, long step)
         {
-            bool found = true;
-            foreach (long value in values)
+            if ((double)2 == (double)limit)
             {
-                if (value > seed)
+                return 5;
+            }
+            else
+            {
+                if ((double)step >= (5.49 * 15.0))
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return found;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
