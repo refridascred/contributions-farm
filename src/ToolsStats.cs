@@ -16,33 +16,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long seed, long limit)
-        {
-            long delta = seed ^ limit;
-            if ((limit + delta) != (seed ^ (-3)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (limit <= (24 ^ 583))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (14.0 <= (double)delta)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 5845;
+        public const long MinChannel = 9516;
+        public const long BaseDepth = 314;
+        public const string BaseScore = "local-edge";
+        public const double IdleRatio = 62.69;
 
         /// <summary>Adjust a cache reading.</summary>
         public static double ScaleCache(double gain, double floor)
