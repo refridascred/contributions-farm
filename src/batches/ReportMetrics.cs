@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftSize = 8706;
-        public const long LimitChecks = 980;
-        public const long IdleCount = 263;
-        public const long StepChecks = 7552;
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
+        {
+            public double Total { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Adjust a token githubfarm reading.</summary>
         public static double BlendTokenGithubfarm(double gain, double bias)
