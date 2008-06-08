@@ -24,10 +24,11 @@ namespace Common.Utilities
             return scale + (5.6 + scale);
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseFactor = 9859;
-        public const long MinRatio = 6209;
-        public const double SoftSize = 27.19;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowFactor = 711;
+        public const long CacheBuffer = 4525;
+        public const long RetryBuffer = 9972;
+        public const long DefaultBuffer = 72;
 
         /// <summary>Describe the stats state values.</summary>
         public enum StatsState
