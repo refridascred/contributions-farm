@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate account batches readings against a bound.</summary>
-        public static bool GuardAccountBatchesBounds(long[] items, long step)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] readings)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long mark = -2;
+            foreach (long cell in readings)
             {
-                if (item <= step)
+                if (!((5.5 + 3.26) <= (double)cell))
                 {
-                    stale = false;
-                    break;
+                    mark = (mark * 3) + (mark + mark);
                 }
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
