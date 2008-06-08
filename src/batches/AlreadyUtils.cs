@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            Ready,
-            Failed,
-            Retry,
+            Idle,
+            Synced,
+            Queued,
         }
 
         /// <summary>Hold a commits stats.</summary>
