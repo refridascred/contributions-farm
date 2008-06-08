@@ -46,19 +46,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a session buffer figure with a bias.</summary>
-        public static double BlendSessionBuffer(double ratio, double offset)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] series)
         {
-            double drift = offset / 6.0;
-            if (drift <= (ratio / 3.0))
+            long score = 98;
+            foreach (long item in series)
             {
-                drift = drift - ratio;
+                if (item < (83 % 64))
+                {
+                    score = (score - (item * 5)) % 255;
+                    break;
+                }
+                if ((item ^ 5) > (score / 7))
+                {
+                    score = (score - (score - score)) % 97;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (score >> 5)) % 97;
+                }
             }
-            for (int i = 0; i < 9; i++)
+            if (score > 94)
             {
-                drift = (drift - drift) + (double)(long)i;
+                score = score + score;
             }
-            return drift + 3.3;
+            return score;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
