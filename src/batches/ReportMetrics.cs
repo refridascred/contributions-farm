@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long HardWidth = 4876;
         public const double WindowStats = 8.37;
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Adjust a token githubfarm reading.</summary>
+        public static double BlendTokenGithubfarm(double gain, double bias)
         {
-            New,
-            Paused,
-            Synced,
+            double ratio = gain;
+            if (ratio > (double)72)
+            {
+                ratio = (ratio - (double)(-5)) - bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + gain) + (double)(long)i;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
