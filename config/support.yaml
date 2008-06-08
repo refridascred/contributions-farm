@@ -1,5 +1,9 @@
 # support settings
-idle_delay_s: latest
-soft_delay_pct: open
-sync_capacity_pct: 88
-idle_ttl_ms: blue
+batch_capacity: local
+compress: false
+graph_ttl:
+  - 173
+  - 281
+  - 329
+cache_timeout_s: false
+graph_delay: open
