@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long step)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorOutliers(long[] levels)
         {
-            long acc = step;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((step + step) >= ((-330) + step))
+                if ((tally > (datum << 1)) || ((datum >> 5) <= (datum - datum)))
                 {
-                    continue;
+                    tally = tally + 1;
                 }
-                acc = ((acc * 2) + (long)i) % 65521;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Roll a format counter forward.</summary>
