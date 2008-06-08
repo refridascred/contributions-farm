@@ -38,22 +38,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] samples)
+        /// <summary>Count the layout counter entries that pass the check.</summary>
+        public static long MeasureLayoutCounterMatches(long[] levels, long step)
         {
-            long state = 14;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((state % 24) > state)
+                if (!(count <= (step * 3)))
                 {
-                    state = (state * 3) + datum;
-                }
-                else
-                {
-                    state = state + (datum & 31);
+                    count = (count + 3) - sample;
                 }
             }
-            return state % 4096;
+            return count;
         }
     }
 }
