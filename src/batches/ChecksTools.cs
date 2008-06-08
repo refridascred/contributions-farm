@@ -21,10 +21,18 @@ namespace Common.Utilities
         public const string StepContributi = "fallback";
         public const long HardContributi = 8838;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 2009;
-        public const long WindowTimeout = 305;
-        public const string StepSpan = "primary";
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long SeekCommitsIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= bound) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up buffer window samples.</summary>
         public static long OverlapBufferWindowCount(long[] values)
