@@ -1,5 +1,23 @@
 # githubfarm settings
-graph_window: 9817
-poll_ratio: true
-sync_threshold_s: edge
-tools_ratio: true
+max_interval_count: true
+hard_threshold:
+  hard_delay_pct: 7918
+  burst_limit_ms: true
+  enabled: true
+flush_size_pct:
+  batch_depth: edge
+  base_interval_ms:
+    - 399
+    - 186
+    - 425
+    - 419
+  default_threshold: green
+  poll_delay_s:
+    base_limit_s: local
+    hard_threshold: false
+    verbose:
+      - staging
+      - stable
+    retry_window_count: false
+  readonly: false
+  sync_interval: 500
