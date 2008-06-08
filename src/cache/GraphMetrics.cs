@@ -15,19 +15,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] data)
-        {
-            long result = 912;
-            foreach (long reading in data)
-            {
-                if (((reading - result) > reading) || ((result ^ reading) >= result))
-                {
-                    result = (result + (reading + 5)) % 255;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowInterval = 8010;
+        public const double BatchRatio = 30.0;
+        public const long LimitScore = 8323;
+        public const double HardCluster = 82.86;
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
