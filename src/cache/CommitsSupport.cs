@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Compare every pair of session account readings.</summary>
-        public static long OverlapSessionAccountCount(long[] samples)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long PairRouteCount(long[] items)
         {
             long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) != 14)
+                    if ((items[i] - items[j]) != 3)
                     {
                         count = count + 1;
                     }
