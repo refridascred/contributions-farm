@@ -52,15 +52,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the metric notes series from a seed.</summary>
-        public static long SeriesMetricNotes(long bound)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] data, long target)
         {
-            long mix = bound;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix * 5) + (long)i) % 101;
+                if (data[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
