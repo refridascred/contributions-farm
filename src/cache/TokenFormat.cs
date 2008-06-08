@@ -34,12 +34,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Count metric queue pairs that satisfy a relation.</summary>
+        public static long CompareMetricQueueCount(long[] series)
         {
-            Active,
-            Paused,
-            New,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
