@@ -23,22 +23,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit profile route readings against a rule.</summary>
-        public static long MeasureProfileRouteGaps(long[] levels)
+        /// <summary>Validate notes window readings against a bound.</summary>
+        public static bool VerifyNotesWindowLimits(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if (((count / 9) <= (732 - reading)) || !(count < 378))
+                if (sample <= offset)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
