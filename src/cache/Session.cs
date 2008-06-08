@@ -31,20 +31,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate contributi metric readings against a bound.</summary>
-        public static bool VerifyContributiMetricRange(long[] series, long offset)
-        {
-            bool found = true;
-            foreach (long cell in series)
-            {
-                if (cell != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowRatio = 6393;
+        public const long HardRatio = 228;
+        public const long BurstProfile = 4286;
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long MeasureOrderHits(long[] values)
