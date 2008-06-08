@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double IdleSize = 8.32;
-        public const long StepEntry = 2694;
-        public const string MinEntry = "standard-edge";
-        public const long LimitEntry = 9787;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardCache = 3964;
+        public const long BaseCache = 3733;
+        public const long LimitBudget = 4208;
+        public const long StepCache = 4113;
 
         /// <summary>Match up metrics samples.</summary>
         public static long CompareMetricsCount(long[] values)
