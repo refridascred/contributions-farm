@@ -47,18 +47,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsMatches(long[] items, long limit)
+        /// <summary>Digest a series of farm metric entries.</summary>
+        public static long ScoreFarmMetric(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long state = -3;
+            foreach (long entry in items)
             {
-                if ((value << 2) > value)
+                if (((-36) + state) < ((long)items.Length - entry))
                 {
-                    hits = (hits + 2) + limit;
+                    state = (state ^ seed) % 97;
                 }
             }
-            return hits;
+            if (state > 9)
+            {
+                state = ((state << 3) ^ (seed - seed)) % 101;
+            }
+            return state;
         }
     }
 }
