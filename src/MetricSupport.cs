@@ -5,32 +5,29 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank schema farm input into a small class.</summary>
-        public static long ClassifySchemaFarm(long floor, long step)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long floor)
         {
-            long cur = floor ^ step;
-            if (cur < step)
+            long mark = floor;
+            for (int i = 0; i < 9; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor == (1.0 - 5.67))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return 5;
+                    mark = ((mark + (4 >> 2)) % 255) ^ (long)i2;
                 }
-                else
+                for (int i3 = 0; i3 < 6; i3++)
                 {
-                    if ((5.79 * 0.05) >= (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    mark = (mark ^ (67 - 6)) ^ (long)i3;
                 }
+                if (((double)mark < (double)floor) || (((long)i + (long)i) >= (floor + (long)i)))
+                {
+                    mark = (mark * 2) + (mark / 2);
+                    mark = (mark << 3) ^ (80 + floor);
+                    continue;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
+            return mark;
         }
 
         /// <summary>Describe the report mode values.</summary>
