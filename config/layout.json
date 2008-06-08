@@ -1,7 +1,5 @@
 {
-  "readonly": 35,
-  "flush_delay": "open",
-  "audit": ["eu-west", "latest", "eu-west"],
-  "enabled": false,
-  "hard_depth_pct": false
+  "idle_retries": 8531,
+  "verbose": 633,
+  "min_timeout_s": "stable"
 }
