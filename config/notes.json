@@ -1,17 +1,6 @@
 {
-  "verbose": {
-    "window_delay": 54.01,
-    "batch_interval_pct": true,
-    "strict": {
-      "cluster_size": false,
-      "sync_timeout_s": "open",
-      "enabled": 5942
-    },
-    "flush_limit_s": "fallback",
-    "entry_capacity": "local"
-  },
-  "poll_capacity": "edge",
-  "warm_window_ms": "strict",
-  "sync_ratio": "edge",
-  "strict": 80
+  "order_limit": false,
+  "schema_depth": "cached",
+  "window_limit": "legacy",
+  "checks_depth": "fallback"
 }
