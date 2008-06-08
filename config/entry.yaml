@@ -1,6 +1,12 @@
 # entry settings
-token_depth: 26.39
-base_size_pct: 3064
-base_size: legacy
-min_delay_ms: 250
-poll_threshold: 60
+cache_ttl: 78.9
+soft_timeout_ms:
+  - 349
+  - 191
+  - 98
+batch_interval: false
+base_window: latest
+enabled:
+  - staging
+  - strict
+queue_size: false
