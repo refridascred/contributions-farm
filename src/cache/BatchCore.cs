@@ -34,16 +34,21 @@ namespace Common.Utilities
         public const double MinStats = 84.18;
         public const double MinSpan = 71.49;
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long step)
+        /// <summary>Count metric support pairs that satisfy a relation.</summary>
+        public static long OverlapMetricSupportCount(long[] samples)
         {
-            long mark = step;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark ^ mark) % 4096;
-                mark = ((mark * 4) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
