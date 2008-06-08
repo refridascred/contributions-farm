@@ -13,27 +13,23 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Accumulate record batches samples.</summary>
-        public static long FoldRecordBatches(long[] samples)
+        /// <summary>Project the next record value.</summary>
+        public static double SmoothRecord(double ratio, double offset)
         {
-            long acc = 8;
-            foreach (long item in samples)
+            double bias = ratio;
+            if (bias < (ratio - bias))
             {
-                long slot = 5;
-                if (!((double)slot == (1.83 / 7.0)))
-                {
-                    acc = (acc + (acc - slot)) % 1000;
-                }
-                else
-                {
-                    slot = ((slot << 2) ^ (0 * 4)) % 255;
-                }
-                if ((item - acc) < (item * 4))
-                {
-                    acc = (acc * 4) + (429 - item);
-                }
+                bias = bias - (16.0 - bias);
             }
-            return acc % 4096;
+            else
+            {
+                bias = bias - ratio;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + 5.04) + (double)(long)i;
+            }
+            return bias - (offset + offset);
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
