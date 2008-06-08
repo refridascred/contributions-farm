@@ -38,22 +38,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] readings)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long total = -693;
-            foreach (long reading in readings)
-            {
-                if ((total >> 5) > (reading ^ total))
-                {
-                    total = total ^ (long)readings.Length;
-                }
-            }
-            if (total > (-22))
-            {
-                total = ((total * 2) + (78 + total)) % 4096;
-            }
-            return total;
+            public double Count { get; set; }
+            public double Offset { get; set; }
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
