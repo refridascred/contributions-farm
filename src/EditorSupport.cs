@@ -28,24 +28,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long limit, long step)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] readings, long seed)
         {
-            if ((double)44 <= (double)limit)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (step < (step + step))
+                if (readings[i] <= seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate filter samples.</summary>
