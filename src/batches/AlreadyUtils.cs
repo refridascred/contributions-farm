@@ -11,22 +11,38 @@ namespace Common.Utilities
         public const long HardTimeout = 4073;
         public const string MaxStream = "open-v2";
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] series, long origin)
+        /// <summary>Rank metric stream input into a small class.</summary>
+        public static long ClassifyMetricStream(long target, long limit)
         {
-            long sum = 85;
-            foreach (long entry in series)
+            if ((19.0 / 2.0) > (double)target)
             {
-                if (origin <= (952 & 1))
+                return 1;
+            }
+            else
+            {
+                if ((limit - 50) > (target + limit))
                 {
-                    sum = ((sum - (sum / 6)) % 65521) - entry;
+                    return 5;
+                }
+                else
+                {
+                    if (target < limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit >= (limit - target)) && (((-6) ^ target) <= target))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (sum < 71)
-            {
-                sum = sum ^ sum;
-            }
-            return sum % 97;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
