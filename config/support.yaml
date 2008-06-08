@@ -1,7 +1,6 @@
 # support settings
-warm_window_s: eu-west
-record_interval: 4
-base_timeout:
-  - 480
-  - 73
-  - 343
+soft_ttl: 88.98
+token_timeout: 30
+metric_capacity: false
+enabled: primary
+soft_delay: 74.74
