@@ -1,8 +1,11 @@
 {
-  "enabled": ["staging", "blue"],
-  "min_threshold_pct": "edge",
-  "readonly": 60.01,
-  "dry_run": 35,
-  "cache_timeout_s": "edge",
-  "verbose": [107, 449, 263, 490]
+  "profile_capacity": [17, 332, 53],
+  "warm_ttl_count": true,
+  "strict": 1490,
+  "counter_timeout": {
+    "audit": 2.8,
+    "retry_delay": 77.59,
+    "retry_retries": false
+  },
+  "cache_limit_count": 96.38
 }
