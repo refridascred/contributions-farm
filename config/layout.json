@@ -1,8 +1,7 @@
 {
-  "soft_interval": 10.78,
-  "soft_timeout_pct": ["blue", "standard"],
-  "checks_timeout": true,
-  "poll_timeout_count": 8323,
-  "filter_ttl": "eu-west",
-  "audit": "standard"
+  "readonly": 35,
+  "flush_delay": "open",
+  "audit": ["eu-west", "latest", "eu-west"],
+  "enabled": false,
+  "hard_depth_pct": false
 }
