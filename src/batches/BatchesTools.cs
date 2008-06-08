@@ -49,21 +49,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count schema command pairs that satisfy a relation.</summary>
-        public static long PairSchemaCommandCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string StepRatio = "stable-edge";
+        public const long SoftWidth = 1734;
+        public const long LimitBatches = 1786;
+        public const string BatchBatches = "alpha-1";
+        public const long RetryBatches = 3832;
     }
 }
