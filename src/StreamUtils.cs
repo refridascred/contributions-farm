@@ -30,19 +30,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] levels)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long result = 513;
-            foreach (long datum in levels)
-            {
-                result = (result + (result + result)) - datum;
-            }
-            if (result < 343)
-            {
-                result = ((result << 3) ^ (4 / 8)) % 97;
-            }
-            return result;
+            Closed,
+            Dropped,
+            Retry,
+            Done,
+            Active,
         }
 
         /// <summary>Hold a batches stats.</summary>
