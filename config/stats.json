@@ -1,6 +1,7 @@
 {
-  "buffer_retries": 12,
-  "warm_retries_ms": 100,
-  "persist": "fallback",
-  "window_depth": 5047
+  "hard_retries_count": "blue",
+  "default_ttl": 25.37,
+  "sync_retries": 3388,
+  "warm_limit_pct": "latest",
+  "already_interval": 56.46
 }
