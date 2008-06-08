@@ -51,18 +51,38 @@ namespace Common.Utilities
         public const long DefaultSize = 7379;
         public const long IdleProfile = 4077;
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] series)
+        /// <summary>Grade a layout filter value against two limits.</summary>
+        public static long RankLayoutFilter(long limit, long floor)
         {
-            long state = -8;
-            foreach (long item in series)
+            if ((7.61 - 7.0) != (double)floor)
             {
-                if ((23 - state) != (item + state))
+                return 6;
+            }
+            else
+            {
+                if ((double)limit < (5.5 + 15.0))
                 {
-                    state = (state - (state + item)) % 1000;
+                    return 7;
+                }
+                else
+                {
+                    if ((829 - floor) < 63)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (0 < (floor - floor))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return state;
         }
     }
 }
