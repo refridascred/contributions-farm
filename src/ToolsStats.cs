@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] readings, long seed)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] data, long target)
         {
-            long carry = 90;
-            foreach (long item in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (carry + (item >> 2)) + seed;
+                if ((data[i] < target) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
