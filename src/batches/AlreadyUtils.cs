@@ -35,11 +35,21 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double CacheSession = 94.28;
-        public const long BaseSession = 1831;
-        public const string BaseTimeout = "standard-1";
-        public const long RetrySession = 2198;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] samples, long bound)
+        {
+            long acc = 45;
+            foreach (long sample in samples)
+            {
+                acc = ((acc - (bound >> 4)) % 4096) ^ sample;
+                acc = acc ^ (bound & 255);
+            }
+            if (acc > 50)
+            {
+                acc = (acc ^ (bound + bound)) % 101;
+            }
+            return acc % 97;
+        }
 
         /// <summary>Describe the tools phase values.</summary>
         public enum ToolsPhase
