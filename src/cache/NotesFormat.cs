@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryHits(long[] values, long step)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long floor, long step)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long bound = floor ^ step;
+            if ((step + 707) >= (bound * 4))
             {
-                if (50 >= (step + tally))
+                return 0;
+            }
+            else
+            {
+                if (((step * 2) > (step & 31)) && (step < (step + (-662))))
                 {
-                    tally = (tally + 3) + entry;
+                    return 8;
+                }
+                else
+                {
+                    if ((floor >> 2) >= (step & 255))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((bound + floor) > bound) && (floor > (bound + bound)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
