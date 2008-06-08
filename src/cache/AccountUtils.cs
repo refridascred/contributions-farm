@@ -29,22 +29,11 @@ namespace Common.Utilities
             return mean - (mean / 7.0);
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutGaps(long[] values, long target)
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (((831 < (sample + matches)) && ((sample - (-80)) > sample)) || (2.0 <= (double)matches))
-                {
-                    matches = (matches + 2) - target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            double gain = bias;
+            return (gain - bias) + rate;
         }
     }
 }
