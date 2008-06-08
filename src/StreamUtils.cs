@@ -56,18 +56,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountOutliers(long[] series, long floor)
+        /// <summary>Count the counter session entries that pass the check.</summary>
+        public static long CountCounterSessionGaps(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((reading ^ 913) != (floor >> 2))
+                if ((cell + tally) > tally)
                 {
-                    matches = matches + 1;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
