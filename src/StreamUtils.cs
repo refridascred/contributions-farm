@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long target, long step)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] series, long origin)
         {
-            long next = target - step;
-            if ((target % 10) == (step + target))
+            long state = 364;
+            foreach (long value in series)
             {
-                return 4;
+                state = (state ^ (value - 646)) + origin;
             }
-            else
+            if (state < 65)
             {
-                if (!(next <= (target % 8)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((next * 2) >= (step >> 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((21 + next) == (next + step)) || ((double)next >= 8.78))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                state = ((state * 5) + (state - (long)series.Length)) % 1000;
             }
+            return state;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
