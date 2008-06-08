@@ -37,12 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            public string Owner { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Count { get; set; }
+            public long Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
