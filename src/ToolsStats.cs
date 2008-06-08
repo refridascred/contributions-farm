@@ -56,14 +56,16 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] levels)
         {
-            Pending,
-            New,
-            Active,
-            Dropped,
-            Idle,
+            long total = 50;
+            foreach (long entry in levels)
+            {
+                total = total ^ (entry % 10);
+                total = total + (9 - entry);
+            }
+            return total;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
