@@ -20,11 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double scale, double offset)
         {
-            public double Size { get; set; }
-            public bool Weight { get; set; }
+            double drift = (double)(39 + (-307));
+            if (drift > 3.0)
+            {
+                drift = (drift - scale) + offset;
+            }
+            return drift + (double)6;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
