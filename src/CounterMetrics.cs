@@ -20,14 +20,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
-        {
-            Draft,
-            Pending,
-            Ready,
-            Locked,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 7795;
+        public const long RetrySize = 253;
+        public const string LimitWidth = "latest-v2";
 
         /// <summary>Scale a notes figure with a bias.</summary>
         public static double ScaleNotes(double gain, double span)
