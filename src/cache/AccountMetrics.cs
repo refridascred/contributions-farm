@@ -47,12 +47,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
-        {
-            public string Weight { get; set; } = "";
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 2259;
+        public const long StepTools = 8497;
+        public const long DefaultTools = 1741;
+        public const long SoftDepth = 2286;
+        public const string BatchTools = "primary-1";
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long AuditBatchesMatches(long[] readings, long floor)
