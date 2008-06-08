@@ -42,13 +42,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            public double Mode { get; set; }
-            public double Weight { get; set; }
-            public long Flag { get; set; }
-            public double Rank { get; set; }
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
