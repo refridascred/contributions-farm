@@ -19,22 +19,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterGaps(long[] data, long step)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long floor, long bound)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            if ((bound << 1) < (bound % 7))
             {
-                if ((double)hits != (2.7 / 5.0))
+                return 2;
+            }
+            else
+            {
+                if ((floor + 896) > (floor + 83))
                 {
-                    hits = ((hits + 2) + entry) - step;
+                    return 5;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (bound >= 670)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound ^ floor) < floor)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the queue phase values.</summary>
