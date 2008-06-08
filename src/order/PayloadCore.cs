@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsGaps(long[] items)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((seen ^ 687) == (item / 7))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 4536;
+        public const double MaxFactor = 52.32;
+        public const string WindowFactor = "standard";
+        public const long SoftFactor = 8765;
+        public const long WindowSize = 4127;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long BaseInterval = 3856;
