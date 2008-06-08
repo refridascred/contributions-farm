@@ -25,12 +25,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Classify a command buffer pair into a bucket.</summary>
+        public static long RankCommandBuffer(long target, long origin)
         {
-            public double Offset { get; set; }
-            public double Size { get; set; }
-            public long Stamp { get; set; }
+            if ((double)target != (double)46)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target - target) < (target - origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((6.0 / 8.0) > (double)origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
