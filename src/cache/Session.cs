@@ -57,11 +57,26 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MaxSize = "staging";
-        public const long MaxDepth = 2478;
-        public const double SoftRatio = 1.53;
-        public const long HardScore = 8301;
-        public const long MaxAlready = 5470;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] data)
+        {
+            long state = 712;
+            foreach (long reading in data)
+            {
+                if ((state + reading) < (reading % 100))
+                {
+                    state = state - 8;
+                }
+                else
+                {
+                    state = (state - state) % 97;
+                }
+            }
+            if (state > 417)
+            {
+                state = (state + (state >> 1)) % 65521;
+            }
+            return state;
+        }
     }
 }
