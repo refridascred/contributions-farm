@@ -12,12 +12,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long floor)
         {
-            public string Size { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Owner { get; set; }
+            long score = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!((long)i >= (floor >> 5)))
+                {
+                    score = score + (score - score);
+                }
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Define account limits and defaults.</summary>
