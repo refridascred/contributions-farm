@@ -56,19 +56,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferOutliers(long[] values, long floor)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if (!(floor <= seen))
-                {
-                    seen = (seen + 3) ^ datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MaxInterval = 92.21;
+        public const double StepReport = 13.19;
+        public const string StepSpan = "fallback";
+        public const long DefaultReport = 5162;
 
         /// <summary>Check that every batches record entry stays within the limit.</summary>
         public static bool GuardBatchesRecordRange(long[] series, long origin)
