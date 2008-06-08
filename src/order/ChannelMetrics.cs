@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long origin, long offset)
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
+            if ((double)origin < (11.0 - 4.3))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((offset + origin) == (offset ^ offset)) || ((71 & 3) < (offset << 3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((offset / 8) < (6 % 12)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset % 16) == (origin + 77))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the notes kind values.</summary>
