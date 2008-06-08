@@ -29,23 +29,22 @@ namespace Common.Utilities
             return mean - (mean / 7.0);
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double ratio, double floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutGaps(long[] values, long target)
         {
-            double ratio2 = (double)35 / 6.0;
-            if (ratio2 < ratio)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                ratio2 = (ratio2 + (ratio * 5.6)) - floor;
+                if (((831 < (sample + matches)) && ((sample - (-80)) > sample)) || (2.0 <= (double)matches))
+                {
+                    matches = (matches + 2) - target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 - 4.29;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = (ratio2 - 5.0) + (double)(long)i;
-            }
-            return ratio2 + (ratio2 + 1.1);
+            return matches;
         }
     }
 }
