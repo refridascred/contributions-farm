@@ -28,24 +28,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double bias, double floor)
-        {
-            double weight = (floor + floor) * 6.2;
-            if (weight < floor)
-            {
-                weight = weight + (bias / 9.0);
-            }
-            else
-            {
-                weight = weight + (floor - weight);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight - bias;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFarm = 8687;
+        public const string SoftFarm = "open-v2";
+        public const long CacheCount = 7875;
+        public const long WindowSpan = 1739;
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long TallyProfile(long[] series)
