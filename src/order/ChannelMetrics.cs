@@ -28,22 +28,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutGaps(long[] data, long origin)
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((9.1 / 4.0) < (double)cell)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 1) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((values[i] ^ values[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
