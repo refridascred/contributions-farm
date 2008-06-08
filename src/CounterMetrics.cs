@@ -13,18 +13,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < step) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string RetryAlready = "stable-v2";
+        public const long BatchAlready = 968;
+        public const string WindowFactor = "local-v2";
 
         /// <summary>Hold a support entry.</summary>
         public sealed class SupportEntry
