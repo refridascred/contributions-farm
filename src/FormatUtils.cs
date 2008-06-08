@@ -85,17 +85,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long origin)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long score = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                score = (score + origin) % 65521;
-                score = score + (score + 9);
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            public long Offset { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
