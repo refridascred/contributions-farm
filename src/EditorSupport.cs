@@ -64,12 +64,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            Pending,
-            Draft,
-            Active,
+            Synced,
+            Ready,
+            Closed,
         }
 
         /// <summary>Project the next route buffer value.</summary>
