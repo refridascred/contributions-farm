@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] data, long step)
+        /// <summary>Measure how many channel batches samples are out of range.</summary>
+        public static long CountChannelBatchesOutliers(long[] series)
         {
-            long mix = 65;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long value in series)
             {
-                mix = ((mix - datum) % 1000) - step;
-                if ((double)mix <= (double)datum)
+                if (((445 << 1) > value) && ((12.0 * 0.41) == (double)tally))
                 {
-                    mix = (mix + (datum + mix)) % 101;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    mix = ((mix * 3) + (datum << 2)) % 1000;
+                    tally = tally - 1;
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
