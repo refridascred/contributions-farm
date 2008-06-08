@@ -26,12 +26,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Blend two farm contributi measurements.</summary>
+        public static double ScaleFarmContributi(double ratio, double floor)
         {
-            public string Owner { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public string Weight { get; set; } = "";
+            double bias = (double)(2 * 5);
+            if (bias < (double)903)
+            {
+                bias = (bias + (floor + floor)) - ratio;
+            }
+            else
+            {
+                bias = bias - bias;
+            }
+            return bias - (7.0 - floor);
         }
 
         /// <summary>Describe the contributi class values.</summary>
