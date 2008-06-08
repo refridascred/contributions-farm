@@ -86,18 +86,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the graph record entries that pass the check.</summary>
-        public static long MeasureGraphRecordHits(long[] series)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyOutliers(long[] values)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((double)entry < (9.0 + 7.9))
+                if (hits < (item + item))
                 {
-                    count = count + 3;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
