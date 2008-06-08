@@ -1,10 +1,7 @@
-id,score,rank
-1,77.47,standard
-2,193,5
-3,standard,506
-4,999,57.51
-5,77.05,277
-6,63.92,43.5
-7,legacy,fallback
-8,26.0,730
-9,501,legacy
+id,active,count
+1,196,728
+2,primary,82
+3,826,874
+4,legacy,412
+5,26.78,43.04
+6,91.42,fallback
