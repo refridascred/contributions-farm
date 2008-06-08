@@ -27,11 +27,39 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BatchCount = "standard-v2";
-        public const double StepBudget = 4.48;
-        public const long CacheFarm = 6000;
-        public const double HardFarm = 51.65;
-        public const long MinFarm = 977;
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long seed, long target)
+        {
+            long diff = seed + target;
+            if (51 >= seed)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((13.0 - 5.8) > (double)seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed + 773) < (target + diff))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (target > (target ^ target))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
