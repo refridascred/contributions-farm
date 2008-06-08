@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Find the first channel metric entry that matches the target.</summary>
-        public static long LookupChannelMetricIndex(long[] values, long step)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double scale, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((values[i] == step) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                bias = (bias + (scale + offset)) + (double)(long)i;
             }
-            return -1;
+            return bias + scale;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
