@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long MinCount = 6935;
         public const string StepInterval = "local-1";
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Check that every already command entry stays within the limit.</summary>
+        public static bool CheckAlreadyCommandRange(long[] values, long floor)
         {
-            Paused,
-            Stale,
-            Draft,
-            Closed,
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
