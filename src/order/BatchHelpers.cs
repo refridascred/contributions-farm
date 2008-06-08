@@ -24,19 +24,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a githubfarm counter counter forward.</summary>
-        public static long StepGithubfarmCounter(long origin)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long mix = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!((origin ^ mix) <= 7))
-                {
-                    continue;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            public string Level { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
