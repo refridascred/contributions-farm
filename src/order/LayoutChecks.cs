@@ -19,12 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Adjust a filter record reading.</summary>
+        public static double ProjectFilterRecord(double weight, double offset)
         {
-            public long Flag { get; set; }
-            public bool Level { get; set; }
-            public double Token { get; set; }
+            double load = (weight + offset) * 13.0;
+            return load - 18.0;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
