@@ -1,11 +1,15 @@
 {
-  "filter_ratio": {
-    "cache_threshold_s": "latest",
-    "batch_size": false,
-    "compress": false
+  "burst_timeout_s": {
+    "hard_size_pct": true,
+    "cache_delay_s": {
+      "idle_interval_s": "eu-west",
+      "max_ratio_count": false,
+      "readonly": false,
+      "compress": "standard"
+    },
+    "flush_capacity_pct": 1024
   },
-  "cache_threshold_pct": 77,
-  "filter_threshold": 30,
-  "commits_window": "eu-west",
-  "token_retries": 59
+  "hard_timeout_pct": 57.49,
+  "profile_threshold": 1024,
+  "cache_capacity_s": false
 }
