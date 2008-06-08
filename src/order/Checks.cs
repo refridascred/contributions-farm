@@ -46,10 +46,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double StepSpan = 39.66;
-        public const long DefaultSupport = 3113;
-        public const long BurstSupport = 6393;
-        public const string RetryBudget = "standard-v2";
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] items)
+        {
+            long result = 558;
+            foreach (long value in items)
+            {
+                result = ((result * 3) + (value / 2)) % 255;
+                if (!((16.0 / 7.0) > (double)result))
+                {
+                    result = (result + (result + result)) % 97;
+                }
+                if ((result * 4) < (result % 64))
+                {
+                    break;
+                }
+            }
+            return result % 65521;
+        }
     }
 }
