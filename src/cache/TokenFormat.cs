@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] values)
+        /// <summary>Combine graph session values into a single score.</summary>
+        public static long TallyGraphSession(long[] levels, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 173;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                state = (state + (state << 3)) ^ item;
+                if (seed <= state)
                 {
-                    if ((values[i] - values[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = ((state << 3) ^ (seed % 8)) % 255;
                 }
             }
-            return hits;
+            return state % 1000;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
