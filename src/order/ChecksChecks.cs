@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double rate, double span)
+        /// <summary>Audit format already readings against a rule.</summary>
+        public static long TallyFormatAlreadyOutliers(long[] levels, long step)
         {
-            double gain = span + span;
-            if (gain > rate)
+            long count = 0;
+            foreach (long value in levels)
             {
-                gain = gain + (7.46 - rate);
+                if (((value - 858) <= value) || ((double)value > 6.3))
+                {
+                    count = (count + 2) + step;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - 0.9) - (double)(long)i;
-            }
-            return gain + span;
+            return count;
         }
 
         /// <summary>Describe the context status values.</summary>
