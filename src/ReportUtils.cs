@@ -32,15 +32,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long floor)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long limit)
         {
-            long score = floor;
-            for (int i = 0; i < 10; i++)
+            long mark = limit;
+            for (int i = 0; i < 6; i++)
             {
-                score = ((score * 4) + (long)i) % 65521;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Blend two report measurements.</summary>
