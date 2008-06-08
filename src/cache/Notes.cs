@@ -43,18 +43,16 @@ namespace Common.Utilities
             return mean - (bias / 8.0);
         }
 
-        /// <summary>Count the batch metrics entries that pass the check.</summary>
-        public static long AuditBatchMetricsHits(long[] readings)
+        /// <summary>Roll a counter checks counter forward.</summary>
+        public static long StepCounterChecks(long target)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long acc = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((2.4 * 9.36) >= (double)hits)
-                {
-                    hits = (hits + 2) ^ reading;
-                }
+                acc = (acc + ((long)i << 3)) % 65521;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Rank token input into a small class.</summary>
