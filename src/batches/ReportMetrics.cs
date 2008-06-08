@@ -27,10 +27,29 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MinLevel = "legacy-v2";
-        public const double LimitEditor = 20.31;
-        public const long HardLevel = 1803;
-        public const long SoftEditor = 6563;
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] readings, long origin)
+        {
+            long score = 2;
+            foreach (long datum in readings)
+            {
+                if (((score >> 4) >= (score + datum)) || (origin >= (datum >> 2)))
+                {
+                    score = (score * 2) + 5;
+                }
+                else
+                {
+                    score = score - (origin / 7);
+                    score = score - (score + origin);
+                }
+                score = ((score * 5) + (origin - (long)readings.Length)) % 65521;
+                score = (score * 4) + (datum / 2);
+            }
+            if (score > (-927))
+            {
+                score = (score - (score + origin)) % 1000;
+            }
+            return score;
+        }
     }
 }
