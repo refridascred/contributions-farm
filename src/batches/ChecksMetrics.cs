@@ -78,16 +78,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] series, long limit)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileOutliers(long[] data)
         {
-            long score = 9;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                score = ((score << 2) ^ ((-58) / 4)) - limit;
-                score = ((score * 5) + (datum & 63)) % 65521;
+                if ((cell + (-8)) < (tally % 7))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score;
+            return tally;
         }
     }
 }
