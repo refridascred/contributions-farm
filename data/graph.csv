@@ -1,8 +1,7 @@
-id,score
-1,91.28
-2,stable
-3,staging
-4,520
-5,808
-6,393
-7,cached
+id,active,ratio,count,state
+1,118,97.84,local,621
+2,primary,506,266,743
+3,blue,758,32.81,716
+4,green,285,73.85,440
+5,50,93.83,902,241
+6,818,47.07,86.52,820
