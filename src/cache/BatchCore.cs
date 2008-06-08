@@ -35,11 +35,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepInterval = 3381;
-        public const double IdleFilter = 29.66;
-        public const double IdleSpan = 18.7;
-        public const long WindowBudget = 3253;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double HardStats = 58.82;
+        public const double MinStats = 84.18;
+        public const double MinSpan = 71.49;
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long SeriesContext(long step)
