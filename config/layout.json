@@ -1,11 +1,12 @@
 {
-  "commits_delay": {
-    "soft_interval": ["cached", "open", "green"],
-    "min_ttl_count": 44,
-    "flush_size_s": true,
-    "warm_interval_count": ["cached", "open", "edge", "eu-west"],
-    "strict": 51
-  },
-  "sync_limit_pct": "eu-west",
-  "hard_size": 5022
+  "warm_threshold_count": true,
+  "enabled": 46.04,
+  "poll_interval_pct": "edge",
+  "burst_timeout": [354, 143, 400, 243],
+  "soft_capacity_s": 25.09,
+  "min_window_pct": {
+    "poll_capacity_pct": "green",
+    "cluster_capacity": 2961,
+    "farm_limit": 2129
+  }
 }
