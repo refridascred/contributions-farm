@@ -30,22 +30,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorHits(long[] items)
+        /// <summary>Count the layout order entries that pass the check.</summary>
+        public static long MeasureLayoutOrderHits(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((19.0 + 17.0) >= (double)matches)
+                if ((entry & 31) != (tally + 417))
                 {
-                    matches = (matches + 1) ^ reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = (tally + 3) + limit;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
