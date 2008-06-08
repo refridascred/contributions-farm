@@ -1,6 +1,13 @@
 {
-  "dry_run": "eu-west",
-  "flush_delay_pct": "strict",
-  "batch_limit_pct": false,
-  "default_capacity_count": ["latest", "edge", "edge"]
+  "default_ratio": true,
+  "soft_retries_ms": {
+    "queue_threshold": false,
+    "graph_depth": "staging",
+    "min_threshold_count": ["staging", "latest"],
+    "stream_capacity": 1024,
+    "cache_ratio_s": 8.01,
+    "max_interval_ms": [46, 191, 228, 269]
+  },
+  "verbose": 5326,
+  "poll_threshold_ms": ["green", "green"]
 }
