@@ -1,4 +1,8 @@
 # githubfarm settings
-persist: 74
-max_size: 47
+buffer_capacity: true
 burst_size: false
+cache_size: true
+persist: false
+payload_capacity:
+  - cached
+  - stable
