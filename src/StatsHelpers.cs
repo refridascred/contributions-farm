@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate channel metric samples.</summary>
-        public static long TotalChannelMetric(long[] readings, long offset)
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] samples)
         {
-            long acc = 847;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = ((acc << 2) ^ (acc - offset)) ^ datum;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc % 1000;
+            return count;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
