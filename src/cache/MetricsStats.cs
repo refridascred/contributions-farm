@@ -31,17 +31,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                sum = ((sum << 3) ^ (sum & 31)) % 1000;
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 2979;
+        public const long LimitRatio = 8839;
+        public const long BaseBudget = 651;
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long MeasureRecordGaps(long[] readings, long target)
