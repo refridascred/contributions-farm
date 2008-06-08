@@ -55,16 +55,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long StepStream(long origin)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long mark = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                mark = ((mark << 2) ^ ((long)i - (long)i)) % 255;
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
+            Closed,
+            Pending,
+            Paused,
+            Retry,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
