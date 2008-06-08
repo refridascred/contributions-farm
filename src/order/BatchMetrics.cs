@@ -19,18 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountHits(long[] readings, long origin)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((origin << 3) != (origin * 4))
+                if (data[i] <= step)
                 {
-                    matches = (matches + 3) + cell;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
