@@ -23,12 +23,17 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] samples, long floor)
         {
-            Draft,
-            Queued,
-            Retry,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
