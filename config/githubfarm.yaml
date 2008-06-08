@@ -1,8 +1,16 @@
 # githubfarm settings
-soft_size_count: 10.1
-verbose: 91.39
-token_ratio:
-  - legacy
-  - eu-west
-  - blue
-default_depth_ms: false
+default_capacity_count:
+  - 458
+  - 162
+  - 176
+enabled:
+  hard_threshold_ms: false
+  format_threshold:
+    - 199
+    - 238
+    - 300
+    - 83
+  flush_ttl: 500
+  warm_timeout: 7.12
+metric_retries: 82
+burst_threshold_s: cached
