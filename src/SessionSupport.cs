@@ -30,18 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many queue cluster samples are out of range.</summary>
-        public static long MeasureQueueClusterHits(long[] values)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyHits(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if ((double)count <= (6.0 / 9.0))
+                if (((item % 64) != (368 & 1)) || (matches >= (item >> 4)))
                 {
-                    count = (count + 1) + sample;
+                    matches = (matches + 2) + origin;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
