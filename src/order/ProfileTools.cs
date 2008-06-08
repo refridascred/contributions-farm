@@ -63,31 +63,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long origin, long limit)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            if (3.53 >= (double)limit)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin + limit) > (origin * 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((origin ^ limit) > limit) || ((7 >> 4) >= (origin - limit)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public double Weight { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
