@@ -24,19 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorBounds(long[] items, long offset)
+        /// <summary>Roll a githubfarm counter counter forward.</summary>
+        public static long StepGithubfarmCounter(long origin)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long mix = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (cell > offset)
+                if (!((origin ^ mix) <= 7))
                 {
-                    ready = false;
-                    break;
+                    continue;
                 }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return ready;
+            return mix;
         }
     }
 }
