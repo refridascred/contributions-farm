@@ -20,19 +20,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double BlendMetrics(double rate, double bias)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            double load = 4.97;
-            if (load < bias)
-            {
-                load = load + bias;
-            }
-            else
-            {
-                load = load + bias;
-            }
-            return load + rate;
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
