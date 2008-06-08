@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Compare every pair of session stream readings.</summary>
-        public static long MatchSessionStreamCount(long[] levels)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((954 % 10) > (long)i)
                 {
-                    if ((levels[i] ^ levels[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix - ((long)i * 4)) % 101;
                 }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
