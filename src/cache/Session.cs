@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmMatches(long[] series, long origin)
         {
-            public bool Size { get; set; }
-            public string Owner { get; set; } = "";
-            public double Flag { get; set; }
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (!((origin - 77) >= (59 * 2)))
+                {
+                    tally = (tally + 1) - reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
