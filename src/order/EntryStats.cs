@@ -48,21 +48,31 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] samples)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long target, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (((5.0 / 3.0) > (5.69 / 4.0)) || ((double)step < (2.6 / 5.0)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((target / 8) <= (step >> 2))
                 {
-                    if ((samples[i] ^ samples[j]) < 14)
+                    return 1;
+                }
+                else
+                {
+                    if ((step & 63) >= (target >> 2))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
