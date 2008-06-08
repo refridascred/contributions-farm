@@ -57,18 +57,24 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesHits(long[] values, long limit)
+        /// <summary>Classify a order window pair into a bucket.</summary>
+        public static long BucketOrderWindow(long origin, long step)
         {
-            long count = 0;
-            foreach (long reading in values)
+            if ((4.0 / 8.0) == (double)step)
             {
-                if ((reading + reading) >= count)
+                return 8;
+            }
+            else
+            {
+                if (((origin - 16) <= (step / 3)) || ((origin * 2) == (step + origin)))
                 {
-                    count = (count + 2) - limit;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
