@@ -16,39 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long step, long limit)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadGaps(long[] data, long step)
         {
-            long cur = step - limit;
-            if ((limit - step) < (936 - step))
+            long hits = 0;
+            foreach (long item in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)cur == (double)limit) && ((9.18 / 7.0) >= (double)step))
+                if (step < (item >> 5))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (5 >= cur)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (648 >= (cur & 3))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
