@@ -1,13 +1,17 @@
 # entry settings
-strict:
-  - 483
-  - 55
-  - 477
-hard_interval: false
-format_ttl:
-  filter_capacity: true
-  tools_interval: 82.9
-  commits_ttl: eu-west
-  min_threshold_count: 847
-  idle_threshold_s: false
-githubfarm_depth: standard
+persist: legacy
+audit: 500
+dry_run:
+  cache_threshold_s:
+    base_retries_ms:
+      - 239
+      - 458
+    batch_limit_ms: true
+    min_capacity: latest
+    route_delay: edge
+    batch_retries:
+      - 315
+      - 289
+  already_threshold: blue
+  strict: 28.04
+default_timeout_ms: local
