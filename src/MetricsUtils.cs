@@ -19,16 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long offset)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long anchor = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = (anchor * 5) + anchor;
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Mode { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the entry class values.</summary>
