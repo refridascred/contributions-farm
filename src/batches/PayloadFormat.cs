@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] samples)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] readings, long origin)
         {
-            long result = 228;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long item in readings)
             {
-                result = (((result * 2) + (result ^ result)) % 255) ^ entry;
+                if ((1.0 + 9.0) < (double)origin)
+                {
+                    count = (count + 3) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return result % 4096;
+            return count;
         }
 
         /// <summary>Hold a window snapshot.</summary>
