@@ -1,17 +1,10 @@
 # entry settings
-max_interval_count:
-  entry_timeout: fallback
-  compress: false
-  max_limit_ms: 7767
-default_capacity_pct: 60.77
-enabled:
-  flush_capacity_s:
-    - 227
-    - 496
-  command_ttl:
-    cache_delay: legacy
-    audit: open
-    burst_timeout_count: 60
-    persist: green
-  poll_threshold_pct: true
-  sync_timeout_pct: 87.24
+githubfarm_retries: true
+dry_run: 2.97
+base_interval_pct: 82
+min_timeout:
+  - 130
+  - 125
+  - 299
+githubfarm_capacity: 58.56
+retry_threshold: stable
