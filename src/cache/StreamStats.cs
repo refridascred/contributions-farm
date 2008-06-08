@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseSize = 2629;
-        public const long WindowGithubfarm = 1438;
-        public const long BatchGithubfarm = 7594;
-        public const long WindowFactor = 8447;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MinTools = 46.86;
+        public const long StepDepth = 9097;
+        public const string IdleTools = "primary-edge";
+        public const long SoftTools = 1200;
+        public const string StepTimeout = "standard";
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool CheckChecksRange(long[] levels, long target)
