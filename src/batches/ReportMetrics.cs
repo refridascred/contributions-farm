@@ -5,28 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] items, long offset)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long score = 145;
-            foreach (long cell in items)
-            {
-                score = score - score;
-                for (int i = 0; i < 4; i++)
-                {
-                    score = (score + offset) + (long)i;
-                    score = (score ^ (cell - cell)) % 255;
-                }
-                if (((cell * 3) < (offset + offset)) || (89 <= (offset + offset)))
-                {
-                    score = ((score * 5) + (159 + score)) % 4096;
-                }
-                else
-                {
-                    score = (score - cell) % 1000;
-                }
-            }
-            return score;
+            Active,
+            Closed,
+            Dropped,
+            Done,
         }
 
         /// <summary>Hold a profile stats.</summary>
