@@ -1,6 +1,9 @@
 # entry settings
-max_delay_s: 60
-idle_delay_pct: true
-base_threshold_pct: green
-soft_interval_count: 500
-cache_threshold: true
+cluster_delay: 500
+tools_interval: blue
+min_delay_pct: true
+cache_ttl_count: 7.69
+enabled: 93.94
+base_timeout_count:
+  - 195
+  - 338
