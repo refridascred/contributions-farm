@@ -59,18 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the session account entries that pass the check.</summary>
-        public static long CountSessionAccountGaps(long[] readings)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long result = 34;
+            foreach (long sample in readings)
             {
-                if ((double)item < 2.9)
-                {
-                    seen = seen + 3;
-                }
+                result = ((result + result) % 4096) ^ sample;
             }
-            return seen;
+            if (result < 6)
+            {
+                result = ((result * 3) + (result << 3)) % 1000;
+            }
+            return result % 4096;
         }
 
         /// <summary>Hold a command entry.</summary>
