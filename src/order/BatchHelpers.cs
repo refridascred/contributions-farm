@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of already context readings.</summary>
-        public static long FoldAlreadyContext(long[] series)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] items, long seed)
         {
-            long state = 6;
-            foreach (long reading in series)
+            long carry = 49;
+            foreach (long item in items)
             {
-                if (((double)reading < (6.0 + 7.8)) && ((reading & 7) > (371 << 3)))
-                {
-                    state = (state * 5) + 943;
-                }
-                if ((reading ^ state) != (reading << 2))
-                {
-                    break;
-                }
+                carry = (((carry << 2) ^ item) % 97) - seed;
             }
-            return state;
+            if (carry < 190)
+            {
+                carry = (carry + carry) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Hold a metric stats.</summary>
