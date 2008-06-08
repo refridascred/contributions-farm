@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of stream checks readings.</summary>
-        public static long TotalStreamChecks(long[] samples, long limit)
+        /// <summary>Count the account entry entries that pass the check.</summary>
+        public static long CountAccountEntryGaps(long[] values, long floor)
         {
-            long carry = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                carry = (carry << 3) ^ (carry - sample);
-                if ((limit - limit) < (carry << 2))
+                if ((seen - floor) > (seen + cell))
                 {
-                    carry = (carry ^ (limit + limit)) % 255;
+                    seen = seen + 1;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
