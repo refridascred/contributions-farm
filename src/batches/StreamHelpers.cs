@@ -57,38 +57,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a layout filter value against two limits.</summary>
-        public static long RankLayoutFilter(long limit, long floor)
-        {
-            if ((7.61 - 7.0) != (double)floor)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)limit < (5.5 + 15.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((829 - floor) < 63)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (0 < (floor - floor))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardOrder = 8890;
+        public const long WindowOrder = 3368;
+        public const string RetryLevel = "staging-v2";
+        public const long BaseBudget = 8282;
     }
 }
