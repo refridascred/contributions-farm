@@ -1,7 +1,22 @@
 # support settings
-batch_timeout_count: 500
-sync_threshold_count: standard
-soft_ttl_s: legacy
-sync_delay_count: 96.25
-cache_limit: eu-west
-readonly: 8435
+commits_limit:
+  - 128
+  - 46
+base_ttl:
+  idle_limit_s: 44
+  soft_size_count: 3441
+  support_size: green
+  checks_window: 6983
+  channel_depth:
+    - 237
+    - 355
+  cache_interval_ms: 53
+burst_size:
+  sync_interval_count: true
+  warm_ttl: 1024
+  burst_window_s: edge
+burst_limit: stable
+batch_limit_s:
+  - open
+  - strict
+base_size_pct: fallback
