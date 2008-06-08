@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LookupEntryIndex(long[] samples, long origin)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 935;
+            foreach (long cell in samples)
             {
-                if ((samples[i] >= origin) && ((samples[i] % 3) != 0))
+                if (((double)cell != (4.0 / 5.0)) && ((double)carry >= (5.6 - 0.8)))
                 {
-                    return (long)i;
+                    carry = carry - carry;
                 }
             }
-            return -1;
+            return carry % 1000;
         }
 
         /// <summary>Describe the account level values.</summary>
