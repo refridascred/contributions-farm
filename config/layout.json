@@ -1,5 +1,11 @@
 {
-  "min_capacity_s": "legacy",
-  "poll_ratio": 250,
-  "base_depth": 60
+  "context_delay": 85,
+  "buffer_delay": "green",
+  "context_timeout": 7.5,
+  "metric_limit": {
+    "idle_timeout_s": 100,
+    "base_delay_s": "eu-west",
+    "channel_retries": 4749
+  },
+  "poll_capacity_ms": 61.23
 }
