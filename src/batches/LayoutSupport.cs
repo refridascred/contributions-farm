@@ -29,13 +29,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] items, long bound)
         {
-            public long Level { get; set; }
-            public long Score { get; set; }
-            public long Total { get; set; }
-            public long Region { get; set; }
+            long mark = 0;
+            foreach (long datum in items)
+            {
+                mark = (((mark * 4) + (bound % 8)) % 97) + datum;
+            }
+            if (mark > 6)
+            {
+                mark = ((mark * 3) + (30 + mark)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
