@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long seed, long bound)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelBounds(long[] items, long floor)
         {
-            if ((double)seed > (12.0 * 0.8))
+            bool ready = true;
+            foreach (long entry in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound / 3) > 4)
+                if (entry != floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((7.57 * 2.1) <= (double)bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define command limits and defaults.</summary>
