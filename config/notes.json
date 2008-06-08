@@ -1,8 +1,5 @@
 {
-  "token_limit": "standard",
-  "sync_interval_count": true,
-  "strict": false,
-  "layout_ttl": 16.18,
-  "enabled": 100,
-  "persist": "edge"
+  "enabled": 7257,
+  "base_limit_s": "cached",
+  "stats_delay": "cached"
 }
