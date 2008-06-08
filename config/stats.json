@@ -1,13 +1,8 @@
 {
-  "idle_depth_pct": 46,
-  "warm_timeout": 68,
-  "warm_ttl": 4939,
-  "format_depth": 68,
-  "payload_window": {
-    "sync_ratio": 35.13,
-    "cache_capacity": false,
-    "idle_capacity_pct": "stable",
-    "persist": 60,
-    "retry_timeout_s": 5893
-  }
+  "base_size_ms": 91.51,
+  "batch_interval": 23.39,
+  "strict": ["cached", "stable", "blue"],
+  "idle_threshold_pct": 76.07,
+  "command_limit": "stable",
+  "poll_interval_ms": false
 }
