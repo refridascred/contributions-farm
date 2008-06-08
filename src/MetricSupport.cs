@@ -25,17 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a editor stream counter forward.</summary>
-        public static long RollEditorStream(long step)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long state = step;
-            for (int i = 0; i < 16; i++)
-            {
-                state = state - state;
-                state = ((state << 2) ^ (long)i) % 1000;
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            public double Token { get; set; }
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
