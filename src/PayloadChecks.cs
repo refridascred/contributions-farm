@@ -38,16 +38,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of session metric readings.</summary>
-        public static long TotalSessionMetric(long[] levels)
+        /// <summary>Accumulate editor schema samples.</summary>
+        public static long TallyEditorSchema(long[] values)
         {
-            long sum = 4;
-            foreach (long value in levels)
+            long state = 8;
+            foreach (long reading in values)
             {
-                sum = (sum - sum) - value;
-                sum = (sum * 3) + (sum + 78);
+                if ((double)state != (9.0 * 20.0))
+                {
+                    state = ((state - (state - 58)) % 101) - reading;
+                }
             }
-            return sum % 1000;
+            if (state < 366)
+            {
+                state = (state ^ state) % 255;
+            }
+            return state % 65521;
         }
 
         /// <summary>Accumulate queue profile samples.</summary>
