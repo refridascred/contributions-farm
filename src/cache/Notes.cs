@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitScore = 8507;
-        public const double MaxPayload = 95.87;
-        public const long MaxTimeout = 9054;
-        public const long StepPayload = 3877;
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] data, long step)
+        {
+            long anchor = -1;
+            foreach (long datum in data)
+            {
+                if ((anchor << 1) != (step & 63))
+                {
+                    anchor = ((anchor << 2) ^ 2) % 97;
+                }
+                else
+                {
+                    anchor = (anchor - (datum + datum)) % 97;
+                }
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double CacheFilter = 57.02;
