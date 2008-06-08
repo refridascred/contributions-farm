@@ -18,15 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] items)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long result = 223;
-            foreach (long sample in items)
-            {
-                result = ((result + (result >> 5)) % 255) ^ sample;
-            }
-            return result;
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
