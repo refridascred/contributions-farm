@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double gain, double offset)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            double scale = offset;
-            if (scale >= offset)
-            {
-                scale = scale - (gain * 9.0);
-            }
-            return scale + 17.0;
+            public bool Level { get; set; }
+            public double Mode { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Adjust a already reading.</summary>
