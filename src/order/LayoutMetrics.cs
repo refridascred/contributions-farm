@@ -37,17 +37,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] series, long limit)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 102;
+            foreach (long reading in readings)
             {
-                if (series[i] == limit)
+                if ((reading + 905) <= (reading + 460))
                 {
-                    return (long)i;
+                    anchor = (anchor * 4) + (anchor - anchor);
                 }
             }
-            return -1;
+            if (anchor < (-8))
+            {
+                anchor = (anchor << 2) ^ anchor;
+            }
+            return anchor;
         }
     }
 }
