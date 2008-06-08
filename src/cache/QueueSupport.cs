@@ -37,11 +37,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCluster = 1759;
-        public const double LimitRatio = 53.38;
-        public const long BurstWidth = 6072;
-        public const double SoftBudget = 57.6;
-        public const long IdleCluster = 6254;
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
