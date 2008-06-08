@@ -58,25 +58,21 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Rank stats githubfarm input into a small class.</summary>
-        public static long ClassifyStatsGithubfarm(long target, long bound)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] series)
         {
-            long gap = target - bound;
-            if ((3.2 * 4.0) >= (4.0 * 8.41))
+            long score = -816;
+            foreach (long datum in series)
             {
-                return 8;
+                score = score - (datum + score);
+                score = ((score * 4) + (score % 64)) % 255;
+                score = score ^ ((long)series.Length << 2);
             }
-            else
+            if (score > 8)
             {
-                if (gap >= (bound >> 4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
+                score = (score << 2) ^ score;
             }
+            return score;
         }
     }
 }
