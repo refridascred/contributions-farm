@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheHits(long[] values, long target)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (((long)values.Length - target) == (entry + count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Failed,
+            Done,
+            Active,
+            Closed,
+            New,
         }
 
         /// <summary>Measure how many metrics queue samples are out of range.</summary>
