@@ -75,11 +75,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Fold a list of already cache readings.</summary>
+        public static long FoldAlreadyCache(long[] samples)
         {
-            public bool Count { get; set; }
-            public string Limit { get; set; } = "";
+            long carry = 80;
+            foreach (long value in samples)
+            {
+                if ((double)carry <= 1.7)
+                {
+                    carry = (carry ^ (carry ^ 757)) % 97;
+                }
+                carry = (carry - (value + carry)) % 4096;
+            }
+            return carry;
         }
     }
 }
