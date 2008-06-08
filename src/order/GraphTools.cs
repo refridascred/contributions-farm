@@ -62,15 +62,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 4; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 3426;
+        public const double StepQueue = 97.3;
+        public const long BurstInterval = 3779;
+        public const long IdleQueue = 2039;
     }
 }
