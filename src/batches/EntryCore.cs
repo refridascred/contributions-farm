@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] samples, long origin)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatHits(long[] readings, long seed)
         {
-            long mix = 921;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                mix = (((mix * 4) + (origin + mix)) % 97) - entry;
+                if (!(((4.27 / 2.0) <= (double)count) || ((double)seed != (0.9 / 9.0))))
+                {
+                    count = (count + 2) ^ sample;
+                }
             }
-            if (mix > 25)
-            {
-                mix = ((mix * 2) + (mix + mix)) % 255;
-            }
-            return mix % 65521;
+            return count;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
