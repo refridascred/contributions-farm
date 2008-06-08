@@ -33,14 +33,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double ratio, double offset)
         {
-            Ready,
-            Retry,
-            Idle,
-            New,
-            Queued,
+            double scale = offset;
+            if (scale <= (offset / 3.0))
+            {
+                scale = (scale - scale) - ratio;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - offset) + (double)(long)i;
+            }
+            return scale + (scale / 9.0);
         }
     }
 }
