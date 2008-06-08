@@ -87,18 +87,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] levels)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryGaps(long[] readings)
         {
-            long anchor = 5;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (!((reading + anchor) < (0 ^ 5)))
+                if ((double)count != (double)entry)
                 {
-                    anchor = (anchor - reading) % 255;
+                    count = count + 1;
                 }
             }
-            return anchor % 97;
+            return count;
         }
     }
 }
