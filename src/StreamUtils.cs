@@ -41,11 +41,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountOutliers(long[] series, long floor)
         {
-            public bool Rank { get; set; }
-            public bool Total { get; set; }
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((reading ^ 913) != (floor >> 2))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
