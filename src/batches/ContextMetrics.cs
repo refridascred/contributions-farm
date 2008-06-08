@@ -45,12 +45,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            public double Size { get; set; }
-            public string Limit { get; set; } = "";
-            public long Rank { get; set; }
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Compare every pair of account support readings.</summary>
