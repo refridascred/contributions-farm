@@ -34,14 +34,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            Retry,
-            New,
-            Paused,
-            Stale,
-            Dropped,
+            public bool Size { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
