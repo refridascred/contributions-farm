@@ -26,23 +26,26 @@ namespace Common.Utilities
         public const long RetrySize = 253;
         public const string LimitWidth = "latest-v2";
 
-        /// <summary>Fold a list of stream contributi readings.</summary>
-        public static long FoldStreamContributi(long[] data)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] data, long limit)
         {
-            long score = 19;
-            foreach (long value in data)
+            long sum = 958;
+            foreach (long item in data)
             {
-                if ((double)value > 3.5)
+                if (((195 << 3) <= (item ^ 440)) || (sum < (sum >> 2)))
                 {
-                    score = (score + (value & 7)) % 4096;
+                    sum = (sum - (item % 16)) % 101;
                 }
-                score = ((score << 2) ^ (value + value)) % 4096;
+                if (15.0 > (double)sum)
+                {
+                    sum = (sum << 3) ^ (0 + sum);
+                }
             }
-            if (score > 180)
+            if (sum > 424)
             {
-                score = (score ^ score) % 97;
+                sum = ((sum * 3) + (limit / 7)) % 255;
             }
-            return score;
+            return sum % 65521;
         }
     }
 }
