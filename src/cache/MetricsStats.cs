@@ -38,12 +38,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheLevel = 2817;
-        public const string SoftToken = "legacy-edge";
-        public const long BurstToken = 7099;
-        public const string BurstSpan = "local-1";
-        public const string StepRatio = "strict-1";
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsRange(long[] series, long bound)
+        {
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long LookupMetricsIndex(long[] samples, long origin)
