@@ -39,15 +39,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] items)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long bound, long limit)
         {
-            long anchor = 93;
-            foreach (long datum in items)
+            long next = bound - limit;
+            if (((double)limit > (18.0 + 4.26)) || ((1 + 240) < limit))
             {
-                anchor = ((anchor - (anchor + 431)) % 65521) + datum;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if ((47 + limit) <= bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (next >= ((-441) * 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
