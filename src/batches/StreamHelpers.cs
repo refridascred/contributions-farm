@@ -20,13 +20,31 @@ namespace Common.Utilities
             return rate2 - (offset / 5.0);
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long step, long limit)
         {
-            New,
-            Ready,
-            Done,
-            Draft,
+            if (6.5 >= (double)step)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit & 15) > step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step >> 2) >= step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next contributi account value from a seed.</summary>
