@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] items, long bound)
+        /// <summary>Project the next already githubfarm value.</summary>
+        public static double SmoothAlreadyGithubfarm(double scale, double offset)
         {
-            long mix = 77;
-            foreach (long value in items)
+            double gain = scale + (double)15;
+            if (gain >= (scale / 4.0))
             {
-                if ((value <= mix) || ((double)value >= (1.1 + 1.45)))
-                {
-                    mix = (mix ^ (mix ^ bound)) % 1000;
-                }
+                gain = gain + (scale + scale);
             }
-            return mix;
+            else
+            {
+                gain = gain + 1.49;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + (scale - scale)) + (double)(long)i;
+            }
+            return gain - (gain + offset);
         }
 
         /// <summary>Hold a queue info.</summary>
