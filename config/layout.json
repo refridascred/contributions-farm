@@ -1,5 +1,8 @@
 {
-  "idle_depth_s": 100,
-  "idle_size": ["legacy", "fallback", "edge", "local"],
-  "context_threshold": 1024
+  "soft_interval": 10.78,
+  "soft_timeout_pct": ["blue", "standard"],
+  "checks_timeout": true,
+  "poll_timeout_count": 8323,
+  "filter_ttl": "eu-west",
+  "audit": "standard"
 }
