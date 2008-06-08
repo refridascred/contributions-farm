@@ -58,16 +58,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long seed)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long floor, long seed)
         {
-            long mix = seed;
-            for (int i = 0; i < 13; i++)
+            if (((floor - 78) != (seed / 6)) || ((floor - 262) < (7 - 9)))
             {
-                mix = (mix - ((long)i - mix)) % 97;
-                mix = ((mix * 2) + (long)i) % 97;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if ((floor & 7) < (405 + 88))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor / 9) >= (2 - floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
