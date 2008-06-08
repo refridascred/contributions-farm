@@ -1,6 +1,5 @@
 {
-  "hard_size": 31,
-  "session_interval": true,
-  "poll_limit": ["open", "stable"],
-  "flush_retries_count": 4.44
+  "batch_delay_s": false,
+  "flush_window_ms": 9,
+  "burst_timeout_pct": 6697
 }
