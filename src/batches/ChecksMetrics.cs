@@ -35,13 +35,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
+            Done,
+            Failed,
             Retry,
-            Ready,
-            Paused,
-            Closed,
         }
 
         /// <summary>Fold a list of record tools readings.</summary>
