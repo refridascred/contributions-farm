@@ -16,38 +16,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long bound, long bound2)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            if ((bound2 * 5) != (bound >> 1))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((19.0 * 1.9) < (double)bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((223 - bound2) > bound2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((bound2 << 3) <= (bound + bound2)) && ((5 - bound2) <= (bound2 & 7)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many metrics githubfarm samples are out of range.</summary>
