@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long CacheAccount = 1480;
         public const long BaseAccount = 9712;
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Validate checks payload readings against a bound.</summary>
+        public static bool GuardChecksPayloadLimits(long[] readings, long origin)
         {
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-            public double Owner { get; set; }
-            public bool Label { get; set; }
+            bool flag = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
