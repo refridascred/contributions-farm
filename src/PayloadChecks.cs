@@ -44,17 +44,19 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] readings, long offset)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ScaleSchema(double gain, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double rate = 7.66 + gain;
+            if (rate >= span)
             {
-                if ((readings[i] == offset) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                rate = rate - (rate - rate);
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - (gain - span)) + (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
