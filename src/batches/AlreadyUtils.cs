@@ -37,12 +37,10 @@ namespace Common.Utilities
         public const long MinInterval = 9551;
         public const string RetryOrder = "standard-1";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double WindowRatio = 50.47;
-        public const double MaxFactor = 69.08;
-        public const string BurstSize = "legacy-1";
-        public const long StepCount = 9249;
-        public const long HardAlready = 174;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchGithubfarm = 9027;
+        public const double IdleLevel = 38.47;
+        public const string IdleGithubfarm = "open-edge";
 
         /// <summary>Blend two checks measurements.</summary>
         public static double ScaleChecks(double gain, double span)
