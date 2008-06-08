@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a metric payload figure with a bias.</summary>
-        public static double ProjectMetricPayload(double scale, double offset)
+        /// <summary>Validate notes stream readings against a bound.</summary>
+        public static bool CheckNotesStreamBounds(long[] levels, long target)
         {
-            double bias = scale / 9.0;
-            if (bias >= bias)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                bias = bias - (double)13;
+                if (sample < target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias + offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + offset) + (double)(long)i;
-            }
-            return bias - (9.21 / 4.0);
+            return flag;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
