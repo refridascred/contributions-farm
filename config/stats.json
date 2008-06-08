@@ -1,8 +1,5 @@
 {
-  "idle_retries_s": "legacy",
-  "base_limit_s": 25.05,
-  "schema_capacity": 250,
-  "soft_ttl_s": "green",
-  "batch_depth": 82,
-  "command_retries": 4481
+  "poll_retries_count": [393, 136, 178],
+  "persist": false,
+  "compress": "fallback"
 }
