@@ -25,18 +25,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatMatches(long[] data, long origin)
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((30 << 3) >= (origin % 60))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 1) ^ entry;
+                    if ((samples[i] - samples[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
