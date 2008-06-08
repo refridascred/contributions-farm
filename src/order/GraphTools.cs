@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] series, long floor)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] series)
         {
-            long carry = 844;
-            foreach (long reading in series)
+            long acc = 56;
+            foreach (long item in series)
             {
-                if ((long)series.Length >= (reading & 7))
+                if ((item + acc) >= acc)
                 {
-                    carry = (((carry * 3) + (9 & 31)) % 255) - floor;
+                    acc = acc - (72 + item);
+                }
+                else
+                {
+                    acc = (acc - acc) % 65521;
+                }
+                if (!((item ^ item) > item))
+                {
+                    break;
                 }
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Describe the stream mode values.</summary>
