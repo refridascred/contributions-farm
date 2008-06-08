@@ -31,15 +31,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
-        {
-            Queued,
-            Dropped,
-            Draft,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string HardReport = "strict-v2";
+        public const string BurstReport = "standard";
+        public const long BatchReport = 1563;
+        public const double LimitReport = 91.56;
+        public const long IdleDepth = 1314;
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long SeriesAlready(long floor)
