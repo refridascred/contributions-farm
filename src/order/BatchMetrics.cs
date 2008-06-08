@@ -52,13 +52,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long target, long origin)
         {
-            public double Count { get; set; }
-            public double Offset { get; set; }
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
+            if ((1.81 + 7.2) >= (double)target)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target > (origin & 31)) && ((origin - target) >= (target ^ 0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((4 - origin) <= (target ^ origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((6 * 5) > target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define report limits and defaults.</summary>
