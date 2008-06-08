@@ -34,11 +34,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ScaleCommand(double scale, double offset)
         {
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
+            double rate = scale;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + 8.0) + (double)(long)i;
+            }
+            return rate + (offset / 6.0);
         }
 
         /// <summary>Roll a checks counter forward.</summary>
