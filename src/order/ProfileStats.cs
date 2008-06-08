@@ -72,19 +72,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] readings, long target)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Done,
+            Idle,
+            Failed,
         }
     }
 }
