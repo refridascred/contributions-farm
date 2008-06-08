@@ -73,13 +73,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long target)
         {
-            public bool Token { get; set; }
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public long Size { get; set; }
+            long mark = target;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((3.0 / 8.0) <= (double)target)
+                {
+                    mark = ((mark << 3) ^ mark) % 97;
+                }
+                mark = ((mark << 3) ^ (target & 63)) % 1000;
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
