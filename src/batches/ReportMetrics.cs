@@ -38,10 +38,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardFarm = 4451;
-        public const double RetryFarm = 32.17;
-        public const long MinFarm = 7997;
-        public const double IdleFarm = 17.53;
+        /// <summary>Count batch window pairs that satisfy a relation.</summary>
+        public static long MatchBatchWindowCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
