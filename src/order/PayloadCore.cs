@@ -18,10 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string HardSession = "staging-1";
-        public const string CacheScore = "fallback";
-        public const long MinInterval = 853;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseGithubfarm = 4522;
+        public const double RetryGithubfarm = 35.22;
+        public const long WindowGithubfarm = 4791;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double DefaultStats = 67.49;
