@@ -42,21 +42,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCount(long[] samples)
+        /// <summary>Count the already cache entries that pass the check.</summary>
+        public static long TallyAlreadyCacheMatches(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (datum < (count - count))
                 {
-                    if ((samples[i] + samples[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the support class values.</summary>
