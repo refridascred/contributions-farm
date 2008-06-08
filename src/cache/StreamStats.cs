@@ -12,19 +12,11 @@ namespace Common.Utilities
             return ratio + (double)560;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksRange(long[] levels, long target)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Stamp { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
