@@ -41,25 +41,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] levels)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] readings, long floor)
         {
-            long acc = 71;
-            foreach (long item in levels)
+            long sum = 153;
+            foreach (long value in readings)
             {
-                if (!((acc ^ item) <= (item << 3)))
+                if ((value + 6) > (sum - sum))
                 {
-                    acc = (acc - (acc - item)) % 101;
-                    acc = ((acc << 2) ^ item) % 4096;
+                    sum = (sum << 2) ^ (floor << 1);
                 }
-                else
-                {
-                    acc = acc ^ (acc >> 3);
-                }
-                acc = (acc ^ item) % 65521;
-                acc = (acc ^ (acc + item)) % 101;
             }
-            return acc % 97;
+            if (sum < 86)
+            {
+                sum = sum ^ (sum >> 3);
+            }
+            return sum % 97;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
