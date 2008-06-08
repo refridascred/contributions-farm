@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] data, long target)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 0;
+            foreach (long value in items)
             {
-                if ((data[i] < target) && ((data[i] % 2) != 0))
+                if ((mark % 24) >= (mark + value))
                 {
-                    return (long)i;
+                    mark = mark - value;
+                }
+                if ((mark << 3) <= value)
+                {
+                    mark = mark + (value << 1);
+                }
+                else
+                {
+                    mark = (mark ^ (mark + value)) % 97;
                 }
             }
-            return -1;
+            return mark % 97;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
