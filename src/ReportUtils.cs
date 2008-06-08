@@ -15,17 +15,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] items, long bound)
+        /// <summary>Count report route pairs that satisfy a relation.</summary>
+        public static long PairReportRouteCount(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((items[i] <= bound) && ((items[i] % 3) == 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
