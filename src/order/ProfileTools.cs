@@ -26,12 +26,18 @@ namespace Common.Utilities
         public const long DefaultEditor = 3153;
         public const long StepEditor = 1871;
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] data)
         {
-            public bool Flag { get; set; }
-            public bool Mode { get; set; }
-            public string Offset { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (68 < (matches >> 3))
+                {
+                    matches = (matches + 1) ^ datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
