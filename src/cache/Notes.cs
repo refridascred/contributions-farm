@@ -53,28 +53,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long floor, long seed)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long step, long offset)
         {
-            if (((floor - 78) != (seed / 6)) || ((floor - 262) < (7 - 9)))
+            long cur = step + offset;
+            if ((step + cur) > (offset + 8))
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if ((floor & 7) < (405 + 88))
+                if (5.0 >= (double)step)
                 {
-                    return 5;
+                    return 4;
                 }
                 else
                 {
-                    if ((floor / 9) >= (2 - floor))
+                    if ((62 >= cur) && ((offset - cur) > step))
                     {
-                        return 2;
+                        return 1;
                     }
                     else
                     {
-                        return 3;
+                        return 8;
                     }
                 }
             }
