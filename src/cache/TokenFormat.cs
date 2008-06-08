@@ -44,21 +44,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] samples)
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double scale, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = scale * 5.0;
+            if (load >= (bias + load))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = load - (load * 6.56);
             }
-            return hits;
+            else
+            {
+                load = load - (scale + 8.2);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - scale) + (double)(long)i;
+            }
+            return load - load;
         }
     }
 }
