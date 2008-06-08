@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long step)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long anchor = step;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = (anchor - anchor) % 1000;
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            Pending,
+            Paused,
+            Draft,
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
