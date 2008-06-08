@@ -42,12 +42,10 @@ namespace Common.Utilities
             return rate2 - rate;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchNotes = 3317;
-        public const long MaxFactor = 1661;
-        public const long SoftCount = 9847;
-        public const long StepNotes = 2997;
-        public const double SoftSpan = 96.83;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 3643;
+        public const long MinBuffer = 646;
+        public const long WindowSpan = 381;
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long AuditEntryOutliers(long[] data)
