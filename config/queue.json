@@ -1,7 +1,16 @@
 {
-  "poll_depth": true,
-  "min_interval_ms": 500,
-  "default_threshold_count": 30,
-  "cluster_retries": "blue",
-  "checks_window": "primary"
+  "token_threshold": false,
+  "session_capacity": true,
+  "compress": {
+    "hard_window_s": 62.05,
+    "batch_interval": "eu-west",
+    "max_retries": {
+      "compress": 250,
+      "persist": 996,
+      "poll_retries_s": ["green", "blue", "fallback"],
+      "format_ratio": false
+    },
+    "flush_limit_ms": ["open", "standard"],
+    "entry_depth": [330, 78, 42]
+  }
 }
