@@ -1,13 +1,5 @@
 {
-  "retry_ttl_count": 16.99,
-  "audit": "stable",
-  "hard_interval": "eu-west",
-  "cache_threshold_pct": true,
-  "compress": {
-    "flush_depth_count": ["cached", "standard"],
-    "base_delay_pct": 59,
-    "base_retries": 7651,
-    "compress": true
-  },
-  "burst_depth_s": 2
+  "githubfarm_size": "fallback",
+  "entry_ratio": 7935,
+  "format_ttl": "local"
 }
