@@ -36,17 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] values, long origin)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandLimits(long[] series, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if ((values[i] >= origin) && ((values[i] % 3) != 0))
+                if (sample < step)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
