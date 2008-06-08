@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            Paused,
-            Ready,
-            New,
+            Synced,
+            Closed,
+            Draft,
         }
 
         /// <summary>Locate a order reading by value.</summary>
