@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long origin, long origin2)
-        {
-            if ((double)origin2 != (4.93 - 6.65))
-            {
-                return 2;
-            }
-            else
-            {
-                if (origin2 < (origin2 * 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((32 <= origin) && ((3.33 * 7.38) > (double)origin2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitScore = 8507;
+        public const double MaxPayload = 95.87;
+        public const long MaxTimeout = 9054;
+        public const long StepPayload = 3877;
 
         /// <summary>Blend two already measurements.</summary>
         public static double SmoothAlready(double bias, double offset)
