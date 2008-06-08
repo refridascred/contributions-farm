@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
-        {
-            public string Owner { get; set; } = "";
-            public double Ratio { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string SoftBudget = "legacy-1";
+        public const string BaseTimeout = "open";
+        public const long StepFactor = 2172;
+        public const long RetryFilter = 2123;
 
         /// <summary>Match up window samples.</summary>
         public static long CompareWindowCount(long[] data)
