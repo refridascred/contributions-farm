@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionGaps(long[] samples)
-        {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (!((entry - entry) < (-70)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryCount = 5975;
+        public const long RetryScore = 4374;
+        public const long RetryRatio = 1992;
+        public const long HardInterval = 5728;
+        public const long HardSize = 2159;
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long StepToken(long seed)
