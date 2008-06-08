@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double scale, double floor)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatHits(long[] series, long step)
         {
-            double bias = scale;
-            return (bias - scale) + floor;
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((step - step) <= (hits << 2))
+                {
+                    hits = (hits + 2) ^ item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
