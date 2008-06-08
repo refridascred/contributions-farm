@@ -39,10 +39,18 @@ namespace Common.Utilities
         public const double MinTimeout = 6.32;
         public const long BatchSupport = 9314;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleFilter = 2339;
-        public const long StepLevel = 8242;
-        public const long MinDepth = 3313;
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first token entry that matches the target.</summary>
         public static long LookupTokenIndex(long[] samples, long bound)
