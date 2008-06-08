@@ -69,11 +69,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultOrder = 1345;
-        public const long CacheWidth = 1272;
-        public const double IdleWidth = 18.95;
-        public const double CacheOrder = 19.81;
-        public const long IdleOrder = 390;
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
+        {
+            Idle,
+            Ready,
+            Closed,
+            New,
+            Active,
+        }
     }
 }
