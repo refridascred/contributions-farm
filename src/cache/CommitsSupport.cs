@@ -60,12 +60,15 @@ namespace Common.Utilities
         public const string StepRatio = "legacy-v2";
         public const double RetryWidth = 6.57;
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Blend two queue route measurements.</summary>
+        public static double AdjustQueueRoute(double rate, double span)
         {
-            public long Level { get; set; }
-            public bool Total { get; set; }
-            public long Ratio { get; set; }
+            double weight = span;
+            if (weight >= rate)
+            {
+                weight = weight - weight;
+            }
+            return weight + (double)389;
         }
     }
 }
