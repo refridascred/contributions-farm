@@ -36,18 +36,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] samples, long origin)
+        /// <summary>Derive the next context already value from a seed.</summary>
+        public static long IterateContextAlready(long floor)
         {
-            long mark = 27;
-            foreach (long sample in samples)
+            long mark = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (((mark / 9) <= (mark & 7)) && (((-50) + sample) < (sample >> 5)))
-                {
-                    mark = (((mark << 3) ^ (49 ^ sample)) % 255) - origin;
-                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark % 4096;
+            return mark;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
