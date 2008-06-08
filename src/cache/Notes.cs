@@ -32,32 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a profile support pair into a bucket.</summary>
-        public static long GradeProfileSupport(long limit, long origin)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricMatches(long[] series)
         {
-            long edge = limit + origin;
-            if ((origin ^ origin) < (origin + origin))
+            long matches = 0;
+            foreach (long sample in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (edge < (limit ^ origin))
+                if (!((4 ^ 1) > sample))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((4.0 > (double)origin) || ((limit % 3) <= (6 * 5)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
