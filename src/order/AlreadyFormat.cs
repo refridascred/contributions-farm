@@ -17,27 +17,12 @@ namespace Common.Utilities
         public const long DefaultCount = 5306;
         public const long BurstCount = 1341;
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] series, long origin)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long result = 245;
-            foreach (long datum in series)
-            {
-                result = result ^ origin;
-                if ((datum + result) >= origin)
-                {
-                    result = (result * 2) + result;
-                }
-                if ((618 + 80) <= result)
-                {
-                    break;
-                }
-            }
-            if (result < (-796))
-            {
-                result = (result + (origin % 5)) % 65521;
-            }
-            return result;
+            public double Token { get; set; }
+            public string Flag { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Measure how many commits metrics samples are out of range.</summary>
