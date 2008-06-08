@@ -1,6 +1,5 @@
 {
-  "metrics_retries": "eu-west",
-  "max_interval_count": 37,
-  "cache_depth": "local",
-  "already_ttl": false
+  "retry_limit": 13.95,
+  "base_depth_count": "legacy",
+  "retry_delay_ms": false
 }
