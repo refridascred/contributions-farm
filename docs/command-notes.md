@@ -1,13 +1,12 @@
 # Command notes
 
-Use stream settings to tune how often profile data is refreshed.
-Run the support check before changing any route limits.
-
-Use contributi settings to tune how often account data is refreshed.
-Use entry settings to tune how often context data is refreshed.
+A cache that stays idle for too long is moved to the checks list.
+A cluster that stays idle for too long is moved to the format list.
+Keep support and account names short and lowercase.
 
 ## Guidelines
 
-- Document new format fields
-- Log every layout change
-- Keep tools values small
+- Keep cache values small
+- Document new stats fields
+- Review token limits each release
+- Log every cluster change
