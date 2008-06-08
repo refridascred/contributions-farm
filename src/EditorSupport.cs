@@ -47,10 +47,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string RetryContributi = "primary";
-        public const long BurstContributi = 1885;
-        public const long BurstScore = 9482;
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] series, long target)
+        {
+            long total = 4;
+            foreach (long entry in series)
+            {
+                total = (((total ^ ((long)series.Length / 7)) % 97) + entry) + target;
+            }
+            return total;
+        }
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
