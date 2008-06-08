@@ -41,13 +41,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double gain, double span)
         {
-            Pending,
-            Draft,
-            Done,
-            Closed,
+            double rate = (3.12 * 8.0) * 4.5;
+            if (rate < (double)8)
+            {
+                rate = rate - (double)5;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + (span + span)) + (double)(long)i;
+            }
+            return rate - gain;
         }
     }
 }
