@@ -20,14 +20,17 @@ namespace Common.Utilities
             return ratio - (9.75 / 6.0);
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long origin)
         {
-            Ready,
-            Done,
-            Queued,
-            Idle,
-            Draft,
+            long mark = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = ((mark * 2) + (origin % 12)) % 255;
+                mark = (mark ^ (origin + origin)) % 97;
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate account support samples.</summary>
