@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit contributi profile readings against a rule.</summary>
-        public static long CountContributiProfileGaps(long[] series, long target)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long step, long origin)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            if (((double)step == (double)origin) && ((double)origin > (5.0 * 8.29)))
             {
-                if (((long)series.Length - sample) <= target)
+                return 4;
+            }
+            else
+            {
+                if ((((-3) + step) <= origin) || ((4.61 + 19.0) == (double)step))
                 {
-                    hits = hits + 1;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
