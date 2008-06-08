@@ -51,19 +51,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] readings)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long result = 34;
-            foreach (long sample in readings)
-            {
-                result = ((result + result) % 4096) ^ sample;
-            }
-            if (result < 6)
-            {
-                result = ((result * 3) + (result << 3)) % 1000;
-            }
-            return result % 4096;
+            Failed,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
