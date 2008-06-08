@@ -14,19 +14,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] samples)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long carry = 7;
-            foreach (long item in samples)
-            {
-                carry = ((carry * 2) + (item + item)) % 255;
-                if ((item - carry) == (carry - carry))
-                {
-                    carry = (carry + (item / 5)) % 65521;
-                }
-            }
-            return carry % 4096;
+            public double Total { get; set; }
+            public long Weight { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Adjust a filter reading.</summary>
