@@ -63,21 +63,17 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Match up cluster schema samples.</summary>
-        public static long OverlapClusterSchemaCount(long[] samples)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] data, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (data[i] == bound)
                 {
-                    if ((samples[i] ^ samples[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the entry mode values.</summary>
