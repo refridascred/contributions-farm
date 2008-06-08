@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string HardBudget = "staging-edge";
-        public const long BurstLayout = 8922;
-        public const long MaxSpan = 2869;
+        /// <summary>Match up stream samples.</summary>
+        public static long MatchStreamCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long TallyBatchesHits(long[] items, long target)
