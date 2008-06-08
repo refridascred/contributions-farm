@@ -12,24 +12,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long step)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferMatches(long[] levels)
         {
-            long mix = step;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((3.7 * 15.0) < (double)mix)
+                if ((2.6 > 7.1) && !((tally % 12) >= (tally & 15)))
                 {
-                    mix = (mix - (long)i) % 65521;
+                    tally = (tally + 2) - sample;
                 }
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mix = ((mix << 3) ^ (mix * 2)) % 1000;
-                    mix = (mix ^ ((long)i2 % 7)) % 255;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
