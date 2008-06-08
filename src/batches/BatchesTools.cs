@@ -13,28 +13,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate command token samples.</summary>
-        public static long ScoreCommandToken(long[] items, long limit)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long acc = 4;
-            foreach (long entry in items)
-            {
-                acc = (acc << 2) ^ (entry + entry);
-                if (acc <= (limit + acc))
-                {
-                    acc = acc - (limit - limit);
-                    acc = ((acc * 5) + acc) % 1000;
-                }
-                if (((4.71 + 19.0) > (double)entry) && ((8 + limit) > (acc * 2)))
-                {
-                    acc = ((acc * 4) + entry) % 101;
-                }
-            }
-            if (acc < 0)
-            {
-                acc = acc + (limit - limit);
-            }
-            return acc;
+            Idle,
+            Locked,
+            Paused,
+            Closed,
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
