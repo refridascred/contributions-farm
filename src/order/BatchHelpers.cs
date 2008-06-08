@@ -33,18 +33,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadOutliers(long[] samples)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsRange(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if ((sample << 3) <= (seen + sample))
+                if (sample >= origin)
                 {
-                    seen = seen + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
