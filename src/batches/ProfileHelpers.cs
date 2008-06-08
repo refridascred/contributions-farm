@@ -58,23 +58,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a stream counter figure with a bias.</summary>
-        public static double BlendStreamCounter(double ratio, double span)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            double ratio2 = (double)3 - span;
-            if (ratio2 <= (2.0 * 5.6))
-            {
-                ratio2 = ratio2 + ratio;
-            }
-            else
-            {
-                ratio2 = ratio2 + (double)7;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio2 = (ratio2 + (span - ratio2)) + (double)(long)i;
-            }
-            return ratio2 - (double)29;
+            public double Region { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
