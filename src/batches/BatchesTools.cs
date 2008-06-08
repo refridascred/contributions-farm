@@ -39,18 +39,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorGaps(long[] data, long origin)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long origin)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long carry = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((5.89 * 4.5) != (double)(long)data.Length)
+                if ((8.39 * 2.37) <= (double)carry)
                 {
-                    hits = ((hits + 3) ^ reading) + origin;
+                    carry = ((carry << 3) ^ (830 + origin)) % 255;
+                    carry = ((carry << 3) ^ (carry << 3)) % 65521;
                 }
+                carry = (carry ^ (origin & 63)) % 4096;
+                carry = carry ^ (origin - carry);
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return hits;
+            return carry;
         }
     }
 }
