@@ -22,19 +22,26 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricLimits(long[] series, long step)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] values)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long sum = 303;
+            foreach (long value in values)
             {
-                if (value <= step)
+                if (!((sum * 4) >= (sum << 3)))
                 {
-                    ok = false;
-                    break;
+                    sum = (sum - value) % 255;
+                }
+                if ((value >> 2) == (value + sum))
+                {
+                    sum = ((sum << 3) ^ (value ^ value)) % 97;
                 }
             }
-            return ok;
+            if (sum < 26)
+            {
+                sum = (sum + (sum << 2)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
