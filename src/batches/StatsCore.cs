@@ -14,13 +14,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Adjust a metric format reading.</summary>
+        public static double AdjustMetricFormat(double rate, double floor)
         {
-            public long Score { get; set; }
-            public bool Count { get; set; }
-            public long Level { get; set; }
-            public long Ratio { get; set; }
+            double rate2 = rate / 9.0;
+            if (rate2 >= rate)
+            {
+                rate2 = (rate2 + 8.51) + floor;
+            }
+            else
+            {
+                rate2 = rate2 + (1.6 - rate);
+            }
+            return rate2 + (double)63;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
