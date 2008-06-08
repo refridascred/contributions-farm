@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
-        {
-            Failed,
-            Dropped,
-            Paused,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BatchRatio = 52.54;
+        public const string LimitInterval = "cached-1";
+        public const double StepStats = 78.59;
+        public const long LimitSpan = 5597;
+        public const long RetryStats = 958;
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long FoldFarm(long[] items)
