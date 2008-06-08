@@ -1,8 +1,13 @@
 # entry settings
-base_interval_s: stable
-warm_timeout: false
-dry_run: 8374
-filter_ratio:
-  default_capacity: 4334
-  editor_ttl: local
-  min_ratio_count: 1540
+strict:
+  - 483
+  - 55
+  - 477
+hard_interval: false
+format_ttl:
+  filter_capacity: true
+  tools_interval: 82.9
+  commits_ttl: eu-west
+  min_threshold_count: 847
+  idle_threshold_s: false
+githubfarm_depth: standard
