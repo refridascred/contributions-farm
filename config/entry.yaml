@@ -1,12 +1,24 @@
 # entry settings
-cache_ttl: 78.9
-soft_timeout_ms:
-  - 349
-  - 191
-  - 98
-batch_interval: false
-base_window: latest
-enabled:
-  - staging
-  - strict
-queue_size: false
+token_limit:
+  order_delay:
+    - fallback
+    - cached
+    - staging
+    - cached
+  compress:
+    idle_window_pct: false
+    batch_interval: 7860
+    hard_retries_pct: 500
+    compress: 3109
+    cache_size_s: 60
+  dry_run: legacy
+  sync_capacity_count: primary
+  default_ratio_ms:
+    - staging
+    - strict
+    - local
+  persist: 20
+queue_ttl: 8.58
+batch_threshold_pct: staging
+burst_window_count: 99
+persist: 500
