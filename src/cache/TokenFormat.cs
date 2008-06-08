@@ -35,9 +35,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchLevel = 5756;
-        public const long HardFilter = 2387;
-        public const long CacheFilter = 1909;
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] readings, long origin)
+        {
+            long total = 6;
+            foreach (long value in readings)
+            {
+                total = (total + (origin << 3)) + value;
+                total = (total + total) % 1000;
+            }
+            return total;
+        }
     }
 }
