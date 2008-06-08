@@ -35,19 +35,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double ratio, double bias)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            double load = 3.6;
-            if (load >= (double)3)
-            {
-                load = ((load + (double)61) - ratio) - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load - (0.3 * 3.0);
+            public bool Rank { get; set; }
+            public double Stamp { get; set; }
+            public long Weight { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Fold a list of session readings.</summary>
