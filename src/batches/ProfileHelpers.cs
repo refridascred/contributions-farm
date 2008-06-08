@@ -58,12 +58,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double HardProfile = 30.55;
-        public const long MinRatio = 3846;
-        public const double MaxProfile = 16.49;
-        public const long IdleCount = 7089;
-        public const long WindowRatio = 2837;
+        /// <summary>Scale a stream counter figure with a bias.</summary>
+        public static double BlendStreamCounter(double ratio, double span)
+        {
+            double ratio2 = (double)3 - span;
+            if (ratio2 <= (2.0 * 5.6))
+            {
+                ratio2 = ratio2 + ratio;
+            }
+            else
+            {
+                ratio2 = ratio2 + (double)7;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio2 = (ratio2 + (span - ratio2)) + (double)(long)i;
+            }
+            return ratio2 - (double)29;
+        }
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long RankChecks(long floor, long step)
