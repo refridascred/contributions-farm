@@ -26,13 +26,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            public long Level { get; set; }
-            public string Token { get; set; } = "";
-            public double Region { get; set; }
-            public string Ratio { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the contributi class values.</summary>
