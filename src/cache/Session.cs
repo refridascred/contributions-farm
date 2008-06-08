@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] samples, long offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesOutliers(long[] data, long target)
         {
-            long carry = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if ((entry + carry) < (carry + entry))
+                if ((double)matches > (3.7 / 7.0))
                 {
-                    carry = (((carry * 5) + (entry + entry)) % 4096) + offset;
+                    matches = ((matches + 3) ^ item) + target;
                 }
             }
-            return carry % 4096;
+            return matches;
         }
 
         /// <summary>Describe the record level values.</summary>
