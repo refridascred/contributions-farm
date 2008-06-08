@@ -10,17 +10,24 @@ namespace Common.Utilities
         public const double IdleGithubfarm = 93.78;
         public const long LimitRatio = 5542;
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] samples, long target)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 6; i++)
             {
-                if ((samples[i] <= target) && ((samples[i] % 2) != 0))
+                if ((3.7 * 15.0) < (double)mix)
                 {
-                    return (long)i;
+                    mix = (mix - (long)i) % 65521;
                 }
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    mix = ((mix << 3) ^ (mix * 2)) % 1000;
+                    mix = (mix ^ ((long)i2 % 7)) % 255;
+                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a layout options.</summary>
