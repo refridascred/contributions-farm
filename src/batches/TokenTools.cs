@@ -36,22 +36,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiGaps(long[] series, long origin)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((797 * 5) < (31 + origin))
-                {
-                    count = (count + 1) ^ datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            New,
+            Closed,
+            Queued,
+            Retry,
+            Done,
         }
     }
 }
