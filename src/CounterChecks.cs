@@ -52,16 +52,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a window tools figure with a bias.</summary>
-        public static double ScaleWindowTools(double ratio, double offset)
-        {
-            double bias = ratio / 3.0;
-            if (bias >= ratio)
-            {
-                bias = bias + (offset / 4.0);
-            }
-            return bias + bias;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseSize = 4468;
+        public const long IdleContext = 490;
+        public const double StepContext = 82.85;
+        public const string MaxRatio = "strict";
+        public const string BatchContext = "staging-edge";
 
         /// <summary>Look up the position of a stats commits sample.</summary>
         public static long LookupStatsCommitsIndex(long[] samples, long step)
