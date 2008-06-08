@@ -65,12 +65,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a githubfarm context sample.</summary>
-        public static long SeekGithubfarmContextIndex(long[] items, long bound)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] values, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((items[i] >= bound) && ((items[i] % 3) != 0))
+                if (values[i] == target)
                 {
                     return (long)i;
                 }
