@@ -19,18 +19,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountOutliers(long[] readings, long target)
+        /// <summary>Blend two record measurements.</summary>
+        public static double BlendRecord(double rate, double span)
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if (count > (target * 2))
-                {
-                    count = (count + 2) + reading;
-                }
-            }
-            return count;
+            double mean = 8.0 / 5.0;
+            return ((mean - (mean / 8.0)) + rate) + span;
         }
 
         /// <summary>Look up the position of a payload stream sample.</summary>
