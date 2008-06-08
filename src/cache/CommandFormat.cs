@@ -20,40 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long offset, long offset2)
-        {
-            long edge = offset ^ offset2;
-            if ((edge + 418) == (offset2 << 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((6 / 9) < (edge / 6)) && ((edge >> 1) <= (offset + offset2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (offset > edge)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset2 + edge) > (offset << 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepScore = 352;
+        public const string BurstScore = "latest-edge";
+        public const long BatchGraph = 9031;
+        public const long LimitGraph = 6745;
+        public const string StepGraph = "strict-v2";
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long DeriveNotes(long target)
