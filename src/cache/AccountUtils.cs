@@ -16,15 +16,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next editor layout value.</summary>
-        public static double SmoothEditorLayout(double rate, double floor)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double scale, double floor)
         {
-            double weight = floor - floor;
-            if (weight <= 3.0)
+            double mean = scale;
+            if (mean < scale)
             {
-                weight = (weight + floor) - rate;
+                mean = (mean + mean) - floor;
             }
-            return weight + (12.0 - 4.64);
+            return mean - (mean / 7.0);
         }
 
         /// <summary>Combine window queue values into a single score.</summary>
