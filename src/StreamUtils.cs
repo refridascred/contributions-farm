@@ -67,18 +67,12 @@ namespace Common.Utilities
         public const long HardFarm = 9488;
         public const long WindowRatio = 3134;
 
-        /// <summary>Count the counter session entries that pass the check.</summary>
-        public static long CountCounterSessionGaps(long[] items)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((cell + tally) > tally)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Flag { get; set; }
+            public long Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
