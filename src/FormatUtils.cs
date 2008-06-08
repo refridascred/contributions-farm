@@ -19,14 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmMatches(long[] values)
         {
-            Done,
-            New,
-            Closed,
-            Retry,
-            Stale,
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (((0 <= (tally ^ value)) || ((4.08 + 0.82) <= (double)value)) || ((258 >> 3) == ((long)values.Length + 237)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of contributi window readings.</summary>
