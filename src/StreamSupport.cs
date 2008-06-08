@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsMatches(long[] items, long target)
-        {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((6.0 * 4.3) == (double)target)
-                {
-                    matches = (matches + 3) ^ cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultLayout = 9739;
+        public const string LimitSpan = "staging";
+        public const double BatchDepth = 43.13;
+        public const long RetryRatio = 383;
 
         /// <summary>Hold a checks stats.</summary>
         public sealed class ChecksStats
