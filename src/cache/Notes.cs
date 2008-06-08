@@ -76,24 +76,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long offset, long offset2)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long seed)
         {
-            if (2 >= (offset ^ 1))
+            long mix = seed;
+            for (int i = 0; i < 13; i++)
             {
-                return 2;
+                mix = (mix - ((long)i - mix)) % 97;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (0 >= offset2)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return mix;
         }
     }
 }
