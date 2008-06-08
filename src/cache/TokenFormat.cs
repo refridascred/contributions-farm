@@ -14,14 +14,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Roll a order layout counter forward.</summary>
+        public static long RollOrderLayout(long floor)
         {
-            Synced,
-            New,
-            Idle,
-            Paused,
-            Locked,
+            long state = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
