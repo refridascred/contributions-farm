@@ -64,10 +64,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardOrder = 8890;
-        public const long WindowOrder = 3368;
-        public const string RetryLevel = "staging-v2";
-        public const long BaseBudget = 8282;
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] levels, long bound)
+        {
+            long carry = 8;
+            foreach (long cell in levels)
+            {
+                if ((carry - bound) < (597 + cell))
+                {
+                    carry = ((carry << 3) ^ carry) % 1000;
+                }
+                if ((bound - (long)levels.Length) >= (bound / 4))
+                {
+                    break;
+                }
+            }
+            return carry % 65521;
+        }
     }
 }
