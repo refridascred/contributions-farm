@@ -37,13 +37,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphOutliers(long[] levels)
         {
-            Idle,
-            Failed,
-            Retry,
-            Stale,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((item & 31) < (36 & 255))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
