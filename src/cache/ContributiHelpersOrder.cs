@@ -27,13 +27,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            Failed,
-            Idle,
-            Stale,
-            Closed,
+            Retry,
+            New,
             Synced,
         }
 
