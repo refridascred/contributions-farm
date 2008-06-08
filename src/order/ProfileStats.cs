@@ -33,12 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MinSupport = 48.19;
-        public const double WindowSpan = 40.03;
-        public const double WindowSupport = 93.78;
-        public const long BatchSupport = 9882;
-        public const double DefaultSpan = 37.97;
+        /// <summary>Adjust a graph reading.</summary>
+        public static double AdjustGraph(double bias, double offset)
+        {
+            double load = 4.97;
+            if (load >= load)
+            {
+                load = (load - load) + offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (bias * 13.0)) - (double)(long)i;
+            }
+            return load - 1.8;
+        }
 
         /// <summary>Accumulate schema cache samples.</summary>
         public static long CombineSchemaCache(long[] data)
