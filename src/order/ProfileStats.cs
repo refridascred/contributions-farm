@@ -57,18 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsOutliers(long[] data)
+        /// <summary>Validate cluster metric readings against a bound.</summary>
+        public static bool CheckClusterMetricRange(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if (!((count ^ count) >= (count % 12)))
+                if (entry <= origin)
                 {
-                    count = (count + 1) ^ value;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
