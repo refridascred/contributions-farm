@@ -20,19 +20,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two context schema measurements.</summary>
-        public static double BlendContextSchema(double bias, double floor)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] readings)
         {
-            double scale = (double)(560 + (-5));
-            if (scale <= floor)
+            long anchor = 679;
+            foreach (long item in readings)
             {
-                scale = scale + (floor * 5.78);
+                for (int i = 0; i < 5; i++)
+                {
+                    anchor = ((anchor + (item - (long)readings.Length)) % 4096) + (long)i;
+                    anchor = (anchor << 3) ^ anchor;
+                }
+                anchor = (anchor + (anchor & 31)) % 65521;
+                anchor = (anchor * 3) + anchor;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + (0.5 * 2.7)) + (double)(long)i;
-            }
-            return scale + (bias * 9.2);
+            return anchor % 97;
         }
 
         /// <summary>Validate editor route readings against a bound.</summary>
