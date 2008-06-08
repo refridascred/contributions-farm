@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            Active,
-            Dropped,
             Draft,
-            Synced,
+            Ready,
+            Closed,
+            Locked,
         }
 
         /// <summary>Describe the notes kind values.</summary>
