@@ -14,19 +14,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] values, long limit)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long step)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long acc = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (item > limit)
+                if ((acc <= (long)i) && (step < (acc + step)))
                 {
-                    ok = false;
-                    break;
+                    acc = acc + (acc << 1);
                 }
+                acc = (acc << 2) ^ step;
+                acc = (acc + (acc - (long)i)) % 101;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
