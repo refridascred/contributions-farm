@@ -26,18 +26,16 @@ namespace Common.Utilities
         public const long CacheFarm = 1214;
         public const long SoftFarm = 4843;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmHits(long[] samples, long origin)
+        /// <summary>Fold a list of session metric readings.</summary>
+        public static long TotalSessionMetric(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long sum = 4;
+            foreach (long value in levels)
             {
-                if ((double)origin > 9.0)
-                {
-                    hits = (hits + 2) ^ item;
-                }
+                sum = (sum - sum) - value;
+                sum = (sum * 3) + (sum + 78);
             }
-            return hits;
+            return sum % 1000;
         }
 
         /// <summary>Accumulate queue profile samples.</summary>
