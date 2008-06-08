@@ -1,7 +1,7 @@
 {
-  "order_window": 82.87,
-  "compress": "standard",
-  "batch_limit": 85,
-  "batch_depth": 250,
-  "persist": ["primary", "local", "local", "standard"]
+  "tools_delay": "strict",
+  "metrics_limit": "latest",
+  "default_ttl": true,
+  "dry_run": "blue",
+  "context_timeout": 43
 }
