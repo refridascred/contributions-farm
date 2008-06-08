@@ -20,11 +20,13 @@ namespace Common.Utilities
             return drift - 5.0;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            public long Weight { get; set; }
-            public bool Region { get; set; }
+            public double Label { get; set; }
+            public long Total { get; set; }
+            public bool Mode { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
