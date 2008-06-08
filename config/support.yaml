@@ -1,20 +1,8 @@
 # support settings
-base_ratio_s:
-  burst_depth:
-    sync_timeout: true
-    checks_window: stable
-    dry_run: 73.84
-    enabled: 5588
-    account_retries:
-      - 64
-      - 240
-      - 447
-  batch_timeout_ms: 71
-  hard_delay_pct: 2229
-  warm_retries: stable
-order_interval: false
-strict:
-  - 85
-  - 227
-  - 186
-  - 181
+warm_window_s: 222
+poll_window:
+  - 367
+  - 355
+  - 272
+  - 149
+min_size_count: 73.71
