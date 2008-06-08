@@ -20,12 +20,11 @@ namespace Common.Utilities
             return ratio + (ratio * 15.0);
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            Failed,
-            Stale,
-            Closed,
+            public string Level { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
