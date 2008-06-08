@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportBounds(long[] levels, long target)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long target, long offset)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long bound = target ^ offset;
+            if (!(target >= bound))
             {
-                if (cell < target)
+                return 6;
+            }
+            else
+            {
+                if (target >= (target % 100))
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((0.26 + 3.3) != (double)target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((target % 64) != ((-22) + bound)) && ((offset / 7) != (target + 632)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
