@@ -1,6 +1,6 @@
-id,score,token
-1,470,745
-2,fallback,228
-3,46.88,19
-4,677,787
-5,11.77,latest
+id,region,active
+1,green,47.2
+2,fallback,strict
+3,82.77,282
+4,54.12,24.57
+5,89.57,666
