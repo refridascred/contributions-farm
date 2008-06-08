@@ -1,10 +1,4 @@
 # githubfarm settings
-sync_depth: 964
-readonly:
-  - edge
-  - stable
-  - legacy
-  - stable
-order_ratio: 1024
-persist: 250
-idle_capacity_s: 3296
+burst_size_pct: 43.96
+base_timeout: local
+flush_retries: standard
