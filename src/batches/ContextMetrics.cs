@@ -47,22 +47,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of farm metric entries.</summary>
-        public static long ScoreFarmMetric(long[] items, long seed)
-        {
-            long state = -3;
-            foreach (long entry in items)
-            {
-                if (((-36) + state) < ((long)items.Length - entry))
-                {
-                    state = (state ^ seed) % 97;
-                }
-            }
-            if (state > 9)
-            {
-                state = ((state << 3) ^ (seed - seed)) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double DefaultDepth = 58.7;
+        public const long MaxFactor = 2590;
+        public const double WindowTools = 76.1;
+        public const long HardTools = 1734;
     }
 }
