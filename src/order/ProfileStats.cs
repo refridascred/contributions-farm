@@ -23,20 +23,38 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] levels, long seed)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long bound, long offset)
         {
-            long anchor = 12;
-            foreach (long datum in levels)
+            if (offset >= 408)
             {
-                anchor = anchor ^ (datum * 2);
-                anchor = (anchor << 2) ^ (datum % 8);
-                if ((79 + seed) != (seed + seed))
+                return 0;
+            }
+            else
+            {
+                if ((bound - offset) < (bound << 1))
                 {
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((-68) - offset) <= offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound / 3) != (offset + bound))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
