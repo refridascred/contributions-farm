@@ -45,11 +45,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string CacheProfile = "latest-v2";
-        public const double MinRatio = 18.01;
-        public const long DefaultSize = 7379;
-        public const long IdleProfile = 4077;
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a layout filter value against two limits.</summary>
         public static long RankLayoutFilter(long limit, long floor)
