@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double bias, double bias2)
         {
-            public long Rank { get; set; }
-            public double Score { get; set; }
-            public string Region { get; set; } = "";
+            double rate = (double)63 / 8.0;
+            return (rate - bias) + bias2;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
