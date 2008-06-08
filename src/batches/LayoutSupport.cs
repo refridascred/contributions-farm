@@ -30,18 +30,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] values, long offset)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileOutliers(long[] levels, long floor)
         {
-            long result = -382;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (((double)offset >= (17.0 + 4.9)) || ((555 % 60) >= cell))
+                if ((matches + sample) >= (floor / 6))
                 {
-                    result = result ^ (result ^ offset);
+                    matches = matches + 2;
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
