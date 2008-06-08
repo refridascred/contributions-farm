@@ -20,19 +20,10 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] levels)
-        {
-            long sum = 95;
-            foreach (long cell in levels)
-            {
-                if (10 > (74 + sum))
-                {
-                    sum = (sum ^ (cell - cell)) % 97;
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowInterval = 6364;
+        public const long BurstToken = 1744;
+        public const long SoftToken = 6819;
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long TallyCommandMatches(long[] series)
