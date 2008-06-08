@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 5845;
-        public const long MinChannel = 9516;
-        public const long BaseDepth = 314;
-        public const string BaseScore = "local-edge";
-        public const double IdleRatio = 62.69;
+        /// <summary>Measure how many support record samples are out of range.</summary>
+        public static long CountSupportRecordGaps(long[] items)
+        {
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (((648 ^ count) <= (-518)) || ((item >= (item + count)) && ((count & 7) < (item - count))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine window values into a single score.</summary>
         public static long DigestWindow(long[] series, long seed)
