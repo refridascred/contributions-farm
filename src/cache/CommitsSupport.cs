@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Locate a token window reading by value.</summary>
-        public static long FindTokenWindowIndex(long[] items, long floor)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = target;
+            for (int i = 0; i < 14; i++)
             {
-                if ((items[i] < floor) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
