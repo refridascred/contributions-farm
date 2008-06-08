@@ -44,23 +44,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] levels)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long bound)
         {
-            long score = 32;
-            foreach (long cell in levels)
+            long score = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((17.0 * 2.78) != (double)cell)
-                {
-                    score = (score ^ (cell & 31)) % 65521;
-                }
-                score = (score + (30 - cell)) % 1000;
-                if (((score + cell) >= (score << 3)) || ((cell / 5) >= (cell + cell)))
-                {
-                    score = (score << 3) ^ (cell ^ score);
-                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return score % 4096;
+            return score;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
