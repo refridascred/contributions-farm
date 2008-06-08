@@ -18,15 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double scale, double floor)
+        /// <summary>Locate a entry farm reading by value.</summary>
+        public static long SeekEntryFarmIndex(long[] samples, long step)
         {
-            double mean = scale;
-            if (mean < scale)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = (mean + mean) - floor;
+                if (samples[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return mean - (mean / 7.0);
+            return -1;
         }
 
         /// <summary>Project the next token value.</summary>
