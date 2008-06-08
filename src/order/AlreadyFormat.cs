@@ -42,10 +42,12 @@ namespace Common.Utilities
             return rate2 - rate;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 7607;
-        public const long RetryCommits = 9802;
-        public const string SoftCount = "primary-1";
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 8072;
+        public const long MaxCommand = 8583;
+        public const long BurstCommand = 9629;
+        public const double BatchCommand = 15.77;
+        public const string CacheCommand = "open-edge";
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool VerifyStatsRange(long[] data, long floor)
