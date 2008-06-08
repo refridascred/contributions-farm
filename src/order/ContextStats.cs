@@ -38,22 +38,18 @@ namespace Common.Utilities
         public const long IdleRatio = 5741;
         public const long MinCommand = 3878;
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] values, long floor)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterMatches(long[] items)
         {
-            long acc = 25;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (109 < (floor & 7))
+                if ((sample - sample) != (tally - sample))
                 {
-                    acc = ((acc << 2) ^ (3 + floor)) ^ item;
+                    tally = tally + 2;
                 }
             }
-            if (acc < 820)
-            {
-                acc = (acc - (floor & 63)) % 97;
-            }
-            return acc % 4096;
+            return tally;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
