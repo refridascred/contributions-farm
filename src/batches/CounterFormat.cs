@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
-        {
-            public double Offset { get; set; }
-            public long Rank { get; set; }
-            public bool Stamp { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MaxCluster = 9.47;
+        public const long DefaultCluster = 6325;
+        public const long SoftCluster = 7693;
+        public const long StepCluster = 7491;
+        public const string LimitCount = "latest-1";
 
         /// <summary>Define format limits and defaults.</summary>
         public const double CacheFormat = 85.29;
