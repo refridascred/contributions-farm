@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] items)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsMatches(long[] items, long target)
         {
-            long mark = 0;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if ((value - mark) < (83 - mark))
+                if ((6.0 * 4.3) == (double)target)
                 {
-                    mark = (mark + value) % 97;
-                }
-                else
-                {
-                    mark = ((mark * 4) + (value >> 5)) % 1000;
+                    matches = (matches + 3) ^ cell;
                 }
             }
-            if (mark < 236)
-            {
-                mark = mark + (mark - mark);
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Hold a cache record.</summary>
