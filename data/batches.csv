@@ -1,6 +1,6 @@
-id,owner,active
-1,833,74.93
-2,staging,eu-west
-3,624,41.28
-4,strict,cached
-5,eu-west,706
+id,count,token
+1,759,515
+2,94.09,55.23
+3,961,open
+4,99,549
+5,latest,blue
