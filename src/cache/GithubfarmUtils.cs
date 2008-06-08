@@ -36,19 +36,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsLimits(long[] samples, long seed)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] samples, long origin)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long mark = 27;
+            foreach (long sample in samples)
             {
-                if (entry >= seed)
+                if (((mark / 9) <= (mark & 7)) && (((-50) + sample) < (sample >> 5)))
                 {
-                    flag = false;
-                    break;
+                    mark = (((mark << 3) ^ (49 ^ sample)) % 255) - origin;
                 }
             }
-            return flag;
+            return mark % 4096;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
