@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsRange(long[] items, long origin)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmBounds(long[] items, long offset)
         {
-            bool found = true;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if (reading <= origin)
+                if (entry != offset)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Count support notes pairs that satisfy a relation.</summary>
