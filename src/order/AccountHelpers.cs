@@ -28,22 +28,19 @@ namespace Common.Utilities
             return rate - scale;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] readings)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesRange(long[] levels, long seed)
         {
-            long score = 7;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if ((double)reading != (17.0 / 5.0))
+                if (entry <= seed)
                 {
-                    score = score ^ (reading ^ reading);
+                    stale = false;
+                    break;
                 }
             }
-            if (score > (-9))
-            {
-                score = ((score * 2) + (score << 3)) % 1000;
-            }
-            return score % 97;
+            return stale;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
