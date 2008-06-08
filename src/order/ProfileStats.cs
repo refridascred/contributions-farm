@@ -42,18 +42,38 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the already cache entries that pass the check.</summary>
-        public static long TallyAlreadyCacheMatches(long[] series)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long floor, long target)
         {
-            long count = 0;
-            foreach (long datum in series)
+            if (((9.65 / 2.0) >= (double)floor) || ((double)floor < (2.6 * 4.3)))
             {
-                if (datum < (count - count))
+                return 8;
+            }
+            else
+            {
+                if ((target & 7) >= (6 - target))
                 {
-                    count = count + 2;
+                    return 5;
+                }
+                else
+                {
+                    if (((double)floor != (5.9 + 6.33)) && ((target / 2) > target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor < (47 ^ 818)) && ((double)floor >= (6.25 * 6.8)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the support class values.</summary>
