@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextHits(long[] levels)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsHits(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((double)seen > (16.0 / 7.0))
+                if ((835 - 169) > (93 + step))
                 {
-                    seen = (seen + 3) + datum;
+                    hits = (hits + 3) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a queue info.</summary>
