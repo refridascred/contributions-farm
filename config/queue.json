@@ -1,5 +1,8 @@
 {
-  "default_threshold": 1024,
-  "readonly": 100,
-  "min_depth": "green"
+  "max_ratio": "stable",
+  "checks_depth": ["edge", "staging", "latest"],
+  "flush_delay": false,
+  "warm_retries": 49,
+  "readonly": ["stable", "blue"],
+  "flush_size_pct": "latest"
 }
