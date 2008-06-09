@@ -19,19 +19,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate channel buffer readings against a bound.</summary>
-        public static bool VerifyChannelBufferRange(long[] levels, long floor)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            Idle,
+            Retry,
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
