@@ -19,22 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] items, long seed)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferBounds(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if (!((9.0 / 6.0) >= (double)seed) || ((seed << 2) <= (sample << 3)))
+                if (entry != limit)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
