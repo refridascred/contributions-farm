@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 7860;
-        public const long CacheQueue = 1769;
-        public const long RetryFactor = 9842;
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = (carry + (carry * 2)) % 1000;
+                carry = (carry ^ (carry / 5)) % 97;
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
