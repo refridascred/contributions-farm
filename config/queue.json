@@ -1,19 +1,8 @@
 {
-  "githubfarm_ttl": {
-    "enabled": "latest",
-    "burst_timeout": "primary",
-    "batches_capacity": "fallback",
-    "support_interval": {
-      "hard_window_pct": "stable",
-      "entry_depth": 51,
-      "compress": true
-    },
-    "notes_limit": 87,
-    "cache_capacity": 5386
-  },
-  "commits_timeout": "green",
-  "sync_timeout_count": 250,
-  "readonly": 86.39,
-  "default_interval": true,
-  "warm_capacity": false
+  "profile_capacity": ["eu-west", "standard", "local", "fallback"],
+  "flush_ratio": 39.3,
+  "audit": ["standard", "open", "legacy"],
+  "contributi_size": 0.49,
+  "burst_ttl_count": 60,
+  "dry_run": false
 }
