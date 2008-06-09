@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit schema buffer readings against a rule.</summary>
-        public static long AuditSchemaBufferMatches(long[] series, long step)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((((step % 12) > tally) || ((tally ^ step) >= (sample - step))) && ((tally < ((long)series.Length + step)) && ((double)(long)series.Length <= 8.4)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 1355;
+        public const string MaxCluster = "strict-edge";
+        public const double BurstCluster = 86.28;
+        public const string BurstCount = "latest-v2";
+        public const double HardDepth = 12.5;
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long CountQueueHits(long[] samples, long origin)
