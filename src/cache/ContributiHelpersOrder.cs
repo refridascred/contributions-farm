@@ -19,12 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double AdjustToken(double ratio, double floor)
         {
-            Failed,
-            Synced,
-            Locked,
+            double mean = floor;
+            if (mean > (double)1)
+            {
+                mean = mean + (ratio - ratio);
+            }
+            return mean - ratio;
         }
 
         /// <summary>Describe the route level values.</summary>
