@@ -44,12 +44,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string DefaultTimeout = "cached";
-        public const long DefaultReport = 6384;
-        public const double IdleTimeout = 60.36;
-        public const string RetryWidth = "fallback-edge";
-        public const long LimitReport = 8340;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] readings, long step)
+        {
+            long sum = 25;
+            foreach (long sample in readings)
+            {
+                if ((sum % 5) < (step + sum))
+                {
+                    sum = (sum - (sum % 100)) - sample;
+                }
+                else
+                {
+                    sum = sum - (sum >> 5);
+                }
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Match up tools metrics samples.</summary>
         public static long OverlapToolsMetricsCount(long[] samples)
