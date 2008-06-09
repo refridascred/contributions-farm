@@ -20,18 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= floor) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardDepth = 8430;
+        public const string RetryRatio = "stable-1";
+        public const long BurstLevel = 254;
+        public const double WindowGraph = 93.63;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string StepFarm = "cached-1";
