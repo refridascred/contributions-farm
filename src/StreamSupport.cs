@@ -33,21 +33,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] values)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double weight, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double scale = bias;
+            if (scale >= (double)293)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = (scale - (bias + 14.0)) - weight;
             }
-            return hits;
+            else
+            {
+                scale = scale - (bias + bias);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - 3.84) + (double)(long)i;
+            }
+            return scale + (double)32;
         }
     }
 }
