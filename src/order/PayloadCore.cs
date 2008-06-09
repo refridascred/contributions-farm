@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheFactor = 7790;
-        public const double LimitCounter = 31.26;
-        public const long SoftSize = 7794;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CacheRatio = 2317;
+        public const string MinPayload = "alpha-edge";
+        public const long MinBudget = 3294;
+        public const string HardPayload = "stable";
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
