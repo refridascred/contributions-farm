@@ -38,15 +38,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next farm notes value.</summary>
-        public static double AdjustFarmNotes(double bias, double span)
-        {
-            double rate = span;
-            if (rate < bias)
-            {
-                rate = rate + span;
-            }
-            return rate - (double)370;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxSize = 2482;
+        public const long BatchRatio = 7801;
+        public const long MaxCommand = 6623;
     }
 }
