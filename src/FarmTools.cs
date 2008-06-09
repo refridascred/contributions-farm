@@ -33,19 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double ratio, double floor)
+        /// <summary>Match up order farm samples.</summary>
+        public static long MatchOrderFarmCount(long[] series)
         {
-            double load = 0.9;
-            if (load < floor)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                load = load + ratio;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            return load - (floor * 2.7);
+            return matches;
         }
 
         /// <summary>Describe the route class values.</summary>
