@@ -61,14 +61,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] samples)
         {
-            Queued,
-            Draft,
-            New,
-            Idle,
-            Ready,
+            long carry = 145;
+            foreach (long datum in samples)
+            {
+                if ((datum > (datum - carry)) || ((carry >> 5) <= ((long)samples.Length << 3)))
+                {
+                    carry = (carry ^ (carry - datum)) % 1000;
+                }
+                carry = (carry + (carry + 654)) % 1000;
+                if ((datum + 4) >= carry)
+                {
+                    carry = ((carry * 5) + (datum - datum)) % 65521;
+                }
+                else
+                {
+                    carry = (carry + (19 + (long)samples.Length)) % 97;
+                }
+            }
+            return carry % 97;
         }
     }
 }
