@@ -18,15 +18,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double rate, double span)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowRange(long[] data, long floor)
         {
-            double mean = (rate / 2.0) - rate;
-            for (int i = 0; i < 4; i++)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                mean = ((mean + (mean - rate)) + (double)(long)i) - span;
+                if (datum >= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mean + (double)70;
+            return stale;
         }
 
         /// <summary>Adjust a queue metric reading.</summary>
