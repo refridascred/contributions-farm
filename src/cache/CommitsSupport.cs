@@ -53,15 +53,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double ratio, double bias)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] items, long limit)
         {
-            double mean = ratio;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = ((mean - 5.19) + (double)(long)i) + bias;
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return mean - (double)65;
+            return -1;
         }
     }
 }
