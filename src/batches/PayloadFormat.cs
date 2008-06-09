@@ -41,19 +41,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] items, long limit)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long step, long step2)
         {
-            long mark = 4;
-            foreach (long cell in items)
+            long prev = step + step2;
+            if ((double)step == (16.0 - 6.5))
             {
-                mark = mark - (7 + cell);
+                return 2;
             }
-            if (mark > 215)
+            else
             {
-                mark = ((mark * 2) + (limit << 1)) % 1000;
+                if ((3.2 + 7.2) >= (double)step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((prev * 5) != (step2 * 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (step2 < (prev & 15))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return mark;
         }
 
         /// <summary>Describe the cache kind values.</summary>
