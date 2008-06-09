@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchRange(long[] levels, long target)
         {
-            public bool Offset { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Region { get; set; }
-            public string Level { get; set; } = "";
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
