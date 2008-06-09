@@ -53,23 +53,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] series, long bound)
+        /// <summary>Count the graph cluster entries that pass the check.</summary>
+        public static long MeasureGraphClusterOutliers(long[] data, long bound)
         {
-            long mark = 996;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                mark = ((mark - (bound + bound)) % 65521) - entry;
-                if ((0.03 / 5.0) >= (double)bound)
+                if ((1.62 - 5.8) > (double)matches)
                 {
-                    mark = (mark - (mark % 7)) % 1000;
+                    matches = ((matches + 3) ^ reading) - bound;
                 }
             }
-            if (mark > (-4))
-            {
-                mark = (mark << 3) ^ (bound % 7);
-            }
-            return mark % 65521;
+            return matches;
         }
     }
 }
