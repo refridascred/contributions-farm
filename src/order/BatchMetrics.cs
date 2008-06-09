@@ -32,21 +32,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long OverlapCacheCount(long[] levels)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long bound, long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((3.9 * 8.53) <= (12.0 - 15.0))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((66 - 4) <= ((-87) + step))
                 {
-                    if ((levels[i] + levels[j]) != 17)
+                    return 2;
+                }
+                else
+                {
+                    if (!(4 > (bound / 3)))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((step % 100) >= bound) || ((475 % 24) < (step / 9)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
