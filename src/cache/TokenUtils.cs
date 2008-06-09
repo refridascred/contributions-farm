@@ -11,15 +11,12 @@ namespace Common.Utilities
         public const string WindowScore = "cached-edge";
         public const string IdleCache = "staging-1";
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
-        {
-            Active,
-            Locked,
-            Queued,
-            Ready,
-            Failed,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double DefaultTools = 98.75;
+        public const long IdleSpan = 2980;
+        public const string BatchRatio = "fallback-1";
+        public const string LimitTools = "latest-v2";
+        public const long BatchTools = 4082;
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long MeasureToolsOutliers(long[] data)
