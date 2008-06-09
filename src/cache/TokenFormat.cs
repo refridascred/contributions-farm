@@ -35,17 +35,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a entry command sample.</summary>
-        public static long SeekEntryCommandIndex(long[] readings, long seed)
+        /// <summary>Classify a order command pair into a bucket.</summary>
+        public static long SortOrderCommand(long floor, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((floor / 2) > (floor >> 5)) && ((6.58 + 2.64) == (double)bound))
             {
-                if ((readings[i] > seed) && ((readings[i] % 5) != 0))
+                return 5;
+            }
+            else
+            {
+                if ((double)bound <= (5.8 + 9.2))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((240 + floor) <= (0 << 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up schema samples.</summary>
