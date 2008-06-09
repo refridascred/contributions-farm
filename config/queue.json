@@ -1,5 +1,16 @@
 {
-  "hard_delay_ms": "primary",
-  "min_threshold_count": 60,
-  "soft_interval_s": 3485
+  "poll_interval_ms": 250,
+  "batch_interval": {
+    "strict": [309, 131, 52],
+    "base_threshold_s": {
+      "batch_capacity_s": 250,
+      "editor_ttl": "legacy",
+      "strict": 1848,
+      "dry_run": false,
+      "idle_size_count": 55.99,
+      "batch_timeout": "stable"
+    },
+    "poll_timeout": true
+  },
+  "retry_threshold_count": 53
 }
