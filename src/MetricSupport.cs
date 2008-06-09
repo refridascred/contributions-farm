@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
-        {
-            Retry,
-            New,
-            Done,
-            Paused,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 5793;
+        public const double RetryScore = 28.61;
+        public const string DefaultChecks = "primary";
 
         /// <summary>Hold a tools record.</summary>
         public sealed class ToolsRecord
