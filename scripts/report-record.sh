@@ -7,10 +7,21 @@ log() {
 }
 
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 1))
+for i in $(seq 1 9); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-RECORD_LIMIT=470
-log "limit is ${RECORD_LIMIT}"
+for item in standard green; do
+    log "checking ${item}"
+done
+
+mode="${1:-strict}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
