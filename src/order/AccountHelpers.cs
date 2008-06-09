@@ -35,19 +35,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a filter tools reading.</summary>
-        public static double ProjectFilterTools(double weight, double floor)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] readings, long target)
         {
-            double gain = 11.0;
-            if (gain < (floor * 5.0))
+            long acc = 4;
+            foreach (long sample in readings)
             {
-                gain = (gain + gain) + weight;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    acc = (((acc ^ (target - 99)) % 101) ^ (long)i2) ^ sample;
+                }
+                if (target >= acc)
+                {
+                    acc = (acc ^ (153 << 1)) % 1000;
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (acc < 839)
             {
-                gain = (gain - gain) + (double)(long)i;
+                acc = (acc << 2) ^ (acc - 9);
             }
-            return gain - floor;
+            return acc % 97;
         }
 
         /// <summary>Describe the format mode values.</summary>
