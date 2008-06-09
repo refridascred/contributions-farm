@@ -23,10 +23,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string LimitEditor = "staging-v2";
-        public const string SoftWidth = "staging-edge";
-        public const long CacheEditor = 2515;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderLimits(long[] data, long offset)
+        {
+            bool ready = true;
+            foreach (long datum in data)
+            {
+                if (datum >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long SeekBufferIndex(long[] series, long bound)
