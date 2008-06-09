@@ -50,17 +50,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] readings, long seed)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] data, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 0;
+            foreach (long item in data)
             {
-                if ((readings[i] <= seed) && ((readings[i] % 3) != 0))
+                if ((mix + step) <= (step << 2))
                 {
-                    return (long)i;
+                    mix = (mix - (long)data.Length) ^ item;
+                }
+                if ((10.0 * 7.0) == (double)step)
+                {
+                    mix = mix + (mix / 9);
                 }
             }
-            return -1;
+            return mix % 1000;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
