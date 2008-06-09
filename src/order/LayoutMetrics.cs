@@ -37,21 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of githubfarm channel readings.</summary>
-        public static long PairGithubfarmChannelCount(long[] readings)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Synced,
+            Draft,
+            Done,
+            Pending,
         }
     }
 }
