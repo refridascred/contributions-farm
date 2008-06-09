@@ -1,7 +1,19 @@
 {
-  "entry_window": [270, 15],
-  "batch_window": 95,
-  "burst_limit": "local",
-  "filter_depth": 56.57,
-  "schema_interval": ["standard", "cached"]
+  "soft_retries_count": 29.21,
+  "editor_limit": 500,
+  "soft_depth_pct": 5696,
+  "contributi_capacity": "green",
+  "burst_capacity_s": {
+    "flush_window": {
+      "contributi_retries": 32,
+      "default_ratio_ms": 80.02,
+      "queue_depth": true,
+      "warm_depth": 78.69,
+      "githubfarm_size": 250
+    },
+    "commits_interval": "stable",
+    "tools_interval": 68.74,
+    "burst_limit": "standard"
+  },
+  "base_size": 73
 }
