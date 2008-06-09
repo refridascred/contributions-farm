@@ -29,20 +29,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] readings)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] levels, long seed)
         {
-            long score = 148;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                score = (score + (204 - sample)) % 4096;
-                score = (score ^ score) % 4096;
+                if (reading >= matches)
+                {
+                    matches = (matches + 3) - seed;
+                }
             }
-            if (score > 3)
-            {
-                score = score + (score - score);
-            }
-            return score;
+            return matches;
         }
     }
 }
