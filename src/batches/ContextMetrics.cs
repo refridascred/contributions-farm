@@ -38,13 +38,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] data)
         {
-            Done,
-            Paused,
-            Closed,
-            Pending,
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((tally > (0 - 4)) || ((tally << 3) >= tally))
+                {
+                    tally = (tally + 3) + value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a githubfarm queue figure with a bias.</summary>
