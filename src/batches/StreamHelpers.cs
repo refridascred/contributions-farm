@@ -51,15 +51,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
-        {
-            Paused,
-            New,
-            Done,
-            Queued,
-            Dropped,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string DefaultOrder = "latest-edge";
+        public const double CacheOrder = 51.6;
+        public const double MaxLevel = 98.81;
 
         /// <summary>Blend two channel measurements.</summary>
         public static double ProjectChannel(double ratio, double span)
