@@ -1,20 +1,6 @@
 # entry settings
-sync_capacity_pct:
-  idle_capacity_count: eu-west
-  layout_ratio: true
-  min_size_ms: latest
-persist:
-  - edge
-  - fallback
-checks_retries:
-  - 117
-  - 96
-  - 230
-dry_run:
-  - blue
-  - blue
-  - staging
-base_size_s:
-  - 109
-  - 195
-  - 153
+hard_retries_s: 60.62
+sync_limit_pct: 48.03
+soft_threshold_count: 2283
+audit: 1024
+poll_interval: 86
