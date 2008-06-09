@@ -55,12 +55,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] items, long origin)
         {
-            public long Level { get; set; }
-            public long Score { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
