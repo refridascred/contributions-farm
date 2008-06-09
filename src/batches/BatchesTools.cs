@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsMatches(long[] values, long bound)
         {
-            Idle,
-            Closed,
-            Draft,
-            Stale,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((double)bound < (9.31 + 3.81))
+                {
+                    hits = (hits + 3) ^ datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a tools info.</summary>
