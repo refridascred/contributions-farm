@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine graph layout values into a single score.</summary>
-        public static long ScoreGraphLayout(long[] items, long target)
+        /// <summary>Audit queue profile readings against a rule.</summary>
+        public static long AuditQueueProfileGaps(long[] readings, long seed)
         {
-            long anchor = 652;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                anchor = (anchor << 3) ^ (anchor - value);
-                if ((value >> 1) == (target / 6))
+                if ((item / 6) > item)
                 {
-                    anchor = ((anchor * 3) + ((long)items.Length & 63)) % 97;
+                    tally = (tally + 3) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return anchor % 1000;
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
