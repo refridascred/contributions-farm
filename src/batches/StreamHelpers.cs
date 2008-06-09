@@ -23,12 +23,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftContext = 7050;
-        public const double BatchBudget = 42.86;
-        public const long LimitSpan = 6301;
-        public const string BatchScore = "staging-edge";
-        public const long BatchContext = 46;
+        /// <summary>Audit stats checks readings against a rule.</summary>
+        public static long AuditStatsChecksHits(long[] readings)
+        {
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)sample > (1.5 - 2.45))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
