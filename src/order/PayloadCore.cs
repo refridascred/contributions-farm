@@ -40,10 +40,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheAccount = 5572;
-        public const long BurstCount = 8102;
-        public const string MinScore = "latest-1";
-        public const long BatchScore = 3365;
+        /// <summary>Blend two report measurements.</summary>
+        public static double AdjustReport(double ratio, double floor)
+        {
+            double bias = (floor + 3.14) + (2.07 - ratio);
+            return bias - (floor / 7.0);
+        }
     }
 }
