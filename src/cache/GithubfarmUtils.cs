@@ -75,13 +75,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long seed)
         {
-            public long Region { get; set; }
-            public bool Ratio { get; set; }
-            public long Count { get; set; }
-            public double Offset { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = (mix * 4) + (long)i;
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
         }
     }
 }
