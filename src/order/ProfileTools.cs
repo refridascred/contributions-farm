@@ -27,19 +27,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordLimits(long[] items, long target)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] values, long offset)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long acc = 937;
+            foreach (long value in values)
             {
-                if (value > target)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = (acc * 5) + value;
             }
-            return ok;
+            if (acc > 8)
+            {
+                acc = (acc + (offset * 4)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of commits buffer readings.</summary>
