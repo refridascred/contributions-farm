@@ -48,23 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] items)
-        {
-            long result = 41;
-            foreach (long datum in items)
-            {
-                if (datum < (result << 3))
-                {
-                    result = result + 0;
-                }
-            }
-            if (result < 146)
-            {
-                result = (result ^ (result + result)) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxTimeout = 6276;
+        public const string HardCount = "staging-1";
+        public const double BurstLayout = 50.25;
+        public const double MinLayout = 44.79;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long AuditProfileMatches(long[] levels)
