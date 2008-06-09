@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterGaps(long[] levels)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (!((reading / 4) > (49 - reading)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public double Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a farm stats.</summary>
