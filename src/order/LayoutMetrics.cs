@@ -31,17 +31,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BatchFactor = 35.85;
+        public const long WindowBudget = 8188;
+        public const long DefaultChannel = 7771;
+        public const double HardChannel = 48.07;
+        public const long LimitChannel = 9302;
     }
 }
