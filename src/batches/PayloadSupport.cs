@@ -42,11 +42,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MinLevel = "local-edge";
-        public const string BaseFactor = "fallback-edge";
-        public const long MaxRatio = 8471;
-        public const double BaseSize = 66.24;
-        public const long BatchSize = 7570;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteHits(long[] values, long target)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((target + target) > (-7))
+                {
+                    seen = (seen + 3) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
