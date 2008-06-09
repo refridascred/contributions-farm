@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a graph contributi pair into a bucket.</summary>
-        public static long ClassifyGraphContributi(long origin, long target)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long limit, long seed)
         {
-            if ((target - origin) > (origin << 1))
+            long bound = limit + seed;
+            if (((bound - seed) >= (bound / 2)) && ((double)limit <= 8.7))
             {
-                return 1;
+                return 2;
             }
             else
             {
-                if ((60 / 2) < (14 ^ target))
+                if ((0 + bound) <= (74 ^ seed))
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    return 3;
+                    if ((limit - 5) > ((-242) << 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
         }
