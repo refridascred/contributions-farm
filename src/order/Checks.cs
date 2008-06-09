@@ -16,22 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenMatches(long[] items, long bound)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((double)bound != (5.14 - 4.0))
-                {
-                    tally = (tally + 2) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
