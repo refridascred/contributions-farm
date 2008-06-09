@@ -80,38 +80,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long offset, long seed)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] data)
         {
-            if ((seed * 3) >= (seed + offset))
+            long state = 53;
+            foreach (long reading in data)
             {
-                return 0;
+                state = ((state + (state * 4)) % 255) + reading;
             }
-            else
-            {
-                if ((seed >> 3) <= 71)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((3.27 * 5.0) > (double)seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((3 <= (offset * 5)) && ((offset - seed) != (seed >> 3)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return state;
         }
     }
 }
