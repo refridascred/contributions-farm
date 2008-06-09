@@ -14,25 +14,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long offset, long target)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] values, long bound)
         {
-            long span = offset - target;
-            if (span <= (span + target))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset + offset) >= (span - target))
+                if ((values[i] > bound) && ((values[i] % 5) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank entry token input into a small class.</summary>
