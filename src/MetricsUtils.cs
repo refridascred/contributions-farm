@@ -41,11 +41,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleFarm = 7904;
-        public const long CacheFarm = 172;
-        public const double MaxSize = 55.11;
-        public const double IdleSpan = 63.49;
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long target, long seed)
+        {
+            if (seed >= (target * 5))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)seed > (10.0 + 5.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (seed <= target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(target <= (target - 43)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit tools report readings against a rule.</summary>
         public static long AuditToolsReportHits(long[] series, long step)
