@@ -42,19 +42,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a batch stream reading.</summary>
-        public static double BlendBatchStream(double scale, double floor)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            double drift = (double)(2 << 1);
-            if (drift > (double)512)
-            {
-                drift = (drift - (double)34) + floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (drift + drift)) + (double)(long)i;
-            }
-            return drift + (scale + scale);
+            public long Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Digest a series of context metric entries.</summary>
