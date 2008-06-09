@@ -1,8 +1,10 @@
 {
-  "default_capacity": true,
-  "min_ttl": [358, 245, 430],
-  "min_delay_ms": "cached",
-  "flush_capacity_pct": 75.8,
-  "counter_depth": 74.12,
-  "dry_run": 55.67
+  "max_size_ms": ["fallback", "edge"],
+  "enabled": 97,
+  "idle_threshold": false,
+  "sync_limit_count": {
+    "burst_window": [451, 61],
+    "default_capacity": 32.7,
+    "base_size": "primary"
+  }
 }
