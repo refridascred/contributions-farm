@@ -27,21 +27,11 @@ namespace Common.Utilities
         public const double MinSupport = 9.81;
         public const double CacheSupport = 96.3;
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] items)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Region { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
