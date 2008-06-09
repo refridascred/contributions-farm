@@ -34,23 +34,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ProjectProfile(double scale, double span)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            double drift = (scale / 4.0) + (3.71 * 19.0);
-            if (drift > (scale * 11.0))
-            {
-                drift = (drift + scale) - span;
-            }
-            else
-            {
-                drift = drift + 16.0;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (double)139) + (double)(long)i;
-            }
-            return drift + 11.0;
+            Closed,
+            Idle,
+            Draft,
         }
     }
 }
