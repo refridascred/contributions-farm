@@ -14,18 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadOutliers(long[] readings, long limit)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((12.0 * 9.62) <= (double)(long)readings.Length)
-                {
-                    seen = ((seen + 2) + entry) + limit;
-                }
-            }
-            return seen;
+            Retry,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Define support limits and defaults.</summary>
