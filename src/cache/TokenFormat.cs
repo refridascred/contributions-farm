@@ -48,17 +48,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 3856;
+        public const long BatchFactor = 7384;
+        public const long SoftProfile = 2585;
+        public const long IdleRatio = 5954;
     }
 }
