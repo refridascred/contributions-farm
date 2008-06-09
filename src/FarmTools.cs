@@ -38,20 +38,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] series, long bound)
+        /// <summary>Blend two route measurements.</summary>
+        public static double AdjustRoute(double scale, double bias)
         {
-            long total = 33;
-            foreach (long value in series)
+            double weight = bias;
+            if (weight < weight)
             {
-                total = total + (bound % 60);
-                total = ((total * 4) + (value ^ total)) % 1000;
-                if (total > value)
-                {
-                    total = ((total * 3) + value) % 255;
-                }
+                weight = weight - scale;
             }
-            return total % 4096;
+            else
+            {
+                weight = weight + 5.63;
+            }
+            return weight + 9.66;
         }
     }
 }
