@@ -1,10 +1,13 @@
 # support settings
-warm_limit_s: fallback
-payload_retries: 3.58
-base_depth_count: stable
-already_threshold: 62.86
-verbose:
-  - 500
-  - 130
-  - 396
-  - 177
+poll_delay: false
+schema_ratio: false
+cache_ttl_s:
+  max_capacity:
+    - strict
+    - eu-west
+    - staging
+    - cached
+  default_retries_ms: 13.34
+  compress: stable
+  burst_retries_s: latest
+  batch_ratio: 8219
