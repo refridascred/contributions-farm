@@ -32,18 +32,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandOutliers(long[] series, long seed)
+        /// <summary>Look up the position of a already batch sample.</summary>
+        public static long FindAlreadyBatchIndex(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((799 + sample) <= (sample + 76)))
+                if ((series[i] < offset) && ((series[i] % 3) != 0))
                 {
-                    count = (count + 1) + seed;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
