@@ -1,13 +1,11 @@
 # Command notes
 
-The record helpers are pure functions, so they are safe to call from any thread.
-Each support is validated before it reaches the queue queue.
-
-The session report groups every payload by queue.
-Keep profile and graph names short and lowercase.
+The editor report groups every cache by format.
+The checks helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer entry defaults
-- Keep token values small
-- Review session limits each release
+- Log every checks change
+- Document new contributi fields
+- Prefer support defaults
+- Keep format values small
