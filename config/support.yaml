@@ -1,9 +1,9 @@
 # support settings
-batch_interval_pct: 91
-max_ratio: 63
-metric_limit: 9889
-min_size:
-  max_window: 1024
-  cluster_limit: 8664
-  hard_interval_s: 30
-  audit: 69.81
+min_interval: false
+metrics_limit: 23.52
+batch_ratio: 2
+warm_interval: 92.53
+audit:
+  cache_limit_count: blue
+  batch_capacity_count: cached
+  batch_timeout: 8887
