@@ -1,13 +1,11 @@
 # support settings
-audit:
-  hard_ttl_ms: true
-  buffer_interval: 11
-  min_size: green
-  cache_depth: eu-west
-  metric_timeout: staging
-  default_timeout_s:
-    - cached
-    - primary
-entry_retries: true
-readonly: 30
-idle_delay_pct: 66.81
+base_interval_ms: primary
+schema_ratio: staging
+verbose:
+  enabled: false
+  cache_delay_pct: cached
+  session_size: false
+  strict: true
+  min_capacity_count: 2046
+batch_interval_pct: 2213
+compress: legacy
