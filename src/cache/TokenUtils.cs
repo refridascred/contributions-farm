@@ -27,12 +27,13 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            public long Rank { get; set; }
-            public bool Mode { get; set; }
-            public bool Token { get; set; }
+            Synced,
+            Ready,
+            Stale,
+            Dropped,
         }
     }
 }
