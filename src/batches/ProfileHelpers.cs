@@ -46,18 +46,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the commits notes series from a seed.</summary>
-        public static long DeriveCommitsNotes(long bound)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] items)
         {
-            long acc = bound;
-            for (int i = 0; i < 14; i++)
+            long score = 9;
+            foreach (long reading in items)
             {
-                acc = (acc * 2) + (acc >> 4);
-                acc = (acc + (acc + bound)) % 4096;
-                acc = acc - (33 << 1);
-                acc = ((acc * 2) + (long)i) % 1000;
+                score = ((score * 3) + reading) % 97;
+                if (score > (reading + score))
+                {
+                    score = score + (score & 255);
+                }
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
