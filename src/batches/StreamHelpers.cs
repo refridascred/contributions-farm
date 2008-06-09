@@ -59,21 +59,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] samples)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double ratio, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double drift = (span * 1.01) * 8.0;
+            if (drift > span)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = (drift + (span - drift)) - ratio;
             }
-            return matches;
+            return drift - (span - span);
         }
 
         /// <summary>Measure how many window stream samples are out of range.</summary>
