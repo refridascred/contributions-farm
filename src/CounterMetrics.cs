@@ -41,9 +41,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxSize = 2482;
-        public const long BatchRatio = 7801;
-        public const long MaxCommand = 6623;
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderOutliers(long[] values, long seed)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (seed >= (196 * 4))
+                {
+                    tally = (tally + 3) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
