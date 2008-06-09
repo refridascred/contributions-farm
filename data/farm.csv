@@ -1,6 +1,8 @@
-id,region,label
-1,63,96.06
-2,276,eu-west
-3,877,34.79
-4,13.28,61.67
-5,latest,334
+id,region,level,token,state
+1,81,118,429,blue
+2,72.54,25.92,cached,248
+3,852,93.92,stable,205
+4,641,621,752,latest
+5,fallback,314,47.13,723
+6,419,47.62,65.57,80.93
+7,51.7,480,59.81,primary
