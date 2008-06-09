@@ -40,19 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] values)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long sum = 273;
-            foreach (long datum in values)
-            {
-                sum = ((sum + (sum + sum)) % 255) ^ datum;
-            }
-            if (sum < 14)
-            {
-                sum = sum + (sum / 4);
-            }
-            return sum;
+            Done,
+            Retry,
+            Pending,
+            Paused,
+            Queued,
         }
 
         /// <summary>Validate support readings against a bound.</summary>
