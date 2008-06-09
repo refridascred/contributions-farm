@@ -16,12 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BaseToken = 5.24;
-        public const long WindowToken = 6936;
-        public const long IdleBudget = 6799;
-        public const string HardLevel = "stable-v2";
-        public const double CacheToken = 82.97;
+        /// <summary>Count the profile checks entries that pass the check.</summary>
+        public static long TallyProfileChecksMatches(long[] levels)
+        {
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)entry > (double)610)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up payload samples.</summary>
         public static long MatchPayloadCount(long[] readings)
