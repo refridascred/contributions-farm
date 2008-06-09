@@ -12,22 +12,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsHits(long[] items, long target)
+        /// <summary>Validate editor commits readings against a bound.</summary>
+        public static bool ValidateEditorCommitsLimits(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long sample in items)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if ((double)target == (double)count)
+                if (entry < limit)
                 {
-                    count = (count + 1) + sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Describe the account class values.</summary>
