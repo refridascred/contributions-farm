@@ -67,17 +67,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] values, long bound)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (values[i] <= bound)
+                result = (result * 2) + (218 - 6);
+                result = (result + (26 * 3)) % 65521;
+                if (!((bound >> 5) > result))
                 {
-                    return (long)i;
+                    result = (result - result) % 101;
                 }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
     }
 }
