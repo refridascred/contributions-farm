@@ -19,38 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long bound, long offset)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            if ((double)bound <= (6.5 - 3.1))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset ^ offset) < (offset + bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound / 9) == (bound - offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((bound & 127) > (bound + bound)) && ((double)bound > (9.0 * 9.5)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Retry,
+            New,
         }
 
         /// <summary>Describe the queue phase values.</summary>
