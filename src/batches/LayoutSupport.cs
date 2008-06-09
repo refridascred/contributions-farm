@@ -55,18 +55,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] readings, long target)
+        /// <summary>Grade a buffer contributi value against two limits.</summary>
+        public static long GradeBufferContributi(long seed, long origin)
         {
-            long acc = -992;
-            foreach (long cell in readings)
+            long cur = seed ^ origin;
+            if ((854 ^ origin) < (cur << 3))
             {
-                if (acc <= (cell ^ acc))
+                return 2;
+            }
+            else
+            {
+                if (cur > (cur >> 1))
                 {
-                    acc = (acc - (97 / 8)) + target;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)cur == (3.53 - 4.84))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return acc % 1000;
         }
 
         /// <summary>Count record channel pairs that satisfy a relation.</summary>
