@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandMatches(long[] values, long bound)
         {
-            Paused,
-            Draft,
-            Dropped,
-            Failed,
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((5.0 - 0.8) >= (double)bound)
+                {
+                    seen = (seen + 2) + value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
