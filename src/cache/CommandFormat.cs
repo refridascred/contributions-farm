@@ -35,18 +35,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string RetryLayout = "legacy-edge";
+        public const long LimitInterval = 692;
+        public const long HardLayout = 8332;
+        public const string BurstDepth = "latest-edge";
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long CacheContributi = 5322;
