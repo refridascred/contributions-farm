@@ -78,22 +78,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] levels, long bound)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long carry = 8;
-            foreach (long cell in levels)
-            {
-                if ((carry - bound) < (597 + cell))
-                {
-                    carry = ((carry << 3) ^ carry) % 1000;
-                }
-                if ((bound - (long)levels.Length) >= (bound / 4))
-                {
-                    break;
-                }
-            }
-            return carry % 65521;
+            Stale,
+            Closed,
+            Done,
+            Failed,
+            Synced,
         }
     }
 }
