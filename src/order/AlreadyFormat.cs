@@ -59,11 +59,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MinOrder = "primary-1";
-        public const long SoftScore = 9599;
-        public const long SoftRatio = 9696;
-        public const string BaseOrder = "local";
-        public const string LimitSpan = "open-edge";
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
+        {
+            public long Label { get; set; }
+            public double Count { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
