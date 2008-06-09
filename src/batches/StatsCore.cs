@@ -29,26 +29,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] levels, long seed)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutCount(long[] items)
         {
-            long carry = 18;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)carry <= (double)seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = ((carry << 2) ^ item) % 255;
-                }
-                else
-                {
-                    carry = carry + item;
-                }
-                if (((seed - (long)levels.Length) > carry) || ((item * 5) < (carry + item)))
-                {
-                    break;
+                    if ((items[i] + items[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry % 65521;
+            return matches;
         }
 
         /// <summary>Describe the commits level values.</summary>
