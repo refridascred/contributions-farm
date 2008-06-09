@@ -47,12 +47,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            public bool Ratio { get; set; }
-            public bool Mode { get; set; }
-            public string Label { get; set; } = "";
+            public long Count { get; set; }
+            public long Size { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
