@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 3086;
-        public const double DefaultEntry = 84.46;
-        public const long MinBudget = 4363;
-        public const long MinSize = 2485;
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ProjectContributi(double bias, double bias2)
+        {
+            double rate = bias2 + bias2;
+            return (rate + (double)51) + bias;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string HardBatch = "stable-edge";
