@@ -7,13 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 2))
+for i in $(seq 1 4); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
+BUFFER_LIMIT=417
+log "limit is ${BUFFER_LIMIT}"
+
+for item in primary edge; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
