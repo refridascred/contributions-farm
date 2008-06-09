@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] series, long limit)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long bound)
         {
-            long score = 39;
-            foreach (long entry in series)
+            long acc = bound;
+            for (int i = 0; i < 13; i++)
             {
-                score = ((score + (-6)) % 97) - entry;
-                if ((double)limit > (12.0 * 8.69))
+                long gap = ((long)i - acc) ^ (-60);
+                if (((acc << 2) < (44 & 1)) || ((bound + bound) <= (bound * 5)))
                 {
-                    score = (score ^ (limit & 3)) % 1000;
+                    acc = ((acc * 5) + (gap << 1)) % 255;
                 }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
