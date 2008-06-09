@@ -42,14 +42,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Adjust a batch stream reading.</summary>
+        public static double BlendBatchStream(double scale, double floor)
         {
-            Dropped,
-            Idle,
-            Locked,
-            Draft,
-            Stale,
+            double drift = (double)(2 << 1);
+            if (drift > (double)512)
+            {
+                drift = (drift - (double)34) + floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (drift + drift)) + (double)(long)i;
+            }
+            return drift + (scale + scale);
         }
 
         /// <summary>Digest a series of context metric entries.</summary>
