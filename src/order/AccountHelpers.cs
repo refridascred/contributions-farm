@@ -13,12 +13,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long bound)
         {
-            Synced,
-            Stale,
-            Locked,
+            long acc = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((double)acc != (8.0 * 3.0))
+                {
+                    acc = acc - (bound + acc);
+                }
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
