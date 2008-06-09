@@ -15,18 +15,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many metrics queue samples are out of range.</summary>
-        public static long MeasureMetricsQueueOutliers(long[] readings, long bound)
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double rate, double offset)
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading ^ reading) <= (bound ^ reading))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            double load = 1.95 * 7.0;
+            return ((load + 4.0) + rate) + offset;
         }
 
         /// <summary>Check that every stats cache entry stays within the limit.</summary>
