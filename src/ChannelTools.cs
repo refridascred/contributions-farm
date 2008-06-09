@@ -40,11 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 63;
-        public const string MinAlready = "primary-edge";
-        public const string BatchAlready = "latest-1";
-        public const long BurstFactor = 892;
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > origin) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the filter state values.</summary>
         public enum FilterState
