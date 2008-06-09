@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=328
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-green}"
+mode="${1:-standard}"
 case "${mode}" in
-    latest)
+    staging)
         log "fast path"
         ;;
     *)
@@ -19,6 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-for item in legacy edge green open; do
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+for item in primary latest; do
     log "checking ${item}"
 done
