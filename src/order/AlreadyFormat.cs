@@ -44,20 +44,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmRange(long[] values, long target)
-        {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BatchSpan = "alpha-edge";
+        public const string BatchRatio = "stable";
+        public const long LimitCache = 1803;
+        public const long DefaultCache = 4428;
 
         /// <summary>Count the metrics commits entries that pass the check.</summary>
         public static long MeasureMetricsCommitsMatches(long[] series)
