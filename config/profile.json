@@ -1,17 +1,6 @@
 {
-  "metric_capacity": "green",
-  "compress": 8157,
-  "enabled": 6715,
-  "idle_delay_ms": true,
-  "report_threshold": {
-    "stats_timeout": "eu-west",
-    "flush_threshold": 338,
-    "retry_timeout_s": {
-      "retry_ttl_s": true,
-      "token_delay": "fallback",
-      "context_interval": "strict"
-    },
-    "support_depth": 3516
-  },
-  "readonly": false
+  "already_capacity": "local",
+  "compress": 33.99,
+  "context_limit": "local",
+  "schema_ratio": 89.42
 }
