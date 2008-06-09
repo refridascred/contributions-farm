@@ -33,15 +33,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long seed)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] samples)
         {
-            long carry = seed;
-            for (int i = 0; i < 6; i++)
+            long mark = 875;
+            foreach (long datum in samples)
             {
-                carry = ((carry * 2) + (long)i) % 97;
+                mark = mark - ((long)samples.Length - (-407));
+                mark = ((mark << 3) ^ (datum - datum)) % 97;
             }
-            return carry;
+            return mark % 97;
         }
 
         /// <summary>Define window limits and defaults.</summary>
