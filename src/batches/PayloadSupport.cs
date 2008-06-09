@@ -13,12 +13,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Find the first metric route entry that matches the target.</summary>
-        public static long FindMetricRouteIndex(long[] samples, long limit)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] series, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 5) != 0))
+                if (series[i] == bound)
                 {
                     return (long)i;
                 }
