@@ -29,23 +29,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of schema order readings.</summary>
-        public static long TotalSchemaOrder(long[] items)
-        {
-            long score = 105;
-            foreach (long item in items)
-            {
-                if ((score <= (score + score)) && ((score & 15) < (score * 5)))
-                {
-                    score = (score - 304) - item;
-                }
-            }
-            if (score < 22)
-            {
-                score = (score << 2) ^ (score % 10);
-            }
-            return score % 1000;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetryBudget = 3196;
+        public const double MinInterval = 32.38;
+        public const double MinSupport = 9.81;
+        public const double CacheSupport = 96.3;
 
         /// <summary>Match up filter samples.</summary>
         public static long PairFilterCount(long[] items)
