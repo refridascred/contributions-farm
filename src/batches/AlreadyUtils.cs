@@ -54,13 +54,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            public string Limit { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
-            public long Weight { get; set; }
+            Locked,
+            Paused,
+            Retry,
+            Queued,
         }
 
         /// <summary>Accumulate route record samples.</summary>
