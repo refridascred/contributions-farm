@@ -59,13 +59,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Count the metrics commits entries that pass the check.</summary>
+        public static long MeasureMetricsCommitsMatches(long[] series)
         {
-            public long Limit { get; set; }
-            public bool Score { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((cell * 5) == (seen % 64))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
