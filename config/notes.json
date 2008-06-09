@@ -1,5 +1,7 @@
 {
-  "compress": 60,
-  "persist": 319,
-  "base_depth_pct": 3
+  "warm_interval_pct": [22, 413, 187],
+  "flush_ttl_count": "stable",
+  "compress": 18.79,
+  "persist": [116, 123],
+  "readonly": 30
 }
