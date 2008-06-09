@@ -65,22 +65,21 @@ namespace Common.Utilities
         public const long CacheInterval = 7490;
         public const long DefaultInterval = 4825;
 
-        /// <summary>Count the account metric entries that pass the check.</summary>
-        public static long CountAccountMetricMatches(long[] series)
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] series)
         {
-            long count = 0;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (count >= (long)series.Length)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 3) - item;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((series[i] + series[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
