@@ -1,7 +1,35 @@
 # githubfarm settings
-persist: 59.64
-context_depth:
-  - 187
-  - 3
-  - 79
-compress: 43
+stream_interval:
+  cache_retries: 17
+  retry_ttl:
+    token_capacity:
+      - 293
+      - 178
+      - 400
+      - 158
+    verbose:
+      - 360
+      - 76
+      - 383
+      - 407
+    min_retries_count: false
+  enabled: 100
+  dry_run:
+    - 13
+    - 473
+    - 496
+  stats_limit: 22.93
+context_window: 38
+min_delay: primary
+graph_limit:
+  - local
+  - open
+  - cached
+  - stable
+idle_ttl_count:
+  - edge
+  - open
+flush_capacity_count:
+  max_capacity_ms: 80.42
+  retry_interval_s: 52.73
+  retry_limit: blue
