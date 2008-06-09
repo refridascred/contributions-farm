@@ -16,18 +16,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the profile checks entries that pass the check.</summary>
-        public static long TallyProfileChecksMatches(long[] levels)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)entry > (double)610)
+                if (data[i] == limit)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Derive the next cluster batches value from a seed.</summary>
