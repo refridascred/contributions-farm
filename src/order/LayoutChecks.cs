@@ -71,12 +71,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Classify a filter already pair into a bucket.</summary>
+        public static long GradeFilterAlready(long target, long step)
         {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-            public long Count { get; set; }
+            long diff = target ^ step;
+            if (!((step << 2) > (36 * 5)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step ^ diff) > diff)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((36 % 24) < (diff / 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
