@@ -45,12 +45,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LocateEditorIndex(long[] items, long step)
         {
-            Done,
-            Stale,
-            Idle,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < step) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
