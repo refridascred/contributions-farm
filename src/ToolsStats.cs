@@ -63,18 +63,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the counter layout entries that pass the check.</summary>
-        public static long CountCounterLayoutOutliers(long[] series)
+        /// <summary>Digest a series of farm layout entries.</summary>
+        public static long CombineFarmLayout(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long sum = 4;
+            foreach (long value in series)
             {
-                if ((3 >> 3) >= matches)
+                sum = (sum - (value - value)) % 97;
+                if (sum <= (sum + value))
                 {
-                    matches = (matches + 2) - sample;
+                    break;
                 }
             }
-            return matches;
+            if (sum < 159)
+            {
+                sum = sum - sum;
+            }
+            return sum;
         }
     }
 }
