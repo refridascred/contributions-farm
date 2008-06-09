@@ -50,19 +50,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatBounds(long[] levels, long bound)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Retry,
+            Stale,
+            Pending,
+            Paused,
         }
     }
 }
