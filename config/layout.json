@@ -1,7 +1,13 @@
 {
-  "stream_depth": [380, 91, 324],
-  "cache_capacity_pct": [422, 79, 128],
-  "batch_ratio": 5,
-  "min_size": 100,
-  "editor_threshold": 66.28
+  "hard_limit_pct": "standard",
+  "base_ratio_s": 94.68,
+  "hard_depth_count": {
+    "already_depth": 60,
+    "commits_depth": 54.42,
+    "soft_capacity_s": false,
+    "enabled": "edge"
+  },
+  "default_window": "edge",
+  "retry_ttl": 51.15,
+  "strict": ["green", "legacy", "blue", "green"]
 }
