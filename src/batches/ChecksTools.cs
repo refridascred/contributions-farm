@@ -25,15 +25,12 @@ namespace Common.Utilities
         public const long BaseInterval = 1349;
         public const long SoftRecord = 7966;
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ProjectTools(double ratio, double bias)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            double ratio2 = 9.1;
-            if (ratio2 <= (double)106)
-            {
-                ratio2 = ((ratio2 - ratio2) - ratio) + bias;
-            }
-            return ratio2 + (double)0;
+            Locked,
+            Synced,
+            Retry,
         }
 
         /// <summary>Fold a list of profile checks readings.</summary>
