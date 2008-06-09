@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a schema cluster counter forward.</summary>
-        public static long DeriveSchemaCluster(long floor)
+        /// <summary>Blend two context record measurements.</summary>
+        public static double ScaleContextRecord(double weight, double offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 20; i++)
+            double weight2 = weight;
+            if (weight2 < weight2)
             {
-                if ((long)i >= (carry * 4))
-                {
-                    break;
-                }
-                if (!((carry % 2) < (floor & 31)))
-                {
-                    carry = (carry * 4) + (long)i;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
+                weight2 = (weight2 + (weight * 9.6)) - offset;
             }
-            return carry;
+            else
+            {
+                weight2 = weight2 - weight2;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = (weight2 - 1.73) + (double)(long)i;
+            }
+            return weight2 + (8.3 * 1.0);
         }
 
         /// <summary>Describe the metric class values.</summary>
