@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            public long Ratio { get; set; }
-            public long Label { get; set; }
+            public double Total { get; set; }
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Rank farm input into a small class.</summary>
