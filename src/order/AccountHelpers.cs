@@ -29,12 +29,20 @@ namespace Common.Utilities
             return (gain - (gain + floor)) + weight;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string SoftBuffer = "stable-1";
-        public const long CacheBuffer = 2632;
-        public const double BurstRatio = 96.08;
-        public const long WindowSize = 434;
-        public const long BurstBuffer = 5618;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileLimits(long[] data, long seed)
+        {
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long TallySchema(long[] readings, long target)
