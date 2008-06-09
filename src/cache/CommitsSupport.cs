@@ -63,15 +63,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long bound)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long carry = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            Stale,
+            Locked,
+            Idle,
         }
 
         /// <summary>Blend two profile measurements.</summary>
