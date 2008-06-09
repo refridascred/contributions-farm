@@ -48,13 +48,12 @@ namespace Common.Utilities
             return load - (floor * 2.7);
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            public long Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Token { get; set; } = "";
+            New,
+            Locked,
+            Stale,
         }
     }
 }
