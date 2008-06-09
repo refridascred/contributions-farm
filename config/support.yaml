@@ -1,5 +1,5 @@
 # support settings
-buffer_retries: true
-batch_retries: 27.17
-record_ttl: 9539
-command_ttl: strict
+retry_limit_pct: 30
+cache_depth_ms: 250
+queue_size: open
+sync_depth_count: edge
