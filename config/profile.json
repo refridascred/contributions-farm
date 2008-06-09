@@ -1,13 +1,6 @@
 {
-  "sync_ratio_count": "fallback",
-  "burst_retries_pct": 60,
-  "warm_window_ms": "blue",
-  "order_limit": 250,
-  "batch_threshold_count": {
-    "base_ttl_pct": true,
-    "checks_retries": 12,
-    "verbose": "stable",
-    "stream_timeout": 35,
-    "retry_ratio_pct": 32
-  }
+  "checks_timeout": 77.85,
+  "audit": 4783,
+  "min_capacity": 70.3,
+  "dry_run": "fallback"
 }
