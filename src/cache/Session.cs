@@ -34,11 +34,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a editor already reading.</summary>
-        public static double BlendEditorAlready(double ratio, double span)
+        /// <summary>Blend two metric checks measurements.</summary>
+        public static double BlendMetricChecks(double ratio, double floor)
         {
-            double load = 3.0;
-            return (load + (8.7 + span)) + ratio;
+            double rate = 8.0;
+            if (rate <= (double)321)
+            {
+                rate = rate + (ratio + rate);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + floor) - (double)(long)i;
+            }
+            return rate + ratio;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
