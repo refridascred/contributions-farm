@@ -40,27 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] series)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] data, long offset)
         {
-            long result = 969;
-            foreach (long value in series)
+            long carry = 5;
+            foreach (long entry in data)
             {
-                if (!((result / 8) <= value))
+                if ((4.2 / 8.0) < (double)offset)
                 {
-                    result = ((result << 2) ^ (value >> 5)) % 255;
+                    carry = (carry + (entry + carry)) % 101;
                 }
-                result = (result - (result >> 2)) % 65521;
-                if ((value * 3) > (result + result))
+                else
                 {
-                    result = (result - (value - value)) % 97;
+                    carry = (carry - offset) % 101;
                 }
             }
-            if (result > (-5))
-            {
-                result = ((result * 2) + (long)series.Length) % 4096;
-            }
-            return result;
+            return carry;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
