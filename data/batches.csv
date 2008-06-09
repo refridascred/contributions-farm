@@ -1,8 +1,8 @@
-id,count,label
-1,147,425
-2,81.43,4.9
-3,58.65,436
-4,60,blue
-5,107,662
-6,edge,534
-7,439,317
+id,count,ratio,state
+1,75.94,strict,1.98
+2,local,72,155
+3,primary,540,803
+4,standard,509,eu-west
+5,279,562,fallback
+6,69,452,408
+7,36.74,545,212
