@@ -29,17 +29,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LookupProfileIndex(long[] readings, long limit)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsOutliers(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (readings[i] >= limit)
+                if ((double)hits >= (11.0 - 4.69))
                 {
-                    return (long)i;
+                    hits = (hits + 1) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Digest a series of counter channel entries.</summary>
