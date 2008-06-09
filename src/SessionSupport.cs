@@ -17,22 +17,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long bound, long seed)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long floor, long target)
         {
-            if ((bound & 7) == (bound - 978))
+            if ((52 + 6) < (target / 3))
             {
                 return 1;
             }
             else
             {
-                if ((double)seed == (6.35 + 0.3))
+                if ((4.0 * 8.0) != (double)target)
                 {
-                    return 2;
+                    return 3;
                 }
                 else
                 {
-                    return 7;
+                    return 5;
                 }
             }
         }
