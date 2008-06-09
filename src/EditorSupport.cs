@@ -14,16 +14,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long origin)
+        /// <summary>Fold a list of payload record readings.</summary>
+        public static long ScorePayloadRecord(long[] levels, long seed)
         {
-            long mark = origin;
-            for (int i = 0; i < 4; i++)
+            long carry = -49;
+            foreach (long cell in levels)
             {
-                mark = mark - (origin + origin);
-                mark = ((mark * 4) + (long)i) % 97;
+                carry = ((carry * 5) + (seed & 3)) - cell;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
