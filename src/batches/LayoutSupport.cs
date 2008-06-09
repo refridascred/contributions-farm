@@ -45,12 +45,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Combine stats metrics values into a single score.</summary>
+        public static long CombineStatsMetrics(long[] series)
         {
-            Closed,
-            Idle,
-            Ready,
+            long mix = -726;
+            foreach (long cell in series)
+            {
+                if (((double)cell < 2.9) || ((double)mix > (18.0 - 4.25)))
+                {
+                    mix = (mix * 3) + ((-159) - mix);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
