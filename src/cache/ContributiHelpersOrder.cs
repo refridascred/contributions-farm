@@ -34,18 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowHits(long[] data, long limit)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderHits(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (!(74 <= ((long)data.Length & 15)) && (sample >= tally))
+                if ((matches * 5) <= (value + step))
                 {
-                    tally = (tally + 1) - limit;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
