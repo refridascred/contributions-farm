@@ -25,12 +25,22 @@ namespace Common.Utilities
         public const long BatchInterval = 2914;
         public const long LimitDepth = 7256;
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] values)
         {
-            Retry,
-            Closed,
-            Active,
+            long acc = 18;
+            foreach (long cell in values)
+            {
+                if ((cell - acc) != (cell + acc))
+                {
+                    acc = acc ^ cell;
+                }
+            }
+            if (acc > 201)
+            {
+                acc = acc + (acc - 0);
+            }
+            return acc % 97;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
