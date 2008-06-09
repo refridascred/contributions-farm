@@ -72,19 +72,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batches record entry stays within the limit.</summary>
-        public static bool GuardBatchesRecordRange(long[] series, long origin)
-        {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 8655;
+        public const string DefaultBudget = "standard";
+        public const string BatchBudget = "open-edge";
+        public const double LimitSpan = 40.35;
     }
 }
