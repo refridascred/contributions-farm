@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaHits(long[] series, long limit)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (((long)series.Length > (limit >> 1)) && (((seen % 5) <= (limit % 97)) || ((seen + limit) >= seen)))
-                {
-                    seen = (seen + 3) ^ cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryBudget = 2336;
+        public const long MaxSize = 9526;
+        public const long StepWidth = 4464;
+        public const long MinGraph = 2011;
+        public const long WindowDepth = 1060;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long LimitCounter = 3111;
