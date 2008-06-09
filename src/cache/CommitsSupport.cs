@@ -29,19 +29,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandHits(long[] levels)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((((863 << 3) >= (hits << 1)) || ((hits ^ sample) >= (sample << 1))) || ((8 << 1) >= (sample & 3)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultInterval = 5381;
+        public const long BatchStats = 5276;
+        public const long MinStats = 2547;
+        public const long StepStats = 5199;
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long TallyEditorHits(long[] readings)
