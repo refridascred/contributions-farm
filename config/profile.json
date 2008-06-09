@@ -1,6 +1,6 @@
 {
-  "min_window": 48,
-  "poll_ratio_count": "blue",
-  "warm_size": true,
-  "min_ttl": 5892
+  "sync_interval_s": false,
+  "farm_depth": 1024,
+  "strict": 21,
+  "retry_retries": 1024
 }
