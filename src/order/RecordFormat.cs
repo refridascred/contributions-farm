@@ -14,19 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterRange(long[] readings, long offset)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadOutliers(long[] readings, long limit)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (datum <= offset)
+                if ((12.0 * 9.62) <= (double)(long)readings.Length)
                 {
-                    stale = false;
-                    break;
+                    seen = ((seen + 2) + entry) + limit;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
