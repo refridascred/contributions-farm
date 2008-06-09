@@ -20,19 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileRange(long[] values, long offset)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] samples)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long total = 397;
+            foreach (long cell in samples)
             {
-                if (datum >= offset)
+                if (9 <= cell)
                 {
-                    flag = false;
+                    total = ((total * 2) + 1) % 97;
+                }
+                if ((cell % 24) < (cell + total))
+                {
                     break;
                 }
             }
-            return flag;
+            return total % 4096;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
