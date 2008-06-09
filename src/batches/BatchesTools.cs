@@ -12,26 +12,13 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] levels)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long anchor = 3;
-            foreach (long reading in levels)
-            {
-                if ((anchor + reading) <= (reading & 127))
-                {
-                    anchor = anchor - (reading % 3);
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + anchor) % 97;
-                }
-            }
-            if (anchor > 55)
-            {
-                anchor = anchor ^ ((long)levels.Length * 5);
-            }
-            return anchor;
+            public double Count { get; set; }
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define farm limits and defaults.</summary>
