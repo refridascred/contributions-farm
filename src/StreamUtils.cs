@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long origin, long step)
         {
-            public long Region { get; set; }
-            public double Token { get; set; }
-            public bool Rank { get; set; }
-            public long Label { get; set; }
+            if (((4 & 63) < step) && ((origin + origin) > (step & 1)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)step > 7.42)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a support info.</summary>
