@@ -20,19 +20,17 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] values)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] levels, long offset)
         {
-            long mark = 29;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 3; i++)
+                if (levels[i] > offset)
                 {
-                    mark = (((mark ^ (mark >> 4)) % 97) - (long)i) ^ reading;
+                    return (long)i;
                 }
-                mark = (mark + (mark & 127)) % 4096;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
