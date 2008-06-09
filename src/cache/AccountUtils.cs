@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double bias, double span)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterGaps(long[] levels)
         {
-            double scale = span / 2.0;
-            if (scale < (scale - bias))
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                scale = scale - scale;
+                if (!((reading / 4) > (49 - reading)))
+                {
+                    matches = matches + 3;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + bias) + (double)(long)i;
-            }
-            return scale - (scale / 9.0);
+            return matches;
         }
 
         /// <summary>Hold a farm stats.</summary>
