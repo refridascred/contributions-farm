@@ -58,10 +58,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string WindowTools = "local";
-        public const string BaseTools = "staging-1";
-        public const long MaxTools = 2982;
-        public const long CacheScore = 1772;
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
+        {
+            Paused,
+            Dropped,
+            Done,
+            Synced,
+            Stale,
+        }
     }
 }
