@@ -29,21 +29,22 @@ namespace Common.Utilities
         public const long LimitRatio = 8839;
         public const long BaseBudget = 651;
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] samples)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 147;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((69 / 3) <= reading))
                 {
-                    if ((samples[i] + samples[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = score - 708;
                 }
             }
-            return tally;
+            if (score < 33)
+            {
+                score = (score - (score * 5)) % 255;
+            }
+            return score % 65521;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
