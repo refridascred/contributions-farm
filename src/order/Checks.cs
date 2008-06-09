@@ -14,12 +14,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Project the next format value.</summary>
+        public static double ProjectFormat(double ratio, double offset)
         {
-            Draft,
-            Failed,
-            Synced,
+            double ratio2 = offset;
+            if (ratio2 <= (8.0 + 14.0))
+            {
+                ratio2 = ratio2 + (double)43;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio2 = (ratio2 + ratio) + (double)(long)i;
+            }
+            return ratio2 - (double)1;
         }
 
         /// <summary>Locate a command reading by value.</summary>
