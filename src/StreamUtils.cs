@@ -54,21 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] values)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            New,
+            Closed,
+            Draft,
+            Failed,
         }
 
         /// <summary>Describe the stream kind values.</summary>
