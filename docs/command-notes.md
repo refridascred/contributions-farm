@@ -1,11 +1,12 @@
 # Command notes
 
-Use token settings to tune how often record data is refreshed.
-Defaults for editor live in the config folder and can be overridden per environment.
+The metrics helpers are pure functions, so they are safe to call from any thread.
+The metric report groups every order by contributi.
+Each window is validated before it reaches the already queue.
 
 ## Guidelines
 
-- Prefer token defaults
-- Log every metrics change
-- Document new payload fields
-- Validate notes input early
+- Review counter limits each release
+- Document new graph fields
+- Keep filter values small
+- Prefer record defaults
