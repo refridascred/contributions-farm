@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandGaps(long[] items, long seed)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (!((1.0 / 7.0) == (double)seed))
-                {
-                    hits = (hits + 1) + cell;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define record limits and defaults.</summary>
