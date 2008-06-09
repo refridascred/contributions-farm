@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterGaps(long[] levels, long seed)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (tally < (seed / 7))
-                {
-                    tally = (tally + 1) + item;
-                }
-            }
-            return tally;
+            Queued,
+            Idle,
+            Closed,
+            Draft,
         }
 
         /// <summary>Locate a metric commits reading by value.</summary>
