@@ -38,15 +38,22 @@ namespace Common.Utilities
         public const long LimitTimeout = 2944;
         public const double HardAccount = 5.86;
 
-        /// <summary>Project the next format value.</summary>
-        public static double ScaleFormat(double gain, double floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheHits(long[] readings)
         {
-            double drift = gain + 8.8;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                drift = (drift + gain) + (double)(long)i;
+                if ((256 ^ reading) < (102 << 1))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return drift - (floor + floor);
+            return matches;
         }
     }
 }
