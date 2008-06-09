@@ -29,13 +29,21 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long CompareBatchesCount(long[] items)
         {
-            Draft,
-            Locked,
-            Idle,
-            Active,
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
