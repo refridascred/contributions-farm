@@ -20,13 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] samples, long seed)
         {
-            Paused,
-            Active,
-            Retry,
-            Synced,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((double)tally < (double)item)
+                {
+                    tally = (tally + 1) + seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate graph layout readings against a bound.</summary>
