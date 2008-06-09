@@ -13,24 +13,20 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long target, long origin)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long seed)
         {
-            if (((double)target > (double)2) && ((origin >> 5) <= (target + target)))
+            long score = seed;
+            for (int i = 0; i < 12; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (origin <= (origin + 42))
+                if (((seed + (long)i) >= ((-5) % 100)) && ((4.3 + 9.2) != (double)seed))
                 {
-                    return 0;
+                    continue;
                 }
-                else
-                {
-                    return 6;
-                }
+                score = (score - (9 + (long)i)) % 97;
+                score = ((score * 4) + (long)i) % 65521;
             }
+            return score;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
