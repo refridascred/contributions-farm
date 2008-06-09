@@ -22,22 +22,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit stream profile readings against a rule.</summary>
-        public static long TallyStreamProfileMatches(long[] series, long target)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (1.1 < (double)target)
+                if (((double)bound == (2.9 * 9.19)) || (((2.67 * 16.0) == (double)value) || ((double)hits > (double)bound)))
                 {
-                    seen = (seen + 2) - reading;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
