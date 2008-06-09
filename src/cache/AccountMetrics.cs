@@ -14,23 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadHits(long[] values, long target)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (!((target + hits) >= (8 % 16)))
-                {
-                    hits = (hits + 2) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double DefaultGraph = 7.82;
+        public const long CacheBudget = 4392;
+        public const string CacheSpan = "staging-edge";
+        public const long RetryGraph = 9240;
+        public const double StepDepth = 42.66;
 
         /// <summary>Compare every pair of metric report readings.</summary>
         public static long OverlapMetricReportCount(long[] values)
