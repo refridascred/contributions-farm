@@ -40,22 +40,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] series, long step)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long bound, long step)
         {
-            long mix = -75;
-            foreach (long reading in series)
+            long prev = bound ^ step;
+            if (((-3) > (bound << 3)) && ((3 & 7) == (step >> 5)))
             {
-                if ((double)1 < (double)reading)
+                return 8;
+            }
+            else
+            {
+                if ((bound / 8) == (step + prev))
                 {
-                    mix = (mix + mix) % 255;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            if (mix < (-1))
-            {
-                mix = (mix + step) % 255;
-            }
-            return mix;
         }
     }
 }
