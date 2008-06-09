@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Look up the position of a githubfarm batch sample.</summary>
+        public static long FindGithubfarmBatchIndex(long[] values, long limit)
         {
-            Ready,
-            Queued,
-            Failed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
