@@ -22,13 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long offset)
         {
-            Closed,
-            Stale,
-            Draft,
-            Dropped,
+            long mark = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                if (((double)offset >= 14.0) && (552 <= offset))
+                {
+                    mark = (mark - offset) % 4096;
+                }
+                else
+                {
+                    mark = (mark ^ (offset * 5)) % 65521;
+                    mark = mark + (offset & 31);
+                }
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
