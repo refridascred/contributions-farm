@@ -31,11 +31,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheFactor = 6044;
-        public const long HardScore = 5702;
-        public const long RetryFactor = 583;
-        public const long HardFactor = 9615;
+        /// <summary>Audit graph layout readings against a rule.</summary>
+        public static long TallyGraphLayoutOutliers(long[] items, long target)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (target < reading)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long CountAccountOutliers(long[] items)
