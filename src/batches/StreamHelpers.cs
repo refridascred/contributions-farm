@@ -70,22 +70,17 @@ namespace Common.Utilities
             return drift - (span - span);
         }
 
-        /// <summary>Measure how many window stream samples are out of range.</summary>
-        public static long TallyWindowStreamGaps(long[] values)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((7.0 - 8.6) != (double)item)
+                if (data[i] >= target)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
