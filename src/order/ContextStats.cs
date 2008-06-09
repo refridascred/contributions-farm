@@ -31,20 +31,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ScaleFormat(double scale, double floor)
-        {
-            double gain = scale;
-            if (gain < (double)8)
-            {
-                gain = (gain - scale) + floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain + (7.71 / 5.0);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchFactor = 2556;
+        public const long BaseScore = 8166;
+        public const long MinTimeout = 3717;
+        public const long HardTimeout = 640;
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long LookupChecksIndex(long[] series, long seed)
