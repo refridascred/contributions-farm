@@ -62,12 +62,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MaxCommand = "primary-edge";
-        public const long BaseCommand = 4078;
-        public const long MinCommand = 8132;
-        public const long BatchCommand = 7047;
-        public const string StepFactor = "fallback-edge";
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
+        {
+            Retry,
+            Closed,
+            Locked,
+            Queued,
+            Synced,
+        }
 
         /// <summary>Fold a list of order readings.</summary>
         public static long TotalOrder(long[] data)
