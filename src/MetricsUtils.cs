@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsGaps(long[] readings)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long carry = -20;
+            foreach (long cell in levels)
             {
-                if ((matches + sample) < (sample - sample))
+                if (4.86 > (double)carry)
                 {
-                    matches = matches + 2;
+                    carry = ((carry ^ (carry & 1)) % 101) - cell;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Count the farm already entries that pass the check.</summary>
