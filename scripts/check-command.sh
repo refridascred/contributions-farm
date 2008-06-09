@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-COMMAND_LIMIT=425
+COMMAND_LIMIT=22
 log "limit is ${COMMAND_LIMIT}"
 
-for item in local latest; do
+for item in edge green; do
     log "checking ${item}"
 done
+
+mode="${1:-blue}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
