@@ -18,22 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stats checks readings against a rule.</summary>
-        public static long AuditStatsChecksHits(long[] readings)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)sample > (1.5 - 2.45))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Draft,
+            Stale,
+            Synced,
+            Pending,
+            Active,
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
