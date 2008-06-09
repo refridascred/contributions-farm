@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            public string Level { get; set; } = "";
+            public bool Size { get; set; }
             public long Ratio { get; set; }
-            public double Count { get; set; }
-            public long Region { get; set; }
+            public bool Offset { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
