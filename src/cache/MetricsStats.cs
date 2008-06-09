@@ -12,26 +12,13 @@ namespace Common.Utilities
             return (bias + 0.59) + span;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] items, long limit)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long anchor = 166;
-            foreach (long reading in items)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    anchor = ((anchor - (anchor + 79)) % 255) ^ (long)i;
-                }
-                if (!((reading ^ limit) > reading))
-                {
-                    anchor = ((anchor * 5) + (35 % 8)) % 101;
-                }
-            }
-            if (anchor < 50)
-            {
-                anchor = (anchor ^ (1 & 7)) % 65521;
-            }
-            return anchor;
+            Queued,
+            Active,
+            Idle,
+            Closed,
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
