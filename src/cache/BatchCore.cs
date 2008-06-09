@@ -20,31 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long floor, long bound)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long origin)
         {
-            if ((double)bound < (7.7 / 4.0))
+            long mark = origin;
+            for (int i = 0; i < 5; i++)
             {
-                return 7;
+                mark = (mark + 602) % 101;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if (904 <= (floor >> 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((5.0 - 7.68) <= (double)bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Project the next graph already value.</summary>
