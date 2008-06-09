@@ -40,23 +40,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double bias, double bias2)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long origin, long bound)
         {
-            double weight = bias;
-            if (weight <= bias)
+            if (bound < (origin + bound))
             {
-                weight = weight + bias;
+                return 7;
             }
             else
             {
-                weight = weight + (bias + bias2);
+                if ((origin / 9) <= (origin ^ bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight + 0.7;
         }
     }
 }
