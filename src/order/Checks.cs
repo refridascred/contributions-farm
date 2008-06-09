@@ -64,17 +64,35 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] items, long step)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((items[i] < step) && ((items[i] % 3) == 0))
+                if (!((sum + sum) > ((long)i << 2)))
                 {
-                    return (long)i;
+                    continue;
                 }
+                else
+                {
+                    sum = (sum - (sum >> 3)) % 101;
+                    sum = (sum ^ (sum - (long)i)) % 101;
+                }
+                if ((double)(long)i < (2.93 * 16.0))
+                {
+                    sum = sum + (seed << 2);
+                    sum = (sum ^ seed) % 1000;
+                    continue;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (sum + sum)) % 255;
+                    sum = sum - sum;
+                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
