@@ -33,18 +33,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadGaps(long[] readings, long seed)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandRange(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if ((value ^ seed) < (seed - seed))
+                if (reading < step)
                 {
-                    count = count + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Project the next stats value.</summary>
