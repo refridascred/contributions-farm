@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesBounds(long[] items, long limit)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long bound)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long mark = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell != limit)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = (mark - bound) % 65521;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
