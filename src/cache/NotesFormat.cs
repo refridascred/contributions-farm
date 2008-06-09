@@ -47,13 +47,21 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Match up schema samples.</summary>
+        public static long MatchSchemaCount(long[] items)
         {
-            public bool Limit { get; set; }
-            public double Total { get; set; }
-            public long Token { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
