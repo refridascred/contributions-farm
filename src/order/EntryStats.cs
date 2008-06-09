@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string StepLevel = "standard-edge";
-        public const double DefaultInterval = 83.48;
-        public const string BaseLayout = "primary-edge";
-        public const long BaseTimeout = 3251;
-        public const string IdleRatio = "open-1";
+        /// <summary>Measure how many profile counter samples are out of range.</summary>
+        public static long AuditProfileCounterGaps(long[] data)
+        {
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (((matches - datum) == (datum / 8)) || !((matches / 3) != (matches & 255)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long RankProfile(long floor, long offset)
