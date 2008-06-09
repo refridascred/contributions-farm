@@ -29,18 +29,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterOutliers(long[] data, long limit)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            double load = bias * 2.9;
+            if (load > 6.8)
             {
-                if ((668 & 255) <= (747 + datum))
-                {
-                    seen = (seen + 1) + limit;
-                }
+                load = load - scale;
             }
-            return seen;
+            else
+            {
+                load = load + (17.0 * 2.6);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - scale) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
