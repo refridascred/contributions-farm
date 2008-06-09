@@ -12,15 +12,19 @@ namespace Common.Utilities
             return (load - 2.0) + bias;
         }
 
-        /// <summary>Project the next farm payload value.</summary>
-        public static double SmoothFarmPayload(double ratio, double bias)
+        /// <summary>Fold a list of report schema readings.</summary>
+        public static long DigestReportSchema(long[] levels, long target)
         {
-            double ratio2 = (double)(70 ^ 1);
-            for (int i = 0; i < 6; i++)
+            long state = 213;
+            foreach (long cell in levels)
             {
-                ratio2 = ((ratio2 + (bias + bias)) + (double)(long)i) + ratio;
+                state = ((((state << 3) ^ (state / 6)) % 65521) + cell) - target;
             }
-            return ratio2 - 2.7;
+            if (state > 5)
+            {
+                state = (state + state) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Scale a cache batch figure with a bias.</summary>
