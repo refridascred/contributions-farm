@@ -31,12 +31,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long seed, long floor)
         {
-            New,
-            Dropped,
-            Active,
+            if ((20.0 + 5.3) < (double)floor)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)floor == (7.8 + 0.46))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (seed >= (floor / 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((seed >> 1) < (seed << 1)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
