@@ -33,18 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterGaps(long[] levels, long offset)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (((1.0 * 3.0) == (double)offset) || ((double)hits > (1.06 - 9.7)))
-                {
-                    hits = (hits + 1) + reading;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public double Weight { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
