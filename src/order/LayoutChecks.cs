@@ -54,12 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] values, long target)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] readings, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((values[i] > target) && ((values[i] % 2) != 0))
+                if ((readings[i] < seed) && ((readings[i] % 2) != 0))
                 {
                     return (long)i;
                 }
