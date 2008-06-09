@@ -20,18 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] data)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsBounds(long[] items, long step)
         {
-            long sum = 943;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if ((double)sum >= (11.0 - 16.0))
+                if (sample >= step)
                 {
-                    sum = (sum - (reading / 2)) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            return sum % 97;
+            return found;
         }
 
         /// <summary>Hold a layout summary.</summary>
