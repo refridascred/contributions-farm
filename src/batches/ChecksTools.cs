@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 6801;
-        public const double BaseQueue = 59.18;
-        public const long WindowInterval = 2967;
-        public const string LimitQueue = "open";
+        /// <summary>Adjust a checks reading.</summary>
+        public static double AdjustChecks(double weight, double floor)
+        {
+            double ratio = weight;
+            if (ratio > floor)
+            {
+                ratio = ratio - 19.0;
+            }
+            return ratio + (1.7 / 5.0);
+        }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long GradeStats(long offset, long offset2)
