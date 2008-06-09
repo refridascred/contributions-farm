@@ -1,5 +1,8 @@
 # support settings
-retry_limit_pct: 30
-cache_depth_ms: 250
-queue_size: open
-sync_depth_count: edge
+filter_delay: strict
+warm_retries_pct: true
+batch_limit_s:
+  compress: open
+  hard_interval_pct: 33
+  warm_delay: local
+enabled: eu-west
