@@ -37,22 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] items, long floor)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long mark = 139;
-            foreach (long datum in items)
-            {
-                if ((double)datum == (4.5 + 8.0))
-                {
-                    mark = (mark ^ (floor + floor)) % 65521;
-                }
-                else
-                {
-                    mark = mark - datum;
-                }
-            }
-            return mark;
+            Retry,
+            Pending,
+            New,
+            Locked,
         }
     }
 }
