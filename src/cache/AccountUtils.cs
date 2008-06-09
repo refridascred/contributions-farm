@@ -30,11 +30,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] levels)
         {
-            public bool Weight { get; set; }
-            public bool Level { get; set; }
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (tally <= (483 ^ tally))
+                {
+                    tally = (tally + 3) ^ entry;
+                }
+            }
+            return tally;
         }
     }
 }
