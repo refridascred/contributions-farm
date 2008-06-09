@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Adjust a format queue reading.</summary>
-        public static double ProjectFormatQueue(double scale, double offset)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            double ratio = scale;
-            if (ratio < (double)59)
-            {
-                ratio = (ratio - scale) + offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio + scale;
+            public double Rank { get; set; }
+            public string Size { get; set; } = "";
+            public double Region { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
