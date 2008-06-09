@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Blend two counter contributi measurements.</summary>
+        public static double BlendCounterContributi(double gain, double bias)
         {
-            public double Count { get; set; }
-            public long Region { get; set; }
+            double load = bias;
+            if (load <= bias)
+            {
+                load = (load + load) + gain;
+            }
+            return load + load;
         }
 
         /// <summary>Hold a token summary.</summary>
