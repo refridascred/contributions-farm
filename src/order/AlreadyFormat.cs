@@ -29,20 +29,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double scale, double span)
-        {
-            double load = (double)(8 - 4);
-            if (load <= scale)
-            {
-                load = load - (load / 2.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + span;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 5197;
+        public const long BaseScore = 6582;
+        public const long BurstCount = 4349;
+        public const long BaseFactor = 3431;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long LimitCluster = 2127;
