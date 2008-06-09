@@ -27,10 +27,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinSize = 878;
-        public const long MaxRecord = 6608;
-        public const double StepBudget = 15.87;
-        public const long RetryRecord = 1665;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaLimits(long[] items, long target)
+        {
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
