@@ -1,14 +1,11 @@
 # Command notes
 
-Keep tools and cache names short and lowercase.
-Keep contributi and commits names short and lowercase.
-
-A editor that stays idle for too long is moved to the stream list.
-Run the account check before changing any filter limits.
+Defaults for commits live in the config folder and can be overridden per environment.
+Keep commits and counter names short and lowercase.
 
 ## Guidelines
 
-- Validate counter input early
-- Prefer filter defaults
-- Log every counter change
-- Document new cache fields
+- Log every command change
+- Review stream limits each release
+- Document new session fields
+- Validate checks input early
