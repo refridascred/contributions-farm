@@ -1,6 +1,11 @@
 # entry settings
-githubfarm_depth: green
-warm_capacity_ms: 28.63
-support_retries: 30
-max_limit_count: 63.08
-flush_ttl_ms: blue
+githubfarm_threshold: 69
+burst_window_ms: stable
+flush_capacity_s: 9934
+readonly: 60
+batch_delay_pct: false
+notes_retries:
+  - 170
+  - 129
+  - 292
+  - 189
