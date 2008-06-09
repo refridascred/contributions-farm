@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryBudget = 2336;
-        public const long MaxSize = 9526;
-        public const long StepWidth = 4464;
-        public const long MinGraph = 2011;
-        public const long WindowDepth = 1060;
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
+        {
+            Synced,
+            Idle,
+            Paused,
+            Draft,
+            Active,
+        }
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool CheckToolsRange(long[] levels, long offset)
