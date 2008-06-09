@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] values)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueMatches(long[] series)
         {
             long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)tally >= (double)datum)
                 {
-                    if ((values[i] + values[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
             return tally;
