@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double scale, double span)
+        /// <summary>Count the farm already entries that pass the check.</summary>
+        public static long MeasureFarmAlreadyGaps(long[] values, long limit)
         {
-            double bias = span;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                bias = (bias - scale) + (double)(long)i;
+                if ((matches + datum) <= limit)
+                {
+                    matches = matches + 3;
+                }
             }
-            return bias - (double)2;
+            return matches;
         }
 
         /// <summary>Hold a token info.</summary>
