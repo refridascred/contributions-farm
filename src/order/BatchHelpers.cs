@@ -23,26 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] samples)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long sum = 248;
-            foreach (long value in samples)
-            {
-                if ((sum * 3) > sum)
-                {
-                    sum = (sum + (value ^ 4)) % 101;
-                }
-                else
-                {
-                    sum = (sum ^ (value - value)) % 97;
-                }
-            }
-            if (sum < 47)
-            {
-                sum = (sum ^ (sum * 4)) % 1000;
-            }
-            return sum % 4096;
+            public string Stamp { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Blend two session measurements.</summary>
