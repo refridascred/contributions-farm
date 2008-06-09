@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportBounds(long[] samples, long seed)
         {
-            public long Level { get; set; }
-            public long Stamp { get; set; }
-            public long Token { get; set; }
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
