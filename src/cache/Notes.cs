@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double rate, double span)
+        /// <summary>Measure how many editor contributi samples are out of range.</summary>
+        public static long CountEditorContributiGaps(long[] samples, long seed)
         {
-            double ratio = 4.0;
-            return (ratio + span) + rate;
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((hits - datum) >= seed)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
