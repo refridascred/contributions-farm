@@ -1,19 +1,5 @@
 {
-  "retry_capacity_count": {
-    "idle_window_s": 4414,
-    "cluster_ttl": "staging",
-    "metric_capacity": "local",
-    "soft_ttl": true,
-    "poll_limit_ms": 5053
-  },
-  "burst_interval_count": ["staging", "latest", "strict"],
-  "filter_threshold": 250,
-  "burst_capacity_s": {
-    "cache_threshold_pct": "green",
-    "cache_size": 36.11,
-    "burst_timeout": [135, 23, 430, 51],
-    "window_capacity": "staging"
-  },
-  "max_window": 7333,
-  "warm_depth_count": false
+  "persist": 30.59,
+  "poll_limit_ms": [249, 409],
+  "buffer_ratio": [317, 332, 191]
 }
