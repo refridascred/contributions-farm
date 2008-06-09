@@ -14,11 +14,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 217;
-        public const long BatchMetric = 1083;
-        public const long BatchSpan = 6564;
-        public const long WindowMetric = 584;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchOrder = 3699;
+        public const long HardOrder = 9866;
+        public const string WindowOrder = "stable-v2";
+        public const string BatchLevel = "latest-edge";
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
