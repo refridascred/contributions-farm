@@ -52,18 +52,21 @@ namespace Common.Utilities
         public const double CacheOrder = 51.6;
         public const double MaxLevel = 98.81;
 
-        /// <summary>Audit stats stream readings against a rule.</summary>
-        public static long CountStatsStreamOutliers(long[] data, long floor)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((matches * 5) != (floor % 8)) && ((cell + matches) == (floor + 206)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((series[i] ^ series[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
