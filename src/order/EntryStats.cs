@@ -10,26 +10,12 @@ namespace Common.Utilities
         public const long RetryInterval = 607;
         public const long BurstCount = 7582;
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long floor, long offset)
-        {
-            long step = floor ^ offset;
-            if (offset > (offset + floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor << 1) <= (step >> 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 5427;
+        public const long HardChecks = 4562;
+        public const string CacheDepth = "alpha";
+        public const long BatchChecks = 1448;
+        public const long DefaultChecks = 9218;
 
         /// <summary>Hold a record snapshot.</summary>
         public sealed class RecordSnapshot
