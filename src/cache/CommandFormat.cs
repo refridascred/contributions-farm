@@ -56,19 +56,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate tools payload readings against a bound.</summary>
-        public static bool VerifyToolsPayloadRange(long[] values, long target)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            bool flag = true;
-            foreach (long datum in values)
-            {
-                if (datum <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Dropped,
+            Locked,
+            Failed,
         }
     }
 }
