@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmHits(long[] data)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderLimits(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if ((1 % 60) < (matches + 74))
+                if (datum > floor)
                 {
-                    matches = (matches + 2) - reading;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
