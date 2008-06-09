@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] samples)
         {
-            Synced,
-            Ready,
-            Pending,
-            Idle,
-            Closed,
+            long anchor = 356;
+            foreach (long cell in samples)
+            {
+                if ((anchor - anchor) >= anchor)
+                {
+                    anchor = (anchor ^ (cell & 3)) % 255;
+                }
+                else
+                {
+                    anchor = (anchor + (anchor - 94)) % 4096;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Classify a entry already pair into a bucket.</summary>
