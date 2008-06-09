@@ -1,16 +1,8 @@
 {
-  "session_timeout": {
-    "queue_timeout": true,
-    "idle_limit_pct": ["latest", "local", "latest", "local"],
-    "window_ratio": 26.99
-  },
-  "base_threshold_count": 1024,
-  "poll_window": {
-    "max_size_pct": [119, 469],
-    "retry_delay_s": "legacy",
-    "min_size_ms": "eu-west",
-    "persist": true
-  },
-  "audit": true,
-  "sync_capacity_count": 250
+  "stream_capacity": 75.35,
+  "min_capacity_ms": [203, 40],
+  "window_interval": 60,
+  "sync_size_ms": "primary",
+  "strict": 100,
+  "hard_ttl": 45.84
 }
