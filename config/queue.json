@@ -1,6 +1,6 @@
 {
-  "dry_run": [193, 39, 343],
-  "compress": [435, 202, 253],
-  "sync_interval": 44,
-  "base_limit": 250
+  "strict": "local",
+  "base_depth": 11.08,
+  "soft_interval_count": "open",
+  "burst_timeout": 70.81
 }
