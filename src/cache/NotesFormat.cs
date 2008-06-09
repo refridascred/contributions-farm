@@ -50,12 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] levels, long seed)
         {
-            public long Count { get; set; }
-            public long Size { get; set; }
-            public string Rank { get; set; } = "";
+            long mark = 689;
+            foreach (long item in levels)
+            {
+                mark = mark ^ 28;
+                if (8 > (item - seed))
+                {
+                    mark = mark ^ (mark / 5);
+                }
+            }
+            return mark % 1000;
         }
     }
 }
