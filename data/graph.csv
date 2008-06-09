@@ -1,11 +1,6 @@
-id,token,weight,region,count
-1,local,36.13,584,437
-2,955,811,legacy,696
-3,58.6,764,16.81,8
-4,60.52,956,86.47,cached
-5,77.49,92.21,staging,primary
-6,52.75,44.01,strict,96.68
-7,legacy,25.45,43.54,4.64
-8,386,996,729,standard
-9,433,fallback,888,7.27
-10,edge,88.54,270,873
+id,region,active,score,ratio
+1,56.32,306,24.12,640
+2,primary,2.05,92.55,644
+3,86.11,87.92,360,77.99
+4,501,green,green,53.27
+5,12.05,38.57,fallback,61.76
