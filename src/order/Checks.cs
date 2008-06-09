@@ -22,11 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitCommand = 9364;
-        public const string LimitBudget = "stable";
-        public const double StepCommand = 89.8;
-        public const long IdleBudget = 3101;
+        /// <summary>Fold a list of support session readings.</summary>
+        public static long TallySupportSession(long[] readings, long step)
+        {
+            long carry = 6;
+            foreach (long reading in readings)
+            {
+                carry = ((carry << 3) ^ (carry + step)) + reading;
+            }
+            if (carry > 309)
+            {
+                carry = carry + carry;
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Rank token channel input into a small class.</summary>
         public static long GradeTokenChannel(long seed, long step)
