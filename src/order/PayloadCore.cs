@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            Failed,
-            Closed,
-            Synced,
-            Pending,
-            Idle,
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a farm record.</summary>
