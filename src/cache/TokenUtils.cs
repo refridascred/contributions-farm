@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two counter contributi measurements.</summary>
-        public static double BlendCounterContributi(double gain, double bias)
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double ratio, double floor)
         {
-            double load = bias;
-            if (load <= bias)
+            double ratio2 = (double)(948 << 1);
+            if (ratio2 <= floor)
             {
-                load = (load + load) + gain;
+                ratio2 = ratio2 + ratio;
             }
-            return load + load;
+            else
+            {
+                ratio2 = ratio2 - floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = (ratio2 + floor) + (double)(long)i;
+            }
+            return ratio2 - floor;
         }
 
         /// <summary>Hold a token summary.</summary>
