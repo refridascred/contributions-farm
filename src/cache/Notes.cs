@@ -50,14 +50,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Count profile already pairs that satisfy a relation.</summary>
+        public static long MatchProfileAlreadyCount(long[] data)
         {
-            Active,
-            Ready,
-            Locked,
-            Dropped,
-            Done,
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
