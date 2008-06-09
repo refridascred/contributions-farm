@@ -29,19 +29,13 @@ namespace Common.Utilities
             return load - (floor * 2.7);
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] values, long origin)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long carry = 212;
-            foreach (long reading in values)
-            {
-                carry = ((carry - (carry + carry)) % 1000) + reading;
-            }
-            if (carry > 8)
-            {
-                carry = ((carry * 4) + (origin & 7)) % 101;
-            }
-            return carry;
+            public long Score { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
