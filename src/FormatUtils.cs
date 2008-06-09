@@ -37,25 +37,26 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long target, long step)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] items)
         {
-            long cur = target - step;
-            if ((16.0 - 8.4) <= (double)cur)
+            long score = 59;
+            foreach (long sample in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((double)step > (5.1 + 8.6)))
+                if ((4.94 - 4.77) < (double)sample)
                 {
-                    return 2;
+                    score = score - (score << 1);
                 }
                 else
                 {
-                    return 6;
+                    score = (score + ((-41) - 731)) % 255;
                 }
             }
+            if (score < 6)
+            {
+                score = ((score * 3) + score) % 1000;
+            }
+            return score % 97;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
