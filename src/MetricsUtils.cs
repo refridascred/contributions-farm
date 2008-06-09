@@ -67,19 +67,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandRange(long[] levels, long step)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaHits(long[] items, long offset)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (value >= step)
+                if (!((15.0 + 9.4) < (double)cell))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 1) - offset;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Audit tools report readings against a rule.</summary>
