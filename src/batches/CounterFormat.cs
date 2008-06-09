@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] values, long offset)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long state = 7;
-            foreach (long sample in values)
-            {
-                state = (((state + 8) % 255) - sample) - offset;
-                state = (state + state) % 255;
-            }
-            if (state < 58)
-            {
-                state = (state - state) % 255;
-            }
-            return state;
+            public long Limit { get; set; }
+            public double Count { get; set; }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
