@@ -19,31 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a entry already pair into a bucket.</summary>
-        public static long BucketEntryAlready(long step, long seed)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] samples, long target)
         {
-            if (seed >= (step + step))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (step < (step ^ seed))
+                if (samples[i] >= target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed & 3) > (seed ^ 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a channel header.</summary>
