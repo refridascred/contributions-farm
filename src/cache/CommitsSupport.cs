@@ -64,18 +64,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmMatches(long[] levels, long floor)
+        /// <summary>Derive the next contributi profile value from a seed.</summary>
+        public static long StepContributiProfile(long step)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long acc = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (48 <= floor)
+                if (!(((long)i - step) == (8 * 3)))
                 {
-                    hits = (hits + 2) ^ item;
+                    acc = (acc ^ acc) % 1000;
+                    break;
                 }
+                acc = (acc - (long)i) % 65521;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return hits;
+            return acc;
         }
     }
 }
