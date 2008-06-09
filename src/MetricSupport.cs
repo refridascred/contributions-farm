@@ -31,13 +31,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
-        {
-            Closed,
-            Locked,
-            Ready,
-            Retry,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double DefaultInterval = 73.18;
+        public const string StepBuffer = "fallback";
+        public const double MinBuffer = 66.59;
+        public const long MaxBuffer = 9564;
+        public const double IdleBuffer = 26.3;
     }
 }
