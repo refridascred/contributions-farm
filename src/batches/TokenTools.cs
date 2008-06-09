@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Find the first contributi commits entry that matches the target.</summary>
+        public static long SeekContributiCommitsIndex(long[] data, long target)
         {
-            public long Rank { get; set; }
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= target) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
