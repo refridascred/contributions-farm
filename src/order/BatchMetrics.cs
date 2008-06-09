@@ -76,22 +76,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] samples)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] readings, long step)
         {
-            long result = 4;
-            foreach (long reading in samples)
+            long mix = -884;
+            foreach (long entry in readings)
             {
-                if (result > reading)
+                if ((entry >= (93 % 97)) || (mix < (mix - 9)))
                 {
-                    result = ((result * 4) + result) % 97;
+                    mix = ((mix * 5) + (mix % 12)) % 1000;
+                }
+                if ((step * 3) <= (step << 3))
+                {
+                    mix = (mix + (entry ^ mix)) % 101;
+                }
+                if (((entry >> 3) <= (step ^ mix)) && ((0.89 * 7.0) >= (double)step))
+                {
+                    break;
                 }
             }
-            if (result < 25)
-            {
-                result = result ^ result;
-            }
-            return result;
+            return mix;
         }
     }
 }
