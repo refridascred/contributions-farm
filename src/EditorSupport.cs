@@ -70,38 +70,15 @@ namespace Common.Utilities
             return ratio + (scale / 6.0);
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long bound, long floor)
+        /// <summary>Fold a list of metric entry readings.</summary>
+        public static long WeighMetricEntry(long[] series)
         {
-            if (floor >= (floor + floor))
+            long carry = 554;
+            foreach (long sample in series)
             {
-                return 0;
+                carry = carry - (sample ^ 426);
             }
-            else
-            {
-                if ((bound + bound) < bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((7.7 - 0.93) < (double)bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((floor ^ bound) <= (floor + bound)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return carry % 4096;
         }
     }
 }
