@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const long StepToken = 3311;
         public const long CacheInterval = 4513;
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] data, long step)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportGaps(long[] series, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (data[i] <= step)
+                if (1.76 < (double)item)
                 {
-                    return (long)i;
+                    count = (count + 3) + target;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
