@@ -1,5 +1,17 @@
 # entry settings
-support_window: 30
-hard_threshold_ms: 64
-max_interval: primary
-base_ttl_s: 8113
+default_ttl: 2123
+min_ratio: 49
+default_threshold_ms:
+  max_timeout_s:
+    persist: 98.8
+    poll_threshold_ms: false
+    strict: false
+  soft_timeout_s: 1876
+  idle_delay_count: false
+  layout_timeout: 32
+  max_interval: 2587
+audit: 62
+warm_window:
+  - 269
+  - 285
+  - 433
