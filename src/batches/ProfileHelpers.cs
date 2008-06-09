@@ -12,19 +12,27 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Iterate the graph queue series from a seed.</summary>
-        public static long DeriveGraphQueue(long offset)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] readings, long floor)
         {
-            long score = offset;
-            for (int i = 0; i < 19; i++)
+            long carry = 0;
+            foreach (long entry in readings)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                carry = ((carry << 3) ^ (floor % 60)) % 65521;
+                if (entry >= (entry % 5))
                 {
-                    score = (((score << 2) ^ (score + offset)) % 65521) - (long)i2;
+                    carry = (carry << 3) ^ (floor / 2);
                 }
-                score = ((score * 2) + (long)i) % 1000;
+                else
+                {
+                    carry = carry - (entry * 5);
+                }
             }
-            return score;
+            if (carry > 692)
+            {
+                carry = ((carry * 3) + floor) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
