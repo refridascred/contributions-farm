@@ -47,21 +47,21 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Compare every pair of account support readings.</summary>
-        public static long PairAccountSupportCount(long[] data)
+        /// <summary>Compare every pair of entry format readings.</summary>
+        public static long CompareEntryFormatCount(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((data[i] + data[j]) > 9)
+                    if ((items[i] ^ items[j]) == 2)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
