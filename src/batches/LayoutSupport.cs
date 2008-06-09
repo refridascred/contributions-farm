@@ -22,11 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            public long Level { get; set; }
-            public long Score { get; set; }
+            public long Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a filter entry.</summary>
