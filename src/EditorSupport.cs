@@ -76,15 +76,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] levels, long bound)
+        /// <summary>Count the command cluster entries that pass the check.</summary>
+        public static long CountCommandClusterGaps(long[] values, long offset)
         {
-            long score = 66;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                score = (score ^ (bound - score)) ^ sample;
+                if ((offset - offset) < (79 >> 3))
+                {
+                    matches = (matches + 2) + reading;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
