@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] data)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long result = 46;
-            foreach (long reading in data)
-            {
-                if (((result % 12) != (result / 6)) && ((result << 2) > result))
-                {
-                    result = ((result << 2) ^ (reading / 3)) % 65521;
-                }
-                else
-                {
-                    result = (result << 2) ^ (result - (-55));
-                }
-            }
-            return result;
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the cluster class values.</summary>
