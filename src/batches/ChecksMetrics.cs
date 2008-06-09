@@ -37,12 +37,12 @@ namespace Common.Utilities
         public const long BurstLayout = 1172;
         public const long StepLevel = 3566;
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            public long Token { get; set; }
-            public long Level { get; set; }
-            public long Flag { get; set; }
+            Synced,
+            Ready,
+            Failed,
         }
 
         /// <summary>Digest a series of order entries.</summary>
