@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long offset)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long total = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                total = total + (offset + offset);
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    total = (((total * 3) + (3 << 3)) % 255) ^ (long)i2;
-                    total = (total ^ (total * 2)) % 1000;
-                }
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
+            public bool Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the record status values.</summary>
