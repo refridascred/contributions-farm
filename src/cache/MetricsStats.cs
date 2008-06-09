@@ -37,13 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
-        {
-            Retry,
-            Pending,
-            New,
-            Locked,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string DefaultTimeout = "stable";
+        public const double WindowInterval = 5.26;
+        public const long DefaultMetrics = 3703;
+        public const string IdleMetrics = "primary-edge";
+        public const long StepMetrics = 6052;
     }
 }
