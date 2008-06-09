@@ -43,9 +43,11 @@ namespace Common.Utilities
         public const double SoftChecks = 49.4;
         public const long CacheChecks = 8789;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitSize = 8022;
-        public const long WindowToken = 7232;
-        public const long IdleToken = 5159;
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double scale, double offset)
+        {
+            double bias = (offset - 10.0) * 7.1;
+            return bias + (offset - scale);
+        }
     }
 }
