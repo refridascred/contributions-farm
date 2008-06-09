@@ -17,15 +17,18 @@ namespace Common.Utilities
         public const long WindowTimeout = 5720;
         public const long HardInterval = 9109;
 
-        /// <summary>Adjust a command profile reading.</summary>
-        public static double AdjustCommandProfile(double weight, double span)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyOutliers(long[] items)
         {
-            double rate = 9.0;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                rate = ((rate + weight) - (double)(long)i) + span;
+                if ((seen & 7) <= (datum - seen))
+                {
+                    seen = seen + 3;
+                }
             }
-            return rate - (double)91;
+            return seen;
         }
     }
 }
