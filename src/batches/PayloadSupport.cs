@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long offset)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmLimits(long[] readings, long seed)
         {
-            long result = offset;
-            for (int i = 0; i < 19; i++)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                result = ((result * 4) + (offset * 2)) % 65521;
-                result = ((result * 2) + (long)i) % 97;
+                if (reading != seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Hold a cache entry.</summary>
