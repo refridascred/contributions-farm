@@ -27,13 +27,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Classify a stream context pair into a bucket.</summary>
+        public static long SortStreamContext(long origin, long step)
         {
-            public bool Size { get; set; }
-            public double Label { get; set; }
-            public double Owner { get; set; }
-            public long Limit { get; set; }
+            if ((origin % 2) > (origin + origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((-8) < step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
