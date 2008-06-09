@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double DefaultDepth = 28.08;
-        public const string RetryToken = "local-edge";
-        public const long IdleCount = 9196;
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
+        {
+            public string Token { get; set; } = "";
+            public bool Size { get; set; }
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long AuditStatsGaps(long[] values)
