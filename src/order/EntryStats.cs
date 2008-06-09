@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
-        {
-            Dropped,
-            Stale,
-            Draft,
-            Pending,
-            Paused,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstBudget = 4946;
+        public const long RetryInterval = 607;
+        public const long BurstCount = 7582;
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long RankProfile(long floor, long offset)
