@@ -31,11 +31,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchFactor = 2556;
-        public const long BaseScore = 8166;
-        public const long MinTimeout = 3717;
-        public const long HardTimeout = 640;
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= limit) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a stats entry reading by value.</summary>
         public static long FindStatsEntryIndex(long[] data, long seed)
