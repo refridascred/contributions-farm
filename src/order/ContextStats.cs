@@ -22,12 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 6567;
-        public const double SoftFactor = 96.83;
-        public const long StepLevel = 8266;
-        public const long CacheFactor = 6422;
-        public const double DefaultRatio = 95.58;
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
+        {
+            public long Label { get; set; }
+            public double Mode { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Digest a series of checks githubfarm entries.</summary>
         public static long TallyChecksGithubfarm(long[] levels)
