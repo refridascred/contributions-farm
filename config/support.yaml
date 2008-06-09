@@ -1,5 +1,5 @@
 # support settings
-command_capacity: 30.19
-flush_ttl_count: 8155
-audit: 30
-enabled: true
+soft_limit_count: local
+cache_ratio_pct: local
+batch_capacity: primary
+cache_window: true
