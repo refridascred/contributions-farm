@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ProjectTools(double rate, double floor)
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] readings)
         {
-            double ratio = floor;
-            if (ratio < (double)33)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = (ratio - (floor * 6.7)) + rate;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + floor) - (double)(long)i;
-            }
-            return ratio - (9.75 / 6.0);
+            return count;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
