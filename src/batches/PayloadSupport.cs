@@ -35,21 +35,15 @@ namespace Common.Utilities
         public const double MinBudget = 1.36;
         public const long DefaultFactor = 2375;
 
-        /// <summary>Compare every pair of already contributi readings.</summary>
-        public static long CompareAlreadyContributiCount(long[] values)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ScalePayload(double scale, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double ratio = span;
+            if (ratio > span)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = ratio - (double)51;
             }
-            return matches;
+            return ratio + (scale / 3.0);
         }
     }
 }
