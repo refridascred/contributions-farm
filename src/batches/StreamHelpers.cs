@@ -23,20 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterBounds(long[] levels, long bound)
-        {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftContext = 7050;
+        public const double BatchBudget = 42.86;
+        public const long LimitSpan = 6301;
+        public const string BatchScore = "staging-edge";
+        public const long BatchContext = 46;
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long BucketPayload(long step, long limit)
