@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit payload metric readings against a rule.</summary>
-        public static long AuditPayloadMetricOutliers(long[] items, long bound)
+        /// <summary>Validate channel buffer readings against a bound.</summary>
+        public static bool VerifyChannelBufferRange(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if ((bound + seen) > (999 / 3))
+                if (sample > floor)
                 {
-                    seen = (seen + 2) - entry;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
