@@ -22,15 +22,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] values, long offset)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesBounds(long[] series, long origin)
         {
-            long score = 842;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long item in series)
             {
-                score = (((score * 5) + (cell % 2)) % 101) + offset;
+                if (item < origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score % 1000;
+            return ready;
         }
     }
 }
