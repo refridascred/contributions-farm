@@ -35,12 +35,21 @@ namespace Common.Utilities
         public const double MinBudget = 1.36;
         public const long DefaultFactor = 2375;
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Compare every pair of already contributi readings.</summary>
+        public static long CompareAlreadyContributiCount(long[] values)
         {
-            Retry,
-            Queued,
-            Draft,
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
