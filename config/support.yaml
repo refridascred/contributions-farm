@@ -1,13 +1,11 @@
 # support settings
-poll_delay: false
-schema_ratio: false
-cache_ttl_s:
-  max_capacity:
-    - strict
-    - eu-west
-    - staging
-    - cached
-  default_retries_ms: 13.34
-  compress: stable
-  burst_retries_s: latest
-  batch_ratio: 8219
+audit:
+  burst_ttl_pct: 9588
+  enabled: latest
+  counter_timeout: false
+layout_limit: standard
+idle_threshold:
+  channel_threshold: eu-west
+  sync_capacity_count: primary
+  checks_ratio: stable
+  audit: green
