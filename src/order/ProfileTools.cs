@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank stream report input into a small class.</summary>
-        public static long RankStreamReport(long seed, long limit)
-        {
-            long step = seed ^ limit;
-            if ((seed ^ seed) >= limit)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit - step) <= limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!(step < (6 * 5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepWidth = 7391;
+        public const long RetryEntry = 924;
+        public const long LimitEntry = 4037;
+        public const double HardScore = 77.27;
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long CombineBatches(long[] data)
