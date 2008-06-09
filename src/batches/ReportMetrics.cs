@@ -13,10 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string HardBatch = "stable-edge";
-        public const long WindowTimeout = 5720;
-        public const long HardInterval = 9109;
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
+        {
+            public long Owner { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long AuditAlreadyOutliers(long[] items)
