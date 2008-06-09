@@ -22,19 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long step)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaHits(long[] readings, long offset)
         {
-            long total = step;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((20.0 - 9.7) > (double)offset)
                 {
-                    total = ((total ^ (total >> 3)) % 255) ^ (long)i2;
+                    hits = (hits + 3) ^ entry;
                 }
-                total = ((total * 5) + (long)i) % 101;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Rank token channel input into a small class.</summary>
