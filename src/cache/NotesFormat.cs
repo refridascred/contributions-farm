@@ -40,17 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] samples, long step)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a metrics options.</summary>
