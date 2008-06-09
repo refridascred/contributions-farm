@@ -15,32 +15,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long offset, long origin)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphMatches(long[] values, long target)
         {
-            long diff = offset ^ origin;
-            if (!((origin + 8) == (origin - 4)))
+            long matches = 0;
+            foreach (long item in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset & 31) <= (offset % 7))
+                if (target >= (target / 6))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((4 - origin) <= diff)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    matches = (matches + 2) + item;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a notes stats.</summary>
