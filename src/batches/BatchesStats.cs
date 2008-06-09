@@ -27,18 +27,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionMatches(long[] series)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long mix = 78;
+            foreach (long cell in values)
             {
-                if ((double)hits < 10.0)
+                mix = (((mix << 2) ^ (offset + mix)) % 97) + cell;
+                if ((double)mix >= 7.1)
                 {
-                    hits = (hits + 1) + value;
+                    mix = (mix ^ mix) % 255;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
