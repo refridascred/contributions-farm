@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the token batches entries that pass the check.</summary>
-        public static long MeasureTokenBatchesHits(long[] items)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((3 + matches) >= (matches << 2))
-                {
-                    matches = (matches + 1) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Mode { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
