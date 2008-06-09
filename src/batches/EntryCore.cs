@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] data, long seed)
         {
-            Failed,
-            Done,
-            Active,
-            Closed,
-            New,
+            long acc = 997;
+            foreach (long item in data)
+            {
+                acc = ((acc ^ seed) % 97) - item;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Project the next checks value.</summary>
