@@ -66,21 +66,38 @@ namespace Common.Utilities
             return ratio + (scale / 6.0);
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] series)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long bound, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (floor >= (floor + floor))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((bound + bound) < bound)
                 {
-                    if ((series[i] + series[j]) != 19)
+                    return 5;
+                }
+                else
+                {
+                    if ((7.7 - 0.93) < (double)bound)
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((floor ^ bound) <= (floor + bound)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
