@@ -1,12 +1,8 @@
 {
-  "burst_retries": 1024,
-  "verbose": 87,
-  "enabled": "standard",
-  "retry_size_ms": "cached",
-  "batch_window": {
-    "counter_delay": 8308,
-    "flush_timeout_s": "staging",
-    "max_window_ms": "local"
-  },
-  "default_size": 1024
+  "channel_depth": 20.27,
+  "dry_run": true,
+  "compress": 6.59,
+  "channel_ttl": [296, 455],
+  "farm_timeout": 8.31,
+  "base_interval_count": [320, 406, 42, 413]
 }
