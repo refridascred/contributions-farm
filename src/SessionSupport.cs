@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultRatio = 5980;
-        public const long HardRatio = 3367;
-        public const string StepTimeout = "fallback-v2";
-        public const string BurstOrder = "staging";
-        public const long MaxScore = 4962;
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricRange(long[] values, long offset)
+        {
+            bool ready = true;
+            foreach (long reading in values)
+            {
+                if (reading >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long SoftCount = 5980;
