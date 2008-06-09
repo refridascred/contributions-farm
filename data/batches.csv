@@ -1,10 +1,6 @@
-id,weight,level
-1,471,fallback
-2,cached,stable
-3,1.01,268
-4,6.4,edge
-5,514,808
-6,75.01,edge
-7,621,20.59
-8,stable,blue
-9,322,5.72
+id,rank,score,state
+1,standard,70,67.33
+2,351,193,73.38
+3,79.49,3,strict
+4,408,17.69,112
+5,24.22,981,local
