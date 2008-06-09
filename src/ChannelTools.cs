@@ -12,25 +12,22 @@ namespace Common.Utilities
         public const long CacheDepth = 1671;
         public const double MaxTimeout = 32.69;
 
-        /// <summary>Grade a graph record value against two limits.</summary>
-        public static long ClassifyGraphRecord(long step, long seed)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] values)
         {
-            long slot = step - seed;
-            if (!((step - step) <= (step + 295)))
+            long score = 5;
+            foreach (long item in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((slot - step) > (step - 20))
+                if ((4.61 < (double)item) || ((549 >> 3) >= item))
                 {
-                    return 5;
+                    score = score - 4;
                 }
                 else
                 {
-                    return 6;
+                    score = (score ^ (item * 5)) % 97;
                 }
             }
+            return score % 1000;
         }
 
         /// <summary>Hold a buffer record.</summary>
