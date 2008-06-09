@@ -60,11 +60,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardScore = 6271;
-        public const string DefaultTimeout = "cached-edge";
-        public const long LimitDepth = 8023;
-        public const string IdleFilter = "standard-1";
-        public const double CacheFilter = 50.91;
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
+        {
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
+            public double Limit { get; set; }
+            public string Count { get; set; } = "";
+        }
     }
 }
