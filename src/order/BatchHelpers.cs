@@ -27,24 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a stream context pair into a bucket.</summary>
-        public static long SortStreamContext(long origin, long step)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsOutliers(long[] series, long target)
         {
-            if ((origin % 2) > (origin + origin))
+            long matches = 0;
+            foreach (long reading in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((-8) < step))
+                if ((double)reading < (3.0 - 9.78))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    matches = (matches + 2) + target;
                 }
             }
+            return matches;
         }
     }
 }
