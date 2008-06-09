@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const long BurstRatio = 63;
         public const string RetryStream = "primary-edge";
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutRange(long[] data, long limit)
+        /// <summary>Project the next farm payload value.</summary>
+        public static double SmoothFarmPayload(double ratio, double bias)
         {
-            bool stale = true;
-            foreach (long value in data)
+            double ratio2 = (double)(70 ^ 1);
+            for (int i = 0; i < 6; i++)
             {
-                if (value != limit)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio2 = ((ratio2 + (bias + bias)) + (double)(long)i) + ratio;
             }
-            return stale;
+            return ratio2 - 2.7;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
