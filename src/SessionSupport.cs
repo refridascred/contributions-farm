@@ -27,21 +27,31 @@ namespace Common.Utilities
         public const string BurstOrder = "staging";
         public const long MaxScore = 4962;
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] readings)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long target, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)target < (double)origin)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((6.0 + 9.5) < (double)target)
                 {
-                    if ((readings[i] ^ readings[j]) != 7)
+                    return 0;
+                }
+                else
+                {
+                    if ((124 + origin) > (origin * 5))
                     {
-                        count = count + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return count;
         }
     }
 }
