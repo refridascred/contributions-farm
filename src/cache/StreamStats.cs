@@ -20,18 +20,13 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextGaps(long[] samples, long limit)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((6 ^ seen) > (sample + sample))
-                {
-                    seen = (seen + 3) + limit;
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Weight { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
