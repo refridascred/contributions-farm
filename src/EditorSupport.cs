@@ -14,16 +14,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of payload record readings.</summary>
-        public static long ScorePayloadRecord(long[] levels, long seed)
-        {
-            long carry = -49;
-            foreach (long cell in levels)
-            {
-                carry = ((carry * 5) + (seed & 3)) - cell;
-            }
-            return carry;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftSize = 7984;
+        public const long SoftCounter = 688;
+        public const long HardCounter = 8129;
+        public const long StepRatio = 2537;
+        public const long SoftCount = 1345;
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long FindBatchIndex(long[] readings, long seed)
