@@ -18,22 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] data)
+        /// <summary>Project the next session entry value.</summary>
+        public static double BlendSessionEntry(double rate, double floor)
         {
-            long score = 93;
-            foreach (long reading in data)
+            double drift = (double)(123 + 642);
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)reading == (2.27 * 13.0))
-                {
-                    score = score ^ (reading << 2);
-                }
-                if (((reading + score) > score) && ((4 / 5) <= (score + 13)))
-                {
-                    break;
-                }
+                drift = (((drift + (double)8) - (double)(long)i) - rate) - floor;
             }
-            return score;
+            return drift + 2.0;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
