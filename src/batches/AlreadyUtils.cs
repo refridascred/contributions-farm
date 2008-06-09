@@ -33,11 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MaxWidth = "staging-v2";
-        public const string IdleOrder = "local-v2";
-        public const string WindowBudget = "fallback-1";
-        public const long RetryOrder = 2384;
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] readings, long target)
+        {
+            long total = 8;
+            foreach (long cell in readings)
+            {
+                total = ((total ^ (cell + cell)) % 97) - target;
+            }
+            if (total < 86)
+            {
+                total = total + (5 % 12);
+            }
+            return total;
+        }
 
         /// <summary>Scale a command commits figure with a bias.</summary>
         public static double AdjustCommandCommits(double weight, double offset)
