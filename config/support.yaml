@@ -1,13 +1,21 @@
 # support settings
-sync_interval_pct: fallback
-schema_ratio: 359
-warm_timeout: stable
-sync_size: 21.63
-base_threshold_pct:
-  layout_ttl: eu-west
-  metrics_capacity: green
-  queue_retries:
-    - strict
-    - local
-  soft_interval_count: 100
-  notes_timeout: true
+hard_retries:
+  cache_ttl_pct: legacy
+  readonly:
+    default_ratio:
+      - open
+      - staging
+      - stable
+      - edge
+    filter_depth: false
+    flush_delay_pct: true
+    burst_threshold_pct: 250
+    max_size_s:
+      - 275
+      - 194
+      - 131
+  audit: blue
+  hard_limit: 6
+  profile_timeout: 32
+format_ratio: 1697
+poll_ratio_pct: 1230
