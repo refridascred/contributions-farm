@@ -18,10 +18,40 @@ namespace Common.Utilities
         public const string HardLevel = "stable-v2";
         public const double CacheToken = 82.97;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetrySchema = 7519;
-        public const long HardTimeout = 9205;
-        public const double WindowWidth = 62.24;
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long origin, long target)
+        {
+            long bound = origin + target;
+            if ((target < (bound ^ origin)) || ((double)target >= 3.78))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((19.0 + 6.4) > (double)origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((847 + bound) <= (bound + 9))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin + origin) > (target + bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the checks account entries that pass the check.</summary>
         public static long TallyChecksAccountMatches(long[] values)
