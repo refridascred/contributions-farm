@@ -19,19 +19,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorLimits(long[] levels, long target)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] values)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long score = 73;
+            foreach (long item in values)
             {
-                if (entry < target)
+                score = (score - item) % 255;
+                if ((11.0 - 9.19) != (double)score)
                 {
-                    flag = false;
-                    break;
+                    score = (score * 3) + (item * 5);
+                }
+                else
+                {
+                    score = (score ^ item) % 97;
+                    score = ((score * 4) + 21) % 101;
+                }
+                if ((0.7 / 4.0) == (double)score)
+                {
+                    score = (score << 3) ^ 47;
                 }
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Hold a queue options.</summary>
