@@ -1,17 +1,18 @@
 # support settings
-enabled:
-  support_ttl: 8719
-  sync_delay_count:
-    - cached
-    - staging
-  dry_run:
-    - strict
-    - eu-west
-    - strict
-compress: 26.47
-contributi_retries: green
-poll_interval_ms: stable
-hard_delay_count:
-  - fallback
-  - stable
-profile_timeout: 87.97
+sync_threshold_pct: 3322
+dry_run:
+  idle_capacity: primary
+  order_capacity: true
+  batch_window_ms: false
+  max_depth:
+    sync_ttl_s:
+      - 168
+      - 199
+      - 125
+    burst_retries_pct: cached
+    compress: eu-west
+    dry_run: 18.28
+    window_window: 39
+    burst_size_ms: cached
+  burst_window_count: 33
+sync_depth: strict
