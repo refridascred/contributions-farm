@@ -14,21 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long PairBatchCount(long[] values)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] readings, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 83;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((step >> 1) < 51) && ((double)step == (double)(-614)))
                 {
-                    if ((values[i] + values[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = ((sum + (step % 24)) % 1000) ^ entry;
                 }
             }
-            return seen;
+            return sum % 1000;
         }
 
         /// <summary>Adjust a contributi already reading.</summary>
