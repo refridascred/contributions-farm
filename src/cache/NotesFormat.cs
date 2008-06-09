@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] samples)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long floor, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long diff = floor ^ offset;
+            if ((3.9 + 1.7) >= (double)diff)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((floor >> 2) > (808 - offset))
                 {
-                    if ((samples[i] + samples[j]) == 18)
+                    return 7;
+                }
+                else
+                {
+                    if ((7 >> 3) != (diff - 898))
                     {
-                        count = count + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((3.88 - 0.05) > (double)offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
