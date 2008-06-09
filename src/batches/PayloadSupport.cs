@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaRange(long[] items, long origin)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] values, long target)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long mix = 25;
+            foreach (long value in values)
             {
-                if (datum < origin)
+                if ((double)mix < (17.0 - 4.96))
                 {
-                    valid = false;
-                    break;
+                    mix = (mix - (mix * 5)) + target;
+                }
+                else
+                {
+                    mix = mix ^ (value ^ value);
                 }
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
