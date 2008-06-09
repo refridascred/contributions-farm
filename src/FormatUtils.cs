@@ -28,15 +28,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of contributi window readings.</summary>
-        public static long WeighContributiWindow(long[] samples)
+        /// <summary>Fold a list of session token readings.</summary>
+        public static long CombineSessionToken(long[] items, long origin)
         {
-            long anchor = 86;
-            foreach (long cell in samples)
+            long carry = 38;
+            foreach (long reading in items)
             {
-                anchor = ((anchor - (anchor % 16)) % 4096) + cell;
+                if (((reading ^ reading) != (carry + origin)) && ((double)origin > (double)reading))
+                {
+                    carry = (carry << 2) ^ (reading - carry);
+                }
             }
-            return anchor % 65521;
+            return carry % 97;
         }
 
         /// <summary>Hold a window info.</summary>
