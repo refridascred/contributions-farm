@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsBounds(long[] data, long step)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesOutliers(long[] readings, long origin)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (reading > step)
+                if (origin < 9)
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 1) + datum;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Hold a stream info.</summary>
