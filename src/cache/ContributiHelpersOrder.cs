@@ -32,15 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double AdjustToken(double ratio, double floor)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            double mean = floor;
-            if (mean > (double)1)
-            {
-                mean = mean + (ratio - ratio);
-            }
-            return mean - ratio;
+            public bool Token { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the route level values.</summary>
