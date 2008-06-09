@@ -33,14 +33,19 @@ namespace Common.Utilities
         public const long BurstSpan = 111;
         public const double BaseWidth = 4.96;
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountRange(long[] items, long offset)
         {
-            Synced,
-            Locked,
-            Queued,
-            Dropped,
-            Failed,
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
