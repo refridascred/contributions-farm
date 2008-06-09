@@ -41,23 +41,21 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] samples, long step)
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] items)
         {
-            long total = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (total ^ (sample << 3)) % 97;
-                if (((65 << 3) == (79 - sample)) && ((double)total == (19.0 + 1.73)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = total - sample;
-                }
-                if ((step & 127) >= step)
-                {
-                    break;
+                    if ((items[i] - items[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total % 65521;
+            return matches;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
