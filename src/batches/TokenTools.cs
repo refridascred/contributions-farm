@@ -31,19 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cluster metric entries that pass the check.</summary>
-        public static long AuditClusterMetricHits(long[] values)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long PairChannelCount(long[] data)
         {
             long matches = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((matches << 2) >= datum)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((data[i] + data[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
