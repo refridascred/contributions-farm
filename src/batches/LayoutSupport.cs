@@ -22,11 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            public long Region { get; set; }
-            public long Rank { get; set; }
+            Paused,
+            Idle,
+            Locked,
         }
 
         /// <summary>Hold a filter entry.</summary>
