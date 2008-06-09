@@ -20,19 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every already command entry stays within the limit.</summary>
-        public static bool CheckAlreadyCommandRange(long[] values, long floor)
+        /// <summary>Match up githubfarm counter samples.</summary>
+        public static long PairGithubfarmCounterCount(long[] levels)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value < floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Classify a command buffer pair into a bucket.</summary>
