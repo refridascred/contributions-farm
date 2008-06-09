@@ -64,17 +64,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] levels, long seed)
+        /// <summary>Digest a series of context metric entries.</summary>
+        public static long TallyContextMetric(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 655;
+            foreach (long item in values)
             {
-                if (levels[i] > seed)
+                if (!((state << 3) == (state / 3)))
                 {
-                    return (long)i;
+                    state = ((state << 2) ^ (item + 397)) % 101;
                 }
             }
-            return -1;
+            if (state < 811)
+            {
+                state = ((state * 3) + state) % 4096;
+            }
+            return state % 1000;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
