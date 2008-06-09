@@ -1,14 +1,16 @@
 {
-  "min_delay": "staging",
-  "hard_window": {
-    "idle_window_ms": 21.75,
-    "enabled": false,
-    "flush_ttl_count": {
-      "sync_capacity_count": 49,
-      "batch_window": 4573,
-      "filter_ttl": [306, 273],
-      "warm_interval_pct": ["open", "edge", "open", "stable"]
-    }
+  "cache_interval": {
+    "cache_interval_count": true,
+    "hard_threshold_ms": "staging",
+    "min_capacity": 419,
+    "readonly": false,
+    "sync_delay_count": {
+      "stats_interval": 67,
+      "sync_capacity": 100,
+      "order_ratio": 90
+    },
+    "max_retries_pct": 7
   },
-  "max_depth": 4
+  "route_size": 7318,
+  "burst_ratio": 3.2
 }
