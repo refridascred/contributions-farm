@@ -12,17 +12,11 @@ namespace Common.Utilities
         public const long MinGraph = 2011;
         public const long WindowDepth = 1060;
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] values, long target)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Fold a list of contributi window readings.</summary>
