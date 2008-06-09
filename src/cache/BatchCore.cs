@@ -20,17 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = (mark + 602) % 101;
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string SoftLevel = "strict-edge";
+        public const double WindowCounter = 82.48;
+        public const long MaxCounter = 6898;
+        public const long LimitCounter = 8575;
 
         /// <summary>Project the next graph already value.</summary>
         public static double SmoothGraphAlready(double scale, double floor)
