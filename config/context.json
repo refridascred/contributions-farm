@@ -1,7 +1,7 @@
 {
-  "compress": "cached",
-  "cache_window": 6.45,
-  "burst_ttl": ["strict", "strict"],
-  "cluster_retries": "cached",
-  "context_depth": 87
+  "verbose": "strict",
+  "hard_interval": ["legacy", "cached", "fallback", "staging"],
+  "sync_delay": true,
+  "sync_timeout_pct": [19, 487, 196],
+  "buffer_timeout": 61
 }
