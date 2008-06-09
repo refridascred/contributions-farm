@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksOutliers(long[] data, long offset)
         {
-            public bool Limit { get; set; }
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((sample % 2) >= sample)
+                {
+                    matches = (matches + 3) - offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
