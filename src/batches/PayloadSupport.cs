@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] data, long target)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long state = 75;
-            foreach (long reading in data)
-            {
-                if (((target & 15) <= reading) || ((state + 148) > (state << 1)))
-                {
-                    state = state - (long)data.Length;
-                }
-            }
-            if (state < 39)
-            {
-                state = (state << 2) ^ (target + 14);
-            }
-            return state;
+            Paused,
+            Active,
+            New,
+            Queued,
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
