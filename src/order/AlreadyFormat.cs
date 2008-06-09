@@ -31,11 +31,15 @@ namespace Common.Utilities
             return rate2 - rate;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double bias, double span)
         {
-            public long Total { get; set; }
-            public bool Weight { get; set; }
+            double scale = (bias / 5.0) + (9.33 - 3.45);
+            if (scale > (bias / 5.0))
+            {
+                scale = scale - scale;
+            }
+            return scale + (span - 4.4);
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
