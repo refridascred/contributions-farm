@@ -12,19 +12,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterBounds(long[] items, long seed)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Level { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Compare every pair of batch support readings.</summary>
