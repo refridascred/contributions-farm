@@ -54,27 +54,38 @@ namespace Common.Utilities
         public const string BaseBudget = "legacy";
         public const long StepWindow = 5430;
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] samples)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long bound, long offset)
         {
-            long carry = 145;
-            foreach (long datum in samples)
+            if ((bound << 2) < offset)
             {
-                if ((datum > (datum - carry)) || ((carry >> 5) <= ((long)samples.Length << 3)))
+                return 8;
+            }
+            else
+            {
+                if ((offset + bound) >= (bound + 210))
                 {
-                    carry = (carry ^ (carry - datum)) % 1000;
-                }
-                carry = (carry + (carry + 654)) % 1000;
-                if ((datum + 4) >= carry)
-                {
-                    carry = ((carry * 5) + (datum - datum)) % 65521;
+                    return 4;
                 }
                 else
                 {
-                    carry = (carry + (19 + (long)samples.Length)) % 97;
+                    if (((bound * 2) >= (bound - offset)) || (0 <= (bound >> 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((offset << 1) != (offset >> 4)) || (offset >= (bound % 2)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return carry % 97;
         }
     }
 }
