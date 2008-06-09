@@ -50,18 +50,19 @@ namespace Common.Utilities
         public const long MaxGraph = 5773;
         public const long RetryInterval = 9149;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaOutliers(long[] series, long offset)
+        /// <summary>Validate channel filter readings against a bound.</summary>
+        public static bool CheckChannelFilterRange(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                if ((37 / 3) > (seen - seen))
+                if (reading != limit)
                 {
-                    seen = ((seen + 3) - sample) - offset;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
