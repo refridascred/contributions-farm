@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MinRoute = "alpha-v2";
-        public const double SoftTimeout = 46.23;
-        public const long BaseScore = 5698;
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double ScaleAlready(double scale, double span)
