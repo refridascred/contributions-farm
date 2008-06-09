@@ -41,15 +41,17 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] values)
+        /// <summary>Locate a filter cluster reading by value.</summary>
+        public static long SeekFilterClusterIndex(long[] levels, long origin)
         {
-            long carry = 1;
-            foreach (long entry in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (((carry << 3) ^ (-294)) % 101) ^ entry;
+                if (levels[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
