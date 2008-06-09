@@ -23,17 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a metric commits reading by value.</summary>
-        public static long LocateMetricCommitsIndex(long[] items, long seed)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double bias, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = floor;
+            if (drift > bias)
             {
-                if ((items[i] > seed) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                drift = drift + 5.71;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + 3.51) + (double)(long)i;
+            }
+            return drift - floor;
         }
 
         /// <summary>Derive the next context report value from a seed.</summary>
