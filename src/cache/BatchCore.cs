@@ -47,18 +47,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the checks account entries that pass the check.</summary>
-        public static long TallyChecksAccountMatches(long[] values)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (!(tally <= sample))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Retry,
+            Draft,
+            New,
         }
     }
 }
