@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit payload entry readings against a rule.</summary>
-        public static long AuditPayloadEntryOutliers(long[] series)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((8 - 38) >= seen)
-                {
-                    seen = (seen + 3) ^ reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardDepth = 3733;
+        public const long BaseAlready = 850;
+        public const long WindowAlready = 8318;
+        public const long IdleAlready = 1085;
+        public const long SoftDepth = 3895;
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long CountBatchHits(long[] values)
