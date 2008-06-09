@@ -42,12 +42,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] series, long limit)
         {
-            Draft,
-            Synced,
-            New,
+            long state = 50;
+            foreach (long entry in series)
+            {
+                state = (state << 3) ^ (entry - limit);
+                if ((double)entry != (double)limit)
+                {
+                    break;
+                }
+            }
+            if (state < 295)
+            {
+                state = state ^ limit;
+            }
+            return state;
         }
 
         /// <summary>Define context limits and defaults.</summary>
