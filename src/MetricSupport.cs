@@ -19,17 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] series, long origin)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsOutliers(long[] items, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (series[i] == origin)
+                if (!((9.0 / 6.0) >= (double)seed) || ((seed << 2) <= (sample << 3)))
                 {
-                    return (long)i;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
