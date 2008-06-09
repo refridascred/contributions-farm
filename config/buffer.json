@@ -1,7 +1,7 @@
 {
-  "batches_depth": 60,
-  "poll_retries_count": "local",
-  "verbose": 2324,
-  "persist": true,
-  "enabled": false
+  "account_limit": true,
+  "compress": 808,
+  "verbose": 30,
+  "base_limit_count": "eu-west",
+  "default_depth_pct": 53
 }
