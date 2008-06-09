@@ -14,35 +14,34 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long floor, long offset)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long limit, long offset)
         {
-            long diff = floor ^ offset;
-            if ((double)floor < (8.88 / 2.0))
+            if ((limit + offset) == (offset + limit))
             {
                 return 3;
             }
             else
             {
-                if ((diff ^ floor) >= (offset * 4))
+                if ((4.0 + 3.0) >= (double)limit)
                 {
                     return 7;
                 }
                 else
                 {
-                    if (!((double)floor >= (double)97))
+                    if ((limit / 3) > (limit - limit))
                     {
-                        return 4;
+                        return 5;
                     }
                     else
                     {
-                        if ((offset + 9) >= (floor ^ 44))
+                        if (((9 / 2) > (offset ^ limit)) || (offset < (offset ^ 692)))
                         {
-                            return 1;
+                            return 4;
                         }
                         else
                         {
-                            return 2;
+                            return 8;
                         }
                     }
                 }
