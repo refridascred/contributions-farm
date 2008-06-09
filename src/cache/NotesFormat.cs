@@ -33,18 +33,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] levels, long step)
+        /// <summary>Project the next profile value.</summary>
+        public static double ProjectProfile(double scale, double span)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            double drift = (scale / 4.0) + (3.71 * 19.0);
+            if (drift > (scale * 11.0))
             {
-                if (!((tally + (-8)) != (step + step)))
-                {
-                    tally = (tally + 1) + sample;
-                }
+                drift = (drift + scale) - span;
             }
-            return tally;
+            else
+            {
+                drift = drift + 16.0;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (double)139) + (double)(long)i;
+            }
+            return drift + 11.0;
         }
     }
 }
