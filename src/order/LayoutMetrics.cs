@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueMatches(long[] series)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchRange(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if ((double)tally >= (double)datum)
+                if (reading > bound)
                 {
-                    tally = tally + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Iterate the schema batch series from a seed.</summary>
