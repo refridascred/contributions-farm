@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every stream githubfarm entry stays within the limit.</summary>
-        public static bool VerifyStreamGithubfarmBounds(long[] items, long step)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the profile class values.</summary>
