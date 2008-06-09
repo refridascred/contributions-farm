@@ -50,15 +50,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of session metric readings.</summary>
-        public static long DigestSessionMetric(long[] levels, long step)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatBounds(long[] levels, long bound)
         {
-            long score = 405;
-            foreach (long value in levels)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                score = ((score + score) - value) + step;
+                if (datum != bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score;
+            return ok;
         }
     }
 }
