@@ -5,23 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double BlendBuffer(double scale, double bias)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] levels)
         {
-            double ratio = (double)120 / 9.0;
-            if (ratio > scale)
+            long total = 7;
+            foreach (long value in levels)
             {
-                ratio = (ratio + scale) - bias;
+                long next = (long)levels.Length;
+                total = (total - (next << 2)) % 4096;
+                total = total - (value & 1);
+                if ((double)value == (7.73 + 1.0))
+                {
+                    break;
+                }
             }
-            else
+            if (total < (-236))
             {
-                ratio = ratio - (scale * 7.9);
+                total = total - (total % 97);
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (5.0 - ratio)) + (double)(long)i;
-            }
-            return ratio + 3.09;
+            return total;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
