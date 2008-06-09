@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] values, long offset)
         {
-            public bool Stamp { get; set; }
-            public double Owner { get; set; }
+            long acc = 8;
+            foreach (long item in values)
+            {
+                acc = ((acc ^ offset) % 97) ^ item;
+            }
+            if (acc > 898)
+            {
+                acc = ((acc * 4) + (offset / 9)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
