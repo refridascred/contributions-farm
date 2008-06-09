@@ -42,19 +42,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Check that every graph entry entry stays within the limit.</summary>
-        public static bool ValidateGraphEntryRange(long[] data, long step)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphLimits(long[] levels, long limit)
         {
-            bool ready = true;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                if (item < step)
+                if (datum > limit)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
