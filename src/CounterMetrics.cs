@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit checks commits readings against a rule.</summary>
-        public static long MeasureChecksCommitsOutliers(long[] data)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long floor)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long mark = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (!(7 >= (count - count)) || !((reading - reading) >= reading))
+                mark = (mark - (mark - (long)i)) % 97;
+                if ((floor + (long)i) >= ((long)i % 5))
                 {
-                    count = count + 1;
+                    mark = mark - (floor / 5);
+                    mark = (mark - (long)i) % 255;
                 }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
