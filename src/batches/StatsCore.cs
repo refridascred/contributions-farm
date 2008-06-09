@@ -28,23 +28,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] readings, long step)
+        /// <summary>Compare every pair of already checks readings.</summary>
+        public static long MatchAlreadyChecksCount(long[] levels)
         {
-            long result = 9;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (result + step) % 101;
-                if ((value - result) >= (result ^ result))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = result ^ 4;
-                }
-                if ((double)value == (double)step)
-                {
-                    break;
+                    if ((levels[i] - levels[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
