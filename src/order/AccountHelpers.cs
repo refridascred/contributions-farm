@@ -43,17 +43,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] samples, long floor)
+        /// <summary>Adjust a filter tools reading.</summary>
+        public static double ProjectFilterTools(double weight, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain = 11.0;
+            if (gain < (floor * 5.0))
             {
-                if (samples[i] > floor)
-                {
-                    return (long)i;
-                }
+                gain = (gain + gain) + weight;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain - floor;
         }
 
         /// <summary>Describe the format mode values.</summary>
