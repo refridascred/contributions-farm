@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double AdjustReport(double rate, double bias)
+        /// <summary>Find the first schema support entry that matches the target.</summary>
+        public static long FindSchemaSupportIndex(long[] items, long bound)
         {
-            double load = rate;
-            return (load - 2.0) + bias;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == bound) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of report schema readings.</summary>
