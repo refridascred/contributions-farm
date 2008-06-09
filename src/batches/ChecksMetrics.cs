@@ -67,16 +67,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long offset)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long result = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                result = (result << 3) ^ (offset + offset);
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            Closed,
+            Failed,
+            Ready,
+            New,
         }
 
         /// <summary>Describe the channel level values.</summary>
