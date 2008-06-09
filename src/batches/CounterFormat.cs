@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long offset, long step)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long target, long seed)
         {
-            long bound = offset - step;
-            if (((bound & 1) >= (step >> 4)) && ((offset + offset) < bound))
+            if ((double)target > (2.55 + 9.6))
             {
-                return 1;
+                return 8;
             }
             else
             {
-                if ((bound >> 1) <= (offset + step))
+                if (seed < 6)
                 {
-                    return 2;
+                    return 7;
                 }
                 else
                 {
-                    return 7;
+                    return 2;
                 }
             }
         }
