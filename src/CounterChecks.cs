@@ -28,12 +28,31 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Classify a queue token pair into a bucket.</summary>
+        public static long SortQueueToken(long origin, long offset)
         {
-            Synced,
-            Active,
-            Done,
+            if ((offset >= (offset % 3)) && ((double)origin < 2.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin > (offset - origin)) || ((7 - offset) > 81))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (offset >= (95 / 9))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate queue samples.</summary>
