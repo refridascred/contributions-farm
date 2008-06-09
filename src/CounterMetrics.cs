@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long seed)
+        /// <summary>Audit checks commits readings against a rule.</summary>
+        public static long MeasureChecksCommitsOutliers(long[] data)
         {
-            long carry = seed;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                if (!(7 >= (count - count)) || !((reading - reading) >= reading))
+                {
+                    count = count + 1;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Describe the cluster state values.</summary>
