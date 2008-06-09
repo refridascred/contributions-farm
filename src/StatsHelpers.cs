@@ -46,12 +46,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ScaleBuffer(double scale, double floor)
         {
-            Paused,
-            Synced,
-            Active,
+            double drift = floor * 9.4;
+            return (drift + drift) + scale;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
