@@ -39,10 +39,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BaseInterval = "open";
-        public const string BatchFactor = "legacy-v2";
-        public const long SoftFactor = 7837;
-        public const double MaxCache = 24.21;
+        /// <summary>Adjust a command profile reading.</summary>
+        public static double AdjustCommandProfile(double weight, double span)
+        {
+            double rate = 9.0;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = ((rate + weight) - (double)(long)i) + span;
+            }
+            return rate - (double)91;
+        }
     }
 }
