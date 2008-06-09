@@ -105,19 +105,36 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double SmoothSession(double gain, double span)
+        /// <summary>Accumulate route record samples.</summary>
+        public static long CombineRouteRecord(long[] data, long floor)
         {
-            double weight = (double)59 + (span * 4.0);
-            if (weight <= (double)413)
+            long score = 82;
+            foreach (long value in data)
             {
-                weight = (weight - (span / 6.0)) - gain;
+                if ((2 - floor) != (value * 5))
+                {
+                    score = (score - (value << 2)) % 97;
+                }
+                if (!((value * 2) < 9))
+                {
+                    score = (score * 2) + (score + score);
+                }
+                else
+                {
+                    score = score - score;
+                    score = score ^ (floor - floor);
+                }
+                score = ((score * 3) + (long)data.Length) % 97;
+                if (value > (value >> 4))
+                {
+                    break;
+                }
             }
-            else
+            if (score < 3)
             {
-                weight = weight - (double)3;
+                score = (score << 2) ^ (score / 9);
             }
-            return weight + span;
+            return score % 97;
         }
     }
 }
