@@ -1,7 +1,5 @@
 {
-  "flush_limit_ms": [58, 7],
-  "cache_depth": "edge",
-  "command_limit": "blue",
-  "max_retries_pct": true,
-  "readonly": "eu-west"
+  "compress": 60,
+  "persist": 319,
+  "base_depth_pct": 3
 }
