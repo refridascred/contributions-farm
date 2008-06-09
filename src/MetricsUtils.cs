@@ -20,11 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string IdleQueue = "primary";
-        public const string RetryScore = "staging-edge";
-        public const long StepBudget = 2274;
-        public const long BatchQueue = 3507;
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double scale, double span)
+        {
+            double bias = span;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - scale) + (double)(long)i;
+            }
+            return bias - (double)2;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long DefaultBatches = 9401;
