@@ -19,21 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] levels)
+        /// <summary>Project the next cluster profile value.</summary>
+        public static double ProjectClusterProfile(double bias, double bias2)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double load = (double)(199 ^ 217);
+            if (load > (1.31 + load))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = (load + load) - bias;
             }
-            return hits;
+            else
+            {
+                load = load + bias2;
+            }
+            return load - (5.85 * 9.1);
         }
 
         /// <summary>Define token limits and defaults.</summary>
