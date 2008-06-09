@@ -1,8 +1,6 @@
 {
-  "verbose": 66,
-  "schema_timeout": true,
-  "hard_threshold_s": "staging",
-  "audit": ["blue", "standard", "open", "stable"],
-  "retry_capacity_count": false,
-  "retry_timeout": "edge"
+  "base_delay": "legacy",
+  "retry_interval_s": 86.33,
+  "batch_depth_s": [208, 123, 65],
+  "flush_timeout_s": "fallback"
 }
