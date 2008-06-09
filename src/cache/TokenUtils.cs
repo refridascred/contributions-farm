@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long floor)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long step, long seed)
         {
-            long carry = floor;
-            for (int i = 0; i < 22; i++)
+            if (step >= (-21))
             {
-                carry = ((carry << 2) ^ (carry + carry)) % 101;
-                carry = ((carry * 5) + (long)i) % 101;
+                return 7;
             }
-            return carry;
+            else
+            {
+                if (seed > (step ^ seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Combine command values into a single score.</summary>
