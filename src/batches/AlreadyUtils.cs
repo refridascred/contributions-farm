@@ -34,22 +34,31 @@ namespace Common.Utilities
         public const double HardCount = 32.09;
         public const long BaseCount = 3712;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionOutliers(long[] samples)
+        /// <summary>Grade a command tools value against two limits.</summary>
+        public static long RankCommandTools(long offset, long origin)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            if ((0 - offset) > (offset + origin))
             {
-                if (value <= hits)
+                return 2;
+            }
+            else
+            {
+                if (((double)offset >= (19.0 + 4.0)) || (origin <= 8))
                 {
-                    hits = hits + 2;
+                    return 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((offset / 9) >= offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
