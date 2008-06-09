@@ -76,17 +76,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Find the first metrics stream entry that matches the target.</summary>
-        public static long SeekMetricsStreamIndex(long[] samples, long step)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double SmoothSession(double gain, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double weight = (double)59 + (span * 4.0);
+            if (weight <= (double)413)
             {
-                if (samples[i] > step)
-                {
-                    return (long)i;
-                }
+                weight = (weight - (span / 6.0)) - gain;
             }
-            return -1;
+            else
+            {
+                weight = weight - (double)3;
+            }
+            return weight + span;
         }
     }
 }
