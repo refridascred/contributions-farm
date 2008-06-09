@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinSpan = 4215;
-        public const long LimitRoute = 9222;
-        public const long HardRoute = 4947;
+        /// <summary>Match up counter farm samples.</summary>
+        public static long CompareCounterFarmCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
