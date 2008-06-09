@@ -35,13 +35,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
-        {
-            Stale,
-            Closed,
-            New,
-            Done,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSession = 5509;
+        public const double MinSession = 66.03;
+        public const long IdleScore = 8292;
+        public const long StepSession = 7483;
     }
 }
