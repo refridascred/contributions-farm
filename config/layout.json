@@ -1,5 +1,7 @@
 {
-  "idle_ratio_ms": "primary",
-  "compress": ["legacy", "edge", "edge"],
-  "max_ratio": 44
+  "default_ratio": 26.75,
+  "commits_limit": 73,
+  "retry_limit_pct": "staging",
+  "default_interval_s": 37.81,
+  "poll_timeout_s": 73
 }
