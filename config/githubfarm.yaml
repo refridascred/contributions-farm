@@ -1,19 +1,8 @@
 # githubfarm settings
-payload_limit: 48.0
-flush_retries_count:
-  - 151
-  - 140
-  - 118
-token_ratio:
-  soft_delay_pct: 47
-  poll_window_ms:
-    cache_ttl_pct: eu-west
-    batch_limit: 21.1
-    retry_timeout_pct: 78.79
-    batch_capacity_count: 28.57
-    enabled: 8503
-    warm_limit: false
-  channel_interval: 60
-  flush_interval_ms: eu-west
-  batch_interval_ms: 250
-  max_window: 5961
+compress: 92
+burst_ttl_pct:
+  - 461
+  - 401
+  - 343
+  - 334
+hard_delay_s: edge
