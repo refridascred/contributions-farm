@@ -41,35 +41,38 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] items, long limit)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long offset, long limit)
         {
-            long state = 6;
-            foreach (long reading in items)
+            if ((double)limit != (double)55)
             {
-                if ((limit - state) > (reading % 5))
+                return 4;
+            }
+            else
+            {
+                if (!((7.2 / 3.0) < (double)limit))
                 {
-                    break;
+                    return 8;
                 }
                 else
                 {
-                    state = (state << 3) ^ state;
-                }
-                if ((state - reading) == (limit * 3))
-                {
-                    continue;
-                }
-                state = (state + (7 - limit)) % 255;
-                if ((7 >= limit) || ((0.5 / 2.0) != (double)state))
-                {
-                    break;
+                    if ((limit / 7) <= limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)limit == (double)offset) && ((offset & 255) >= (limit + limit)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (state > 82)
-            {
-                state = (state ^ (limit >> 2)) % 255;
-            }
-            return state;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
