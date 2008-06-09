@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Look up the position of a support already sample.</summary>
+        public static long SeekSupportAlreadyIndex(long[] samples, long seed)
         {
-            public long Score { get; set; }
-            public long Level { get; set; }
-            public long Flag { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
