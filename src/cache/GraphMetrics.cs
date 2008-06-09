@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const double SoftScore = 87.21;
         public const double WindowDepth = 4.34;
 
-        /// <summary>Locate a tools command reading by value.</summary>
-        public static long FindToolsCommandIndex(long[] samples, long seed)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportLimits(long[] values, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if (samples[i] >= seed)
+                if (entry > target)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Describe the account class values.</summary>
