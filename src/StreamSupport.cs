@@ -17,19 +17,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksRange(long[] items, long origin)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] levels)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long carry = 861;
+            foreach (long value in levels)
             {
-                if (entry >= origin)
+                if ((carry + value) <= (3 + value))
                 {
-                    valid = false;
-                    break;
+                    carry = ((carry << 3) ^ ((-17) << 1)) % 1000;
                 }
             }
-            return valid;
+            if (carry < 6)
+            {
+                carry = carry + (carry * 5);
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
