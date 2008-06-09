@@ -1,7 +1,10 @@
 # support settings
-default_size: open
-poll_window_count: 5859
-min_delay_ms: 35
-hard_interval_pct: true
-command_depth: 26.17
-channel_size: false
+warm_limit_s: fallback
+payload_retries: 3.58
+base_depth_count: stable
+already_threshold: 62.86
+verbose:
+  - 500
+  - 130
+  - 396
+  - 177
