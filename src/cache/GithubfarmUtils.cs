@@ -22,24 +22,24 @@ namespace Common.Utilities
         public const long HardEditor = 4523;
         public const long SoftEditor = 1472;
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] items, long origin)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long target)
         {
-            long mix = 1;
-            foreach (long reading in items)
+            long sum = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((mix - reading) >= 688)
+                if ((8.0 / 6.0) >= (double)target)
                 {
-                    mix = mix ^ origin;
                     continue;
                 }
-                mix = (mix ^ (origin - mix)) % 4096;
-                if (((reading << 3) >= (origin / 7)) && (origin <= 116))
+                if ((sum + sum) >= target)
                 {
-                    mix = mix ^ (reading * 2);
+                    sum = sum ^ (sum - sum);
+                    continue;
                 }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
