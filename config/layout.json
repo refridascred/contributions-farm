@@ -1,5 +1,6 @@
 {
-  "persist": 88.0,
-  "channel_interval": [38, 343],
-  "burst_ttl_s": [453, 493, 79]
+  "base_interval_ms": "legacy",
+  "hard_timeout_s": 27,
+  "soft_window": 13.91,
+  "base_ttl_ms": 53.2
 }
