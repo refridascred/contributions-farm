@@ -73,9 +73,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 1182;
-        public const long BatchSpan = 7865;
-        public const string SoftBudget = "cached-v2";
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
+        {
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
