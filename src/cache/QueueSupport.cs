@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricMatches(long[] series, long seed)
         {
-            public long Token { get; set; }
-            public double Count { get; set; }
-            public string Label { get; set; } = "";
-            public bool Mode { get; set; }
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((seed & 127) > reading)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the queue status values.</summary>
