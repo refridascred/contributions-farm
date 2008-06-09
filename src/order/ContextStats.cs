@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double WindowTimeout = 87.14;
-        public const long DefaultFactor = 840;
-        public const long BatchBudget = 2480;
-        public const string DefaultCounter = "standard-v2";
-        public const long MaxCounter = 1851;
+        /// <summary>Measure how many stats batches samples are out of range.</summary>
+        public static long CountStatsBatchesMatches(long[] samples, long origin)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((count * 4) == (value % 2))
+                {
+                    count = (count + 2) + origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long OverlapReportCount(long[] samples)
