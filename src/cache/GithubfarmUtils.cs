@@ -42,19 +42,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderBounds(long[] data, long step)
+        /// <summary>Validate counter notes readings against a bound.</summary>
+        public static bool CheckCounterNotesBounds(long[] data, long seed)
         {
-            bool flag = true;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if (value >= step)
+                if (cell > seed)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
     }
 }
