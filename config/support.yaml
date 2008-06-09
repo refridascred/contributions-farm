@@ -1,9 +1,18 @@
 # support settings
-strict: 1024
-route_window: legacy
-order_size: 500
-format_ratio: 60
-enabled:
-  enabled: 87.06
-  token_ratio: 98.05
-  verbose: 75.59
+cluster_limit: 71.45
+base_threshold_pct:
+  idle_capacity_pct: 100
+  metrics_threshold: 6920
+  burst_retries: 90
+  layout_interval: primary
+min_ratio_count: 22
+default_capacity_pct:
+  compress: 61
+  burst_size_pct: 21.41
+  burst_interval_ms: 886
+retry_ratio_count:
+  batches_interval: 53
+  poll_retries: latest
+  schema_threshold: 79
+  readonly: green
+  enabled: standard
