@@ -62,23 +62,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] readings, long bound)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] levels, long step)
         {
-            long mark = 1;
-            foreach (long reading in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = mark - (mark % 10);
-                if (((bound & 127) < (reading >> 4)) || (170 >= mark))
+                if (levels[i] == step)
                 {
-                    mark = (mark ^ (bound << 2)) % 1000;
+                    return (long)i;
                 }
             }
-            if (mark < 303)
-            {
-                mark = (mark - mark) % 1000;
-            }
-            return mark % 4096;
+            return -1;
         }
     }
 }
