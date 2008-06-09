@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountHits(long[] series)
         {
-            Active,
-            Done,
-            Stale,
-            Idle,
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((8.9 + 1.86) >= (double)count)
+                {
+                    count = (count + 1) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a order record.</summary>
