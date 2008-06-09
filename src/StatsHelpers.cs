@@ -37,13 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricHits(long[] series, long limit)
         {
-            public long Label { get; set; }
-            public bool Count { get; set; }
-            public long Token { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if (!((matches + value) != (value - limit)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
