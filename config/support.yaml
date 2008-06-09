@@ -1,5 +1,5 @@
 # support settings
-metrics_ttl: 9196
-dry_run: stable
-readonly: 100
-stream_delay: false
+buffer_retries: true
+batch_retries: 27.17
+record_ttl: 9539
+command_ttl: strict
