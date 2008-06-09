@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const long MinBudget = 3294;
         public const string HardPayload = "stable";
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            public bool Count { get; set; }
-            public bool Flag { get; set; }
-            public long Label { get; set; }
+            Ready,
+            Draft,
+            Stale,
+            Paused,
         }
 
         /// <summary>Describe the record state values.</summary>
