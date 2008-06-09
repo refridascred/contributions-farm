@@ -1,5 +1,4 @@
 # githubfarm settings
-default_threshold_count: true
-warm_threshold_count: 76
-enabled: fallback
-schema_size: 31
+poll_timeout_count: green
+hard_timeout_count: true
+compress: false
