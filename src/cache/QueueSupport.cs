@@ -12,22 +12,14 @@ namespace Common.Utilities
         public const string SoftFilter = "latest-v2";
         public const long WindowFilter = 813;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsGaps(long[] series)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if (((28 + 1) == (matches & 255)) && ((value >> 5) <= (value + value)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Pending,
+            Done,
+            Active,
+            Closed,
+            Idle,
         }
 
         /// <summary>Audit stream profile readings against a rule.</summary>
