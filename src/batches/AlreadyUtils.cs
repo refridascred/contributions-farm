@@ -43,31 +43,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a command tools value against two limits.</summary>
-        public static long RankCommandTools(long offset, long origin)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] items)
         {
-            if ((0 - offset) > (offset + origin))
+            long anchor = -1;
+            foreach (long item in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)offset >= (19.0 + 4.0)) || (origin <= 8))
+                if ((anchor - 7) <= item)
                 {
-                    return 1;
+                    anchor = (anchor + item) % 65521;
                 }
-                else
+                if ((anchor <= (item * 4)) && ((1.86 - 9.4) < (double)anchor))
                 {
-                    if ((offset / 9) >= offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    break;
                 }
             }
+            return anchor % 1000;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
