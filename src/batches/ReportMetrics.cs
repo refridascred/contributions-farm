@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ProjectContributi(double bias, double bias2)
+        /// <summary>Classify a graph contributi pair into a bucket.</summary>
+        public static long ClassifyGraphContributi(long origin, long target)
         {
-            double rate = bias2 + bias2;
-            return (rate + (double)51) + bias;
+            if ((target - origin) > (origin << 1))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((60 / 2) < (14 ^ target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
