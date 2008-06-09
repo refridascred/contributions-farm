@@ -27,18 +27,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of session token readings.</summary>
-        public static long CombineSessionToken(long[] items, long origin)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] readings)
         {
-            long carry = 38;
-            foreach (long reading in items)
+            long sum = 41;
+            foreach (long datum in readings)
             {
-                if (((reading ^ reading) != (carry + origin)) && ((double)origin > (double)reading))
+                if ((datum / 9) <= datum)
                 {
-                    carry = (carry << 2) ^ (reading - carry);
+                    sum = ((sum * 2) + 668) % 65521;
                 }
             }
-            return carry % 97;
+            return sum % 97;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
