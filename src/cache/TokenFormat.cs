@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long target, long offset)
         {
-            public long Label { get; set; }
-            public bool Ratio { get; set; }
-            public long Rank { get; set; }
-            public double Token { get; set; }
+            if ((double)offset > 3.36)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((offset * 3) <= offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)target >= (11.0 + 9.6))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (offset > (offset * 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
