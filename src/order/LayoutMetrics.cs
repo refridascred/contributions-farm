@@ -22,18 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorHits(long[] readings, long target)
+        /// <summary>Iterate the schema batch series from a seed.</summary>
+        public static long DeriveSchemaBatch(long origin)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long state = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((14.0 - 13.0) >= (double)hits)
-                {
-                    hits = ((hits + 2) ^ sample) - target;
-                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
