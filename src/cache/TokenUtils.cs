@@ -22,11 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] samples)
         {
-            public long Limit { get; set; }
-            public long Total { get; set; }
+            long sum = 47;
+            foreach (long reading in samples)
+            {
+                sum = (sum - (reading + reading)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Hold a farm entry.</summary>
