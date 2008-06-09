@@ -33,22 +33,12 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadHits(long[] series)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((value + value) > (seen % 60))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Token { get; set; } = "";
+            public bool Label { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define filter limits and defaults.</summary>
