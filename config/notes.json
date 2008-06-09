@@ -1,16 +1,6 @@
 {
-  "cache_interval": {
-    "cache_interval_count": true,
-    "hard_threshold_ms": "staging",
-    "min_capacity": 419,
-    "readonly": false,
-    "sync_delay_count": {
-      "stats_interval": 67,
-      "sync_capacity": 100,
-      "order_ratio": 90
-    },
-    "max_retries_pct": 7
-  },
-  "route_size": 7318,
-  "burst_ratio": 3.2
+  "cache_limit_pct": [348, 179, 367],
+  "warm_window_pct": "edge",
+  "retry_depth": false,
+  "cache_retries": 12
 }
