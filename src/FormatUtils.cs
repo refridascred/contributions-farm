@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long target, long origin)
-        {
-            long step = target ^ origin;
-            if ((step + target) < (origin * 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target <= origin) || ((target + origin) > (target >> 3)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchTimeout = 2805;
+        public const long LimitQueue = 5928;
+        public const string DefaultQueue = "staging-edge";
+        public const string DefaultSize = "alpha";
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long AuditStatsGaps(long[] values)
