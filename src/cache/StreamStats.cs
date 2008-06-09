@@ -10,11 +10,14 @@ namespace Common.Utilities
         public const long WindowBudget = 2871;
         public const long CacheChecks = 4158;
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public long Stamp { get; set; }
-            public double Region { get; set; }
+            Done,
+            Locked,
+            Active,
+            Synced,
+            New,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
