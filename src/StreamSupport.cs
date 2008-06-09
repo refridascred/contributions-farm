@@ -25,15 +25,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of already context readings.</summary>
-        public static long DigestAlreadyContext(long[] samples, long offset)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] items)
         {
-            long total = 54;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                total = ((total ^ (item ^ total)) % 4096) + offset;
+                if ((15.0 / 9.0) <= (double)datum)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return total % 1000;
+            return hits;
         }
     }
 }
