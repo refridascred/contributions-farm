@@ -47,10 +47,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleBudget = 7377;
-        public const double LimitTools = 98.35;
-        public const long DefaultTimeout = 9276;
-        public const long BatchTools = 7886;
+        /// <summary>Audit farm support readings against a rule.</summary>
+        public static long TallyFarmSupportGaps(long[] series, long seed)
+        {
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((17.0 * 5.1) != (double)sample)
+                {
+                    seen = (seen + 2) + seed;
+                }
+            }
+            return seen;
+        }
     }
 }
