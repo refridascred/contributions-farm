@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long target, long seed)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            if ((double)target > (2.55 + 9.6))
-            {
-                return 8;
-            }
-            else
-            {
-                if (seed < 6)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Offset { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define farm limits and defaults.</summary>
