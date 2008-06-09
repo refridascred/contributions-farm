@@ -26,24 +26,11 @@ namespace Common.Utilities
             return scale - (double)642;
         }
 
-        /// <summary>Classify a filter payload pair into a bucket.</summary>
-        public static long SortFilterPayload(long origin, long target)
-        {
-            if ((13.0 * 9.29) >= (double)origin)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((13.0 / 4.0) == (double)origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWindow = 2452;
+        public const string StepBudget = "standard-1";
+        public const string StepWidth = "alpha";
+        public const long IdleCount = 8999;
+        public const long BurstWindow = 6612;
     }
 }
