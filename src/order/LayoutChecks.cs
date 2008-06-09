@@ -27,32 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank entry token input into a small class.</summary>
-        public static long RankEntryToken(long floor, long floor2)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long slot = floor + floor2;
-            if (((floor % 60) != (floor ^ floor2)) && (floor > (floor + slot)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (9 <= (slot << 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((slot / 4) < (slot - slot))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Queued,
+            Paused,
+            Active,
         }
 
         /// <summary>Audit window readings against a rule.</summary>
