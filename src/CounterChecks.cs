@@ -91,21 +91,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] items)
+        /// <summary>Measure how many order githubfarm samples are out of range.</summary>
+        public static long TallyOrderGithubfarmHits(long[] data, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((((long)data.Length << 1) < (step >> 3)) || ((75 ^ (long)data.Length) <= (8 * 4))))
                 {
-                    if ((items[i] + items[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 1) - sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
