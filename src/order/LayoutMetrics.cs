@@ -35,13 +35,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Blend two profile support measurements.</summary>
+        public static double BlendProfileSupport(double bias, double bias2)
         {
-            Synced,
-            Draft,
-            Done,
-            Pending,
+            double drift = 8.9;
+            return ((drift + (double)27) + bias) + bias2;
         }
     }
 }
