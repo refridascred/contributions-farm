@@ -32,10 +32,21 @@ namespace Common.Utilities
             return rate2 - offset;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstEntry = 9275;
-        public const long RetryEntry = 1295;
-        public const long CacheBudget = 2214;
-        public const string MinInterval = "alpha-v2";
+        /// <summary>Compare every pair of notes schema readings.</summary>
+        public static long MatchNotesSchemaCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
