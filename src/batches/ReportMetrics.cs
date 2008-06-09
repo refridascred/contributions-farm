@@ -29,12 +29,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            Draft,
-            Retry,
-            Closed,
+            public long Score { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
