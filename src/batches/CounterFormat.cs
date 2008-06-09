@@ -33,15 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double rate, double floor)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] readings, long bound)
         {
-            double bias = floor;
-            if (bias < (rate + floor))
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = bias - (floor + bias);
+                if ((readings[i] <= bound) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias - floor;
+            return -1;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
