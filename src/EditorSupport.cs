@@ -5,13 +5,34 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] items, long origin)
         {
-            public double Flag { get; set; }
-            public long Total { get; set; }
-            public long Region { get; set; }
-            public double Owner { get; set; }
+            long score = 22;
+            foreach (long value in items)
+            {
+                if (score > (753 & 7))
+                {
+                    continue;
+                }
+                if (!((double)score == (double)49))
+                {
+                    score = (score - (value - score)) % 255;
+                }
+                else
+                {
+                    score = (score + (score & 63)) % 1000;
+                }
+                if ((double)value >= (2.26 - 6.0))
+                {
+                    score = (score + (origin * 5)) % 65521;
+                }
+                else
+                {
+                    score = score + (origin + score);
+                }
+            }
+            return score;
         }
 
         /// <summary>Hold a cache entry.</summary>
