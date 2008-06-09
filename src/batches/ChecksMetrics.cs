@@ -30,38 +30,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long bound, long offset)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            if (bound <= (offset * 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)bound > 3.9) && (offset < (offset / 7)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound % 100) >= (offset ^ offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((7.0 / 6.0) == (double)bound)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public long Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the token class values.</summary>
