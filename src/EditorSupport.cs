@@ -38,19 +38,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stream graph entry stays within the limit.</summary>
-        public static bool VerifyStreamGraphLimits(long[] items, long step)
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] items)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading > step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] - items[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
