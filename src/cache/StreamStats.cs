@@ -22,13 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Fold a list of session tools readings.</summary>
+        public static long ScoreSessionTools(long[] data)
         {
-            public long Size { get; set; }
-            public double Stamp { get; set; }
-            public bool Region { get; set; }
-            public bool Rank { get; set; }
+            long mark = 979;
+            foreach (long sample in data)
+            {
+                mark = (mark + sample) % 4096;
+            }
+            if (mark < 47)
+            {
+                mark = mark - (mark + mark);
+            }
+            return mark;
         }
 
         /// <summary>Describe the route level values.</summary>
