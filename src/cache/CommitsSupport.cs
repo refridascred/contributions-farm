@@ -19,18 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchHits(long[] items)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((tally ^ item) > tally)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public bool Region { get; set; }
+            public long Token { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
