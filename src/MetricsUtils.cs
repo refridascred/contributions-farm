@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] readings)
+        /// <summary>Count the token batches entries that pass the check.</summary>
+        public static long MeasureTokenBatchesHits(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((3 + matches) >= (matches << 2))
                 {
-                    if ((readings[i] ^ readings[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 1) ^ entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
