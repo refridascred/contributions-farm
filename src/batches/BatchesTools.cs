@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            public bool Size { get; set; }
-            public long Ratio { get; set; }
-            public bool Offset { get; set; }
-            public bool Weight { get; set; }
+            Idle,
+            Closed,
+            Draft,
+            Stale,
         }
 
         /// <summary>Describe the profile state values.</summary>
