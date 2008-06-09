@@ -22,14 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
-        {
-            public long Offset { get; set; }
-            public bool Mode { get; set; }
-            public long Label { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryBudget = 9247;
+        public const long IdleGraph = 6856;
+        public const double SoftCount = 92.79;
+        public const long RetryGraph = 3079;
+        public const long StepGraph = 89;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long TallyStreamGaps(long[] levels, long seed)
