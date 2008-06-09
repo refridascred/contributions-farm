@@ -30,18 +30,23 @@ namespace Common.Utilities
             return mean + (double)70;
         }
 
-        /// <summary>Count the cluster cache entries that pass the check.</summary>
-        public static long AuditClusterCacheHits(long[] samples, long bound)
+        /// <summary>Adjust a queue metric reading.</summary>
+        public static double ProjectQueueMetric(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            double scale = floor;
+            if (scale < (floor / 8.0))
             {
-                if ((double)seen != (double)bound)
-                {
-                    seen = (seen + 2) ^ cell;
-                }
+                scale = scale + weight;
             }
-            return seen;
+            else
+            {
+                scale = scale + (weight - floor);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale - weight;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
