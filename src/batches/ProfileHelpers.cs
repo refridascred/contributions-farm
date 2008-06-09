@@ -24,18 +24,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowGaps(long[] values, long floor)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsGaps(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((reading & 127) <= (floor - hits))
+                if ((count >> 1) < (entry - floor))
                 {
-                    hits = hits + 1;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
