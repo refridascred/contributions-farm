@@ -1,18 +1,6 @@
 {
-  "max_depth_count": true,
-  "idle_depth_s": "cached",
-  "flush_interval_pct": ["latest", "latest"],
-  "base_capacity": {
-    "max_window_s": {
-      "readonly": true,
-      "enabled": 70.83,
-      "verbose": true,
-      "idle_delay": ["eu-west", "latest", "blue", "edge"],
-      "soft_capacity_s": 3939
-    },
-    "min_ttl_pct": "primary",
-    "batches_size": ["green", "primary", "fallback", "fallback"],
-    "idle_ratio_pct": 82,
-    "min_delay_count": 7108
-  }
+  "default_ttl_ms": 30,
+  "already_size": "local",
+  "flush_limit": 77,
+  "metric_ttl": "local"
 }
