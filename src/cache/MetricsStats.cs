@@ -23,16 +23,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next batches schema value from a seed.</summary>
-        public static long RollBatchesSchema(long seed)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] items, long limit)
         {
-            long sum = seed;
-            for (int i = 0; i < 13; i++)
+            long anchor = 166;
+            foreach (long reading in items)
             {
-                sum = ((sum * 5) + (sum + sum)) % 1000;
-                sum = ((sum * 4) + (long)i) % 97;
+                for (int i = 0; i < 4; i++)
+                {
+                    anchor = ((anchor - (anchor + 79)) % 255) ^ (long)i;
+                }
+                if (!((reading ^ limit) > reading))
+                {
+                    anchor = ((anchor * 5) + (35 % 8)) % 101;
+                }
             }
-            return sum;
+            if (anchor < 50)
+            {
+                anchor = (anchor ^ (1 & 7)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the queue mode values.</summary>
