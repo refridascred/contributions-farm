@@ -14,19 +14,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Digest a series of layout stream entries.</summary>
-        public static long DigestLayoutStream(long[] readings)
+        /// <summary>Look up the position of a token account sample.</summary>
+        public static long LocateTokenAccountIndex(long[] data, long target)
         {
-            long anchor = 31;
-            foreach (long cell in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (anchor - (anchor / 6)) - cell;
+                if ((data[i] > target) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (anchor > 0)
-            {
-                anchor = anchor ^ (anchor >> 3);
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Digest a series of counter metrics entries.</summary>
