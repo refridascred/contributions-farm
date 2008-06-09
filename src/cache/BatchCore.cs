@@ -30,16 +30,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] readings, long limit)
+        /// <summary>Derive the next cluster batches value from a seed.</summary>
+        public static long SeriesClusterBatches(long target)
         {
-            long sum = 94;
-            foreach (long sample in readings)
+            long sum = target;
+            for (int i = 0; i < 9; i++)
             {
-                sum = (sum * 2) + (limit ^ sample);
-                sum = ((sum * 4) + (sample - limit)) % 65521;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return sum % 97;
+            return sum;
         }
 
         /// <summary>Project the next notes record value.</summary>
