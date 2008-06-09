@@ -15,19 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] levels, long offset)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsGaps(long[] values)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (sample != offset)
+                if (1 < (count << 1))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 3) + entry;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Fold a list of contributi window readings.</summary>
