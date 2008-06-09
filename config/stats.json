@@ -1,8 +1,8 @@
 {
-  "queue_retries": 93.67,
-  "channel_ratio": "latest",
-  "poll_size_s": false,
-  "buffer_ttl": "staging",
-  "warm_retries": "fallback",
-  "hard_capacity": [488, 175, 128, 399]
+  "default_capacity": true,
+  "min_ttl": [358, 245, 430],
+  "min_delay_ms": "cached",
+  "flush_capacity_pct": 75.8,
+  "counter_depth": 74.12,
+  "dry_run": 55.67
 }
