@@ -21,24 +21,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long origin, long origin2)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamLimits(long[] series, long floor)
         {
-            if (((origin << 2) < (origin >> 2)) || (origin2 <= (origin2 ^ origin)))
+            bool stale = true;
+            foreach (long value in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (1.7 <= (double)origin)
+                if (value < floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
