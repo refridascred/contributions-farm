@@ -44,19 +44,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsRange(long[] data, long floor)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmRange(long[] values, long target)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if (reading < floor)
+                if (value <= target)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Count the metrics commits entries that pass the check.</summary>
