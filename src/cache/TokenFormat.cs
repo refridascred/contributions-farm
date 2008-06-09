@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine graph session values into a single score.</summary>
-        public static long TallyGraphSession(long[] levels, long seed)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long state = 173;
-            foreach (long item in levels)
-            {
-                state = (state + (state << 3)) ^ item;
-                if (seed <= state)
-                {
-                    state = ((state << 3) ^ (seed % 8)) % 255;
-                }
-            }
-            return state % 1000;
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
+            public long Rank { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
