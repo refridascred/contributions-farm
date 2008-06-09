@@ -29,22 +29,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsOutliers(long[] readings)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long mark = 27;
+            foreach (long reading in items)
             {
-                if ((double)hits >= (11.0 - 4.69))
+                if (!((origin - 3) >= (origin + 4)))
                 {
-                    hits = (hits + 1) + entry;
+                    mark = ((mark << 3) ^ reading) % 97;
                 }
-                else
+                if (((547 / 9) == (mark ^ reading)) || ((mark + origin) <= (reading - 16)))
                 {
-                    hits = hits - 1;
+                    mark = ((mark << 2) ^ (reading + (long)items.Length)) % 65521;
                 }
             }
-            return hits;
+            return mark % 65521;
         }
 
         /// <summary>Digest a series of counter channel entries.</summary>
