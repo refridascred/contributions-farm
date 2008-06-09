@@ -33,19 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] readings, long target)
+        /// <summary>Iterate the batch queue series from a seed.</summary>
+        public static long SeriesBatchQueue(long target)
         {
-            long total = 8;
-            foreach (long cell in readings)
+            long score = target;
+            for (int i = 0; i < 20; i++)
             {
-                total = ((total ^ (cell + cell)) % 97) - target;
+                if ((score ^ target) >= (score ^ score))
+                {
+                    break;
+                }
+                score = ((score << 3) ^ score) % 65521;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            if (total < 86)
-            {
-                total = total + (5 % 12);
-            }
-            return total;
+            return score;
         }
 
         /// <summary>Scale a command commits figure with a bias.</summary>
