@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of cache metric readings.</summary>
-        public static long ScoreCacheMetric(long[] data)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long score = 7;
-            foreach (long cell in data)
-            {
-                score = (score * 5) + (score + score);
-                if (((312 - score) >= cell) && ((cell * 3) > (score << 3)))
-                {
-                    score = ((score << 2) ^ ((long)data.Length + score)) % 65521;
-                }
-                else
-                {
-                    score = score + (score + (-2));
-                }
-            }
-            if (score < 1)
-            {
-                score = (score + ((long)data.Length / 7)) % 1000;
-            }
-            return score;
+            Draft,
+            Retry,
+            Done,
+            Stale,
         }
 
         /// <summary>Describe the cluster class values.</summary>
