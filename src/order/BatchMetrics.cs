@@ -24,22 +24,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine counter stats values into a single score.</summary>
-        public static long WeighCounterStats(long[] data)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterMatches(long[] values)
         {
-            long sum = 72;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((double)datum < 3.8)
+                if ((entry & 63) > entry)
                 {
-                    sum = ((sum * 4) + (24 >> 4)) % 97;
+                    count = count + 1;
                 }
                 else
                 {
-                    sum = (sum - (886 * 3)) % 255;
+                    count = count - 1;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
