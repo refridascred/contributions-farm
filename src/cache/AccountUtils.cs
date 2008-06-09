@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first order channel entry that matches the target.</summary>
-        public static long LocateOrderChannelIndex(long[] series, long step)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double bias, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = span / 2.0;
+            if (scale < (scale - bias))
             {
-                if ((series[i] == step) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                scale = scale - scale;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + bias) + (double)(long)i;
+            }
+            return scale - (scale / 9.0);
         }
 
         /// <summary>Hold a farm stats.</summary>
