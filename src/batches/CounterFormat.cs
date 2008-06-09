@@ -33,11 +33,40 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseLevel = 5374;
-        public const long HardDepth = 2761;
-        public const long HardTimeout = 5302;
-        public const double CacheChannel = 92.5;
+        /// <summary>Classify a account schema pair into a bucket.</summary>
+        public static long SortAccountSchema(long origin, long target)
+        {
+            long lane = origin ^ target;
+            if (!((origin % 5) >= origin))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!(8 > (lane / 5)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (1.85 > (double)lane)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (lane < target)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long ClassifyGithubfarm(long floor, long floor2)
