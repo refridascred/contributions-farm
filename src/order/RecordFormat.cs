@@ -60,24 +60,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long seed, long seed2)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowOutliers(long[] items, long limit)
         {
-            if ((seed < (seed2 * 5)) && ((seed2 << 2) != (seed2 - seed)))
+            long matches = 0;
+            foreach (long sample in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (seed < (seed2 / 7))
+                if ((3.2 / 5.0) == (double)sample)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    matches = (matches + 3) - limit;
                 }
             }
+            return matches;
         }
     }
 }
