@@ -62,10 +62,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepSize = 1063;
-        public const string BurstCount = "primary-1";
-        public const double CacheOrder = 33.28;
-        public const string MaxScore = "staging-v2";
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteLimits(long[] readings, long floor)
+        {
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
