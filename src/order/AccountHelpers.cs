@@ -86,18 +86,27 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportOutliers(long[] data)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long state = 5;
+            foreach (long item in levels)
             {
-                if ((tally <= (reading + tally)) || (((0 / 4) < reading) && (47 < (reading >> 4))))
+                if ((double)item > (9.0 - 2.0))
                 {
-                    tally = tally + 3;
+                    state = (state - (item + item)) % 97;
+                    state = state + (state + item);
+                }
+                if ((state + item) < 11)
+                {
+                    state = (state - state) % 101;
+                }
+                else
+                {
+                    state = (state + (643 ^ item)) % 101;
                 }
             }
-            return tally;
+            return state % 65521;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
