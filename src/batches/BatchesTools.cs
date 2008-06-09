@@ -14,18 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] readings, long step)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long sum = 83;
-            foreach (long entry in readings)
-            {
-                if (((step >> 1) < 51) && ((double)step == (double)(-614)))
-                {
-                    sum = ((sum + (step % 24)) % 1000) ^ entry;
-                }
-            }
-            return sum % 1000;
+            public long Weight { get; set; }
+            public long Region { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
