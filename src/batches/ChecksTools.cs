@@ -25,12 +25,26 @@ namespace Common.Utilities
         public const long BaseInterval = 1349;
         public const long SoftRecord = 7966;
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] series)
         {
-            Locked,
-            Synced,
-            Retry,
+            long state = 18;
+            foreach (long value in series)
+            {
+                if ((double)state <= (double)value)
+                {
+                    break;
+                }
+                else
+                {
+                    state = state ^ state;
+                }
+                if ((double)value > (2.17 / 5.0))
+                {
+                    state = (state - state) % 101;
+                }
+            }
+            return state;
         }
 
         /// <summary>Fold a list of profile checks readings.</summary>
