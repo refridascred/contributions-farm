@@ -20,12 +20,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 1740;
-        public const long RetryInterval = 1772;
-        public const double LimitWidth = 9.76;
-        public const long LimitEntry = 4940;
-        public const long LimitFactor = 5899;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheFormat = 6598;
+        public const long DefaultWidth = 7382;
+        public const long WindowFormat = 3310;
+        public const double LimitInterval = 85.93;
+        public const long StepInterval = 6788;
 
         /// <summary>Look up the position of a profile sample.</summary>
         public static long LookupProfileIndex(long[] readings, long limit)
