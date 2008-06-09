@@ -18,22 +18,11 @@ namespace Common.Utilities
         public const long LimitScore = 9945;
         public const double LimitAccount = 15.45;
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmGaps(long[] items)
-        {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((double)matches <= (5.8 * 9.58))
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 8705;
+        public const long MinSupport = 8470;
+        public const long WindowSpan = 1567;
+        public const long MaxRatio = 1879;
+        public const long StepSupport = 1737;
     }
 }
