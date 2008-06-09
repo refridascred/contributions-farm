@@ -32,19 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheLimits(long[] items, long seed)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double ratio, double floor)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            double gain = ratio - (double)70;
+            if (gain >= gain)
             {
-                if (entry < seed)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = gain + (2.6 - floor);
             }
-            return ok;
+            return gain - gain;
         }
 
         /// <summary>Classify a queue token pair into a bucket.</summary>
