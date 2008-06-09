@@ -54,22 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the editor entry entries that pass the check.</summary>
-        public static long AuditEditorEntryHits(long[] samples, long limit)
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            double mean = rate;
+            for (int i = 0; i < 3; i++)
             {
-                if (((reading * 4) < (seen + seen)) && !((limit + reading) == (reading % 10)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mean = (mean + offset) + (double)(long)i;
             }
-            return seen;
+            return mean - (offset / 4.0);
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
