@@ -20,19 +20,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorRange(long[] values, long step)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorOutliers(long[] levels)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (value > step)
+                if ((83 <= (reading ^ matches)) && ((reading ^ reading) != (matches + reading)))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
