@@ -20,18 +20,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the checks batch entries that pass the check.</summary>
-        public static long CountChecksBatchHits(long[] series, long step)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((reading ^ reading) != (reading << 3))
+                if ((readings[i] < seed) && ((readings[i] % 2) != 0))
                 {
-                    seen = (seen + 1) + step;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
