@@ -25,12 +25,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BurstAccount = "standard-1";
-        public const string CacheAccount = "alpha-v2";
-        public const long MaxScore = 930;
-        public const long LimitTimeout = 2944;
-        public const double HardAccount = 5.86;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] data, long floor)
+        {
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (((long)data.Length % 2) >= (count - floor))
+                {
+                    count = (count + 2) ^ item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool VerifyProfileLimits(long[] readings, long step)
