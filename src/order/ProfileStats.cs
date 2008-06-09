@@ -44,13 +44,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long bound)
+        /// <summary>Fold a list of route metric readings.</summary>
+        public static long FoldRouteMetric(long[] levels)
         {
-            long mark = bound;
-            for (int i = 0; i < 22; i++)
+            long mark = 578;
+            foreach (long value in levels)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                mark = ((mark << 2) ^ (value >> 3)) % 101;
+            }
+            if (mark > 518)
+            {
+                mark = (mark + (mark * 5)) % 101;
             }
             return mark;
         }
