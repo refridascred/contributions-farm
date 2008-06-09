@@ -13,13 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
-        {
-            Retry,
-            Queued,
-            Idle,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseFactor = 5962;
+        public const long CacheScore = 7714;
+        public const long BaseCount = 424;
+        public const long MaxLevel = 6580;
+        public const long CacheSize = 5350;
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long MatchProfileCount(long[] readings)
