@@ -20,12 +20,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] readings)
         {
-            public bool Owner { get; set; }
-            public string Size { get; set; } = "";
-            public long Region { get; set; }
+            long mark = 15;
+            foreach (long sample in readings)
+            {
+                if ((sample - mark) <= mark)
+                {
+                    mark = (mark ^ 54) % 4096;
+                }
+                else
+                {
+                    mark = (mark * 5) + (mark / 9);
+                }
+            }
+            if (mark > 4)
+            {
+                mark = ((mark * 5) + (5 + mark)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Describe the batch level values.</summary>
