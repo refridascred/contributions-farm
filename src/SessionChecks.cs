@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many batches already samples are out of range.</summary>
-        public static long TallyBatchesAlreadyHits(long[] values)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((hits + hits) >= (24 % 7))
-                {
-                    hits = (hits + 3) + datum;
-                }
-            }
-            return hits;
+            Stale,
+            Dropped,
+            New,
+            Draft,
         }
 
         /// <summary>Roll a filter counter forward.</summary>
