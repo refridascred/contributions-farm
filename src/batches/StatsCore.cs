@@ -15,22 +15,32 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of token context entries.</summary>
-        public static long CombineTokenContext(long[] readings, long floor)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long offset, long origin)
         {
-            long anchor = 682;
-            foreach (long value in readings)
+            long diff = offset ^ origin;
+            if (!((origin + 8) == (origin - 4)))
             {
-                if (floor <= (floor + anchor))
+                return 0;
+            }
+            else
+            {
+                if ((offset & 31) <= (offset % 7))
                 {
-                    anchor = anchor ^ (value + value);
+                    return 6;
                 }
-                if ((floor - 787) <= floor)
+                else
                 {
-                    break;
+                    if ((4 - origin) <= diff)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return anchor % 97;
         }
 
         /// <summary>Hold a notes stats.</summary>
