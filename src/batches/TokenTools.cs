@@ -18,11 +18,18 @@ namespace Common.Utilities
         public const long LimitScore = 9945;
         public const double LimitAccount = 15.45;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 8705;
-        public const long MinSupport = 8470;
-        public const long WindowSpan = 1567;
-        public const long MaxRatio = 1879;
-        public const long StepSupport = 1737;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutOutliers(long[] data, long offset)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((count > (entry + entry)) && (((double)offset == (14.0 + 0.51)) || ((entry >> 1) > count)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
