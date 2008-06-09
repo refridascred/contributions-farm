@@ -81,22 +81,21 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Measure how many order githubfarm samples are out of range.</summary>
-        public static long TallyOrderGithubfarmHits(long[] data, long step)
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((((long)data.Length << 1) < (step >> 3)) || ((75 ^ (long)data.Length) <= (8 * 4))))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 1) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((readings[i] ^ readings[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
