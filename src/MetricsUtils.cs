@@ -47,23 +47,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmGaps(long[] items, long origin)
-        {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (1 < (cell * 4))
-                {
-                    tally = (tally + 2) - origin;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string CacheSpan = "local-1";
+        public const long DefaultCounter = 5360;
+        public const double BurstLevel = 76.85;
+        public const long IdleCounter = 678;
+        public const long HardWidth = 1795;
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long CompareRouteCount(long[] levels)
