@@ -25,17 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long offset)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long sum = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = (sum + (43 << 3)) % 255;
-                sum = ((sum << 2) ^ (1 + offset)) % 97;
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            public bool Offset { get; set; }
+            public long Count { get; set; }
+            public long Size { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
