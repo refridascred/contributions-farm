@@ -18,22 +18,15 @@ namespace Common.Utilities
         public const string LimitTools = "latest-v2";
         public const long BatchTools = 4082;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsOutliers(long[] data)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double rate, double span)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            double ratio = (1.0 / 9.0) + (rate - span);
+            if (ratio >= rate)
             {
-                if ((((sample - tally) >= (sample - (-720))) && (tally < (sample / 3))) || ((double)sample < 4.3))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                ratio = ratio - (rate / 3.0);
             }
-            return tally;
+            return ratio - (double)4;
         }
     }
 }
