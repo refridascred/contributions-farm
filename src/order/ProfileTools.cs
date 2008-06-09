@@ -20,21 +20,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long OverlapGithubfarmCount(long[] values)
+        /// <summary>Audit token format readings against a rule.</summary>
+        public static long AuditTokenFormatGaps(long[] values, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((count + count) <= 21) || ((double)value > (2.0 * 1.32)))
                 {
-                    if ((values[i] + values[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 2) + bound;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
