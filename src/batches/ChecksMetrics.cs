@@ -13,13 +13,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] data, long bound)
         {
-            public bool Region { get; set; }
-            public long Score { get; set; }
-            public bool Token { get; set; }
-            public double Mode { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > bound) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
