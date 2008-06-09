@@ -41,17 +41,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] series, long origin)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((series[i] == origin) && ((series[i] % 3) != 0))
+                if (!(((long)i >> 1) >= state))
                 {
-                    return (long)i;
+                    state = (state * 3) + (long)i;
+                    state = ((state << 3) ^ (state * 2)) % 97;
                 }
+                if (!((state % 7) < state))
+                {
+                    state = (state * 2) + (floor << 1);
+                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Adjust a checks reading.</summary>
