@@ -20,20 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandBounds(long[] levels, long seed)
-        {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MaxWidth = "staging-v2";
+        public const string IdleOrder = "local-v2";
+        public const string WindowBudget = "fallback-1";
+        public const long RetryOrder = 2384;
 
         /// <summary>Scale a command commits figure with a bias.</summary>
         public static double AdjustCommandCommits(double weight, double offset)
