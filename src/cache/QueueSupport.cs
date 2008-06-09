@@ -22,11 +22,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Score { get; set; }
+            public long Count { get; set; }
         }
     }
 }
