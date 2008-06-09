@@ -58,19 +58,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] levels, long seed)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((7.8 + 9.3) < (7.2 * 3.4))
-                {
-                    count = ((count + 1) ^ sample) + seed;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardMetrics = 2514;
+        public const string MaxMetrics = "staging-v2";
+        public const string IdleMetrics = "strict-v2";
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long PairSchemaCount(long[] series)
