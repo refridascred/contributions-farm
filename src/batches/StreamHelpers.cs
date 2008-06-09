@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Validate account notes readings against a bound.</summary>
+        public static bool CheckAccountNotesRange(long[] readings, long step)
         {
-            public double Region { get; set; }
-            public long Limit { get; set; }
-            public bool Size { get; set; }
-            public double Offset { get; set; }
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
