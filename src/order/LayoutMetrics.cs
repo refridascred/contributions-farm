@@ -26,14 +26,18 @@ namespace Common.Utilities
         public const long SoftCommand = 5323;
         public const long BurstCommand = 4857;
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmHits(long[] levels, long target)
         {
-            Paused,
-            Retry,
-            Queued,
-            Draft,
-            Synced,
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (((double)item < (7.39 / 3.0)) || (((item ^ tally) == (tally >> 2)) && ((double)item == (double)tally)))
+                {
+                    tally = (tally + 1) - target;
+                }
+            }
+            return tally;
         }
     }
 }
