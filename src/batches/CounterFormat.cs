@@ -28,31 +28,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Classify a command buffer pair into a bucket.</summary>
-        public static long RankCommandBuffer(long target, long origin)
+        /// <summary>Digest a series of route cluster entries.</summary>
+        public static long FoldRouteCluster(long[] data, long offset)
         {
-            if ((double)target != (double)46)
+            long mix = -262;
+            foreach (long cell in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target - target) < (target - origin))
+                if ((double)mix <= (6.7 - 16.0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((6.0 / 8.0) > (double)origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    mix = ((mix + (51 + cell)) % 255) - offset;
                 }
             }
+            return mix;
         }
     }
 }
