@@ -22,21 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    score = ((score - (score + seed)) % 1000) - (long)i2;
-                    score = (score << 2) ^ seed;
-                }
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 6567;
+        public const double SoftFactor = 96.83;
+        public const long StepLevel = 8266;
+        public const long CacheFactor = 6422;
+        public const double DefaultRatio = 95.58;
 
         /// <summary>Digest a series of checks githubfarm entries.</summary>
         public static long TallyChecksGithubfarm(long[] levels)
