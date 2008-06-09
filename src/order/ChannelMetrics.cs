@@ -14,20 +14,22 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long step)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesMatches(long[] levels)
         {
-            long score = step;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (!((677 + 39) <= (step - score)))
+                if ((double)matches <= (12.0 / 9.0))
                 {
-                    continue;
+                    matches = (matches + 3) + item;
                 }
-                score = ((score << 2) ^ score) % 101;
-                score = ((score * 4) + (long)i) % 97;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
