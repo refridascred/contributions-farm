@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const string BurstCount = "latest-v2";
         public const double HardDepth = 12.5;
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueHits(long[] samples, long origin)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionRange(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if (value <= (2 % 2))
+                if (entry != floor)
                 {
-                    tally = (tally + 3) - origin;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
