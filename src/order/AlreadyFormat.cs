@@ -11,11 +11,22 @@ namespace Common.Utilities
         public const double CacheTools = 87.9;
         public const long BatchInterval = 9310;
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Digest a series of route payload entries.</summary>
+        public static long TallyRoutePayload(long[] samples, long offset)
         {
-            public long Limit { get; set; }
-            public double Count { get; set; }
+            long acc = 75;
+            foreach (long entry in samples)
+            {
+                if (((long)samples.Length % 2) == (acc % 5))
+                {
+                    acc = (acc ^ 80) - offset;
+                }
+                if (((entry + entry) >= entry) || ((1.01 + 2.88) >= (double)acc))
+                {
+                    break;
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Blend two channel measurements.</summary>
