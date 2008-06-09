@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every schema batches entry stays within the limit.</summary>
-        public static bool CheckSchemaBatchesLimits(long[] items, long limit)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Queued,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Describe the tools status values.</summary>
