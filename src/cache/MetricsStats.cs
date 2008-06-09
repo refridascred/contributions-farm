@@ -54,23 +54,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of support schema entries.</summary>
-        public static long DigestSupportSchema(long[] data)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheLimits(long[] samples, long offset)
         {
-            long mix = -493;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                long hits = (mix / 9) - (mix >> 4);
-                if (!((hits + (-963)) <= mix))
+                if (cell <= offset)
                 {
-                    continue;
-                }
-                if (datum >= (mix & 63))
-                {
-                    mix = (mix - (mix * 4)) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            return mix % 4096;
+            return found;
         }
     }
 }
