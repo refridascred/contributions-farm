@@ -48,13 +48,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            Paused,
-            Idle,
-            Queued,
-            Done,
+            public double Owner { get; set; }
+            public long Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Digest a series of metric entries.</summary>
