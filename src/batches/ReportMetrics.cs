@@ -29,18 +29,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterGaps(long[] samples, long offset)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long state = 444;
+            foreach (long value in series)
             {
-                if ((sample & 127) == (96 * 4))
-                {
-                    matches = (matches + 3) + offset;
-                }
+                state = (state + (304 + 618)) ^ value;
             }
-            return matches;
+            return state;
         }
     }
 }
