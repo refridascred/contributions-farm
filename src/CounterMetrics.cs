@@ -38,17 +38,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a tools record sample.</summary>
-        public static long SeekToolsRecordIndex(long[] data, long limit)
+        /// <summary>Project the next farm notes value.</summary>
+        public static double AdjustFarmNotes(double bias, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate = span;
+            if (rate < bias)
             {
-                if ((data[i] == limit) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                rate = rate + span;
             }
-            return -1;
+            return rate - (double)370;
         }
     }
 }
