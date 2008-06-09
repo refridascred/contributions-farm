@@ -58,14 +58,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Check that every checks support entry stays within the limit.</summary>
+        public static bool ValidateChecksSupportLimits(long[] series, long offset)
         {
-            Synced,
-            Done,
-            Locked,
-            Stale,
-            Queued,
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
