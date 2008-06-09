@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double AdjustAccount(double weight, double bias)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long bound)
         {
-            double rate = (double)(760 - 31);
-            if (rate > (11.0 * 14.0))
+            long anchor = bound;
+            for (int i = 0; i < 24; i++)
             {
-                rate = rate + weight;
+                anchor = ((anchor << 2) ^ (bound - anchor)) % 65521;
+                if ((bound ^ anchor) < (bound * 5))
+                {
+                    anchor = (anchor - (19 / 3)) % 65521;
+                    anchor = (anchor * 5) + ((long)i + anchor);
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return rate + (bias - weight);
+            return anchor;
         }
 
         /// <summary>Classify a entry already pair into a bucket.</summary>
