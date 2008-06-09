@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowTimeout = 46;
+        public const string CacheBudget = "standard-1";
+        public const string DefaultFormat = "local-v2";
+        public const double BurstFormat = 48.81;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long SoftBudget = 727;
