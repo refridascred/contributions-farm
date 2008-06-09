@@ -49,15 +49,22 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Derive the next profile filter value from a seed.</summary>
-        public static long SeriesProfileFilter(long step)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] items, long seed)
         {
-            long state = step;
-            for (int i = 0; i < 8; i++)
+            long acc = 586;
+            foreach (long datum in items)
             {
-                state = ((state * 4) + (long)i) % 97;
+                if ((7 - acc) < (8 + 206))
+                {
+                    acc = ((acc + (datum - datum)) % 4096) + seed;
+                }
+                else
+                {
+                    acc = (acc * 3) + (acc % 5);
+                }
             }
-            return state;
+            return acc % 1000;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
