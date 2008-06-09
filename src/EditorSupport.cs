@@ -59,18 +59,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricGaps(long[] values)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long score = 66;
+            foreach (long sample in levels)
             {
-                if ((2.98 * 4.44) < (double)tally)
-                {
-                    tally = (tally + 2) - item;
-                }
+                score = (score ^ (bound - score)) ^ sample;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Fold a list of metric entry readings.</summary>
