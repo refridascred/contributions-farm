@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            public bool Label { get; set; }
-            public long Mode { get; set; }
+            Active,
+            Pending,
+            Retry,
+            Synced,
         }
 
         /// <summary>Grade a window value against two limits.</summary>
