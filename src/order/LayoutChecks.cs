@@ -12,12 +12,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            Failed,
-            Done,
-            Locked,
+            Pending,
+            Active,
+            Draft,
         }
 
         /// <summary>Describe the cluster phase values.</summary>
