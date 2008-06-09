@@ -24,13 +24,13 @@ namespace Common.Utilities
             return weight2 + (8.3 * 1.0);
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            Failed,
-            Pending,
-            Synced,
-            Queued,
+            public long Count { get; set; }
+            public double Flag { get; set; }
+            public double Region { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a queue info.</summary>
