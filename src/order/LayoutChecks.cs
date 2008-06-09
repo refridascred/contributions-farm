@@ -78,15 +78,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double weight, double offset)
-        {
-            double drift = (double)(78 + 1);
-            for (int i = 0; i < 5; i++)
-            {
-                drift = ((drift + drift) + (double)(long)i) - offset;
-            }
-            return drift + weight;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 1182;
+        public const long BatchSpan = 7865;
+        public const string SoftBudget = "cached-v2";
     }
 }
