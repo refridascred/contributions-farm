@@ -41,18 +41,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count profile already pairs that satisfy a relation.</summary>
-        public static long MatchProfileAlreadyCount(long[] data)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmHits(long[] items, long offset)
         {
             long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long datum in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((long)items.Length != (datum - datum)) && ((1.0 + 9.38) > (double)datum))
                 {
-                    if ((data[i] + data[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 1) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
