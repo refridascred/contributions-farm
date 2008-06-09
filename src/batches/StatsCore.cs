@@ -69,12 +69,10 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string DefaultSpan = "alpha-1";
-        public const long BatchSize = 2703;
-        public const double RetryBuffer = 80.51;
-        public const long LimitWidth = 1308;
-        public const string CacheBudget = "local";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BurstInterval = "fallback-v2";
+        public const long DefaultTimeout = 7069;
+        public const string BaseTimeout = "latest-v2";
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long FoldChannel(long[] levels, long target)
