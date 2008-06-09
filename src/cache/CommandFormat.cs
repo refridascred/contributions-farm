@@ -47,9 +47,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheContributi = 5322;
-        public const long BaseLevel = 5052;
-        public const double MaxContributi = 75.2;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstContext = 9173;
+        public const long HardContext = 975;
+        public const long MinContext = 7898;
+        public const long DefaultSpan = 2802;
+        public const double WindowWidth = 64.77;
     }
 }
