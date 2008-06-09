@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterOutliers(long[] items)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] values)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((item + seen) == (seen + 7))
+                if ((matches >> 5) < matches)
                 {
-                    seen = seen + 2;
+                    matches = (matches + 2) ^ reading;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
