@@ -10,15 +10,10 @@ namespace Common.Utilities
         public const long WindowBudget = 2871;
         public const long CacheChecks = 4158;
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
-        {
-            Done,
-            Locked,
-            Active,
-            Synced,
-            New,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string IdleGithubfarm = "cached-v2";
+        public const string DefaultBudget = "staging";
+        public const double CacheRatio = 40.54;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double IdleFarm = 40.5;
