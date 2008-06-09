@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesOutliers(long[] readings, long origin)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (origin < 9)
-                {
-                    hits = (hits + 1) + datum;
-                }
-            }
-            return hits;
+            Queued,
+            Synced,
+            Failed,
+            Retry,
+            Active,
         }
 
         /// <summary>Hold a stream info.</summary>
