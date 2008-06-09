@@ -1,19 +1,5 @@
 {
-  "editor_limit": true,
-  "sync_threshold_count": false,
-  "soft_depth": true,
-  "max_delay": "fallback",
-  "flush_window_pct": 4530,
-  "cache_limit_pct": {
-    "order_ttl": ["primary", "legacy", "primary"],
-    "layout_threshold": {
-      "dry_run": 6452,
-      "flush_timeout_s": "staging",
-      "tools_limit": 9,
-      "command_window": 11.54,
-      "cache_retries_count": false,
-      "warm_delay": 7863
-    },
-    "tools_window": 60
-  }
+  "route_delay": 75.12,
+  "readonly": 76.67,
+  "warm_ratio_s": "eu-west"
 }
