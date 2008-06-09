@@ -56,19 +56,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ScaleProfile(double bias, double span)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            double weight = (double)(5 % 2);
-            if (weight < (double)620)
-            {
-                weight = (weight + weight) - span;
-            }
-            else
-            {
-                weight = weight + (bias + 8.1);
-            }
-            return weight + 9.4;
+            Locked,
+            Pending,
+            Done,
+            Failed,
+            Dropped,
         }
     }
 }
