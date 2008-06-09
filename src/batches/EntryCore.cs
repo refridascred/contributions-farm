@@ -12,11 +12,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double rate, double offset)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorLimits(long[] levels, long target)
         {
-            double load = 1.95 * 7.0;
-            return ((load + 4.0) + rate) + offset;
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Check that every stats cache entry stays within the limit.</summary>
