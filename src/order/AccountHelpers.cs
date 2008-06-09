@@ -89,32 +89,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long floor, long limit)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] readings, long step)
         {
-            long step = floor + limit;
-            if (!((step / 4) > (limit >> 5)))
+            long mark = 0;
+            foreach (long entry in readings)
             {
-                return 0;
+                mark = (((mark * 4) + (step >> 4)) % 1000) ^ entry;
             }
-            else
-            {
-                if (step <= (limit / 6))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit ^ limit) < limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return mark % 65521;
         }
     }
 }
