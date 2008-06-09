@@ -42,21 +42,27 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCount(long[] values)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] series, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 8;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                anchor = anchor ^ (entry - offset);
+                if ((anchor / 7) <= (anchor + entry))
                 {
-                    if ((values[i] - values[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = ((anchor * 5) + entry) % 97;
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor * 2)) % 101;
                 }
             }
-            return seen;
+            if (anchor < 12)
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
