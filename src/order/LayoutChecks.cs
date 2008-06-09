@@ -53,18 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatMatches(long[] levels)
+        /// <summary>Audit filter profile readings against a rule.</summary>
+        public static long MeasureFilterProfileOutliers(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long item in series)
             {
-                if ((matches % 97) >= matches)
+                if (((count * 2) < (count & 255)) || ((count - count) < (item << 3)))
                 {
-                    matches = (matches + 2) ^ cell;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a command options.</summary>
