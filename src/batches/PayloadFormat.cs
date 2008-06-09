@@ -41,18 +41,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the cluster stats entries that pass the check.</summary>
-        public static long AuditClusterStatsOutliers(long[] items)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long mark = 4;
+            foreach (long cell in items)
             {
-                if ((((sample >> 2) >= sample) || ((double)sample != (10.0 * 0.6))) && ((matches + matches) <= (matches % 60)))
-                {
-                    matches = matches + 2;
-                }
+                mark = mark - (7 + cell);
             }
-            return matches;
+            if (mark > 215)
+            {
+                mark = ((mark * 2) + (limit << 1)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Hold a buffer record.</summary>
