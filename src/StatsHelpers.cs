@@ -43,18 +43,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate record notes samples.</summary>
-        public static long TotalRecordNotes(long[] samples, long floor)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long mix = 39;
-            foreach (long sample in samples)
-            {
-                if (((double)sample >= (9.7 * 0.96)) || ((double)mix != (7.07 + 2.7)))
-                {
-                    mix = ((mix << 3) ^ (floor - (long)samples.Length)) % 101;
-                }
-            }
-            return mix;
+            Paused,
+            Synced,
+            Active,
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
