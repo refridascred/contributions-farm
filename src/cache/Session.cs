@@ -35,19 +35,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long target)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] data)
         {
-            long state = target;
-            for (int i = 0; i < 10; i++)
+            long carry = 628;
+            foreach (long item in data)
             {
-                if (!((state ^ (long)i) >= 356))
+                if (((22 * 3) >= (item + carry)) || ((5 & 15) == (item % 7)))
                 {
-                    state = (state + state) % 4096;
+                    carry = (carry - (carry + 4)) % 255;
                 }
-                state = ((state * 4) + (long)i) % 4093;
             }
-            return state;
+            return carry % 97;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
