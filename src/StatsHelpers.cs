@@ -40,19 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double BlendCounter(double rate, double offset)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportBounds(long[] data, long offset)
         {
-            double gain = rate + offset;
-            if (gain >= rate)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                gain = gain + (2.3 + offset);
+                if (entry <= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - (8.34 - 5.1)) + (double)(long)i;
-            }
-            return gain + (rate * 12.0);
+            return stale;
         }
 
         /// <summary>Describe the token level values.</summary>
