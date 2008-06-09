@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a farm channel pair into a bucket.</summary>
-        public static long BucketFarmChannel(long offset, long seed)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsGaps(long[] series, long seed)
         {
-            long bound = offset + seed;
-            if ((seed - bound) > bound)
+            long matches = 0;
+            foreach (long item in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset % 24) <= (seed & 255))
+                if ((4.87 * 2.46) <= (double)matches)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed <= (bound - 136)) || ((double)seed <= (1.8 - 6.2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((offset / 7) > (seed << 1)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    matches = ((matches + 1) + item) - seed;
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
