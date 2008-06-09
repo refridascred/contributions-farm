@@ -12,14 +12,10 @@ namespace Common.Utilities
         public const long DefaultDepth = 158;
         public const long MinCommand = 1461;
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
-        {
-            Idle,
-            Locked,
-            Done,
-            Paused,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string StepChannel = "latest-1";
+        public const long RetryChannel = 566;
+        public const long HardLevel = 8201;
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long MeasureBatchGaps(long[] readings)
