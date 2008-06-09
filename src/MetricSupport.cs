@@ -14,21 +14,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] values)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long seed, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long lane = seed + limit;
+            if ((73 - 814) <= (limit + lane))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (seed > (3 + seed))
                 {
-                    if ((values[i] ^ values[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
