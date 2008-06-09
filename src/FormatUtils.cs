@@ -41,15 +41,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long seed)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long mix = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
