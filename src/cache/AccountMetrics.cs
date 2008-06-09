@@ -29,21 +29,13 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Compare every pair of metric report readings.</summary>
-        public static long OverlapMetricReportCount(long[] values)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Draft,
+            Locked,
+            Idle,
+            Active,
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
