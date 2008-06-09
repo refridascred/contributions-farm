@@ -13,12 +13,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long seed)
         {
-            Closed,
-            Idle,
-            Retry,
+            long carry = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next support format value from a seed.</summary>
