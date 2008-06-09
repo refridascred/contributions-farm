@@ -13,24 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long floor, long target)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            if ((52 + 6) < (target / 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((4.0 * 8.0) != (double)target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Retry,
+            Queued,
+            Idle,
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
