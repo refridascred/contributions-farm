@@ -65,19 +65,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate notes tools readings against a bound.</summary>
-        public static bool GuardNotesToolsBounds(long[] levels, long step)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountMatches(long[] samples, long limit)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (sample > step)
+                if (!(limit > (limit * 2)) && (((limit ^ (-302)) <= 53) && ((limit >> 2) == (limit + count))))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 3) + item;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Digest a series of context cache entries.</summary>
