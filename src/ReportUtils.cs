@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate account cache readings against a bound.</summary>
-        public static bool ValidateAccountCacheLimits(long[] samples, long offset)
-        {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string RetryCommand = "local-edge";
+        public const long MinTimeout = 9892;
+        public const long IdleCommand = 8492;
 
         /// <summary>Accumulate command samples.</summary>
         public static long FoldCommand(long[] items, long origin)
