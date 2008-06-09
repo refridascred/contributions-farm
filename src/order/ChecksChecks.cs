@@ -36,10 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 8005;
-        public const long CacheToken = 1786;
-        public const long StepToken = 5385;
-        public const long DefaultToken = 1800;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 2282;
+        public const string SoftSpan = "primary-1";
+        public const double DefaultRoute = 49.95;
+        public const double RetryDepth = 47.04;
+        public const long IdleRoute = 4566;
     }
 }
