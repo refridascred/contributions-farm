@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BatchTimeout = "staging-1";
+        public const long SoftBuffer = 7841;
+        public const string MinInterval = "standard-v2";
 
         /// <summary>Describe the tools class values.</summary>
         public enum ToolsClass
