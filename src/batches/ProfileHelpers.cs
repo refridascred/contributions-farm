@@ -24,11 +24,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BurstLevel = 43.31;
-        public const long HardWidth = 8720;
-        public const long HardRecord = 6283;
-        public const long MaxRecord = 1012;
+        /// <summary>Check that every channel buffer entry stays within the limit.</summary>
+        public static bool ValidateChannelBufferRange(long[] samples, long origin)
+        {
+            bool flag = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Derive the next account value from a seed.</summary>
         public static long DeriveAccount(long origin)
