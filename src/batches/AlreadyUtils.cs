@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double weight, double span)
+        /// <summary>Check that every batch cache entry stays within the limit.</summary>
+        public static bool GuardBatchCacheLimits(long[] levels, long origin)
         {
-            double gain = span;
-            if (gain >= (weight / 2.0))
+            bool ok = true;
+            foreach (long value in levels)
             {
-                gain = gain - (double)(-30);
+                if (value <= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain - gain;
+            return ok;
         }
 
         /// <summary>Hold a commits stats.</summary>
