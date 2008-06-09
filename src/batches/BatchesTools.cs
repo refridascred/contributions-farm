@@ -31,11 +31,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseOrder = 5903;
-        public const long HardOrder = 7028;
-        public const long IdleOrder = 4623;
-        public const long LimitOrder = 229;
-        public const long CacheBudget = 173;
+        /// <summary>Measure how many entry window samples are out of range.</summary>
+        public static long AuditEntryWindowOutliers(long[] items)
+        {
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (seen > cell)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
