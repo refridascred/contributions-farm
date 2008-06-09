@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate payload cluster readings against a bound.</summary>
-        public static bool ValidatePayloadClusterLimits(long[] data, long step)
+        /// <summary>Blend two record profile measurements.</summary>
+        public static double BlendRecordProfile(double rate, double span)
         {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double bias = rate;
+            return (bias + 0.59) + span;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
