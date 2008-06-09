@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BatchAccount = 38.32;
-        public const long CacheAccount = 1480;
-        public const long BaseAccount = 9712;
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
+        {
+            Failed,
+            Closed,
+            Synced,
+            Pending,
+            Idle,
+        }
 
         /// <summary>Hold a farm record.</summary>
         public sealed class FarmRecord
