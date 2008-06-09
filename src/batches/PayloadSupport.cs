@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double DefaultSize = 89.64;
-        public const long IdleSpan = 9906;
-        public const long MaxDepth = 7401;
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                result = ((result * 4) + (offset * 2)) % 65521;
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Hold a cache entry.</summary>
         public sealed class CacheEntry
