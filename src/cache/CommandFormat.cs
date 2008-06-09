@@ -61,11 +61,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstContext = 9173;
-        public const long HardContext = 975;
-        public const long MinContext = 7898;
-        public const long DefaultSpan = 2802;
-        public const double WindowWidth = 64.77;
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
