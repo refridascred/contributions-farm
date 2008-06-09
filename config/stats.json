@@ -1,6 +1,9 @@
 {
-  "warm_delay": [423, 285],
-  "strict": "green",
-  "retry_depth_pct": 55.82,
-  "idle_ttl_count": 500
+  "hard_threshold": false,
+  "default_size_pct": {
+    "layout_capacity": 17.07,
+    "readonly": [355, 184, 250, 248],
+    "cache_timeout": ["stable", "staging"]
+  },
+  "enabled": 7889
 }
