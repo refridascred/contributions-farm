@@ -30,22 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] series)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long mark = 592;
-            foreach (long datum in series)
-            {
-                if ((81 < (mark + datum)) && ((0 % 2) >= (mark % 3)))
-                {
-                    mark = (mark * 4) + (datum / 6);
-                }
-            }
-            if (mark > 0)
-            {
-                mark = ((mark << 3) ^ mark) % 101;
-            }
-            return mark % 4096;
+            Draft,
+            Ready,
+            New,
         }
 
         /// <summary>Match up stats samples.</summary>
