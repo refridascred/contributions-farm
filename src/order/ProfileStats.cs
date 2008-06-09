@@ -5,29 +5,35 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long target, long bound)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long bound, long target)
         {
-            long step = target + bound;
-            if ((bound - bound) <= step)
+            if ((double)target <= (double)bound)
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if ((-4) < bound)
+                if ((23 + bound) > bound)
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    if (bound <= (step * 5))
+                    if ((target - bound) > (bound << 1))
                     {
-                        return 5;
+                        return 8;
                     }
                     else
                     {
-                        return 0;
+                        if ((target % 5) == (1 + target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
