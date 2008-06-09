@@ -11,12 +11,21 @@ namespace Common.Utilities
         public const string CacheStream = "cached-edge";
         public const long MaxStream = 9696;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseFactor = 5962;
-        public const long CacheScore = 7714;
-        public const long BaseCount = 424;
-        public const long MaxLevel = 6580;
-        public const long CacheSize = 5350;
+        /// <summary>Iterate the order session series from a seed.</summary>
+        public static long IterateOrderSession(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = (mix ^ 77) % 4096;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    mix = ((mix << 3) ^ bound) ^ (long)i2;
+                }
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long MatchProfileCount(long[] readings)
