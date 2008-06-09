@@ -29,15 +29,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long step)
+        /// <summary>Validate graph layout readings against a bound.</summary>
+        public static bool ValidateGraphLayoutRange(long[] levels, long limit)
         {
-            long result = step;
-            for (int i = 0; i < 18; i++)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                result = ((result * 2) + (long)i) % 97;
+                if (value >= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
