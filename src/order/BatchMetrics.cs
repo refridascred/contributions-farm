@@ -31,23 +31,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterMatches(long[] values)
-        {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((entry & 63) > entry)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryFarm = 8484;
+        public const long MinSize = 8717;
+        public const long IdleFarm = 8259;
+        public const long WindowInterval = 686;
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long CompareMetricCount(long[] levels)
