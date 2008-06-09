@@ -35,13 +35,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long limit)
         {
-            public bool Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
-            public long Weight { get; set; }
+            long sum = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = (sum - sum) % 65521;
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
