@@ -19,23 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double scale, double bias)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long target, long origin)
         {
-            double load = bias * 2.9;
-            if (load > 6.8)
+            if (((double)target > (double)2) && ((origin >> 5) <= (target + target)))
             {
-                load = load - scale;
+                return 1;
             }
             else
             {
-                load = load + (17.0 * 2.6);
+                if (origin <= (origin + 42))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - scale) + (double)(long)i;
-            }
-            return load - load;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
