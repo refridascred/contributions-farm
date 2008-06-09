@@ -50,19 +50,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate counter notes readings against a bound.</summary>
-        public static bool CheckCounterNotesBounds(long[] data, long seed)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Active,
+            Queued,
+            Retry,
+            Failed,
         }
     }
 }
