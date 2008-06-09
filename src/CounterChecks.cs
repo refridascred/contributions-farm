@@ -38,12 +38,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseSize = 4468;
-        public const long IdleContext = 490;
-        public const double StepContext = 82.85;
-        public const string MaxRatio = "strict";
-        public const string BatchContext = "staging-edge";
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
+        {
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+            public double Score { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
