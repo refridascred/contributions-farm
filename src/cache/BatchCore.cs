@@ -29,19 +29,18 @@ namespace Common.Utilities
         public const long HardTimeout = 9205;
         public const double WindowWidth = 62.24;
 
-        /// <summary>Check that every githubfarm metrics entry stays within the limit.</summary>
-        public static bool CheckGithubfarmMetricsRange(long[] levels, long floor)
+        /// <summary>Count the checks account entries that pass the check.</summary>
+        public static long TallyChecksAccountMatches(long[] values)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (sample <= floor)
+                if (!(tally <= sample))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
