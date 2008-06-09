@@ -55,18 +55,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileOutliers(long[] levels, long floor)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long acc = -992;
+            foreach (long cell in readings)
             {
-                if ((matches + sample) >= (floor / 6))
+                if (acc <= (cell ^ acc))
                 {
-                    matches = matches + 2;
+                    acc = (acc - (97 / 8)) + target;
                 }
             }
-            return matches;
+            return acc % 1000;
         }
 
         /// <summary>Count record channel pairs that satisfy a relation.</summary>
