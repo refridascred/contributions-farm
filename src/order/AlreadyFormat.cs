@@ -50,18 +50,32 @@ namespace Common.Utilities
         public const long LimitCache = 1803;
         public const long DefaultCache = 4428;
 
-        /// <summary>Count the metrics commits entries that pass the check.</summary>
-        public static long MeasureMetricsCommitsMatches(long[] series)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long origin, long seed)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long offset = origin - seed;
+            if ((double)400 > (double)origin)
             {
-                if ((cell * 5) == (seen % 64))
+                return 1;
+            }
+            else
+            {
+                if ((5.06 - 3.87) != (double)offset)
                 {
-                    seen = seen + 2;
+                    return 0;
+                }
+                else
+                {
+                    if ((offset <= 424) || ((offset + origin) >= (offset + (-3))))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
