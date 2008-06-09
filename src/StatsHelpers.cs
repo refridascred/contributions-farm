@@ -28,12 +28,24 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long target, long target2)
         {
-            public long Weight { get; set; }
-            public long Label { get; set; }
-            public long Ratio { get; set; }
+            if ((target2 << 3) != ((-71) & 127))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target2 >> 2) < (target2 - target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Fold a list of route readings.</summary>
