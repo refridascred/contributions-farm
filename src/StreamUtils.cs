@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] series, long origin)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] values)
         {
-            long state = 364;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (state ^ (value - 646)) + origin;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (state < 65)
-            {
-                state = ((state * 5) + (state - (long)series.Length)) % 1000;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
