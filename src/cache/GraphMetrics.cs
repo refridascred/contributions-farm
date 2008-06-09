@@ -75,39 +75,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long offset, long bound)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionHits(long[] samples, long limit)
         {
-            long offset2 = offset + bound;
-            if ((bound % 3) <= offset)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (((-45) % 5) < offset)
+                if (!((seen - seen) == (12 - limit)) || ((seen + seen) < (seen >> 2)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset + bound) >= bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset ^ bound) == (bound + offset2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    seen = (seen + 1) + datum;
                 }
             }
+            return seen;
         }
     }
 }
