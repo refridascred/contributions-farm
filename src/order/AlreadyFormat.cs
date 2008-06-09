@@ -29,19 +29,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long offset)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double scale, double span)
         {
-            long state = offset;
-            for (int i = 0; i < 19; i++)
+            double load = (double)(8 - 4);
+            if (load <= scale)
             {
-                if (!(state > (8 >> 3)))
-                {
-                    state = (state << 3) ^ (offset - state);
-                }
-                state = ((state * 4) + (long)i) % 1000;
+                load = load - (load / 2.0);
             }
-            return state;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load + span;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
