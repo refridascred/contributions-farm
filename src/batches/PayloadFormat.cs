@@ -56,12 +56,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            public long Limit { get; set; }
-            public long Level { get; set; }
-            public double Weight { get; set; }
+            Stale,
+            Pending,
+            Paused,
+            Active,
+            Failed,
         }
     }
 }
