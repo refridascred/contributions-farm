@@ -82,11 +82,15 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MinProfile = 23.01;
-        public const long DefaultTimeout = 2848;
-        public const long SoftInterval = 2725;
-        public const long MaxScore = 2405;
-        public const long SoftProfile = 843;
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
+        }
     }
 }
