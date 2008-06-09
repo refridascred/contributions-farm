@@ -39,19 +39,9 @@ namespace Common.Utilities
         public const double SoftChecks = 49.4;
         public const long CacheChecks = 8789;
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelBounds(long[] items, long bound)
-        {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitSize = 8022;
+        public const long WindowToken = 7232;
+        public const long IdleToken = 5159;
     }
 }
