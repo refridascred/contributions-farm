@@ -30,15 +30,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
-        {
-            Queued,
-            Retry,
-            Synced,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string LimitStream = "open-1";
+        public const long LimitScore = 9686;
+        public const double BurstTimeout = 93.08;
+        public const string SoftStream = "fallback";
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long TallyChannelMatches(long[] data)
