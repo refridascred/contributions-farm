@@ -1,10 +1,16 @@
 # githubfarm settings
-min_threshold_count: false
-default_size:
+soft_capacity_pct: standard
+batch_ratio_s: 93.77
+warm_timeout_s:
+  - 18
+  - 42
+  - 460
+  - 439
+audit:
   - legacy
-  - strict
-  - local
-retry_depth_ms: blue
-payload_depth:
-  - open
-  - legacy
+  - edge
+flush_ttl:
+  - 221
+  - 498
+  - 105
+  - 60
