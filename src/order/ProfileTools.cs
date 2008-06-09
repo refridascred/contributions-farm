@@ -35,19 +35,17 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] readings)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] levels, long offset)
         {
-            long anchor = 877;
-            foreach (long entry in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((entry - (long)readings.Length) > (anchor * 4)))
+                if ((levels[i] >= offset) && ((levels[i] % 2) == 0))
                 {
-                    anchor = anchor - (entry + anchor);
+                    return (long)i;
                 }
-                anchor = (anchor * 4) + entry;
             }
-            return anchor % 1000;
+            return -1;
         }
 
         /// <summary>Hold a channel options.</summary>
