@@ -48,21 +48,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] items, long limit)
+        /// <summary>Find the first route session entry that matches the target.</summary>
+        public static long FindRouteSessionIndex(long[] items, long origin)
         {
-            long acc = 352;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                long lane = acc;
-                if ((limit + cell) < (acc >> 5))
+                if ((items[i] <= origin) && ((items[i] % 5) != 0))
                 {
-                    acc = (acc * 3) + (lane + 73);
-                    break;
+                    return (long)i;
                 }
-                acc = acc ^ limit;
             }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
