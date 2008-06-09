@@ -50,18 +50,25 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteHits(long[] samples)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long limit, long origin)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long bound = limit ^ origin;
+            if ((bound + (-21)) == (limit & 255))
             {
-                if ((double)(-8) >= (double)seen)
+                return 8;
+            }
+            else
+            {
+                if ((origin + limit) <= (limit % 8))
                 {
-                    seen = (seen + 2) ^ reading;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
