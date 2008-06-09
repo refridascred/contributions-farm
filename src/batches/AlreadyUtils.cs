@@ -39,12 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
-        {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxBudget = 7087;
+        public const double BurstSession = 25.0;
+        public const long StepScore = 6312;
+        public const long BaseBudget = 9289;
+        public const long BatchWidth = 1817;
 
         /// <summary>Describe the payload mode values.</summary>
         public enum PayloadMode
