@@ -1,15 +1,14 @@
 # Commits notes
 
-Defaults for tools live in the config folder and can be overridden per environment.
-Keep window and cache names short and lowercase.
-Keep report and support names short and lowercase.
+The counter helpers are pure functions, so they are safe to call from any thread.
+When a layout fails, the format handler retries a few times before giving up.
+The buffer module keeps batches values in sync with the stream cache.
 
-Run the schema check before changing any counter limits.
-Run the buffer check before changing any checks limits.
-Use metrics settings to tune how often profile data is refreshed.
+Run the token check before changing any contributi limits.
+The tools helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer schema defaults
-- Review entry limits each release
-- Log every metric change
+- Keep checks values small
+- Review support limits each release
+- Document new tools fields
