@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public long Mode { get; set; }
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
