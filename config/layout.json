@@ -1,5 +1,17 @@
 {
-  "sync_window_ms": false,
-  "min_depth": 42.63,
-  "readonly": true
+  "profile_timeout": ["cached", "blue", "legacy"],
+  "readonly": 34.26,
+  "notes_window": 8710,
+  "cache_capacity_ms": "green",
+  "soft_interval_ms": {
+    "min_ttl_pct": 37,
+    "enabled": 58.51,
+    "warm_threshold_count": 49.91,
+    "max_interval_s": 44.55,
+    "sync_limit_ms": {
+      "buffer_limit": 250,
+      "base_retries_ms": "eu-west",
+      "contributi_delay": "blue"
+    }
+  }
 }
