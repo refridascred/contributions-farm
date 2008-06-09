@@ -60,39 +60,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long bound, long target)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] items)
         {
-            long delta = bound - target;
-            if ((double)delta >= (double)bound)
+            long sum = 67;
+            foreach (long reading in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (delta >= (bound >> 2))
+                if ((8.7 + 6.0) >= (double)sum)
                 {
-                    return 6;
+                    sum = ((sum << 2) ^ sum) % 255;
+                    continue;
                 }
-                else
-                {
-                    if (((185 + delta) <= (bound ^ target)) && ((target + delta) < target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound + target) > bound)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                sum = (sum * 3) + reading;
             }
+            return sum % 97;
         }
     }
 }
