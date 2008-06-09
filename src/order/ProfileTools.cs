@@ -41,18 +41,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= offset) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 6830;
+        public const long MaxGraph = 5773;
+        public const long RetryInterval = 9149;
 
         /// <summary>Hold a channel options.</summary>
         public sealed class ChannelOptions
