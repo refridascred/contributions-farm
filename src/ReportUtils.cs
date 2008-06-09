@@ -20,21 +20,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count report route pairs that satisfy a relation.</summary>
-        public static long PairReportRouteCount(long[] series)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Paused,
+            Active,
+            Retry,
+            Synced,
         }
 
         /// <summary>Roll a graph counter forward.</summary>
