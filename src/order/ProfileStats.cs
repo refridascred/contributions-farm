@@ -54,18 +54,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportHits(long[] samples)
+        /// <summary>Check that every graph entry entry stays within the limit.</summary>
+        public static bool ValidateGraphEntryRange(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if (!((double)hits == (8.12 + 5.37)))
+                if (item < step)
                 {
-                    hits = (hits + 3) + datum;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
