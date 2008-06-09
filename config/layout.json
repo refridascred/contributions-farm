@@ -1,13 +1,12 @@
 {
-  "hard_limit_pct": "standard",
-  "base_ratio_s": 94.68,
-  "hard_depth_count": {
-    "already_depth": 60,
-    "commits_depth": 54.42,
-    "soft_capacity_s": false,
-    "enabled": "edge"
+  "sync_capacity_count": 83,
+  "report_timeout": 4.49,
+  "batch_ratio": {
+    "sync_delay_ms": 60,
+    "idle_ttl_pct": "legacy",
+    "farm_interval": 3989,
+    "dry_run": ["cached", "open", "legacy", "open"],
+    "persist": 57
   },
-  "default_window": "edge",
-  "retry_ttl": 51.15,
-  "strict": ["green", "legacy", "blue", "green"]
+  "cache_retries_pct": 10
 }
