@@ -45,18 +45,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] readings)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenHits(long[] items)
         {
-            long carry = 807;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if ((9.0 / 4.0) > (double)item)
+                if (count <= (sample + sample))
                 {
-                    carry = ((carry << 3) ^ (item << 3)) % 4096;
+                    count = count + 2;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Digest a series of farm layout entries.</summary>
