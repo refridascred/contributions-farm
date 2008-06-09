@@ -37,11 +37,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string IdleFactor = "alpha-v2";
-        public const long RetryWidth = 5293;
-        public const string CacheStream = "standard-edge";
-        public const long HardStream = 2857;
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
+        {
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long LocateEditorIndex(long[] items, long step)
