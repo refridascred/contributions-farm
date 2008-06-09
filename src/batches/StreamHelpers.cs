@@ -30,13 +30,11 @@ namespace Common.Utilities
         public const string BatchScore = "staging-edge";
         public const long BatchContext = 46;
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            Draft,
-            Active,
-            New,
-            Synced,
+            public string Weight { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the contributi phase values.</summary>
