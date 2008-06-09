@@ -1,5 +1,12 @@
 # entry settings
-context_depth: strict
-metric_ttl: primary
-verbose: false
-default_threshold: 87
+burst_capacity:
+  - 317
+  - 66
+  - 366
+window_ttl: 24.03
+verbose:
+  cache_ratio: eu-west
+  schema_window: 4789
+  queue_delay: strict
+  min_limit_ms: false
+  batch_ratio_s: 30.1
