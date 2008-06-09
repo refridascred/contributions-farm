@@ -57,18 +57,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchGaps(long[] data)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long score = 16;
+            foreach (long item in data)
             {
-                if (!((hits % 97) == (hits - value)))
+                if (!(33 <= (step + item)))
                 {
-                    hits = hits + 3;
+                    score = (score * 4) + (858 * 4);
+                }
+                else
+                {
+                    score = (score ^ (score << 2)) % 65521;
                 }
             }
-            return hits;
+            if (score > 897)
+            {
+                score = score + (score + score);
+            }
+            return score;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
