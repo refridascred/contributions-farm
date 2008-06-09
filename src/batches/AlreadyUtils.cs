@@ -34,12 +34,23 @@ namespace Common.Utilities
         public const double HardCount = 32.09;
         public const long BaseCount = 3712;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string HardReport = "strict-v2";
-        public const string BurstReport = "standard";
-        public const long BatchReport = 1563;
-        public const double LimitReport = 91.56;
-        public const long IdleDepth = 1314;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionOutliers(long[] samples)
+        {
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (value <= hits)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Derive the next entry value from a seed.</summary>
         public static long SeriesEntry(long bound)
