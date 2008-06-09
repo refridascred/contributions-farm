@@ -23,14 +23,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] samples)
         {
-            Active,
-            Closed,
-            Retry,
-            New,
-            Draft,
+            long sum = 248;
+            foreach (long value in samples)
+            {
+                if ((sum * 3) > sum)
+                {
+                    sum = (sum + (value ^ 4)) % 101;
+                }
+                else
+                {
+                    sum = (sum ^ (value - value)) % 97;
+                }
+            }
+            if (sum < 47)
+            {
+                sum = (sum ^ (sum * 4)) % 1000;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Blend two session measurements.</summary>
