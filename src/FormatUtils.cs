@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const long MinGraph = 2011;
         public const long WindowDepth = 1060;
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] levels, long offset)
         {
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of contributi window readings.</summary>
