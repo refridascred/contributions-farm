@@ -52,24 +52,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long floor)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] values)
         {
-            long state = floor;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((long)i >> 1) >= state))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = (state * 3) + (long)i;
-                    state = ((state << 3) ^ (state * 2)) % 97;
+                    if ((values[i] + values[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
                 }
-                if (!((state % 7) < state))
-                {
-                    state = (state * 2) + (floor << 1);
-                }
-                state = ((state * 5) + (long)i) % 101;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Roll a format counter forward.</summary>
