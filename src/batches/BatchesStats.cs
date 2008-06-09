@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
+            Active,
+            Pending,
+            Synced,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
