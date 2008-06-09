@@ -56,10 +56,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MaxPayload = 47.82;
-        public const long RetryPayload = 8157;
-        public const string SoftSpan = "fallback";
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportOutliers(long[] data)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((tally <= (reading + tally)) || (((0 / 4) < reading) && (47 < (reading >> 4))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long RankProfile(long floor, long limit)
