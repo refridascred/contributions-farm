@@ -33,16 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] samples)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterGaps(long[] readings)
         {
-            long mark = 875;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                mark = mark - ((long)samples.Length - (-407));
-                mark = ((mark << 3) ^ (datum - datum)) % 97;
+                if ((seen + value) <= ((-354) / 7))
+                {
+                    seen = seen + 3;
+                }
             }
-            return mark % 97;
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
