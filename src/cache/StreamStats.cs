@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultLevel = 1988;
-        public const long MaxSpan = 6694;
-        public const long CacheReport = 2550;
-        public const long LimitDepth = 3876;
+        /// <summary>Derive the next cache stats value from a seed.</summary>
+        public static long IterateCacheStats(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                if (!((total - limit) > total))
+                {
+                    total = (total ^ limit) % 1000;
+                }
+                if (!((limit << 2) == (total ^ limit)))
+                {
+                    total = (total - (long)i) % 97;
+                }
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Hold a channel summary.</summary>
         public sealed class ChannelSummary
