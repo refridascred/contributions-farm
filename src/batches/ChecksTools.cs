@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double bias, double bias2)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderLimits(long[] samples, long target)
         {
-            double mean = bias2 * 9.0;
-            if (mean < (double)22)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                mean = (mean - (bias2 - 12.0)) - bias;
+                if (entry > target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mean + bias2;
+            return found;
         }
 
         /// <summary>Define record limits and defaults.</summary>
