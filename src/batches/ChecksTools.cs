@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double BlendCluster(double rate, double bias)
-        {
-            double weight = (rate - rate) + (bias / 3.0);
-            if (weight < 4.1)
-            {
-                weight = weight - (1.2 + rate);
-            }
-            else
-            {
-                weight = weight + (weight + bias);
-            }
-            return weight - bias;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardInterval = 5321;
+        public const long CacheSize = 8448;
+        public const string LimitSupport = "open";
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
