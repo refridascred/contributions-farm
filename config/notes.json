@@ -1,18 +1,6 @@
 {
-  "payload_ratio": 4,
-  "default_ttl": true,
-  "default_retries_ms": {
-    "compress": "staging",
-    "githubfarm_ttl": {
-      "warm_timeout": 100,
-      "max_delay_pct": 1441,
-      "max_capacity_pct": true
-    },
-    "strict": "green",
-    "burst_depth": "staging",
-    "soft_timeout_count": 57,
-    "order_ratio": ["latest", "fallback"]
-  },
-  "strict": false,
-  "warm_ttl": 36.77
+  "idle_ttl": "green",
+  "retry_ratio_pct": 6213,
+  "poll_size_count": 60,
+  "default_timeout_s": "eu-west"
 }
