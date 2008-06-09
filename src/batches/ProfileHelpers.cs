@@ -33,15 +33,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of format command readings.</summary>
-        public static long TotalFormatCommand(long[] values, long step)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long origin)
         {
-            long score = 43;
-            foreach (long value in values)
+            long state = origin;
+            for (int i = 0; i < 14; i++)
             {
-                score = (((score << 2) ^ (0 + step)) % 97) - value;
+                long tally = state;
+                if ((8 * 4) < (tally % 100))
+                {
+                    tally = (tally - (state - (long)i)) % 4096;
+                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Hold a entry header.</summary>
