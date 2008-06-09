@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up counter farm samples.</summary>
-        public static long CompareCounterFarmCount(long[] readings)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Weight { get; set; } = "";
+            public bool Label { get; set; }
+            public long Limit { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a token summary.</summary>
