@@ -16,11 +16,23 @@ namespace Common.Utilities
         public const string BatchDepth = "strict-1";
         public const double DefaultContributi = 14.13;
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double rate, double floor)
         {
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
+            double ratio = rate - 16.0;
+            if (ratio >= (double)9)
+            {
+                ratio = ratio - (4.2 + 2.64);
+            }
+            else
+            {
+                ratio = ratio - floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - (double)(-301)) + (double)(long)i;
+            }
+            return ratio + (double)9;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
