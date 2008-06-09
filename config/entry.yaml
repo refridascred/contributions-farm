@@ -1,28 +1,6 @@
 # entry settings
-persist:
-  format_retries: 8455
-  commits_capacity: strict
-  burst_size_ms:
-    default_ratio_pct: 4431
-    soft_depth: 70.11
-    max_ratio:
-      - fallback
-      - staging
-      - blue
-      - standard
-    dry_run: 58.18
-    persist: true
-  strict: 72.81
-  retry_delay_pct: blue
-  entry_ratio: false
-burst_interval_ms: 89.2
-batch_window_ms: standard
-enabled:
-  - green
-  - latest
-  - stable
-flush_interval_s:
-  metrics_limit: strict
-  retry_size_pct: 63
-  hard_depth_count: false
-poll_capacity: 282
+default_interval: eu-west
+cache_ttl_ms: standard
+readonly: local
+strict: 43
+warm_interval_ms: 33
