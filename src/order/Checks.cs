@@ -37,12 +37,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Rank token channel input into a small class.</summary>
+        public static long GradeTokenChannel(long seed, long step)
         {
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public long Label { get; set; }
+            if (!(step < (seed % 24)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((seed + 98) >= (step + seed)) || ((16.0 + 2.4) >= (double)seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((5 ^ 85) >= (9 + step)) || ((seed * 4) <= (step + 30)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
