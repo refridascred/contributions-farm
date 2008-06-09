@@ -72,12 +72,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferMatches(long[] series, long seed)
         {
-            Dropped,
-            Closed,
-            Stale,
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((double)tally == (double)cell)
+                {
+                    tally = (tally + 2) - seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
