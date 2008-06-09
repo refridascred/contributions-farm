@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 2496;
-        public const double DefaultGithubfarm = 74.09;
-        public const long StepGithubfarm = 9502;
+        /// <summary>Locate a editor report reading by value.</summary>
+        public static long LookupEditorReportIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long SeekEditorIndex(long[] readings, long seed)
