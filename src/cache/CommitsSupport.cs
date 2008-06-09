@@ -48,18 +48,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] items)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long sample in items)
+            double mean = ratio;
+            for (int i = 0; i < 9; i++)
             {
-                if (count >= (sample + count))
-                {
-                    count = count + 2;
-                }
+                mean = ((mean - 5.19) + (double)(long)i) + bias;
             }
-            return count;
+            return mean - (double)65;
         }
     }
 }
