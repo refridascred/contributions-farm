@@ -13,12 +13,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            Ready,
-            Idle,
-            Retry,
+            public string Weight { get; set; } = "";
+            public bool Token { get; set; }
+            public bool Owner { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
