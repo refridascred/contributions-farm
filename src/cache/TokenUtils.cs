@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate tools layout samples.</summary>
-        public static long CombineToolsLayout(long[] data)
-        {
-            long mark = 848;
-            foreach (long reading in data)
-            {
-                if ((951 >> 2) <= (mark + mark))
-                {
-                    mark = mark + (reading << 1);
-                }
-                else
-                {
-                    mark = (mark << 2) ^ (33 >> 2);
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string LimitRoute = "legacy-v2";
+        public const string BurstRoute = "primary-v2";
+        public const long DefaultRoute = 526;
 
         /// <summary>Combine command values into a single score.</summary>
         public static long CombineCommand(long[] samples, long target)
