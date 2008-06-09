@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            public long Limit { get; set; }
-            public double Count { get; set; }
             public long Ratio { get; set; }
+            public long Weight { get; set; }
             public long Rank { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
