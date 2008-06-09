@@ -38,19 +38,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double BlendReport(double ratio, double span)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long StepStream(long offset)
         {
-            double load = span;
-            if (load < (double)38)
+            long state = offset;
+            for (int i = 0; i < 20; i++)
             {
-                load = (load - (double)804) + ratio;
+                state = ((state * 5) + state) % 1000;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (4.5 / 5.0)) + (double)(long)i;
-            }
-            return load + (double)76;
+            return state;
         }
     }
 }
