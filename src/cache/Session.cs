@@ -25,22 +25,14 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] readings)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long total = 936;
-            foreach (long entry in readings)
-            {
-                if ((double)(long)readings.Length < (0.2 + 2.61))
-                {
-                    total = total + (total - entry);
-                }
-            }
-            if (total < 9)
-            {
-                total = (total << 2) ^ ((long)readings.Length - total);
-            }
-            return total;
+            Dropped,
+            Queued,
+            Ready,
+            Failed,
+            Paused,
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
