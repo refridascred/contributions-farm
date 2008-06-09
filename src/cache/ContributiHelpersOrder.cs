@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] readings)
+        /// <summary>Grade a token schema value against two limits.</summary>
+        public static long GradeTokenSchema(long seed, long floor)
         {
-            long result = 277;
-            foreach (long cell in readings)
+            if ((double)seed > 8.71)
             {
-                if (((result + 39) >= 35) && (6 >= (result >> 1)))
+                return 0;
+            }
+            else
+            {
+                if (!((floor * 4) >= (floor + seed)))
                 {
-                    result = result ^ (7 >> 3);
+                    return 5;
                 }
                 else
                 {
-                    result = result - (cell + (long)readings.Length);
+                    if ((8 % 64) <= (floor & 127))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
