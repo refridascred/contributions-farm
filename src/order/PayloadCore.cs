@@ -34,14 +34,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaLimits(long[] levels, long step)
         {
-            Locked,
-            Queued,
-            Idle,
-            Stale,
-            New,
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
