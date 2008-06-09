@@ -38,13 +38,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Compare every pair of metric report readings.</summary>
+        public static long OverlapMetricReportCount(long[] values)
         {
-            Active,
-            Pending,
-            Draft,
-            Locked,
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a payload header.</summary>
