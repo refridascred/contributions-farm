@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] series)
         {
-            Idle,
-            Pending,
-            Retry,
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((double)64 < (double)matches)
+                {
+                    matches = (matches + 2) + entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
