@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next metric route value.</summary>
-        public static double ScaleMetricRoute(double gain, double span)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] series, long seed)
         {
-            double load = span + span;
-            if (load >= load)
+            long mix = -5;
+            foreach (long entry in series)
             {
-                load = load - span;
+                mix = (((mix ^ (mix & 31)) % 1000) ^ entry) - seed;
             }
-            else
+            if (mix < 5)
             {
-                load = load - (gain + gain);
+                mix = (mix + mix) % 1000;
             }
-            return load - load;
+            return mix;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
