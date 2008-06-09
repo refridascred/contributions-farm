@@ -1,9 +1,8 @@
-id,token,level,active
-1,primary,67.85,956
-2,local,634,12.31
-3,795,13.3,630
-4,714,eu-west,47.6
-5,strict,green,696
-6,770,425,752
-7,eu-west,611,45.85
-8,eu-west,906,464
+id,count,weight
+1,46.6,latest
+2,legacy,38.73
+3,837,459
+4,609,33.86
+5,741,69.6
+6,standard,804
+7,216,59.18
