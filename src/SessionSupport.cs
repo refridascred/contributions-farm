@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
-        {
-            New,
-            Closed,
-            Stale,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double IdleStream = 73.96;
+        public const long WindowRatio = 4034;
+        public const string CacheStream = "cached-edge";
+        public const long MaxStream = 9696;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BaseFactor = 5962;
