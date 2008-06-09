@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] values, long offset)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsHits(long[] data)
         {
-            long acc = 8;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                acc = ((acc ^ offset) % 97) ^ item;
+                if ((hits >> 4) >= (entry / 6))
+                {
+                    hits = hits + 1;
+                }
             }
-            if (acc > 898)
-            {
-                acc = ((acc * 4) + (offset / 9)) % 97;
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
