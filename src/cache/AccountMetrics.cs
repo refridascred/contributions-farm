@@ -38,13 +38,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricHits(long[] data, long offset)
         {
-            public bool Size { get; set; }
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
-            public string Token { get; set; } = "";
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((offset >> 5) > count)
+                {
+                    count = (count + 3) ^ cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
