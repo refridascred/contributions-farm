@@ -15,15 +15,31 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a batch buffer reading.</summary>
-        public static double ProjectBatchBuffer(double rate, double offset)
+        /// <summary>Classify a entry already pair into a bucket.</summary>
+        public static long BucketEntryAlready(long step, long seed)
         {
-            double scale = (offset - 3.25) + (rate - rate);
-            if (scale <= (3.36 + 2.0))
+            if (seed >= (step + step))
             {
-                scale = scale - scale;
+                return 1;
             }
-            return scale - (double)642;
+            else
+            {
+                if (step < (step ^ seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed & 3) > (seed ^ 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define window limits and defaults.</summary>
