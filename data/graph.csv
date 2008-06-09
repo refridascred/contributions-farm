@@ -1,8 +1,6 @@
-id,score,owner
-1,42.2,fallback
-2,edge,974
-3,250,44.38
-4,66.01,64.09
-5,latest,local
-6,468,8.36
-7,728,fallback
+id,label,token,weight,region
+1,74.49,239,50.28,legacy
+2,24,334,blue,19
+3,blue,66.17,standard,legacy
+4,417,primary,332,green
+5,latest,strict,37,393
