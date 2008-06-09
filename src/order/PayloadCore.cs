@@ -27,17 +27,10 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Look up the position of a profile checks sample.</summary>
-        public static long FindProfileChecksIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheAccount = 5572;
+        public const long BurstCount = 8102;
+        public const string MinScore = "latest-1";
+        public const long BatchScore = 3365;
     }
 }
