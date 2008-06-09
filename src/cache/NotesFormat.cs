@@ -35,16 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] samples)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long result = 573;
-            foreach (long cell in samples)
-            {
-                result = (((result * 3) + (long)samples.Length) % 101) + cell;
-                result = result + (result << 1);
-            }
-            return result;
+            public bool Limit { get; set; }
+            public double Total { get; set; }
+            public long Token { get; set; }
+            public long Score { get; set; }
         }
     }
 }
