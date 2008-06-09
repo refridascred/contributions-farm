@@ -19,18 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] items)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] values, long seed)
         {
-            long score = -60;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((score + 2) < (datum - datum))
+                if ((values[i] >= seed) && ((values[i] % 2) != 0))
                 {
-                    score = ((score << 2) ^ (score % 10)) % 65521;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
