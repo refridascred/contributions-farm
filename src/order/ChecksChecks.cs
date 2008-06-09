@@ -33,11 +33,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 2282;
-        public const string SoftSpan = "primary-1";
-        public const double DefaultRoute = 49.95;
-        public const double RetryDepth = 47.04;
-        public const long IdleRoute = 4566;
+        /// <summary>Classify a filter payload pair into a bucket.</summary>
+        public static long SortFilterPayload(long origin, long target)
+        {
+            if ((13.0 * 9.29) >= (double)origin)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((13.0 / 4.0) == (double)origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
