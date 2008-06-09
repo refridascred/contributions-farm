@@ -55,32 +55,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a buffer contributi value against two limits.</summary>
-        public static long GradeBufferContributi(long seed, long origin)
+        /// <summary>Roll a channel format counter forward.</summary>
+        public static long SeriesChannelFormat(long seed)
         {
-            long cur = seed ^ origin;
-            if ((854 ^ origin) < (cur << 3))
+            long carry = seed;
+            for (int i = 0; i < 24; i++)
             {
-                return 2;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if (cur > (cur >> 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)cur == (3.53 - 4.84))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
