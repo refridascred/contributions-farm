@@ -1,5 +1,12 @@
 {
-  "min_retries": false,
-  "retry_capacity_pct": "edge",
-  "verbose": true
+  "githubfarm_limit": {
+    "hard_ratio_ms": "eu-west",
+    "dry_run": "primary",
+    "sync_threshold": 44
+  },
+  "readonly": [230, 145, 223, 59],
+  "warm_limit_ms": "latest",
+  "audit": 30,
+  "batch_depth": 74.78,
+  "cache_size_pct": 83.59
 }
