@@ -14,22 +14,38 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] values, long target)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long origin, long seed)
         {
-            long mark = 13;
-            foreach (long sample in values)
+            if ((seed + seed) >= (origin ^ seed))
             {
-                if ((sample << 3) != (target * 3))
+                return 5;
+            }
+            else
+            {
+                if ((244 - origin) >= (origin - seed))
                 {
-                    mark = (mark << 3) ^ (mark - sample);
+                    return 3;
                 }
-                if ((6.0 / 9.0) > (double)(long)values.Length)
+                else
                 {
-                    break;
+                    if ((1 + origin) != (seed - seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)seed == (1.0 / 5.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Digest a series of route cluster entries.</summary>
