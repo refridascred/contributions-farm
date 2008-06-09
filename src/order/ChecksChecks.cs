@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BaseBudget = "alpha-v2";
-        public const long BaseMetrics = 8126;
-        public const long DefaultMetrics = 6774;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountHits(long[] series, long bound)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((sample + matches) > (sample ^ 79))
+                {
+                    matches = (matches + 1) + bound;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate support samples.</summary>
         public static long DigestSupport(long[] items)
