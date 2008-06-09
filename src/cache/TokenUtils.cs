@@ -39,14 +39,16 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long step)
         {
-            Done,
-            Paused,
-            Stale,
-            Synced,
-            Ready,
+            long anchor = step;
+            for (int i = 0; i < 16; i++)
+            {
+                anchor = (anchor - (step & 3)) % 101;
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
