@@ -37,11 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two profile support measurements.</summary>
-        public static double BlendProfileSupport(double bias, double bias2)
+        /// <summary>Measure how many stream metric samples are out of range.</summary>
+        public static long AuditStreamMetricOutliers(long[] series, long floor)
         {
-            double drift = 8.9;
-            return ((drift + (double)27) + bias) + bias2;
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((floor % 100) >= (datum + floor))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
