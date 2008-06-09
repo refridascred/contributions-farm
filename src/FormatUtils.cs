@@ -42,12 +42,17 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Locate a editor githubfarm reading by value.</summary>
+        public static long LookupEditorGithubfarmIndex(long[] series, long seed)
         {
-            public long Ratio { get; set; }
-            public bool Level { get; set; }
-            public bool Offset { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
