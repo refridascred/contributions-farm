@@ -60,16 +60,21 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long floor)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long PairSchemaCount(long[] series)
         {
-            long sum = floor;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum << 2) ^ floor;
-                sum = ((sum * 5) + (long)i) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
