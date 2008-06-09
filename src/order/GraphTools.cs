@@ -27,13 +27,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Classify a metrics githubfarm pair into a bucket.</summary>
+        public static long RankMetricsGithubfarm(long offset, long limit)
         {
-            public double Region { get; set; }
-            public string Score { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Owner { get; set; }
+            if ((7.71 * 3.6) < (double)limit)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)offset >= (9.23 + 17.0)) || ((limit ^ offset) >= 4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
