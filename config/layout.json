@@ -1,6 +1,10 @@
 {
-  "audit": 90.64,
-  "batch_timeout": false,
-  "base_depth_pct": [361, 488],
-  "contributi_capacity": "cached"
+  "idle_delay_count": "standard",
+  "burst_window": {
+    "strict": 100,
+    "audit": false,
+    "retry_threshold_s": [262, 484, 151, 362]
+  },
+  "verbose": 9797,
+  "enabled": "edge"
 }
