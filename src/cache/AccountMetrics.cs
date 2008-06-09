@@ -20,15 +20,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the cache batch series from a seed.</summary>
-        public static long RollCacheBatch(long origin)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] values, long target)
         {
-            long mix = origin;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                if (!((target + hits) >= (8 % 16)))
+                {
+                    hits = (hits + 2) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the cache level values.</summary>
