@@ -1,6 +1,19 @@
 {
-  "compress": "cached",
-  "max_ratio_s": true,
-  "default_ttl": 52.22,
-  "base_retries_pct": [327, 258, 302]
+  "editor_limit": true,
+  "sync_threshold_count": false,
+  "soft_depth": true,
+  "max_delay": "fallback",
+  "flush_window_pct": 4530,
+  "cache_limit_pct": {
+    "order_ttl": ["primary", "legacy", "primary"],
+    "layout_threshold": {
+      "dry_run": 6452,
+      "flush_timeout_s": "staging",
+      "tools_limit": 9,
+      "command_window": 11.54,
+      "cache_retries_count": false,
+      "warm_delay": 7863
+    },
+    "tools_window": 60
+  }
 }
