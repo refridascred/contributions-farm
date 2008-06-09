@@ -25,13 +25,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Rank entry token input into a small class.</summary>
+        public static long RankEntryToken(long floor, long floor2)
         {
-            Synced,
-            Retry,
-            Stale,
-            Draft,
+            long slot = floor + floor2;
+            if (((floor % 60) != (floor ^ floor2)) && (floor > (floor + slot)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (9 <= (slot << 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((slot / 4) < (slot - slot))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
