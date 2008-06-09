@@ -18,19 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] samples, long seed)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long origin)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long mark = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (sample >= seed)
-                {
-                    found = false;
-                    break;
-                }
+                mark = (mark + (origin % 2)) % 255;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
