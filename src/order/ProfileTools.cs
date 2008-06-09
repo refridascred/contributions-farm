@@ -26,13 +26,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryRange(long[] readings, long step)
         {
-            public double Offset { get; set; }
-            public string Total { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public string Limit { get; set; } = "";
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
