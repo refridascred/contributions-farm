@@ -14,38 +14,21 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long step, long limit)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long CompareGithubfarmCount(long[] values)
         {
-            if (6 > (step << 3))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((1.3 - 10.0) != (double)step) || ((6.7 + 7.0) <= (double)limit))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)step <= (3.18 + 3.6))
+                    if ((values[i] ^ values[j]) != 1)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (step <= (limit & 63))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
