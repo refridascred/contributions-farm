@@ -29,18 +29,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderMatches(long[] data, long step)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long origin)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long mix = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (20.0 <= (double)tally)
+                if ((double)mix == (double)41)
                 {
-                    tally = ((tally + 3) + reading) - step;
+                    mix = mix + (94 & 1);
                 }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
     }
 }
