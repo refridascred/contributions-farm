@@ -45,18 +45,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenHits(long[] items)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsMatches(long[] values)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (count <= (sample + sample))
+                if ((double)hits != (8.94 / 8.0))
                 {
-                    count = count + 2;
+                    hits = (hits + 2) + item;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Digest a series of farm layout entries.</summary>
