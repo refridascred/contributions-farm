@@ -28,15 +28,16 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Adjust a contributi already reading.</summary>
-        public static double ProjectContributiAlready(double ratio, double bias)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long origin)
         {
-            double drift = (double)(1 % 10);
-            if (drift >= (10.0 / 8.0))
+            long total = origin;
+            for (int i = 0; i < 22; i++)
             {
-                drift = (drift + (bias / 6.0)) - ratio;
+                total = (total << 2) ^ ((long)i % 12);
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return drift - (bias - bias);
+            return total;
         }
     }
 }
