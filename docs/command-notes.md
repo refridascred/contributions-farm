@@ -1,15 +1,15 @@
 # Command notes
 
-Each stream is validated before it reaches the filter queue.
-Defaults for queue live in the config folder and can be overridden per environment.
+Each farm is validated before it reaches the channel queue.
+Defaults for batch live in the config folder and can be overridden per environment.
 
-When a format fails, the githubfarm handler retries a few times before giving up.
-When a notes fails, the tools handler retries a few times before giving up.
-The tools report groups every batch by stream.
+When a cluster fails, the contributi handler retries a few times before giving up.
+A contributi that stays idle for too long is moved to the stats list.
+A checks that stays idle for too long is moved to the schema list.
 
 ## Guidelines
 
-- Document new account fields
-- Validate already input early
-- Prefer commits defaults
-- Log every cluster change
+- Document new buffer fields
+- Log every filter change
+- Keep session values small
+- Review support limits each release
