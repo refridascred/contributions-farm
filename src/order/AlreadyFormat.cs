@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueRange(long[] series, long bound)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long bound)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long mark = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (entry != bound)
+                long count = bound - (85 << 3);
+                if ((1.9 >= (double)bound) || (mark < (count + bound)))
                 {
-                    found = false;
-                    break;
+                    mark = (mark << 3) ^ (864 % 5);
                 }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Describe the schema phase values.</summary>
