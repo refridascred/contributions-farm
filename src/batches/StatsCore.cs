@@ -66,13 +66,39 @@ namespace Common.Utilities
         public const long DefaultTimeout = 7069;
         public const string BaseTimeout = "latest-v2";
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long seed, long floor)
         {
-            public bool Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
+            long slot = seed ^ floor;
+            if (!(floor <= slot))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor << 1) >= (slot + seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (seed < floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((floor << 1) <= seed) || (17.0 > (double)slot))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
