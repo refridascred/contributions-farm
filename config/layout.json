@@ -1,10 +1,5 @@
 {
-  "retry_capacity": {
-    "layout_capacity": true,
-    "payload_delay": ["blue", "edge", "primary", "latest"],
-    "contributi_threshold": [254, 455],
-    "token_delay": "green"
-  },
-  "idle_size_ms": ["eu-west", "strict", "legacy"],
-  "batch_depth_ms": "blue"
+  "persist": 88.0,
+  "channel_interval": [38, 343],
+  "burst_ttl_s": [453, 493, 79]
 }
