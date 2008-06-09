@@ -29,11 +29,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Digest a series of counter metrics entries.</summary>
+        public static long TotalCounterMetrics(long[] samples, long limit)
         {
-            public bool Token { get; set; }
-            public string Score { get; set; } = "";
+            long sum = 5;
+            foreach (long cell in samples)
+            {
+                sum = (((sum * 5) + (cell ^ 773)) % 4096) - limit;
+                sum = (sum * 5) + (652 + sum);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Hold a route entry.</summary>
