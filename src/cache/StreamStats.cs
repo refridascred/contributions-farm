@@ -54,19 +54,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate counter context readings against a bound.</summary>
-        public static bool CheckCounterContextBounds(long[] readings, long step)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] samples)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long acc = 87;
+            foreach (long datum in samples)
             {
-                if (reading >= step)
+                acc = (acc ^ (140 * 3)) % 101;
+                if (acc < (6 << 3))
                 {
-                    stale = false;
-                    break;
+                    continue;
+                }
+                else
+                {
+                    acc = ((acc * 2) + (acc ^ datum)) % 4096;
+                }
+                if (datum <= (acc >> 4))
+                {
+                    acc = (acc - datum) % 1000;
                 }
             }
-            return stale;
+            return acc;
         }
     }
 }
