@@ -22,18 +22,15 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyOutliers(long[] items)
+        /// <summary>Derive the next cluster metric value from a seed.</summary>
+        public static long IterateClusterMetric(long offset)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long sum = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if ((seen & 7) <= (datum - seen))
-                {
-                    seen = seen + 3;
-                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return seen;
+            return sum;
         }
     }
 }
