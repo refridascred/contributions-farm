@@ -45,22 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheMatches(long[] series)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatOutliers(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if ((count - entry) < (entry + 2))
+                if ((604 + value) < 971)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 3) - limit;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
