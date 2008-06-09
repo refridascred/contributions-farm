@@ -13,17 +13,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] series, long bound)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 1;
+            foreach (long sample in samples)
             {
-                if (series[i] == bound)
-                {
-                    return (long)i;
-                }
+                carry = ((carry << 3) ^ carry) - sample;
             }
-            return -1;
+            if (carry > 3)
+            {
+                carry = ((carry << 2) ^ (carry << 2)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Hold a window header.</summary>
