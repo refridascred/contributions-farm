@@ -1,7 +1,13 @@
 {
-  "filter_ttl": "open",
-  "max_capacity_s": 80.91,
-  "retry_limit": false,
-  "verbose": 22,
-  "flush_retries": 89.53
+  "strict": ["open", "edge", "standard"],
+  "poll_size_pct": "standard",
+  "soft_size_ms": {
+    "poll_interval": 4461,
+    "persist": ["legacy", "local", "primary"],
+    "sync_depth_count": true,
+    "strict": 250,
+    "flush_limit": ["stable", "strict", "eu-west"],
+    "hard_ratio": 15
+  },
+  "compress": 6.04
 }
