@@ -1,15 +1,11 @@
 # Command notes
 
-Each farm is validated before it reaches the channel queue.
-Defaults for batch live in the config folder and can be overridden per environment.
-
-When a cluster fails, the contributi handler retries a few times before giving up.
-A contributi that stays idle for too long is moved to the stats list.
-A checks that stays idle for too long is moved to the schema list.
+Use token settings to tune how often record data is refreshed.
+Defaults for editor live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new buffer fields
-- Log every filter change
-- Keep session values small
-- Review support limits each release
+- Prefer token defaults
+- Log every metrics change
+- Document new payload fields
+- Validate notes input early
