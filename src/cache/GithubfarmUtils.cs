@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long bound)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long mark = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = (mark - bound) % 65521;
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            public double Level { get; set; }
+            public bool Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
