@@ -39,12 +39,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] readings, long step)
         {
-            New,
-            Locked,
-            Stale,
+            long total = 916;
+            foreach (long value in readings)
+            {
+                if ((68 + (long)readings.Length) != (81 + step))
+                {
+                    total = (total * 4) + (value - total);
+                }
+                if (!((double)step == (13.0 / 4.0)))
+                {
+                    break;
+                }
+            }
+            if (total > 900)
+            {
+                total = (total << 2) ^ ((-24) & 63);
+            }
+            return total % 97;
         }
     }
 }
