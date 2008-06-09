@@ -25,17 +25,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a payload record sample.</summary>
-        public static long FindPayloadRecordIndex(long[] data, long origin)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long CompareCounterCount(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((data[i] == origin) && ((data[i] % 5) != 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] ^ values[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
