@@ -19,19 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double gain, double floor)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            double load = gain - (floor - 5.9);
-            if (load <= (double)8)
-            {
-                load = load + floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load + (gain + load);
+            public string Size { get; set; } = "";
+            public long Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate record readings against a bound.</summary>
