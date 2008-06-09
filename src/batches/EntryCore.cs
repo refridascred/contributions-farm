@@ -30,13 +30,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Count the editor entry entries that pass the check.</summary>
+        public static long AuditEditorEntryHits(long[] samples, long limit)
         {
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (((reading * 4) < (seen + seen)) && !((limit + reading) == (reading % 10)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the record mode values.</summary>
