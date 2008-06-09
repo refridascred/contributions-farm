@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit queue profile readings against a rule.</summary>
-        public static long AuditQueueProfileGaps(long[] readings, long seed)
+        /// <summary>Iterate the filter command series from a seed.</summary>
+        public static long DeriveFilterCommand(long limit)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long carry = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((item / 6) > item)
+                if (5.8 > (double)(long)i)
                 {
-                    tally = (tally + 3) - seed;
+                    carry = carry + (limit << 3);
+                    carry = carry - limit;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                carry = carry ^ (limit % 5);
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
