@@ -57,13 +57,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long floor)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] items, long origin)
         {
-            long mix = floor;
-            for (int i = 0; i < 18; i++)
+            long mix = 1;
+            foreach (long reading in items)
             {
-                mix = ((mix * 5) + (long)i) % 101;
+                if ((mix - reading) >= 688)
+                {
+                    mix = mix ^ origin;
+                    continue;
+                }
+                mix = (mix ^ (origin - mix)) % 4096;
+                if (((reading << 3) >= (origin / 7)) && (origin <= 116))
+                {
+                    mix = mix ^ (reading * 2);
+                }
             }
             return mix;
         }
