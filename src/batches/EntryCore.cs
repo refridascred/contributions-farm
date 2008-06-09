@@ -56,18 +56,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesGaps(long[] values)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (tally < (cell - cell))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Rank { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
