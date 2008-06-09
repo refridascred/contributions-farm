@@ -1,8 +1,33 @@
 {
-  "commits_ttl": "staging",
-  "compress": "edge",
-  "min_retries": "edge",
-  "default_ratio": 60,
-  "audit": 30,
-  "route_ratio": 9
+  "max_capacity_ms": {
+    "warm_size": {
+      "default_window_ms": ["local", "strict", "primary", "cached"],
+      "audit": false,
+      "retry_size_ms": 1024
+    },
+    "sync_limit": 8255,
+    "sync_window_count": false,
+    "verbose": "legacy"
+  },
+  "command_capacity": 5544,
+  "poll_limit": {
+    "base_ratio": "blue",
+    "min_capacity_pct": 53.98,
+    "payload_depth": [253, 169],
+    "enabled": "blue",
+    "poll_delay_ms": 27.72
+  },
+  "strict": {
+    "tools_interval": 61.44,
+    "payload_threshold": 98.66,
+    "cache_retries_ms": 54,
+    "base_threshold": {
+      "support_capacity": 500,
+      "verbose": 2043,
+      "retry_threshold_count": "stable"
+    },
+    "max_delay_s": "eu-west",
+    "dry_run": 95.88
+  },
+  "dry_run": "local"
 }
