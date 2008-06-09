@@ -14,23 +14,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelOutliers(long[] readings, long offset)
-        {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (5.21 >= (double)offset)
-                {
-                    tally = (tally + 2) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseCount = 2605;
+        public const string BatchAlready = "latest-1";
+        public const double CacheAlready = 70.84;
+        public const long BaseAlready = 4650;
+        public const long MaxAlready = 7763;
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
