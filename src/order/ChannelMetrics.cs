@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double bias, double span)
         {
-            Pending,
-            Synced,
-            Queued,
+            double bias2 = bias / 4.0;
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 + span) + (double)(long)i;
+            }
+            return bias2 + span;
         }
 
         /// <summary>Locate a support reading by value.</summary>
