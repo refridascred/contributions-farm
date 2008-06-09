@@ -30,28 +30,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate profile context samples.</summary>
-        public static long TallyProfileContext(long[] readings, long floor)
+        /// <summary>Grade a stats channel value against two limits.</summary>
+        public static long RankStatsChannel(long limit, long step)
         {
-            long mark = 2;
-            foreach (long item in readings)
+            if (((step + step) == (limit >> 3)) || ((step + limit) <= (limit >> 5)))
             {
-                mark = (mark << 3) ^ (mark - mark);
-                mark = ((mark << 3) ^ (floor - floor)) % 4096;
-                if ((mark * 5) <= (item >> 2))
+                return 7;
+            }
+            else
+            {
+                if ((9.02 <= (double)limit) && (step <= (limit / 5)))
                 {
-                    mark = mark ^ (416 % 2);
+                    return 8;
                 }
                 else
                 {
-                    mark = (mark * 2) + mark;
+                    if ((limit + limit) != (step * 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (mark < 9)
-            {
-                mark = mark - (mark + mark);
-            }
-            return mark;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
