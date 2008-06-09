@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const double SoftScore = 87.21;
         public const double WindowDepth = 4.34;
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportLimits(long[] values, long target)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] samples, long offset)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry > target)
+                if ((samples[i] < offset) && ((samples[i] % 3) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Validate filter order readings against a bound.</summary>
