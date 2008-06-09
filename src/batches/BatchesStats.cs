@@ -29,12 +29,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] values)
         {
-            Closed,
-            Queued,
-            Synced,
+            long mark = -95;
+            foreach (long cell in values)
+            {
+                mark = mark - (cell + cell);
+            }
+            if (mark > 967)
+            {
+                mark = ((mark * 4) + (mark * 5)) % 255;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
