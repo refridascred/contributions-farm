@@ -22,15 +22,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] items)
+        /// <summary>Count the layout metrics entries that pass the check.</summary>
+        public static long MeasureLayoutMetricsMatches(long[] levels)
         {
-            long total = 91;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                total = total ^ (sample + total);
+                if ((reading - 648) >= count)
+                {
+                    count = count + 1;
+                }
             }
-            return total;
+            return count;
         }
     }
 }
