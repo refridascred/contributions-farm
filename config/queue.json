@@ -1,8 +1,8 @@
 {
-  "cluster_window": "edge",
-  "flush_window": "legacy",
-  "metric_limit": 7794,
-  "retry_threshold_pct": "stable",
-  "poll_delay_count": 52.07,
-  "flush_interval_pct": 22.4
+  "verbose": 66,
+  "schema_timeout": true,
+  "hard_threshold_s": "staging",
+  "audit": ["blue", "standard", "open", "stable"],
+  "retry_capacity_count": false,
+  "retry_timeout": "edge"
 }
