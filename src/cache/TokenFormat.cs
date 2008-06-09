@@ -31,19 +31,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every farm cluster entry stays within the limit.</summary>
-        public static bool CheckFarmClusterRange(long[] samples, long step)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            bool valid = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Stale,
+            Done,
+            Locked,
         }
     }
 }
