@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftReport = 1660;
-        public const string DefaultCount = "legacy-edge";
-        public const long MinReport = 1621;
-        public const long RetrySpan = 1239;
-        public const long WindowReport = 8437;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BurstCache = 64.13;
+        public const long MinFactor = 1552;
+        public const string WindowScore = "cached-edge";
+        public const string IdleCache = "staging-1";
 
         /// <summary>Describe the cache class values.</summary>
         public enum CacheClass
