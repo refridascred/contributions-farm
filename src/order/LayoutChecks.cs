@@ -67,18 +67,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit filter profile readings against a rule.</summary>
-        public static long MeasureFilterProfileOutliers(long[] series)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (((count * 2) < (count & 255)) || ((count - count) < (item << 3)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Queued,
+            Stale,
+            Paused,
         }
 
         /// <summary>Hold a command options.</summary>
