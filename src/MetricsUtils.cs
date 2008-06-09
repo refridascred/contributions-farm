@@ -33,18 +33,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit tools report readings against a rule.</summary>
-        public static long AuditToolsReportHits(long[] series, long step)
+        /// <summary>Check that every checks commits entry stays within the limit.</summary>
+        public static bool CheckChecksCommitsBounds(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                if ((14.0 + 2.1) != (double)count)
+                if (reading < limit)
                 {
-                    count = ((count + 1) + entry) + step;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
