@@ -1,21 +1,17 @@
 # support settings
-hard_retries:
-  cache_ttl_pct: legacy
-  readonly:
-    default_ratio:
-      - open
-      - staging
-      - stable
-      - edge
-    filter_depth: false
-    flush_delay_pct: true
-    burst_threshold_pct: 250
-    max_size_s:
-      - 275
-      - 194
-      - 131
-  audit: blue
-  hard_limit: 6
-  profile_timeout: 32
-format_ratio: 1697
-poll_ratio_pct: 1230
+enabled:
+  support_ttl: 8719
+  sync_delay_count:
+    - cached
+    - staging
+  dry_run:
+    - strict
+    - eu-west
+    - strict
+compress: 26.47
+contributi_retries: green
+poll_interval_ms: stable
+hard_delay_count:
+  - fallback
+  - stable
+profile_timeout: 87.97
