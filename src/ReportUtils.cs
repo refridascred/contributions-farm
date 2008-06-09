@@ -47,39 +47,10 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long target, long limit)
-        {
-            long lane = target ^ limit;
-            if ((limit % 8) < 384)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)lane <= 5.6) || (lane > (48 << 1)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit + limit) != (9 * 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((144 + target) == (limit << 1))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string WindowTools = "local";
+        public const string BaseTools = "staging-1";
+        public const long MaxTools = 2982;
+        public const long CacheScore = 1772;
     }
 }
