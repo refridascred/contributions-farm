@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] levels, long offset)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Failed,
+            Done,
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
