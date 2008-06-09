@@ -86,12 +86,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            Done,
+            Locked,
             Draft,
-            Dropped,
+            Synced,
             Failed,
         }
     }
