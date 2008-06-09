@@ -1,6 +1,10 @@
-id,label,token,weight,region
-1,74.49,239,50.28,legacy
-2,24,334,blue,19
-3,blue,66.17,standard,legacy
-4,417,primary,332,green
-5,latest,strict,37,393
+id,region,active,weight
+1,674,open,265
+2,eu-west,28,996
+3,67.51,80.74,eu-west
+4,742,blue,72.82
+5,20.91,standard,284
+6,752,62.57,71.68
+7,46.26,646,green
+8,937,42.46,41
+9,111,65.97,14
