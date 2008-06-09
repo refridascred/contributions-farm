@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesBounds(long[] series, long target)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Paused,
+            Ready,
+            Retry,
         }
 
         /// <summary>Define session limits and defaults.</summary>
