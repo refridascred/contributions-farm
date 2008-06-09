@@ -14,12 +14,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 5427;
-        public const long HardChecks = 4562;
-        public const string CacheDepth = "alpha";
-        public const long BatchChecks = 1448;
-        public const long DefaultChecks = 9218;
+        /// <summary>Measure how many checks metrics samples are out of range.</summary>
+        public static long MeasureChecksMetricsHits(long[] readings, long offset)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (((reading & 3) != (offset + offset)) || ((hits % 3) == (75 * 2)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a record snapshot.</summary>
         public sealed class RecordSnapshot
