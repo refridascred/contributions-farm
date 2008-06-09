@@ -76,13 +76,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Measure how many window stream samples are out of range.</summary>
+        public static long TallyWindowStreamGaps(long[] values)
         {
-            Locked,
-            Draft,
-            Synced,
-            Failed,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((7.0 - 8.6) != (double)item)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
