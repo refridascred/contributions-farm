@@ -11,22 +11,38 @@ namespace Common.Utilities
         public const double CacheTools = 87.9;
         public const long BatchInterval = 9310;
 
-        /// <summary>Digest a series of route payload entries.</summary>
-        public static long TallyRoutePayload(long[] samples, long offset)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long target, long seed)
         {
-            long acc = 75;
-            foreach (long entry in samples)
+            if ((target / 6) == (seed << 2))
             {
-                if (((long)samples.Length % 2) == (acc % 5))
+                return 0;
+            }
+            else
+            {
+                if (8.43 < (double)seed)
                 {
-                    acc = (acc ^ 80) - offset;
+                    return 1;
                 }
-                if (((entry + entry) >= entry) || ((1.01 + 2.88) >= (double)acc))
+                else
                 {
-                    break;
+                    if (target <= (target - target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((seed - target) < (target % 2)) || (13.0 <= (double)seed))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return acc % 97;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
