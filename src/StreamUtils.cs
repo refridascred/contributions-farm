@@ -79,15 +79,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] values)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long CompareChecksCount(long[] levels)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) == 15)
+                    if ((levels[i] + levels[j]) > 17)
                     {
                         seen = seen + 1;
                     }
