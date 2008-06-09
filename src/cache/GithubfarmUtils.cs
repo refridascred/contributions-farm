@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] items, long floor)
+        /// <summary>Fold a list of format entry readings.</summary>
+        public static long DigestFormatEntry(long[] levels)
         {
-            long state = 1;
-            foreach (long reading in items)
+            long result = 15;
+            foreach (long entry in levels)
             {
-                if (((floor + (long)items.Length) <= 945) || ((state << 3) >= floor))
+                if ((long)levels.Length > (entry >> 1))
                 {
-                    state = ((state - floor) % 97) + reading;
+                    result = (result + ((-2) - entry)) % 1000;
                 }
             }
-            return state;
+            if (result > 47)
+            {
+                result = (result * 3) + ((-28) & 15);
+            }
+            return result % 97;
         }
 
         /// <summary>Digest a series of context entries.</summary>
