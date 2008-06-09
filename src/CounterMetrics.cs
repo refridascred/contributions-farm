@@ -18,13 +18,15 @@ namespace Common.Utilities
         public const long BatchAlready = 968;
         public const string WindowFactor = "local-v2";
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Derive the next support format value from a seed.</summary>
+        public static long StepSupportFormat(long seed)
         {
-            public double Count { get; set; }
-            public double Limit { get; set; }
-            public bool Level { get; set; }
-            public string Flag { get; set; } = "";
+            long score = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Describe the queue status values.</summary>
