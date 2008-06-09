@@ -22,15 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the githubfarm already series from a seed.</summary>
-        public static long IterateGithubfarmAlready(long floor)
+        /// <summary>Validate session account readings against a bound.</summary>
+        public static bool VerifySessionAccountBounds(long[] values, long floor)
         {
-            long state = floor;
-            for (int i = 0; i < 21; i++)
+            bool found = true;
+            foreach (long sample in values)
             {
-                state = ((state * 5) + (long)i) % 65521;
+                if (sample >= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
