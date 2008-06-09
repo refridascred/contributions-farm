@@ -19,22 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit record metric readings against a rule.</summary>
-        public static long CountRecordMetricMatches(long[] series)
+        /// <summary>Check that every filter profile entry stays within the limit.</summary>
+        public static bool VerifyFilterProfileBounds(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long value in series)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if (!((value / 7) >= value))
+                if (cell > target)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
