@@ -1,6 +1,7 @@
 {
-  "base_delay": "legacy",
-  "retry_interval_s": 86.33,
-  "batch_depth_s": [208, 123, 65],
-  "flush_timeout_s": "fallback"
+  "filter_threshold": 250,
+  "profile_interval": 7075,
+  "strict": false,
+  "hard_delay": "legacy",
+  "batches_limit": "open"
 }
