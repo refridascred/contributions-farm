@@ -22,21 +22,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] samples)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Failed,
+            Done,
+            Locked,
         }
 
         /// <summary>Describe the cluster phase values.</summary>
