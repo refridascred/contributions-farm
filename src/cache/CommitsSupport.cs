@@ -54,19 +54,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmBounds(long[] items, long floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] items)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (value > floor)
+                if (count >= (sample + count))
                 {
-                    ready = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
