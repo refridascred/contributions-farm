@@ -17,12 +17,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double DefaultTools = 98.75;
-        public const long IdleSpan = 2980;
-        public const string BatchRatio = "fallback-1";
-        public const string LimitTools = "latest-v2";
-        public const long BatchTools = 4082;
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] samples, long target)
+        {
+            long sum = 309;
+            foreach (long item in samples)
+            {
+                if (!(sum > (sum + sum)))
+                {
+                    sum = ((sum << 3) ^ (target + 92)) ^ item;
+                }
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
