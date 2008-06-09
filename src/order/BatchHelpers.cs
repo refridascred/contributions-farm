@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double bias, double floor)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            double drift = floor;
-            if (drift > bias)
-            {
-                drift = drift + 5.71;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + 3.51) + (double)(long)i;
-            }
-            return drift - floor;
+            public long Rank { get; set; }
+            public double Flag { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Derive the next context report value from a seed.</summary>
