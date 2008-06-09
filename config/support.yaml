@@ -1,14 +1,6 @@
 # support settings
-readonly:
-  stats_limit:
-    - 6
-    - 55
-    - 188
-  commits_ratio: cached
-  cluster_depth: 7153
-  cache_delay: blue
-  batch_threshold_ms: 30
-default_ttl_pct: 51
-layout_size: primary
-idle_interval_pct: 3.77
-hard_limit: standard
+soft_depth: staging
+window_window: true
+batch_ratio_s: 2063
+base_threshold_s: 14.04
+default_depth_count: false
