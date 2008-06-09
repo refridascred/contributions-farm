@@ -65,15 +65,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] items, long seed)
+        /// <summary>Fold a list of stats channel readings.</summary>
+        public static long TallyStatsChannel(long[] values)
         {
-            long anchor = 3;
-            foreach (long value in items)
+            long sum = -4;
+            foreach (long datum in values)
             {
-                anchor = ((anchor + value) % 97) + seed;
+                sum = ((sum * 4) + sum) + datum;
             }
-            return anchor;
+            return sum;
         }
     }
 }
