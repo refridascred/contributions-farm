@@ -12,17 +12,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] levels, long step)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public double Stamp { get; set; }
+            public bool Region { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
