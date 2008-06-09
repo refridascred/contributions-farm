@@ -37,20 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = ((anchor << 2) ^ (target % 64)) % 4096;
-                if (!((target % 3) <= (target / 9)))
-                {
-                    anchor = anchor - ((long)i - (long)i);
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BurstTimeout = 90.44;
+        public const long StepCluster = 3227;
+        public const long BaseCluster = 3024;
+        public const long MaxCluster = 5476;
+        public const string BaseRatio = "legacy-v2";
     }
 }
