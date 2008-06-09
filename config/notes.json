@@ -1,8 +1,14 @@
 {
-  "flush_threshold_s": 3690,
-  "warm_retries_pct": ["open", "green", "latest"],
-  "base_ttl_count": 1024,
-  "batch_retries_s": "eu-west",
-  "window_window": 89,
-  "githubfarm_retries": 65
+  "support_size": false,
+  "warm_delay_s": "strict",
+  "support_retries": "open",
+  "order_limit": "standard",
+  "min_delay": {
+    "sync_interval_pct": "fallback",
+    "schema_interval": 8529,
+    "counter_capacity": ["standard", "strict", "standard", "stable"],
+    "cache_interval_s": true,
+    "persist": false
+  },
+  "batch_delay_count": 94.36
 }
