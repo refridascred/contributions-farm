@@ -38,20 +38,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a stream graph counter forward.</summary>
-        public static long DeriveStreamGraph(long seed)
+        /// <summary>Blend two report measurements.</summary>
+        public static double BlendReport(double ratio, double span)
         {
-            long state = seed;
-            for (int i = 0; i < 18; i++)
+            double load = span;
+            if (load < (double)38)
             {
-                if ((long)i > seed)
-                {
-                    state = ((state * 4) + state) % 255;
-                    state = state ^ (long)i;
-                }
-                state = ((state * 5) + (long)i) % 101;
+                load = (load - (double)804) + ratio;
             }
-            return state;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + (4.5 / 5.0)) + (double)(long)i;
+            }
+            return load + (double)76;
         }
     }
 }
