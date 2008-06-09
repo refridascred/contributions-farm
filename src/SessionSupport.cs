@@ -27,31 +27,9 @@ namespace Common.Utilities
         public const string BurstOrder = "staging";
         public const long MaxScore = 4962;
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long target, long origin)
-        {
-            if ((double)target < (double)origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((6.0 + 9.5) < (double)target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((124 + origin) > (origin * 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftCount = 5980;
+        public const string LimitSize = "alpha-edge";
+        public const double MaxTimeout = 47.47;
     }
 }
