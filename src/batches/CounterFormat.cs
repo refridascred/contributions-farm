@@ -23,18 +23,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksHits(long[] items)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((tally <= (value >> 1)) && !(((long)items.Length * 2) <= tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Dropped,
+            Closed,
+            Draft,
+            Retry,
+            Pending,
         }
     }
 }
