@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
-        {
-            Synced,
-            Idle,
-            Paused,
-            Draft,
-            Active,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double DefaultDepth = 28.08;
+        public const string RetryToken = "local-edge";
+        public const long IdleCount = 9196;
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long AuditStatsGaps(long[] values)
