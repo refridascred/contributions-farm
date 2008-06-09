@@ -22,24 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank session batch input into a small class.</summary>
-        public static long GradeSessionBatch(long step, long floor)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] readings)
         {
-            if ((floor * 3) != (34 - step))
+            long score = 4;
+            foreach (long cell in readings)
             {
-                return 0;
+                score = (score << 2) ^ (cell + cell);
             }
-            else
-            {
-                if (step <= (step & 15))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return score % 97;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
