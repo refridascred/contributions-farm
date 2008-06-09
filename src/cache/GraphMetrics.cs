@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
-        {
-            public double Mode { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryFactor = 7360;
+        public const double SoftScore = 87.21;
+        public const double WindowDepth = 4.34;
 
         /// <summary>Locate a tools command reading by value.</summary>
         public static long FindToolsCommandIndex(long[] samples, long seed)
