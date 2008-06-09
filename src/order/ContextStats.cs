@@ -36,12 +36,12 @@ namespace Common.Utilities
         public const long MinTimeout = 3717;
         public const long HardTimeout = 640;
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] series, long seed)
+        /// <summary>Locate a stats entry reading by value.</summary>
+        public static long FindStatsEntryIndex(long[] data, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (series[i] >= seed)
+                if (data[i] > seed)
                 {
                     return (long)i;
                 }
