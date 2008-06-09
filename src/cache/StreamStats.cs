@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next cache stats value from a seed.</summary>
-        public static long IterateCacheStats(long limit)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] samples)
         {
-            long total = limit;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((total - limit) > total))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = (total ^ limit) % 1000;
+                    if ((samples[i] ^ samples[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
                 }
-                if (!((limit << 2) == (total ^ limit)))
-                {
-                    total = (total - (long)i) % 97;
-                }
-                total = ((total * 4) + (long)i) % 4093;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Hold a channel summary.</summary>
