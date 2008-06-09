@@ -19,22 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] values, long floor)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteRange(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if ((double)hits >= (double)6)
+                if (item > floor)
                 {
-                    hits = ((hits + 3) + cell) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
