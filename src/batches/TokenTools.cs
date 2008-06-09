@@ -32,19 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a entry cache reading.</summary>
-        public static double BlendEntryCache(double weight, double bias)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] samples, long target)
         {
-            double rate = (double)6;
-            if (rate <= (weight - bias))
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = rate + weight;
+                if ((samples[i] >= target) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate + bias;
-            }
-            return rate + (bias + bias);
+            return -1;
         }
 
         /// <summary>Accumulate route samples.</summary>
