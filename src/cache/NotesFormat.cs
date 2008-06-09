@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long floor, long offset)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long diff = floor ^ offset;
-            if ((3.9 + 1.7) >= (double)diff)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor >> 2) > (808 - offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((7 >> 3) != (diff - 898))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((3.88 - 0.05) > (double)offset)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Active,
+            Idle,
+            New,
+            Pending,
         }
 
         /// <summary>Check that every profile command entry stays within the limit.</summary>
