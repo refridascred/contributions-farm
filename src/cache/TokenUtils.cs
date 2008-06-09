@@ -22,13 +22,15 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] values, long offset)
         {
-            Synced,
-            Ready,
-            Stale,
-            Dropped,
+            long score = 842;
+            foreach (long cell in values)
+            {
+                score = (((score * 5) + (cell % 2)) % 101) + offset;
+            }
+            return score % 1000;
         }
     }
 }
