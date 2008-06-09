@@ -51,27 +51,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] series, long limit)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double rate, double bias)
         {
-            long acc = 51;
-            foreach (long item in series)
+            double gain = (double)(16 - 0);
+            if (gain <= rate)
             {
-                if ((double)acc != (7.0 * 9.28))
-                {
-                    continue;
-                }
-                else
-                {
-                    acc = (acc - (acc ^ limit)) + item;
-                }
-                acc = acc + (limit << 1);
+                gain = (gain + rate) - bias;
             }
-            if (acc > 5)
-            {
-                acc = ((acc * 2) + ((long)series.Length - limit)) % 97;
-            }
-            return acc % 97;
+            return gain + 5.27;
         }
     }
 }
