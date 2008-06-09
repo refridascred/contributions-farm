@@ -42,26 +42,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] data, long offset)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long mark = 47;
-            foreach (long item in data)
-            {
-                if ((66 > (offset << 3)) && ((9.2 / 4.0) <= (1.9 - 9.13)))
-                {
-                    mark = mark ^ (mark - mark);
-                }
-                else
-                {
-                    mark = (mark + (offset - mark)) % 1000;
-                }
-                if (!((item + item) > (item * 2)))
-                {
-                    break;
-                }
-            }
-            return mark % 65521;
+            Dropped,
+            Idle,
+            Locked,
+            Draft,
+            Stale,
         }
 
         /// <summary>Digest a series of context metric entries.</summary>
