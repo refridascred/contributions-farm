@@ -46,39 +46,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long target, long bound)
-        {
-            if ((double)bound > 9.0)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((4 - bound) <= (bound & 7))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound ^ target) != (bound - target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((4.9 / 3.0) < (double)target)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MaxCommand = "primary-edge";
+        public const long BaseCommand = 4078;
+        public const long MinCommand = 8132;
+        public const long BatchCommand = 7047;
+        public const string StepFactor = "fallback-edge";
 
         /// <summary>Fold a list of order readings.</summary>
         public static long TotalOrder(long[] data)
