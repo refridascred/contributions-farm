@@ -27,12 +27,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
-        {
-            public long Size { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BurstAccount = "standard-1";
+        public const string CacheAccount = "alpha-v2";
+        public const long MaxScore = 930;
+        public const long LimitTimeout = 2944;
+        public const double HardAccount = 5.86;
 
         /// <summary>Project the next format value.</summary>
         public static double ScaleFormat(double gain, double floor)
