@@ -30,19 +30,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryRange(long[] readings, long step)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordLimits(long[] items, long target)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if (entry >= step)
+                if (value > target)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Fold a list of commits buffer readings.</summary>
