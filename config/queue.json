@@ -1,11 +1,8 @@
 {
-  "idle_depth_ms": {
-    "strict": 70,
-    "default_size_pct": "latest",
-    "max_size_count": 69,
-    "flush_delay_pct": 7333,
-    "sync_threshold_s": ["local", "standard", "stable", "latest"]
-  },
-  "readonly": 6371,
-  "farm_limit": 312
+  "min_timeout": "standard",
+  "poll_ttl": 2486,
+  "warm_timeout_s": 58.94,
+  "editor_depth": "fallback",
+  "batch_depth_pct": 97.6,
+  "sync_limit_pct": "eu-west"
 }
