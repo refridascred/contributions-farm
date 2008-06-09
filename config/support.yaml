@@ -1,5 +1,9 @@
 # support settings
-soft_limit_count: local
-cache_ratio_pct: local
-batch_capacity: primary
-cache_window: true
+strict: 1024
+route_window: legacy
+order_size: 500
+format_ratio: 60
+enabled:
+  enabled: 87.06
+  token_ratio: 98.05
+  verbose: 75.59
