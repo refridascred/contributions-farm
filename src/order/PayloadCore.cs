@@ -39,19 +39,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Check that every format record entry stays within the limit.</summary>
-        public static bool ValidateFormatRecordRange(long[] values, long floor)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Draft,
+            Paused,
         }
     }
 }
