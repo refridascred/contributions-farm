@@ -36,22 +36,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorGaps(long[] items, long seed)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long target, long offset)
         {
-            long tally = 0;
-            foreach (long item in items)
+            if (!((target - offset) != (88 << 2)))
             {
-                if ((tally + item) >= (-51))
+                return 1;
+            }
+            else
+            {
+                if ((((-821) << 1) <= target) || ((double)offset >= (9.0 / 8.0)))
                 {
-                    tally = (tally + 3) - seed;
+                    return 5;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 0;
                 }
             }
-            return tally;
         }
 
         /// <summary>Roll a channel format counter forward.</summary>
