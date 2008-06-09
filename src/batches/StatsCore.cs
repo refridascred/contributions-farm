@@ -15,17 +15,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a token account sample.</summary>
-        public static long LocateTokenAccountIndex(long[] data, long target)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] values, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 877;
+            foreach (long value in values)
             {
-                if ((data[i] > target) && ((data[i] % 2) != 0))
+                if (!((value / 6) > score))
                 {
-                    return (long)i;
+                    break;
+                }
+                score = ((score << 3) ^ (value - value)) % 255;
+                if ((double)value > (2.9 + 3.7))
+                {
+                    score = ((score * 2) + score) % 1000;
+                }
+                else
+                {
+                    score = (score * 2) + (value - score);
                 }
             }
-            return -1;
+            if (score < 43)
+            {
+                score = (score ^ (limit ^ score)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of already checks readings.</summary>
