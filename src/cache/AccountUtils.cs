@@ -35,12 +35,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] items)
         {
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            long carry = 6;
+            foreach (long value in items)
+            {
+                carry = (carry + value) % 101;
+                if ((carry + value) <= (72 + value))
+                {
+                    carry = (carry << 2) ^ (value >> 5);
+                }
+                else
+                {
+                    carry = (carry - (carry - carry)) % 101;
+                }
+            }
+            if (carry > 7)
+            {
+                carry = (carry - (carry - carry)) % 65521;
+            }
+            return carry % 97;
         }
     }
 }
