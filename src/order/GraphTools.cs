@@ -28,11 +28,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BatchMetrics = "cached";
-        public const long BaseMetrics = 6977;
-        public const long HardMetrics = 3150;
-        public const string IdleMetrics = "staging-edge";
+        /// <summary>Compare every pair of window payload readings.</summary>
+        public static long PairWindowPayloadCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a session counter value against two limits.</summary>
         public static long BucketSessionCounter(long limit, long bound)
