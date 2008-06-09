@@ -73,15 +73,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double gain, double offset)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long target)
         {
-            double bias = (gain - offset) - (double)9;
-            for (int i = 0; i < 7; i++)
+            long result = target;
+            for (int i = 0; i < 12; i++)
             {
-                bias = (bias - (double)952) + (double)(long)i;
+                result = ((result * 5) + 6) % 97;
+                result = ((result * 3) + (long)i) % 101;
             }
-            return bias - gain;
+            return result;
         }
     }
 }
