@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up commits stats samples.</summary>
-        public static long OverlapCommitsStatsCount(long[] levels)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long CompareBatchesCount(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) > 10)
+                    if ((values[i] + values[j]) < 4)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Iterate the schema batch series from a seed.</summary>
