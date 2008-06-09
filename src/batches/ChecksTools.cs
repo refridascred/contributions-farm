@@ -18,10 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardInterval = 5321;
-        public const long CacheSize = 8448;
-        public const string LimitSupport = "open";
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinRecord = 1642;
+        public const long SoftInterval = 5138;
+        public const long BaseInterval = 1349;
+        public const long SoftRecord = 7966;
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
