@@ -44,26 +44,12 @@ namespace Common.Utilities
         public const string LimitCluster = "strict-1";
         public const long BaseCluster = 2602;
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] readings)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long mark = 817;
-            foreach (long reading in readings)
-            {
-                if ((mark % 24) == (53 * 4))
-                {
-                    mark = (mark - reading) % 101;
-                }
-                else
-                {
-                    mark = (mark - (reading + mark)) % 101;
-                }
-            }
-            if (mark > 1)
-            {
-                mark = (mark - ((long)readings.Length - 691)) % 255;
-            }
-            return mark;
+            public long Region { get; set; }
+            public double Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
