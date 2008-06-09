@@ -64,23 +64,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ScaleCommits(double gain, double span)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long OverlapGraphCount(long[] series)
         {
-            double weight = span;
-            if (weight < (double)244)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = weight + (gain * 6.8);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight + gain;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - span) + (double)(long)i;
-            }
-            return weight - (double)46;
+            return seen;
         }
     }
 }
