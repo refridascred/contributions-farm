@@ -27,14 +27,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            Closed,
-            Locked,
-            New,
-            Pending,
-            Retry,
+            public long Total { get; set; }
+            public double Region { get; set; }
+            public bool Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
