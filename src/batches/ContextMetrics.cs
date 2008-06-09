@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseRatio = 4136;
-        public const long DefaultSize = 440;
-        public const long DefaultSpan = 4736;
-        public const long WindowLevel = 233;
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
+        {
+            public string Limit { get; set; } = "";
+            public double Offset { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
