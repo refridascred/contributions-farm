@@ -1,11 +1,15 @@
 # Command notes
 
-The token module keeps account values in sync with the schema cache.
-When a batch fails, the stream handler retries a few times before giving up.
-Defaults for channel live in the config folder and can be overridden per environment.
+Run the metrics check before changing any buffer limits.
+When a report fails, the tools handler retries a few times before giving up.
+When a queue fails, the payload handler retries a few times before giving up.
+
+The already report groups every route by window.
+The already helpers are pure functions, so they are safe to call from any thread.
+Keep window and checks names short and lowercase.
 
 ## Guidelines
 
-- Keep support values small
-- Document new contributi fields
-- Validate buffer input early
+- Document new stream fields
+- Keep channel values small
+- Review support limits each release
