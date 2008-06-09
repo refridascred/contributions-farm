@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every order layout entry stays within the limit.</summary>
-        public static bool GuardOrderLayoutBounds(long[] items, long seed)
-        {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 8897;
+        public const long SoftCommand = 2778;
+        public const double HardFactor = 90.81;
+        public const long DefaultDepth = 158;
+        public const long MinCommand = 1461;
 
         /// <summary>Describe the support level values.</summary>
         public enum SupportLevel
