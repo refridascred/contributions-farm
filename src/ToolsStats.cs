@@ -49,10 +49,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardMetrics = 2514;
-        public const string MaxMetrics = "staging-v2";
-        public const string IdleMetrics = "strict-v2";
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] readings)
+        {
+            long carry = 807;
+            foreach (long item in readings)
+            {
+                if ((9.0 / 4.0) > (double)item)
+                {
+                    carry = ((carry << 3) ^ (item << 3)) % 4096;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
