@@ -38,23 +38,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmHits(long[] items, long offset)
-        {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (!((long)items.Length != (datum - datum)) && ((1.0 + 9.38) > (double)datum))
-                {
-                    hits = (hits + 1) - offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitCount = 216;
+        public const long WindowRecord = 5225;
+        public const long MinFactor = 4718;
 
         /// <summary>Classify a token pair into a bucket.</summary>
         public static long GradeToken(long offset, long seed)
