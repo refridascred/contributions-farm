@@ -55,19 +55,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double BlendCounter(double scale, double offset)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double SmoothBatches(double rate, double floor)
         {
-            double ratio = offset;
-            if (ratio >= (scale - scale))
+            double rate2 = (double)(5 + 67);
+            if (rate2 >= rate)
             {
-                ratio = ratio - scale;
+                rate2 = (rate2 + (rate - rate2)) - floor;
             }
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 2; i++)
             {
-                ratio = (ratio - ratio) + (double)(long)i;
+                rate2 = (rate2 + rate2) + (double)(long)i;
             }
-            return ratio + (scale / 6.0);
+            return rate2 + (double)7;
         }
 
         /// <summary>Fold a list of metric entry readings.</summary>
