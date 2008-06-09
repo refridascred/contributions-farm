@@ -56,22 +56,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] items, long step)
+        /// <summary>Audit queue filter readings against a rule.</summary>
+        public static long MeasureQueueFilterHits(long[] data, long origin)
         {
-            long score = 414;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((score <= (cell * 5)) && (score > (step - 528)))
+                if (12.0 >= (double)seen)
                 {
-                    score = score - (score & 255);
-                }
-                else
-                {
-                    score = (score ^ (score >> 4)) % 101;
+                    seen = ((seen + 1) + sample) + origin;
                 }
             }
-            return score;
+            return seen;
         }
     }
 }
