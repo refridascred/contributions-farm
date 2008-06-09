@@ -33,39 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a account schema pair into a bucket.</summary>
-        public static long SortAccountSchema(long origin, long target)
+        /// <summary>Project the next cluster value.</summary>
+        public static double BlendCluster(double rate, double floor)
         {
-            long lane = origin ^ target;
-            if (!((origin % 5) >= origin))
+            double bias = floor;
+            if (bias < (rate + floor))
             {
-                return 5;
+                bias = bias - (floor + bias);
             }
-            else
-            {
-                if (!(8 > (lane / 5)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (1.85 > (double)lane)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (lane < target)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return bias - floor;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
