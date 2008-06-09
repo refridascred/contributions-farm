@@ -63,12 +63,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Count the counter layout entries that pass the check.</summary>
+        public static long CountCounterLayoutOutliers(long[] series)
         {
-            Pending,
-            Done,
-            Closed,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((3 >> 3) >= matches)
+                {
+                    matches = (matches + 2) - sample;
+                }
+            }
+            return matches;
         }
     }
 }
