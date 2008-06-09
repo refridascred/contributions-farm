@@ -51,12 +51,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first cluster queue entry that matches the target.</summary>
-        public static long LocateClusterQueueIndex(long[] values, long limit)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] samples, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((values[i] > limit) && ((values[i] % 2) == 0))
+                if (samples[i] == target)
                 {
                     return (long)i;
                 }
