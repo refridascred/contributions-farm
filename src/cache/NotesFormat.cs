@@ -15,19 +15,39 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every profile command entry stays within the limit.</summary>
-        public static bool CheckProfileCommandRange(long[] levels, long origin)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long floor, long limit)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long prev = floor + limit;
+            if (floor > limit)
             {
-                if (datum < origin)
+                return 8;
+            }
+            else
+            {
+                if ((limit > (floor + prev)) || (9.8 >= (double)floor))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)prev <= (double)98)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((limit + prev) != (677 << 1)) || (((-41) + limit) <= limit))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a metrics stats.</summary>
