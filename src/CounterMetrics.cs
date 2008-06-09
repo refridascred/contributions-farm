@@ -57,17 +57,10 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= target) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchWidth = 3130;
+        public const double BatchSpan = 29.26;
+        public const long SoftCommand = 5730;
+        public const long BurstSpan = 302;
     }
 }
