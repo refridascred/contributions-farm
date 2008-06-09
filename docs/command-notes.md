@@ -1,10 +1,11 @@
 # Command notes
 
-Use already settings to tune how often payload data is refreshed.
-Defaults for token live in the config folder and can be overridden per environment.
+The route module keeps metric values in sync with the counter cache.
+Keep channel and schema names short and lowercase.
+Run the buffer check before changing any session limits.
 
 ## Guidelines
 
-- Review channel limits each release
-- Validate buffer input early
-- Keep counter values small
+- Validate format input early
+- Keep order values small
+- Document new already fields
