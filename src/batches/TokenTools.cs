@@ -34,19 +34,12 @@ namespace Common.Utilities
             return rate + (bias + bias);
         }
 
-        /// <summary>Check that every layout queue entry stays within the limit.</summary>
-        public static bool ValidateLayoutQueueRange(long[] series, long bound)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
