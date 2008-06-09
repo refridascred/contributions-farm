@@ -48,17 +48,13 @@ namespace Common.Utilities
         public const string MaxRatio = "strict";
         public const string BatchContext = "staging-edge";
 
-        /// <summary>Look up the position of a stats commits sample.</summary>
-        public static long LookupStatsCommitsIndex(long[] samples, long step)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Retry,
+            Active,
+            Stale,
         }
     }
 }
