@@ -29,12 +29,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
-        {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 4773;
+        public const long SoftContributi = 7832;
+        public const long MaxSize = 1370;
 
         /// <summary>Compare every pair of checks readings.</summary>
         public static long CompareChecksCount(long[] levels)
