@@ -33,15 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the already stream series from a seed.</summary>
-        public static long SeriesAlreadyStream(long limit)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] levels)
         {
-            long score = limit;
-            for (int i = 0; i < 5; i++)
+            long total = 9;
+            foreach (long datum in levels)
             {
-                score = ((score * 3) + (long)i) % 1000;
+                total = total - datum;
             }
-            return score;
+            if (total > 607)
+            {
+                total = (total - total) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
