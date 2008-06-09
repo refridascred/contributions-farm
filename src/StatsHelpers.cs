@@ -42,21 +42,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of cache payload readings.</summary>
-        public static long CompareCachePayloadCount(long[] data)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Size { get; set; }
+            public double Limit { get; set; }
+            public long Region { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Fold a list of stats channel readings.</summary>
