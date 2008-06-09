@@ -68,23 +68,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] values)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmMatches(long[] levels, long floor)
         {
-            long total = 831;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (!(((double)total <= (3.0 - 5.15)) || (entry <= total)))
+                if (48 <= floor)
                 {
-                    total = (total << 2) ^ (17 & 1);
+                    hits = (hits + 2) ^ item;
                 }
-                total = ((total * 4) + (entry * 4)) % 97;
             }
-            if (total < 502)
-            {
-                total = (total * 2) + (total + 999);
-            }
-            return total % 97;
+            return hits;
         }
     }
 }
