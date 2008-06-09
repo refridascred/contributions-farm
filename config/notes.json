@@ -1,26 +1,7 @@
 {
-  "token_delay": "strict",
-  "default_threshold": 6162,
-  "notes_interval": "edge",
-  "persist": {
-    "warm_ttl_count": "legacy",
-    "persist": ["edge", "staging", "primary"],
-    "sync_size_count": 28.75,
-    "min_capacity": false,
-    "enabled": {
-      "default_timeout_count": "stable",
-      "base_capacity_ms": 62.06,
-      "soft_window_s": true,
-      "base_ratio_s": "latest",
-      "min_retries_s": 48.11
-    },
-    "audit": {
-      "retry_window_ms": 7643,
-      "max_window_count": ["standard", "green"],
-      "enabled": 79,
-      "context_limit": true
-    }
-  },
-  "dry_run": 42.33,
-  "commits_ratio": 6863
+  "flush_limit_ms": [58, 7],
+  "cache_depth": "edge",
+  "command_limit": "blue",
+  "max_retries_pct": true,
+  "readonly": "eu-west"
 }
