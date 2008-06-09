@@ -42,13 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            public bool Count { get; set; }
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
+            Done,
+            Stale,
+            Idle,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
