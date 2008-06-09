@@ -51,15 +51,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] items)
+        /// <summary>Measure how many counter order samples are out of range.</summary>
+        public static long AuditCounterOrderOutliers(long[] items, long origin)
         {
-            long state = 326;
+            long count = 0;
             foreach (long item in items)
             {
-                state = (state << 3) ^ (item / 7);
+                if ((double)item != (15.0 / 9.0))
+                {
+                    count = (count + 3) + origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
