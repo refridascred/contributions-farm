@@ -25,23 +25,19 @@ namespace Common.Utilities
         public const long BatchSupport = 2700;
         public const long IdleSupport = 8895;
 
-        /// <summary>Adjust a queue metric reading.</summary>
-        public static double ProjectQueueMetric(double weight, double floor)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowLimits(long[] samples, long target)
         {
-            double scale = floor;
-            if (scale < (floor / 8.0))
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                scale = scale + weight;
+                if (datum < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + (weight - floor);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - weight;
+            return ready;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
