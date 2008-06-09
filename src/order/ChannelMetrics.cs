@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            public long Ratio { get; set; }
-            public bool Size { get; set; }
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            Pending,
+            Synced,
+            Queued,
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
