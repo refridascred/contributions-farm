@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaBounds(long[] values, long step)
-        {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 4952;
+        public const long LimitSchema = 3651;
+        public const double DefaultSchema = 26.69;
+        public const double SoftSchema = 68.25;
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
