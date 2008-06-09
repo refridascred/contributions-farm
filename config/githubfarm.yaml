@@ -1,5 +1,20 @@
 # githubfarm settings
-command_limit: 29.3
-audit: true
-burst_capacity_pct: 52.9
-min_limit_s: open
+graph_interval:
+  retry_capacity_s:
+    - 32
+    - 338
+    - 389
+  default_threshold_pct: 30
+  default_retries_pct: 30
+  stream_retries: stable
+channel_ttl: 52
+idle_timeout_pct:
+  flush_delay: true
+  soft_size_pct: false
+  window_retries: 76.3
+  readonly: 100
+  verbose:
+    - fallback
+    - stable
+    - cached
+  soft_interval: 1560
