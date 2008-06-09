@@ -12,13 +12,18 @@ namespace Common.Utilities
             return (bias + 0.59) + span;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterMatches(long[] items, long target)
         {
-            Queued,
-            Active,
-            Idle,
-            Closed,
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (!((hits << 1) == (target - cell)) && !((hits * 5) >= 5))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
