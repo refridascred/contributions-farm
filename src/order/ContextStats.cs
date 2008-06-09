@@ -23,21 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] samples)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Stale,
+            Closed,
+            Locked,
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
