@@ -35,18 +35,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksOutliers(long[] items)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelLimits(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if ((item % 7) < (item + count))
+                if (sample < offset)
                 {
-                    count = count + 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Describe the order class values.</summary>
