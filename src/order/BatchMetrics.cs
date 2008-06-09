@@ -55,17 +55,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long SeekTokenIndex(long[] items, long origin)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long offset, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long next = offset ^ seed;
+            if (seed <= (offset * 2))
             {
-                if (items[i] < origin)
+                return 7;
+            }
+            else
+            {
+                if ((8.31 / 6.0) < (double)next)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
