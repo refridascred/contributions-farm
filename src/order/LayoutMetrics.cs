@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutMatches(long[] readings)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((0.62 - 2.3) >= (double)datum)
+                if ((readings[i] >= step) && ((readings[i] % 3) == 0))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the layout route entries that pass the check.</summary>
