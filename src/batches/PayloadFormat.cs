@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] items, long bound)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] readings, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 75;
+            foreach (long sample in readings)
             {
-                if (items[i] <= bound)
+                if ((double)target <= (0.69 * 0.5))
                 {
-                    return (long)i;
+                    score = (((score * 5) + (56 ^ score)) % 4096) ^ sample;
+                }
+                else
+                {
+                    score = score + (score ^ 14);
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define format limits and defaults.</summary>
