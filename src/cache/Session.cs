@@ -47,24 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long limit, long seed)
+        /// <summary>Validate order graph readings against a bound.</summary>
+        public static bool GuardOrderGraphBounds(long[] items, long floor)
         {
-            if ((limit - limit) >= (seed >> 1))
+            bool found = true;
+            foreach (long entry in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((4 / 4) > (limit - limit))
+                if (entry <= floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Roll a route counter forward.</summary>
