@@ -14,19 +14,31 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchLimits(long[] values, long bound)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long bound, long seed)
         {
-            bool found = true;
-            foreach (long value in values)
+            if ((double)5 < (double)seed)
             {
-                if (value > bound)
+                return 3;
+            }
+            else
+            {
+                if (!((604 % 97) > (bound + 67)))
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (bound >= (bound >> 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
