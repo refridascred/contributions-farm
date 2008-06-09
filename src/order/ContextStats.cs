@@ -39,22 +39,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 24; i++)
-            {
-                score = score + step;
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    score = score - (step + (long)i2);
-                    score = ((score * 4) + ((-466) * 5)) % 4096;
-                }
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double DefaultRatio = 68.99;
+        public const long HardSpan = 7528;
+        public const long BaseEditor = 223;
+        public const long MaxEditor = 5177;
 
         /// <summary>Audit queue filter readings against a rule.</summary>
         public static long MeasureQueueFilterHits(long[] data, long origin)
