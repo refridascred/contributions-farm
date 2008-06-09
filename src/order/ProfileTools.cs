@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepWidth = 7391;
-        public const long RetryEntry = 924;
-        public const long LimitEntry = 4037;
-        public const double HardScore = 77.27;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] readings, long offset)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (!!((reading * 2) == ((long)readings.Length & 15)))
+                {
+                    hits = (hits + 1) + offset;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long CombineBatches(long[] data)
