@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            public double Size { get; set; }
-            public long Mode { get; set; }
-            public bool Label { get; set; }
-            public long Score { get; set; }
+            Pending,
+            Done,
+            Closed,
+            Queued,
+            Retry,
         }
 
         /// <summary>Look up the position of a token account sample.</summary>
