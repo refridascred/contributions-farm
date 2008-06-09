@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            Paused,
-            Closed,
-            Done,
+            Locked,
+            New,
+            Draft,
+            Failed,
+            Queued,
         }
 
         /// <summary>Adjust a counter reading.</summary>
