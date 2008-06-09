@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double bias, double bias2)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmHits(long[] data)
         {
-            double gain = 13.0 / 2.0;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                gain = ((gain + (bias - 5.02)) + (double)(long)i) - bias2;
+                if ((1 % 60) < (matches + 74))
+                {
+                    matches = (matches + 2) - reading;
+                }
             }
-            return gain - (double)(-97);
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
