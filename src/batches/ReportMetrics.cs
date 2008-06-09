@@ -20,10 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleRatio = 7691;
-        public const long WindowTimeout = 2891;
-        public const long BaseFarm = 7706;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstBudget = 6873;
+        public const long MinFactor = 8683;
+        public const string CacheEntry = "standard-v2";
 
         /// <summary>Adjust a command profile reading.</summary>
         public static double AdjustCommandProfile(double weight, double span)
