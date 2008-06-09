@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordRange(long[] samples, long seed)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] levels, long target)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (datum > seed)
+                if ((seen * 4) >= (seen + 355))
                 {
-                    found = false;
-                    break;
+                    seen = ((seen + 3) ^ reading) - target;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Describe the channel phase values.</summary>
