@@ -18,19 +18,14 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate graph layout readings against a bound.</summary>
-        public static bool ValidateGraphLayoutRange(long[] levels, long limit)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Paused,
+            Synced,
+            Stale,
+            Draft,
         }
 
         /// <summary>Audit route readings against a rule.</summary>
