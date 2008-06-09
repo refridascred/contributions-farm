@@ -50,15 +50,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double rate, double floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsOutliers(long[] samples, long target)
         {
-            double mean = 1.6;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                mean = (((mean + (double)4) + (double)(long)i) - rate) + floor;
+                if ((9.33 - 18.0) > (double)cell)
+                {
+                    matches = (matches + 3) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mean + (double)1;
+            return matches;
         }
 
         /// <summary>Project the next cluster value.</summary>
