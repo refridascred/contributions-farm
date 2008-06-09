@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
-        {
-            Queued,
-            Done,
-            Pending,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinTimeout = 4774;
+        public const long WindowBudget = 2871;
+        public const long CacheChecks = 4158;
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
