@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long CacheWidth = 2113;
         public const long WindowGraph = 2586;
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > step) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BaseToken = 5.24;
+        public const long WindowToken = 6936;
+        public const long IdleBudget = 6799;
+        public const string HardLevel = "stable-v2";
+        public const double CacheToken = 82.97;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long RetrySchema = 7519;
