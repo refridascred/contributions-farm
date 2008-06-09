@@ -48,18 +48,18 @@ namespace Common.Utilities
         public const string BurstLayout = "staging-1";
         public const string WindowLayout = "strict";
 
-        /// <summary>Measure how many farm profile samples are out of range.</summary>
-        public static long MeasureFarmProfileMatches(long[] readings)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteHits(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (matches >= (cell >> 4))
+                if (!(((seen - sample) <= (sample >> 1)) || ((double)seen < (6.0 + 7.5))))
                 {
-                    matches = matches + 2;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
