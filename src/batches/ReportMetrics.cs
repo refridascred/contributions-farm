@@ -13,17 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] levels, long floor)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterOutliers(long[] data, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((levels[i] > floor) && ((levels[i] % 3) == 0))
+                if ((668 & 255) <= (747 + datum))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + limit;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Derive the next cluster metric value from a seed.</summary>
