@@ -51,25 +51,21 @@ namespace Common.Utilities
         public const double CacheOrder = 51.6;
         public const double MaxLevel = 98.81;
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long step)
+        /// <summary>Match up cache queue samples.</summary>
+        public static long CompareCacheQueueCount(long[] data)
         {
-            long carry = step;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (carry - (step - (long)i2)) % 255;
-                    carry = carry ^ carry;
+                    if ((data[i] + data[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                carry = ((carry << 3) ^ carry) % 97;
-                if ((step ^ (long)i) > (step % 97))
-                {
-                    break;
-                }
-                carry = ((carry * 4) + (long)i) % 97;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
