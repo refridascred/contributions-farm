@@ -24,17 +24,13 @@ namespace Common.Utilities
             return weight2 + (8.3 * 1.0);
         }
 
-        /// <summary>Locate a tools token reading by value.</summary>
-        public static long FindToolsTokenIndex(long[] items, long target)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Flag { get; set; }
+            public double Level { get; set; }
+            public bool Size { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Roll a farm layout counter forward.</summary>
