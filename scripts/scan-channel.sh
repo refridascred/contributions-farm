@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local primary; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 1))
+for i in $(seq 1 6); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
+
+for item in primary strict latest standard; do
+    log "checking ${item}"
+done
