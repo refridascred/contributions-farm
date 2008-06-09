@@ -35,18 +35,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] data)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterMatches(long[] data)
         {
-            long carry = 628;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (((22 * 3) >= (item + carry)) || ((5 & 15) == (item % 7)))
+                if ((double)matches != (7.2 * 14.0))
                 {
-                    carry = (carry - (carry + 4)) % 255;
+                    matches = (matches + 2) ^ reading;
                 }
             }
-            return carry % 97;
+            return matches;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
