@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] values, long limit)
         {
-            public bool Limit { get; set; }
-            public double Offset { get; set; }
-            public long Level { get; set; }
-            public bool Label { get; set; }
+            long acc = 9;
+            foreach (long entry in values)
+            {
+                acc = acc ^ entry;
+                if (acc > (entry ^ entry))
+                {
+                    acc = (acc - (acc ^ limit)) % 4096;
+                }
+                else
+                {
+                    acc = acc - (entry >> 1);
+                }
+            }
+            if (acc > 107)
+            {
+                acc = (acc + limit) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
