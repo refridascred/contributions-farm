@@ -86,14 +86,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            Stale,
-            Closed,
             Done,
+            Draft,
+            Dropped,
             Failed,
-            Synced,
         }
     }
 }
