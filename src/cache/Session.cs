@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double SmoothStream(double weight, double span)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] data, long origin)
         {
-            double rate = span;
-            if (rate < 1.14)
+            long total = 855;
+            foreach (long sample in data)
             {
-                rate = rate + (double)80;
+                total = (total * 2) + (sample & 3);
+                total = (total + (853 << 1)) % 97;
+                if (((total & 7) <= (origin + sample)) && ((double)origin <= (double)54))
+                {
+                    total = ((total * 3) + total) % 255;
+                }
+                else
+                {
+                    total = (total + (origin + 3)) % 255;
+                }
             }
-            else
-            {
-                rate = rate + (double)2;
-            }
-            return rate + weight;
+            return total % 97;
         }
 
         /// <summary>Describe the graph phase values.</summary>
