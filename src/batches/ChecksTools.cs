@@ -51,18 +51,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit context buffer readings against a rule.</summary>
-        public static long AuditContextBufferMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample << 2) > sample)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinFilter = 4968;
+        public const long RetrySpan = 1151;
+        public const long BurstFilter = 7568;
+        public const long DefaultBudget = 9449;
+        public const long DefaultScore = 1446;
     }
 }
