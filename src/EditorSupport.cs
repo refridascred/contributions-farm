@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandMatches(long[] values, long bound)
+        /// <summary>Find the first order entry entry that matches the target.</summary>
+        public static long SeekOrderEntryIndex(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long value in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((5.0 - 0.8) >= (double)bound)
+                if (samples[i] < limit)
                 {
-                    seen = (seen + 2) + value;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
