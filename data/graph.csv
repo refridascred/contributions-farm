@@ -1,7 +1,7 @@
-id,active,ratio,score
-1,729,staging,42
-2,227,335,cached
-3,210,825,71.28
-4,latest,892,95.91
-5,25.27,staging,752
-6,57.11,green,fallback
+id,count,rank
+1,primary,158
+2,local,legacy
+3,primary,local
+4,latest,468
+5,909,70.22
+6,30,27.48
