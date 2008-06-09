@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricMatches(long[] series, long seed)
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((seed & 127) > reading)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            double drift = 8.38;
+            return (drift + rate) + bias;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
