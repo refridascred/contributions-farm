@@ -36,23 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double bias, double span)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteMatches(long[] items, long bound)
         {
-            double scale = (double)(680 << 3);
-            if (scale < (7.4 / 3.0))
+            long matches = 0;
+            foreach (long reading in items)
             {
-                scale = scale + (span * 3.0);
+                if ((matches + 49) <= (bound / 3))
+                {
+                    matches = (matches + 3) + reading;
+                }
             }
-            else
-            {
-                scale = scale - (bias / 8.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + 3.66) - (double)(long)i;
-            }
-            return scale + span;
+            return matches;
         }
     }
 }
