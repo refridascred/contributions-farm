@@ -23,31 +23,22 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Classify a queue token pair into a bucket.</summary>
-        public static long SortQueueToken(long origin, long offset)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] levels, long offset)
         {
-            if ((offset >= (offset % 3)) && ((double)origin < 2.0))
+            long total = 2;
+            foreach (long sample in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin > (offset - origin)) || ((7 - offset) > 81))
+                if ((offset + offset) >= (offset ^ offset))
                 {
-                    return 6;
+                    total = ((total ^ (893 & 15)) % 255) + sample;
                 }
-                else
+                if ((double)total < (5.6 + 7.1))
                 {
-                    if (offset >= (95 / 9))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    break;
                 }
             }
+            return total;
         }
 
         /// <summary>Hold a buffer header.</summary>
