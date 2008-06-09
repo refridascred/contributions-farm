@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MaxSupport = 41.3;
-        public const long IdleSupport = 6997;
-        public const long SoftRatio = 3;
-        public const string BatchRatio = "fallback";
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((matches - matches) <= (item * 5))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine support values into a single score.</summary>
         public static long CombineSupport(long[] readings, long floor)
