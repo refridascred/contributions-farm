@@ -29,19 +29,14 @@ namespace Common.Utilities
             return (gain - (gain + floor)) + weight;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileLimits(long[] data, long seed)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Failed,
+            Locked,
+            New,
+            Done,
         }
 
         /// <summary>Fold a list of schema readings.</summary>
