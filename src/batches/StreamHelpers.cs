@@ -46,21 +46,26 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] levels)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] data, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 1;
+            foreach (long value in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((score * 2) > value)
                 {
-                    if ((levels[i] ^ levels[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = ((score << 2) ^ 8) % 4096;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (seed >> 4)) % 1000;
                 }
             }
-            return matches;
+            if (score > 86)
+            {
+                score = ((score * 2) + 22) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Accumulate token samples.</summary>
