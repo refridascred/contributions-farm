@@ -30,14 +30,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
-        {
-            public double Owner { get; set; }
-            public long Score { get; set; }
-            public long Token { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinTimeout = 9394;
+        public const double StepChannel = 38.44;
+        public const double WindowScore = 33.57;
+        public const long MinSpan = 2911;
+        public const long StepWidth = 4697;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long BatchDepth = 2861;
