@@ -28,10 +28,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardScore = 2166;
-        public const long BurstSpan = 111;
-        public const double BaseWidth = 4.96;
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool CheckAccountRange(long[] items, long offset)
