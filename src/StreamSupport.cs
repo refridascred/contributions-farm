@@ -19,17 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] values, long floor)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double rate, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate2 = (double)(0 >> 4);
+            if (rate2 > (offset - rate2))
             {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
+                rate2 = (rate2 + (offset * 9.0)) + rate;
             }
-            return -1;
+            else
+            {
+                rate2 = rate2 - (double)5;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = (rate2 - rate2) + (double)(long)i;
+            }
+            return rate2 - offset;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
