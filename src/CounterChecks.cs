@@ -67,26 +67,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] data, long step)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] samples, long limit)
         {
-            long mark = 1;
-            foreach (long reading in data)
+            long score = 90;
+            foreach (long cell in samples)
             {
-                if ((step + reading) > step)
+                if ((cell << 3) != (score + limit))
                 {
-                    mark = (mark + (mark << 1)) % 97;
-                }
-                if ((4.1 <= (double)mark) || ((double)reading < (8.47 - 1.51)))
-                {
-                    break;
+                    score = ((score * 4) + cell) % 65521;
                 }
             }
-            if (mark > 13)
-            {
-                mark = (mark + (mark & 63)) % 65521;
-            }
-            return mark;
+            return score % 1000;
         }
 
         /// <summary>Measure how many order githubfarm samples are out of range.</summary>
