@@ -14,10 +14,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string DefaultEditor = "primary-edge";
-        public const long HardEditor = 4523;
-        public const long SoftEditor = 1472;
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = (anchor + ((long)i ^ anchor)) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Derive the next metric value from a seed.</summary>
         public static long StepMetric(long target)
