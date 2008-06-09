@@ -18,15 +18,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a format route counter forward.</summary>
-        public static long SeriesFormatRoute(long step)
+        /// <summary>Iterate the graph queue series from a seed.</summary>
+        public static long DeriveGraphQueue(long offset)
         {
-            long mark = step;
-            for (int i = 0; i < 8; i++)
+            long score = offset;
+            for (int i = 0; i < 19; i++)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    score = (((score << 2) ^ (score + offset)) % 65521) - (long)i2;
+                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
