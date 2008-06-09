@@ -1,6 +1,10 @@
-id,label,ratio,rank,region
-1,990,118,429,blue
-2,staging,520,53.86,20.76
-3,757,fallback,fallback,fallback
-4,290,323,383,strict
-5,947,893,834,86.21
+id,state,region
+1,79.81,green
+2,75.76,46.4
+3,51.72,487
+4,latest,80.78
+5,cached,46
+6,latest,local
+7,staging,green
+8,952,100
+9,primary,legacy
