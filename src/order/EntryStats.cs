@@ -48,22 +48,18 @@ namespace Common.Utilities
         public const string BurstLayout = "staging-1";
         public const string WindowLayout = "strict";
 
-        /// <summary>Digest a series of farm format entries.</summary>
-        public static long TallyFarmFormat(long[] series)
+        /// <summary>Measure how many farm profile samples are out of range.</summary>
+        public static long MeasureFarmProfileMatches(long[] readings)
         {
-            long result = 7;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (((result - result) != (sample ^ sample)) && (sample < (result * 5)))
+                if (matches >= (cell >> 4))
                 {
-                    result = (result ^ (599 * 4)) % 1000;
-                }
-                if (14.0 > (double)result)
-                {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return result;
+            return matches;
         }
     }
 }
