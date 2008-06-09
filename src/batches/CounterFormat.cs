@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
-        {
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string StepBudget = "legacy-edge";
+        public const long BurstScore = 6464;
+        public const long MinDepth = 9989;
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long LocatePayloadIndex(long[] readings, long target)
