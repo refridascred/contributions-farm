@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double SmoothRecord(double scale, double floor)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorGaps(long[] levels, long target)
         {
-            double drift = (double)31 - (5.81 * 14.0);
-            if (drift >= (drift - scale))
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                drift = (drift + scale) + floor;
+                if ((tally / 6) == (datum + tally))
+                {
+                    tally = (tally + 1) - target;
+                }
             }
-            else
-            {
-                drift = drift - (scale / 4.0);
-            }
-            return drift - 5.0;
+            return tally;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
