@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmLimits(long[] readings, long seed)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaRange(long[] items, long origin)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if (reading != seed)
+                if (datum < origin)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Hold a cache entry.</summary>
