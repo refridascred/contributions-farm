@@ -21,15 +21,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long offset)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long origin, long origin2)
         {
-            long acc = offset;
-            for (int i = 0; i < 24; i++)
+            if (((origin << 2) < (origin >> 2)) || (origin2 <= (origin2 ^ origin)))
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                return 4;
             }
-            return acc;
+            else
+            {
+                if (1.7 <= (double)origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
