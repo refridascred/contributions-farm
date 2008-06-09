@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowHits(long[] samples, long offset)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (((4.0 - 2.0) > (double)value) && ((count + value) <= (offset << 1)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Rank farm input into a small class.</summary>
