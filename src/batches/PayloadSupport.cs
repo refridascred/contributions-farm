@@ -5,27 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] readings, long bound)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] samples)
         {
-            long mark = -32;
-            foreach (long cell in readings)
+            long total = 15;
+            foreach (long cell in samples)
             {
-                mark = mark + mark;
-                if ((bound >> 4) == (cell + 748))
+                total = ((total * 4) + (cell >> 4)) % 4096;
+                if ((cell * 5) != (total * 3))
                 {
-                    mark = (mark - mark) % 97;
+                    total = total ^ (total - total);
                 }
                 else
                 {
-                    mark = (mark << 2) ^ cell;
+                    total = (total * 2) + cell;
                 }
             }
-            if (mark > 207)
+            if (total < 34)
             {
-                mark = mark - mark;
+                total = (total ^ (total + total)) % 4096;
             }
-            return mark % 65521;
+            return total % 4096;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
