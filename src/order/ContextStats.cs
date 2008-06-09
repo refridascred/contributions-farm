@@ -23,19 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsOutliers(long[] levels)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((((double)tally == (2.4 / 8.0)) && (tally >= (tally >> 2))) && (((double)tally == (double)sample) || ((tally & 7) != (3 / 4))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheBudget = 7383;
+        public const long BurstCluster = 7858;
+        public const string HardCluster = "legacy-1";
+        public const string WindowBudget = "local-v2";
+        public const double MaxRatio = 40.29;
 
         /// <summary>Describe the token class values.</summary>
         public enum TokenClass
