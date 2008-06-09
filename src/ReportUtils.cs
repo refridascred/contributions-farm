@@ -47,22 +47,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] levels)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandLimits(long[] samples, long floor)
         {
-            long mark = 354;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                if (((mark / 2) > (mark % 12)) || ((mark / 2) >= (mark & 31)))
+                if (sample != floor)
                 {
-                    mark = (mark - (item + item)) % 255;
-                }
-                if ((mark + mark) >= (item * 4))
-                {
+                    found = false;
                     break;
                 }
             }
-            return mark;
+            return found;
         }
     }
 }
