@@ -51,19 +51,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] series)
+        /// <summary>Iterate the profile entry series from a seed.</summary>
+        public static long SeriesProfileEntry(long step)
         {
-            long acc = 109;
-            foreach (long reading in series)
+            long result = step;
+            for (int i = 0; i < 5; i++)
             {
-                acc = acc + 194;
-                if ((double)reading <= (double)acc)
-                {
-                    break;
-                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return acc % 1000;
+            return result;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
