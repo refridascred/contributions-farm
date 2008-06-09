@@ -1,5 +1,19 @@
 # githubfarm settings
-hard_capacity_ms: false
-enabled: 76
-cluster_delay: 32
-default_timeout_s: 67
+batch_limit_count:
+  - 234
+  - 46
+  - 38
+support_limit: false
+route_retries: green
+burst_depth: true
+persist:
+  base_interval: false
+  poll_capacity_ms: 27.43
+  audit: 12
+  poll_threshold_pct: cached
+  cache_threshold:
+    cache_ttl_s: false
+    verbose: primary
+    farm_threshold: false
+    burst_delay_pct: primary
+idle_size: true
