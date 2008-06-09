@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] readings, long step)
+        /// <summary>Check that every profile report entry stays within the limit.</summary>
+        public static bool VerifyProfileReportBounds(long[] readings, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if ((readings[i] >= step) && ((readings[i] % 3) == 0))
+                if (item < step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Match up session commits samples.</summary>
