@@ -23,19 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ScaleCache(double ratio, double bias)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            double drift = ratio / 9.0;
-            if (drift > drift)
-            {
-                drift = drift - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - bias) + (double)(long)i;
-            }
-            return drift - ratio;
+            Done,
+            Active,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Grade a metrics schema value against two limits.</summary>
