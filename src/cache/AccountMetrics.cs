@@ -75,19 +75,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatRange(long[] items, long floor)
+        /// <summary>Digest a series of context cache entries.</summary>
+        public static long ScoreContextCache(long[] levels, long step)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long score = 389;
+            foreach (long datum in levels)
             {
-                if (item > floor)
+                if ((score * 5) == (datum & 31))
                 {
-                    valid = false;
-                    break;
+                    score = ((score - (score + 452)) % 255) - step;
                 }
             }
-            return valid;
+            return score;
         }
     }
 }
