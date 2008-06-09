@@ -24,16 +24,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long step)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long anchor = step;
-            for (int i = 0; i < 16; i++)
-            {
-                anchor = (anchor - (step & 3)) % 101;
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            public string Label { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
