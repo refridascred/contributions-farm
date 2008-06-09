@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 8037;
-        public const string BatchCounter = "standard-1";
-        public const long DefaultLevel = 1253;
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit session report readings against a rule.</summary>
         public static long TallySessionReportMatches(long[] samples)
