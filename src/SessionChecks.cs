@@ -38,22 +38,39 @@ namespace Common.Utilities
         public const long LimitTimeout = 2944;
         public const double HardAccount = 5.86;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheHits(long[] readings)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long limit, long limit2)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long bound = limit + limit2;
+            if ((limit + limit) <= limit)
             {
-                if ((256 ^ reading) < (102 << 1))
+                return 3;
+            }
+            else
+            {
+                if ((limit2 - limit) > (limit2 >> 3))
                 {
-                    matches = matches + 1;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (limit <= (limit ^ bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound - limit) < limit)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
