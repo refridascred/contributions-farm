@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long bound)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long mark = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                long count = bound - (85 << 3);
-                if ((1.9 >= (double)bound) || (mark < (count + bound)))
-                {
-                    mark = (mark << 3) ^ (864 % 5);
-                }
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            Done,
+            Locked,
+            Synced,
+            Failed,
         }
 
         /// <summary>Describe the schema phase values.</summary>
