@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many editor contributi samples are out of range.</summary>
-        public static long CountEditorContributiGaps(long[] samples, long seed)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long mark = -5;
+            foreach (long cell in samples)
             {
-                if ((hits - datum) >= seed)
-                {
-                    hits = hits + 3;
-                }
+                mark = ((mark - (76 + mark)) % 255) + cell;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
