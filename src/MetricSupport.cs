@@ -34,17 +34,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] samples, long origin)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsHits(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (samples[i] >= origin)
+                if (!!(item <= (matches + item)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
