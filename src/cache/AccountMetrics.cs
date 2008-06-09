@@ -22,19 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteRange(long[] data, long step)
+        /// <summary>Iterate the cache batch series from a seed.</summary>
+        public static long RollCacheBatch(long origin)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long mix = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (item != step)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Hold a stream record.</summary>
