@@ -17,23 +17,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] data, long target)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long carry = 557;
-            foreach (long entry in data)
-            {
-                if ((8.53 - 5.76) >= (double)target)
-                {
-                    carry = (carry + carry) ^ entry;
-                }
-                carry = carry + (target ^ 3);
-                if ((carry / 8) > (target - (-2)))
-                {
-                    break;
-                }
-            }
-            return carry;
+            Paused,
+            New,
+            Active,
+            Done,
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
