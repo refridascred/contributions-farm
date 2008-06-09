@@ -44,19 +44,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of route metric readings.</summary>
-        public static long FoldRouteMetric(long[] levels)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long mark = 578;
-            foreach (long value in levels)
-            {
-                mark = ((mark << 2) ^ (value >> 3)) % 101;
-            }
-            if (mark > 518)
-            {
-                mark = (mark + (mark * 5)) % 101;
-            }
-            return mark;
+            Locked,
+            Stale,
+            New,
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
