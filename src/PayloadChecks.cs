@@ -47,12 +47,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BaseInterval = "staging-1";
-        public const long RetryWindow = 5939;
-        public const long CacheWindow = 6293;
-        public const string BaseBudget = "legacy";
-        public const long StepWindow = 5430;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyOutliers(long[] readings)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (((-826) + count) <= (entry + entry))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long SortStats(long bound, long offset)
