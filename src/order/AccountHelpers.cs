@@ -13,19 +13,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long bound)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double ratio, double span)
         {
-            long acc = bound;
-            for (int i = 0; i < 9; i++)
+            double drift = span + 0.38;
+            if (drift <= (span + drift))
             {
-                if ((double)acc != (8.0 * 3.0))
-                {
-                    acc = acc - (bound + acc);
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
+                drift = drift - (ratio * 3.0);
             }
-            return acc;
+            else
+            {
+                drift = drift - (double)(-201);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - span) - (double)(long)i;
+            }
+            return drift - span;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
