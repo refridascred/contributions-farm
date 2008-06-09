@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            public double Score { get; set; }
-            public string Level { get; set; } = "";
-            public double Total { get; set; }
+            Queued,
+            Synced,
+            Active,
         }
 
         /// <summary>Measure how many editor cluster samples are out of range.</summary>
