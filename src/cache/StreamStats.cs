@@ -37,13 +37,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
-        {
-            New,
-            Queued,
-            Stale,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxCount = 3358;
+        public const long CacheFilter = 4114;
+        public const long MinFilter = 347;
+        public const string CacheTimeout = "staging";
 
         /// <summary>Fold a list of window readings.</summary>
         public static long ScoreWindow(long[] items)
