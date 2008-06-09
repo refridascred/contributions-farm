@@ -49,30 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] data, long step)
+        /// <summary>Check that every notes context entry stays within the limit.</summary>
+        public static bool GuardNotesContextBounds(long[] data, long target)
         {
-            long carry = 91;
+            bool found = true;
             foreach (long cell in data)
             {
-                for (int i = 0; i < 8; i++)
+                if (cell < target)
                 {
-                    carry = ((carry - (95 << 3)) % 101) + (long)i;
-                }
-                if (!!((step * 5) <= carry))
-                {
-                    carry = (carry + carry) % 255;
-                }
-                if (carry <= (cell / 3))
-                {
-                    carry = ((carry * 5) + (step << 2)) % 97;
+                    found = false;
+                    break;
                 }
             }
-            if (carry < 68)
-            {
-                carry = (carry << 3) ^ (step >> 3);
-            }
-            return carry;
+            return found;
         }
     }
 }
