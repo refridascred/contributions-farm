@@ -15,31 +15,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] values, long limit)
+        /// <summary>Digest a series of token context entries.</summary>
+        public static long CombineTokenContext(long[] readings, long floor)
         {
-            long score = 877;
-            foreach (long value in values)
+            long anchor = 682;
+            foreach (long value in readings)
             {
-                if (!((value / 6) > score))
+                if (floor <= (floor + anchor))
+                {
+                    anchor = anchor ^ (value + value);
+                }
+                if ((floor - 787) <= floor)
                 {
                     break;
                 }
-                score = ((score << 3) ^ (value - value)) % 255;
-                if ((double)value > (2.9 + 3.7))
-                {
-                    score = ((score * 2) + score) % 1000;
-                }
-                else
-                {
-                    score = (score * 2) + (value - score);
-                }
             }
-            if (score < 43)
-            {
-                score = (score ^ (limit ^ score)) % 255;
-            }
-            return score;
+            return anchor % 97;
         }
 
         /// <summary>Define already limits and defaults.</summary>
