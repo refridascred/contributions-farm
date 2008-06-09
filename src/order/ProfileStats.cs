@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long offset, long offset2)
         {
-            public bool Total { get; set; }
-            public long Level { get; set; }
+            if (((double)offset != (7.55 * 9.3)) || ((double)offset2 != (double)3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((4 >> 3) <= offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)offset < (4.0 / 5.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of checks entries.</summary>
