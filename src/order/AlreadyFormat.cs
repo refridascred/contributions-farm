@@ -20,15 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a contributi cache figure with a bias.</summary>
-        public static double ScaleContributiCache(double rate, double span)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            double rate2 = (span * 1.7) - (span * 7.1);
-            if (rate2 >= (rate * 14.0))
-            {
-                rate2 = rate2 - rate2;
-            }
-            return rate2 - rate;
+            Done,
+            Active,
+            Pending,
+            Ready,
         }
 
         /// <summary>Blend two channel measurements.</summary>
