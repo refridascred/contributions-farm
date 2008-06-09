@@ -19,19 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportBounds(long[] data, long offset)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Region { get; set; } = "";
+            public double Token { get; set; }
+            public bool Stamp { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the token level values.</summary>
