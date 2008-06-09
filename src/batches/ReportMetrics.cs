@@ -29,21 +29,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] values)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterGaps(long[] samples, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((sample & 127) == (96 * 4))
                 {
-                    if ((values[i] ^ values[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 3) + offset;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
