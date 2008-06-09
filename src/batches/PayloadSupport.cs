@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long target, long step)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long slot = target - step;
-            if (!((target << 1) > (step + target)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target ^ step) < target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (14.0 < (double)slot)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step / 8) < target)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Find the first metric route entry that matches the target.</summary>
