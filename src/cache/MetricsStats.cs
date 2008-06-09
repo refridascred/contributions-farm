@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterMatches(long[] items, long floor)
+        /// <summary>Validate payload cluster readings against a bound.</summary>
+        public static bool ValidatePayloadClusterLimits(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if ((matches & 15) != (matches * 3))
+                if (datum < step)
                 {
-                    matches = ((matches + 1) + sample) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
