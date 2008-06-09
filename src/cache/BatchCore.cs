@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterRange(long[] items, long limit)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            bool found = true;
-            foreach (long sample in items)
-            {
-                if (sample >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            New,
+            Draft,
+            Closed,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
