@@ -79,10 +79,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 8655;
-        public const string DefaultBudget = "standard";
-        public const string BatchBudget = "open-edge";
-        public const double LimitSpan = 40.35;
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] samples)
+        {
+            long result = 4;
+            foreach (long reading in samples)
+            {
+                if (result > reading)
+                {
+                    result = ((result * 4) + result) % 97;
+                }
+            }
+            if (result < 25)
+            {
+                result = result ^ result;
+            }
+            return result;
+        }
     }
 }
