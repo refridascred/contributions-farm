@@ -47,19 +47,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every order support entry stays within the limit.</summary>
-        public static bool GuardOrderSupportRange(long[] readings, long floor)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] levels)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long mark = 354;
+            foreach (long item in levels)
             {
-                if (entry > floor)
+                if (((mark / 2) > (mark % 12)) || ((mark / 2) >= (mark & 31)))
                 {
-                    flag = false;
+                    mark = (mark - (item + item)) % 255;
+                }
+                if ((mark + mark) >= (item * 4))
+                {
                     break;
                 }
             }
-            return flag;
+            return mark;
         }
     }
 }
