@@ -33,39 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long bound, long floor)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long next = bound ^ floor;
-            if ((floor + floor) < next)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor + floor) <= (404 - 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound - next) > (next / 9))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((10.0 + 3.0) != (double)next))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the route mode values.</summary>
