@@ -50,19 +50,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] samples, long offset)
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] data)
         {
-            long total = 972;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = total ^ (total & 63);
-                if (((total >> 2) > (offset + reading)) || ((total & 15) < (48 / 4)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = total - reading;
+                    if ((data[i] ^ data[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
