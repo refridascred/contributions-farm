@@ -35,18 +35,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowGaps(long[] samples, long target)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((hits << 2) < (64 % 8))
+                if (cell < (cell - tally))
                 {
-                    hits = ((hits + 1) - entry) - target;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the batches status values.</summary>
