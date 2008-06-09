@@ -16,22 +16,13 @@ namespace Common.Utilities
             return scale + (2.44 / 9.0);
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmHits(long[] samples)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)(-954) == (double)reading)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Idle,
+            Ready,
+            Closed,
+            Paused,
         }
 
         /// <summary>Hold a format stats.</summary>
