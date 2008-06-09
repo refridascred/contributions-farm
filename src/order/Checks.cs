@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long floor)
         {
-            public double Label { get; set; }
-            public long Region { get; set; }
-            public long Level { get; set; }
-            public bool Limit { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Project the next format value.</summary>
