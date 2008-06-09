@@ -33,13 +33,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Weight { get; set; }
-            public bool Limit { get; set; }
+            New,
+            Queued,
+            Stale,
         }
 
         /// <summary>Describe the format mode values.</summary>
