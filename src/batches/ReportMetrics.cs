@@ -5,28 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next cluster checks value from a seed.</summary>
-        public static long IterateClusterChecks(long target)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesMatches(long[] samples)
         {
-            long result = target;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (!((target + (long)i) < result))
+                if ((double)item >= 4.0)
                 {
-                    result = (result ^ target) % 4096;
+                    count = count + 2;
                 }
-                if ((target * 3) < (target / 8))
-                {
-                    result = (result ^ target) % 97;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (target + result)) % 65521;
-                    result = (result - (60 * 3)) % 97;
-                }
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Adjust a filter reading.</summary>
