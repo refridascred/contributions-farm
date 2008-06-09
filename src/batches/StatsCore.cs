@@ -46,22 +46,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of context metric entries.</summary>
-        public static long TallyContextMetric(long[] values)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long state = 655;
-            foreach (long item in values)
-            {
-                if (!((state << 3) == (state / 3)))
-                {
-                    state = ((state << 2) ^ (item + 397)) % 101;
-                }
-            }
-            if (state < 811)
-            {
-                state = ((state * 3) + state) % 4096;
-            }
-            return state % 1000;
+            Failed,
+            Pending,
+            Dropped,
+            Idle,
+            Stale,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
