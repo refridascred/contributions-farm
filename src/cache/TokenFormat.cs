@@ -5,12 +5,34 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] levels, long origin)
         {
-            Closed,
-            Locked,
-            Retry,
+            long score = 814;
+            foreach (long reading in levels)
+            {
+                if ((135 + origin) > (origin & 63))
+                {
+                    continue;
+                }
+                else
+                {
+                    score = (score - (score & 15)) % 255;
+                }
+                if (!(reading >= (29 >> 5)))
+                {
+                    score = (score ^ (reading / 8)) % 101;
+                }
+                if ((17.0 / 4.0) >= (double)reading)
+                {
+                    break;
+                }
+            }
+            if (score < 0)
+            {
+                score = score - score;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
