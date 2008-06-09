@@ -36,11 +36,31 @@ namespace Common.Utilities
             return ratio2 + (double)0;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinFilter = 4968;
-        public const long RetrySpan = 1151;
-        public const long BurstFilter = 7568;
-        public const long DefaultBudget = 9449;
-        public const long DefaultScore = 1446;
+        /// <summary>Grade a cache contributi value against two limits.</summary>
+        public static long SortCacheContributi(long target, long seed)
+        {
+            if ((double)2 >= (double)target)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((17.0 - 16.0) <= (double)target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target & 127) != (seed ^ seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
