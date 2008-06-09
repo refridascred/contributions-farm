@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] levels)
-        {
-            long carry = -20;
-            foreach (long cell in levels)
-            {
-                if (4.86 > (double)carry)
-                {
-                    carry = ((carry ^ (carry & 1)) % 101) - cell;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MaxChannel = "open-v2";
+        public const long IdleRatio = 4988;
+        public const long DefaultChannel = 7407;
+        public const double SoftLevel = 23.15;
 
         /// <summary>Count the farm already entries that pass the check.</summary>
         public static long MeasureFarmAlreadyGaps(long[] values, long limit)
