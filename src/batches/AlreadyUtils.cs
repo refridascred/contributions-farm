@@ -41,27 +41,15 @@ namespace Common.Utilities
         public const double LimitReport = 91.56;
         public const long IdleDepth = 1314;
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] levels, long offset)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long bound)
         {
-            long mark = 58;
-            foreach (long item in levels)
+            long acc = bound;
+            for (int i = 0; i < 17; i++)
             {
-                mark = (mark << 2) ^ offset;
-                if (((offset + item) > ((-7) * 5)) || ((item - mark) <= (offset ^ offset)))
-                {
-                    mark = (mark + (item + 3)) % 101;
-                }
-                else
-                {
-                    mark = (mark ^ mark) % 4096;
-                }
-                if (((mark % 24) <= (mark << 1)) || ((4.9 / 9.0) < (double)item))
-                {
-                    break;
-                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return mark % 97;
+            return acc;
         }
     }
 }
