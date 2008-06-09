@@ -32,20 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate route batch readings against a bound.</summary>
-        public static bool VerifyRouteBatchRange(long[] levels, long offset)
-        {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MaxSpan = "stable";
+        public const long RetryWindow = 2378;
+        public const long BatchRatio = 3291;
+        public const double StepWindow = 47.84;
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool CheckChannelLimits(long[] values, long offset)
