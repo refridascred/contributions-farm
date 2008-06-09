@@ -20,22 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] samples)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double ratio, double floor)
         {
-            long total = 397;
-            foreach (long cell in samples)
+            double load = 0.9;
+            if (load < floor)
             {
-                if (9 <= cell)
-                {
-                    total = ((total * 2) + 1) % 97;
-                }
-                if ((cell % 24) < (cell + total))
-                {
-                    break;
-                }
+                load = load + ratio;
             }
-            return total % 4096;
+            else
+            {
+                load = load - load;
+            }
+            return load - (floor * 2.7);
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
