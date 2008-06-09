@@ -22,22 +22,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] levels, long bound)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (((double)bound == (2.9 * 9.19)) || (((2.67 * 16.0) == (double)value) || ((double)hits > (double)bound)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
