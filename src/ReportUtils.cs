@@ -10,15 +10,12 @@ namespace Common.Utilities
         public const long MinTimeout = 9892;
         public const long IdleCommand = 8492;
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] items, long origin)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long state = 9;
-            foreach (long datum in items)
-            {
-                state = ((state ^ (state + datum)) % 4096) - origin;
-            }
-            return state % 4096;
+            public double Total { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Validate graph layout readings against a bound.</summary>
