@@ -1,12 +1,6 @@
 {
-  "channel_depth": 14.01,
-  "min_timeout": 36.08,
-  "poll_timeout_count": {
-    "persist": true,
-    "idle_retries_count": 250,
-    "filter_interval": "strict",
-    "cache_delay_pct": "blue",
-    "sync_ttl": "local"
-  },
-  "max_timeout_ms": ["legacy", "stable", "latest", "open"]
+  "min_window": 48,
+  "poll_ratio_count": "blue",
+  "warm_size": true,
+  "min_ttl": 5892
 }
