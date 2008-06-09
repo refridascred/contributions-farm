@@ -1,9 +1,13 @@
 {
-  "min_timeout_s": false,
-  "verbose": 100,
-  "commits_size": {
-    "cache_depth_count": false,
-    "counter_window": 55.61,
-    "min_limit_s": 8141
+  "sync_ratio_count": "fallback",
+  "burst_retries_pct": 60,
+  "warm_window_ms": "blue",
+  "order_limit": 250,
+  "batch_threshold_count": {
+    "base_ttl_pct": true,
+    "checks_retries": 12,
+    "verbose": "stable",
+    "stream_timeout": 35,
+    "retry_ratio_pct": 32
   }
 }
