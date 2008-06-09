@@ -1,9 +1,5 @@
 # support settings
-warm_threshold_ms:
-  - legacy
-  - legacy
-  - fallback
-cache_delay_s: 78.62
-sync_depth_count: blue
-hard_retries: 8071
-persist: primary
+command_capacity: 30.19
+flush_ttl_count: 8155
+audit: 30
+enabled: true
