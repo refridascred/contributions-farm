@@ -27,14 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandRange(long[] samples, long offset)
         {
-            Retry,
-            Draft,
-            Ready,
-            Idle,
-            Locked,
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
