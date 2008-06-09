@@ -35,11 +35,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsGaps(long[] values, long bound)
         {
-            public string Region { get; set; } = "";
-            public bool Stamp { get; set; }
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (!((seen + bound) >= (reading + reading)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
