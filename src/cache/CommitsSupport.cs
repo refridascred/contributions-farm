@@ -49,21 +49,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Compare every pair of account layout readings.</summary>
-        public static long MatchAccountLayoutCount(long[] series)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Fold a list of already readings.</summary>
