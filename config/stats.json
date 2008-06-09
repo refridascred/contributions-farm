@@ -1,9 +1,5 @@
 {
-  "hard_threshold": false,
-  "default_size_pct": {
-    "layout_capacity": 17.07,
-    "readonly": [355, 184, 250, 248],
-    "cache_timeout": ["stable", "staging"]
-  },
-  "enabled": 7889
+  "poll_limit": 30.82,
+  "warm_retries": 70.61,
+  "retry_size_s": 2382
 }
