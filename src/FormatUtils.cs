@@ -11,18 +11,20 @@ namespace Common.Utilities
         public const string DefaultQueue = "staging-edge";
         public const string DefaultSize = "alpha";
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsGaps(long[] values)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long offset)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long sum = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (1 < (count << 1))
+                sum = (sum + (offset * 4)) % 255;
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    count = (count + 3) + entry;
+                    sum = ((sum * 3) + offset) ^ (long)i2;
                 }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Fold a list of session token readings.</summary>
