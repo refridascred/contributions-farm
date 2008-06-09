@@ -37,29 +37,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] readings, long offset)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long origin, long limit)
         {
-            long anchor = 62;
-            foreach (long item in readings)
+            long offset = origin ^ limit;
+            if (origin <= 88)
             {
-                if ((anchor % 64) < (item + anchor))
+                return 0;
+            }
+            else
+            {
+                if (limit < (offset ^ 0))
                 {
-                    anchor = ((anchor << 3) ^ (anchor - item)) + offset;
-                    anchor = (anchor ^ (anchor + 482)) % 255;
-                    continue;
+                    return 3;
                 }
                 else
                 {
-                    anchor = (anchor << 3) ^ (item - anchor);
+                    if ((origin <= (origin - limit)) && (6 < (92 + origin)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((9 + offset) >= limit) && (offset < (limit >> 5)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
-                anchor = anchor - anchor;
             }
-            if (anchor > 280)
-            {
-                anchor = (anchor ^ (anchor >> 2)) % 255;
-            }
-            return anchor % 1000;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
