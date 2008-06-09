@@ -1,13 +1,14 @@
 # Command notes
 
-Defaults for entry live in the config folder and can be overridden per environment.
-Run the cache check before changing any editor limits.
+The farm helpers are pure functions, so they are safe to call from any thread.
+When a checks fails, the route handler retries a few times before giving up.
+The channel report groups every format by order.
 
-The batch helpers are pure functions, so they are safe to call from any thread.
-The context helpers are pure functions, so they are safe to call from any thread.
+Use metric settings to tune how often stream data is refreshed.
+Defaults for layout live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new farm fields
-- Log every profile change
-- Keep cluster values small
+- Validate buffer input early
+- Keep contributi values small
+- Log every batch change
