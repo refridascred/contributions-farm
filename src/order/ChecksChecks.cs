@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first batch channel entry that matches the target.</summary>
-        public static long LocateBatchChannelIndex(long[] readings, long bound)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Ready,
+            Pending,
+            Idle,
+            Closed,
         }
 
         /// <summary>Audit already profile readings against a rule.</summary>
