@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Audit already profile readings against a rule.</summary>
+        public static long AuditAlreadyProfileHits(long[] series, long step)
         {
-            Retry,
-            Active,
-            Ready,
-            Pending,
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((cell >> 3) < (step << 2))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
