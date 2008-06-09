@@ -29,12 +29,20 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] readings)
         {
-            Idle,
-            Closed,
-            Paused,
+            long score = 148;
+            foreach (long sample in readings)
+            {
+                score = (score + (204 - sample)) % 4096;
+                score = (score ^ score) % 4096;
+            }
+            if (score > 3)
+            {
+                score = score + (score - score);
+            }
+            return score;
         }
     }
 }
