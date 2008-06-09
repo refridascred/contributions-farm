@@ -32,12 +32,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] levels, long step)
         {
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public long Level { get; set; }
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (!((tally + (-8)) != (step + step)))
+                {
+                    tally = (tally + 1) + sample;
+                }
+            }
+            return tally;
         }
     }
 }
