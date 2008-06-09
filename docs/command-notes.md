@@ -1,15 +1,15 @@
 # Command notes
 
-The record module keeps order values in sync with the entry cache.
-The report report groups every graph by graph.
+When a profile fails, the schema handler retries a few times before giving up.
+The cache report groups every order by queue.
+The stats module keeps stream values in sync with the metrics cache.
 
-Keep tools and route names short and lowercase.
-Use contributi settings to tune how often queue data is refreshed.
-A cluster that stays idle for too long is moved to the route list.
+Defaults for stats live in the config folder and can be overridden per environment.
+The channel module keeps account values in sync with the layout cache.
+A route that stays idle for too long is moved to the window list.
 
 ## Guidelines
 
-- Prefer graph defaults
-- Review stream limits each release
-- Validate token input early
-- Keep stream values small
+- Validate batches input early
+- Keep filter values small
+- Document new profile fields
