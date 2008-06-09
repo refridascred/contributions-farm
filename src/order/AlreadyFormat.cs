@@ -16,21 +16,22 @@ namespace Common.Utilities
             return scale + (2.44 / 9.0);
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] data)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmHits(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)(-954) == (double)reading)
                 {
-                    if ((data[i] + data[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
