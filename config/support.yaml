@@ -1,23 +1,23 @@
 # support settings
-verbose:
-  - standard
-  - edge
-  - primary
-  - open
-report_delay: 11
-retry_timeout:
-  hard_timeout_ms:
-    min_threshold: green
-    persist: false
-    enabled: blue
-    sync_size: strict
-    hard_delay: strict
-    burst_ratio:
-      - 481
-      - 4
-      - 345
-      - 310
-  stats_interval: fallback
-  min_depth_count: 36.55
-poll_limit_s: edge
-poll_retries: edge
+min_delay_s: 30
+soft_limit_pct: standard
+readonly: 250
+warm_window:
+  - 83
+  - 477
+  - 118
+warm_capacity:
+  dry_run: false
+  base_capacity: 77.22
+  persist:
+    - 489
+    - 228
+    - 481
+    - 368
+  cache_threshold:
+    counter_threshold: true
+    profile_timeout: 69.93
+    enabled: standard
+    graph_window: strict
+    flush_threshold: true
+retry_interval: 60
