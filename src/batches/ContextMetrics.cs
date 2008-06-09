@@ -22,11 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double WindowProfile = 1.48;
-        public const double DefaultProfile = 89.27;
-        public const long IdleSpan = 4052;
-        public const double WindowSpan = 25.65;
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
+        {
+            Queued,
+            Dropped,
+            Idle,
+        }
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
