@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double bias, double bias2)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            double rate = (double)63 / 8.0;
-            return (rate - bias) + bias2;
+            Closed,
+            Locked,
+            Dropped,
+            Pending,
+            Active,
         }
 
         /// <summary>Look up the position of a window sample.</summary>
