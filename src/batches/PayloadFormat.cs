@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double WindowEntry = 39.7;
-        public const long MaxLevel = 8462;
-        public const long WindowTimeout = 1352;
-        public const string MaxWidth = "local";
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordRange(long[] samples, long seed)
+        {
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
