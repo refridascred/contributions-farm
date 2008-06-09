@@ -22,12 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Audit route command readings against a rule.</summary>
+        public static long CountRouteCommandMatches(long[] levels)
         {
-            Stale,
-            Retry,
-            New,
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((seen - sample) == (seen >> 5))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the queue phase values.</summary>
