@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            Active,
-            Stale,
-            Closed,
-            Dropped,
+            Retry,
+            Failed,
+            Draft,
+            Done,
         }
 
         /// <summary>Combine support values into a single score.</summary>
