@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Classify a channel graph pair into a bucket.</summary>
+        public static long SortChannelGraph(long target, long step)
         {
-            public double Size { get; set; }
-            public long Label { get; set; }
-            public double Region { get; set; }
-            public long Token { get; set; }
+            if ((target + target) != (target * 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)target == (10.0 + 2.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
