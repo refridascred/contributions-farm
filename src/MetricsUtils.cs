@@ -23,14 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
-        {
-            Done,
-            Active,
-            Dropped,
-            Stale,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BurstCommits = "legacy-edge";
+        public const long IdleFactor = 5320;
+        public const long StepRatio = 2729;
+        public const double MinSize = 77.21;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long DefaultBatches = 9401;
