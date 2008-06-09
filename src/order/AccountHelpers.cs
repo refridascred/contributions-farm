@@ -29,40 +29,12 @@ namespace Common.Utilities
             return (gain - (gain + floor)) + weight;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long bound, long target)
-        {
-            long step = bound + target;
-            if ((double)bound < 5.18)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(2.9 >= (double)target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step + target) < (bound % 24))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((target >> 2) > (97 * 5)) && ((bound << 2) < target))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string SoftBuffer = "stable-1";
+        public const long CacheBuffer = 2632;
+        public const double BurstRatio = 96.08;
+        public const long WindowSize = 434;
+        public const long BurstBuffer = 5618;
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long TallySchema(long[] readings, long target)
