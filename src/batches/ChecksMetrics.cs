@@ -40,13 +40,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] samples, long origin)
         {
-            Closed,
-            Failed,
-            Ready,
-            New,
+            long sum = 411;
+            foreach (long entry in samples)
+            {
+                sum = ((((sum * 3) + sum) % 101) ^ entry) + origin;
+            }
+            if (sum < 215)
+            {
+                sum = (sum * 2) + 5;
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the channel level values.</summary>
