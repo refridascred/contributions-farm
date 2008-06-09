@@ -46,12 +46,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportRange(long[] items, long offset)
         {
-            Dropped,
-            Queued,
-            Stale,
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
