@@ -1,6 +1,7 @@
-id,rank,state
-1,stable,green
-2,70.05,3.86
-3,675,green
-4,30.76,85
-5,57.47,green
+id,ratio,level
+1,66.45,77
+2,stable,green
+3,36.19,66.93
+4,818,19.03
+5,823,27.42
+6,16.82,669
