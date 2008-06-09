@@ -47,12 +47,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Project the next notes record value.</summary>
+        public static double BlendNotesRecord(double ratio, double span)
         {
-            Retry,
-            Draft,
-            New,
+            double scale = span;
+            if (scale < scale)
+            {
+                scale = scale + scale;
+            }
+            else
+            {
+                scale = scale + (scale / 5.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + (ratio * 2.0)) + (double)(long)i;
+            }
+            return scale - (scale / 6.0);
         }
     }
 }
