@@ -36,23 +36,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] data, long offset)
-        {
-            long carry = 5;
-            foreach (long entry in data)
-            {
-                if ((4.2 / 8.0) < (double)offset)
-                {
-                    carry = (carry + (entry + carry)) % 101;
-                }
-                else
-                {
-                    carry = (carry - offset) % 101;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double StepBatches = 54.18;
+        public const string WindowBatches = "alpha-v2";
+        public const double IdleBatches = 45.77;
+        public const long WindowLevel = 6758;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double DefaultRatio = 42.05;
