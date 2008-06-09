@@ -13,13 +13,16 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long floor)
         {
-            public double Mode { get; set; }
-            public double Label { get; set; }
-            public long Total { get; set; }
-            public bool Region { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = (carry ^ floor) % 101;
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Rank token input into a small class.</summary>
