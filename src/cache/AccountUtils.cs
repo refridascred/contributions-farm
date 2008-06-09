@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelLimits(long[] samples, long bound)
-        {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstSpan = 7097;
+        public const string StepSize = "strict-v2";
+        public const long LimitAlready = 9614;
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
