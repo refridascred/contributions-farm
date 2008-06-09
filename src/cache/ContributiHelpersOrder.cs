@@ -20,13 +20,18 @@ namespace Common.Utilities
             return drift - 5.0;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferGaps(long[] series, long origin)
         {
-            public double Label { get; set; }
-            public long Total { get; set; }
-            public bool Mode { get; set; }
-            public string Token { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((((entry << 1) == (origin + origin)) || ((7 * 5) < (0 + matches))) || !((double)origin > 5.5))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
