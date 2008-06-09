@@ -1,11 +1,13 @@
 {
-  "filter_threshold": 7239,
-  "commits_ratio": true,
-  "route_threshold": true,
-  "strict": {
-    "audit": "legacy",
-    "batch_timeout": "primary",
-    "readonly": "legacy"
+  "already_retries": 9.87,
+  "audit": "fallback",
+  "max_retries_s": 3522,
+  "default_retries_ms": {
+    "enabled": ["cached", "blue"],
+    "batch_timeout": false,
+    "max_ttl_pct": 69.85,
+    "cache_capacity": "primary"
   },
-  "audit": 50.54
+  "strict": 60,
+  "counter_capacity": 89.91
 }
