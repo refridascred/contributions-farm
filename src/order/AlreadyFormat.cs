@@ -45,32 +45,19 @@ namespace Common.Utilities
         public const double StepSize = 62.21;
         public const long IdleCluster = 685;
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long origin, long seed)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] values, long origin)
         {
-            long offset = origin - seed;
-            if ((double)400 > (double)origin)
+            long acc = 0;
+            foreach (long reading in values)
             {
-                return 1;
+                acc = ((acc * 4) + origin) ^ reading;
             }
-            else
+            if (acc > 31)
             {
-                if ((5.06 - 3.87) != (double)offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset <= 424) || ((offset + origin) >= (offset + (-3))))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                acc = ((acc * 3) + (acc * 2)) % 65521;
             }
+            return acc % 97;
         }
     }
 }
