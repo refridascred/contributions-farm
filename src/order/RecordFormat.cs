@@ -14,18 +14,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiOutliers(long[] levels, long limit)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((matches / 2) != (matches ^ limit))
-                {
-                    matches = (matches + 1) ^ item;
-                }
-            }
-            return matches;
+            public string Flag { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Fold a list of schema order readings.</summary>
