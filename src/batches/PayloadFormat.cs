@@ -55,11 +55,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepInterval = 4618;
-        public const long StepLayout = 3082;
-        public const long CacheRatio = 1397;
-        public const string LimitLayout = "local-v2";
-        public const string IdleWidth = "fallback-1";
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
+        {
+            public long Limit { get; set; }
+            public long Level { get; set; }
+            public double Weight { get; set; }
+        }
     }
 }
