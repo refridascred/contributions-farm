@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long bound)
+        /// <summary>Project the next metric route value.</summary>
+        public static double ScaleMetricRoute(double gain, double span)
         {
-            long sum = bound;
-            for (int i = 0; i < 11; i++)
+            double load = span + span;
+            if (load >= load)
             {
-                if ((bound - 92) <= ((long)i >> 4))
-                {
-                    sum = sum - bound;
-                }
-                else
-                {
-                    sum = ((sum * 5) + ((long)i << 1)) % 97;
-                    sum = sum - (sum % 7);
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
+                load = load - span;
             }
-            return sum;
+            else
+            {
+                load = load - (gain + gain);
+            }
+            return load - load;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
