@@ -1,11 +1,12 @@
 {
-  "burst_size_count": "legacy",
-  "default_timeout_pct": "latest",
-  "batches_interval": {
-    "report_ratio": 5162,
-    "hard_retries_s": "latest",
-    "dry_run": 33.81,
-    "sync_retries": 57
+  "idle_limit_count": {
+    "idle_timeout_pct": 4,
+    "poll_timeout_ms": "blue",
+    "cache_ttl_count": ["blue", "cached"]
   },
-  "warm_capacity": ["primary", "fallback"]
+  "max_limit": 46.57,
+  "order_interval": "standard",
+  "route_capacity": 4.69,
+  "hard_threshold_pct": 30,
+  "retry_delay_s": ["fallback", "stable", "legacy"]
 }
