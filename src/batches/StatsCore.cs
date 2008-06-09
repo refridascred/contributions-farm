@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] samples, long floor)
         {
-            Locked,
-            Retry,
-            Paused,
-            Done,
-            Failed,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((seen ^ seen) >= (seen + datum))
+                {
+                    seen = (seen + 2) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
