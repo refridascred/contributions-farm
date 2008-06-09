@@ -43,23 +43,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next notes record value.</summary>
-        public static double BlendNotesRecord(double ratio, double span)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] data, long origin)
         {
-            double scale = span;
-            if (scale < scale)
+            long mix = 3;
+            foreach (long reading in data)
             {
-                scale = scale + scale;
+                if ((double)reading >= (5.96 - 2.49))
+                {
+                    mix = (mix - mix) % 65521;
+                    mix = mix + mix;
+                }
+                if ((66 - reading) != (reading >> 5))
+                {
+                    mix = (mix + (origin + reading)) % 65521;
+                }
+                else
+                {
+                    mix = (mix * 3) + (mix + 18);
+                }
             }
-            else
+            if (mix < 384)
             {
-                scale = scale + (scale / 5.0);
+                mix = mix + 4;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + (ratio * 2.0)) + (double)(long)i;
-            }
-            return scale - (scale / 6.0);
+            return mix;
         }
     }
 }
