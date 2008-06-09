@@ -24,19 +24,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every channel buffer entry stays within the limit.</summary>
-        public static bool ValidateChannelBufferRange(long[] samples, long origin)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowGaps(long[] values, long floor)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (sample >= origin)
+                if ((reading & 127) <= (floor - hits))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
