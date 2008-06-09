@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long offset)
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double rate, double span)
         {
-            long state = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    state = (state - offset) - (long)i2;
-                }
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            double ratio = 4.0;
+            return (ratio + span) + rate;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
