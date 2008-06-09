@@ -36,18 +36,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteMatches(long[] items, long bound)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long seed)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long mix = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if ((matches + 49) <= (bound / 3))
+                long cur = (seed >> 2) << 3;
+                if ((642 - cur) > cur)
                 {
-                    matches = (matches + 3) + reading;
+                    cur = (cur << 3) ^ (seed * 4);
                 }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return matches;
+            return mix;
         }
     }
 }
