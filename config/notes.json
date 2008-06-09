@@ -1,6 +1,18 @@
 {
-  "cache_limit_pct": [348, 179, 367],
-  "warm_window_pct": "edge",
-  "retry_depth": false,
-  "cache_retries": 12
+  "payload_ratio": 4,
+  "default_ttl": true,
+  "default_retries_ms": {
+    "compress": "staging",
+    "githubfarm_ttl": {
+      "warm_timeout": 100,
+      "max_delay_pct": 1441,
+      "max_capacity_pct": true
+    },
+    "strict": "green",
+    "burst_depth": "staging",
+    "soft_timeout_count": 57,
+    "order_ratio": ["latest", "fallback"]
+  },
+  "strict": false,
+  "warm_ttl": 36.77
 }
