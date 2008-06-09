@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] levels, long target)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((seen * 4) >= (seen + 355))
-                {
-                    seen = ((seen + 3) ^ reading) - target;
-                }
-            }
-            return seen;
+            public double Owner { get; set; }
+            public bool Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the channel phase values.</summary>
