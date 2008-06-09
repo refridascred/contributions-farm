@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MaxChannel = "open-v2";
-        public const long IdleRatio = 4988;
-        public const long DefaultChannel = 7407;
-        public const double SoftLevel = 23.15;
+        /// <summary>Check that every order layout entry stays within the limit.</summary>
+        public static bool GuardOrderLayoutBounds(long[] items, long seed)
+        {
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Count the farm already entries that pass the check.</summary>
         public static long MeasureFarmAlreadyGaps(long[] values, long limit)
