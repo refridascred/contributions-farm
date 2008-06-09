@@ -25,18 +25,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterOutliers(long[] readings)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (item > (item ^ item))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public bool Mode { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
