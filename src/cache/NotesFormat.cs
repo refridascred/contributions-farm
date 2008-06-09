@@ -20,15 +20,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] data, long target)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] items, long bound)
         {
-            long sum = 46;
-            foreach (long value in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (((sum ^ (sum << 1)) % 4096) + value) + target;
+                if (items[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Hold a order record.</summary>
