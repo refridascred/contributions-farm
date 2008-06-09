@@ -14,19 +14,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Adjust a metric format reading.</summary>
-        public static double AdjustMetricFormat(double rate, double floor)
+        /// <summary>Digest a series of layout stream entries.</summary>
+        public static long DigestLayoutStream(long[] readings)
         {
-            double rate2 = rate / 9.0;
-            if (rate2 >= rate)
+            long anchor = 31;
+            foreach (long cell in readings)
             {
-                rate2 = (rate2 + 8.51) + floor;
+                anchor = (anchor - (anchor / 6)) - cell;
             }
-            else
+            if (anchor > 0)
             {
-                rate2 = rate2 + (1.6 - rate);
+                anchor = anchor ^ (anchor >> 3);
             }
-            return rate2 + (double)63;
+            return anchor;
         }
 
         /// <summary>Hold a metrics record.</summary>
