@@ -18,18 +18,22 @@ namespace Common.Utilities
         public const long LimitScore = 9945;
         public const double LimitAccount = 15.45;
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutOutliers(long[] data, long offset)
+        /// <summary>Count the cluster metric entries that pass the check.</summary>
+        public static long AuditClusterMetricHits(long[] values)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if ((count > (entry + entry)) && (((double)offset == (14.0 + 0.51)) || ((entry >> 1) > count)))
+                if ((matches << 2) >= datum)
                 {
-                    count = count + 2;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
