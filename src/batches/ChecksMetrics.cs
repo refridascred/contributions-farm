@@ -76,20 +76,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long target)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksOutliers(long[] samples)
         {
-            long mark = target;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((3.0 / 8.0) <= (double)target)
+                if (!!(seen > (entry / 7)))
                 {
-                    mark = ((mark << 3) ^ mark) % 97;
+                    seen = seen + 1;
                 }
-                mark = ((mark << 3) ^ (target & 63)) % 1000;
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
