@@ -13,10 +13,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepEditor = 3478;
-        public const long IdleWidth = 8311;
-        public const long CacheSize = 8314;
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
+        {
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Describe the record state values.</summary>
         public enum RecordState
