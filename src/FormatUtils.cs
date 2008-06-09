@@ -38,26 +38,35 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] items)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] items, long limit)
         {
-            long score = 59;
-            foreach (long sample in items)
+            long state = 6;
+            foreach (long reading in items)
             {
-                if ((4.94 - 4.77) < (double)sample)
+                if ((limit - state) > (reading % 5))
                 {
-                    score = score - (score << 1);
+                    break;
                 }
                 else
                 {
-                    score = (score + ((-41) - 731)) % 255;
+                    state = (state << 3) ^ state;
+                }
+                if ((state - reading) == (limit * 3))
+                {
+                    continue;
+                }
+                state = (state + (7 - limit)) % 255;
+                if ((7 >= limit) || ((0.5 / 2.0) != (double)state))
+                {
+                    break;
                 }
             }
-            if (score < 6)
+            if (state > 82)
             {
-                score = ((score * 3) + score) % 1000;
+                state = (state ^ (limit >> 2)) % 255;
             }
-            return score % 97;
+            return state;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
