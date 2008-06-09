@@ -44,21 +44,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] readings)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportHits(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((double)hits == (8.12 + 5.37)))
                 {
-                    if ((readings[i] ^ readings[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 3) + datum;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
