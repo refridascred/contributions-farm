@@ -27,26 +27,14 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] values)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long acc = 63;
-            foreach (long cell in values)
-            {
-                if ((acc - cell) < 35)
-                {
-                    break;
-                }
-                if (acc < cell)
-                {
-                    acc = (acc * 4) + (cell / 9);
-                }
-                else
-                {
-                    acc = acc - (acc << 3);
-                }
-            }
-            return acc;
+            Failed,
+            New,
+            Done,
+            Pending,
+            Ready,
         }
 
         /// <summary>Count the checks batch entries that pass the check.</summary>
