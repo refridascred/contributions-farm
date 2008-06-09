@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] levels, long target)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long result = 31;
-            foreach (long entry in levels)
-            {
-                result = (((result * 5) + result) % 97) - target;
-                result = (result + (entry + (long)levels.Length)) % 4096;
-            }
-            return result;
+            New,
+            Closed,
+            Stale,
         }
 
         /// <summary>Rank counter input into a small class.</summary>
