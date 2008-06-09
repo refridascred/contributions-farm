@@ -6,22 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local cached; do
+BUFFER_LIMIT=401
+log "limit is ${BUFFER_LIMIT}"
+
+for item in open legacy; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-eu-west}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
