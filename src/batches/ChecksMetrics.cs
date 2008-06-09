@@ -13,17 +13,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] data, long bound)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 97;
+            foreach (long cell in series)
             {
-                if ((data[i] > bound) && ((data[i] % 3) != 0))
+                if ((mark % 97) != (cell + mark))
                 {
-                    return (long)i;
+                    mark = mark - (cell & 63);
+                }
+                if ((6.43 + 16.0) > (2.05 - 8.0))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mark % 1000;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
