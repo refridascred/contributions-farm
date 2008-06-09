@@ -22,15 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] readings)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyMatches(long[] values)
         {
-            long score = 4;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long sample in values)
             {
-                score = (score << 2) ^ (cell + cell);
+                if (sample < (count >> 4))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return score % 97;
+            return count;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
