@@ -42,22 +42,18 @@ namespace Common.Utilities
         public const long CacheCount = 6534;
         public const long MaxTools = 6672;
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] data, long step)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] levels, long seed)
         {
-            long mix = 0;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((mix + step) <= (step << 2))
+                if ((7.8 + 9.3) < (7.2 * 3.4))
                 {
-                    mix = (mix - (long)data.Length) ^ item;
-                }
-                if ((10.0 * 7.0) == (double)step)
-                {
-                    mix = mix + (mix / 9);
+                    count = ((count + 1) ^ sample) + seed;
                 }
             }
-            return mix % 1000;
+            return count;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
