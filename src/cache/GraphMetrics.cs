@@ -25,12 +25,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Validate filter order readings against a bound.</summary>
+        public static bool GuardFilterOrderBounds(long[] samples, long bound)
         {
-            Draft,
-            Ready,
-            New,
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
