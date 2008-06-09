@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double IdleStream = 73.96;
-        public const long WindowRatio = 4034;
-        public const string CacheStream = "cached-edge";
-        public const long MaxStream = 9696;
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double rate, double floor)
+        {
+            double scale = rate;
+            if (scale >= rate)
+            {
+                scale = (scale + (double)41) - floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale + scale;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long DefaultRatio = 5980;
