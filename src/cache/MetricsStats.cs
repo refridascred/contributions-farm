@@ -12,19 +12,12 @@ namespace Common.Utilities
             return (bias + 0.59) + span;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double scale, double floor)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            double gain = (double)((-606) + 31);
-            if (gain > (scale + gain))
-            {
-                gain = gain + scale;
-            }
-            else
-            {
-                gain = gain + (floor / 5.0);
-            }
-            return gain - floor;
+            public long Score { get; set; }
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
