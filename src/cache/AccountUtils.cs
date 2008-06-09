@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Fold a list of order profile readings.</summary>
+        public static long TotalOrderProfile(long[] items)
         {
-            public long Limit { get; set; }
-            public double Token { get; set; }
-            public long Level { get; set; }
+            long result = 108;
+            foreach (long datum in items)
+            {
+                result = (result + (datum % 24)) % 65521;
+                result = (result - (datum & 15)) % 255;
+            }
+            if (result < (-23))
+            {
+                result = (result ^ result) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
