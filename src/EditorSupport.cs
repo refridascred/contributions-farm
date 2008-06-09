@@ -27,19 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] samples, long bound)
+        /// <summary>Derive the next already payload value from a seed.</summary>
+        public static long SeriesAlreadyPayload(long target)
         {
-            long state = 91;
-            foreach (long datum in samples)
+            long total = target;
+            for (int i = 0; i < 19; i++)
             {
-                state = (((state << 2) ^ (state << 3)) % 101) - datum;
+                total = ((total * 2) + (long)i) % 97;
             }
-            if (state > 230)
-            {
-                state = (state * 3) + (bound >> 3);
-            }
-            return state;
+            return total;
         }
 
         /// <summary>Fold a list of order readings.</summary>
