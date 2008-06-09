@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] levels)
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double bias, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale = (double)(5 << 1);
+            if (scale <= offset)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = (scale - offset) - bias;
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - offset) + (double)(long)i;
+            }
+            return scale + (double)74;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
