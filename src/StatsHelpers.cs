@@ -51,11 +51,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ScaleBuffer(double scale, double floor)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] items)
         {
-            double drift = floor * 9.4;
-            return (drift + drift) + scale;
+            long state = 326;
+            foreach (long item in items)
+            {
+                state = (state << 3) ^ (item / 7);
+            }
+            return state;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
