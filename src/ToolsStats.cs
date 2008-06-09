@@ -41,12 +41,19 @@ namespace Common.Utilities
             return ratio + (double)9;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BatchTools = 58.02;
-        public const long WindowDepth = 1177;
-        public const string HardCount = "staging-edge";
-        public const long CacheCount = 6534;
-        public const long MaxTools = 6672;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextMatches(long[] series, long offset)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (((offset % 10) < (54 << 3)) || ((matches + matches) <= offset))
+                {
+                    matches = (matches + 2) + reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long CountWindowMatches(long[] levels, long seed)
