@@ -1,9 +1,8 @@
-id,weight,level,score,state
-1,open,864,226,98.92
-2,34.78,8.82,primary,primary
-3,370,latest,187,58.18
-4,stable,21.9,49.69,919
-5,green,555,primary,76.32
-6,973,primary,eu-west,191
-7,eu-west,edge,green,894
-8,fallback,278,103,97.6
+id,rank,region,ratio
+1,949,legacy,55
+2,blue,469,118
+3,718,16.35,primary
+4,976,59,legacy
+5,127,598,750
+6,stable,71,270
+7,983,14.4,green
