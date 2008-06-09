@@ -59,19 +59,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutRange(long[] items, long limit)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheHits(long[] items)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (entry < limit)
+                if (cell < (matches << 3))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
