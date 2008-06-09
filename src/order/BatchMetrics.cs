@@ -11,18 +11,24 @@ namespace Common.Utilities
         public const long StepToken = 3311;
         public const long CacheInterval = 4513;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportGaps(long[] series, long target)
+        /// <summary>Rank batches contributi input into a small class.</summary>
+        public static long GradeBatchesContributi(long step, long target)
         {
-            long count = 0;
-            foreach (long item in series)
+            if (((target - target) < (step - target)) && ((step - 90) < step))
             {
-                if (1.76 < (double)item)
+                return 1;
+            }
+            else
+            {
+                if ((step + target) != ((-718) >> 4))
                 {
-                    count = (count + 3) + target;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
