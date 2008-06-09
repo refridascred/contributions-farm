@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long MinGraph = 2011;
         public const long WindowDepth = 1060;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 3111;
-        public const long BaseCounter = 6226;
-        public const long BurstBudget = 5389;
-        public const long StepCount = 4088;
-        public const long RetryTimeout = 7625;
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of contributi window readings.</summary>
         public static long WeighContributiWindow(long[] samples)
