@@ -47,14 +47,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Check that every order support entry stays within the limit.</summary>
+        public static bool GuardOrderSupportRange(long[] readings, long floor)
         {
-            Paused,
-            Dropped,
-            Done,
-            Synced,
-            Stale,
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
