@@ -24,18 +24,32 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteOutliers(long[] items)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long seed, long bound)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long lane = seed ^ bound;
+            if (seed > bound)
             {
-                if (6.7 >= (double)tally)
+                return 5;
+            }
+            else
+            {
+                if ((2 < (seed - lane)) && ((18.0 / 5.0) <= (double)seed))
                 {
-                    tally = (tally + 2) ^ item;
+                    return 4;
+                }
+                else
+                {
+                    if (!((lane << 2) > (lane % 64)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the profile state values.</summary>
