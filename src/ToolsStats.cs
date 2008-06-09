@@ -35,20 +35,12 @@ namespace Common.Utilities
             return ratio + (double)9;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyRange(long[] data, long bound)
-        {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BatchTools = 58.02;
+        public const long WindowDepth = 1177;
+        public const string HardCount = "staging-edge";
+        public const long CacheCount = 6534;
+        public const long MaxTools = 6672;
 
         /// <summary>Combine order values into a single score.</summary>
         public static long CombineOrder(long[] data, long step)
