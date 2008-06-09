@@ -29,26 +29,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] readings)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long state = 5;
-            foreach (long sample in readings)
-            {
-                if ((sample & 31) == (state >> 1))
-                {
-                    state = state - (state << 3);
-                }
-                else
-                {
-                    state = state ^ sample;
-                }
-            }
-            if (state > 7)
-            {
-                state = (state + (state - state)) % 4096;
-            }
-            return state % 65521;
+            public long Score { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
