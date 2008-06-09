@@ -35,24 +35,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long target, long bound)
+        /// <summary>Roll a stream graph counter forward.</summary>
+        public static long DeriveStreamGraph(long seed)
         {
-            if ((6.41 + 5.1) > (double)target)
+            long state = seed;
+            for (int i = 0; i < 18; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound >> 3) == (bound - bound))
+                if ((long)i > seed)
                 {
-                    return 1;
+                    state = ((state * 4) + state) % 255;
+                    state = state ^ (long)i;
                 }
-                else
-                {
-                    return 7;
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
+            return state;
         }
     }
 }
