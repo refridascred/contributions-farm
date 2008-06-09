@@ -35,12 +35,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MaxCount = 17.95;
-        public const string IdleProfile = "open";
-        public const long LimitProfile = 7565;
-        public const double HardCount = 32.09;
-        public const long BaseCount = 3712;
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
+        {
+            Draft,
+            Active,
+            Synced,
+        }
 
         /// <summary>Grade a command tools value against two limits.</summary>
         public static long RankCommandTools(long offset, long origin)
