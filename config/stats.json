@@ -1,8 +1,8 @@
 {
-  "idle_timeout_count": 250,
-  "min_retries": 27,
-  "base_ratio_s": true,
-  "warm_ratio_pct": 54.93,
-  "persist": 90.38,
-  "readonly": 48
+  "soft_size_ms": 500,
+  "dry_run": 86.05,
+  "poll_delay": 75,
+  "base_retries_ms": "latest",
+  "soft_ratio_s": 60,
+  "hard_ratio_s": "staging"
 }
