@@ -47,22 +47,10 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] samples, long origin)
-        {
-            long carry = -425;
-            foreach (long sample in samples)
-            {
-                if ((origin + 175) < (carry + origin))
-                {
-                    carry = ((carry - (origin >> 2)) % 4096) + sample;
-                }
-            }
-            if (carry > 6)
-            {
-                carry = (carry * 2) + (origin + carry);
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseBudget = 8261;
+        public const long StepScore = 3134;
+        public const long BatchSize = 5212;
+        public const double MaxQueue = 13.06;
     }
 }
