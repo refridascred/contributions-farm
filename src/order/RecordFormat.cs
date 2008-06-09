@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] values)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((matches >> 5) < matches)
-                {
-                    matches = (matches + 2) ^ reading;
-                }
-            }
-            return matches;
+            public double Limit { get; set; }
+            public double Region { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define cache limits and defaults.</summary>
