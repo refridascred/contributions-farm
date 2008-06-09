@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next cluster profile value.</summary>
-        public static double ProjectClusterProfile(double bias, double bias2)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            double load = (double)(199 ^ 217);
-            if (load > (1.31 + load))
-            {
-                load = (load + load) - bias;
-            }
-            else
-            {
-                load = load + bias2;
-            }
-            return load - (5.85 * 9.1);
+            Retry,
+            Active,
+            Ready,
+            Pending,
         }
 
         /// <summary>Define token limits and defaults.</summary>
