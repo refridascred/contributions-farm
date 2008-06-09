@@ -43,17 +43,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a stats entry reading by value.</summary>
-        public static long FindStatsEntryIndex(long[] data, long seed)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] data, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 91;
+            foreach (long cell in data)
             {
-                if (data[i] > seed)
+                for (int i = 0; i < 8; i++)
                 {
-                    return (long)i;
+                    carry = ((carry - (95 << 3)) % 101) + (long)i;
+                }
+                if (!!((step * 5) <= carry))
+                {
+                    carry = (carry + carry) % 255;
+                }
+                if (carry <= (cell / 3))
+                {
+                    carry = ((carry * 5) + (step << 2)) % 97;
                 }
             }
-            return -1;
+            if (carry < 68)
+            {
+                carry = (carry << 3) ^ (step >> 3);
+            }
+            return carry;
         }
     }
 }
