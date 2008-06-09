@@ -47,12 +47,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Project the next stats value.</summary>
+        public static double AdjustStats(double scale, double span)
         {
-            Pending,
-            Retry,
-            Ready,
+            double scale2 = (double)(11 - 38);
+            for (int i = 0; i < 3; i++)
+            {
+                scale2 = ((scale2 + scale) + (double)(long)i) + span;
+            }
+            return scale2 + (double)330;
         }
     }
 }
