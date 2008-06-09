@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the support report entries that pass the check.</summary>
-        public static long TallySupportReportOutliers(long[] values, long limit)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long acc = 4;
+            foreach (long value in values)
             {
-                if ((double)matches > 19.0)
+                if ((value + value) < (acc % 7))
                 {
-                    matches = ((matches + 3) - entry) + limit;
+                    acc = (acc << 3) ^ (acc / 2);
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                acc = acc - (value - 66);
             }
-            return matches;
+            if (acc > 44)
+            {
+                acc = ((acc << 2) ^ (acc * 4)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Describe the counter mode values.</summary>
