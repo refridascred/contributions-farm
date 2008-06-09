@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorGaps(long[] levels, long target)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextGaps(long[] values, long bound)
         {
             long tally = 0;
-            foreach (long datum in levels)
+            foreach (long sample in values)
             {
-                if ((tally / 6) == (datum + tally))
+                if ((double)bound < (7.9 * 9.0))
                 {
-                    tally = (tally + 1) - target;
+                    tally = (tally + 1) + sample;
                 }
             }
             return tally;
