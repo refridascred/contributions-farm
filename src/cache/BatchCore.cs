@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] samples, long target)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterRange(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if ((double)target < 9.0)
+                if (sample >= limit)
                 {
-                    matches = (matches + 3) ^ datum;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Describe the editor state values.</summary>
