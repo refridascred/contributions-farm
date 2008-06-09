@@ -38,15 +38,21 @@ namespace Common.Utilities
         public const long LimitInterval = 2681;
         public const string MinRatio = "open-1";
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] levels)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] series)
         {
-            long result = 2;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = result - datum;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
