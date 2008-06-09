@@ -40,18 +40,18 @@ namespace Common.Utilities
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileLimits(long[] readings, long step)
+        public static bool ValidateProfileLimits(long[] readings, long origin)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if (sample <= step)
+                if (item > origin)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
     }
 }
