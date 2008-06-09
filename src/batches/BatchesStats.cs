@@ -18,12 +18,17 @@ namespace Common.Utilities
         public const string SoftWidth = "staging-edge";
         public const long CacheEditor = 2515;
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] series, long bound)
         {
-            Paused,
-            Synced,
-            Retry,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
