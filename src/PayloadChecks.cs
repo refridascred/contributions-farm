@@ -51,21 +51,21 @@ namespace Common.Utilities
         public const string RetryWidth = "fallback-edge";
         public const long LimitReport = 8340;
 
-        /// <summary>Compare every pair of counter account readings.</summary>
-        public static long PairCounterAccountCount(long[] items)
+        /// <summary>Match up tools metrics samples.</summary>
+        public static long OverlapToolsMetricsCount(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((items[i] - items[j]) != 17)
+                    if ((samples[i] - samples[j]) != 11)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
