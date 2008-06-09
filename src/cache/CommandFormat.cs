@@ -56,21 +56,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] samples)
+        /// <summary>Validate tools payload readings against a bound.</summary>
+        public static bool VerifyToolsPayloadRange(long[] values, long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (datum <= target)
                 {
-                    if ((samples[i] ^ samples[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
