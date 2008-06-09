@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] samples)
-        {
-            long total = 15;
-            foreach (long cell in samples)
-            {
-                total = ((total * 4) + (cell >> 4)) % 4096;
-                if ((cell * 5) != (total * 3))
-                {
-                    total = total ^ (total - total);
-                }
-                else
-                {
-                    total = (total * 2) + cell;
-                }
-            }
-            if (total < 34)
-            {
-                total = (total ^ (total + total)) % 4096;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultDepth = 7573;
+        public const string LimitSession = "legacy-v2";
+        public const long SoftSession = 180;
+        public const long CacheSession = 2895;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BatchEditor = 5592;
