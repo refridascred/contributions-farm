@@ -53,15 +53,13 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Fold a list of stats channel readings.</summary>
-        public static long TallyStatsChannel(long[] values)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long sum = -4;
-            foreach (long datum in values)
-            {
-                sum = ((sum * 4) + sum) + datum;
-            }
-            return sum;
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public double Token { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
