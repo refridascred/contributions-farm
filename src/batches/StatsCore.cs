@@ -74,20 +74,13 @@ namespace Common.Utilities
         public const long DefaultTimeout = 7069;
         public const string BaseTimeout = "latest-v2";
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] levels, long target)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long anchor = 460;
-            foreach (long value in levels)
-            {
-                anchor = (((anchor * 4) + (anchor - anchor)) % 101) + value;
-                anchor = (anchor + target) % 1000;
-                if ((double)anchor < (5.0 * 7.0))
-                {
-                    break;
-                }
-            }
-            return anchor % 65521;
+            public bool Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public long Score { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
