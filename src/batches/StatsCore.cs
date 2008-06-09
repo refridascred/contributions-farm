@@ -42,21 +42,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of already checks readings.</summary>
-        public static long MatchAlreadyChecksCount(long[] levels)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] data, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 47;
+            foreach (long item in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((66 > (offset << 3)) && ((9.2 / 4.0) <= (1.9 - 9.13)))
                 {
-                    if ((levels[i] - levels[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = mark ^ (mark - mark);
+                }
+                else
+                {
+                    mark = (mark + (offset - mark)) % 1000;
+                }
+                if (!((item + item) > (item * 2)))
+                {
+                    break;
                 }
             }
-            return matches;
+            return mark % 65521;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
