@@ -18,22 +18,22 @@ namespace Common.Utilities
         public const long IdleWidth = 8311;
         public const long CacheSize = 8314;
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] items)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelGaps(long[] items, long bound)
         {
-            long score = 8;
+            long seen = 0;
             foreach (long cell in items)
             {
-                if ((score % 3) == (864 << 1))
+                if ((8.7 <= (double)cell) && (((long)items.Length >> 1) < bound))
                 {
-                    score = (score * 4) + (score & 1);
+                    seen = seen + 1;
                 }
                 else
                 {
-                    score = score - cell;
+                    seen = seen - 1;
                 }
             }
-            return score % 97;
+            return seen;
         }
 
         /// <summary>Accumulate already samples.</summary>
