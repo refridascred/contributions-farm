@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long limit, long seed)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] items, long origin)
         {
-            long bound = limit + seed;
-            if (((bound - seed) >= (bound / 2)) && ((double)limit <= 8.7))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((0 + bound) <= (74 ^ seed))
+                if (items[i] < origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit - 5) > ((-242) << 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
