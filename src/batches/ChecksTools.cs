@@ -36,31 +36,24 @@ namespace Common.Utilities
             return ratio2 + (double)0;
         }
 
-        /// <summary>Grade a cache contributi value against two limits.</summary>
-        public static long SortCacheContributi(long target, long seed)
+        /// <summary>Fold a list of profile checks readings.</summary>
+        public static long TotalProfileChecks(long[] data, long origin)
         {
-            if ((double)2 >= (double)target)
+            long carry = 61;
+            foreach (long datum in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((17.0 - 16.0) <= (double)target)
+                carry = (carry << 2) ^ datum;
+                carry = carry - (datum - carry);
+                if ((double)origin < (5.5 + 9.43))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((target & 127) != (seed ^ seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    carry = ((carry << 3) ^ carry) % 101;
                 }
             }
+            if (carry < 80)
+            {
+                carry = (carry - (carry / 8)) % 101;
+            }
+            return carry;
         }
     }
 }
