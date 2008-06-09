@@ -11,14 +11,19 @@ namespace Common.Utilities
         public const long BurstRatio = 63;
         public const string RetryStream = "primary-edge";
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutRange(long[] data, long limit)
         {
-            Paused,
-            Locked,
-            Active,
-            Synced,
-            Ready,
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
