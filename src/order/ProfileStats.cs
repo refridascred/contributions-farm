@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long offset, long offset2)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsOutliers(long[] levels, long bound)
         {
-            if (((double)offset != (7.55 * 9.3)) || ((double)offset2 != (double)3))
+            long seen = 0;
+            foreach (long value in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((4 >> 3) <= offset)
+                if ((double)seen < (5.91 / 9.0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)offset < (4.0 / 5.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    seen = ((seen + 1) + value) - bound;
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
