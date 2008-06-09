@@ -33,12 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] levels)
         {
-            public double Size { get; set; }
-            public double Level { get; set; }
-            public bool Region { get; set; }
+            long result = 510;
+            foreach (long sample in levels)
+            {
+                if ((6.38 * 2.4) >= (double)sample)
+                {
+                    result = (result + (result - result)) % 1000;
+                }
+            }
+            return result;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
