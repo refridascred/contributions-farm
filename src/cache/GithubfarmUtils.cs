@@ -20,21 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count stats format pairs that satisfy a relation.</summary>
-        public static long CompareStatsFormatCount(long[] readings)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double scale, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double rate = 7.0;
+            if (rate >= 15.0)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = (rate - scale) - offset;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - (rate / 9.0)) + (double)(long)i;
+            }
+            return rate - (double)(-1);
         }
 
         /// <summary>Digest a series of command entries.</summary>
