@@ -43,19 +43,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two metric checks measurements.</summary>
-        public static double BlendMetricChecks(double ratio, double floor)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long OverlapContributiCount(long[] items)
         {
-            double rate = 8.0;
-            if (rate <= (double)321)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = rate + (ratio + rate);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + floor) - (double)(long)i;
-            }
-            return rate + ratio;
+            return seen;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
