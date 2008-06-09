@@ -26,17 +26,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] levels, long target)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long seed, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (!((offset * 2) == (seed - 161)))
             {
-                if ((levels[i] <= target) && ((levels[i] % 5) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((16 + offset) < (seed + seed))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
