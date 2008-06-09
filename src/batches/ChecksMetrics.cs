@@ -90,11 +90,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstWidth = 362;
-        public const long SoftDepth = 856;
-        public const long HardFarm = 5132;
-        public const string DefaultFarm = "local-1";
-        public const string BurstSize = "alpha";
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
+        {
+            Done,
+            Synced,
+            Idle,
+        }
     }
 }
