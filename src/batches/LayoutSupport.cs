@@ -36,24 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long target, long offset)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            if (!((target - offset) != (88 << 2)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((((-821) << 1) <= target) || ((double)offset >= (9.0 / 8.0)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Rank { get; set; }
+            public long Label { get; set; }
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Roll a channel format counter forward.</summary>
