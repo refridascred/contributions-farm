@@ -1,13 +1,6 @@
 # entry settings
-verbose:
-  strict: eu-west
-  cache_size:
-    - 187
-    - 105
-    - 303
-  min_threshold: staging
-  default_delay_pct:
-    - 270
-    - 59
-channel_interval: false
-record_timeout: 84.72
+max_retries_s: 57
+hard_capacity_count: false
+metrics_limit: 1.2
+dry_run: 5472
+base_ratio: 60
