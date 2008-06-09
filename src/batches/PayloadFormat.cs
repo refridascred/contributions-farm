@@ -23,11 +23,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowTimeout = 46;
-        public const string CacheBudget = "standard-1";
-        public const string DefaultFormat = "local-v2";
-        public const double BurstFormat = 48.81;
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] data)
+        {
+            long score = 93;
+            foreach (long reading in data)
+            {
+                if ((double)reading == (2.27 * 13.0))
+                {
+                    score = score ^ (reading << 2);
+                }
+                if (((reading + score) > score) && ((4 / 5) <= (score + 13)))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long TotalFilter(long[] data, long bound)
