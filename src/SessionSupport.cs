@@ -17,21 +17,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up format report samples.</summary>
-        public static long OverlapFormatReportCount(long[] readings)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] data, long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 557;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((8.53 - 5.76) >= (double)target)
                 {
-                    if ((readings[i] - readings[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry + carry) ^ entry;
+                }
+                carry = carry + (target ^ 3);
+                if ((carry / 8) > (target - (-2)))
+                {
+                    break;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
