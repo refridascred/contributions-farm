@@ -14,22 +14,17 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] data)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seen % 16) >= (datum >> 3))
+                if (values[i] == origin)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
