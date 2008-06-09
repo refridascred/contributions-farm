@@ -47,11 +47,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinFilter = 1506;
-        public const long LimitFilter = 1696;
-        public const long BurstFilter = 3222;
-        public const string DefaultSize = "legacy-edge";
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
+        {
+            Closed,
+            Active,
+            Dropped,
+        }
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long CompareRouteCount(long[] levels)
