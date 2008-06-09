@@ -67,10 +67,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double CacheGithubfarm = 90.55;
-        public const long MinDepth = 4396;
-        public const long BurstGithubfarm = 6765;
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Blend two profile measurements.</summary>
         public static double ScaleProfile(double bias, double span)
