@@ -14,12 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Audit schema graph readings against a rule.</summary>
+        public static long AuditSchemaGraphMatches(long[] samples)
         {
-            Retry,
-            Synced,
-            Ready,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (!((7.9 + 1.04) == (double)matches))
+                {
+                    matches = (matches + 3) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
