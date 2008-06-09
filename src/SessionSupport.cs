@@ -34,21 +34,18 @@ namespace Common.Utilities
             return scale + (double)604;
         }
 
-        /// <summary>Match up commits command samples.</summary>
-        public static long PairCommitsCommandCount(long[] data)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportOutliers(long[] values, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)floor != (double)620)
                 {
-                    if ((data[i] + data[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 2) + datum;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
