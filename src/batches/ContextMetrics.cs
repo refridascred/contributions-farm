@@ -14,12 +14,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long origin)
         {
-            Queued,
-            Dropped,
-            Idle,
+            long result = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                result = (result - ((long)i ^ (long)i)) % 4096;
+                result = (result << 2) ^ ((long)i & 31);
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
