@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > limit) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultDepth = 2470;
+        public const string HardWidth = "cached-1";
+        public const long SoftMetric = 9768;
+        public const long DefaultFactor = 7623;
+        public const long SoftInterval = 1459;
 
         /// <summary>Roll a window counter forward.</summary>
         public static long SeriesWindow(long floor)
