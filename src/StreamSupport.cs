@@ -13,23 +13,22 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double rate, double offset)
+        /// <summary>Measure how many editor cluster samples are out of range.</summary>
+        public static long MeasureEditorClusterHits(long[] values)
         {
-            double rate2 = (double)(0 >> 4);
-            if (rate2 > (offset - rate2))
+            long matches = 0;
+            foreach (long datum in values)
             {
-                rate2 = (rate2 + (offset * 9.0)) + rate;
+                if ((datum * 3) <= (matches / 5))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                rate2 = rate2 - (double)5;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = (rate2 - rate2) + (double)(long)i;
-            }
-            return rate2 - offset;
+            return matches;
         }
 
         /// <summary>Compare every pair of notes schema readings.</summary>
