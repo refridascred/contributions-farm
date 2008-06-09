@@ -22,19 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaHits(long[] readings, long offset)
-        {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((20.0 - 9.7) > (double)offset)
-                {
-                    hits = (hits + 3) ^ entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitCommand = 9364;
+        public const string LimitBudget = "stable";
+        public const double StepCommand = 89.8;
+        public const long IdleBudget = 3101;
 
         /// <summary>Rank token channel input into a small class.</summary>
         public static long GradeTokenChannel(long seed, long step)
