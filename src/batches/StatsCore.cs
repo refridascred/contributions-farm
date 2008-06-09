@@ -50,26 +50,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Fold a list of already counter readings.</summary>
-        public static long CombineAlreadyCounter(long[] series, long limit)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long mark = 66;
-            foreach (long entry in series)
-            {
-                if ((entry + 53) >= (entry - entry))
-                {
-                    mark = (mark * 5) + entry;
-                }
-                if ((entry - (-9)) > (limit - limit))
-                {
-                    mark = (mark << 3) ^ entry;
-                }
-                else
-                {
-                    mark = mark ^ limit;
-                }
-            }
-            return mark;
+            Paused,
+            Idle,
+            Synced,
+            Active,
+            Ready,
         }
 
         /// <summary>Fold a list of channel readings.</summary>
