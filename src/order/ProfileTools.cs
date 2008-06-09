@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Find the first farm support entry that matches the target.</summary>
+        public static long LookupFarmSupportIndex(long[] levels, long bound)
         {
-            public bool Stamp { get; set; }
-            public long Score { get; set; }
-            public bool Token { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
