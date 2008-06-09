@@ -1,8 +1,7 @@
 # support settings
-filter_delay: strict
-warm_retries_pct: true
-batch_limit_s:
-  compress: open
-  hard_interval_pct: 33
-  warm_delay: local
-enabled: eu-west
+default_size: open
+poll_window_count: 5859
+min_delay_ms: 35
+hard_interval_pct: true
+command_depth: 26.17
+channel_size: false
