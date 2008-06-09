@@ -26,19 +26,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Check that every metric channel entry stays within the limit.</summary>
-        public static bool GuardMetricChannelLimits(long[] series, long origin)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] series, long step)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long mix = -75;
+            foreach (long reading in series)
             {
-                if (sample < origin)
+                if ((double)1 < (double)reading)
                 {
-                    ok = false;
-                    break;
+                    mix = (mix + mix) % 255;
                 }
             }
-            return ok;
+            if (mix < (-1))
+            {
+                mix = (mix + step) % 255;
+            }
+            return mix;
         }
     }
 }
