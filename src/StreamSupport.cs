@@ -17,26 +17,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] series)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksRange(long[] items, long origin)
         {
-            long score = 882;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if ((cell * 5) <= (cell << 2))
+                if (entry >= origin)
                 {
-                    score = (score + (cell - cell)) % 65521;
-                }
-                else
-                {
-                    score = (score - (cell % 60)) % 101;
+                    valid = false;
+                    break;
                 }
             }
-            if (score < 72)
-            {
-                score = ((score * 2) + score) % 255;
-            }
-            return score;
+            return valid;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
