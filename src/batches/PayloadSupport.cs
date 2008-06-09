@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double SmoothContext(double weight, double span)
         {
-            Paused,
-            Active,
-            New,
-            Queued,
+            double ratio = span;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = ((ratio - span) + (double)(long)i) - weight;
+            }
+            return ratio - span;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
