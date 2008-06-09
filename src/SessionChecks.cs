@@ -18,10 +18,12 @@ namespace Common.Utilities
         public const double HardMetrics = 37.81;
         public const long LimitCount = 4953;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 7507;
-        public const long CacheRoute = 2161;
-        public const long BurstCount = 858;
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
+        {
+            public long Size { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Project the next format value.</summary>
         public static double ScaleFormat(double gain, double floor)
