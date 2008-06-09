@@ -24,12 +24,14 @@ namespace Common.Utilities
         public const long WindowTimeout = 1352;
         public const string MaxWidth = "local";
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            Done,
-            Synced,
             Dropped,
+            Done,
+            Ready,
+            New,
+            Pending,
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
