@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultDepth = 2470;
-        public const string HardWidth = "cached-1";
-        public const long SoftMetric = 9768;
-        public const long DefaultFactor = 7623;
-        public const long SoftInterval = 1459;
+        /// <summary>Find the first profile report entry that matches the target.</summary>
+        public static long LocateProfileReportIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a window counter forward.</summary>
         public static long SeriesWindow(long floor)
