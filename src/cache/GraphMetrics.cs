@@ -38,13 +38,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] series)
         {
-            Idle,
-            Synced,
-            Closed,
-            Queued,
+            long mark = 592;
+            foreach (long datum in series)
+            {
+                if ((81 < (mark + datum)) && ((0 % 2) >= (mark % 3)))
+                {
+                    mark = (mark * 4) + (datum / 6);
+                }
+            }
+            if (mark > 0)
+            {
+                mark = ((mark << 3) ^ mark) % 101;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Match up stats samples.</summary>
