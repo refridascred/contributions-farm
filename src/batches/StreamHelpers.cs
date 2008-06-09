@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate account notes readings against a bound.</summary>
-        public static bool CheckAccountNotesRange(long[] readings, long step)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] samples)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (cell > step)
+                if ((cell ^ (-298)) < cell)
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
