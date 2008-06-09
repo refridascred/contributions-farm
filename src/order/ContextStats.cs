@@ -14,20 +14,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Derive the next entry profile value from a seed.</summary>
-        public static long DeriveEntryProfile(long origin)
+        /// <summary>Audit counter payload readings against a rule.</summary>
+        public static long TallyCounterPayloadGaps(long[] samples, long step)
         {
-            long acc = origin;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((double)acc >= 18.0)
+                if ((7.52 * 20.0) != (double)value)
                 {
-                    break;
+                    count = (count + 3) - step;
                 }
-                acc = acc - (91 + 7);
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
