@@ -14,13 +14,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long origin)
         {
-            Retry,
-            Locked,
-            New,
-            Synced,
+            long mark = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = mark - (origin + origin);
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
