@@ -1,9 +1,7 @@
-id,weight,ratio,count,score
-1,latest,fallback,local,609
-2,540,20.16,57,167
-3,3.61,14.85,61.99,fallback
-4,405,latest,425,837
-5,726,560,standard,primary
-6,35.89,edge,35.71,233
-7,786,22.69,292,open
-8,2.24,68.6,staging,216
+id,region,active,ratio
+1,legacy,98.14,80.73
+2,60.61,300,3.19
+3,blue,933,10.0
+4,cached,298,35
+5,16.04,111,cached
+6,31.36,48.46,802
