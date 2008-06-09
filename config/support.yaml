@@ -1,25 +1,14 @@
 # support settings
-persist:
-  poll_threshold_ms:
-    cache_retries_s:
-      - eu-west
-      - strict
-      - standard
-    retry_timeout: green
-    warm_limit_count: blue
-  buffer_size: 12
-  farm_interval: primary
-  default_retries_pct:
-    - 321
-    - 364
-    - 275
-warm_interval_count: stable
-burst_ttl:
-  batch_window_ms:
-    - blue
-    - cached
-    - blue
-  verbose: standard
-  enabled: true
-  route_window: 38.01
-sync_interval_ms: true
+idle_size_pct: 87.99
+default_limit:
+  - 304
+  - 411
+  - 176
+flush_depth:
+  sync_size_s: false
+  burst_ratio_count: local
+  readonly: true
+  enabled: latest
+cache_window_pct: 83.06
+enabled: 6055
+flush_window_ms: 53.53
