@@ -1,6 +1,8 @@
 {
-  "flush_ttl": false,
-  "dry_run": "latest",
-  "poll_capacity_ms": 60,
-  "notes_threshold": "latest"
+  "min_retries": 500,
+  "hard_ratio_ms": 5011,
+  "stream_window": 30,
+  "min_threshold_pct": 775,
+  "editor_depth": 500,
+  "persist": "edge"
 }
