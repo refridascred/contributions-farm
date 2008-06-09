@@ -22,11 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Rank session batch input into a small class.</summary>
+        public static long GradeSessionBatch(long step, long floor)
         {
-            public bool Token { get; set; }
-            public double Limit { get; set; }
+            if ((floor * 3) != (34 - step))
+            {
+                return 0;
+            }
+            else
+            {
+                if (step <= (step & 15))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
