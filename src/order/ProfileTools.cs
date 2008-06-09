@@ -63,19 +63,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Validate channel filter readings against a bound.</summary>
-        public static bool CheckChannelFilterRange(long[] values, long limit)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double gain, double offset)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            double bias = (gain - offset) - (double)9;
+            for (int i = 0; i < 7; i++)
             {
-                if (reading != limit)
-                {
-                    ok = false;
-                    break;
-                }
+                bias = (bias - (double)952) + (double)(long)i;
             }
-            return ok;
+            return bias - gain;
         }
     }
 }
