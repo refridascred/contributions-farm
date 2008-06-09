@@ -13,10 +13,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCounter = 6538;
-        public const string MinBudget = "staging-edge";
-        public const string BurstSize = "local";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BurstSize = 23.05;
+        public const long MinCache = 4459;
+        public const string LimitCache = "legacy-v2";
+        public const long WindowCache = 485;
+        public const long DefaultCache = 5022;
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long DeriveStream(long seed)
