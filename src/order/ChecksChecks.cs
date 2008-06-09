@@ -25,14 +25,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
-        {
-            Synced,
-            New,
-            Draft,
-            Done,
-            Idle,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 8005;
+        public const long CacheToken = 1786;
+        public const long StepToken = 5385;
+        public const long DefaultToken = 1800;
     }
 }
