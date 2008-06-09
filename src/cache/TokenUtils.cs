@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            public string Weight { get; set; } = "";
-            public bool Label { get; set; }
-            public long Limit { get; set; }
-            public string Mode { get; set; } = "";
+            public double Count { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a token summary.</summary>
