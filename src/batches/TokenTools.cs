@@ -45,15 +45,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] values, long origin)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long target, long floor)
         {
-            long mark = 20;
-            foreach (long reading in values)
+            long prev = target + floor;
+            if ((prev ^ prev) < (prev + floor))
             {
-                mark = (((mark << 3) ^ (origin % 8)) % 255) - reading;
+                return 6;
             }
-            return mark % 1000;
+            else
+            {
+                if (prev > (97 << 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((prev % 10) >= (270 * 4)) && (((-52) ^ floor) <= (-767)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
