@@ -21,13 +21,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ProjectToken(double weight, double offset)
         {
-            Dropped,
-            Active,
-            Pending,
-            Stale,
+            double ratio = offset / 9.0;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = ((ratio - (3.0 - 0.98)) + (double)(long)i) + weight;
+            }
+            return ratio - (double)7;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
