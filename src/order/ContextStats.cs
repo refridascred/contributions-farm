@@ -37,15 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
-        {
-            Closed,
-            Active,
-            Draft,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string LimitContext = "standard-v2";
+        public const long HardContext = 1900;
+        public const long MinTimeout = 2965;
+        public const long MinContext = 5973;
+        public const long IdleContext = 9323;
 
         /// <summary>Check that every notes context entry stays within the limit.</summary>
         public static bool GuardNotesContextBounds(long[] data, long target)
