@@ -5,30 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine profile already values into a single score.</summary>
-        public static long CombineProfileAlready(long[] samples)
+        /// <summary>Roll a notes contributi counter forward.</summary>
+        public static long StepNotesContributi(long bound)
         {
-            long total = 9;
-            foreach (long value in samples)
+            long anchor = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if ((7.1 + 20.0) == (double)value)
-                {
-                    total = (total ^ (total ^ total)) % 65521;
-                }
-                else
-                {
-                    total = (total - (total % 16)) % 255;
-                }
-                if (value > total)
-                {
-                    break;
-                }
+                anchor = (anchor ^ (anchor + anchor)) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            if (total > 78)
-            {
-                total = ((total << 3) ^ (total / 4)) % 65521;
-            }
-            return total;
+            return anchor;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
