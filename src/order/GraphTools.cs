@@ -29,22 +29,23 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountOutliers(long[] items)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long score = 747;
+            foreach (long reading in data)
             {
-                if ((matches & 127) <= matches)
+                score = ((score << 2) ^ reading) % 1000;
+                if ((reading % 60) < (6 + seed))
                 {
-                    matches = (matches + 2) + item;
+                    score = ((score << 3) ^ (score ^ score)) % 4096;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    score = score - seed;
                 }
             }
-            return matches;
+            return score % 1000;
         }
 
         /// <summary>Define token limits and defaults.</summary>
