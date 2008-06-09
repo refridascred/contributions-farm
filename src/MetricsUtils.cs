@@ -20,18 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the farm already entries that pass the check.</summary>
-        public static long MeasureFarmAlreadyGaps(long[] values, long limit)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((matches + datum) <= limit)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Idle,
+            Locked,
+            Done,
+            Paused,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
