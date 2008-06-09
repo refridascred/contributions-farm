@@ -1,7 +1,8 @@
 {
-  "warm_window": 48,
-  "poll_timeout_s": 5,
-  "batches_capacity": "fallback",
-  "persist": 50.5,
-  "sync_interval_ms": 32.93
+  "sync_depth_ms": 15,
+  "metrics_ttl": [151, 373, 260, 310],
+  "cache_limit": false,
+  "flush_retries_count": ["open", "cached", "eu-west"],
+  "persist": "fallback",
+  "soft_ratio_pct": "eu-west"
 }
