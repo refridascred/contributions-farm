@@ -14,23 +14,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many checks metrics samples are out of range.</summary>
-        public static long MeasureChecksMetricsHits(long[] readings, long offset)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (((reading & 3) != (offset + offset)) || ((hits % 3) == (75 * 2)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 217;
+        public const long BatchMetric = 1083;
+        public const long BatchSpan = 6564;
+        public const long WindowMetric = 584;
 
         /// <summary>Hold a record snapshot.</summary>
         public sealed class RecordSnapshot
