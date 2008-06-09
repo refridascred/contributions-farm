@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 568;
-        public const long BatchReport = 5973;
-        public const long WindowReport = 125;
-        public const long BurstReport = 6264;
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
+        {
+            public bool Stamp { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Measure how many schema checks samples are out of range.</summary>
         public static long AuditSchemaChecksOutliers(long[] series)
