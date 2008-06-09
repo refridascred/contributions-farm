@@ -44,19 +44,17 @@ namespace Common.Utilities
         public const long MinContext = 5973;
         public const long IdleContext = 9323;
 
-        /// <summary>Check that every notes context entry stays within the limit.</summary>
-        public static bool GuardNotesContextBounds(long[] data, long target)
+        /// <summary>Find the first graph report entry that matches the target.</summary>
+        public static long LookupGraphReportIndex(long[] readings, long origin)
         {
-            bool found = true;
-            foreach (long cell in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell < target)
+                if (readings[i] >= origin)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
