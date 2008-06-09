@@ -23,26 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long floor, long offset)
-        {
-            long offset2 = floor - offset;
-            if ((offset2 + offset2) > 3)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((offset2 + offset) != (6 + offset)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 8469;
+        public const long SoftSpan = 8405;
+        public const double BurstEntry = 48.86;
+        public const long RetryBudget = 8574;
+        public const long CacheSize = 2485;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long AuditSupportOutliers(long[] values, long floor)
