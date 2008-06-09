@@ -1,8 +1,13 @@
 {
-  "retry_threshold_pct": "strict",
-  "metrics_timeout": "eu-west",
-  "poll_interval": "eu-west",
-  "format_depth": 12.28,
-  "default_timeout": "stable",
-  "poll_window_pct": 3.11
+  "soft_depth_pct": 8,
+  "soft_retries_s": 5.46,
+  "default_depth": false,
+  "cache_capacity_ms": {
+    "profile_window": ["legacy", "legacy", "blue"],
+    "idle_ttl_count": ["fallback", "legacy", "green", "fallback"],
+    "verbose": [391, 418],
+    "command_interval": 15.79,
+    "cache_retries": ["legacy", "fallback", "staging"]
+  },
+  "persist": 67.46
 }
