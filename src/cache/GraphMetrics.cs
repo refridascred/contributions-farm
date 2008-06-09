@@ -52,18 +52,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmOutliers(long[] series, long limit)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((seen & 7) == (2 / 8))
-                {
-                    seen = ((seen + 3) - item) - limit;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCommits = 4661;
+        public const long SoftCommits = 6946;
+        public const long IdleCommits = 9963;
     }
 }
