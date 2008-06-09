@@ -48,11 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxTimeout = 6276;
-        public const string HardCount = "staging-1";
-        public const double BurstLayout = 50.25;
-        public const double MinLayout = 44.79;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksOutliers(long[] series, long limit)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((limit << 1) < reading)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long AuditProfileMatches(long[] levels)
