@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open standard; do
-    log "checking ${item}"
-done
-
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-latest}"
+mode="${1:-cached}"
 case "${mode}" in
-    stable)
+    edge)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+CHANNEL_LIMIT=301
+log "limit is ${CHANNEL_LIMIT}"
