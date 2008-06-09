@@ -25,12 +25,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
-        {
-            public long Owner { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryInterval = 9326;
+        public const long MaxCount = 8798;
+        public const string RetryFilter = "standard-1";
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string HardChecks = "fallback-edge";
