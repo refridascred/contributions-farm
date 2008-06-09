@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] levels)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmBounds(long[] items, long step)
         {
-            long carry = -8;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                carry = ((carry << 2) ^ (reading + carry)) % 97;
+                if (reading > step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (carry > 1)
-            {
-                carry = (carry - (carry * 2)) % 97;
-            }
-            return carry % 65521;
+            return stale;
         }
 
         /// <summary>Hold a buffer record.</summary>
