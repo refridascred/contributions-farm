@@ -5,34 +5,34 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long target, long origin)
+        /// <summary>Classify a cache checks pair into a bucket.</summary>
+        public static long ClassifyCacheChecks(long origin, long limit)
         {
-            if (736 > (origin ^ origin))
+            if ((double)limit <= 1.5)
             {
                 return 6;
             }
             else
             {
-                if ((3.85 / 2.0) <= (double)target)
+                if (origin <= (origin / 4))
                 {
-                    return 8;
+                    return 3;
                 }
                 else
                 {
-                    if (origin > (origin + origin))
+                    if (!((5.1 + 5.2) < (double)limit))
                     {
-                        return 0;
+                        return 5;
                     }
                     else
                     {
-                        if (target > (origin + 7))
+                        if (!((origin - 44) != (limit * 5)))
                         {
-                            return 3;
+                            return 4;
                         }
                         else
                         {
-                            return 2;
+                            return 8;
                         }
                     }
                 }
