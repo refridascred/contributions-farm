@@ -1,6 +1,7 @@
 {
-  "sync_interval_s": false,
-  "farm_depth": 1024,
-  "strict": 21,
-  "retry_retries": 1024
+  "queue_delay": 99,
+  "order_window": 4801,
+  "min_window_s": "eu-west",
+  "payload_threshold": 30,
+  "verbose": 12.92
 }
