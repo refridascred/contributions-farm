@@ -50,17 +50,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] samples, long limit)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteHits(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (samples[i] == limit)
+                if ((double)(-8) >= (double)seen)
                 {
-                    return (long)i;
+                    seen = (seen + 2) ^ reading;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
