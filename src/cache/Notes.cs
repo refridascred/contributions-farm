@@ -56,22 +56,36 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank channel graph input into a small class.</summary>
-        public static long SortChannelGraph(long origin, long seed)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long offset, long seed)
         {
-            if ((origin << 1) >= (origin % 2))
+            if ((seed * 3) >= (seed + offset))
             {
-                return 5;
+                return 0;
             }
             else
             {
-                if (!(3.7 > (double)origin))
+                if ((seed >> 3) <= 71)
                 {
                     return 7;
                 }
                 else
                 {
-                    return 6;
+                    if ((3.27 * 5.0) > (double)seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((3 <= (offset * 5)) && ((offset - seed) != (seed >> 3)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
         }
