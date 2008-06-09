@@ -22,19 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate filter queue readings against a bound.</summary>
-        public static bool ValidateFilterQueueRange(long[] items, long bound)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long step)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long total = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (entry > bound)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    ok = false;
-                    break;
+                    total = ((total ^ (total >> 3)) % 255) ^ (long)i2;
                 }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Rank token channel input into a small class.</summary>
