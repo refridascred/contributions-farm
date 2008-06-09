@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            Active,
-            Queued,
-            Pending,
-            Dropped,
+            public bool Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the tools status values.</summary>
