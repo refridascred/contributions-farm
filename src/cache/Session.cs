@@ -27,19 +27,17 @@ namespace Common.Utilities
         public const long LimitEntry = 4940;
         public const long LimitFactor = 5899;
 
-        /// <summary>Validate order graph readings against a bound.</summary>
-        public static bool GuardOrderGraphBounds(long[] items, long floor)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] readings, long limit)
         {
-            bool found = true;
-            foreach (long entry in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry <= floor)
+                if (readings[i] >= limit)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Roll a route counter forward.</summary>
