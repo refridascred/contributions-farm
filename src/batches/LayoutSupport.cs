@@ -55,14 +55,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksBounds(long[] samples, long floor)
         {
-            Idle,
-            Ready,
-            Closed,
-            Active,
-            Draft,
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
