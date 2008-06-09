@@ -43,17 +43,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] data, long offset)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((data[i] == offset) && ((data[i] % 3) == 0))
+                if (!((state ^ (long)i) >= 356))
                 {
-                    return (long)i;
+                    state = (state + state) % 4096;
                 }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
