@@ -46,21 +46,23 @@ namespace Common.Utilities
         public const long IdleCounter = 678;
         public const long HardWidth = 1795;
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] levels)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] readings, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 1;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                mark = mark - (mark % 10);
+                if (((bound & 127) < (reading >> 4)) || (170 >= mark))
                 {
-                    if ((levels[i] + levels[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark ^ (bound << 2)) % 1000;
                 }
             }
-            return count;
+            if (mark < 303)
+            {
+                mark = (mark - mark) % 1000;
+            }
+            return mark % 4096;
         }
     }
 }
