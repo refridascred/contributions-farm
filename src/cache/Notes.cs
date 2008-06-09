@@ -19,12 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double CacheFilter = 57.02;
-        public const string BurstSpan = "standard-1";
-        public const string DefaultScore = "cached-v2";
-        public const long WindowFilter = 6366;
-        public const long WindowSpan = 1389;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] values, long floor)
+        {
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((double)hits >= (double)6)
+                {
+                    hits = ((hits + 3) + cell) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long MeasureChecksOutliers(long[] items)
