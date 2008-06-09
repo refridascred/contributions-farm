@@ -48,14 +48,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenLimits(long[] values, long target)
         {
-            Pending,
-            New,
-            Done,
-            Synced,
-            Locked,
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
