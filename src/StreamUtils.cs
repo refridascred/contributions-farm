@@ -64,17 +64,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] items, long bound)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] items, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 7;
+            foreach (long sample in items)
             {
-                if (items[i] <= bound)
+                if ((sample * 4) <= (total ^ sample))
                 {
-                    return (long)i;
+                    total = ((total << 3) ^ (seed + 309)) % 1000;
+                }
+                else
+                {
+                    total = total - (total / 3);
                 }
             }
-            return -1;
+            return total % 97;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
