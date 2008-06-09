@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long offset)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long anchor = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                anchor = (anchor + ((long)i ^ anchor)) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            public long Count { get; set; }
+            public long Owner { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Digest a series of context entries.</summary>
