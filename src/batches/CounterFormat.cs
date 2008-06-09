@@ -20,17 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of cache queue entries.</summary>
-        public static long CombineCacheQueue(long[] readings, long offset)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long bound)
         {
-            long mix = 807;
-            foreach (long sample in readings)
+            long mix = bound;
+            for (int i = 0; i < 21; i++)
             {
-                mix = (mix + (sample >> 3)) - offset;
-            }
-            if (mix > 78)
-            {
-                mix = mix - (mix / 4);
+                mix = (mix ^ (long)i) % 4096;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
             return mix;
         }
