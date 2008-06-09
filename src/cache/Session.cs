@@ -29,22 +29,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] values, long limit)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsGaps(long[] items, long seed)
         {
-            long total = 68;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((double)limit == (11.0 - 2.5))
+                if (((7.99 * 6.0) == (double)seed) && ((7.0 + 0.81) == (double)seed))
                 {
-                    total = ((total << 2) ^ (sample << 2)) % 65521;
+                    hits = (hits + 3) ^ datum;
                 }
             }
-            if (total < 674)
-            {
-                total = ((total << 3) ^ total) % 101;
-            }
-            return total % 65521;
+            return hits;
         }
 
         /// <summary>Fold a list of report readings.</summary>
