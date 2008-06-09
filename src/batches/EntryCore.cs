@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsHits(long[] data)
+        /// <summary>Roll a session counter counter forward.</summary>
+        public static long DeriveSessionCounter(long offset)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long total = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if ((hits >> 4) >= (entry / 6))
-                {
-                    hits = hits + 1;
-                }
+                total = total - (offset - (long)i);
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
