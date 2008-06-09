@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > origin) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 3086;
+        public const double DefaultEntry = 84.46;
+        public const long MinBudget = 4363;
+        public const long MinSize = 2485;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string HardBatch = "stable-edge";
