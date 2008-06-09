@@ -40,19 +40,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ProjectFilter(double scale, double span)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            double bias = (double)(446 - 6);
-            if (bias < scale)
-            {
-                bias = bias + (span / 6.0);
-            }
-            else
-            {
-                bias = bias + (span * 4.6);
-            }
-            return bias - 6.6;
+            Dropped,
+            Paused,
+            Done,
+            Locked,
         }
     }
 }
