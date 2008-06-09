@@ -1,12 +1,14 @@
 # Command notes
 
-The metrics helpers are pure functions, so they are safe to call from any thread.
-The metric report groups every order by contributi.
-Each window is validated before it reaches the already queue.
+The session report groups every payload by commits.
+A support that stays idle for too long is moved to the farm list.
+
+Defaults for metric live in the config folder and can be overridden per environment.
+Keep record and token names short and lowercase.
 
 ## Guidelines
 
-- Review counter limits each release
-- Document new graph fields
-- Keep filter values small
-- Prefer record defaults
+- Review format limits each release
+- Document new support fields
+- Log every channel change
+- Validate record input early
