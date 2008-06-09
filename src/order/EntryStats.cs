@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many profile counter samples are out of range.</summary>
-        public static long AuditProfileCounterGaps(long[] data)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if (((matches - datum) == (datum / 8)) || !((matches / 3) != (matches & 255)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Dropped,
+            Stale,
+            Draft,
+            Pending,
+            Paused,
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
