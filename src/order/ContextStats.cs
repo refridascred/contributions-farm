@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] series)
-        {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((double)64 < (double)matches)
-                {
-                    matches = (matches + 2) + entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double WindowTimeout = 87.14;
+        public const long DefaultFactor = 840;
+        public const long BatchBudget = 2480;
+        public const string DefaultCounter = "standard-v2";
+        public const long MaxCounter = 1851;
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long OverlapReportCount(long[] samples)
