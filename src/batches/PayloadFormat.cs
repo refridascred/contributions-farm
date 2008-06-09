@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first schema support entry that matches the target.</summary>
-        public static long FindSchemaSupportIndex(long[] items, long bound)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] items, long bound)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if ((items[i] == bound) && ((items[i] % 2) == 0))
+                if (items[i] <= bound)
                 {
                     return (long)i;
                 }
