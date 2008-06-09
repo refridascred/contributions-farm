@@ -28,13 +28,22 @@ namespace Common.Utilities
         public const long RetryFactor = 583;
         public const long HardFactor = 9615;
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountOutliers(long[] items)
         {
-            Synced,
-            Queued,
-            Paused,
-            Stale,
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((matches & 127) <= matches)
+                {
+                    matches = (matches + 2) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a record metric value against two limits.</summary>
