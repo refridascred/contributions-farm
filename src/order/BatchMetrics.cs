@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountGaps(long[] readings, long bound)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sample + matches) >= sample)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 2) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((data[i] - data[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Rank batches contributi input into a small class.</summary>
