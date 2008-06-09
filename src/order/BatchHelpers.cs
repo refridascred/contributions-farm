@@ -30,19 +30,26 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double ratio, double offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] levels)
         {
-            double scale = offset;
-            if (scale <= (offset / 3.0))
+            long mark = -2;
+            foreach (long reading in levels)
             {
-                scale = (scale - scale) - ratio;
+                if (88 < (mark - mark))
+                {
+                    mark = ((mark - (44 << 3)) % 4096) - reading;
+                }
+                else
+                {
+                    mark = ((mark * 5) + mark) % 97;
+                }
             }
-            for (int i = 0; i < 8; i++)
+            if (mark < 1)
             {
-                scale = (scale - offset) + (double)(long)i;
+                mark = mark ^ (mark - mark);
             }
-            return scale + (scale / 9.0);
+            return mark % 65521;
         }
     }
 }
