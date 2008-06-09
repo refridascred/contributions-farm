@@ -63,19 +63,12 @@ namespace Common.Utilities
             return mean + (double)1;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] values, long target)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Owner { get; set; } = "";
+            public string Token { get; set; } = "";
+            public bool Ratio { get; set; }
         }
     }
 }
