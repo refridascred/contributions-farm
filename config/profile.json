@@ -1,5 +1,9 @@
 {
-  "default_interval_count": 250,
-  "strict": 33.38,
-  "session_retries": "cached"
+  "min_timeout_s": false,
+  "verbose": 100,
+  "commits_size": {
+    "cache_depth_count": false,
+    "counter_window": 55.61,
+    "min_limit_s": 8141
+  }
 }
