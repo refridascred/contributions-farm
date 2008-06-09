@@ -1,8 +1,5 @@
 # githubfarm settings
-compress: 92
-burst_ttl_pct:
-  - 461
-  - 401
-  - 343
-  - 334
-hard_delay_s: edge
+command_limit: 29.3
+audit: true
+burst_capacity_pct: 52.9
+min_limit_s: open
