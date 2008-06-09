@@ -38,13 +38,12 @@ namespace Common.Utilities
         public const long LimitTimeout = 2944;
         public const double HardAccount = 5.86;
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
-            public long Limit { get; set; }
+            Idle,
+            Done,
+            Queued,
         }
     }
 }
