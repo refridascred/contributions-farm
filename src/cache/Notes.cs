@@ -19,19 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorOutliers(long[] levels)
-        {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((83 <= (reading ^ matches)) && ((reading ^ reading) != (matches + reading)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BurstSize = 36.11;
+        public const long SoftInterval = 198;
+        public const string MaxSize = "staging-1";
+        public const long HardStream = 8763;
+        public const long StepStream = 277;
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool CheckChannelLimits(long[] values, long offset)
