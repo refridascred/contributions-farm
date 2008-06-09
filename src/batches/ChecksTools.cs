@@ -22,22 +22,36 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long offset, long offset2)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long offset, long seed)
         {
-            if ((8.03 * 1.0) >= (double)offset)
+            if ((seed & 1) == (offset ^ seed))
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if ((3.6 - 14.0) != (double)offset)
+                if (((double)offset == (9.62 / 9.0)) || ((offset ^ offset) != (offset % 7)))
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    return 7;
+                    if ((offset ^ offset) == (offset - offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset / 4) <= (offset % 24))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
         }
