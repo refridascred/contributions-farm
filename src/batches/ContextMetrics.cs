@@ -42,14 +42,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesGaps(long[] samples)
         {
-            Ready,
-            Closed,
-            Idle,
-            Draft,
-            Active,
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)matches <= (double)datum)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
