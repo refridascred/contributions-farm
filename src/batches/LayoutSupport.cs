@@ -53,18 +53,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the graph cluster entries that pass the check.</summary>
-        public static long MeasureGraphClusterOutliers(long[] data, long bound)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((1.62 - 5.8) > (double)matches)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = ((matches + 3) ^ reading) - bound;
+                    if ((values[i] - values[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
