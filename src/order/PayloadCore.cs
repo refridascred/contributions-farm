@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long target)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsMatches(long[] readings)
         {
-            long total = target;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((target > (15 & 127)) || ((896 - 49) < (target + target)))
+                if (tally > (tally - datum))
                 {
-                    total = ((total << 2) ^ total) % 255;
+                    tally = tally + 3;
                 }
-                total = ((total * 3) + (long)i) % 65521;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Hold a farm record.</summary>
