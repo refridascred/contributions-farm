@@ -13,25 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long offset, long limit)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsMatches(long[] items)
         {
-            long step = offset ^ limit;
-            if ((1 - step) >= offset)
+            long matches = 0;
+            foreach (long value in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((50 / 6) > (step + 158))
+                if ((value % 100) > (matches % 5))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the session mode values.</summary>
