@@ -1,12 +1,8 @@
 # githubfarm settings
-account_retries:
-  warm_ratio: latest
-  dry_run: true
-  max_capacity_count: strict
-  buffer_timeout:
-    - 441
-    - 291
-    - 247
-command_delay: 2328
-hard_depth_count: fallback
-verbose: edge
+cache_depth_s: 22.42
+cache_limit_ms: latest
+metrics_limit:
+  - 474
+  - 43
+burst_ratio_ms: false
+idle_capacity: 53.0
