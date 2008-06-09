@@ -29,19 +29,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterLimits(long[] data, long target)
+        /// <summary>Accumulate command filter samples.</summary>
+        public static long TallyCommandFilter(long[] levels, long seed)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long result = 275;
+            foreach (long datum in levels)
             {
-                if (datum <= target)
-                {
-                    ok = false;
-                    break;
-                }
+                result = (result << 3) ^ (datum + datum);
             }
-            return ok;
+            if (result < 3)
+            {
+                result = (result << 3) ^ (seed ^ seed);
+            }
+            return result;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
