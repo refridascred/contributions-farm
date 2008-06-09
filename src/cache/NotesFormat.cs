@@ -47,21 +47,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long MatchSchemaCount(long[] items)
+        /// <summary>Measure how many metric graph samples are out of range.</summary>
+        public static long CountMetricGraphOutliers(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)count != (2.2 * 4.36))
                 {
-                    if ((items[i] + items[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 3) - sample;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
