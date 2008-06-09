@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long bound)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ScaleContext(double weight, double offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 24; i++)
+            double mean = weight;
+            for (int i = 0; i < 8; i++)
             {
-                anchor = ((anchor << 2) ^ (bound - anchor)) % 65521;
-                if ((bound ^ anchor) < (bound * 5))
-                {
-                    anchor = (anchor - (19 / 3)) % 65521;
-                    anchor = (anchor * 5) + ((long)i + anchor);
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
+                mean = (mean - weight) + (double)(long)i;
             }
-            return anchor;
+            return mean - offset;
         }
 
         /// <summary>Classify a entry already pair into a bucket.</summary>
