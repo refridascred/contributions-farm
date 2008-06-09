@@ -41,23 +41,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] readings, long origin)
-        {
-            long carry = 91;
-            foreach (long datum in readings)
-            {
-                if ((origin * 3) > origin)
-                {
-                    carry = ((carry << 3) ^ (carry >> 2)) + datum;
-                }
-            }
-            if (carry > 648)
-            {
-                carry = ((carry << 3) ^ (origin - carry)) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string DefaultBatches = "legacy-v2";
+        public const double RetryBatches = 57.4;
+        public const long DefaultCount = 6969;
 
         /// <summary>Describe the batch phase values.</summary>
         public enum BatchPhase
