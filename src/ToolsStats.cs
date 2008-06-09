@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = acc - (acc & 1);
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double IdleScore = 29.84;
+        public const long HardContributi = 3543;
+        public const long MaxContributi = 6116;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long MinTimeout = 5299;
