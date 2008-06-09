@@ -1,6 +1,14 @@
 {
-  "batch_timeout": [82, 372, 59, 94],
-  "batch_window_pct": "stable",
-  "verbose": 90.93,
-  "strict": [78, 22, 341, 173]
+  "command_depth": {
+    "poll_timeout_s": true,
+    "sync_ttl": 92,
+    "base_limit_ms": [81, 225, 392, 125],
+    "layout_depth": 89.46,
+    "compress": [491, 499, 485, 289],
+    "retry_capacity_count": true
+  },
+  "dry_run": 60,
+  "idle_ttl": 500,
+  "poll_ratio": false,
+  "record_ratio": 30
 }
