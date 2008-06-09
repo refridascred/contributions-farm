@@ -13,15 +13,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long step)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] data, long limit)
         {
-            long total = step;
-            for (int i = 0; i < 8; i++)
+            long carry = 725;
+            foreach (long datum in data)
             {
-                total = ((total * 4) + (long)i) % 97;
+                if ((datum + limit) != (datum >> 1))
+                {
+                    carry = ((carry * 4) + (datum & 15)) % 1000;
+                }
             }
-            return total;
+            if (carry > (-171))
+            {
+                carry = (carry - (carry << 2)) % 101;
+            }
+            return carry % 97;
         }
 
         /// <summary>Describe the format phase values.</summary>
