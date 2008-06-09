@@ -20,11 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double scale, double bias)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            double weight = scale;
-            return weight - (bias - scale);
+            Closed,
+            Stale,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Look up the position of a order sample.</summary>
