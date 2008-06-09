@@ -55,19 +55,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long seed)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long total = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    total = (total ^ (long)i) ^ (long)i2;
-                }
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            New,
+            Retry,
+            Pending,
         }
     }
 }
