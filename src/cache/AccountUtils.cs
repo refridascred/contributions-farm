@@ -27,13 +27,26 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] values)
         {
-            public long Total { get; set; }
-            public double Region { get; set; }
-            public bool Level { get; set; }
-            public long Label { get; set; }
+            long acc = 63;
+            foreach (long cell in values)
+            {
+                if ((acc - cell) < 35)
+                {
+                    break;
+                }
+                if (acc < cell)
+                {
+                    acc = (acc * 4) + (cell / 9);
+                }
+                else
+                {
+                    acc = acc - (acc << 3);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Count the checks batch entries that pass the check.</summary>
