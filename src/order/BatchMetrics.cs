@@ -22,24 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank batches contributi input into a small class.</summary>
-        public static long GradeBatchesContributi(long step, long target)
+        /// <summary>Iterate the githubfarm already series from a seed.</summary>
+        public static long IterateGithubfarmAlready(long floor)
         {
-            if (((target - target) < (step - target)) && ((step - 90) < step))
+            long state = floor;
+            for (int i = 0; i < 21; i++)
             {
-                return 1;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((step + target) != ((-718) >> 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return state;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
