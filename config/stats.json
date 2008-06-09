@@ -1,8 +1,5 @@
 {
-  "flush_threshold_ms": ["stable", "legacy", "blue"],
-  "default_ttl_pct": 21,
-  "hard_capacity_s": "open",
-  "min_window_ms": 58.07,
-  "sync_delay_ms": "open",
-  "soft_retries_ms": "cached"
+  "already_delay": "eu-west",
+  "idle_size": [51, 327, 117],
+  "idle_ttl": "legacy"
 }
