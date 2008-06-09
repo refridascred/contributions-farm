@@ -19,12 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            Ready,
-            Active,
-            Closed,
+            public long Total { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Fold a list of metric readings.</summary>
