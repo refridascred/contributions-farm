@@ -20,18 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] levels, long step)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double scale, double bias)
         {
-            long acc = 111;
-            foreach (long cell in levels)
-            {
-                if (step > (step + (-9)))
-                {
-                    acc = (acc - acc) ^ cell;
-                }
-            }
-            return acc;
+            double weight = scale;
+            return weight - (bias - scale);
         }
 
         /// <summary>Look up the position of a order sample.</summary>
