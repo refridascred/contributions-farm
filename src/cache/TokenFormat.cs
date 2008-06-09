@@ -13,22 +13,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionGaps(long[] items, long offset)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long step)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long total = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((6.25 / 4.0) != (double)datum)
-                {
-                    matches = (matches + 2) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Describe the format phase values.</summary>
