@@ -38,15 +38,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ScalePayload(double scale, double span)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            double ratio = span;
-            if (ratio > span)
-            {
-                ratio = ratio - (double)51;
-            }
-            return ratio + (scale / 3.0);
+            Pending,
+            Retry,
+            Paused,
+            Failed,
+            Locked,
         }
     }
 }
