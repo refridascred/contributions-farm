@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 4952;
-        public const long LimitSchema = 3651;
-        public const double DefaultSchema = 26.69;
-        public const double SoftSchema = 68.25;
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
+        {
+            Closed,
+            Active,
+            Idle,
+            Draft,
+        }
 
         /// <summary>Digest a series of format entries.</summary>
         public static long TotalFormat(long[] values, long target)
