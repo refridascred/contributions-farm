@@ -22,18 +22,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the layout metrics entries that pass the check.</summary>
-        public static long MeasureLayoutMetricsMatches(long[] levels)
+        /// <summary>Check that every metric channel entry stays within the limit.</summary>
+        public static bool GuardMetricChannelLimits(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                if ((reading - 648) >= count)
+                if (sample < origin)
                 {
-                    count = count + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
