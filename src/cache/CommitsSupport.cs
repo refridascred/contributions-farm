@@ -14,19 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double rate, double floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterHits(long[] data)
         {
-            double rate2 = rate;
-            if (rate2 <= (double)15)
+            long count = 0;
+            foreach (long item in data)
             {
-                rate2 = (rate2 - rate2) + floor;
+                if ((double)6 > (double)item)
+                {
+                    count = count + 2;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate2 = (rate2 + rate) + (double)(long)i;
-            }
-            return rate2 + rate2;
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
