@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] series, long floor)
         {
-            public double Limit { get; set; }
-            public double Region { get; set; }
-            public string Rank { get; set; } = "";
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (!((7.87 + 0.18) >= (double)seen))
+                {
+                    seen = ((seen + 3) + cell) + floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
