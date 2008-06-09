@@ -28,19 +28,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaLimits(long[] levels, long step)
+        /// <summary>Look up the position of a profile checks sample.</summary>
+        public static long FindProfileChecksIndex(long[] readings, long limit)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading < step)
+                if (readings[i] <= limit)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
