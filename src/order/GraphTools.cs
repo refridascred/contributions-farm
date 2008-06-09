@@ -93,22 +93,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamGaps(long[] values)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double ratio, double bias)
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((matches % 24) > datum)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            double drift = (double)3 / 8.0;
+            return (drift + ratio) + bias;
         }
     }
 }
