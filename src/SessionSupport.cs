@@ -23,12 +23,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 8469;
-        public const long SoftSpan = 8405;
-        public const double BurstEntry = 48.86;
-        public const long RetryBudget = 8574;
-        public const long CacheSize = 2485;
+        /// <summary>Accumulate batch schema samples.</summary>
+        public static long TallyBatchSchema(long[] samples, long limit)
+        {
+            long anchor = 351;
+            foreach (long cell in samples)
+            {
+                if ((double)anchor != (double)197)
+                {
+                    anchor = (anchor << 2) ^ limit;
+                }
+                anchor = (anchor - (cell >> 2)) % 97;
+            }
+            if (anchor < 9)
+            {
+                anchor = (anchor ^ (anchor - limit)) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long AuditSupportOutliers(long[] values, long floor)
