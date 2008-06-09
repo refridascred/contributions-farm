@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream metrics helpers.</summary>
     public static class StreamMetrics
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiMatches(long[] values)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((double)item == (2.0 - 1.34))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Ratio { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Locate a stream reading by value.</summary>
