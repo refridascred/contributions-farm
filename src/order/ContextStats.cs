@@ -23,12 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsOutliers(long[] levels)
         {
-            Stale,
-            Closed,
-            Locked,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((((double)tally == (2.4 / 8.0)) && (tally >= (tally >> 2))) && (((double)tally == (double)sample) || ((tally & 7) != (3 / 4))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
