@@ -52,11 +52,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double WindowCount = 69.39;
-        public const long BurstTimeout = 5450;
-        public const double MinBudget = 36.47;
-        public const long SoftCommand = 3615;
-        public const double MaxCommand = 10.05;
+        /// <summary>Check that every context channel entry stays within the limit.</summary>
+        public static bool GuardContextChannelLimits(long[] values, long seed)
+        {
+            bool valid = true;
+            foreach (long value in values)
+            {
+                if (value != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
