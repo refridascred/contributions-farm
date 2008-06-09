@@ -32,40 +32,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a metrics schema value against two limits.</summary>
-        public static long SortMetricsSchema(long bound, long step)
-        {
-            long step2 = bound + step;
-            if (step2 <= (step + (-9)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step << 2) < step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((step >> 4) < (76 + 64)) && ((step >> 1) >= step2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)bound > (2.0 + 0.84))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 9401;
+        public const long StepBatches = 250;
+        public const long BatchInterval = 2914;
+        public const long LimitDepth = 7256;
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long AuditSchemaHits(long[] items, long offset)
