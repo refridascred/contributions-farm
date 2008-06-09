@@ -29,15 +29,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long limit)
+        /// <summary>Combine payload token values into a single score.</summary>
+        public static long WeighPayloadToken(long[] data)
         {
-            long mark = limit;
-            for (int i = 0; i < 6; i++)
+            long state = 277;
+            foreach (long cell in data)
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                if (!((double)state < (2.4 + 2.0)))
+                {
+                    state = (state << 2) ^ (state & 255);
+                    continue;
+                }
+                state = (state * 2) + cell;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Hold a context entry.</summary>
