@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileHits(long[] levels)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long offset)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long state = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((reading >> 3) <= (reading % 100))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    hits = hits + 2;
+                    state = (state - offset) - (long)i2;
                 }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
