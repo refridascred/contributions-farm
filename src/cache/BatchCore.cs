@@ -58,12 +58,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
-        {
-            public long Region { get; set; }
-            public double Total { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheBudget = 8301;
+        public const long MinCount = 7124;
+        public const long BatchInterval = 9132;
+        public const long BaseMetrics = 2480;
     }
 }
