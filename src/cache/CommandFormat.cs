@@ -28,11 +28,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long offset)
         {
-            public long Offset { get; set; }
-            public bool Score { get; set; }
+            long score = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
