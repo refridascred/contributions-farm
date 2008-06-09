@@ -37,26 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate channel contributi samples.</summary>
-        public static long TallyChannelContributi(long[] series)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long sum = 1;
-            foreach (long entry in series)
-            {
-                if ((sum - sum) >= (entry - 9))
-                {
-                    sum = (sum + (706 >> 1)) % 97;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (sum & 127)) % 1000;
-                }
-            }
-            if (sum < 23)
-            {
-                sum = ((sum << 3) ^ sum) % 255;
-            }
-            return sum;
+            Synced,
+            Retry,
+            Stale,
+            Draft,
         }
 
         /// <summary>Describe the route level values.</summary>
