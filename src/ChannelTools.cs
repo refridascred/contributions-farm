@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double IdleSize = 63.27;
-        public const long IdleTimeout = 4284;
-        public const long MinAlready = 6005;
-        public const long CacheDepth = 1671;
-        public const double MaxTimeout = 32.69;
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
+        {
+            public long Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Accumulate schema samples.</summary>
         public static long TotalSchema(long[] values)
