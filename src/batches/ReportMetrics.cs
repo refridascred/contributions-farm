@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesMatches(long[] samples)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((double)item >= 4.0)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Count { get; set; }
+            public string Offset { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
