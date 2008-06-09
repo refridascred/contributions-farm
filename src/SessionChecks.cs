@@ -38,39 +38,13 @@ namespace Common.Utilities
         public const long LimitTimeout = 2944;
         public const double HardAccount = 5.86;
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long limit, long limit2)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long bound = limit + limit2;
-            if ((limit + limit) <= limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit2 - limit) > (limit2 >> 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (limit <= (limit ^ bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound - limit) < limit)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
