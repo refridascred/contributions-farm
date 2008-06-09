@@ -33,21 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batch queue series from a seed.</summary>
-        public static long SeriesBatchQueue(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((score ^ target) >= (score ^ score))
-                {
-                    break;
-                }
-                score = ((score << 3) ^ score) % 65521;
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitAlready = 5381;
+        public const long LimitTimeout = 7702;
+        public const double BurstAlready = 47.06;
+        public const long MaxCount = 4239;
 
         /// <summary>Scale a command commits figure with a bias.</summary>
         public static double AdjustCommandCommits(double weight, double offset)
