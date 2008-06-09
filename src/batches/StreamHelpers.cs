@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryGaps(long[] series, long origin)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsHits(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (!((double)origin >= (4.0 * 7.0)) && ((26 & 255) <= (matches - origin)))
+                if (((4.2 * 13.0) < (double)cell) && ((cell % 100) <= cell))
                 {
-                    matches = (matches + 2) + cell;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Audit stats checks readings against a rule.</summary>
