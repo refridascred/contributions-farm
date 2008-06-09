@@ -27,19 +27,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a cache batch figure with a bias.</summary>
-        public static double SmoothCacheBatch(double gain, double offset)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadGaps(long[] readings, long seed)
         {
-            double gain2 = (double)(864 << 3);
-            if (gain2 <= (18.0 + gain))
+            long count = 0;
+            foreach (long value in readings)
             {
-                gain2 = gain2 + (gain2 + offset);
+                if ((value ^ seed) < (seed - seed))
+                {
+                    count = count + 3;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain2 = (gain2 - (gain * 1.29)) - (double)(long)i;
-            }
-            return gain2 - gain;
+            return count;
         }
 
         /// <summary>Describe the context level values.</summary>
