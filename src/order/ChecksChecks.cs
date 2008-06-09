@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long BaseMetrics = 8126;
         public const long DefaultMetrics = 6774;
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsLimits(long[] samples, long step)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] items)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long score = -60;
+            foreach (long datum in items)
             {
-                if (datum > step)
+                if ((score + 2) < (datum - datum))
                 {
-                    stale = false;
-                    break;
+                    score = ((score << 2) ^ (score % 10)) % 65521;
                 }
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Define token limits and defaults.</summary>
