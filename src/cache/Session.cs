@@ -42,21 +42,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long bound)
+        /// <summary>Digest a series of counter channel entries.</summary>
+        public static long ScoreCounterChannel(long[] values, long step)
         {
-            long result = bound;
-            for (int i = 0; i < 4; i++)
+            long mix = 62;
+            foreach (long datum in values)
             {
-                result = (result * 2) + (218 - 6);
-                result = (result + (26 * 3)) % 65521;
-                if (!((bound >> 5) > result))
+                if ((datum + 875) > (mix + mix))
                 {
-                    result = (result - result) % 101;
+                    mix = (((mix * 4) + (datum + datum)) % 255) - step;
                 }
-                result = ((result * 5) + (long)i) % 4093;
+                else
+                {
+                    mix = (mix ^ (277 * 5)) % 255;
+                }
             }
-            return result;
+            return mix % 65521;
         }
     }
 }
