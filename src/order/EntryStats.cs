@@ -48,31 +48,13 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long target, long step)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            if (((5.0 / 3.0) > (5.69 / 4.0)) || ((double)step < (2.6 / 5.0)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target / 8) <= (step >> 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step & 63) >= (target >> 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Stale,
+            Idle,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
