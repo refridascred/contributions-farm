@@ -33,19 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowLimits(long[] samples, long target)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long seed)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long carry = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (datum < target)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Define window limits and defaults.</summary>
