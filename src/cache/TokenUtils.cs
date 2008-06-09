@@ -24,15 +24,14 @@ namespace Common.Utilities
         public const string LimitTools = "latest-v2";
         public const long BatchTools = 4082;
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double rate, double span)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            double ratio = (1.0 / 9.0) + (rate - span);
-            if (ratio >= rate)
-            {
-                ratio = ratio - (rate / 3.0);
-            }
-            return ratio - (double)4;
+            Done,
+            Paused,
+            Stale,
+            Synced,
+            Ready,
         }
     }
 }
