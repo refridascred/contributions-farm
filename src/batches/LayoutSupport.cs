@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double bias, double offset)
+        /// <summary>Compare every pair of report channel readings.</summary>
+        public static long PairReportChannelCount(long[] series)
         {
-            double scale = (double)(5 << 1);
-            if (scale <= offset)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = (scale - offset) - bias;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - offset) + (double)(long)i;
-            }
-            return scale + (double)74;
+            return tally;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
