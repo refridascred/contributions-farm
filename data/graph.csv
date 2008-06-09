@@ -1,10 +1,7 @@
-id,region,active,weight
-1,674,open,265
-2,eu-west,28,996
-3,67.51,80.74,eu-west
-4,742,blue,72.82
-5,20.91,standard,284
-6,752,62.57,71.68
-7,46.26,646,green
-8,937,42.46,41
-9,111,65.97,14
+id,owner,weight,state
+1,edge,171,staging
+2,312,strict,331
+3,461,cached,fallback
+4,86.78,13.9,341
+5,22.42,cached,790
+6,508,eu-west,staging
