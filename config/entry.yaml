@@ -1,20 +1,11 @@
 # entry settings
-flush_threshold_ms:
-  - 217
-  - 427
-  - 233
-  - 19
-soft_size_s: cached
-base_ttl: 78.26
-min_timeout_pct: local
-sync_threshold_ms:
-  cache_threshold: 63
-  flush_timeout_s: 1024
-  soft_depth:
-    enabled: 81
-    min_timeout_s: strict
-    base_window: 100
-    dry_run: eu-west
-    report_depth: green
-  account_delay: false
-cache_threshold: 28
+default_retries_s: cached
+warm_window: 6678
+persist:
+  flush_retries_ms: 29.22
+  sync_ttl: true
+  command_ratio: 91.74
+  editor_limit: 7.91
+  default_capacity_ms: latest
+  base_window: false
+default_depth_count: 1024
