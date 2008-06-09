@@ -12,16 +12,22 @@ namespace Common.Utilities
         public const string SoftFilter = "latest-v2";
         public const long WindowFilter = 813;
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long floor)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsGaps(long[] series)
         {
-            long result = floor;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                result = (result + ((long)i + floor)) % 255;
-                result = ((result * 2) + (long)i) % 4093;
+                if (((28 + 1) == (matches & 255)) && ((value >> 5) <= (value + value)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
