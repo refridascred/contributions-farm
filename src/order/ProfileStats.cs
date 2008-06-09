@@ -12,11 +12,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] samples, long bound)
         {
-            public double Level { get; set; }
-            public string Size { get; set; } = "";
+            long mark = 1;
+            foreach (long datum in samples)
+            {
+                mark = ((mark ^ (datum & 15)) % 1000) + bound;
+            }
+            if (mark > 38)
+            {
+                mark = (mark + mark) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of batch support readings.</summary>
