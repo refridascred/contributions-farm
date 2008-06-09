@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyHits(long[] series, long target)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((((seen + target) < (sample + target)) || ((seen & 7) == (5 * 5))) && ((target > (target - seen)) || ((target - 680) >= (seen / 7))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public bool Ratio { get; set; }
+            public double Size { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a token summary.</summary>
