@@ -28,12 +28,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleLevel = 6076;
-        public const double DefaultBudget = 18.9;
-        public const long WindowSize = 1455;
-        public const double StepBudget = 50.17;
-        public const long BaseStats = 4109;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardScore = 2166;
+        public const long BurstSpan = 111;
+        public const double BaseWidth = 4.96;
 
         /// <summary>Describe the cluster phase values.</summary>
         public enum ClusterPhase
