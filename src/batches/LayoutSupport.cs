@@ -53,11 +53,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            public bool Count { get; set; }
-            public long Level { get; set; }
+            Idle,
+            Ready,
+            Closed,
+            Active,
+            Draft,
         }
     }
 }
