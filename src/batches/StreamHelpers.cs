@@ -33,19 +33,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorBounds(long[] items, long seed)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] levels)
         {
-            bool found = true;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (item > seed)
+                if ((count << 3) == (item & 15))
                 {
-                    found = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
