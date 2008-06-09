@@ -33,21 +33,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] data)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((7.47 / 6.0) < (double)acc))
                 {
-                    if ((data[i] ^ data[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = acc + ((long)i ^ target);
                 }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Describe the queue mode values.</summary>
