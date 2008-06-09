@@ -1,6 +1,5 @@
 {
-  "verbose": 28.84,
-  "record_timeout": "open",
-  "context_interval": 60,
-  "readonly": false
+  "checks_depth": 30.4,
+  "order_capacity": "staging",
+  "notes_window": "eu-west"
 }
