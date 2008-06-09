@@ -48,12 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long target)
         {
-            Queued,
-            New,
-            Draft,
+            long anchor = target;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
     }
 }
