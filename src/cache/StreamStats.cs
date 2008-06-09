@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinTimeout = 4774;
-        public const long WindowBudget = 2871;
-        public const long CacheChecks = 4158;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderHits(long[] series, long seed)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (((value - seed) >= (value + (-6))) || ((tally << 3) > (99 & 3)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string IdleGithubfarm = "cached-v2";
