@@ -40,13 +40,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            public string Region { get; set; } = "";
-            public bool Count { get; set; }
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            public bool Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
