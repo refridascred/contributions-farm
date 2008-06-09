@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long CompareReportCount(long[] series)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Label { get; set; }
+            public bool Total { get; set; }
+            public long Stamp { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
