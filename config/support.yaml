@@ -1,6 +1,13 @@
 # support settings
-soft_depth: staging
-window_window: true
-batch_ratio_s: 2063
-base_threshold_s: 14.04
-default_depth_count: false
+audit:
+  hard_ttl_ms: true
+  buffer_interval: 11
+  min_size: green
+  cache_depth: eu-west
+  metric_timeout: staging
+  default_timeout_s:
+    - cached
+    - primary
+entry_retries: true
+readonly: 30
+idle_delay_pct: 66.81
