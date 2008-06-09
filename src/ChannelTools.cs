@@ -57,12 +57,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterGaps(long[] levels, long offset)
         {
-            New,
-            Retry,
-            Pending,
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (((1.0 * 3.0) == (double)offset) || ((double)hits > (1.06 - 9.7)))
+                {
+                    hits = (hits + 1) + reading;
+                }
+            }
+            return hits;
         }
     }
 }
