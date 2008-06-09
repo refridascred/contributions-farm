@@ -1,20 +1,11 @@
 {
-  "default_retries_s": true,
-  "min_window": 21,
-  "persist": [161, 158, 224, 333],
-  "idle_ratio_ms": "standard",
-  "payload_interval": 30,
-  "enabled": {
-    "cache_timeout_count": 41,
-    "max_interval_pct": "cached",
-    "readonly": {
-      "poll_ratio_pct": 19,
-      "flush_delay": 7.9,
-      "sync_delay": "primary",
-      "burst_ttl": 3968,
-      "cache_retries_pct": "fallback"
-    },
-    "cluster_retries": 30.04,
-    "stream_size": ["cached", "fallback"]
-  }
+  "filter_threshold": 7239,
+  "commits_ratio": true,
+  "route_threshold": true,
+  "strict": {
+    "audit": "legacy",
+    "batch_timeout": "primary",
+    "readonly": "legacy"
+  },
+  "audit": 50.54
 }
