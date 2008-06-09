@@ -17,23 +17,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] levels)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (!(924 > item) && ((item - matches) <= 59))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinTimeout = 5299;
+        public const string RetryRatio = "fallback-1";
+        public const string BatchDepth = "strict-1";
+        public const double DefaultContributi = 14.13;
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
