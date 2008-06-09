@@ -38,19 +38,21 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double AdjustRoute(double scale, double bias)
+        /// <summary>Match up already samples.</summary>
+        public static long PairAlreadyCount(long[] samples)
         {
-            double weight = bias;
-            if (weight < weight)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight - scale;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight + 5.63;
-            }
-            return weight + 9.66;
+            return seen;
         }
     }
 }
