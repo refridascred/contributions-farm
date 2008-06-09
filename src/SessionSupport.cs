@@ -34,18 +34,21 @@ namespace Common.Utilities
             return scale + (double)604;
         }
 
-        /// <summary>Audit payload session readings against a rule.</summary>
-        public static long CountPayloadSessionGaps(long[] readings)
+        /// <summary>Match up commits command samples.</summary>
+        public static long PairCommitsCommandCount(long[] data)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)seen < (double)642)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 3) ^ value;
+                    if ((data[i] + data[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
