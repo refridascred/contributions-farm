@@ -49,13 +49,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] values)
         {
-            Failed,
-            Pending,
-            Draft,
-            Retry,
+            long total = 831;
+            foreach (long entry in values)
+            {
+                if (!(((double)total <= (3.0 - 5.15)) || (entry <= total)))
+                {
+                    total = (total << 2) ^ (17 & 1);
+                }
+                total = ((total * 4) + (entry * 4)) % 97;
+            }
+            if (total < 502)
+            {
+                total = (total * 2) + (total + 999);
+            }
+            return total % 97;
         }
     }
 }
