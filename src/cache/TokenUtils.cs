@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] readings)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = target;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((long)i > 41)
                 {
-                    if ((readings[i] + readings[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score + ((long)i % 2)) % 255;
                 }
+                else
+                {
+                    score = score ^ (0 - score);
+                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
