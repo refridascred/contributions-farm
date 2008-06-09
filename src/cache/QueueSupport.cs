@@ -22,11 +22,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            public long Mode { get; set; }
-            public double Stamp { get; set; }
+            Draft,
+            Failed,
+            New,
+            Done,
+            Idle,
         }
     }
 }
