@@ -59,22 +59,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsMatches(long[] values, long bound)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((double)cell == (8.03 * 2.5))
-                {
-                    seen = (seen + 2) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            New,
+            Stale,
+            Retry,
+            Closed,
         }
 
         /// <summary>Compare every pair of filter stats readings.</summary>
