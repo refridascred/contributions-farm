@@ -43,19 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatRange(long[] data, long bound)
+        /// <summary>Fold a list of context stream readings.</summary>
+        public static long ScoreContextStream(long[] levels)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long acc = 0;
+            foreach (long entry in levels)
             {
-                if (reading >= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = (((acc << 3) ^ acc) % 101) - entry;
             }
-            return ready;
+            if (acc > 13)
+            {
+                acc = ((acc << 2) ^ (752 - acc)) % 255;
+            }
+            return acc % 1000;
         }
     }
 }
