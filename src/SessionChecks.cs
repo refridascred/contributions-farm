@@ -37,18 +37,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the batch checks entries that pass the check.</summary>
-        public static long AuditBatchChecksHits(long[] data)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long target)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long acc = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)seen <= (double)item)
+                if (!((acc + target) <= (target & 3)))
                 {
-                    seen = seen + 2;
+                    acc = (acc << 3) ^ 622;
+                    acc = ((acc * 3) + ((-7) / 8)) % 101;
                 }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    acc = (((acc << 2) ^ (target * 2)) % 65521) ^ (long)i2;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return seen;
+            return acc;
         }
     }
 }
