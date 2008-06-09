@@ -28,18 +28,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamOutliers(long[] readings)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (((-611) % 12) >= (matches % 12))
-                {
-                    matches = (matches + 1) ^ cell;
-                }
-            }
-            return matches;
+            public string Stamp { get; set; } = "";
+            public double Offset { get; set; }
+            public double Owner { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Combine farm values into a single score.</summary>
