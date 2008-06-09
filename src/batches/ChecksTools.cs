@@ -22,38 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long offset, long seed)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            if ((seed & 1) == (offset ^ seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)offset == (9.62 / 9.0)) || ((offset ^ offset) != (offset % 7)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset ^ offset) == (offset - offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset / 4) <= (offset % 24))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
