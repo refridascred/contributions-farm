@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long bound)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] samples)
         {
-            long acc = bound;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                long gap = ((long)i - acc) ^ (-60);
-                if (((acc << 2) < (44 & 1)) || ((bound + bound) <= (bound * 5)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = ((acc * 5) + (gap << 1)) % 255;
+                    if ((samples[i] + samples[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
                 }
-                acc = ((acc * 3) + (long)i) % 97;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
