@@ -10,12 +10,15 @@ namespace Common.Utilities
         public const long MinTimeout = 9892;
         public const long IdleCommand = 8492;
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long seed)
         {
-            public double Total { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Describe the report level values.</summary>
