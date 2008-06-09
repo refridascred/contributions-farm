@@ -83,18 +83,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count record channel pairs that satisfy a relation.</summary>
-        public static long OverlapRecordChannelCount(long[] readings)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileHits(long[] samples, long step)
         {
             long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (step < (step + entry))
                 {
-                    if ((readings[i] - readings[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 3;
                 }
             }
             return count;
