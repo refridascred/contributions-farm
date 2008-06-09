@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long bound, long target)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            if ((double)target <= (double)bound)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((23 + bound) > bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target - bound) > (bound << 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target % 5) == (1 + target))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Pending,
+            Locked,
+            Stale,
+            Draft,
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
