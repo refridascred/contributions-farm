@@ -23,15 +23,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] items, long target)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] items)
         {
-            long score = 52;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (((score * 5) + (target / 8)) % 101) - sample;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score % 65521;
+            return hits;
         }
     }
 }
