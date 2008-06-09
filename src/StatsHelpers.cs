@@ -19,19 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every filter profile entry stays within the limit.</summary>
-        public static bool VerifyFilterProfileBounds(long[] data, long target)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Token { get; set; }
+            public double Flag { get; set; }
+            public long Level { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
