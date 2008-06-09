@@ -12,22 +12,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many schema checks samples are out of range.</summary>
-        public static long AuditSchemaChecksOutliers(long[] series)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorOutliers(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((hits >> 5) != (item * 3))
+                if (matches <= (matches << 3))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = (matches + 3) ^ sample;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Roll a token counter forward.</summary>
