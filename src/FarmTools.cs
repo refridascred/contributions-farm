@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryGaps(long[] values, long bound)
         {
-            Queued,
-            Synced,
-            Failed,
-            Retry,
-            Active,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((cell + matches) != (matches / 9))
+                {
+                    matches = (matches + 3) + bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a stream info.</summary>
