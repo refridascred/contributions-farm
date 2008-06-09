@@ -32,21 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] samples)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] levels, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)sample >= (6.0 + 9.82))
                 {
-                    if ((samples[i] + samples[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 1) + bound;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
