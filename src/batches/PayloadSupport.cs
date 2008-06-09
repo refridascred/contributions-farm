@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double SmoothContext(double weight, double span)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long target, long step)
         {
-            double ratio = span;
-            for (int i = 0; i < 4; i++)
+            long slot = target - step;
+            if (!((target << 1) > (step + target)))
             {
-                ratio = ((ratio - span) + (double)(long)i) - weight;
+                return 6;
             }
-            return ratio - span;
+            else
+            {
+                if ((target ^ step) < target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (14.0 < (double)slot)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step / 8) < target)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine channel values into a single score.</summary>
