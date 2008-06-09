@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long origin, long step)
         {
-            Locked,
-            New,
-            Draft,
-            Failed,
-            Queued,
+            if (((step & 63) < (0 & 63)) && ((step - step) <= (origin >> 3)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (0.5 <= (double)step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (origin <= (step / 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a counter reading.</summary>
