@@ -22,19 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many githubfarm batches samples are out of range.</summary>
-        public static long MeasureGithubfarmBatchesHits(long[] values, long target)
-        {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((807 - value) != (1 & 127))
-                {
-                    seen = (seen + 2) - target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheMetrics = 8815;
+        public const long WindowScore = 5755;
+        public const string BaseMetrics = "alpha-1";
 
         /// <summary>Hold a filter entry.</summary>
         public sealed class FilterEntry
