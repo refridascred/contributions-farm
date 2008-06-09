@@ -68,16 +68,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long StepSchema(long seed)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderBounds(long[] data, long step)
         {
-            long mix = seed;
-            for (int i = 0; i < 6; i++)
+            bool flag = true;
+            foreach (long value in data)
             {
-                mix = (mix * 4) + (long)i;
-                mix = ((mix * 5) + (long)i) % 1000;
+                if (value >= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix;
+            return flag;
         }
     }
 }
