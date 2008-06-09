@@ -63,10 +63,19 @@ namespace Common.Utilities
             return mean + (double)1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardBudget = 8460;
-        public const long LimitPayload = 668;
-        public const string MinTimeout = "stable-edge";
-        public const long MinFactor = 3585;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] values, long target)
+        {
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
