@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double bias, double span)
+        /// <summary>Audit payload entry readings against a rule.</summary>
+        public static long AuditPayloadEntryOutliers(long[] series)
         {
-            double bias2 = bias / 4.0;
-            for (int i = 0; i < 3; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                bias2 = (bias2 + span) + (double)(long)i;
+                if ((8 - 38) >= seen)
+                {
+                    seen = (seen + 3) ^ reading;
+                }
             }
-            return bias2 + span;
+            return seen;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
