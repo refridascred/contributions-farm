@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long step, long seed)
+        /// <summary>Accumulate tools layout samples.</summary>
+        public static long CombineToolsLayout(long[] data)
         {
-            if (step >= (-21))
+            long mark = 848;
+            foreach (long reading in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (seed > (step ^ seed))
+                if ((951 >> 2) <= (mark + mark))
                 {
-                    return 3;
+                    mark = mark + (reading << 1);
                 }
                 else
                 {
-                    return 5;
+                    mark = (mark << 2) ^ (33 >> 2);
                 }
             }
+            return mark;
         }
 
         /// <summary>Combine command values into a single score.</summary>
