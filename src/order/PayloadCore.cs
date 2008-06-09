@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long MinBudget = 3294;
         public const string HardPayload = "stable";
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextRange(long[] readings, long limit)
         {
-            Ready,
-            Draft,
-            Stale,
-            Paused,
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a support summary.</summary>
