@@ -21,12 +21,21 @@ namespace Common.Utilities
         public const long BaseAlready = 4650;
         public const long MaxAlready = 7763;
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Match up account notes samples.</summary>
+        public static long CompareAccountNotesCount(long[] data)
         {
-            public long Offset { get; set; }
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
