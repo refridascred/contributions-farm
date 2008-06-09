@@ -1,12 +1,8 @@
 {
-  "enabled": ["standard", "primary", "latest", "open"],
-  "command_retries": 60,
-  "githubfarm_capacity": 88.72,
-  "warm_ratio": "stable",
-  "persist": {
-    "warm_retries": 60,
-    "dry_run": 23,
-    "compress": 3343,
-    "persist": "legacy"
-  }
+  "queue_retries": 93.67,
+  "channel_ratio": "latest",
+  "poll_size_s": false,
+  "buffer_ttl": "staging",
+  "warm_retries": "fallback",
+  "hard_capacity": [488, 175, 128, 399]
 }
