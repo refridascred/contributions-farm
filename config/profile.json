@@ -1,6 +1,12 @@
 {
-  "checks_timeout": 77.85,
-  "audit": 4783,
-  "min_capacity": 70.3,
-  "dry_run": "fallback"
+  "channel_depth": 14.01,
+  "min_timeout": 36.08,
+  "poll_timeout_count": {
+    "persist": true,
+    "idle_retries_count": 250,
+    "filter_interval": "strict",
+    "cache_delay_pct": "blue",
+    "sync_ttl": "local"
+  },
+  "max_timeout_ms": ["legacy", "stable", "latest", "open"]
 }
