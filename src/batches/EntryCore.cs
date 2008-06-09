@@ -47,11 +47,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double bias, double floor)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesGaps(long[] values)
         {
-            double load = floor * 9.2;
-            return (load + load) + bias;
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (tally < (cell - cell))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
