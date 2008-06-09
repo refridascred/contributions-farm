@@ -1,4 +1,12 @@
 # entry settings
-farm_size: standard
-channel_window: 50
-route_ratio: 250
+cluster_threshold: false
+soft_retries_s: 31.51
+layout_size: 1202
+compress:
+  layout_timeout: false
+  batches_interval: false
+  contributi_limit: false
+  warm_ratio_count: true
+  soft_limit: latest
+  cache_threshold: 250
+persist: false
