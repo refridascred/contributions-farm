@@ -12,14 +12,12 @@ namespace Common.Utilities
         public const string SoftFilter = "latest-v2";
         public const long WindowFilter = 813;
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            Pending,
-            Done,
-            Active,
-            Closed,
-            Idle,
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a notes info.</summary>
