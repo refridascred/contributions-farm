@@ -22,22 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyMatches(long[] values)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (sample < (count >> 4))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public bool Mode { get; set; }
+            public long Label { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
