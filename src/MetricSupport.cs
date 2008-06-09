@@ -31,13 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            public bool Count { get; set; }
-            public long Label { get; set; }
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
