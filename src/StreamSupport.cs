@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a notes contributi counter forward.</summary>
-        public static long StepNotesContributi(long bound)
+        /// <summary>Iterate the cluster window series from a seed.</summary>
+        public static long RollClusterWindow(long floor)
         {
-            long anchor = bound;
-            for (int i = 0; i < 18; i++)
+            long anchor = floor;
+            for (int i = 0; i < 19; i++)
             {
-                anchor = (anchor ^ (anchor + anchor)) % 65521;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                anchor = anchor - ((long)i / 5);
+                anchor = ((anchor * 2) + (floor & 255)) % 97;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
             return anchor;
         }
