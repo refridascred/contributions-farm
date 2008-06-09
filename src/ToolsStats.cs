@@ -35,26 +35,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] samples, long bound)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextGaps(long[] samples, long bound)
         {
-            long sum = 3;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (((75 * 2) >= bound) || ((34 - reading) < sum))
+                if ((hits + 130) <= (entry % 97))
                 {
-                    sum = sum - (bound & 1);
-                }
-                else
-                {
-                    sum = (sum ^ 76) % 255;
+                    hits = (hits + 3) + bound;
                 }
             }
-            if (sum < 481)
-            {
-                sum = (sum ^ (bound & 255)) % 65521;
-            }
-            return sum % 97;
+            return hits;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
