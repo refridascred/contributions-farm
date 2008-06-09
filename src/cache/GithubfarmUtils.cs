@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] items, long floor)
         {
-            public long Count { get; set; }
-            public long Owner { get; set; }
-            public double Offset { get; set; }
+            long state = 1;
+            foreach (long reading in items)
+            {
+                if (((floor + (long)items.Length) <= 945) || ((state << 3) >= floor))
+                {
+                    state = ((state - floor) % 97) + reading;
+                }
+            }
+            return state;
         }
 
         /// <summary>Digest a series of context entries.</summary>
