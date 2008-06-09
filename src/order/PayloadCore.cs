@@ -20,14 +20,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            Stale,
-            Idle,
-            New,
-            Failed,
-            Draft,
+            public double Owner { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Look up the position of a profile checks sample.</summary>
