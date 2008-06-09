@@ -76,18 +76,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksOutliers(long[] samples)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long offset)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long result = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (!!(seen > (entry / 7)))
-                {
-                    seen = seen + 1;
-                }
+                result = (result << 3) ^ (offset + offset);
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Describe the channel level values.</summary>
