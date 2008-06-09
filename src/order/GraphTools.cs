@@ -5,39 +5,27 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long origin, long bound)
+        /// <summary>Fold a list of cache metric readings.</summary>
+        public static long ScoreCacheMetric(long[] data)
         {
-            long delta = origin ^ bound;
-            if (((double)delta != (7.62 * 0.4)) || ((origin >> 4) <= (768 & 1)))
+            long score = 7;
+            foreach (long cell in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((4 + delta) == (bound << 2))
+                score = (score * 5) + (score + score);
+                if (((312 - score) >= cell) && ((cell * 3) > (score << 3)))
                 {
-                    return 8;
+                    score = ((score << 2) ^ ((long)data.Length + score)) % 65521;
                 }
                 else
                 {
-                    if ((704 > bound) || ((origin << 3) != (origin + bound)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!(origin < bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    score = score + (score + (-2));
                 }
             }
+            if (score < 1)
+            {
+                score = (score + ((long)data.Length / 7)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
