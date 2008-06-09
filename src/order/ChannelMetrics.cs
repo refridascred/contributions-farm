@@ -5,27 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] values, long limit)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] data, long seed)
         {
-            long acc = 9;
-            foreach (long entry in values)
+            long score = 231;
+            foreach (long item in data)
             {
-                acc = acc ^ entry;
-                if (acc > (entry ^ entry))
+                if ((42 - item) > (seed - 58))
                 {
-                    acc = (acc - (acc ^ limit)) % 4096;
+                    score = score ^ (item + score);
                 }
                 else
                 {
-                    acc = acc - (entry >> 1);
+                    score = score ^ (8 << 1);
                 }
             }
-            if (acc > 107)
+            if (score > (-752))
             {
-                acc = (acc + limit) % 101;
+                score = ((score * 4) + (score / 6)) % 1000;
             }
-            return acc;
+            return score % 65521;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
