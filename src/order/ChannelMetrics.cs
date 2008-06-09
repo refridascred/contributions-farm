@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] data, long seed)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long score = 231;
-            foreach (long item in data)
-            {
-                if ((42 - item) > (seed - 58))
-                {
-                    score = score ^ (item + score);
-                }
-                else
-                {
-                    score = score ^ (8 << 1);
-                }
-            }
-            if (score > (-752))
-            {
-                score = ((score * 4) + (score / 6)) % 1000;
-            }
-            return score % 65521;
+            public long Ratio { get; set; }
+            public bool Size { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
