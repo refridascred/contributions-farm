@@ -68,20 +68,10 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Check that every checks support entry stays within the limit.</summary>
-        public static bool ValidateChecksSupportLimits(long[] series, long offset)
-        {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MaxPayload = 47.82;
+        public const long RetryPayload = 8157;
+        public const string SoftSpan = "fallback";
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long RankProfile(long floor, long limit)
