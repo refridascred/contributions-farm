@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Rank batches filter input into a small class.</summary>
-        public static long ClassifyBatchesFilter(long bound, long floor)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            if (floor >= (floor & 127))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((3 - (-321)) != (bound + floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (bound > 364)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Blend two batches measurements.</summary>
