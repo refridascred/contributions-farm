@@ -19,17 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] values, long seed)
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((values[i] >= seed) && ((values[i] % 2) != 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
