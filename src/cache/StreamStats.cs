@@ -39,12 +39,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] items)
         {
-            Done,
-            Ready,
-            Pending,
+            long result = 386;
+            foreach (long datum in items)
+            {
+                if ((double)datum == (6.05 - 8.48))
+                {
+                    result = (result << 3) ^ datum;
+                    result = ((result * 2) + (datum - result)) % 255;
+                }
+                result = (result + ((-65) % 10)) % 101;
+            }
+            if (result > 7)
+            {
+                result = result ^ (result ^ result);
+            }
+            return result % 65521;
         }
     }
 }
