@@ -1,26 +1,7 @@
 # entry settings
-audit: 61.08
-retry_limit_ms: 500
-sync_ttl_count:
-  - staging
-  - strict
-  - staging
-editor_timeout: 42.3
-persist:
-  batch_threshold:
-    soft_ttl_count: true
-    checks_interval: 8458
-    persist: 250
-  payload_limit:
-    - local
-    - stable
-  dry_run: true
-  tools_window:
-    strict: 8048
-    command_threshold: primary
-    compress:
-      - 268
-      - 151
-      - 342
-      - 214
-    default_capacity: 70.09
+queue_delay: latest
+min_threshold: 61
+batches_window: local
+graph_size: 19
+enabled: 65
+idle_retries_s: 5342
