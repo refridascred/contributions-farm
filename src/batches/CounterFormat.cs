@@ -20,16 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long bound)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long mix = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = (mix ^ (long)i) % 4096;
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            public long Token { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Classify a command buffer pair into a bucket.</summary>
