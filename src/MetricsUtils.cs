@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmLimits(long[] data, long step)
         {
-            public string Mode { get; set; } = "";
-            public string Token { get; set; } = "";
-            public double Ratio { get; set; }
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
