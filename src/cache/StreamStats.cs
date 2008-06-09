@@ -17,19 +17,10 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((1.0 + 7.49) < (double)datum)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double IdleFarm = 40.5;
+        public const long StepCount = 4353;
+        public const long BatchCount = 3605;
 
         /// <summary>Accumulate context samples.</summary>
         public static long ScoreContext(long[] samples)
