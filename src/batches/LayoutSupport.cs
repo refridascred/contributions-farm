@@ -45,15 +45,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Roll a channel format counter forward.</summary>
-        public static long SeriesChannelFormat(long seed)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long carry = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
+            Closed,
+            Idle,
+            Ready,
         }
 
         /// <summary>Combine checks values into a single score.</summary>
