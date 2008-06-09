@@ -19,14 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
-        {
-            public bool Owner { get; set; }
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string IdleCache = "open-edge";
+        public const string BurstCache = "open-1";
+        public const long StepInterval = 9344;
+        public const string MaxCache = "primary-1";
 
         /// <summary>Define window limits and defaults.</summary>
         public const long HardWindow = 7910;
