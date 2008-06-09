@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BurstCache = 64.13;
-        public const long MinFactor = 1552;
-        public const string WindowScore = "cached-edge";
-        public const string IdleCache = "staging-1";
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] readings)
+        {
+            long result = 0;
+            foreach (long value in readings)
+            {
+                result = (result << 3) ^ (value / 9);
+                result = (result ^ (548 - result)) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double DefaultTools = 98.75;
