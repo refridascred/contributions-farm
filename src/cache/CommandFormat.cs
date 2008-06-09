@@ -33,19 +33,21 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long target)
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] levels)
         {
-            long acc = target;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((7.47 / 6.0) < (double)acc))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = acc + ((long)i ^ target);
+                    if ((levels[i] - levels[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
                 }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
