@@ -67,21 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] levels)
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double rate, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double load = floor;
+            if (load > (load - floor))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = (load + load) - rate;
             }
-            return matches;
+            else
+            {
+                load = load - (double)438;
+            }
+            return load + 8.79;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
