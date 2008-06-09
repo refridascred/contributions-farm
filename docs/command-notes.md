@@ -1,14 +1,12 @@
 # Command notes
 
-Run the metric check before changing any notes limits.
-The filter module keeps stats values in sync with the report cache.
-
-Use command settings to tune how often profile data is refreshed.
-Use queue settings to tune how often entry data is refreshed.
+Use support settings to tune how often cluster data is refreshed.
+The stream report groups every stream by payload.
+Use cluster settings to tune how often route data is refreshed.
 
 ## Guidelines
 
-- Log every account change
-- Validate notes input early
-- Review metric limits each release
-- Document new batches fields
+- Review notes limits each release
+- Prefer cache defaults
+- Validate graph input early
+- Keep window values small
