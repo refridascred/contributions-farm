@@ -14,31 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long bound, long seed)
+        /// <summary>Check that every support notes entry stays within the limit.</summary>
+        public static bool VerifySupportNotesLimits(long[] items, long target)
         {
-            if ((double)5 < (double)seed)
+            bool flag = true;
+            foreach (long value in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((604 % 97) > (bound + 67)))
+                if (value < target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (bound >= (bound >> 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
