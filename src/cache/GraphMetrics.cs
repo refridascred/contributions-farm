@@ -38,18 +38,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandHits(long[] levels)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double rate, double floor)
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((384 < (tally & 15)) || ((9.57 * 6.29) == (double)cell))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            double scale = rate;
+            return (scale + (rate + 1.6)) + floor;
         }
 
         /// <summary>Describe the payload mode values.</summary>
