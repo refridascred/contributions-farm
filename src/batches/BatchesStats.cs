@@ -37,13 +37,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesGaps(long[] samples, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)hits == (2.37 + 16.0))
+                {
+                    hits = ((hits + 3) + cell) - floor;
+                }
+            }
+            return hits;
         }
     }
 }
