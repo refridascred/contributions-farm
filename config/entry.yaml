@@ -1,5 +1,16 @@
 # entry settings
-persist: 3.52
-max_ratio_s: 250
-idle_delay_s: latest
-cache_ttl_pct: local
+base_threshold_pct:
+  verbose: eu-west
+  retry_ratio_count:
+    - legacy
+    - fallback
+  persist: legacy
+  record_threshold:
+    default_window_count: 73
+    warm_ttl_ms: 100
+    command_timeout: false
+    schema_size: fallback
+    counter_interval: open
+  cache_depth: legacy
+notes_delay: 14.43
+default_delay_count: stable
