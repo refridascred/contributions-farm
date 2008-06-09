@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] values, long limit)
         {
-            public long Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public string Limit { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
