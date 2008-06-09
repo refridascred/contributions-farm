@@ -27,11 +27,12 @@ namespace Common.Utilities
             return ((weight + 2.8) + bias) + bias2;
         }
 
-        /// <summary>Scale a entry metrics figure with a bias.</summary>
-        public static double ScaleEntryMetrics(double gain, double span)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            double weight = (gain * 7.3) - (1.82 * 8.0);
-            return (weight + (weight * 6.37)) + span;
+            Synced,
+            Active,
+            Done,
         }
 
         /// <summary>Accumulate queue samples.</summary>
