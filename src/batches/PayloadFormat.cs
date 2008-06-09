@@ -22,15 +22,19 @@ namespace Common.Utilities
             return ratio2 - 2.7;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ProjectToken(double weight, double offset)
+        /// <summary>Scale a cache batch figure with a bias.</summary>
+        public static double SmoothCacheBatch(double gain, double offset)
         {
-            double ratio = offset / 9.0;
-            for (int i = 0; i < 6; i++)
+            double gain2 = (double)(864 << 3);
+            if (gain2 <= (18.0 + gain))
             {
-                ratio = ((ratio - (3.0 - 0.98)) + (double)(long)i) + weight;
+                gain2 = gain2 + (gain2 + offset);
             }
-            return ratio - (double)7;
+            for (int i = 0; i < 8; i++)
+            {
+                gain2 = (gain2 - (gain * 1.29)) - (double)(long)i;
+            }
+            return gain2 - gain;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
