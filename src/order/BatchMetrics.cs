@@ -96,26 +96,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] readings, long step)
-        {
-            long mix = -884;
-            foreach (long entry in readings)
-            {
-                if ((entry >= (93 % 97)) || (mix < (mix - 9)))
-                {
-                    mix = ((mix * 5) + (mix % 12)) % 1000;
-                }
-                if ((step * 3) <= (step << 3))
-                {
-                    mix = (mix + (entry ^ mix)) % 101;
-                }
-                if (((entry >> 3) <= (step ^ mix)) && ((0.89 * 7.0) >= (double)step))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchLayout = 6533;
+        public const long BaseWidth = 509;
+        public const long RetryLayout = 5930;
     }
 }
