@@ -32,18 +32,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricMatches(long[] items)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long bound)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long result = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if ((cell ^ cell) > (tally + cell))
-                {
-                    tally = tally + 3;
-                }
+                result = result - result;
+                result = (result ^ ((-288) >> 2)) % 255;
+                result = ((result * 2) + (long)i) % 97;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
