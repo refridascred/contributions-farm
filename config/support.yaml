@@ -1,27 +1,13 @@
 # support settings
-burst_delay_count:
-  - 236
-  - 488
-  - 408
-  - 453
-flush_limit: open
-session_ratio:
-  - latest
-  - blue
-  - blue
-  - strict
-retry_ttl_s: false
-audit:
-  editor_depth: 84
-  sync_retries_count: 30
-  persist: 1024
-  poll_retries:
-    tools_limit: 46.12
-    support_ratio: 250
-    command_ttl: blue
-    audit: edge
-    sync_window: staging
-  flush_size:
-    - blue
-    - staging
-  burst_delay_ms: 77.75
+sync_interval_pct: fallback
+schema_ratio: 359
+warm_timeout: stable
+sync_size: 21.63
+base_threshold_pct:
+  layout_ttl: eu-west
+  metrics_capacity: green
+  queue_retries:
+    - strict
+    - local
+  soft_interval_count: 100
+  notes_timeout: true
