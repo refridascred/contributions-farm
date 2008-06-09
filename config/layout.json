@@ -1,5 +1,7 @@
 {
-  "min_depth_pct": ["strict", "open"],
-  "flush_timeout": ["primary", "latest"],
-  "max_window_count": "edge"
+  "burst_retries": [298, 476, 170],
+  "strict": "open",
+  "layout_size": true,
+  "idle_capacity_s": 39.4,
+  "farm_interval": true
 }
