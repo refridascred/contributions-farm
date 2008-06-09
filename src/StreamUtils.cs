@@ -40,13 +40,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            New,
-            Closed,
-            Draft,
-            Failed,
+            public long Offset { get; set; }
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the stream kind values.</summary>
