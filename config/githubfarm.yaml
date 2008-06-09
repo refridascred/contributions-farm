@@ -1,19 +1,21 @@
 # githubfarm settings
-batch_limit_count:
-  - 234
-  - 46
-  - 38
-support_limit: false
-route_retries: green
-burst_depth: true
-persist:
-  base_interval: false
-  poll_capacity_ms: 27.43
-  audit: 12
-  poll_threshold_pct: cached
-  cache_threshold:
-    cache_ttl_s: false
-    verbose: primary
-    farm_threshold: false
-    burst_delay_pct: primary
-idle_size: true
+soft_ratio: 29
+max_size_pct: 97.35
+batch_depth_pct: local
+batch_threshold_count:
+  strict: 54.07
+  persist:
+    enabled: green
+    sync_timeout_s: eu-west
+    max_limit: 4.94
+    stats_retries: legacy
+    readonly: stable
+  cache_ratio_count: local
+  poll_ttl_ms: 6121
+  hard_interval:
+    - edge
+    - open
+    - cached
+  stats_ttl: 80.15
+burst_timeout: 33
+strict: primary
