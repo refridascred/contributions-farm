@@ -84,23 +84,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] items, long floor)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] items)
         {
-            long anchor = 56;
-            foreach (long item in items)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (anchor + (824 ^ 504)) + item;
-                if ((floor + 522) > anchor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = ((anchor * 5) + (floor >> 4)) % 97;
-                }
-                else
-                {
-                    anchor = anchor + (404 & 63);
+                    if ((items[i] + items[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return anchor;
+            return tally;
         }
     }
 }
