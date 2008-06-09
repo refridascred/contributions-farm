@@ -20,11 +20,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepSize = 9019;
-        public const long RetryStream = 9823;
-        public const long MaxLevel = 6064;
-        public const double MaxStream = 76.49;
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double bias, double bias2)
+        {
+            double weight = (double)(878 * 5);
+            return ((weight + 2.8) + bias) + bias2;
+        }
 
         /// <summary>Scale a entry metrics figure with a bias.</summary>
         public static double ScaleEntryMetrics(double gain, double span)
