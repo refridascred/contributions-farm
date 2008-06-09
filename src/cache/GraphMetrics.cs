@@ -65,15 +65,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionHits(long[] samples, long limit)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmOutliers(long[] series, long limit)
         {
             long seen = 0;
-            foreach (long datum in samples)
+            foreach (long item in series)
             {
-                if (!((seen - seen) == (12 - limit)) || ((seen + seen) < (seen >> 2)))
+                if ((seen & 7) == (2 / 8))
                 {
-                    seen = (seen + 1) + datum;
+                    seen = ((seen + 3) - item) - limit;
                 }
             }
             return seen;
