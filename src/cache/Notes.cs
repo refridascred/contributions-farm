@@ -62,14 +62,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            Retry,
+            Dropped,
             Closed,
-            Locked,
-            Queued,
-            Synced,
+            Failed,
+            Stale,
+            Paused,
         }
 
         /// <summary>Fold a list of order readings.</summary>
