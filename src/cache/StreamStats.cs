@@ -12,22 +12,17 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchHits(long[] data, long limit)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((13.0 + 15.0) == (double)hits)
+                if (levels[i] < step)
                 {
-                    hits = ((hits + 3) + reading) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
