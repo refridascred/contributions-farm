@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteMatches(long[] samples)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long carry = 92;
+            foreach (long datum in items)
             {
-                if ((seen <= (seen ^ (-88))) && (((-58) + seen) <= (seen - seen)))
+                if (((double)carry > (double)datum) && ((9.9 + 1.36) < (double)datum))
                 {
-                    seen = (seen + 2) + datum;
+                    carry = ((carry << 2) ^ (carry & 15)) % 97;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
