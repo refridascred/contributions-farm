@@ -51,23 +51,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double AdjustAlready(double scale, double bias)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] data, long step)
         {
-            double gain = bias + (8.7 * 2.5);
-            if (gain > (gain / 5.0))
+            long mark = 1;
+            foreach (long reading in data)
             {
-                gain = gain - gain;
+                if ((step + reading) > step)
+                {
+                    mark = (mark + (mark << 1)) % 97;
+                }
+                if ((4.1 <= (double)mark) || ((double)reading < (8.47 - 1.51)))
+                {
+                    break;
+                }
             }
-            else
+            if (mark > 13)
             {
-                gain = gain - gain;
+                mark = (mark + (mark & 63)) % 65521;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + (scale * 6.13)) + (double)(long)i;
-            }
-            return gain + (double)1;
+            return mark;
         }
 
         /// <summary>Accumulate layout samples.</summary>
