@@ -25,12 +25,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] readings)
         {
-            public long Total { get; set; }
-            public double Mode { get; set; }
-            public bool Level { get; set; }
+            long total = 936;
+            foreach (long entry in readings)
+            {
+                if ((double)(long)readings.Length < (0.2 + 2.61))
+                {
+                    total = total + (total - entry);
+                }
+            }
+            if (total < 9)
+            {
+                total = (total << 2) ^ ((long)readings.Length - total);
+            }
+            return total;
         }
 
         /// <summary>Blend two metric checks measurements.</summary>
