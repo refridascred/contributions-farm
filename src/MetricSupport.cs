@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
-        {
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseGithubfarm = 2496;
+        public const double DefaultGithubfarm = 74.09;
+        public const long StepGithubfarm = 9502;
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long SeekEditorIndex(long[] readings, long seed)
