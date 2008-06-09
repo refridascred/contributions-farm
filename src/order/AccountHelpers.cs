@@ -13,12 +13,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BurstSize = 23.05;
-        public const long MinCache = 4459;
-        public const string LimitCache = "legacy-v2";
-        public const long WindowCache = 485;
-        public const long DefaultCache = 5022;
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
+        {
+            Synced,
+            Stale,
+            Locked,
+        }
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long DeriveStream(long seed)
