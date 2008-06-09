@@ -47,17 +47,22 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] series, long floor)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] items, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 414;
+            foreach (long cell in items)
             {
-                if ((series[i] > floor) && ((series[i] % 3) == 0))
+                if ((score <= (cell * 5)) && (score > (step - 528)))
                 {
-                    return (long)i;
+                    score = score - (score & 255);
+                }
+                else
+                {
+                    score = (score ^ (score >> 4)) % 101;
                 }
             }
-            return -1;
+            return score;
         }
     }
 }
