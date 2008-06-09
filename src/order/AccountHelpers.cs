@@ -13,20 +13,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ProjectContext(double scale, double floor)
-        {
-            double rate = scale;
-            if (rate < floor)
-            {
-                rate = rate - floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + 4.5) + (double)(long)i;
-            }
-            return rate - scale;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCounter = 6538;
+        public const string MinBudget = "staging-edge";
+        public const string BurstSize = "local";
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long DeriveStream(long seed)
