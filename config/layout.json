@@ -1,7 +1,5 @@
 {
-  "soft_threshold": "standard",
-  "persist": "primary",
-  "readonly": 75,
-  "audit": [248, 28, 472],
-  "base_retries": 60
+  "flush_retries_ms": 30,
+  "strict": "primary",
+  "flush_ttl_pct": 93
 }
