@@ -13,22 +13,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many editor cluster samples are out of range.</summary>
-        public static long MeasureEditorClusterHits(long[] values)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum * 3) <= (matches / 5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((series[i] - series[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count notes batch pairs that satisfy a relation.</summary>
