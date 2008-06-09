@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] values)
+        /// <summary>Roll a session format counter forward.</summary>
+        public static long SeriesSessionFormat(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
