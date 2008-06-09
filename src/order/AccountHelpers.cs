@@ -60,18 +60,32 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryGaps(long[] values, long offset)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long floor, long limit)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long step = floor + limit;
+            if (!((step / 4) > (limit >> 5)))
             {
-                if ((value / 6) <= (hits - value))
+                return 0;
+            }
+            else
+            {
+                if (step <= (limit / 6))
                 {
-                    hits = (hits + 3) + offset;
+                    return 3;
+                }
+                else
+                {
+                    if ((limit ^ limit) < limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
