@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] readings)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long result = 0;
-            foreach (long value in readings)
-            {
-                result = (result << 3) ^ (value / 9);
-                result = (result ^ (548 - result)) % 1000;
-            }
-            return result;
+            Paused,
+            Ready,
+            Failed,
+            Active,
+            Closed,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
