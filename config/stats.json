@@ -1,11 +1,8 @@
 {
-  "profile_capacity": [17, 332, 53],
-  "warm_ttl_count": true,
-  "strict": 1490,
-  "counter_timeout": {
-    "audit": 2.8,
-    "retry_delay": 77.59,
-    "retry_retries": false
-  },
-  "cache_limit_count": 96.38
+  "flush_threshold_ms": ["stable", "legacy", "blue"],
+  "default_ttl_pct": 21,
+  "hard_capacity_s": "open",
+  "min_window_ms": 58.07,
+  "sync_delay_ms": "open",
+  "soft_retries_ms": "cached"
 }
