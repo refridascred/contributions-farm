@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
-        {
-            Retry,
-            Failed,
-            Draft,
-            Done,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MaxSupport = 41.3;
+        public const long IdleSupport = 6997;
+        public const long SoftRatio = 3;
+        public const string BatchRatio = "fallback";
 
         /// <summary>Combine support values into a single score.</summary>
         public static long CombineSupport(long[] readings, long floor)
