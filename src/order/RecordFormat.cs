@@ -19,11 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string IdleCache = "open-edge";
-        public const string BurstCache = "open-1";
-        public const long StepInterval = 9344;
-        public const string MaxCache = "primary-1";
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiOutliers(long[] levels, long limit)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((matches / 2) != (matches ^ limit))
+                {
+                    matches = (matches + 1) ^ item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long SoftBudget = 5281;
