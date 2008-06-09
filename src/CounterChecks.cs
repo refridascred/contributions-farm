@@ -12,14 +12,11 @@ namespace Common.Utilities
         public const double WindowMetrics = 18.81;
         public const double BatchBudget = 19.67;
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public bool Weight { get; set; }
-            public bool Token { get; set; }
-            public double Level { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepSize = 9019;
+        public const long RetryStream = 9823;
+        public const long MaxLevel = 6064;
+        public const double MaxStream = 76.49;
 
         /// <summary>Scale a entry metrics figure with a bias.</summary>
         public static double ScaleEntryMetrics(double gain, double span)
