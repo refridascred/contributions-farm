@@ -20,13 +20,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            Ready,
-            Draft,
-            Pending,
-            Synced,
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
