@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsMatches(long[] readings)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiRange(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long reading in series)
             {
-                if (tally > (tally - datum))
+                if (reading != origin)
                 {
-                    tally = tally + 3;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Hold a farm record.</summary>
