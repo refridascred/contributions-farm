@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Match up account samples.</summary>
-        public static long MatchAccountCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstGraph = 7994;
+        public const long HardGraph = 6566;
+        public const long StepBudget = 3735;
+        public const long IdleGraph = 8035;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long CacheSchema = 7730;
