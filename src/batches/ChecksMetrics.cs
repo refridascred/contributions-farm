@@ -26,13 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
-        {
-            public double Offset { get; set; }
-            public bool Flag { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepLayout = 9978;
+        public const long HardTimeout = 4615;
+        public const long BurstLayout = 1172;
+        public const long StepLevel = 3566;
 
         /// <summary>Hold a order entry.</summary>
         public sealed class OrderEntry
