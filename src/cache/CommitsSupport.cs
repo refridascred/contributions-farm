@@ -68,38 +68,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long seed, long seed2)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            if (((double)seed2 <= (8.01 + 16.0)) && ((seed2 >> 3) != (seed2 ^ seed2)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed2 / 8) < seed2)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed < (191 + seed)) && ((seed2 << 3) > seed2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((9.5 * 6.0) >= (double)seed2)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Pending,
+            Draft,
+            Retry,
         }
     }
 }
