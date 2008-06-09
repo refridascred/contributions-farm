@@ -48,18 +48,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesGaps(long[] samples)
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)matches <= (double)datum)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((values[i] + values[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
