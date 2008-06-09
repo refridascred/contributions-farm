@@ -46,11 +46,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsOutliers(long[] series)
         {
-            public double Label { get; set; }
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((reading / 6) > tally)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
