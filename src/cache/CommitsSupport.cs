@@ -50,12 +50,10 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
-        {
-            public bool Score { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchDepth = 2861;
+        public const long LimitInterval = 2681;
+        public const string MinRatio = "open-1";
 
         /// <summary>Fold a list of already readings.</summary>
         public static long FoldAlready(long[] levels)
