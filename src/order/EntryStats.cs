@@ -36,11 +36,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double StepBatches = 54.18;
-        public const string WindowBatches = "alpha-v2";
-        public const double IdleBatches = 45.77;
-        public const long WindowLevel = 6758;
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
+        {
+            New,
+            Dropped,
+            Active,
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double DefaultRatio = 42.05;
