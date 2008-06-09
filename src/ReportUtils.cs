@@ -29,20 +29,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine payload token values into a single score.</summary>
-        public static long WeighPayloadToken(long[] data)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long state = 277;
-            foreach (long cell in data)
-            {
-                if (!((double)state < (2.4 + 2.0)))
-                {
-                    state = (state << 2) ^ (state & 255);
-                    continue;
-                }
-                state = (state * 2) + cell;
-            }
-            return state;
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a context entry.</summary>
