@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            Dropped,
             Done,
             Active,
+            Closed,
+            New,
+            Stale,
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
