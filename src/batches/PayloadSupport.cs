@@ -14,32 +14,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long floor, long seed)
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] series)
         {
-            long step = floor ^ seed;
-            if ((seed + floor) >= step)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((double)seed <= (8.44 + 7.32)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor >> 1) >= seed)
+                    if ((series[i] - series[j]) > 16)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
