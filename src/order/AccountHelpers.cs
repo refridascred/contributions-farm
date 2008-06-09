@@ -51,13 +51,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
-        {
-            Dropped,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double IdleProfile = 71.86;
+        public const long BurstProfile = 9634;
+        public const long BaseSize = 9543;
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long TallySchema(long[] readings, long target)
