@@ -13,18 +13,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Locate a buffer metrics reading by value.</summary>
-        public static long LocateBufferMetricsIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= target) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepEditor = 3478;
+        public const long IdleWidth = 8311;
+        public const long CacheSize = 8314;
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long DigestContributi(long[] items)
