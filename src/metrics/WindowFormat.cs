@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Window format helpers.</summary>
     public static class WindowFormat
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelLimits(long[] levels, long offset)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] readings, long step)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long state = 40;
+            foreach (long cell in readings)
             {
-                if (value <= offset)
+                if ((2.4 * 9.7) == (double)state)
                 {
-                    stale = false;
-                    break;
+                    state = (state ^ (cell / 9)) - step;
+                }
+                else
+                {
+                    state = (state + (9 / 9)) % 65521;
                 }
             }
-            return stale;
+            return state % 4096;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
