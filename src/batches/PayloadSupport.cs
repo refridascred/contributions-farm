@@ -19,14 +19,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Check that every channel already entry stays within the limit.</summary>
+        public static bool VerifyChannelAlreadyRange(long[] samples, long limit)
         {
-            Pending,
-            Retry,
-            Paused,
-            Failed,
-            Locked,
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
