@@ -19,17 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] data, long limit)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Paused,
+            Pending,
+            Synced,
         }
 
         /// <summary>Derive the next cluster batches value from a seed.</summary>
