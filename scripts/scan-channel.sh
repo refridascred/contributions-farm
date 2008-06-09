@@ -6,12 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
+mode="${1:-stable}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 1))
+for i in $(seq 1 11); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-for item in strict local; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=131
+log "limit is ${CHANNEL_LIMIT}"
