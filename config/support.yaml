@@ -1,17 +1,5 @@
 # support settings
-soft_interval:
-  format_ratio: 64
-  retry_depth_ms:
-    - stable
-    - strict
-    - standard
-    - primary
-  sync_size_pct:
-    - 293
-    - 398
-    - 274
-    - 213
-  token_interval: 250
-enabled: true
-poll_interval_ms: standard
-strict: 96.8
+metrics_ttl: 9196
+dry_run: stable
+readonly: 100
+stream_delay: false
