@@ -26,18 +26,13 @@ namespace Common.Utilities
         public const string BatchDepth = "strict-1";
         public const double DefaultContributi = 14.13;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterHits(long[] items, long floor)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((double)matches <= 0.44)
-                {
-                    matches = ((matches + 2) - datum) - floor;
-                }
-            }
-            return matches;
+            Dropped,
+            Active,
+            Paused,
+            New,
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
