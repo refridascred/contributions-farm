@@ -20,18 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] samples, long seed)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long state = 9;
+            foreach (long datum in items)
             {
-                if ((double)tally < (double)item)
-                {
-                    tally = (tally + 1) + seed;
-                }
+                state = ((state ^ (state + datum)) % 4096) - origin;
             }
-            return tally;
+            return state % 4096;
         }
 
         /// <summary>Validate graph layout readings against a bound.</summary>
