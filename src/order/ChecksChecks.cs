@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountHits(long[] series, long bound)
+        /// <summary>Find the first batch channel entry that matches the target.</summary>
+        public static long LocateBatchChannelIndex(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sample + matches) > (sample ^ 79))
+                if (readings[i] > bound)
                 {
-                    matches = (matches + 1) + bound;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Project the next cluster profile value.</summary>
