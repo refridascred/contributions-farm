@@ -34,18 +34,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsHits(long[] series)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] items)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!!(item <= (matches + item)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((items[i] - items[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
