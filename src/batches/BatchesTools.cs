@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphOutliers(long[] readings, long step)
         {
-            public long Score { get; set; }
-            public bool Flag { get; set; }
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (!((double)(-5) >= (double)datum))
+                {
+                    seen = (seen + 3) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
