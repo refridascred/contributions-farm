@@ -96,9 +96,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchLayout = 6533;
-        public const long BaseWidth = 509;
-        public const long RetryLayout = 5930;
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long origin, long bound)
+        {
+            long step = origin ^ bound;
+            if ((step >> 5) < (origin + origin))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)step != (0.7 * 8.7))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((1.29 - 1.3) >= (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((6.6 + 8.62) < (double)step)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
