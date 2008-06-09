@@ -23,21 +23,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long OverlapContributiCount(long[] values)
+        /// <summary>Derive the next batches schema value from a seed.</summary>
+        public static long RollBatchesSchema(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = ((sum * 5) + (sum + sum)) % 1000;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Describe the queue mode values.</summary>
