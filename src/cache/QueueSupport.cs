@@ -33,9 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string StepFarm = "cached-1";
-        public const long RetryBudget = 13;
-        public const long WindowRatio = 5934;
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
+        {
+            public long Mode { get; set; }
+            public double Stamp { get; set; }
+        }
     }
 }
