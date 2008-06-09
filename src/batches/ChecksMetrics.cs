@@ -13,17 +13,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] levels, long bound)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= bound) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public long Score { get; set; }
+            public bool Token { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a entry snapshot.</summary>
