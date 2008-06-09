@@ -50,15 +50,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long target)
+        /// <summary>Blend two already measurements.</summary>
+        public static double AdjustAlready(double scale, double bias)
         {
-            long anchor = target;
-            for (int i = 0; i < 14; i++)
+            double gain = bias + (8.7 * 2.5);
+            if (gain > (gain / 5.0))
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                gain = gain - gain;
             }
-            return anchor;
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + (scale * 6.13)) + (double)(long)i;
+            }
+            return gain + (double)1;
         }
 
         /// <summary>Accumulate layout samples.</summary>
