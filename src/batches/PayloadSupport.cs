@@ -13,20 +13,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] samples)
-        {
-            long carry = 1;
-            foreach (long sample in samples)
-            {
-                carry = ((carry << 3) ^ carry) - sample;
-            }
-            if (carry > 3)
-            {
-                carry = ((carry << 2) ^ (carry << 2)) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 5592;
+        public const double IdleEditor = 97.98;
+        public const double MaxEditor = 20.52;
+        public const double MinBudget = 1.36;
+        public const long DefaultFactor = 2375;
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
