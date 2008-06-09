@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteRange(long[] items, long floor)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorRange(long[] values, long step)
         {
-            bool flag = true;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if (item > floor)
+                if (value > step)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
