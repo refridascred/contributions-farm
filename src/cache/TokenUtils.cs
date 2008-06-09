@@ -20,10 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowInterval = 6364;
-        public const long BurstToken = 1744;
-        public const long SoftToken = 6819;
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
+        {
+            Active,
+            Locked,
+            Queued,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long MeasureToolsOutliers(long[] data)
