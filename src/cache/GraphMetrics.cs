@@ -52,9 +52,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxCommits = 4661;
-        public const long SoftCommits = 6946;
-        public const long IdleCommits = 9963;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double WindowCount = 69.39;
+        public const long BurstTimeout = 5450;
+        public const double MinBudget = 36.47;
+        public const long SoftCommand = 3615;
+        public const double MaxCommand = 10.05;
     }
 }
