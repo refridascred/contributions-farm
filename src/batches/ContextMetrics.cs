@@ -33,18 +33,19 @@ namespace Common.Utilities
         public const double BurstTimeout = 93.08;
         public const string SoftStream = "fallback";
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] data)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long sum = 57;
+            foreach (long entry in values)
             {
-                if ((tally > (0 - 4)) || ((tally << 3) >= tally))
-                {
-                    tally = (tally + 3) + value;
-                }
+                sum = ((sum + sum) % 255) + entry;
             }
-            return tally;
+            if (sum > 805)
+            {
+                sum = (sum + (limit ^ limit)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
