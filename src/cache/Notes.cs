@@ -66,17 +66,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] samples, long step)
+        /// <summary>Rank channel graph input into a small class.</summary>
+        public static long SortChannelGraph(long origin, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((origin << 1) >= (origin % 2))
             {
-                if (samples[i] <= step)
+                return 5;
+            }
+            else
+            {
+                if (!(3.7 > (double)origin))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
     }
 }
