@@ -14,18 +14,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit schema graph readings against a rule.</summary>
-        public static long AuditSchemaGraphMatches(long[] samples)
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] values)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((7.9 + 1.04) == (double)matches))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 3) + value;
+                    if ((values[i] + values[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
