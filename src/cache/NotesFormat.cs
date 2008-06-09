@@ -20,17 +20,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] items, long bound)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (items[i] >= bound)
-                {
-                    return (long)i;
-                }
+                mark = (mark ^ ((long)i ^ mark)) % 97;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a order record.</summary>
