@@ -1,12 +1,13 @@
 # entry settings
-cluster_threshold: false
-soft_retries_s: 31.51
-layout_size: 1202
-compress:
-  layout_timeout: false
-  batches_interval: false
-  contributi_limit: false
-  warm_ratio_count: true
-  soft_limit: latest
-  cache_threshold: 250
-persist: false
+verbose:
+  strict: eu-west
+  cache_size:
+    - 187
+    - 105
+    - 303
+  min_threshold: staging
+  default_delay_pct:
+    - 270
+    - 59
+channel_interval: false
+record_timeout: 84.72
