@@ -42,17 +42,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Locate a editor githubfarm reading by value.</summary>
-        public static long LookupEditorGithubfarmIndex(long[] series, long seed)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double weight, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain = (double)5 - (double)8;
+            if (gain > (gain + 11.0))
             {
-                if (series[i] <= seed)
-                {
-                    return (long)i;
-                }
+                gain = ((gain - gain) + weight) - span;
             }
-            return -1;
+            return gain - 3.7;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
