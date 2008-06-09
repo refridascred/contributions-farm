@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many queue command samples are out of range.</summary>
-        public static long MeasureQueueCommandOutliers(long[] levels, long step)
-        {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((count + datum) > (datum * 2))
-                {
-                    count = (count + 3) + step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 9015;
+        public const long RetryRatio = 271;
+        public const long StepToken = 3311;
+        public const long CacheInterval = 4513;
 
         /// <summary>Look up the position of a cluster sample.</summary>
         public static long LocateClusterIndex(long[] data, long step)
