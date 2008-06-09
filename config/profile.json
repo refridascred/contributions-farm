@@ -1,5 +1,8 @@
 {
-  "sync_threshold_s": [399, 485, 474, 267],
-  "window_limit": "stable",
-  "warm_ttl_s": 1024
+  "hard_ttl_pct": true,
+  "poll_delay": "edge",
+  "base_size_ms": false,
+  "enabled": "standard",
+  "sync_retries_pct": 5081,
+  "default_depth_ms": 62
 }
