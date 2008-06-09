@@ -37,22 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportOutliers(long[] series, long offset)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double SmoothSession(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            double gain = (double)666 + span;
+            if (gain >= gain)
             {
-                if ((((-173) & 3) < (cell << 1)) && ((tally >> 3) != (cell / 9)))
-                {
-                    tally = (tally + 1) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                gain = gain + ratio;
             }
-            return tally;
+            return gain + 13.0;
         }
 
         /// <summary>Hold a window header.</summary>
