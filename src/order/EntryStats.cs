@@ -31,38 +31,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long seed, long floor)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            if ((20.0 + 5.3) < (double)floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor == (7.8 + 0.46))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (seed >= (floor / 7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((seed >> 1) < (seed << 1)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public string Size { get; set; } = "";
+            public bool Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
