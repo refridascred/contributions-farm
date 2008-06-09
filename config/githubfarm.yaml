@@ -1,23 +1,5 @@
 # githubfarm settings
-dry_run: 64.11
-retry_limit: 500
-githubfarm_interval: 86.46
-filter_capacity: false
-min_capacity_pct:
-  cache_depth_count:
-    - cached
-    - green
-    - edge
-  idle_interval_pct:
-    burst_depth_s: 6645
-    soft_interval: 3618
-    sync_depth_ms: 500
-    sync_limit: strict
-    entry_capacity: true
-    verbose:
-      - 172
-      - 352
-  queue_interval: 51.07
-  retry_capacity_s: latest
-  cache_ttl: 9
-  enabled: legacy
+hard_capacity_ms: false
+enabled: 76
+cluster_delay: 32
+default_timeout_s: 67
