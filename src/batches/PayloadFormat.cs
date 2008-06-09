@@ -31,15 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
-        {
-            Dropped,
-            Done,
-            Ready,
-            New,
-            Pending,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftBudget = 727;
+        public const string HardSpan = "strict-edge";
+        public const double BaseGithubfarm = 71.18;
+        public const double MinWidth = 22.87;
+        public const long SoftInterval = 4074;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long StepInterval = 4618;
