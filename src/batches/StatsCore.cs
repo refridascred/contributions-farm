@@ -61,10 +61,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BurstInterval = "fallback-v2";
-        public const long DefaultTimeout = 7069;
-        public const string BaseTimeout = "latest-v2";
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] levels, long step)
+        {
+            long mix = 250;
+            foreach (long entry in levels)
+            {
+                if ((4.0 + 1.77) >= (double)step)
+                {
+                    mix = (((mix * 2) + mix) % 101) + entry;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long RankCommits(long seed, long floor)
