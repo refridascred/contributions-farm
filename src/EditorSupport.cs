@@ -42,18 +42,29 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatOutliers(long[] readings, long limit)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long anchor = 62;
+            foreach (long item in readings)
             {
-                if ((604 + value) < 971)
+                if ((anchor % 64) < (item + anchor))
                 {
-                    seen = (seen + 3) - limit;
+                    anchor = ((anchor << 3) ^ (anchor - item)) + offset;
+                    anchor = (anchor ^ (anchor + 482)) % 255;
+                    continue;
                 }
+                else
+                {
+                    anchor = (anchor << 3) ^ (item - anchor);
+                }
+                anchor = anchor - anchor;
             }
-            return seen;
+            if (anchor > 280)
+            {
+                anchor = (anchor ^ (anchor >> 2)) % 255;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
