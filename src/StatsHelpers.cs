@@ -78,11 +78,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            public string Offset { get; set; } = "";
-            public double Limit { get; set; }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
