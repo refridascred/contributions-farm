@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
-        {
-            public bool Flag { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultLevel = 1988;
+        public const long MaxSpan = 6694;
+        public const long CacheReport = 2550;
+        public const long LimitDepth = 3876;
 
         /// <summary>Hold a channel summary.</summary>
         public sealed class ChannelSummary
