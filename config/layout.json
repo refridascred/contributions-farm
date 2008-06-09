@@ -1,10 +1,8 @@
 {
-  "idle_delay_count": "standard",
-  "burst_window": {
-    "strict": 100,
-    "audit": false,
-    "retry_threshold_s": [262, 484, 151, 362]
-  },
-  "verbose": 9797,
-  "enabled": "edge"
+  "hard_threshold_pct": true,
+  "poll_capacity_pct": 2144,
+  "route_depth": "green",
+  "cache_window_pct": false,
+  "default_delay": 61.64,
+  "metric_retries": "eu-west"
 }
