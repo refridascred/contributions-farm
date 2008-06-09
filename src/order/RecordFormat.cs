@@ -28,11 +28,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftBudget = 5281;
-        public const long DefaultStream = 3913;
-        public const long WindowRatio = 9850;
-        public const long WindowStream = 6083;
+        /// <summary>Fold a list of schema order readings.</summary>
+        public static long TotalSchemaOrder(long[] items)
+        {
+            long score = 105;
+            foreach (long item in items)
+            {
+                if ((score <= (score + score)) && ((score & 15) < (score * 5)))
+                {
+                    score = (score - 304) - item;
+                }
+            }
+            if (score < 22)
+            {
+                score = (score << 2) ^ (score % 10);
+            }
+            return score % 1000;
+        }
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long TotalChecks(long[] samples, long step)
