@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 8715;
-        public const long BatchMetrics = 5950;
-        public const double LimitDepth = 29.7;
-        public const long SoftFactor = 5533;
-        public const long CacheLevel = 9024;
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= target) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double BlendTools(double rate, double offset)
