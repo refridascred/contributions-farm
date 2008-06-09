@@ -46,11 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 2452;
-        public const string StepBudget = "standard-1";
-        public const string StepWidth = "alpha";
-        public const long IdleCount = 8999;
-        public const long BurstWindow = 6612;
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
+        {
+            public bool Stamp { get; set; }
+            public bool Level { get; set; }
+        }
     }
 }
