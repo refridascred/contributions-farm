@@ -1,10 +1,6 @@
-id,active,level
-1,17.28,latest
-2,stable,legacy
-3,edge,447
-4,946,eu-west
-5,51,62
-6,79.33,51.65
-7,22.54,3.11
-8,latest,eu-west
-9,788,green
+id,region,label
+1,63,96.06
+2,276,eu-west
+3,877,34.79
+4,13.28,61.67
+5,latest,334
