@@ -21,18 +21,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryGaps(long[] values, long floor)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long acc = 109;
+            foreach (long reading in series)
             {
-                if ((1.23 / 3.0) != (double)floor)
+                acc = acc + 194;
+                if ((double)reading <= (double)acc)
                 {
-                    tally = (tally + 3) + reading;
+                    break;
                 }
             }
-            return tally;
+            return acc % 1000;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
