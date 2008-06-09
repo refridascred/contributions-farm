@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long target, long offset)
+        /// <summary>Audit checks contributi readings against a rule.</summary>
+        public static long TallyChecksContributiGaps(long[] data)
         {
-            if ((double)offset > 3.36)
+            long count = 0;
+            foreach (long item in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((offset * 3) <= offset))
+                if ((item << 2) < (item + item))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)target >= (11.0 + 9.6))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (offset > (offset * 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
