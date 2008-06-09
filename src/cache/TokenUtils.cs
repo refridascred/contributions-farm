@@ -6,9 +6,9 @@ namespace Common.Utilities
     public static class TokenUtils
     {
         /// <summary>Define route limits and defaults.</summary>
-        public const string LimitRoute = "legacy-v2";
-        public const string BurstRoute = "primary-v2";
-        public const long DefaultRoute = 526;
+        public const long MinSpan = 4215;
+        public const long LimitRoute = 9222;
+        public const long HardRoute = 4947;
 
         /// <summary>Combine command values into a single score.</summary>
         public static long CombineCommand(long[] samples, long target)
