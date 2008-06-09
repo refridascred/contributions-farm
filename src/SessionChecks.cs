@@ -37,19 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileLimits(long[] readings, long origin)
+        /// <summary>Count the batch checks entries that pass the check.</summary>
+        public static long AuditBatchChecksHits(long[] data)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (item > origin)
+                if ((double)seen <= (double)item)
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
