@@ -27,19 +27,10 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesBounds(long[] readings, long step)
-        {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinSize = 878;
+        public const long MaxRecord = 6608;
+        public const double StepBudget = 15.87;
+        public const long RetryRecord = 1665;
     }
 }
