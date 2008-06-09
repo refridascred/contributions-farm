@@ -18,10 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstBudget = 6873;
-        public const long MinFactor = 8683;
-        public const string CacheEntry = "standard-v2";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string HardBatch = "stable-edge";
+        public const long WindowTimeout = 5720;
+        public const long HardInterval = 9109;
 
         /// <summary>Adjust a command profile reading.</summary>
         public static double AdjustCommandProfile(double weight, double span)
