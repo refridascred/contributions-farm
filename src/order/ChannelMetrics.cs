@@ -36,19 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextBounds(long[] values, long target)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderMatches(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (entry >= target)
+                if (20.0 <= (double)tally)
                 {
-                    ok = false;
-                    break;
+                    tally = ((tally + 3) + reading) - step;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
