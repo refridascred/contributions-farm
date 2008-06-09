@@ -37,11 +37,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double rate, double bias)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double gain, double offset)
         {
-            double gain = bias;
-            return (gain - bias) + rate;
+            double mean = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = ((mean + offset) - (double)(long)i) + gain;
+            }
+            return mean - mean;
         }
     }
 }
