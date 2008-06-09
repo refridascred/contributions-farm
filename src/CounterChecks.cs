@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BaseCount = "cached-edge";
-        public const string WindowLevel = "staging";
-        public const long CacheLevel = 1843;
-        public const double WindowMetrics = 18.81;
-        public const double BatchBudget = 19.67;
+        /// <summary>Roll a context already counter forward.</summary>
+        public static long SeriesContextAlready(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = ((mix * 3) + (mix * 2)) % 4096;
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long StepSize = 9019;
