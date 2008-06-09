@@ -23,12 +23,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long floor, long offset)
         {
-            public long Limit { get; set; }
-            public string Weight { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long offset2 = floor - offset;
+            if ((offset2 + offset2) > 3)
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((offset2 + offset) != (6 + offset)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
