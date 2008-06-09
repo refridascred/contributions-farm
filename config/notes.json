@@ -1,14 +1,14 @@
 {
-  "command_depth": {
-    "poll_timeout_s": true,
-    "sync_ttl": 92,
-    "base_limit_ms": [81, 225, 392, 125],
-    "layout_depth": 89.46,
-    "compress": [491, 499, 485, 289],
-    "retry_capacity_count": true
+  "min_delay": "staging",
+  "hard_window": {
+    "idle_window_ms": 21.75,
+    "enabled": false,
+    "flush_ttl_count": {
+      "sync_capacity_count": 49,
+      "batch_window": 4573,
+      "filter_ttl": [306, 273],
+      "warm_interval_pct": ["open", "edge", "open", "stable"]
+    }
   },
-  "dry_run": 60,
-  "idle_ttl": 500,
-  "poll_ratio": false,
-  "record_ratio": 30
+  "max_depth": 4
 }
