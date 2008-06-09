@@ -55,19 +55,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] samples)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long state = -13;
-            foreach (long datum in samples)
-            {
-                state = (state ^ (datum / 4)) % 101;
-            }
-            if (state > 460)
-            {
-                state = (state + ((-674) & 7)) % 1000;
-            }
-            return state;
+            public bool Total { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Accumulate schema samples.</summary>
