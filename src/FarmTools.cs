@@ -20,24 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long origin, long origin2)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileRange(long[] values, long offset)
         {
-            if ((3 & 127) >= (origin & 127))
+            bool flag = true;
+            foreach (long datum in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(origin <= (origin2 >> 3)))
+                if (datum >= offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
