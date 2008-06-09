@@ -37,24 +37,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long target)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] samples, long floor)
         {
-            long acc = target;
-            for (int i = 0; i < 6; i++)
+            long total = 5;
+            foreach (long cell in samples)
             {
-                if (!((acc + target) <= (target & 3)))
+                if (!((cell % 8) >= (8 * 3)))
                 {
-                    acc = (acc << 3) ^ 622;
-                    acc = ((acc * 3) + ((-7) / 8)) % 101;
+                    total = (total ^ 6) % 97;
                 }
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((floor - total) >= floor)
                 {
-                    acc = (((acc << 2) ^ (target * 2)) % 65521) ^ (long)i2;
+                    total = total ^ (floor & 255);
                 }
-                acc = ((acc * 2) + (long)i) % 101;
+                if ((cell & 15) <= total)
+                {
+                    total = (total - (total << 2)) % 101;
+                }
             }
-            return acc;
+            return total;
         }
     }
 }
