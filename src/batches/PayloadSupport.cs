@@ -20,26 +20,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] readings)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long floor, long seed)
         {
-            long mark = 15;
-            foreach (long sample in readings)
+            long step = floor ^ seed;
+            if ((seed + floor) >= step)
             {
-                if ((sample - mark) <= mark)
+                return 3;
+            }
+            else
+            {
+                if (!((double)seed <= (8.44 + 7.32)))
                 {
-                    mark = (mark ^ 54) % 4096;
+                    return 0;
                 }
                 else
                 {
-                    mark = (mark * 5) + (mark / 9);
+                    if ((floor >> 1) >= seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (mark > 4)
-            {
-                mark = ((mark * 5) + (5 + mark)) % 101;
-            }
-            return mark;
         }
 
         /// <summary>Describe the batch level values.</summary>
