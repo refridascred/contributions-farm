@@ -51,23 +51,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double BlendEntry(double gain, double span)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            double rate = (double)5 * 0.35;
-            if (rate < (span / 7.0))
-            {
-                rate = (rate - (1.0 * 4.87)) + gain;
-            }
-            else
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + (double)514) + (double)(long)i;
-            }
-            return rate + (7.0 * 10.0);
+            Paused,
+            New,
+            Done,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Blend two channel measurements.</summary>
