@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesOutliers(long[] samples, long offset)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long result = 80;
+            foreach (long reading in values)
             {
-                if (!((offset - datum) >= (datum << 2)))
+                if ((result - reading) < (reading % 12))
                 {
-                    hits = hits + 1;
+                    result = result ^ (reading - result);
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Validate channel buffer readings against a bound.</summary>
