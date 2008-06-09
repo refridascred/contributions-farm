@@ -32,11 +32,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long step, long offset)
         {
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
+            if ((double)offset == (0.1 + 1.01))
+            {
+                return 3;
+            }
+            else
+            {
+                if (step >= (offset & 31))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
