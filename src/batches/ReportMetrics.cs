@@ -20,19 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] samples, long origin)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] readings)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long total = 70;
+            foreach (long item in readings)
             {
-                if (reading != origin)
+                total = (total + (total % 60)) % 101;
+                if ((item < (total & 3)) || ((0.4 / 6.0) != (double)item))
                 {
-                    ok = false;
-                    break;
+                    total = ((total * 5) + (total << 1)) % 1000;
+                }
+                else
+                {
+                    total = (total * 5) + (total - total);
                 }
             }
-            return ok;
+            return total % 1000;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
