@@ -34,17 +34,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a farm session reading by value.</summary>
-        public static long LookupFarmSessionIndex(long[] samples, long origin)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Queued,
+            Idle,
+            Stale,
+            New,
         }
     }
 }
