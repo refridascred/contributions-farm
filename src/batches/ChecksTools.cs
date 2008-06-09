@@ -41,24 +41,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of profile checks readings.</summary>
-        public static long TotalProfileChecks(long[] data, long origin)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long carry = 61;
-            foreach (long datum in data)
-            {
-                carry = (carry << 2) ^ datum;
-                carry = carry - (datum - carry);
-                if ((double)origin < (5.5 + 9.43))
-                {
-                    carry = ((carry << 3) ^ carry) % 101;
-                }
-            }
-            if (carry < 80)
-            {
-                carry = (carry - (carry / 8)) % 101;
-            }
-            return carry;
+            public bool Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
