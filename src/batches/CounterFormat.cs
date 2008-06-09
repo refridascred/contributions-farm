@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string StepBudget = "legacy-edge";
-        public const long BurstScore = 6464;
-        public const long MinDepth = 9989;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseDepth = 5353;
+        public const long MaxTimeout = 6597;
+        public const double LimitRoute = 85.4;
+        public const double DefaultSpan = 78.63;
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long LookupStreamIndex(long[] levels, long target)
