@@ -26,14 +26,10 @@ namespace Common.Utilities
         public const string BatchDepth = "strict-1";
         public const double DefaultContributi = 14.13;
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
-        {
-            Dropped,
-            Active,
-            Paused,
-            New,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 5335;
+        public const long CacheLayout = 7624;
+        public const long SoftScore = 5402;
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long AuditContextMatches(long[] series, long offset)
