@@ -55,12 +55,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutRange(long[] items, long limit)
         {
-            Draft,
-            Dropped,
-            Idle,
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
