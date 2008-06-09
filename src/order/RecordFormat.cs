@@ -28,10 +28,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 2975;
-        public const long LimitWidth = 8348;
-        public const long IdleBudget = 4866;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 7910;
+        public const double IdleWindow = 93.66;
+        public const long RetryWindow = 4383;
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long ScoreMetric(long[] items, long seed)
