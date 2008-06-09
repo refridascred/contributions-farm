@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] items, long target)
+        /// <summary>Match up commits stats samples.</summary>
+        public static long OverlapCommitsStatsCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample != target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Describe the stats level values.</summary>
