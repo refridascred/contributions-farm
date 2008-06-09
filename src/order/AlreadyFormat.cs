@@ -20,15 +20,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double bias, double span)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterLimits(long[] data, long target)
         {
-            double scale = (bias / 5.0) + (9.33 - 3.45);
-            if (scale > (bias / 5.0))
+            bool ok = true;
+            foreach (long datum in data)
             {
-                scale = scale - scale;
+                if (datum <= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return scale + (span - 4.4);
+            return ok;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
