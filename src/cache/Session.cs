@@ -25,13 +25,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            Idle,
-            Synced,
-            Done,
-            Queued,
+            public long Total { get; set; }
+            public double Mode { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Blend two metric checks measurements.</summary>
