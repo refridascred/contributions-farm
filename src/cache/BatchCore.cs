@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BaseGraph = "fallback-1";
-        public const long RetryGraph = 8570;
-        public const long CacheWidth = 2113;
-        public const long WindowGraph = 2586;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] readings)
+        {
+            long score = 257;
+            foreach (long item in readings)
+            {
+                score = (((score << 3) ^ 0) % 65521) ^ item;
+            }
+            return score;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const double BaseToken = 5.24;
