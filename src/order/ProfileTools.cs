@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesOutliers(long[] readings, long offset)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (!!((reading * 2) == ((long)readings.Length & 15)))
-                {
-                    hits = (hits + 1) + offset;
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a payload summary.</summary>
