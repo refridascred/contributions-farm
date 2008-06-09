@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BatchRoute = 90.83;
-        public const double SoftRoute = 60.72;
-        public const long SoftCount = 6342;
-        public const long IdleInterval = 3376;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 7860;
+        public const long CacheQueue = 1769;
+        public const long RetryFactor = 9842;
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
