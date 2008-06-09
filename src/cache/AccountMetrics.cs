@@ -49,21 +49,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] series)
+        /// <summary>Validate notes tools readings against a bound.</summary>
+        public static bool GuardNotesToolsBounds(long[] levels, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (sample > step)
                 {
-                    if ((series[i] + series[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Digest a series of context cache entries.</summary>
