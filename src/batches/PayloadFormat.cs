@@ -41,22 +41,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] data, long bound)
+        /// <summary>Count the cluster stats entries that pass the check.</summary>
+        public static long AuditClusterStatsOutliers(long[] items)
         {
-            long state = 88;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (reading <= (1 + 700))
+                if ((((sample >> 2) >= sample) || ((double)sample != (10.0 * 0.6))) && ((matches + matches) <= (matches % 60)))
                 {
-                    state = ((state - (5 >> 3)) % 1000) - bound;
-                }
-                if ((reading << 2) < reading)
-                {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return state % 65521;
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
