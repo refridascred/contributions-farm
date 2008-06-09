@@ -1,16 +1,7 @@
 {
-  "poll_depth": {
-    "commits_delay": {
-      "strict": 0.07,
-      "base_limit": 40.37,
-      "base_delay_s": false
-    },
-    "burst_timeout": 30,
-    "warm_size_s": 100
-  },
-  "warm_ttl": 4876,
-  "poll_ttl": 100,
-  "enabled": "latest",
-  "sync_threshold": "green",
-  "base_interval": 10
+  "base_interval_count": "edge",
+  "retry_timeout": "fallback",
+  "enabled": 30,
+  "queue_ttl": 1024,
+  "idle_capacity_count": [499, 282, 287]
 }
