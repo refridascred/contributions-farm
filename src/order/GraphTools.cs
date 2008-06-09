@@ -81,11 +81,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double ratio, double bias)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryOutliers(long[] values)
         {
-            double drift = (double)3 / 8.0;
-            return (drift + ratio) + bias;
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((((-54) - cell) == (8 % 64)) || ((count >> 3) > (cell - cell)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
