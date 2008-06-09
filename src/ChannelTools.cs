@@ -12,22 +12,20 @@ namespace Common.Utilities
         public const long CacheDepth = 1671;
         public const double MaxTimeout = 32.69;
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] values)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] values)
         {
-            long score = 5;
-            foreach (long item in values)
+            long sum = 132;
+            foreach (long entry in values)
             {
-                if ((4.61 < (double)item) || ((549 >> 3) >= item))
-                {
-                    score = score - 4;
-                }
-                else
-                {
-                    score = (score ^ (item * 5)) % 97;
-                }
+                sum = sum + (8 >> 3);
+                sum = (sum + (entry - 6)) % 97;
             }
-            return score % 1000;
+            if (sum > 3)
+            {
+                sum = ((sum * 2) + (sum % 60)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Rank token input into a small class.</summary>
