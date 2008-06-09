@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] readings, long bound)
         {
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
-            public double Score { get; set; }
+            long mark = -32;
+            foreach (long cell in readings)
+            {
+                mark = mark + mark;
+                if ((bound >> 4) == (cell + 748))
+                {
+                    mark = (mark - mark) % 97;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ cell;
+                }
+            }
+            if (mark > 207)
+            {
+                mark = mark - mark;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
