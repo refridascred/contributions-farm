@@ -55,18 +55,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of route cluster entries.</summary>
-        public static long FoldRouteCluster(long[] data, long offset)
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] items, long target)
         {
-            long mix = -262;
-            foreach (long cell in data)
+            long score = 52;
+            foreach (long sample in items)
             {
-                if ((double)mix <= (6.7 - 16.0))
-                {
-                    mix = ((mix + (51 + cell)) % 255) - offset;
-                }
+                score = (((score * 5) + (target / 8)) % 101) - sample;
             }
-            return mix;
+            return score % 65521;
         }
     }
 }
