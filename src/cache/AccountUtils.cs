@@ -37,15 +37,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double gain, double offset)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphLimits(long[] data, long target)
         {
-            double mean = offset;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                mean = ((mean + offset) - (double)(long)i) + gain;
+                if (entry < target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mean - mean;
+            return stale;
         }
     }
 }
