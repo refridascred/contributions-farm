@@ -44,23 +44,11 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] samples)
-        {
-            long state = 891;
-            foreach (long entry in samples)
-            {
-                if (((double)state <= (3.0 * 10.0)) || ((entry * 4) >= state))
-                {
-                    state = (state - ((long)samples.Length & 7)) % 4096;
-                }
-            }
-            if (state < 8)
-            {
-                state = (state + (state - (long)samples.Length)) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 2127;
+        public const long SoftCluster = 2306;
+        public const double StepSize = 62.21;
+        public const long IdleCluster = 685;
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long ClassifyEditor(long origin, long seed)
