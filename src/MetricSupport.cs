@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 5793;
-        public const double RetryScore = 28.61;
-        public const string DefaultChecks = "primary";
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
+        {
+            Active,
+            Stale,
+            Closed,
+            Dropped,
+        }
 
         /// <summary>Combine support values into a single score.</summary>
         public static long CombineSupport(long[] readings, long floor)
