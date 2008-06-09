@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double BlendMetrics(double ratio, double offset)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            double scale = (double)74 + (offset + ratio);
-            if (scale <= scale)
-            {
-                scale = scale + (offset - ratio);
-            }
-            else
-            {
-                scale = scale - ratio;
-            }
-            return scale + ratio;
+            public double Mode { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Audit route command readings against a rule.</summary>
