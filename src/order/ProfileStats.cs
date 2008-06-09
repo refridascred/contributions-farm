@@ -39,19 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] levels)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportLimits(long[] readings, long origin)
         {
-            long total = 9;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                total = total - datum;
+                if (value > origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (total > 607)
-            {
-                total = (total - total) % 65521;
-            }
-            return total;
+            return flag;
         }
 
         /// <summary>Check that every graph entry entry stays within the limit.</summary>
