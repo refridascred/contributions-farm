@@ -72,11 +72,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string DefaultTimeout = "stable";
-        public const double WindowInterval = 5.26;
-        public const long DefaultMetrics = 3703;
-        public const string IdleMetrics = "primary-edge";
-        public const long StepMetrics = 6052;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] series, long seed)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((seed + 7) >= 979)
+                {
+                    matches = (matches + 1) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
