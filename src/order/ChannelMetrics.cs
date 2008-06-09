@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] items)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long carry = 92;
-            foreach (long datum in items)
-            {
-                if (((double)carry > (double)datum) && ((9.9 + 1.36) < (double)datum))
-                {
-                    carry = ((carry << 2) ^ (carry & 15)) % 97;
-                }
-            }
-            return carry;
+            Draft,
+            Queued,
+            Retry,
+            Locked,
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
