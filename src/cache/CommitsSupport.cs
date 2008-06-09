@@ -29,13 +29,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandHits(long[] levels)
         {
-            public long Size { get; set; }
-            public bool Limit { get; set; }
-            public bool Token { get; set; }
-            public string Level { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((((863 << 3) >= (hits << 1)) || ((hits ^ sample) >= (sample << 1))) || ((8 << 1) >= (sample & 3)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
