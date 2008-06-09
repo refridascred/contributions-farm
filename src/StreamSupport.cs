@@ -31,21 +31,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] series)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 882;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((cell * 5) <= (cell << 2))
                 {
-                    if ((series[i] - series[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score + (cell - cell)) % 65521;
+                }
+                else
+                {
+                    score = (score - (cell % 60)) % 101;
                 }
             }
-            return hits;
+            if (score < 72)
+            {
+                score = ((score * 2) + score) % 255;
+            }
+            return score;
         }
 
         /// <summary>Count notes batch pairs that satisfy a relation.</summary>
