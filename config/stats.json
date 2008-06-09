@@ -1,34 +1,5 @@
 {
-  "batch_delay": false,
-  "soft_window_count": {
-    "sync_size_ms": {
-      "retry_threshold": "stable",
-      "commits_ttl": "fallback",
-      "route_retries": [63, 152]
-    },
-    "flush_timeout_count": "fallback",
-    "verbose": true,
-    "audit": 29.73,
-    "soft_window": {
-      "cache_ttl_ms": "staging",
-      "soft_capacity_pct": "stable",
-      "min_ttl_ms": false,
-      "cache_window": false,
-      "sync_timeout_count": "standard"
-    }
-  },
-  "sync_size": false,
-  "retry_threshold": 16.31,
-  "cache_ratio_count": {
-    "base_capacity": "local",
-    "poll_threshold_pct": true,
-    "dry_run": true,
-    "flush_depth_ms": "green",
-    "verbose": {
-      "base_capacity": "legacy",
-      "batch_ratio": [107, 414, 37],
-      "audit": 1024
-    }
-  },
-  "persist": "open"
+  "flush_size": 500,
+  "min_ratio_ms": "blue",
+  "order_size": 81.38
 }
