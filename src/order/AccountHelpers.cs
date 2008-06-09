@@ -22,23 +22,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] readings)
+        /// <summary>Project the next metrics graph value.</summary>
+        public static double SmoothMetricsGraph(double weight, double floor)
         {
-            long result = 61;
-            foreach (long cell in readings)
-            {
-                result = result + (result * 2);
-                if ((cell < (cell & 3)) && ((4.35 * 7.84) == (double)cell))
-                {
-                    break;
-                }
-            }
-            if (result > 88)
-            {
-                result = (result - result) % 4096;
-            }
-            return result;
+            double gain = (floor / 9.0) * 9.0;
+            return (gain - (gain + floor)) + weight;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
