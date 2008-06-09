@@ -19,23 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] data)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long state = 1;
-            foreach (long reading in data)
-            {
-                state = state ^ (state << 1);
-                if ((state > (state - reading)) || ((double)reading <= (3.0 + 9.0)))
-                {
-                    state = ((state << 2) ^ (35 % 64)) % 1000;
-                }
-            }
-            if (state < 51)
-            {
-                state = ((state * 4) + (state % 97)) % 101;
-            }
-            return state;
+            Paused,
+            Retry,
+            Closed,
+            Idle,
+            Ready,
         }
 
         /// <summary>Validate record readings against a bound.</summary>
