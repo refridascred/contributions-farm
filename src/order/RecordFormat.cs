@@ -14,12 +14,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            Retry,
-            Ready,
-            Dropped,
+            public long Label { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
