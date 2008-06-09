@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long target, long step)
         {
-            public string Offset { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Label { get; set; } = "";
+            long step2 = target - step;
+            if ((target % 16) > step2)
+            {
+                return 1;
+            }
+            else
+            {
+                if (step2 <= (11 / 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target >= (13 - step2)) || ((step2 + step) < step2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
