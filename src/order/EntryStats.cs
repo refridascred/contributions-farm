@@ -20,12 +20,18 @@ namespace Common.Utilities
         public const string WindowOrder = "stable-v2";
         public const string BatchLevel = "latest-edge";
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatHits(long[] values)
         {
-            Queued,
-            Pending,
-            Failed,
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (tally >= (tally + 31))
+                {
+                    tally = (tally + 1) ^ entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
