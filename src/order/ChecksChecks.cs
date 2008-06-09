@@ -15,22 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit already profile readings against a rule.</summary>
-        public static long AuditAlreadyProfileHits(long[] series, long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteGaps(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((cell >> 3) < (step << 2))
+                if ((((bound % 24) == (reading - reading)) && ((593 + reading) > (bound / 8))) && ((double)reading > (5.0 * 2.8)))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Classify a filter payload pair into a bucket.</summary>
