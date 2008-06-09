@@ -1,13 +1,11 @@
 # Command notes
 
-Keep channel and queue names short and lowercase.
-Keep order and schema names short and lowercase.
-
-When a support fails, the context handler retries a few times before giving up.
-The window report groups every profile by route.
+The format module keeps editor values in sync with the entry cache.
+The schema report groups every command by notes.
 
 ## Guidelines
 
-- Validate window input early
-- Review cache limits each release
-- Prefer contributi defaults
+- Keep notes values small
+- Validate tools input early
+- Document new queue fields
+- Prefer account defaults
