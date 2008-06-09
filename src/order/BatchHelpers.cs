@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] levels)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterGaps(long[] levels, long seed)
         {
-            long total = 7;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                long next = (long)levels.Length;
-                total = (total - (next << 2)) % 4096;
-                total = total - (value & 1);
-                if ((double)value == (7.73 + 1.0))
+                if (tally < (seed / 7))
                 {
-                    break;
+                    tally = (tally + 1) + item;
                 }
             }
-            if (total < (-236))
-            {
-                total = total - (total % 97);
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Describe the farm level values.</summary>
