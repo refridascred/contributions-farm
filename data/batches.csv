@@ -1,8 +1,6 @@
-id,count,ratio,state
-1,75.94,strict,1.98
-2,local,72,155
-3,primary,540,803
-4,standard,509,eu-west
-5,279,562,fallback
-6,69,452,408
-7,36.74,545,212
+id,state,weight,active
+1,637,32.93,528
+2,14.76,802,open
+3,edge,815,79.53
+4,975,eu-west,656
+5,188,852,680
