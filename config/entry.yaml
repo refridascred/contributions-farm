@@ -1,4 +1,6 @@
 # entry settings
-profile_delay: 15
-readonly: 250
-max_timeout_ms: true
+githubfarm_depth: green
+warm_capacity_ms: 28.63
+support_retries: 30
+max_limit_count: 63.08
+flush_ttl_ms: blue
