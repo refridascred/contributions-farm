@@ -60,21 +60,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of filter stats readings.</summary>
-        public static long OverlapFilterStatsCount(long[] series)
+        /// <summary>Digest a series of support schema entries.</summary>
+        public static long DigestSupportSchema(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = -493;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                long hits = (mix / 9) - (mix >> 4);
+                if (!((hits + (-963)) <= mix))
                 {
-                    if ((series[i] + series[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    continue;
+                }
+                if (datum >= (mix & 63))
+                {
+                    mix = (mix - (mix * 4)) % 1000;
                 }
             }
-            return tally;
+            return mix % 4096;
         }
     }
 }
