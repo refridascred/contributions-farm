@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long bound, long step)
         {
-            Paused,
-            Stale,
-            Idle,
-            Failed,
+            long prev = bound ^ step;
+            if ((prev % 5) < (step - prev))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((10.0 / 3.0) <= (double)step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step / 6) < prev)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two farm measurements.</summary>
