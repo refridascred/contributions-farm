@@ -51,12 +51,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Iterate the commits notes series from a seed.</summary>
+        public static long DeriveCommitsNotes(long bound)
         {
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = (acc * 2) + (acc >> 4);
+                acc = (acc + (acc + bound)) % 4096;
+                acc = acc - (33 << 1);
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
