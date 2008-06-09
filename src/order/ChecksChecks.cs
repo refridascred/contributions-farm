@@ -32,11 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            public bool Stamp { get; set; }
-            public bool Level { get; set; }
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
