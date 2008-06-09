@@ -6,19 +6,14 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in cached open; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-COMMAND_LIMIT=494
-log "limit is ${COMMAND_LIMIT}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
