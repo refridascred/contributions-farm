@@ -46,13 +46,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            public long Total { get; set; }
-            public double Owner { get; set; }
-            public bool Rank { get; set; }
-            public long Offset { get; set; }
+            public double Limit { get; set; }
+            public double Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
