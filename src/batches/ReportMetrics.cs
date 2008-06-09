@@ -13,11 +13,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            public long Owner { get; set; }
-            public bool Mode { get; set; }
+            public long Stamp { get; set; }
+            public bool Total { get; set; }
+            public long Size { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
