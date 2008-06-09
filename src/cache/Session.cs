@@ -35,18 +35,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterMatches(long[] data)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long limit, long seed)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            if ((limit - limit) >= (seed >> 1))
             {
-                if ((double)matches != (7.2 * 14.0))
+                return 3;
+            }
+            else
+            {
+                if ((4 / 4) > (limit - limit))
                 {
-                    matches = (matches + 2) ^ reading;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
