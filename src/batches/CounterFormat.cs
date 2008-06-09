@@ -14,38 +14,17 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long origin, long seed)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LocatePayloadIndex(long[] readings, long target)
         {
-            if ((seed + seed) >= (origin ^ seed))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((244 - origin) >= (origin - seed))
+                if (readings[i] <= target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((1 + origin) != (seed - seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)seed == (1.0 / 5.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate session samples.</summary>
