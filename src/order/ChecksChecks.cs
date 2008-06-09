@@ -37,24 +37,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long step, long offset)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            if ((double)offset == (0.1 + 1.01))
-            {
-                return 3;
-            }
-            else
-            {
-                if (step >= (offset & 31))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public double Stamp { get; set; }
+            public double Count { get; set; }
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
