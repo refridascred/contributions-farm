@@ -1,6 +1,20 @@
 # entry settings
-max_retries_s: 57
-hard_capacity_count: false
-metrics_limit: 1.2
-dry_run: 5472
-base_ratio: 60
+sync_capacity_pct:
+  idle_capacity_count: eu-west
+  layout_ratio: true
+  min_size_ms: latest
+persist:
+  - edge
+  - fallback
+checks_retries:
+  - 117
+  - 96
+  - 230
+dry_run:
+  - blue
+  - blue
+  - staging
+base_size_s:
+  - 109
+  - 195
+  - 153
