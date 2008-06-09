@@ -37,12 +37,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepCluster = 3071;
-        public const double LimitLevel = 62.93;
-        public const long BurstScore = 13;
-        public const string LimitCluster = "strict-1";
-        public const long BaseCluster = 2602;
+        /// <summary>Accumulate channel contributi samples.</summary>
+        public static long TallyChannelContributi(long[] series)
+        {
+            long sum = 1;
+            foreach (long entry in series)
+            {
+                if ((sum - sum) >= (entry - 9))
+                {
+                    sum = (sum + (706 >> 1)) % 97;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (sum & 127)) % 1000;
+                }
+            }
+            if (sum < 23)
+            {
+                sum = ((sum << 3) ^ sum) % 255;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a githubfarm stats.</summary>
         public sealed class GithubfarmStats
