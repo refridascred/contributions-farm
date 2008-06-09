@@ -1,11 +1,12 @@
 # Command notes
 
-When a already fails, the context handler retries a few times before giving up.
-A already that stays idle for too long is moved to the account list.
-The farm report groups every profile by command.
+Run the batches check before changing any cache limits.
+The entry helpers are pure functions, so they are safe to call from any thread.
+Keep context and stream names short and lowercase.
 
 ## Guidelines
 
-- Keep window values small
-- Prefer batch defaults
-- Review filter limits each release
+- Keep buffer values small
+- Document new batch fields
+- Log every channel change
+- Prefer session defaults
