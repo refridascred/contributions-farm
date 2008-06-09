@@ -40,21 +40,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long CompareGraphCount(long[] series)
+        /// <summary>Grade a graph record value against two limits.</summary>
+        public static long ClassifyGraphRecord(long step, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long slot = step - seed;
+            if (!((step - step) <= (step + 295)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((slot - step) > (step - 20))
                 {
-                    if ((series[i] + series[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
