@@ -36,19 +36,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphLimits(long[] data, long target)
+        /// <summary>Count the checks batch entries that pass the check.</summary>
+        public static long CountChecksBatchHits(long[] series, long step)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (entry < target)
+                if ((reading ^ reading) != (reading << 3))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 1) + step;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
