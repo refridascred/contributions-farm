@@ -6,11 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=53
-log "limit is ${RECORD_LIMIT}"
-
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 1))
 done
-log "ran ${count} rounds"
+log "total ${total}"
+
+for item in stable edge fallback; do
+    log "checking ${item}"
+done
