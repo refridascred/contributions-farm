@@ -29,19 +29,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Accumulate command filter samples.</summary>
-        public static long TallyCommandFilter(long[] levels, long seed)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long offset)
         {
-            long result = 275;
-            foreach (long datum in levels)
+            long state = offset;
+            for (int i = 0; i < 19; i++)
             {
-                result = (result << 3) ^ (datum + datum);
+                if (!(state > (8 >> 3)))
+                {
+                    state = (state << 3) ^ (offset - state);
+                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            if (result < 3)
-            {
-                result = (result << 3) ^ (seed ^ seed);
-            }
-            return result;
+            return state;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
