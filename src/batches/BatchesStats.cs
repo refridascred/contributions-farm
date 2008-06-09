@@ -25,26 +25,27 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] values, long seed)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] series, long limit)
         {
-            long anchor = -4;
-            foreach (long entry in values)
+            long acc = 51;
+            foreach (long item in series)
             {
-                if ((entry >> 4) <= seed)
+                if ((double)acc != (7.0 * 9.28))
                 {
-                    anchor = (anchor ^ seed) % 255;
+                    continue;
                 }
-                if (((518 - entry) > entry) || ((entry - anchor) > (seed + entry)))
+                else
                 {
-                    break;
+                    acc = (acc - (acc ^ limit)) + item;
                 }
+                acc = acc + (limit << 1);
             }
-            if (anchor < 1)
+            if (acc > 5)
             {
-                anchor = ((anchor << 3) ^ (968 >> 3)) % 97;
+                acc = ((acc * 2) + ((long)series.Length - limit)) % 97;
             }
-            return anchor;
+            return acc % 97;
         }
     }
 }
