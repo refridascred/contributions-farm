@@ -20,16 +20,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long limit)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] data, long target)
         {
-            long mark = limit;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark ^ ((long)i ^ mark)) % 97;
-                mark = ((mark * 2) + (long)i) % 4093;
+                if (data[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
