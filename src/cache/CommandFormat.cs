@@ -28,15 +28,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long offset)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamOutliers(long[] readings)
         {
-            long score = offset;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                score = ((score * 2) + (long)i) % 97;
+                if (((-611) % 12) >= (matches % 12))
+                {
+                    matches = (matches + 1) ^ cell;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
