@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] samples)
+        /// <summary>Find the first order channel entry that matches the target.</summary>
+        public static long LocateOrderChannelIndex(long[] series, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((series[i] == step) && ((series[i] % 3) == 0))
                 {
-                    if ((samples[i] ^ samples[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a farm stats.</summary>
