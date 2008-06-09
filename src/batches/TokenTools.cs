@@ -33,9 +33,11 @@ namespace Common.Utilities
             return weight + (rate * 9.1);
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftFactor = 7550;
-        public const long IdleWidth = 9472;
-        public const long StepContributi = 1316;
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
+        {
+            public double Size { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
