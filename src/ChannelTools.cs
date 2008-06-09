@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit session report readings against a rule.</summary>
-        public static long TallySessionReportMatches(long[] samples)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)reading <= 18.0)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Region { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
