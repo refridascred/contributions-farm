@@ -10,10 +10,16 @@ namespace Common.Utilities
         public const double StepRatio = 46.45;
         public const long BurstInterval = 1174;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BatchMetrics = "local-edge";
-        public const double HardMetrics = 37.81;
-        public const long LimitCount = 4953;
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a buffer snapshot.</summary>
         public sealed class BufferSnapshot
