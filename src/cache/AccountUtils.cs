@@ -13,12 +13,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long offset)
         {
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
-            public long Region { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
