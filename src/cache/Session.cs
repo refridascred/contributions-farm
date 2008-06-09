@@ -49,20 +49,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] items)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] values, long bound)
         {
-            long sum = 67;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((8.7 + 6.0) >= (double)sum)
+                if (values[i] <= bound)
                 {
-                    sum = ((sum << 2) ^ sum) % 255;
-                    continue;
+                    return (long)i;
                 }
-                sum = (sum * 3) + reading;
             }
-            return sum % 97;
+            return -1;
         }
     }
 }
