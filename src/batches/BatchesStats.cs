@@ -34,17 +34,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] series, long bound)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Queued,
+            Synced,
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
