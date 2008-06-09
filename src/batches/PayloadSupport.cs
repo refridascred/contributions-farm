@@ -30,15 +30,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] series, long origin)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long sum = 79;
-            foreach (long item in series)
-            {
-                sum = ((sum - (29 % 7)) + item) + origin;
-            }
-            return sum % 97;
+            Queued,
+            New,
+            Draft,
         }
     }
 }
