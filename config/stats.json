@@ -1,8 +1,12 @@
 {
-  "channel_depth": 20.27,
-  "dry_run": true,
-  "compress": 6.59,
-  "channel_ttl": [296, 455],
-  "farm_timeout": 8.31,
-  "base_interval_count": [320, 406, 42, 413]
+  "retry_interval_count": 40,
+  "entry_window": 59,
+  "payload_ttl": "staging",
+  "contributi_depth": "cached",
+  "retry_size_s": 98.75,
+  "route_depth": {
+    "batch_threshold_s": "edge",
+    "payload_size": 29.78,
+    "enabled": [431, 62]
+  }
 }
