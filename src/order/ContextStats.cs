@@ -26,12 +26,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string LimitContext = "standard-v2";
-        public const long HardContext = 1900;
-        public const long MinTimeout = 2965;
-        public const long MinContext = 5973;
-        public const long IdleContext = 9323;
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > step) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first graph report entry that matches the target.</summary>
         public static long LookupGraphReportIndex(long[] readings, long origin)
