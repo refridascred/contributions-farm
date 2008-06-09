@@ -33,23 +33,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double weight, double bias)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long floor, long limit)
         {
-            double scale = bias;
-            if (scale >= (double)293)
+            long delta = floor ^ limit;
+            if ((floor * 3) == (limit - delta))
             {
-                scale = (scale - (bias + 14.0)) - weight;
+                return 7;
             }
             else
             {
-                scale = scale - (bias + bias);
+                if (((-851) << 1) >= (limit << 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((9.0 - 4.9) != (double)floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((6.93 + 3.0) != (double)floor)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - 3.84) + (double)(long)i;
-            }
-            return scale + (double)32;
         }
     }
 }
