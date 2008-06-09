@@ -15,18 +15,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteGaps(long[] samples, long bound)
+        /// <summary>Adjust a batch buffer reading.</summary>
+        public static double ProjectBatchBuffer(double rate, double offset)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            double scale = (offset - 3.25) + (rate - rate);
+            if (scale <= (3.36 + 2.0))
             {
-                if ((((bound % 24) == (reading - reading)) && ((593 + reading) > (bound / 8))) && ((double)reading > (5.0 * 2.8)))
-                {
-                    count = count + 2;
-                }
+                scale = scale - scale;
             }
-            return count;
+            return scale - (double)642;
         }
 
         /// <summary>Classify a filter payload pair into a bucket.</summary>
