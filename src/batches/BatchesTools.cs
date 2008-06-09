@@ -27,13 +27,22 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Measure how many batch queue samples are out of range.</summary>
+        public static long MeasureBatchQueueHits(long[] series)
         {
-            public double Label { get; set; }
-            public double Mode { get; set; }
-            public bool Stamp { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((double)datum == (5.0 - 9.0))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
