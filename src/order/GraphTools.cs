@@ -28,20 +28,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] readings)
-        {
-            long mix = 91;
-            foreach (long datum in readings)
-            {
-                mix = (mix << 2) ^ datum;
-                if ((2.19 / 5.0) > (double)datum)
-                {
-                    mix = (mix - (datum ^ datum)) % 101;
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BatchMetrics = "cached";
+        public const long BaseMetrics = 6977;
+        public const long HardMetrics = 3150;
+        public const string IdleMetrics = "staging-edge";
 
         /// <summary>Grade a session counter value against two limits.</summary>
         public static long BucketSessionCounter(long limit, long bound)
