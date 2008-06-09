@@ -75,22 +75,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiHits(long[] data, long offset)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((2.91 / 4.0) < (double)value)
-                {
-                    count = (count + 3) - offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Offset { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
