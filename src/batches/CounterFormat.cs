@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseDepth = 5353;
-        public const long MaxTimeout = 6597;
-        public const double LimitRoute = 85.4;
-        public const double DefaultSpan = 78.63;
+        /// <summary>Check that every account cluster entry stays within the limit.</summary>
+        public static bool GuardAccountClusterRange(long[] samples, long step)
+        {
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long LookupStreamIndex(long[] levels, long target)
