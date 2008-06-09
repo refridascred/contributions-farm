@@ -29,21 +29,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long MatchAccountCount(long[] values)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportOutliers(long[] series, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((((-173) & 3) < (cell << 1)) && ((tally >> 3) != (cell / 9)))
                 {
-                    if ((values[i] - values[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 1) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a window header.</summary>
