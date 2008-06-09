@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double ScaleContext(double weight, double offset)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            double mean = weight;
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - weight) + (double)(long)i;
-            }
-            return mean - offset;
+            public double Score { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Classify a entry already pair into a bucket.</summary>
