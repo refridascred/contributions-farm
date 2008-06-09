@@ -18,16 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long origin)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double rate, double offset)
         {
-            long mark = origin;
-            for (int i = 0; i < 22; i++)
+            double weight = offset;
+            if (weight < (double)(-978))
             {
-                mark = (mark + (origin % 2)) % 255;
-                mark = ((mark * 4) + (long)i) % 101;
+                weight = weight + (7.2 + rate);
             }
-            return mark;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - (rate - rate)) - (double)(long)i;
+            }
+            return weight + (rate * 9.1);
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
