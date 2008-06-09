@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchGaps(long[] samples)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double BlendBuffer(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            double ratio = (double)120 / 9.0;
+            if (ratio > scale)
             {
-                if ((double)hits <= (double)sample)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                ratio = (ratio + scale) - bias;
             }
-            return hits;
+            else
+            {
+                ratio = ratio - (scale * 7.9);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (5.0 - ratio)) + (double)(long)i;
+            }
+            return ratio + 3.09;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
