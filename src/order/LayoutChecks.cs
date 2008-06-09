@@ -12,13 +12,25 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long offset, long target)
         {
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
-            public double Label { get; set; }
+            long span = offset - target;
+            if (span <= (span + target))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset + offset) >= (span - target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Rank entry token input into a small class.</summary>
