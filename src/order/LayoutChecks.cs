@@ -57,32 +57,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a filter already pair into a bucket.</summary>
-        public static long GradeFilterAlready(long target, long step)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long limit)
         {
-            long diff = target ^ step;
-            if (!((step << 2) > (36 * 5)))
+            long score = limit;
+            for (int i = 0; i < 14; i++)
             {
-                return 8;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((step ^ diff) > diff)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((36 % 24) < (diff / 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return score;
         }
     }
 }
