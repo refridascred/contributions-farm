@@ -48,15 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MinLevel = "local-edge";
+        public const string BaseFactor = "fallback-edge";
+        public const long MaxRatio = 8471;
+        public const double BaseSize = 66.24;
+        public const long BatchSize = 7570;
     }
 }
