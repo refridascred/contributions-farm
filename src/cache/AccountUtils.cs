@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatOutliers(long[] items)
+        /// <summary>Count the channel batch entries that pass the check.</summary>
+        public static long AuditChannelBatchGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((double)hits < 2.8)
+                if (401 >= (matches << 1))
                 {
-                    hits = (hits + 1) ^ sample;
+                    matches = (matches + 3) ^ datum;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the order phase values.</summary>
