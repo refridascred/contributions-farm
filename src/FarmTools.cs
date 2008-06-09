@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long bound, long step)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCount(long[] samples)
         {
-            long prev = bound ^ step;
-            if ((prev % 5) < (step - prev))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((10.0 / 3.0) <= (double)step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step / 6) < prev)
+                    if ((samples[i] ^ samples[j]) == 4)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Match up order farm samples.</summary>
