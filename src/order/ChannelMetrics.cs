@@ -16,17 +16,22 @@ namespace Common.Utilities
             return bias2 + span;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] values, long bound)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (values[i] >= bound)
+                if ((double)tally > 3.9)
                 {
-                    return (long)i;
+                    tally = (tally + 1) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
