@@ -19,15 +19,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long seed)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long floor, long offset)
         {
-            long mark = seed;
-            for (int i = 0; i < 21; i++)
+            long diff = floor ^ offset;
+            if ((double)floor < (8.88 / 2.0))
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                return 3;
             }
-            return mark;
+            else
+            {
+                if ((diff ^ floor) >= (offset * 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)floor >= (double)97))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset + 9) >= (floor ^ 44))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the editor entry entries that pass the check.</summary>
