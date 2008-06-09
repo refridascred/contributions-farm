@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportOutliers(long[] data)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((count + item) < (item + 9))
+                if ((double)target < 9.0)
                 {
-                    count = count + 1;
+                    matches = (matches + 3) ^ datum;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the editor state values.</summary>
