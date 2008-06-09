@@ -26,25 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long seed, long offset)
-        {
-            if (!((offset * 2) == (seed - 161)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((16 + offset) < (seed + seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstWidth = 7061;
+        public const string LimitFarm = "staging-1";
+        public const string MinInterval = "alpha-v2";
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long ClassifyGithubfarm(long floor, long floor2)
