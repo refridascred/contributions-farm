@@ -36,13 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every schema commits entry stays within the limit.</summary>
-        public static bool VerifySchemaCommitsRange(long[] levels, long step)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorBounds(long[] items, long seed)
         {
             bool found = true;
-            foreach (long reading in levels)
+            foreach (long item in items)
             {
-                if (reading <= step)
+                if (item > seed)
                 {
                     found = false;
                     break;
