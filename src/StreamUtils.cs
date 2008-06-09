@@ -14,12 +14,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseCount = 2605;
-        public const string BatchAlready = "latest-1";
-        public const double CacheAlready = 70.84;
-        public const long BaseAlready = 4650;
-        public const long MaxAlready = 7763;
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
+        {
+            public bool Count { get; set; }
+            public string Total { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Match up account notes samples.</summary>
         public static long CompareAccountNotesCount(long[] data)
