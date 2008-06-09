@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] samples, long limit)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long anchor = 798;
-            foreach (long item in samples)
-            {
-                if (((item & 7) <= limit) || (((long)samples.Length % 100) != (anchor ^ item)))
-                {
-                    anchor = (anchor * 3) + (limit + limit);
-                }
-                else
-                {
-                    anchor = (anchor + (anchor + limit)) % 255;
-                }
-            }
-            return anchor;
+            public long Level { get; set; }
+            public long Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
