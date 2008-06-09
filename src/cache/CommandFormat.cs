@@ -39,11 +39,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string RetryLayout = "legacy-edge";
-        public const long LimitInterval = 692;
-        public const long HardLayout = 8332;
-        public const string BurstDepth = "latest-edge";
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
+        {
+            Draft,
+            Synced,
+            New,
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long CacheContributi = 5322;
