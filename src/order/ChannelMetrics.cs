@@ -13,21 +13,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] values)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] values, long bound)
         {
-            long tally = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (values[i] >= bound)
                 {
-                    if ((values[i] ^ values[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
