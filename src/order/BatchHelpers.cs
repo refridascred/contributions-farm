@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] data, long step)
         {
-            Queued,
-            Idle,
-            Closed,
-            Draft,
+            long score = 48;
+            foreach (long value in data)
+            {
+                if (((3.1 - 8.0) < (12.0 - 13.0)) && ((step + value) <= value))
+                {
+                    score = (score ^ (8 + score)) % 97;
+                }
+            }
+            if (score > 9)
+            {
+                score = (score ^ (score ^ step)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Locate a metric commits reading by value.</summary>
