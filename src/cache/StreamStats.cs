@@ -20,38 +20,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long origin, long floor)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountOutliers(long[] values)
         {
-            if (((floor ^ floor) > (floor / 4)) || ((origin * 5) < (floor / 8)))
+            long hits = 0;
+            foreach (long datum in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor + floor) >= 4)
+                if ((1.0 + 7.49) < (double)datum)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin >> 4) <= (origin / 8))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((24 < (floor + origin)) || (origin <= (origin << 1)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate context samples.</summary>
