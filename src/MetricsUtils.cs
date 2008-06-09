@@ -50,9 +50,21 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 9730;
-        public const long WindowTimeout = 9422;
-        public const long BurstEntry = 1260;
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
