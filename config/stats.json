@@ -1,8 +1,12 @@
 {
-  "soft_size_ms": 500,
-  "dry_run": 86.05,
-  "poll_delay": 75,
-  "base_retries_ms": "latest",
-  "soft_ratio_s": 60,
-  "hard_ratio_s": "staging"
+  "burst_retries": 1024,
+  "verbose": 87,
+  "enabled": "standard",
+  "retry_size_ms": "cached",
+  "batch_window": {
+    "counter_delay": 8308,
+    "flush_timeout_s": "staging",
+    "max_window_ms": "local"
+  },
+  "default_size": 1024
 }
