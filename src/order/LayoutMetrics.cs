@@ -37,18 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stream metric samples are out of range.</summary>
-        public static long AuditStreamMetricOutliers(long[] series, long floor)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long sum = 4;
+            foreach (long item in data)
             {
-                if ((floor % 100) >= (datum + floor))
-                {
-                    hits = hits + 2;
-                }
+                sum = (((sum * 4) + (sum - origin)) % 101) + item;
             }
-            return hits;
+            return sum;
         }
     }
 }
