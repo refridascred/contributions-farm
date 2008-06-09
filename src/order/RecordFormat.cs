@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterHits(long[] series, long floor)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (!((7.87 + 0.18) >= (double)seen))
-                {
-                    seen = ((seen + 3) + cell) + floor;
-                }
-            }
-            return seen;
+            Paused,
+            Failed,
+            Idle,
+            Stale,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
