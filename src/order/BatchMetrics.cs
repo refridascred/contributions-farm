@@ -22,19 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate session account readings against a bound.</summary>
-        public static bool VerifySessionAccountBounds(long[] values, long floor)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
