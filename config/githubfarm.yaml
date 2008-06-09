@@ -1,21 +1,7 @@
 # githubfarm settings
-audit: green
-verbose: 89.03
-flush_limit: eu-west
-idle_retries_s: staging
-hard_ratio:
-  cache_ttl_ms: 30
-  payload_capacity: open
-  default_depth_ms: 35.93
-  tools_depth: local
-  default_ratio_ms: true
-  warm_limit:
-    stats_delay: latest
-    flush_ratio: open
-    idle_delay_pct: 2997
-    strict:
-      - staging
-      - staging
-      - staging
-    enabled: 100
-retry_depth_ms: 5220
+persist: 59.64
+context_depth:
+  - 187
+  - 3
+  - 79
+compress: 43
