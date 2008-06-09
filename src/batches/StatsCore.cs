@@ -61,18 +61,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] levels, long step)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterRange(long[] items, long origin)
         {
-            long mix = 250;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if ((4.0 + 1.77) >= (double)step)
+                if (reading < origin)
                 {
-                    mix = (((mix * 2) + mix) % 101) + entry;
+                    ready = false;
+                    break;
                 }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
