@@ -55,18 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatGaps(long[] series, long limit)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowGaps(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (seen < (limit + value))
+                if ((hits << 2) < (64 % 8))
                 {
-                    seen = seen + 3;
+                    hits = ((hits + 1) - entry) - target;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the batches status values.</summary>
