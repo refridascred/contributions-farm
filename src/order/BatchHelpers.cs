@@ -27,19 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandRange(long[] samples, long offset)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenBounds(long[] data, long floor)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long item in data)
             {
-                if (item != offset)
+                if (item <= floor)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
     }
 }
