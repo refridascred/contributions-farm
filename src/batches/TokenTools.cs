@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] items, long floor)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Rank { get; set; }
+            public bool Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
