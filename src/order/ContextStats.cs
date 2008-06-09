@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelBounds(long[] items, long floor)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesBounds(long[] series, long target)
         {
             bool ready = true;
-            foreach (long entry in items)
+            foreach (long cell in series)
             {
-                if (entry != floor)
+                if (cell <= target)
                 {
                     ready = false;
                     break;
