@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 5936;
-        public const long BurstDepth = 4507;
-        public const long WindowCluster = 2721;
-        public const string HardCount = "legacy-v2";
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
+        {
+            Failed,
+            Done,
+            Stale,
+            Dropped,
+        }
 
         /// <summary>Adjust a commits reading.</summary>
         public static double AdjustCommits(double scale, double span)
