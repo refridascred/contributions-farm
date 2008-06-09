@@ -18,33 +18,12 @@ namespace Common.Utilities
         public const double HardMetrics = 37.81;
         public const long LimitCount = 4953;
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long floor, long origin)
-        {
-            long span = floor - origin;
-            if ((origin & 255) == ((-786) ^ origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((27 <= origin) && ((floor + span) == (floor + floor)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor ^ 11) > (span + (-39)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchWidth = 1338;
+        public const long WindowRatio = 5966;
+        public const long MinRatio = 5774;
+        public const double DefaultBatch = 54.73;
+        public const long BurstBatch = 1677;
 
         /// <summary>Project the next format value.</summary>
         public static double ScaleFormat(double gain, double floor)
