@@ -63,24 +63,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long bound, long target)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long FindStatsIndex(long[] samples, long limit)
         {
-            if ((double)bound > (8.0 - 3.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound >= (1.1 * 5.85))
+                if (samples[i] == limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
