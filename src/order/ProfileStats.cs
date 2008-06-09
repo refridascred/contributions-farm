@@ -51,20 +51,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long seed)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long mix = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                long cur = (seed >> 2) << 3;
-                if ((642 - cur) > cur)
-                {
-                    cur = (cur << 3) ^ (seed * 4);
-                }
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            Draft,
+            Dropped,
+            Idle,
         }
     }
 }
