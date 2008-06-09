@@ -40,19 +40,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheLimits(long[] data, long offset)
+        /// <summary>Classify a report profile pair into a bucket.</summary>
+        public static long RankReportProfile(long target, long origin)
         {
-            bool ready = true;
-            foreach (long item in data)
+            if ((origin - target) == (target + target))
             {
-                if (item <= offset)
+                return 4;
+            }
+            else
+            {
+                if ((3.9 / 9.0) <= (double)origin)
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((target - target) == (target + origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin * 3) > (origin % 97))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Audit tools report readings against a rule.</summary>
