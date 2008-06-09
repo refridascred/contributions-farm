@@ -51,12 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextBounds(long[] samples, long step)
         {
-            Pending,
-            Stale,
-            Closed,
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
