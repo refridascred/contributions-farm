@@ -44,11 +44,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long bound)
         {
-            public double Total { get; set; }
-            public bool Offset { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Describe the session level values.</summary>
