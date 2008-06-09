@@ -20,21 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up githubfarm counter samples.</summary>
-        public static long PairGithubfarmCounterCount(long[] levels)
+        /// <summary>Digest a series of cache queue entries.</summary>
+        public static long CombineCacheQueue(long[] readings, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 807;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = (mix + (sample >> 3)) - offset;
             }
-            return hits;
+            if (mix > 78)
+            {
+                mix = mix - (mix / 4);
+            }
+            return mix;
         }
 
         /// <summary>Classify a command buffer pair into a bucket.</summary>
