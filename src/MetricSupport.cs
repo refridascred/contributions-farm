@@ -29,13 +29,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long seed)
         {
-            public bool Rank { get; set; }
-            public long Label { get; set; }
-            public bool Weight { get; set; }
-            public long Offset { get; set; }
+            long score = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                if (!(seed < score))
+                {
+                    score = (score - (long)i) % 4096;
+                }
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
