@@ -1,7 +1,7 @@
 {
-  "default_window_s": 77.8,
-  "warm_ttl": 43,
-  "cache_ratio_count": [288, 135, 455, 162],
-  "burst_limit": false,
-  "sync_depth_count": [137, 194, 98]
+  "warm_window": 48,
+  "poll_timeout_s": 5,
+  "batches_capacity": "fallback",
+  "persist": 50.5,
+  "sync_interval_ms": 32.93
 }
