@@ -37,39 +37,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long origin, long limit)
+        /// <summary>Combine cache command values into a single score.</summary>
+        public static long FoldCacheCommand(long[] samples, long origin)
         {
-            long offset = origin ^ limit;
-            if (origin <= 88)
+            long score = 1;
+            foreach (long entry in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (limit < (offset ^ 0))
+                if ((entry & 7) > origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin <= (origin - limit)) && (6 < (92 + origin)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((9 + offset) >= limit) && (offset < (limit >> 5)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    score = (score << 3) ^ (453 * 4);
                 }
             }
+            if (score > (-42))
+            {
+                score = (score << 3) ^ origin;
+            }
+            return score;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
