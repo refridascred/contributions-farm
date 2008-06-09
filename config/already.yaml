@@ -1,8 +1,13 @@
 # already settings
-min_depth_pct: cached
-poll_ttl: 45.42
-cache_interval: 17
-flush_window_count:
-  - 448
-  - 11
-  - 369
+batches_retries: 500
+max_retries: blue
+default_delay: stable
+persist: 100
+tools_delay:
+  hard_size: standard
+  enabled: 66
+  cache_capacity:
+    - cached
+    - edge
+  batch_limit_count: green
+tools_interval: 2.08
