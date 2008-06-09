@@ -22,18 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the payload format entries that pass the check.</summary>
-        public static long CountPayloadFormatMatches(long[] series, long limit)
+        /// <summary>Validate filter queue readings against a bound.</summary>
+        public static bool ValidateFilterQueueRange(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if (!!((limit + 6) <= (5 - (long)series.Length)))
+                if (entry > bound)
                 {
-                    tally = (tally + 3) - entry;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
