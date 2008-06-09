@@ -51,22 +51,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many counter order samples are out of range.</summary>
-        public static long AuditCounterOrderOutliers(long[] items, long origin)
+        /// <summary>Compare every pair of cache payload readings.</summary>
+        public static long CompareCachePayloadCount(long[] data)
         {
-            long count = 0;
-            foreach (long item in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)item != (15.0 / 9.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 3) + origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((data[i] ^ data[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
