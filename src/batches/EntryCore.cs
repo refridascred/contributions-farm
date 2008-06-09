@@ -49,15 +49,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] series)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double rate, double floor)
         {
-            long state = 708;
-            foreach (long value in series)
+            double mean = 1.6;
+            for (int i = 0; i < 6; i++)
             {
-                state = (state ^ (state % 2)) ^ value;
+                mean = (((mean + (double)4) + (double)(long)i) - rate) + floor;
             }
-            return state;
+            return mean + (double)1;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
