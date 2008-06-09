@@ -64,14 +64,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatMatches(long[] levels)
         {
-            Locked,
-            Stale,
-            Ready,
-            Retry,
-            Queued,
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((matches % 97) >= matches)
+                {
+                    matches = (matches + 2) ^ cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
