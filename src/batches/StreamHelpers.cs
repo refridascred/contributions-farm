@@ -41,11 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Check that every schema commits entry stays within the limit.</summary>
+        public static bool VerifySchemaCommitsRange(long[] levels, long step)
         {
-            public string Weight { get; set; } = "";
-            public double Score { get; set; }
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a contributi options.</summary>
