@@ -37,17 +37,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] items, long limit)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] values, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 7;
+            foreach (long cell in values)
             {
-                if ((items[i] <= limit) && ((items[i] % 5) == 0))
+                if ((double)bound == (5.1 + 9.7))
                 {
-                    return (long)i;
+                    state = state ^ (12 + bound);
+                    break;
+                }
+                if ((0.22 * 2.05) == (double)state)
+                {
+                    state = (state * 2) + (cell % 3);
                 }
             }
-            return -1;
+            return state % 97;
         }
 
         /// <summary>Check that every notes context entry stays within the limit.</summary>
