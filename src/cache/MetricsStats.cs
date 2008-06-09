@@ -10,12 +10,21 @@ namespace Common.Utilities
         public const long SoftBuffer = 7841;
         public const string MinInterval = "standard-v2";
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long OverlapContributiCount(long[] values)
         {
-            Failed,
-            Retry,
-            Locked,
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the queue mode values.</summary>
