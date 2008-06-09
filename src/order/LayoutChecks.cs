@@ -59,12 +59,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            public long Region { get; set; }
-            public double Ratio { get; set; }
-            public long Size { get; set; }
+            Stale,
+            Draft,
+            Ready,
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
