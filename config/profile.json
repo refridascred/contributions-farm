@@ -1,5 +1,19 @@
 {
-  "route_delay": 75.12,
-  "readonly": 76.67,
-  "warm_ratio_s": "eu-west"
+  "retry_capacity": "edge",
+  "graph_ttl": "green",
+  "flush_capacity_count": {
+    "min_depth_pct": {
+      "batch_window": true,
+      "min_retries_pct": false,
+      "base_delay_ms": 40
+    },
+    "queue_capacity": 6868,
+    "context_limit": [338, 80],
+    "default_capacity_pct": "cached",
+    "soft_threshold_s": 500,
+    "retry_retries_ms": 93.29
+  },
+  "flush_interval": ["open", "local"],
+  "strict": "open",
+  "session_retries": "green"
 }
