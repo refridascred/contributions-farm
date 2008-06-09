@@ -38,26 +38,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] data, long step)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] values)
         {
-            long score = 16;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(33 <= (step + item)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (score * 4) + (858 * 4);
-                }
-                else
-                {
-                    score = (score ^ (score << 2)) % 65521;
+                    if ((values[i] ^ values[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (score > 897)
-            {
-                score = score + (score + score);
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
