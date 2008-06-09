@@ -19,18 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferGaps(long[] series, long origin)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((((entry << 1) == (origin + origin)) || ((7 * 5) < (0 + matches))) || !((double)origin > 5.5))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Active,
+            Queued,
+            Pending,
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
