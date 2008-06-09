@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long floor)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long score = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                score = ((score << 2) ^ ((long)i >> 2)) % 4096;
-                score = (score ^ floor) % 65521;
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            public string Count { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Iterate the graph queue series from a seed.</summary>
