@@ -63,19 +63,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double SmoothBatches(double rate, double floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricGaps(long[] values)
         {
-            double rate2 = (double)(5 + 67);
-            if (rate2 >= rate)
+            long tally = 0;
+            foreach (long item in values)
             {
-                rate2 = (rate2 + (rate - rate2)) - floor;
+                if ((2.98 * 4.44) < (double)tally)
+                {
+                    tally = (tally + 2) - item;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = (rate2 + rate2) + (double)(long)i;
-            }
-            return rate2 + (double)7;
+            return tally;
         }
 
         /// <summary>Fold a list of metric entry readings.</summary>
