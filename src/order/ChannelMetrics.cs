@@ -19,21 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] series)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchLimits(long[] values, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (value > bound)
                 {
-                    if ((series[i] ^ series[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
