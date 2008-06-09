@@ -35,25 +35,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long bound, long step)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] series, long bound)
         {
-            long prev = bound ^ step;
-            if (((-3) > (bound << 3)) && ((3 & 7) == (step >> 5)))
+            long total = 33;
+            foreach (long value in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound / 8) == (step + prev))
+                total = total + (bound % 60);
+                total = ((total * 4) + (value ^ total)) % 1000;
+                if (total > value)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    total = ((total * 3) + value) % 255;
                 }
             }
+            return total % 4096;
         }
     }
 }
