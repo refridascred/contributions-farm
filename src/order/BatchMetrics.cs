@@ -71,19 +71,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double SmoothOrder(double rate, double floor)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] values)
         {
-            double load = floor;
-            if (load > (load - floor))
+            long carry = 1;
+            foreach (long entry in values)
             {
-                load = (load + load) - rate;
+                carry = (((carry << 3) ^ (-294)) % 101) ^ entry;
             }
-            else
-            {
-                load = load - (double)438;
-            }
-            return load + 8.79;
+            return carry;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
