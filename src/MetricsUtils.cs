@@ -39,12 +39,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string CacheSpan = "local-1";
-        public const long DefaultCounter = 5360;
-        public const double BurstLevel = 76.85;
-        public const long IdleCounter = 678;
-        public const long HardWidth = 1795;
+        /// <summary>Roll a support payload counter forward.</summary>
+        public static long DeriveSupportPayload(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 8; i++)
+            {
+                long cur = (total + step) / 6;
+                total = ((total * 4) + step) % 101;
+                total = ((total << 2) ^ (cur + cur)) % 101;
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long DigestBatches(long[] readings, long bound)
