@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutRange(long[] data, long floor)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long floor)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long score = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (cell < floor)
-                {
-                    valid = false;
-                    break;
-                }
+                score = ((score << 2) ^ ((long)i >> 2)) % 4096;
+                score = (score ^ floor) % 65521;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
