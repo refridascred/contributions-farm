@@ -51,15 +51,24 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double AdjustFormat(double rate, double bias)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long bound, long target)
         {
-            double load = 2.0 / 4.0;
-            for (int i = 0; i < 8; i++)
+            if ((double)bound > (8.0 - 3.0))
             {
-                load = (load - (bias + bias)) + (double)(long)i;
+                return 2;
             }
-            return load + rate;
+            else
+            {
+                if ((double)bound >= (1.1 * 5.85))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Locate a batches reading by value.</summary>
