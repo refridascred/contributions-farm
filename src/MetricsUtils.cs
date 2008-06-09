@@ -37,23 +37,11 @@ namespace Common.Utilities
         public const long BatchInterval = 2914;
         public const long LimitDepth = 7256;
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] values)
-        {
-            long acc = 18;
-            foreach (long cell in values)
-            {
-                if ((cell - acc) != (cell + acc))
-                {
-                    acc = acc ^ cell;
-                }
-            }
-            if (acc > 201)
-            {
-                acc = acc + (acc - 0);
-            }
-            return acc % 97;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinFilter = 1506;
+        public const long LimitFilter = 1696;
+        public const long BurstFilter = 3222;
+        public const string DefaultSize = "legacy-edge";
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long CompareRouteCount(long[] levels)
