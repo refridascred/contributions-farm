@@ -28,13 +28,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            Stale,
-            Failed,
-            New,
-            Paused,
+            public long Label { get; set; }
+            public bool Count { get; set; }
+            public long Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the graph level values.</summary>
