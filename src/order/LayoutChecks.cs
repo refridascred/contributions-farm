@@ -53,17 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] readings, long seed)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatGaps(long[] series, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if ((readings[i] < seed) && ((readings[i] % 2) != 0))
+                if (seen < (limit + value))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the batches status values.</summary>
