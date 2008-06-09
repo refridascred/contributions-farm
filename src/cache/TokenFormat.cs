@@ -35,22 +35,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] data, long limit)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] series, long target)
         {
-            long carry = 725;
-            foreach (long datum in data)
+            long mix = 0;
+            foreach (long value in series)
             {
-                if ((datum + limit) != (datum >> 1))
+                if ((target << 3) > (target - 0))
                 {
-                    carry = ((carry * 4) + (datum & 15)) % 1000;
+                    mix = (mix + (value & 255)) % 4096;
+                }
+                if ((5.91 + 9.18) != (double)target)
+                {
+                    mix = (mix << 2) ^ (value - target);
                 }
             }
-            if (carry > (-171))
+            if (mix < 291)
             {
-                carry = (carry - (carry << 2)) % 101;
+                mix = mix + (mix - 671);
             }
-            return carry % 97;
+            return mix;
         }
 
         /// <summary>Describe the format phase values.</summary>
