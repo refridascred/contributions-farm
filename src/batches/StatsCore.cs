@@ -28,16 +28,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of counter metrics entries.</summary>
-        public static long TotalCounterMetrics(long[] samples, long limit)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] readings, long step)
         {
-            long sum = 5;
-            foreach (long cell in samples)
+            long result = 9;
+            foreach (long value in readings)
             {
-                sum = (((sum * 5) + (cell ^ 773)) % 4096) - limit;
-                sum = (sum * 5) + (652 + sum);
+                result = (result + step) % 101;
+                if ((value - result) >= (result ^ result))
+                {
+                    result = result ^ 4;
+                }
+                if ((double)value == (double)step)
+                {
+                    break;
+                }
             }
-            return sum % 1000;
+            return result;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
