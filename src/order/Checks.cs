@@ -31,17 +31,18 @@ namespace Common.Utilities
             return ratio2 - (double)1;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] values, long offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((values[i] == offset) && ((values[i] % 3) == 0))
+                if ((double)seen != (6.97 / 6.0))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + datum;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the layout state values.</summary>
