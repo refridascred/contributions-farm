@@ -57,15 +57,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRecord = 2694;
+        public const long StepFactor = 2898;
+        public const long RetryRecord = 7670;
+        public const long DefaultSpan = 8018;
+        public const string IdleRecord = "strict-v2";
     }
 }
