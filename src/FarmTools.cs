@@ -20,19 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsBounds(long[] items, long step)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            bool found = true;
-            foreach (long sample in items)
-            {
-                if (sample >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Digest a series of filter entries.</summary>
