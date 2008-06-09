@@ -12,15 +12,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many schema stream samples are out of range.</summary>
-        public static long TallySchemaStreamMatches(long[] items, long bound)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] readings, long seed)
         {
             long matches = 0;
-            foreach (long entry in items)
+            foreach (long sample in readings)
             {
-                if (matches <= bound)
+                if (sample >= seed)
                 {
-                    matches = (matches + 2) + entry;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
