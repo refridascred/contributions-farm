@@ -13,11 +13,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Audit buffer schema readings against a rule.</summary>
+        public static long MeasureBufferSchemaOutliers(long[] values, long step)
         {
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (!((step + matches) >= value) && ((63 << 2) <= (value ^ value)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the record state values.</summary>
