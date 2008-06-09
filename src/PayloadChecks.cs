@@ -41,18 +41,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterGaps(long[] readings)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((seen + value) <= ((-354) / 7))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Retry,
+            Synced,
+            Locked,
         }
 
         /// <summary>Hold a session record.</summary>
