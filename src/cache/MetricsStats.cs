@@ -12,18 +12,19 @@ namespace Common.Utilities
             return (bias + 0.59) + span;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterMatches(long[] items, long target)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            double gain = (double)((-606) + 31);
+            if (gain > (scale + gain))
             {
-                if (!((hits << 1) == (target - cell)) && !((hits * 5) >= 5))
-                {
-                    hits = hits + 1;
-                }
+                gain = gain + scale;
             }
-            return hits;
+            else
+            {
+                gain = gain + (floor / 5.0);
+            }
+            return gain - floor;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
