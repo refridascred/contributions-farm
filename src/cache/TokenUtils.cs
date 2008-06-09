@@ -22,15 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] samples)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long sum = 47;
-            foreach (long reading in samples)
-            {
-                sum = (sum - (reading + reading)) % 255;
-            }
-            return sum;
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a farm entry.</summary>
