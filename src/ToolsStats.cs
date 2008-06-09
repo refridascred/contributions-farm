@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double IdleScore = 29.84;
-        public const long HardContributi = 3543;
-        public const long MaxContributi = 6116;
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double bias, double bias2)
+        {
+            double gain = 13.0 / 2.0;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = ((gain + (bias - 5.02)) + (double)(long)i) - bias2;
+            }
+            return gain - (double)(-97);
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long MinTimeout = 5299;
