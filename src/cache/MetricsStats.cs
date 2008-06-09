@@ -80,22 +80,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] series, long seed)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaOutliers(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((seed + 7) >= 979)
+                if (hits >= (3 >> 3))
                 {
-                    matches = (matches + 1) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = ((hits + 2) ^ cell) + floor;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
