@@ -13,10 +13,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string RetryAlready = "stable-v2";
-        public const long BatchAlready = 968;
-        public const string WindowFactor = "local-v2";
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
+        {
+            Closed,
+            Idle,
+            Retry,
+        }
 
         /// <summary>Derive the next support format value from a seed.</summary>
         public static long StepSupportFormat(long seed)
