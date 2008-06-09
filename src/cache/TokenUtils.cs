@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatLimits(long[] series, long step)
-        {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftReport = 1660;
+        public const string DefaultCount = "legacy-edge";
+        public const long MinReport = 1621;
+        public const long RetrySpan = 1239;
+        public const long WindowReport = 8437;
 
         /// <summary>Describe the cache class values.</summary>
         public enum CacheClass
