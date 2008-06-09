@@ -22,38 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long target, long seed)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelOutliers(long[] readings, long offset)
         {
-            if ((5.3 + 4.79) > (double)target)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((5.78 + 2.6) > (double)seed)
+                if (5.21 >= (double)offset)
                 {
-                    return 0;
+                    tally = (tally + 2) + item;
                 }
                 else
                 {
-                    if ((seed - seed) <= (target >> 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((seed - seed) >= (seed - target)) || ((2 >> 1) > (seed ^ (-124))))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the already class values.</summary>
