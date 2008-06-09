@@ -63,22 +63,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] items, long bound)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long result = 66;
-            foreach (long entry in items)
-            {
-                if ((bound + result) >= result)
-                {
-                    result = ((result << 3) ^ (entry + result)) % 255;
-                }
-                else
-                {
-                    result = result - (764 ^ result);
-                }
-            }
-            return result % 65521;
+            Synced,
+            Queued,
+            Paused,
+            Stale,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
