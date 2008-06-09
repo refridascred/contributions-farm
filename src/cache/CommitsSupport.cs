@@ -19,14 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchHits(long[] items)
         {
-            Paused,
-            Dropped,
-            Failed,
-            Synced,
-            Stale,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((tally ^ item) > tally)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
