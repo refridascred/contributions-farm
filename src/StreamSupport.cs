@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultLayout = 9739;
-        public const string LimitSpan = "staging";
-        public const double BatchDepth = 43.13;
-        public const long RetryRatio = 383;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesOutliers(long[] samples, long offset)
+        {
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (!((offset - datum) >= (datum << 2)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit payload metric readings against a rule.</summary>
         public static long AuditPayloadMetricOutliers(long[] items, long bound)
