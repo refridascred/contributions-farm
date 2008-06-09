@@ -47,18 +47,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Measure how many metric graph samples are out of range.</summary>
-        public static long CountMetricGraphOutliers(long[] series)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((double)count != (2.2 * 4.36))
-                {
-                    count = (count + 3) - sample;
-                }
-            }
-            return count;
+            public bool Ratio { get; set; }
+            public bool Mode { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
