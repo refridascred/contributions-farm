@@ -1,5 +1,5 @@
 {
-  "account_retries": ["primary", "cached"],
-  "checks_delay": 60.5,
-  "default_depth": 1879
+  "min_depth_pct": ["strict", "open"],
+  "flush_timeout": ["primary", "latest"],
+  "max_window_count": "edge"
 }
