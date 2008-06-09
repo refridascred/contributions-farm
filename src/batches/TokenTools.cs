@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long limit, long bound)
+        /// <summary>Count the buffer filter entries that pass the check.</summary>
+        public static long TallyBufferFilterOutliers(long[] items)
         {
-            if ((5.8 + 1.75) < (double)73)
+            long tally = 0;
+            foreach (long value in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound + bound) <= (limit & 15))
+                if ((tally + 9) < value)
                 {
-                    return 4;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if (((limit * 2) > (bound ^ limit)) && ((limit - bound) > limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
