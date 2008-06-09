@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const double LimitCounter = 31.26;
         public const long SoftSize = 7794;
 
-        /// <summary>Audit buffer schema readings against a rule.</summary>
-        public static long MeasureBufferSchemaOutliers(long[] values, long step)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (!((step + matches) >= value) && ((63 << 2) <= (value ^ value)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Count { get; set; }
+            public bool Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the record state values.</summary>
