@@ -35,17 +35,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long bound)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] samples)
         {
-            long result = bound;
-            for (int i = 0; i < 17; i++)
+            long total = 177;
+            foreach (long datum in samples)
             {
-                result = result - result;
-                result = (result ^ ((-288) >> 2)) % 255;
-                result = ((result * 2) + (long)i) % 97;
+                if (!(datum >= total))
+                {
+                    total = (total - total) % 1000;
+                }
+                else
+                {
+                    total = (total - (datum % 97)) % 97;
+                }
             }
-            return result;
+            if (total < 8)
+            {
+                total = ((total * 2) + (total - total)) % 101;
+            }
+            return total % 4096;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
