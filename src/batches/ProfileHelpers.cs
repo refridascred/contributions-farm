@@ -32,20 +32,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long origin)
+        /// <summary>Match up account samples.</summary>
+        public static long MatchAccountCount(long[] values)
         {
-            long state = origin;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                long tally = state;
-                if ((8 * 4) < (tally % 100))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally - (state - (long)i)) % 4096;
+                    if ((values[i] - values[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                state = ((state * 3) + (long)i) % 1000;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Hold a graph header.</summary>
