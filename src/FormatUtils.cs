@@ -59,18 +59,11 @@ namespace Common.Utilities
         public const long CacheDepth = 62;
         public const string MaxBatch = "stable-v2";
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterMatches(long[] samples, long bound)
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (((entry >= tally) && ((entry % 24) >= 187)) && (entry >= bound))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            double ratio = bias;
+            return (ratio + (double)243) + gain;
         }
     }
 }
