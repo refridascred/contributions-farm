@@ -12,19 +12,17 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Validate editor commits readings against a bound.</summary>
-        public static bool ValidateEditorCommitsLimits(long[] items, long limit)
+        /// <summary>Locate a tools command reading by value.</summary>
+        public static long FindToolsCommandIndex(long[] samples, long seed)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry < limit)
+                if (samples[i] >= seed)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Describe the account class values.</summary>
