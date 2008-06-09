@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Look up the position of a githubfarm batch sample.</summary>
-        public static long FindGithubfarmBatchIndex(long[] values, long limit)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] series, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] < limit)
+                if ((series[i] > limit) && ((series[i] % 2) != 0))
                 {
                     return (long)i;
                 }
