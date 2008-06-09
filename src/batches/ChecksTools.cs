@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] series, long limit)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] items, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (series[i] == limit)
+                if (!((1.0 / 7.0) == (double)seed))
                 {
-                    return (long)i;
+                    hits = (hits + 1) + cell;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define record limits and defaults.</summary>
