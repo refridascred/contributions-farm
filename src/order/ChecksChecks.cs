@@ -19,18 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double RetryScore = 10.23;
+        public const long BurstCommits = 6259;
+        public const double DefaultTimeout = 75.56;
+        public const string LimitCommits = "stable-1";
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long GradeWindow(long step, long offset)
