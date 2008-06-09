@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksOutliers(long[] data, long offset)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((sample % 2) >= sample)
-                {
-                    matches = (matches + 3) - offset;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 8715;
+        public const long BatchMetrics = 5950;
+        public const double LimitDepth = 29.7;
+        public const long SoftFactor = 5533;
+        public const long CacheLevel = 9024;
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double BlendTools(double rate, double offset)
