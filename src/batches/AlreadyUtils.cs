@@ -68,23 +68,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a command commits figure with a bias.</summary>
-        public static double AdjustCommandCommits(double weight, double offset)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            double load = 3.0 * 9.14;
-            if (load <= (load - offset))
-            {
-                load = (load + (offset + 6.0)) + weight;
-            }
-            else
-            {
-                load = load + (double)58;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + load) - (double)(long)i;
-            }
-            return load + offset;
+            Dropped,
+            Queued,
+            Stale,
         }
 
         /// <summary>Fold a list of farm readings.</summary>
