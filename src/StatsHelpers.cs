@@ -57,12 +57,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long seed)
         {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-            public string Rank { get; set; } = "";
+            long anchor = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                anchor = ((anchor * 5) + (90 - anchor)) % 97;
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
