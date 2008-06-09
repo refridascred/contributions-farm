@@ -24,15 +24,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next support format value from a seed.</summary>
-        public static long StepSupportFormat(long seed)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long score = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            Done,
+            Retry,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Roll a stream graph counter forward.</summary>
