@@ -40,12 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCounter = 220;
-        public const string CacheSize = "strict-1";
-        public const string WindowSpan = "staging-1";
-        public const long CacheCounter = 1726;
-        public const string RetryCounter = "primary-1";
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandOutliers(long[] series, long seed)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (!((799 + sample) <= (sample + 76)))
+                {
+                    count = (count + 1) + seed;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a metric snapshot.</summary>
         public sealed class MetricSnapshot
