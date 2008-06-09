@@ -1,16 +1,4 @@
 # entry settings
-base_threshold_pct:
-  verbose: eu-west
-  retry_ratio_count:
-    - legacy
-    - fallback
-  persist: legacy
-  record_threshold:
-    default_window_count: 73
-    warm_ttl_ms: 100
-    command_timeout: false
-    schema_size: fallback
-    counter_interval: open
-  cache_depth: legacy
-notes_delay: 14.43
-default_delay_count: stable
+profile_delay: 15
+readonly: 250
+max_timeout_ms: true
