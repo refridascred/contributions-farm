@@ -18,10 +18,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 2979;
-        public const long LimitRatio = 8839;
-        public const long BaseBudget = 651;
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
+        {
+            Pending,
+            Failed,
+            Closed,
+            Active,
+            Synced,
+        }
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long AuditReportGaps(long[] items, long bound)
