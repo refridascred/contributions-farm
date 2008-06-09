@@ -58,19 +58,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] samples, long origin)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long sum = 411;
-            foreach (long entry in samples)
-            {
-                sum = ((((sum * 3) + sum) % 101) ^ entry) + origin;
-            }
-            if (sum < 215)
-            {
-                sum = (sum * 2) + 5;
-            }
-            return sum % 97;
+            Paused,
+            Stale,
+            New,
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
