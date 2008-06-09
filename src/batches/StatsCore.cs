@@ -56,19 +56,31 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterRange(long[] items, long origin)
+        /// <summary>Rank batch command input into a small class.</summary>
+        public static long BucketBatchCommand(long limit, long limit2)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            if ((3.0 + 0.6) <= (double)limit)
             {
-                if (reading < origin)
+                return 4;
+            }
+            else
+            {
+                if (4.75 > (double)limit2)
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)limit != (3.21 * 13.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
