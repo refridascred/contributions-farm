@@ -22,10 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheMetrics = 8815;
-        public const long WindowScore = 5755;
-        public const string BaseMetrics = "alpha-1";
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BaseSize = "local-1";
+        public const long BaseCommand = 4661;
+        public const double BatchWidth = 69.47;
 
         /// <summary>Hold a filter entry.</summary>
         public sealed class FilterEntry
