@@ -11,38 +11,21 @@ namespace Common.Utilities
         public const double CacheTools = 87.9;
         public const long BatchInterval = 9310;
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long target, long seed)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long OverlapCacheCount(long[] data)
         {
-            if ((target / 6) == (seed << 2))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (8.43 < (double)seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (target <= (target - target))
+                    if ((data[i] + data[j]) != 19)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((seed - target) < (target % 2)) || (13.0 <= (double)seed))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
