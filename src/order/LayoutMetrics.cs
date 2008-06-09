@@ -34,18 +34,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmHits(long[] levels, long target)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)item < (7.39 / 3.0)) || (((item ^ tally) == (tally >> 2)) && ((double)item == (double)tally)))
+                if (values[i] > limit)
                 {
-                    tally = (tally + 1) - target;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
