@@ -40,20 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchRange(long[] levels, long target)
-        {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 63;
+        public const string MinAlready = "primary-edge";
+        public const string BatchAlready = "latest-1";
+        public const long BurstFactor = 892;
 
         /// <summary>Describe the filter state values.</summary>
         public enum FilterState
