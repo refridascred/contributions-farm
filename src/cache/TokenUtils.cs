@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next queue report value from a seed.</summary>
-        public static long DeriveQueueReport(long seed)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatLimits(long[] series, long step)
         {
-            long sum = seed;
-            for (int i = 0; i < 13; i++)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                if ((sum << 1) < (seed - 2))
+                if (reading < step)
                 {
-                    sum = sum ^ 590;
+                    flag = false;
+                    break;
                 }
-                if ((seed / 3) < (sum - sum))
-                {
-                    sum = (sum << 3) ^ sum;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Define token limits and defaults.</summary>
