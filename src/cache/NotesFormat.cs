@@ -40,11 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Check that every profile command entry stays within the limit.</summary>
+        public static bool CheckProfileCommandRange(long[] levels, long origin)
         {
-            public long Region { get; set; }
-            public bool Label { get; set; }
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a metrics stats.</summary>
