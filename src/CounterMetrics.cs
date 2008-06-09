@@ -32,14 +32,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long target, long bound)
         {
-            Queued,
-            Synced,
-            Paused,
-            Pending,
-            Stale,
+            if ((6.41 + 5.1) > (double)target)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound >> 3) == (bound - bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
