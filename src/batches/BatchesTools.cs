@@ -27,16 +27,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long origin)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesBounds(long[] readings, long step)
         {
-            long total = origin;
-            for (int i = 0; i < 22; i++)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                total = (total << 2) ^ ((long)i % 12);
-                total = ((total * 5) + (long)i) % 65521;
+                if (cell >= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total;
+            return flag;
         }
     }
 }
