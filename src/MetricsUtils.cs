@@ -25,18 +25,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] levels)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchGaps(long[] readings)
         {
-            long result = 510;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((6.38 * 2.4) >= (double)sample)
+                if ((43 + hits) > datum)
                 {
-                    result = (result + (result - result)) % 1000;
+                    hits = hits + 2;
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Roll a support payload counter forward.</summary>
