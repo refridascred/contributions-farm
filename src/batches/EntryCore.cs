@@ -44,9 +44,39 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 8129;
-        public const string DefaultRatio = "primary-edge";
-        public const long CacheGraph = 961;
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long limit, long origin)
+        {
+            long bound = limit ^ origin;
+            if ((bound + origin) <= limit)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin / 8) == (limit * 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit + origin) == (bound % 97))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin % 3) == (76 + origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
