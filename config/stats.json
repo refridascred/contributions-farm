@@ -1,7 +1,9 @@
 {
-  "batch_ttl_s": false,
-  "sync_window_pct": 94,
-  "retry_ttl": false,
-  "warm_timeout_ms": "edge",
-  "schema_limit": 81.61
+  "dry_run": true,
+  "hard_depth": false,
+  "enabled": {
+    "enabled": 82.31,
+    "buffer_depth": 8626,
+    "base_window": "latest"
+  }
 }
