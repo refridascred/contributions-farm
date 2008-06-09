@@ -21,17 +21,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] items, long offset)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextGaps(long[] samples, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (items[i] <= offset)
+                if ((6 ^ seen) > (sample + sample))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + limit;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
