@@ -38,16 +38,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] readings, long origin)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long bound, long origin)
         {
-            long total = 6;
-            foreach (long value in readings)
+            if ((double)bound != (3.4 / 6.0))
             {
-                total = (total + (origin << 3)) + value;
-                total = (total + total) % 1000;
+                return 3;
             }
-            return total;
+            else
+            {
+                if ((689 + bound) <= origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
