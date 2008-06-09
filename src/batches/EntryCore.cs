@@ -34,19 +34,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every stats cache entry stays within the limit.</summary>
-        public static bool GuardStatsCacheLimits(long[] levels, long limit)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
