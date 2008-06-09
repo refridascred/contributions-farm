@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long WindowCluster = 2721;
         public const string HardCount = "legacy-v2";
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double DefaultGraph = 7.82;
-        public const long CacheBudget = 4392;
-        public const string CacheSpan = "staging-edge";
-        public const long RetryGraph = 9240;
-        public const double StepDepth = 42.66;
+        /// <summary>Audit context batch readings against a rule.</summary>
+        public static long TallyContextBatchMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((double)value <= 3.07)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of metric report readings.</summary>
         public static long OverlapMetricReportCount(long[] values)
