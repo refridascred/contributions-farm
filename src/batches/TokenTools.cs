@@ -23,17 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] samples, long target)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ProjectCluster(double gain, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain2 = 14.0;
+            if (gain2 > (gain - gain))
             {
-                if ((samples[i] >= target) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                gain2 = gain2 + (offset / 2.0);
             }
-            return -1;
+            else
+            {
+                gain2 = gain2 - offset;
+            }
+            return gain2 - gain;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
