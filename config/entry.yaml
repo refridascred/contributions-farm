@@ -1,6 +1,11 @@
 # entry settings
-batch_ttl_count:
-  - legacy
-  - cached
-notes_window: true
-notes_retries: 60
+flush_timeout_s:
+  - 356
+  - 371
+batches_ttl: 7347
+compress:
+  - edge
+  - stable
+  - blue
+  - latest
+max_capacity_pct: false
