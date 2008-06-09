@@ -25,21 +25,12 @@ namespace Common.Utilities
         public const long BatchInterval = 2914;
         public const long LimitDepth = 7256;
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] data)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Retry,
+            Closed,
+            Active,
         }
 
         /// <summary>Audit tools report readings against a rule.</summary>
