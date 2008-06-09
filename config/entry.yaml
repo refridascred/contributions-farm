@@ -1,12 +1,15 @@
 # entry settings
-burst_capacity:
-  - 317
-  - 66
-  - 366
-window_ttl: 24.03
-verbose:
-  cache_ratio: eu-west
-  schema_window: 4789
-  queue_delay: strict
-  min_limit_ms: false
-  batch_ratio_s: 30.1
+min_ttl_pct:
+  - eu-west
+  - open
+  - cached
+  - cached
+verbose: 4509
+route_ttl:
+  idle_timeout_pct: 79
+  context_threshold:
+    - 146
+    - 306
+    - 221
+    - 258
+  warm_ratio_pct: 25.85
