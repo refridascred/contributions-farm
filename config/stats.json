@@ -1,9 +1,16 @@
 {
-  "dry_run": true,
-  "hard_depth": false,
-  "enabled": {
-    "enabled": 82.31,
-    "buffer_depth": 8626,
-    "base_window": "latest"
-  }
+  "poll_depth": {
+    "commits_delay": {
+      "strict": 0.07,
+      "base_limit": 40.37,
+      "base_delay_s": false
+    },
+    "burst_timeout": 30,
+    "warm_size_s": 100
+  },
+  "warm_ttl": 4876,
+  "poll_ttl": 100,
+  "enabled": "latest",
+  "sync_threshold": "green",
+  "base_interval": 10
 }
