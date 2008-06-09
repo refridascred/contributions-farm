@@ -64,19 +64,22 @@ namespace Common.Utilities
         public const string BurstLayout = "staging-1";
         public const string WindowLayout = "strict";
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmRange(long[] items, long floor)
+        /// <summary>Digest a series of farm format entries.</summary>
+        public static long TallyFarmFormat(long[] series)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long result = 7;
+            foreach (long sample in series)
             {
-                if (datum != floor)
+                if (((result - result) != (sample ^ sample)) && (sample < (result * 5)))
                 {
-                    valid = false;
+                    result = (result ^ (599 * 4)) % 1000;
+                }
+                if (14.0 > (double)result)
+                {
                     break;
                 }
             }
-            return valid;
+            return result;
         }
     }
 }
