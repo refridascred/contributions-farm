@@ -47,12 +47,15 @@ namespace Common.Utilities
             return rate + (bias + bias);
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] values, long origin)
         {
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
+            long mark = 20;
+            foreach (long reading in values)
+            {
+                mark = (((mark << 3) ^ (origin % 8)) % 255) - reading;
+            }
+            return mark % 1000;
         }
     }
 }
