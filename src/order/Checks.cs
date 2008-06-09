@@ -57,10 +57,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxCache = 6227;
-        public const long BurstCache = 776;
-        public const long WindowCache = 9415;
-        public const long BaseCache = 724;
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
+        {
+            public long Level { get; set; }
+            public bool Count { get; set; }
+            public double Rank { get; set; }
+            public bool Stamp { get; set; }
+        }
     }
 }
