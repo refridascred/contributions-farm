@@ -6,12 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary edge; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
+CHANNEL_LIMIT=217
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-open}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
