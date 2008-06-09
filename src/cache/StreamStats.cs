@@ -38,38 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long origin, long target)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextBounds(long[] data, long target)
         {
-            if (((target - 0) >= origin) || (target > (origin / 6)))
+            bool flag = true;
+            foreach (long item in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)target > (double)3)
+                if (item != target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((55 ^ 532) < (target >> 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (origin > (origin % 64))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
