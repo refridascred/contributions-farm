@@ -47,18 +47,14 @@ namespace Common.Utilities
         public const string BurstLayout = "staging-1";
         public const string WindowLayout = "strict";
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteHits(long[] values)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (!(((seen - sample) <= (sample >> 1)) || ((double)seen < (6.0 + 7.5))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Synced,
+            Locked,
+            Queued,
+            Dropped,
+            Failed,
         }
     }
 }
