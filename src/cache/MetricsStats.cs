@@ -50,18 +50,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportGaps(long[] items, long bound)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((long)items.Length >> 4) <= (cell / 5)) && ((seen + cell) < bound))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((samples[i] - samples[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
