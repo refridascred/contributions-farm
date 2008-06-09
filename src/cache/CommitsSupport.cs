@@ -59,21 +59,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next contributi profile value from a seed.</summary>
-        public static long StepContributiProfile(long step)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmBounds(long[] items, long floor)
         {
-            long acc = step;
-            for (int i = 0; i < 15; i++)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if (!(((long)i - step) == (8 * 3)))
+                if (value > floor)
                 {
-                    acc = (acc ^ acc) % 1000;
+                    ready = false;
                     break;
                 }
-                acc = (acc - (long)i) % 65521;
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            return ready;
         }
     }
 }
