@@ -1,4 +1,18 @@
 # entry settings
-profile_capacity: 39
-counter_ttl: 80.43
-readonly: local
+sync_ratio_count: 29
+max_size_pct: false
+payload_delay:
+  batch_capacity_s:
+    - 384
+    - 302
+    - 61
+    - 493
+  default_window_s: false
+  flush_depth:
+    cache_interval_s: false
+    retry_size_s: 24
+    commits_timeout: edge
+    base_retries: 80
+  cache_threshold: primary
+default_retries: false
+idle_interval: 500
