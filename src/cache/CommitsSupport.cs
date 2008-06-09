@@ -29,24 +29,12 @@ namespace Common.Utilities
         public const long MinStats = 2547;
         public const long StepStats = 5199;
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long bound, long floor)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            if ((bound + bound) >= bound)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound >> 3) <= (bound % 8))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public bool Rank { get; set; }
+            public string Score { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
