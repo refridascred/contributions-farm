@@ -30,21 +30,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] readings)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] readings, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 94;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = (sum * 2) + (limit ^ sample);
+                sum = ((sum * 4) + (sample - limit)) % 65521;
             }
-            return hits;
+            return sum % 97;
         }
 
         /// <summary>Project the next notes record value.</summary>
