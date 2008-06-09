@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] data, long origin)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] samples, long step)
         {
-            long total = 855;
-            foreach (long sample in data)
+            long carry = 312;
+            foreach (long item in samples)
             {
-                total = (total * 2) + (sample & 3);
-                total = (total + (853 << 1)) % 97;
-                if (((total & 7) <= (origin + sample)) && ((double)origin <= (double)54))
-                {
-                    total = ((total * 3) + total) % 255;
-                }
-                else
-                {
-                    total = (total + (origin + 3)) % 255;
-                }
+                carry = (((carry << 3) ^ (item + item)) % 4096) - step;
             }
-            return total % 97;
+            if (carry < 95)
+            {
+                carry = ((carry * 3) + (22 >> 3)) % 97;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
