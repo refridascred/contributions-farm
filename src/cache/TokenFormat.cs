@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit checks contributi readings against a rule.</summary>
-        public static long TallyChecksContributiGaps(long[] data)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((item << 2) < (item + item))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Closed,
+            Locked,
+            Retry,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
