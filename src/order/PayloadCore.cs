@@ -43,19 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of context stream readings.</summary>
-        public static long ScoreContextStream(long[] levels)
+        /// <summary>Check that every format record entry stays within the limit.</summary>
+        public static bool ValidateFormatRecordRange(long[] values, long floor)
         {
-            long acc = 0;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                acc = (((acc << 3) ^ acc) % 101) - entry;
+                if (cell >= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (acc > 13)
-            {
-                acc = ((acc << 2) ^ (752 - acc)) % 255;
-            }
-            return acc % 1000;
+            return ready;
         }
     }
 }
