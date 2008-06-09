@@ -14,12 +14,13 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public long Flag { get; set; }
+            Failed,
+            Paused,
+            Done,
+            Closed,
         }
 
         /// <summary>Hold a editor stats.</summary>
