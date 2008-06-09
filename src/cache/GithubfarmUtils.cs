@@ -57,22 +57,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelMatches(long[] items)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long floor)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long mix = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (!!((count - cell) < (cell << 3)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
