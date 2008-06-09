@@ -24,14 +24,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long seed, long bound)
         {
-            Dropped,
-            Closed,
-            Draft,
-            Retry,
-            Pending,
+            if ((seed / 7) <= (seed << 1))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((bound << 3) >= seed) || ((double)seed != (double)bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)70 > (double)seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
