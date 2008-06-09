@@ -54,19 +54,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a githubfarm queue figure with a bias.</summary>
-        public static double AdjustGithubfarmQueue(double gain, double floor)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            double load = gain * 6.7;
-            if (load >= load)
-            {
-                load = load - 6.1;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load + (floor * 17.0);
+            Ready,
+            Closed,
+            Idle,
+            Draft,
+            Active,
         }
     }
 }
