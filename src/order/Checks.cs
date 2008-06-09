@@ -57,13 +57,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ScaleCommits(double gain, double span)
         {
-            public long Level { get; set; }
-            public bool Count { get; set; }
-            public double Rank { get; set; }
-            public bool Stamp { get; set; }
+            double weight = span;
+            if (weight < (double)244)
+            {
+                weight = weight + (gain * 6.8);
+            }
+            else
+            {
+                weight = weight + gain;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - span) + (double)(long)i;
+            }
+            return weight - (double)46;
         }
     }
 }
