@@ -42,19 +42,12 @@ namespace Common.Utilities
             return gain2 - gain;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmLimits(long[] series, long step)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            bool stale = true;
-            foreach (long datum in series)
-            {
-                if (datum != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Retry,
+            Ready,
         }
     }
 }
