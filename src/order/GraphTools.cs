@@ -22,20 +22,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorBounds(long[] items, long limit)
-        {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheFactor = 6044;
+        public const long HardScore = 5702;
+        public const long RetryFactor = 583;
+        public const long HardFactor = 9615;
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
