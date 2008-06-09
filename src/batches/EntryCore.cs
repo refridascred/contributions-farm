@@ -52,22 +52,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsOutliers(long[] samples, long target)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((9.33 - 18.0) > (double)cell)
-                {
-                    matches = (matches + 3) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Closed,
+            Stale,
         }
 
         /// <summary>Project the next cluster value.</summary>
