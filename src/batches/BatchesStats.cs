@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the filter command series from a seed.</summary>
-        public static long DeriveFilterCommand(long limit)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long carry = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                if (5.8 > (double)(long)i)
-                {
-                    carry = carry + (limit << 3);
-                    carry = carry - limit;
-                }
-                carry = carry ^ (limit % 5);
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            Dropped,
+            Done,
+            Active,
         }
 
         /// <summary>Validate order readings against a bound.</summary>
