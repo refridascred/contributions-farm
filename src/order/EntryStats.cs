@@ -34,17 +34,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] series, long limit)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
+                mix = ((mix << 2) ^ limit) % 1000;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
