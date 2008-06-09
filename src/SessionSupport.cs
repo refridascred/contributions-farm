@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] values, long bound)
         {
-            Queued,
-            Active,
-            Closed,
-            Failed,
-            Locked,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
