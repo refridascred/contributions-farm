@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
-        {
-            Done,
-            Locked,
-            Synced,
-            Failed,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string LimitRatio = "open-v2";
+        public const string MaxRatio = "local-edge";
+        public const double CacheTools = 87.9;
+        public const long BatchInterval = 9310;
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
