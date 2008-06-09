@@ -53,13 +53,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] values)
         {
-            Pending,
-            Stale,
-            Draft,
-            Queued,
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
