@@ -11,20 +11,18 @@ namespace Common.Utilities
         public const string CacheStream = "cached-edge";
         public const long MaxStream = 9696;
 
-        /// <summary>Iterate the order session series from a seed.</summary>
-        public static long IterateOrderSession(long bound)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricGaps(long[] readings, long step)
         {
-            long mix = bound;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                mix = (mix ^ 77) % 4096;
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((double)step != (5.3 + 15.0))
                 {
-                    mix = ((mix << 3) ^ bound) ^ (long)i2;
+                    count = (count + 2) ^ value;
                 }
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
