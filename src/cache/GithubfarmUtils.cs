@@ -5,39 +5,32 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank tools metrics input into a small class.</summary>
-        public static long SortToolsMetrics(long limit, long target)
+        /// <summary>Accumulate already editor samples.</summary>
+        public static long DigestAlreadyEditor(long[] levels)
         {
-            long step = limit ^ target;
-            if ((double)target <= (20.0 * 14.0))
+            long carry = 250;
+            foreach (long item in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (((limit + step) >= (limit - limit)) && (1.92 < (double)target))
+                if (6 <= (carry - item))
                 {
-                    return 6;
+                    carry = carry + 0;
+                    break;
                 }
                 else
                 {
-                    if (!(((-5) - step) <= limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (target >= (step >> 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    carry = carry + carry;
+                    carry = carry - (item << 3);
+                }
+                if ((10.0 / 5.0) >= (double)item)
+                {
+                    carry = ((carry * 3) + (carry >> 1)) % 65521;
+                }
+                if (!(0 < (item ^ item)))
+                {
+                    break;
                 }
             }
+            return carry;
         }
 
         /// <summary>Count stats format pairs that satisfy a relation.</summary>
