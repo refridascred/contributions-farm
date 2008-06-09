@@ -1,14 +1,11 @@
 # Command notes
 
-The session report groups every payload by commits.
-A support that stays idle for too long is moved to the farm list.
-
-Defaults for metric live in the config folder and can be overridden per environment.
-Keep record and token names short and lowercase.
+The token module keeps account values in sync with the schema cache.
+When a batch fails, the stream handler retries a few times before giving up.
+Defaults for channel live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review format limits each release
-- Document new support fields
-- Log every channel change
-- Validate record input early
+- Keep support values small
+- Document new contributi fields
+- Validate buffer input early
