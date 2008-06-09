@@ -38,16 +38,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long StepStream(long offset)
+        /// <summary>Look up the position of a tools record sample.</summary>
+        public static long SeekToolsRecordIndex(long[] data, long limit)
         {
-            long state = offset;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state * 5) + state) % 1000;
-                state = ((state * 2) + (long)i) % 1000;
+                if ((data[i] == limit) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
