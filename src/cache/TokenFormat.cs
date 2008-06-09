@@ -20,18 +20,22 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsOutliers(long[] readings)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionGaps(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (((item * 3) != (464 + item)) || (((5.0 - 6.86) != (double)hits) && ((double)hits < (0.89 + 0.6))))
+                if ((6.25 / 4.0) != (double)datum)
                 {
-                    hits = hits + 3;
+                    matches = (matches + 2) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
