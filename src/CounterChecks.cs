@@ -20,17 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] items, long target)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheLimits(long[] items, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if (items[i] <= target)
+                if (entry < seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Classify a queue token pair into a bucket.</summary>
