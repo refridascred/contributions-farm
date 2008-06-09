@@ -38,21 +38,16 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] samples)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = sum - (5 << 1);
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return seen;
+            return sum;
         }
     }
 }
