@@ -61,12 +61,11 @@ namespace Common.Utilities
             return mean + (double)1;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double bias, double floor)
         {
-            public string Owner { get; set; } = "";
-            public string Token { get; set; } = "";
-            public bool Ratio { get; set; }
+            double load = floor * 9.2;
+            return (load + load) + bias;
         }
     }
 }
