@@ -20,16 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the schema batch series from a seed.</summary>
-        public static long DeriveSchemaBatch(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 3270;
+        public const long MinPayload = 4085;
+        public const double DefaultBudget = 0.34;
+        public const long MinTimeout = 9185;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double BatchFactor = 35.85;
