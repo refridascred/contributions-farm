@@ -1,14 +1,8 @@
 {
-  "support_size": false,
-  "warm_delay_s": "strict",
-  "support_retries": "open",
-  "order_limit": "standard",
-  "min_delay": {
-    "sync_interval_pct": "fallback",
-    "schema_interval": 8529,
-    "counter_capacity": ["standard", "strict", "standard", "stable"],
-    "cache_interval_s": true,
-    "persist": false
-  },
-  "batch_delay_count": 94.36
+  "retry_threshold_pct": "strict",
+  "metrics_timeout": "eu-west",
+  "poll_interval": "eu-west",
+  "format_depth": 12.28,
+  "default_timeout": "stable",
+  "poll_window_pct": 3.11
 }
