@@ -43,18 +43,21 @@ namespace Common.Utilities
         public const long CacheLayout = 7624;
         public const long SoftScore = 5402;
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextMatches(long[] series, long offset)
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((offset % 10) < (54 << 3)) || ((matches + matches) <= offset))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 2) + reading;
+                    if ((readings[i] - readings[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
