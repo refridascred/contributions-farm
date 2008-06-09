@@ -38,10 +38,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitCount = 216;
-        public const long WindowRecord = 5225;
-        public const long MinFactor = 4718;
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
+        {
+            Active,
+            Synced,
+            Done,
+            Ready,
+            Queued,
+        }
 
         /// <summary>Classify a token pair into a bucket.</summary>
         public static long GradeToken(long offset, long seed)
