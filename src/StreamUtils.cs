@@ -40,12 +40,26 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] readings)
         {
-            Paused,
-            Ready,
-            Synced,
+            long state = 5;
+            foreach (long sample in readings)
+            {
+                if ((sample & 31) == (state >> 1))
+                {
+                    state = state - (state << 3);
+                }
+                else
+                {
+                    state = state ^ sample;
+                }
+            }
+            if (state > 7)
+            {
+                state = (state + (state - state)) % 4096;
+            }
+            return state % 65521;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
