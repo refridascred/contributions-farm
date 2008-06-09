@@ -1,13 +1,5 @@
 {
-  "strict": ["open", "edge", "standard"],
-  "poll_size_pct": "standard",
-  "soft_size_ms": {
-    "poll_interval": 4461,
-    "persist": ["legacy", "local", "primary"],
-    "sync_depth_count": true,
-    "strict": 250,
-    "flush_limit": ["stable", "strict", "eu-west"],
-    "hard_ratio": 15
-  },
-  "compress": 6.04
+  "account_retries": ["primary", "cached"],
+  "checks_delay": 60.5,
+  "default_depth": 1879
 }
