@@ -48,13 +48,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
-        {
-            Retry,
-            Stale,
-            Pending,
-            Paused,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 7474;
+        public const long SoftWidth = 7438;
+        public const long CacheTools = 2652;
+        public const double IdleScore = 74.15;
+        public const double IdleFactor = 74.13;
     }
 }
