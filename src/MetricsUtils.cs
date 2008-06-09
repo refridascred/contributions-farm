@@ -35,18 +35,21 @@ namespace Common.Utilities
         public const long BatchInterval = 2914;
         public const long LimitDepth = 7256;
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaHits(long[] items, long offset)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((15.0 + 9.4) < (double)cell))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 1) - offset;
+                    if ((data[i] + data[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Audit tools report readings against a rule.</summary>
