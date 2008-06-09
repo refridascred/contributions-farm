@@ -37,24 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long bound, long origin)
+        /// <summary>Check that every farm cluster entry stays within the limit.</summary>
+        public static bool CheckFarmClusterRange(long[] samples, long step)
         {
-            if ((double)bound != (3.4 / 6.0))
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((689 + bound) <= origin)
+                if (sample <= step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
