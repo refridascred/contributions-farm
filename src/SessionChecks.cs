@@ -33,23 +33,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many account format samples are out of range.</summary>
-        public static long TallyAccountFormatOutliers(long[] readings, long floor)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (((9 * 5) >= (floor << 1)) && ((floor / 6) != (hits ^ floor)))
-                {
-                    hits = (hits + 3) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCounter = 220;
+        public const string CacheSize = "strict-1";
+        public const string WindowSpan = "staging-1";
+        public const long CacheCounter = 1726;
+        public const string RetryCounter = "primary-1";
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long CombineCluster(long[] samples, long floor)
