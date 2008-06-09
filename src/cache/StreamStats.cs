@@ -23,10 +23,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string IdleGithubfarm = "cached-v2";
-        public const string DefaultBudget = "staging";
-        public const double CacheRatio = 40.54;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchHits(long[] data, long limit)
+        {
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((13.0 + 15.0) == (double)hits)
+                {
+                    hits = ((hits + 3) + reading) - limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double IdleFarm = 40.5;
