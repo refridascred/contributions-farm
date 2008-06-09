@@ -1,15 +1,15 @@
 # Command notes
 
-Run the metrics check before changing any buffer limits.
-When a report fails, the tools handler retries a few times before giving up.
-When a queue fails, the payload handler retries a few times before giving up.
+The token module keeps queue values in sync with the profile cache.
+Keep farm and stream names short and lowercase.
+Keep payload and already names short and lowercase.
 
-The already report groups every route by window.
-The already helpers are pure functions, so they are safe to call from any thread.
-Keep window and checks names short and lowercase.
+When a checks fails, the tools handler retries a few times before giving up.
+Keep queue and already names short and lowercase.
+The channel module keeps metric values in sync with the filter cache.
 
 ## Guidelines
 
-- Document new stream fields
-- Keep channel values small
-- Review support limits each release
+- Review stream limits each release
+- Log every format change
+- Document new entry fields
