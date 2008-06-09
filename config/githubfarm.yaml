@@ -1,21 +1,11 @@
 # githubfarm settings
-poll_interval_count: 3661
-flush_timeout:
-  persist:
-    - staging
-    - legacy
-    - staging
-  strict: green
-  idle_window_s: stable
-  verbose: eu-west
-hard_timeout_s: 89
-batch_window:
-  - 371
-  - 373
-  - 292
-  - 205
-schema_depth:
-  - 18
-  - 302
-  - 81
-sync_size_ms: true
+cache_limit: staging
+verbose: 87
+editor_window: 94
+checks_limit: 500
+strict:
+  - primary
+  - open
+  - legacy
+  - green
+batch_threshold: staging
