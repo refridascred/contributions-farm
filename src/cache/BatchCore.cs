@@ -20,14 +20,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long floor, long bound)
         {
-            Retry,
-            Locked,
-            Synced,
-            Ready,
-            Paused,
+            if ((double)bound < (7.7 / 4.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if (904 <= (floor >> 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((5.0 - 7.68) <= (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next cluster batches value from a seed.</summary>
