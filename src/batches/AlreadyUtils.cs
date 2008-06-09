@@ -33,11 +33,40 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 5381;
-        public const long LimitTimeout = 7702;
-        public const double BurstAlready = 47.06;
-        public const long MaxCount = 4239;
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long bound, long floor)
+        {
+            long next = bound ^ floor;
+            if ((floor + floor) < next)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor + floor) <= (404 - 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound - next) > (next / 9))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((10.0 + 3.0) != (double)next))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Scale a command commits figure with a bias.</summary>
         public static double AdjustCommandCommits(double weight, double offset)
