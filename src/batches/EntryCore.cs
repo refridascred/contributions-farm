@@ -51,17 +51,9 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 8129;
+        public const string DefaultRatio = "primary-edge";
+        public const long CacheGraph = 961;
     }
 }
