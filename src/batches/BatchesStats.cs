@@ -17,18 +17,12 @@ namespace Common.Utilities
         public const string SoftWidth = "staging-edge";
         public const long CacheEditor = 2515;
 
-        /// <summary>Audit support payload readings against a rule.</summary>
-        public static long AuditSupportPayloadHits(long[] samples)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (!(sample >= seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Paused,
+            Synced,
+            Retry,
         }
 
         /// <summary>Combine order values into a single score.</summary>
