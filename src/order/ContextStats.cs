@@ -39,39 +39,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long seed, long limit)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long step)
         {
-            long bound = seed - limit;
-            if (((limit + bound) < limit) && (62 <= (bound + (-565))))
+            long score = step;
+            for (int i = 0; i < 24; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed >= (9.5 * 8.41))
+                score = score + step;
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return 4;
+                    score = score - (step + (long)i2);
+                    score = ((score * 4) + ((-466) * 5)) % 4096;
                 }
-                else
-                {
-                    if (((-2) + seed) < (seed + seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((0.4 + 1.0) >= (double)seed)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                score = ((score * 3) + (long)i) % 65521;
             }
+            return score;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
