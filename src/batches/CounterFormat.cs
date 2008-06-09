@@ -33,28 +33,35 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long seed, long bound)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long floor, long floor2)
         {
-            if ((seed / 7) <= (seed << 1))
+            if ((6.5 / 7.0) < (double)floor)
             {
-                return 5;
+                return 1;
             }
             else
             {
-                if (((bound << 3) >= seed) || ((double)seed != (double)bound))
+                if (!((14.0 / 4.0) != (double)floor))
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    if ((double)70 > (double)seed)
+                    if ((floor2 << 3) == (floor & 31))
                     {
-                        return 4;
+                        return 7;
                     }
                     else
                     {
-                        return 7;
+                        if (15.0 < (double)floor)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
