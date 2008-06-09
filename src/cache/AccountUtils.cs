@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstSpan = 7097;
-        public const string StepSize = "strict-v2";
-        public const long LimitAlready = 9614;
+        /// <summary>Match up stats route samples.</summary>
+        public static long CompareStatsRouteCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
