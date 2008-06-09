@@ -1,6 +1,7 @@
-id,owner,state
-1,96.89,edge
-2,primary,755
-3,936,legacy
-4,644,staging
-5,78,939
+id,active,ratio,score
+1,729,staging,42
+2,227,335,cached
+3,210,825,71.28
+4,latest,892,95.91
+5,25.27,staging,752
+6,57.11,green,fallback
