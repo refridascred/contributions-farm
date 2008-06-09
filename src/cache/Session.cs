@@ -25,14 +25,31 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long target, long seed)
         {
-            Dropped,
-            Queued,
-            Ready,
-            Failed,
-            Paused,
+            if ((double)target < (double)seed)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)target > (14.0 / 3.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target < ((-39) / 3)) || ((seed + target) > (seed >> 5)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank batch input into a small class.</summary>
