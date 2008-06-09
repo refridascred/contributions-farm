@@ -85,18 +85,17 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] levels)
+        /// <summary>Find the first metrics stream entry that matches the target.</summary>
+        public static long SeekMetricsStreamIndex(long[] samples, long step)
         {
-            long acc = 53;
-            foreach (long sample in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((acc - sample) != (sample & 7))
+                if (samples[i] > step)
                 {
-                    acc = (acc - (76 - sample)) % 97;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
     }
 }
