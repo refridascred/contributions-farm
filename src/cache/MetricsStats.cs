@@ -23,22 +23,18 @@ namespace Common.Utilities
         public const long LimitRatio = 8839;
         public const long BaseBudget = 651;
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] readings)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportGaps(long[] items, long bound)
         {
-            long score = 147;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (!((69 / 3) <= reading))
+                if ((((long)items.Length >> 4) <= (cell / 5)) && ((seen + cell) < bound))
                 {
-                    score = score - 708;
+                    seen = seen + 1;
                 }
             }
-            if (score < 33)
-            {
-                score = (score - (score * 5)) % 255;
-            }
-            return score % 65521;
+            return seen;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
