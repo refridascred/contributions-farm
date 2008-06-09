@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of report schema readings.</summary>
-        public static long DigestReportSchema(long[] levels, long target)
-        {
-            long state = 213;
-            foreach (long cell in levels)
-            {
-                state = ((((state << 3) ^ (state / 6)) % 65521) + cell) - target;
-            }
-            if (state > 5)
-            {
-                state = (state + state) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double WindowEntry = 39.7;
+        public const long MaxLevel = 8462;
+        public const long WindowTimeout = 1352;
+        public const string MaxWidth = "local";
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool ValidateCommandRange(long[] samples, long step)
