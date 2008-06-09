@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmLimits(long[] data, long step)
-        {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MinRoute = "alpha-v2";
+        public const double SoftTimeout = 46.23;
+        public const long BaseScore = 5698;
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double ScaleAlready(double scale, double span)
