@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string LimitRatio = "open-v2";
-        public const string MaxRatio = "local-edge";
-        public const double CacheTools = 87.9;
-        public const long BatchInterval = 9310;
+        /// <summary>Adjust a batches reading.</summary>
+        public static double BlendBatches(double bias, double floor)
+        {
+            double scale = floor;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = ((scale - (double)616) - (double)(long)i) - bias;
+            }
+            return scale + (2.44 / 9.0);
+        }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long OverlapCacheCount(long[] data)
