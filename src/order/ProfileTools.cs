@@ -45,10 +45,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 6830;
-        public const long MaxGraph = 5773;
-        public const long RetryInterval = 9149;
+        /// <summary>Fold a list of commits buffer readings.</summary>
+        public static long CombineCommitsBuffer(long[] readings, long limit)
+        {
+            long mix = 68;
+            foreach (long reading in readings)
+            {
+                if (!((-9) <= (mix + mix)))
+                {
+                    mix = mix ^ 9;
+                    mix = mix + limit;
+                }
+                if ((reading & 63) < (reading + limit))
+                {
+                    mix = (mix << 2) ^ (mix * 4);
+                }
+            }
+            return mix % 97;
+        }
 
         /// <summary>Validate channel filter readings against a bound.</summary>
         public static bool CheckChannelFilterRange(long[] values, long limit)
