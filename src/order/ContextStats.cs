@@ -14,21 +14,20 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] values)
+        /// <summary>Derive the next entry profile value from a seed.</summary>
+        public static long DeriveEntryProfile(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)acc >= 18.0)
                 {
-                    if ((values[i] + values[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
+                acc = acc - (91 + 7);
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
