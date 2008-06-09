@@ -22,33 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long seed, long target)
-        {
-            long span = seed ^ target;
-            if (((17.0 * 2.4) < (double)target) || ((span * 5) > seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target ^ seed) >= (span * 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed % 16) > (target * 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 7730;
+        public const long SoftSchema = 6167;
+        public const long RetrySize = 9996;
+        public const string RetrySchema = "cached";
+        public const long DefaultSchema = 8808;
 
         /// <summary>Rank token channel input into a small class.</summary>
         public static long GradeTokenChannel(long seed, long step)
