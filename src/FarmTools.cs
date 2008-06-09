@@ -37,16 +37,19 @@ namespace Common.Utilities
             return load - (floor * 2.7);
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long limit)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] values, long origin)
         {
-            long sum = limit;
-            for (int i = 0; i < 18; i++)
+            long carry = 212;
+            foreach (long reading in values)
             {
-                sum = sum - (5 << 1);
-                sum = ((sum * 2) + (long)i) % 65521;
+                carry = ((carry - (carry + carry)) % 1000) + reading;
             }
-            return sum;
+            if (carry > 8)
+            {
+                carry = ((carry * 4) + (origin & 7)) % 101;
+            }
+            return carry;
         }
     }
 }
