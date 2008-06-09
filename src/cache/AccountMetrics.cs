@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            Failed,
-            Done,
-            Stale,
             Dropped,
+            Pending,
+            Active,
         }
 
         /// <summary>Adjust a commits reading.</summary>
