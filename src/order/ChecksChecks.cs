@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string IdleTimeout = "local-v2";
-        public const double IdleToken = 42.24;
-        public const double BatchToken = 65.68;
-        public const long WindowScore = 736;
-        public const string MinCount = "local-edge";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BaseBudget = "alpha-v2";
+        public const long BaseMetrics = 8126;
+        public const long DefaultMetrics = 6774;
 
         /// <summary>Combine session values into a single score.</summary>
         public static long DigestSession(long[] items)
