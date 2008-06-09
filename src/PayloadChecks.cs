@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long IdleCounter = 535;
         public const long SoftCount = 354;
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Validate metrics cache readings against a bound.</summary>
+        public static bool ValidateMetricsCacheRange(long[] values, long limit)
         {
-            public double Total { get; set; }
-            public long Weight { get; set; }
-            public double Label { get; set; }
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
