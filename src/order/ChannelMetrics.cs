@@ -29,19 +29,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long origin)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] items, long target)
         {
-            long mix = origin;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((double)mix == (double)41)
+                if (!((cell * 2) > (target - target)) || (((double)target == (6.94 + 0.58)) && ((cell % 5) >= (cell & 63))))
                 {
-                    mix = mix + (94 & 1);
+                    hits = hits + 3;
                 }
-                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mix;
+            return hits;
         }
     }
 }
