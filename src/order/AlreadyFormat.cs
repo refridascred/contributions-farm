@@ -34,11 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 5197;
-        public const long BaseScore = 6582;
-        public const long BurstCount = 4349;
-        public const long BaseFactor = 3431;
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
+        {
+            public long Owner { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long LimitCluster = 2127;
