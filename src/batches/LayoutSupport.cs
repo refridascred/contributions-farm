@@ -36,25 +36,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long seed)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] samples)
         {
-            long carry = seed;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seed & 7) <= (carry - carry))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = carry + (carry ^ 756);
-                    carry = (carry ^ seed) % 1000;
+                    if ((samples[i] - samples[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    carry = ((carry * 5) + (carry - carry)) % 1000;
-                    carry = (carry - (2 + carry)) % 65521;
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
