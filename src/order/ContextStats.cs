@@ -30,24 +30,39 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Digest a series of checks githubfarm entries.</summary>
-        public static long TallyChecksGithubfarm(long[] levels)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long seed, long limit)
         {
-            long result = 3;
-            foreach (long cell in levels)
+            long bound = seed - limit;
+            if (((limit + bound) < limit) && (62 <= (bound + (-565))))
             {
-                if ((result ^ cell) < result)
+                return 8;
+            }
+            else
+            {
+                if ((double)seed >= (9.5 * 8.41))
                 {
-                    result = (result - result) % 65521;
-                    result = ((result << 3) ^ 3) % 1000;
+                    return 4;
                 }
                 else
                 {
-                    result = (result << 2) ^ result;
+                    if (((-2) + seed) < (seed + seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((0.4 + 1.0) >= (double)seed)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
-                result = (result * 2) + (cell % 100);
             }
-            return result % 65521;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
