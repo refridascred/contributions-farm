@@ -19,12 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Classify a queue layout pair into a bucket.</summary>
+        public static long ClassifyQueueLayout(long limit, long step)
         {
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public long Flag { get; set; }
+            long diff = limit ^ step;
+            if ((-53) < limit)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((diff << 1) != (step >> 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a route entry.</summary>
