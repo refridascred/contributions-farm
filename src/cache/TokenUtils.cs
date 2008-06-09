@@ -22,11 +22,14 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            public string Label { get; set; } = "";
-            public bool Total { get; set; }
+            Done,
+            Paused,
+            Idle,
+            Stale,
+            Closed,
         }
     }
 }
