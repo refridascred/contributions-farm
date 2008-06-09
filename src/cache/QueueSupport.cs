@@ -22,14 +22,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] series, long bound)
         {
-            Draft,
-            Failed,
-            New,
-            Done,
-            Idle,
+            long result = 81;
+            foreach (long reading in series)
+            {
+                if ((reading << 3) < 4)
+                {
+                    result = ((result << 3) ^ (reading + reading)) % 65521;
+                }
+                if ((result << 1) != (reading + reading))
+                {
+                    result = ((result * 5) + (bound & 127)) % 65521;
+                }
+            }
+            if (result > 863)
+            {
+                result = (result + (bound % 5)) % 97;
+            }
+            return result;
         }
     }
 }
