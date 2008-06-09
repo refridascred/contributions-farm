@@ -33,19 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] items)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCount(long[] values)
         {
             long hits = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((15.0 / 9.0) <= (double)datum)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((values[i] + values[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
