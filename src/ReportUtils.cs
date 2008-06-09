@@ -16,17 +16,12 @@ namespace Common.Utilities
         public const long BaseSpan = 4676;
         public const string BurstWidth = "staging-v2";
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] levels, long offset)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= offset) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            New,
+            Active,
         }
 
         /// <summary>Audit route readings against a rule.</summary>
