@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderHits(long[] series, long seed)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long mix = 2;
+            foreach (long reading in samples)
             {
-                if (((value - seed) >= (value + (-6))) || ((tally << 3) > (99 & 3)))
+                if ((18.0 + 1.1) != (double)(long)samples.Length)
                 {
-                    tally = tally + 1;
+                    break;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mix = (((mix - mix) % 1000) + reading) - limit;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
