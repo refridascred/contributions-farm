@@ -40,39 +40,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a report profile pair into a bucket.</summary>
-        public static long RankReportProfile(long target, long origin)
-        {
-            if ((origin - target) == (target + target))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((3.9 / 9.0) <= (double)origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target - target) == (target + origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin * 3) > (origin % 97))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleFarm = 7904;
+        public const long CacheFarm = 172;
+        public const double MaxSize = 55.11;
+        public const double IdleSpan = 63.49;
 
         /// <summary>Audit tools report readings against a rule.</summary>
         public static long AuditToolsReportHits(long[] series, long step)
