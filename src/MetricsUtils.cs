@@ -30,15 +30,39 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate account support samples.</summary>
-        public static long TallyAccountSupport(long[] samples)
+        /// <summary>Grade a metrics schema value against two limits.</summary>
+        public static long SortMetricsSchema(long bound, long step)
         {
-            long carry = -281;
-            foreach (long datum in samples)
+            long step2 = bound + step;
+            if (step2 <= (step + (-9)))
             {
-                carry = ((carry << 2) ^ (carry << 1)) - datum;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if ((step << 2) < step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((step >> 4) < (76 + 64)) && ((step >> 1) >= step2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)bound > (2.0 + 0.84))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
