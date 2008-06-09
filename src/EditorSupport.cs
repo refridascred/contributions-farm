@@ -38,12 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Check that every stream graph entry stays within the limit.</summary>
+        public static bool VerifyStreamGraphLimits(long[] items, long step)
         {
-            public bool Token { get; set; }
-            public bool Score { get; set; }
-            public double Size { get; set; }
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define window limits and defaults.</summary>
