@@ -20,22 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count graph contributi pairs that satisfy a relation.</summary>
-        public static long PairGraphContributiCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string CacheAccount = "local-v2";
+        public const long LimitScore = 9945;
+        public const double LimitAccount = 15.45;
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long AuditGithubfarmGaps(long[] items)
