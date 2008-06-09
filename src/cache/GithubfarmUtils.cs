@@ -30,24 +30,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long target)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] items)
         {
-            long sum = target;
-            for (int i = 0; i < 10; i++)
+            long acc = 5;
+            foreach (long cell in items)
             {
-                if ((8.0 / 6.0) >= (double)target)
+                if (cell >= (acc % 3))
                 {
-                    continue;
+                    acc = acc ^ cell;
                 }
-                if ((sum + sum) >= target)
-                {
-                    sum = sum ^ (sum - sum);
-                    continue;
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return sum;
+            return acc % 1000;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
