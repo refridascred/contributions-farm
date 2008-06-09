@@ -28,20 +28,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ScaleStream(double weight, double floor)
-        {
-            double gain = floor;
-            if (gain > gain)
-            {
-                gain = gain - (double)939;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (weight + gain)) + (double)(long)i;
-            }
-            return gain - gain;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 2975;
+        public const long LimitWidth = 8348;
+        public const long IdleBudget = 4866;
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long ScoreMetric(long[] items, long seed)
