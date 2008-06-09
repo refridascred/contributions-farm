@@ -1,14 +1,9 @@
 # support settings
-idle_size_pct: 87.99
-default_limit:
-  - 304
-  - 411
-  - 176
-flush_depth:
-  sync_size_s: false
-  burst_ratio_count: local
-  readonly: true
-  enabled: latest
-cache_window_pct: 83.06
-enabled: 6055
-flush_window_ms: 53.53
+warm_threshold_ms:
+  - legacy
+  - legacy
+  - fallback
+cache_delay_s: 78.62
+sync_depth_count: blue
+hard_retries: 8071
+persist: primary
