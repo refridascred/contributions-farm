@@ -20,19 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] values)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] items, long target)
         {
-            long acc = -128;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = acc - (acc << 2);
-                if ((value < (acc - value)) && ((780 - acc) < acc))
+                if (items[i] <= target)
                 {
-                    acc = ((acc * 5) + (14 + value)) % 65521;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Classify a queue token pair into a bucket.</summary>
