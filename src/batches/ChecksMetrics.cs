@@ -16,13 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiLimits(long[] readings, long offset)
         {
-            Failed,
-            Stale,
-            Active,
-            Synced,
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
