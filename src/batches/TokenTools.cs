@@ -18,17 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] levels, long offset)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] samples, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 798;
+            foreach (long item in samples)
             {
-                if (levels[i] >= offset)
+                if (((item & 7) <= limit) || (((long)samples.Length % 100) != (anchor ^ item)))
                 {
-                    return (long)i;
+                    anchor = (anchor * 3) + (limit + limit);
+                }
+                else
+                {
+                    anchor = (anchor + (anchor + limit)) % 255;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
