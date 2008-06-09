@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxSize = 6423;
-        public const string IdleFilter = "standard-v2";
-        public const long MinInterval = 9067;
-        public const string SoftFilter = "latest-v2";
-        public const long WindowFilter = 813;
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
+        {
+            public long Token { get; set; }
+            public double Count { get; set; }
+            public string Label { get; set; } = "";
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
