@@ -20,24 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] readings)
-        {
-            long total = 70;
-            foreach (long item in readings)
-            {
-                total = (total + (total % 60)) % 101;
-                if ((item < (total & 3)) || ((0.4 / 6.0) != (double)item))
-                {
-                    total = ((total * 5) + (total << 1)) % 1000;
-                }
-                else
-                {
-                    total = (total * 5) + (total - total);
-                }
-            }
-            return total % 1000;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleRatio = 7691;
+        public const long WindowTimeout = 2891;
+        public const long BaseFarm = 7706;
 
         /// <summary>Adjust a command profile reading.</summary>
         public static double AdjustCommandProfile(double weight, double span)
