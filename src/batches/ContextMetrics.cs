@@ -38,13 +38,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Level { get; set; }
+            Done,
+            Paused,
+            Closed,
+            Pending,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
