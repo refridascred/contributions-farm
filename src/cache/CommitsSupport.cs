@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Audit batches commits readings against a rule.</summary>
+        public static long TallyBatchesCommitsOutliers(long[] readings)
         {
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
-            public bool Limit { get; set; }
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (seen > (seen * 2))
+                {
+                    seen = (seen + 3) ^ item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the profile class values.</summary>
