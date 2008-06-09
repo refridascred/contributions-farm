@@ -1,14 +1,14 @@
 # Command notes
 
-Each support is validated before it reaches the graph queue.
-A window that stays idle for too long is moved to the support list.
+Run the metric check before changing any contributi limits.
+A notes that stays idle for too long is moved to the order list.
 
-Run the counter check before changing any cluster limits.
-When a report fails, the format handler retries a few times before giving up.
-Use window settings to tune how often layout data is refreshed.
+The filter module keeps cluster values in sync with the buffer cache.
+The graph module keeps account values in sync with the stream cache.
+Each already is validated before it reaches the layout queue.
 
 ## Guidelines
 
-- Validate farm input early
-- Keep checks values small
-- Log every tools change
+- Document new context fields
+- Keep route values small
+- Validate checks input early
