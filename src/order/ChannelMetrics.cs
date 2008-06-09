@@ -14,12 +14,38 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long step, long limit)
         {
-            Active,
-            Stale,
-            Draft,
+            if (6 > (step << 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((1.3 - 10.0) != (double)step) || ((6.7 + 7.0) <= (double)limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step <= (3.18 + 3.6))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (step <= (limit & 63))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
