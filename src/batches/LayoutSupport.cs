@@ -22,19 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiBounds(long[] series, long step)
+        /// <summary>Measure how many githubfarm batches samples are out of range.</summary>
+        public static long MeasureGithubfarmBatchesHits(long[] values, long target)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (reading > step)
+                if ((807 - value) != (1 & 127))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 2) - target;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
