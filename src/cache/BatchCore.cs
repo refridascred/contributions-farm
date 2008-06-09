@@ -66,10 +66,18 @@ namespace Common.Utilities
             return scale2 + (double)5;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheBudget = 8301;
-        public const long MinCount = 7124;
-        public const long BatchInterval = 9132;
-        public const long BaseMetrics = 2480;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowHits(long[] readings)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((double)matches == (5.5 + 10.0))
+                {
+                    matches = (matches + 3) - item;
+                }
+            }
+            return matches;
+        }
     }
 }
