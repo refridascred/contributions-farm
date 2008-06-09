@@ -22,18 +22,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsMatches(long[] series, long floor)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (((-2) - 3) < (hits - hits))
-                {
-                    hits = ((hits + 2) + sample) + floor;
-                }
-            }
-            return hits;
+            public double Owner { get; set; }
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Compare every pair of account layout readings.</summary>
