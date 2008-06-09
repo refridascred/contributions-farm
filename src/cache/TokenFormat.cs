@@ -48,10 +48,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 3856;
-        public const long BatchFactor = 7384;
-        public const long SoftProfile = 2585;
-        public const long IdleRatio = 5954;
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
+        {
+            Paused,
+            Failed,
+            Dropped,
+            New,
+            Pending,
+        }
     }
 }
