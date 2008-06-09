@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long floor)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchHits(long[] levels)
         {
-            long carry = floor;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                carry = (carry - 95) % 1000;
-                if ((double)carry != (6.53 * 6.59))
+                if (!((sample / 5) == (sample * 5)))
                 {
-                    carry = (carry * 3) + (floor * 4);
-                    continue;
+                    hits = hits + 3;
                 }
-                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Adjust a entry cache reading.</summary>
