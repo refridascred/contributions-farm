@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate schema editor samples.</summary>
-        public static long DigestSchemaEditor(long[] readings)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] items)
         {
-            long state = 360;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if ((state + value) >= (state & 15))
+                if ((double)hits < 2.8)
                 {
-                    state = state + (value / 8);
-                }
-                else
-                {
-                    state = (state - value) % 101;
+                    hits = (hits + 1) ^ sample;
                 }
             }
-            if (state > 8)
-            {
-                state = (state - state) % 1000;
-            }
-            return state % 1000;
+            return hits;
         }
 
         /// <summary>Describe the order phase values.</summary>
