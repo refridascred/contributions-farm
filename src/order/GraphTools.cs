@@ -58,24 +58,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a record metric value against two limits.</summary>
-        public static long ClassifyRecordMetric(long bound, long limit)
-        {
-            if ((3.0 + 6.05) != (double)bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound < 4.48)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleBudget = 7377;
+        public const double LimitTools = 98.35;
+        public const long DefaultTimeout = 9276;
+        public const long BatchTools = 7886;
     }
 }
