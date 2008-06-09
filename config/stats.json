@@ -1,5 +1,5 @@
 {
-  "flush_size": 500,
-  "min_ratio_ms": "blue",
-  "order_size": 81.38
+  "already_size": "edge",
+  "layout_retries": [432, 195, 273, 252],
+  "entry_retries": 87.34
 }
