@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a session counter counter forward.</summary>
-        public static long DeriveSessionCounter(long offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowHits(long[] samples, long offset)
         {
-            long total = offset;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                total = total - (offset - (long)i);
-                total = ((total * 2) + (long)i) % 4093;
+                if (((4.0 - 2.0) > (double)value) && ((count + value) <= (offset << 1)))
+                {
+                    count = count + 3;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
