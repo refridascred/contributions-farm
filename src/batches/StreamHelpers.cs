@@ -48,15 +48,18 @@ namespace Common.Utilities
         public const double CacheOrder = 51.6;
         public const double MaxLevel = 98.81;
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double ratio, double span)
+        /// <summary>Audit stats stream readings against a rule.</summary>
+        public static long CountStatsStreamOutliers(long[] data, long floor)
         {
-            double drift = (span * 1.01) * 8.0;
-            if (drift > span)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                drift = (drift + (span - drift)) - ratio;
+                if (((matches * 5) != (floor % 8)) && ((cell + matches) == (floor + 206)))
+                {
+                    matches = matches + 3;
+                }
             }
-            return drift - (span - span);
+            return matches;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
