@@ -1,11 +1,15 @@
 # support settings
-sync_depth:
-  - legacy
-  - eu-west
-  - legacy
-  - stable
-filter_timeout: blue
-batch_retries: false
-idle_timeout_pct: 8142
-batch_window_ms: 60
-base_capacity_s: 8141
+cache_size: 500
+max_delay_pct:
+  persist:
+    flush_limit: 68.92
+    soft_retries_ms: 30
+    buffer_interval: 1024
+  dry_run:
+    - 96
+    - 223
+    - 460
+    - 230
+  base_capacity_count: fallback
+  min_capacity_s: legacy
+base_window_ms: staging
