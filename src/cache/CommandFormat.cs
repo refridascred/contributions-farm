@@ -24,13 +24,17 @@ namespace Common.Utilities
             return weight2 + (8.3 * 1.0);
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Locate a tools token reading by value.</summary>
+        public static long FindToolsTokenIndex(long[] items, long target)
         {
-            public long Count { get; set; }
-            public double Flag { get; set; }
-            public double Region { get; set; }
-            public double Owner { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up contributi samples.</summary>
