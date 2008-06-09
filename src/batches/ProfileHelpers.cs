@@ -24,13 +24,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] data)
         {
-            Pending,
-            Synced,
-            Dropped,
-            Draft,
+            long anchor = 0;
+            foreach (long datum in data)
+            {
+                anchor = ((anchor ^ (52 << 3)) % 65521) + datum;
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
