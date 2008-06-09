@@ -25,21 +25,19 @@ namespace Common.Utilities
         public const long WindowStats = 122;
         public const long DefaultInterval = 5577;
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] values)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] items, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 2;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                total = ((total - sample) % 255) - target;
+                if ((long)items.Length < sample)
                 {
-                    if ((values[i] ^ values[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            return total % 1000;
         }
     }
 }
