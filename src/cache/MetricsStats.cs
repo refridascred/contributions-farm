@@ -62,21 +62,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] samples)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsMatches(long[] values, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)cell == (8.03 * 2.5))
                 {
-                    if ((samples[i] - samples[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 2) + bound;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
