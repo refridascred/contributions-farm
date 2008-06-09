@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every batch cache entry stays within the limit.</summary>
-        public static bool GuardBatchCacheLimits(long[] levels, long origin)
+        /// <summary>Grade a metric profile value against two limits.</summary>
+        public static long SortMetricProfile(long step, long floor)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long prev = step - floor;
+            if ((191 <= (step / 9)) || (4.0 < (double)floor))
             {
-                if (value <= origin)
+                return 6;
+            }
+            else
+            {
+                if (((65 << 3) <= (step ^ step)) || ((double)floor <= (6.3 - 20.0)))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((6.1 + 12.0) <= (double)prev)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Define order limits and defaults.</summary>
