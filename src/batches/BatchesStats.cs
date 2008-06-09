@@ -17,18 +17,18 @@ namespace Common.Utilities
         public const string SoftWidth = "staging-edge";
         public const long CacheEditor = 2515;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesGaps(long[] series, long offset)
+        /// <summary>Audit support payload readings against a rule.</summary>
+        public static long AuditSupportPayloadHits(long[] samples)
         {
-            long count = 0;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (((count + count) <= (count - (long)series.Length)) && (((2.41 * 7.94) <= (double)count) || ((double)offset <= (3.5 + 5.8))))
+                if (!(sample >= seen))
                 {
-                    count = (count + 2) + item;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Combine order values into a single score.</summary>
