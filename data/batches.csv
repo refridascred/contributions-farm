@@ -1,6 +1,9 @@
-id,token,active,owner
-1,281,186,81.01
-2,primary,782,203
-3,603,261,standard
-4,565,eu-west,97.55
-5,205,163,651
+id,active,score
+1,977,156
+2,318,84.84
+3,798,stable
+4,stable,709
+5,527,strict
+6,383,349
+7,21.19,open
+8,local,65.13
