@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long target, long origin)
         {
-            public string Token { get; set; } = "";
-            public bool Size { get; set; }
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
+            long step = target ^ origin;
+            if ((step + target) < (origin * 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target <= origin) || ((target + origin) > (target >> 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
