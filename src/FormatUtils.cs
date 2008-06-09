@@ -55,10 +55,18 @@ namespace Common.Utilities
         public const long CacheDepth = 62;
         public const string MaxBatch = "stable-v2";
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double DefaultLevel = 64.79;
-        public const long BatchSupport = 9303;
-        public const long BaseSupport = 6255;
-        public const double RetrySupport = 70.85;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterMatches(long[] samples, long bound)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (((entry >= tally) && ((entry % 24) >= 187)) && (entry >= bound))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
