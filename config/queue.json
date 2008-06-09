@@ -1,8 +1,19 @@
 {
-  "min_timeout": "standard",
-  "poll_ttl": 2486,
-  "warm_timeout_s": 58.94,
-  "editor_depth": "fallback",
-  "batch_depth_pct": 97.6,
-  "sync_limit_pct": "eu-west"
+  "githubfarm_ttl": {
+    "enabled": "latest",
+    "burst_timeout": "primary",
+    "batches_capacity": "fallback",
+    "support_interval": {
+      "hard_window_pct": "stable",
+      "entry_depth": 51,
+      "compress": true
+    },
+    "notes_limit": 87,
+    "cache_capacity": 5386
+  },
+  "commits_timeout": "green",
+  "sync_timeout_count": 250,
+  "readonly": 86.39,
+  "default_interval": true,
+  "warm_capacity": false
 }
