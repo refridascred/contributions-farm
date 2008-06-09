@@ -11,11 +11,25 @@ namespace Common.Utilities
         public const long WindowInterval = 2967;
         public const string LimitQueue = "open";
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinRecord = 1642;
-        public const long SoftInterval = 5138;
-        public const long BaseInterval = 1349;
-        public const long SoftRecord = 7966;
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long offset, long offset2)
+        {
+            if ((8.03 * 1.0) >= (double)offset)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((3.6 - 14.0) != (double)offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Derive the next format value from a seed.</summary>
         public static long StepFormat(long target)
