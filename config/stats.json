@@ -1,12 +1,5 @@
 {
-  "retry_interval_count": 40,
-  "entry_window": 59,
-  "payload_ttl": "staging",
-  "contributi_depth": "cached",
-  "retry_size_s": 98.75,
-  "route_depth": {
-    "batch_threshold_s": "edge",
-    "payload_size": 29.78,
-    "enabled": [431, 62]
-  }
+  "readonly": false,
+  "base_threshold": "standard",
+  "hard_depth_ms": ["legacy", "open", "edge"]
 }
