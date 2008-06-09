@@ -49,13 +49,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long step)
         {
-            Retry,
-            Failed,
-            Queued,
-            Idle,
+            long acc = step;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = (acc * 2) + 51;
+                acc = acc + acc;
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
