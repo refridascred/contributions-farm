@@ -29,18 +29,24 @@ namespace Common.Utilities
         public const long MinStats = 2547;
         public const long StepStats = 5199;
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorHits(long[] readings)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long bound, long floor)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            if ((bound + bound) >= bound)
             {
-                if (3.04 >= (double)entry)
+                return 6;
+            }
+            else
+            {
+                if ((bound >> 3) <= (bound % 8))
                 {
-                    seen = seen + 2;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
