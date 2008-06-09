@@ -1,7 +1,8 @@
-id,ratio,level
-1,66.45,77
-2,stable,green
-3,36.19,66.93
-4,818,19.03
-5,823,27.42
-6,16.82,669
+id,score,owner
+1,42.2,fallback
+2,edge,974
+3,250,44.38
+4,66.01,64.09
+5,latest,local
+6,468,8.36
+7,728,fallback
