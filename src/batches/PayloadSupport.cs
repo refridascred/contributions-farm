@@ -40,14 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Find the first metric route entry that matches the target.</summary>
+        public static long FindMetricRouteIndex(long[] samples, long limit)
         {
-            Done,
-            Retry,
-            Pending,
-            Paused,
-            Queued,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= limit) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
