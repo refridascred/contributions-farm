@@ -1,11 +1,5 @@
 # entry settings
-default_retries_s: cached
-warm_window: 6678
-persist:
-  flush_retries_ms: 29.22
-  sync_ttl: true
-  command_ratio: 91.74
-  editor_limit: 7.91
-  default_capacity_ms: latest
-  base_window: false
-default_depth_count: 1024
+persist: 3.52
+max_ratio_s: 250
+idle_delay_s: latest
+cache_ttl_pct: local
