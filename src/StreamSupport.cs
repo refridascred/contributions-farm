@@ -39,10 +39,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define entry limits and defaults.</summary>
-        public const string WindowRatio = "strict";
-        public const long CacheFactor = 8196;
-        public const long HardEntry = 3145;
-        public const double LimitEntry = 29.47;
-        public const long StepBudget = 6048;
+        public const long BurstEntry = 9275;
+        public const long RetryEntry = 1295;
+        public const long CacheBudget = 2214;
+        public const string MinInterval = "alpha-v2";
     }
 }
