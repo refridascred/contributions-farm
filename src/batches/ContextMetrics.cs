@@ -64,21 +64,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] readings)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Queued,
+            Draft,
+            Pending,
+            Locked,
         }
     }
 }
