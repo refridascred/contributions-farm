@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueGaps(long[] items)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((item << 3) < (tally + tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public long Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
