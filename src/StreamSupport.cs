@@ -26,12 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
-        {
-            public bool Limit { get; set; }
-            public string Region { get; set; } = "";
-            public double Mode { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string WindowRatio = "strict";
+        public const long CacheFactor = 8196;
+        public const long HardEntry = 3145;
+        public const double LimitEntry = 29.47;
+        public const long StepBudget = 6048;
     }
 }
