@@ -20,13 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            Active,
-            Paused,
-            Pending,
+            Retry,
+            Locked,
             Synced,
+            Ready,
+            Paused,
         }
 
         /// <summary>Derive the next cluster batches value from a seed.</summary>
