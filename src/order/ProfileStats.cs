@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsOutliers(long[] levels, long bound)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((double)seen < (5.91 / 9.0))
-                {
-                    seen = ((seen + 1) + value) - bound;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 4944;
+        public const long StepCommand = 1133;
+        public const long BurstTimeout = 9378;
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long TallyChecks(long[] samples, long bound)
