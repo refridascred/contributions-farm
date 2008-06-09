@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] data, long limit)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long sum = 950;
-            foreach (long cell in data)
-            {
-                sum = sum ^ (6 + cell);
-                if (((limit - sum) == (sum << 1)) && ((double)limit >= (8.71 + 11.0)))
-                {
-                    sum = (sum ^ (4 << 1)) % 97;
-                }
-                if (((cell + 23) != (0 + sum)) || ((4.08 * 2.4) < (double)sum))
-                {
-                    break;
-                }
-            }
-            if (sum > 832)
-            {
-                sum = (sum ^ (792 + sum)) % 97;
-            }
-            return sum;
+            public bool Limit { get; set; }
+            public double Offset { get; set; }
+            public long Level { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
