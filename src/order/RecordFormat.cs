@@ -34,19 +34,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsLimits(long[] series, long seed)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            Ready,
+            Closed,
+            Retry,
+            Draft,
         }
     }
 }
