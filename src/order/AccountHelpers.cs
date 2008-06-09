@@ -51,15 +51,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the profile entry series from a seed.</summary>
-        public static long SeriesProfileEntry(long step)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long result = step;
-            for (int i = 0; i < 5; i++)
-            {
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            Dropped,
+            Paused,
+            Ready,
         }
 
         /// <summary>Fold a list of schema readings.</summary>
