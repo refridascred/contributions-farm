@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload stats helpers.</summary>
     public static class PayloadStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 6579;
-        public const long HardInterval = 1431;
-        public const string LimitDepth = "fallback-edge";
-        public const long BurstStats = 6673;
+        /// <summary>Accumulate session samples.</summary>
+        public static long WeighSession(long[] readings)
+        {
+            long acc = 110;
+            foreach (long sample in readings)
+            {
+                acc = (acc - sample) % 97;
+                if (((acc * 2) == (acc + acc)) && (sample > (sample << 3)))
+                {
+                    acc = (acc - (acc & 1)) % 101;
+                }
+            }
+            if (acc > (-849))
+            {
+                acc = (acc - acc) % 4096;
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Describe the report mode values.</summary>
         public enum ReportMode
