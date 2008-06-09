@@ -1,35 +1,27 @@
 # githubfarm settings
-stream_interval:
-  cache_retries: 17
-  retry_ttl:
-    token_capacity:
-      - 293
-      - 178
-      - 400
-      - 158
-    verbose:
-      - 360
-      - 76
-      - 383
-      - 407
-    min_retries_count: false
-  enabled: 100
-  dry_run:
-    - 13
-    - 473
-    - 496
-  stats_limit: 22.93
-context_window: 38
-min_delay: primary
-graph_limit:
-  - local
-  - open
-  - cached
-  - stable
-idle_ttl_count:
-  - edge
-  - open
-flush_capacity_count:
-  max_capacity_ms: 80.42
-  retry_interval_s: 52.73
-  retry_limit: blue
+sync_delay:
+  - 272
+  - 317
+  - 329
+metric_capacity: 100
+batch_depth_s:
+  - 389
+  - 374
+  - 170
+  - 42
+cache_size: edge
+account_size:
+  report_ttl: 13
+  batch_size_s: 6
+  hard_size:
+    githubfarm_depth: 2551
+    burst_size: 500
+    base_depth:
+      - blue
+      - latest
+    min_depth: 11
+    poll_ratio: 94.2
+    idle_retries: latest
+  persist: false
+  order_ttl: 63.93
+strict: 80.42
