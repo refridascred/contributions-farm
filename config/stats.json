@@ -1,5 +1,8 @@
 {
-  "already_delay": "eu-west",
-  "idle_size": [51, 327, 117],
-  "idle_ttl": "legacy"
+  "commits_ttl": "staging",
+  "compress": "edge",
+  "min_retries": "edge",
+  "default_ratio": 60,
+  "audit": 30,
+  "route_ratio": 9
 }
