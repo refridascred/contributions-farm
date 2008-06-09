@@ -77,18 +77,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheMatches(long[] items)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (!(tally > (tally + tally)))
-                {
-                    tally = (tally + 1) + sample;
-                }
-            }
-            return tally;
+            public string Level { get; set; } = "";
+            public double Owner { get; set; }
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Fold a list of channel readings.</summary>
