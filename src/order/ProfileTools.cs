@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] items, long floor)
+        /// <summary>Rank stream report input into a small class.</summary>
+        public static long RankStreamReport(long seed, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long step = seed ^ limit;
+            if ((seed ^ seed) >= limit)
             {
-                if (items[i] <= floor)
+                return 6;
+            }
+            else
+            {
+                if ((limit - step) <= limit)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (!(step < (6 * 5)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
