@@ -83,12 +83,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
             public long Total { get; set; }
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
+            public string Region { get; set; } = "";
+            public double Owner { get; set; }
         }
     }
 }
