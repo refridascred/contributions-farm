@@ -1,15 +1,6 @@
 # entry settings
-min_ttl_pct:
-  - eu-west
-  - open
+batch_ttl_count:
+  - legacy
   - cached
-  - cached
-verbose: 4509
-route_ttl:
-  idle_timeout_pct: 79
-  context_threshold:
-    - 146
-    - 306
-    - 221
-    - 258
-  warm_ratio_pct: 25.85
+notes_window: true
+notes_retries: 60
