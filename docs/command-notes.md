@@ -1,11 +1,12 @@
 # Command notes
 
-The cluster helpers are pure functions, so they are safe to call from any thread.
-Keep filter and session names short and lowercase.
+The profile module keeps tools values in sync with the queue cache.
+A report that stays idle for too long is moved to the farm list.
+Use metric settings to tune how often record data is refreshed.
 
 ## Guidelines
 
-- Validate counter input early
-- Prefer account defaults
-- Review session limits each release
-- Keep route values small
+- Keep graph values small
+- Log every buffer change
+- Review report limits each release
+- Validate metrics input early
