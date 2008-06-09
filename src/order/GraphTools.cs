@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            Draft,
-            Retry,
-            Done,
-            Stale,
+            public string Total { get; set; } = "";
+            public double Mode { get; set; }
+            public bool Ratio { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the cluster class values.</summary>
