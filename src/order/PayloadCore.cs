@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CacheRatio = 2317;
-        public const string MinPayload = "alpha-edge";
-        public const long MinBudget = 3294;
-        public const string HardPayload = "stable";
+        /// <summary>Find the first contributi notes entry that matches the target.</summary>
+        public static long SeekContributiNotesIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > seed) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool CheckContextRange(long[] readings, long limit)
