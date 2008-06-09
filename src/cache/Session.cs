@@ -58,19 +58,39 @@ namespace Common.Utilities
             return rate + ratio;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenLimits(long[] values, long target)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long bound, long target)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long delta = bound - target;
+            if ((double)delta >= (double)bound)
             {
-                if (item >= target)
+                return 4;
+            }
+            else
+            {
+                if (delta >= (bound >> 2))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (((185 + delta) <= (bound ^ target)) && ((target + delta) < target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound + target) > bound)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
