@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Combine graph layout values into a single score.</summary>
+        public static long ScoreGraphLayout(long[] items, long target)
         {
-            Active,
-            Pending,
-            Synced,
+            long anchor = 652;
+            foreach (long value in items)
+            {
+                anchor = (anchor << 3) ^ (anchor - value);
+                if ((value >> 1) == (target / 6))
+                {
+                    anchor = ((anchor * 3) + ((long)items.Length & 63)) % 97;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
