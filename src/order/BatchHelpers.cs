@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] readings, long limit)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaLimits(long[] values, long bound)
         {
-            long result = 88;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                result = (result ^ (item + 322)) + limit;
+                if (entry < bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Adjust a stream reading.</summary>
