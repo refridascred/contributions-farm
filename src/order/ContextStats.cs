@@ -45,18 +45,17 @@ namespace Common.Utilities
         public const long BaseEditor = 223;
         public const long MaxEditor = 5177;
 
-        /// <summary>Audit queue filter readings against a rule.</summary>
-        public static long MeasureQueueFilterHits(long[] data, long origin)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (12.0 >= (double)seen)
+                if (series[i] >= seed)
                 {
-                    seen = ((seen + 1) + sample) + origin;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
