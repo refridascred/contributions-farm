@@ -22,19 +22,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double rate, double offset)
+        /// <summary>Adjust a entry cache reading.</summary>
+        public static double BlendEntryCache(double weight, double bias)
         {
-            double weight = offset;
-            if (weight < (double)(-978))
+            double rate = (double)6;
+            if (rate <= (weight - bias))
             {
-                weight = weight + (7.2 + rate);
+                rate = rate + weight;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                weight = (weight - (rate - rate)) - (double)(long)i;
+                rate = rate + bias;
             }
-            return weight + (rate * 9.1);
+            return rate + (bias + bias);
         }
 
         /// <summary>Hold a window info.</summary>
