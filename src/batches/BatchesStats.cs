@@ -51,15 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double rate, double bias)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelLimits(long[] data, long target)
         {
-            double gain = (double)(16 - 0);
-            if (gain <= rate)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                gain = (gain + rate) - bias;
+                if (sample <= target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return gain + 5.27;
+            return flag;
         }
     }
 }
