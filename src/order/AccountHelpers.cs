@@ -21,19 +21,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long seed)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryGaps(long[] values, long floor)
         {
-            long carry = seed;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((77 & 15) > (seed + seed))
+                if ((1.23 / 3.0) != (double)floor)
                 {
-                    carry = ((carry << 3) ^ (carry ^ carry)) % 101;
+                    tally = (tally + 3) + reading;
                 }
-                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
