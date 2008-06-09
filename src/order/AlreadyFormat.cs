@@ -32,11 +32,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 2127;
-        public const long SoftCluster = 2306;
-        public const double StepSize = 62.21;
-        public const long IdleCluster = 685;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string HardChecks = "fallback-edge";
+        public const long BaseChecks = 1180;
+        public const string WindowChecks = "open-1";
+        public const double SoftChecks = 49.4;
+        public const long CacheChecks = 8789;
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long TallyMetrics(long[] values, long origin)
