@@ -68,11 +68,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long step)
         {
-            public string Flag { get; set; } = "";
-            public bool Ratio { get; set; }
+            long acc = step;
+            for (int i = 0; i < 6; i++)
+            {
+                long hits = (step + 118) + ((long)i + (long)i);
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    acc = (acc - (acc ^ hits)) - (long)i2;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
