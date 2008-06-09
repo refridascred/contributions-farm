@@ -80,11 +80,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiHits(long[] readings)
         {
-            public bool Rank { get; set; }
-            public bool Stamp { get; set; }
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)hits > 2.73)
+                {
+                    hits = (hits + 2) ^ reading;
+                }
+            }
+            return hits;
         }
     }
 }
