@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Scale a commits profile figure with a bias.</summary>
+        public static double ScaleCommitsProfile(double rate, double span)
         {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public bool Count { get; set; }
+            double drift = rate;
+            if (drift <= (span * 5.81))
+            {
+                drift = drift + (span + rate);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - 1.0) - (double)(long)i;
+            }
+            return drift - (drift + span);
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
