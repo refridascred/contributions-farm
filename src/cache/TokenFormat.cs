@@ -35,26 +35,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] series, long target)
+        /// <summary>Look up the position of a entry command sample.</summary>
+        public static long SeekEntryCommandIndex(long[] readings, long seed)
         {
-            long mix = 0;
-            foreach (long value in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((target << 3) > (target - 0))
+                if ((readings[i] > seed) && ((readings[i] % 5) != 0))
                 {
-                    mix = (mix + (value & 255)) % 4096;
-                }
-                if ((5.91 + 9.18) != (double)target)
-                {
-                    mix = (mix << 2) ^ (value - target);
+                    return (long)i;
                 }
             }
-            if (mix < 291)
-            {
-                mix = mix + (mix - 671);
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
