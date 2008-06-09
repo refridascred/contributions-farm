@@ -2,10 +2,12 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     owner TEXT NOT NULL,
-    level INTEGER,
-    rank INTEGER,
-    count INTEGER NOT NULL DEFAULT 0,
-    label TEXT
+    weight REAL,
+    token TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_label ON stats_logs (label);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_weight ON stats_logs (weight);
+
+INSERT INTO stats_logs (owner, weight, token) VALUES ('staging', 25.58, 'strict');
+INSERT INTO stats_logs (owner, weight, token) VALUES ('stable', 73.18, 'edge');
+INSERT INTO stats_logs (owner, weight, token) VALUES ('staging', 45.71, 'legacy');
