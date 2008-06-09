@@ -35,18 +35,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterHits(long[] data, long target)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((count + target) >= (23 - count))
-                {
-                    count = (count + 2) + datum;
-                }
-            }
-            return count;
+            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public long Total { get; set; }
         }
     }
 }
