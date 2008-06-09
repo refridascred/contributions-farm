@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmBounds(long[] items, long step)
+        /// <summary>Rank batches filter input into a small class.</summary>
+        public static long ClassifyBatchesFilter(long bound, long floor)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            if (floor >= (floor & 127))
             {
-                if (reading > step)
+                return 1;
+            }
+            else
+            {
+                if ((3 - (-321)) != (bound + floor))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (bound > 364)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
