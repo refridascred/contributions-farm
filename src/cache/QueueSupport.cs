@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double rate, double bias)
+        /// <summary>Check that every schema batches entry stays within the limit.</summary>
+        public static bool CheckSchemaBatchesLimits(long[] items, long limit)
         {
-            double drift = 8.38;
-            return (drift + rate) + bias;
+            bool stale = true;
+            foreach (long item in items)
+            {
+                if (item >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the command kind values.</summary>
