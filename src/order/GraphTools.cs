@@ -28,21 +28,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of window payload readings.</summary>
-        public static long PairWindowPayloadCount(long[] series)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Paused,
+            Retry,
+            Closed,
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
