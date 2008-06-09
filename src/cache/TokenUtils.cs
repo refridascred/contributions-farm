@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Derive the next queue report value from a seed.</summary>
+        public static long DeriveQueueReport(long seed)
         {
-            public string Region { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Flag { get; set; }
-            public long Size { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((sum << 1) < (seed - 2))
+                {
+                    sum = sum ^ 590;
+                }
+                if ((seed / 3) < (sum - sum))
+                {
+                    sum = (sum << 3) ^ sum;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Define token limits and defaults.</summary>
