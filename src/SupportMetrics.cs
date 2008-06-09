@@ -10,38 +10,16 @@ namespace Common.Utilities
         public const long BurstSpan = 9048;
         public const long StepCommits = 6884;
 
-        /// <summary>Grade a session context value against two limits.</summary>
-        public static long SortSessionContext(long floor, long offset)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long RollAlready(long origin)
         {
-            if ((floor + offset) >= (floor + floor))
+            long acc = origin;
+            for (int i = 0; i < 15; i++)
             {
-                return 4;
+                acc = (acc << 2) ^ (acc / 6);
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            else
-            {
-                if (((offset >> 5) >= (10 + floor)) && ((4.0 + 7.0) <= (double)floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset - 934) == (857 + 41))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)offset <= (double)0)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
