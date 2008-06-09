@@ -32,14 +32,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            Done,
-            Paused,
-            Idle,
-            Stale,
-            Closed,
+            public long Rank { get; set; }
+            public bool Mode { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
