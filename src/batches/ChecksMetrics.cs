@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long target)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long anchor = target;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            Dropped,
+            Draft,
+            Done,
         }
 
         /// <summary>Locate a context reading by value.</summary>
