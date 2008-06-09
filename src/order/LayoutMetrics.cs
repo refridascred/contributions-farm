@@ -22,24 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long offset)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorHits(long[] readings, long target)
         {
-            long mark = offset;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (((double)offset >= 14.0) && (552 <= offset))
+                if ((14.0 - 13.0) >= (double)hits)
                 {
-                    mark = (mark - offset) % 4096;
+                    hits = ((hits + 2) ^ sample) - target;
                 }
-                else
-                {
-                    mark = (mark ^ (offset * 5)) % 65521;
-                    mark = mark + (offset & 31);
-                }
-                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
