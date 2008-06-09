@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Audit githubfarm notes readings against a rule.</summary>
+        public static long AuditGithubfarmNotesOutliers(long[] values)
         {
-            public double Score { get; set; }
-            public double Offset { get; set; }
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (((5.0 + 6.8) == (double)hits) || (((7.3 * 6.0) > (double)cell) || ((double)260 <= (double)hits)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a entry already pair into a bucket.</summary>
