@@ -23,12 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheBudget = 7383;
-        public const long BurstCluster = 7858;
-        public const string HardCluster = "legacy-1";
-        public const string WindowBudget = "local-v2";
-        public const double MaxRatio = 40.29;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueHits(long[] samples, long origin)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (value <= (2 % 2))
+                {
+                    tally = (tally + 3) - origin;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the token class values.</summary>
         public enum TokenClass
