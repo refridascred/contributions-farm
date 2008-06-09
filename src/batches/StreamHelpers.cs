@@ -30,31 +30,13 @@ namespace Common.Utilities
         public const string BatchScore = "staging-edge";
         public const long BatchContext = 46;
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long step, long limit)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            if (6.5 >= (double)step)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit & 15) > step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step >> 2) >= step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Draft,
+            Active,
+            New,
+            Synced,
         }
 
         /// <summary>Describe the contributi phase values.</summary>
