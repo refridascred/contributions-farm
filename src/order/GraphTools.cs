@@ -46,18 +46,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryOutliers(long[] values)
+        /// <summary>Grade a record metric value against two limits.</summary>
+        public static long ClassifyRecordMetric(long bound, long limit)
         {
-            long count = 0;
-            foreach (long cell in values)
+            if ((3.0 + 6.05) != (double)bound)
             {
-                if ((((-54) - cell) == (8 % 64)) || ((count >> 3) > (cell - cell)))
+                return 2;
+            }
+            else
+            {
+                if ((double)bound < 4.48)
                 {
-                    count = count + 1;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
     }
 }
