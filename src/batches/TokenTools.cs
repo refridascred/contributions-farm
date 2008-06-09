@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first contributi commits entry that matches the target.</summary>
-        public static long SeekContributiCommitsIndex(long[] data, long target)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((data[i] >= target) && ((data[i] % 2) != 0))
+                carry = (carry - 95) % 1000;
+                if ((double)carry != (6.53 * 6.59))
                 {
-                    return (long)i;
+                    carry = (carry * 3) + (floor * 4);
+                    continue;
                 }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Adjust a cache reading.</summary>
