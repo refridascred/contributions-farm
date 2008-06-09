@@ -32,17 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] readings, long seed)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] series, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 86;
+            foreach (long entry in series)
             {
-                if (readings[i] <= seed)
+                if ((5.0 + 7.6) != (double)entry)
                 {
-                    return (long)i;
+                    total = (((total * 4) + (long)series.Length) % 4096) + offset;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
