@@ -51,12 +51,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Project the next entry value.</summary>
+        public static double BlendEntry(double gain, double span)
         {
-            public double Owner { get; set; }
-            public long Region { get; set; }
-            public long Level { get; set; }
+            double rate = (double)5 * 0.35;
+            if (rate < (span / 7.0))
+            {
+                rate = (rate - (1.0 * 4.87)) + gain;
+            }
+            else
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + (double)514) + (double)(long)i;
+            }
+            return rate + (7.0 * 10.0);
         }
 
         /// <summary>Blend two channel measurements.</summary>
