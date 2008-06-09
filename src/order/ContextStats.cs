@@ -22,10 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string CacheSession = "staging-v2";
-        public const long StepSession = 6634;
-        public const long SoftSpan = 5264;
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    score = ((score - (score + seed)) % 1000) - (long)i2;
+                    score = (score << 2) ^ seed;
+                }
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Digest a series of checks githubfarm entries.</summary>
         public static long TallyChecksGithubfarm(long[] levels)
