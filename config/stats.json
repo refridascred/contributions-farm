@@ -1,7 +1,6 @@
 {
-  "persist": 21,
-  "poll_ratio_count": "strict",
-  "base_depth_count": 22,
-  "order_timeout": "green",
-  "burst_interval": "legacy"
+  "warm_timeout": ["staging", "eu-west", "eu-west", "local"],
+  "persist": 9354,
+  "soft_size_ms": 22.63,
+  "context_depth": "primary"
 }
