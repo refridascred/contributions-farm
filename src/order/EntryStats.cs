@@ -20,13 +20,12 @@ namespace Common.Utilities
         public const long BatchSpan = 6564;
         public const long WindowMetric = 584;
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            public bool Weight { get; set; }
-            public string Size { get; set; } = "";
-            public bool Label { get; set; }
-            public long Rank { get; set; }
+            Queued,
+            Pending,
+            Failed,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
