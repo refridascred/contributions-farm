@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] values)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long result = 80;
-            foreach (long reading in values)
-            {
-                if ((result - reading) < (reading % 12))
-                {
-                    result = result ^ (reading - result);
-                }
-            }
-            return result;
+            public bool Limit { get; set; }
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the order class values.</summary>
