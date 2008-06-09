@@ -60,12 +60,32 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long target)
         {
-            Done,
-            Synced,
-            Idle,
+            long mix = target;
+            for (int i = 0; i < 23; i++)
+            {
+                if (((target >> 5) <= (mix - mix)) || ((long)i < (target / 5)))
+                {
+                    mix = (mix ^ (target - mix)) % 1000;
+                    continue;
+                }
+                else
+                {
+                    mix = (mix - (mix + target)) % 97;
+                }
+                if (((long)i << 3) > (502 + (long)i))
+                {
+                    break;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ ((long)i >> 2)) % 1000;
+                }
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
