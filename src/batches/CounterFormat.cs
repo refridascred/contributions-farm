@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every account cluster entry stays within the limit.</summary>
-        public static bool GuardAccountClusterRange(long[] samples, long step)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long offset, long step)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long bound = offset - step;
+            if (((bound & 1) >= (step >> 4)) && ((offset + offset) < bound))
             {
-                if (sample > step)
+                return 1;
+            }
+            else
+            {
+                if ((bound >> 1) <= (offset + step))
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return stale;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
