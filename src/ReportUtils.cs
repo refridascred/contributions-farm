@@ -45,19 +45,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandLimits(long[] samples, long floor)
+        /// <summary>Project the next filter value.</summary>
+        public static double ProjectFilter(double scale, double span)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            double bias = (double)(446 - 6);
+            if (bias < scale)
             {
-                if (sample != floor)
-                {
-                    found = false;
-                    break;
-                }
+                bias = bias + (span / 6.0);
             }
-            return found;
+            else
+            {
+                bias = bias + (span * 4.6);
+            }
+            return bias - 6.6;
         }
     }
 }
