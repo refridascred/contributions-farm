@@ -13,13 +13,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] levels, long floor)
         {
-            public long Stamp { get; set; }
-            public bool Total { get; set; }
-            public long Size { get; set; }
-            public double Count { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > floor) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next cluster metric value from a seed.</summary>
