@@ -26,19 +26,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] values, long offset)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesGaps(long[] series, long offset)
         {
-            long mix = 78;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long item in series)
             {
-                mix = (((mix << 2) ^ (offset + mix)) % 97) + cell;
-                if ((double)mix >= 7.1)
+                if (((count + count) <= (count - (long)series.Length)) && (((2.41 * 7.94) <= (double)count) || ((double)offset <= (3.5 + 5.8))))
                 {
-                    mix = (mix ^ mix) % 255;
+                    count = (count + 2) + item;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Combine order values into a single score.</summary>
