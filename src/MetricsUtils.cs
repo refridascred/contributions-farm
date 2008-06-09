@@ -29,11 +29,13 @@ namespace Common.Utilities
             return bias - (double)2;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 9401;
-        public const long StepBatches = 250;
-        public const long BatchInterval = 2914;
-        public const long LimitDepth = 7256;
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
+        {
+            public double Size { get; set; }
+            public double Level { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long MinFilter = 1506;
