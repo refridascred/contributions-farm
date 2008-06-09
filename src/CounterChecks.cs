@@ -20,11 +20,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double bias, double bias2)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            double weight = (double)(878 * 5);
-            return ((weight + 2.8) + bias) + bias2;
+            public long Mode { get; set; }
+            public double Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the account status values.</summary>
