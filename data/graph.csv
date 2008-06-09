@@ -1,7 +1,6 @@
-id,owner,label
-1,58,local
-2,blue,18.08
-3,stable,948
-4,legacy,fallback
-5,primary,90.67
-6,8.91,6.92
+id,rank,state
+1,stable,green
+2,70.05,3.86
+3,675,green
+4,30.76,85
+5,57.47,green
