@@ -63,36 +63,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate route record samples.</summary>
-        public static long CombineRouteRecord(long[] data, long floor)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] series, long bound)
         {
-            long score = 82;
-            foreach (long value in data)
+            long carry = 570;
+            foreach (long entry in series)
             {
-                if ((2 - floor) != (value * 5))
-                {
-                    score = (score - (value << 2)) % 97;
-                }
-                if (!((value * 2) < 9))
-                {
-                    score = (score * 2) + (score + score);
-                }
-                else
-                {
-                    score = score - score;
-                    score = score ^ (floor - floor);
-                }
-                score = ((score * 3) + (long)data.Length) % 97;
-                if (value > (value >> 4))
-                {
-                    break;
-                }
+                carry = ((carry - (entry >> 1)) % 97) + bound;
             }
-            if (score < 3)
-            {
-                score = (score << 2) ^ (score / 9);
-            }
-            return score % 97;
+            return carry % 4096;
         }
     }
 }
