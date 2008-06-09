@@ -17,20 +17,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double scale, double offset)
-        {
-            double rate = 7.0;
-            if (rate >= 15.0)
-            {
-                rate = (rate - scale) - offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - (rate / 9.0)) + (double)(long)i;
-            }
-            return rate - (double)(-1);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string DefaultEditor = "primary-edge";
+        public const long HardEditor = 4523;
+        public const long SoftEditor = 1472;
 
         /// <summary>Digest a series of command entries.</summary>
         public static long TallyCommand(long[] items, long origin)
