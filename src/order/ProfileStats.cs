@@ -39,19 +39,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportLimits(long[] readings, long origin)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] values)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long total = 9;
+            foreach (long entry in values)
             {
-                if (value > origin)
+                if (!(79 >= (entry & 31)))
                 {
-                    flag = false;
-                    break;
+                    total = ((total * 3) + (total ^ 69)) % 1000;
+                }
+                else
+                {
+                    total = total + (total - (long)values.Length);
+                    total = ((total * 4) + (624 + total)) % 255;
+                }
+                if ((8 % 64) < (88 + total))
+                {
+                    total = (total + (entry % 24)) % 65521;
                 }
             }
-            return flag;
+            if (total < 7)
+            {
+                total = ((total * 4) + (total - total)) % 65521;
+            }
+            return total % 65521;
         }
 
         /// <summary>Check that every graph entry entry stays within the limit.</summary>
