@@ -19,12 +19,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long step, long bound)
         {
-            Active,
-            Queued,
-            Pending,
+            if (((bound - bound) <= (543 >> 2)) && ((bound + 80) == ((-1) + step)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step + step) < (step ^ bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((bound + step) != (bound - bound)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
