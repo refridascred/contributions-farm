@@ -25,13 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            public bool Offset { get; set; }
-            public long Count { get; set; }
+            public bool Count { get; set; }
+            public long Label { get; set; }
             public long Size { get; set; }
-            public string Total { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
     }
 }
