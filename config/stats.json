@@ -1,5 +1,5 @@
 {
-  "already_size": "edge",
-  "layout_retries": [432, 195, 273, 252],
-  "entry_retries": 87.34
+  "enabled": [99, 256, 204, 426],
+  "base_retries_pct": "green",
+  "retry_capacity": "edge"
 }
