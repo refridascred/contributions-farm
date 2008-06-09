@@ -47,12 +47,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmGaps(long[] items, long origin)
         {
-            Closed,
-            Active,
-            Dropped,
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (1 < (cell * 4))
+                {
+                    tally = (tally + 2) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
