@@ -13,10 +13,20 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string CacheAccount = "local-v2";
-        public const long LimitScore = 9945;
-        public const double LimitAccount = 15.45;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutRange(long[] samples, long seed)
+        {
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count the cluster metric entries that pass the check.</summary>
         public static long AuditClusterMetricHits(long[] values)
