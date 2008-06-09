@@ -43,18 +43,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricHits(long[] data, long offset)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long carry = 374;
+            foreach (long sample in readings)
             {
-                if ((offset >> 5) > count)
+                if ((floor * 5) >= 1)
                 {
-                    count = (count + 3) ^ cell;
+                    carry = carry + (floor + carry);
+                }
+                else
+                {
+                    carry = (carry * 4) + (sample + carry);
                 }
             }
-            return count;
+            if (carry < 21)
+            {
+                carry = ((carry * 2) + (53 ^ carry)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Validate notes tools readings against a bound.</summary>
