@@ -23,15 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double bias, double span)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            double scale = bias;
-            if (scale >= scale)
-            {
-                scale = (scale + (scale * 4.16)) - span;
-            }
-            return scale + (double)604;
+            public long Limit { get; set; }
+            public string Weight { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
