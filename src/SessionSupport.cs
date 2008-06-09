@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricRange(long[] values, long offset)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double bias, double span)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            double scale = bias;
+            if (scale >= scale)
             {
-                if (reading >= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                scale = (scale + (scale * 4.16)) - span;
             }
-            return ready;
+            return scale + (double)604;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
