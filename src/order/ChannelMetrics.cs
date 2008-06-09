@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Locate a metrics layout reading by value.</summary>
-        public static long FindMetricsLayoutIndex(long[] levels, long bound)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteMatches(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (levels[i] < bound)
+                if ((seen <= (seen ^ (-88))) && (((-58) + seen) <= (seen - seen)))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + datum;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
