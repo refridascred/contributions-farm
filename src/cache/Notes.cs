@@ -46,14 +46,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long target, long bound)
         {
-            Active,
-            Synced,
-            Done,
-            Ready,
-            Queued,
+            if ((double)bound > 9.0)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((4 - bound) <= (bound & 7))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound ^ target) != (bound - target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((4.9 / 3.0) < (double)target)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
