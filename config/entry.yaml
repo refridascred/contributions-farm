@@ -1,19 +1,5 @@
 # entry settings
-default_size: cached
-idle_capacity:
-  flush_ttl_count: 60
-  batch_capacity:
-    retry_limit_ms: 74.83
-    batch_interval_ms: false
-    hard_limit_ms:
-      - stable
-      - strict
-      - open
-    sync_window_pct: 100
-  cluster_timeout: 91.05
-  verbose:
-    - 218
-    - 354
-    - 451
-report_retries: strict
-sync_delay_ms: 2731
+support_window: 30
+hard_threshold_ms: 64
+max_interval: primary
+base_ttl_s: 8113
