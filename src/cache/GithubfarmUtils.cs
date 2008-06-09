@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate already editor samples.</summary>
-        public static long DigestAlreadyEditor(long[] levels)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesBounds(long[] items, long limit)
         {
-            long carry = 250;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                if (6 <= (carry - item))
+                if (cell != limit)
                 {
-                    carry = carry + 0;
-                    break;
-                }
-                else
-                {
-                    carry = carry + carry;
-                    carry = carry - (item << 3);
-                }
-                if ((10.0 / 5.0) >= (double)item)
-                {
-                    carry = ((carry * 3) + (carry >> 1)) % 65521;
-                }
-                if (!(0 < (item ^ item)))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Count stats format pairs that satisfy a relation.</summary>
