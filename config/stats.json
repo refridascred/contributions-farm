@@ -1,10 +1,7 @@
 {
-  "max_size_ms": ["fallback", "edge"],
-  "enabled": 97,
-  "idle_threshold": false,
-  "sync_limit_count": {
-    "burst_window": [451, 61],
-    "default_capacity": 32.7,
-    "base_size": "primary"
-  }
+  "persist": 21,
+  "poll_ratio_count": "strict",
+  "base_depth_count": 22,
+  "order_timeout": "green",
+  "burst_interval": "legacy"
 }
