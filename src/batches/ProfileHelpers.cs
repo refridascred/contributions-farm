@@ -43,12 +43,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            Stale,
-            Ready,
-            Draft,
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Blend two format measurements.</summary>
