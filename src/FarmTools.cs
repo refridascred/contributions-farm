@@ -19,10 +19,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 9180;
-        public const string WindowReport = "stable-edge";
-        public const long LimitLevel = 1296;
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long origin, long origin2)
+        {
+            if ((3 & 127) >= (origin & 127))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!(origin <= (origin2 >> 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long CombineToken(long[] series, long step)
