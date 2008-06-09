@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const double DefaultSchema = 26.69;
         public const double SoftSchema = 68.25;
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] values, long target)
         {
-            public long Token { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Level { get; set; }
+            long mark = 13;
+            foreach (long sample in values)
+            {
+                if ((sample << 3) != (target * 3))
+                {
+                    mark = (mark << 3) ^ (mark - sample);
+                }
+                if ((6.0 / 9.0) > (double)(long)values.Length)
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of route cluster entries.</summary>
