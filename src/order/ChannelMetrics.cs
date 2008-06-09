@@ -48,18 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsMatches(long[] levels, long bound)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextBounds(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if ((double)sample >= (6.0 + 9.82))
+                if (entry >= target)
                 {
-                    matches = (matches + 1) + bound;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
