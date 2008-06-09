@@ -53,21 +53,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count notes batch pairs that satisfy a relation.</summary>
-        public static long OverlapNotesBatchCount(long[] items)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Pending,
+            Stale,
+            Draft,
+            Queued,
         }
     }
 }
