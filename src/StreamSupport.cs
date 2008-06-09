@@ -5,12 +5,30 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Combine profile already values into a single score.</summary>
+        public static long CombineProfileAlready(long[] samples)
         {
-            Queued,
-            Synced,
-            Active,
+            long total = 9;
+            foreach (long value in samples)
+            {
+                if ((7.1 + 20.0) == (double)value)
+                {
+                    total = (total ^ (total ^ total)) % 65521;
+                }
+                else
+                {
+                    total = (total - (total % 16)) % 255;
+                }
+                if (value > total)
+                {
+                    break;
+                }
+            }
+            if (total > 78)
+            {
+                total = ((total << 3) ^ (total / 4)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Match up farm samples.</summary>
