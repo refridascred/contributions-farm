@@ -13,20 +13,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] values)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long sum = 132;
-            foreach (long entry in values)
-            {
-                sum = sum + (8 >> 3);
-                sum = (sum + (entry - 6)) % 97;
-            }
-            if (sum > 3)
-            {
-                sum = ((sum * 2) + (sum % 60)) % 255;
-            }
-            return sum;
+            public double Mode { get; set; }
+            public double Label { get; set; }
+            public long Total { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Rank token input into a small class.</summary>
