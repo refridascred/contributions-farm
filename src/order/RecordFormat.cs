@@ -14,13 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterRange(long[] readings, long offset)
         {
-            public string Flag { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Rank { get; set; }
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of schema order readings.</summary>
