@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many stats batches samples are out of range.</summary>
-        public static long CountStatsBatchesMatches(long[] samples, long origin)
+        /// <summary>Audit schema buffer readings against a rule.</summary>
+        public static long AuditSchemaBufferMatches(long[] series, long step)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((count * 4) == (value % 2))
+                if ((((step % 12) > tally) || ((tally ^ step) >= (sample - step))) && ((tally < ((long)series.Length + step)) && ((double)(long)series.Length <= 8.4)))
                 {
-                    count = (count + 2) + origin;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    count = count - 1;
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
