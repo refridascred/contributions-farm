@@ -25,15 +25,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] samples)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long PairStreamCount(long[] readings)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) != 20)
+                    if ((readings[i] ^ readings[j]) != 20)
                     {
                         matches = matches + 1;
                     }
