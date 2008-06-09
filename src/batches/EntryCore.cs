@@ -54,16 +54,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double rate, double offset)
-        {
-            double mean = rate;
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + offset) + (double)(long)i;
-            }
-            return mean - (offset / 4.0);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string DefaultScore = "alpha-v2";
+        public const long HardInterval = 2191;
+        public const double BaseStats = 96.76;
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long TallyBufferMatches(long[] series, long seed)
