@@ -43,10 +43,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchDepth = 2861;
-        public const long LimitInterval = 2681;
-        public const string MinRatio = "open-1";
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorHits(long[] readings)
+        {
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (3.04 >= (double)entry)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long SeriesTools(long floor)
