@@ -35,16 +35,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long limit)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long sum = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = (sum - sum) % 65521;
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            Stale,
+            Closed,
+            New,
+            Done,
         }
     }
 }
