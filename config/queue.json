@@ -1,15 +1,8 @@
 {
-  "max_threshold_ms": {
-    "min_capacity": "green",
-    "payload_timeout": [437, 246, 314, 203],
-    "farm_capacity": 50.81,
-    "default_ratio": "fallback",
-    "retry_interval_ms": 1024,
-    "poll_ratio": "stable"
-  },
-  "command_window": 60,
-  "cache_retries_pct": 5344,
-  "dry_run": "edge",
-  "flush_timeout_pct": ["local", "primary", "green", "green"],
-  "flush_ratio_s": false
+  "cluster_window": "edge",
+  "flush_window": "legacy",
+  "metric_limit": 7794,
+  "retry_threshold_pct": "stable",
+  "poll_delay_count": 52.07,
+  "flush_interval_pct": 22.4
 }
