@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a session format counter forward.</summary>
-        public static long SeriesSessionFormat(long target)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long bound)
         {
-            long anchor = target;
-            for (int i = 0; i < 6; i++)
+            long sum = bound;
+            for (int i = 0; i < 11; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                if ((bound - 92) <= ((long)i >> 4))
+                {
+                    sum = sum - bound;
+                }
+                else
+                {
+                    sum = ((sum * 5) + ((long)i << 1)) % 97;
+                    sum = sum - (sum % 7);
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
