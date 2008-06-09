@@ -1,20 +1,7 @@
 {
-  "sync_retries_ms": false,
-  "commits_threshold": {
-    "default_size_ms": {
-      "dry_run": false,
-      "default_capacity_ms": "open",
-      "flush_interval_s": 100,
-      "max_capacity_s": "edge",
-      "readonly": 8992
-    },
-    "notes_limit": false,
-    "cache_ttl": "open",
-    "poll_interval": ["edge", "fallback", "staging"],
-    "soft_ratio": 4.13
-  },
-  "max_threshold_count": true,
-  "persist": false,
-  "flush_depth_s": ["blue", "edge"],
-  "soft_ttl_count": true
+  "poll_retries": 8669,
+  "hard_delay": 28.46,
+  "strict": 94.19,
+  "readonly": 51.95,
+  "cache_ratio_s": ["stable", "staging"]
 }
