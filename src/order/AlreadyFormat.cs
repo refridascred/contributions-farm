@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] readings)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueRange(long[] series, long bound)
         {
-            long carry = 936;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if ((double)sample != (8.48 / 3.0))
+                if (entry != bound)
                 {
-                    carry = (carry ^ carry) % 97;
-                }
-                else
-                {
-                    carry = ((carry * 3) + (8 % 60)) % 255;
-                }
-                if (sample < (sample / 7))
-                {
-                    carry = ((carry << 3) ^ (carry + carry)) % 65521;
-                }
-                else
-                {
-                    carry = carry ^ (8 << 1);
+                    found = false;
+                    break;
                 }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Scale a contributi cache figure with a bias.</summary>
