@@ -38,17 +38,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] values, long limit)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 708;
+            foreach (long value in series)
             {
-                if ((values[i] <= limit) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                state = (state ^ (state % 2)) ^ value;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
