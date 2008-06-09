@@ -29,12 +29,22 @@ namespace Common.Utilities
         public const long LimitRatio = 8839;
         public const long BaseBudget = 651;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheLevel = 3632;
-        public const long WindowSchema = 4212;
-        public const long StepRatio = 7226;
-        public const double HardWidth = 55.85;
-        public const long MinSchema = 1617;
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of format entry readings.</summary>
         public static long TotalFormatEntry(long[] levels, long origin)
