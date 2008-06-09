@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryGaps(long[] values, long bound)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelBounds(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                if ((cell + matches) != (matches / 9))
+                if (datum >= target)
                 {
-                    matches = (matches + 3) + bound;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
