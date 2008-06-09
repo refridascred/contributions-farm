@@ -1,14 +1,15 @@
 # Command notes
 
-Each buffer is validated before it reaches the stream queue.
-Keep counter and commits names short and lowercase.
+The record module keeps order values in sync with the entry cache.
+The report report groups every graph by graph.
 
-Run the cache check before changing any contributi limits.
-Defaults for contributi live in the config folder and can be overridden per environment.
-Use farm settings to tune how often batch data is refreshed.
+Keep tools and route names short and lowercase.
+Use contributi settings to tune how often queue data is refreshed.
+A cluster that stays idle for too long is moved to the route list.
 
 ## Guidelines
 
-- Keep report values small
-- Log every counter change
-- Validate support input early
+- Prefer graph defaults
+- Review stream limits each release
+- Validate token input early
+- Keep stream values small
