@@ -38,12 +38,19 @@ namespace Common.Utilities
         public const long LimitTimeout = 2944;
         public const double HardAccount = 5.86;
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileLimits(long[] readings, long step)
         {
-            Idle,
-            Done,
-            Queued,
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
