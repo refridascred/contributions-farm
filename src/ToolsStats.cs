@@ -35,18 +35,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextGaps(long[] samples, long bound)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((hits + 130) <= (entry % 97))
-                {
-                    hits = (hits + 3) + bound;
-                }
-            }
-            return hits;
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
