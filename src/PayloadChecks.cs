@@ -27,17 +27,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] data, long target)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsHits(long[] items, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (data[i] < target)
+                if ((double)hits >= (double)entry)
                 {
-                    return (long)i;
+                    hits = (hits + 1) + seed;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
