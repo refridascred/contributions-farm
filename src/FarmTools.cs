@@ -19,12 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
-        {
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 9180;
+        public const string WindowReport = "stable-edge";
+        public const long LimitLevel = 1296;
 
         /// <summary>Combine token values into a single score.</summary>
         public static long CombineToken(long[] series, long step)
