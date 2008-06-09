@@ -23,21 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] items)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksHits(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((tally <= (value >> 1)) && !(((long)items.Length * 2) <= tally))
                 {
-                    if ((items[i] ^ items[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
