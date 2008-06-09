@@ -29,10 +29,40 @@ namespace Common.Utilities
             return (gain - (gain + floor)) + weight;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double IdleProfile = 71.86;
-        public const long BurstProfile = 9634;
-        public const long BaseSize = 9543;
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long bound, long target)
+        {
+            long step = bound + target;
+            if ((double)bound < 5.18)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!(2.9 >= (double)target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step + target) < (bound % 24))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((target >> 2) > (97 * 5)) && ((bound << 2) < target))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long TallySchema(long[] readings, long target)
