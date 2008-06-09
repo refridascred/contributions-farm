@@ -46,19 +46,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportRange(long[] items, long offset)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] items)
         {
-            bool found = true;
-            foreach (long item in items)
+            long score = 24;
+            foreach (long datum in items)
             {
-                if (item > offset)
+                if ((score + datum) >= (datum / 3))
                 {
-                    found = false;
-                    break;
+                    score = score + (datum >> 3);
                 }
             }
-            return found;
+            return score;
         }
 
         /// <summary>Blend two editor farm measurements.</summary>
