@@ -1,7 +1,9 @@
 {
-  "default_ratio": 26.75,
-  "commits_limit": 73,
-  "retry_limit_pct": "staging",
-  "default_interval_s": 37.81,
-  "poll_timeout_s": 73
+  "strict": "edge",
+  "buffer_threshold": {
+    "warm_ratio_ms": "cached",
+    "retry_ratio_ms": "stable",
+    "token_threshold": 38.36
+  },
+  "account_delay": "green"
 }
