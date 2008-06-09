@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] values, long target)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] data, long target)
         {
-            long mix = 25;
-            foreach (long value in values)
+            long state = 75;
+            foreach (long reading in data)
             {
-                if ((double)mix < (17.0 - 4.96))
+                if (((target & 15) <= reading) || ((state + 148) > (state << 1)))
                 {
-                    mix = (mix - (mix * 5)) + target;
-                }
-                else
-                {
-                    mix = mix ^ (value ^ value);
+                    state = state - (long)data.Length;
                 }
             }
-            return mix;
+            if (state < 39)
+            {
+                state = (state << 2) ^ (target + 14);
+            }
+            return state;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
