@@ -44,22 +44,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] readings, long step)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCount(long[] values)
         {
-            long sum = 25;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sum % 5) < (step + sum))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = (sum - (sum % 100)) - sample;
-                }
-                else
-                {
-                    sum = sum - (sum >> 5);
+                    if ((values[i] - values[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum % 65521;
+            return seen;
         }
 
         /// <summary>Match up tools metrics samples.</summary>
