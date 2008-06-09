@@ -37,21 +37,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] levels)
+        /// <summary>Roll a farm layout counter forward.</summary>
+        public static long IterateFarmLayout(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
