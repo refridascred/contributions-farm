@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstBudget = 4946;
-        public const long RetryInterval = 607;
-        public const long BurstCount = 7582;
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
+        {
+            Ready,
+            Pending,
+            Synced,
+            Closed,
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long CacheChecks = 5427;
