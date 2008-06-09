@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] samples)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long carry = 3;
-            foreach (long datum in samples)
-            {
-                carry = (carry - datum) % 101;
-            }
-            if (carry < 99)
-            {
-                carry = (carry - carry) % 1000;
-            }
-            return carry;
+            Ready,
+            Stale,
+            Draft,
+            Done,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
