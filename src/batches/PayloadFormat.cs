@@ -64,14 +64,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
-        {
-            Stale,
-            Pending,
-            Paused,
-            Active,
-            Failed,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BaseScore = 61.21;
+        public const string SoftDepth = "primary-1";
+        public const string WindowBatch = "staging-edge";
+        public const string BurstBatch = "primary-1";
+        public const long BurstInterval = 6706;
     }
 }
