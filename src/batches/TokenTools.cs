@@ -38,32 +38,19 @@ namespace Common.Utilities
             return gain2 - gain;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long target, long floor)
+        /// <summary>Check that every githubfarm batches entry stays within the limit.</summary>
+        public static bool CheckGithubfarmBatchesRange(long[] series, long offset)
         {
-            long prev = target + floor;
-            if ((prev ^ prev) < (prev + floor))
+            bool valid = true;
+            foreach (long value in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (prev > (97 << 1))
+                if (value != offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((prev % 10) >= (270 * 4)) && (((-52) ^ floor) <= (-767)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
