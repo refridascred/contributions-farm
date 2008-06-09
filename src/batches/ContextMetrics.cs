@@ -27,11 +27,29 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string LimitStream = "open-1";
-        public const long LimitScore = 9686;
-        public const double BurstTimeout = 93.08;
-        public const string SoftStream = "fallback";
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((seed - seed) <= 3) || (acc < (seed - seed)))
+                {
+                    acc = acc ^ ((long)i ^ seed);
+                    continue;
+                }
+                else
+                {
+                    acc = (acc - (946 ^ seed)) % 4096;
+                }
+                if (!((acc & 255) < (long)i))
+                {
+                    break;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long WeighCounter(long[] values, long limit)
