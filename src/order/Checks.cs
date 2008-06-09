@@ -16,11 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Count the payload format entries that pass the check.</summary>
+        public static long CountPayloadFormatMatches(long[] series, long limit)
         {
-            public long Rank { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (!!((limit + 6) <= (5 - (long)series.Length)))
+                {
+                    tally = (tally + 3) - entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
