@@ -30,39 +30,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long seed, long step)
+        /// <summary>Audit stream profile readings against a rule.</summary>
+        public static long TallyStreamProfileMatches(long[] series, long target)
         {
-            long offset = seed ^ step;
-            if ((seed + 281) > step)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)step >= 10.0)
+                if (1.1 < (double)target)
                 {
-                    return 3;
+                    seen = (seen + 2) - reading;
                 }
                 else
                 {
-                    if (!((0 + seed) == (offset - seed)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((seed & 7) < (1 % 8)) && ((step >> 3) > (offset + seed)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
