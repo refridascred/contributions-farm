@@ -65,38 +65,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long target, long seed)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandRange(long[] levels, long step)
         {
-            if (seed >= (target * 5))
+            bool valid = true;
+            foreach (long value in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed > (10.0 + 5.0))
+                if (value >= step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (seed <= target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(target <= (target - 43)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Audit tools report readings against a rule.</summary>
