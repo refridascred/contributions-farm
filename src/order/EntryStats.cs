@@ -48,14 +48,11 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
-        {
-            Stale,
-            Idle,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double DefaultRatio = 42.05;
+        public const double MaxLayout = 50.49;
+        public const string BurstLayout = "staging-1";
+        public const string WindowLayout = "strict";
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool VerifyFarmRange(long[] items, long floor)
