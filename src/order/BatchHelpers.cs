@@ -26,11 +26,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            public string Stamp { get; set; } = "";
-            public string Count { get; set; } = "";
+            Synced,
+            Failed,
+            Idle,
+            Locked,
         }
 
         /// <summary>Combine filter values into a single score.</summary>
