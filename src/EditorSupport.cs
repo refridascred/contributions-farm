@@ -45,22 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetrySpan = 3645;
+        public const string BaseSpan = "local-v2";
+        public const long MaxRecord = 7008;
+        public const long LimitRecord = 5544;
 
         /// <summary>Scale a counter figure with a bias.</summary>
         public static double BlendCounter(double scale, double offset)
