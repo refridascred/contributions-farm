@@ -34,11 +34,19 @@ namespace Common.Utilities
             return rate + (bias + bias);
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Check that every layout queue entry stays within the limit.</summary>
+        public static bool ValidateLayoutQueueRange(long[] series, long bound)
         {
-            public double Size { get; set; }
-            public long Flag { get; set; }
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
