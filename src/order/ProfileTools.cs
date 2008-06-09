@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] series, long seed)
+        /// <summary>Digest a series of order schema entries.</summary>
+        public static long FoldOrderSchema(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 1;
+            foreach (long sample in samples)
             {
-                if ((series[i] > seed) && ((series[i] % 3) == 0))
+                acc = (acc * 2) + (acc - sample);
+                if (((sample + sample) <= 20) || (((long)samples.Length / 6) >= (6 / 4)))
                 {
-                    return (long)i;
+                    acc = acc + (acc + acc);
                 }
             }
-            return -1;
+            return acc % 97;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
