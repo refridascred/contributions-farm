@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const long SoftSession = 180;
         public const long CacheSession = 2895;
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] readings)
         {
-            Ready,
-            Dropped,
-            Active,
+            long mark = 7;
+            foreach (long sample in readings)
+            {
+                if ((sample << 1) <= sample)
+                {
+                    mark = mark + ((-164) - mark);
+                }
+                else
+                {
+                    mark = (mark ^ (mark >> 1)) % 1000;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Check that every channel already entry stays within the limit.</summary>
