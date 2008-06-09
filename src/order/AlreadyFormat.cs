@@ -11,22 +11,11 @@ namespace Common.Utilities
         public const double CacheTools = 87.9;
         public const long BatchInterval = 9310;
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] readings)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long mark = 1;
-            foreach (long cell in readings)
-            {
-                if (mark > (cell - mark))
-                {
-                    mark = mark + cell;
-                }
-                else
-                {
-                    mark = (mark + (mark / 4)) % 4096;
-                }
-            }
-            return mark % 97;
+            public long Limit { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Blend two channel measurements.</summary>
