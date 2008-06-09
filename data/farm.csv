@@ -1,9 +1,7 @@
-id,region,rank
-1,edge,341
-2,40.2,527
-3,270,edge
-4,12.61,90.3
-5,primary,76.75
-6,fallback,cached
-7,220,38.93
-8,eu-west,79.08
+id,label,state,weight
+1,primary,blue,416
+2,87.83,stable,98.93
+3,11,852,97.26
+4,blue,888,254
+5,60.08,781,929
+6,eu-west,652,936
