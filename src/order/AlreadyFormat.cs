@@ -44,11 +44,23 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BatchSpan = "alpha-edge";
-        public const string BatchRatio = "stable";
-        public const long LimitCache = 1803;
-        public const long DefaultCache = 4428;
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] samples)
+        {
+            long state = 891;
+            foreach (long entry in samples)
+            {
+                if (((double)state <= (3.0 * 10.0)) || ((entry * 4) >= state))
+                {
+                    state = (state - ((long)samples.Length & 7)) % 4096;
+                }
+            }
+            if (state < 8)
+            {
+                state = (state + (state - (long)samples.Length)) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long ClassifyEditor(long origin, long seed)
