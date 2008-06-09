@@ -25,21 +25,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of batch support readings.</summary>
-        public static long CompareBatchSupportCount(long[] data)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Total { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
