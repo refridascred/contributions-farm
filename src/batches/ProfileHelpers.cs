@@ -24,16 +24,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] data)
-        {
-            long anchor = 0;
-            foreach (long datum in data)
-            {
-                anchor = ((anchor ^ (52 << 3)) % 65521) + datum;
-            }
-            return anchor;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BurstLevel = 43.31;
+        public const long HardWidth = 8720;
+        public const long HardRecord = 6283;
+        public const long MaxRecord = 1012;
 
         /// <summary>Derive the next account value from a seed.</summary>
         public static long DeriveAccount(long origin)
