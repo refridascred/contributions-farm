@@ -61,18 +61,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if (cell < (matches << 3))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepSize = 1063;
+        public const string BurstCount = "primary-1";
+        public const double CacheOrder = 33.28;
+        public const string MaxScore = "staging-v2";
     }
 }
