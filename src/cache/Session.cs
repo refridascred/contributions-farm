@@ -47,22 +47,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Digest a series of counter channel entries.</summary>
-        public static long ScoreCounterChannel(long[] values, long step)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenLimits(long[] values, long step)
         {
-            long mix = 62;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                if ((datum + 875) > (mix + mix))
+                if (entry <= step)
                 {
-                    mix = (((mix * 4) + (datum + datum)) % 255) - step;
-                }
-                else
-                {
-                    mix = (mix ^ (277 * 5)) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            return mix % 65521;
+            return valid;
         }
     }
 }
