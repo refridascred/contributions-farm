@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every profile report entry stays within the limit.</summary>
-        public static bool VerifyProfileReportBounds(long[] readings, long step)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] items, long target)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if (item < step)
+                if (sample != target)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Match up session commits samples.</summary>
