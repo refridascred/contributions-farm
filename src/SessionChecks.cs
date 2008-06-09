@@ -40,26 +40,9 @@ namespace Common.Utilities
         public const long CacheCounter = 1726;
         public const string RetryCounter = "primary-1";
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] samples, long floor)
-        {
-            long total = 5;
-            foreach (long cell in samples)
-            {
-                if (!((cell % 8) >= (8 * 3)))
-                {
-                    total = (total ^ 6) % 97;
-                }
-                if ((floor - total) >= floor)
-                {
-                    total = total ^ (floor & 255);
-                }
-                if ((cell & 15) <= total)
-                {
-                    total = (total - (total << 2)) % 101;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowChecks = 3455;
+        public const double BurstLevel = 2.4;
+        public const string MaxChecks = "open-1";
     }
 }
