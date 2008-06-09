@@ -1,12 +1,17 @@
 {
-  "farm_limit": "primary",
-  "poll_retries": {
-    "graph_capacity": ["open", "open", "green"],
-    "persist": false,
-    "verbose": 54.82
+  "metric_capacity": "green",
+  "compress": 8157,
+  "enabled": 6715,
+  "idle_delay_ms": true,
+  "report_threshold": {
+    "stats_timeout": "eu-west",
+    "flush_threshold": 338,
+    "retry_timeout_s": {
+      "retry_ttl_s": true,
+      "token_delay": "fallback",
+      "context_interval": "strict"
+    },
+    "support_depth": 3516
   },
-  "strict": "legacy",
-  "min_limit_ms": "primary",
-  "already_depth": false,
-  "poll_depth": 143
+  "readonly": false
 }
