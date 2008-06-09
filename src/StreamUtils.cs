@@ -68,20 +68,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long IterateToken(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 6; i++)
-            {
-                long hits = (step + 118) + ((long)i + (long)i);
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    acc = (acc - (acc ^ hits)) - (long)i2;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MinProfile = 23.01;
+        public const long DefaultTimeout = 2848;
+        public const long SoftInterval = 2725;
+        public const long MaxScore = 2405;
+        public const long SoftProfile = 843;
     }
 }
