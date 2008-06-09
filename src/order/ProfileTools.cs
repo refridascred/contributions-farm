@@ -19,14 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double gain, double floor)
         {
-            Paused,
-            Retry,
-            Closed,
-            Idle,
-            Ready,
+            double load = gain - (floor - 5.9);
+            if (load <= (double)8)
+            {
+                load = load + floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load + (gain + load);
         }
 
         /// <summary>Validate record readings against a bound.</summary>
