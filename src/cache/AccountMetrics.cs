@@ -75,18 +75,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of context cache entries.</summary>
-        public static long ScoreContextCache(long[] levels, long step)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] samples)
         {
-            long score = 389;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((score * 5) == (datum & 31))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = ((score - (score + 452)) % 255) - step;
+                    if ((samples[i] + samples[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
     }
 }
