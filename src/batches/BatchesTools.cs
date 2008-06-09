@@ -12,11 +12,22 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxLevel = 9426;
-        public const long BurstLevel = 4831;
-        public const double SoftCounter = 73.39;
-        public const long BaseInterval = 4313;
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long DefaultFarm = 4850;
