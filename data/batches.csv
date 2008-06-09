@@ -1,9 +1,8 @@
-id,active,score
-1,977,156
-2,318,84.84
-3,798,stable
-4,stable,709
-5,527,strict
-6,383,349
-7,21.19,open
-8,local,65.13
+id,level,region
+1,local,26.56
+2,580,644
+3,760,12.38
+4,strict,40.54
+5,769,36.05
+6,895,latest
+7,stable,176
