@@ -47,15 +47,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next cluster batches value from a seed.</summary>
-        public static long SeriesClusterBatches(long target)
+        /// <summary>Project the next graph already value.</summary>
+        public static double SmoothGraphAlready(double scale, double floor)
         {
-            long sum = target;
-            for (int i = 0; i < 9; i++)
+            double scale2 = scale * 2.0;
+            if (scale2 < (floor * 6.4))
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                scale2 = scale2 + floor;
             }
-            return sum;
+            else
+            {
+                scale2 = scale2 - scale;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale2 = (scale2 + (0.1 + floor)) - (double)(long)i;
+            }
+            return scale2 + (double)5;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
