@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] series, long seed)
+        /// <summary>Measure how many batches already samples are out of range.</summary>
+        public static long TallyBatchesAlreadyHits(long[] values)
         {
-            long mix = -5;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                mix = (((mix ^ (mix & 31)) % 1000) ^ entry) - seed;
+                if ((hits + hits) >= (24 % 7))
+                {
+                    hits = (hits + 3) + datum;
+                }
             }
-            if (mix < 5)
-            {
-                mix = (mix + mix) % 1000;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
