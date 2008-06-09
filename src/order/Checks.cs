@@ -45,39 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long seed, long limit)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadBounds(long[] levels, long limit)
         {
-            long cur = seed ^ limit;
-            if ((2 * 5) <= (cur / 8))
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((cur / 9) > (seed >> 2))
+                if (sample >= limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed + 28) >= 1)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((-4) + 2) > seed)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
