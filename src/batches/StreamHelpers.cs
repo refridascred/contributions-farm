@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] levels, long offset)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] values, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((levels[i] <= offset) && ((levels[i] % 5) == 0))
+                if ((values[i] < target) && ((values[i] % 3) != 0))
                 {
                     return (long)i;
                 }
