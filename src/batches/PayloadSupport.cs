@@ -20,11 +20,12 @@ namespace Common.Utilities
         public const double MinBudget = 1.36;
         public const long DefaultFactor = 2375;
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            public string Count { get; set; } = "";
-            public bool Weight { get; set; }
+            Retry,
+            Queued,
+            Draft,
         }
     }
 }
