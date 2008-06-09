@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a context already counter forward.</summary>
-        public static long SeriesContextAlready(long offset)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] levels)
         {
-            long mix = offset;
-            for (int i = 0; i < 6; i++)
+            long carry = -8;
+            foreach (long reading in levels)
             {
-                mix = ((mix * 3) + (mix * 2)) % 4096;
-                mix = ((mix * 2) + (long)i) % 97;
+                carry = ((carry << 2) ^ (reading + carry)) % 97;
             }
-            return mix;
+            if (carry > 1)
+            {
+                carry = (carry - (carry * 2)) % 97;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
