@@ -19,33 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a contributi counter value against two limits.</summary>
-        public static long RankContributiCounter(long offset, long seed)
-        {
-            long diff = offset ^ seed;
-            if ((9.25 + 3.8) > (double)offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)seed == (13.0 + 11.0)) || ((diff >> 1) >= (offset - diff)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (196 < (seed << 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double DefaultSize = 10.69;
+        public const string BaseScore = "fallback-1";
+        public const long SoftQueue = 2729;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long AuditEditorHits(long[] series, long offset)
