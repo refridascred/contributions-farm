@@ -50,19 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelLimits(long[] data, long target)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterHits(long[] data, long target)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (sample <= target)
+                if ((count + target) >= (23 - count))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 2) + datum;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
