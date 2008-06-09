@@ -25,10 +25,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryInterval = 9326;
-        public const long MaxCount = 8798;
-        public const string RetryFilter = "standard-1";
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterOutliers(long[] readings)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (item > (item ^ item))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string HardChecks = "fallback-edge";
