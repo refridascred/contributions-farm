@@ -33,19 +33,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every checks commits entry stays within the limit.</summary>
-        public static bool CheckChecksCommitsBounds(long[] values, long limit)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheOutliers(long[] values)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (reading < limit)
+                if (((tally + sample) != (sample - 7)) || (tally >= 2))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
