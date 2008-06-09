@@ -1,15 +1,11 @@
 # Command notes
 
-When a profile fails, the schema handler retries a few times before giving up.
-The cache report groups every order by queue.
-The stats module keeps stream values in sync with the metrics cache.
-
-Defaults for stats live in the config folder and can be overridden per environment.
-The channel module keeps account values in sync with the layout cache.
-A route that stays idle for too long is moved to the window list.
+Use cache settings to tune how often notes data is refreshed.
+Use record settings to tune how often batch data is refreshed.
 
 ## Guidelines
 
-- Validate batches input early
-- Keep filter values small
-- Document new profile fields
+- Document new channel fields
+- Review filter limits each release
+- Keep batch values small
+- Validate cluster input early
