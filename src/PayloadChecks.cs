@@ -18,20 +18,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowRange(long[] data, long floor)
-        {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitWidth = 5581;
+        public const string SoftSize = "staging-1";
+        public const string LimitSupport = "fallback-v2";
+        public const long BatchSupport = 2700;
+        public const long IdleSupport = 8895;
 
         /// <summary>Adjust a queue metric reading.</summary>
         public static double ProjectQueueMetric(double weight, double floor)
