@@ -22,15 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long limit)
+        /// <summary>Audit githubfarm contributi readings against a rule.</summary>
+        public static long AuditGithubfarmContributiHits(long[] samples, long target)
         {
-            long carry = limit;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                if ((double)target > (7.59 / 5.0))
+                {
+                    matches = (matches + 2) ^ reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
