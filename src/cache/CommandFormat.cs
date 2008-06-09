@@ -48,11 +48,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 7474;
-        public const long SoftWidth = 7438;
-        public const long CacheTools = 2652;
-        public const double IdleScore = 74.15;
-        public const double IdleFactor = 74.13;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheContributi = 5322;
+        public const long BaseLevel = 5052;
+        public const double MaxContributi = 75.2;
     }
 }
