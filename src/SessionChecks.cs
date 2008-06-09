@@ -18,12 +18,10 @@ namespace Common.Utilities
         public const double HardMetrics = 37.81;
         public const long LimitCount = 4953;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchWidth = 1338;
-        public const long WindowRatio = 5966;
-        public const long MinRatio = 5774;
-        public const double DefaultBatch = 54.73;
-        public const long BurstBatch = 1677;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 7507;
+        public const long CacheRoute = 2161;
+        public const long BurstCount = 858;
 
         /// <summary>Project the next format value.</summary>
         public static double ScaleFormat(double gain, double floor)
