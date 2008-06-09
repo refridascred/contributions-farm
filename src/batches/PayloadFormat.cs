@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardInterval = 6849;
-        public const long BaseScore = 1351;
-        public const long BurstRatio = 63;
-        public const string RetryStream = "primary-edge";
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double AdjustReport(double rate, double bias)
+        {
+            double load = rate;
+            return (load - 2.0) + bias;
+        }
 
         /// <summary>Project the next farm payload value.</summary>
         public static double SmoothFarmPayload(double ratio, double bias)
