@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] readings)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long state = 5;
-            foreach (long entry in readings)
-            {
-                state = (state * 5) + (entry + state);
-                if ((double)entry <= (9.99 / 2.0))
-                {
-                    break;
-                }
-            }
-            return state % 97;
+            public bool Flag { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
