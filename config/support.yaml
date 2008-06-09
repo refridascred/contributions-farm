@@ -1,9 +1,23 @@
 # support settings
-readonly: false
-record_threshold: latest
-burst_timeout_count: false
-cache_timeout: false
-channel_retries: blue
-poll_depth:
-  - 214
-  - 329
+verbose:
+  - standard
+  - edge
+  - primary
+  - open
+report_delay: 11
+retry_timeout:
+  hard_timeout_ms:
+    min_threshold: green
+    persist: false
+    enabled: blue
+    sync_size: strict
+    hard_delay: strict
+    burst_ratio:
+      - 481
+      - 4
+      - 345
+      - 310
+  stats_interval: fallback
+  min_depth_count: 36.55
+poll_limit_s: edge
+poll_retries: edge
