@@ -1,8 +1,16 @@
 {
-  "stream_capacity": 75.35,
-  "min_capacity_ms": [203, 40],
-  "window_interval": 60,
-  "sync_size_ms": "primary",
-  "strict": 100,
-  "hard_ttl": 45.84
+  "soft_threshold_ms": "latest",
+  "dry_run": false,
+  "persist": {
+    "batch_ratio_count": "staging",
+    "poll_capacity": {
+      "enabled": "staging",
+      "buffer_size": 88,
+      "default_limit": [411, 179, 241]
+    },
+    "hard_size_ms": 4208
+  },
+  "poll_size_pct": 4822,
+  "notes_ratio": 4594,
+  "checks_window": false
 }
