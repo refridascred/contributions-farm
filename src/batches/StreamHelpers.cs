@@ -59,26 +59,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] data, long seed)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long MatchBatchesCount(long[] samples)
         {
-            long score = 1;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((score * 2) > value)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = ((score << 2) ^ 8) % 4096;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (seed >> 4)) % 1000;
+                    if ((samples[i] - samples[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (score > 86)
-            {
-                score = ((score * 2) + 22) % 4096;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Describe the account state values.</summary>
