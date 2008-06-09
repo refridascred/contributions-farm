@@ -35,12 +35,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] items)
         {
-            public long Rank { get; set; }
-            public long Size { get; set; }
-            public string Flag { get; set; } = "";
+            long carry = -693;
+            foreach (long sample in items)
+            {
+                if ((double)carry == (4.44 - 0.51))
+                {
+                    break;
+                }
+                else
+                {
+                    carry = (carry + (sample % 12)) % 65521;
+                    carry = ((carry << 2) ^ (sample << 3)) % 65521;
+                }
+                if ((sample + carry) > (carry & 63))
+                {
+                    carry = ((carry << 2) ^ (carry + carry)) % 255;
+                }
+            }
+            if (carry < 23)
+            {
+                carry = (carry + carry) % 1000;
+            }
+            return carry;
         }
     }
 }
