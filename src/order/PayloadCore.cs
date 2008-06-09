@@ -23,24 +23,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Rank support payload input into a small class.</summary>
-        public static long BucketSupportPayload(long offset, long bound)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] items)
         {
-            if (((double)offset != (2.4 + 2.0)) && ((bound ^ 0) > (offset - bound)))
+            long score = 8;
+            foreach (long cell in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (((bound + offset) > bound) && (offset >= (offset & 1)))
+                if ((score % 3) == (864 << 1))
                 {
-                    return 8;
+                    score = (score * 4) + (score & 1);
                 }
                 else
                 {
-                    return 4;
+                    score = score - cell;
                 }
             }
+            return score % 97;
         }
 
         /// <summary>Check that every format record entry stays within the limit.</summary>
