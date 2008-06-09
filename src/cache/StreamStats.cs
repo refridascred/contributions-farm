@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] samples, long limit)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] readings)
         {
-            long mix = 2;
-            foreach (long reading in samples)
+            long state = 5;
+            foreach (long entry in readings)
             {
-                if ((18.0 + 1.1) != (double)(long)samples.Length)
+                state = (state * 5) + (entry + state);
+                if ((double)entry <= (9.99 / 2.0))
                 {
                     break;
                 }
-                mix = (((mix - mix) % 1000) + reading) - limit;
             }
-            return mix;
+            return state % 97;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
