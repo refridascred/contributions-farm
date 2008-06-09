@@ -32,13 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricMatches(long[] items)
         {
-            Done,
-            Retry,
-            Stale,
-            Dropped,
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((cell ^ cell) > (tally + cell))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
