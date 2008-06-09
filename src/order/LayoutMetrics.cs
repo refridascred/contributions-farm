@@ -37,15 +37,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] data, long origin)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long sum = 4;
-            foreach (long item in data)
-            {
-                sum = (((sum * 4) + (sum - origin)) % 101) + item;
-            }
-            return sum;
+            Paused,
+            Retry,
+            Queued,
+            Draft,
+            Synced,
         }
     }
 }
