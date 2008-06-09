@@ -29,13 +29,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long step)
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
-            public bool Weight { get; set; }
+            long result = step;
+            for (int i = 0; i < 18; i++)
+            {
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Hold a context entry.</summary>
