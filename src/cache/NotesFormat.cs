@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
-        {
-            Draft,
-            Active,
-            Idle,
-            New,
-            Pending,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string CacheChannel = "latest";
+        public const long BurstChannel = 5215;
+        public const double SoftChannel = 79.95;
+        public const long MinInterval = 5403;
 
         /// <summary>Classify a already pair into a bucket.</summary>
         public static long BucketAlready(long floor, long limit)
