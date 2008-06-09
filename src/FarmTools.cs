@@ -40,26 +40,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] readings, long step)
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double bias, double bias2)
         {
-            long total = 916;
-            foreach (long value in readings)
+            double weight = bias;
+            if (weight <= bias)
             {
-                if ((68 + (long)readings.Length) != (81 + step))
-                {
-                    total = (total * 4) + (value - total);
-                }
-                if (!((double)step == (13.0 / 4.0)))
-                {
-                    break;
-                }
+                weight = weight + bias;
             }
-            if (total > 900)
+            else
             {
-                total = (total << 2) ^ ((-24) & 63);
+                weight = weight + (bias + bias2);
             }
-            return total % 97;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight + 0.7;
         }
     }
 }
