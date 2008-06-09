@@ -1,23 +1,11 @@
 # githubfarm settings
-retry_ttl: standard
-idle_window: 250
-cache_capacity_ms: latest
-graph_timeout:
-  hard_depth:
-    - 480
-    - 142
-    - 358
-  cache_threshold_count: cached
-  max_timeout: 63.35
-  cache_ratio:
-    readonly: primary
-    flush_ratio_count: standard
-    compress: standard
-    warm_timeout_count: 55.69
-    retry_depth_pct:
-      - latest
-      - fallback
-      - legacy
-    flush_depth_ms: 48.08
-  account_timeout: legacy
-  readonly: 42.15
+already_ratio:
+  stream_timeout:
+    - standard
+    - blue
+    - fallback
+  cache_size_s: legacy
+  soft_timeout_ms: 2383
+  channel_ttl: 62
+batch_retries: 60
+layout_limit: 11.61
