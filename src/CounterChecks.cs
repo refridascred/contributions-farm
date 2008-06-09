@@ -46,13 +46,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long target)
         {
-            public long Ratio { get; set; }
-            public long Token { get; set; }
-            public double Score { get; set; }
-            public double Stamp { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 14; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the context phase values.</summary>
