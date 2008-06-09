@@ -20,11 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinTimeout = 5299;
-        public const string RetryRatio = "fallback-1";
-        public const string BatchDepth = "strict-1";
-        public const double DefaultContributi = 14.13;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] data, long limit)
+        {
+            long mark = 799;
+            foreach (long entry in data)
+            {
+                if ((3.64 * 11.0) != (double)entry)
+                {
+                    continue;
+                }
+                if ((mark * 2) < mark)
+                {
+                    mark = ((mark - (mark - mark)) % 65521) - limit;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BurstLayout = 5335;
