@@ -1,14 +1,10 @@
 # Command notes
 
-The farm helpers are pure functions, so they are safe to call from any thread.
-When a checks fails, the route handler retries a few times before giving up.
-The channel report groups every format by order.
-
-Use metric settings to tune how often stream data is refreshed.
-Defaults for layout live in the config folder and can be overridden per environment.
+Use already settings to tune how often payload data is refreshed.
+Defaults for token live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
+- Review channel limits each release
 - Validate buffer input early
-- Keep contributi values small
-- Log every batch change
+- Keep counter values small
