@@ -24,25 +24,12 @@ namespace Common.Utilities
         public const long WindowTimeout = 1352;
         public const string MaxWidth = "local";
 
-        /// <summary>Grade a stream stats value against two limits.</summary>
-        public static long ClassifyStreamStats(long origin, long target)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long gap = origin - target;
-            if (gap > target)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target + 984) <= (gap - target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Done,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Project the next stats value.</summary>
