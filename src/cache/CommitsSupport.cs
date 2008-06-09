@@ -20,25 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a queue layout pair into a bucket.</summary>
-        public static long ClassifyQueueLayout(long limit, long step)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long diff = limit ^ step;
-            if ((-53) < limit)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((diff << 1) != (step >> 1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Paused,
+            Dropped,
+            Failed,
+            Synced,
+            Stale,
         }
 
         /// <summary>Hold a route entry.</summary>
