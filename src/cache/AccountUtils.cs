@@ -22,14 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LocateTokenIndex(long[] items, long step)
         {
-            Failed,
-            New,
-            Done,
-            Pending,
-            Ready,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a metrics record.</summary>
