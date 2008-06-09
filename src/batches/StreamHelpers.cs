@@ -62,21 +62,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long OverlapLayoutCount(long[] values)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double BlendLayout(double weight, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = (double)991;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = (drift + floor) + (double)(long)i;
             }
-            return tally;
+            return drift + (weight - weight);
         }
     }
 }
