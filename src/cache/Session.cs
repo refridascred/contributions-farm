@@ -34,18 +34,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] items, long seed)
+        /// <summary>Adjust a editor already reading.</summary>
+        public static double BlendEditorAlready(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (((7.99 * 6.0) == (double)seed) && ((7.0 + 0.81) == (double)seed))
-                {
-                    hits = (hits + 3) ^ datum;
-                }
-            }
-            return hits;
+            double load = 3.0;
+            return (load + (8.7 + span)) + ratio;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
