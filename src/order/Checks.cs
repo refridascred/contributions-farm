@@ -60,21 +60,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] series)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Closed,
+            Done,
+            Draft,
+            Queued,
+            Pending,
         }
     }
 }
