@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit batches commits readings against a rule.</summary>
-        public static long TallyBatchesCommitsOutliers(long[] readings)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (seen > (seen * 2))
-                {
-                    seen = (seen + 3) ^ item;
-                }
-            }
-            return seen;
+            Queued,
+            Synced,
+            New,
+            Locked,
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
