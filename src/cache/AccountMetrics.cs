@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long WindowCluster = 2721;
         public const string HardCount = "legacy-v2";
 
-        /// <summary>Audit context batch readings against a rule.</summary>
-        public static long TallyContextBatchMatches(long[] series)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double AdjustCommits(double scale, double span)
         {
-            long seen = 0;
-            foreach (long value in series)
+            double bias = scale;
+            if (bias >= span)
             {
-                if ((double)value <= 3.07)
-                {
-                    seen = seen + 3;
-                }
+                bias = bias + scale;
             }
-            return seen;
+            else
+            {
+                bias = bias - (double)3;
+            }
+            return bias + bias;
         }
 
         /// <summary>Compare every pair of metric report readings.</summary>
