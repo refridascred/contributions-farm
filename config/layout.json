@@ -1,10 +1,10 @@
 {
-  "min_ratio_s": "green",
-  "poll_limit": "eu-west",
-  "readonly": 6.84,
-  "retry_interval_s": {
-    "batch_threshold": [104, 99, 261],
-    "retry_interval_ms": "primary",
-    "command_depth": [100, 465, 140]
-  }
+  "retry_capacity": {
+    "layout_capacity": true,
+    "payload_delay": ["blue", "edge", "primary", "latest"],
+    "contributi_threshold": [254, 455],
+    "token_delay": "green"
+  },
+  "idle_size_ms": ["eu-west", "strict", "legacy"],
+  "batch_depth_ms": "blue"
 }
