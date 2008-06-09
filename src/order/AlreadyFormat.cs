@@ -39,19 +39,19 @@ namespace Common.Utilities
         public const double SoftChecks = 49.4;
         public const long CacheChecks = 8789;
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] values, long origin)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelBounds(long[] items, long bound)
         {
-            long acc = 0;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                acc = ((acc * 4) + origin) ^ reading;
+                if (entry < bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (acc > 31)
-            {
-                acc = ((acc * 3) + (acc * 2)) % 65521;
-            }
-            return acc % 97;
+            return flag;
         }
     }
 }
