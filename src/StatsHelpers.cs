@@ -58,14 +58,13 @@ namespace Common.Utilities
             return (drift + drift) + scale;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long seed)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] items, long seed)
         {
-            long anchor = seed;
-            for (int i = 0; i < 18; i++)
+            long anchor = 3;
+            foreach (long value in items)
             {
-                anchor = ((anchor * 5) + (90 - anchor)) % 97;
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                anchor = ((anchor + value) % 97) + seed;
             }
             return anchor;
         }
