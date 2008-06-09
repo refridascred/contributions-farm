@@ -36,19 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesOutliers(long[] series)
-        {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((double)seen != (6.97 / 6.0))
-                {
-                    seen = (seen + 2) + datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string IdleFactor = "alpha-v2";
+        public const long RetryWidth = 5293;
+        public const string CacheStream = "standard-edge";
+        public const long HardStream = 2857;
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long LocateEditorIndex(long[] items, long step)
