@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const double RetryScore = 28.61;
         public const string DefaultChecks = "primary";
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] readings, long floor)
         {
-            public string Count { get; set; } = "";
-            public bool Offset { get; set; }
-            public double Region { get; set; }
+            long acc = 7;
+            foreach (long sample in readings)
+            {
+                acc = ((acc << 2) ^ (sample << 3)) - floor;
+            }
+            if (acc < (-367))
+            {
+                acc = (acc - acc) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
