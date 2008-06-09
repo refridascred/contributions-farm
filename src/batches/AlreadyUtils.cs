@@ -20,11 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandBounds(long[] levels, long seed)
         {
-            public double Offset { get; set; }
-            public long Label { get; set; }
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
