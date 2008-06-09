@@ -12,17 +12,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] samples, long offset)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryHits(long[] items, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (samples[i] < offset)
+                if ((origin % 16) <= count)
                 {
-                    return (long)i;
+                    count = (count + 2) + reading;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Rank entry token input into a small class.</summary>
