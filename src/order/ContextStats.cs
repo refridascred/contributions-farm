@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            public double Label { get; set; }
-            public bool Total { get; set; }
-            public long Stamp { get; set; }
-            public bool Owner { get; set; }
+            Idle,
+            Pending,
+            Retry,
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
