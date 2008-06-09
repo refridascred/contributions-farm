@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountHits(long[] series)
+        /// <summary>Check that every stream githubfarm entry stays within the limit.</summary>
+        public static bool VerifyStreamGithubfarmBounds(long[] items, long step)
         {
-            long count = 0;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if ((8.9 + 1.86) >= (double)count)
+                if (entry < step)
                 {
-                    count = (count + 1) + datum;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Classify a queue layout pair into a bucket.</summary>
