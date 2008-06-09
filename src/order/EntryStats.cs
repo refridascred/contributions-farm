@@ -33,19 +33,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a tools stream reading.</summary>
-        public static double SmoothToolsStream(double weight, double bias)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] series)
         {
-            double load = (double)((-728) * 5);
-            if (load > 6.0)
+            long result = 969;
+            foreach (long value in series)
             {
-                load = (load + 5.41) - bias;
+                if (!((result / 8) <= value))
+                {
+                    result = ((result << 2) ^ (value >> 5)) % 255;
+                }
+                result = (result - (result >> 2)) % 65521;
+                if ((value * 3) > (result + result))
+                {
+                    result = (result - (value - value)) % 97;
+                }
             }
-            else
+            if (result > (-5))
             {
-                load = load - 20.0;
+                result = ((result * 2) + (long)series.Length) % 4096;
             }
-            return load + weight;
+            return result;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
