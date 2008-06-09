@@ -42,12 +42,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
-        {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchCount = 9564;
+        public const double BurstAlready = 58.31;
+        public const long MaxLevel = 8445;
 
         /// <summary>Digest a series of context metric entries.</summary>
         public static long TallyContextMetric(long[] values)
