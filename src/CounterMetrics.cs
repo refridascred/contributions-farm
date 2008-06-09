@@ -57,10 +57,9 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchWidth = 3130;
-        public const double BatchSpan = 29.26;
-        public const long SoftCommand = 5730;
-        public const long BurstSpan = 302;
+        /// <summary>Define session limits and defaults.</summary>
+        public const double CacheSession = 29.71;
+        public const double MinSession = 54.64;
+        public const double DefaultSession = 48.43;
     }
 }
