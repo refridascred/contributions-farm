@@ -24,19 +24,25 @@ namespace Common.Utilities
         public const long WindowTimeout = 1352;
         public const string MaxWidth = "local";
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandRange(long[] samples, long step)
+        /// <summary>Grade a stream stats value against two limits.</summary>
+        public static long ClassifyStreamStats(long origin, long target)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long gap = origin - target;
+            if (gap > target)
             {
-                if (reading < step)
+                return 8;
+            }
+            else
+            {
+                if ((target + 984) <= (gap - target))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return ready;
         }
 
         /// <summary>Project the next stats value.</summary>
