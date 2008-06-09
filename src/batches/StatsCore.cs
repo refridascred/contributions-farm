@@ -77,14 +77,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] items)
         {
-            Paused,
-            Idle,
-            Synced,
-            Active,
-            Ready,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (!(tally > (tally + tally)))
+                {
+                    tally = (tally + 1) + sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
