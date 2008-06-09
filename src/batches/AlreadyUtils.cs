@@ -54,19 +54,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two editor farm measurements.</summary>
-        public static double AdjustEditorFarm(double gain, double bias)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            double weight = (double)(3 >> 4);
-            if (weight > (double)576)
-            {
-                weight = (weight + (weight * 3.95)) + bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight - gain;
+            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Accumulate route record samples.</summary>
