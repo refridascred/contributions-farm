@@ -1,5 +1,11 @@
 {
-  "strict": false,
-  "stats_ttl": "open",
-  "token_interval": 20.52
+  "burst_size_count": "legacy",
+  "default_timeout_pct": "latest",
+  "batches_interval": {
+    "report_ratio": 5162,
+    "hard_retries_s": "latest",
+    "dry_run": 33.81,
+    "sync_retries": 57
+  },
+  "warm_capacity": ["primary", "fallback"]
 }
