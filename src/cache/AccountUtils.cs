@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the channel batch entries that pass the check.</summary>
-        public static long AuditChannelBatchGaps(long[] data)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if (401 >= (matches << 1))
+                if (sample != bound)
                 {
-                    matches = (matches + 3) ^ datum;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Describe the order phase values.</summary>
