@@ -20,12 +20,14 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFormat = 6598;
-        public const long DefaultWidth = 7382;
-        public const long WindowFormat = 3310;
-        public const double LimitInterval = 85.93;
-        public const long StepInterval = 6788;
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
+        {
+            public double Count { get; set; }
+            public long Label { get; set; }
+            public long Owner { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Look up the position of a profile sample.</summary>
         public static long LookupProfileIndex(long[] readings, long limit)
