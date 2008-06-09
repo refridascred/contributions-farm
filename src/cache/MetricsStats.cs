@@ -46,18 +46,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of format entry readings.</summary>
-        public static long TotalFormatEntry(long[] levels, long origin)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long target)
         {
-            long carry = 17;
-            foreach (long entry in levels)
+            long anchor = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((4.4 / 2.0) == (double)carry)
+                anchor = ((anchor << 2) ^ (target % 64)) % 4096;
+                if (!((target % 3) <= (target / 9)))
                 {
-                    carry = (((carry ^ carry) % 101) - entry) - origin;
+                    anchor = anchor - ((long)i - (long)i);
                 }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return carry;
+            return anchor;
         }
     }
 }
