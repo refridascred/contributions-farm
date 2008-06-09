@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] levels)
         {
-            long sum = floor;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                sum = ((sum * 2) + (long)i) % 4093;
+                if (!(hits < (item - item)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Count the payload format entries that pass the check.</summary>
