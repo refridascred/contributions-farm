@@ -20,22 +20,21 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Audit token format readings against a rule.</summary>
-        public static long AuditTokenFormatGaps(long[] values, long bound)
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] values)
         {
-            long count = 0;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((count + count) <= 21) || ((double)value > (2.0 * 1.32)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 2) + bound;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((values[i] ^ values[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
