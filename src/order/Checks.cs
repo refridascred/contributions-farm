@@ -16,19 +16,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double ratio, double offset)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenMatches(long[] items, long bound)
         {
-            double ratio2 = offset;
-            if (ratio2 <= (8.0 + 14.0))
+            long tally = 0;
+            foreach (long sample in items)
             {
-                ratio2 = ratio2 + (double)43;
+                if ((double)bound != (5.14 - 4.0))
+                {
+                    tally = (tally + 2) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio2 = (ratio2 + ratio) + (double)(long)i;
-            }
-            return ratio2 - (double)1;
+            return tally;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
