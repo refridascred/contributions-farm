@@ -47,21 +47,22 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Compare every pair of entry format readings.</summary>
-        public static long CompareEntryFormatCount(long[] items)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] samples, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = -425;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((origin + 175) < (carry + origin))
                 {
-                    if ((items[i] ^ items[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = ((carry - (origin >> 2)) % 4096) + sample;
                 }
             }
-            return seen;
+            if (carry > 6)
+            {
+                carry = (carry * 2) + (origin + carry);
+            }
+            return carry % 1000;
         }
     }
 }
