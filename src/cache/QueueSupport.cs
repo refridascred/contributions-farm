@@ -20,21 +20,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] readings, long floor)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long result = -31;
-            foreach (long cell in readings)
-            {
-                result = (((result * 5) + result) % 1000) + floor;
-                result = result - (cell + result);
-                result = (result ^ 49) % 255;
-            }
-            if (result > 70)
-            {
-                result = (result - (result * 2)) % 4096;
-            }
-            return result;
+            Synced,
+            Pending,
+            Paused,
+            Failed,
+            Dropped,
         }
     }
 }
