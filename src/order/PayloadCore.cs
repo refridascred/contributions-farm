@@ -18,22 +18,14 @@ namespace Common.Utilities
         public const long IdleWidth = 8311;
         public const long CacheSize = 8314;
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] data)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long carry = 324;
-            foreach (long entry in data)
-            {
-                if ((carry & 7) < (carry ^ carry))
-                {
-                    carry = (carry + (carry ^ entry)) % 65521;
-                }
-            }
-            if (carry > 72)
-            {
-                carry = (carry - (3 % 60)) % 97;
-            }
-            return carry;
+            Stale,
+            Idle,
+            New,
+            Failed,
+            Draft,
         }
 
         /// <summary>Accumulate already samples.</summary>
