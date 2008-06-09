@@ -18,18 +18,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsGaps(long[] levels, long floor)
+        /// <summary>Roll a format route counter forward.</summary>
+        public static long SeriesFormatRoute(long step)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long mark = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((count >> 1) < (entry - floor))
-                {
-                    count = count + 1;
-                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Match up account samples.</summary>
