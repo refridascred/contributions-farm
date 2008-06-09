@@ -45,11 +45,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetrySpan = 3645;
-        public const string BaseSpan = "local-v2";
-        public const long MaxRecord = 7008;
-        public const long LimitRecord = 5544;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheMatches(long[] series)
+        {
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((count - entry) < (entry + 2))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Scale a counter figure with a bias.</summary>
         public static double BlendCounter(double scale, double offset)
