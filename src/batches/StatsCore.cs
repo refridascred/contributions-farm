@@ -29,21 +29,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long MatchTokenCount(long[] readings)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] levels, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 18;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)carry <= (double)seed)
                 {
-                    if ((readings[i] + readings[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = ((carry << 2) ^ item) % 255;
+                }
+                else
+                {
+                    carry = carry + item;
+                }
+                if (((seed - (long)levels.Length) > carry) || ((item * 5) < (carry + item)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return carry % 65521;
         }
 
         /// <summary>Describe the commits level values.</summary>
