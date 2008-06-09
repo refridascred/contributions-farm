@@ -1,5 +1,22 @@
 # githubfarm settings
-default_timeout_s: 92.59
-persist: 90.74
-max_ttl_pct: legacy
-batch_delay_count: 2.08
+stream_capacity:
+  min_limit_count: stable
+  burst_depth_count: 62.41
+  flush_delay_s:
+    already_ttl:
+      - 328
+      - 267
+      - 330
+      - 172
+    flush_interval: 1193
+    warm_limit_s: false
+    order_retries: true
+    strict:
+      - 101
+      - 485
+      - 158
+      - 331
+    max_ttl: 70
+  token_threshold: 8010
+strict: open
+batch_limit_count: false
