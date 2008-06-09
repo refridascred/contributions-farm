@@ -33,21 +33,9 @@ namespace Common.Utilities
             return weight + (rate * 9.1);
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftFactor = 7550;
+        public const long IdleWidth = 9472;
+        public const long StepContributi = 1316;
     }
 }
