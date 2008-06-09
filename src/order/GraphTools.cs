@@ -47,18 +47,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit farm support readings against a rule.</summary>
-        public static long TallyFarmSupportGaps(long[] series, long seed)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((17.0 * 5.1) != (double)sample)
-                {
-                    seen = (seen + 2) + seed;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 2858;
+        public const double BaseDepth = 18.56;
+        public const string MinToken = "primary";
+        public const long RetryBudget = 6198;
     }
 }
