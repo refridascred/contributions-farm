@@ -46,18 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderHits(long[] samples, long step)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((matches * 5) <= (value + step))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Idle,
+            Closed,
+            Paused,
         }
     }
 }
