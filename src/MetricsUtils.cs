@@ -13,11 +13,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BurstCommits = "legacy-edge";
-        public const long IdleFactor = 5320;
-        public const long StepRatio = 2729;
-        public const double MinSize = 77.21;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string IdleQueue = "primary";
+        public const string RetryScore = "staging-edge";
+        public const long StepBudget = 2274;
+        public const long BatchQueue = 3507;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long DefaultBatches = 9401;
