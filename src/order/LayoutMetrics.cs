@@ -20,22 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up session commits samples.</summary>
-        public static long CompareSessionCommitsCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleTimeout = 1191;
+        public const string WindowCommand = "latest-edge";
+        public const long SoftCommand = 5323;
+        public const long BurstCommand = 4857;
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
