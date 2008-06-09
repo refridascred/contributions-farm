@@ -1,13 +1,14 @@
 # Command notes
 
-Defaults for metrics live in the config folder and can be overridden per environment.
-The already module keeps token values in sync with the report cache.
+Each buffer is validated before it reaches the stream queue.
+Keep counter and commits names short and lowercase.
 
-Defaults for format live in the config folder and can be overridden per environment.
-Use farm settings to tune how often route data is refreshed.
+Run the cache check before changing any contributi limits.
+Defaults for contributi live in the config folder and can be overridden per environment.
+Use farm settings to tune how often batch data is refreshed.
 
 ## Guidelines
 
-- Review command limits each release
-- Keep checks values small
-- Log every channel change
+- Keep report values small
+- Log every counter change
+- Validate support input early
