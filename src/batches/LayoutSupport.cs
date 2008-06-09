@@ -22,10 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BaseSize = "local-1";
-        public const long BaseCommand = 4661;
-        public const double BatchWidth = 69.47;
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
+        {
+            public long Level { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Hold a filter entry.</summary>
         public sealed class FilterEntry
