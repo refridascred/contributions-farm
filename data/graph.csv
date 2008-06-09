@@ -1,6 +1,9 @@
-id,score,token,ratio
-1,edge,local,868
-2,28.76,58.44,strict
-3,edge,1,975
-4,836,807,primary
-5,161,strict,584
+id,rank,active,ratio
+1,standard,strict,44.73
+2,strict,686,865
+3,675,54.52,57.05
+4,strict,74.76,745
+5,692,937,262
+6,82.9,599,818
+7,385,306,854
+8,green,primary,59.39
