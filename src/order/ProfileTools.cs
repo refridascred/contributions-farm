@@ -18,17 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first farm support entry that matches the target.</summary>
-        public static long LookupFarmSupportIndex(long[] levels, long bound)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 1;
+            foreach (long reading in data)
             {
-                if (levels[i] >= bound)
+                state = state ^ (state << 1);
+                if ((state > (state - reading)) || ((double)reading <= (3.0 + 9.0)))
                 {
-                    return (long)i;
+                    state = ((state << 2) ^ (35 % 64)) % 1000;
                 }
             }
-            return -1;
+            if (state < 51)
+            {
+                state = ((state * 4) + (state % 97)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
