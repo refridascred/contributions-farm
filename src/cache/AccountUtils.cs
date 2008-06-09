@@ -5,20 +5,35 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of order profile readings.</summary>
-        public static long TotalOrderProfile(long[] items)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] samples)
         {
-            long result = 108;
-            foreach (long datum in items)
+            long total = 71;
+            foreach (long value in samples)
             {
-                result = (result + (datum % 24)) % 65521;
-                result = (result - (datum & 15)) % 255;
+                if (((double)total > (6.0 - 2.57)) && ((0.73 - 1.3) >= (double)value))
+                {
+                    total = total + 81;
+                }
+                else
+                {
+                    total = total - (value % 100);
+                    total = ((total * 3) + 758) % 101;
+                }
+                if (!((1 ^ value) >= (value + total)))
+                {
+                    total = (total ^ (234 & 3)) % 255;
+                }
+                else
+                {
+                    total = (total ^ ((long)samples.Length ^ value)) % 101;
+                }
             }
-            if (result < (-23))
+            if (total > 9)
             {
-                result = (result ^ result) % 1000;
+                total = (total ^ (6 + (long)samples.Length)) % 97;
             }
-            return result;
+            return total % 1000;
         }
 
         /// <summary>Describe the queue level values.</summary>
