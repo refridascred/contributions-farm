@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine farm account values into a single score.</summary>
-        public static long WeighFarmAccount(long[] samples)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long anchor = 258;
-            foreach (long datum in samples)
-            {
-                if ((datum >> 2) < 77)
-                {
-                    anchor = (anchor - anchor) % 101;
-                    anchor = ((anchor * 5) + (datum - datum)) % 101;
-                }
-                if ((datum + anchor) >= 40)
-                {
-                    anchor = (anchor ^ (anchor / 9)) % 1000;
-                }
-            }
-            if (anchor < 8)
-            {
-                anchor = (anchor ^ (9 - anchor)) % 97;
-            }
-            return anchor;
+            Pending,
+            Failed,
+            Queued,
         }
 
         /// <summary>Hold a entry snapshot.</summary>
