@@ -41,38 +41,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long offset, long limit)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long seed)
         {
-            if ((double)limit != (double)55)
+            long mix = seed;
+            for (int i = 0; i < 7; i++)
             {
-                return 4;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if (!((7.2 / 3.0) < (double)limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit / 7) <= limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)limit == (double)offset) && ((offset & 255) >= (limit + limit)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
