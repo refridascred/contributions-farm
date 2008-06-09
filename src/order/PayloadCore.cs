@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long target)
         {
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Owner { get; set; }
+            long total = target;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((target > (15 & 127)) || ((896 - 49) < (target + target)))
+                {
+                    total = ((total << 2) ^ total) % 255;
+                }
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Hold a farm record.</summary>
