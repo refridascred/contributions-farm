@@ -1,7 +1,5 @@
 {
-  "filter_threshold": 250,
-  "profile_interval": 7075,
-  "strict": false,
-  "hard_delay": "legacy",
-  "batches_limit": "open"
+  "hard_delay_ms": "primary",
+  "min_threshold_count": 60,
+  "soft_interval_s": 3485
 }
