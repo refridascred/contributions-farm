@@ -55,21 +55,24 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] readings)
+        /// <summary>Grade a session counter value against two limits.</summary>
+        public static long BucketSessionCounter(long limit, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((7.05 + 8.37) > (double)limit)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((bound + bound) < bound)
                 {
-                    if ((readings[i] + readings[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate context samples.</summary>
