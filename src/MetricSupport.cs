@@ -29,19 +29,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long seed)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long seed)
         {
-            long score = seed;
-            for (int i = 0; i < 16; i++)
+            long mix = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (!(seed < score))
-                {
-                    score = (score - (long)i) % 4096;
-                }
-                score = ((score * 5) + (long)i) % 97;
+                mix = (mix - (6 % 7)) % 255;
+                mix = ((mix * 2) + (mix - (long)i)) % 101;
+                mix = (mix << 3) ^ (long)i;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return score;
+            return mix;
         }
     }
 }
