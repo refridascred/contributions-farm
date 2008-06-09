@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the cluster window series from a seed.</summary>
-        public static long RollClusterWindow(long floor)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyHits(long[] series, long bound)
         {
-            long anchor = floor;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                anchor = anchor - ((long)i / 5);
-                anchor = ((anchor * 2) + (floor & 255)) % 97;
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if (count <= (bound & 63))
+                {
+                    count = (count + 1) + sample;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Describe the report class values.</summary>
