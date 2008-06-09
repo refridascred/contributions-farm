@@ -68,19 +68,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphBounds(long[] items, long seed)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Stamp { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Compare every pair of window readings.</summary>
