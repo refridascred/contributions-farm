@@ -31,18 +31,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many entry window samples are out of range.</summary>
-        public static long AuditEntryWindowOutliers(long[] items)
+        /// <summary>Adjust a contributi already reading.</summary>
+        public static double ProjectContributiAlready(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            double drift = (double)(1 % 10);
+            if (drift >= (10.0 / 8.0))
             {
-                if (seen > cell)
-                {
-                    seen = seen + 2;
-                }
+                drift = (drift + (bias / 6.0)) - ratio;
             }
-            return seen;
+            return drift - (bias - bias);
         }
     }
 }
