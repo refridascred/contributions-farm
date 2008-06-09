@@ -1,11 +1,27 @@
 # support settings
-base_interval_ms: primary
-schema_ratio: staging
-verbose:
-  enabled: false
-  cache_delay_pct: cached
-  session_size: false
-  strict: true
-  min_capacity_count: 2046
-batch_interval_pct: 2213
-compress: legacy
+burst_delay_count:
+  - 236
+  - 488
+  - 408
+  - 453
+flush_limit: open
+session_ratio:
+  - latest
+  - blue
+  - blue
+  - strict
+retry_ttl_s: false
+audit:
+  editor_depth: 84
+  sync_retries_count: 30
+  persist: 1024
+  poll_retries:
+    tools_limit: 46.12
+    support_ratio: 250
+    command_ttl: blue
+    audit: edge
+    sync_window: staging
+  flush_size:
+    - blue
+    - staging
+  burst_delay_ms: 77.75
