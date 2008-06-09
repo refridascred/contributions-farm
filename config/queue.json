@@ -1,16 +1,13 @@
 {
-  "soft_threshold_ms": "latest",
-  "dry_run": false,
-  "persist": {
-    "batch_ratio_count": "staging",
-    "poll_capacity": {
-      "enabled": "staging",
-      "buffer_size": 88,
-      "default_limit": [411, 179, 241]
-    },
-    "hard_size_ms": 4208
-  },
-  "poll_size_pct": 4822,
-  "notes_ratio": 4594,
-  "checks_window": false
+  "base_timeout": 250,
+  "default_size": 9197,
+  "cache_ttl_count": 67,
+  "checks_delay": false,
+  "default_threshold_ms": {
+    "dry_run": 55.43,
+    "warm_interval_ms": "latest",
+    "flush_delay_count": [12, 253, 181],
+    "burst_timeout": false,
+    "batches_ratio": true
+  }
 }
