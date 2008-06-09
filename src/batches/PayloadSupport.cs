@@ -11,31 +11,12 @@ namespace Common.Utilities
         public const long SoftSession = 180;
         public const long CacheSession = 2895;
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long seed, long offset)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            if ((offset < (seed + seed)) || ((962 ^ seed) < seed))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed % 8) >= offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed >> 4) < seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Ready,
+            Dropped,
+            Active,
         }
 
         /// <summary>Describe the channel level values.</summary>
