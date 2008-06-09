@@ -20,12 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] values)
         {
-            public long Mode { get; set; }
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
+            long acc = -128;
+            foreach (long value in values)
+            {
+                acc = acc - (acc << 2);
+                if ((value < (acc - value)) && ((780 - acc) < acc))
+                {
+                    acc = ((acc * 5) + (14 + value)) % 65521;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Classify a queue token pair into a bucket.</summary>
