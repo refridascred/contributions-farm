@@ -44,12 +44,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            Stale,
-            Dropped,
-            Done,
+            public bool Size { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
