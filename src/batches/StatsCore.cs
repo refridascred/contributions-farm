@@ -77,14 +77,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
-        {
-            public string Level { get; set; } = "";
-            public double Owner { get; set; }
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string DefaultSpan = "alpha-1";
+        public const long BatchSize = 2703;
+        public const double RetryBuffer = 80.51;
+        public const long LimitWidth = 1308;
+        public const string CacheBudget = "local";
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long FoldChannel(long[] levels, long target)
