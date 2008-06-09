@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of contributi metric entries.</summary>
-        public static long DigestContributiMetric(long[] items)
+        /// <summary>Validate account cache readings against a bound.</summary>
+        public static bool ValidateAccountCacheLimits(long[] samples, long offset)
         {
-            long score = 107;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                score = ((score ^ (898 ^ score)) % 255) ^ sample;
-                if ((score % 60) == (score << 3))
+                if (reading >= offset)
                 {
+                    flag = false;
                     break;
                 }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Describe the record phase values.</summary>
