@@ -12,27 +12,22 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] readings, long floor)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsHits(long[] series)
         {
-            long carry = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                carry = ((carry << 3) ^ (floor % 60)) % 65521;
-                if (entry >= (entry % 5))
+                if (((reading / 9) == (613 + (long)series.Length)) && ((reading << 3) <= (reading - 51)))
                 {
-                    carry = (carry << 3) ^ (floor / 2);
+                    tally = tally + 3;
                 }
                 else
                 {
-                    carry = carry - (entry * 5);
+                    tally = tally - 1;
                 }
             }
-            if (carry > 692)
-            {
-                carry = ((carry * 3) + floor) % 255;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
