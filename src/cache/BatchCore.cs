@@ -39,31 +39,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] data, long origin)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long PairCounterCount(long[] series)
         {
-            long mix = 3;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)reading >= (5.96 - 2.49))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = (mix - mix) % 65521;
-                    mix = mix + mix;
-                }
-                if ((66 - reading) != (reading >> 5))
-                {
-                    mix = (mix + (origin + reading)) % 65521;
-                }
-                else
-                {
-                    mix = (mix * 3) + (mix + 18);
+                    if ((series[i] + series[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mix < 384)
-            {
-                mix = mix + 4;
-            }
-            return mix;
+            return tally;
         }
     }
 }
