@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextGaps(long[] values, long bound)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long result = 277;
+            foreach (long cell in readings)
             {
-                if ((double)bound < (7.9 * 9.0))
+                if (((result + 39) >= 35) && (6 >= (result >> 1)))
                 {
-                    tally = (tally + 1) + sample;
+                    result = result ^ (7 >> 3);
+                }
+                else
+                {
+                    result = result - (cell + (long)readings.Length);
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
