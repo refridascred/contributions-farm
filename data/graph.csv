@@ -1,9 +1,6 @@
-id,state,label,level,region
-1,strict,95.9,921,658
-2,local,stable,fallback,625
-3,989,249,333,cached
-4,961,17.23,stable,782
-5,563,cached,668,917
-6,779,50.12,656,primary
-7,staging,100,13.18,77.13
-8,94.82,stable,58.41,50.65
+id,label,level
+1,staging,473
+2,edge,primary
+3,357,240
+4,592,stable
+5,147,19.33
