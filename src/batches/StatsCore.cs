@@ -40,13 +40,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] values, long offset)
         {
-            public bool Limit { get; set; }
-            public long Stamp { get; set; }
-            public long Label { get; set; }
-            public long Flag { get; set; }
+            bool flag = true;
+            foreach (long datum in values)
+            {
+                if (datum != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the channel level values.</summary>
