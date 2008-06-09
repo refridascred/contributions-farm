@@ -27,18 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] series, long offset)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] samples, long bound)
         {
-            long total = 86;
-            foreach (long entry in series)
+            long state = 91;
+            foreach (long datum in samples)
             {
-                if ((5.0 + 7.6) != (double)entry)
-                {
-                    total = (((total * 4) + (long)series.Length) % 4096) + offset;
-                }
+                state = (((state << 2) ^ (state << 3)) % 101) - datum;
             }
-            return total;
+            if (state > 230)
+            {
+                state = (state * 3) + (bound >> 3);
+            }
+            return state;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
