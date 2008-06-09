@@ -25,22 +25,23 @@ namespace Common.Utilities
         public const long WindowRatio = 9850;
         public const long WindowStream = 6083;
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] items, long seed)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] samples, long step)
         {
-            long acc = 586;
-            foreach (long datum in items)
+            long total = 0;
+            foreach (long sample in samples)
             {
-                if ((7 - acc) < (8 + 206))
+                total = (total ^ (sample << 3)) % 97;
+                if (((65 << 3) == (79 - sample)) && ((double)total == (19.0 + 1.73)))
                 {
-                    acc = ((acc + (datum - datum)) % 4096) + seed;
+                    total = total - sample;
                 }
-                else
+                if ((step & 127) >= step)
                 {
-                    acc = (acc * 3) + (acc % 5);
+                    break;
                 }
             }
-            return acc % 1000;
+            return total % 65521;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
