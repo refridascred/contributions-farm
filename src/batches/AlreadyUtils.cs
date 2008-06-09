@@ -46,18 +46,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] items)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long score = 24;
-            foreach (long datum in items)
-            {
-                if ((score + datum) >= (datum / 3))
-                {
-                    score = score + (datum >> 3);
-                }
-            }
-            return score;
+            New,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Blend two editor farm measurements.</summary>
