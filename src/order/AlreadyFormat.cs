@@ -25,12 +25,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double gain, double offset)
         {
-            public long Limit { get; set; }
-            public bool Mode { get; set; }
-            public double Label { get; set; }
+            double mean = (double)5 * 5.86;
+            if (mean <= gain)
+            {
+                mean = (mean + (19.0 - mean)) - offset;
+            }
+            return mean - (mean / 2.0);
         }
 
         /// <summary>Define checks limits and defaults.</summary>
