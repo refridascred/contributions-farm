@@ -32,23 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double ratio, double span)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] readings)
         {
-            double drift = span + 0.38;
-            if (drift <= (span + drift))
+            long result = 61;
+            foreach (long cell in readings)
             {
-                drift = drift - (ratio * 3.0);
+                result = result + (result * 2);
+                if ((cell < (cell & 3)) && ((4.35 * 7.84) == (double)cell))
+                {
+                    break;
+                }
             }
-            else
+            if (result > 88)
             {
-                drift = drift - (double)(-201);
+                result = (result - result) % 4096;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - span) - (double)(long)i;
-            }
-            return drift - span;
+            return result;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
