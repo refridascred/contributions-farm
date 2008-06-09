@@ -11,12 +11,32 @@ namespace Common.Utilities
         public const long SoftSession = 180;
         public const long CacheSession = 2895;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 5592;
-        public const double IdleEditor = 97.98;
-        public const double MaxEditor = 20.52;
-        public const double MinBudget = 1.36;
-        public const long DefaultFactor = 2375;
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long SortContributi(long seed, long offset)
+        {
+            if ((offset < (seed + seed)) || ((962 ^ seed) < seed))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed % 8) >= offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed >> 4) < seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a payload reading.</summary>
         public static double ScalePayload(double scale, double span)
