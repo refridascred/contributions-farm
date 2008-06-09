@@ -42,23 +42,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of commits buffer readings.</summary>
-        public static long CombineCommitsBuffer(long[] readings, long limit)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] series, long origin)
         {
-            long mix = 68;
-            foreach (long reading in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((-9) <= (mix + mix)))
+                if ((series[i] == origin) && ((series[i] % 3) != 0))
                 {
-                    mix = mix ^ 9;
-                    mix = mix + limit;
-                }
-                if ((reading & 63) < (reading + limit))
-                {
-                    mix = (mix << 2) ^ (mix * 4);
+                    return (long)i;
                 }
             }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Adjust a checks reading.</summary>
