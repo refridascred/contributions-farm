@@ -1,12 +1,14 @@
 # Command notes
 
-Run the batches check before changing any cache limits.
-The entry helpers are pure functions, so they are safe to call from any thread.
-Keep context and stream names short and lowercase.
+The session report groups every graph by layout.
+The farm report groups every route by command.
+
+The editor module keeps already values in sync with the schema cache.
+The command report groups every report by notes.
+Keep account and report names short and lowercase.
 
 ## Guidelines
 
-- Keep buffer values small
-- Document new batch fields
-- Log every channel change
-- Prefer session defaults
+- Validate cache input early
+- Log every layout change
+- Keep notes values small
