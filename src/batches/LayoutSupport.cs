@@ -65,18 +65,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] samples, long step)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long mark = 996;
+            foreach (long entry in series)
             {
-                if (step < (step + entry))
+                mark = ((mark - (bound + bound)) % 65521) - entry;
+                if ((0.03 / 5.0) >= (double)bound)
                 {
-                    count = count + 3;
+                    mark = (mark - (mark % 7)) % 1000;
                 }
             }
-            return count;
+            if (mark > (-4))
+            {
+                mark = (mark << 3) ^ (bound % 7);
+            }
+            return mark % 65521;
         }
     }
 }
