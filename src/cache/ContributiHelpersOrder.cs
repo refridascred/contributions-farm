@@ -19,31 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long step, long bound)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            if (((bound - bound) <= (543 >> 2)) && ((bound + 80) == ((-1) + step)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step + step) < (step ^ bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((bound + step) != (bound - bound)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Failed,
+            Synced,
+            Locked,
         }
 
         /// <summary>Describe the route level values.</summary>
