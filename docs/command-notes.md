@@ -1,14 +1,13 @@
 # Command notes
 
-The session report groups every graph by layout.
-The farm report groups every route by command.
+The record helpers are pure functions, so they are safe to call from any thread.
+Each support is validated before it reaches the queue queue.
 
-The editor module keeps already values in sync with the schema cache.
-The command report groups every report by notes.
-Keep account and report names short and lowercase.
+The session report groups every payload by queue.
+Keep profile and graph names short and lowercase.
 
 ## Guidelines
 
-- Validate cache input early
-- Log every layout change
-- Keep notes values small
+- Prefer entry defaults
+- Keep token values small
+- Review session limits each release
