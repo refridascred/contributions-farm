@@ -22,17 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] items, long step)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Offset { get; set; } = "";
+            public long Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a support stats.</summary>
