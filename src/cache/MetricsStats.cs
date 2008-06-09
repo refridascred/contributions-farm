@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BatchTimeout = "staging-1";
-        public const long SoftBuffer = 7841;
-        public const string MinInterval = "standard-v2";
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterMatches(long[] items, long floor)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((matches & 15) != (matches * 3))
+                {
+                    matches = ((matches + 1) + sample) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long OverlapContributiCount(long[] values)
