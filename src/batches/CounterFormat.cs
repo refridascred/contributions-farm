@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string DefaultSession = "stable-v2";
-        public const long MinCount = 6935;
-        public const string StepInterval = "local-1";
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaBounds(long[] values, long step)
+        {
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Check that every already command entry stays within the limit.</summary>
         public static bool CheckAlreadyCommandRange(long[] values, long floor)
