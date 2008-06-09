@@ -65,18 +65,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountMatches(long[] samples, long limit)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphBounds(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long item in items)
             {
-                if (!(limit > (limit * 2)) && (((limit ^ (-302)) <= 53) && ((limit >> 2) == (limit + count))))
+                if (item < seed)
                 {
-                    count = (count + 3) + item;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Digest a series of context cache entries.</summary>
