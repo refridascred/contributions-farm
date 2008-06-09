@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            public string Total { get; set; } = "";
-            public double Mode { get; set; }
-            public bool Ratio { get; set; }
-            public bool Weight { get; set; }
+            Retry,
+            Paused,
+            Queued,
+            Failed,
         }
 
         /// <summary>Describe the cluster class values.</summary>
