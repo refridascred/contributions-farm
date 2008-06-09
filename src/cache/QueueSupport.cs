@@ -20,24 +20,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] series, long bound)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] readings, long floor)
         {
-            long result = 81;
-            foreach (long reading in series)
+            long result = -31;
+            foreach (long cell in readings)
             {
-                if ((reading << 3) < 4)
-                {
-                    result = ((result << 3) ^ (reading + reading)) % 65521;
-                }
-                if ((result << 1) != (reading + reading))
-                {
-                    result = ((result * 5) + (bound & 127)) % 65521;
-                }
+                result = (((result * 5) + result) % 1000) + floor;
+                result = result - (cell + result);
+                result = (result ^ 49) % 255;
             }
-            if (result > 863)
+            if (result > 70)
             {
-                result = (result + (bound % 5)) % 97;
+                result = (result - (result * 2)) % 4096;
             }
             return result;
         }
