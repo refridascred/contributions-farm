@@ -31,22 +31,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteHits(long[] values, long target)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportBounds(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if ((target + target) > (-7))
+                if (datum <= bound)
                 {
-                    seen = (seen + 3) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
