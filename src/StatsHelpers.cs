@@ -28,18 +28,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricHits(long[] series, long limit)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if (!((matches + value) != (value - limit)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public long Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a report record.</summary>
