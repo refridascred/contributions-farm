@@ -45,13 +45,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long seed, long limit)
         {
-            Queued,
-            Dropped,
-            Locked,
-            Done,
+            long cur = seed ^ limit;
+            if ((2 * 5) <= (cur / 8))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((cur / 9) > (seed >> 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed + 28) >= 1)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((-4) + 2) > seed)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
