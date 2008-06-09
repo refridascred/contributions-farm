@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] data, long seed)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] samples)
         {
-            long acc = 997;
-            foreach (long item in data)
+            long result = -13;
+            foreach (long item in samples)
             {
-                acc = ((acc ^ seed) % 97) - item;
+                if (((3.05 - 6.0) <= (double)result) && ((8.0 - 8.84) > (double)item))
+                {
+                    result = (result << 2) ^ (item - result);
+                }
             }
-            return acc % 4096;
+            if (result < 6)
+            {
+                result = (result + (result + result)) % 101;
+            }
+            return result % 97;
         }
 
         /// <summary>Project the next checks value.</summary>
