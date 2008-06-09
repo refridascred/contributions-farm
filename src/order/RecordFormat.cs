@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
-        {
-            Paused,
-            Failed,
-            Idle,
-            Stale,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxScore = 9069;
+        public const long RetryStream = 3330;
+        public const long MaxStream = 7014;
+        public const string StepStream = "fallback-edge";
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
