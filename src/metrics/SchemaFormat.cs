@@ -59,14 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double ratio, double offset)
         {
-            Ready,
-            Queued,
-            Active,
-            Done,
-            Locked,
+            double mean = offset;
+            if (mean <= (double)(-76))
+            {
+                mean = mean - (double)0;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (double)71) + (double)(long)i;
+            }
+            return mean - (ratio + mean);
         }
 
         /// <summary>Measure how many profile entry samples are out of range.</summary>
