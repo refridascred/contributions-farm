@@ -77,18 +77,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaOutliers(long[] readings, long floor)
+        /// <summary>Compare every pair of filter stats readings.</summary>
+        public static long OverlapFilterStatsCount(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (hits >= (3 >> 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = ((hits + 2) ^ cell) + floor;
+                    if ((series[i] + series[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
