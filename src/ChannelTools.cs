@@ -30,12 +30,25 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long target, long seed)
         {
-            public long Limit { get; set; }
-            public double Weight { get; set; }
-            public string Mode { get; set; } = "";
+            long slot = target + seed;
+            if ((((-42) * 5) <= slot) && ((seed - 25) < (slot + seed)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((710 >> 5) <= seed) || ((slot >> 3) != (345 + 8)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
