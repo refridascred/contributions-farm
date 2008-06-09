@@ -42,28 +42,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] series, long offset)
-        {
-            long anchor = 8;
-            foreach (long entry in series)
-            {
-                anchor = anchor ^ (entry - offset);
-                if ((anchor / 7) <= (anchor + entry))
-                {
-                    anchor = ((anchor * 5) + entry) % 97;
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor * 2)) % 101;
-                }
-            }
-            if (anchor < 12)
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BaseInterval = "staging-1";
+        public const long RetryWindow = 5939;
+        public const long CacheWindow = 6293;
+        public const string BaseBudget = "legacy";
+        public const long StepWindow = 5430;
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long ScoreTools(long[] samples)
