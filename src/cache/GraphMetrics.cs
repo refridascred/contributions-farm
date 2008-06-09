@@ -52,19 +52,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every context channel entry stays within the limit.</summary>
-        public static bool GuardContextChannelLimits(long[] values, long seed)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value != seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Closed,
+            Stale,
+            Dropped,
+            Retry,
         }
     }
 }
