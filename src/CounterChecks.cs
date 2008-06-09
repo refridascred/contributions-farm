@@ -62,11 +62,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            public bool Total { get; set; }
-            public double Limit { get; set; }
+            public bool Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public double Total { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Digest a series of batches entries.</summary>
