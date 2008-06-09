@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] values)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutRange(long[] data, long floor)
         {
-            long acc = 4;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if ((value + value) < (acc % 7))
+                if (cell < floor)
                 {
-                    acc = (acc << 3) ^ (acc / 2);
+                    valid = false;
+                    break;
                 }
-                acc = acc - (value - 66);
             }
-            if (acc > 44)
-            {
-                acc = ((acc << 2) ^ (acc * 4)) % 65521;
-            }
-            return acc;
+            return valid;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
