@@ -14,13 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double rate, double floor)
         {
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
-            public long Token { get; set; }
-            public double Label { get; set; }
+            double rate2 = rate;
+            if (rate2 <= (double)15)
+            {
+                rate2 = (rate2 - rate2) + floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate2 = (rate2 + rate) + (double)(long)i;
+            }
+            return rate2 + rate2;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
