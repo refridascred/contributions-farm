@@ -1,5 +1,6 @@
 {
-  "readonly": false,
-  "base_threshold": "standard",
-  "hard_depth_ms": ["legacy", "open", "edge"]
+  "warm_delay": [423, 285],
+  "strict": "green",
+  "retry_depth_pct": 55.82,
+  "idle_ttl_count": 500
 }
