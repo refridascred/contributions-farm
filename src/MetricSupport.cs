@@ -19,19 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] readings, long floor)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] series, long origin)
         {
-            long acc = 7;
-            foreach (long sample in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc << 2) ^ (sample << 3)) - floor;
+                if (series[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            if (acc < (-367))
-            {
-                acc = (acc - acc) % 255;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
