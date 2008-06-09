@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the cluster token series from a seed.</summary>
-        public static long SeriesClusterToken(long seed)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long result = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            Done,
+            Ready,
+            Paused,
         }
 
         /// <summary>Accumulate format samples.</summary>
