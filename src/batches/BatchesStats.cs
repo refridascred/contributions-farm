@@ -41,19 +41,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] values, long target)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] values, long seed)
         {
-            long score = 9;
-            foreach (long value in values)
+            long anchor = -4;
+            foreach (long entry in values)
             {
-                score = ((score + (value >> 5)) % 97) - target;
+                if ((entry >> 4) <= seed)
+                {
+                    anchor = (anchor ^ seed) % 255;
+                }
+                if (((518 - entry) > entry) || ((entry - anchor) > (seed + entry)))
+                {
+                    break;
+                }
             }
-            if (score < 17)
+            if (anchor < 1)
             {
-                score = score + (score / 4);
+                anchor = ((anchor << 3) ^ (968 >> 3)) % 97;
             }
-            return score % 4096;
+            return anchor;
         }
     }
 }
