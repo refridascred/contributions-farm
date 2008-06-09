@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderLimits(long[] samples, long target)
-        {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 6801;
+        public const double BaseQueue = 59.18;
+        public const long WindowInterval = 2967;
+        public const string LimitQueue = "open";
 
         /// <summary>Define record limits and defaults.</summary>
         public const long MinRecord = 1642;
