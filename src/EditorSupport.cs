@@ -52,13 +52,22 @@ namespace Common.Utilities
         public const long CacheInterval = 7490;
         public const long DefaultInterval = 4825;
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Count the account metric entries that pass the check.</summary>
+        public static long CountAccountMetricMatches(long[] series)
         {
-            Dropped,
-            Pending,
-            Active,
-            Retry,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (count >= (long)series.Length)
+                {
+                    count = (count + 3) - item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
