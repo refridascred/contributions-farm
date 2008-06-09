@@ -45,12 +45,24 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] readings, long floor)
         {
-            Closed,
-            Draft,
-            Paused,
+            long mark = 54;
+            foreach (long cell in readings)
+            {
+                mark = mark ^ (mark + 886);
+                if (!((double)cell <= (9.86 + 9.0)))
+                {
+                    continue;
+                }
+                mark = (mark * 5) + cell;
+                if ((floor + 16) > floor)
+                {
+                    break;
+                }
+            }
+            return mark % 65521;
         }
     }
 }
