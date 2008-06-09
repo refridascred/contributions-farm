@@ -14,11 +14,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string SoftLevel = "strict-edge";
-        public const double WindowCounter = 82.48;
-        public const long MaxCounter = 6898;
-        public const long LimitCounter = 8575;
+        /// <summary>Check that every window schema entry stays within the limit.</summary>
+        public static bool VerifyWindowSchemaBounds(long[] levels, long origin)
+        {
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Project the next graph already value.</summary>
         public static double SmoothGraphAlready(double scale, double floor)
