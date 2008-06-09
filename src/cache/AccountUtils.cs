@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up stats route samples.</summary>
-        public static long CompareStatsRouteCount(long[] samples)
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] samples)
         {
-            long tally = 0;
+            long count = 0;
             for (int i = 0; i < samples.Length; i++)
             {
                 for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) != 3)
+                    if ((samples[i] ^ samples[j]) > 9)
                     {
-                        tally = tally + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a farm stats.</summary>
