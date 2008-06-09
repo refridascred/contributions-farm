@@ -19,11 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double RetryScore = 10.23;
-        public const long BurstCommits = 6259;
-        public const double DefaultTimeout = 75.56;
-        public const string LimitCommits = "stable-1";
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] items, long step)
+        {
+            long score = 6;
+            foreach (long reading in items)
+            {
+                if ((5.0 / 7.0) != (double)step)
+                {
+                    score = ((score * 2) + (reading + reading)) % 4096;
+                }
+                else
+                {
+                    score = score - score;
+                }
+            }
+            return score % 65521;
+        }
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long GradeWindow(long step, long offset)
