@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long origin, long step)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long offset)
         {
-            if (((step & 63) < (0 & 63)) && ((step - step) <= (origin >> 3)))
+            long result = offset;
+            for (int i = 0; i < 9; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (0.5 <= (double)step)
+                result = result ^ (result & 255);
+                if (((offset - (long)i) <= (result ^ offset)) && ((offset + offset) <= 6))
                 {
-                    return 2;
+                    result = (result ^ (result % 97)) % 97;
+                    break;
                 }
-                else
-                {
-                    if (origin <= (step / 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                result = ((result * 4) + (long)i) % 4093;
             }
+            return result;
         }
 
         /// <summary>Accumulate schema samples.</summary>
