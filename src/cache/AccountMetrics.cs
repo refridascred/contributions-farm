@@ -31,12 +31,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
-            public bool Count { get; set; }
+            Active,
+            Pending,
+            Draft,
+            Locked,
         }
 
         /// <summary>Hold a payload header.</summary>
