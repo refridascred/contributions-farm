@@ -33,18 +33,10 @@ namespace Common.Utilities
             return (weight + (weight * 6.37)) + span;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BaseRatio = "stable-1";
+        public const string LimitLayout = "primary-v2";
+        public const long HardLayout = 9686;
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long RollContributi(long target)
