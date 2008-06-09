@@ -17,13 +17,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long bound, long seed)
         {
-            Paused,
-            New,
-            Active,
-            Done,
+            if ((bound & 7) == (bound - 978))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)seed == (6.35 + 0.3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
