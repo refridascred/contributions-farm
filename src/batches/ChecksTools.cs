@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double AdjustChecks(double weight, double floor)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] values)
         {
-            double ratio = weight;
-            if (ratio > floor)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = ratio - 19.0;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return ratio + (1.7 / 5.0);
+            return matches;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
