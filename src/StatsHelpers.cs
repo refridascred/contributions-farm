@@ -36,13 +36,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] items, long limit)
         {
-            public double Size { get; set; }
-            public double Limit { get; set; }
-            public long Region { get; set; }
-            public bool Label { get; set; }
+            long acc = 352;
+            foreach (long cell in items)
+            {
+                long lane = acc;
+                if ((limit + cell) < (acc >> 5))
+                {
+                    acc = (acc * 3) + (lane + 73);
+                    break;
+                }
+                acc = acc ^ limit;
+            }
+            return acc % 97;
         }
 
         /// <summary>Fold a list of stats channel readings.</summary>
