@@ -72,10 +72,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 9181;
-        public const long BurstBudget = 685;
-        public const long BatchLevel = 5054;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchGaps(long[] data)
+        {
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (!((hits % 97) == (hits - value)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long HardScore = 6271;
