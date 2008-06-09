@@ -12,23 +12,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileHits(long[] readings, long seed)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (sample >= seed)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string LimitEditor = "staging-v2";
+        public const string SoftWidth = "staging-edge";
+        public const long CacheEditor = 2515;
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long CountNotesGaps(long[] series, long offset)
