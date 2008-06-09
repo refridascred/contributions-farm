@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] readings)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportOutliers(long[] data)
         {
-            long score = 257;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long item in data)
             {
-                score = (((score << 3) ^ 0) % 65521) ^ item;
+                if ((count + item) < (item + 9))
+                {
+                    count = count + 1;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
