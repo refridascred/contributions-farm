@@ -34,9 +34,18 @@ namespace Common.Utilities
             return scale + (double)604;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftCount = 5980;
-        public const string LimitSize = "alpha-edge";
-        public const double MaxTimeout = 47.47;
+        /// <summary>Audit payload session readings against a rule.</summary>
+        public static long CountPayloadSessionGaps(long[] readings)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((double)seen < (double)642)
+                {
+                    seen = (seen + 3) ^ value;
+                }
+            }
+            return seen;
+        }
     }
 }
