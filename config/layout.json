@@ -1,5 +1,6 @@
 {
-  "default_retries": 33,
-  "entry_delay": 1047,
-  "compress": [418, 183]
+  "verbose": false,
+  "burst_window_count": false,
+  "retry_delay": "strict",
+  "record_interval": "eu-west"
 }
