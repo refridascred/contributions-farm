@@ -14,22 +14,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchHits(long[] samples, long target)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((hits << 2) == (hits * 2))
-                {
-                    hits = ((hits + 1) + datum) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
