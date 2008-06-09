@@ -64,19 +64,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] values, long offset)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] levels, long seed)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum != offset)
+                if (levels[i] > seed)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Describe the channel level values.</summary>
