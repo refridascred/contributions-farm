@@ -32,26 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] levels)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long mark = -2;
-            foreach (long reading in levels)
-            {
-                if (88 < (mark - mark))
-                {
-                    mark = ((mark - (44 << 3)) % 4096) - reading;
-                }
-                else
-                {
-                    mark = ((mark * 5) + mark) % 97;
-                }
-            }
-            if (mark < 1)
-            {
-                mark = mark ^ (mark - mark);
-            }
-            return mark % 65521;
+            public bool Size { get; set; }
+            public double Label { get; set; }
+            public double Owner { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
