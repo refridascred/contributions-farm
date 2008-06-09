@@ -13,12 +13,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Locate a buffer metrics reading by value.</summary>
+        public static long LocateBufferMetricsIndex(long[] series, long target)
         {
-            public double Count { get; set; }
-            public string Score { get; set; } = "";
-            public bool Ratio { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= target) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
