@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            Pending,
-            Done,
-            Closed,
-            Queued,
+            Locked,
             Retry,
+            Paused,
+            Done,
+            Failed,
         }
 
         /// <summary>Look up the position of a token account sample.</summary>
