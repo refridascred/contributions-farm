@@ -13,13 +13,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            public double Flag { get; set; }
-            public double Level { get; set; }
-            public bool Size { get; set; }
-            public long Mode { get; set; }
+            public long Offset { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Combine record values into a single score.</summary>
