@@ -66,27 +66,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] levels)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmRange(long[] data, long target)
         {
-            long state = 5;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if ((double)item > (9.0 - 2.0))
+                if (item < target)
                 {
-                    state = (state - (item + item)) % 97;
-                    state = state + (state + item);
-                }
-                if ((state + item) < 11)
-                {
-                    state = (state - state) % 101;
-                }
-                else
-                {
-                    state = (state + (643 ^ item)) % 101;
+                    stale = false;
+                    break;
                 }
             }
-            return state % 65521;
+            return stale;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
