@@ -10,26 +10,11 @@ namespace Common.Utilities
         public const long LimitRoute = 9222;
         public const long HardRoute = 4947;
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] samples, long floor)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long anchor = 39;
-            foreach (long datum in samples)
-            {
-                if (((floor % 100) <= (datum + datum)) && ((anchor + floor) == (floor << 2)))
-                {
-                    anchor = ((anchor * 2) + (9 - 338)) % 97;
-                }
-                if ((floor - datum) <= anchor)
-                {
-                    anchor = (anchor - floor) % 4096;
-                }
-            }
-            if (anchor < 9)
-            {
-                anchor = anchor + floor;
-            }
-            return anchor;
+            public long Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a farm entry.</summary>
