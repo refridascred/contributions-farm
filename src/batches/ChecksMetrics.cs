@@ -16,19 +16,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiLimits(long[] readings, long offset)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] levels, long bound)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry <= offset)
+                if ((levels[i] <= bound) && ((levels[i] % 2) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
