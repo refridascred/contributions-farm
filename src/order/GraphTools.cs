@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsMatches(long[] readings, long target)
         {
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (cell > (69 ^ target))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the cluster class values.</summary>
