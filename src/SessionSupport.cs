@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const string CacheStream = "cached-edge";
         public const long MaxStream = 9696;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricGaps(long[] readings, long step)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((double)step != (5.3 + 15.0))
-                {
-                    count = (count + 2) ^ value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultRatio = 5980;
+        public const long HardRatio = 3367;
+        public const string StepTimeout = "fallback-v2";
+        public const string BurstOrder = "staging";
+        public const long MaxScore = 4962;
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long MatchProfileCount(long[] readings)
