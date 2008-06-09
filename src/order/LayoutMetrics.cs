@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the layout route entries that pass the check.</summary>
-        public static long AuditLayoutRouteMatches(long[] levels, long origin)
+        /// <summary>Match up session commits samples.</summary>
+        public static long CompareSessionCommitsCount(long[] readings)
         {
             long count = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((origin ^ count) > (origin ^ origin))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 3) - reading;
+                    if ((readings[i] ^ readings[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
