@@ -26,23 +26,18 @@ namespace Common.Utilities
         public const string BatchDepth = "strict-1";
         public const double DefaultContributi = 14.13;
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double rate, double floor)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterHits(long[] items, long floor)
         {
-            double ratio = rate - 16.0;
-            if (ratio >= (double)9)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                ratio = ratio - (4.2 + 2.64);
+                if ((double)matches <= 0.44)
+                {
+                    matches = ((matches + 2) - datum) - floor;
+                }
             }
-            else
-            {
-                ratio = ratio - floor;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - (double)(-301)) + (double)(long)i;
-            }
-            return ratio + (double)9;
+            return matches;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
