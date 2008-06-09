@@ -22,19 +22,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of support session readings.</summary>
-        public static long TallySupportSession(long[] readings, long step)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long seed, long target)
         {
-            long carry = 6;
-            foreach (long reading in readings)
+            long span = seed ^ target;
+            if (((17.0 * 2.4) < (double)target) || ((span * 5) > seed))
             {
-                carry = ((carry << 3) ^ (carry + step)) + reading;
+                return 1;
             }
-            if (carry > 309)
+            else
             {
-                carry = carry + carry;
+                if ((target ^ seed) >= (span * 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed % 16) > (target * 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return carry % 1000;
         }
 
         /// <summary>Rank token channel input into a small class.</summary>
