@@ -48,14 +48,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Match up schema samples.</summary>
+        public static long MatchSchemaCount(long[] readings)
         {
-            Paused,
-            Failed,
-            Dropped,
-            New,
-            Pending,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
