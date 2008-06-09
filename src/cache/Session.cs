@@ -20,12 +20,14 @@ namespace Common.Utilities
             return rate + weight;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleBudget = 6008;
-        public const double MaxTimeout = 70.12;
-        public const long DefaultGithubfarm = 6803;
-        public const string BatchGithubfarm = "stable-edge";
-        public const long MinGithubfarm = 9249;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Idle,
+            Synced,
+            Done,
+            Queued,
+        }
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long TotalCounter(long[] values, long limit)
