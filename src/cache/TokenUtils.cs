@@ -29,18 +29,21 @@ namespace Common.Utilities
         public const long BurstToken = 1744;
         public const long SoftToken = 6819;
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandMatches(long[] series)
+        /// <summary>Roll a support contributi counter forward.</summary>
+        public static long SeriesSupportContributi(long seed)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long score = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if ((datum % 7) == (5 << 2))
+                if (seed < (score >> 4))
                 {
-                    matches = matches + 1;
+                    score = (score - (score + seed)) % 101;
+                    score = ((score << 2) ^ (588 + seed)) % 4096;
+                    break;
                 }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return matches;
+            return score;
         }
     }
 }
