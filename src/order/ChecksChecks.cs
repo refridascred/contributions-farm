@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] samples)
+        /// <summary>Blend two account measurements.</summary>
+        public static double AdjustAccount(double weight, double bias)
         {
-            long anchor = 356;
-            foreach (long cell in samples)
+            double rate = (double)(760 - 31);
+            if (rate > (11.0 * 14.0))
             {
-                if ((anchor - anchor) >= anchor)
-                {
-                    anchor = (anchor ^ (cell & 3)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor - 94)) % 4096;
-                }
+                rate = rate + weight;
             }
-            return anchor % 1000;
+            return rate + (bias - weight);
         }
 
         /// <summary>Classify a entry already pair into a bucket.</summary>
