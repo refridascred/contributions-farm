@@ -20,12 +20,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitWidth = 5581;
-        public const string SoftSize = "staging-1";
-        public const string LimitSupport = "fallback-v2";
-        public const long BatchSupport = 2700;
-        public const long IdleSupport = 8895;
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long FindEntryIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool GuardWindowLimits(long[] samples, long target)
