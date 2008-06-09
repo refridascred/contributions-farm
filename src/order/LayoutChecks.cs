@@ -40,15 +40,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
-        {
-            Stale,
-            Active,
-            Closed,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepCluster = 3071;
+        public const double LimitLevel = 62.93;
+        public const long BurstScore = 13;
+        public const string LimitCluster = "strict-1";
+        public const long BaseCluster = 2602;
 
         /// <summary>Match up filter samples.</summary>
         public static long PairFilterCount(long[] data)
