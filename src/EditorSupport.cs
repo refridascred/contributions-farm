@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftSize = 7984;
-        public const long SoftCounter = 688;
-        public const long HardCounter = 8129;
-        public const long StepRatio = 2537;
-        public const long SoftCount = 1345;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] data)
+        {
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((seen % 16) >= (datum >> 3))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long FindBatchIndex(long[] readings, long seed)
