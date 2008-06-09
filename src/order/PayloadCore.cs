@@ -28,24 +28,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] readings, long floor)
+        /// <summary>Locate a farm session reading by value.</summary>
+        public static long LookupFarmSessionIndex(long[] samples, long origin)
         {
-            long mark = 54;
-            foreach (long cell in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = mark ^ (mark + 886);
-                if (!((double)cell <= (9.86 + 9.0)))
+                if (samples[i] < origin)
                 {
-                    continue;
-                }
-                mark = (mark * 5) + cell;
-                if ((floor + 16) > floor)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark % 65521;
+            return -1;
         }
     }
 }
