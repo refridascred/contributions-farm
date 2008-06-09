@@ -1,6 +1,6 @@
 {
-  "verbose": false,
-  "burst_window_count": false,
-  "retry_delay": "strict",
-  "record_interval": "eu-west"
+  "audit": 90.64,
+  "batch_timeout": false,
+  "base_depth_pct": [361, 488],
+  "contributi_capacity": "cached"
 }
