@@ -18,14 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            Draft,
-            Stale,
-            Synced,
-            Pending,
-            Active,
+            public double Region { get; set; }
+            public long Limit { get; set; }
+            public bool Size { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
