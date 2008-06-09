@@ -25,10 +25,11 @@ namespace Common.Utilities
         public const long StepInterval = 9344;
         public const string MaxCache = "primary-1";
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 7910;
-        public const double IdleWindow = 93.66;
-        public const long RetryWindow = 4383;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftBudget = 5281;
+        public const long DefaultStream = 3913;
+        public const long WindowRatio = 9850;
+        public const long WindowStream = 6083;
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long ScoreMetric(long[] items, long seed)
