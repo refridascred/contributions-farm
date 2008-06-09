@@ -1,7 +1,43 @@
 # entry settings
-queue_delay: latest
-min_threshold: 61
-batches_window: local
-graph_size: 19
-enabled: 65
-idle_retries_s: 5342
+audit: legacy
+commits_interval:
+  - latest
+  - stable
+  - blue
+idle_window:
+  batches_capacity: false
+  default_window_pct: false
+  flush_limit_count: 5608
+  soft_ratio: 7
+dry_run: true
+enabled:
+  audit:
+    - latest
+    - local
+    - eu-west
+    - eu-west
+  batch_size:
+    - 463
+    - 37
+  default_limit_pct:
+    - cached
+    - local
+    - blue
+    - eu-west
+  max_limit_ms: fallback
+  persist: 68.39
+contributi_delay:
+  commits_window:
+    - 440
+    - 320
+    - 329
+  tools_capacity:
+    checks_size: false
+    dry_run: 100
+    base_timeout_s: 47.02
+  hard_delay:
+    soft_ratio: 41.4
+    audit: false
+    readonly: 43.42
+  verbose: staging
+  base_timeout_ms: 44.08
