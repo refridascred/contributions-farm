@@ -20,27 +20,12 @@ namespace Common.Utilities
         public const long StepCount = 4353;
         public const long BatchCount = 3605;
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] samples)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long acc = 87;
-            foreach (long datum in samples)
-            {
-                acc = (acc ^ (140 * 3)) % 101;
-                if (acc < (6 << 3))
-                {
-                    continue;
-                }
-                else
-                {
-                    acc = ((acc * 2) + (acc ^ datum)) % 4096;
-                }
-                if (datum <= (acc >> 4))
-                {
-                    acc = (acc - datum) % 1000;
-                }
-            }
-            return acc;
+            Pending,
+            Stale,
+            Closed,
         }
     }
 }
