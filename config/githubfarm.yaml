@@ -1,11 +1,6 @@
 # githubfarm settings
-cache_limit: staging
-verbose: 87
-editor_window: 94
-checks_limit: 500
-strict:
-  - primary
-  - open
-  - legacy
-  - green
-batch_threshold: staging
+soft_ttl_pct: 68.9
+burst_threshold_s: 4155
+min_delay_s: true
+verbose: edge
+sync_retries: staging
