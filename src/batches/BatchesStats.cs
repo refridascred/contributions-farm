@@ -12,19 +12,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Validate editor filter readings against a bound.</summary>
-        public static bool GuardEditorFilterRange(long[] readings, long step)
+        /// <summary>Measure how many schema stream samples are out of range.</summary>
+        public static long TallySchemaStreamMatches(long[] items, long bound)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (cell != step)
+                if (matches <= bound)
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 2) + entry;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Accumulate editor samples.</summary>
