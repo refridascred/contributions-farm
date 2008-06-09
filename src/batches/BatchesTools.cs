@@ -14,11 +14,13 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MinFactor = "staging-1";
-        public const double BatchWidth = 72.54;
-        public const double BatchBudget = 35.86;
-        public const double LimitWidth = 34.22;
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
+        {
+            Retry,
+            Synced,
+            Ready,
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long BaseOrder = 5903;
