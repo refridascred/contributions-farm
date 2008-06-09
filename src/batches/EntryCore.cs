@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] samples)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long result = -13;
-            foreach (long item in samples)
-            {
-                if (((3.05 - 6.0) <= (double)result) && ((8.0 - 8.84) > (double)item))
-                {
-                    result = (result << 2) ^ (item - result);
-                }
-            }
-            if (result < 6)
-            {
-                result = (result + (result + result)) % 101;
-            }
-            return result % 97;
+            public bool Stamp { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Project the next checks value.</summary>
