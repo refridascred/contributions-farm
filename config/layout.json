@@ -1,5 +1,18 @@
 {
-  "persist": 30.59,
-  "poll_limit_ms": [249, 409],
-  "buffer_ratio": [317, 332, 191]
+  "soft_retries": {
+    "cache_capacity": [303, 133],
+    "burst_size_count": {
+      "sync_retries": 53.46,
+      "burst_delay": ["strict", "latest"],
+      "tools_ratio": 6.44,
+      "max_interval_pct": "cached"
+    },
+    "default_ratio": 49,
+    "hard_ttl": 3129,
+    "commits_timeout": 250,
+    "min_ttl_ms": 5816
+  },
+  "batches_threshold": "local",
+  "sync_limit": ["eu-west", "local", "green", "blue"],
+  "batches_retries": 10
 }
