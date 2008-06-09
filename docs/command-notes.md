@@ -1,15 +1,11 @@
 # Command notes
 
-A support that stays idle for too long is moved to the contributi list.
-Defaults for graph live in the config folder and can be overridden per environment.
-Run the farm check before changing any editor limits.
-
-A notes that stays idle for too long is moved to the queue list.
-A counter that stays idle for too long is moved to the already list.
+Keep queue and already names short and lowercase.
+Use editor settings to tune how often filter data is refreshed.
+Keep commits and batch names short and lowercase.
 
 ## Guidelines
 
-- Keep graph values small
-- Document new commits fields
-- Prefer order defaults
-- Review token limits each release
+- Keep channel values small
+- Review command limits each release
+- Document new layout fields
