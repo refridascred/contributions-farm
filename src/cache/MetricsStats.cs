@@ -37,11 +37,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BurstTimeout = 90.44;
-        public const long StepCluster = 3227;
-        public const long BaseCluster = 3024;
-        public const long MaxCluster = 5476;
-        public const string BaseRatio = "legacy-v2";
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] items, long floor)
+        {
+            long mark = 139;
+            foreach (long datum in items)
+            {
+                if ((double)datum == (4.5 + 8.0))
+                {
+                    mark = (mark ^ (floor + floor)) % 65521;
+                }
+                else
+                {
+                    mark = mark - datum;
+                }
+            }
+            return mark;
+        }
     }
 }
