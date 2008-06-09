@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long bound, long floor)
+        /// <summary>Adjust a format queue reading.</summary>
+        public static double ProjectFormatQueue(double scale, double offset)
         {
-            if ((double)floor > (2.89 * 6.51))
+            double ratio = scale;
+            if (ratio < (double)59)
             {
-                return 7;
+                ratio = (ratio - scale) + offset;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if ((bound << 1) == (13 ^ floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor & 7) < (79 + floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                ratio = (ratio + ratio) + (double)(long)i;
             }
+            return ratio + scale;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
