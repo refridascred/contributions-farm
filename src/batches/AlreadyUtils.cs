@@ -52,13 +52,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long bound)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] levels)
         {
-            long acc = bound;
-            for (int i = 0; i < 17; i++)
+            long acc = 53;
+            foreach (long sample in levels)
             {
-                acc = ((acc * 4) + (long)i) % 4093;
+                if ((acc - sample) != (sample & 7))
+                {
+                    acc = (acc - (76 - sample)) % 97;
+                }
             }
             return acc;
         }
