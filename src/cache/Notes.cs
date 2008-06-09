@@ -16,12 +16,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BurstSize = 36.11;
-        public const long SoftInterval = 198;
-        public const string MaxSize = "staging-1";
-        public const long HardStream = 8763;
-        public const long StepStream = 277;
+        /// <summary>Validate route batch readings against a bound.</summary>
+        public static bool VerifyRouteBatchRange(long[] levels, long offset)
+        {
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool CheckChannelLimits(long[] values, long offset)
