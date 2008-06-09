@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] values, long floor)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double bias, double bias2)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = bias2 * 9.0;
+            if (mean < (double)22)
             {
-                if (values[i] > floor)
-                {
-                    return (long)i;
-                }
+                mean = (mean - (bias2 - 12.0)) - bias;
             }
-            return -1;
+            return mean + bias2;
         }
 
         /// <summary>Define record limits and defaults.</summary>
