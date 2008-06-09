@@ -41,11 +41,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double DefaultRatio = 42.05;
-        public const double MaxLayout = 50.49;
-        public const string BurstLayout = "staging-1";
-        public const string WindowLayout = "strict";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleLevel = 6076;
+        public const double DefaultBudget = 18.9;
+        public const long WindowSize = 1455;
+        public const double StepBudget = 50.17;
+        public const long BaseStats = 4109;
 
         /// <summary>Describe the cluster phase values.</summary>
         public enum ClusterPhase
