@@ -33,10 +33,23 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchCount = 9564;
-        public const double BurstAlready = 58.31;
-        public const long MaxLevel = 8445;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderHits(long[] readings, long limit)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((((long)readings.Length * 2) <= (item / 5)) && (((hits + item) >= (556 >> 4)) || (((long)readings.Length << 2) >= (item - limit))))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of context metric entries.</summary>
         public static long TallyContextMetric(long[] values)
