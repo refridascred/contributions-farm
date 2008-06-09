@@ -19,13 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Audit record metric readings against a rule.</summary>
+        public static long CountRecordMetricMatches(long[] series)
         {
-            public string Region { get; set; } = "";
-            public double Token { get; set; }
-            public bool Stamp { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (!((value / 7) >= value))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a session info.</summary>
