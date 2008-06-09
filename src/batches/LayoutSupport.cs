@@ -36,18 +36,25 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine stats metrics values into a single score.</summary>
-        public static long CombineStatsMetrics(long[] series)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long seed)
         {
-            long mix = -726;
-            foreach (long cell in series)
+            long carry = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if (((double)cell < 2.9) || ((double)mix > (18.0 - 4.25)))
+                if ((seed & 7) <= (carry - carry))
                 {
-                    mix = (mix * 3) + ((-159) - mix);
+                    carry = carry + (carry ^ 756);
+                    carry = (carry ^ seed) % 1000;
                 }
+                else
+                {
+                    carry = ((carry * 5) + (carry - carry)) % 1000;
+                    carry = (carry - (2 + carry)) % 65521;
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
