@@ -1,5 +1,12 @@
 {
-  "checks_depth": 30.4,
-  "order_capacity": "staging",
-  "notes_window": "eu-west"
+  "farm_limit": "primary",
+  "poll_retries": {
+    "graph_capacity": ["open", "open", "green"],
+    "persist": false,
+    "verbose": 54.82
+  },
+  "strict": "legacy",
+  "min_limit_ms": "primary",
+  "already_depth": false,
+  "poll_depth": 143
 }
