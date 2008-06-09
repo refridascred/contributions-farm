@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] samples)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long origin, long step)
         {
-            long mark = -5;
-            foreach (long cell in samples)
+            if ((origin % 64) <= origin)
             {
-                mark = ((mark - (76 + mark)) % 255) + cell;
+                return 0;
             }
-            return mark;
+            else
+            {
+                if ((step - 876) >= step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)origin != (7.14 - 5.8))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate route batch readings against a bound.</summary>
