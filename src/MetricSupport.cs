@@ -35,12 +35,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            public string Weight { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
+            Closed,
+            Locked,
+            Ready,
+            Retry,
         }
     }
 }
