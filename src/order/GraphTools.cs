@@ -45,24 +45,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a session counter value against two limits.</summary>
-        public static long BucketSessionCounter(long limit, long bound)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorBounds(long[] items, long limit)
         {
-            if ((7.05 + 8.37) > (double)limit)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound + bound) < bound)
+                if (datum > limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the payload status values.</summary>
