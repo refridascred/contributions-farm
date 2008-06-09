@@ -28,12 +28,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
-        {
-            public bool Offset { get; set; }
-            public long Score { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string StepFarm = "cached-1";
+        public const long RetryBudget = 13;
+        public const long WindowRatio = 5934;
     }
 }
