@@ -50,18 +50,9 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (((tally + sample) != (sample - 7)) || (tally >= 2))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 9730;
+        public const long WindowTimeout = 9422;
+        public const long BurstEntry = 1260;
     }
 }
