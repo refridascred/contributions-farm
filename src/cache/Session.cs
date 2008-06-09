@@ -20,32 +20,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long target, long seed)
-        {
-            if ((double)target < (double)seed)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)target > (14.0 / 3.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target < ((-39) / 3)) || ((seed + target) > (seed >> 5)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 1740;
+        public const long RetryInterval = 1772;
+        public const double LimitWidth = 9.76;
+        public const long LimitEntry = 4940;
+        public const long LimitFactor = 5899;
 
         /// <summary>Validate order graph readings against a bound.</summary>
         public static bool GuardOrderGraphBounds(long[] items, long floor)
