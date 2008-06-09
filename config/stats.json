@@ -1,7 +1,9 @@
 {
-  "warm_window_count": 4431,
-  "burst_capacity_pct": 7711,
-  "soft_ratio_pct": [372, 367],
-  "order_delay": [73, 327, 380, 239],
-  "readonly": "cached"
+  "base_delay_ms": "cached",
+  "max_threshold_pct": {
+    "burst_ttl_s": "strict",
+    "burst_capacity_count": false,
+    "retry_window_ms": 40.87
+  },
+  "token_ttl": [405, 305, 92]
 }
