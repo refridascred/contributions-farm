@@ -33,15 +33,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Roll a farm layout counter forward.</summary>
-        public static long IterateFarmLayout(long origin)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] values)
         {
-            long state = origin;
-            for (int i = 0; i < 6; i++)
+            long mark = 29;
+            foreach (long reading in values)
             {
-                state = ((state * 3) + (long)i) % 4093;
+                for (int i = 0; i < 3; i++)
+                {
+                    mark = (((mark ^ (mark >> 4)) % 97) - (long)i) ^ reading;
+                }
+                mark = (mark + (mark & 127)) % 4096;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
