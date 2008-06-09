@@ -29,11 +29,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double DefaultInterval = 73.18;
-        public const string StepBuffer = "fallback";
-        public const double MinBuffer = 66.59;
-        public const long MaxBuffer = 9564;
-        public const double IdleBuffer = 26.3;
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
+        {
+            public bool Rank { get; set; }
+            public long Label { get; set; }
+            public bool Weight { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
