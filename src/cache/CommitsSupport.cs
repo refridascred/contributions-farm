@@ -66,12 +66,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] levels)
         {
-            Stale,
-            Locked,
-            Idle,
+            long result = 2;
+            foreach (long datum in levels)
+            {
+                result = result - datum;
+            }
+            return result;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
