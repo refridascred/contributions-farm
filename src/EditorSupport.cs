@@ -73,15 +73,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of metric entry readings.</summary>
-        public static long WeighMetricEntry(long[] series)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiGaps(long[] values)
         {
-            long carry = 554;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long value in values)
             {
-                carry = carry - (sample ^ 426);
+                if ((((value >> 5) <= tally) && ((double)2 < (double)tally)) && ((double)tally != (double)value))
+                {
+                    tally = tally + 3;
+                }
             }
-            return carry % 4096;
+            return tally;
         }
     }
 }
