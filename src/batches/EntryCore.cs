@@ -60,39 +60,10 @@ namespace Common.Utilities
             return mean + (double)1;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long limit, long origin)
-        {
-            long bound = limit ^ origin;
-            if ((bound + origin) <= limit)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin / 8) == (limit * 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit + origin) == (bound % 97))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin % 3) == (76 + origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardBudget = 8460;
+        public const long LimitPayload = 668;
+        public const string MinTimeout = "stable-edge";
+        public const long MinFactor = 3585;
     }
 }
