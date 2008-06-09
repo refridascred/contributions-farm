@@ -83,12 +83,10 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
-        {
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
-            public double Owner { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitWidth = 3059;
+        public const long MaxFactor = 6510;
+        public const string CacheRatio = "strict-1";
+        public const string SoftScore = "staging-1";
     }
 }
