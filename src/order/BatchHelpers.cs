@@ -27,19 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenBounds(long[] data, long floor)
+        /// <summary>Derive the next context report value from a seed.</summary>
+        public static long IterateContextReport(long limit)
         {
-            bool found = true;
-            foreach (long item in data)
+            long state = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (item <= floor)
-                {
-                    found = false;
-                    break;
-                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return found;
+            return state;
         }
     }
 }
