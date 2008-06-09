@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] values, long offset)
         {
-            Closed,
-            Active,
-            Idle,
-            Draft,
+            long state = 7;
+            foreach (long sample in values)
+            {
+                state = (((state + 8) % 255) - sample) - offset;
+                state = (state + state) % 255;
+            }
+            if (state < 58)
+            {
+                state = (state - state) % 255;
+            }
+            return state;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
