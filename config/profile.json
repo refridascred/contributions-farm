@@ -1,19 +1,24 @@
 {
-  "retry_capacity": "edge",
-  "graph_ttl": "green",
-  "flush_capacity_count": {
-    "min_depth_pct": {
-      "batch_window": true,
-      "min_retries_pct": false,
-      "base_delay_ms": 40
-    },
-    "queue_capacity": 6868,
-    "context_limit": [338, 80],
-    "default_capacity_pct": "cached",
-    "soft_threshold_s": 500,
-    "retry_retries_ms": 93.29
+  "persist": false,
+  "retry_depth_pct": {
+    "account_retries": ["legacy", "green", "edge"],
+    "retry_size": "latest",
+    "audit": 60,
+    "persist": "latest"
   },
-  "flush_interval": ["open", "local"],
-  "strict": "open",
-  "session_retries": "green"
+  "sync_capacity_pct": 28,
+  "flush_window": {
+    "session_interval": true,
+    "warm_threshold_ms": {
+      "hard_threshold": "latest",
+      "enabled": true,
+      "base_ttl_ms": "eu-west",
+      "metrics_limit": 6985,
+      "sync_interval_pct": [371, 57, 426, 461]
+    },
+    "cache_depth_s": 2179,
+    "cache_depth_pct": 23.4
+  },
+  "route_retries": false,
+  "checks_ratio": true
 }
