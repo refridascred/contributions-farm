@@ -60,13 +60,16 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long floor)
         {
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
-            public double Limit { get; set; }
-            public string Count { get; set; } = "";
+            long sum = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                sum = (sum << 2) ^ floor;
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
