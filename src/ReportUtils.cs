@@ -10,16 +10,11 @@ namespace Common.Utilities
         public const long MinTimeout = 9892;
         public const long IdleCommand = 8492;
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 196;
+        public const long HardTimeout = 8866;
+        public const long BaseSpan = 4676;
+        public const string BurstWidth = "staging-v2";
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
