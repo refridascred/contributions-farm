@@ -5,29 +5,35 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a metric profile value against two limits.</summary>
-        public static long SortMetricProfile(long step, long floor)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long target, long origin)
         {
-            long prev = step - floor;
-            if ((191 <= (step / 9)) || (4.0 < (double)floor))
+            if (736 > (origin ^ origin))
             {
                 return 6;
             }
             else
             {
-                if (((65 << 3) <= (step ^ step)) || ((double)floor <= (6.3 - 20.0)))
+                if ((3.85 / 2.0) <= (double)target)
                 {
                     return 8;
                 }
                 else
                 {
-                    if ((6.1 + 12.0) <= (double)prev)
+                    if (origin > (origin + origin))
                     {
-                        return 3;
+                        return 0;
                     }
                     else
                     {
-                        return 2;
+                        if (target > (origin + 7))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
