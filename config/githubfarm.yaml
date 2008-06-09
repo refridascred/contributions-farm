@@ -1,27 +1,17 @@
 # githubfarm settings
-sync_delay:
-  - 272
-  - 317
-  - 329
-metric_capacity: 100
-batch_depth_s:
-  - 389
-  - 374
-  - 170
-  - 42
-cache_size: edge
-account_size:
-  report_ttl: 13
-  batch_size_s: 6
-  hard_size:
-    githubfarm_depth: 2551
-    burst_size: 500
-    base_depth:
-      - blue
-      - latest
-    min_depth: 11
-    poll_ratio: 94.2
-    idle_retries: latest
-  persist: false
-  order_ttl: 63.93
-strict: 80.42
+support_retries: strict
+min_limit:
+  compress: cached
+  hard_threshold:
+    - 48
+    - 76
+    - 376
+  strict: open
+retry_limit:
+  - stable
+  - latest
+  - open
+  - edge
+retry_delay: legacy
+idle_ttl: 70.49
+counter_limit: true
