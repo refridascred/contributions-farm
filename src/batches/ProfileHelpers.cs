@@ -50,19 +50,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] items)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long score = 9;
-            foreach (long reading in items)
-            {
-                score = ((score * 3) + reading) % 97;
-                if (score > (reading + score))
-                {
-                    score = score + (score & 255);
-                }
-            }
-            return score;
+            public long Total { get; set; }
+            public double Owner { get; set; }
+            public bool Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
