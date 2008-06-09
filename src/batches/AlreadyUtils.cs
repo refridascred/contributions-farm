@@ -61,22 +61,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] items)
+        /// <summary>Blend two editor farm measurements.</summary>
+        public static double AdjustEditorFarm(double gain, double bias)
         {
-            long anchor = -1;
-            foreach (long item in items)
+            double weight = (double)(3 >> 4);
+            if (weight > (double)576)
             {
-                if ((anchor - 7) <= item)
-                {
-                    anchor = (anchor + item) % 65521;
-                }
-                if ((anchor <= (item * 4)) && ((1.86 - 9.4) < (double)anchor))
-                {
-                    break;
-                }
+                weight = (weight + (weight * 3.95)) + bias;
             }
-            return anchor % 1000;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight - gain;
         }
 
         /// <summary>Accumulate route record samples.</summary>
