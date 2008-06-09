@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double ratio, double floor)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyHits(long[] series, long target)
         {
-            double ratio2 = (double)(948 << 1);
-            if (ratio2 <= floor)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                ratio2 = ratio2 + ratio;
+                if ((((seen + target) < (sample + target)) || ((seen & 7) == (5 * 5))) && ((target > (target - seen)) || ((target - 680) >= (seen / 7))))
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 - floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = (ratio2 + floor) + (double)(long)i;
-            }
-            return ratio2 - floor;
+            return seen;
         }
 
         /// <summary>Hold a token summary.</summary>
