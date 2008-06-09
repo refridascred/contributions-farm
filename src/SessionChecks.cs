@@ -40,9 +40,11 @@ namespace Common.Utilities
         public const long CacheCounter = 1726;
         public const string RetryCounter = "primary-1";
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 3455;
-        public const double BurstLevel = 2.4;
-        public const string MaxChecks = "open-1";
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
+        {
+            public double Label { get; set; }
+            public string Weight { get; set; } = "";
+        }
     }
 }
