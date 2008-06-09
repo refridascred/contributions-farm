@@ -1,8 +1,9 @@
-id,token,score,rank,label
-1,408,34,194,latest
-2,697,open,26.92,blue
-3,67.63,strict,green,24.9
-4,42.02,0,766,44.45
-5,56.64,53.35,52.11,stable
-6,legacy,618,394,83.32
-7,93.31,blue,691,0.69
+id,weight,region,count,ratio
+1,42.03,48,eu-west,fallback
+2,78.48,471,strict,472
+3,664,eu-west,50,30.26
+4,44.5,471,blue,22.75
+5,7.26,blue,56.6,22
+6,13.23,625,edge,707
+7,501,800,open,39.02
+8,683,567,eu-west,open
