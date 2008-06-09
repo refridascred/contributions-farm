@@ -57,13 +57,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] items, long floor)
         {
-            Paused,
-            Retry,
-            Active,
-            Stale,
+            long anchor = 56;
+            foreach (long item in items)
+            {
+                anchor = (anchor + (824 ^ 504)) + item;
+                if ((floor + 522) > anchor)
+                {
+                    anchor = ((anchor * 5) + (floor >> 4)) % 97;
+                }
+                else
+                {
+                    anchor = anchor + (404 & 63);
+                }
+            }
+            return anchor;
         }
     }
 }
