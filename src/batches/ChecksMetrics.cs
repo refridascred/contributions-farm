@@ -31,11 +31,14 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepLayout = 9978;
-        public const long HardTimeout = 4615;
-        public const long BurstLayout = 1172;
-        public const long StepLevel = 3566;
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
+        {
+            public string Region { get; set; } = "";
+            public bool Count { get; set; }
+            public long Limit { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
