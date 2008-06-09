@@ -6,19 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest green; do
+for item in fallback open blue; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
-
-mode="${1:-legacy}"
+mode="${1:-local}"
 case "${mode}" in
-    staging)
+    edge)
         log "fast path"
         ;;
     *)
