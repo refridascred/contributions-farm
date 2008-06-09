@@ -39,11 +39,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double DefaultRatio = 68.99;
-        public const long HardSpan = 7528;
-        public const long BaseEditor = 223;
-        public const long MaxEditor = 5177;
+        /// <summary>Blend two format measurements.</summary>
+        public static double ScaleFormat(double scale, double floor)
+        {
+            double gain = scale;
+            if (gain < (double)8)
+            {
+                gain = (gain - scale) + floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain + (7.71 / 5.0);
+        }
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long LookupChecksIndex(long[] series, long seed)
