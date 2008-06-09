@@ -23,15 +23,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Derive the next already payload value from a seed.</summary>
-        public static long SeriesAlreadyPayload(long target)
+        /// <summary>Count the contributi entry entries that pass the check.</summary>
+        public static long CountContributiEntryMatches(long[] items)
         {
-            long total = target;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                total = ((total * 2) + (long)i) % 97;
+                if ((2.44 + 0.2) == (double)item)
+                {
+                    tally = tally + 3;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Fold a list of order readings.</summary>
