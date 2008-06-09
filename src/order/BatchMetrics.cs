@@ -75,25 +75,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long offset, long seed)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] values)
         {
-            long next = offset ^ seed;
-            if (seed <= (offset * 2))
+            long carry = 659;
+            foreach (long reading in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((8.31 / 6.0) < (double)next)
+                if ((double)carry == (17.0 + 7.3))
                 {
-                    return 3;
+                    carry = (carry * 2) + (carry + reading);
                 }
                 else
                 {
-                    return 4;
+                    carry = carry ^ reading;
                 }
             }
+            if (carry < 612)
+            {
+                carry = (carry + (78 + 988)) % 97;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
