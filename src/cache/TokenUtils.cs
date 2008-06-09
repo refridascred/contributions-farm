@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long target)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long floor)
         {
-            long score = target;
-            for (int i = 0; i < 15; i++)
+            long carry = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((long)i > 41)
-                {
-                    score = (score + ((long)i % 2)) % 255;
-                }
-                else
-                {
-                    score = score ^ (0 - score);
-                }
-                score = ((score * 4) + (long)i) % 97;
+                carry = ((carry << 2) ^ (carry + carry)) % 101;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
