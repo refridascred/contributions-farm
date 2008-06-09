@@ -1,6 +1,11 @@
-id,region,active,score,ratio
-1,56.32,306,24.12,640
-2,primary,2.05,92.55,644
-3,86.11,87.92,360,77.99
-4,501,green,green,53.27
-5,12.05,38.57,fallback,61.76
+id,rank,state,owner
+1,eu-west,624,976
+2,latest,legacy,57.93
+3,strict,776,974
+4,94.99,471,primary
+5,73.4,0.69,565
+6,598,3.34,527
+7,402,816,439
+8,30.88,12.35,64.67
+9,13.98,967,primary
+10,eu-west,899,legacy
