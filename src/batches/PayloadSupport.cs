@@ -14,21 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] series)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 273;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = ((sum + (sum + sum)) % 255) ^ datum;
             }
-            return seen;
+            if (sum < 14)
+            {
+                sum = sum + (sum / 4);
+            }
+            return sum;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
