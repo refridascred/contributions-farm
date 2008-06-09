@@ -52,23 +52,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((count ^ datum) <= 6)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBudget = 8770;
+        public const long HardBatch = 5724;
+        public const long BurstBatch = 9932;
+        public const long CacheDepth = 62;
+        public const string MaxBatch = "stable-v2";
 
         /// <summary>Define support limits and defaults.</summary>
         public const double DefaultLevel = 64.79;
