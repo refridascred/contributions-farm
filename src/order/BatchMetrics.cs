@@ -30,38 +30,15 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long bound, long step)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double gain, double bias)
         {
-            if ((3.9 * 8.53) <= (12.0 - 15.0))
+            double drift = (double)950 * 3.3;
+            if (drift < bias)
             {
-                return 0;
+                drift = (drift - bias) + gain;
             }
-            else
-            {
-                if ((66 - 4) <= ((-87) + step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!(4 > (bound / 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((step % 100) >= bound) || ((475 % 24) < (step / 9)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return drift + bias;
         }
 
         /// <summary>Combine context values into a single score.</summary>
