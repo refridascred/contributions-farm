@@ -13,10 +13,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstWidth = 7061;
-        public const string LimitFarm = "staging-1";
-        public const string MinInterval = "alpha-v2";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseLevel = 5374;
+        public const long HardDepth = 2761;
+        public const long HardTimeout = 5302;
+        public const double CacheChannel = 92.5;
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long ClassifyGithubfarm(long floor, long floor2)
