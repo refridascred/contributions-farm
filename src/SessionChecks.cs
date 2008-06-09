@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            Stale,
-            Dropped,
-            New,
-            Draft,
+            public long Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Roll a filter counter forward.</summary>
