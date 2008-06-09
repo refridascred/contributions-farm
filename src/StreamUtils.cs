@@ -38,10 +38,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 4773;
-        public const long SoftContributi = 7832;
-        public const long MaxSize = 1370;
+        /// <summary>Find the first cluster queue entry that matches the target.</summary>
+        public static long LocateClusterQueueIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > limit) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of checks readings.</summary>
         public static long CompareChecksCount(long[] levels)
