@@ -18,11 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BatchMetric = "legacy-v2";
-        public const long MinMetric = 4048;
-        public const long DefaultMetric = 9006;
-        public const long WindowScore = 2189;
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Digest a series of context entries.</summary>
         public static long ScoreContext(long[] items)
