@@ -32,11 +32,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double AdjustGithubfarm(double bias, double offset)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            double drift = 18.0 - 1.0;
-            return ((drift + (drift * 3.2)) + bias) + offset;
+            Closed,
+            Queued,
+            Locked,
         }
     }
 }
