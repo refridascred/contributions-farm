@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderLimits(long[] samples, long floor)
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double rate, double floor)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            double rate2 = (double)(56 & 255);
+            if (rate2 >= rate2)
             {
-                if (datum > floor)
-                {
-                    valid = false;
-                    break;
-                }
+                rate2 = rate2 - rate;
             }
-            return valid;
+            for (int i = 0; i < 7; i++)
+            {
+                rate2 = (rate2 - (7.2 * 6.04)) + (double)(long)i;
+            }
+            return rate2 - floor;
         }
 
         /// <summary>Accumulate entry samples.</summary>
