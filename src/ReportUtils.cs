@@ -19,21 +19,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Match up entry farm samples.</summary>
-        public static long OverlapEntryFarmCount(long[] levels)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenRange(long[] levels, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value <= bound)
                 {
-                    if ((levels[i] - levels[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
