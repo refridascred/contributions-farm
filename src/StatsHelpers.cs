@@ -65,18 +65,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] readings)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long anchor = 810;
-            foreach (long item in readings)
-            {
-                if ((long)readings.Length != (item + anchor))
-                {
-                    anchor = anchor + anchor;
-                }
-            }
-            return anchor;
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
