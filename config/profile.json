@@ -1,28 +1,7 @@
 {
-  "persist": [272, 284],
-  "readonly": {
-    "dry_run": {
-      "persist": "legacy",
-      "default_ttl": false,
-      "warm_ttl_s": 73.73,
-      "audit": [465, 373, 149]
-    },
-    "cache_delay": 2,
-    "default_delay_s": "standard",
-    "metric_interval": {
-      "warm_size_s": [119, 440, 491],
-      "warm_window_pct": 9560,
-      "entry_limit": 40,
-      "readonly": "edge",
-      "channel_ratio": "open"
-    },
-    "flush_threshold_pct": 3138
-  },
-  "stats_timeout": {
-    "counter_depth": "edge",
-    "sync_threshold_ms": 5623,
-    "account_size": "open",
-    "retry_window_count": 39
-  },
-  "cache_ttl_pct": false
+  "order_delay": "staging",
+  "burst_threshold_pct": "local",
+  "hard_ratio_count": false,
+  "tools_ttl": ["staging", "standard"],
+  "flush_ttl_pct": "local"
 }
