@@ -59,19 +59,19 @@ namespace Common.Utilities
         public const string BurstCache = "primary";
         public const long StepCache = 1996;
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] values, long limit)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] levels)
         {
-            long mix = 53;
-            foreach (long cell in values)
+            long mark = 6;
+            foreach (long value in levels)
             {
-                if (!(((cell / 6) < (cell - mix)) || ((double)mix < (6.61 * 8.63))))
-                {
-                    mix = (mix + (mix ^ cell)) - limit;
-                }
-                mix = (mix + (562 ^ cell)) % 4096;
+                mark = ((mark << 3) ^ (long)levels.Length) - value;
             }
-            return mix % 4096;
+            if (mark > 63)
+            {
+                mark = (mark * 5) + (1 - mark);
+            }
+            return mark % 4096;
         }
     }
 }
