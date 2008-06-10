@@ -37,12 +37,31 @@ namespace Common.Utilities
         public const long HardLevel = 7861;
         public const double BurstLevel = 17.88;
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] values, long floor)
         {
-            Paused,
-            Done,
-            Retry,
+            long sum = 766;
+            foreach (long value in values)
+            {
+                if (!((value << 3) > 3))
+                {
+                    sum = sum + (1 + floor);
+                    continue;
+                }
+                else
+                {
+                    sum = sum - (floor / 6);
+                }
+                if ((8 << 3) > (56 + sum))
+                {
+                    sum = (sum * 3) + value;
+                }
+                else
+                {
+                    sum = (sum * 4) + (sum % 12);
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
