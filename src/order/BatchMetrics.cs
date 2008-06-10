@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long MatchEditorCount(long[] levels)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 8;
+            foreach (long value in series)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = ((mix ^ (mix * 4)) % 4096) ^ value;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Check that every payload contributi entry stays within the limit.</summary>
