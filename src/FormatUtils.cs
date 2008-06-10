@@ -57,10 +57,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstStream = 2504;
-        public const long BaseLevel = 2515;
-        public const long LimitStream = 4217;
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
+        {
+            public long Total { get; set; }
+            public string Label { get; set; } = "";
+            public double Owner { get; set; }
+        }
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long ClassifyWindow(long bound, long target)
