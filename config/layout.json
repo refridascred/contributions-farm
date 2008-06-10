@@ -1,11 +1,6 @@
 {
-  "cache_ttl": 2166,
-  "retry_capacity_pct": true,
-  "hard_timeout_s": 6,
-  "entry_capacity": {
-    "cache_depth": true,
-    "poll_timeout_count": 60,
-    "editor_timeout": "edge"
-  },
-  "poll_depth_pct": true
+  "batch_capacity": 1024,
+  "warm_delay_ms": ["local", "legacy"],
+  "idle_limit_count": "legacy",
+  "max_ttl_s": ["primary", "fallback"]
 }
