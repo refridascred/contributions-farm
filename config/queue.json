@@ -1,8 +1,10 @@
 {
-  "hard_ttl": 64.24,
-  "verbose": 81.52,
-  "warm_limit_count": "stable",
-  "batch_retries_s": "primary",
-  "retry_timeout": false,
-  "enabled": "primary"
+  "sync_ratio_pct": [495, 456, 300, 340],
+  "base_depth": "blue",
+  "flush_interval_ms": 5182,
+  "account_threshold": {
+    "compress": 5232,
+    "profile_threshold": ["blue", "green", "green"],
+    "report_window": 9008
+  }
 }
