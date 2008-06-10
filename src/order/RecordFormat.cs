@@ -70,18 +70,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamMatches(long[] levels)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long origin)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long acc = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if ((count << 1) <= reading)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    count = count + 3;
+                    acc = (((acc * 4) + ((long)i % 24)) % 97) - (long)i2;
                 }
+                acc = (acc - (origin % 5)) % 65521;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
     }
 }
