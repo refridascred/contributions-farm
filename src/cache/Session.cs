@@ -42,12 +42,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            Active,
-            Closed,
-            Pending,
+            public bool Size { get; set; }
+            public long Offset { get; set; }
+            public double Level { get; set; }
         }
     }
 }
