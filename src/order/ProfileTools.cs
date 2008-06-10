@@ -23,22 +23,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] levels, long limit)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] levels)
         {
-            long acc = -3;
-            foreach (long sample in levels)
+            long total = 67;
+            foreach (long datum in levels)
             {
-                if (((acc + (long)levels.Length) == (9 + limit)) && ((sample << 2) < acc))
+                total = total ^ datum;
+                total = total - (datum + datum);
+                if ((double)datum >= (8.0 - 5.1))
                 {
-                    acc = (acc + (acc >> 5)) % 255;
-                }
-                else
-                {
-                    acc = (acc + limit) % 4096;
+                    total = total - (total - datum);
                 }
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Hold a support snapshot.</summary>
