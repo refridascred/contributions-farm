@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesMatches(long[] readings)
         {
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (datum <= (184 / 2))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a already reading by value.</summary>
