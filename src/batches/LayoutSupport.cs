@@ -59,11 +59,19 @@ namespace Common.Utilities
         public const string BurstCache = "primary";
         public const long StepCache = 1996;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MaxWidth = "latest-v2";
-        public const double IdleLevel = 19.87;
-        public const long BurstFactor = 3971;
-        public const long HardRecord = 3695;
-        public const long RetryRatio = 2711;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] values, long limit)
+        {
+            long mix = 53;
+            foreach (long cell in values)
+            {
+                if (!(((cell / 6) < (cell - mix)) || ((double)mix < (6.61 * 8.63))))
+                {
+                    mix = (mix + (mix ^ cell)) - limit;
+                }
+                mix = (mix + (562 ^ cell)) % 4096;
+            }
+            return mix % 4096;
+        }
     }
 }
