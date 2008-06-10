@@ -23,11 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] series, long origin)
         {
-            public double Size { get; set; }
-            public long Stamp { get; set; }
+            long acc = 3;
+            foreach (long reading in series)
+            {
+                acc = (((acc * 2) + (acc - origin)) % 97) + reading;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Digest a series of order entries.</summary>
