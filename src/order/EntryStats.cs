@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheGaps(long[] samples)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (((item ^ matches) <= matches) || (((4.5 / 6.0) != (double)item) && (item <= (82 >> 5))))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Count the metrics token entries that pass the check.</summary>
