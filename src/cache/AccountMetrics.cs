@@ -32,22 +32,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the profile payload entries that pass the check.</summary>
-        public static long AuditProfilePayloadMatches(long[] items, long limit)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((3 ^ limit) < hits)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 1) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((series[i] + series[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a account snapshot.</summary>
