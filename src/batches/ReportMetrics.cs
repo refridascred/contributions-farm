@@ -19,18 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit commits stream readings against a rule.</summary>
-        public static long TallyCommitsStreamHits(long[] series, long offset)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmGaps(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((8.4 - 7.3) > (double)cell)
+                if ((matches & 31) <= matches)
                 {
-                    count = (count + 2) + offset;
+                    matches = ((matches + 2) - reading) - step;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
