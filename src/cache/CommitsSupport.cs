@@ -62,11 +62,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MinRecord = 37.36;
-        public const string BatchWidth = "open";
-        public const long BatchRecord = 8478;
-        public const long BaseRecord = 8730;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatHits(long[] values)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if (item > 9)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
