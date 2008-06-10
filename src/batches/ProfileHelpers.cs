@@ -39,19 +39,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] series, long target)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long carry = 325;
-            foreach (long sample in series)
-            {
-                carry = (((carry - 586) % 101) + sample) + target;
-            }
-            if (carry > 5)
-            {
-                carry = (carry ^ (carry / 9)) % 255;
-            }
-            return carry % 97;
+            Pending,
+            Stale,
+            Queued,
+            Locked,
+            Draft,
         }
 
         /// <summary>Define already limits and defaults.</summary>
