@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const double RetryCount = 96.02;
         public const long StepCache = 2531;
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] samples, long offset)
         {
-            public string Token { get; set; } = "";
-            public bool Size { get; set; }
-            public string Flag { get; set; } = "";
-            public long Label { get; set; }
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
