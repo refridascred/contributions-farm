@@ -1,5 +1,15 @@
 {
-  "cache_capacity_s": 76.09,
-  "stats_ttl": 46.67,
-  "idle_ttl_ms": 93
+  "base_depth_s": {
+    "already_capacity": true,
+    "batches_size": 50,
+    "session_retries": {
+      "min_retries_ms": true,
+      "route_capacity": 59,
+      "cache_limit": "latest",
+      "retry_ttl_count": 5008
+    }
+  },
+  "audit": 7,
+  "payload_retries": "staging",
+  "batch_limit_s": "standard"
 }
