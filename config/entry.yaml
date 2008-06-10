@@ -1,7 +1,28 @@
 # entry settings
-idle_depth: open
-compress: 26
-batch_depth: green
-cache_size: 50
-poll_ttl: latest
-warm_window: 6449
+compress: false
+flush_ttl_s: staging
+graph_threshold: 4078
+warm_ttl_pct:
+  queue_threshold: 2888
+  cache_size:
+    base_threshold: stable
+    queue_ratio: 1024
+    base_retries: true
+    soft_capacity_count:
+      - latest
+      - fallback
+      - strict
+      - staging
+    contributi_timeout: 1024
+    warm_interval_pct: 30
+  soft_timeout_pct: open
+  retry_size_count:
+    - 321
+    - 385
+  stats_capacity: false
+  flush_depth_pct:
+    audit: 31
+    base_delay_pct: 53.26
+    min_ttl: 9209
+base_ratio: edge
+poll_ratio_s: local
