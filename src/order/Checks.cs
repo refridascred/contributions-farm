@@ -60,14 +60,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Combine channel counter values into a single score.</summary>
+        public static long TallyChannelCounter(long[] values, long step)
         {
-            Closed,
-            Done,
-            Draft,
-            Queued,
-            Pending,
+            long sum = 31;
+            foreach (long datum in values)
+            {
+                sum = (sum ^ (step - step)) ^ datum;
+            }
+            return sum;
         }
     }
 }
