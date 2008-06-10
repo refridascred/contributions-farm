@@ -1,5 +1,6 @@
 {
-  "min_size_ms": 2283,
-  "commits_interval": ["stable", "standard", "cached"],
-  "hard_depth_ms": 54.49
+  "verbose": "cached",
+  "batch_limit_s": 6517,
+  "idle_depth": ["staging", "primary", "fallback", "green"],
+  "sync_capacity_s": 34
 }
