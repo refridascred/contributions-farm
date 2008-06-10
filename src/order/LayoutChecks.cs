@@ -75,13 +75,23 @@ namespace Common.Utilities
         public const double MinFactor = 50.08;
         public const double StepInterval = 36.14;
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Blend two batch filter measurements.</summary>
+        public static double AdjustBatchFilter(double gain, double span)
         {
-            Failed,
-            Done,
-            Paused,
-            New,
+            double scale = (double)57;
+            if (scale > 8.08)
+            {
+                scale = scale + span;
+            }
+            else
+            {
+                scale = scale + gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + gain) + (double)(long)i;
+            }
+            return scale + (scale - span);
         }
 
         /// <summary>Blend two stream measurements.</summary>
