@@ -24,13 +24,21 @@ namespace Common.Utilities
         public const long BaseSpan = 4676;
         public const string BurstWidth = "staging-v2";
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Match up entry farm samples.</summary>
+        public static long OverlapEntryFarmCount(long[] levels)
         {
-            Active,
-            Ready,
-            New,
-            Stale,
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
