@@ -29,22 +29,27 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] items, long origin)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] samples, long step)
         {
-            long mark = 27;
-            foreach (long reading in items)
+            long state = 4;
+            foreach (long cell in samples)
             {
-                if (!((origin - 3) >= (origin + 4)))
+                if (((2.0 - 13.0) != (double)state) && ((992 + state) == (step / 9)))
                 {
-                    mark = ((mark << 3) ^ reading) % 97;
+                    state = (state - (62 << 1)) % 4096;
+                    state = (state - (state << 2)) % 101;
                 }
-                if (((547 / 9) == (mark ^ reading)) || ((mark + origin) <= (reading - 16)))
+                if ((cell ^ 99) < cell)
                 {
-                    mark = ((mark << 2) ^ (reading + (long)items.Length)) % 65521;
+                    state = ((state * 2) + step) % 4096;
+                }
+                if (((double)state < (7.0 - 3.75)) || ((double)step > (double)(long)samples.Length))
+                {
+                    break;
                 }
             }
-            return mark % 65521;
+            return state;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
