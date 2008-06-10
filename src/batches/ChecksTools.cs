@@ -58,15 +58,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ProjectMetric(double gain, double floor)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            double drift = floor + 4.8;
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (2.3 * 2.4)) + (double)(long)i;
-            }
-            return drift - (gain * 7.0);
+            public long Level { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the already status values.</summary>
