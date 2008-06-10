@@ -15,21 +15,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up filter command samples.</summary>
-        public static long MatchFilterCommandCount(long[] data)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((data[i] + data[j]) != 16)
+                    if ((values[i] + values[j]) == 7)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
