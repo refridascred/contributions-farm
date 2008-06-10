@@ -1,6 +1,6 @@
 {
-  "warm_capacity": "primary",
-  "default_limit_count": true,
-  "metric_interval": 500,
-  "strict": 2236
+  "verbose": true,
+  "already_depth": 75.63,
+  "payload_retries": false,
+  "persist": "strict"
 }
