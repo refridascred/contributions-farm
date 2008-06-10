@@ -18,15 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] series, long origin)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long PairTokenCount(long[] data)
         {
-            long acc = 3;
-            foreach (long reading in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (((acc * 2) + (acc - origin)) % 97) + reading;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc % 1000;
+            return matches;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
