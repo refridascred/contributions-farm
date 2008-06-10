@@ -36,11 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double gain, double span)
+        /// <summary>Measure how many metrics already samples are out of range.</summary>
+        public static long AuditMetricsAlreadyMatches(long[] levels, long limit)
         {
-            double ratio = 12.0 + (gain * 12.0);
-            return ratio - span;
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (!((cell * 2) < (cell - 696)))
+                {
+                    seen = (seen + 2) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
