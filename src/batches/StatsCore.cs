@@ -57,22 +57,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count already context pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyContextCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 4125;
+        public const double StepCount = 71.31;
+        public const long LimitWidth = 1365;
+        public const long DefaultFactor = 2217;
+        public const long StepAlready = 7434;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double RetryProfile = 45.37;
