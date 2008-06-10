@@ -27,15 +27,12 @@ namespace Common.Utilities
         public const long MaxEditor = 7278;
         public const long DefaultEditor = 429;
 
-        /// <summary>Project the next metrics command value.</summary>
-        public static double ScaleMetricsCommand(double gain, double bias)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            double gain2 = bias;
-            if (gain2 > gain)
-            {
-                gain2 = gain2 - 0.1;
-            }
-            return gain2 + bias;
+            public string Offset { get; set; } = "";
+            public bool Owner { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
