@@ -1,9 +1,6 @@
-id,owner,region,rank
-1,legacy,blue,40.52
-2,44,8.82,68.21
-3,776,cached,947
-4,81.1,740,626
-5,blue,859,784
-6,712,64.99,350
-7,33.2,23.56,82.28
-8,899,858,stable
+id,count,ratio,weight
+1,660,latest,18
+2,105,61.96,edge
+3,fallback,primary,2.98
+4,4.48,fallback,631
+5,fallback,812,standard
