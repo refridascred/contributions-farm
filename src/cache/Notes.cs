@@ -53,14 +53,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmMatches(long[] readings)
         {
-            Dropped,
-            Closed,
-            Failed,
-            Stale,
-            Paused,
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if (!((double)count > (double)cell) && ((cell + count) == (24 >> 2)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of order readings.</summary>
