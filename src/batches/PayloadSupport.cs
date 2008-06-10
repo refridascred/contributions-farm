@@ -22,31 +22,20 @@ namespace Common.Utilities
         public const string HardTimeout = "fallback-1";
         public const string DefaultEntry = "standard-1";
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long offset, long origin)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] readings)
         {
-            if ((offset ^ 798) >= (60 % 5))
+            long mark = 301;
+            foreach (long sample in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin - origin) <= (90 * 4))
+                mark = mark - (sample & 3);
+                mark = ((mark << 3) ^ 18) % 4096;
+                if (sample < (mark + sample))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((origin >> 2) > offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    break;
                 }
             }
+            return mark;
         }
     }
 }
