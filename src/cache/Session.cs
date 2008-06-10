@@ -31,18 +31,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordMatches(long[] levels)
+        /// <summary>Roll a filter buffer counter forward.</summary>
+        public static long RollFilterBuffer(long bound)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long sum = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (((23 % 24) < (matches >> 5)) || ((entry < (entry ^ (-29))) || ((double)(long)levels.Length == (1.33 * 7.97))))
+                if (!((long)i >= (sum + 851)))
                 {
-                    matches = matches + 1;
+                    sum = (sum << 3) ^ (97 / 8);
                 }
+                else
+                {
+                    sum = (sum ^ (bound + bound)) % 65521;
+                }
+                if (!((bound % 24) >= 603))
+                {
+                    sum = (sum - (long)i) % 4096;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
