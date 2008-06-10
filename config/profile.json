@@ -1,17 +1,33 @@
 {
-  "default_window_count": 30,
-  "dry_run": "strict",
-  "hard_window": 78.8,
-  "default_window_ms": {
-    "verbose": {
-      "max_interval": "fallback",
-      "base_limit_ms": 2944,
-      "stream_limit": true,
-      "burst_threshold": 772
+  "default_retries": [267, 287, 482, 438],
+  "channel_timeout": 3277,
+  "checks_timeout": 7853,
+  "retry_capacity_pct": 60,
+  "audit": {
+    "sync_threshold_ms": 76.6,
+    "flush_ttl": {
+      "soft_interval_s": 66.41,
+      "buffer_ratio": "local",
+      "enabled": ["open", "fallback", "local"],
+      "sync_ratio_s": 88,
+      "burst_window_ms": "cached",
+      "burst_depth": "cached"
     },
-    "buffer_timeout": "open",
-    "poll_limit_s": [242, 340],
-    "queue_size": ["blue", "blue", "primary"],
-    "soft_timeout_pct": [82, 478, 418, 73]
-  }
+    "session_capacity": [284, 430, 190, 201],
+    "idle_interval_ms": {
+      "commits_window": 4744,
+      "cache_retries_ms": "green",
+      "soft_threshold_s": [241, 177],
+      "idle_ratio_pct": 254,
+      "burst_timeout_ms": true,
+      "audit": 1024
+    },
+    "hard_threshold_pct": {
+      "audit": "blue",
+      "hard_size": false,
+      "route_interval": 35.13
+    },
+    "tools_capacity": "fallback"
+  },
+  "batch_depth_count": [87, 391]
 }
