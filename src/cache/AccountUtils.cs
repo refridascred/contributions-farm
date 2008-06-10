@@ -25,10 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double LimitEntry = 10.61;
-        public const double IdleDepth = 41.2;
-        public const long HardEntry = 5439;
-        public const string LimitCount = "alpha-v2";
+        /// <summary>Look up the position of a checks layout sample.</summary>
+        public static long FindChecksLayoutIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= origin) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
