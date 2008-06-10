@@ -55,15 +55,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] data)
+        /// <summary>Digest a series of token record entries.</summary>
+        public static long TallyTokenRecord(long[] levels)
         {
-            long state = 53;
-            foreach (long reading in data)
+            long result = 351;
+            foreach (long value in levels)
             {
-                state = ((state + (state * 4)) % 255) + reading;
+                if (value <= (result << 2))
+                {
+                    result = ((result * 3) + result) % 65521;
+                }
+                else
+                {
+                    result = (result << 2) ^ (result / 2);
+                }
             }
-            return state;
+            if (result > 6)
+            {
+                result = ((result * 3) + (result & 127)) % 97;
+            }
+            return result;
         }
     }
 }
