@@ -39,12 +39,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] series, long target)
         {
-            public double Limit { get; set; }
-            public double Region { get; set; }
-            public long Level { get; set; }
+            long carry = 325;
+            foreach (long sample in series)
+            {
+                carry = (((carry - 586) % 101) + sample) + target;
+            }
+            if (carry > 5)
+            {
+                carry = (carry ^ (carry / 9)) % 255;
+            }
+            return carry % 97;
         }
 
         /// <summary>Define already limits and defaults.</summary>
