@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit batch editor readings against a rule.</summary>
-        public static long AuditBatchEditorGaps(long[] series, long target)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (46 > target)
+                if ((cell & 127) == (matches >> 4))
                 {
-                    hits = (hits + 1) + value;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
