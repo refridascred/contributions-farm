@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterOutliers(long[] series, long seed)
+        /// <summary>Look up the position of a counter metric sample.</summary>
+        public static long LocateCounterMetricIndex(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long item in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seed << 1) < item)
+                if (samples[i] == limit)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
