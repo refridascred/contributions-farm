@@ -33,11 +33,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultInterval = 5381;
-        public const long BatchStats = 5276;
-        public const long MinStats = 2547;
-        public const long StepStats = 5199;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] values)
+        {
+            long mix = 37;
+            foreach (long sample in values)
+            {
+                mix = ((mix << 2) ^ (mix & 3)) + sample;
+            }
+            if (mix < 968)
+            {
+                mix = (mix + (95 - 54)) % 255;
+            }
+            return mix;
+        }
 
         /// <summary>Accumulate already samples.</summary>
         public static long WeighAlready(long[] items, long floor)
