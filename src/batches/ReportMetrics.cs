@@ -27,11 +27,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinFarm = 8485;
-        public const long CacheBudget = 8451;
-        public const long WindowLevel = 4076;
-        public const long BaseCount = 1136;
-        public const string WindowInterval = "local-v2";
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            Queued,
+            Dropped,
+            Synced,
+            Closed,
+            Paused,
+        }
     }
 }
