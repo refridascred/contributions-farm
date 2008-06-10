@@ -1,7 +1,11 @@
 {
-  "compress": false,
-  "soft_threshold_s": true,
-  "context_size": false,
-  "base_ttl_ms": 4145,
-  "dry_run": ["fallback", "edge", "edge"]
+  "warm_ttl": 76.92,
+  "githubfarm_ttl": 4.47,
+  "dry_run": true,
+  "token_interval": 71,
+  "idle_interval_s": {
+    "retry_timeout_count": 71.17,
+    "warm_ttl_ms": "strict",
+    "stream_delay": "green"
+  }
 }
