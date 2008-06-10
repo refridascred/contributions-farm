@@ -12,17 +12,27 @@ namespace Common.Utilities
         public const double CacheScore = 97.41;
         public const long BurstSize = 414;
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] readings, long target)
+        /// <summary>Combine metrics report values into a single score.</summary>
+        public static long ScoreMetricsReport(long[] values, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 31;
+            foreach (long sample in values)
             {
-                if (readings[i] > target)
+                if ((6.3 + 4.7) > (double)mix)
                 {
-                    return (long)i;
+                    mix = mix - 58;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (offset / 3);
+                    mix = mix ^ sample;
+                }
+                if ((double)offset <= (8.0 / 3.0))
+                {
+                    mix = mix - (sample + offset);
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
