@@ -47,19 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] levels, long seed)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long mark = 689;
-            foreach (long item in levels)
-            {
-                mark = mark ^ 28;
-                if (8 > (item - seed))
-                {
-                    mark = mark ^ (mark / 5);
-                }
-            }
-            return mark % 1000;
+            Pending,
+            Queued,
+            Dropped,
         }
     }
 }
