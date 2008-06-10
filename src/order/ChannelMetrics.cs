@@ -19,22 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] values, long limit)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long acc = 44;
-            foreach (long sample in values)
-            {
-                if ((double)acc < (11.0 + 1.0))
-                {
-                    acc = ((acc ^ (sample ^ sample)) % 4096) - limit;
-                }
-                else
-                {
-                    acc = (acc * 5) + 3;
-                }
-            }
-            return acc % 1000;
+            public long Label { get; set; }
+            public bool Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the metric state values.</summary>
