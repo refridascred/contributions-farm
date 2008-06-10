@@ -50,19 +50,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphLimits(long[] values, long offset)
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double rate, double bias)
         {
-            bool valid = true;
-            foreach (long value in values)
+            double ratio = (double)(51 >> 3);
+            if (ratio >= (rate - bias))
             {
-                if (value >= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio = ratio + ratio;
             }
-            return valid;
+            else
+            {
+                ratio = ratio - (rate / 6.0);
+            }
+            return ratio - (double)(-305);
         }
 
         /// <summary>Hold a format info.</summary>
