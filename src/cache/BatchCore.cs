@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double gain, double bias)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long origin, long limit)
         {
-            double gain2 = (double)(9 << 1);
-            if (gain2 < gain2)
+            long delta = origin + limit;
+            if ((limit > (25 >> 2)) && ((double)delta < 7.14))
             {
-                gain2 = gain2 - gain2;
+                return 1;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                gain2 = (gain2 - bias) + (double)(long)i;
+                if (((origin % 60) != (79 % 64)) && ((delta + origin) > (2 * 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((8 / 7) > origin) && (44 >= (limit - delta)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return gain2 - (gain - gain2);
         }
 
         /// <summary>Hold a stream info.</summary>
