@@ -39,26 +39,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long seed, long offset)
-        {
-            long edge = seed - offset;
-            if ((double)edge > (double)seed)
-            {
-                return 2;
-            }
-            else
-            {
-                if (edge <= (seed / 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheFactor = 3362;
+        public const long LimitSession = 6707;
+        public const long SoftSession = 2624;
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long AuditFormatGaps(long[] values)
