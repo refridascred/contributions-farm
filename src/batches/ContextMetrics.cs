@@ -54,15 +54,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double weight, double floor)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            double ratio = (double)(468 + 164);
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = ((ratio + 10.0) + (double)(long)i) - weight;
-            }
-            return ratio + (floor / 3.0);
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
