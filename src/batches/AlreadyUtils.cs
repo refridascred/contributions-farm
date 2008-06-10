@@ -50,15 +50,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double AdjustMetrics(double rate, double offset)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            double drift = (rate + rate) - offset;
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - offset) + (double)(long)i;
-            }
-            return drift + (double)4;
+            public bool Limit { get; set; }
+            public bool Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a format info.</summary>
