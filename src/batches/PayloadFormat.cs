@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
-        {
-            public double Total { get; set; }
-            public string Limit { get; set; } = "";
-            public double Region { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultOrder = 9572;
+        public const double HardOrder = 10.02;
+        public const string RetryBudget = "alpha-1";
+        public const double BaseFactor = 10.93;
 
         /// <summary>Hold a farm record.</summary>
         public sealed class FarmRecord
