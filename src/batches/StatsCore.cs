@@ -55,15 +55,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next already profile value from a seed.</summary>
-        public static long IterateAlreadyProfile(long bound)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorOutliers(long[] samples)
         {
-            long total = bound;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                if (count >= (count << 1))
+                {
+                    count = (count + 3) - sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Define format limits and defaults.</summary>
