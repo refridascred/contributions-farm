@@ -19,19 +19,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] readings, long target)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long floor, long step)
         {
-            long total = 19;
-            foreach (long value in readings)
+            long slot = floor ^ step;
+            if (((61 - floor) >= 82) || ((6 ^ step) != (slot - (-338))))
             {
-                total = ((total ^ (target & 255)) % 255) ^ value;
+                return 3;
             }
-            if (total > 0)
+            else
             {
-                total = (total + (total << 2)) % 255;
+                if (!((double)floor < 2.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor <= (step & 3)) || ((step - floor) <= (floor + slot)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return total % 4096;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
