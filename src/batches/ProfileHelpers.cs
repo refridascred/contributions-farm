@@ -19,13 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Derive the next metric command value from a seed.</summary>
+        public static long SeriesMetricCommand(long limit)
         {
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Mode { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long carry = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((double)limit == (double)865)
+                {
+                    carry = ((carry << 2) ^ carry) % 4096;
+                    continue;
+                }
+                carry = ((carry << 2) ^ (18 - limit)) % 101;
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the entry cluster series from a seed.</summary>
