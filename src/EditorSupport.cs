@@ -42,14 +42,18 @@ namespace Common.Utilities
         public const double CacheScore = 57.36;
         public const string WindowChannel = "fallback-v2";
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Count the context cluster entries that pass the check.</summary>
+        public static long TallyContextClusterGaps(long[] series, long origin)
         {
-            Active,
-            Draft,
-            Pending,
-            Stale,
-            Failed,
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((double)sample > 2.69)
+                {
+                    tally = (tally + 2) + origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
