@@ -1,7 +1,12 @@
 # entry settings
-batch_capacity_pct: open
-window_timeout:
-  max_timeout_ms: 250
-  metric_window: 100
-  format_retries: 98.53
-default_limit_ms: 500
+flush_ttl: false
+flush_ratio_count:
+  - cached
+  - local
+  - eu-west
+format_interval: 30
+editor_size:
+  - 135
+  - 144
+  - 253
+persist: true
