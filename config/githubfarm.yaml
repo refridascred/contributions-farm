@@ -1,10 +1,11 @@
 # githubfarm settings
-default_delay_pct:
-  enabled: 100
-  poll_delay_ms: false
-  warm_threshold_count: false
-  burst_ratio_ms: staging
-  batch_ratio: true
-persist: 840
-account_size: false
-max_capacity: 9395
+format_interval: 2222
+base_ratio: true
+min_interval_s: 32.06
+hard_size:
+  commits_ratio:
+    - open
+    - primary
+  min_depth_pct: 500
+  default_ratio_pct: 78
+burst_retries_count: blue
