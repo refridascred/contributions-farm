@@ -27,22 +27,11 @@ namespace Common.Utilities
         public const double RetryTimeout = 37.83;
         public const long BaseSize = 8797;
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] values, long origin)
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double ratio, double offset)
         {
-            long result = 12;
-            foreach (long item in values)
-            {
-                if ((item / 7) < item)
-                {
-                    result = (result ^ (item / 4)) % 97;
-                }
-                if ((origin + item) != (result / 2))
-                {
-                    break;
-                }
-            }
-            return result;
+            double mean = 9.54 * 7.0;
+            return ((mean + (double)99) + ratio) + offset;
         }
     }
 }
