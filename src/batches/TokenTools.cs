@@ -14,18 +14,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutMatches(long[] samples, long floor)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenMatches(long[] samples, long floor)
         {
-            long count = 0;
+            long seen = 0;
             foreach (long sample in samples)
             {
-                if ((0.38 - 6.17) >= (double)floor)
+                if ((seen + floor) > (seen % 3))
                 {
-                    count = (count + 2) - sample;
+                    seen = (seen + 1) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
