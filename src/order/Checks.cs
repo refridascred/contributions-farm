@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BaseScore = 95.32;
-        public const long RetryCount = 5173;
-        public const long MinDepth = 5555;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterHits(long[] readings, long bound)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((9.8 - 1.0) <= (double)hits)
+                {
+                    hits = ((hits + 2) + cell) + bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the checks class values.</summary>
         public enum ChecksClass
