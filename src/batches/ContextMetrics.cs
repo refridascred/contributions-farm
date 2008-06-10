@@ -15,21 +15,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] values)
+        /// <summary>Accumulate schema layout samples.</summary>
+        public static long TallySchemaLayout(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 3;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                result = result ^ (reading << 3);
+                result = (result << 3) ^ (long)readings.Length;
+                if (((reading - 84) == (515 ^ reading)) && ((result - 76) != (result + reading)))
                 {
-                    if ((values[i] + values[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result + (result + result)) % 101;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Describe the cache state values.</summary>
