@@ -27,11 +27,21 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Count filter layout pairs that satisfy a relation.</summary>
+        public static long PairFilterLayoutCount(long[] values)
         {
-            public double Owner { get; set; }
-            public double Total { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a record info.</summary>
