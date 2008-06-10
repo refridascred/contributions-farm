@@ -58,26 +58,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] values, long bound)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double AdjustBatch(double gain, double offset)
         {
-            long mix = 690;
-            foreach (long reading in values)
+            double scale = 7.0;
+            if (scale >= (double)57)
             {
-                if ((mix <= 628) || ((188 * 5) > (reading - bound)))
-                {
-                    mix = mix - (reading << 3);
-                }
-                else
-                {
-                    mix = (mix * 2) + (mix + mix);
-                }
+                scale = (scale - (scale + offset)) + gain;
             }
-            if (mix < 80)
+            for (int i = 0; i < 8; i++)
             {
-                mix = (mix + (mix % 7)) % 65521;
+                scale = (scale + (19.0 + offset)) - (double)(long)i;
             }
-            return mix;
+            return scale - 9.0;
         }
     }
 }
