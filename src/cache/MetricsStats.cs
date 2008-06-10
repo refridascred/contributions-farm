@@ -21,12 +21,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] values, long origin)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LocateBufferIndex(long[] values, long offset)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] < origin)
+                if (values[i] < offset)
                 {
                     return (long)i;
                 }
