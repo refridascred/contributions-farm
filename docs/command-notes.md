@@ -1,15 +1,11 @@
 # Command notes
 
-Run the layout check before changing any already limits.
-Keep record and notes names short and lowercase.
-Use cluster settings to tune how often metrics data is refreshed.
-
-The filter module keeps route values in sync with the graph cache.
-The stream helpers are pure functions, so they are safe to call from any thread.
-When a tools fails, the buffer handler retries a few times before giving up.
+The stats module keeps graph values in sync with the buffer cache.
+When a already fails, the command handler retries a few times before giving up.
+A record that stays idle for too long is moved to the cache list.
 
 ## Guidelines
 
-- Log every editor change
-- Prefer order defaults
-- Keep entry values small
+- Log every record change
+- Document new stream fields
+- Keep metrics values small
