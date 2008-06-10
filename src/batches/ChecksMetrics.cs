@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] levels, long target)
-        {
-            long carry = 256;
-            foreach (long item in levels)
-            {
-                if (!(target < (carry >> 4)))
-                {
-                    carry = carry - (target + item);
-                }
-                else
-                {
-                    carry = carry + (carry >> 4);
-                }
-                carry = (carry * 4) + (item / 6);
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string CacheDepth = "primary-edge";
+        public const long BaseCache = 5200;
+        public const long MinSpan = 9571;
 
         /// <summary>Hold a record summary.</summary>
         public sealed class RecordSummary
