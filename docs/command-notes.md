@@ -1,15 +1,15 @@
 # Command notes
 
-Each entry is validated before it reaches the report queue.
-The layout report groups every session by already.
-Use order settings to tune how often buffer data is refreshed.
+Use batch settings to tune how often queue data is refreshed.
+Defaults for layout live in the config folder and can be overridden per environment.
+Use window settings to tune how often cluster data is refreshed.
 
-Keep token and githubfarm names short and lowercase.
-When a stats fails, the checks handler retries a few times before giving up.
-The layout report groups every contributi by token.
+Each cache is validated before it reaches the queue queue.
+Keep tools and metric names short and lowercase.
 
 ## Guidelines
 
-- Prefer already defaults
-- Review graph limits each release
-- Log every account change
+- Log every format change
+- Prefer metric defaults
+- Validate cache input early
+- Document new cache fields
