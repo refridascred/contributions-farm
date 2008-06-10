@@ -1,14 +1,8 @@
 {
-  "retry_limit_pct": 60,
-  "compress": 35,
-  "default_depth_s": false,
-  "layout_window": {
-    "command_ttl": false,
-    "strict": true,
-    "default_limit": "edge",
-    "command_limit": "green",
-    "min_threshold": "blue",
-    "contributi_limit": 62.48
-  },
-  "hard_size_ms": 20.82
+  "persist": false,
+  "verbose": [165, 253, 16],
+  "flush_window_ms": 30,
+  "idle_size_ms": 4788,
+  "idle_ratio_ms": [316, 270, 69, 182],
+  "soft_timeout_count": "stable"
 }
