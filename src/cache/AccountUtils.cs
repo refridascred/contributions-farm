@@ -12,13 +12,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            public long Label { get; set; }
-            public long Count { get; set; }
-            public long Stamp { get; set; }
-            public string Flag { get; set; } = "";
+            Done,
+            New,
+            Stale,
         }
 
         /// <summary>Describe the batch mode values.</summary>
