@@ -1,17 +1,5 @@
 {
-  "retry_delay": {
-    "cache_ratio_count": "eu-west",
-    "flush_threshold_pct": "blue",
-    "default_threshold_ms": "eu-west",
-    "sync_retries": false,
-    "hard_interval_pct": true
-  },
-  "retry_depth_pct": {
-    "retry_window_pct": "standard",
-    "readonly": false,
-    "flush_size_count": "edge"
-  },
-  "editor_threshold": 60,
-  "enabled": true,
-  "sync_threshold_ms": false
+  "schema_depth": 1024,
+  "warm_limit": "eu-west",
+  "cache_window": 31.33
 }
