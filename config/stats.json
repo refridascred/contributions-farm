@@ -1,15 +1,6 @@
 {
-  "base_depth_s": {
-    "already_capacity": true,
-    "batches_size": 50,
-    "session_retries": {
-      "min_retries_ms": true,
-      "route_capacity": 59,
-      "cache_limit": "latest",
-      "retry_ttl_count": 5008
-    }
-  },
-  "audit": 7,
-  "payload_retries": "staging",
-  "batch_limit_s": "standard"
+  "strict": true,
+  "verbose": [359, 435],
+  "default_threshold_count": 77.96,
+  "compress": "blue"
 }
