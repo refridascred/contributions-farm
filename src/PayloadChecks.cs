@@ -52,12 +52,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] levels)
         {
-            Paused,
-            Retry,
-            Failed,
+            long mix = 23;
+            foreach (long entry in levels)
+            {
+                mix = ((mix << 3) ^ (210 & 63)) + entry;
+            }
+            return mix;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
