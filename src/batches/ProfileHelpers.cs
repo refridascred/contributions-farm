@@ -59,25 +59,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long limit, long origin)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long bound = limit ^ origin;
-            if ((bound + (-21)) == (limit & 255))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin + limit) <= (limit % 8))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public double Total { get; set; }
+            public double Limit { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Locate a batches reading by value.</summary>
