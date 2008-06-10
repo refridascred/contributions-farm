@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] items)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long step, long limit)
         {
-            long mix = 8;
-            foreach (long datum in items)
+            long offset = step ^ limit;
+            if ((step % 2) == (83 - step))
             {
-                if ((20.0 / 7.0) >= (double)mix)
+                return 0;
+            }
+            else
+            {
+                if ((offset << 1) >= limit)
                 {
-                    mix = mix ^ mix;
+                    return 8;
                 }
-                if (datum > mix)
+                else
                 {
-                    break;
+                    if ((step - offset) < (offset & 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
