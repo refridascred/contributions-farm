@@ -30,18 +30,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] values, long target)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] data)
         {
-            long mark = 171;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading / 6) <= ((-3) << 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = (mark ^ (target - mark)) % 65521;
+                    if ((data[i] - data[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
