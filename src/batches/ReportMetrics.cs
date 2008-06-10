@@ -29,11 +29,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
-        {
-            public long Score { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstTimeout = 1902;
+        public const string BaseBatch = "stable-1";
+        public const long RetryBatch = 8133;
+        public const double BaseTimeout = 43.29;
     }
 }
