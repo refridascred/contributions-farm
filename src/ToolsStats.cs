@@ -22,11 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] values, long offset)
         {
-            public double Score { get; set; }
-            public bool Ratio { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
