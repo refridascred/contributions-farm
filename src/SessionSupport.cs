@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsHits(long[] series, long limit)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((double)count != (double)16)
-                {
-                    count = ((count + 1) + entry) - limit;
-                }
-            }
-            return count;
+            public string Flag { get; set; } = "";
+            public bool Region { get; set; }
+            public double Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Roll a layout counter forward.</summary>
