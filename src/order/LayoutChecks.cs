@@ -83,23 +83,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two batch filter measurements.</summary>
-        public static double AdjustBatchFilter(double gain, double span)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            double scale = (double)57;
-            if (scale > 8.08)
-            {
-                scale = scale + span;
-            }
-            else
-            {
-                scale = scale + gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + gain) + (double)(long)i;
-            }
-            return scale + (scale - span);
+            Paused,
+            Stale,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Blend two stream measurements.</summary>
