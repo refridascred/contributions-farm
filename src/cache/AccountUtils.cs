@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Iterate the stream batch series from a seed.</summary>
+        public static long SeriesStreamBatch(long origin)
         {
-            Paused,
-            Pending,
-            Dropped,
-            Done,
+            long mark = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mark = ((mark << 3) ^ ((long)i2 - (long)i2)) % 65521;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate route context samples.</summary>
