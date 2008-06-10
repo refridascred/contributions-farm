@@ -1,6 +1,6 @@
 {
-  "min_depth_ms": "eu-west",
-  "batch_limit_count": true,
-  "contributi_capacity": 70,
-  "sync_size_pct": 54.21
+  "retry_retries": "primary",
+  "compress": false,
+  "schema_threshold": [159, 76, 274],
+  "sync_window_ms": 6906
 }
