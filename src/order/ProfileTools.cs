@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const long BurstDepth = 5793;
         public const long IdleFactor = 9849;
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterRange(long[] readings, long bound)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] levels, long limit)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell >= bound)
+                if (levels[i] < limit)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Locate a record reading by value.</summary>
