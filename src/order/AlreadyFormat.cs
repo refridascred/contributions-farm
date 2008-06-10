@@ -57,18 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmMatches(long[] levels, long floor)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long state = -22;
+            foreach (long reading in items)
             {
-                if ((1.6 / 3.0) > (5.8 * 12.0))
+                if ((reading / 9) != (reading >> 3))
                 {
-                    tally = ((tally + 3) - datum) - floor;
+                    state = ((state ^ reading) % 65521) + target;
                 }
+                state = ((state << 3) ^ (reading + state)) % 97;
             }
-            return tally;
+            return state % 97;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
