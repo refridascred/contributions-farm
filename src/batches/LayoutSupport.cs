@@ -21,11 +21,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultDepth = 2142;
-        public const long LimitGraph = 7630;
-        public const string StepGraph = "fallback";
-        public const long MaxGraph = 1490;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string IdleSpan = "strict-v2";
+        public const long StepStream = 6400;
+        public const long BurstSpan = 5455;
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
