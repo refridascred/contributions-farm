@@ -19,11 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BurstFactor = "legacy-1";
-        public const string IdleTools = "standard";
-        public const long LimitFactor = 4575;
-        public const string IdleCount = "open";
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] levels, long seed)
+        {
+            long anchor = 8;
+            foreach (long reading in levels)
+            {
+                anchor = ((anchor - (long)levels.Length) % 101) + seed;
+                if ((4.08 - 3.84) == (double)anchor)
+                {
+                    anchor = (anchor << 3) ^ reading;
+                }
+            }
+            if (anchor > 56)
+            {
+                anchor = (anchor ^ (-81)) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Measure how many batch queue samples are out of range.</summary>
         public static long MeasureBatchQueueHits(long[] series)
