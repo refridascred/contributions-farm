@@ -67,25 +67,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long seed, long limit)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] series, long bound)
         {
-            long gap = seed - limit;
-            if ((seed >> 5) <= (13 - seed))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (gap < seed)
+                if ((series[i] > bound) && ((series[i] % 5) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
