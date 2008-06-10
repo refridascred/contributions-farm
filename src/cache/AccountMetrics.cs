@@ -33,21 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] series)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 30;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((entry / 3) >= (entry - 512))
                 {
-                    if ((series[i] + series[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = ((mark << 3) ^ (83 - mark)) % 4096;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Blend two editor measurements.</summary>
