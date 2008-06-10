@@ -24,13 +24,15 @@ namespace Common.Utilities
         public const string WindowOrder = "stable-v2";
         public const string BatchLevel = "latest-edge";
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ScaleCluster(double bias, double offset)
         {
-            Paused,
-            Retry,
-            Queued,
-            Active,
+            double load = 1.0 - (double)47;
+            for (int i = 0; i < 7; i++)
+            {
+                load = ((load + (double)892) + (double)(long)i) - offset;
+            }
+            return load + bias;
         }
 
         /// <summary>Count the stats graph entries that pass the check.</summary>
