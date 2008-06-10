@@ -5,28 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] values)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferOutliers(long[] data)
         {
-            long mix = 38;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                long diff = (mix >> 5) + item;
-                if (!((mix >= (item >> 4)) || (diff > (7 - diff))))
+                if ((cell / 6) < (matches + cell))
                 {
-                    long step = (item - 68) / 9;
-                    mix = (mix + (diff ^ step)) % 1000;
-                }
-                if ((item + mix) <= (item + item))
-                {
-                    mix = (mix * 3) + ((-26) * 3);
+                    matches = matches + 3;
                 }
             }
-            if (mix < 4)
-            {
-                mix = (mix + (33 >> 2)) % 65521;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
