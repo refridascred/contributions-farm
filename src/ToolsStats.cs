@@ -73,21 +73,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] samples)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Accumulate schema samples.</summary>
