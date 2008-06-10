@@ -46,13 +46,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Roll a batches window counter forward.</summary>
+        public static long DeriveBatchesWindow(long limit)
         {
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-            public bool Score { get; set; }
-            public long Total { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Combine channel counter values into a single score.</summary>
