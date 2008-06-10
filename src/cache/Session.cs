@@ -22,16 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long target)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long sum = target;
-            for (int i = 0; i < 20; i++)
-            {
-                sum = sum ^ ((long)i << 3);
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            public double Total { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the command state values.</summary>
