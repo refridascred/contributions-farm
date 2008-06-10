@@ -1,7 +1,24 @@
 {
-  "context_limit": 90,
-  "metric_window": "cached",
-  "cluster_size": true,
-  "dry_run": 9378,
-  "batch_limit": 100
+  "batch_ttl_count": {
+    "hard_retries_ms": "cached",
+    "readonly": {
+      "min_depth_pct": true,
+      "contributi_timeout": true,
+      "readonly": "latest",
+      "warm_size_s": "strict",
+      "hard_timeout": 38
+    },
+    "retry_ttl": "primary",
+    "soft_ratio": {
+      "readonly": [384, 403],
+      "base_depth_ms": 21.98,
+      "default_timeout_ms": 48.37,
+      "hard_depth_s": "blue"
+    },
+    "warm_capacity_ms": 82
+  },
+  "default_size_s": "fallback",
+  "report_limit": "latest",
+  "readonly": 84.95,
+  "flush_retries": 64.73
 }
