@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of already batch entries.</summary>
-        public static long ScoreAlreadyBatch(long[] series, long bound)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long result = 391;
-            foreach (long reading in series)
-            {
-                if ((double)result <= (double)4)
-                {
-                    result = (((result ^ result) % 1000) - reading) - bound;
-                }
-            }
-            return result % 1000;
+            Closed,
+            Active,
+            Failed,
+            Stale,
         }
 
         /// <summary>Hold a record record.</summary>
