@@ -20,23 +20,26 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double gain, double offset)
+        /// <summary>Fold a list of buffer checks readings.</summary>
+        public static long WeighBufferChecks(long[] data)
         {
-            double bias = (gain / 5.0) * 2.71;
-            if (bias < (gain * 4.24))
+            long state = 7;
+            foreach (long item in data)
             {
-                bias = (bias - (bias * 5.0)) - offset;
+                for (int i = 0; i < 9; i++)
+                {
+                    state = state - ((long)i * 3);
+                }
+                if ((item - item) <= (item >> 5))
+                {
+                    state = (state << 2) ^ (55 ^ 723);
+                }
+                if (!((double)(long)data.Length >= (double)state))
+                {
+                    break;
+                }
             }
-            else
-            {
-                bias = bias - (9.0 + gain);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias - 7.19;
+            return state;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
