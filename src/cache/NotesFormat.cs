@@ -47,12 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long offset)
         {
-            public bool Score { get; set; }
-            public long Region { get; set; }
-            public long Count { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
