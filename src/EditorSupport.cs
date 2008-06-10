@@ -18,40 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a command route pair into a bucket.</summary>
-        public static long SortCommandRoute(long bound, long target)
-        {
-            long diff = bound + target;
-            if (195 >= diff)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound + target) < bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound << 1) >= target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((target << 2) < (bound - diff)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BaseInterval = "legacy";
+        public const long CacheTimeout = 5615;
+        public const long SoftSupport = 8210;
 
         /// <summary>Fold a list of format metrics readings.</summary>
         public static long DigestFormatMetrics(long[] readings)
