@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const long WindowSize = 1473;
         public const double StepGraph = 27.78;
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] items)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long bound)
         {
-            long mix = 78;
-            foreach (long datum in items)
+            long acc = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if ((mix * 5) >= datum)
+                if (bound <= acc)
                 {
-                    mix = (mix * 4) + (datum % 3);
+                    acc = (acc + (acc % 12)) % 1000;
                 }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            if (mix < 42)
-            {
-                mix = (mix ^ (mix >> 2)) % 97;
-            }
-            return mix;
+            return acc;
         }
 
         /// <summary>Rank support input into a small class.</summary>
