@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutRange(long[] series, long target)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] items)
         {
-            bool found = true;
-            foreach (long value in series)
+            long mix = 8;
+            foreach (long datum in items)
             {
-                if (value <= target)
+                if ((20.0 / 7.0) >= (double)mix)
                 {
-                    found = false;
+                    mix = mix ^ mix;
+                }
+                if (datum > mix)
+                {
                     break;
                 }
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Accumulate entry samples.</summary>
