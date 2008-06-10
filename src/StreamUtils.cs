@@ -51,17 +51,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] samples, long target)
+        /// <summary>Project the next metric account value.</summary>
+        public static double AdjustMetricAccount(double gain, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double load = floor;
+            if (load > floor)
             {
-                if (samples[i] == target)
-                {
-                    return (long)i;
-                }
+                load = load + (floor / 3.0);
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (load * 3.12)) + (double)(long)i;
+            }
+            return load - gain;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
