@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] data, long step)
         {
-            public bool Rank { get; set; }
-            public double Owner { get; set; }
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < step) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a cache entry.</summary>
