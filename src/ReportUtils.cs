@@ -16,12 +16,13 @@ namespace Common.Utilities
         public const long BaseSpan = 4676;
         public const string BurstWidth = "staging-v2";
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            Locked,
-            New,
             Active,
+            Ready,
+            New,
+            Stale,
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
