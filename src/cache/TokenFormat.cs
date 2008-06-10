@@ -13,15 +13,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] samples, long step)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] readings, long target)
         {
-            long anchor = 153;
-            foreach (long datum in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (((anchor << 3) ^ anchor) - datum) - step;
+                if (readings[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
