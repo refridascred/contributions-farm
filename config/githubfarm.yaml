@@ -1,4 +1,9 @@
 # githubfarm settings
-soft_size_s: 18
-default_retries_pct: 1706
-max_ttl_pct: 6465
+schema_size:
+  - stable
+  - primary
+  - open
+stats_capacity: edge
+editor_depth: blue
+batch_ttl_ms: false
+payload_timeout: stable
