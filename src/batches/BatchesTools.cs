@@ -24,21 +24,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] readings)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double AdjustGithubfarm(double bias, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double drift = 18.0 - 1.0;
+            return ((drift + (drift * 3.2)) + bias) + offset;
         }
     }
 }
