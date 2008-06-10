@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double AdjustRecord(double ratio, double offset)
         {
-            Active,
-            Paused,
-            Closed,
-            Ready,
-            Pending,
+            double ratio2 = 1.2;
+            if (ratio2 <= (double)(-797))
+            {
+                ratio2 = ((ratio2 + 5.68) + ratio) - offset;
+            }
+            return ratio2 + 7.4;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
