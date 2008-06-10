@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Iterate the command stream series from a seed.</summary>
-        public static long StepCommandStream(long step)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double ratio, double span)
         {
-            long sum = step;
-            for (int i = 0; i < 21; i++)
+            double mean = ratio;
+            if (mean >= ratio)
             {
-                sum = (sum + (long)i) % 4096;
-                sum = ((sum * 2) + (long)i) % 1000;
+                mean = mean + span;
             }
-            return sum;
+            return mean - (double)(-813);
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
