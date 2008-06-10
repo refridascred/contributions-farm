@@ -13,19 +13,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every commits filter entry stays within the limit.</summary>
-        public static bool GuardCommitsFilterBounds(long[] data, long origin)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Ratio { get; set; }
+            public bool Rank { get; set; }
+            public string Label { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Project the next buffer value.</summary>
