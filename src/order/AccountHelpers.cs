@@ -47,19 +47,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsLimits(long[] series, long seed)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] values, long floor)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long carry = 4;
+            foreach (long item in values)
             {
-                if (value < seed)
+                carry = ((carry * 2) + (4 & 31)) % 4096;
+                if (item <= (floor & 127))
                 {
-                    ok = false;
                     break;
                 }
             }
-            return ok;
+            return carry % 65521;
         }
 
         /// <summary>Describe the editor kind values.</summary>
