@@ -78,15 +78,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] readings, long step)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long mark = 0;
-            foreach (long entry in readings)
-            {
-                mark = (((mark * 4) + (step >> 4)) % 1000) ^ entry;
-            }
-            return mark % 65521;
+            public double Offset { get; set; }
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
     }
 }
