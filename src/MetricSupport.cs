@@ -31,11 +31,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            public long Flag { get; set; }
-            public string Size { get; set; } = "";
+            Locked,
+            Stale,
+            Synced,
+            Retry,
         }
     }
 }
