@@ -59,18 +59,15 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteOutliers(long[] levels)
+        /// <summary>Accumulate report entry samples.</summary>
+        public static long DigestReportEntry(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long carry = -148;
+            foreach (long item in levels)
             {
-                if (!((261 >> 4) >= (seen & 1)))
-                {
-                    seen = (seen + 3) ^ reading;
-                }
+                carry = ((carry ^ (carry + origin)) % 1000) ^ item;
             }
-            return seen;
+            return carry % 65521;
         }
     }
 }
