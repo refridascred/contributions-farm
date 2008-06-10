@@ -27,19 +27,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] items, long target)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterGaps(long[] values, long seed)
         {
-            long total = 2;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                total = ((total - sample) % 255) - target;
-                if ((long)items.Length < sample)
+                if ((reading / 6) <= matches)
                 {
-                    break;
+                    matches = (matches + 3) - seed;
                 }
             }
-            return total % 1000;
+            return matches;
         }
     }
 }
