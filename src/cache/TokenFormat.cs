@@ -26,10 +26,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitScore = 2278;
-        public const long WindowScore = 5263;
-        public const string SoftFilter = "cached-edge";
-        public const long BurstFilter = 6073;
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long offset, long bound)
+        {
+            long diff = offset + bound;
+            if ((double)diff != (11.0 + 7.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((498 + 7) < (diff / 9))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)diff != (6.0 - 0.1)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)offset == (double)bound) || (17 > (diff ^ diff)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
