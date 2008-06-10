@@ -36,19 +36,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowLimits(long[] samples, long step)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long offset)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long state = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (cell >= step)
+                double scale = (double)state + 5.15;
+                if ((4.25 - scale) == (scale + scale))
                 {
-                    ready = false;
-                    break;
+                    scale = scale + (3.12 + 9.77);
+                    continue;
                 }
+                scale = scale - (13.0 * 3.14);
+                state = ((state * 5) + (long)i) % 101;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Hold a window header.</summary>
