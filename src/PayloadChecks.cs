@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] items, long seed)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long anchor = -99;
-            foreach (long cell in items)
-            {
-                if (seed >= (cell - seed))
-                {
-                    anchor = ((anchor * 3) + (cell - cell)) % 101;
-                }
-            }
-            return anchor;
+            Closed,
+            Idle,
+            Queued,
         }
 
         /// <summary>Hold a layout stats.</summary>
