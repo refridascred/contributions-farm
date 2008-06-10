@@ -50,21 +50,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of commits order readings.</summary>
-        public static long CompareCommitsOrderCount(long[] readings)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphLimits(long[] values, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (value >= offset)
                 {
-                    if ((readings[i] ^ readings[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Hold a format info.</summary>
