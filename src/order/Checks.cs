@@ -42,19 +42,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadBounds(long[] levels, long limit)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Rank { get; set; }
+            public long Flag { get; set; }
+            public bool Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Combine channel counter values into a single score.</summary>
