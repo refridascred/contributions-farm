@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long floor, long bound)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmMatches(long[] data, long bound)
         {
-            if (bound > (floor + 38))
+            long count = 0;
+            foreach (long item in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound + bound) <= bound)
+                if ((double)bound < 4.7)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    count = (count + 1) - item;
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many stream farm samples are out of range.</summary>
