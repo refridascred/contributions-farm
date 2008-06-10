@@ -27,11 +27,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
+            public long Weight { get; set; }
+            public double Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
