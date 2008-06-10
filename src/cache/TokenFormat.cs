@@ -47,11 +47,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Digest a series of payload command entries.</summary>
+        public static long TallyPayloadCommand(long[] series)
         {
-            public string Stamp { get; set; } = "";
-            public long Count { get; set; }
+            long mark = 2;
+            foreach (long reading in series)
+            {
+                if (((461 + mark) != (mark % 3)) && (reading > (mark ^ reading)))
+                {
+                    mark = mark - (mark + reading);
+                }
+            }
+            if (mark < 7)
+            {
+                mark = mark ^ (mark >> 3);
+            }
+            return mark % 97;
         }
     }
 }
