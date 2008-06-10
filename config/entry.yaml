@@ -1,28 +1,23 @@
 # entry settings
-compress: false
-flush_ttl_s: staging
-graph_threshold: 4078
-warm_ttl_pct:
-  queue_threshold: 2888
-  cache_size:
-    base_threshold: stable
-    queue_ratio: 1024
-    base_retries: true
-    soft_capacity_count:
-      - latest
-      - fallback
-      - strict
-      - staging
-    contributi_timeout: 1024
-    warm_interval_pct: 30
-  soft_timeout_pct: open
-  retry_size_count:
-    - 321
-    - 385
-  stats_capacity: false
-  flush_depth_pct:
-    audit: 31
-    base_delay_pct: 53.26
-    min_ttl: 9209
-base_ratio: edge
-poll_ratio_s: local
+command_size:
+  warm_timeout_s: 54.86
+  sync_ratio: 30
+  batch_window_count: legacy
+  poll_limit_ms:
+    - 288
+    - 266
+    - 435
+  warm_limit_ms:
+    - legacy
+    - staging
+    - edge
+    - legacy
+warm_interval:
+  - primary
+  - fallback
+max_delay:
+  - latest
+  - legacy
+warm_window: 355
+dry_run: 18.07
+readonly: stable
