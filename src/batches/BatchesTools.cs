@@ -15,24 +15,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long origin, long target)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            if (target < (17 + target))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(70 >= (origin * 2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Queued,
+            Retry,
+            Locked,
+            Idle,
+            Pending,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
