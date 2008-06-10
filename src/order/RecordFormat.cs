@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] samples, long offset)
-        {
-            long mix = 377;
-            foreach (long item in samples)
-            {
-                if ((double)item < (6.0 * 19.0))
-                {
-                    mix = (((mix * 2) + (item * 2)) % 101) + offset;
-                }
-            }
-            if (mix < 54)
-            {
-                mix = mix - 1;
-            }
-            return mix;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 8576;
+        public const double BaseRatio = 3.18;
+        public const long WindowTimeout = 81;
+        public const double MinDepth = 35.94;
+        public const double RetryCommits = 47.48;
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long GradeTools(long limit, long origin)
