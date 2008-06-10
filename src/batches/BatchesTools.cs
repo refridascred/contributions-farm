@@ -15,11 +15,25 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string CacheRoute = "open-v2";
-        public const long RetryTimeout = 5321;
-        public const long BaseRoute = 9544;
-        public const long WindowSize = 1064;
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long origin, long target)
+        {
+            if (target < (17 + target))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!(70 >= (origin * 2)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long RetryTools = 300;
