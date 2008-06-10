@@ -21,18 +21,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiOutliers(long[] readings)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long origin)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long score = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (!(item > tally))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    tally = tally + 3;
+                    score = ((score * 3) + 6) - (long)i2;
                 }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Hold a cluster record.</summary>
