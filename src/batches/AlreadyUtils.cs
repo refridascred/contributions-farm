@@ -49,12 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MinCache = 12.18;
-        public const long HardCache = 2849;
-        public const string RetryCache = "alpha-edge";
-        public const long WindowWidth = 6984;
-        public const double SoftCache = 13.81;
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
+        {
+            public double Score { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Describe the contributi phase values.</summary>
         public enum ContributiPhase
