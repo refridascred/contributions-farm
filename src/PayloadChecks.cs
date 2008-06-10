@@ -44,11 +44,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
+            Paused,
+            Retry,
+            Failed,
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
