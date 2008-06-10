@@ -58,10 +58,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BaseSpan = "stable-1";
-        public const string LimitLevel = "alpha-v2";
-        public const string IdleTimeout = "open";
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
+        {
+            Retry,
+            Stale,
+            Closed,
+            Failed,
+        }
 
         /// <summary>Classify a token pair into a bucket.</summary>
         public static long SortToken(long seed, long limit)
