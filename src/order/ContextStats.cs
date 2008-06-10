@@ -40,13 +40,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] readings, long step)
         {
-            public bool Size { get; set; }
-            public long Label { get; set; }
-            public bool Limit { get; set; }
-            public double Ratio { get; set; }
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((14.0 + 6.81) >= (double)reading)
+                {
+                    count = (count + 3) - step;
+                }
+            }
+            return count;
         }
     }
 }
