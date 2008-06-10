@@ -30,22 +30,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] values, long target)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] data)
         {
-            long sum = 6;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((target * 3) > (target + target))
+                if (((63 - value) < value) || ((count + (-345)) != (value + value)))
                 {
-                    sum = (sum - entry) % 97;
-                }
-                else
-                {
-                    sum = (sum - sum) % 101;
+                    count = count + 2;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
