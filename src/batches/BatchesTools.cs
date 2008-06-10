@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            public long Weight { get; set; }
-            public bool Ratio { get; set; }
+            Paused,
+            Dropped,
+            Queued,
+            Active,
+            Synced,
         }
 
         /// <summary>Define route limits and defaults.</summary>
