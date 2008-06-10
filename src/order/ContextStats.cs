@@ -40,17 +40,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first graph report entry that matches the target.</summary>
-        public static long LookupGraphReportIndex(long[] readings, long origin)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Size { get; set; }
+            public long Label { get; set; }
+            public bool Limit { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
