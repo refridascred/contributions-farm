@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] data, long bound)
+        /// <summary>Project the next support contributi value.</summary>
+        public static double ScaleSupportContributi(double ratio, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double load = (double)85 + (offset / 8.0);
+            if (load > ratio)
             {
-                if ((data[i] > bound) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                load = load + load;
             }
-            return -1;
+            else
+            {
+                load = load - load;
+            }
+            return load - offset;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
