@@ -61,14 +61,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ScalePayload(double gain, double span)
         {
-            Locked,
-            Queued,
-            Dropped,
-            Pending,
-            Done,
+            double bias = span;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = ((bias - span) - (double)(long)i) - gain;
+            }
+            return bias + bias;
         }
 
         /// <summary>Derive the next command payload value from a seed.</summary>
