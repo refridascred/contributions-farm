@@ -46,18 +46,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Measure how many layout graph samples are out of range.</summary>
-        public static long AuditLayoutGraphMatches(long[] samples, long offset)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double scale, double span)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            double scale2 = scale;
+            if (scale2 < span)
             {
-                if (((offset * 3) > count) && ((((-54) - cell) < ((-951) >> 3)) && (cell > (cell + offset))))
-                {
-                    count = count + 2;
-                }
+                scale2 = scale2 - (double)2;
             }
-            return count;
+            else
+            {
+                scale2 = scale2 + (span / 3.0);
+            }
+            return scale2 - (6.87 / 7.0);
         }
 
         /// <summary>Hold a tools header.</summary>
