@@ -24,39 +24,20 @@ namespace Common.Utilities
         public const string IdleWidth = "stable-edge";
         public const long BatchTimeout = 4894;
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long step, long step2)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long target)
         {
-            long prev = step + step2;
-            if ((double)step == (16.0 - 6.5))
+            long mix = target;
+            for (int i = 0; i < 14; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((3.2 + 7.2) >= (double)step)
+                if ((target + (long)i) == (mix + target))
                 {
-                    return 5;
+                    mix = (mix << 3) ^ (375 - (long)i);
                 }
-                else
-                {
-                    if ((prev * 5) != (step2 * 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (step2 < (prev & 15))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                mix = ((mix << 3) ^ (target - mix)) % 65521;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
+            return mix;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
