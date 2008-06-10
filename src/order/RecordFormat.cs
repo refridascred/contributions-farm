@@ -18,11 +18,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetryBudget = 3196;
-        public const double MinInterval = 32.38;
-        public const double MinSupport = 9.81;
-        public const double CacheSupport = 96.3;
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
