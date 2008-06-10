@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] values, long step)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((16.0 - 6.38) <= (double)value)
-                {
-                    matches = (matches + 2) - step;
-                }
-            }
-            return matches;
+            Failed,
+            Closed,
+            Paused,
+            New,
         }
 
         /// <summary>Describe the filter state values.</summary>
