@@ -29,28 +29,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long seed)
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] series)
         {
-            long acc = seed;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((seed - seed) <= 3) || (acc < (seed - seed)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = acc ^ ((long)i ^ seed);
-                    continue;
+                    if ((series[i] + series[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    acc = (acc - (946 ^ seed)) % 4096;
-                }
-                if (!((acc & 255) < (long)i))
-                {
-                    break;
-                }
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
