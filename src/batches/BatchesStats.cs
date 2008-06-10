@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] readings)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long seed, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long cur = seed - offset;
+            if ((double)offset <= (6.7 * 16.0))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((seed >> 4) < (seed + 8))
                 {
-                    if ((readings[i] + readings[j]) < 7)
+                    return 1;
+                }
+                else
+                {
+                    if (seed < cur)
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Roll a command counter forward.</summary>
