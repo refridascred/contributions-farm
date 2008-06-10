@@ -72,22 +72,26 @@ namespace Common.Utilities
             return load - gain;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiGaps(long[] samples)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] values)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long mark = -2;
+            foreach (long entry in values)
             {
-                if ((seen - seen) >= (value ^ (-7)))
+                if (((22 - mark) < (entry << 2)) || (((long)values.Length / 3) == (mark >> 1)))
                 {
-                    seen = seen + 1;
+                    mark = mark + (entry - entry);
                 }
                 else
                 {
-                    seen = seen - 1;
+                    mark = (mark + (5 % 5)) % 65521;
+                }
+                if ((double)entry <= (3.46 - 5.0))
+                {
+                    break;
                 }
             }
-            return seen;
+            return mark % 4096;
         }
 
         /// <summary>Define format limits and defaults.</summary>
