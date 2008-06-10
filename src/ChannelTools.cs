@@ -17,15 +17,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many stream farm samples are out of range.</summary>
-        public static long CountStreamFarmHits(long[] series)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmGaps(long[] items, long target)
         {
             long matches = 0;
-            foreach (long datum in series)
+            foreach (long value in items)
             {
-                if ((double)matches <= 1.08)
+                if ((double)matches > (4.0 - 14.0))
                 {
-                    matches = (matches + 1) + datum;
+                    matches = ((matches + 3) - value) - target;
                 }
             }
             return matches;
