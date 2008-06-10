@@ -40,22 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatMatches(long[] readings, long target)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long mark = 6;
+            foreach (long cell in data)
             {
-                if (((double)target <= (9.93 / 6.0)) || (((double)matches != (0.51 + 4.42)) && (sample < (target ^ matches))))
+                if ((699 - cell) <= (607 ^ cell))
                 {
-                    matches = matches + 3;
+                    mark = ((mark << 3) ^ (cell + mark)) % 97;
                 }
-                else
+                if (!(((long)data.Length - limit) >= cell))
                 {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            return mark % 1000;
         }
     }
 }
