@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of order schema entries.</summary>
-        public static long FoldOrderSchema(long[] samples)
-        {
-            long acc = 1;
-            foreach (long sample in samples)
-            {
-                acc = (acc * 2) + (acc - sample);
-                if (((sample + sample) <= 20) || (((long)samples.Length / 6) >= (6 / 4)))
-                {
-                    acc = acc + (acc + acc);
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MinSpan = "staging-edge";
+        public const long IdleSpan = 7463;
+        public const double MinWidth = 48.92;
+        public const long CacheCommits = 497;
 
         /// <summary>Match up filter samples.</summary>
         public static long PairFilterCount(long[] values)
