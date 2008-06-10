@@ -41,17 +41,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] items, long floor)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Count { get; set; }
+            public bool Score { get; set; }
+            public long Flag { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the checks phase values.</summary>
