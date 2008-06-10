@@ -32,19 +32,21 @@ namespace Common.Utilities
         public const double MaxRatio = 68.63;
         public const string BurstRatio = "legacy";
 
-        /// <summary>Check that every editor schema entry stays within the limit.</summary>
-        public static bool ValidateEditorSchemaRange(long[] items, long floor)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] items)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value != floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] + items[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
