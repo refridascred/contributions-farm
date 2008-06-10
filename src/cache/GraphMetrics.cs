@@ -43,13 +43,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double weight, double offset)
         {
-            public bool Mode { get; set; }
-            public double Offset { get; set; }
-            public long Label { get; set; }
-            public string Limit { get; set; } = "";
+            double mean = weight;
+            if (mean >= (double)815)
+            {
+                mean = (mean - (weight + 9.7)) - offset;
+            }
+            return mean + mean;
         }
 
         /// <summary>Fold a list of format readings.</summary>
