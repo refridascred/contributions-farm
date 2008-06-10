@@ -61,19 +61,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksOutliers(long[] series, long limit)
-        {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((limit << 1) < reading)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string LimitAlready = "primary-1";
+        public const long RetryAlready = 9432;
+        public const long IdleAlready = 6437;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long AuditProfileMatches(long[] levels)
