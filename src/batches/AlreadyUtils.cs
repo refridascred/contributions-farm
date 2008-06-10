@@ -61,12 +61,12 @@ namespace Common.Utilities
             return drift + (double)4;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            Dropped,
-            Failed,
-            Draft,
+            public string Rank { get; set; } = "";
+            public bool Flag { get; set; }
+            public double Region { get; set; }
         }
     }
 }
