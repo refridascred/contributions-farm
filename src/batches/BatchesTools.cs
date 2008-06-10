@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            Paused,
-            Dropped,
-            Queued,
-            Active,
-            Synced,
+            public bool Size { get; set; }
+            public bool Rank { get; set; }
+            public bool Ratio { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the filter status values.</summary>
