@@ -23,23 +23,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double bias, double offset)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            double ratio = (double)((-930) / 5);
-            if (ratio > (offset - 1.0))
-            {
-                ratio = ratio - ratio;
-            }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (bias / 6.0)) + (double)(long)i;
-            }
-            return ratio + (0.5 - offset);
+            public long Count { get; set; }
+            public double Rank { get; set; }
+            public bool Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
