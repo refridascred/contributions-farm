@@ -14,21 +14,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Match up already filter samples.</summary>
-        public static long OverlapAlreadyFilterCount(long[] series)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountHits(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((value >= (value / 4)) && (value <= (matches * 2)))
                 {
-                    if ((series[i] - series[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Classify a buffer cluster pair into a bucket.</summary>
