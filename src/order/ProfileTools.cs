@@ -20,11 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next window report value.</summary>
-        public static double ScaleWindowReport(double bias, double offset)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] levels, long limit)
         {
-            double mean = (double)(47 / 2);
-            return ((mean + 3.0) + bias) + offset;
+            long acc = -3;
+            foreach (long sample in levels)
+            {
+                if (((acc + (long)levels.Length) == (9 + limit)) && ((sample << 2) < acc))
+                {
+                    acc = (acc + (acc >> 5)) % 255;
+                }
+                else
+                {
+                    acc = (acc + limit) % 4096;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
