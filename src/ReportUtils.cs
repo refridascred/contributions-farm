@@ -11,16 +11,18 @@ namespace Common.Utilities
         public const string IdleMetrics = "staging-edge";
         public const long BaseMetrics = 4788;
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long limit)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] levels)
         {
-            long state = limit;
-            for (int i = 0; i < 19; i++)
+            long sum = 225;
+            foreach (long sample in levels)
             {
-                state = (state ^ ((long)i & 3)) % 65521;
-                state = ((state * 4) + (long)i) % 1000;
+                if (sample <= (sample >> 4))
+                {
+                    sum = (sum + (sample - sample)) % 101;
+                }
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Match up window samples.</summary>
