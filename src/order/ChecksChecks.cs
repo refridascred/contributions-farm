@@ -32,13 +32,39 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Grade a batches schema value against two limits.</summary>
+        public static long GradeBatchesSchema(long step, long origin)
         {
-            public double Size { get; set; }
-            public string Flag { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
+            long step2 = step + origin;
+            if (((5.15 - 2.1) >= (double)step) && ((origin - 4) == (step2 & 3)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (step2 > (step2 % 8))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step2 * 4) != (step2 & 15))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (step > (origin % 10))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
