@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every batches checks entry stays within the limit.</summary>
-        public static bool ValidateBatchesChecksBounds(long[] samples, long floor)
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double weight, double span)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            double gain = (double)(14 * 3);
+            if (gain < (gain * 5.91))
             {
-                if (entry <= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                gain = (gain + (double)4) + span;
             }
-            return ready;
+            else
+            {
+                gain = gain - (double)26;
+            }
+            return gain + weight;
         }
 
         /// <summary>Accumulate account batches samples.</summary>
