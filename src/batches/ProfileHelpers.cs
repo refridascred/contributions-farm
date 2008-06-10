@@ -48,12 +48,13 @@ namespace Common.Utilities
         public const long StepAlready = 8517;
         public const long BaseFactor = 2927;
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            public double Weight { get; set; }
-            public long Owner { get; set; }
-            public string Label { get; set; } = "";
+            Queued,
+            Active,
+            Done,
+            Dropped,
         }
     }
 }
