@@ -27,11 +27,13 @@ namespace Common.Utilities
         public const double RetryTimeout = 37.83;
         public const long BaseSize = 8797;
 
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double ratio, double offset)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            double mean = 9.54 * 7.0;
-            return ((mean + (double)99) + ratio) + offset;
+            Draft,
+            Paused,
+            Ready,
+            Failed,
         }
     }
 }
