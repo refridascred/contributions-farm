@@ -41,18 +41,11 @@ namespace Common.Utilities
             return mean - bias2;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountHits(long[] samples)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)(long)samples.Length == (15.0 + 6.1))
-                {
-                    seen = (seen + 3) + cell;
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
