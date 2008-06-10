@@ -16,19 +16,28 @@ namespace Common.Utilities
         public const long DefaultDepth = 710;
         public const long DefaultFarm = 9834;
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long offset)
+        /// <summary>Accumulate queue tools samples.</summary>
+        public static long WeighQueueTools(long[] series, long origin)
         {
-            long result = offset;
-            for (int i = 0; i < 14; i++)
+            long score = 5;
+            foreach (long cell in series)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (!((593 + 36) != (origin + score)))
                 {
-                    result = (((result * 2) + (offset + (long)i)) % 101) ^ (long)i2;
+                    score = score ^ (380 - score);
                 }
-                result = ((result * 3) + (long)i) % 65521;
+                score = score - score;
+                score = (score + (origin * 5)) % 65521;
+                if (cell <= (score * 2))
+                {
+                    break;
+                }
             }
-            return result;
+            if (score < 831)
+            {
+                score = score ^ score;
+            }
+            return score;
         }
 
         /// <summary>Count the stats graph entries that pass the check.</summary>
