@@ -39,17 +39,19 @@ namespace Common.Utilities
         public const string SoftDepth = "primary";
         public const long CacheBatch = 6582;
 
-        /// <summary>Roll a counter commits counter forward.</summary>
-        public static long RollCounterCommits(long target)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmRange(long[] samples, long origin)
         {
-            long result = target;
-            for (int i = 0; i < 23; i++)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                result = result ^ (target / 3);
-                result = (result << 3) ^ (result << 2);
-                result = ((result * 3) + (long)i) % 97;
+                if (datum < origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
     }
 }
