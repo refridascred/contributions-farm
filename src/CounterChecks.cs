@@ -45,14 +45,20 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long seed)
         {
-            Done,
-            Closed,
-            Locked,
-            Synced,
-            Queued,
+            long result = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((seed + result) <= ((-751) * 4))
+                {
+                    result = ((result * 2) + seed) % 4096;
+                    break;
+                }
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
