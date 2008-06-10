@@ -20,24 +20,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long origin, long step)
+        /// <summary>Audit cache batch readings against a rule.</summary>
+        public static long MeasureCacheBatchMatches(long[] levels)
         {
-            if (step < (step >> 1))
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((74 + origin) <= (origin - origin))
+                if (sample >= (sample + hits))
                 {
-                    return 7;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    return 2;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
