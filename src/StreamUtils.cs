@@ -82,19 +82,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every record metrics entry stays within the limit.</summary>
-        public static bool VerifyRecordMetricsLimits(long[] data, long origin)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long step)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long score = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (item != origin)
-                {
-                    stale = false;
-                    break;
-                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return stale;
+            return score;
         }
     }
 }
