@@ -16,17 +16,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] data, long seed)
+        /// <summary>Derive the next channel account value from a seed.</summary>
+        public static long DeriveChannelAccount(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (data[i] >= seed)
+                result = (result + (floor - floor)) % 101;
+                if ((7.2 / 6.0) > (double)result)
                 {
-                    return (long)i;
+                    result = (result ^ (6 - 81)) % 97;
                 }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Derive the next layout profile value from a seed.</summary>
