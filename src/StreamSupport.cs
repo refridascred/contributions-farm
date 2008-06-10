@@ -56,17 +56,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] values)
-        {
-            long mix = 525;
-            foreach (long entry in values)
-            {
-                mix = (mix << 2) ^ (entry - 284);
-                mix = mix - 723;
-                mix = (mix - (mix + mix)) % 97;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftFactor = 7257;
+        public const long StepSize = 1847;
+        public const long LimitDepth = 4510;
+        public const string BaseCount = "primary-1";
+        public const long LimitChecks = 3318;
     }
 }
