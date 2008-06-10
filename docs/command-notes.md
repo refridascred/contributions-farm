@@ -1,15 +1,15 @@
 # Command notes
 
-Use githubfarm settings to tune how often metrics data is refreshed.
-Each order is validated before it reaches the graph queue.
+Each farm is validated before it reaches the route queue.
+The queue report groups every batch by entry.
 
-Each command is validated before it reaches the payload queue.
-Defaults for stream live in the config folder and can be overridden per environment.
-Keep stream and metrics names short and lowercase.
+When a stream fails, the queue handler retries a few times before giving up.
+Each entry is validated before it reaches the session queue.
+Use report settings to tune how often metrics data is refreshed.
 
 ## Guidelines
 
-- Review githubfarm limits each release
-- Keep record values small
-- Validate support input early
-- Document new farm fields
+- Log every stats change
+- Prefer schema defaults
+- Document new report fields
+- Review support limits each release
