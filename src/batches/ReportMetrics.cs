@@ -29,10 +29,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstTimeout = 1902;
-        public const string BaseBatch = "stable-1";
-        public const long RetryBatch = 8133;
-        public const double BaseTimeout = 43.29;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinFarm = 8485;
+        public const long CacheBudget = 8451;
+        public const long WindowLevel = 4076;
+        public const long BaseCount = 1136;
+        public const string WindowInterval = "local-v2";
     }
 }
