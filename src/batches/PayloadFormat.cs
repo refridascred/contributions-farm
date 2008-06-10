@@ -24,20 +24,18 @@ namespace Common.Utilities
         public const string IdleWidth = "stable-edge";
         public const long BatchTimeout = 4894;
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long target)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesGaps(long[] values)
         {
-            long mix = target;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((target + (long)i) == (mix + target))
+                if ((731 / 3) < (reading - matches))
                 {
-                    mix = (mix << 3) ^ (375 - (long)i);
+                    matches = matches + 2;
                 }
-                mix = ((mix << 3) ^ (target - mix)) % 65521;
-                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Adjust a filter stats reading.</summary>
