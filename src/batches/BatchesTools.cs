@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] samples, long seed)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long acc = 3;
-            foreach (long sample in samples)
-            {
-                acc = (((acc * 5) + (acc + acc)) - sample) - seed;
-            }
-            return acc % 65521;
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Grade a window graph value against two limits.</summary>
