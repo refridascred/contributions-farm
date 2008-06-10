@@ -29,19 +29,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Check that every channel already entry stays within the limit.</summary>
-        public static bool VerifyChannelAlreadyRange(long[] samples, long limit)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsRange(long[] samples, long step)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                if (reading < limit)
+                if (sample <= step)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
     }
 }
