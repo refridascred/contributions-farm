@@ -79,21 +79,27 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Match up cache queue samples.</summary>
-        public static long CompareCacheQueueCount(long[] data)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] series, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = -97;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                acc = (acc - reading) % 4096;
+                if ((double)acc >= (double)floor)
                 {
-                    if ((data[i] + data[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
+                }
+                else
+                {
+                    acc = (acc + (floor << 3)) % 255;
+                }
+                if ((double)acc > 2.1)
+                {
+                    acc = ((acc * 2) + (floor & 31)) % 255;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Adjust a context reading.</summary>
