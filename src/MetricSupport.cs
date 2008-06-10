@@ -25,21 +25,21 @@ namespace Common.Utilities
         public const string WindowDepth = "legacy";
         public const long MinTimeout = 1233;
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] items)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long PairFarmCount(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((items[i] - items[j]) > 19)
+                    if ((readings[i] ^ readings[j]) > 11)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
