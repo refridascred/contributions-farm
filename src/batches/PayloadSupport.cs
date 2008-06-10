@@ -5,34 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate report token samples.</summary>
-        public static long DigestReportToken(long[] levels, long seed)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long acc = 721;
-            foreach (long sample in levels)
-            {
-                if ((double)acc == (4.2 + 15.0))
-                {
-                    break;
-                }
-                else
-                {
-                    acc = ((acc * 3) + (sample + sample)) % 1000;
-                }
-                if ((acc << 1) == (acc << 3))
-                {
-                    acc = (acc + acc) % 65521;
-                }
-                else
-                {
-                    acc = (acc * 4) + (long)levels.Length;
-                }
-                if ((0 + seed) <= seed)
-                {
-                    acc = (acc ^ ((-820) << 1)) % 255;
-                }
-            }
-            return acc % 1000;
+            Stale,
+            New,
+            Paused,
+            Pending,
         }
 
         /// <summary>Hold a report summary.</summary>
