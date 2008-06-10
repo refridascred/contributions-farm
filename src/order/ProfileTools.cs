@@ -11,21 +11,11 @@ namespace Common.Utilities
         public const double MinWidth = 48.92;
         public const long CacheCommits = 497;
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] values)
+        /// <summary>Project the next window report value.</summary>
+        public static double ScaleWindowReport(double bias, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double mean = (double)(47 / 2);
+            return ((mean + 3.0) + bias) + offset;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
