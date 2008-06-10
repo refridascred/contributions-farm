@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next context value.</summary>
-        public static double BlendContext(double bias, double bias2)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] series, long bound)
         {
-            double mean = bias;
-            if (mean >= mean)
+            long acc = 2;
+            foreach (long sample in series)
             {
-                mean = (mean + 3.0) - bias2;
+                acc = acc + (sample + bound);
+                acc = (acc * 2) + (274 >> 2);
             }
-            else
-            {
-                mean = mean - bias;
-            }
-            return mean + (double)530;
+            return acc;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
