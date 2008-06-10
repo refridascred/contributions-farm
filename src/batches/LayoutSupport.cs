@@ -38,21 +38,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up metrics order samples.</summary>
-        public static long OverlapMetricsOrderCount(long[] readings)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            New,
+            Queued,
+            Active,
+            Failed,
         }
 
         /// <summary>Audit report readings against a rule.</summary>
