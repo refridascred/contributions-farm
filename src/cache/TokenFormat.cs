@@ -12,21 +12,22 @@ namespace Common.Utilities
         public const long SoftProfile = 6917;
         public const string CacheProfile = "staging-edge";
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] items)
+        /// <summary>Audit report tools readings against a rule.</summary>
+        public static long CountReportToolsHits(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((reading - count) != ((long)series.Length >> 1))
                 {
-                    if ((items[i] ^ items[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
