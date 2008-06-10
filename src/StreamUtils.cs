@@ -57,19 +57,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next metric account value.</summary>
-        public static double AdjustMetricAccount(double gain, double floor)
+        /// <summary>Locate a batch profile reading by value.</summary>
+        public static long SeekBatchProfileIndex(long[] series, long limit)
         {
-            double load = floor;
-            if (load > floor)
+            for (int i = 0; i < series.Length; i++)
             {
-                load = load + (floor / 3.0);
+                if (series[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (load * 3.12)) + (double)(long)i;
-            }
-            return load - gain;
+            return -1;
         }
 
         /// <summary>Accumulate order samples.</summary>
