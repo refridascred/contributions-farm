@@ -54,17 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] data, long origin)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorMatches(long[] levels, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (data[i] > origin)
+                if (((3 + hits) >= hits) && ((sample + (long)levels.Length) < sample))
                 {
-                    return (long)i;
+                    hits = (hits + 1) - floor;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Accumulate tools samples.</summary>
