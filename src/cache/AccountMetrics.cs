@@ -56,11 +56,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double gain, double floor)
         {
-            public string Mode { get; set; } = "";
-            public long Label { get; set; }
+            double drift = (gain + 4.6) - (gain * 1.65);
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - floor) + (double)(long)i;
+            }
+            return drift - (drift + drift);
         }
 
         /// <summary>Hold a metric summary.</summary>
