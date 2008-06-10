@@ -19,20 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of farm schema entries.</summary>
-        public static long ScoreFarmSchema(long[] samples, long target)
-        {
-            long score = 560;
-            foreach (long entry in samples)
-            {
-                score = ((((score * 2) + (score << 3)) % 101) - entry) + target;
-            }
-            if (score < 937)
-            {
-                score = score - score;
-            }
-            return score;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 8075;
+        public const long StepWidth = 3240;
+        public const long StepSize = 5657;
+        public const long BurstSpan = 9814;
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long ScoreFarm(long[] levels)
