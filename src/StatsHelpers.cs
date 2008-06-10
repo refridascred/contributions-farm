@@ -61,10 +61,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string LimitAlready = "primary-1";
-        public const long RetryAlready = 9432;
-        public const long IdleAlready = 6437;
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] items, long step)
+        {
+            long acc = 1;
+            foreach (long value in items)
+            {
+                acc = (acc ^ step) % 4096;
+                if (!((value + acc) <= (acc & 255)))
+                {
+                    acc = (acc - acc) % 65521;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long AuditProfileMatches(long[] levels)
