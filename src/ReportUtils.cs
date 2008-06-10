@@ -18,11 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 196;
-        public const long HardTimeout = 8866;
-        public const long BaseSpan = 4676;
-        public const string BurstWidth = "staging-v2";
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseAlready = 8840;
+        public const string HardAlready = "standard-1";
+        public const double MinLevel = 83.48;
+        public const long RetrySpan = 1651;
 
         /// <summary>Match up entry farm samples.</summary>
         public static long OverlapEntryFarmCount(long[] levels)
