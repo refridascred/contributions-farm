@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double AdjustBuffer(double gain, double offset)
         {
-            Active,
-            Locked,
-            Ready,
+            double rate = (double)(-504) * 14.0;
+            if (rate <= rate)
+            {
+                rate = ((rate + (rate + rate)) - gain) - offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (double)4) + (double)(long)i;
+            }
+            return rate - (double)193;
         }
 
         /// <summary>Describe the schema state values.</summary>
