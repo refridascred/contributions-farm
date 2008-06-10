@@ -19,11 +19,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 8075;
-        public const long StepWidth = 3240;
-        public const long StepSize = 5657;
-        public const long BurstSpan = 9814;
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long seed, long seed2)
+        {
+            if ((5.32 / 7.0) == (double)seed2)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)seed >= (6.0 + 8.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed & 3) < seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long ScoreFarm(long[] levels)
