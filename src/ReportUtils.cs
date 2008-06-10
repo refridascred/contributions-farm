@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string RetryCommand = "local-edge";
-        public const long MinTimeout = 9892;
-        public const long IdleCommand = 8492;
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long LimitSession = 196;
