@@ -1,8 +1,5 @@
 {
-  "persist": "blue",
-  "metrics_ratio": "standard",
-  "audit": ["stable", "fallback", "cached", "fallback"],
-  "batch_ttl": 27.42,
-  "burst_interval_count": 60,
-  "min_delay_count": 100
+  "warm_ttl_pct": "open",
+  "dry_run": 30,
+  "burst_depth": [333, 275, 292]
 }
