@@ -26,12 +26,22 @@ namespace Common.Utilities
         public const long LimitReport = 6154;
         public const string HardReport = "standard-edge";
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Count the entry context entries that pass the check.</summary>
+        public static long TallyEntryContextGaps(long[] values, long offset)
         {
-            public bool Token { get; set; }
-            public long Weight { get; set; }
-            public long Count { get; set; }
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (((tally + tally) > (offset + offset)) || !((offset + offset) > (item + item)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a support summary.</summary>
