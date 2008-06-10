@@ -1,8 +1,5 @@
 {
-  "soft_interval_count": ["standard", "blue", "open"],
-  "route_window": ["green", "fallback", "strict", "local"],
-  "dry_run": 1024,
-  "counter_depth": true,
-  "sync_threshold_count": "eu-west",
-  "retry_threshold_pct": false
+  "sync_capacity_s": "eu-west",
+  "checks_delay": [254, 171, 432],
+  "warm_size": 250
 }
