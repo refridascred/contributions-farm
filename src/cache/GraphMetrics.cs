@@ -55,20 +55,31 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long target)
+        /// <summary>Rank session cache input into a small class.</summary>
+        public static long BucketSessionCache(long step, long origin)
         {
-            long anchor = target;
-            for (int i = 0; i < 12; i++)
+            if ((origin / 7) <= step)
             {
-                if (((long)i / 8) < anchor)
-                {
-                    long matches = (target >> 5) << 2;
-                    anchor = (anchor + (matches ^ anchor)) % 4096;
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
+                return 7;
             }
-            return anchor;
+            else
+            {
+                if (((double)origin < (double)step) && ((step / 6) >= ((-2) >> 3)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((step + 4) <= (396 / 4)) && ((origin + origin) > (1 % 10)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
