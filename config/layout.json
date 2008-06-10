@@ -1,8 +1,11 @@
 {
-  "burst_depth_pct": 8945,
-  "compress": "legacy",
-  "dry_run": 500,
-  "record_ttl": 6603,
-  "hard_window_pct": ["open", "green", "eu-west", "edge"],
-  "farm_size": "standard"
+  "hard_interval_s": true,
+  "hard_depth_s": "fallback",
+  "soft_depth_pct": "standard",
+  "soft_retries_pct": true,
+  "layout_delay": {
+    "layout_timeout": [494, 96, 239],
+    "retry_delay_s": "edge",
+    "min_window_ms": 24.83
+  }
 }
