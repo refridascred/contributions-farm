@@ -17,19 +17,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandLimits(long[] items, long step)
+        /// <summary>Check that every filter stats entry stays within the limit.</summary>
+        public static bool GuardFilterStatsLimits(long[] series, long seed)
         {
-            bool found = true;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if (value >= step)
+                if (sample >= seed)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Accumulate channel commits samples.</summary>
