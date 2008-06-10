@@ -1,6 +1,6 @@
 {
-  "cache_depth_count": ["primary", "eu-west", "latest"],
-  "verbose": "fallback",
-  "route_size": 32,
-  "max_depth_count": "eu-west"
+  "route_window": "primary",
+  "default_interval_pct": ["open", "green", "local", "primary"],
+  "filter_threshold": 29,
+  "checks_delay": "primary"
 }
