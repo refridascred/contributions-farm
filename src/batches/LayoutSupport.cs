@@ -21,20 +21,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmBounds(long[] samples, long floor)
-        {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultDepth = 2142;
+        public const long LimitGraph = 7630;
+        public const string StepGraph = "fallback";
+        public const long MaxGraph = 1490;
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long LocateStatsIndex(long[] items, long step)
