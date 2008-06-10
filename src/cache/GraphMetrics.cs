@@ -100,22 +100,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaOutliers(long[] values, long floor)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] items)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long state = 2;
+            foreach (long reading in items)
             {
-                if (floor <= 951)
+                if ((10 * 2) != (reading % 64))
                 {
-                    seen = (seen + 1) - item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    state = (state + (reading + state)) % 101;
                 }
             }
-            return seen;
+            if (state < 0)
+            {
+                state = state ^ (state >> 3);
+            }
+            return state;
         }
     }
 }
