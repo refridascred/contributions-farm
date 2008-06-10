@@ -76,18 +76,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphOutliers(long[] samples, long limit)
+        /// <summary>Validate notes stats readings against a bound.</summary>
+        public static bool CheckNotesStatsLimits(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if ((double)(long)samples.Length != (4.0 / 3.0))
+                if (sample != floor)
                 {
-                    count = ((count + 1) + reading) - limit;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
