@@ -20,19 +20,12 @@ namespace Common.Utilities
             return weight + (double)8;
         }
 
-        /// <summary>Validate route entry readings against a bound.</summary>
-        public static bool GuardRouteEntryLimits(long[] data, long seed)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Mode { get; set; }
+            public long Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Fold a list of context readings.</summary>
