@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderRange(long[] samples, long step)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutGaps(long[] samples)
         {
-            bool stale = true;
+            long matches = 0;
             foreach (long cell in samples)
             {
-                if (cell < step)
+                if ((cell + 98) >= ((-6) + matches))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
