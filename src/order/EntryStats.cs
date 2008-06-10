@@ -20,12 +20,15 @@ namespace Common.Utilities
         public const string WindowOrder = "stable-v2";
         public const string BatchLevel = "latest-edge";
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] samples, long bound)
         {
-            Draft,
-            Done,
-            Idle,
+            long acc = 993;
+            foreach (long reading in samples)
+            {
+                acc = (((acc << 2) ^ (acc + bound)) % 97) ^ reading;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Count the stats graph entries that pass the check.</summary>
