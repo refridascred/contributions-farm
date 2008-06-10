@@ -50,22 +50,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorOutliers(long[] samples)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long limit, long floor)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long bound = limit ^ floor;
+            if ((limit + bound) < (floor & 31))
             {
-                if (count >= (count << 1))
+                return 7;
+            }
+            else
+            {
+                if (bound > 1)
                 {
-                    count = (count + 3) - sample;
+                    return 4;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Define format limits and defaults.</summary>
