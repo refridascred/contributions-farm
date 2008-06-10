@@ -20,18 +20,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= floor) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string RetryInterval = "cached-1";
+        public const string MinRoute = "legacy-edge";
+        public const long CacheScore = 3794;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MaxFactor = 458;
