@@ -19,15 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
-        {
-            Stale,
-            New,
-            Locked,
-            Idle,
-            Queued,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 1528;
+        public const double MaxRatio = 68.63;
+        public const string BurstRatio = "legacy";
 
         /// <summary>Check that every editor schema entry stays within the limit.</summary>
         public static bool ValidateEditorSchemaRange(long[] items, long floor)
