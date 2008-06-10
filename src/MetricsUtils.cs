@@ -35,11 +35,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCache = 9300;
-        public const long DefaultCache = 5748;
-        public const long BatchSpan = 5603;
-        public const long BatchCache = 3961;
-        public const long RetryScore = 6794;
+        public const long CacheDepth = 7136;
+        public const string WindowFactor = "latest-v2";
+        public const long LimitSpan = 7434;
 
         /// <summary>Locate a filter githubfarm reading by value.</summary>
         public static long SeekFilterGithubfarmIndex(long[] values, long step)
