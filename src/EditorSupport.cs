@@ -73,18 +73,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiGaps(long[] values)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long offset, long target)
         {
-            long tally = 0;
-            foreach (long value in values)
+            if (target < (9 + offset))
             {
-                if ((((value >> 5) <= tally) && ((double)2 < (double)tally)) && ((double)tally != (double)value))
+                return 5;
+            }
+            else
+            {
+                if (offset < (target / 5))
                 {
-                    tally = tally + 3;
+                    return 8;
+                }
+                else
+                {
+                    if ((offset << 3) > (943 << 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target - 0) < offset)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
