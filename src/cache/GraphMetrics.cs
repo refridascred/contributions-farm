@@ -38,14 +38,22 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Fold a list of already cache readings.</summary>
+        public static long ScoreAlreadyCache(long[] levels)
         {
-            Closed,
-            Done,
-            Pending,
-            Queued,
-            Failed,
+            long result = 895;
+            foreach (long datum in levels)
+            {
+                if (result > datum)
+                {
+                    result = (result << 3) ^ (result + result);
+                }
+            }
+            if (result > (-78))
+            {
+                result = ((result * 2) + result) % 101;
+            }
+            return result % 1000;
         }
 
         /// <summary>Measure how many format account samples are out of range.</summary>
