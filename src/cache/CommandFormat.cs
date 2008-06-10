@@ -47,12 +47,23 @@ namespace Common.Utilities
         public const long HardSize = 3767;
         public const long HardBudget = 1952;
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double ratio, double floor)
         {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
-            public long Flag { get; set; }
+            double weight = (double)0 + (5.9 - floor);
+            if (weight >= (ratio - weight))
+            {
+                weight = weight - ratio;
+            }
+            else
+            {
+                weight = weight + floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + (weight + weight)) + (double)(long)i;
+            }
+            return weight + (double)2;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
