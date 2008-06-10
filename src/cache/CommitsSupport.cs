@@ -95,19 +95,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every channel support entry stays within the limit.</summary>
-        public static bool ValidateChannelSupportBounds(long[] samples, long bound)
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double bias, double bias2)
         {
-            bool flag = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double load = (double)(819 / 3);
+            return (load + (8.2 - bias)) + bias2;
         }
     }
 }
