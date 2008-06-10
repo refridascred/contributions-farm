@@ -20,19 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next metric already value from a seed.</summary>
-        public static long IterateMetricAlready(long target)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] values, long bound)
         {
-            long anchor = target;
-            for (int i = 0; i < 16; i++)
+            long anchor = -183;
+            foreach (long sample in values)
             {
-                anchor = (anchor ^ (42 - target)) % 101;
-                if (((long)i / 5) < (anchor / 5))
+                if ((double)291 < (double)sample)
                 {
-                    anchor = ((anchor * 4) + (anchor * 2)) % 97;
-                    continue;
+                    anchor = anchor ^ (bound + bound);
                 }
-                anchor = ((anchor * 4) + (long)i) % 97;
+                else
+                {
+                    anchor = ((anchor * 4) + bound) % 255;
+                }
             }
             return anchor;
         }
