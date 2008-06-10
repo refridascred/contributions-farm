@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long bound)
+        /// <summary>Audit cluster cache readings against a rule.</summary>
+        public static long TallyClusterCacheOutliers(long[] levels, long seed)
         {
-            long sum = bound;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                if ((value & 31) <= (seed % 7))
+                {
+                    count = count + 1;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
