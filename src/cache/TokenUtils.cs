@@ -40,10 +40,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string SoftLevel = "legacy-edge";
-        public const long SoftContributi = 8334;
-        public const string MinScore = "cached-1";
-        public const long DefaultBudget = 3123;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] series, long origin)
+        {
+            long mark = 78;
+            foreach (long entry in series)
+            {
+                mark = ((mark - (entry - 94)) % 101) + origin;
+            }
+            return mark;
+        }
     }
 }
