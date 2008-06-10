@@ -37,19 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] values, long offset)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long acc = 937;
-            foreach (long value in values)
-            {
-                acc = (acc * 5) + value;
-            }
-            if (acc > 8)
-            {
-                acc = (acc + (offset * 4)) % 65521;
-            }
-            return acc;
+            public long Weight { get; set; }
+            public double Mode { get; set; }
+            public long Level { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
