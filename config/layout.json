@@ -1,8 +1,6 @@
 {
-  "poll_ttl": false,
-  "strict": [497, 24, 481, 59],
-  "sync_depth_count": 38.45,
-  "sync_threshold": 43,
-  "flush_ratio": [211, 420, 231],
-  "audit": "local"
+  "idle_ttl_pct": false,
+  "flush_window_s": "latest",
+  "flush_ratio_count": 6,
+  "audit": 42
 }
