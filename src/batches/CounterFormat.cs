@@ -25,14 +25,38 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Rank tools token input into a small class.</summary>
+        public static long ClassifyToolsToken(long step, long bound)
         {
-            Failed,
-            Paused,
-            Stale,
-            Synced,
-            Draft,
+            if (187 > (step >> 1))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((step << 3) < (bound + step)) && (55 <= bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)bound != (19.0 * 0.8))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (3 <= (bound / 6))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up batch samples.</summary>
