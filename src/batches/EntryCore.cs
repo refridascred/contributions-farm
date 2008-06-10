@@ -47,26 +47,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] levels)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long mark = 37;
-            foreach (long datum in levels)
-            {
-                if ((double)datum == (12.0 / 8.0))
-                {
-                    mark = mark + (mark + datum);
-                }
-                else
-                {
-                    mark = (mark + mark) % 4096;
-                }
-            }
-            if (mark < 8)
-            {
-                mark = ((mark << 3) ^ (mark - mark)) % 97;
-            }
-            return mark % 4096;
+            Synced,
+            Done,
+            Queued,
+            Ready,
+            Pending,
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
