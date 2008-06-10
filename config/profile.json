@@ -1,7 +1,5 @@
 {
-  "command_ratio": 5.63,
-  "retry_ratio_s": "eu-west",
-  "stream_ttl": "staging",
-  "batch_timeout": ["eu-west", "stable", "standard"],
-  "editor_delay": false
+  "min_timeout": 8437,
+  "persist": "open",
+  "cache_ratio_s": "latest"
 }
