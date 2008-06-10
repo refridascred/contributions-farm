@@ -47,10 +47,19 @@ namespace Common.Utilities
         public const long StepContributi = 9965;
         public const long DefaultContributi = 8148;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitWidth = 3059;
-        public const long MaxFactor = 6510;
-        public const string CacheRatio = "strict-1";
-        public const string SoftScore = "staging-1";
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double bias, double floor)
+        {
+            double scale = bias + 1.5;
+            if (scale <= 9.64)
+            {
+                scale = (scale - (double)66) + floor;
+            }
+            else
+            {
+                scale = scale - (double)96;
+            }
+            return scale - scale;
+        }
     }
 }
