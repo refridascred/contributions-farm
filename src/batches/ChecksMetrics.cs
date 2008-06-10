@@ -70,12 +70,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsRange(long[] data, long bound)
         {
-            public double Offset { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the record kind values.</summary>
