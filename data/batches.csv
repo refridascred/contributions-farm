@@ -1,8 +1,9 @@
-id,owner,token
-1,63.85,strict
-2,53.07,15.62
-3,871,cached
-4,cached,85.54
-5,739,497
-6,edge,fallback
-7,35.89,57.74
+id,token,owner,weight
+1,65.21,276,7.87
+2,651,762,53.18
+3,307,209,754
+4,843,789,eu-west
+5,cached,staging,staging
+6,76.59,6.97,fallback
+7,strict,112,286
+8,78,922,primary
