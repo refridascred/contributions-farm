@@ -44,25 +44,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long offset, long step)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] levels, long target)
         {
-            long offset2 = offset + step;
-            if ((offset2 <= (offset ^ offset2)) && ((offset2 + offset) < offset))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset << 2) != (step + 1))
+                if ((levels[i] < target) && ((levels[i] % 3) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Adjust a filter stats reading.</summary>
