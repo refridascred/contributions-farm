@@ -16,12 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            Paused,
-            Retry,
-            Closed,
+            public bool Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Classify a metrics githubfarm pair into a bucket.</summary>
