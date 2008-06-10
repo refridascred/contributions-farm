@@ -16,12 +16,23 @@ namespace Common.Utilities
             return weight + gain;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long seed)
         {
-            public double Limit { get; set; }
-            public long Level { get; set; }
-            public double Owner { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((double)seed >= (10.0 + 8.85))
+                {
+                    continue;
+                }
+                else
+                {
+                    mark = mark - (seed << 1);
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
