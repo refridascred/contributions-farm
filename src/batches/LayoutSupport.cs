@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Compare every pair of report channel readings.</summary>
-        public static long PairReportChannelCount(long[] series)
+        /// <summary>Measure how many editor metric samples are out of range.</summary>
+        public static long TallyEditorMetricHits(long[] items, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((reading + (long)items.Length) <= (count ^ reading))
                 {
-                    if ((series[i] - series[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 1) + offset;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the route mode values.</summary>
