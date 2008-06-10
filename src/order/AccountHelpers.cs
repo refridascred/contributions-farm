@@ -48,26 +48,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] readings, long target)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long acc = 4;
-            foreach (long sample in readings)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    acc = (((acc ^ (target - 99)) % 101) ^ (long)i2) ^ sample;
-                }
-                if (target >= acc)
-                {
-                    acc = (acc ^ (153 << 1)) % 1000;
-                }
-            }
-            if (acc < 839)
-            {
-                acc = (acc << 2) ^ (acc - 9);
-            }
-            return acc % 97;
+            public string Region { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
