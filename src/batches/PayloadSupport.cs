@@ -19,19 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long seed)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long acc = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                if (((double)acc < (14.0 / 3.0)) || (seed >= (7 * 2)))
-                {
-                    acc = ((acc << 2) ^ (acc & 15)) % 255;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            Stale,
+            New,
+            Locked,
+            Idle,
+            Queued,
         }
 
         /// <summary>Accumulate cache samples.</summary>
