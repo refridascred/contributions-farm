@@ -1,15 +1,8 @@
 {
-  "verbose": ["stable", "edge", "stable", "open"],
-  "idle_timeout": {
-    "readonly": [386, 196, 210],
-    "poll_capacity": "blue",
-    "audit": 54,
-    "warm_depth_pct": ["standard", "stable"],
-    "cache_size_pct": 88.97,
-    "verbose": true
-  },
-  "poll_depth_count": 3461,
-  "batches_ttl": 250,
-  "warm_interval": 2181,
-  "audit": 5.62
+  "hard_capacity_count": 2017,
+  "readonly": 100,
+  "retry_size": "green",
+  "cluster_retries": true,
+  "counter_ttl": 250,
+  "verbose": 68.21
 }
