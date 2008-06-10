@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Look up the position of a profile format sample.</summary>
-        public static long LocateProfileFormatIndex(long[] levels, long limit)
+        /// <summary>Roll a window stats counter forward.</summary>
+        public static long RollWindowStats(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((levels[i] < limit) && ((levels[i] % 2) != 0))
+                if ((double)score >= 14.0)
                 {
-                    return (long)i;
+                    break;
                 }
+                score = ((score * 3) + (score << 1)) % 1000;
+                score = ((score * 4) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
