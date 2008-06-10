@@ -93,21 +93,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long seed)
+        /// <summary>Scale a githubfarm profile figure with a bias.</summary>
+        public static double ProjectGithubfarmProfile(double ratio, double bias)
         {
-            long total = seed;
-            for (int i = 0; i < 13; i++)
+            double ratio2 = ratio;
+            if (ratio2 >= 10.0)
             {
-                if (16.0 <= (double)total)
-                {
-                    total = (total << 3) ^ total;
-                    total = total ^ (total + seed);
-                    break;
-                }
-                total = ((total * 2) + (long)i) % 97;
+                ratio2 = ratio2 + (double)63;
             }
-            return total;
+            else
+            {
+                ratio2 = ratio2 - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 + (bias + 9.2)) + (double)(long)i;
+            }
+            return ratio2 + (ratio2 + 7.0);
         }
     }
 }
