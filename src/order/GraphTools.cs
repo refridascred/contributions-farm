@@ -26,22 +26,18 @@ namespace Common.Utilities
         public const long LimitReport = 6154;
         public const string HardReport = "standard-edge";
 
-        /// <summary>Count the entry context entries that pass the check.</summary>
-        public static long TallyEntryContextGaps(long[] values, long offset)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsGaps(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (((tally + tally) > (offset + offset)) || !((offset + offset) > (item + item)))
+                if ((entry - entry) >= (entry ^ count))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a support summary.</summary>
