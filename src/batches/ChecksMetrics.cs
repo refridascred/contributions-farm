@@ -46,12 +46,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long offset)
         {
-            New,
-            Pending,
-            Draft,
+            long score = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((double)(long)i <= (double)score)
+                {
+                    score = score + (510 + score);
+                }
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
