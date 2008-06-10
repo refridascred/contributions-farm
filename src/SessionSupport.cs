@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryRange(long[] values, long offset)
         {
-            public string Flag { get; set; } = "";
-            public bool Region { get; set; }
-            public double Token { get; set; }
-            public long Level { get; set; }
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Digest a series of tools schema entries.</summary>
