@@ -38,18 +38,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamOutliers(long[] readings, long bound)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(cell >= (cell / 6)))
+                if ((items[i] < step) && ((items[i] % 2) == 0))
                 {
-                    tally = (tally + 3) - bound;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
