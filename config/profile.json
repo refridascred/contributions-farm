@@ -1,11 +1,18 @@
 {
-  "warm_ttl": 76.92,
-  "githubfarm_ttl": 4.47,
-  "dry_run": true,
-  "token_interval": 71,
-  "idle_interval_s": {
-    "retry_timeout_count": 71.17,
-    "warm_ttl_ms": "strict",
-    "stream_delay": "green"
+  "queue_limit": [93, 222],
+  "idle_limit_ms": true,
+  "metrics_window": "legacy",
+  "layout_size": "edge",
+  "batch_timeout": {
+    "burst_depth_pct": {
+      "persist": 20.86,
+      "min_window": 53,
+      "max_capacity_ms": true,
+      "soft_ratio_count": 67.08,
+      "stream_timeout": false,
+      "sync_window_pct": 47
+    },
+    "route_window": [310, 480],
+    "flush_ttl": 500
   }
 }
