@@ -31,18 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] levels)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchOutliers(long[] values, long step)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((count << 3) == (item & 15))
+                if ((-14) >= (item % 2))
                 {
-                    count = count + 3;
+                    hits = (hits + 1) + step;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Accumulate graph queue samples.</summary>
