@@ -6,22 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local eu-west cached open; do
-    log "checking ${item}"
-done
-
-mode="${1:-stable}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=163
+log "limit is ${COMMAND_LIMIT}"
 
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 1))
+for i in $(seq 1 8); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
