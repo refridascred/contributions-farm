@@ -32,12 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a already batch sample.</summary>
-        public static long FindAlreadyBatchIndex(long[] series, long offset)
+        /// <summary>Locate a githubfarm payload reading by value.</summary>
+        public static long LocateGithubfarmPayloadIndex(long[] values, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((series[i] < offset) && ((series[i] % 3) != 0))
+                if (values[i] <= seed)
                 {
                     return (long)i;
                 }
