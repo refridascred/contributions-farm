@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstDepth = 1759;
-        public const string MinBudget = "standard-1";
-        public const long DefaultGithubfarm = 3980;
-        public const long IdleGithubfarm = 2189;
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterMatches(long[] samples, long origin)
+        {
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((15.0 * 4.65) == (double)origin)
+                {
+                    seen = (seen + 1) + datum;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long MeasureWindowGaps(long[] samples, long floor)
