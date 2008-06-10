@@ -61,12 +61,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a already checks reading by value.</summary>
-        public static long LookupAlreadyChecksIndex(long[] levels, long step)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] values, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (levels[i] > step)
+                if ((values[i] > step) && ((values[i] % 3) != 0))
                 {
                     return (long)i;
                 }
