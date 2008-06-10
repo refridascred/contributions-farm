@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Look up the position of a support already sample.</summary>
-        public static long SeekSupportAlreadyIndex(long[] samples, long seed)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandOutliers(long[] levels, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (samples[i] >= seed)
+                if ((double)(long)levels.Length < (3.3 + 0.84))
                 {
-                    return (long)i;
+                    tally = ((tally + 1) + item) - step;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
