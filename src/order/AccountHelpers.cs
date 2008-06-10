@@ -47,19 +47,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] readings, long offset)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsLimits(long[] series, long seed)
         {
-            long result = 83;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long value in series)
             {
-                result = (result ^ value) - offset;
-                if (!(value <= result))
+                if (value < seed)
                 {
-                    result = result - (599 & 1);
+                    ok = false;
+                    break;
                 }
             }
-            return result % 97;
+            return ok;
         }
 
         /// <summary>Describe the editor kind values.</summary>
