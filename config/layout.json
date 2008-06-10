@@ -1,6 +1,6 @@
 {
-  "readonly": "eu-west",
-  "warm_interval": true,
-  "enabled": 35.97,
-  "retry_depth_ms": false
+  "hard_ttl_count": 76.17,
+  "idle_retries_ms": [62, 450],
+  "min_limit": 1576,
+  "sync_depth_s": "cached"
 }
