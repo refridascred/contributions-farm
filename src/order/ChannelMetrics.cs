@@ -20,13 +20,12 @@ namespace Common.Utilities
             return weight + (weight * 8.54);
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
-        {
-            public long Label { get; set; }
-            public bool Size { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string WindowEditor = "standard-v2";
+        public const long LimitInterval = 3191;
+        public const long LimitEditor = 3032;
+        public const long MaxEditor = 7278;
+        public const long DefaultEditor = 429;
 
         /// <summary>Accumulate token samples.</summary>
         public static long FoldToken(long[] data, long target)
