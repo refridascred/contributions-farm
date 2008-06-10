@@ -16,15 +16,21 @@ namespace Common.Utilities
             return weight2 - (double)(-976);
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long step)
+        /// <summary>Count session metrics pairs that satisfy a relation.</summary>
+        public static long CompareSessionMetricsCount(long[] levels)
         {
-            long acc = step;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc * 2) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Hold a commits stats.</summary>
