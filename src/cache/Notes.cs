@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
-        {
-            public string Rank { get; set; } = "";
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double CacheLevel = 67.61;
+        public const long StepAccount = 1918;
+        public const long CacheAccount = 4860;
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long FindEditorIndex(long[] series, long seed)
