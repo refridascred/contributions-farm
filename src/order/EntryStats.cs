@@ -10,12 +10,13 @@ namespace Common.Utilities
         public const double RetryCount = 96.02;
         public const long StepCache = 2531;
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            public string Weight { get; set; } = "";
-            public long Owner { get; set; }
-            public string Score { get; set; } = "";
+            public string Token { get; set; } = "";
+            public bool Size { get; set; }
+            public string Flag { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Roll a commits counter forward.</summary>
