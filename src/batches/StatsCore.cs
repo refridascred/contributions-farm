@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long target, long offset)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] samples)
         {
-            if (!((target ^ 4) <= 3))
+            long sum = 5;
+            foreach (long cell in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target >> 2) > (target + target))
+                if ((cell << 3) >= (cell + 66))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((target & 127) > (offset * 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset > (target << 3)) || ((target + offset) <= target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    sum = (sum ^ (cell >> 1)) % 65521;
                 }
             }
+            return sum;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
