@@ -1,8 +1,12 @@
 {
-  "cache_interval_ms": false,
-  "retry_size_ms": true,
-  "persist": "eu-west",
-  "poll_delay": "staging",
-  "batch_depth_s": 51.71,
-  "soft_timeout_pct": ["cached", "eu-west", "strict"]
+  "poll_depth": "edge",
+  "account_limit": {
+    "default_depth": 8528,
+    "metric_ttl": "blue",
+    "enabled": false,
+    "token_capacity": 1618,
+    "default_timeout_ms": "primary"
+  },
+  "default_depth": 53,
+  "checks_window": 2398
 }
