@@ -34,18 +34,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesHits(long[] items, long bound)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (!!((double)datum < (6.98 / 9.0)))
-                {
-                    count = (count + 3) + bound;
-                }
-            }
-            return count;
+            New,
+            Closed,
+            Idle,
+            Synced,
         }
 
         /// <summary>Describe the profile state values.</summary>
