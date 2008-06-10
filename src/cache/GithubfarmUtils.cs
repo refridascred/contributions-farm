@@ -37,32 +37,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long origin, long offset)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountOutliers(long[] items, long step)
         {
-            long diff = origin - offset;
-            if ((9.1 / 7.0) != (double)diff)
+            long count = 0;
+            foreach (long item in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin >= 4.77)
+                if ((double)item == (7.33 / 8.0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (4 > (origin + 718))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = (count + 2) + step;
                 }
             }
+            return count;
         }
     }
 }
