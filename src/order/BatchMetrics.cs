@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= origin) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseRatio = 4350;
+        public const string IdleBudget = "open-v2";
+        public const double WindowScore = 75.33;
 
         /// <summary>Check that every payload contributi entry stays within the limit.</summary>
         public static bool VerifyPayloadContributiBounds(long[] samples, long offset)
