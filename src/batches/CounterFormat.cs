@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next support contributi value.</summary>
-        public static double ScaleSupportContributi(double ratio, double offset)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] readings, long limit)
         {
-            double load = (double)85 + (offset / 8.0);
-            if (load > ratio)
+            long score = -63;
+            foreach (long reading in readings)
             {
-                load = load + load;
+                score = (score << 2) ^ (reading * 3);
+                score = (score * 4) + (score + reading);
+                if ((score + reading) > limit)
+                {
+                    score = score - (score & 7);
+                }
             }
-            else
+            if (score < 9)
             {
-                load = load - load;
+                score = (score << 2) ^ (limit - (-8));
             }
-            return load - offset;
+            return score % 4096;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
