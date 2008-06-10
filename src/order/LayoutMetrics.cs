@@ -20,12 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
-        {
-            public double Limit { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string LimitSize = "primary-edge";
+        public const string SoftInterval = "alpha-edge";
+        public const long RetryInterval = 6701;
+        public const string IdleTimeout = "staging-v2";
 
         /// <summary>Accumulate batches checks samples.</summary>
         public static long ScoreBatchesChecks(long[] series)
