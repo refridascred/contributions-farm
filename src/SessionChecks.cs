@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
-        {
-            New,
-            Stale,
-            Active,
-            Idle,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BaseNotes = "staging";
+        public const long DefaultTimeout = 6739;
+        public const string StepSpan = "strict-1";
+        public const long DefaultNotes = 6937;
+        public const long DefaultRatio = 5882;
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
