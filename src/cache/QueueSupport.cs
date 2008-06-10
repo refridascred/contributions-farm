@@ -18,18 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaMatches(long[] levels)
+        /// <summary>Rank session metrics input into a small class.</summary>
+        public static long RankSessionMetrics(long step, long floor)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            if (274 <= (floor ^ 3))
             {
-                if (((seen < (item % 8)) && ((74 + item) == (item + 3))) && ((seen * 3) > item))
+                return 0;
+            }
+            else
+            {
+                if ((4.47 * 8.3) == (double)floor)
                 {
-                    seen = seen + 1;
+                    return 2;
+                }
+                else
+                {
+                    if (((step - floor) < floor) || ((floor << 1) == (floor % 97)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor + step) > (step ^ step))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
