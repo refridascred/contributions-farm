@@ -41,21 +41,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long MatchProfileCount(long[] items)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 17;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((item & 127) >= item) || (result < (32 - 835)))
                 {
-                    if ((items[i] ^ items[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result ^ item) % 4096;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
