@@ -22,15 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two contributi notes measurements.</summary>
-        public static double ProjectContributiNotes(double weight, double offset)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandBounds(long[] items, long offset)
         {
-            double mean = weight * 0.19;
-            for (int i = 0; i < 7; i++)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                mean = (mean + (offset + weight)) + (double)(long)i;
+                if (datum >= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mean - mean;
+            return ready;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
