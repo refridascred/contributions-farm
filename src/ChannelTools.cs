@@ -27,19 +27,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordRange(long[] values, long limit)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksOutliers(long[] items, long floor)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (cell <= limit)
+                if ((double)sample != (double)357)
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 2) - floor;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
