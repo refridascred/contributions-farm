@@ -15,13 +15,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Match up metrics account samples.</summary>
+        public static long MatchMetricsAccountCount(long[] series)
         {
-            public long Stamp { get; set; }
-            public double Region { get; set; }
-            public long Score { get; set; }
-            public bool Level { get; set; }
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the batch status values.</summary>
