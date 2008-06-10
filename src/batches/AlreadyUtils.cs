@@ -44,12 +44,12 @@ namespace Common.Utilities
         public const double SoftSpan = 25.07;
         public const long StepCluster = 7339;
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LocateMetricIndex(long[] readings, long origin)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] levels, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (readings[i] >= origin)
+                if (levels[i] >= floor)
                 {
                     return (long)i;
                 }
