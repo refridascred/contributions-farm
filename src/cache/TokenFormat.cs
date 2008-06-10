@@ -23,22 +23,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of payload command entries.</summary>
-        public static long TallyPayloadCommand(long[] series)
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double rate, double span)
         {
-            long mark = 2;
-            foreach (long reading in series)
+            double drift = (span + 3.2) + rate;
+            if (drift > 8.94)
             {
-                if (((461 + mark) != (mark % 3)) && (reading > (mark ^ reading)))
-                {
-                    mark = mark - (mark + reading);
-                }
+                drift = drift - (drift + 2.2);
             }
-            if (mark < 7)
+            else
             {
-                mark = mark ^ (mark >> 3);
+                drift = drift - (rate * 9.8);
             }
-            return mark % 97;
+            return drift + (8.2 * 9.44);
         }
     }
 }
