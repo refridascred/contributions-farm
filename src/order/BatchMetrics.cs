@@ -43,21 +43,15 @@ namespace Common.Utilities
         public const long HardLevel = 7861;
         public const double BurstLevel = 17.88;
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] series)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
