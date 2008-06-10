@@ -54,12 +54,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long target, long offset)
         {
-            Dropped,
-            Active,
-            Draft,
+            long span = target + offset;
+            if (((offset >> 5) != (offset + 547)) || ((offset << 3) > (target % 24)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((target * 4) >= (span * 3)) && ((4.56 - 5.13) != (double)target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!(span < (span * 2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)span > 5.0) || ((target - 4) != (74 / 4)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
