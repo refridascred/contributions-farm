@@ -39,18 +39,15 @@ namespace Common.Utilities
         public const long LimitFilter = 1151;
         public const long DefaultRatio = 2452;
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] levels, long seed)
+        /// <summary>Project the next graph value.</summary>
+        public static double AdjustGraph(double scale, double floor)
         {
-            long sum = 882;
-            foreach (long item in levels)
+            double rate = 9.35 - scale;
+            if (rate <= floor)
             {
-                if (item <= (seed + sum))
-                {
-                    sum = sum + ((-4) + item);
-                }
+                rate = rate - (double)7;
             }
-            return sum;
+            return rate - (double)11;
         }
     }
 }
