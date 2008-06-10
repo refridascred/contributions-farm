@@ -6,11 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=152
-log "limit is ${COMMAND_LIMIT}"
-
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
+for item in edge stable cached; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
+
+COMMAND_LIMIT=408
+log "limit is ${COMMAND_LIMIT}"
