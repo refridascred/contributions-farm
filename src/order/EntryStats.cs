@@ -49,9 +49,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string HardMetrics = "staging";
-        public const long IdleMetrics = 3920;
-        public const long BurstFactor = 7468;
+        /// <summary>Count githubfarm graph pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmGraphCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
