@@ -31,22 +31,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metrics already samples are out of range.</summary>
-        public static long AuditMetricsAlreadyMatches(long[] levels, long limit)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (!((cell * 2) < (cell - 696)))
-                {
-                    seen = (seen + 2) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public double Region { get; set; }
+            public long Level { get; set; }
+            public long Count { get; set; }
         }
     }
 }
