@@ -16,13 +16,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
-        {
-            Dropped,
-            Active,
-            Queued,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinPayload = 6343;
+        public const double DefaultPayload = 73.37;
+        public const long LimitPayload = 6397;
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool VerifyMetricsRange(long[] samples, long step)
