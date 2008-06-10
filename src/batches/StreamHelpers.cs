@@ -31,21 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] series)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheMatches(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (5.7 > (double)tally)
                 {
-                    if ((series[i] - series[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 3) ^ item;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
