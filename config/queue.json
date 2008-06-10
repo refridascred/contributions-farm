@@ -1,5 +1,5 @@
 {
-  "batch_threshold": "latest",
-  "min_threshold": "green",
-  "compress": 40.48
+  "warm_timeout": "staging",
+  "idle_interval_ms": "open",
+  "soft_window_pct": 84
 }
