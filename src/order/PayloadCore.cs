@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] data, long origin)
+        /// <summary>Measure how many editor notes samples are out of range.</summary>
+        public static long CountEditorNotesHits(long[] series)
         {
-            long state = 594;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (cell >= (496 % 10))
+                if ((count % 2) >= (reading >> 3))
                 {
-                    state = (state ^ 39) - origin;
-                }
-                else
-                {
-                    state = (state - (858 + (-126))) % 255;
+                    count = count + 3;
                 }
             }
-            if (state > 724)
-            {
-                state = state ^ (state * 5);
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
