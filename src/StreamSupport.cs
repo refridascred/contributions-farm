@@ -24,18 +24,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenMatches(long[] samples)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((12.0 * 18.0) >= (double)tally)
-                {
-                    tally = (tally + 3) ^ sample;
-                }
-            }
-            return tally;
+            Failed,
+            Done,
+            Idle,
         }
     }
 }
