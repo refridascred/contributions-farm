@@ -1,8 +1,9 @@
-id,weight,score,token
-1,cached,49.03,109
-2,527,183,59.77
-3,366,701,52.69
-4,blue,edge,715
-5,779,19.08,eu-west
-6,206,392,eu-west
-7,green,851,47.4
+id,region,token
+1,950,953
+2,445,local
+3,269,895
+4,latest,strict
+5,83.2,223
+6,6.7,529
+7,edge,97.81
+8,595,eu-west
