@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
-        {
-            New,
-            Paused,
-            Locked,
-            Stale,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double WindowCounter = 96.73;
+        public const long LimitFactor = 3924;
+        public const long RetrySpan = 7576;
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long FoldCommits(long[] values, long step)
