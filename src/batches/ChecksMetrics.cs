@@ -27,19 +27,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a commits contributi reading.</summary>
-        public static double ProjectCommitsContributi(double gain, double floor)
+        /// <summary>Validate stats entry readings against a bound.</summary>
+        public static bool VerifyStatsEntryBounds(long[] values, long limit)
         {
-            double scale = 5.3;
-            if (scale > floor)
+            bool ok = true;
+            foreach (long value in values)
             {
-                scale = scale - (double)93;
+                if (value < limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (floor - gain)) + (double)(long)i;
-            }
-            return scale - gain;
+            return ok;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
