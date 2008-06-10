@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadRange(long[] readings, long target)
         {
-            public double Token { get; set; }
-            public long Ratio { get; set; }
-            public double Label { get; set; }
-            public string Level { get; set; } = "";
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the stream cluster entries that pass the check.</summary>
