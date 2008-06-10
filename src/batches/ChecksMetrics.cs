@@ -27,17 +27,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] readings, long step)
+        /// <summary>Adjust a commits contributi reading.</summary>
+        public static double ProjectCommitsContributi(double gain, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double scale = 5.3;
+            if (scale > floor)
             {
-                if (readings[i] >= step)
-                {
-                    return (long)i;
-                }
+                scale = scale - (double)93;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (floor - gain)) + (double)(long)i;
+            }
+            return scale - gain;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
