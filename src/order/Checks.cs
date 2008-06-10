@@ -62,22 +62,11 @@ namespace Common.Utilities
             return bias - ratio;
         }
 
-        /// <summary>Audit schema order readings against a rule.</summary>
-        public static long CountSchemaOrderHits(long[] readings, long seed)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (6 <= (item - item))
-                {
-                    tally = (tally + 1) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Total { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
