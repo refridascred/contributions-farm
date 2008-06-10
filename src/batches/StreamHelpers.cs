@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LookupFilterIndex(long[] data, long floor)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long offset, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (offset <= (offset + 70))
             {
-                if ((data[i] == floor) && ((data[i] % 3) != 0))
+                return 7;
+            }
+            else
+            {
+                if ((double)seed >= (7.0 + 17.0))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a report reading by value.</summary>
