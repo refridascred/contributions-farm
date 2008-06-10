@@ -1,38 +1,11 @@
 # githubfarm settings
-order_interval:
-  - latest
-  - eu-west
-  - strict
-warm_capacity_ms: primary
-sync_window: 71
-batch_limit_count:
-  warm_interval_s:
-    - 236
-    - 65
-    - 304
-    - 45
-  record_window: false
-  burst_retries_count:
-    - 51
-    - 473
-    - 357
-    - 146
-default_window_ms:
-  batch_threshold: 5.67
-  base_threshold: 84.24
-  max_interval: 1024
-  enabled: false
-  default_ratio:
-    default_size: 52.42
-    persist:
-      - 486
-      - 66
-      - 116
-    queue_interval: latest
-    sync_timeout: false
-    warm_window_s:
-      - staging
-      - green
-      - staging
-      - edge
-    base_window_s: local
+verbose: 250
+poll_limit_pct: 250
+support_capacity:
+  - open
+  - blue
+max_interval:
+  - 248
+  - 492
+  - 233
+  - 336
