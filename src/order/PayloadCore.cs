@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double rate, double span)
-        {
-            double bias = 4.2 * 8.0;
-            return (bias + (rate - 2.31)) + span;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BurstDepth = 46.39;
+        public const string DefaultMetric = "standard-1";
+        public const long RetryMetric = 7429;
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
