@@ -76,39 +76,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long origin, long bound)
+        /// <summary>Blend two format window measurements.</summary>
+        public static double BlendFormatWindow(double rate, double offset)
         {
-            long step = origin ^ bound;
-            if ((step >> 5) < (origin + origin))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)step != (0.7 * 8.7))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((1.29 - 1.3) >= (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((6.6 + 8.62) < (double)step)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            double scale = rate;
+            return (scale - rate) + offset;
         }
     }
 }
