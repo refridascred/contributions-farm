@@ -25,17 +25,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a checks layout sample.</summary>
-        public static long FindChecksLayoutIndex(long[] data, long origin)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if ((data[i] <= origin) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                state = (state - offset) % 65521;
+                state = ((state * 3) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
     }
 }
