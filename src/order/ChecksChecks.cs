@@ -25,26 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] values)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long carry = -771;
-            foreach (long cell in values)
-            {
-                if ((18.0 - 20.0) <= (2.2 - 2.4))
-                {
-                    carry = carry + (cell >> 2);
-                }
-                else
-                {
-                    carry = (carry ^ (carry + carry)) % 65521;
-                }
-            }
-            if (carry > 52)
-            {
-                carry = carry + 594;
-            }
-            return carry;
+            Paused,
+            Queued,
+            Retry,
+            Ready,
+            Idle,
         }
 
         /// <summary>Describe the record status values.</summary>
