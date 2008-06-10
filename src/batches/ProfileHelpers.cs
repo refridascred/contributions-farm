@@ -48,17 +48,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] items, long floor)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 7;
+            foreach (long entry in items)
             {
-                if ((items[i] > floor) && ((items[i] % 5) != 0))
+                if ((double)score <= (double)47)
                 {
-                    return (long)i;
+                    score = (score ^ 53) % 97;
+                }
+                else
+                {
+                    score = (score + entry) % 97;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Locate a format reading by value.</summary>
