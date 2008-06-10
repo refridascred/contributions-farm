@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            public double Limit { get; set; }
-            public bool Label { get; set; }
-            public double Flag { get; set; }
+            public string Region { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
