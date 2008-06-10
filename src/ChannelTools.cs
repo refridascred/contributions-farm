@@ -23,19 +23,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandLimits(long[] items, long limit)
+        /// <summary>Audit command schema readings against a rule.</summary>
+        public static long TallyCommandSchemaGaps(long[] values)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (sample <= limit)
+                if (((cell >> 2) <= hits) && ((5.7 / 6.0) >= (double)cell))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
