@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long floor)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long result = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                result = (result - (1 + 45)) % 255;
-                if ((floor % 10) == (floor - result))
-                {
-                    result = result ^ (result >> 3);
-                }
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            public long Mode { get; set; }
+            public double Score { get; set; }
+            public bool Region { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define support limits and defaults.</summary>
