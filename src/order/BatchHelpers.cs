@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first metrics commits entry that matches the target.</summary>
-        public static long SeekMetricsCommitsIndex(long[] data, long target)
+        /// <summary>Measure how many cache filter samples are out of range.</summary>
+        public static long MeasureCacheFilterHits(long[] readings, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (data[i] > target)
+                if (step <= (1 + step))
                 {
-                    return (long)i;
+                    tally = (tally + 1) - entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a report record.</summary>
