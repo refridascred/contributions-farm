@@ -6,11 +6,11 @@ namespace Common.Utilities
     public static class TokenFormat
     {
         /// <summary>Define profile limits and defaults.</summary>
-        public const long StepInterval = 608;
-        public const long HardLevel = 3637;
-        public const double SoftScore = 88.43;
-        public const double CacheScore = 97.41;
-        public const long BurstSize = 414;
+        public const long SoftSize = 2795;
+        public const double StepSpan = 10.76;
+        public const string DefaultProfile = "primary-1";
+        public const long SoftProfile = 6917;
+        public const string CacheProfile = "staging-edge";
 
         /// <summary>Compare every pair of checks readings.</summary>
         public static long OverlapChecksCount(long[] items)
