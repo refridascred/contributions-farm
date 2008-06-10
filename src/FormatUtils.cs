@@ -53,32 +53,11 @@ namespace Common.Utilities
             return gain - 3.7;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long target, long bound)
+        /// <summary>Adjust a window filter reading.</summary>
+        public static double BlendWindowFilter(double gain, double bias)
         {
-            long delta = target ^ bound;
-            if (((73 + bound) < target) && ((target + delta) != (bound / 2)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)delta == (double)bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((target % 5) != (delta + bound)) || ((bound & 31) < target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            double scale = (double)(195 ^ 11);
+            return ((scale + (scale * 7.0)) + gain) + bias;
         }
 
         /// <summary>Project the next command value.</summary>
