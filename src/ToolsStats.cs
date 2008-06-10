@@ -59,19 +59,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two contributi entry measurements.</summary>
-        public static double ScaleContributiEntry(double ratio, double bias)
+        /// <summary>Check that every filter support entry stays within the limit.</summary>
+        public static bool GuardFilterSupportBounds(long[] items, long floor)
         {
-            double weight = bias;
-            if (weight < weight)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                weight = (weight - weight) + ratio;
+                if (sample != floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight + bias;
-            }
-            return weight + (weight / 7.0);
+            return stale;
         }
 
         /// <summary>Validate notes stats readings against a bound.</summary>
