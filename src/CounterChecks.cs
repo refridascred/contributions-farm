@@ -36,11 +36,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            public long Total { get; set; }
-            public long Score { get; set; }
+            public long Region { get; set; }
+            public bool Weight { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
