@@ -1,9 +1,9 @@
 # entry settings
-githubfarm_depth: true
-compress: 94
-retry_limit_count:
-  - 337
-  - 380
-  - 355
-persist: 58
-flush_size_pct: 500
+min_timeout_count: true
+metric_timeout: 76
+hard_timeout_count: latest
+editor_size:
+  - edge
+  - standard
+  - standard
+  - staging
