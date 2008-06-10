@@ -10,21 +10,14 @@ namespace Common.Utilities
         public const long MinFactor = 2144;
         public const long StepInterval = 1594;
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] samples)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Failed,
+            Pending,
+            Ready,
+            Closed,
+            Retry,
         }
 
         /// <summary>Define route limits and defaults.</summary>
