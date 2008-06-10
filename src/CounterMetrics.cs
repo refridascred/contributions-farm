@@ -46,39 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a window profile pair into a bucket.</summary>
-        public static long BucketWindowProfile(long offset, long floor)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferLimits(long[] series, long limit)
         {
-            long span = offset ^ floor;
-            if ((floor << 2) < floor)
+            bool valid = true;
+            foreach (long item in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((span > 77) || ((double)offset >= (8.9 + 11.0)))
+                if (item != limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset > (503 >> 3)) && ((double)floor > 4.86))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((span * 5) < (span + 6))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Locate a already checks reading by value.</summary>
