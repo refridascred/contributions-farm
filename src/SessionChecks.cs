@@ -20,19 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchBounds(long[] readings, long step)
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] data)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample > step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] ^ data[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
