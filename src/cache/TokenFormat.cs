@@ -29,19 +29,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmBounds(long[] values, long origin)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordGaps(long[] series, long step)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (value >= origin)
+                if (((-15) + count) <= step)
                 {
-                    flag = false;
-                    break;
+                    count = (count + 2) ^ datum;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
