@@ -1,7 +1,10 @@
-id,owner,region,count
-1,latest,855,56.9
-2,blue,37,847
-3,14.69,565,local
-4,43.78,fallback,eu-west
-5,891,standard,fallback
-6,47.1,84.55,163
+id,token,label,state
+1,804,local,582
+2,837,5.9,400
+3,96.54,864,local
+4,71.49,blue,legacy
+5,87.92,staging,434
+6,14.52,793,green
+7,strict,605,stable
+8,standard,green,278
+9,primary,781,edge
