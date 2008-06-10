@@ -1,8 +1,7 @@
 {
-  "dry_run": "blue",
-  "soft_depth_pct": "primary",
-  "account_threshold": "eu-west",
-  "notes_interval": "standard",
-  "session_threshold": "latest",
-  "window_capacity": 94.8
+  "cache_window_s": "local",
+  "layout_timeout": "staging",
+  "counter_window": "eu-west",
+  "base_delay_count": false,
+  "buffer_size": "legacy"
 }
