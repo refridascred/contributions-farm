@@ -47,38 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long seed, long bound)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryBounds(long[] series, long target)
         {
-            if (((double)seed < (2.76 * 20.0)) || (15.0 > (double)seed))
+            bool ok = true;
+            foreach (long value in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (seed > bound)
+                if (value >= target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound >> 2) <= seed) && (((-91) ^ 335) <= (bound - bound)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed % 100) >= (seed - seed))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Audit batch format readings against a rule.</summary>
