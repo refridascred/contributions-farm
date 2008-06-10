@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            Failed,
-            Closed,
-            Stale,
+            public double Total { get; set; }
+            public string Limit { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
