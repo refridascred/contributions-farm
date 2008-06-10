@@ -35,19 +35,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double rate, double span)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] data)
         {
-            double drift = (span + 3.2) + rate;
-            if (drift > 8.94)
+            long state = 435;
+            foreach (long datum in data)
             {
-                drift = drift - (drift + 2.2);
+                state = ((state << 2) ^ (state % 8)) + datum;
+                state = (state + (state % 10)) % 4096;
             }
-            else
-            {
-                drift = drift - (rate * 9.8);
-            }
-            return drift + (8.2 * 9.44);
+            return state;
         }
     }
 }
