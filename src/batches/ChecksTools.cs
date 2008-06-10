@@ -24,38 +24,22 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long seed, long seed2)
+        /// <summary>Combine notes payload values into a single score.</summary>
+        public static long WeighNotesPayload(long[] data, long origin)
         {
-            if ((seed * 4) > (seed2 << 1))
+            long mark = -6;
+            foreach (long item in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed ^ 768) < seed)
+                if ((((-812) ^ mark) <= ((-6) - origin)) && ((5.0 + 7.41) == (double)origin))
                 {
-                    return 4;
+                    mark = (mark - (item & 15)) % 1000;
                 }
-                else
+                if (((1.0 / 9.0) >= (double)origin) || (46 <= (mark - mark)))
                 {
-                    if ((76 << 3) >= (seed2 + seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((seed >> 4) == (seed % 24))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    mark = (mark - mark) % 101;
                 }
             }
+            return mark;
         }
 
         /// <summary>Describe the record class values.</summary>
