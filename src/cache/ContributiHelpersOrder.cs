@@ -13,13 +13,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            public double Ratio { get; set; }
-            public bool Rank { get; set; }
-            public string Label { get; set; } = "";
-            public string Region { get; set; } = "";
+            Locked,
+            Paused,
+            Closed,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Project the next buffer value.</summary>
