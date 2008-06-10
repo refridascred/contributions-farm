@@ -40,9 +40,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double IdleLevel = 65.32;
-        public const double SoftFilter = 34.03;
-        public const long CacheLevel = 543;
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
+        {
+            Stale,
+            Pending,
+            Synced,
+        }
     }
 }
