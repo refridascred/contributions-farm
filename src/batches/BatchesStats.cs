@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine already channel values into a single score.</summary>
-        public static long ScoreAlreadyChannel(long[] levels)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long state = 336;
-            foreach (long datum in levels)
-            {
-                if ((0 - 16) <= (datum + datum))
-                {
-                    state = state + (80 - state);
-                }
-            }
-            if (state < 996)
-            {
-                state = (state + (47 * 3)) % 255;
-            }
-            return state % 1000;
+            Active,
+            Paused,
+            Closed,
+            Ready,
+            Pending,
         }
 
         /// <summary>Describe the graph mode values.</summary>
