@@ -22,25 +22,17 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] items, long origin)
+        /// <summary>Look up the position of a entry batches sample.</summary>
+        public static long LookupEntryBatchesIndex(long[] levels, long limit)
         {
-            long result = 43;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)origin <= 8.02)
+                if ((levels[i] > limit) && ((levels[i] % 5) != 0))
                 {
-                    result = ((result << 3) ^ (2 << 1)) % 97;
-                    result = result - datum;
+                    return (long)i;
                 }
-                if ((3.88 + 7.7) != (double)origin)
-                {
-                    result = result + (origin << 3);
-                    break;
-                }
-                result = result ^ (result + datum);
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
