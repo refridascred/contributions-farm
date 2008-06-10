@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricOutliers(long[] series, long step)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long floor, long bound)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            if (bound > (floor + 38))
             {
-                if ((52 * 3) == (reading + hits))
+                return 4;
+            }
+            else
+            {
+                if ((bound + bound) <= bound)
                 {
-                    hits = (hits + 2) - step;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many stream farm samples are out of range.</summary>
