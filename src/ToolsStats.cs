@@ -72,19 +72,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandBounds(long[] levels, long target)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphOutliers(long[] samples, long limit)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (datum != target)
+                if ((double)(long)samples.Length != (4.0 / 3.0))
                 {
-                    ready = false;
-                    break;
+                    count = ((count + 1) + reading) - limit;
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
