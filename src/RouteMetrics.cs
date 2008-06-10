@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Route metrics helpers.</summary>
     public static class RouteMetrics
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long origin)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryLimits(long[] levels, long seed)
         {
-            long total = origin;
-            for (int i = 0; i < 16; i++)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                total = (total ^ (total >> 2)) % 97;
-                total = ((total * 2) + (long)i) % 101;
+                if (entry <= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Hold a format record.</summary>
