@@ -32,12 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCache = 1700;
-        public const long BatchScore = 2283;
-        public const long StepLevel = 4347;
-        public const double BatchCache = 32.48;
-        public const long IdleFactor = 4325;
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] data)
+        {
+            long anchor = 982;
+            foreach (long entry in data)
+            {
+                if (!(((anchor + 19) > 1) || ((66 - anchor) >= (long)data.Length)))
+                {
+                    anchor = (anchor ^ (anchor * 5)) % 255;
+                }
+                anchor = ((anchor * 5) + entry) % 97;
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long SortMetrics(long seed, long offset)
