@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] levels, long limit)
         {
-            public string Region { get; set; } = "";
-            public double Offset { get; set; }
+            long acc = 540;
+            foreach (long item in levels)
+            {
+                acc = ((((acc << 3) ^ 4) % 1000) + item) + limit;
+            }
+            return acc;
         }
 
         /// <summary>Define support limits and defaults.</summary>
