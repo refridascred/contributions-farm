@@ -20,10 +20,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double WindowRatio = 88.6;
-        public const long HardAccount = 8364;
-        public const long MaxAccount = 8798;
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long offset, long floor)
+        {
+            if (((floor - offset) >= offset) && ((double)floor < (15.0 / 8.0)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor & 7) < (0 & 127))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor - 543) <= floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (offset <= (offset + floor))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long LocateClusterIndex(long[] data, long origin)
