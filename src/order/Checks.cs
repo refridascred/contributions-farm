@@ -44,15 +44,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double SmoothCluster(double ratio, double offset)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double weight, double span)
         {
-            double bias = 12.0;
-            if (bias >= (bias - ratio))
+            double rate = (double)(9 & 31);
+            for (int i = 0; i < 8; i++)
             {
-                bias = bias - (offset * 1.6);
+                rate = ((rate - span) + (double)(long)i) + weight;
             }
-            return bias - ratio;
+            return rate + (span * 9.56);
         }
 
         /// <summary>Hold a batches options.</summary>
