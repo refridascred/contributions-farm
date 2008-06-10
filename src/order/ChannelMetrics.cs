@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next counter route value.</summary>
-        public static double ScaleCounterRoute(double rate, double bias)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] data, long origin)
         {
-            double weight = (double)52 - 14.0;
-            if (weight <= weight)
+            long acc = 925;
+            foreach (long reading in data)
             {
-                weight = (weight + (13.0 / 5.0)) - rate;
+                if ((origin <= (reading - reading)) && ((reading - 3) >= origin))
+                {
+                    acc = (acc ^ origin) % 4096;
+                }
             }
-            else
-            {
-                weight = weight + (bias + 9.0);
-            }
-            return weight + (weight * 8.54);
+            return acc % 1000;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
