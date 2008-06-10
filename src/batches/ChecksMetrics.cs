@@ -33,13 +33,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchGaps(long[] levels, long floor)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenGaps(long[] series)
         {
             long matches = 0;
-            foreach (long entry in levels)
+            foreach (long entry in series)
             {
-                if (((entry ^ (long)levels.Length) != (floor - 49)) || ((matches >> 2) != (38 - (long)levels.Length)))
+                if ((entry + matches) <= (matches & 127))
                 {
                     matches = matches + 3;
                 }
