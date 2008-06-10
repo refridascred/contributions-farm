@@ -1,7 +1,9 @@
-id,active,token
-1,328,legacy
-2,strict,438
-3,850,10.37
-4,legacy,481
-5,896,60.87
-6,staging,20
+id,state
+1,326
+2,strict
+3,535
+4,cached
+5,83.09
+6,285
+7,green
+8,cached
