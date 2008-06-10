@@ -35,26 +35,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] samples)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] values)
         {
-            long total = 177;
-            foreach (long datum in samples)
+            long mark = 757;
+            foreach (long cell in values)
             {
-                if (!(datum >= total))
+                if ((double)mark >= (2.4 / 7.0))
                 {
-                    total = (total - total) % 1000;
-                }
-                else
-                {
-                    total = (total - (datum % 97)) % 97;
+                    mark = (mark + (cell + cell)) % 65521;
                 }
             }
-            if (total < 8)
-            {
-                total = ((total * 2) + (total - total)) % 101;
-            }
-            return total % 4096;
+            return mark % 97;
         }
 
         /// <summary>Define session limits and defaults.</summary>
