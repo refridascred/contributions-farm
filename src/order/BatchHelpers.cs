@@ -28,15 +28,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Derive the next context report value from a seed.</summary>
-        public static long IterateContextReport(long limit)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long state = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            Done,
+            Failed,
+            New,
         }
     }
 }
