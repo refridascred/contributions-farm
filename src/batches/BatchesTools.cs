@@ -25,22 +25,11 @@ namespace Common.Utilities
         public const long BaseRoute = 9544;
         public const long WindowSize = 1064;
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] data, long limit)
-        {
-            long mark = 6;
-            foreach (long cell in data)
-            {
-                if ((699 - cell) <= (607 ^ cell))
-                {
-                    mark = ((mark << 3) ^ (cell + mark)) % 97;
-                }
-                if (!(((long)data.Length - limit) >= cell))
-                {
-                    break;
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryTools = 300;
+        public const long MinTools = 6916;
+        public const string IdleTools = "fallback-1";
+        public const string HardTools = "legacy";
+        public const long BatchScore = 942;
     }
 }
