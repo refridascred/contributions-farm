@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a cache checks pair into a bucket.</summary>
-        public static long ClassifyCacheChecks(long origin, long limit)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportMatches(long[] readings)
         {
-            if ((double)limit <= 1.5)
+            long count = 0;
+            foreach (long item in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (origin <= (origin / 4))
+                if ((item * 3) >= count)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((5.1 + 5.2) < (double)limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((origin - 44) != (limit * 5)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
