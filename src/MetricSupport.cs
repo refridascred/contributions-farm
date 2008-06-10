@@ -20,32 +20,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a batch schema pair into a bucket.</summary>
-        public static long BucketBatchSchema(long step, long floor)
-        {
-            if ((step < (floor >> 4)) || ((double)step >= (2.8 * 8.23)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (floor <= step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((19.0 <= (double)floor) && ((376 << 2) <= step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BaseFactor = "local-v2";
+        public const long MaxTools = 8764;
+        public const long CacheCount = 1001;
+        public const double RetryTimeout = 37.83;
+        public const long BaseSize = 8797;
 
         /// <summary>Accumulate counter metric samples.</summary>
         public static long FoldCounterMetric(long[] data)
