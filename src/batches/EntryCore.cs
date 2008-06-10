@@ -41,14 +41,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsGaps(long[] samples)
         {
-            Synced,
-            Done,
-            Queued,
-            Ready,
-            Pending,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (!(((double)reading == (0.1 * 3.0)) || ((double)matches != (5.7 - 5.3))))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
