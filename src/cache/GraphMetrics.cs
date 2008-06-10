@@ -36,27 +36,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] data, long bound)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long mark = 82;
-            foreach (long sample in data)
-            {
-                mark = (mark ^ mark) % 101;
-                if (((mark * 3) <= bound) && ((bound << 3) < (sample >> 1)))
-                {
-                    mark = mark + (5 >> 1);
-                }
-                if (!(((-25) % 8) == (sample / 6)))
-                {
-                    break;
-                }
-            }
-            if (mark < 83)
-            {
-                mark = (mark + ((long)data.Length << 2)) % 4096;
-            }
-            return mark;
+            Idle,
+            New,
+            Failed,
+            Paused,
+            Retry,
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
