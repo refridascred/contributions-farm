@@ -29,18 +29,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] items)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long acc = 5;
-            foreach (long cell in items)
-            {
-                if (cell >= (acc % 3))
-                {
-                    acc = acc ^ cell;
-                }
-            }
-            return acc % 1000;
+            public string Region { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
