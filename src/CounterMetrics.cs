@@ -35,13 +35,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Classify a window profile pair into a bucket.</summary>
+        public static long BucketWindowProfile(long offset, long floor)
         {
-            public long Count { get; set; }
-            public double Score { get; set; }
-            public bool Ratio { get; set; }
-            public long Limit { get; set; }
+            long span = offset ^ floor;
+            if ((floor << 2) < floor)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((span > 77) || ((double)offset >= (8.9 + 11.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset > (503 >> 3)) && ((double)floor > 4.86))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((span * 5) < (span + 6))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define session limits and defaults.</summary>
