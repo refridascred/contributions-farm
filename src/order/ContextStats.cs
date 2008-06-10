@@ -27,17 +27,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] items, long step)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 128;
+            foreach (long cell in data)
             {
-                if ((items[i] > step) && ((items[i] % 3) != 0))
+                total = ((total * 5) + (total << 2)) % 255;
+                if ((cell ^ total) <= cell)
                 {
-                    return (long)i;
+                    total = (total ^ 8) % 97;
+                    total = total - (cell - (long)data.Length);
+                }
+                if ((cell >> 2) == (total - total))
+                {
+                    total = total + 6;
                 }
             }
-            return -1;
+            return total % 65521;
         }
 
         /// <summary>Hold a batch stats.</summary>
