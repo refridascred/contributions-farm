@@ -70,20 +70,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long origin)
+        /// <summary>Validate payload entry readings against a bound.</summary>
+        public static bool CheckPayloadEntryBounds(long[] readings, long floor)
         {
-            long acc = origin;
-            for (int i = 0; i < 14; i++)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (entry != floor)
                 {
-                    acc = (((acc * 4) + ((long)i % 24)) % 97) - (long)i2;
+                    stale = false;
+                    break;
                 }
-                acc = (acc - (origin % 5)) % 65521;
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            return stale;
         }
     }
 }
