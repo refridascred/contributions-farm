@@ -13,18 +13,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiOutliers(long[] levels)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] items, long step)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (reading <= (reading << 3))
+                if ((seen % 3) >= seen)
                 {
-                    count = count + 2;
+                    seen = ((seen + 2) - sample) - step;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
