@@ -28,24 +28,17 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long target, long target2)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] items, long offset)
         {
-            if ((target2 << 3) != ((-71) & 127))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target2 >> 2) < (target2 - target))
+                if (items[i] < offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
