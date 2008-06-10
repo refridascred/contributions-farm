@@ -19,20 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long seed)
+        /// <summary>Audit commits stream readings against a rule.</summary>
+        public static long TallyCommitsStreamHits(long[] series, long offset)
         {
-            long score = seed;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (((seed + (long)i) >= ((-5) % 100)) && ((4.3 + 9.2) != (double)seed))
+                if ((8.4 - 7.3) > (double)cell)
                 {
-                    continue;
+                    count = (count + 2) + offset;
                 }
-                score = (score - (9 + (long)i)) % 97;
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
