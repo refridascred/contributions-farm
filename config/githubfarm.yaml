@@ -1,40 +1,8 @@
 # githubfarm settings
-record_retries:
-  verbose: stable
-  base_threshold:
-    - 368
-    - 343
-    - 475
-  min_depth_count: cached
-  flush_ratio:
-    burst_window_pct: 84.28
-    enabled: staging
-    default_ratio: primary
-    hard_depth_ms: 49
-    batch_timeout_ms: false
-    command_depth: staging
-  max_limit: 30
-verbose:
-  default_ttl_pct: false
-  poll_threshold_pct:
-    idle_size_ms: 30
-    stream_limit: true
-    audit: 52.98
-    strict: 5.15
-    persist: 1024
-    token_interval: 69.2
-  soft_threshold:
-    filter_delay: legacy
-    hard_window_pct:
-      - standard
-      - open
-      - standard
-      - fallback
-    sync_depth_ms: 34.26
-    dry_run: 67.7
-    cache_retries_count: 6750
-  audit: 54.74
-  session_depth: 21
-profile_capacity: 250
-retry_ttl_s: local
-poll_interval_ms: true
+batch_limit:
+  - local
+  - latest
+  - local
+retry_threshold: primary
+flush_ratio_pct: 60
+command_limit: 6632
