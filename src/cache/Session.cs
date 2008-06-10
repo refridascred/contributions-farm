@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Check that every counter graph entry stays within the limit.</summary>
+        public static bool VerifyCounterGraphBounds(long[] levels, long target)
         {
-            public double Count { get; set; }
-            public long Label { get; set; }
-            public long Owner { get; set; }
-            public long Score { get; set; }
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the queue class values.</summary>
