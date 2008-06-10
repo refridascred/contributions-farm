@@ -14,14 +14,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double weight, double span)
         {
-            Queued,
-            Retry,
-            Locked,
-            Idle,
-            Pending,
+            double load = (double)(93 + 7);
+            if (load < (weight * 6.3))
+            {
+                load = load - (load / 4.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load - span;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
