@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit channel counter readings against a rule.</summary>
-        public static long AuditChannelCounterHits(long[] levels)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((double)item > (6.0 / 4.0))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public bool Count { get; set; }
+            public double Owner { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a record record.</summary>
