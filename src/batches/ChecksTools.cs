@@ -58,14 +58,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ProjectMetric(double gain, double floor)
         {
-            Closed,
-            New,
-            Failed,
-            Queued,
-            Synced,
+            double drift = floor + 4.8;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (2.3 * 2.4)) + (double)(long)i;
+            }
+            return drift - (gain * 7.0);
         }
 
         /// <summary>Define session limits and defaults.</summary>
