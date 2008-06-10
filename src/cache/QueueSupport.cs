@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelOutliers(long[] values, long floor)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (((0.12 / 2.0) < (double)floor) || (matches >= (cell << 3)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Pending,
+            Queued,
+            Paused,
+            Ready,
+            Done,
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
