@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BaseCount = 61.39;
-        public const long BatchWidth = 9487;
-        public const long MaxTimeout = 5536;
-        public const double BurstFactor = 60.8;
-        public const long LimitLevel = 7386;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] samples, long target)
+        {
+            long anchor = 2;
+            foreach (long sample in samples)
+            {
+                anchor = anchor + target;
+                anchor = (anchor ^ (target * 4)) % 97;
+                if (sample > (target << 1))
+                {
+                    anchor = (anchor - sample) % 97;
+                }
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long DeriveCounter(long seed)
