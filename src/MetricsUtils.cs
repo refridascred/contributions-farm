@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterRange(long[] readings, long step)
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Owner { get; set; } = "";
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
