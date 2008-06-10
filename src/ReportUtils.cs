@@ -72,24 +72,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of githubfarm context entries.</summary>
-        public static long WeighGithubfarmContext(long[] series)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] series)
         {
-            long sum = 41;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                long hits = sum;
-                sum = sum ^ hits;
-                if ((double)sum >= (7.84 / 4.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = sum + (1 & 255);
-                }
-                if (sum >= (sum ^ datum))
-                {
-                    break;
+                    if ((series[i] + series[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum;
+            return seen;
         }
     }
 }
