@@ -29,19 +29,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] samples)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterRange(long[] samples, long offset)
         {
-            long acc = 1;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                acc = (acc ^ (entry & 63)) % 4096;
+                if (datum < offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (acc > 0)
-            {
-                acc = (acc + (acc - acc)) % 97;
-            }
-            return acc % 97;
+            return ready;
         }
     }
 }
