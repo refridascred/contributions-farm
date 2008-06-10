@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 8897;
-        public const long SoftCommand = 2778;
-        public const double HardFactor = 90.81;
-        public const long DefaultDepth = 158;
-        public const long MinCommand = 1461;
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
+        {
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string StepChannel = "latest-1";
