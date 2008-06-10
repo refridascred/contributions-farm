@@ -1,6 +1,12 @@
 {
-  "persist": 52.68,
-  "base_ratio_ms": [203, 17, 277, 339],
-  "buffer_limit": 85.2,
-  "stream_ratio": "legacy"
+  "base_window": {
+    "cache_threshold": 66.54,
+    "compress": 32.65,
+    "cache_window": "edge",
+    "min_interval": false,
+    "batch_depth_s": "legacy",
+    "enabled": "blue"
+  },
+  "max_delay_pct": 25.97,
+  "window_limit": 5114
 }
