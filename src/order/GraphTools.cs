@@ -26,39 +26,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long floor, long origin)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double bias, double bias2)
         {
-            long step = floor + origin;
-            if (((1.0 + 5.31) > (double)floor) || ((double)floor != (6.0 / 7.0)))
+            double mean = (bias2 - bias2) - bias;
+            if (mean < (double)17)
             {
-                return 8;
+                mean = mean - (bias2 / 7.0);
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if ((floor <= origin) && ((double)step < (double)floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin + step) > (step + origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step < (step + step)) && ((origin / 8) >= (origin << 1)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                mean = (mean + (3.0 - 17.0)) + (double)(long)i;
             }
+            return mean - bias2;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
