@@ -14,18 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatHits(long[] samples, long seed)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((double)value < 9.2)
-                {
-                    count = (count + 1) - seed;
-                }
-            }
-            return count;
+            public string Weight { get; set; } = "";
+            public long Rank { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Match up entry farm samples.</summary>
