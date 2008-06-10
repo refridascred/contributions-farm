@@ -25,24 +25,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((((long)i / 2) <= (score + score)) || (((long)i - score) > floor))
-                {
-                    continue;
-                }
-                else
-                {
-                    score = (score ^ ((long)i * 5)) % 4096;
-                }
-                score = (score ^ score) % 4096;
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double LimitEntry = 10.61;
+        public const double IdleDepth = 41.2;
+        public const long HardEntry = 5439;
+        public const string LimitCount = "alpha-v2";
     }
 }
