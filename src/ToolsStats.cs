@@ -29,19 +29,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] data, long step)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long anchor = 680;
-            foreach (long sample in data)
-            {
-                anchor = (anchor + (sample + sample)) % 97;
-            }
-            if (anchor < 248)
-            {
-                anchor = ((anchor << 2) ^ (step + step)) % 101;
-            }
-            return anchor;
+            public long Stamp { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Grade a token value against two limits.</summary>
