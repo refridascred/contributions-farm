@@ -50,18 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a support payload counter forward.</summary>
-        public static long DeriveSupportPayload(long step)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenMatches(long[] data)
         {
-            long total = step;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                long cur = (total + step) / 6;
-                total = ((total * 4) + step) % 101;
-                total = ((total << 2) ^ (cur + cur)) % 101;
-                total = ((total * 2) + (long)i) % 101;
+                if ((reading + count) < (count ^ 8))
+                {
+                    count = count + 1;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
