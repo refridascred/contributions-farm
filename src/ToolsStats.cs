@@ -38,10 +38,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 5335;
-        public const long CacheLayout = 7624;
-        public const long SoftScore = 5402;
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up report samples.</summary>
         public static long CompareReportCount(long[] readings)
