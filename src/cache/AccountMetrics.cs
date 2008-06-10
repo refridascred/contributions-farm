@@ -26,15 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double scale, double span)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatRange(long[] levels, long step)
         {
-            double drift = 6.0 - (scale / 6.0);
-            if (drift > (double)83)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                drift = (drift + scale) - span;
+                if (datum <= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return drift + (drift - 8.48);
+            return ok;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
