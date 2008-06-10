@@ -42,19 +42,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphLimits(long[] levels, long limit)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphOutliers(long[] series)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (datum > limit)
+                if ((sample - sample) > (sample * 4))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Match up channel samples.</summary>
