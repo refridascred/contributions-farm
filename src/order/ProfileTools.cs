@@ -48,21 +48,17 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] items)
+        /// <summary>Find the first report filter entry that matches the target.</summary>
+        public static long SeekReportFilterIndex(long[] values, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((values[i] == seed) && ((values[i] % 5) != 0))
                 {
-                    if ((items[i] + items[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the format phase values.</summary>
