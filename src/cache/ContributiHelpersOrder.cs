@@ -27,19 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every tools report entry stays within the limit.</summary>
-        public static bool GuardToolsReportLimits(long[] data, long step)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterOutliers(long[] data, long floor)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (reading > step)
+                if (!(43 > (floor ^ hits)) || ((13.0 + 16.0) >= (double)hits))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 3) + cell;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
