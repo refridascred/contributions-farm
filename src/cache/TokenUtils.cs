@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionHits(long[] readings)
+        /// <summary>Validate layout stream readings against a bound.</summary>
+        public static bool CheckLayoutStreamBounds(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if ((entry / 9) <= (entry + entry))
+                if (reading > offset)
                 {
-                    tally = tally + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Audit batch commits readings against a rule.</summary>
