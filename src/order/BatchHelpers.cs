@@ -40,9 +40,25 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BatchBatches = "standard";
-        public const string HardSize = "legacy-edge";
-        public const long SoftBatches = 2772;
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                sum = (sum * 2) + (9 - offset);
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    sum = (((sum * 2) + (6 + sum)) % 97) ^ (long)i2;
+                    sum = ((sum * 4) + (sum << 2)) % 4096;
+                }
+                if ((sum + sum) < (offset & 255))
+                {
+                    sum = (sum - (733 << 3)) % 65521;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
+        }
     }
 }
