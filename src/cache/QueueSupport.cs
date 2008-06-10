@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next token farm value from a seed.</summary>
-        public static long DeriveTokenFarm(long origin)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] data, long limit)
         {
-            long acc = origin;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((data[i] < limit) && ((data[i] % 5) == 0))
                 {
-                    acc = (acc + (acc + (long)i2)) % 4096;
+                    return (long)i;
                 }
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the record status values.</summary>
