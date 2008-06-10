@@ -19,18 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsMatches(long[] items)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((value % 100) > (matches % 5))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Ready,
+            Closed,
+            Failed,
+            Retry,
         }
 
         /// <summary>Accumulate already samples.</summary>
