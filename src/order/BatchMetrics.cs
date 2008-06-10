@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseRatio = 4350;
-        public const string IdleBudget = "open-v2";
-        public const double WindowScore = 75.33;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if (((long)series.Length - hits) >= hits)
+                {
+                    hits = (hits + 3) + entry;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every payload contributi entry stays within the limit.</summary>
         public static bool VerifyPayloadContributiBounds(long[] samples, long offset)
