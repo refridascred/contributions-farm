@@ -18,19 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every counter graph entry stays within the limit.</summary>
-        public static bool VerifyCounterGraphBounds(long[] levels, long target)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long target)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long sum = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (datum > target)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = sum ^ ((long)i << 3);
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Describe the queue class values.</summary>
