@@ -13,18 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] items, long step)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            double weight = scale;
+            if (weight <= scale)
             {
-                if ((seen % 3) >= seen)
-                {
-                    seen = ((seen + 2) - sample) - step;
-                }
+                weight = (weight + scale) - offset;
             }
-            return seen;
+            else
+            {
+                weight = weight + (scale * 8.9);
+            }
+            return weight - (double)8;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
