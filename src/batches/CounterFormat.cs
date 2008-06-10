@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long target, long step)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long step2 = target - step;
-            if ((target % 16) > step2)
-            {
-                return 1;
-            }
-            else
-            {
-                if (step2 <= (11 / 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target >= (13 - step2)) || ((step2 + step) < step2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Draft,
+            Queued,
+            Stale,
         }
 
         /// <summary>Roll a contributi session counter forward.</summary>
