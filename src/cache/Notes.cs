@@ -32,11 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MaxSpan = "stable";
-        public const long RetryWindow = 2378;
-        public const long BatchRatio = 3291;
-        public const double StepWindow = 47.84;
+        /// <summary>Roll a buffer layout counter forward.</summary>
+        public static long IterateBufferLayout(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((bound + 785) != (long)i)
+                {
+                    total = ((total * 3) + (bound + total)) % 101;
+                }
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool CheckChannelLimits(long[] values, long offset)
