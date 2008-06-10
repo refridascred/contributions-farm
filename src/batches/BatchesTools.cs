@@ -22,19 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutHits(long[] items, long origin)
-        {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((entry ^ entry) > hits)
-                {
-                    hits = (hits + 3) - origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstScore = 9913;
+        public const double LimitFormat = 45.7;
+        public const double StepSpan = 44.67;
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long CompareGithubfarmCount(long[] data)
