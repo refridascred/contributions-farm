@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] items)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] items)
         {
-            long result = -26;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = result - (reading >> 3);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Check that every payload contributi entry stays within the limit.</summary>
