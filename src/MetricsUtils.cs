@@ -24,38 +24,14 @@ namespace Common.Utilities
         public const long RetryChannel = 566;
         public const long HardLevel = 8201;
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long bound, long bound2)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            if (((bound << 2) == (bound2 << 1)) || ((double)bound2 > (1.6 - 2.0)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((2.78 - 0.33) <= (double)bound2) || ((bound * 3) <= (2 ^ bound2)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)bound <= (15.0 + 6.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((0.14 / 9.0) <= (double)bound2)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Active,
+            Stale,
+            New,
+            Locked,
+            Pending,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
