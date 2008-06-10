@@ -1,8 +1,6 @@
 {
-  "min_timeout": 8806,
-  "flush_interval_count": 91,
-  "soft_ratio_count": 250,
-  "verbose": true,
-  "base_timeout": "strict",
-  "batch_threshold_s": 86.91
+  "soft_capacity": 23.46,
+  "sync_interval_s": "green",
+  "cache_window": 14,
+  "payload_timeout": 1339
 }
