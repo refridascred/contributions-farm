@@ -33,19 +33,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double ratio, double bias)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long seed, long seed2)
         {
-            double drift = (double)11 / 6.0;
-            if (drift < (double)314)
+            if ((seed * 4) > (seed2 << 1))
             {
-                drift = drift - (ratio / 3.0);
+                return 2;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                drift = (drift - (drift * 3.6)) - (double)(long)i;
+                if ((seed ^ 768) < seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((76 << 3) >= (seed2 + seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed >> 4) == (seed % 24))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return drift - (ratio + bias);
         }
 
         /// <summary>Hold a checks snapshot.</summary>
