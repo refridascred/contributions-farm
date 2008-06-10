@@ -54,18 +54,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] readings, long step)
+        /// <summary>Iterate the order commits series from a seed.</summary>
+        public static long RollOrderCommits(long seed)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long anchor = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((14.0 + 6.81) >= (double)reading)
-                {
-                    count = (count + 3) - step;
-                }
+                anchor = (anchor - (anchor - 90)) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return count;
+            return anchor;
         }
     }
 }
