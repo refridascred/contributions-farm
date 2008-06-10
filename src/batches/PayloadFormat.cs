@@ -11,13 +11,14 @@ namespace Common.Utilities
         public const string RetryBudget = "alpha-1";
         public const double BaseFactor = 10.93;
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public bool Level { get; set; }
+            Queued,
+            Ready,
+            Pending,
+            Failed,
+            Closed,
         }
 
         /// <summary>Describe the order class values.</summary>
