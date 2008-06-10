@@ -1,6 +1,5 @@
 {
-  "default_ttl_ms": 30,
-  "already_size": "local",
-  "flush_limit": 77,
-  "metric_ttl": "local"
+  "batch_timeout_ms": 100,
+  "hard_threshold": "stable",
+  "base_depth": 93.61
 }
