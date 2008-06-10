@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 8968;
-        public const long BaseFactor = 3228;
-        public const double LimitPayload = 64.02;
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
+        {
+            Done,
+            Pending,
+            Closed,
+            Ready,
+        }
 
         /// <summary>Hold a route summary.</summary>
         public sealed class RouteSummary
