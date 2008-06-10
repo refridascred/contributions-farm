@@ -50,18 +50,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit payload schema readings against a rule.</summary>
-        public static long MeasurePayloadSchemaHits(long[] samples, long floor)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (count > floor)
-                {
-                    count = (count + 3) - reading;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
