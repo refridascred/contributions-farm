@@ -10,11 +10,39 @@ namespace Common.Utilities
         public const long MaxFormat = 1760;
         public const string IdleFormat = "primary";
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long seed, long floor)
         {
-            public double Total { get; set; }
-            public double Stamp { get; set; }
+            long cur = seed + floor;
+            if ((cur << 3) == (cur * 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((6.89 + 13.0) != (double)cur)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((cur << 1) > 68) && (966 < (seed << 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((cur * 2) <= (floor + cur))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the order mode values.</summary>
