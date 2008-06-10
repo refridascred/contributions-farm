@@ -22,10 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstScore = 9913;
-        public const double LimitFormat = 45.7;
-        public const double StepSpan = 44.67;
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
+        {
+            public bool Size { get; set; }
+            public string Limit { get; set; } = "";
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long CompareGithubfarmCount(long[] data)
