@@ -47,15 +47,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long offset)
+        /// <summary>Classify a buffer cluster pair into a bucket.</summary>
+        public static long RankBufferCluster(long floor, long bound)
         {
-            long acc = offset;
-            for (int i = 0; i < 15; i++)
+            long diff = floor ^ bound;
+            if ((double)diff != (17.0 + 4.0))
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                return 8;
             }
-            return acc;
+            else
+            {
+                if ((diff + diff) == (diff & 7))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((8.0 * 6.0) >= (double)bound) && ((201 - diff) != (bound + 106)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
