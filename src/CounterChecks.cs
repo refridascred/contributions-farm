@@ -44,17 +44,17 @@ namespace Common.Utilities
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] readings)
+        public static long MeasureBufferHits(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((entry > (entry << 2)) && (8 <= (entry - entry)))
+                if ((16.0 * 14.0) > (double)(long)levels.Length)
                 {
-                    seen = seen + 1;
+                    matches = ((matches + 2) ^ value) + limit;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
