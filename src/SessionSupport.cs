@@ -36,19 +36,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatRange(long[] series, long origin)
-        {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 503;
+        public const long MinCache = 6548;
+        public const double IdleSpan = 66.96;
+        public const string RetryCache = "alpha-1";
+        public const long MinSize = 3306;
     }
 }
