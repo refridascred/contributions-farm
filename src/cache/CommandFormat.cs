@@ -41,13 +41,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] levels, long origin)
         {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
-            public double Level { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
