@@ -26,19 +26,18 @@ namespace Common.Utilities
         public const double MaxWidth = 63.35;
         public const string BaseInterval = "staging-1";
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ProjectOrder(double gain, double span)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] samples)
         {
-            double bias = (double)(1 ^ 36);
-            if (bias < (span / 5.0))
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                bias = bias - (gain + bias);
+                if ((double)matches > (double)datum)
+                {
+                    matches = matches + 2;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = bias - (double)(long)i;
-            }
-            return bias + 18.0;
+            return matches;
         }
     }
 }
