@@ -50,13 +50,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Compare every pair of commits order readings.</summary>
+        public static long CompareCommitsOrderCount(long[] readings)
         {
-            Locked,
-            Paused,
-            Dropped,
-            Stale,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a format info.</summary>
