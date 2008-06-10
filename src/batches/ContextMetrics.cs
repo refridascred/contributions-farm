@@ -21,11 +21,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long step)
         {
-            public double Offset { get; set; }
-            public string Count { get; set; } = "";
+            long acc = step;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Hold a commits stats.</summary>
