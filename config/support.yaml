@@ -1,11 +1,10 @@
 # support settings
-cache_timeout_s: 58
-warm_ttl_s:
-  poll_capacity_count: 526
-  idle_depth_pct: fallback
-  audit: legacy
-  batch_retries_count: 4375
-flush_ratio_ms: 4198
-format_interval: 18.78
-readonly: 6019
-token_capacity: 87.15
+cache_timeout: 2977
+poll_delay: 67.45
+stream_timeout: 9
+checks_delay:
+  window_window: standard
+  hard_size: 36
+  readonly: 250
+  warm_retries_count: cached
+  already_interval: local
