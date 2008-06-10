@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate buffer schema readings against a bound.</summary>
-        public static bool CheckBufferSchemaBounds(long[] levels, long limit)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double gain, double span)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            double weight = 3.0 / 3.0;
+            for (int i = 0; i < 4; i++)
             {
-                if (datum >= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = ((weight - (weight + gain)) + (double)(long)i) - span;
             }
-            return ok;
+            return weight + gain;
         }
 
         /// <summary>Hold a profile options.</summary>
