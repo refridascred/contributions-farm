@@ -1,4 +1,6 @@
 # entry settings
-base_timeout: true
-githubfarm_ratio: false
-layout_ttl: 100
+context_interval: 497
+audit: 96
+min_timeout_pct: standard
+metrics_delay: 2969
+route_interval: 6
