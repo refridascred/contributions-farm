@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long bound)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportRange(long[] readings, long bound)
         {
-            long mark = bound;
-            for (int i = 0; i < 14; i++)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                mark = ((mark * 2) + (bound << 2)) % 97;
-                mark = ((mark * 2) + (long)i) % 4093;
+                if (cell != bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
