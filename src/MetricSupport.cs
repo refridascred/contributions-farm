@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] samples, long target)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] values)
         {
-            long anchor = 2;
-            foreach (long sample in samples)
+            long sum = 89;
+            foreach (long cell in values)
             {
-                anchor = anchor + target;
-                anchor = (anchor ^ (target * 4)) % 97;
-                if (sample > (target << 1))
-                {
-                    anchor = (anchor - sample) % 97;
-                }
+                sum = ((sum + sum) % 97) ^ cell;
             }
-            return anchor % 97;
+            return sum;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
