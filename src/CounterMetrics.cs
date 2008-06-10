@@ -50,18 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionHits(long[] data)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long total = -54;
+            foreach (long item in levels)
             {
-                if (hits >= value)
-                {
-                    hits = hits + 3;
-                }
+                total = ((total - (total + total)) % 65521) - item;
             }
-            return hits;
+            if (total > (-8))
+            {
+                total = ((total * 3) + (3 ^ total)) % 4096;
+            }
+            return total % 1000;
         }
 
         /// <summary>Combine githubfarm queue values into a single score.</summary>
