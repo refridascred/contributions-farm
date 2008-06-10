@@ -18,21 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long floor)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long mark = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                mark = (mark - (mark - (long)i)) % 97;
-                if ((floor + (long)i) >= ((long)i % 5))
-                {
-                    mark = mark - (floor / 5);
-                    mark = (mark - (long)i) % 255;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            public long Level { get; set; }
+            public bool Owner { get; set; }
+            public long Weight { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Classify a window profile pair into a bucket.</summary>
