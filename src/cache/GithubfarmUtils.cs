@@ -22,14 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
-        {
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
-            public double Region { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 7985;
+        public const double SoftFilter = 87.17;
+        public const double MaxFilter = 54.16;
+        public const long StepDepth = 3807;
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long SeriesNotes(long offset)
