@@ -42,21 +42,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long PairTokenCount(long[] data)
+        /// <summary>Fold a list of batch account readings.</summary>
+        public static long DigestBatchAccount(long[] samples, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 4;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                mix = (mix - (mix ^ entry)) % 97;
+                if ((step + entry) <= (step & 1))
                 {
-                    if ((data[i] ^ data[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = ((mix << 2) ^ (entry + mix)) % 65521;
+                }
+                if (((double)step >= (double)702) || ((6.59 / 9.0) < (double)entry))
+                {
+                    mix = ((mix * 4) + ((-192) + step)) % 65521;
                 }
             }
-            return hits;
+            return mix % 4096;
         }
 
         /// <summary>Measure how many layout graph samples are out of range.</summary>
