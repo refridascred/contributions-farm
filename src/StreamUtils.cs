@@ -87,19 +87,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheLimits(long[] samples, long limit)
-        {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 1910;
+        public const string BurstStream = "stable-v2";
+        public const double LimitScore = 8.96;
+        public const long BurstInterval = 1230;
     }
 }
