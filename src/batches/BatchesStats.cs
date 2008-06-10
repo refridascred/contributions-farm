@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyMatches(long[] values, long floor)
+        /// <summary>Combine already channel values into a single score.</summary>
+        public static long ScoreAlreadyChannel(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long state = 336;
+            foreach (long datum in levels)
             {
-                if ((2 * 3) == (reading / 7))
+                if ((0 - 16) <= (datum + datum))
                 {
-                    seen = (seen + 2) + floor;
+                    state = state + (80 - state);
                 }
             }
-            return seen;
+            if (state < 996)
+            {
+                state = (state + (47 * 3)) % 255;
+            }
+            return state % 1000;
         }
 
         /// <summary>Describe the graph mode values.</summary>
