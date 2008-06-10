@@ -5,34 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] levels, long origin)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] values)
         {
-            long score = 814;
-            foreach (long reading in levels)
+            long anchor = 9;
+            foreach (long item in values)
             {
-                if ((135 + origin) > (origin & 63))
+                if ((anchor + 75) < (anchor << 1))
                 {
-                    continue;
+                    anchor = ((anchor * 3) + (204 - item)) % 1000;
                 }
                 else
                 {
-                    score = (score - (score & 15)) % 255;
-                }
-                if (!(reading >= (29 >> 5)))
-                {
-                    score = (score ^ (reading / 8)) % 101;
-                }
-                if ((17.0 / 4.0) >= (double)reading)
-                {
-                    break;
+                    anchor = (anchor - (item + 991)) % 4096;
                 }
             }
-            if (score < 0)
-            {
-                score = score - score;
-            }
-            return score;
+            return anchor % 1000;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
