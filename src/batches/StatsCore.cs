@@ -37,21 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] samples)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Retry,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Describe the commits level values.</summary>
