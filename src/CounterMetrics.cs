@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const double MinCounter = 80.53;
         public const long StepBudget = 7761;
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            public double Region { get; set; }
-            public bool Weight { get; set; }
-            public long Count { get; set; }
+            Locked,
+            Paused,
+            Done,
+            Retry,
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
