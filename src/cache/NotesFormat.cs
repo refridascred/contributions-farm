@@ -38,10 +38,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseSize = 4394;
-        public const long BatchToken = 544;
-        public const double HardToken = 76.89;
-        public const long DefaultToken = 7907;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double IdleLevel = 65.32;
+        public const double SoftFilter = 34.03;
+        public const long CacheLevel = 543;
     }
 }
