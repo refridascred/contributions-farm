@@ -35,18 +35,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] levels)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordRange(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if (493 < (tally & 3))
+                if (datum != origin)
                 {
-                    tally = (tally + 1) + entry;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
