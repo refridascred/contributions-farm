@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] data)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long bound)
         {
-            long anchor = 28;
-            foreach (long value in data)
+            long mark = bound;
+            for (int i = 0; i < 14; i++)
             {
-                anchor = (anchor << 3) ^ (anchor - 892);
-                anchor = (anchor - (anchor % 12)) % 255;
-                if ((anchor - anchor) > (value ^ value))
-                {
-                    break;
-                }
+                mark = ((mark * 2) + (bound << 2)) % 97;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            if (anchor < 9)
-            {
-                anchor = anchor + (anchor / 2);
-            }
-            return anchor % 1000;
+            return mark;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
