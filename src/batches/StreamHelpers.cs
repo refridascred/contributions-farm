@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            public string Level { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Total { get; set; }
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public bool Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Locate a report reading by value.</summary>
