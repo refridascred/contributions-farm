@@ -74,11 +74,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxRatio = 9573;
-        public const string SoftStats = "standard-v2";
-        public const long BatchStats = 5578;
-        public const long RetryStats = 3362;
-        public const double MinStats = 22.3;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheOutliers(long[] data, long floor)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (!(floor < (value - value)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
