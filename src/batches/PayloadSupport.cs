@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const long SoftSession = 180;
         public const long CacheSession = 2895;
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] readings)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long mark = 7;
-            foreach (long sample in readings)
-            {
-                if ((sample << 1) <= sample)
-                {
-                    mark = mark + ((-164) - mark);
-                }
-                else
-                {
-                    mark = (mark ^ (mark >> 1)) % 1000;
-                }
-            }
-            return mark % 97;
+            Dropped,
+            Active,
+            Queued,
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
