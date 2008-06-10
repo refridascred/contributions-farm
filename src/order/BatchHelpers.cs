@@ -34,25 +34,16 @@ namespace Common.Utilities
             return bias - 7.19;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long offset)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long floor)
         {
-            long sum = offset;
-            for (int i = 0; i < 8; i++)
+            long score = floor;
+            for (int i = 0; i < 10; i++)
             {
-                sum = (sum * 2) + (9 - offset);
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    sum = (((sum * 2) + (6 + sum)) % 97) ^ (long)i2;
-                    sum = ((sum * 4) + (sum << 2)) % 4096;
-                }
-                if ((sum + sum) < (offset & 255))
-                {
-                    sum = (sum - (733 << 3)) % 65521;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
+                score = (score ^ (floor << 1)) % 97;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return sum;
+            return score;
         }
     }
 }
