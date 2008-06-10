@@ -19,23 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] values, long step)
-        {
-            long sum = 647;
-            foreach (long datum in values)
-            {
-                if (!((double)sum > (17.0 + 18.0)))
-                {
-                    sum = ((sum << 3) ^ (datum / 6)) % 101;
-                }
-            }
-            if (sum > 861)
-            {
-                sum = ((sum << 3) ^ ((long)values.Length ^ step)) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MinTimeout = 84.96;
+        public const double BurstBuffer = 18.35;
+        public const long BaseSpan = 6165;
+        public const long StepDepth = 4753;
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long AuditGithubfarmMatches(long[] data, long limit)
