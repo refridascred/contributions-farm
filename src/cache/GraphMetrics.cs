@@ -41,18 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] levels, long target)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long result = -86;
-            foreach (long reading in levels)
-            {
-                if (((8.98 - 7.1) == (double)result) || ((-722) < (long)levels.Length))
-                {
-                    result = ((result + result) - reading) - target;
-                }
-            }
-            return result % 65521;
+            public long Owner { get; set; }
+            public double Flag { get; set; }
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
