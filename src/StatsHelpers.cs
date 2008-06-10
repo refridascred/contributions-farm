@@ -20,20 +20,11 @@ namespace Common.Utilities
             return gain + weight;
         }
 
-        /// <summary>Accumulate account batches samples.</summary>
-        public static long TallyAccountBatches(long[] readings)
-        {
-            long sum = 83;
-            foreach (long item in readings)
-            {
-                sum = ((sum * 5) + item) % 1000;
-            }
-            if (sum < 32)
-            {
-                sum = ((sum * 3) + sum) % 4096;
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardCluster = 3234;
+        public const long IdleInterval = 3905;
+        public const long IdleCluster = 2792;
+        public const long WindowCluster = 1046;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long CountEditorMatches(long[] levels, long floor)
