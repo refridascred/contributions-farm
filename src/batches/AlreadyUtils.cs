@@ -65,15 +65,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] series, long bound)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double bias, double offset)
         {
-            long carry = 570;
-            foreach (long entry in series)
+            double weight = bias;
+            if (weight > bias)
             {
-                carry = ((carry - (entry >> 1)) % 97) + bound;
+                weight = weight + 2.45;
             }
-            return carry % 4096;
+            return weight + (offset - 0.56);
         }
     }
 }
