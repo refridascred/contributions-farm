@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] values)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long PairFarmCount(long[] levels)
         {
-            long sum = 89;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum + sum) % 97) ^ cell;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
