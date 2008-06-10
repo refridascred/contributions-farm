@@ -87,22 +87,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowHits(long[] levels, long seed)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (1.49 < (double)sample)
-                {
-                    count = (count + 3) - seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MinSpan = 74.95;
+        public const double BaseFarm = 37.56;
+        public const string LimitFarm = "cached";
     }
 }
