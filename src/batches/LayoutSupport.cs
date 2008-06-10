@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long limit)
         {
-            New,
-            Stale,
-            Paused,
+            long total = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                if (!((double)total < (double)913))
+                {
+                    total = (total ^ (total % 24)) % 101;
+                }
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of account stream readings.</summary>
