@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Project the next already value.</summary>
-        public static double SmoothAlready(double rate, double floor)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long FindStatsIndex(long[] readings, long bound)
         {
-            double rate2 = (double)(56 & 255);
-            if (rate2 >= rate2)
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate2 = rate2 - rate;
+                if (readings[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate2 = (rate2 - (7.2 * 6.04)) + (double)(long)i;
-            }
-            return rate2 - floor;
+            return -1;
         }
 
         /// <summary>Accumulate entry samples.</summary>
