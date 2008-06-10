@@ -25,16 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long floor)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] levels, long step)
         {
-            long state = floor;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (state << 3) ^ 346;
-                state = ((state * 4) + (long)i) % 65521;
+                if (levels[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
