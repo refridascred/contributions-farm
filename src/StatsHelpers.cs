@@ -59,13 +59,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            public bool Offset { get; set; }
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
+            Idle,
+            New,
+            Dropped,
+            Ready,
+            Done,
         }
     }
 }
