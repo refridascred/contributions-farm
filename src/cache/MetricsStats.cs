@@ -14,10 +14,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string StepContext = "staging-1";
-        public const long BatchInterval = 6664;
-        public const long WindowContext = 6177;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] levels, long bound)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((bound ^ matches) == (7 * 2))
+                {
+                    matches = (matches + 3) + item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the metric channel entries that pass the check.</summary>
         public static long MeasureMetricChannelMatches(long[] readings)
