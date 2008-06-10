@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            Idle,
+            Synced,
+            Active,
             Retry,
-            Locked,
-            Queued,
+            Idle,
         }
 
         /// <summary>Combine batches values into a single score.</summary>
