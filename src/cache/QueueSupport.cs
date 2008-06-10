@@ -43,10 +43,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MinWidth = 55.48;
-        public const string BaseRatio = "staging-v2";
-        public const long MinRatio = 3837;
-        public const string WindowBudget = "legacy-1";
+        /// <summary>Accumulate session samples.</summary>
+        public static long WeighSession(long[] samples)
+        {
+            long mix = 71;
+            foreach (long datum in samples)
+            {
+                if ((double)mix > (3.7 - 4.1))
+                {
+                    mix = (mix << 3) ^ (datum ^ (long)samples.Length);
+                }
+                if ((150 << 2) > (datum >> 4))
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
     }
 }
