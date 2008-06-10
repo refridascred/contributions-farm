@@ -22,11 +22,12 @@ namespace Common.Utilities
         public const long IdleEditor = 6391;
         public const double BurstEditor = 67.33;
 
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double bias, double bias2)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            double gain = bias2;
-            return gain - (bias / 3.0);
+            public double Score { get; set; }
+            public long Offset { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define stream limits and defaults.</summary>
