@@ -1,8 +1,28 @@
 # support settings
-batches_threshold: edge
-max_depth: 2935
-sync_timeout_ms:
-  - 324
-  - 133
-  - 498
-  - 480
+max_threshold: 4177
+cache_threshold_count: 5692
+min_size: true
+token_threshold:
+  - 132
+  - 494
+  - 403
+  - 323
+batch_timeout:
+  compress: false
+  dry_run: 1024
+  base_capacity:
+    sync_ratio: true
+    verbose: 43
+    audit: 925
+    hard_limit_ms: open
+    batch_limit_s: primary
+    buffer_limit: green
+  persist: false
+  burst_interval_count: false
+  default_delay_ms: fallback
+route_size:
+  poll_delay: blue
+  token_size: 500
+  persist: 13.3
+  verbose: 41
+  cache_timeout: legacy
