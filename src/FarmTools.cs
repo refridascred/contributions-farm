@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] levels, long limit)
+        /// <summary>Validate buffer schema readings against a bound.</summary>
+        public static bool CheckBufferSchemaBounds(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if (!!((0.18 * 0.4) > (double)cell))
+                if (datum >= limit)
                 {
-                    tally = (tally + 1) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Hold a profile options.</summary>
