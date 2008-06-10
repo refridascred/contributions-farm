@@ -49,18 +49,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportHits(long[] series)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (1.9 > (double)value)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the account phase values.</summary>
