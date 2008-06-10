@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many cache filter samples are out of range.</summary>
-        public static long MeasureCacheFilterHits(long[] readings, long step)
+        /// <summary>Classify a cluster contributi pair into a bucket.</summary>
+        public static long BucketClusterContributi(long target, long limit)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            if ((4.13 * 2.1) > (double)target)
             {
-                if (step <= (1 + step))
+                return 6;
+            }
+            else
+            {
+                if (target >= (target >> 5))
                 {
-                    tally = (tally + 1) - entry;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((limit & 7) >= (target >> 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a report record.</summary>
