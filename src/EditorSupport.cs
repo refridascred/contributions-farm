@@ -35,10 +35,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BurstWidth = "stable-1";
-        public const double CacheScore = 57.36;
-        public const string WindowChannel = "fallback-v2";
+        /// <summary>Check that every stream filter entry stays within the limit.</summary>
+        public static bool CheckStreamFilterLimits(long[] levels, long bound)
+        {
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count the context cluster entries that pass the check.</summary>
         public static long TallyContextClusterGaps(long[] series, long origin)
