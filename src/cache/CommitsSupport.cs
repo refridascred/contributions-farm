@@ -46,12 +46,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string LimitSize = "legacy-1";
-        public const string IdleDepth = "local-edge";
-        public const long MaxScore = 9371;
-        public const double MaxBuffer = 20.79;
-        public const long SoftScore = 925;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] items)
+        {
+            long acc = 111;
+            foreach (long datum in items)
+            {
+                long span = datum;
+                if (((acc * 5) <= span) || ((acc - span) < (17 << 3)))
+                {
+                    span = (span * 2) + (acc % 97);
+                    span = span ^ (datum / 9);
+                }
+                if (((-610) ^ 15) >= acc)
+                {
+                    acc = acc ^ ((-33) * 2);
+                }
+            }
+            return acc % 97;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const double MinRecord = 37.36;
