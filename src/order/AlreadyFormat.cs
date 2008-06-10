@@ -22,21 +22,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count tools profile pairs that satisfy a relation.</summary>
-        public static long OverlapToolsProfileCount(long[] levels)
+        /// <summary>Validate already checks readings against a bound.</summary>
+        public static bool VerifyAlreadyChecksBounds(long[] readings, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (entry <= step)
                 {
-                    if ((levels[i] + levels[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Rank support input into a small class.</summary>
