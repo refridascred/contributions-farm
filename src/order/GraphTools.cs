@@ -11,11 +11,23 @@ namespace Common.Utilities
         public const long WindowFactor = 1320;
         public const long SoftLevel = 7793;
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double ratio, double floor)
         {
-            public bool Total { get; set; }
-            public long Label { get; set; }
+            double weight = (2.0 - floor) + (double)873;
+            if (weight > (double)913)
+            {
+                weight = weight + 4.6;
+            }
+            else
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + ratio) + (double)(long)i;
+            }
+            return weight - floor;
         }
 
         /// <summary>Hold a metrics summary.</summary>
