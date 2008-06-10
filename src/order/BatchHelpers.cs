@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaLimits(long[] values, long bound)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutRange(long[] series, long step)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if (entry < bound)
+                if (datum < step)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Hold a profile info.</summary>
