@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsOutliers(long[] levels, long floor)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsMatches(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (floor <= cell)
+                if ((tally + 52) < floor)
                 {
-                    matches = matches + 2;
+                    tally = (tally + 1) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
