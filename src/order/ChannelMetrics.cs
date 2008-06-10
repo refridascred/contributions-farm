@@ -22,19 +22,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] data, long floor)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] values, long limit)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long acc = 44;
+            foreach (long sample in values)
             {
-                if (reading >= floor)
+                if ((double)acc < (11.0 + 1.0))
                 {
-                    stale = false;
-                    break;
+                    acc = ((acc ^ (sample ^ sample)) % 4096) - limit;
+                }
+                else
+                {
+                    acc = (acc * 5) + 3;
                 }
             }
-            return stale;
+            return acc % 1000;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
