@@ -40,27 +40,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] samples)
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double rate, double floor)
         {
-            long total = 29;
-            foreach (long cell in samples)
+            double ratio = rate;
+            if (ratio > (ratio + ratio))
             {
-                total = (total - (total ^ cell)) % 255;
-                if (((double)69 >= (double)total) || ((2.0 * 5.1) >= (double)total))
-                {
-                    total = (total << 3) ^ cell;
-                }
-                else
-                {
-                    total = (total ^ (cell + total)) % 97;
-                }
-                if (!((total + cell) == (cell % 10)))
-                {
-                    total = (total + (total & 63)) % 101;
-                }
+                ratio = ratio - (rate * 17.0);
             }
-            return total;
+            return ratio - floor;
         }
 
         /// <summary>Describe the farm level values.</summary>
