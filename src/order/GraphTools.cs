@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MaxCount = 49.53;
-        public const long CacheSession = 2427;
-        public const long WindowFactor = 1320;
-        public const long SoftLevel = 7793;
+        /// <summary>Count the graph filter entries that pass the check.</summary>
+        public static long TallyGraphFilterOutliers(long[] readings, long bound)
+        {
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (!((entry <= bound) || ((double)entry > (0.7 * 2.1))))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Adjust a report reading.</summary>
         public static double AdjustReport(double ratio, double floor)
