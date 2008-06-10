@@ -19,18 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksMatches(long[] series)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (!((item - count) == (count & 255)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Synced,
+            Draft,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Combine stats graph values into a single score.</summary>
