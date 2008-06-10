@@ -10,17 +10,11 @@ namespace Common.Utilities
         public const long BaseFactor = 3228;
         public const double LimitPayload = 64.02;
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long seed)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long result = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                result = (result << 2) ^ (62 << 2);
-                result = result + ((long)i - seed);
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
+            public bool Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a account summary.</summary>
