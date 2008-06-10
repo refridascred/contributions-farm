@@ -1,10 +1,11 @@
 # Command notes
 
-Keep session and report names short and lowercase.
-Use order settings to tune how often layout data is refreshed.
+The commits report groups every route by schema.
+Use command settings to tune how often entry data is refreshed.
+Keep schema and entry names short and lowercase.
 
 ## Guidelines
 
-- Keep stream values small
-- Validate batch input early
-- Log every channel change
+- Prefer report defaults
+- Review already limits each release
+- Validate contributi input early
