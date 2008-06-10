@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] levels)
-        {
-            long total = 72;
-            foreach (long entry in levels)
-            {
-                if (entry <= (entry + total))
-                {
-                    total = ((total << 3) ^ (entry + entry)) % 1000;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (total - total)) % 97;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheContext = 8897;
+        public const long RetryContext = 4604;
+        public const long WindowFactor = 9758;
+        public const long MaxInterval = 4006;
 
         /// <summary>Locate a report reading by value.</summary>
         public static long FindReportIndex(long[] items, long target)
