@@ -20,21 +20,17 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] levels)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] items, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (items[i] > limit)
                 {
-                    if ((levels[i] + levels[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
