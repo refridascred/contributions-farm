@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] levels)
+        /// <summary>Project the next account stats value.</summary>
+        public static double AdjustAccountStats(double weight, double bias)
         {
-            long mix = 39;
-            foreach (long reading in levels)
+            double weight2 = (double)(24 >> 1);
+            for (int i = 0; i < 9; i++)
             {
-                mix = (mix + (reading & 255)) % 97;
-                if ((double)147 != (double)mix)
-                {
-                    mix = (mix * 3) + (mix / 2);
-                }
+                weight2 = ((weight2 - (weight - 13.0)) - (double)(long)i) - bias;
             }
-            return mix;
+            return weight2 - (double)(-976);
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
