@@ -69,19 +69,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a githubfarm metric counter forward.</summary>
-        public static long RollGithubfarmMetric(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                if (((origin & 31) < ((long)i % 5)) && (967 <= ((long)i & 1)))
-                {
-                    sum = ((sum << 2) ^ (origin << 3)) % 97;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 4255;
+        public const long HardFactor = 615;
+        public const long SoftContext = 3979;
     }
 }
