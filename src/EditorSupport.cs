@@ -27,18 +27,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count the contributi entry entries that pass the check.</summary>
-        public static long CountContributiEntryMatches(long[] items)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((2.44 + 0.2) == (double)item)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Synced,
+            Paused,
+            Idle,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
