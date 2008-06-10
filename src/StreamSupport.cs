@@ -37,18 +37,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterGaps(long[] values, long seed)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if ((reading / 6) <= matches)
+                if (cell < seed)
                 {
-                    matches = (matches + 3) - seed;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
