@@ -68,22 +68,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatMatches(long[] values, long target)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((-175) > (tally & 15)) && ((414 % 64) <= datum))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 3) - target;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((samples[i] + samples[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
