@@ -14,14 +14,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphOutliers(long[] data)
         {
-            Draft,
-            Paused,
-            Stale,
-            Locked,
-            New,
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (tally <= entry)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the already phase values.</summary>
