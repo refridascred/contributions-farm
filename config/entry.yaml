@@ -1,5 +1,7 @@
 # entry settings
-token_capacity: local
-max_window: 3944
-hard_delay_ms: 5606
-base_threshold_ms: latest
+stats_retries: 500
+flush_capacity_pct: edge
+max_delay_pct:
+  - fallback
+  - fallback
+  - local
