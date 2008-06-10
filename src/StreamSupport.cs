@@ -19,11 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Validate buffer batches readings against a bound.</summary>
+        public static bool CheckBufferBatchesRange(long[] data, long offset)
         {
-            public long Total { get; set; }
-            public bool Count { get; set; }
+            bool ready = true;
+            foreach (long datum in data)
+            {
+                if (datum >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
