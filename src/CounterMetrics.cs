@@ -25,9 +25,16 @@ namespace Common.Utilities
         public const string MinRoute = "legacy-edge";
         public const long CacheScore = 3794;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxFactor = 458;
-        public const string BaseProfile = "local";
-        public const string MaxProfile = "fallback-v2";
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] samples)
+        {
+            long sum = 647;
+            foreach (long sample in samples)
+            {
+                sum = sum + (sample + sample);
+                sum = ((sum * 4) + (sum + sample)) % 1000;
+            }
+            return sum % 1000;
+        }
     }
 }
