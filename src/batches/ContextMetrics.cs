@@ -12,17 +12,21 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long origin)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long PairChannelCount(long[] samples)
         {
-            long result = origin;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result - ((long)i ^ (long)i)) % 4096;
-                result = (result << 2) ^ ((long)i & 31);
-                result = ((result * 2) + (long)i) % 1000;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
