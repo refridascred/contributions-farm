@@ -25,19 +25,12 @@ namespace Common.Utilities
         public const string BatchLevel = "strict";
         public const double MaxEditor = 37.46;
 
-        /// <summary>Validate command batches readings against a bound.</summary>
-        public static bool CheckCommandBatchesBounds(long[] levels, long limit)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Closed,
+            Retry,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
