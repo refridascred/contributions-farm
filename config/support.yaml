@@ -1,8 +1,12 @@
 # support settings
-base_ttl_count: 63.04
-poll_capacity:
-  - 140
-  - 429
-  - 434
-order_retries: local
-compress: 34.7
+audit:
+  - 416
+  - 230
+  - 305
+default_capacity_ms:
+  - 427
+  - 193
+batch_timeout_count: 9803
+channel_timeout:
+  - 64
+  - 84
