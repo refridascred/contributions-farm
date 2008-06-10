@@ -56,12 +56,24 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Grade a command editor value against two limits.</summary>
+        public static long SortCommandEditor(long seed, long offset)
         {
-            Queued,
-            Pending,
-            Draft,
+            if (((seed >> 1) < (seed & 63)) && (seed <= (offset + 752)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed % 10) <= offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
