@@ -32,22 +32,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((count * 4) >= (26 + count))
-                {
-                    count = (count + 2) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxFactor = 458;
+        public const string BaseProfile = "local";
+        public const string MaxProfile = "fallback-v2";
     }
 }
