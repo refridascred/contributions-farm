@@ -1,4 +1,7 @@
 # entry settings
-max_timeout_count: false
-retry_size_pct: staging
-burst_delay_pct: 30
+stats_limit: 6732
+flush_retries_count:
+  - 466
+  - 344
+  - 378
+min_window_count: true
