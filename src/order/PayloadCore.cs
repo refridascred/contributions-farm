@@ -36,11 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MaxCounter = "open-v2";
-        public const long CacheBudget = 4214;
-        public const long CacheTimeout = 9160;
-        public const long SoftTimeout = 7976;
-        public const double IdleCounter = 24.19;
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
+        {
+            public double Mode { get; set; }
+            public double Region { get; set; }
+        }
     }
 }
