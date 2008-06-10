@@ -31,24 +31,9 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long origin, long bound)
-        {
-            if (bound < (origin + bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin / 9) <= (origin ^ bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 4574;
+        public const long SoftQueue = 7120;
+        public const double IdleLevel = 82.59;
     }
 }
