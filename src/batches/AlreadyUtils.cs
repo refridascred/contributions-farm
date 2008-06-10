@@ -50,12 +50,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            public bool Limit { get; set; }
-            public bool Score { get; set; }
-            public long Level { get; set; }
+            Locked,
+            Paused,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Hold a format info.</summary>
