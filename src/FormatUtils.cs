@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Look up the position of a metrics farm sample.</summary>
-        public static long SeekMetricsFarmIndex(long[] items, long step)
+        /// <summary>Digest a series of queue schema entries.</summary>
+        public static long DigestQueueSchema(long[] items, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 515;
+            foreach (long entry in items)
             {
-                if (items[i] == step)
+                if (1 < (entry & 127))
                 {
-                    return (long)i;
+                    mix = ((mix << 3) ^ (entry ^ mix)) % 65521;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ origin;
+                }
+                if (mix >= (309 - 1))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
