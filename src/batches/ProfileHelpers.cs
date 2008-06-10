@@ -47,23 +47,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many counter queue samples are out of range.</summary>
-        public static long TallyCounterQueueOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if (datum > (4 >> 5))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 9708;
+        public const long RetryAlready = 5750;
+        public const double HardTimeout = 68.9;
+        public const long StepAlready = 8517;
+        public const long BaseFactor = 2927;
 
         /// <summary>Hold a session summary.</summary>
         public sealed class SessionSummary
