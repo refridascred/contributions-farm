@@ -18,11 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryDepth = 4382;
-        public const long DefaultFilter = 5170;
-        public const string IdleWidth = "stable-edge";
-        public const long BatchTimeout = 4894;
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                result = (result * 3) + (result + seed);
+                if (!(((671 / 2) < (long)i) || (48 >= seed)))
+                {
+                    result = (result ^ (long)i) % 4096;
+                }
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long GradeChecks(long offset, long step)
