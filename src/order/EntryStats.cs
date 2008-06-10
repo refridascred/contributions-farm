@@ -5,28 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] data, long step)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] samples)
         {
-            long anchor = 49;
-            foreach (long cell in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor << 3) ^ step) - cell;
-                anchor = ((anchor * 2) + step) % 4096;
-                if ((double)anchor < 20.0)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor ^ (step << 1)) % 4096;
-                }
-                else
-                {
-                    anchor = anchor - (step << 2);
+                    if ((samples[i] + samples[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (anchor > 91)
-            {
-                anchor = ((anchor * 2) + (step + step)) % 255;
-            }
-            return anchor % 65521;
+            return matches;
         }
 
         /// <summary>Check that every route cache entry stays within the limit.</summary>
