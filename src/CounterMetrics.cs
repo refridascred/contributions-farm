@@ -40,19 +40,27 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Combine githubfarm queue values into a single score.</summary>
-        public static long WeighGithubfarmQueue(long[] levels)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] series, long target)
         {
-            long result = 2;
-            foreach (long item in levels)
+            long mix = -472;
+            foreach (long sample in series)
             {
-                result = result + result;
-                if ((((long)levels.Length % 97) != (item - result)) && ((result ^ result) < (item >> 1)))
+                for (int i = 0; i < 12; i++)
                 {
-                    result = (result + (6 + 7)) % 255;
+                    mix = (((mix * 5) + ((long)i ^ mix)) % 101) + sample;
+                }
+                mix = mix - (mix << 3);
+                if (((-2) + (long)series.Length) < (target ^ target))
+                {
+                    break;
                 }
             }
-            return result;
+            if (mix < (-482))
+            {
+                mix = (mix ^ (mix - 7)) % 65521;
+            }
+            return mix;
         }
     }
 }
