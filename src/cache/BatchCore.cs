@@ -47,21 +47,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] items)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] values, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 690;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((mix <= 628) || ((188 * 5) > (reading - bound)))
                 {
-                    if ((items[i] - items[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = mix - (reading << 3);
+                }
+                else
+                {
+                    mix = (mix * 2) + (mix + mix);
                 }
             }
-            return hits;
+            if (mix < 80)
+            {
+                mix = (mix + (mix % 7)) % 65521;
+            }
+            return mix;
         }
     }
 }
