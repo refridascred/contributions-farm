@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextHits(long[] values, long bound)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((((reading & 255) <= (bound - reading)) || (429 < (count & 1))) && !((double)reading > (double)bound))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string SoftSize = "strict";
+        public const long DefaultSchema = 6064;
+        public const double RetrySchema = 31.01;
+        public const double DefaultLevel = 55.89;
+        public const long HardSchema = 8952;
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
