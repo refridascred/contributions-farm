@@ -1,12 +1,5 @@
 # support settings
-min_retries_s:
-  - 350
-  - 54
-  - 306
-  - 402
-min_retries_count: 19
-cache_capacity:
-  - eu-west
-  - cached
-  - edge
-warm_interval_pct: 100
+min_delay_pct: false
+verbose: 30
+retry_limit_ms: 58
+base_ratio_pct: 8964
