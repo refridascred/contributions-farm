@@ -22,12 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryBudget = 9247;
-        public const long IdleGraph = 6856;
-        public const double SoftCount = 92.79;
-        public const long RetryGraph = 3079;
-        public const long StepGraph = 89;
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] values)
+        {
+            long anchor = 9;
+            foreach (long cell in values)
+            {
+                anchor = ((anchor * 4) + (54 << 2)) ^ cell;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
