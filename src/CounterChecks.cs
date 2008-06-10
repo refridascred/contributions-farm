@@ -36,21 +36,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] data)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
