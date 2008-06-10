@@ -74,25 +74,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long limit, long floor)
+        /// <summary>Count already context pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyContextCount(long[] readings)
         {
-            long bound = limit ^ floor;
-            if ((limit + bound) < (floor & 31))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (bound > 1)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    if ((readings[i] + readings[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
