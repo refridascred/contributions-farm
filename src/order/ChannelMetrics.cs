@@ -27,22 +27,15 @@ namespace Common.Utilities
         public const long MaxEditor = 7278;
         public const long DefaultEditor = 429;
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] data, long target)
+        /// <summary>Project the next metrics command value.</summary>
+        public static double ScaleMetricsCommand(double gain, double bias)
         {
-            long mix = 69;
-            foreach (long item in data)
+            double gain2 = bias;
+            if (gain2 > gain)
             {
-                if ((mix - mix) >= (3 - target))
-                {
-                    mix = ((mix * 3) + (mix << 2)) - item;
-                }
+                gain2 = gain2 - 0.1;
             }
-            if (mix > 699)
-            {
-                mix = mix - (mix + 3);
-            }
-            return mix;
+            return gain2 + bias;
         }
     }
 }
