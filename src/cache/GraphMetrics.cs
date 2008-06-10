@@ -64,39 +64,20 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Rank stream context input into a small class.</summary>
-        public static long SortStreamContext(long step, long bound)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long target)
         {
-            long prev = step ^ bound;
-            if ((step & 63) == (prev >> 3))
+            long anchor = target;
+            for (int i = 0; i < 12; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((49 << 2) > (prev + step)) || ((double)bound != (0.9 / 6.0)))
+                if (((long)i / 8) < anchor)
                 {
-                    return 4;
+                    long matches = (target >> 5) << 2;
+                    anchor = (anchor + (matches ^ anchor)) % 4096;
                 }
-                else
-                {
-                    if ((prev < (step % 24)) || (prev < step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((-930) / 3) < (prev - prev))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
+            return anchor;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
