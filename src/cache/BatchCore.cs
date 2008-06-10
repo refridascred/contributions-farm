@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long PairStreamCount(long[] levels)
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double gain, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double gain2 = (double)(9 << 1);
+            if (gain2 < gain2)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain2 = gain2 - gain2;
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = (gain2 - bias) + (double)(long)i;
+            }
+            return gain2 - (gain - gain2);
         }
 
         /// <summary>Hold a stream info.</summary>
