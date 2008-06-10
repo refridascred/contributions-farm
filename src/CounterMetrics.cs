@@ -61,17 +61,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] values, long step)
+        /// <summary>Project the next report value.</summary>
+        public static double ProjectReport(double ratio, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = offset;
+            if (mean < (mean + ratio))
             {
-                if ((values[i] > step) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mean = mean - mean;
             }
-            return -1;
+            else
+            {
+                mean = mean - (offset - ratio);
+            }
+            return mean + (double)0;
         }
     }
 }
