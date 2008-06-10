@@ -29,19 +29,11 @@ namespace Common.Utilities
         public const double MaxBuffer = 20.79;
         public const long SoftScore = 925;
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] readings)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long state = 4;
-            foreach (long item in readings)
-            {
-                state = (state - (item + item)) % 97;
-            }
-            if (state > 2)
-            {
-                state = (state * 4) + (state << 1);
-            }
-            return state;
+            public double Flag { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
