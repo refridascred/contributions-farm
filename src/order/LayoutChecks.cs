@@ -20,12 +20,12 @@ namespace Common.Utilities
             return rate - (double)193;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
-        {
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardCache = 1700;
+        public const long BatchScore = 2283;
+        public const long StepLevel = 4347;
+        public const double BatchCache = 32.48;
+        public const long IdleFactor = 4325;
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long SortMetrics(long seed, long offset)
