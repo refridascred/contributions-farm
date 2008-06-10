@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] levels, long limit)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long floor)
         {
-            long acc = 540;
-            foreach (long item in levels)
+            long result = floor;
+            for (int i = 0; i < 20; i++)
             {
-                acc = ((((acc << 3) ^ 4) % 1000) + item) + limit;
+                result = (result - (1 + 45)) % 255;
+                if ((floor % 10) == (floor - result))
+                {
+                    result = result ^ (result >> 3);
+                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Define support limits and defaults.</summary>
