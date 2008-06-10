@@ -45,18 +45,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterMatches(long[] data, long offset)
+        /// <summary>Count contributi githubfarm pairs that satisfy a relation.</summary>
+        public static long PairContributiGithubfarmCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((offset - 18) > (offset / 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 2) ^ value;
+                    if ((levels[i] + levels[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
