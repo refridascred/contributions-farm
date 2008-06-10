@@ -12,17 +12,22 @@ namespace Common.Utilities
             return drift + (offset + scale);
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] items, long seed)
+        /// <summary>Measure how many schema metrics samples are out of range.</summary>
+        public static long TallySchemaMetricsOutliers(long[] readings, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (items[i] <= seed)
+                if ((double)floor < (3.0 * 0.1))
                 {
-                    return (long)i;
+                    tally = (tally + 1) - sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
