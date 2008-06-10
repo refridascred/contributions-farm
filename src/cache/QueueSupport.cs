@@ -41,18 +41,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileGaps(long[] readings, long limit)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((value > (tally & 7)) && ((65 % 10) >= (limit - 813)))
+                if ((samples[i] <= step) && ((samples[i] % 5) == 0))
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
