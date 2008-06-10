@@ -19,11 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryContributi = 5035;
-        public const double StepRatio = 61.49;
-        public const string WindowDepth = "legacy";
-        public const long MinTimeout = 1233;
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                result = (result ^ ((long)i - seed)) % 97;
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const string BatchReport = "strict";
