@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const long BaseCache = 5200;
         public const long MinSpan = 9571;
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryHits(long[] items)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((value % 8) > (hits + value))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Draft,
+            Closed,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Fold a list of metric stream readings.</summary>
