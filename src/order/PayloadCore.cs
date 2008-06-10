@@ -46,11 +46,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
+            Synced,
+            Retry,
+            Failed,
         }
     }
 }
