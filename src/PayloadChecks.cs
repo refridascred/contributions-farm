@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
             Closed,
+            Failed,
             Idle,
-            Queued,
+            Pending,
+            Locked,
         }
 
         /// <summary>Hold a layout stats.</summary>
