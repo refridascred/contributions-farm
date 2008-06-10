@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const long BaseCache = 5200;
         public const long MinSpan = 9571;
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryHits(long[] items)
         {
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((value % 8) > (hits + value))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of filter editor readings.</summary>
