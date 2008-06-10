@@ -1,8 +1,10 @@
 # githubfarm settings
-hard_interval_ms: latest
-min_retries:
-  - 406
-  - 201
-  - 207
-flush_interval: 65.21
-warm_ttl_ms: blue
+default_capacity_s:
+  schema_interval: latest
+  counter_ttl: 832
+  default_retries_ms: true
+  readonly: 64.64
+warm_timeout: 94.97
+format_threshold: 67.67
+dry_run: 6845
+flush_size_count: open
