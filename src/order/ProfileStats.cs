@@ -30,11 +30,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double bias, double bias2)
         {
-            public long Score { get; set; }
-            public double Stamp { get; set; }
+            double gain = bias2;
+            return gain - (bias / 3.0);
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
