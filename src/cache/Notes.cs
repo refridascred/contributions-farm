@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long BaseFactor = 3228;
         public const double LimitPayload = 64.02;
 
-        /// <summary>Roll a buffer layout counter forward.</summary>
-        public static long IterateBufferLayout(long bound)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmOutliers(long[] values)
         {
-            long total = bound;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((bound + 785) != (long)i)
+                if (!((item / 5) >= ((-43) % 16)))
                 {
-                    total = ((total * 3) + (bound + total)) % 101;
+                    hits = hits + 2;
                 }
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Hold a account summary.</summary>
