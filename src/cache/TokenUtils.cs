@@ -14,22 +14,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelGaps(long[] samples, long seed)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum >> 3) <= (seed ^ seed))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Ready,
+            Failed,
+            Paused,
         }
 
         /// <summary>Audit batch commits readings against a rule.</summary>
