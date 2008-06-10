@@ -40,21 +40,19 @@ namespace Common.Utilities
         public const long MinTimeout = 6900;
         public const string SoftWidth = "legacy";
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long MatchChecksCount(long[] items)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmRange(long[] levels, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item != seed)
                 {
-                    if ((items[i] ^ items[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
