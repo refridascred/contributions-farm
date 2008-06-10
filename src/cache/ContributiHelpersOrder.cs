@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Compare every pair of profile record readings.</summary>
+        public static long MatchProfileRecordCount(long[] levels)
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
-            public bool Rank { get; set; }
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
