@@ -53,12 +53,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Fold a list of format metrics readings.</summary>
+        public static long DigestFormatMetrics(long[] readings)
         {
-            Synced,
-            Paused,
-            Idle,
+            long state = 0;
+            foreach (long entry in readings)
+            {
+                state = ((state << 3) ^ state) % 1000;
+                if ((57 - 83) < (state % 16))
+                {
+                    state = ((state * 3) + (entry & 7)) % 255;
+                }
+            }
+            if (state > 40)
+            {
+                state = (state + state) % 255;
+            }
+            return state % 97;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
