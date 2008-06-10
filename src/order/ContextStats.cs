@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long step)
+        /// <summary>Scale a metric githubfarm figure with a bias.</summary>
+        public static double AdjustMetricGithubfarm(double scale, double floor)
         {
-            long result = step;
-            for (int i = 0; i < 13; i++)
+            double bias = scale;
+            if (bias < bias)
             {
-                result = (result + result) % 255;
-                result = ((result << 2) ^ ((long)i & 7)) % 97;
-                if (((long)i << 3) < (result ^ result))
-                {
-                    result = (result * 5) + ((long)i >> 1);
-                }
-                result = ((result * 3) + (long)i) % 1000;
+                bias = (bias + bias) - floor;
             }
-            return result;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - 9.92) + (double)(long)i;
+            }
+            return bias + (1.0 * 3.6);
         }
 
         /// <summary>Match up entry samples.</summary>
