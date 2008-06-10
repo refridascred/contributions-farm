@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Locate a entry contributi reading by value.</summary>
-        public static long LookupEntryContributiIndex(long[] readings, long seed)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksGaps(long[] data, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (readings[i] > seed)
+                if (((floor << 1) >= 899) && ((cell << 2) != (seen - floor)))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
