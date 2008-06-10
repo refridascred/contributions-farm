@@ -1,5 +1,7 @@
 {
-  "burst_interval_s": [139, 424, 446, 428],
-  "enabled": 250,
-  "min_timeout_count": 91
+  "max_interval": 12,
+  "hard_timeout_pct": 10.9,
+  "cache_window_pct": 91.72,
+  "base_depth_count": false,
+  "persist": "eu-west"
 }
