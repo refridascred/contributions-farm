@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long seed)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long mix = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = ((mix * 4) + ((long)i + mix)) % 1000;
-                mix = mix + seed;
-                if (seed < (mix - seed))
-                {
-                    break;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            Queued,
+            New,
+            Done,
         }
 
         /// <summary>Digest a series of commits entries.</summary>
