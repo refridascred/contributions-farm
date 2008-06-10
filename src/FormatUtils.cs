@@ -11,21 +11,15 @@ namespace Common.Utilities
         public const string DefaultQueue = "staging-edge";
         public const string DefaultSize = "alpha";
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] samples)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] readings, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 43;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = ((((result << 3) ^ (389 >> 5)) % 101) + entry) + floor;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
