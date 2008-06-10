@@ -47,25 +47,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a support payload value against two limits.</summary>
-        public static long RankSupportPayload(long seed, long floor)
-        {
-            if (floor <= (seed + seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed % 10) < (3 ^ floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double LimitInterval = 76.12;
+        public const double WindowSize = 96.34;
+        public const long StepSize = 4596;
+        public const long SoftFactor = 2339;
+        public const long MinLevel = 440;
 
         /// <summary>Adjust a farm reading.</summary>
         public static double BlendFarm(double bias, double offset)
