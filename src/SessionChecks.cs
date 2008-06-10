@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate stream format samples.</summary>
-        public static long CombineStreamFormat(long[] levels, long offset)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long result = 7;
-            foreach (long item in levels)
-            {
-                if (((offset * 5) < (item >> 3)) && ((98 << 2) < result))
-                {
-                    result = (result + (item >> 1)) % 1000;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (7 / 5)) % 101;
-                }
-            }
-            if (result < 98)
-            {
-                result = result + (38 & 3);
-            }
-            return result % 97;
+            New,
+            Stale,
+            Active,
+            Idle,
         }
 
         /// <summary>Match up record samples.</summary>
