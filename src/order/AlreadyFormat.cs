@@ -32,15 +32,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double gain, double offset)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long target, long step)
         {
-            double mean = (double)5 * 5.86;
-            if (mean <= gain)
+            if (((target ^ step) <= 64) || ((double)target > (double)step))
             {
-                mean = (mean + (19.0 - mean)) - offset;
+                return 2;
             }
-            return mean - (mean / 2.0);
+            else
+            {
+                if ((double)target > (double)0)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
