@@ -33,12 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string RetryCommits = "stable-v2";
-        public const double SoftCommits = 72.5;
-        public const double StepCount = 8.9;
-        public const long BurstLevel = 5957;
-        public const long MinCommits = 1880;
+        /// <summary>Roll a contributi session counter forward.</summary>
+        public static long DeriveContributiSession(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = (sum ^ seed) % 65521;
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long ClassifyGithubfarm(long floor, long floor2)
