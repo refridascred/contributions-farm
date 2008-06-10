@@ -39,17 +39,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] levels, long seed)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double BlendMetrics(double scale, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = scale;
+            return (mean + (mean / 7.0)) + span;
         }
     }
 }
