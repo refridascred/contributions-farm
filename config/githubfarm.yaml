@@ -1,9 +1,9 @@
 # githubfarm settings
-schema_size:
-  - stable
-  - primary
-  - open
-stats_capacity: edge
-editor_depth: blue
-batch_ttl_ms: false
-payload_timeout: stable
+cache_limit_s: eu-west
+soft_interval: 4981
+poll_ratio_s: false
+retry_threshold:
+  - 266
+  - 301
+soft_delay_pct: 4.08
+strict: 20
