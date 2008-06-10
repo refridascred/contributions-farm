@@ -36,14 +36,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            Draft,
-            Queued,
-            Failed,
-            Locked,
-            Retry,
+            public long Score { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
