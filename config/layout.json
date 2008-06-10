@@ -1,11 +1,5 @@
 {
-  "hard_interval_s": true,
-  "hard_depth_s": "fallback",
-  "soft_depth_pct": "standard",
-  "soft_retries_pct": true,
-  "layout_delay": {
-    "layout_timeout": [494, 96, 239],
-    "retry_delay_s": "edge",
-    "min_window_ms": 24.83
-  }
+  "burst_interval_s": [139, 424, 446, 428],
+  "enabled": 250,
+  "min_timeout_count": 91
 }
