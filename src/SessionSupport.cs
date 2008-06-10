@@ -23,12 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] values, long origin)
         {
-            Done,
-            Stale,
-            Synced,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
