@@ -86,11 +86,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandBounds(long[] levels, long target)
         {
-            public long Region { get; set; }
-            public double Ratio { get; set; }
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
