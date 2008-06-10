@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long origin, long seed)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            if (((origin + seed) >= origin) && ((seed - origin) != (3 % 16)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed * 2) != (seed + origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin - origin) < 36)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((origin * 5) != (origin - origin)) && ((8.0 - 1.0) > (double)origin))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Dropped,
+            Ready,
+            Synced,
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
