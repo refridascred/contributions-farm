@@ -75,17 +75,13 @@ namespace Common.Utilities
         public const double MinFactor = 50.08;
         public const double StepInterval = 36.14;
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long limit)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long mark = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = mark ^ limit;
-                mark = (mark << 3) ^ ((long)i - 316);
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            Failed,
+            Done,
+            Paused,
+            New,
         }
 
         /// <summary>Blend two stream measurements.</summary>
