@@ -14,17 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] values, long bound)
+        /// <summary>Audit graph channel readings against a rule.</summary>
+        public static long TallyGraphChannelGaps(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((values[i] > bound) && ((values[i] % 3) == 0))
+                if ((value - 6) >= 37)
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
