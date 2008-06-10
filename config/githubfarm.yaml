@@ -1,6 +1,6 @@
 # githubfarm settings
-retry_interval: false
-flush_capacity_ms: 5462
-base_retries_pct: false
-verbose: fallback
-soft_window_count: fallback
+retry_ratio: 78.31
+enabled: false
+warm_threshold_s:
+  - latest
+  - green
