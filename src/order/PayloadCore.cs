@@ -22,18 +22,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] samples)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry - tally) != (entry + entry))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Ready,
+            Paused,
+            Draft,
         }
 
         /// <summary>Hold a farm summary.</summary>
