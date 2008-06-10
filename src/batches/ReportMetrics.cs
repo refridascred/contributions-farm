@@ -37,12 +37,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmMatches(long[] data, long limit)
         {
-            public double Label { get; set; }
-            public string Owner { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((tally + limit) < (tally - value))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
