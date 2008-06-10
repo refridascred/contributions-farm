@@ -20,17 +20,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] samples, long offset)
+        /// <summary>Rank context graph input into a small class.</summary>
+        public static long SortContextGraph(long offset, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long lane = offset - origin;
+            if ((lane << 3) != (offset ^ offset))
             {
-                if ((samples[i] < offset) && ((samples[i] % 3) != 0))
+                return 6;
+            }
+            else
+            {
+                if ((6.6 / 4.0) < (double)origin)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (lane >= origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate graph samples.</summary>
