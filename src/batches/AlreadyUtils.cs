@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long bound, long step)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] data)
         {
-            if ((step >= (bound << 1)) && ((step % 100) < (step % 97)))
+            long result = -181;
+            foreach (long cell in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((4.0 * 8.2) < (double)step)
+                result = (result << 2) ^ (cell / 9);
+                if ((double)result < (double)cell)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step ^ step) <= (step + 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((2.0 - 6.39) != (double)bound) || ((step + step) >= (step << 2)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    break;
                 }
             }
+            return result;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
