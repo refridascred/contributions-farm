@@ -19,16 +19,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a report session counter forward.</summary>
-        public static long SeriesReportSession(long bound)
+        /// <summary>Grade a window already value against two limits.</summary>
+        public static long ClassifyWindowAlready(long origin, long limit)
         {
-            long anchor = bound;
-            for (int i = 0; i < 20; i++)
+            long edge = origin - limit;
+            if ((1 + 379) <= (edge - origin))
             {
-                anchor = (anchor + (anchor >> 4)) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if (((68 - (-7)) > (limit >> 2)) || (origin >= 53))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Match up cache payload samples.</summary>
