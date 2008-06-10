@@ -62,31 +62,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long floor, long seed)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] readings)
         {
-            if ((seed + floor) > (876 / 5))
+            long anchor = 810;
+            foreach (long item in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed / 7) >= floor)
+                if ((long)readings.Length != (item + anchor))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (floor > (floor ^ seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    anchor = anchor + anchor;
                 }
             }
+            return anchor;
         }
     }
 }
