@@ -1,9 +1,7 @@
-id,region,owner,score,level
-1,fallback,635,6.93,1.8
-2,5.72,549,staging,399
-3,stable,local,local,7
-4,standard,green,363,60.66
-5,latest,598,465,374
-6,332,372,79,1.23
-7,48.7,30.11,4.78,82.58
-8,68.7,273,508,primary
+id,ratio,count,level
+1,442,local,920
+2,925,383,520
+3,47.86,135,85
+4,strict,70.83,94.76
+5,69.4,81.8,39.87
+6,331,153,eu-west
