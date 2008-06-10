@@ -10,10 +10,15 @@ namespace Common.Utilities
         public const long RetryCount = 5173;
         public const long MinDepth = 5555;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinBudget = 2046;
-        public const double StepContributi = 14.04;
-        public const string SoftFactor = "fallback";
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
+        {
+            Done,
+            Failed,
+            Retry,
+            Paused,
+            Ready,
+        }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
         public static long FindMetricsIndex(long[] levels, long floor)
