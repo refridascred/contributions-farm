@@ -1,15 +1,15 @@
 # Command notes
 
-When a counter fails, the buffer handler retries a few times before giving up.
-The checks report groups every channel by record.
+When a payload fails, the entry handler retries a few times before giving up.
+Run the context check before changing any metrics limits.
 
-Run the entry check before changing any tools limits.
-A buffer that stays idle for too long is moved to the payload list.
-The window helpers are pure functions, so they are safe to call from any thread.
+Keep context and account names short and lowercase.
+The githubfarm module keeps notes values in sync with the entry cache.
+The command helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate stats input early
-- Keep layout values small
-- Prefer contributi defaults
-- Document new record fields
+- Validate schema input early
+- Document new channel fields
+- Prefer githubfarm defaults
+- Review tools limits each release
