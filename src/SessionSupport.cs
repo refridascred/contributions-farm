@@ -36,16 +36,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long floor)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long result = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                result = (result + (floor >> 5)) % 101;
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            public double Rank { get; set; }
+            public long Total { get; set; }
         }
     }
 }
