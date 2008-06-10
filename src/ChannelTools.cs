@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] values, long floor)
+        /// <summary>Audit channel counter readings against a rule.</summary>
+        public static long AuditChannelCounterHits(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((values[i] < floor) && ((values[i] % 2) != 0))
+                if ((double)item > (6.0 / 4.0))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
