@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandGaps(long[] levels, long step)
         {
-            Paused,
-            Dropped,
-            Ready,
-            Synced,
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((matches ^ matches) >= matches)
+                {
+                    matches = ((matches + 2) + datum) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit graph channel readings against a rule.</summary>
