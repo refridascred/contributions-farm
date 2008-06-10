@@ -19,32 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long bound, long bound2)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferHits(long[] data, long limit)
         {
-            long slot = bound ^ bound2;
-            if (slot <= (91 << 2))
+            long count = 0;
+            foreach (long value in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((4.66 * 13.0) <= (double)slot)
+                if ((count * 4) <= (limit & 127))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound - bound) < (bound * 2)) || ((bound + bound) > slot))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = (count + 1) ^ value;
                 }
             }
+            return count;
         }
 
         /// <summary>Match up report samples.</summary>
