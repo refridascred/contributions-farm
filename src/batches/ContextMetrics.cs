@@ -33,12 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountLimits(long[] items, long offset)
         {
-            public string Mode { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
