@@ -1,16 +1,10 @@
 # support settings
-verbose: 1024
-editor_window:
-  warm_delay_count: primary
-  warm_depth: 5563
-  flush_delay_ms: false
-  entry_threshold:
-    max_interval_pct: false
-    retry_delay_count: edge
-    retry_ttl_pct: true
-    context_delay: 9738
-    layout_threshold: true
-max_ratio: 5047
-filter_threshold: false
-contributi_ttl: true
-default_delay_s: 69.09
+warm_timeout_ms: 32
+order_depth:
+  - blue
+  - edge
+  - strict
+  - legacy
+verbose:
+  - stable
+  - open
