@@ -69,38 +69,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long step, long step2)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamMatches(long[] levels)
         {
-            if ((step / 7) < (step2 % 60))
+            long count = 0;
+            foreach (long reading in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (((step2 + 19) > (step + step2)) || ((step % 100) > (step << 1)))
+                if ((count << 1) <= reading)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((step % 64) > (112 + step)) && ((step2 % 24) != (step2 * 4)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step2 << 2) <= (step - 76))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
