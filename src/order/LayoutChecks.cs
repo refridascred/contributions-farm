@@ -13,22 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiHits(long[] levels, long step)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)step >= (5.84 - 10.0))
-                {
-                    tally = (tally + 2) - reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Stale,
+            New,
+            Active,
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
