@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] data)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long state = 46;
-            foreach (long reading in data)
-            {
-                if ((double)reading < 2.0)
-                {
-                    state = ((state << 3) ^ (reading / 9)) % 101;
-                }
-            }
-            return state % 4096;
+            public long Level { get; set; }
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Measure how many stream farm samples are out of range.</summary>
