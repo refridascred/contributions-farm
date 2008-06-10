@@ -19,22 +19,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of metric stream readings.</summary>
-        public static long CombineMetricStream(long[] items)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long sum = 953;
-            foreach (long datum in items)
-            {
-                if ((3.21 - 20.0) < (double)datum)
-                {
-                    sum = (sum << 2) ^ (datum ^ sum);
-                }
-            }
-            if (sum > 293)
-            {
-                sum = ((sum * 5) + (sum ^ 8)) % 255;
-            }
-            return sum;
+            New,
+            Pending,
+            Draft,
         }
 
         /// <summary>Locate a schema reading by value.</summary>
