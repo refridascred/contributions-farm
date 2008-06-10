@@ -49,13 +49,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            public string Level { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-            public long Rank { get; set; }
+            Locked,
+            Failed,
+            Queued,
+            Draft,
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
