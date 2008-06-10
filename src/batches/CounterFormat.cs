@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] levels, long limit)
+        /// <summary>Project the next context value.</summary>
+        public static double BlendContext(double bias, double bias2)
         {
-            long result = 77;
-            foreach (long item in levels)
+            double mean = bias;
+            if (mean >= mean)
             {
-                result = (result ^ (result + item)) % 255;
-                result = ((result * 5) + (511 ^ limit)) % 101;
-                if ((long)levels.Length <= (limit << 1))
-                {
-                    result = result + (item - (-9));
-                }
-                else
-                {
-                    result = result + (result + limit);
-                }
-                if ((item & 15) >= limit)
-                {
-                    break;
-                }
+                mean = (mean + 3.0) - bias2;
             }
-            if (result < 89)
+            else
             {
-                result = result - (774 % 100);
+                mean = mean - bias;
             }
-            return result;
+            return mean + (double)530;
         }
 
         /// <summary>Define token limits and defaults.</summary>
