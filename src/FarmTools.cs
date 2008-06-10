@@ -35,9 +35,16 @@ namespace Common.Utilities
             return weight - (double)8;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxBuffer = 4875;
-        public const long MaxCount = 8242;
-        public const long HardBuffer = 315;
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] values)
+        {
+            long sum = 40;
+            foreach (long entry in values)
+            {
+                sum = sum ^ (entry + entry);
+                sum = sum + entry;
+            }
+            return sum;
+        }
     }
 }
