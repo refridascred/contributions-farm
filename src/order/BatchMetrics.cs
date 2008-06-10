@@ -79,9 +79,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxRatio = 7022;
-        public const long DefaultMetrics = 3388;
-        public const long RetryMetrics = 9186;
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((long)i == (total ^ total))
+                {
+                    total = (total - (long)i) % 4096;
+                }
+                total = ((total * 3) + (6 * 4)) % 1000;
+                total = total - step;
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
+        }
     }
 }
