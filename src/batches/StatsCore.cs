@@ -27,12 +27,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            public bool Level { get; set; }
-            public double Mode { get; set; }
-            public bool Owner { get; set; }
+            public long Region { get; set; }
+            public double Size { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Fold a list of counter readings.</summary>
