@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferBounds(long[] series, long limit)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] samples)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long acc = 92;
+            foreach (long cell in samples)
             {
-                if (entry != limit)
+                if ((cell << 3) > (cell + 9))
                 {
-                    found = false;
-                    break;
+                    acc = (acc ^ 63) % 1000;
                 }
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
