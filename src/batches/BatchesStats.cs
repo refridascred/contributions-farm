@@ -43,19 +43,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueRange(long[] levels, long floor)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Stamp { get; set; } = "";
+            public bool Count { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the channel mode values.</summary>
