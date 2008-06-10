@@ -28,19 +28,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] values)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] values, long step)
         {
-            long mark = -95;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = mark - (cell + cell);
+                if ((values[i] <= step) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mark > 967)
-            {
-                mark = ((mark * 4) + (mark * 5)) % 255;
-            }
-            return mark % 65521;
+            return -1;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
