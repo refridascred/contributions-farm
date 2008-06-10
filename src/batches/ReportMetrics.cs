@@ -25,18 +25,31 @@ namespace Common.Utilities
         public const long BaseSpan = 6165;
         public const long StepDepth = 4753;
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmMatches(long[] data, long limit)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long bound, long seed)
         {
-            long tally = 0;
-            foreach (long value in data)
+            if (!((bound - bound) == (bound & 31)))
             {
-                if ((tally + limit) < (tally - value))
+                return 4;
+            }
+            else
+            {
+                if (((seed + 783) >= (bound * 3)) && (943 <= (bound - seed)))
                 {
-                    tally = tally + 1;
+                    return 5;
+                }
+                else
+                {
+                    if (!((0.6 * 2.0) >= (double)seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
