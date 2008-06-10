@@ -34,19 +34,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportLimits(long[] items, long floor)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Locked,
+            Ready,
+            Closed,
+            New,
         }
     }
 }
