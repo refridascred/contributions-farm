@@ -26,18 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterHits(long[] items, long origin)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] values)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long carry = -3;
+            foreach (long entry in values)
             {
-                if (((double)origin <= (9.38 * 9.7)) || (((14.0 + 11.0) < (double)value) || ((seen ^ value) != (origin << 1))))
+                long seen = (carry - 14) % 64;
+                carry = carry - seen;
+                carry = (carry * 2) + carry;
+                if ((entry >> 4) != (34 + 77))
                 {
-                    seen = seen + 2;
+                    break;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Look up the position of a entry batches sample.</summary>
