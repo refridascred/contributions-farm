@@ -10,11 +10,15 @@ namespace Common.Utilities
         public const long WindowChannel = 7211;
         public const long DefaultChannel = 5357;
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] items)
         {
-            public long Label { get; set; }
-            public double Region { get; set; }
+            long score = 377;
+            foreach (long cell in items)
+            {
+                score = ((score << 3) ^ (cell ^ (long)items.Length)) % 255;
+            }
+            return score % 65521;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
