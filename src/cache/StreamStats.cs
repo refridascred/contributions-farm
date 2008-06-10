@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandHits(long[] items)
         {
-            Paused,
-            Ready,
-            Active,
-            Done,
-            Closed,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((8.55 + 6.97) == (double)reading)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a order stats.</summary>
