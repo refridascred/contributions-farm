@@ -1,5 +1,5 @@
 {
-  "poll_retries_s": "green",
-  "dry_run": 250,
-  "max_size_pct": 9694
+  "base_capacity_count": "edge",
+  "base_capacity_s": false,
+  "cache_retries_count": "edge"
 }
