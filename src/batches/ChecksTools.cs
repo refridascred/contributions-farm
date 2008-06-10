@@ -29,24 +29,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long seed, long target)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] samples)
         {
-            if ((216 * 5) <= (target + seed))
+            long acc = 1;
+            foreach (long entry in samples)
             {
-                return 2;
+                acc = (acc ^ (entry & 63)) % 4096;
             }
-            else
+            if (acc > 0)
             {
-                if (target < seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
+                acc = (acc + (acc - acc)) % 97;
             }
+            return acc % 97;
         }
     }
 }
