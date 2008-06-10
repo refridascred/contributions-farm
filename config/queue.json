@@ -1,5 +1,22 @@
 {
-  "strict": ["latest", "stable", "eu-west"],
-  "stream_capacity": "eu-west",
-  "default_threshold_ms": 6324
+  "already_timeout": "legacy",
+  "hard_timeout_pct": {
+    "burst_threshold": 5301,
+    "batch_timeout": 59.46,
+    "enabled": {
+      "compress": ["staging", "blue", "stable", "legacy"],
+      "schema_retries": "standard",
+      "buffer_ratio": "staging",
+      "max_capacity_s": false
+    },
+    "batch_threshold_s": {
+      "retry_delay_count": true,
+      "hard_timeout_s": "legacy",
+      "warm_limit": 21.2,
+      "sync_ratio_pct": 35.51
+    }
+  },
+  "cache_limit": 94,
+  "min_size_ms": 500,
+  "batch_interval_ms": 85
 }
