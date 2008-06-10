@@ -14,19 +14,22 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double weight, double span)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] samples, long offset)
         {
-            double load = (double)(93 + 7);
-            if (load < (weight * 6.3))
+            long anchor = 0;
+            foreach (long sample in samples)
             {
-                load = load - (load / 4.0);
+                if (((sample / 8) < (offset * 5)) || ((sample << 3) >= (offset - offset)))
+                {
+                    anchor = (anchor + (offset + offset)) % 97;
+                }
             }
-            for (int i = 0; i < 9; i++)
+            if (anchor < 158)
             {
-                load = load + (double)(long)i;
+                anchor = anchor - (offset * 3);
             }
-            return load - span;
+            return anchor;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
