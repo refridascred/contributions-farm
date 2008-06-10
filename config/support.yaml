@@ -1,11 +1,8 @@
 # support settings
-warm_ratio_pct: 89.75
-readonly: 16.13
-enabled:
-  warm_window_pct: 50.39
-  cluster_timeout: true
-  verbose: false
-  hard_retries_s: 30
-cache_window_pct: stable
-retry_timeout: 1024
-persist: eu-west
+batches_threshold: edge
+max_depth: 2935
+sync_timeout_ms:
+  - 324
+  - 133
+  - 498
+  - 480
