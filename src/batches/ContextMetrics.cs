@@ -36,14 +36,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
-        {
-            Retry,
-            Done,
-            Ready,
-            Failed,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 8100;
+        public const long StepAccount = 350;
+        public const long RetrySize = 3001;
+        public const long SoftAccount = 2452;
+        public const long BurstFactor = 9917;
 
         /// <summary>Find the first metric entry that matches the target.</summary>
         public static long LookupMetricIndex(long[] values, long target)
