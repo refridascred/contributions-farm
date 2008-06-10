@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowSize = 9189;
+        public const long DefaultEditor = 8273;
+        public const long RetryEditor = 9769;
+        public const string BatchLevel = "strict";
+        public const double MaxEditor = 37.46;
 
         /// <summary>Hold a context header.</summary>
         public sealed class ContextHeader
