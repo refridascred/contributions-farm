@@ -62,12 +62,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            public double Total { get; set; }
-            public double Limit { get; set; }
-            public bool Flag { get; set; }
+            Retry,
+            Active,
+            Locked,
+            Failed,
         }
 
         /// <summary>Locate a batches reading by value.</summary>
