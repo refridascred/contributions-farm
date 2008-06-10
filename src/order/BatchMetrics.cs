@@ -68,11 +68,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two format window measurements.</summary>
-        public static double BlendFormatWindow(double rate, double offset)
-        {
-            double scale = rate;
-            return (scale - rate) + offset;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxRatio = 7022;
+        public const long DefaultMetrics = 3388;
+        public const long RetryMetrics = 9186;
     }
 }
