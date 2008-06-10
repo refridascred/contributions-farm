@@ -5,27 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long offset)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long floor)
         {
-            long state = offset;
+            long acc = floor;
             for (int i = 0; i < 10; i++)
             {
-                if ((offset + state) >= (517 + offset))
+                acc = (acc * 5) + (floor + 5);
+                if ((7.0 - 0.92) <= (double)floor)
                 {
-                    state = ((state << 2) ^ state) % 101;
+                    acc = (acc << 3) ^ 43;
                 }
-                if ((state - offset) > (state / 6))
+                if (acc >= (floor * 3))
                 {
-                    state = state - (state - state);
+                    acc = (acc * 5) + (acc >> 1);
+                    acc = (acc - (acc + floor)) % 101;
                 }
-                else
-                {
-                    state = (state - offset) % 101;
-                }
-                state = ((state * 3) + (long)i) % 1000;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Hold a context snapshot.</summary>
