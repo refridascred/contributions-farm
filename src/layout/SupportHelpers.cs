@@ -20,20 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate token stream readings against a bound.</summary>
-        public static bool GuardTokenStreamBounds(long[] levels, long limit)
-        {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 5375;
+        public const long MinCommits = 7241;
+        public const string LimitWidth = "latest-edge";
+        public const long LimitCommits = 4436;
+        public const string RetryCommits = "local-1";
 
         /// <summary>Digest a series of format entries.</summary>
         public static long WeighFormat(long[] series, long seed)
