@@ -39,19 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordHits(long[] series, long bound)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long PairPayloadCount(long[] items)
         {
             long count = 0;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count << 2) < (46 / 6))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = ((count + 2) ^ value) - bound;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((items[i] + items[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
