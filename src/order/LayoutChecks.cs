@@ -31,12 +31,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long seed, long offset)
         {
-            Queued,
-            Paused,
-            Active,
+            long edge = seed - offset;
+            if ((double)edge > (double)seed)
+            {
+                return 2;
+            }
+            else
+            {
+                if (edge <= (seed / 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
