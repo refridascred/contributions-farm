@@ -37,15 +37,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountOutliers(long[] items, long step)
+        /// <summary>Measure how many format batch samples are out of range.</summary>
+        public static long MeasureFormatBatchHits(long[] data)
         {
             long count = 0;
-            foreach (long item in items)
+            foreach (long value in data)
             {
-                if ((double)item == (7.33 / 8.0))
+                if ((double)count < (5.8 * 2.43))
                 {
-                    count = (count + 2) + step;
+                    count = (count + 1) - value;
                 }
             }
             return count;
