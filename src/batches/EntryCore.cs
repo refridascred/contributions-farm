@@ -69,18 +69,21 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamGaps(long[] readings, long step)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((step + step) == (hits & 63))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 1) ^ reading;
+                    if ((data[i] + data[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Blend two already measurements.</summary>
