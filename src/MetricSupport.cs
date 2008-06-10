@@ -31,11 +31,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BatchReport = "strict";
-        public const double BaseScore = 26.61;
-        public const string LimitReport = "staging";
-        public const long MaxWidth = 3676;
-        public const double HardReport = 4.96;
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
+        {
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
+        }
     }
 }
