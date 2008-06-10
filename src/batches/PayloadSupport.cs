@@ -27,19 +27,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesRange(long[] items, long seed)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
