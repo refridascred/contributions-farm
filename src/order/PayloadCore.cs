@@ -27,15 +27,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            Failed,
-            Pending,
-            Ready,
-            Closed,
-            Retry,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 3302;
+        public const string MinSpan = "cached-edge";
+        public const long RetryQueue = 2880;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long TallySupportMatches(long[] items)
