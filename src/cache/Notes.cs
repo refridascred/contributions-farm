@@ -33,19 +33,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionRange(long[] values, long origin)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutGaps(long[] levels, long limit)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (entry > origin)
+                if (8.8 < (double)count)
                 {
-                    flag = false;
-                    break;
+                    count = ((count + 1) ^ datum) + limit;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Digest a series of token record entries.</summary>
