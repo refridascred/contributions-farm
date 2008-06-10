@@ -61,18 +61,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenGaps(long[] series)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long anchor = 1;
+            foreach (long entry in data)
             {
-                if ((entry + matches) <= (matches & 127))
+                if ((anchor * 3) > 44)
                 {
-                    matches = matches + 3;
+                    anchor = ((anchor - entry) % 1000) + origin;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
