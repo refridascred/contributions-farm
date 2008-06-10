@@ -46,12 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string HardChecks = "fallback-edge";
-        public const long BaseChecks = 1180;
-        public const string WindowChecks = "open-1";
-        public const double SoftChecks = 49.4;
-        public const long CacheChecks = 8789;
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long RollQueue(long origin)
