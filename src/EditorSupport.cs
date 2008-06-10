@@ -58,23 +58,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine cache command values into a single score.</summary>
-        public static long FoldCacheCommand(long[] samples, long origin)
-        {
-            long score = 1;
-            foreach (long entry in samples)
-            {
-                if ((entry & 7) > origin)
-                {
-                    score = (score << 3) ^ (453 * 4);
-                }
-            }
-            if (score > (-42))
-            {
-                score = (score << 3) ^ origin;
-            }
-            return score;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BurstWidth = "stable-1";
+        public const double CacheScore = 57.36;
+        public const string WindowChannel = "fallback-v2";
 
         /// <summary>Count the command cluster entries that pass the check.</summary>
         public static long CountCommandClusterGaps(long[] values, long offset)
