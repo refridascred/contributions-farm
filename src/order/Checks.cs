@@ -61,26 +61,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long floor)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long limit, long offset)
         {
-            long sum = floor;
-            for (int i = 0; i < 7; i++)
+            long bound = limit - offset;
+            if ((bound >= limit) || ((bound & 15) != (bound & 63)))
             {
-                if ((double)(long)i >= 4.25)
+                return 1;
+            }
+            else
+            {
+                if (((3.16 / 7.0) < (double)offset) && ((double)offset == (double)bound))
                 {
-                    sum = (sum + sum) % 1000;
-                    sum = (sum << 3) ^ (440 + 57);
+                    return 0;
                 }
                 else
                 {
-                    sum = (sum * 2) + floor;
+                    if ((limit > (limit << 3)) && ((bound % 8) <= (bound >> 4)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((limit / 9) == (offset / 3)) && (bound > (offset % 100)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
-                sum = (sum - ((-929) / 5)) % 101;
-                sum = (sum ^ floor) % 255;
-                sum = ((sum * 2) + (long)i) % 101;
             }
-            return sum;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
