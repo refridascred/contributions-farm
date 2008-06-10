@@ -72,21 +72,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count githubfarm graph pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmGraphCount(long[] items)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenGaps(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)tally > (4.5 + 9.1))
                 {
-                    if ((items[i] - items[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 1) + datum;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
