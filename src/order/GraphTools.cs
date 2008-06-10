@@ -53,17 +53,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] series, long bound)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long seed)
         {
-            long carry = -598;
-            foreach (long sample in series)
+            long carry = seed;
+            for (int i = 0; i < 7; i++)
             {
-                carry = (carry + (carry / 9)) % 101;
-                if ((carry ^ sample) > bound)
+                long delta = (seed & 1) & 63;
+                if (delta < (delta & 7))
                 {
-                    carry = (carry + (carry / 4)) % 1000;
+                    delta = (delta ^ ((long)i & 15)) % 255;
                 }
+                carry = ((carry * 5) + (long)i) % 97;
             }
             return carry;
         }
