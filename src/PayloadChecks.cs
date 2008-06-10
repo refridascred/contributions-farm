@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long IdleCounter = 535;
         public const long SoftCount = 354;
 
-        /// <summary>Audit metrics checks readings against a rule.</summary>
-        public static long AuditMetricsChecksOutliers(long[] values)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (hits >= (hits << 3))
-                {
-                    hits = (hits + 3) - entry;
-                }
-            }
-            return hits;
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
