@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every contributi order entry stays within the limit.</summary>
-        public static bool ValidateContributiOrderRange(long[] readings, long floor)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Queued,
+            Retry,
+            Failed,
+            Done,
         }
 
         /// <summary>Rank record input into a small class.</summary>
