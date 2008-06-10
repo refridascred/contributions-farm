@@ -60,13 +60,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            Queued,
-            Active,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 3180;
+        public const long BatchReport = 2902;
+        public const string HardReport = "staging-1";
+        public const double RetrySize = 79.33;
+        public const double StepReport = 33.22;
     }
 }
