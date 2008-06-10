@@ -16,14 +16,10 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
-        {
-            public double Token { get; set; }
-            public double Flag { get; set; }
-            public long Level { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double WindowRatio = 88.6;
+        public const long HardAccount = 8364;
+        public const long MaxAccount = 8798;
 
         /// <summary>Locate a batch reading by value.</summary>
         public static long LocateBatchIndex(long[] values, long step)
