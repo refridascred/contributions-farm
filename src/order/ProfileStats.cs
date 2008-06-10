@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] data)
         {
-            Queued,
-            Failed,
-            Done,
+            long mark = 6;
+            foreach (long sample in data)
+            {
+                mark = (mark - sample) % 101;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Rank window input into a small class.</summary>
