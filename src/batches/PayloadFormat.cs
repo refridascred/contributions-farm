@@ -51,17 +51,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a farm schema sample.</summary>
-        public static long FindFarmSchemaIndex(long[] levels, long bound)
+        /// <summary>Scale a window support figure with a bias.</summary>
+        public static double ProjectWindowSupport(double weight, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double gain = bias;
+            if (gain > (double)24)
             {
-                if (levels[i] < bound)
-                {
-                    return (long)i;
-                }
+                gain = gain - gain;
             }
-            return -1;
+            else
+            {
+                gain = gain + gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - (weight / 8.0)) + (double)(long)i;
+            }
+            return gain + (double)12;
         }
     }
 }
