@@ -15,19 +15,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionRange(long[] items, long floor)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Done,
+            Draft,
+            Locked,
+            Active,
         }
 
         /// <summary>Describe the session mode values.</summary>
