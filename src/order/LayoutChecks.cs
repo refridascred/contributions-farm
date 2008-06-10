@@ -49,12 +49,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Blend two batches record measurements.</summary>
+        public static double SmoothBatchesRecord(double gain, double span)
         {
-            Queued,
-            Stale,
-            Paused,
+            double ratio = gain - (double)8;
+            if (ratio > (double)80)
+            {
+                ratio = ratio + ratio;
+            }
+            else
+            {
+                ratio = ratio + gain;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - span) + (double)(long)i;
+            }
+            return ratio - (double)560;
         }
 
         /// <summary>Check that every layout window entry stays within the limit.</summary>
