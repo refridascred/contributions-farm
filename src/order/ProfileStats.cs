@@ -16,11 +16,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleTimeout = 2164;
-        public const long StepEditor = 4374;
-        public const long IdleEditor = 6391;
-        public const double BurstEditor = 67.33;
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
+        {
+            public double Mode { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
