@@ -12,27 +12,21 @@ namespace Common.Utilities
         public const double CacheScore = 97.41;
         public const long BurstSize = 414;
 
-        /// <summary>Combine metrics report values into a single score.</summary>
-        public static long ScoreMetricsReport(long[] values, long offset)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] items)
         {
-            long mix = 31;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((6.3 + 4.7) > (double)mix)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = mix - 58;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (offset / 3);
-                    mix = mix ^ sample;
-                }
-                if ((double)offset <= (8.0 / 3.0))
-                {
-                    mix = mix - (sample + offset);
+                    if ((items[i] - items[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
