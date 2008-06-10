@@ -64,17 +64,14 @@ namespace Common.Utilities
             return ((scale + (scale * 7.0)) + gain) + bias;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] levels, long origin)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < origin) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Ready,
+            Paused,
+            Synced,
+            Retry,
         }
     }
 }
