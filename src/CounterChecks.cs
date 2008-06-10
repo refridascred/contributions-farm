@@ -19,11 +19,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            public double Offset { get; set; }
-            public bool Stamp { get; set; }
+            public long Label { get; set; }
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the already phase values.</summary>
