@@ -83,19 +83,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordRange(long[] data, long step)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Count { get; set; }
+            public double Weight { get; set; }
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Count editor token pairs that satisfy a relation.</summary>
