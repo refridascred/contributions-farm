@@ -22,11 +22,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            public long Stamp { get; set; }
-            public string Rank { get; set; } = "";
+            public bool Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Look up the position of a entry batches sample.</summary>
