@@ -22,10 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryChecks = 8206;
-        public const long HardChecks = 7651;
-        public const long CacheChecks = 760;
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double gain, double bias)
+        {
+            double weight = (gain - gain) * 4.49;
+            if (weight >= (8.84 / 9.0))
+            {
+                weight = (weight - (double)0) + bias;
+            }
+            else
+            {
+                weight = weight - (gain * 19.0);
+            }
+            return weight - (double)0;
+        }
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool GuardMetricsBounds(long[] items, long bound)
