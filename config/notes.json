@@ -1,8 +1,5 @@
 {
-  "format_ttl": 66,
-  "flush_ttl_count": "latest",
-  "buffer_interval": 105,
-  "cache_capacity": "standard",
-  "burst_capacity_s": 86.61,
-  "readonly": false
+  "warm_depth_count": 1024,
+  "queue_interval": false,
+  "default_limit": true
 }
