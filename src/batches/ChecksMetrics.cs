@@ -82,32 +82,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long target)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] levels, long origin)
         {
-            long mix = target;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((target >> 5) <= (mix - mix)) || ((long)i < (target / 5)))
+                if ((levels[i] < origin) && ((levels[i] % 5) == 0))
                 {
-                    mix = (mix ^ (target - mix)) % 1000;
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    mix = (mix - (mix + target)) % 97;
-                }
-                if (((long)i << 3) > (502 + (long)i))
-                {
-                    break;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ ((long)i >> 2)) % 1000;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix;
+            return -1;
         }
     }
 }
