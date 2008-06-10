@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-            public long Size { get; set; }
+            Synced,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Grade a window graph value against two limits.</summary>
