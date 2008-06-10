@@ -81,16 +81,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long offset)
+        /// <summary>Audit batch format readings against a rule.</summary>
+        public static long CountBatchFormatGaps(long[] data, long offset)
         {
-            long mix = offset;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                mix = (mix * 2) + (offset & 1);
-                mix = ((mix * 5) + (long)i) % 65521;
+                if ((offset * 4) >= seen)
+                {
+                    seen = (seen + 1) + sample;
+                }
             }
-            return mix;
+            return seen;
         }
     }
 }
