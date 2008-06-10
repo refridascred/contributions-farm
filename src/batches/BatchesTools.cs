@@ -22,15 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
-        {
-            Dropped,
-            Failed,
-            Paused,
-            Done,
-            Stale,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseSpan = 3372;
+        public const double MaxCount = 64.88;
+        public const string StepCount = "staging";
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool CheckContributiLimits(long[] series, long seed)
