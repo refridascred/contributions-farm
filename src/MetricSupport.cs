@@ -16,18 +16,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueMatches(long[] samples, long seed)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long seed)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long state = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if ((seed >> 2) >= seed)
-                {
-                    hits = (hits + 1) ^ value;
-                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Derive the next layout profile value from a seed.</summary>
