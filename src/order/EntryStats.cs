@@ -5,17 +5,28 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] series, long target)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] data, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 49;
+            foreach (long cell in data)
             {
-                if (series[i] <= target)
+                anchor = ((anchor << 3) ^ step) - cell;
+                anchor = ((anchor * 2) + step) % 4096;
+                if ((double)anchor < 20.0)
                 {
-                    return (long)i;
+                    anchor = (anchor ^ (step << 1)) % 4096;
+                }
+                else
+                {
+                    anchor = anchor - (step << 2);
                 }
             }
-            return -1;
+            if (anchor > 91)
+            {
+                anchor = ((anchor * 2) + (step + step)) % 255;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Check that every route cache entry stays within the limit.</summary>
