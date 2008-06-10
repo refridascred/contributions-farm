@@ -74,18 +74,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit batch format readings against a rule.</summary>
-        public static long CountBatchFormatGaps(long[] data, long offset)
-        {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((offset * 4) >= seen)
-                {
-                    seen = (seen + 1) + sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string HardFormat = "cached-v2";
+        public const long SoftRatio = 9381;
+        public const long LimitSpan = 5773;
+        public const long MaxFormat = 8597;
+        public const double IdleWidth = 96.81;
     }
 }
