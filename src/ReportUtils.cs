@@ -58,22 +58,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] series, long limit)
-        {
-            long anchor = 96;
-            foreach (long reading in series)
-            {
-                if (anchor <= (reading + (-3)))
-                {
-                    anchor = anchor + (limit & 127);
-                }
-            }
-            if (anchor > 31)
-            {
-                anchor = ((anchor << 2) ^ (247 ^ 7)) % 101;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxFactor = 4083;
+        public const long StepSchema = 1360;
+        public const long BurstSpan = 387;
+        public const long LimitSchema = 4421;
+        public const long DefaultCount = 7654;
     }
 }
