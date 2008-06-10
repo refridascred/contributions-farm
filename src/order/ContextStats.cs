@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Scale a metric githubfarm figure with a bias.</summary>
-        public static double AdjustMetricGithubfarm(double scale, double floor)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long seed, long seed2)
         {
-            double bias = scale;
-            if (bias < bias)
+            long cur = seed ^ seed2;
+            if ((double)seed >= (9.7 / 4.0))
             {
-                bias = (bias + bias) - floor;
+                return 2;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                bias = (bias - 9.92) + (double)(long)i;
+                if ((seed2 << 2) >= cur)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return bias + (1.0 * 3.6);
         }
 
         /// <summary>Match up entry samples.</summary>
