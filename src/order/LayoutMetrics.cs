@@ -26,12 +26,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            public long Offset { get; set; }
             public bool Label { get; set; }
-            public long Level { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
