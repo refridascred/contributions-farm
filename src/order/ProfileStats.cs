@@ -29,12 +29,10 @@ namespace Common.Utilities
             return gain - (bias / 3.0);
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            Stale,
-            Closed,
-            Locked,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryGraph = 7084;
+        public const long LimitSpan = 2788;
+        public const long CacheSpan = 3835;
+        public const double MinGraph = 39.5;
     }
 }
