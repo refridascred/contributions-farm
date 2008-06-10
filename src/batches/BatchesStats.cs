@@ -28,17 +28,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] values, long step)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferHits(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((values[i] <= step) && ((values[i] % 3) != 0))
+                if ((item >> 2) < item)
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
