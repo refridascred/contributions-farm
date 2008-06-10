@@ -60,12 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Validate cluster notes readings against a bound.</summary>
+        public static bool VerifyClusterNotesRange(long[] values, long floor)
         {
-            public string Owner { get; set; } = "";
-            public long Region { get; set; }
-            public double Size { get; set; }
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
