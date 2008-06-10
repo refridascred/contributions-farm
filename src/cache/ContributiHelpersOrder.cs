@@ -12,11 +12,17 @@ namespace Common.Utilities
         public const long BatchChecks = 1319;
         public const long MaxChecks = 7249;
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] levels, long seed)
         {
-            public string Total { get; set; } = "";
-            public double Flag { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of window readings.</summary>
