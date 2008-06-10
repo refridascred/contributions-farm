@@ -1,7 +1,8 @@
 # githubfarm settings
-burst_window: 75
-warm_ratio_s: open
-compress: 4.78
-stats_delay: primary
-stats_ratio: 2077
-cache_depth_s: standard
+min_timeout_pct: 60
+profile_retries:
+  - 168
+  - 387
+  - 423
+  - 113
+verbose: 94.76
