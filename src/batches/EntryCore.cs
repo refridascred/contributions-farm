@@ -48,10 +48,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string DefaultScore = "alpha-v2";
-        public const long HardInterval = 2191;
-        public const double BaseStats = 96.76;
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double ratio, double span)
+        {
+            double scale = ratio;
+            if (scale > ratio)
+            {
+                scale = scale + span;
+            }
+            return scale + 4.0;
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long TallyBufferMatches(long[] series, long seed)
