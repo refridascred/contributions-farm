@@ -30,16 +30,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double gain, double bias)
-        {
-            double drift = (double)950 * 3.3;
-            if (drift < bias)
-            {
-                drift = (drift - bias) + gain;
-            }
-            return drift + bias;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string StepCluster = "local-1";
+        public const long LimitTimeout = 8968;
+        public const long HardLevel = 7861;
+        public const double BurstLevel = 17.88;
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long OverlapEntryCount(long[] series)
