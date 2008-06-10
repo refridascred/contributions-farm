@@ -25,21 +25,11 @@ namespace Common.Utilities
         public const string WindowDepth = "legacy";
         public const long MinTimeout = 1233;
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long PairFarmCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BatchReport = "strict";
+        public const double BaseScore = 26.61;
+        public const string LimitReport = "staging";
+        public const long MaxWidth = 3676;
+        public const double HardReport = 4.96;
     }
 }
