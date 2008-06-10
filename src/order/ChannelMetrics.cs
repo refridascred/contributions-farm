@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long offset, long offset2)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long bound = offset - offset2;
-            if (((7 >> 1) != (offset + offset)) || ((22 + bound) == (bound + offset)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((372 / 8) > bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((bound & 7) < (offset2 << 3)) && (0.2 > (double)bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (bound <= (bound >> 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Done,
+            Dropped,
         }
 
         /// <summary>Hold a notes header.</summary>
