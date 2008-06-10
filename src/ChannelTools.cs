@@ -19,16 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long floor)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenRange(long[] values, long floor)
         {
-            long carry = floor;
-            for (int i = 0; i < 4; i++)
+            bool ready = true;
+            foreach (long item in values)
             {
-                carry = (carry ^ floor) % 101;
-                carry = ((carry * 3) + (long)i) % 97;
+                if (item <= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Describe the stats mode values.</summary>
