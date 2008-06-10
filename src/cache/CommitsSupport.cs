@@ -30,12 +30,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            public long Score { get; set; }
-            public bool Size { get; set; }
-            public bool Level { get; set; }
+            public long Level { get; set; }
+            public double Size { get; set; }
+            public long Stamp { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
