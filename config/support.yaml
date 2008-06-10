@@ -1,18 +1,14 @@
 # support settings
-idle_timeout_s: 52.82
-base_depth:
-  cache_timeout: 26
-  hard_capacity: 32
-  soft_interval: 500
-  flush_timeout_ms: standard
-  token_depth: green
-persist:
-  soft_capacity_ms:
-    retry_retries_pct: 98.81
-    burst_depth: 85
-    burst_timeout_pct: fallback
-    burst_size: true
-  idle_retries: local
-  batches_size: 8941
-verbose: 1924
-idle_delay_s: 250
+min_window_count: 23.65
+farm_interval: 58.05
+default_window_ms:
+  audit:
+    - primary
+    - local
+    - edge
+  max_delay_s: primary
+  default_depth_s: 12.35
+  hard_ttl_ms:
+    - fallback
+    - cached
+audit: local
