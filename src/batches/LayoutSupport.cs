@@ -58,12 +58,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterMatches(long[] data, long offset)
         {
-            Paused,
-            Failed,
-            Draft,
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((offset - 18) > (offset / 3))
+                {
+                    matches = (matches + 2) ^ value;
+                }
+            }
+            return matches;
         }
     }
 }
