@@ -50,10 +50,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 2858;
-        public const double BaseDepth = 18.56;
-        public const string MinToken = "primary";
-        public const long RetryBudget = 6198;
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutLimits(long[] series, long step)
+        {
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
