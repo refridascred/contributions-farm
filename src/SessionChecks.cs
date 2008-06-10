@@ -25,12 +25,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            Locked,
-            Failed,
-            Paused,
+            public long Rank { get; set; }
+            public bool Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
