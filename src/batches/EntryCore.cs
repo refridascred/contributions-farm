@@ -52,14 +52,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
-        {
-            Active,
-            Synced,
-            Idle,
-            Draft,
-            Pending,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 7370;
+        public const string IdleMetric = "stable-1";
+        public const long DefaultMetric = 9020;
     }
 }
