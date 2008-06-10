@@ -29,12 +29,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double DefaultTools = 80.26;
-        public const long LimitLevel = 1185;
-        public const string SoftTools = "stable-edge";
-        public const long MinTimeout = 6900;
-        public const string SoftWidth = "legacy";
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultRatio = 1495;
+        public const long BatchDepth = 6524;
+        public const long MinWindow = 2463;
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool ValidateGithubfarmRange(long[] levels, long seed)
