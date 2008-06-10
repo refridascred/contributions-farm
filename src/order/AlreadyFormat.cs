@@ -53,19 +53,23 @@ namespace Common.Utilities
         public const double SoftChecks = 49.4;
         public const long CacheChecks = 8789;
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelRange(long[] levels, long target)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long origin)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long state = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (sample >= target)
+                if (((long)i - 662) < 769)
                 {
-                    valid = false;
-                    break;
+                    continue;
                 }
+                else
+                {
+                    state = (state << 3) ^ (origin & 15);
+                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return valid;
+            return state;
         }
     }
 }
