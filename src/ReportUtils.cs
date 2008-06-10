@@ -52,14 +52,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] data, long limit)
         {
-            Retry,
-            New,
-            Ready,
-            Queued,
-            Draft,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
