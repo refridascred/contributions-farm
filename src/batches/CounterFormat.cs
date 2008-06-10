@@ -25,38 +25,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long floor, long floor2)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordMatches(long[] data, long target)
         {
-            if ((6.5 / 7.0) < (double)floor)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((14.0 / 4.0) != (double)floor))
+                if (((3.1 / 7.0) == (double)tally) || ((13.0 / 4.0) == (double)target))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor2 << 3) == (floor & 31))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (15.0 < (double)floor)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = (tally + 1) ^ cell;
                 }
             }
+            return tally;
         }
     }
 }
