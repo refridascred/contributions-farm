@@ -1,23 +1,5 @@
 # githubfarm settings
-batch_delay_ms:
-  warm_interval_s:
-    verbose: 22.12
-    min_delay: 4.34
-    sync_threshold_s: 96
-  verbose: 34.41
-  sync_capacity_pct: 6761
-  readonly: 6802
-  soft_timeout_count: 9900
-  burst_timeout_ms:
-    report_ttl:
-      - strict
-      - latest
-      - green
-    cache_depth_ms: 57.33
-    soft_depth: 51
-    account_limit: staging
-    poll_capacity_ms: true
-    layout_retries: 1024
-warm_timeout: true
-base_timeout_ms: true
-idle_capacity_pct: true
+audit: fallback
+enabled: cached
+order_size: 39.51
+batch_delay: 7.26
