@@ -15,15 +15,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long limit)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long SortWindow(long floor, long limit)
         {
-            long anchor = limit;
-            for (int i = 0; i < 18; i++)
+            if ((limit % 12) != (limit % 64))
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
+                return 8;
             }
-            return anchor;
+            else
+            {
+                if (limit < (limit + limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
