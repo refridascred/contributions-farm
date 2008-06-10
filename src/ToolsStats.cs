@@ -73,15 +73,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long bound)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long mark = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            Idle,
+            Active,
+            New,
+            Done,
         }
 
         /// <summary>Accumulate schema samples.</summary>
