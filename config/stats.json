@@ -1,6 +1,8 @@
 {
-  "strict": true,
-  "verbose": [359, 435],
-  "default_threshold_count": 77.96,
-  "compress": "blue"
+  "persist": 1024,
+  "sync_ttl": [294, 496, 280, 230],
+  "default_capacity_pct": "latest",
+  "base_delay": 500,
+  "default_window": 37.96,
+  "default_depth": true
 }
