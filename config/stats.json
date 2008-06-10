@@ -1,12 +1,16 @@
 {
-  "audit": 2288,
-  "cache_timeout_pct": "latest",
-  "commits_window": [148, 19],
-  "default_ratio_count": 24,
-  "default_retries": 100,
-  "dry_run": {
-    "sync_retries_s": 5354,
-    "stream_delay": "staging",
-    "base_depth": ["stable", "legacy"]
+  "notes_size": "local",
+  "poll_timeout": 59.69,
+  "warm_retries_s": 1517,
+  "sync_ttl": ["legacy", "green", "edge"],
+  "min_window_count": "open",
+  "warm_interval_s": {
+    "min_size_s": "latest",
+    "batch_threshold_s": {
+      "route_size": "stable",
+      "retry_size_ms": "primary",
+      "batch_delay_pct": 98.29
+    },
+    "persist": [360, 289, 400]
   }
 }
