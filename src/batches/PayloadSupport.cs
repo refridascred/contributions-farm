@@ -29,19 +29,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] readings)
+        /// <summary>Check that every editor schema entry stays within the limit.</summary>
+        public static bool ValidateEditorSchemaRange(long[] items, long floor)
         {
-            long result = 5;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long value in items)
             {
-                result = ((result - (result + result)) % 97) - item;
+                if (value != floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (result < 1)
-            {
-                result = ((result << 2) ^ (result - result)) % 255;
-            }
-            return result;
+            return stale;
         }
     }
 }
