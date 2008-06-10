@@ -69,13 +69,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
-        {
-            public long Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public double Token { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string IdleSession = "cached";
+        public const long RetrySession = 8079;
+        public const string SoftSession = "local-v2";
+        public const long HardSession = 9025;
+        public const double LimitLevel = 29.46;
     }
 }
