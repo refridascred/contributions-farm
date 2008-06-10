@@ -15,13 +15,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutOutliers(long[] levels)
         {
-            Ready,
-            Closed,
-            Failed,
-            Retry,
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (2.5 >= (double)reading)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
