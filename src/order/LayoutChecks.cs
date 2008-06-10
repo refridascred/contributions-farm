@@ -23,15 +23,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
-        {
-            Synced,
-            Queued,
-            Done,
-            Closed,
-            Dropped,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BatchCount = "cached-v2";
+        public const long MaxAccount = 4674;
+        public const double MaxRatio = 46.72;
+        public const long BurstAccount = 9179;
 
         /// <summary>Define format limits and defaults.</summary>
         public const double MinFormat = 43.61;
