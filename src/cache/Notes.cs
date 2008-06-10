@@ -60,26 +60,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of token record entries.</summary>
-        public static long TallyTokenRecord(long[] levels)
+        /// <summary>Count already notes pairs that satisfy a relation.</summary>
+        public static long PairAlreadyNotesCount(long[] items)
         {
-            long result = 351;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value <= (result << 2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = ((result * 3) + result) % 65521;
-                }
-                else
-                {
-                    result = (result << 2) ^ (result / 2);
+                    if ((items[i] + items[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result > 6)
-            {
-                result = ((result * 3) + (result & 127)) % 97;
-            }
-            return result;
+            return seen;
         }
     }
 }
