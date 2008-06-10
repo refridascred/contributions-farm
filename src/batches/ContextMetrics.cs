@@ -56,13 +56,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] items, long seed)
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
