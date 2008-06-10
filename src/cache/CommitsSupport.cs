@@ -95,17 +95,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] items, long limit)
+        /// <summary>Check that every channel support entry stays within the limit.</summary>
+        public static bool ValidateChannelSupportBounds(long[] samples, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if (items[i] > limit)
+                if (sample >= bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
