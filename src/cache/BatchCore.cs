@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportHits(long[] items)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long PairStreamCount(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((16.0 * 15.0) > (double)count)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 2) + datum;
+                    if ((levels[i] ^ levels[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Combine support values into a single score.</summary>
