@@ -62,9 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double CacheSession = 29.71;
-        public const double MinSession = 54.64;
-        public const double DefaultSession = 48.43;
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double scale, double floor)
+        {
+            double weight = scale;
+            if (weight < (floor / 2.0))
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - floor) + (double)(long)i;
+            }
+            return weight + (floor - scale);
+        }
     }
 }
