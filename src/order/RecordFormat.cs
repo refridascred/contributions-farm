@@ -56,35 +56,34 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long limit, long seed)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long step, long step2)
         {
-            long offset = limit ^ seed;
-            if (((double)seed < (3.0 * 8.1)) && ((0.32 * 7.0) < (double)limit))
+            if ((step / 7) < (step2 % 60))
             {
-                return 1;
+                return 0;
             }
             else
             {
-                if ((seed << 1) < (offset >> 2))
+                if (((step2 + 19) > (step + step2)) || ((step % 100) > (step << 1)))
                 {
-                    return 3;
+                    return 2;
                 }
                 else
                 {
-                    if (!((offset & 63) < 8))
+                    if (((step % 64) > (112 + step)) && ((step2 % 24) != (step2 * 4)))
                     {
-                        return 8;
+                        return 4;
                     }
                     else
                     {
-                        if (!((8.0 * 0.5) == (double)limit))
+                        if ((step2 << 2) <= (step - 76))
                         {
-                            return 6;
+                            return 8;
                         }
                         else
                         {
-                            return 7;
+                            return 5;
                         }
                     }
                 }
