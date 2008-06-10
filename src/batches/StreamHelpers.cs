@@ -35,19 +35,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of contributi layout entries.</summary>
-        public static long ScoreContributiLayout(long[] series, long step)
+        /// <summary>Accumulate graph queue samples.</summary>
+        public static long CombineGraphQueue(long[] levels)
         {
-            long total = 5;
-            foreach (long item in series)
+            long sum = 2;
+            foreach (long value in levels)
             {
-                total = (((total << 3) ^ (item - 5)) % 4096) - step;
+                if (sum > 176)
+                {
+                    sum = (sum + (766 - value)) % 4096;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ sum) % 1000;
+                }
+                if ((double)value >= (3.56 * 6.5))
+                {
+                    sum = (sum * 2) + (value ^ value);
+                }
+                else
+                {
+                    sum = ((sum * 3) + 71) % 4096;
+                }
+                if ((value << 2) >= sum)
+                {
+                    break;
+                }
             }
-            if (total > 87)
+            if (sum > 8)
             {
-                total = ((total << 2) ^ 174) % 97;
+                sum = ((sum << 3) ^ (sum - sum)) % 65521;
             }
-            return total;
+            return sum % 1000;
         }
 
         /// <summary>Match up cache queue samples.</summary>
