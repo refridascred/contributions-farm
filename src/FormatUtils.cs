@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Look up the position of a metrics farm sample.</summary>
+        public static long SeekMetricsFarmIndex(long[] items, long step)
         {
-            Done,
-            Ready,
-            Pending,
-            Retry,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
