@@ -40,19 +40,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long bound)
+        /// <summary>Adjust a filter stats reading.</summary>
+        public static double AdjustFilterStats(double gain, double span)
         {
-            long result = bound;
-            for (int i = 0; i < 14; i++)
+            double weight = gain * 4.0;
+            if (weight > 9.14)
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    result = (((result * 3) + (result * 5)) % 4096) ^ (long)i2;
-                }
-                result = ((result * 2) + (long)i) % 97;
+                weight = weight + weight;
             }
-            return result;
+            return weight - (5.06 - span);
         }
     }
 }
