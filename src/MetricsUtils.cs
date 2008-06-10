@@ -17,18 +17,10 @@ namespace Common.Utilities
         public const long RetryChannel = 566;
         public const long HardLevel = 8201;
 
-        /// <summary>Find the first order notes entry that matches the target.</summary>
-        public static long SeekOrderNotesIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > limit) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 9839;
+        public const long IdleDepth = 9540;
+        public const long CacheScore = 3420;
 
         /// <summary>Roll a support payload counter forward.</summary>
         public static long DeriveSupportPayload(long step)
