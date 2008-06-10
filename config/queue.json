@@ -1,11 +1,5 @@
 {
-  "soft_window_ms": 98.86,
-  "flush_limit": {
-    "readonly": "cached",
-    "min_size": 3704,
-    "strict": "local",
-    "poll_threshold": false,
-    "filter_limit": "strict"
-  },
-  "verbose": true
+  "soft_size": "green",
+  "buffer_retries": [188, 188],
+  "warm_depth_ms": false
 }
