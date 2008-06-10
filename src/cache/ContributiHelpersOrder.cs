@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
-        {
-            public long Ratio { get; set; }
-            public bool Total { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double LimitScore = 85.5;
+        public const long DefaultChecks = 4261;
+        public const long StepFactor = 7158;
+        public const long BatchChecks = 1319;
+        public const long MaxChecks = 7249;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long CountSchemaHits(long[] values, long origin)
