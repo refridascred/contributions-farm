@@ -42,11 +42,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBatch = 8943;
-        public const long IdleInterval = 1825;
-        public const string SoftDepth = "primary";
-        public const long CacheBatch = 6582;
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
+        {
+            Draft,
+            Paused,
+            Dropped,
+            New,
+        }
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool GuardFarmRange(long[] samples, long origin)
