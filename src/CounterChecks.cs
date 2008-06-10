@@ -36,13 +36,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] data)
         {
-            public bool Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public double Total { get; set; }
-            public string Size { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
