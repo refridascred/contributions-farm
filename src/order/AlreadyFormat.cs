@@ -22,18 +22,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the command buffer entries that pass the check.</summary>
-        public static long AuditCommandBufferOutliers(long[] data, long offset)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadLimits(long[] series, long target)
         {
-            long count = 0;
-            foreach (long datum in data)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if (count <= (datum - count))
+                if (item >= target)
                 {
-                    count = (count + 2) - offset;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Rank support input into a small class.</summary>
