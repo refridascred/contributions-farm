@@ -29,14 +29,23 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double gain, double floor)
         {
-            Locked,
-            Ready,
-            Stale,
-            Failed,
-            Dropped,
+            double drift = 3.3;
+            if (drift < (floor - drift))
+            {
+                drift = drift - (gain - drift);
+            }
+            else
+            {
+                drift = drift - (gain / 9.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - 5.0) - (double)(long)i;
+            }
+            return drift - gain;
         }
     }
 }
