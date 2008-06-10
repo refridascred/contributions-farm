@@ -56,11 +56,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MaxWidth = 47.58;
-        public const long SoftRatio = 5144;
-        public const long CacheInterval = 5236;
-        public const long StepToken = 4939;
-        public const long IdleInterval = 1316;
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] values)
+        {
+            long mix = 525;
+            foreach (long entry in values)
+            {
+                mix = (mix << 2) ^ (entry - 284);
+                mix = mix - 723;
+                mix = (mix - (mix + mix)) % 97;
+            }
+            return mix % 65521;
+        }
     }
 }
