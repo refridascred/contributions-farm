@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            public string Flag { get; set; } = "";
-            public double Stamp { get; set; }
-            public double Size { get; set; }
-            public long Limit { get; set; }
+            Stale,
+            Retry,
+            Synced,
         }
 
         /// <summary>Audit githubfarm contributi readings against a rule.</summary>
