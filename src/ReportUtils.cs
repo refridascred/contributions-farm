@@ -52,18 +52,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionMatches(long[] series)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((sample % 64) >= sample)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Retry,
+            New,
+            Ready,
+            Queued,
+            Draft,
         }
     }
 }
