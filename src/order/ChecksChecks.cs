@@ -25,11 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstWidth = 2676;
-        public const string HardDepth = "legacy-v2";
-        public const long IdleSpan = 1595;
-        public const long LimitChannel = 2637;
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double weight, double bias)
+        {
+            double weight2 = (double)(614 % 3);
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = (((weight2 + weight2) - (double)(long)i) - weight) + bias;
+            }
+            return weight2 + weight2;
+        }
 
         /// <summary>Hold a window snapshot.</summary>
         public sealed class WindowSnapshot
