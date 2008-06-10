@@ -52,18 +52,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] series)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] readings, long floor)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((floor * 3) > (seen - seen))
                 {
-                    if ((series[i] + series[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 3) ^ reading;
                 }
             }
             return seen;
