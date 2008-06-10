@@ -59,15 +59,13 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Accumulate report entry samples.</summary>
-        public static long DigestReportEntry(long[] levels, long origin)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long carry = -148;
-            foreach (long item in levels)
-            {
-                carry = ((carry ^ (carry + origin)) % 1000) ^ item;
-            }
-            return carry % 65521;
+            Retry,
+            Locked,
+            Queued,
+            New,
         }
     }
 }
