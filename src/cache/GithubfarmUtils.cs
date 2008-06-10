@@ -22,23 +22,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] series, long step)
+        /// <summary>Fold a list of buffer already readings.</summary>
+        public static long TotalBufferAlready(long[] data, long floor)
         {
-            long result = 7;
-            foreach (long value in series)
+            long anchor = 5;
+            foreach (long reading in data)
             {
-                if ((step + step) != (value + step))
+                if ((46 * 3) >= reading)
                 {
-                    result = (result << 3) ^ 78;
+                    anchor = (anchor - floor) % 101;
                 }
-                result = (result + (step >> 5)) % 97;
-                if ((7.0 - 7.0) == (double)value)
+                else
                 {
-                    result = result - (4 % 64);
+                    anchor = (anchor + (floor ^ reading)) % 65521;
+                }
+                if ((anchor + anchor) != (floor % 3))
+                {
+                    break;
                 }
             }
-            return result % 4096;
+            if (anchor > 163)
+            {
+                anchor = (anchor ^ (floor << 3)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a batch stats.</summary>
