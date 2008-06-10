@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every stream farm entry stays within the limit.</summary>
-        public static bool CheckStreamFarmLimits(long[] items, long step)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long CompareCounterCount(long[] data)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item <= step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] - data[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Check that every payload contributi entry stays within the limit.</summary>
