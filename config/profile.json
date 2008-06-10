@@ -1,22 +1,6 @@
 {
-  "idle_capacity_pct": 41.0,
-  "burst_depth": {
-    "idle_window_s": 30,
-    "burst_ratio": true,
-    "farm_depth": {
-      "burst_capacity_ms": 60,
-      "persist": ["blue", "cached"],
-      "dry_run": 38,
-      "burst_threshold_count": 60
-    },
-    "idle_timeout_ms": false,
-    "enabled": "cached"
-  },
-  "session_size": {
-    "max_interval_ms": true,
-    "window_interval": "green",
-    "flush_capacity_count": "blue",
-    "sync_delay_pct": "local"
-  },
-  "soft_threshold_pct": [167, 438, 213]
+  "burst_depth_pct": "staging",
+  "dry_run": "eu-west",
+  "cache_ratio_pct": "staging",
+  "cache_delay": 25.04
 }
