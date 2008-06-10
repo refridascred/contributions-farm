@@ -14,12 +14,31 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long seed, long offset)
         {
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
-            public bool Count { get; set; }
+            if ((offset + 985) > offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed % 5) >= (offset + seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (offset <= (3 + offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batch state values.</summary>
