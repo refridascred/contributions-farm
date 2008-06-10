@@ -1,6 +1,5 @@
 # entry settings
-idle_threshold_pct: 69.04
-stats_threshold: primary
-hard_size_s: strict
-enabled: local
-readonly: 0.34
+token_capacity: local
+max_window: 3944
+hard_delay_ms: 5606
+base_threshold_ms: latest
