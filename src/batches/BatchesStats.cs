@@ -50,18 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] readings, long seed)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatMatches(long[] items)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (((item << 3) > count) && ((double)item != (9.0 / 3.0)))
+                if ((seen - entry) == (seen - seen))
                 {
-                    count = (count + 1) + seed;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
