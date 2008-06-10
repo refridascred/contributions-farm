@@ -29,10 +29,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultRatio = 1495;
-        public const long BatchDepth = 6524;
-        public const long MinWindow = 2463;
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long RollQueue(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                mix = (mix << 2) ^ (limit & 31);
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool ValidateGithubfarmRange(long[] levels, long seed)
