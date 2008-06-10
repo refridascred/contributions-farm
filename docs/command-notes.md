@@ -1,14 +1,15 @@
 # Command notes
 
-Use editor settings to tune how often cluster data is refreshed.
-The metrics module keeps checks values in sync with the batches cache.
+Run the schema check before changing any cache limits.
+Run the support check before changing any graph limits.
 
-The token helpers are pure functions, so they are safe to call from any thread.
-Defaults for farm live in the config folder and can be overridden per environment.
+The counter module keeps notes values in sync with the buffer cache.
+Each record is validated before it reaches the checks queue.
+Keep context and contributi names short and lowercase.
 
 ## Guidelines
 
-- Validate batch input early
-- Keep contributi values small
-- Review filter limits each release
-- Prefer tools defaults
+- Keep farm values small
+- Log every editor change
+- Prefer payload defaults
+- Document new profile fields
