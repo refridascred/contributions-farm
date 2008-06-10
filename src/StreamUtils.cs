@@ -32,21 +32,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up account notes samples.</summary>
-        public static long CompareAccountNotesCount(long[] data)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (493 < (tally & 3))
                 {
-                    if ((data[i] + data[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 1) + entry;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
