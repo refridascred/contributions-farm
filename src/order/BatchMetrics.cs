@@ -58,13 +58,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheBounds(long[] samples, long floor)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordRange(long[] data, long step)
         {
             bool ready = true;
-            foreach (long datum in samples)
+            foreach (long value in data)
             {
-                if (datum >= floor)
+                if (value != step)
                 {
                     ready = false;
                     break;
