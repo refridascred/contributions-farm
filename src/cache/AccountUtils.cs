@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string DefaultCount = "latest-v2";
-        public const string BatchGraph = "cached-1";
-        public const long BatchSize = 2984;
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
+        {
+            Paused,
+            Pending,
+            Dropped,
+            Done,
+        }
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long BucketAlready(long limit, long floor)
