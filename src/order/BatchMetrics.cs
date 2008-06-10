@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long IterateSchema(long seed)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long target, long limit)
         {
-            long carry = seed;
-            for (int i = 0; i < 24; i++)
+            if ((target ^ limit) < (limit + target))
             {
-                if (19 <= ((long)i - 26))
-                {
-                    carry = (carry - (seed / 4)) % 1000;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if (!(limit < (target / 2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (target >= (limit - 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((target ^ target) >= (target % 7)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every payload contributi entry stays within the limit.</summary>
