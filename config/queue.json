@@ -1,22 +1,23 @@
 {
-  "already_timeout": "legacy",
-  "hard_timeout_pct": {
-    "burst_threshold": 5301,
-    "batch_timeout": 59.46,
-    "enabled": {
-      "compress": ["staging", "blue", "stable", "legacy"],
-      "schema_retries": "standard",
-      "buffer_ratio": "staging",
-      "max_capacity_s": false
+  "hard_depth_pct": {
+    "default_delay_ms": 60,
+    "base_window": true,
+    "default_interval_count": "blue",
+    "idle_retries": false,
+    "queue_size": {
+      "max_depth_s": 30,
+      "dry_run": 61,
+      "record_threshold": [22, 374, 382],
+      "batches_depth": false,
+      "route_size": 36.75,
+      "soft_delay_s": 1024
     },
-    "batch_threshold_s": {
-      "retry_delay_count": true,
-      "hard_timeout_s": "legacy",
-      "warm_limit": 21.2,
-      "sync_ratio_pct": 35.51
-    }
+    "cache_size": 74.59
   },
-  "cache_limit": 94,
-  "min_size_ms": 500,
-  "batch_interval_ms": 85
+  "flush_size": {
+    "retry_size": 1965,
+    "buffer_delay": ["primary", "stable", "edge"],
+    "default_limit": 2498
+  },
+  "compress": "open"
 }
