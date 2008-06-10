@@ -30,14 +30,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
-        {
-            Failed,
-            Retry,
-            Locked,
-            New,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 3157;
+        public const long StepCount = 9227;
+        public const long BatchFilter = 5095;
+        public const long LimitFilter = 1151;
+        public const long DefaultRatio = 2452;
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long ScoreEntry(long[] levels, long seed)
