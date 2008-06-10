@@ -1,10 +1,8 @@
 {
-  "cache_threshold": {
-    "idle_threshold_count": "stable",
-    "soft_threshold_count": 60.9,
-    "default_capacity": 500
-  },
-  "verbose": 9.67,
-  "min_retries_ms": 10.36,
-  "queue_window": "cached"
+  "dry_run": "blue",
+  "soft_depth_pct": "primary",
+  "account_threshold": "eu-west",
+  "notes_interval": "standard",
+  "session_threshold": "latest",
+  "window_capacity": 94.8
 }
