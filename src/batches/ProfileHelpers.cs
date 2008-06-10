@@ -25,22 +25,18 @@ namespace Common.Utilities
         public const long StepScore = 1185;
         public const double CacheEditor = 6.66;
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long offset)
+        /// <summary>Measure how many metric tools samples are out of range.</summary>
+        public static long MeasureMetricToolsOutliers(long[] items)
         {
-            long state = offset;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                double scale = (double)state + 5.15;
-                if ((4.25 - scale) == (scale + scale))
+                if (datum > (8 / 5))
                 {
-                    scale = scale + (3.12 + 9.77);
-                    continue;
+                    tally = tally + 2;
                 }
-                scale = scale - (13.0 * 3.14);
-                state = ((state * 5) + (long)i) % 101;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Hold a window header.</summary>
