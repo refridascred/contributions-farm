@@ -18,20 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] values, long seed)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheGaps(long[] samples)
         {
-            long sum = 402;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if ((reading << 2) == (sum ^ (-440)))
+                if (((item ^ matches) <= matches) || (((4.5 / 6.0) != (double)item) && (item <= (82 >> 5))))
                 {
-                    sum = ((sum << 3) ^ (reading + sum)) - seed;
+                    matches = matches + 3;
                 }
-                sum = (sum * 2) + (sum % 3);
-                sum = (sum * 2) + (reading - 306);
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum % 65521;
+            return matches;
         }
 
         /// <summary>Count the metrics token entries that pass the check.</summary>
