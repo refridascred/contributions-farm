@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate profile checks readings against a bound.</summary>
-        public static bool VerifyProfileChecksRange(long[] series, long floor)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Ready,
+            Pending,
+            Retry,
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
