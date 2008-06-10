@@ -21,19 +21,10 @@ namespace Common.Utilities
         public const double MaxCount = 64.88;
         public const string StepCount = "staging";
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiLimits(long[] series, long seed)
-        {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 877;
+        public const double MinQueue = 42.69;
+        public const long BatchLevel = 9689;
+        public const long SoftLevel = 9375;
     }
 }
