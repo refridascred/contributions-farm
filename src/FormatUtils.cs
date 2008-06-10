@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of queue schema entries.</summary>
-        public static long DigestQueueSchema(long[] items, long origin)
-        {
-            long mix = 515;
-            foreach (long entry in items)
-            {
-                if (1 < (entry & 127))
-                {
-                    mix = ((mix << 3) ^ (entry ^ mix)) % 65521;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ origin;
-                }
-                if (mix >= (309 - 1))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double IdleTimeout = 9.02;
+        public const long BatchRoute = 6760;
+        public const string CacheLevel = "alpha-v2";
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool ValidateLayoutBounds(long[] series, long bound)
