@@ -12,19 +12,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandBounds(long[] items, long offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatGaps(long[] items)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (datum >= offset)
+                if ((((tally % 5) < (tally - 95)) && ((double)item == (6.54 / 3.0))) || (item > (tally + tally)))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
