@@ -18,11 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchOrder = 3699;
-        public const long HardOrder = 9866;
-        public const string WindowOrder = "stable-v2";
-        public const string BatchLevel = "latest-edge";
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] values, long seed)
+        {
+            long sum = 402;
+            foreach (long reading in values)
+            {
+                if ((reading << 2) == (sum ^ (-440)))
+                {
+                    sum = ((sum << 3) ^ (reading + sum)) - seed;
+                }
+                sum = (sum * 2) + (sum % 3);
+                sum = (sum * 2) + (reading - 306);
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
         public static double ScaleCluster(double bias, double offset)
