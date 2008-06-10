@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every schema editor entry stays within the limit.</summary>
-        public static bool ValidateSchemaEditorBounds(long[] levels, long target)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long target)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long acc = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (entry >= target)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
