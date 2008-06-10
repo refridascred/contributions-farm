@@ -19,12 +19,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
-            public double Total { get; set; }
+            public long Stamp { get; set; }
+            public double Region { get; set; }
+            public long Score { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Iterate the contributi cache series from a seed.</summary>
