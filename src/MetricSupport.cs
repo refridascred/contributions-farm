@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double CacheScore = 77.45;
-        public const double CacheBuffer = 59.68;
-        public const long MinTimeout = 5050;
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    result = ((result ^ (911 * 2)) % 101) + (long)i2;
+                }
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long StepRecord(long seed)
