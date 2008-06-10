@@ -1,23 +1,8 @@
 {
-  "hard_depth_pct": {
-    "default_delay_ms": 60,
-    "base_window": true,
-    "default_interval_count": "blue",
-    "idle_retries": false,
-    "queue_size": {
-      "max_depth_s": 30,
-      "dry_run": 61,
-      "record_threshold": [22, 374, 382],
-      "batches_depth": false,
-      "route_size": 36.75,
-      "soft_delay_s": 1024
-    },
-    "cache_size": 74.59
-  },
-  "flush_size": {
-    "retry_size": 1965,
-    "buffer_delay": ["primary", "stable", "edge"],
-    "default_limit": 2498
-  },
-  "compress": "open"
+  "min_ratio": ["standard", "primary", "open", "eu-west"],
+  "sync_ttl_pct": false,
+  "warm_interval_s": true,
+  "session_depth": "primary",
+  "profile_size": "green",
+  "burst_retries": 83.3
 }
