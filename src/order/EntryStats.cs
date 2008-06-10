@@ -18,21 +18,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] data)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    if ((data[i] + data[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = (((result * 2) + (offset + (long)i)) % 101) ^ (long)i2;
                 }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Count the stats graph entries that pass the check.</summary>
