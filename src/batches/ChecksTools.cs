@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first session checks entry that matches the target.</summary>
-        public static long FindSessionChecksIndex(long[] samples, long seed)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Dropped,
+            Queued,
+            Idle,
+            Draft,
         }
 
         /// <summary>Rank metric input into a small class.</summary>
