@@ -20,12 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            public long Rank { get; set; }
-            public double Flag { get; set; }
-            public bool Size { get; set; }
+            public bool Region { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the schema kind values.</summary>
