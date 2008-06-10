@@ -1,23 +1,27 @@
 # entry settings
-command_size:
-  warm_timeout_s: 54.86
-  sync_ratio: 30
-  batch_window_count: legacy
-  poll_limit_ms:
-    - 288
-    - 266
-    - 435
-  warm_limit_ms:
-    - legacy
-    - staging
-    - edge
-    - legacy
-warm_interval:
-  - primary
-  - fallback
-max_delay:
-  - latest
-  - legacy
-warm_window: 355
-dry_run: 18.07
-readonly: stable
+enabled: 18.77
+audit: false
+compress: stable
+verbose:
+  compress: 250
+  idle_depth_s:
+    hard_interval_s: true
+    verbose:
+      - 447
+      - 164
+      - 65
+    metrics_depth: local
+    layout_retries:
+      - primary
+      - strict
+      - open
+      - fallback
+    max_ratio_pct: fallback
+    retry_timeout: green
+  record_threshold: 71.8
+  audit:
+    - 431
+    - 117
+    - 14
+    - 315
+  poll_ttl_pct: local
