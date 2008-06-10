@@ -47,11 +47,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            public double Score { get; set; }
-            public long Label { get; set; }
+            public long Flag { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Grade a command editor value against two limits.</summary>
