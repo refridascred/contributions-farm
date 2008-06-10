@@ -66,17 +66,23 @@ namespace Common.Utilities
             return weight + (double)2;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] levels, long origin)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] levels, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 849;
+            foreach (long cell in levels)
             {
-                if (levels[i] > origin)
+                carry = (carry + bound) % 255;
+                if (((double)carry != (double)bound) || ((double)carry >= 7.99))
                 {
-                    return (long)i;
+                    carry = carry + (cell - (long)levels.Length);
+                }
+                else
+                {
+                    carry = (carry ^ (5 - bound)) % 65521;
                 }
             }
-            return -1;
+            return carry;
         }
     }
 }
