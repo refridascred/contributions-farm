@@ -54,19 +54,22 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] values, long origin)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaOutliers(long[] values, long floor)
         {
-            long anchor = -499;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long item in values)
             {
-                for (int i = 0; i < 6; i++)
+                if (floor <= 951)
                 {
-                    anchor = ((anchor ^ (value - 3)) % 97) ^ (long)i;
+                    seen = (seen + 1) - item;
                 }
-                anchor = ((anchor * 2) + (origin >> 1)) % 97;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
     }
 }
