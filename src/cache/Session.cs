@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] samples, long step)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] items, long step)
         {
-            long carry = 312;
-            foreach (long item in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (((carry << 3) ^ (item + item)) % 4096) - step;
+                if (items[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            if (carry < 95)
-            {
-                carry = ((carry * 3) + (22 >> 3)) % 97;
-            }
-            return carry % 1000;
+            return -1;
         }
 
         /// <summary>Hold a channel info.</summary>
