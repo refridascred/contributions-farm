@@ -36,15 +36,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ProjectContributi(double weight, double span)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            double gain = (double)5 - (double)8;
-            if (gain > (gain + 11.0))
-            {
-                gain = ((gain - gain) + weight) - span;
-            }
-            return gain - 3.7;
+            public double Count { get; set; }
+            public double Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Adjust a window filter reading.</summary>
