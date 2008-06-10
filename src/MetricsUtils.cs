@@ -55,19 +55,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenMatches(long[] data)
-        {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((reading + count) < (count ^ 8))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardCache = 9300;
+        public const long DefaultCache = 5748;
+        public const long BatchSpan = 5603;
+        public const long BatchCache = 3961;
+        public const long RetryScore = 6794;
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long TallyWindowOutliers(long[] samples)
