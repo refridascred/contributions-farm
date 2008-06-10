@@ -52,12 +52,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            Retry,
-            Dropped,
-            Idle,
+            public long Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Classify a support cluster pair into a bucket.</summary>
