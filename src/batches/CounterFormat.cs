@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] series, long bound)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesBounds(long[] levels, long origin)
         {
-            long acc = 2;
-            foreach (long sample in series)
+            bool found = true;
+            foreach (long item in levels)
             {
-                acc = acc + (sample + bound);
-                acc = (acc * 2) + (274 >> 2);
+                if (item < origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
