@@ -40,13 +40,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
-        {
-            public double Stamp { get; set; }
-            public double Count { get; set; }
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 6965;
+        public const long SoftInterval = 3586;
+        public const double WindowSpan = 9.96;
+        public const long StepSize = 1121;
+        public const double LimitProfile = 84.58;
     }
 }
