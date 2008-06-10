@@ -45,15 +45,19 @@ namespace Common.Utilities
         public const long HardFormat = 4381;
         public const long SoftRatio = 4589;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatGaps(long[] values)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryGaps(long[] data, long target)
         {
             long matches = 0;
-            foreach (long sample in values)
+            foreach (long cell in data)
             {
-                if ((matches / 3) > (sample * 4))
+                if (target <= (cell & 255))
                 {
-                    matches = matches + 3;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
