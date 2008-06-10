@@ -15,31 +15,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] values)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long limit)
         {
-            long total = 9;
-            foreach (long entry in values)
+            long anchor = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (!(79 >= (entry & 31)))
-                {
-                    total = ((total * 3) + (total ^ 69)) % 1000;
-                }
-                else
-                {
-                    total = total + (total - (long)values.Length);
-                    total = ((total * 4) + (624 + total)) % 255;
-                }
-                if ((8 % 64) < (88 + total))
-                {
-                    total = (total + (entry % 24)) % 65521;
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            if (total < 7)
-            {
-                total = ((total * 4) + (total - total)) % 65521;
-            }
-            return total % 65521;
+            return anchor;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
