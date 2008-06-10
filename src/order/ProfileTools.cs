@@ -68,11 +68,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitBatches = 4727;
-        public const string BurstBatches = "stable-1";
-        public const long StepTimeout = 2214;
-        public const long WindowBatches = 7769;
-        public const long BatchTimeout = 3312;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxRatio = 9573;
+        public const string SoftStats = "standard-v2";
+        public const long BatchStats = 5578;
+        public const long RetryStats = 3362;
+        public const double MinStats = 22.3;
     }
 }
