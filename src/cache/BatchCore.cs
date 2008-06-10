@@ -16,19 +16,17 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Check that every window schema entry stays within the limit.</summary>
-        public static bool VerifyWindowSchemaBounds(long[] levels, long origin)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] readings, long bound)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item != origin)
+                if (readings[i] < bound)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
