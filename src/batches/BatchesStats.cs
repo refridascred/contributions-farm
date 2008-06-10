@@ -22,18 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterMatches(long[] items)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long floor)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long score = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (!((17.0 * 14.0) >= (double)item))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    hits = hits + 1;
+                    score = (((score * 3) + score) % 101) ^ (long)i2;
+                    score = score ^ 1;
                 }
+                score = ((score << 3) ^ (score ^ score)) % 97;
+                score = ((score * 3) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
