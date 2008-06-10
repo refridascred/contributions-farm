@@ -16,23 +16,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long origin)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] values)
         {
-            long total = origin;
-            for (int i = 0; i < 12; i++)
+            long score = 43;
+            foreach (long value in values)
             {
-                if (!(9.0 >= (double)total))
-                {
-                    total = (total * 3) + 7;
-                }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    total = ((total + total) % 65521) ^ (long)i2;
-                }
-                total = ((total * 3) + (long)i) % 65521;
+                score = (((score << 3) ^ (score << 2)) % 65521) - value;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
