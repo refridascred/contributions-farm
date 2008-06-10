@@ -56,31 +56,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long origin, long origin2)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] samples, long bound)
         {
-            if (origin2 >= (origin - origin))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin - 73) < (origin2 + origin2))
+                if ((samples[i] >= bound) && ((samples[i] % 5) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)origin2 >= 11.0) && ((156 + origin2) >= (origin + 850)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
