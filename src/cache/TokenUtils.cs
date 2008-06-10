@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportRange(long[] readings, long bound)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Draft,
+            Retry,
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
