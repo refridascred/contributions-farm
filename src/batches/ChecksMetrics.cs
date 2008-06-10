@@ -75,19 +75,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryBounds(long[] series, long target)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Pending,
+            Done,
+            Synced,
+            Failed,
         }
 
         /// <summary>Define format limits and defaults.</summary>
