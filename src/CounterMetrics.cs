@@ -33,16 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] samples)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long sum = 647;
-            foreach (long sample in samples)
-            {
-                sum = sum + (sample + sample);
-                sum = ((sum * 4) + (sum + sample)) % 1000;
-            }
-            return sum % 1000;
+            Paused,
+            Dropped,
+            Done,
+            Active,
+            Stale,
         }
     }
 }
