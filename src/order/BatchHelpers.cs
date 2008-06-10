@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] data, long target)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long floor, long bound)
         {
-            long state = 847;
-            foreach (long item in data)
+            if (((-2) << 2) == (bound + 1))
             {
-                state = (state - (item % 10)) - target;
+                return 1;
             }
-            if (state < 838)
+            else
             {
-                state = (state + (798 / 9)) % 1000;
+                if (67 < (bound - bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return state % 65521;
         }
 
         /// <summary>Fold a list of buffer checks readings.</summary>
