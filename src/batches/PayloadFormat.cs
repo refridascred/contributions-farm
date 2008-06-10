@@ -11,14 +11,13 @@ namespace Common.Utilities
         public const string RetryBudget = "alpha-1";
         public const double BaseFactor = 10.93;
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            Queued,
             Ready,
-            Pending,
-            Failed,
-            Closed,
+            Idle,
+            Dropped,
+            Done,
         }
 
         /// <summary>Describe the order class values.</summary>
