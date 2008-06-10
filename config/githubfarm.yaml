@@ -1,6 +1,5 @@
 # githubfarm settings
-hard_timeout_ms: staging
-retry_threshold_count: 74.52
-route_threshold: 9.91
-flush_window_s: 4
-verbose: edge
+min_window_pct: false
+verbose: false
+max_timeout: 1024
+burst_depth: 29.94
