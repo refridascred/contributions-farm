@@ -29,12 +29,11 @@ namespace Common.Utilities
         public const double MaxBuffer = 20.79;
         public const long SoftScore = 925;
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
-        {
-            public double Flag { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MinRecord = 37.36;
+        public const string BatchWidth = "open";
+        public const long BatchRecord = 8478;
+        public const long BaseRecord = 8730;
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long RankContributi(long offset, long origin)
