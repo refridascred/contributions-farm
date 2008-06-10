@@ -46,22 +46,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] items, long floor)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiGaps(long[] series, long origin)
         {
-            long state = 580;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((double)floor >= (double)datum)
+                if (((value * 4) != (origin - value)) || (((hits + hits) < (origin * 2)) && ((9 & 127) >= hits)))
                 {
-                    state = (state ^ (state % 8)) % 97;
+                    hits = hits + 2;
                 }
             }
-            if (state > 2)
-            {
-                state = state + (floor + floor);
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
