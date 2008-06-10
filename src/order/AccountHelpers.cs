@@ -77,26 +77,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine githubfarm already values into a single score.</summary>
-        public static long TotalGithubfarmAlready(long[] readings)
+        /// <summary>Derive the next command payload value from a seed.</summary>
+        public static long StepCommandPayload(long seed)
         {
-            long carry = 1;
-            foreach (long value in readings)
+            long mark = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((value * 2) > ((-807) * 4))
-                {
-                    carry = (carry * 4) + (carry / 8);
-                }
-                else
-                {
-                    carry = carry - (value % 7);
-                }
+                mark = mark ^ (seed >> 5);
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            if (carry > 971)
-            {
-                carry = (carry + carry) % 97;
-            }
-            return carry;
+            return mark;
         }
     }
 }
