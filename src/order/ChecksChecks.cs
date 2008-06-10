@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long CompareFormatCount(long[] series)
+        /// <summary>Derive the next stream report value from a seed.</summary>
+        public static long IterateStreamReport(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(((total % 12) >= (offset + total)) && ((offset * 3) == (533 / 2))))
                 {
-                    if ((series[i] + series[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (total - (offset ^ total)) % 65521;
                 }
+                total = (total + ((-880) % 64)) % 65521;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Describe the stats mode values.</summary>
