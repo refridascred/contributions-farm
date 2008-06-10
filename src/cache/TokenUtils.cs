@@ -40,15 +40,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] series, long origin)
+        /// <summary>Audit route command readings against a rule.</summary>
+        public static long TallyRouteCommandOutliers(long[] levels, long step)
         {
-            long mark = 78;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                mark = ((mark - (entry - 94)) % 101) + origin;
+                if (((sample + step) < (matches & 7)) && ((sample * 2) == (sample + step)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return mark;
+            return matches;
         }
     }
 }
