@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long target, long origin)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long step = target + origin;
-            if (target >= (step ^ origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((9 + step) <= target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((66 ^ origin) > (919 + target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Active,
+            Locked,
+            Ready,
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
