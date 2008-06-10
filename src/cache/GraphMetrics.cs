@@ -45,14 +45,18 @@ namespace Common.Utilities
             return (scale + (rate + 1.6)) + floor;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Measure how many format account samples are out of range.</summary>
+        public static long AuditFormatAccountOutliers(long[] data, long bound)
         {
-            Done,
-            Closed,
-            Stale,
-            Dropped,
-            Retry,
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (((9.15 + 4.23) < (double)matches) || (((double)item <= 15.0) && ((double)item >= (1.96 + 3.0))))
+                {
+                    matches = (matches + 3) - bound;
+                }
+            }
+            return matches;
         }
     }
 }
