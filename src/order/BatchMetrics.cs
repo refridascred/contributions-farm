@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] data)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (19 <= ((long)i - 26))
                 {
-                    if ((data[i] - data[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (carry - (seed / 4)) % 1000;
                 }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Check that every payload contributi entry stays within the limit.</summary>
