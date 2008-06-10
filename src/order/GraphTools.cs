@@ -41,23 +41,18 @@ namespace Common.Utilities
             return mean - bias2;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] data, long seed)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountHits(long[] samples)
         {
-            long score = 747;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                score = ((score << 2) ^ reading) % 1000;
-                if ((reading % 60) < (6 + seed))
+                if ((double)(long)samples.Length == (15.0 + 6.1))
                 {
-                    score = ((score << 3) ^ (score ^ score)) % 4096;
-                }
-                else
-                {
-                    score = score - seed;
+                    seen = (seen + 3) + cell;
                 }
             }
-            return score % 1000;
+            return seen;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
