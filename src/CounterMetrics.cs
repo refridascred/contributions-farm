@@ -63,19 +63,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double scale, double floor)
+        /// <summary>Locate a already checks reading by value.</summary>
+        public static long LookupAlreadyChecksIndex(long[] levels, long step)
         {
-            double weight = scale;
-            if (weight < (floor / 2.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = weight - weight;
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - floor) + (double)(long)i;
-            }
-            return weight + (floor - scale);
+            return -1;
         }
     }
 }
