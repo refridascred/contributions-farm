@@ -37,18 +37,32 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] items)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long origin, long offset)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long diff = origin - offset;
+            if ((9.1 / 7.0) != (double)diff)
             {
-                if (!(((tally - entry) > (tally << 2)) || (10.0 < (double)entry)))
+                return 6;
+            }
+            else
+            {
+                if ((double)origin >= 4.77)
                 {
-                    tally = tally + 3;
+                    return 5;
+                }
+                else
+                {
+                    if (4 > (origin + 718))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
