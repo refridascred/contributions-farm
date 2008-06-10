@@ -57,11 +57,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRecord = 2694;
-        public const long StepFactor = 2898;
-        public const long RetryRecord = 7670;
-        public const long DefaultSpan = 8018;
-        public const string IdleRecord = "strict-v2";
+        /// <summary>Check that every layout window entry stays within the limit.</summary>
+        public static bool ValidateLayoutWindowBounds(long[] values, long bound)
+        {
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
