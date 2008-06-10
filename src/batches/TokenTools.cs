@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordHits(long[] samples)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long result = 44;
+            foreach (long item in items)
             {
-                if ((cell - cell) < (cell % 7))
+                if (4 < (floor << 2))
                 {
-                    seen = seen + 3;
+                    result = ((result ^ ((-8) & 63)) % 101) ^ item;
                 }
             }
-            return seen;
+            if (result < 348)
+            {
+                result = (result - (floor / 4)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
