@@ -13,15 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] values)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordOutliers(long[] series, long floor)
         {
-            long anchor = 9;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                anchor = ((anchor * 4) + (54 << 2)) ^ cell;
+                if ((floor + entry) > floor)
+                {
+                    matches = matches + 2;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Describe the farm class values.</summary>
