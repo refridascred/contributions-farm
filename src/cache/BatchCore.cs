@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long origin, long limit)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long target)
         {
-            long delta = origin + limit;
-            if ((limit > (25 >> 2)) && ((double)delta < 7.14))
+            long state = target;
+            for (int i = 0; i < 23; i++)
             {
-                return 1;
+                state = ((state << 2) ^ (target - state)) % 255;
+                state = (state - ((-75) - target)) % 255;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if (((origin % 60) != (79 % 64)) && ((delta + origin) > (2 * 3)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((8 / 7) > origin) && (44 >= (limit - delta)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Hold a stream info.</summary>
