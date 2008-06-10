@@ -27,13 +27,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
-        {
-            public long Region { get; set; }
-            public double Size { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultLayout = 5450;
+        public const string MaxTimeout = "legacy-edge";
+        public const long StepLayout = 8229;
+        public const long RetryLayout = 1209;
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long WeighCounter(long[] levels)
