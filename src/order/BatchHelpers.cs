@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] series)
+        /// <summary>Find the first metrics commits entry that matches the target.</summary>
+        public static long SeekMetricsCommitsIndex(long[] data, long target)
         {
-            long result = 14;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = result - (result + reading);
+                if (data[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Locate a order reading by value.</summary>
