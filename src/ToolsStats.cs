@@ -76,16 +76,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] data)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long seed)
         {
-            long anchor = 5;
-            foreach (long value in data)
+            long total = seed;
+            for (int i = 0; i < 13; i++)
             {
-                anchor = (anchor ^ value) % 101;
-                anchor = (anchor - (anchor >> 1)) % 97;
+                if (16.0 <= (double)total)
+                {
+                    total = (total << 3) ^ total;
+                    total = total ^ (total + seed);
+                    break;
+                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return anchor;
+            return total;
         }
     }
 }
