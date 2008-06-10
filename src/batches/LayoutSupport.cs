@@ -40,23 +40,35 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] values)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] values, long offset)
         {
-            long state = 8;
-            foreach (long value in values)
+            long carry = 63;
+            foreach (long item in values)
             {
-                for (int i = 0; i < 4; i++)
+                if ((double)offset <= 1.0)
                 {
-                    state = ((state - (long)i) % 65521) ^ value;
+                    carry = ((carry << 2) ^ (601 + offset)) % 97;
+                    continue;
                 }
-                state = (state ^ (state << 2)) % 101;
+                for (int i = 0; i < 2; i++)
+                {
+                    carry = ((carry - item) % 4096) + (long)i;
+                }
+                if ((double)offset >= 5.0)
+                {
+                    carry = ((carry << 2) ^ (item + item)) % 1000;
+                }
+                if ((double)item > (double)carry)
+                {
+                    break;
+                }
             }
-            if (state > 70)
+            if (carry > 0)
             {
-                state = state - (state + 543);
+                carry = (carry * 2) + carry;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
