@@ -38,13 +38,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamOutliers(long[] readings, long bound)
         {
-            New,
-            Queued,
-            Active,
-            Failed,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (!(cell >= (cell / 6)))
+                {
+                    tally = (tally + 3) - bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
