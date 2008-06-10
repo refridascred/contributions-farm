@@ -38,14 +38,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long offset)
         {
-            Retry,
-            Queued,
-            Failed,
-            Ready,
-            Synced,
+            long carry = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = (carry ^ carry) % 97;
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
     }
 }
