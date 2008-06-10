@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] data)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double scale, double floor)
         {
-            long mark = 42;
-            foreach (long cell in data)
+            double ratio = scale;
+            if (ratio < scale)
             {
-                if ((mark ^ mark) >= (cell + 763))
-                {
-                    mark = mark - (cell - cell);
-                }
+                ratio = (ratio + (double)8) + floor;
             }
-            if (mark < 1)
-            {
-                mark = (mark + (mark + mark)) % 101;
-            }
-            return mark;
+            return ratio - (ratio / 6.0);
         }
 
         /// <summary>Hold a notes header.</summary>
