@@ -13,39 +13,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long seed, long step)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaHits(long[] values, long origin)
         {
-            long prev = seed ^ step;
-            if (prev <= 247)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((prev + 99) <= step)
+                if (!((matches % 2) < (matches ^ origin)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (prev >= (seed - prev))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((4.36 + 0.68) > (double)prev)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = (matches + 3) ^ reading;
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every tools report entry stays within the limit.</summary>
