@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmMatches(long[] data, long bound)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] data)
         {
-            long count = 0;
-            foreach (long item in data)
+            long state = 46;
+            foreach (long reading in data)
             {
-                if ((double)bound < 4.7)
+                if ((double)reading < 2.0)
                 {
-                    count = (count + 1) - item;
+                    state = ((state << 3) ^ (reading / 9)) % 101;
                 }
             }
-            return count;
+            return state % 4096;
         }
 
         /// <summary>Measure how many stream farm samples are out of range.</summary>
