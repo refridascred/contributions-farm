@@ -25,19 +25,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every cluster command entry stays within the limit.</summary>
-        public static bool GuardClusterCommandRange(long[] items, long bound)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long floor)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long score = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (value < bound)
+                if ((((long)i / 2) <= (score + score)) || (((long)i - score) > floor))
                 {
-                    flag = false;
-                    break;
+                    continue;
                 }
+                else
+                {
+                    score = (score ^ ((long)i * 5)) % 4096;
+                }
+                score = (score ^ score) % 4096;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return flag;
+            return score;
         }
     }
 }
