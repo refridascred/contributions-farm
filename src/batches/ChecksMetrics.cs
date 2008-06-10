@@ -34,23 +34,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] series)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] series, long bound)
         {
-            long state = -2;
-            foreach (long cell in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = state ^ (state & 63);
-                if ((cell + state) <= (cell - state))
+                if (series[i] < bound)
                 {
-                    state = (state << 3) ^ (state - cell);
+                    return (long)i;
                 }
             }
-            if (state < 661)
-            {
-                state = state + (state + state);
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
