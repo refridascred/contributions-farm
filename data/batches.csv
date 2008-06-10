@@ -1,9 +1,8 @@
-id,label,count,weight
-1,open,84.58,111
-2,cached,980,stable
-3,376,staging,primary
-4,281,open,310
-5,30,37.52,43.13
-6,525,61.9,21.72
-7,586,72.45,406
-8,33.77,340,cached
+id,state,score,ratio,level
+1,838,55.49,696,192
+2,670,542,700,latest
+3,806,731,green,stable
+4,154,standard,679,491
+5,primary,67.87,288,833
+6,green,52.46,257,staging
+7,legacy,716,625,stable
