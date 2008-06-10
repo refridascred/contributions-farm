@@ -35,19 +35,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double ratio, double span)
+        /// <summary>Project the next profile value.</summary>
+        public static double AdjustProfile(double rate, double floor)
         {
-            double ratio2 = ratio * 20.0;
-            if (ratio2 < (double)16)
+            double mean = (double)6 / 7.0;
+            if (mean <= mean)
             {
-                ratio2 = (ratio2 + ratio2) - span;
+                mean = ((mean + (0.1 - 7.8)) - rate) - floor;
             }
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 2; i++)
             {
-                ratio2 = (ratio2 + ratio) + (double)(long)i;
+                mean = (mean - (double)9) + (double)(long)i;
             }
-            return ratio2 - ratio2;
+            return mean - (double)635;
         }
     }
 }
