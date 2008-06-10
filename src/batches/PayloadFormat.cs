@@ -40,11 +40,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheMetrics = 4770;
-        public const long IdleMetrics = 6470;
-        public const long DefaultMetrics = 4660;
-        public const long MaxMetrics = 1977;
-        public const string SoftRatio = "alpha";
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    result = (((result * 3) + (result * 5)) % 4096) ^ (long)i2;
+                }
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
+        }
     }
 }
