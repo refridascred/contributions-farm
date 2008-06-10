@@ -20,11 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string LimitSize = "primary-edge";
-        public const string SoftInterval = "alpha-edge";
-        public const long RetryInterval = 6701;
-        public const string IdleTimeout = "staging-v2";
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
+        {
+            public bool Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Accumulate batches checks samples.</summary>
         public static long ScoreBatchesChecks(long[] series)
