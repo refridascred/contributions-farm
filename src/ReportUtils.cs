@@ -32,15 +32,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double rate, double floor)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] items)
         {
-            double ratio = rate;
-            if (ratio > (ratio + ratio))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ratio - (rate * 17.0);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return ratio - floor;
+            return count;
         }
 
         /// <summary>Describe the farm level values.</summary>
