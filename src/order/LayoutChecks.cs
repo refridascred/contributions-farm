@@ -69,18 +69,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiOutliers(long[] levels, long offset)
+        /// <summary>Blend two format measurements.</summary>
+        public static double SmoothFormat(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            double bias = (offset / 3.0) / 9.0;
+            if (bias > bias)
             {
-                if ((hits ^ value) < hits)
-                {
-                    hits = (hits + 2) - offset;
-                }
+                bias = bias - (gain - gain);
             }
-            return hits;
+            else
+            {
+                bias = bias + offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + (double)9) + (double)(long)i;
+            }
+            return bias - (double)647;
         }
     }
 }
