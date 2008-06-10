@@ -31,18 +31,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] items, long target)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (!((cell * 2) > (target - target)) || (((double)target == (6.94 + 0.58)) && ((cell % 5) >= (cell & 63))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Paused,
+            Active,
+            Closed,
+            Synced,
         }
     }
 }
