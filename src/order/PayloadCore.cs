@@ -19,10 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 3302;
-        public const string MinSpan = "cached-edge";
-        public const long RetryQueue = 2880;
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
+        {
+            Failed,
+            Dropped,
+            Locked,
+            Synced,
+            Idle,
+        }
 
         /// <summary>Count the context editor entries that pass the check.</summary>
         public static long MeasureContextEditorOutliers(long[] items)
