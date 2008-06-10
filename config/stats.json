@@ -1,26 +1,12 @@
 {
-  "compress": ["staging", "primary", "green", "stable"],
-  "default_depth": "legacy",
-  "sync_delay": {
-    "persist": 83.69,
-    "idle_retries": ["local", "edge", "open", "latest"],
-    "flush_interval": 26,
-    "dry_run": 10,
-    "audit": 60,
-    "soft_window_s": true
-  },
-  "readonly": {
-    "context_threshold": 12,
-    "enabled": 8002,
-    "channel_depth": 96.74,
-    "burst_threshold_count": "strict",
-    "idle_ttl": {
-      "dry_run": 4343,
-      "sync_timeout_count": [477, 239, 197],
-      "sync_depth": false,
-      "compress": false,
-      "cache_window": 5016,
-      "verbose": 100
-    }
+  "audit": 2288,
+  "cache_timeout_pct": "latest",
+  "commits_window": [148, 19],
+  "default_ratio_count": 24,
+  "default_retries": 100,
+  "dry_run": {
+    "sync_retries_s": 5354,
+    "stream_delay": "staging",
+    "base_depth": ["stable", "legacy"]
   }
 }
