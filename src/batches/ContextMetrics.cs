@@ -57,13 +57,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            Queued,
-            Draft,
-            Pending,
-            Locked,
+            public string Offset { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Token { get; set; }
         }
     }
 }
