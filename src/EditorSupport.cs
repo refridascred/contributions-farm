@@ -35,19 +35,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every stream filter entry stays within the limit.</summary>
-        public static bool CheckStreamFilterLimits(long[] levels, long bound)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] items)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (value < bound)
+                if ((count << 2) != (603 - item))
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Count the context cluster entries that pass the check.</summary>
