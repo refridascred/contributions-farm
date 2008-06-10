@@ -23,13 +23,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatRange(long[] series, long origin)
         {
-            public long Rank { get; set; }
-            public double Region { get; set; }
-            public long Level { get; set; }
-            public long Count { get; set; }
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
