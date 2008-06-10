@@ -35,11 +35,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftFactor = 3657;
-        public const long RetryRatio = 3780;
-        public const long WindowSize = 9419;
-        public const string SoftEditor = "legacy";
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
+        {
+            Draft,
+            Queued,
+            Failed,
+            Locked,
+            Retry,
+        }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
         public static long CompareAccountCount(long[] samples)
