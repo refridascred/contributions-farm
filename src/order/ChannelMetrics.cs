@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double scale, double floor)
+        /// <summary>Project the next counter route value.</summary>
+        public static double ScaleCounterRoute(double rate, double bias)
         {
-            double ratio = scale;
-            if (ratio < scale)
+            double weight = (double)52 - 14.0;
+            if (weight <= weight)
             {
-                ratio = (ratio + (double)8) + floor;
+                weight = (weight + (13.0 / 5.0)) - rate;
             }
-            return ratio - (ratio / 6.0);
+            else
+            {
+                weight = weight + (bias + 9.0);
+            }
+            return weight + (weight * 8.54);
         }
 
         /// <summary>Hold a notes header.</summary>
