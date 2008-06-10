@@ -25,11 +25,19 @@ namespace Common.Utilities
         public const string BatchLevel = "strict";
         public const double MaxEditor = 37.46;
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Validate command batches readings against a bound.</summary>
+        public static bool CheckCommandBatchesBounds(long[] levels, long limit)
         {
-            public string Region { get; set; } = "";
-            public double Size { get; set; }
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
