@@ -22,18 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileHits(long[] samples)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double ratio, double bias)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            double drift = (double)11 / 6.0;
+            if (drift < (double)314)
             {
-                if (8.2 <= (double)matches)
-                {
-                    matches = (matches + 1) + item;
-                }
+                drift = drift - (ratio / 3.0);
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (drift * 3.6)) - (double)(long)i;
+            }
+            return drift - (ratio + bias);
         }
 
         /// <summary>Hold a checks snapshot.</summary>
