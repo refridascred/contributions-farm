@@ -1,6 +1,8 @@
 {
-  "verbose": "cached",
-  "batch_limit_s": 6517,
-  "idle_depth": ["staging", "primary", "fallback", "green"],
-  "sync_capacity_s": 34
+  "hard_ttl": 64.24,
+  "verbose": 81.52,
+  "warm_limit_count": "stable",
+  "batch_retries_s": "primary",
+  "retry_timeout": false,
+  "enabled": "primary"
 }
