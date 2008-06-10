@@ -20,13 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            Closed,
-            Dropped,
-            Failed,
-            Stale,
+            public double Flag { get; set; }
+            public string Size { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
