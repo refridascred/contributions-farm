@@ -19,12 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            Retry,
-            New,
-            Queued,
+            public bool Offset { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a channel record.</summary>
