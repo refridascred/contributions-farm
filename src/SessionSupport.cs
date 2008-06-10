@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit support stats readings against a rule.</summary>
-        public static long CountSupportStatsMatches(long[] samples, long target)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((9 & 1) >= (target << 2))
-                {
-                    hits = (hits + 2) ^ entry;
-                }
-            }
-            return hits;
+            Active,
+            Dropped,
+            Retry,
+            Synced,
+            Paused,
         }
 
         /// <summary>Match up schema metrics samples.</summary>
