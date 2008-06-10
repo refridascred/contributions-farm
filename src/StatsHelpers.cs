@@ -67,32 +67,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] readings)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] values)
         {
-            long state = 45;
-            foreach (long value in readings)
+            long anchor = -4;
+            foreach (long value in values)
             {
-                if ((state - value) >= state)
-                {
-                    state = state ^ (state * 3);
-                }
-                if (value < (state + value))
-                {
-                    state = ((state * 4) + (value + value)) % 255;
-                    break;
-                }
-                else
-                {
-                    state = state - (0 + 9);
-                }
-                state = (state << 3) ^ (state / 6);
-                if ((state ^ value) > state)
-                {
-                    break;
-                }
+                anchor = (anchor ^ (value - value)) % 65521;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
