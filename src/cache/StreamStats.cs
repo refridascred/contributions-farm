@@ -33,18 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many notes metrics samples are out of range.</summary>
-        public static long TallyNotesMetricsOutliers(long[] series, long floor)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenOutliers(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((162 >> 5) <= (floor & 3))
+                if ((sample / 6) >= (sample + count))
                 {
-                    seen = (seen + 1) + entry;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count support cluster pairs that satisfy a relation.</summary>
