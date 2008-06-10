@@ -33,23 +33,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] levels)
+        /// <summary>Measure how many checks counter samples are out of range.</summary>
+        public static long CountChecksCounterOutliers(long[] levels, long limit)
         {
-            long anchor = 128;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                anchor = (anchor ^ anchor) % 255;
-                if (((double)value >= (5.9 / 5.0)) && ((anchor << 1) >= (value ^ value)))
+                if ((tally + limit) > datum)
                 {
-                    anchor = anchor ^ anchor;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    anchor = ((anchor << 2) ^ anchor) % 65521;
+                    tally = tally - 1;
                 }
             }
-            return anchor % 65521;
+            return tally;
         }
     }
 }
