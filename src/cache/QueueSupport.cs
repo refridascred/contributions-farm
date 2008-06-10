@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a metrics buffer sample.</summary>
-        public static long LookupMetricsBufferIndex(long[] series, long step)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Audit cache batch readings against a rule.</summary>
