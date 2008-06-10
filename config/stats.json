@@ -1,6 +1,13 @@
 {
-  "filter_capacity": "latest",
-  "enabled": 88,
-  "context_window": 51,
-  "audit": 1024
+  "retry_timeout_pct": {
+    "githubfarm_limit": 69,
+    "hard_depth": 7315,
+    "burst_window": "strict",
+    "readonly": 73.23,
+    "burst_delay": [26, 135],
+    "contributi_size": 957
+  },
+  "sync_ratio_s": 4704,
+  "burst_retries_pct": "primary",
+  "retry_size": true
 }
