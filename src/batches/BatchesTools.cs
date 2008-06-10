@@ -37,10 +37,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 877;
-        public const double MinQueue = 42.69;
-        public const long BatchLevel = 9689;
-        public const long SoftLevel = 9375;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatMatches(long[] readings, long target)
+        {
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (((double)target <= (9.93 / 6.0)) || (((double)matches != (0.51 + 4.42)) && (sample < (target ^ matches))))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
