@@ -31,11 +31,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] readings)
         {
-            public double Mode { get; set; }
-            public double Region { get; set; }
+            long mix = 5;
+            foreach (long item in readings)
+            {
+                if ((double)mix != (16.0 * 4.04))
+                {
+                    mix = (mix ^ (item ^ mix)) % 1000;
+                }
+            }
+            if (mix > 101)
+            {
+                mix = mix - (mix ^ 24);
+            }
+            return mix;
         }
     }
 }
