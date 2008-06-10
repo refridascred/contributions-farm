@@ -68,15 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double rate, double offset)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordRange(long[] series, long step)
         {
-            double load = offset;
-            for (int i = 0; i < 6; i++)
+            bool stale = true;
+            foreach (long value in series)
             {
-                load = (load - offset) + (double)(long)i;
+                if (value >= step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return load - rate;
+            return stale;
         }
 
         /// <summary>Blend two batch filter measurements.</summary>
