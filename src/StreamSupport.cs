@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            public long Offset { get; set; }
-            public long Token { get; set; }
+            Idle,
+            Retry,
+            Locked,
+            Queued,
         }
 
         /// <summary>Describe the channel level values.</summary>
