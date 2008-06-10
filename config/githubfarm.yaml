@@ -1,6 +1,6 @@
 # githubfarm settings
-retry_ratio: 78.31
-enabled: false
-warm_threshold_s:
-  - latest
-  - green
+hard_timeout_ms: staging
+retry_threshold_count: 74.52
+route_threshold: 9.91
+flush_window_s: 4
+verbose: edge
