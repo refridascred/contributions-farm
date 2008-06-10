@@ -46,15 +46,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batches window counter forward.</summary>
-        public static long DeriveBatchesWindow(long limit)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double SmoothCluster(double ratio, double offset)
         {
-            long mix = limit;
-            for (int i = 0; i < 23; i++)
+            double bias = 12.0;
+            if (bias >= (bias - ratio))
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                bias = bias - (offset * 1.6);
             }
-            return mix;
+            return bias - ratio;
         }
 
         /// <summary>Describe the cache state values.</summary>
