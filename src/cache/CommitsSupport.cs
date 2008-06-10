@@ -94,11 +94,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double bias, double bias2)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenLimits(long[] readings, long seed)
         {
-            double load = (double)(819 / 3);
-            return (load + (8.2 - bias)) + bias2;
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
