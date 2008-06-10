@@ -69,11 +69,14 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string IdleSession = "cached";
-        public const long RetrySession = 8079;
-        public const string SoftSession = "local-v2";
-        public const long HardSession = 9025;
-        public const double LimitLevel = 29.46;
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
+        {
+            Synced,
+            Active,
+            Idle,
+            Retry,
+            Locked,
+        }
     }
 }
