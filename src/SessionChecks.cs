@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowRange(long[] data, long limit)
+        /// <summary>Accumulate stream format samples.</summary>
+        public static long CombineStreamFormat(long[] levels, long offset)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long result = 7;
+            foreach (long item in levels)
             {
-                if (sample > limit)
+                if (((offset * 5) < (item >> 3)) && ((98 << 2) < result))
                 {
-                    ok = false;
-                    break;
+                    result = (result + (item >> 1)) % 1000;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (7 / 5)) % 101;
                 }
             }
-            return ok;
+            if (result < 98)
+            {
+                result = result + (38 & 3);
+            }
+            return result % 97;
         }
 
         /// <summary>Match up record samples.</summary>
