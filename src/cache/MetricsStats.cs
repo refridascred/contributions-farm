@@ -33,17 +33,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] values, long offset)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Flag { get; set; }
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
