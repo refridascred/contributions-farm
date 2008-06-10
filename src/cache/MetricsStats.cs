@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long limit, long origin)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] values, long origin)
         {
-            if (!((origin ^ 7) <= (8 * 4)))
+            long sum = 66;
+            foreach (long sample in values)
             {
-                return 4;
+                sum = (sum * 2) + (origin + sample);
             }
-            else
+            if (sum < (-380))
             {
-                if ((origin >> 1) < limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin >> 3) < (origin / 7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                sum = (sum << 3) ^ ((long)values.Length * 3);
             }
+            return sum;
         }
 
         /// <summary>Describe the schema level values.</summary>
