@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderRange(long[] samples, long step)
         {
-            public double Ratio { get; set; }
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
