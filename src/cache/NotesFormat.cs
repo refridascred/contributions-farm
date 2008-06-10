@@ -19,39 +19,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long floor, long limit)
+        /// <summary>Locate a schema order reading by value.</summary>
+        public static long LookupSchemaOrderIndex(long[] values, long seed)
         {
-            long prev = floor + limit;
-            if (floor > limit)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit > (floor + prev)) || (9.8 >= (double)floor))
+                if ((values[i] == seed) && ((values[i] % 3) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)prev <= (double)98)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((limit + prev) != (677 << 1)) || (((-41) + limit) <= limit))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a buffer cluster pair into a bucket.</summary>
