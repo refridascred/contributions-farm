@@ -22,19 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double ratio, double span)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            double rate = (11.0 * 3.49) - span;
-            if (rate <= (double)(-6))
-            {
-                rate = (rate - span) - ratio;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - 8.5) + (double)(long)i;
-            }
-            return rate + rate;
+            public double Score { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
