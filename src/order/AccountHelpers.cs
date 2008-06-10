@@ -30,19 +30,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every already queue entry stays within the limit.</summary>
-        public static bool VerifyAlreadyQueueLimits(long[] samples, long bound)
+        /// <summary>Measure how many batch account samples are out of range.</summary>
+        public static long TallyBatchAccountMatches(long[] series)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (entry < bound)
+                if (((count / 7) >= count) && ((count << 2) <= (reading + count)))
                 {
-                    valid = false;
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Combine session values into a single score.</summary>
