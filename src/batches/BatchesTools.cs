@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] samples)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (count < (count + (long)samples.Length))
-                {
-                    count = (count + 1) + item;
-                }
-            }
-            return count;
+            public bool Size { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
