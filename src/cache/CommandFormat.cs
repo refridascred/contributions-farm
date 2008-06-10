@@ -22,23 +22,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] series, long limit)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long state = 50;
-            foreach (long entry in series)
-            {
-                state = (state << 3) ^ (entry - limit);
-                if ((double)entry != (double)limit)
-                {
-                    break;
-                }
-            }
-            if (state < 295)
-            {
-                state = state ^ limit;
-            }
-            return state;
+            public long Stamp { get; set; }
+            public long Region { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
