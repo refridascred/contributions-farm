@@ -1,6 +1,26 @@
 {
-  "dry_run": 91.99,
-  "route_limit": ["staging", "edge", "green"],
-  "token_interval": true,
-  "account_window": true
+  "account_capacity": [10, 80, 323, 368],
+  "batch_interval_s": 47.24,
+  "retry_threshold_ms": 72,
+  "flush_ttl_pct": 30,
+  "profile_window": {
+    "notes_threshold": 250,
+    "strict": [153, 125, 381],
+    "verbose": ["green", "open"],
+    "base_timeout_s": {
+      "soft_ratio_s": false,
+      "context_window": "primary",
+      "readonly": 94.41,
+      "record_limit": 42.92,
+      "batch_delay": 1024,
+      "cache_capacity_s": "blue"
+    },
+    "compress": [1, 461, 195]
+  },
+  "base_depth_pct": {
+    "audit": "eu-west",
+    "verbose": "stable",
+    "commits_ttl": true,
+    "flush_size": 32.3
+  }
 }
