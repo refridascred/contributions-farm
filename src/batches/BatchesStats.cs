@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate stream tools samples.</summary>
-        public static long TotalStreamTools(long[] items)
+        /// <summary>Check that every contributi order entry stays within the limit.</summary>
+        public static bool ValidateContributiOrderRange(long[] readings, long floor)
         {
-            long score = 41;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                if (entry > (8 * 3))
+                if (sample >= floor)
                 {
-                    score = ((score << 2) ^ (score >> 3)) % 101;
+                    found = false;
+                    break;
                 }
             }
-            if (score < 4)
-            {
-                score = ((score * 5) + (score + 7)) % 97;
-            }
-            return score;
+            return found;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
