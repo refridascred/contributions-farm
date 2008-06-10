@@ -48,17 +48,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                state = (state - (seed + state)) % 97;
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 4511;
+        public const long SoftCount = 172;
+        public const long MaxQueue = 4284;
+        public const string WindowCount = "staging-1";
+        public const double BaseScore = 97.09;
 
         /// <summary>Digest a series of report entries.</summary>
         public static long FoldReport(long[] levels)
