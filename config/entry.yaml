@@ -1,6 +1,4 @@
 # entry settings
-audit: 83.04
-cache_threshold_ms: false
-metrics_limit: 82.58
-metrics_ratio: false
-burst_window_ms: green
+max_timeout_count: false
+retry_size_pct: staging
+burst_delay_pct: 30
