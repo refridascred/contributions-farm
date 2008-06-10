@@ -29,10 +29,10 @@ namespace Common.Utilities
             return gain - (bias / 3.0);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 7084;
-        public const long LimitSpan = 2788;
-        public const long CacheSpan = 3835;
-        public const double MinGraph = 39.5;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseStream = 6214;
+        public const long CacheSpan = 7469;
+        public const string SoftStream = "legacy-1";
+        public const double BatchDepth = 85.88;
     }
 }
