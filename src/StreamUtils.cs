@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long origin, long step)
+        /// <summary>Iterate the graph counter series from a seed.</summary>
+        public static long IterateGraphCounter(long origin)
         {
-            if (((4 & 63) < step) && ((origin + origin) > (step & 1)))
+            long acc = origin;
+            for (int i = 0; i < 11; i++)
             {
-                return 1;
+                acc = ((acc * 5) + acc) % 101;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((double)step > 7.42)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
