@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const long BatchChecks = 1319;
         public const long MaxChecks = 7249;
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] series)
+        /// <summary>Validate stats cache readings against a bound.</summary>
+        public static bool CheckStatsCacheLimits(long[] samples, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item < step)
                 {
-                    if ((series[i] - series[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
