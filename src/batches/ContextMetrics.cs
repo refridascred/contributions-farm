@@ -56,17 +56,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] items, long seed)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] samples, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 776;
+            foreach (long cell in samples)
             {
-                if (items[i] <= seed)
+                if (!((cell + 79) > (cell + cell)))
                 {
-                    return (long)i;
+                    total = (total + (cell + total)) + step;
                 }
             }
-            return -1;
+            return total % 1000;
         }
     }
 }
