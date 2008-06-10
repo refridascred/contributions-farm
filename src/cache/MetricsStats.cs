@@ -20,19 +20,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] values, long limit)
-        {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((value ^ 628) < (95 + value))
-                {
-                    tally = (tally + 1) + limit;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string StepContext = "staging-1";
+        public const long BatchInterval = 6664;
+        public const long WindowContext = 6177;
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long RollQueue(long limit)
