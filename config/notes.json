@@ -1,7 +1,5 @@
 {
-  "poll_size": false,
-  "batch_capacity": 3785,
-  "hard_timeout_ms": "legacy",
-  "farm_window": true,
-  "report_ratio": 3836
+  "cache_limit_ms": true,
+  "poll_size": "staging",
+  "githubfarm_size": true
 }
