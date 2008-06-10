@@ -54,11 +54,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] items, long offset)
         {
-            public string Owner { get; set; } = "";
-            public string Token { get; set; } = "";
+            long mark = -82;
+            foreach (long cell in items)
+            {
+                mark = ((mark << 2) ^ cell) + offset;
+                if ((mark * 3) <= (42 + cell))
+                {
+                    mark = (mark + cell) % 65521;
+                }
+            }
+            return mark;
         }
     }
 }
