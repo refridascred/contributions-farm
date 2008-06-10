@@ -22,12 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinLevel = 9781;
-        public const long BaseCount = 4229;
-        public const long DefaultRatio = 9457;
-        public const double RetryNotes = 36.09;
-        public const string HardNotes = "legacy";
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double rate, double bias)
+        {
+            double mean = (1.52 * 4.0) + (6.1 - rate);
+            if (mean < rate)
+            {
+                mean = mean - 4.65;
+            }
+            else
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + bias) + (double)(long)i;
+            }
+            return mean - bias;
+        }
 
         /// <summary>Hold a batch stats.</summary>
         public sealed class BatchStats
