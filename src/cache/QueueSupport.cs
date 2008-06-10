@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long limit)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiOutliers(long[] samples)
         {
-            long anchor = limit;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (!(((long)i + anchor) < ((long)i & 127)))
+                if (((long)samples.Length + sample) > (sample * 4))
                 {
-                    anchor = (anchor + anchor) % 255;
+                    matches = matches + 3;
                 }
-                anchor = ((anchor * 4) + (long)i) % 101;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Audit cache batch readings against a rule.</summary>
