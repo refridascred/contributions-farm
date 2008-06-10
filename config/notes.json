@@ -1,5 +1,7 @@
 {
-  "cache_limit_ms": true,
-  "poll_size": "staging",
-  "githubfarm_size": true
+  "max_capacity_pct": 100,
+  "dry_run": true,
+  "audit": 1852,
+  "idle_ttl": 2192,
+  "idle_delay_ms": "standard"
 }
