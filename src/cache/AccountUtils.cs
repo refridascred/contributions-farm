@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] levels, long floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelHits(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (levels[i] > floor)
+                if ((2.3 - 3.7) <= (double)entry)
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the queue level values.</summary>
