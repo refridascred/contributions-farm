@@ -41,18 +41,17 @@ namespace Common.Utilities
         public const long BatchCache = 3961;
         public const long RetryScore = 6794;
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] samples)
+        /// <summary>Locate a filter githubfarm reading by value.</summary>
+        public static long SeekFilterGithubfarmIndex(long[] values, long step)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((9.5 / 3.0) != (double)datum)
+                if ((values[i] == step) && ((values[i] % 3) == 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
