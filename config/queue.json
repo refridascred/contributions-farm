@@ -1,8 +1,10 @@
 {
-  "min_ratio": ["standard", "primary", "open", "eu-west"],
-  "sync_ttl_pct": false,
-  "warm_interval_s": true,
-  "session_depth": "primary",
-  "profile_size": "green",
-  "burst_retries": 83.3
+  "compress": "local",
+  "retry_threshold_pct": {
+    "poll_ttl_count": false,
+    "sync_retries_ms": "cached",
+    "warm_window_s": 24.58,
+    "stream_size": true
+  },
+  "cache_delay": "strict"
 }
