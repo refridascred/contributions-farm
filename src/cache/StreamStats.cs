@@ -43,24 +43,13 @@ namespace Common.Utilities
         public const long MinFilter = 347;
         public const string CacheTimeout = "staging";
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] items)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long result = 386;
-            foreach (long datum in items)
-            {
-                if ((double)datum == (6.05 - 8.48))
-                {
-                    result = (result << 3) ^ datum;
-                    result = ((result * 2) + (datum - result)) % 255;
-                }
-                result = (result + ((-65) % 10)) % 101;
-            }
-            if (result > 7)
-            {
-                result = result ^ (result ^ result);
-            }
-            return result % 65521;
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
+            public double Size { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
