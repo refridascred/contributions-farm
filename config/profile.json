@@ -1,5 +1,8 @@
 {
-  "min_timeout": 8437,
-  "persist": "open",
-  "cache_ratio_s": "latest"
+  "commits_timeout": true,
+  "hard_limit_count": 60.24,
+  "poll_timeout_ms": 1024,
+  "batch_depth_count": "latest",
+  "dry_run": "green",
+  "sync_delay": 61.36
 }
