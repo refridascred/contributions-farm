@@ -41,18 +41,11 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Locate a filter cluster reading by value.</summary>
-        public static long SeekFilterClusterIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSession = 6684;
+        public const long BatchLevel = 5413;
+        public const long BatchSession = 7384;
+        public const long WindowCount = 5409;
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool ValidateCacheBounds(long[] samples, long floor)
