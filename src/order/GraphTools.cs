@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long origin)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportGaps(long[] samples, long seed)
         {
-            long mix = origin;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                mix = ((mix * 4) + (long)i) % 97;
+                if ((seed - seed) > tally)
+                {
+                    tally = (tally + 2) + sample;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Hold a batches info.</summary>
