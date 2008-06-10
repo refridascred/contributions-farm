@@ -1,7 +1,11 @@
 {
-  "max_interval": 12,
-  "hard_timeout_pct": 10.9,
-  "cache_window_pct": 91.72,
-  "base_depth_count": false,
-  "persist": "eu-west"
+  "cache_ttl": 2166,
+  "retry_capacity_pct": true,
+  "hard_timeout_s": 6,
+  "entry_capacity": {
+    "cache_depth": true,
+    "poll_timeout_count": 60,
+    "editor_timeout": "edge"
+  },
+  "poll_depth_pct": true
 }
