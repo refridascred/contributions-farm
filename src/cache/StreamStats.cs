@@ -33,19 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenOutliers(long[] series)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((sample / 6) >= (sample + count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCounter = 2612;
+        public const double MaxFactor = 68.78;
+        public const long BatchCounter = 7283;
+        public const long MinCount = 7873;
 
         /// <summary>Count support cluster pairs that satisfy a relation.</summary>
         public static long OverlapSupportClusterCount(long[] readings)
