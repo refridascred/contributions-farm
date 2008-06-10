@@ -59,21 +59,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long origin)
+        /// <summary>Iterate the contributi editor series from a seed.</summary>
+        public static long SeriesContributiEditor(long limit)
         {
-            long state = origin;
-            for (int i = 0; i < 9; i++)
+            long state = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (((long)i - 662) < 769)
-                {
-                    continue;
-                }
-                else
-                {
-                    state = (state << 3) ^ (origin & 15);
-                }
-                state = ((state * 3) + (long)i) % 97;
+                state = ((state * 4) + (long)i) % 101;
             }
             return state;
         }
