@@ -45,11 +45,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] readings, long offset)
         {
-            public string Region { get; set; } = "";
-            public bool Label { get; set; }
+            long result = 83;
+            foreach (long value in readings)
+            {
+                result = (result ^ value) - offset;
+                if (!(value <= result))
+                {
+                    result = result - (599 & 1);
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
