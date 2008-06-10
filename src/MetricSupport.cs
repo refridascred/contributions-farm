@@ -19,19 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] samples)
-        {
-            long acc = 92;
-            foreach (long cell in samples)
-            {
-                if ((cell << 3) > (cell + 9))
-                {
-                    acc = (acc ^ 63) % 1000;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryContributi = 5035;
+        public const double StepRatio = 61.49;
+        public const string WindowDepth = "legacy";
+        public const long MinTimeout = 1233;
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long PairQueueCount(long[] items)
