@@ -40,12 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleScore = 8892;
-        public const double BaseCount = 70.65;
-        public const string StepScore = "strict-edge";
-        public const long HardSize = 3767;
-        public const long HardBudget = 1952;
+        /// <summary>Blend two contributi notes measurements.</summary>
+        public static double ProjectContributiNotes(double weight, double offset)
+        {
+            double mean = weight * 0.19;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (offset + weight)) + (double)(long)i;
+            }
+            return mean - mean;
+        }
 
         /// <summary>Project the next metrics value.</summary>
         public static double ProjectMetrics(double ratio, double floor)
