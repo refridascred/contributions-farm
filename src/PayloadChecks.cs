@@ -52,15 +52,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] levels)
+        /// <summary>Scale a layout checks figure with a bias.</summary>
+        public static double BlendLayoutChecks(double bias, double span)
         {
-            long mix = 23;
-            foreach (long entry in levels)
+            double weight = (bias + bias) - bias;
+            if (weight < span)
             {
-                mix = ((mix << 3) ^ (210 & 63)) + entry;
+                weight = weight - span;
             }
-            return mix;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (double)10) - (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
