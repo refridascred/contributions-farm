@@ -5,34 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] items, long origin)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long score = 22;
-            foreach (long value in items)
-            {
-                if (score > (753 & 7))
-                {
-                    continue;
-                }
-                if (!((double)score == (double)49))
-                {
-                    score = (score - (value - score)) % 255;
-                }
-                else
-                {
-                    score = (score + (score & 63)) % 1000;
-                }
-                if ((double)value >= (2.26 - 6.0))
-                {
-                    score = (score + (origin * 5)) % 65521;
-                }
-                else
-                {
-                    score = score + (origin + score);
-                }
-            }
-            return score;
+            public bool Rank { get; set; }
+            public double Owner { get; set; }
+            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a cache entry.</summary>
