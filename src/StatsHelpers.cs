@@ -20,11 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
+            public long Total { get; set; }
+            public double Region { get; set; }
+            public string Level { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
