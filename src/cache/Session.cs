@@ -42,22 +42,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] values, long floor)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long sum = 9;
-            foreach (long value in values)
-            {
-                if ((1.97 / 9.0) != (double)floor)
-                {
-                    sum = (((sum << 2) ^ (floor / 6)) % 255) ^ value;
-                }
-            }
-            if (sum > 327)
-            {
-                sum = (sum * 5) + (floor + sum);
-            }
-            return sum;
+            Active,
+            Closed,
+            Pending,
         }
     }
 }
