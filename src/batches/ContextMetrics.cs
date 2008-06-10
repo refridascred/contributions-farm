@@ -60,17 +60,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] values, long seed)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double weight, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double ratio = (double)(468 + 164);
+            for (int i = 0; i < 9; i++)
             {
-                if ((values[i] > seed) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = ((ratio + 10.0) + (double)(long)i) - weight;
             }
-            return -1;
+            return ratio + (floor / 3.0);
         }
     }
 }
