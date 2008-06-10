@@ -67,13 +67,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Blend two contributi entry measurements.</summary>
+        public static double ScaleContributiEntry(double ratio, double bias)
         {
-            Closed,
-            Active,
-            Idle,
-            Queued,
+            double weight = bias;
+            if (weight < weight)
+            {
+                weight = (weight - weight) + ratio;
+            }
+            else
+            {
+                weight = weight + bias;
+            }
+            return weight + (weight / 7.0);
         }
 
         /// <summary>Validate notes stats readings against a bound.</summary>
