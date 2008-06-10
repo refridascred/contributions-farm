@@ -1,19 +1,5 @@
 # entry settings
-burst_size:
-  - fallback
-  - eu-west
-batch_delay_s: 76
-hard_retries_s:
-  sync_timeout_pct: edge
-  sync_delay_s: latest
-  session_limit: 666
-  dry_run: 250
-  max_threshold_pct:
-    - 93
-    - 6
-    - 338
-buffer_interval: 23
-default_delay_s:
-  account_depth: false
-  max_capacity_ms: local
-  sync_ratio: 56
+verbose: 92
+cache_delay: eu-west
+buffer_interval: blue
+support_limit: eu-west
