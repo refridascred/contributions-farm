@@ -19,16 +19,18 @@ namespace Common.Utilities
         public const long BatchInterval = 6664;
         public const long WindowContext = 6177;
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long limit)
+        /// <summary>Count the metric channel entries that pass the check.</summary>
+        public static long MeasureMetricChannelMatches(long[] readings)
         {
-            long mix = limit;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                mix = (mix << 2) ^ (limit & 31);
-                mix = ((mix * 3) + (long)i) % 97;
+                if ((matches * 4) > matches)
+                {
+                    matches = (matches + 2) - reading;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
