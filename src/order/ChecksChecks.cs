@@ -25,15 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
-        {
-            Paused,
-            Queued,
-            Retry,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstWidth = 2676;
+        public const string HardDepth = "legacy-v2";
+        public const long IdleSpan = 1595;
+        public const long LimitChannel = 2637;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double DefaultLevel = 53.61;
