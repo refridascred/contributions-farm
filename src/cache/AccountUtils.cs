@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionHits(long[] readings, long offset)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((offset / 3) <= cell))
+                if (levels[i] > floor)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the queue level values.</summary>
