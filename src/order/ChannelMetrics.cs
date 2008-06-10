@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] data, long origin)
-        {
-            long acc = 925;
-            foreach (long reading in data)
-            {
-                if ((origin <= (reading - reading)) && ((reading - 3) >= origin))
-                {
-                    acc = (acc ^ origin) % 4096;
-                }
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string SoftCommand = "legacy";
+        public const long HardCommand = 5715;
+        public const long CacheDepth = 6513;
 
         /// <summary>Adjust a githubfarm reading.</summary>
         public static double BlendGithubfarm(double rate, double floor)
