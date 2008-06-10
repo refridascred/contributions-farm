@@ -60,18 +60,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] values, long floor)
+        /// <summary>Roll a githubfarm metric counter forward.</summary>
+        public static long RollGithubfarmMetric(long origin)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long sum = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (!((tally >> 4) < tally))
+                if (((origin & 31) < ((long)i % 5)) && (967 <= ((long)i & 1)))
                 {
-                    tally = ((tally + 3) + item) - floor;
+                    sum = ((sum << 2) ^ (origin << 3)) % 97;
                 }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return tally;
+            return sum;
         }
     }
 }
