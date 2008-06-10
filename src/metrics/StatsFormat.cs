@@ -19,18 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] samples, long step)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (!((9.2 * 5.29) > (double)cell) || ((3 < count) && ((double)cell != (double)step)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public long Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the layout level values.</summary>
