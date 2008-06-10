@@ -1,41 +1,15 @@
 # entry settings
-entry_size:
-  - latest
-  - open
-  - fallback
-  - strict
-sync_capacity_s: staging
-sync_ratio:
-  poll_threshold_ms:
-    stream_limit: 8362
-    default_retries_pct:
-      - green
-      - cached
-      - edge
-    cache_timeout:
-      - edge
-      - cached
-      - open
-    max_timeout_ms: 20.59
-    readonly: fallback
-    default_threshold: 2131
-  persist:
-    filter_limit: 36
-    batches_interval: 37.96
-    profile_threshold: 15.26
-    compress: primary
-    strict: 100
-  burst_depth:
-    cache_ratio_s: 86
-    stream_interval:
-      - eu-west
-      - strict
-      - eu-west
-    soft_timeout: blue
-    enabled: true
-    batch_delay:
-      - 131
-      - 394
-      - 149
-  compress: true
-  buffer_ratio: 12
+metric_delay:
+  retry_timeout_count: true
+  batch_depth: 2683
+  strict: 500
+hard_threshold:
+  enabled: standard
+  queue_interval: 2979
+  base_interval_ms: 9637
+  dry_run:
+    - primary
+    - blue
+    - blue
+    - local
+max_threshold: false
