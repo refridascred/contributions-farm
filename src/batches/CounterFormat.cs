@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] readings)
+        /// <summary>Count queue token pairs that satisfy a relation.</summary>
+        public static long OverlapQueueTokenCount(long[] levels)
         {
-            long anchor = -61;
-            foreach (long value in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (anchor >= (anchor ^ anchor))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = anchor + (anchor - anchor);
-                }
-                else
-                {
-                    anchor = (anchor ^ value) % 97;
+                    if ((levels[i] - levels[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (anchor > 6)
-            {
-                anchor = ((anchor * 4) + (anchor - 36)) % 101;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Define token limits and defaults.</summary>
