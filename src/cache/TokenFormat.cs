@@ -25,39 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long offset, long bound)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmBounds(long[] values, long origin)
         {
-            long diff = offset + bound;
-            if ((double)diff != (11.0 + 7.0))
+            bool flag = true;
+            foreach (long value in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((498 + 7) < (diff / 9))
+                if (value >= origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)diff != (6.0 - 0.1)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)offset == (double)bound) || (17 > (diff ^ diff)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
