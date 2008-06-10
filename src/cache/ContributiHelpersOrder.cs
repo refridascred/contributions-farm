@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double LimitSize = 25.17;
-        public const long BurstRatio = 9036;
-        public const long MaxCount = 2232;
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
+        {
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public string Region { get; set; } = "";
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
         public static long SortQueue(long seed, long step)
