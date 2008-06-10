@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string SoftCounter = "latest";
-        public const long MaxCounter = 5868;
-        public const double MinCounter = 80.53;
-        public const long StepBudget = 7761;
+        /// <summary>Grade a contributi account value against two limits.</summary>
+        public static long BucketContributiAccount(long step, long floor)
+        {
+            long diff = step ^ floor;
+            if (((step + step) != (519 + step)) && ((double)step == (6.3 + 1.0)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((9.0 + 13.0) >= (double)diff)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
