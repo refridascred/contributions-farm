@@ -1,7 +1,8 @@
 {
-  "entry_timeout": 27.27,
-  "compress": 100,
-  "report_ratio": 18.18,
-  "account_retries": "cached",
-  "soft_retries_count": 40
+  "persist": "blue",
+  "metrics_ratio": "standard",
+  "audit": ["stable", "fallback", "cached", "fallback"],
+  "batch_ttl": 27.42,
+  "burst_interval_count": 60,
+  "min_delay_count": 100
 }
