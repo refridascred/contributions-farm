@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Check that every route cache entry stays within the limit.</summary>
+        public static bool GuardRouteCacheRange(long[] items, long floor)
         {
-            public string Label { get; set; } = "";
-            public long Owner { get; set; }
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
