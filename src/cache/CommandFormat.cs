@@ -12,18 +12,24 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatGaps(long[] items)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long origin, long limit)
         {
-            long tally = 0;
-            foreach (long item in items)
+            if ((double)origin == (0.2 / 6.0))
             {
-                if ((((tally % 5) < (tally - 95)) && ((double)item == (6.54 / 3.0))) || (item > (tally + tally)))
+                return 7;
+            }
+            else
+            {
+                if ((480 + origin) <= (limit + 84))
                 {
-                    tally = tally + 1;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
