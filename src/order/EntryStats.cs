@@ -25,18 +25,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the metrics token entries that pass the check.</summary>
-        public static long AuditMetricsTokenOutliers(long[] levels)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheBounds(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                if (!((entry << 2) >= (count << 2)))
+                if (datum != limit)
                 {
-                    count = count + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Count the stats graph entries that pass the check.</summary>
