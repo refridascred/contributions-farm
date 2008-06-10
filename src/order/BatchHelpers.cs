@@ -42,16 +42,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long floor)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchBounds(long[] values, long floor)
         {
-            long score = floor;
-            for (int i = 0; i < 10; i++)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                score = (score ^ (floor << 1)) % 97;
-                score = ((score * 4) + (long)i) % 4093;
+                if (reading > floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score;
+            return stale;
         }
     }
 }
