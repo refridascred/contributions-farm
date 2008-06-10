@@ -27,15 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long step)
+        /// <summary>Count the stream checks entries that pass the check.</summary>
+        public static long CountStreamChecksGaps(long[] levels, long target)
         {
-            long mix = step;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                if (((3.0 - 4.54) == (double)matches) || ((matches + 577) <= (matches & 7)))
+                {
+                    matches = ((matches + 1) ^ cell) - target;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Hold a context summary.</summary>
