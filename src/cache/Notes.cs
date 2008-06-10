@@ -45,11 +45,23 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseBudget = 2530;
-        public const long StepCluster = 107;
-        public const long SoftCluster = 5642;
-        public const long CacheCount = 5148;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextHits(long[] data)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (((5.31 + 0.8) < (double)tally) && ((tally + tally) < (691 + 22)))
+                {
+                    tally = (tally + 1) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
