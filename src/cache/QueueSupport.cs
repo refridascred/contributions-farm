@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] levels)
         {
-            public bool Size { get; set; }
-            public long Ratio { get; set; }
+            long acc = 3;
+            foreach (long entry in levels)
+            {
+                acc = (acc + entry) % 101;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Describe the tools status values.</summary>
