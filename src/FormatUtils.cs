@@ -62,11 +62,25 @@ namespace Common.Utilities
             return ((scale + (scale * 7.0)) + gain) + bias;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double gain, double bias)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long offset, long floor)
         {
-            double ratio = bias;
-            return (ratio + (double)243) + gain;
+            long cur = offset + floor;
+            if (cur < (312 << 1))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((6.22 / 7.0) != (double)offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
