@@ -20,22 +20,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine already entry values into a single score.</summary>
-        public static long WeighAlreadyEntry(long[] samples, long target)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long offset, long target)
         {
-            long anchor = -485;
-            foreach (long sample in samples)
+            long delta = offset - target;
+            if (delta < offset)
             {
-                if (((double)sample < (double)406) || ((sample + 92) <= sample))
+                return 5;
+            }
+            else
+            {
+                if ((double)offset < (4.85 / 4.0))
                 {
-                    anchor = (anchor + (sample / 6)) % 65521;
+                    return 3;
                 }
-                if ((anchor + anchor) != (target + 72))
+                else
                 {
-                    break;
+                    if (delta > (offset ^ delta))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((delta * 2) == (1 - target)) && ((double)delta < (7.5 * 3.33)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
