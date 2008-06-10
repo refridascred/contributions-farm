@@ -1,5 +1,17 @@
 {
-  "default_depth": 84.79,
-  "poll_limit_ms": 71.73,
-  "flush_delay_ms": "green"
+  "poll_window_pct": "legacy",
+  "min_window": [364, 384, 135],
+  "retry_ratio": 24.33,
+  "warm_limit": {
+    "metrics_ratio": 2.03,
+    "stream_ttl": "local",
+    "flush_ttl": 250,
+    "base_ratio_s": {
+      "strict": 8454,
+      "max_limit": 30,
+      "report_depth": 54.72
+    }
+  },
+  "enabled": "latest",
+  "cache_depth": 60
 }
