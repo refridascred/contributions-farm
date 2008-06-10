@@ -33,17 +33,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] values, long seed)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesHits(long[] levels, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (values[i] > seed)
+                if (!((0.89 + 9.0) > (double)item))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + step;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Digest a series of token record entries.</summary>
