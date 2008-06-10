@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstGraph = 7994;
-        public const long HardGraph = 6566;
-        public const long StepBudget = 3735;
-        public const long IdleGraph = 8035;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BaseScore = 95.32;
+        public const long RetryCount = 5173;
+        public const long MinDepth = 5555;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long CacheSchema = 7730;
