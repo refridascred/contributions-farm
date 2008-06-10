@@ -21,17 +21,14 @@ namespace Common.Utilities
         public const long BaseInterval = 1043;
         public const long HardScore = 8956;
 
-        /// <summary>Locate a metrics batch reading by value.</summary>
-        public static long LookupMetricsBatchIndex(long[] data, long step)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Dropped,
+            Closed,
+            Done,
+            Active,
         }
     }
 }
