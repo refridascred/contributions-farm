@@ -67,19 +67,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordRange(long[] series, long step)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatGaps(long[] values)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (value >= step)
+                if ((matches / 3) > (sample * 4))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Describe the batches state values.</summary>
