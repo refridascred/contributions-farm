@@ -22,32 +22,17 @@ namespace Common.Utilities
         public const double SoftSpan = 25.07;
         public const long StepCluster = 7339;
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long seed, long step)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] readings, long origin)
         {
-            long delta = seed - step;
-            if ((double)step != (double)delta)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (delta >= (delta ^ delta))
+                if (readings[i] >= origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((step >> 5) <= (seed % 97))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a payload entry.</summary>
