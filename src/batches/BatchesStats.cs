@@ -43,19 +43,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportBounds(long[] data, long origin)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueRange(long[] levels, long floor)
         {
-            bool found = true;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if (reading > origin)
+                if (datum > floor)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Describe the channel mode values.</summary>
