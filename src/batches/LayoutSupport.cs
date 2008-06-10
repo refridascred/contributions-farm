@@ -71,19 +71,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksBounds(long[] samples, long floor)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] values, long floor)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if (reading <= floor)
+                if (datum > floor)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
     }
 }
