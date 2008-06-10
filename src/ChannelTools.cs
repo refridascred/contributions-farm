@@ -27,18 +27,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksOutliers(long[] items, long floor)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((double)sample != (double)357)
-                {
-                    seen = (seen + 2) - floor;
-                }
-            }
-            return seen;
+            public bool Token { get; set; }
+            public double Total { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
