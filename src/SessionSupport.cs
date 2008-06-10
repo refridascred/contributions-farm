@@ -14,21 +14,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Match up schema metrics samples.</summary>
-        public static long MatchSchemaMetricsCount(long[] series)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmBounds(long[] series, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (sample != seed)
                 {
-                    if ((series[i] + series[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Hold a report header.</summary>
