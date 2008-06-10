@@ -50,18 +50,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Measure how many format account samples are out of range.</summary>
-        public static long AuditFormatAccountOutliers(long[] data, long bound)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long anchor = -499;
+            foreach (long value in values)
             {
-                if (((9.15 + 4.23) < (double)matches) || (((double)item <= 15.0) && ((double)item >= (1.96 + 3.0))))
+                for (int i = 0; i < 6; i++)
                 {
-                    matches = (matches + 3) - bound;
+                    anchor = ((anchor ^ (value - 3)) % 97) ^ (long)i;
                 }
+                anchor = ((anchor * 2) + (origin >> 1)) % 97;
             }
-            return matches;
+            return anchor;
         }
     }
 }
