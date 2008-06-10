@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a session account value against two limits.</summary>
-        public static long ClassifySessionAccount(long origin, long bound)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] data)
         {
-            long diff = origin ^ bound;
-            if (((diff * 2) >= (diff + diff)) && ((9.7 + 0.74) < (double)origin))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin - diff) != (5 + bound))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)diff >= 6.43) || ((74 >> 4) == (bound % 3)))
+                    if ((data[i] + data[j]) < 1)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (bound < (88 % 12))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Blend two contributi notes measurements.</summary>
