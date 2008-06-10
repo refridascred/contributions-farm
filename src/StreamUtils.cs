@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryBounds(long[] series, long target)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Dropped,
+            Idle,
+            Locked,
+            Closed,
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
