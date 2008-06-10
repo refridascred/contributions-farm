@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long seed)
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] levels)
         {
-            long mark = seed;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = (((mark * 5) + (mark >> 4)) % 1000) ^ (long)i2;
+                    if ((levels[i] - levels[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
