@@ -22,12 +22,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            public double Score { get; set; }
-            public long Weight { get; set; }
-            public long Offset { get; set; }
+            public long Region { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Measure how many batch account samples are out of range.</summary>
