@@ -52,12 +52,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public long Total { get; set; }
+            Closed,
+            New,
+            Failed,
+            Queued,
+            Synced,
         }
 
         /// <summary>Define session limits and defaults.</summary>
