@@ -14,16 +14,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long offset)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] values, long step)
         {
-            long mark = offset;
-            for (int i = 0; i < 9; i++)
+            long sum = 647;
+            foreach (long datum in values)
             {
-                mark = ((mark << 2) ^ mark) % 4096;
-                mark = ((mark * 2) + (long)i) % 101;
+                if (!((double)sum > (17.0 + 18.0)))
+                {
+                    sum = ((sum << 3) ^ (datum / 6)) % 101;
+                }
             }
-            return mark;
+            if (sum > 861)
+            {
+                sum = ((sum << 3) ^ ((long)values.Length ^ step)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
