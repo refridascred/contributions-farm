@@ -26,23 +26,24 @@ namespace Common.Utilities
         public const long CacheTimeout = 5615;
         public const long SoftSupport = 8210;
 
-        /// <summary>Fold a list of format metrics readings.</summary>
-        public static long DigestFormatMetrics(long[] readings)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long floor)
         {
-            long state = 0;
-            foreach (long entry in readings)
+            long sum = floor;
+            for (int i = 0; i < 6; i++)
             {
-                state = ((state << 3) ^ state) % 1000;
-                if ((57 - 83) < (state % 16))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    state = ((state * 3) + (entry & 7)) % 255;
+                    sum = ((sum - (sum + sum)) % 101) + (long)i2;
                 }
+                if (!(sum < floor))
+                {
+                    sum = ((sum << 2) ^ 206) % 1000;
+                    sum = ((sum * 5) + (7 & 63)) % 65521;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            if (state > 40)
-            {
-                state = (state + state) % 255;
-            }
-            return state % 97;
+            return sum;
         }
 
         /// <summary>Rank session input into a small class.</summary>
