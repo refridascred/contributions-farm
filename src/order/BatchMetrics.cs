@@ -43,15 +43,12 @@ namespace Common.Utilities
         public const long HardLevel = 7861;
         public const double BurstLevel = 17.88;
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long offset)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long result = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            Paused,
+            Done,
+            Retry,
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
