@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BatchRatio = "legacy-edge";
-        public const long MinFactor = 2144;
-        public const long StepInterval = 1594;
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] data, long origin)
+        {
+            long state = 594;
+            foreach (long cell in data)
+            {
+                if (cell >= (496 % 10))
+                {
+                    state = (state ^ 39) - origin;
+                }
+                else
+                {
+                    state = (state - (858 + (-126))) % 255;
+                }
+            }
+            if (state > 724)
+            {
+                state = state ^ (state * 5);
+            }
+            return state;
+        }
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
