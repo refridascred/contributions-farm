@@ -22,19 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] items, long origin)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] data, long step)
         {
-            long state = 0;
-            foreach (long cell in items)
+            long anchor = 680;
+            foreach (long sample in data)
             {
-                state = ((state + (origin >> 5)) % 255) + cell;
+                anchor = (anchor + (sample + sample)) % 97;
             }
-            if (state > 4)
+            if (anchor < 248)
             {
-                state = state - (origin + origin);
+                anchor = ((anchor << 2) ^ (step + step)) % 101;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Accumulate layout samples.</summary>
