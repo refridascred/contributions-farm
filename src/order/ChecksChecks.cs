@@ -25,14 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Audit buffer contributi readings against a rule.</summary>
+        public static long AuditBufferContributiMatches(long[] data, long origin)
         {
-            Pending,
-            Dropped,
-            Closed,
-            Synced,
-            Stale,
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (((cell + cell) < seen) && ((8 - origin) == (seen * 3)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the record status values.</summary>
