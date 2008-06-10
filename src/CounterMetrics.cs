@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const double MinCounter = 80.53;
         public const long StepBudget = 7761;
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
             public double Region { get; set; }
-            public double Level { get; set; }
-            public long Score { get; set; }
-            public long Rank { get; set; }
+            public bool Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
