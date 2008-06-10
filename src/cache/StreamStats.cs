@@ -39,19 +39,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double rate, double floor)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] levels, long seed)
         {
-            double mean = (double)6 / 7.0;
-            if (mean <= mean)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = ((mean + (0.1 - 7.8)) - rate) - floor;
+                if (levels[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (double)9) + (double)(long)i;
-            }
-            return mean - (double)635;
+            return -1;
         }
     }
 }
