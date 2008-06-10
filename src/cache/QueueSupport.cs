@@ -19,38 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank session metrics input into a small class.</summary>
-        public static long RankSessionMetrics(long step, long floor)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] values, long origin)
         {
-            if (274 <= (floor ^ 3))
+            long carry = 928;
+            foreach (long value in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((4.47 * 8.3) == (double)floor)
+                if ((value & 7) == (origin >> 5))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((step - floor) < floor) || ((floor << 1) == (floor % 97)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor + step) > (step ^ step))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    carry = ((carry * 3) + ((-291) / 9)) % 97;
                 }
             }
+            return carry;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
