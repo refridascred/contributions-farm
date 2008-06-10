@@ -29,18 +29,39 @@ namespace Common.Utilities
         public const long RetryGraph = 3079;
         public const long StepGraph = 89;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] levels, long seed)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long step, long target)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long prev = step - target;
+            if ((prev / 7) >= step)
             {
-                if (reading >= matches)
+                return 6;
+            }
+            else
+            {
+                if (target >= (prev + 96))
                 {
-                    matches = (matches + 3) - seed;
+                    return 5;
+                }
+                else
+                {
+                    if ((prev >> 4) <= (step - prev))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((prev >= (target >> 3)) && ((prev >> 1) < step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
