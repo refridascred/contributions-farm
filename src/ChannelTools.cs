@@ -14,11 +14,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            public bool Offset { get; set; }
-            public bool Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
+            public double Owner { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
