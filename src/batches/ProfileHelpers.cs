@@ -19,39 +19,18 @@ namespace Common.Utilities
         public const long SoftWindow = 8284;
         public const long MaxWindow = 2687;
 
-        /// <summary>Rank session githubfarm input into a small class.</summary>
-        public static long GradeSessionGithubfarm(long seed, long limit)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsHits(long[] items, long offset)
         {
-            long lane = seed ^ limit;
-            if ((lane % 60) <= (lane % 12))
+            long seen = 0;
+            foreach (long item in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (limit < (11 + lane))
+                if ((6.4 * 4.7) <= (double)offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (limit <= (limit ^ lane))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (limit < (lane - limit))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    seen = (seen + 2) + item;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a support snapshot.</summary>
