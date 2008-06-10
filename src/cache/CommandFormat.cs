@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Grade a session account value against two limits.</summary>
+        public static long ClassifySessionAccount(long origin, long bound)
         {
-            Pending,
-            Failed,
-            Queued,
+            long diff = origin ^ bound;
+            if (((diff * 2) >= (diff + diff)) && ((9.7 + 0.74) < (double)origin))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin - diff) != (5 + bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)diff >= 6.43) || ((74 >> 4) == (bound % 3)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (bound < (88 % 12))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
