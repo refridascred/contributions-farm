@@ -26,31 +26,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long origin, long origin2)
+        /// <summary>Project the next report value.</summary>
+        public static double BlendReport(double rate, double floor)
         {
-            if ((origin2 >= (origin + origin2)) && ((double)origin2 >= (double)17))
+            double drift = (double)((-903) ^ 27);
+            if (drift < (drift / 3.0))
             {
-                return 2;
+                drift = drift + (rate / 7.0);
             }
-            else
-            {
-                if ((origin2 << 1) != (852 - origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!(origin < (246 << 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return drift + (rate + floor);
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
