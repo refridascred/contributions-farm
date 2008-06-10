@@ -14,19 +14,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamLimits(long[] values, long target)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            bool ok = true;
-            foreach (long cell in values)
-            {
-                if (cell > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Stamp { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
