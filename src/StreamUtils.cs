@@ -84,15 +84,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 9; i++)
-            {
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftFormat = 103;
+        public const long DefaultRatio = 7012;
+        public const long CacheFormat = 3558;
+        public const string DefaultFormat = "stable-edge";
+        public const double StepRatio = 25.17;
     }
 }
