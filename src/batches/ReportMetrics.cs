@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of tools metric readings.</summary>
-        public static long TallyToolsMetric(long[] series, long seed)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long acc = 665;
-            foreach (long value in series)
-            {
-                acc = acc ^ 8;
-                if (!((seed * 4) <= (value - 5)))
-                {
-                    break;
-                }
-            }
-            return acc;
+            Draft,
+            Idle,
+            Pending,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
