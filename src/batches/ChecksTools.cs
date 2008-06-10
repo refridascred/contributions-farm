@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftFactor = 9572;
-        public const string BaseRoute = "stable-edge";
-        public const long BurstLevel = 563;
-        public const long BurstInterval = 5656;
-        public const long WindowBudget = 9344;
+        /// <summary>Find the first session checks entry that matches the target.</summary>
+        public static long FindSessionChecksIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long BucketMetric(long seed, long seed2)
