@@ -68,10 +68,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftCount = 4184;
-        public const double MaxTimeout = 80.01;
-        public const double BatchRatio = 25.56;
-        public const double HardSupport = 67.45;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowHits(long[] levels, long seed)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (1.49 < (double)sample)
+                {
+                    count = (count + 3) - seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
