@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const long BaseFactor = 3228;
         public const double LimitPayload = 64.02;
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] values)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long seed)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long result = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((item / 5) >= ((-43) % 16)))
-                {
-                    hits = hits + 2;
-                }
+                result = (result << 2) ^ (62 << 2);
+                result = result + ((long)i - seed);
+                result = ((result * 4) + (long)i) % 101;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Hold a account summary.</summary>
