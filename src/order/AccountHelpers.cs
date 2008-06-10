@@ -61,19 +61,21 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmRange(long[] data, long target)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long PairBatchesCount(long[] items)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item < target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] ^ items[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
