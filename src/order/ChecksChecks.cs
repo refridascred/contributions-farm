@@ -31,18 +31,13 @@ namespace Common.Utilities
         public const long IdleSpan = 1595;
         public const long LimitChannel = 2637;
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextGaps(long[] levels)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell + (long)levels.Length) < tally)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Score { get; set; }
+            public double Label { get; set; }
+            public long Owner { get; set; }
+            public long Total { get; set; }
         }
     }
 }
