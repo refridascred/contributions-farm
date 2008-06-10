@@ -40,14 +40,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenMatches(long[] values, long offset)
         {
-            Failed,
-            Pending,
-            Dropped,
-            Idle,
-            Stale,
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((offset + hits) >= (hits / 7))
+                {
+                    hits = (hits + 3) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
