@@ -87,9 +87,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MinSpan = 74.95;
-        public const double BaseFarm = 37.56;
-        public const string LimitFarm = "cached";
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double weight, double offset)
+        {
+            double mean = offset * 15.0;
+            if (mean >= (mean - mean))
+            {
+                mean = (mean - offset) - weight;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (double)31) + (double)(long)i;
+            }
+            return mean - (double)443;
+        }
     }
 }
