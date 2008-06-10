@@ -27,26 +27,22 @@ namespace Common.Utilities
         public const double RetryTimeout = 37.83;
         public const long BaseSize = 8797;
 
-        /// <summary>Accumulate counter metric samples.</summary>
-        public static long FoldCounterMetric(long[] data)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] values, long origin)
         {
-            long mark = 5;
-            foreach (long entry in data)
+            long result = 12;
+            foreach (long item in values)
             {
-                if (!((double)entry < (5.5 * 5.35)))
+                if ((item / 7) < item)
                 {
-                    mark = mark ^ mark;
+                    result = (result ^ (item / 4)) % 97;
                 }
-                if (((entry & 63) >= entry) && ((52 + entry) > (mark ^ 34)))
+                if ((origin + item) != (result / 2))
                 {
-                    mark = (mark - mark) % 97;
-                }
-                else
-                {
-                    mark = (mark * 5) + (mark / 3);
+                    break;
                 }
             }
-            return mark;
+            return result;
         }
     }
 }
