@@ -29,27 +29,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] samples, long step)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long state = 4;
-            foreach (long cell in samples)
-            {
-                if (((2.0 - 13.0) != (double)state) && ((992 + state) == (step / 9)))
-                {
-                    state = (state - (62 << 1)) % 4096;
-                    state = (state - (state << 2)) % 101;
-                }
-                if ((cell ^ 99) < cell)
-                {
-                    state = ((state * 2) + step) % 4096;
-                }
-                if (((double)state < (7.0 - 3.75)) || ((double)step > (double)(long)samples.Length))
-                {
-                    break;
-                }
-            }
-            return state;
+            Failed,
+            Retry,
+            Locked,
+            New,
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
