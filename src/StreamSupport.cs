@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] samples, long limit)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] items, long step)
         {
-            long acc = 324;
-            foreach (long entry in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((entry & 1) == (limit << 2)))
+                if (items[i] >= step)
                 {
-                    acc = (acc ^ 0) % 4096;
+                    return (long)i;
                 }
             }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
