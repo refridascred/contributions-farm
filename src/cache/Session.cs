@@ -57,39 +57,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long target, long offset)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] values, long floor)
         {
-            long span = target + offset;
-            if (((offset >> 5) != (offset + 547)) || ((offset << 3) > (target % 24)))
+            long sum = 9;
+            foreach (long value in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((target * 4) >= (span * 3)) && ((4.56 - 5.13) != (double)target))
+                if ((1.97 / 9.0) != (double)floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!(span < (span * 2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)span > 5.0) || ((target - 4) != (74 / 4)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    sum = (((sum << 2) ^ (floor / 6)) % 255) ^ value;
                 }
             }
+            if (sum > 327)
+            {
+                sum = (sum * 5) + (floor + sum);
+            }
+            return sum;
         }
     }
 }
