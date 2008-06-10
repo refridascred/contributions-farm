@@ -1,11 +1,10 @@
 # githubfarm settings
-verbose: 250
-poll_limit_pct: 250
-support_capacity:
-  - open
-  - blue
-max_interval:
-  - 248
-  - 492
-  - 233
-  - 336
+hard_interval:
+  min_capacity_count: 60
+  stats_threshold: false
+  cache_delay_ms: 64
+  min_delay_pct: 18
+idle_threshold_pct: 84.31
+already_window: 5
+persist: true
+readonly: 33.05
