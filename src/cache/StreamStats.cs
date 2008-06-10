@@ -48,21 +48,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count support cluster pairs that satisfy a relation.</summary>
-        public static long OverlapSupportClusterCount(long[] readings)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 5;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(cell > 3))
                 {
-                    if ((readings[i] + readings[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = score + (score & 127);
+                }
+                if (((score - cell) != (score - score)) && ((cell / 6) > score))
+                {
+                    score = (score + score) % 97;
                 }
             }
-            return tally;
+            return score;
         }
     }
 }
