@@ -60,39 +60,21 @@ namespace Common.Utilities
         public const long BatchRecord = 8478;
         public const long BaseRecord = 8730;
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long offset, long origin)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutCount(long[] levels)
         {
-            long slot = offset + origin;
-            if (((double)slot <= (3.8 - 1.22)) && ((double)offset > (0.19 / 3.0)))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((slot - offset) <= (origin / 7)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((32 - slot) == (origin >> 2)) && ((16.0 + 13.0) >= (double)origin))
+                    if ((levels[i] ^ levels[j]) == 14)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((slot - (-247)) < (465 - origin))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the window mode values.</summary>
