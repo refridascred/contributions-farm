@@ -31,19 +31,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every notes channel entry stays within the limit.</summary>
-        public static bool VerifyNotesChannelRange(long[] items, long origin)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] values)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample != origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] ^ values[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
