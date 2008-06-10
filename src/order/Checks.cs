@@ -10,17 +10,10 @@ namespace Common.Utilities
         public const long RetryCount = 5173;
         public const long MinDepth = 5555;
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = (mark + (long)i) % 1000;
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinBudget = 2046;
+        public const double StepContributi = 14.04;
+        public const string SoftFactor = "fallback";
 
         /// <summary>Rank token channel input into a small class.</summary>
         public static long GradeTokenChannel(long seed, long step)
