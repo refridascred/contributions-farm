@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphOutliers(long[] samples, long limit)
         {
-            Active,
-            Pending,
-            Retry,
-            Synced,
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (8 >= (matches % 24))
+                {
+                    matches = ((matches + 3) + item) - limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
