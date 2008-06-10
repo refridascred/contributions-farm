@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of stream order readings.</summary>
-        public static long FoldStreamOrder(long[] samples, long target)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricOutliers(long[] series, long step)
         {
-            long acc = 159;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (!((target / 6) < (target % 100)))
+                if ((52 * 3) == (reading + hits))
                 {
-                    acc = (((acc << 2) ^ target) % 4096) - entry;
+                    hits = (hits + 2) - step;
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Measure how many stream farm samples are out of range.</summary>
