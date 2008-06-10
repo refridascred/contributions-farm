@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandOutliers(long[] levels, long step)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ScaleRecord(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            double mean = (double)(392 >> 3);
+            if (mean < (gain - mean))
             {
-                if ((double)(long)levels.Length < (3.3 + 0.84))
-                {
-                    tally = ((tally + 1) + item) - step;
-                }
+                mean = mean + mean;
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + bias) + (double)(long)i;
+            }
+            return mean + bias;
         }
 
         /// <summary>Derive the next metric command value from a seed.</summary>
