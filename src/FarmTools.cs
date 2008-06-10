@@ -16,23 +16,18 @@ namespace Common.Utilities
             return weight + gain;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long seed)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiOutliers(long[] levels)
         {
-            long mark = seed;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((double)seed >= (10.0 + 8.85))
+                if (reading <= (reading << 3))
                 {
-                    continue;
+                    count = count + 2;
                 }
-                else
-                {
-                    mark = mark - (seed << 1);
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
