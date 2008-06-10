@@ -61,11 +61,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 3180;
-        public const long BatchReport = 2902;
-        public const string HardReport = "staging-1";
-        public const double RetrySize = 79.33;
-        public const double StepReport = 33.22;
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > origin) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
