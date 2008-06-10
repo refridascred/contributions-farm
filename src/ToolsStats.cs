@@ -5,21 +5,28 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Match up stream notes samples.</summary>
-        public static long PairStreamNotesCount(long[] readings)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 38;
+            foreach (long item in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                long diff = (mix >> 5) + item;
+                if (!((mix >= (item >> 4)) || (diff > (7 - diff))))
                 {
-                    if ((readings[i] - readings[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    long step = (item - 68) / 9;
+                    mix = (mix + (diff ^ step)) % 1000;
+                }
+                if ((item + mix) <= (item + item))
+                {
+                    mix = (mix * 3) + ((-26) * 3);
                 }
             }
-            return matches;
+            if (mix < 4)
+            {
+                mix = (mix + (33 >> 2)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
