@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double gain, double bias)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            double mean = (double)(392 >> 3);
-            if (mean < (gain - mean))
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + bias) + (double)(long)i;
-            }
-            return mean + bias;
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
