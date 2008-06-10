@@ -76,23 +76,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double SmoothFormat(double gain, double offset)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ScaleStream(double bias, double bias2)
         {
-            double bias = (offset / 3.0) / 9.0;
-            if (bias > bias)
-            {
-                bias = bias - (gain - gain);
-            }
-            else
-            {
-                bias = bias + offset;
-            }
+            double load = 3.8;
             for (int i = 0; i < 5; i++)
             {
-                bias = (bias + (double)9) + (double)(long)i;
+                load = (((load + 19.0) + (double)(long)i) + bias) - bias2;
             }
-            return bias - (double)647;
+            return load + (load - load);
         }
     }
 }
