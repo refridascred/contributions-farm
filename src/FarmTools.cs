@@ -20,19 +20,19 @@ namespace Common.Utilities
             return weight + (double)8;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double scale, double offset)
+        /// <summary>Validate route entry readings against a bound.</summary>
+        public static bool GuardRouteEntryLimits(long[] data, long seed)
         {
-            double weight = scale;
-            if (weight <= scale)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                weight = (weight + scale) - offset;
+                if (cell < seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight + (scale * 8.9);
-            }
-            return weight - (double)8;
+            return valid;
         }
 
         /// <summary>Fold a list of context readings.</summary>
