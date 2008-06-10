@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
-        {
-            public string Limit { get; set; } = "";
-            public double Weight { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowFormat = 5117;
+        public const long MaxFormat = 1760;
+        public const string IdleFormat = "primary";
 
         /// <summary>Hold a layout snapshot.</summary>
         public sealed class LayoutSnapshot
