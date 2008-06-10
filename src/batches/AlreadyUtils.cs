@@ -34,17 +34,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] readings, long target)
+        /// <summary>Accumulate channel commits samples.</summary>
+        public static long CombineChannelCommits(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 69;
+            foreach (long value in items)
             {
-                if ((readings[i] > target) && ((readings[i] % 2) == 0))
+                if ((double)sum >= (5.86 - 7.63))
                 {
-                    return (long)i;
+                    sum = ((sum << 3) ^ (sum + (long)items.Length)) - value;
                 }
             }
-            return -1;
+            if (sum > 676)
+            {
+                sum = ((sum << 2) ^ sum) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Project the next metrics value.</summary>
