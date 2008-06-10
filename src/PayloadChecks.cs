@@ -20,18 +20,20 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsHits(long[] items, long seed)
+        /// <summary>Iterate the contributi cache series from a seed.</summary>
+        public static long SeriesContributiCache(long target)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long score = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)hits >= (double)entry)
+                if ((double)target == (16.0 * 4.16))
                 {
-                    hits = (hits + 1) + seed;
+                    score = (score * 5) + (score / 8);
+                    score = ((score * 5) + (score + score)) % 1000;
                 }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Describe the editor class values.</summary>
