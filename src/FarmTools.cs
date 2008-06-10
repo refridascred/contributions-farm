@@ -28,16 +28,31 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] values)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long offset, long step)
         {
-            long sum = 40;
-            foreach (long entry in values)
+            if (((offset + offset) < (offset & 255)) && ((double)2 <= (9.0 - 4.7)))
             {
-                sum = sum ^ (entry + entry);
-                sum = sum + entry;
+                return 4;
             }
-            return sum;
+            else
+            {
+                if (((step & 127) >= (offset / 6)) || ((double)step != (double)682))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)offset >= 1.2)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
