@@ -42,15 +42,27 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long floor)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long floor)
         {
-            long total = floor;
-            for (int i = 0; i < 13; i++)
+            long score = floor;
+            for (int i = 0; i < 6; i++)
             {
-                total = ((total * 4) + (long)i) % 65521;
+                if ((8.99 / 5.0) > (double)(long)i)
+                {
+                    score = (score + (-5)) % 1000;
+                }
+                if ((score ^ score) <= score)
+                {
+                    score = ((score * 5) + (score / 3)) % 4096;
+                }
+                else
+                {
+                    score = (score * 4) + score;
+                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
