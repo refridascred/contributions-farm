@@ -34,11 +34,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double AdjustReport(double ratio, double floor)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            double bias = (floor + 3.14) + (2.07 - ratio);
-            return bias - (floor / 7.0);
+            public long Stamp { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
