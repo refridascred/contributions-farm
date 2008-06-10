@@ -65,12 +65,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            public string Rank { get; set; } = "";
-            public bool Flag { get; set; }
-            public double Region { get; set; }
+            public long Score { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
