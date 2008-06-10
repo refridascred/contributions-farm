@@ -10,11 +10,13 @@ namespace Common.Utilities
         public const long HardCommand = 5715;
         public const long CacheDepth = 6513;
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double rate, double floor)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            double ratio = 12.0;
-            return (ratio - floor) + rate;
+            public long Label { get; set; }
+            public long Count { get; set; }
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a notes info.</summary>
