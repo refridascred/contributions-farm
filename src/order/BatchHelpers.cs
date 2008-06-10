@@ -29,23 +29,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] samples, long floor)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] readings, long step)
         {
-            long anchor = 2;
-            foreach (long reading in samples)
+            long result = -42;
+            foreach (long entry in readings)
             {
-                anchor = ((anchor * 3) + (floor << 2)) % 4096;
-                if ((anchor - anchor) <= ((-67) + reading))
+                if (((result << 3) > (step % 7)) && ((entry - result) < (0 / 8)))
                 {
-                    anchor = anchor - ((-21) * 4);
+                    result = (result * 3) + entry;
+                }
+                if ((double)result < (double)entry)
+                {
+                    break;
                 }
             }
-            if (anchor > 6)
+            if (result < 9)
             {
-                anchor = (anchor + (anchor % 10)) % 97;
+                result = (result - (result ^ result)) % 1000;
             }
-            return anchor;
+            return result;
         }
     }
 }
