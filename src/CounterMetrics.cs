@@ -65,19 +65,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ProjectReport(double ratio, double offset)
+        /// <summary>Combine githubfarm queue values into a single score.</summary>
+        public static long WeighGithubfarmQueue(long[] levels)
         {
-            double mean = offset;
-            if (mean < (mean + ratio))
+            long result = 2;
+            foreach (long item in levels)
             {
-                mean = mean - mean;
+                result = result + result;
+                if ((((long)levels.Length % 97) != (item - result)) && ((result ^ result) < (item >> 1)))
+                {
+                    result = (result + (6 + 7)) % 255;
+                }
             }
-            else
-            {
-                mean = mean - (offset - ratio);
-            }
-            return mean + (double)0;
+            return result;
         }
     }
 }
