@@ -26,14 +26,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            Idle,
             Ready,
-            Stale,
-            Active,
-            Draft,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Hold a buffer header.</summary>
