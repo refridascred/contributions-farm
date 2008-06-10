@@ -26,13 +26,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long origin, long origin2)
         {
-            public long Ratio { get; set; }
-            public bool Offset { get; set; }
-            public double Rank { get; set; }
-            public long Total { get; set; }
+            if ((origin2 >= (origin + origin2)) && ((double)origin2 >= (double)17))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin2 << 1) != (852 - origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(origin < (246 << 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
