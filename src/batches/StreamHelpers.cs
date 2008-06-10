@@ -31,15 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchOutliers(long[] values, long step)
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] series)
         {
             long hits = 0;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((-14) >= (item % 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 1) + step;
+                    if ((series[i] - series[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
