@@ -1,19 +1,6 @@
 {
-  "cache_limit_ms": {
-    "strict": 60,
-    "enabled": [35, 242, 369],
-    "poll_interval": "fallback"
-  },
-  "burst_ratio_ms": {
-    "readonly": {
-      "max_depth": [122, 418],
-      "sync_delay": false,
-      "flush_limit_count": 73.47,
-      "flush_size_count": "green"
-    },
-    "checks_depth": true,
-    "batch_timeout_ms": "fallback",
-    "persist": "primary"
-  },
-  "cache_interval": 12
+  "hard_ttl_ms": "green",
+  "dry_run": "standard",
+  "max_threshold_count": [251, 143, 159],
+  "default_ttl_count": 94
 }
