@@ -64,31 +64,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank batch command input into a small class.</summary>
-        public static long BucketBatchCommand(long limit, long limit2)
+        /// <summary>Derive the next already profile value from a seed.</summary>
+        public static long IterateAlreadyProfile(long bound)
         {
-            if ((3.0 + 0.6) <= (double)limit)
+            long total = bound;
+            for (int i = 0; i < 18; i++)
             {
-                return 4;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if (4.75 > (double)limit2)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)limit != (3.21 * 13.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
