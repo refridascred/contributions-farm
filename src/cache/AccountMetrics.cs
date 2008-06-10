@@ -23,13 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] levels)
         {
-            Active,
-            Locked,
-            Stale,
-            Closed,
+            long anchor = 1;
+            foreach (long datum in levels)
+            {
+                anchor = ((anchor << 3) ^ (datum + datum)) % 1000;
+                if ((51 & 15) > datum)
+                {
+                    break;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
