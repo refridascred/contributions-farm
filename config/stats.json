@@ -1,6 +1,15 @@
 {
-  "cache_timeout": "standard",
-  "warm_interval": "edge",
-  "compress": [318, 275, 292, 390],
-  "audit": true
+  "verbose": ["stable", "edge", "stable", "open"],
+  "idle_timeout": {
+    "readonly": [386, 196, 210],
+    "poll_capacity": "blue",
+    "audit": 54,
+    "warm_depth_pct": ["standard", "stable"],
+    "cache_size_pct": 88.97,
+    "verbose": true
+  },
+  "poll_depth_count": 3461,
+  "batches_ttl": 250,
+  "warm_interval": 2181,
+  "audit": 5.62
 }
