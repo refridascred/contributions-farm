@@ -73,21 +73,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long step)
+        /// <summary>Count editor token pairs that satisfy a relation.</summary>
+        public static long PairEditorTokenCount(long[] items)
         {
-            long total = step;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((long)i == (total ^ total))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total - (long)i) % 4096;
+                    if ((items[i] ^ items[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                total = ((total * 3) + (6 * 4)) % 1000;
-                total = total - step;
-                total = ((total * 5) + (long)i) % 101;
             }
-            return total;
+            return seen;
         }
     }
 }
