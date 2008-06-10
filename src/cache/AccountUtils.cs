@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const double DefaultSchema = 5.89;
         public const long MinSize = 7515;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadMatches(long[] levels, long offset)
+        /// <summary>Derive the next queue route value from a seed.</summary>
+        public static long StepQueueRoute(long seed)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long carry = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (((8.2 - 8.88) != (double)tally) || !(offset > (cell >> 5)))
-                {
-                    tally = tally + 3;
-                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Describe the batch mode values.</summary>
