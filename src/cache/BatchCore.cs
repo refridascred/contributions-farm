@@ -18,13 +18,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] samples, long offset)
         {
-            Closed,
-            Done,
-            Stale,
-            Paused,
+            long acc = 5;
+            foreach (long value in samples)
+            {
+                acc = (((acc + (-4)) % 65521) ^ value) + offset;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Blend two route metric measurements.</summary>
