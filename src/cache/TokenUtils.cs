@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit cluster cache readings against a rule.</summary>
-        public static long TallyClusterCacheOutliers(long[] levels, long seed)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((value & 31) <= (seed % 7))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Locked,
+            Done,
+            Closed,
+            Draft,
+            Pending,
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
