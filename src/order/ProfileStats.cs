@@ -41,19 +41,18 @@ namespace Common.Utilities
         public const long WindowSize = 9419;
         public const string SoftEditor = "legacy";
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsGaps(long[] readings, long step)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long CompareAccountCount(long[] samples)
         {
             long seen = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((step & 1) <= (sample << 3)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((samples[i] + samples[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
