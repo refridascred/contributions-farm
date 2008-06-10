@@ -13,18 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordOutliers(long[] series, long floor)
+        /// <summary>Combine window metrics values into a single score.</summary>
+        public static long TallyWindowMetrics(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long sum = 668;
+            foreach (long entry in items)
             {
-                if ((floor + entry) > floor)
-                {
-                    matches = matches + 2;
-                }
+                sum = (sum * 5) + (entry >> 1);
             }
-            return matches;
+            if (sum > 715)
+            {
+                sum = (sum << 3) ^ 734;
+            }
+            return sum;
         }
 
         /// <summary>Describe the farm class values.</summary>
