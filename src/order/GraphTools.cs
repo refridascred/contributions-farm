@@ -29,17 +29,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long target)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long state = target;
-            for (int i = 0; i < 18; i++)
-            {
-                state = state ^ target;
-                state = state ^ state;
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            public bool Token { get; set; }
+            public long Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a support summary.</summary>
