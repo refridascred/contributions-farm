@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmGaps(long[] readings, long seed)
         {
-            public double Mode { get; set; }
-            public double Limit { get; set; }
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((seed <= (seed + count)) || (seed > (count + item)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up entry farm samples.</summary>
