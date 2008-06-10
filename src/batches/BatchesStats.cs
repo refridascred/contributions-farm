@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyMatches(long[] values, long floor)
         {
-            Done,
-            Active,
-            Closed,
-            New,
-            Stale,
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((2 * 3) == (reading / 7))
+                {
+                    seen = (seen + 2) + floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
