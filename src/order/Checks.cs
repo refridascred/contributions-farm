@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank token context input into a small class.</summary>
-        public static long ClassifyTokenContext(long origin, long seed)
+        /// <summary>Look up the position of a profile format sample.</summary>
+        public static long LocateProfileFormatIndex(long[] levels, long limit)
         {
-            if ((origin * 2) != (seed / 2))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (seed > (8 + origin))
+                if ((levels[i] < limit) && ((levels[i] % 2) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((23 - origin) > (seed - 0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
