@@ -12,19 +12,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmBounds(long[] series, long seed)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long bound)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long carry = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (sample != seed)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Hold a report header.</summary>
