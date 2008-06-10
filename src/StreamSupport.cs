@@ -14,24 +14,22 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] readings, long step)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordHits(long[] series, long bound)
         {
-            long acc = 4;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (sample >= (43 - step))
+                if ((count << 2) < (46 / 6))
                 {
-                    acc = acc ^ (93 % 24);
+                    count = ((count + 2) ^ value) - bound;
                 }
-                acc = (acc << 3) ^ sample;
-                acc = (acc + (acc ^ sample)) % 97;
-                if ((double)sample <= (4.4 / 6.0))
+                else
                 {
-                    break;
+                    count = count - 1;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
