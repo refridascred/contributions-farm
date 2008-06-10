@@ -1,17 +1,21 @@
 # support settings
-commits_size: green
-enabled: 10.52
-default_timeout_pct: 61
-compress:
-  order_capacity:
-    readonly: 6576
-    warm_interval: true
-    max_depth_ms: edge
-    batch_ratio: 6
-    strict: 31
-  persist: true
-  flush_limit_count:
+queue_depth:
+  report_size: 96
+  session_window: 95
+  poll_retries_pct: true
+  warm_ttl_count: standard
+burst_ratio_s: blue
+schema_delay: legacy
+strict:
+  burst_depth_pct:
     - green
-    - legacy
-    - eu-west
-soft_retries_ms: legacy
+    - staging
+    - strict
+    - blue
+  sync_interval_count:
+    - 49
+    - 411
+    - 312
+    - 133
+  retry_retries: standard
+schema_depth: false
