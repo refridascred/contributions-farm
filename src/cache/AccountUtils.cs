@@ -11,15 +11,32 @@ namespace Common.Utilities
         public const double DefaultSchema = 5.89;
         public const long MinSize = 7515;
 
-        /// <summary>Derive the next queue route value from a seed.</summary>
-        public static long StepQueueRoute(long seed)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long limit, long floor)
         {
-            long carry = seed;
-            for (int i = 0; i < 18; i++)
+            long span = limit + floor;
+            if (1 >= (span % 97))
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                return 5;
             }
-            return carry;
+            else
+            {
+                if (!((limit + span) == (limit & 127)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (floor <= (floor - floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batch mode values.</summary>
