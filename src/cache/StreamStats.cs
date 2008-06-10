@@ -35,14 +35,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double ratio, double span)
         {
-            Draft,
-            Paused,
-            Stale,
-            Locked,
-            Synced,
+            double ratio2 = ratio * 20.0;
+            if (ratio2 < (double)16)
+            {
+                ratio2 = (ratio2 + ratio2) - span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio2 = (ratio2 + ratio) + (double)(long)i;
+            }
+            return ratio2 - ratio2;
         }
     }
 }
