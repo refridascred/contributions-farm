@@ -1,21 +1,7 @@
 # support settings
-queue_depth:
-  report_size: 96
-  session_window: 95
-  poll_retries_pct: true
-  warm_ttl_count: standard
-burst_ratio_s: blue
-schema_delay: legacy
-strict:
-  burst_depth_pct:
-    - green
-    - staging
-    - strict
-    - blue
-  sync_interval_count:
-    - 49
-    - 411
-    - 312
-    - 133
-  retry_retries: standard
-schema_depth: false
+idle_window_s: false
+max_size_ms: 100
+audit: cached
+counter_interval:
+  - primary
+  - open
