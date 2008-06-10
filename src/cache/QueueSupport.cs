@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] data, long offset)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueMatches(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (data[i] >= offset)
+                if ((6.1 / 3.0) == (double)matches)
                 {
-                    return (long)i;
+                    matches = (matches + 1) ^ item;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Rank session metrics input into a small class.</summary>
