@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const double DefaultSchema = 5.89;
         public const long MinSize = 7515;
 
-        /// <summary>Look up the position of a cluster session sample.</summary>
-        public static long LocateClusterSessionIndex(long[] samples, long floor)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadMatches(long[] levels, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((samples[i] == floor) && ((samples[i] % 5) != 0))
+                if (((8.2 - 8.88) != (double)tally) || !(offset > (cell >> 5)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the batch mode values.</summary>
