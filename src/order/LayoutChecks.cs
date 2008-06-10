@@ -86,19 +86,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] levels, long floor)
-        {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double HardTimeout = 75.96;
+        public const double HardBatches = 29.33;
+        public const long MinWidth = 6259;
+        public const long MaxBatches = 6871;
     }
 }
