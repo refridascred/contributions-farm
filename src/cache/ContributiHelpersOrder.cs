@@ -28,13 +28,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] readings, long seed)
         {
-            Draft,
-            Closed,
-            Stale,
-            Ready,
+            long sum = 619;
+            foreach (long datum in readings)
+            {
+                if (sum <= datum)
+                {
+                    sum = (((sum << 2) ^ (datum + 293)) % 65521) - seed;
+                }
+            }
+            return sum % 4096;
         }
     }
 }
