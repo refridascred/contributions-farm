@@ -19,10 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 8655;
-        public const long BaseBudget = 5005;
-        public const long IdleSize = 9400;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BurstFactor = "legacy-1";
+        public const string IdleTools = "standard";
+        public const long LimitFactor = 4575;
+        public const string IdleCount = "open";
 
         /// <summary>Measure how many batch queue samples are out of range.</summary>
         public static long MeasureBatchQueueHits(long[] series)
