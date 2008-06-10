@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] series)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] levels, long origin)
         {
-            long mix = 8;
-            foreach (long value in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix ^ (mix * 4)) % 4096) ^ value;
+                if ((levels[i] >= origin) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Check that every payload contributi entry stays within the limit.</summary>
