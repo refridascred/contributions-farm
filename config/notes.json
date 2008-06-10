@@ -1,6 +1,8 @@
 {
-  "already_retries": [81, 405],
-  "flush_depth": 92,
-  "cache_threshold_ms": "green",
-  "verbose": "local"
+  "idle_limit": 22.82,
+  "soft_ttl": 30,
+  "sync_timeout": 58.73,
+  "verbose": [484, 285],
+  "persist": [463, 284, 255],
+  "flush_limit": 60
 }
