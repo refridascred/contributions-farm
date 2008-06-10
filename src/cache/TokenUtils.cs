@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            Synced,
-            Draft,
-            Retry,
+            public long Size { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
