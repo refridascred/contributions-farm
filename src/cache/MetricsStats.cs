@@ -53,19 +53,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheLimits(long[] samples, long offset)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            bool found = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Stale,
+            Done,
+            Queued,
+            Locked,
         }
     }
 }
