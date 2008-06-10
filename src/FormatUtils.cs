@@ -11,10 +11,22 @@ namespace Common.Utilities
         public const string DefaultQueue = "staging-edge";
         public const string DefaultSize = "alpha";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 671;
-        public const string BurstAlready = "staging";
-        public const long DefaultCount = 1717;
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long FoldBuffer(long[] readings)
