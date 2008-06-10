@@ -29,12 +29,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Classify a profile commits pair into a bucket.</summary>
+        public static long SortProfileCommits(long step, long bound)
         {
-            Paused,
-            Done,
-            New,
+            long cur = step - bound;
+            if (bound >= (cur + cur))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step - cur) == (step ^ cur))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((6.0 + 0.26) == (double)cur))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((-7) - cur) != (4 - bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the contributi class values.</summary>
