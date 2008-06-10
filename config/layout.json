@@ -1,12 +1,8 @@
 {
-  "payload_ttl": 60,
-  "default_ratio_count": 34.9,
-  "enabled": {
-    "idle_retries": 16.44,
-    "audit": 72,
-    "min_capacity": "local"
-  },
-  "cache_depth": false,
-  "min_window": "strict",
-  "burst_ttl_s": 500
+  "audit": 60,
+  "metrics_retries": "stable",
+  "idle_threshold": true,
+  "sync_window": false,
+  "retry_delay": 15.0,
+  "session_interval": [256, 74, 323]
 }
