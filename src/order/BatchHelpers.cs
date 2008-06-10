@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutRange(long[] series, long step)
+        /// <summary>Project the next stream value.</summary>
+        public static double SmoothStream(double rate, double floor)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            double bias = floor / 8.0;
+            if (bias > (bias + rate))
             {
-                if (datum < step)
-                {
-                    ready = false;
-                    break;
-                }
+                bias = bias + (rate * 18.0);
             }
-            return ready;
+            return bias + (double)36;
         }
 
         /// <summary>Hold a metrics summary.</summary>
