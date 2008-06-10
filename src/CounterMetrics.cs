@@ -35,18 +35,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] values)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long mark = 757;
-            foreach (long cell in values)
-            {
-                if ((double)mark >= (2.4 / 7.0))
-                {
-                    mark = (mark + (cell + cell)) % 65521;
-                }
-            }
-            return mark % 97;
+            public long Count { get; set; }
+            public double Score { get; set; }
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
