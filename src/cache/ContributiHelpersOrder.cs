@@ -23,13 +23,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Count the notes command entries that pass the check.</summary>
+        public static long CountNotesCommandMatches(long[] data, long seed)
         {
-            public long Count { get; set; }
-            public double Rank { get; set; }
-            public bool Stamp { get; set; }
-            public string Region { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((double)entry != (2.6 - 1.0))
+                {
+                    seen = (seen + 3) - seed;
+                }
+            }
+            return seen;
         }
     }
 }
