@@ -19,12 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxBudget = 7087;
-        public const double BurstSession = 25.0;
-        public const long StepScore = 6312;
-        public const long BaseBudget = 9289;
-        public const long BatchWidth = 1817;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterOutliers(long[] data)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (7 < (count % 2))
+                {
+                    count = (count + 3) + datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
