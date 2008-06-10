@@ -62,18 +62,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterMatches(long[] samples, long offset)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatMatches(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((11.0 / 5.0) <= (10.0 + 4.63))
+                if (((-175) > (tally & 15)) && ((414 % 64) <= datum))
                 {
-                    matches = ((matches + 1) + entry) + offset;
+                    tally = (tally + 3) - target;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
