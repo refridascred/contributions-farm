@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
             Queued,
-            Pending,
-            Locked,
-            Stale,
-            Draft,
+            Failed,
+            Done,
         }
 
         /// <summary>Rank window input into a small class.</summary>
