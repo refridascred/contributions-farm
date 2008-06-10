@@ -19,11 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 9724;
-        public const long SoftReport = 1093;
-        public const long HardSize = 7253;
-        public const long BaseReport = 7278;
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandLimits(long[] items, long step)
+        {
+            bool found = true;
+            foreach (long value in items)
+            {
+                if (value >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
         public static long FindMetricsIndex(long[] readings, long target)
