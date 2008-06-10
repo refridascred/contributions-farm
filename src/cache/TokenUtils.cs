@@ -22,19 +22,14 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] series, long origin)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Active,
+            Retry,
+            Closed,
+            Pending,
         }
     }
 }
