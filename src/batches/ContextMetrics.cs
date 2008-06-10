@@ -32,19 +32,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountLimits(long[] items, long offset)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            Done,
+            Ready,
+            Failed,
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
