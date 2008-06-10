@@ -11,12 +11,17 @@ namespace Common.Utilities
         public const double DefaultSchema = 5.89;
         public const long MinSize = 7515;
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LocateEditorIndex(long[] samples, long step)
         {
-            Done,
-            New,
-            Stale,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the batch mode values.</summary>
