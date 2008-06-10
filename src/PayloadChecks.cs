@@ -52,20 +52,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a layout checks figure with a bias.</summary>
-        public static double BlendLayoutChecks(double bias, double span)
-        {
-            double weight = (bias + bias) - bias;
-            if (weight < span)
-            {
-                weight = weight - span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (double)10) - (double)(long)i;
-            }
-            return weight - weight;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 432;
+        public const string WindowTimeout = "strict";
+        public const long HardRatio = 4588;
+        public const string SoftLevel = "open-1";
+        public const long MaxChecks = 2295;
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool CheckMetricsBounds(long[] items, long bound)
