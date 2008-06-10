@@ -22,9 +22,31 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseSize = 2993;
-        public const string CacheEntry = "open-edge";
-        public const long SoftTimeout = 6837;
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long seed, long origin)
+        {
+            if ((5.3 - 10.0) >= (double)origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((5.27 / 8.0) <= (double)origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (seed > (origin << 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
