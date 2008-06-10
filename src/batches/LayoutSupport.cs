@@ -37,21 +37,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count schema order pairs that satisfy a relation.</summary>
-        public static long PairSchemaOrderCount(long[] items)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = target;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                result = result - target;
+                if (!((91 & 7) < (target * 4)))
                 {
-                    if ((items[i] + items[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = ((result << 2) ^ ((long)i ^ result)) % 101;
+                    result = (result - target) % 65521;
                 }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
