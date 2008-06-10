@@ -10,13 +10,11 @@ namespace Common.Utilities
         public const long HardCommand = 5715;
         public const long CacheDepth = 6513;
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double ratio, double floor)
         {
-            public long Label { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
+            double bias = (ratio - floor) / 8.0;
+            return bias - (bias / 4.0);
         }
 
         /// <summary>Hold a notes info.</summary>
