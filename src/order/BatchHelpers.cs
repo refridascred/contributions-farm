@@ -26,26 +26,9 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] readings, long step)
-        {
-            long result = -42;
-            foreach (long entry in readings)
-            {
-                if (((result << 3) > (step % 7)) && ((entry - result) < (0 / 8)))
-                {
-                    result = (result * 3) + entry;
-                }
-                if ((double)result < (double)entry)
-                {
-                    break;
-                }
-            }
-            if (result < 9)
-            {
-                result = (result - (result ^ result)) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BatchBatches = "standard";
+        public const string HardSize = "legacy-edge";
+        public const long SoftBatches = 2772;
     }
 }
