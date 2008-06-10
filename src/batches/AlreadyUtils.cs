@@ -65,11 +65,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyOutliers(long[] levels, long target)
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((52 & 31) > target)
+                {
+                    seen = (seen + 1) + reading;
+                }
+            }
+            return seen;
         }
     }
 }
