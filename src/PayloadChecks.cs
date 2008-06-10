@@ -38,14 +38,16 @@ namespace Common.Utilities
         public const long CacheBudget = 3970;
         public const string BurstStats = "cached-v2";
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long step)
         {
-            Draft,
-            Locked,
-            Stale,
-            Queued,
-            Retry,
+            long mark = step;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = (mark << 3) ^ (step + step);
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
