@@ -54,23 +54,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two batches record measurements.</summary>
-        public static double SmoothBatchesRecord(double gain, double span)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long origin, long origin2)
         {
-            double ratio = gain - (double)8;
-            if (ratio > (double)80)
+            if (origin2 >= (origin - origin))
             {
-                ratio = ratio + ratio;
+                return 2;
             }
             else
             {
-                ratio = ratio + gain;
+                if ((origin - 73) < (origin2 + origin2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)origin2 >= 11.0) && ((156 + origin2) >= (origin + 850)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - span) + (double)(long)i;
-            }
-            return ratio - (double)560;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
