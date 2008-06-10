@@ -54,22 +54,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] samples, long step)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long state = 1;
-            foreach (long datum in samples)
-            {
-                if (((datum / 9) == (step >> 3)) || ((9.1 * 1.0) != (double)step))
-                {
-                    state = ((state << 3) ^ (step ^ state)) % 4096;
-                }
-            }
-            if (state < 636)
-            {
-                state = (state - (step - state)) % 65521;
-            }
-            return state;
+            Dropped,
+            Active,
+            Draft,
         }
     }
 }
