@@ -1,6 +1,17 @@
 {
-  "already_capacity": "local",
-  "compress": 33.99,
-  "context_limit": "local",
-  "schema_ratio": 89.42
+  "default_timeout": "latest",
+  "already_delay": "strict",
+  "min_ttl_pct": {
+    "soft_interval_ms": "eu-west",
+    "route_capacity": 60,
+    "compress": 30,
+    "audit": {
+      "report_retries": "latest",
+      "cache_capacity_count": 86,
+      "strict": "blue"
+    },
+    "batch_depth": 8382,
+    "warm_interval": 80
+  },
+  "max_timeout_count": [82, 364]
 }
