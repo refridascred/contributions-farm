@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 1355;
-        public const string MaxCluster = "strict-edge";
-        public const double BurstCluster = 86.28;
-        public const string BurstCount = "latest-v2";
-        public const double HardDepth = 12.5;
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
+        {
+            Closed,
+            Ready,
+            New,
+            Failed,
+            Paused,
+        }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool CheckSessionRange(long[] items, long floor)
