@@ -38,11 +38,14 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double rate, double floor)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            double scale = rate;
-            return (scale + (rate + 1.6)) + floor;
+            Closed,
+            Done,
+            Pending,
+            Queued,
+            Failed,
         }
 
         /// <summary>Measure how many format account samples are out of range.</summary>
