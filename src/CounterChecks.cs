@@ -40,12 +40,13 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftContributi = 7319;
-        public const long BurstContributi = 3400;
-        public const long SoftLevel = 9496;
-        public const long StepContributi = 9965;
-        public const long DefaultContributi = 8148;
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
+        {
+            Synced,
+            Idle,
+            Paused,
+        }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long AuditStatsHits(long[] values, long floor)
