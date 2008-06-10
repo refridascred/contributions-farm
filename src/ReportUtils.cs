@@ -39,32 +39,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long seed, long bound)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesHits(long[] items, long bound)
         {
-            long lane = seed ^ bound;
-            if (seed > bound)
+            long count = 0;
+            foreach (long datum in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((2 < (seed - lane)) && ((18.0 / 5.0) <= (double)seed))
+                if (!!((double)datum < (6.98 / 9.0)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((lane << 2) > (lane % 64)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = (count + 3) + bound;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the profile state values.</summary>
