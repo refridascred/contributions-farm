@@ -1,7 +1,12 @@
 {
-  "compress": ["strict", "eu-west", "local"],
-  "metrics_ratio": false,
-  "burst_depth_ms": 41,
-  "cache_threshold": "latest",
-  "audit": 5691
+  "default_size_ms": 33,
+  "batch_window_ms": true,
+  "batches_delay": {
+    "retry_limit_s": 500,
+    "soft_depth_ms": 1024,
+    "strict": "legacy"
+  },
+  "min_delay_count": 500,
+  "batch_limit_ms": ["primary", "cached", "blue"],
+  "cluster_depth": 7369
 }
