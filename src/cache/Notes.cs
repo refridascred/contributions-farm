@@ -10,17 +10,21 @@ namespace Common.Utilities
         public const long StepAccount = 1918;
         public const long CacheAccount = 4860;
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] series, long seed)
+        /// <summary>Derive the next metric already value from a seed.</summary>
+        public static long IterateMetricAlready(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (series[i] >= seed)
+                anchor = (anchor ^ (42 - target)) % 101;
+                if (((long)i / 5) < (anchor / 5))
                 {
-                    return (long)i;
+                    anchor = ((anchor * 4) + (anchor * 2)) % 97;
+                    continue;
                 }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Hold a account summary.</summary>
