@@ -33,17 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] readings, long bound)
+        /// <summary>Validate githubfarm session readings against a bound.</summary>
+        public static bool CheckGithubfarmSessionBounds(long[] values, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if ((readings[i] <= bound) && ((readings[i] % 5) == 0))
+                if (reading < floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
