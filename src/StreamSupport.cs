@@ -12,19 +12,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate buffer batches readings against a bound.</summary>
-        public static bool CheckBufferBatchesRange(long[] data, long offset)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Paused,
+            Stale,
+            Locked,
+            New,
         }
 
         /// <summary>Audit token readings against a rule.</summary>
