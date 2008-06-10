@@ -1,7 +1,11 @@
 # support settings
-idle_window_s: false
-max_size_ms: 100
-audit: cached
-counter_interval:
-  - primary
-  - open
+cache_timeout_s: 58
+warm_ttl_s:
+  poll_capacity_count: 526
+  idle_depth_pct: fallback
+  audit: legacy
+  batch_retries_count: 4375
+flush_ratio_ms: 4198
+format_interval: 18.78
+readonly: 6019
+token_capacity: 87.15
