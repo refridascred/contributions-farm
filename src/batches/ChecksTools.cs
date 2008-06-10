@@ -40,18 +40,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit filter batches readings against a rule.</summary>
-        public static long MeasureFilterBatchesHits(long[] levels)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (hits < (hits & 63))
-                {
-                    hits = (hits + 1) - cell;
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
