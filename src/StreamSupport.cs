@@ -14,18 +14,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphOutliers(long[] data)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long acc = 89;
+            foreach (long value in levels)
             {
-                if (tally <= entry)
-                {
-                    tally = tally + 2;
-                }
+                acc = ((acc * 5) + value) % 101;
+                acc = ((acc * 2) + 0) % 1000;
             }
-            return tally;
+            return acc % 97;
         }
 
         /// <summary>Describe the already phase values.</summary>
