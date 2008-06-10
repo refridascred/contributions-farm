@@ -49,14 +49,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionOutliers(long[] values)
         {
-            Synced,
-            Done,
-            Failed,
-            Retry,
-            Queued,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((287 - matches) >= matches)
+                {
+                    matches = (matches + 2) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of report entries.</summary>
