@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 4185;
-        public const long CacheBudget = 5503;
-        public const double StepSize = 57.88;
-        public const double IdleSpan = 30.77;
-        public const double SoftRoute = 38.05;
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
+        {
+            Paused,
+            New,
+            Stale,
+            Dropped,
+            Retry,
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long MeasureBufferHits(long[] data, long limit)
