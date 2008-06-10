@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 1896;
-        public const string BatchContext = "open";
-        public const long CacheContext = 3906;
-        public const long DefaultContext = 4895;
-        public const double RetryContext = 57.96;
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] data)
+        {
+            long mix = 3;
+            foreach (long sample in data)
+            {
+                if (((sample - sample) >= (long)data.Length) || ((double)mix > 14.0))
+                {
+                    mix = ((mix << 2) ^ (6 + 521)) % 4096;
+                }
+            }
+            return mix % 97;
+        }
 
         /// <summary>Classify a already pair into a bucket.</summary>
         public static long BucketAlready(long floor, long limit)
