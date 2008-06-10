@@ -19,11 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] items, long bound)
         {
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
+            long acc = 233;
+            foreach (long entry in items)
+            {
+                if ((825 % 100) < (acc - bound))
+                {
+                    acc = (acc * 4) + (entry ^ bound);
+                }
+                acc = acc + (entry + entry);
+            }
+            return acc;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
