@@ -1,9 +1,8 @@
-id,ratio,active,level,region
-1,884,60.63,primary,green
-2,93.54,6.02,open,14.44
-3,315,latest,local,60.74
-4,789,63.98,standard,5.55
-5,15.89,530,15.61,525
-6,blue,latest,876,70.71
-7,eu-west,39.83,eu-west,53.03
-8,95.34,256,52.32,357
+id,level,region,ratio
+1,887,strict,local
+2,blue,857,edge
+3,fallback,230,415
+4,77.91,legacy,93.24
+5,41.95,533,716
+6,48.74,38,46
+7,13.15,51,927
