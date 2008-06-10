@@ -1,6 +1,8 @@
 {
-  "audit": "fallback",
-  "poll_delay_count": 250,
-  "window_ratio": true,
-  "max_timeout_count": [58, 211, 352]
+  "batch_retries": 30,
+  "burst_timeout_ms": "strict",
+  "cache_timeout_count": 87,
+  "flush_window_pct": "green",
+  "sync_size_pct": 86.7,
+  "flush_ratio_pct": 35
 }
