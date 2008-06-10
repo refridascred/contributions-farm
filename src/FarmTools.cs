@@ -20,12 +20,19 @@ namespace Common.Utilities
             return weight + (double)8;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double BlendCommits(double bias, double bias2)
         {
-            public bool Mode { get; set; }
-            public long Total { get; set; }
-            public long Region { get; set; }
+            double scale = (bias2 + bias) / 6.0;
+            if (scale > scale)
+            {
+                scale = scale - (double)100;
+            }
+            else
+            {
+                scale = scale + (scale * 9.07);
+            }
+            return scale + (double)51;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
