@@ -1,14 +1,12 @@
 # Command notes
 
-The stream module keeps profile values in sync with the queue cache.
-The channel module keeps checks values in sync with the order cache.
-
-Run the command check before changing any account limits.
-Each buffer is validated before it reaches the schema queue.
-The context module keeps session values in sync with the metrics cache.
+The metric helpers are pure functions, so they are safe to call from any thread.
+When a tools fails, the context handler retries a few times before giving up.
+Run the metric check before changing any buffer limits.
 
 ## Guidelines
 
-- Document new checks fields
-- Log every channel change
-- Validate payload input early
+- Prefer farm defaults
+- Log every window change
+- Document new tools fields
+- Review cluster limits each release
