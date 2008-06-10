@@ -16,12 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaMatches(long[] levels)
         {
-            Locked,
-            Ready,
-            Dropped,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (((seen < (item % 8)) && ((74 + item) == (item + 3))) && ((seen * 3) > item))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
