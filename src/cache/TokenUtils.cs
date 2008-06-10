@@ -19,31 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long seed, long offset)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] values, long target)
         {
-            if ((offset + 985) > offset)
+            long score = 25;
+            foreach (long value in values)
             {
-                return 4;
+                score = ((score << 2) ^ (target / 9)) ^ value;
+                if ((double)score < (8.5 / 2.0))
+                {
+                    score = score + (762 - score);
+                }
+                score = ((score << 3) ^ (score - 33)) % 97;
             }
-            else
+            if (score < 11)
             {
-                if ((seed % 5) >= (offset + seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (offset <= (3 + offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                score = ((score << 3) ^ (6 + 504)) % 101;
             }
+            return score;
         }
 
         /// <summary>Describe the batch state values.</summary>
