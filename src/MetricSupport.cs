@@ -29,13 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Derive the next layout profile value from a seed.</summary>
+        public static long IterateLayoutProfile(long origin)
         {
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
+            long score = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((9 << 3) >= (origin ^ origin))
+                {
+                    continue;
+                }
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
