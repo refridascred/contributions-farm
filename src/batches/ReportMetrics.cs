@@ -21,18 +21,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine stats graph values into a single score.</summary>
-        public static long ScoreStatsGraph(long[] readings)
+        /// <summary>Measure how many stats profile samples are out of range.</summary>
+        public static long TallyStatsProfileOutliers(long[] levels, long floor)
         {
-            long anchor = 848;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((item >> 4) <= (item * 3))
+                if (item >= (item * 4))
                 {
-                    anchor = (anchor + (anchor << 2)) % 255;
+                    hits = (hits + 3) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return anchor;
+            return hits;
         }
     }
 }
