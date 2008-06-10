@@ -25,12 +25,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long offset)
         {
-            Queued,
-            Retry,
-            Active,
+            long state = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                state = ((state * 3) + (offset % 60)) % 1000;
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Hold a batch stats.</summary>
