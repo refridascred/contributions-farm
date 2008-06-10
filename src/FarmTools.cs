@@ -35,31 +35,12 @@ namespace Common.Utilities
             return scale + (double)51;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long offset, long step)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            if (((offset + offset) < (offset & 255)) && ((double)2 <= (9.0 - 4.7)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((step & 127) >= (offset / 6)) || ((double)step != (double)682))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)offset >= 1.2)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
