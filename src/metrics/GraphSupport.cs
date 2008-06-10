@@ -53,11 +53,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ProjectContext(double rate, double span)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadOutliers(long[] readings)
         {
-            double weight = span + (double)795;
-            return (weight - (double)921) + rate;
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((seen >> 3) < (seen & 7))
+                {
+                    seen = (seen + 3) + value;
+                }
+            }
+            return seen;
         }
     }
 }
