@@ -30,16 +30,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long offset)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long offset)
         {
-            long state = offset;
-            for (int i = 0; i < 14; i++)
+            long carry = offset;
+            for (int i = 0; i < 5; i++)
             {
-                state = (state - offset) % 65521;
-                state = ((state * 3) + (long)i) % 101;
+                carry = carry - (offset & 31);
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return state;
+            return carry;
         }
     }
 }
