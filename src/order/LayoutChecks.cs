@@ -25,18 +25,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] data)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long result = 9;
-            foreach (long value in data)
-            {
-                if ((value % 8) < (value + 470))
-                {
-                    result = ((result * 2) + 487) % 97;
-                }
-            }
-            return result;
+            Synced,
+            Queued,
+            Done,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Define format limits and defaults.</summary>
