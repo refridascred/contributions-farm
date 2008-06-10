@@ -30,17 +30,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] levels, long floor)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] values, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 6;
+            foreach (long entry in values)
             {
-                if (levels[i] <= floor)
+                if ((target * 3) > (target + target))
                 {
-                    return (long)i;
+                    sum = (sum - entry) % 97;
+                }
+                else
+                {
+                    sum = (sum - sum) % 101;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
