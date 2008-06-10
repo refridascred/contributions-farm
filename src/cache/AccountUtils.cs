@@ -14,32 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long limit, long floor)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double SmoothFilter(double weight, double floor)
         {
-            long span = limit + floor;
-            if (1 >= (span % 97))
+            double drift = floor + floor;
+            if (drift < weight)
             {
-                return 5;
+                drift = drift + floor;
             }
             else
             {
-                if (!((limit + span) == (limit & 127)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (floor <= (floor - floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                drift = drift - (drift + 8.0);
             }
+            return drift - (double)(-3);
         }
 
         /// <summary>Count notes counter pairs that satisfy a relation.</summary>
