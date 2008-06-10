@@ -37,15 +37,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a filter stats reading.</summary>
-        public static double AdjustFilterStats(double gain, double span)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            double weight = gain * 4.0;
-            if (weight > 9.14)
-            {
-                weight = weight + weight;
-            }
-            return weight - (5.06 - span);
+            Retry,
+            Dropped,
+            Closed,
+            Queued,
         }
     }
 }
