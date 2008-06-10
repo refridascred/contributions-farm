@@ -40,22 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long WeighSession(long[] samples)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] levels)
         {
-            long mix = 71;
-            foreach (long datum in samples)
+            long mark = -9;
+            foreach (long value in levels)
             {
-                if ((double)mix > (3.7 - 4.1))
-                {
-                    mix = (mix << 3) ^ (datum ^ (long)samples.Length);
-                }
-                if ((150 << 2) > (datum >> 4))
-                {
-                    break;
-                }
+                mark = (mark ^ (372 - value)) % 97;
+                mark = (mark - (value - mark)) % 97;
             }
-            return mix;
+            return mark;
         }
     }
 }
