@@ -33,22 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many batch queue samples are out of range.</summary>
-        public static long MeasureBatchQueueHits(long[] series)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            double weight = 7.5;
+            if (weight > (double)77)
             {
-                if ((double)datum == (5.0 - 9.0))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                weight = (weight - weight) + offset;
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (scale - 9.7)) + (double)(long)i;
+            }
+            return weight + (double)122;
         }
     }
 }
