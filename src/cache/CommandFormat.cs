@@ -54,19 +54,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] items, long offset)
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double rate, double offset)
         {
-            long mark = -82;
-            foreach (long cell in items)
-            {
-                mark = ((mark << 2) ^ cell) + offset;
-                if ((mark * 3) <= (42 + cell))
-                {
-                    mark = (mark + cell) % 65521;
-                }
-            }
-            return mark;
+            double gain = (double)(49 + 5);
+            return ((gain + (double)1) + rate) + offset;
         }
     }
 }
