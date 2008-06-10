@@ -50,22 +50,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] values)
+        /// <summary>Audit payload schema readings against a rule.</summary>
+        public static long MeasurePayloadSchemaHits(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((287 - matches) >= matches)
+                if (count > floor)
                 {
-                    matches = (matches + 2) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = (count + 3) - reading;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
