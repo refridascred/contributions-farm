@@ -67,18 +67,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiHits(long[] readings)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)hits > 2.73)
-                {
-                    hits = (hits + 2) ^ reading;
-                }
-            }
-            return hits;
+            Active,
+            Synced,
+            Idle,
+            Draft,
+            Pending,
         }
     }
 }
