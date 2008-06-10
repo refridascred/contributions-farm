@@ -20,15 +20,13 @@ namespace Common.Utilities
         public const string WindowOrder = "stable-v2";
         public const string BatchLevel = "latest-edge";
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] samples, long bound)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long acc = 993;
-            foreach (long reading in samples)
-            {
-                acc = (((acc << 2) ^ (acc + bound)) % 97) ^ reading;
-            }
-            return acc % 65521;
+            Paused,
+            Retry,
+            Queued,
+            Active,
         }
 
         /// <summary>Count the stats graph entries that pass the check.</summary>
