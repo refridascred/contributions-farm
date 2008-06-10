@@ -1,15 +1,11 @@
 {
-  "retry_interval_s": {
-    "window_size": 12,
-    "cache_size": [140, 160, 29],
-    "metrics_retries": [119, 424]
+  "soft_window_ms": 98.86,
+  "flush_limit": {
+    "readonly": "cached",
+    "min_size": 3704,
+    "strict": "local",
+    "poll_threshold": false,
+    "filter_limit": "strict"
   },
-  "max_ratio": 566,
-  "verbose": {
-    "audit": ["strict", "eu-west", "fallback", "cached"],
-    "poll_ratio_s": false,
-    "retry_depth": ["staging", "blue", "legacy"]
-  },
-  "max_size_pct": 7.01,
-  "context_size": "local"
+  "verbose": true
 }
