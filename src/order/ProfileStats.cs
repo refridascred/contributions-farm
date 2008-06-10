@@ -31,9 +31,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MaxEntry = 9.16;
-        public const double IdleSpan = 46.55;
-        public const long LimitLevel = 4484;
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
+        }
     }
 }
