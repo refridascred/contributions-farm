@@ -14,15 +14,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Roll a account contributi counter forward.</summary>
-        public static long StepAccountContributi(long step)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamLimits(long[] values, long target)
         {
-            long mark = step;
-            for (int i = 0; i < 11; i++)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                mark = ((mark * 2) + (long)i) % 97;
+                if (cell > target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
