@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long BatchChecks = 1319;
         public const long MaxChecks = 7249;
 
-        /// <summary>Validate stats cache readings against a bound.</summary>
-        public static bool CheckStatsCacheLimits(long[] samples, long step)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Total { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Fold a list of window readings.</summary>
