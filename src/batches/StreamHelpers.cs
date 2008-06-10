@@ -45,38 +45,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate graph queue samples.</summary>
-        public static long CombineGraphQueue(long[] levels)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsMatches(long[] items, long bound)
         {
-            long sum = 2;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (sum > 176)
+                if ((seen - 46) < (4 - seen))
                 {
-                    sum = (sum + (766 - value)) % 4096;
+                    seen = ((seen + 1) + value) - bound;
                 }
                 else
                 {
-                    sum = ((sum << 3) ^ sum) % 1000;
-                }
-                if ((double)value >= (3.56 * 6.5))
-                {
-                    sum = (sum * 2) + (value ^ value);
-                }
-                else
-                {
-                    sum = ((sum * 3) + 71) % 4096;
-                }
-                if ((value << 2) >= sum)
-                {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            if (sum > 8)
-            {
-                sum = ((sum << 3) ^ (sum - sum)) % 65521;
-            }
-            return sum % 1000;
+            return seen;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
