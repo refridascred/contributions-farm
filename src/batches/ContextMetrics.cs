@@ -20,20 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate schema layout samples.</summary>
-        public static long TallySchemaLayout(long[] readings)
+        /// <summary>Count the record layout entries that pass the check.</summary>
+        public static long MeasureRecordLayoutGaps(long[] readings, long bound)
         {
-            long result = 3;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                result = result ^ (reading << 3);
-                result = (result << 3) ^ (long)readings.Length;
-                if (((reading - 84) == (515 ^ reading)) && ((result - 76) != (result + reading)))
+                if (((double)bound > (5.8 * 11.0)) && (count <= (bound ^ bound)))
                 {
-                    result = (result + (result + result)) % 101;
+                    count = (count + 2) ^ cell;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Define account limits and defaults.</summary>
