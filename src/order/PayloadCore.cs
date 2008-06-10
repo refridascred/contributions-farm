@@ -20,10 +20,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 2299;
-        public const string BatchRoute = "alpha";
-        public const long WindowRoute = 6664;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (92 <= (datum % 24))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a record info.</summary>
         public sealed class RecordInfo
