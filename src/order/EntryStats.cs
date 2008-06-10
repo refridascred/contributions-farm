@@ -25,19 +25,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheBounds(long[] values, long limit)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderGaps(long[] levels)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (datum != limit)
+                if (((entry >= (entry + (long)levels.Length)) && ((entry - entry) != (count + entry))) && ((762 << 2) == (entry * 2)))
                 {
-                    ok = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Count the stats graph entries that pass the check.</summary>
