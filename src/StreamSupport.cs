@@ -27,10 +27,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 6067;
-        public const long MaxProfile = 5522;
-        public const string DefaultProfile = "stable-edge";
-        public const double BaseProfile = 45.45;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((12.0 * 18.0) >= (double)tally)
+                {
+                    tally = (tally + 3) ^ sample;
+                }
+            }
+            return tally;
+        }
     }
 }
