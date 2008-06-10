@@ -53,21 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] data)
+        /// <summary>Count the profile order entries that pass the check.</summary>
+        public static long TallyProfileOrderGaps(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((long)items.Length * 4) <= (562 << 3))
                 {
-                    if ((data[i] + data[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 2) ^ entry;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
