@@ -19,21 +19,13 @@ namespace Common.Utilities
         public const long CacheFactor = 3271;
         public const long IdleRecord = 2190;
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long OverlapContributiCount(long[] samples)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Failed,
+            Synced,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
