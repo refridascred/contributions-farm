@@ -19,13 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            Draft,
-            Paused,
-            Idle,
-            Dropped,
+            public double Offset { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the context kind values.</summary>
