@@ -28,16 +28,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long limit)
+        /// <summary>Count the stats graph entries that pass the check.</summary>
+        public static long AuditStatsGraphOutliers(long[] levels, long seed)
         {
-            long mix = limit;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                mix = ((mix << 2) ^ limit) % 1000;
-                mix = ((mix * 2) + (long)i) % 65521;
+                if (!(seed >= (value >> 4)))
+                {
+                    count = count + 1;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
