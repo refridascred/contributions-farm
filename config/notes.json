@@ -1,12 +1,17 @@
 {
-  "poll_depth": "edge",
-  "account_limit": {
-    "default_depth": 8528,
-    "metric_ttl": "blue",
-    "enabled": false,
-    "token_capacity": 1618,
-    "default_timeout_ms": "primary"
+  "poll_capacity_count": true,
+  "format_depth": "fallback",
+  "compress": {
+    "warm_depth": 50.81,
+    "githubfarm_threshold": {
+      "batches_window": "latest",
+      "audit": 36.79,
+      "base_timeout_s": 97
+    },
+    "audit": 40.77,
+    "readonly": "standard"
   },
-  "default_depth": 53,
-  "checks_window": 2398
+  "hard_interval": false,
+  "cache_ratio_count": 1024,
+  "persist": 9284
 }
