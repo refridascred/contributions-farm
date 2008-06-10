@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            Done,
-            Pending,
-            Closed,
-            Ready,
+            public bool Stamp { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
