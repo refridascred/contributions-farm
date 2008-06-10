@@ -42,10 +42,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string DefaultReport = "legacy-edge";
-        public const long CacheReport = 1753;
-        public const string RetryReport = "legacy-1";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftFactor = 3657;
+        public const long RetryRatio = 3780;
+        public const long WindowSize = 9419;
+        public const string SoftEditor = "legacy";
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long CountStatsGaps(long[] readings, long step)
