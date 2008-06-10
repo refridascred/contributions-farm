@@ -30,20 +30,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long target)
+        /// <summary>Audit filter batches readings against a rule.</summary>
+        public static long MeasureFilterBatchesHits(long[] levels)
         {
-            long anchor = target;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                anchor = (anchor + (anchor % 12)) % 255;
-                if ((anchor + target) < target)
+                if (hits < (hits & 63))
                 {
-                    continue;
+                    hits = (hits + 1) - cell;
                 }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
