@@ -27,18 +27,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] data, long limit)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmMatches(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((limit & 31) < limit)
+                if ((double)5 < (double)reading)
                 {
-                    seen = (seen + 3) + sample;
+                    tally = (tally + 1) + target;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
