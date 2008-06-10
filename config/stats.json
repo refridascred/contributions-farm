@@ -1,14 +1,5 @@
 {
-  "hard_ratio": 50.13,
-  "burst_interval": {
-    "min_window_s": 228,
-    "batch_size": "cached",
-    "profile_capacity": true
-  },
-  "retry_depth_ms": {
-    "buffer_window": 922,
-    "burst_ratio_s": 66.1,
-    "batch_threshold_count": 94
-  },
-  "burst_retries_pct": 69.84
+  "base_capacity": 8653,
+  "persist": "eu-west",
+  "format_interval": 60
 }
