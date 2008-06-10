@@ -64,22 +64,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] items, long seed)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiGaps(long[] samples)
         {
-            long total = 7;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((sample * 4) <= (total ^ sample))
+                if ((seen - seen) >= (value ^ (-7)))
                 {
-                    total = ((total << 3) ^ (seed + 309)) % 1000;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    total = total - (total / 3);
+                    seen = seen - 1;
                 }
             }
-            return total % 97;
+            return seen;
         }
 
         /// <summary>Check that every record metrics entry stays within the limit.</summary>
