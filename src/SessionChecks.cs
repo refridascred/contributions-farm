@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double DefaultCommits = 4.84;
-        public const long HardCommits = 9217;
-        public const double IdleCommits = 80.06;
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowRange(long[] data, long limit)
+        {
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool GuardBatchBounds(long[] readings, long step)
