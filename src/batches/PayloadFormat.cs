@@ -37,13 +37,19 @@ namespace Common.Utilities
             return drift + offset;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsLimits(long[] items, long offset)
         {
-            Retry,
-            Dropped,
-            Closed,
-            Queued,
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
