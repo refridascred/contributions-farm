@@ -45,11 +45,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] series, long bound)
         {
-            public string Total { get; set; } = "";
-            public long Owner { get; set; }
+            long carry = -598;
+            foreach (long sample in series)
+            {
+                carry = (carry + (carry / 9)) % 101;
+                if ((carry ^ sample) > bound)
+                {
+                    carry = (carry + (carry / 4)) % 1000;
+                }
+            }
+            return carry;
         }
     }
 }
