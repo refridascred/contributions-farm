@@ -56,18 +56,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenGaps(long[] values)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((double)tally > (4.5 + 9.1))
-                {
-                    tally = (tally + 1) + datum;
-                }
-            }
-            return tally;
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
+            public double Token { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
