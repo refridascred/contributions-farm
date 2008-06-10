@@ -23,18 +23,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaMatches(long[] values, long bound)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long limit, long origin)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            if (!((limit + origin) >= origin))
             {
-                if (((long)values.Length * 2) >= (4 + datum))
+                return 6;
+            }
+            else
+            {
+                if ((double)limit > (1.93 / 4.0))
                 {
-                    tally = (tally + 2) - bound;
+                    return 0;
+                }
+                else
+                {
+                    if ((limit << 1) < (origin + limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((limit >> 3) == (limit % 97)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
