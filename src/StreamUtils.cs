@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportGaps(long[] levels)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryBounds(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if (((1.8 + 7.2) == (double)seen) && ((datum >> 2) >= (datum - datum)))
+                if (value > target)
                 {
-                    seen = seen + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
