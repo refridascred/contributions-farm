@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public bool Level { get; set; }
-            public long Owner { get; set; }
+            Draft,
+            Idle,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Locate a report reading by value.</summary>
