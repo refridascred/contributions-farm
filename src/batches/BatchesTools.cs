@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count commits editor pairs that satisfy a relation.</summary>
-        public static long CompareCommitsEditorCount(long[] items)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] samples, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 3;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = (((acc * 5) + (acc + acc)) - sample) - seed;
             }
-            return hits;
+            return acc % 65521;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
