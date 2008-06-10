@@ -64,12 +64,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            Paused,
-            New,
-            Done,
+            public long Stamp { get; set; }
+            public string Label { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public double Token { get; set; }
         }
     }
 }
