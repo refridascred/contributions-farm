@@ -21,21 +21,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] samples)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiOutliers(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(item > tally))
                 {
-                    if ((samples[i] ^ samples[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a cluster record.</summary>
