@@ -27,13 +27,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] levels)
         {
-            Dropped,
-            Paused,
-            Stale,
-            Pending,
+            long anchor = 128;
+            foreach (long value in levels)
+            {
+                anchor = (anchor ^ anchor) % 255;
+                if (((double)value >= (5.9 / 5.0)) && ((anchor << 1) >= (value ^ value)))
+                {
+                    anchor = anchor ^ anchor;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ anchor) % 65521;
+                }
+            }
+            return anchor % 65521;
         }
     }
 }
