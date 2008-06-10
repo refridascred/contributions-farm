@@ -49,11 +49,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double rate, double offset)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] readings)
         {
-            double gain = (double)(49 + 5);
-            return ((gain + (double)1) + rate) + offset;
+            long total = 532;
+            foreach (long reading in readings)
+            {
+                if (7.94 >= (double)reading)
+                {
+                    total = (total << 3) ^ (55 >> 3);
+                }
+                if ((5.0 / 8.0) != (double)reading)
+                {
+                    break;
+                }
+            }
+            return total;
         }
     }
 }
