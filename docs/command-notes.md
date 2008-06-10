@@ -1,11 +1,14 @@
 # Command notes
 
-Keep queue and already names short and lowercase.
-Use editor settings to tune how often filter data is refreshed.
-Keep commits and batch names short and lowercase.
+Keep notes and cache names short and lowercase.
+The window helpers are pure functions, so they are safe to call from any thread.
+
+A metric that stays idle for too long is moved to the buffer list.
+When a order fails, the githubfarm handler retries a few times before giving up.
+The profile module keeps farm values in sync with the schema cache.
 
 ## Guidelines
 
-- Keep channel values small
-- Review command limits each release
-- Document new layout fields
+- Keep githubfarm values small
+- Prefer window defaults
+- Document new graph fields
