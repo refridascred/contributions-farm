@@ -43,13 +43,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportBounds(long[] data, long origin)
         {
-            public double Score { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Stamp { get; set; }
-            public bool Count { get; set; }
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the channel mode values.</summary>
