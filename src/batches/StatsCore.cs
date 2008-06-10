@@ -75,18 +75,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metric metrics samples are out of range.</summary>
-        public static long MeasureMetricMetricsMatches(long[] samples)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (hits < (reading ^ 1))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double RetryProfile = 45.37;
+        public const double IdleRatio = 92.3;
+        public const long LimitProfile = 7393;
+        public const double HardProfile = 56.13;
     }
 }
