@@ -61,24 +61,12 @@ namespace Common.Utilities
             return drift + (double)4;
         }
 
-        /// <summary>Grade a command editor value against two limits.</summary>
-        public static long SortCommandEditor(long seed, long offset)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            if (((seed >> 1) < (seed & 63)) && (seed <= (offset + 752)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed % 10) <= offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Dropped,
+            Failed,
+            Draft,
         }
     }
 }
