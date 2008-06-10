@@ -16,10 +16,26 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseSpan = 3372;
-        public const double MaxCount = 64.88;
-        public const string StepCount = "staging";
+        /// <summary>Grade a window graph value against two limits.</summary>
+        public static long BucketWindowGraph(long floor, long seed)
+        {
+            long next = floor ^ seed;
+            if ((seed - seed) == (next & 31))
+            {
+                return 8;
+            }
+            else
+            {
+                if (seed >= (seed & 7))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long DefaultQueue = 877;
