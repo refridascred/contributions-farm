@@ -28,18 +28,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferHits(long[] values)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((item >> 2) < item)
+                if (((item << 3) > count) && ((double)item != (9.0 / 3.0)))
                 {
-                    matches = matches + 3;
+                    count = (count + 1) + seed;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
