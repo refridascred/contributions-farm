@@ -1,8 +1,19 @@
 {
-  "hard_capacity_count": 2017,
-  "readonly": 100,
-  "retry_size": "green",
-  "cluster_retries": true,
-  "counter_ttl": 250,
-  "verbose": 68.21
+  "idle_limit_s": "standard",
+  "readonly": "latest",
+  "hard_window": ["strict", "standard", "stable"],
+  "base_capacity_s": {
+    "burst_retries_count": ["latest", "standard", "eu-west"],
+    "cache_retries": "standard",
+    "default_delay_pct": {
+      "hard_capacity_ms": 1578,
+      "compress": "stable",
+      "hard_size_pct": "blue",
+      "retry_limit_count": 30,
+      "max_retries_ms": 500,
+      "cache_threshold": true
+    },
+    "base_capacity_ms": false
+  },
+  "audit": [184, 352, 169]
 }
