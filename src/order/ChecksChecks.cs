@@ -25,15 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double weight, double bias)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            double weight2 = (double)(614 % 3);
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = (((weight2 + weight2) - (double)(long)i) - weight) + bias;
-            }
-            return weight2 + weight2;
+            public bool Owner { get; set; }
+            public string Score { get; set; } = "";
+            public bool Token { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a window snapshot.</summary>
