@@ -1,5 +1,5 @@
 {
-  "dry_run": "stable",
-  "batch_limit": ["stable", "blue"],
-  "command_ttl": "stable"
+  "cache_retries": 50,
+  "buffer_threshold": 69,
+  "warm_ratio_ms": true
 }
