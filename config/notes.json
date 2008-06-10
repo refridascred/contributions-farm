@@ -1,7 +1,7 @@
 {
-  "burst_capacity_ms": 34,
-  "batch_capacity_pct": "eu-west",
-  "channel_ttl": true,
-  "audit": 24,
-  "stats_size": "blue"
+  "flush_threshold_pct": "eu-west",
+  "enabled": "fallback",
+  "strict": 34,
+  "cache_interval": 1024,
+  "metric_ttl": 60
 }
