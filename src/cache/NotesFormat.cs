@@ -47,12 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            Pending,
-            Queued,
-            Dropped,
+            public bool Score { get; set; }
+            public long Region { get; set; }
+            public long Count { get; set; }
         }
     }
 }
