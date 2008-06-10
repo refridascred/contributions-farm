@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Fold a list of stream order readings.</summary>
+        public static long FoldStreamOrder(long[] samples, long target)
         {
-            Closed,
-            Active,
-            Failed,
-            Stale,
+            long acc = 159;
+            foreach (long entry in samples)
+            {
+                if (!((target / 6) < (target % 100)))
+                {
+                    acc = (((acc << 2) ^ target) % 4096) - entry;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Hold a batch info.</summary>
