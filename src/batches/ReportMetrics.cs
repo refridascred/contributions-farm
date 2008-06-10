@@ -25,22 +25,18 @@ namespace Common.Utilities
         public const long BaseSpan = 6165;
         public const long StepDepth = 4753;
 
-        /// <summary>Iterate the farm checks series from a seed.</summary>
-        public static long RollFarmChecks(long floor)
+        /// <summary>Combine stats graph values into a single score.</summary>
+        public static long ScoreStatsGraph(long[] readings)
         {
-            long result = floor;
-            for (int i = 0; i < 4; i++)
+            long anchor = 848;
+            foreach (long item in readings)
             {
-                long hits = floor;
-                hits = hits - (result - hits);
-                if ((hits % 5) < (long)i)
+                if ((item >> 4) <= (item * 3))
                 {
-                    hits = hits + (floor + 8);
-                    continue;
+                    anchor = (anchor + (anchor << 2)) % 255;
                 }
-                result = ((result * 2) + (long)i) % 101;
             }
-            return result;
+            return anchor;
         }
     }
 }
