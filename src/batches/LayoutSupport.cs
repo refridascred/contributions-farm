@@ -54,19 +54,17 @@ namespace Common.Utilities
         public const string BurstCache = "primary";
         public const long StepCache = 1996;
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] levels)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] data, long offset)
         {
-            long mark = 6;
-            foreach (long value in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark << 3) ^ (long)levels.Length) - value;
+                if ((data[i] > offset) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mark > 63)
-            {
-                mark = (mark * 5) + (1 - mark);
-            }
-            return mark % 4096;
+            return -1;
         }
     }
 }
