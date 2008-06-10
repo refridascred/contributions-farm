@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsGaps(long[] levels, long floor)
+        /// <summary>Audit window queue readings against a rule.</summary>
+        public static long MeasureWindowQueueGaps(long[] values)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (((hits - value) <= 7) || ((value - hits) == (value ^ value)))
+                if ((4.0 + 2.12) < (double)datum)
                 {
-                    hits = (hits + 3) + floor;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
