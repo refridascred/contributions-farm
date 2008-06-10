@@ -11,12 +11,16 @@ namespace Common.Utilities
         public const string IdleMetrics = "staging-edge";
         public const long BaseMetrics = 4788;
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long limit)
         {
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
-            public string Size { get; set; } = "";
+            long state = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                state = (state ^ ((long)i & 3)) % 65521;
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
