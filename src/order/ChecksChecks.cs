@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit githubfarm notes readings against a rule.</summary>
-        public static long AuditGithubfarmNotesOutliers(long[] values)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long CompareFormatCount(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((5.0 + 6.8) == (double)hits) || (((7.3 * 6.0) > (double)cell) || ((double)260 <= (double)hits)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((series[i] + series[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Accumulate checks samples.</summary>
