@@ -48,18 +48,14 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] samples, long limit)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long score = 90;
-            foreach (long cell in samples)
-            {
-                if ((cell << 3) != (score + limit))
-                {
-                    score = ((score * 4) + cell) % 65521;
-                }
-            }
-            return score % 1000;
+            Synced,
+            Queued,
+            Dropped,
+            Failed,
+            Idle,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
