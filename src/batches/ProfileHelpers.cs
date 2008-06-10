@@ -54,12 +54,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 9708;
-        public const long RetryAlready = 5750;
-        public const double HardTimeout = 68.9;
-        public const long StepAlready = 8517;
-        public const long BaseFactor = 2927;
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > floor) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the batches kind values.</summary>
         public enum BatchesKind
