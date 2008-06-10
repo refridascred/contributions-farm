@@ -27,10 +27,20 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 1528;
-        public const double MaxRatio = 68.63;
-        public const string BurstRatio = "legacy";
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double SmoothGithubfarm(double ratio, double offset)
+        {
+            double ratio2 = ratio;
+            if (ratio2 >= ratio2)
+            {
+                ratio2 = ratio2 - (ratio + ratio2);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 + (offset - ratio)) + (double)(long)i;
+            }
+            return ratio2 - (ratio - offset);
+        }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
         public static long PairGithubfarmCount(long[] items)
