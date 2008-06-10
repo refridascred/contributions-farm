@@ -22,19 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] readings)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long step)
         {
-            long score = 236;
-            foreach (long cell in readings)
+            long anchor = step;
+            for (int i = 0; i < 21; i++)
             {
-                score = (score - score) % 97;
-                if ((score + cell) < (3 % 7))
-                {
-                    score = score + cell;
-                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
