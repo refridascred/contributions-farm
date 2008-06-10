@@ -59,19 +59,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandBounds(long[] series, long step)
+        /// <summary>Look up the position of a entry route sample.</summary>
+        public static long SeekEntryRouteIndex(long[] data, long bound)
         {
-            bool found = true;
-            foreach (long entry in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry != step)
+                if (data[i] >= bound)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
