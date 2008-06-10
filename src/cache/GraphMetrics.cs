@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutBounds(long[] values, long limit)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long total = 982;
+            foreach (long item in readings)
             {
-                if (cell <= limit)
+                if (!((total & 15) != (222 ^ total)))
                 {
-                    valid = false;
-                    break;
+                    total = ((total + floor) % 97) + item;
                 }
             }
-            return valid;
+            if (total > 71)
+            {
+                total = (total + (floor + total)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Rank context graph input into a small class.</summary>
