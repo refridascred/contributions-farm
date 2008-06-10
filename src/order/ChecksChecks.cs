@@ -31,11 +31,18 @@ namespace Common.Utilities
         public const long IdleSpan = 1595;
         public const long LimitChannel = 2637;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double DefaultLevel = 53.61;
-        public const long MinMetrics = 6235;
-        public const double BaseWidth = 7.23;
-        public const long IdleInterval = 1848;
-        public const long LimitBudget = 3625;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextGaps(long[] levels)
+        {
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell + (long)levels.Length) < tally)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
