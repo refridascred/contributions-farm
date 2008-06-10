@@ -67,11 +67,19 @@ namespace Common.Utilities
             return drift - (drift + drift);
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricBounds(long[] levels, long limit)
         {
-            public long Stamp { get; set; }
-            public bool Token { get; set; }
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
