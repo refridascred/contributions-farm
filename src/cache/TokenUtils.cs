@@ -20,10 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepTimeout = 5480;
-        public const long BaseInterval = 1043;
-        public const long HardScore = 8956;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry / 9) <= (entry + entry))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
