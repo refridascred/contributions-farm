@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowRange(long[] items, long limit)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Stale,
+            New,
+            Retry,
+            Draft,
         }
 
         /// <summary>Locate a stats reading by value.</summary>
