@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the stream batch series from a seed.</summary>
-        public static long SeriesStreamBatch(long origin)
+        /// <summary>Count channel payload pairs that satisfy a relation.</summary>
+        public static long CompareChannelPayloadCount(long[] levels)
         {
-            long mark = origin;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = ((mark << 3) ^ ((long)i2 - (long)i2)) % 65521;
+                    if ((levels[i] + levels[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
