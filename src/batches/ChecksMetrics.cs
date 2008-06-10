@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] readings)
         {
-            Done,
-            Ready,
-            Paused,
+            long state = 78;
+            foreach (long value in readings)
+            {
+                if ((value << 3) >= (long)readings.Length)
+                {
+                    state = ((state << 3) ^ value) % 1000;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Hold a record summary.</summary>
