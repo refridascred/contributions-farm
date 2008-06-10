@@ -37,20 +37,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the entry cluster series from a seed.</summary>
-        public static long StepEntryCluster(long seed)
+        /// <summary>Rank session githubfarm input into a small class.</summary>
+        public static long GradeSessionGithubfarm(long seed, long limit)
         {
-            long total = seed;
-            for (int i = 0; i < 10; i++)
+            long lane = seed ^ limit;
+            if ((lane % 60) <= (lane % 12))
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    total = (total + ((long)i & 15)) ^ (long)i2;
-                }
-                total = ((total << 3) ^ total) % 65521;
-                total = ((total * 4) + (long)i) % 1000;
+                return 8;
             }
-            return total;
+            else
+            {
+                if (limit < (11 + lane))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (limit <= (limit ^ lane))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (limit < (lane - limit))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the profile kind values.</summary>
