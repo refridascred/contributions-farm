@@ -26,12 +26,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] data, long bound)
         {
-            public bool Label { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Count { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
