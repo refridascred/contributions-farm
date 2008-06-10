@@ -36,18 +36,11 @@ namespace Common.Utilities
         public const string RetryLevel = "latest-v2";
         public const long StepFactor = 119;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] levels, long seed)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)hits != (18.0 / 2.0))
-                {
-                    hits = ((hits + 3) + cell) + seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitBuffer = 1775;
+        public const long MinSize = 7433;
+        public const long BurstCount = 3894;
+        public const long BatchSpan = 8507;
+        public const string MinBuffer = "latest-1";
     }
 }
