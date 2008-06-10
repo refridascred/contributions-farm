@@ -37,19 +37,17 @@ namespace Common.Utilities
             return drift + offset;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsLimits(long[] items, long offset)
+        /// <summary>Look up the position of a farm schema sample.</summary>
+        public static long FindFarmSchemaIndex(long[] levels, long bound)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell <= offset)
+                if (levels[i] < bound)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
