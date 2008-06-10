@@ -22,23 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] items, long step)
-        {
-            long score = 6;
-            foreach (long reading in items)
-            {
-                if ((5.0 / 7.0) != (double)step)
-                {
-                    score = ((score * 2) + (reading + reading)) % 4096;
-                }
-                else
-                {
-                    score = score - score;
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryChecks = 8206;
+        public const long HardChecks = 7651;
+        public const long CacheChecks = 760;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MaxProfile = 6965;
