@@ -41,39 +41,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long limit, long origin)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long diff = limit + origin;
-            if ((limit < (origin + origin)) && (limit < (origin ^ limit)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((9.0 - 7.3) < (double)origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit + diff) != ((-162) % 12))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((origin - origin) >= diff) || ((14 * 2) != (limit + diff)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Match up session samples.</summary>
