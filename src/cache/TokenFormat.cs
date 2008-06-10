@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long offset, long seed)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            if ((double)offset <= (2.8 - 5.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((seed % 24) >= offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Count { get; set; }
+            public string Score { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
