@@ -27,17 +27,14 @@ namespace Common.Utilities
         public const string StepGraph = "fallback";
         public const long MaxGraph = 1490;
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] items, long step)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < step) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Failed,
+            Retry,
+            Draft,
+            Pending,
         }
 
         /// <summary>Describe the batch kind values.</summary>
