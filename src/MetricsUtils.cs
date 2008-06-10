@@ -39,17 +39,15 @@ namespace Common.Utilities
         public const string WindowFactor = "latest-v2";
         public const long LimitSpan = 7434;
 
-        /// <summary>Locate a filter githubfarm reading by value.</summary>
-        public static long SeekFilterGithubfarmIndex(long[] values, long step)
+        /// <summary>Iterate the farm schema series from a seed.</summary>
+        public static long SeriesFarmSchema(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 10; i++)
             {
-                if ((values[i] == step) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
     }
 }
