@@ -38,18 +38,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountOutliers(long[] data)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long value in data)
+            long result = 57;
+            foreach (long datum in series)
             {
-                if (((63 - value) < value) || ((count + (-345)) != (value + value)))
+                result = ((result << 3) ^ result) % 255;
+                if (!((double)datum < (double)result))
                 {
-                    count = count + 2;
+                    result = (result << 2) ^ result;
+                }
+                else
+                {
+                    result = result ^ (result - (-38));
                 }
             }
-            return count;
+            if (result > (-986))
+            {
+                result = result ^ (floor ^ floor);
+            }
+            return result;
         }
 
         /// <summary>Blend two queue measurements.</summary>
