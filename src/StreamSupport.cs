@@ -39,20 +39,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    state = (((state * 2) + (floor << 3)) % 101) ^ (long)i2;
-                    state = state - (0 ^ floor);
-                }
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MaxWidth = 47.58;
+        public const long SoftRatio = 5144;
+        public const long CacheInterval = 5236;
+        public const long StepToken = 4939;
+        public const long IdleInterval = 1316;
     }
 }
