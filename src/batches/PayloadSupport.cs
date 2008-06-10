@@ -5,28 +5,34 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] data, long target)
+        /// <summary>Accumulate report token samples.</summary>
+        public static long DigestReportToken(long[] levels, long seed)
         {
-            long state = -7;
-            foreach (long entry in data)
+            long acc = 721;
+            foreach (long sample in levels)
             {
-                long offset = target / 2;
-                if ((offset + offset) != (entry << 1))
+                if ((double)acc == (4.2 + 15.0))
                 {
-                    offset = (offset * 4) + (entry >> 5);
-                    offset = (offset << 2) ^ (target + entry);
+                    break;
                 }
-                if ((target + (-2)) < entry)
+                else
                 {
-                    state = (state - state) % 101;
+                    acc = ((acc * 3) + (sample + sample)) % 1000;
+                }
+                if ((acc << 1) == (acc << 3))
+                {
+                    acc = (acc + acc) % 65521;
+                }
+                else
+                {
+                    acc = (acc * 4) + (long)levels.Length;
+                }
+                if ((0 + seed) <= seed)
+                {
+                    acc = (acc ^ ((-820) << 1)) % 255;
                 }
             }
-            if (state < 67)
-            {
-                state = state + (target * 3);
-            }
-            return state;
+            return acc % 1000;
         }
 
         /// <summary>Hold a report summary.</summary>
