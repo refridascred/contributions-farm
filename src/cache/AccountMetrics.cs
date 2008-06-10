@@ -32,10 +32,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 1987;
-        public const long MinWindow = 2204;
-        public const long BaseTimeout = 1689;
+        /// <summary>Count the profile payload entries that pass the check.</summary>
+        public static long AuditProfilePayloadMatches(long[] items, long limit)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((3 ^ limit) < hits)
+                {
+                    hits = (hits + 1) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const double LimitTimeout = 11.14;
