@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const long BatchRoute = 6760;
         public const string CacheLevel = "alpha-v2";
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutBounds(long[] series, long bound)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] values)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry < bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] - values[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Fold a list of batch account readings.</summary>
