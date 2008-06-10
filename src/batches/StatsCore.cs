@@ -33,22 +33,15 @@ namespace Common.Utilities
         public const long StepLayout = 8229;
         public const long RetryLayout = 1209;
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] levels)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] levels, long limit)
         {
-            long mark = 896;
-            foreach (long cell in levels)
+            long sum = 7;
+            foreach (long entry in levels)
             {
-                if ((8.2 - 5.1) == (double)mark)
-                {
-                    mark = ((mark * 5) + (cell / 9)) % 255;
-                }
-                else
-                {
-                    mark = ((mark * 4) + ((long)levels.Length + mark)) % 65521;
-                }
+                sum = ((sum + (limit * 4)) % 1000) + entry;
             }
-            return mark % 65521;
+            return sum;
         }
 
         /// <summary>Define already limits and defaults.</summary>
