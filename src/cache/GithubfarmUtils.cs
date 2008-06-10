@@ -49,15 +49,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many format batch samples are out of range.</summary>
-        public static long MeasureFormatBatchHits(long[] data)
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] readings)
         {
             long count = 0;
-            foreach (long value in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)count < (5.8 * 2.43))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 1) - value;
+                    if ((readings[i] + readings[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
