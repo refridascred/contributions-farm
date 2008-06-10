@@ -13,19 +13,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double AdjustCommits(double scale, double span)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            double bias = scale;
-            if (bias >= span)
-            {
-                bias = bias + scale;
-            }
-            else
-            {
-                bias = bias - (double)3;
-            }
-            return bias + bias;
+            Active,
+            Locked,
+            Stale,
+            Closed,
         }
 
         /// <summary>Define window limits and defaults.</summary>
