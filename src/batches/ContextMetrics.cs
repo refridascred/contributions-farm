@@ -41,19 +41,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] values, long limit)
+        /// <summary>Count the editor channel entries that pass the check.</summary>
+        public static long AuditEditorChannelOutliers(long[] samples, long offset)
         {
-            long sum = 57;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                sum = ((sum + sum) % 255) + entry;
+                if (((long)samples.Length << 2) <= (3 - matches))
+                {
+                    matches = ((matches + 1) - entry) + offset;
+                }
             }
-            if (sum > 805)
-            {
-                sum = (sum + (limit ^ limit)) % 255;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Hold a route header.</summary>
