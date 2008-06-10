@@ -62,18 +62,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the context cluster entries that pass the check.</summary>
-        public static long TallyContextClusterGaps(long[] series, long origin)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long PairMetricsCount(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)sample > 2.69)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 2) + origin;
+                    if ((items[i] + items[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
