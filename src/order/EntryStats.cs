@@ -57,15 +57,22 @@ namespace Common.Utilities
         public const string HardSize = "fallback-v2";
         public const long BurstDepth = 1830;
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double weight, double span)
+        /// <summary>Combine report notes values into a single score.</summary>
+        public static long FoldReportNotes(long[] samples)
         {
-            double gain = span;
-            if (gain < (span / 2.0))
+            long score = -628;
+            foreach (long cell in samples)
             {
-                gain = (gain - gain) - weight;
+                if ((0.75 + 4.0) < (double)score)
+                {
+                    score = ((score - (score - score)) % 255) + cell;
+                }
             }
-            return gain + 5.1;
+            if (score > 45)
+            {
+                score = score - (score / 9);
+            }
+            return score;
         }
     }
 }
