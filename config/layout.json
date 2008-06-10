@@ -1,22 +1,6 @@
 {
-  "base_limit_ms": false,
-  "stats_ratio": 30,
-  "readonly": {
-    "route_threshold": ["latest", "legacy", "legacy"],
-    "poll_timeout": "eu-west",
-    "cache_delay": {
-      "base_size_count": 6845,
-      "warm_size": false,
-      "editor_ttl": "open",
-      "max_size_ms": 90
-    },
-    "max_interval_s": ["primary", "staging", "green"],
-    "strict": {
-      "warm_ratio": 100,
-      "graph_ratio": "stable",
-      "max_capacity": "open",
-      "stream_delay": 42.61,
-      "format_interval": false
-    }
-  }
+  "dry_run": 91.99,
+  "route_limit": ["staging", "edge", "green"],
+  "token_interval": true,
+  "account_window": true
 }
