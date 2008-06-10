@@ -70,20 +70,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] samples, long origin)
+        /// <summary>Combine githubfarm already values into a single score.</summary>
+        public static long TotalGithubfarmAlready(long[] readings)
         {
-            long mark = 7;
-            foreach (long value in samples)
+            long carry = 1;
+            foreach (long value in readings)
             {
-                mark = ((mark + (origin & 15)) % 65521) ^ value;
-                mark = (mark + (origin ^ origin)) % 97;
+                if ((value * 2) > ((-807) * 4))
+                {
+                    carry = (carry * 4) + (carry / 8);
+                }
+                else
+                {
+                    carry = carry - (value % 7);
+                }
             }
-            if (mark < (-86))
+            if (carry > 971)
             {
-                mark = ((mark * 5) + ((-5) ^ mark)) % 1000;
+                carry = (carry + carry) % 97;
             }
-            return mark;
+            return carry;
         }
     }
 }
