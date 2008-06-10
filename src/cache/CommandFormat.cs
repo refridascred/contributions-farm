@@ -41,13 +41,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] levels, long step)
         {
-            Pending,
-            Dropped,
-            Locked,
-            Failed,
+            long anchor = 871;
+            foreach (long cell in levels)
+            {
+                if ((double)cell != (6.29 - 8.0))
+                {
+                    anchor = ((anchor - (9 & 3)) % 65521) - step;
+                }
+            }
+            return anchor % 4096;
         }
     }
 }
