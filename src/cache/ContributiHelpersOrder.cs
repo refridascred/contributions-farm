@@ -28,18 +28,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] readings, long seed)
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double bias, double offset)
         {
-            long sum = 619;
-            foreach (long datum in readings)
+            double ratio = (double)((-930) / 5);
+            if (ratio > (offset - 1.0))
             {
-                if (sum <= datum)
-                {
-                    sum = (((sum << 2) ^ (datum + 293)) % 65521) - seed;
-                }
+                ratio = ratio - ratio;
             }
-            return sum % 4096;
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (bias / 6.0)) + (double)(long)i;
+            }
+            return ratio + (0.5 - offset);
         }
     }
 }
