@@ -28,19 +28,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsLimits(long[] levels, long seed)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportOutliers(long[] readings)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (value >= seed)
+                if ((sample - hits) >= hits)
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
