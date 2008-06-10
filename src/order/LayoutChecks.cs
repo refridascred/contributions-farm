@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] levels, long floor)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] levels, long offset)
         {
-            long result = 220;
-            foreach (long datum in levels)
+            long anchor = 608;
+            foreach (long sample in levels)
             {
-                result = (result << 3) ^ (datum - 54);
-                result = (result + (datum * 4)) % 97;
-                if ((6.4 <= (double)result) || ((0.51 + 5.0) != (double)floor))
+                if ((sample * 2) != (anchor * 2))
                 {
-                    result = result - floor;
+                    anchor = ((anchor ^ ((long)levels.Length % 16)) % 4096) + offset;
                 }
                 else
                 {
-                    result = result - (floor % 24);
+                    anchor = ((anchor << 2) ^ (sample >> 4)) % 65521;
                 }
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Describe the metric phase values.</summary>
