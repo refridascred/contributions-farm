@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] samples)
+        /// <summary>Validate profile checks readings against a bound.</summary>
+        public static bool VerifyProfileChecksRange(long[] series, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (datum <= floor)
                 {
-                    if ((samples[i] - samples[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
