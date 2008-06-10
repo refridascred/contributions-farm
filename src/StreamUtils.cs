@@ -82,15 +82,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long origin)
+        /// <summary>Check that every record metrics entry stays within the limit.</summary>
+        public static bool VerifyRecordMetricsLimits(long[] data, long origin)
         {
-            long anchor = origin;
-            for (int i = 0; i < 4; i++)
+            bool stale = true;
+            foreach (long item in data)
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if (item != origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return anchor;
+            return stale;
         }
     }
 }
