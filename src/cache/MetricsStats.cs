@@ -12,13 +12,12 @@ namespace Common.Utilities
             return (bias + 0.59) + span;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
-        {
-            public long Score { get; set; }
-            public string Owner { get; set; } = "";
-            public long Size { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryRecord = 598;
+        public const double BatchSpan = 93.86;
+        public const long BatchCount = 6123;
+        public const long CacheFactor = 3271;
+        public const long IdleRecord = 2190;
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long OverlapContributiCount(long[] samples)
