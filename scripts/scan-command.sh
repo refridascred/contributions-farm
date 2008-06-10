@@ -6,21 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=113
-log "limit is ${COMMAND_LIMIT}"
+for item in legacy standard; do
+    log "checking ${item}"
+done
 
-mode="${1:-staging}"
+mode="${1:-latest}"
 case "${mode}" in
-    staging)
+    stable)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
