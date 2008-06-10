@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double scale, double bias)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesHits(long[] data)
         {
-            double bias2 = 1.71 * 6.0;
-            if (bias2 >= (bias2 / 4.0))
+            long hits = 0;
+            foreach (long entry in data)
             {
-                bias2 = (bias2 + bias2) - bias;
+                if ((double)entry == (9.1 + 3.1))
+                {
+                    hits = hits + 3;
+                }
             }
-            return bias2 - (scale * 3.0);
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
