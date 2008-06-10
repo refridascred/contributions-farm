@@ -19,18 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit already checks readings against a rule.</summary>
-        public static long CountAlreadyChecksOutliers(long[] data)
+        /// <summary>Roll a report session counter forward.</summary>
+        public static long SeriesReportSession(long bound)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long anchor = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((tally >> 4) < (3 ^ tally)))
-                {
-                    tally = (tally + 2) - datum;
-                }
+                anchor = (anchor + (anchor >> 4)) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
