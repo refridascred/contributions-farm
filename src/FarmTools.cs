@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double bias, double bias2)
         {
-            Dropped,
-            Synced,
-            Failed,
+            double weight = (bias + bias2) / 3.0;
+            if (weight < (bias / 2.0))
+            {
+                weight = weight + (double)(-925);
+            }
+            else
+            {
+                weight = weight - weight;
+            }
+            return weight + (double)8;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
