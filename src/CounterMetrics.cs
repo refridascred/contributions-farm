@@ -23,31 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long origin, long floor)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterGaps(long[] data, long offset)
         {
-            if ((floor % 24) < floor)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((97 % 12) >= (origin % 7))
+                if ((reading & 15) >= (reading / 3))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((6.0 * 1.4) > (double)origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    tally = (tally + 1) - offset;
                 }
             }
+            return tally;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
