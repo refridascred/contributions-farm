@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesBounds(long[] levels, long origin)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
