@@ -37,24 +37,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long target, long step)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            if (((target ^ step) <= 64) || ((double)target > (double)step))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)target > (double)0)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Retry,
+            Draft,
+            Closed,
         }
 
         /// <summary>Digest a series of schema entries.</summary>
