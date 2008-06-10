@@ -61,14 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            Pending,
-            Stale,
-            Queued,
-            Locked,
-            Draft,
+            public string Total { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
