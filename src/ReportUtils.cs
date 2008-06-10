@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] readings, long target)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Size { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
