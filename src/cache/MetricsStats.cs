@@ -14,18 +14,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] levels, long bound)
+        /// <summary>Look up the position of a batch window sample.</summary>
+        public static long SeekBatchWindowIndex(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((bound ^ matches) == (7 * 2))
+                if ((samples[i] >= origin) && ((samples[i] % 2) == 0))
                 {
-                    matches = (matches + 3) + item;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the metric channel entries that pass the check.</summary>
