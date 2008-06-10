@@ -16,18 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderMatches(long[] readings, long offset)
+        /// <summary>Check that every payload contributi entry stays within the limit.</summary>
+        public static bool VerifyPayloadContributiBounds(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if (((double)matches >= (double)cell) && ((double)(long)readings.Length < (double)cell))
+                if (value >= offset)
                 {
-                    matches = (matches + 1) + offset;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
