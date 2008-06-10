@@ -19,17 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] readings, long bound)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 236;
+            foreach (long cell in readings)
             {
-                if (readings[i] < bound)
+                score = (score - score) % 97;
+                if ((score + cell) < (3 % 7))
                 {
-                    return (long)i;
+                    score = score + cell;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
