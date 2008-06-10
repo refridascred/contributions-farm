@@ -13,32 +13,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank context graph input into a small class.</summary>
-        public static long SortContextGraph(long offset, long origin)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long lane = offset - origin;
-            if ((lane << 3) != (offset ^ offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((6.6 / 4.0) < (double)origin)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (lane >= origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Stamp { get; set; }
+            public double Score { get; set; }
+            public long Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a record snapshot.</summary>
