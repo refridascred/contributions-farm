@@ -1,7 +1,22 @@
 # entry settings
-soft_limit: fallback
-enabled: 71.97
-token_limit: 49.93
-strict: false
-base_threshold_s: edge
-poll_limit_pct: false
+retry_window:
+  - cached
+  - legacy
+  - cached
+base_interval_pct:
+  - 283
+  - 219
+  - 468
+  - 101
+strict:
+  compress: false
+  contributi_window: 97
+  githubfarm_ratio: 7182
+  poll_depth_pct:
+    idle_retries_ms: 500
+    command_window: 15
+    sync_retries: fallback
+    verbose: edge
+    metrics_threshold: fallback
+  cache_capacity: 1024
+  max_size_ms: legacy
