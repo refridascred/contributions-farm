@@ -35,12 +35,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
-        {
-            Queued,
-            New,
-            Locked,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double DefaultLevel = 53.61;
+        public const long MinMetrics = 6235;
+        public const double BaseWidth = 7.23;
+        public const long IdleInterval = 1848;
+        public const long LimitBudget = 3625;
     }
 }
