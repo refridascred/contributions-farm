@@ -56,19 +56,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double rate, double bias)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            double ratio = (double)(51 >> 3);
-            if (ratio >= (rate - bias))
-            {
-                ratio = ratio + ratio;
-            }
-            else
-            {
-                ratio = ratio - (rate / 6.0);
-            }
-            return ratio - (double)(-305);
+            public bool Count { get; set; }
+            public double Total { get; set; }
+            public long Score { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a format info.</summary>
