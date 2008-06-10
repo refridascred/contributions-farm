@@ -73,19 +73,19 @@ namespace Common.Utilities
             return ratio - (double)560;
         }
 
-        /// <summary>Check that every layout window entry stays within the limit.</summary>
-        public static bool ValidateLayoutWindowBounds(long[] values, long bound)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] levels, long floor)
         {
-            bool found = true;
-            foreach (long cell in values)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                if (cell < bound)
+                if (datum >= floor)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
     }
 }
