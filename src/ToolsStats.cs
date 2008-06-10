@@ -59,12 +59,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultCount = 2054;
-        public const double HardLevel = 88.28;
-        public const long LimitInterval = 4924;
-        public const long HardStream = 3040;
-        public const long DefaultLevel = 6472;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileHits(long[] levels, long limit)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((114 - limit) <= (hits - hits))
+                {
+                    hits = (hits + 2) + item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every filter support entry stays within the limit.</summary>
         public static bool GuardFilterSupportBounds(long[] items, long floor)
