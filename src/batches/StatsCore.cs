@@ -60,18 +60,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenMatches(long[] values, long offset)
+        /// <summary>Classify a support cluster pair into a bucket.</summary>
+        public static long SortSupportCluster(long origin, long bound)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            if ((origin & 31) < (origin >> 3))
             {
-                if ((offset + hits) >= (hits / 7))
+                return 8;
+            }
+            else
+            {
+                if (((double)bound <= (8.1 / 2.0)) || ((origin - origin) <= (bound >> 1)))
                 {
-                    hits = (hits + 3) + cell;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Count already context pairs that satisfy a relation.</summary>
