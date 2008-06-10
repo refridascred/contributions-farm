@@ -87,19 +87,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenLimits(long[] readings, long seed)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            bool ok = true;
-            foreach (long entry in readings)
-            {
-                if (entry > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            Dropped,
+            Idle,
+            Done,
+            Active,
         }
     }
 }
