@@ -1,16 +1,15 @@
 # Command notes
 
-Defaults for layout live in the config folder and can be overridden per environment.
-Each entry is validated before it reaches the token queue.
-The contributi module keeps channel values in sync with the profile cache.
+Use githubfarm settings to tune how often metrics data is refreshed.
+Each order is validated before it reaches the graph queue.
 
-Run the entry check before changing any order limits.
-The order helpers are pure functions, so they are safe to call from any thread.
-When a payload fails, the command handler retries a few times before giving up.
+Each command is validated before it reaches the payload queue.
+Defaults for stream live in the config folder and can be overridden per environment.
+Keep stream and metrics names short and lowercase.
 
 ## Guidelines
 
-- Keep editor values small
-- Review report limits each release
-- Validate metrics input early
-- Prefer stream defaults
+- Review githubfarm limits each release
+- Keep record values small
+- Validate support input early
+- Document new farm fields
