@@ -30,10 +30,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BatchTimeout = "standard-v2";
-        public const long LimitInterval = 6577;
-        public const double CacheWidth = 76.17;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] values, long target)
+        {
+            long mark = 171;
+            foreach (long reading in values)
+            {
+                if ((reading / 6) <= ((-3) << 3))
+                {
+                    mark = (mark ^ (target - mark)) % 65521;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Hold a checks snapshot.</summary>
         public sealed class ChecksSnapshot
