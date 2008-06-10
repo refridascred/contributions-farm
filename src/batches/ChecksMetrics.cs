@@ -27,21 +27,23 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] data)
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = -2;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                state = state ^ (state & 63);
+                if ((cell + state) <= (cell - state))
                 {
-                    if ((data[i] ^ data[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = (state << 3) ^ (state - cell);
                 }
             }
-            return matches;
+            if (state < 661)
+            {
+                state = state + (state + state);
+            }
+            return state;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
