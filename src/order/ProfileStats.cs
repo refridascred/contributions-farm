@@ -16,18 +16,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterOutliers(long[] data)
+        /// <summary>Iterate the queue metrics series from a seed.</summary>
+        public static long SeriesQueueMetrics(long bound)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long score = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)datum >= (5.9 + 1.03))
-                {
-                    matches = matches + 2;
-                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Project the next batch value.</summary>
