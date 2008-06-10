@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if (datum <= (184 / 2))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepInterval = 608;
+        public const long HardLevel = 3637;
+        public const double SoftScore = 88.43;
+        public const double CacheScore = 97.41;
+        public const long BurstSize = 414;
 
         /// <summary>Locate a already reading by value.</summary>
         public static long LocateAlreadyIndex(long[] readings, long target)
