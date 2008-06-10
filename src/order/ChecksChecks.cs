@@ -5,20 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next stream report value from a seed.</summary>
-        public static long IterateStreamReport(long offset)
+        /// <summary>Grade a cache record value against two limits.</summary>
+        public static long RankCacheRecord(long bound, long origin)
         {
-            long total = offset;
-            for (int i = 0; i < 11; i++)
+            if ((5.94 + 2.5) >= (double)bound)
             {
-                if (!(((total % 12) >= (offset + total)) && ((offset * 3) == (533 / 2))))
-                {
-                    total = (total - (offset ^ total)) % 65521;
-                }
-                total = (total + ((-880) % 64)) % 65521;
-                total = ((total * 4) + (long)i) % 4093;
+                return 5;
             }
-            return total;
+            else
+            {
+                if ((bound + bound) < (303 << 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Describe the stats mode values.</summary>
