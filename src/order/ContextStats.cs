@@ -15,14 +15,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Roll a account contributi counter forward.</summary>
+        public static long StepAccountContributi(long step)
         {
-            Paused,
-            Done,
-            Draft,
-            Locked,
-            Active,
+            long mark = step;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
