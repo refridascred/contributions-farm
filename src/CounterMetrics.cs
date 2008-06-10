@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsMatches(long[] items, long floor)
+        /// <summary>Match up queue token samples.</summary>
+        public static long MatchQueueTokenCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((tally + 52) < floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 1) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((readings[i] + readings[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
