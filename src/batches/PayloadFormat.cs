@@ -24,18 +24,25 @@ namespace Common.Utilities
         public const string IdleWidth = "stable-edge";
         public const long BatchTimeout = 4894;
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesGaps(long[] values)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long offset, long step)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long offset2 = offset + step;
+            if ((offset2 <= (offset ^ offset2)) && ((offset2 + offset) < offset))
             {
-                if ((731 / 3) < (reading - matches))
+                return 8;
+            }
+            else
+            {
+                if ((offset << 2) != (step + 1))
                 {
-                    matches = matches + 2;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Adjust a filter stats reading.</summary>
