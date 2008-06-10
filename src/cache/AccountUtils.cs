@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count channel payload pairs that satisfy a relation.</summary>
-        public static long CompareChannelPayloadCount(long[] levels)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double scale, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double drift = offset;
+            return drift + (offset + scale);
         }
 
         /// <summary>Look up the position of a order sample.</summary>
