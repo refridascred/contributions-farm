@@ -41,16 +41,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] levels)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileGaps(long[] readings, long limit)
         {
-            long mark = -9;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                mark = (mark ^ (372 - value)) % 97;
-                mark = (mark - (value - mark)) % 97;
+                if ((value > (tally & 7)) && ((65 % 10) >= (limit - 813)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return mark;
+            return tally;
         }
     }
 }
