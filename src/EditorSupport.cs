@@ -63,18 +63,14 @@ namespace Common.Utilities
         public const double CacheScore = 57.36;
         public const string WindowChannel = "fallback-v2";
 
-        /// <summary>Count the command cluster entries that pass the check.</summary>
-        public static long CountCommandClusterGaps(long[] values, long offset)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((offset - offset) < (79 >> 3))
-                {
-                    matches = (matches + 2) + reading;
-                }
-            }
-            return matches;
+            Active,
+            Draft,
+            Pending,
+            Stale,
+            Failed,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
