@@ -25,12 +25,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] samples, long floor)
         {
-            Done,
-            Failed,
-            New,
+            long anchor = 2;
+            foreach (long reading in samples)
+            {
+                anchor = ((anchor * 3) + (floor << 2)) % 4096;
+                if ((anchor - anchor) <= ((-67) + reading))
+                {
+                    anchor = anchor - ((-21) * 4);
+                }
+            }
+            if (anchor > 6)
+            {
+                anchor = (anchor + (anchor % 10)) % 97;
+            }
+            return anchor;
         }
     }
 }
