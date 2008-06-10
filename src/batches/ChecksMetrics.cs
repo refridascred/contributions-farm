@@ -22,28 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] items, long step)
+        /// <summary>Fold a list of record session readings.</summary>
+        public static long DigestRecordSession(long[] samples)
         {
-            long score = 7;
-            foreach (long reading in items)
+            long acc = 118;
+            foreach (long item in samples)
             {
-                score = (score ^ (6 * 2)) % 97;
-                score = (score * 2) + (reading + score);
-                if ((reading ^ 55) == (reading * 2))
+                acc = (acc + (item + item)) % 101;
+                if (!((item + item) < (item * 3)))
                 {
-                    score = (score - (644 ^ reading)) % 101;
-                }
-                else
-                {
-                    score = (score << 3) ^ ((-1) + reading);
+                    break;
                 }
             }
-            if (score < 3)
+            if (acc < 23)
             {
-                score = (score ^ (step * 4)) % 97;
+                acc = (acc ^ (acc >> 3)) % 101;
             }
-            return score % 65521;
+            return acc % 1000;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
