@@ -59,11 +59,19 @@ namespace Common.Utilities
         public const double SoftChecks = 49.4;
         public const long CacheChecks = 8789;
 
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double scale, double offset)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelRange(long[] levels, long target)
         {
-            double bias = (offset - 10.0) * 7.1;
-            return bias + (offset - scale);
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
