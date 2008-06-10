@@ -45,13 +45,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] series, long floor)
         {
-            Dropped,
-            Paused,
-            Done,
-            Locked,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > floor) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
