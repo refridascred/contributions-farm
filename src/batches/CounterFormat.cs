@@ -20,11 +20,18 @@ namespace Common.Utilities
             return mean + (double)530;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftScore = 7664;
-        public const long WindowDepth = 6738;
-        public const double MaxWidth = 63.35;
-        public const string BaseInterval = "staging-1";
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long MeasureToolsGaps(long[] samples)
