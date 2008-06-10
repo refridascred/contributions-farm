@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] items)
+        /// <summary>Measure how many githubfarm stream samples are out of range.</summary>
+        public static long CountGithubfarmStreamMatches(long[] samples, long origin)
         {
             long matches = 0;
-            foreach (long item in items)
+            foreach (long cell in samples)
             {
-                if ((matches - matches) <= (item * 5))
+                if (((20.0 / 4.0) < (double)(long)samples.Length) || ((double)cell < 9.12))
                 {
-                    matches = matches + 1;
+                    matches = (matches + 1) + origin;
                 }
             }
             return matches;
