@@ -16,11 +16,20 @@ namespace Common.Utilities
             return mean - (double)(-813);
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MaxDepth = "stable-edge";
-        public const long DefaultCluster = 702;
-        public const string RetrySize = "alpha-v2";
-        public const string CacheWidth = "cached";
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] readings, long target)
+        {
+            long total = 19;
+            foreach (long value in readings)
+            {
+                total = ((total ^ (target & 255)) % 255) ^ value;
+            }
+            if (total > 0)
+            {
+                total = (total + (total << 2)) % 255;
+            }
+            return total % 4096;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string LimitSize = "legacy-1";
