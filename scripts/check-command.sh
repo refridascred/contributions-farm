@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=500
+COMMAND_LIMIT=310
 log "limit is ${COMMAND_LIMIT}"
 
-for item in local staging; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 2))
 done
+log "total ${total}"
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+mode="${1:-standard}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
