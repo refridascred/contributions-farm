@@ -22,15 +22,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the report queue series from a seed.</summary>
-        public static long RollReportQueue(long seed)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] samples)
         {
-            long carry = seed;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                carry = ((carry * 2) + (long)i) % 97;
+                if ((entry - tally) != (entry + entry))
+                {
+                    tally = tally + 2;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
