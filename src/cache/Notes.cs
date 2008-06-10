@@ -62,18 +62,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmMatches(long[] readings)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionRange(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if (!((double)count > (double)cell) && ((cell + count) == (24 >> 2)))
+                if (entry > origin)
                 {
-                    count = count + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Fold a list of order readings.</summary>
