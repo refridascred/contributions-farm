@@ -1,15 +1,5 @@
 # support settings
-cache_size: 500
-max_delay_pct:
-  persist:
-    flush_limit: 68.92
-    soft_retries_ms: 30
-    buffer_interval: 1024
-  dry_run:
-    - 96
-    - 223
-    - 460
-    - 230
-  base_capacity_count: fallback
-  min_capacity_s: legacy
-base_window_ms: staging
+default_delay: false
+batch_size_ms: 78.41
+cache_timeout: local
+cluster_delay: false
