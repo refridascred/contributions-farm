@@ -57,12 +57,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] samples)
         {
-            Retry,
-            Draft,
-            Done,
+            long score = 9;
+            foreach (long entry in samples)
+            {
+                if ((score % 5) >= score)
+                {
+                    score = (score << 3) ^ (entry << 3);
+                }
+            }
+            if (score < 73)
+            {
+                score = (score + (score * 5)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
