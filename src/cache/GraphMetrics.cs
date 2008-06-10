@@ -23,19 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate filter order readings against a bound.</summary>
-        public static bool GuardFilterOrderBounds(long[] samples, long bound)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double AdjustSupport(double gain, double span)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            double rate = span;
+            if (rate < 4.15)
             {
-                if (reading <= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = (rate - (rate + rate)) - gain;
             }
-            return ok;
+            else
+            {
+                rate = rate + span;
+            }
+            return rate - span;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
