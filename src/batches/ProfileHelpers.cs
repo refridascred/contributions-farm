@@ -61,18 +61,12 @@ namespace Common.Utilities
         public const long StepAlready = 8517;
         public const long BaseFactor = 2927;
 
-        /// <summary>Audit already counter readings against a rule.</summary>
-        public static long MeasureAlreadyCounterHits(long[] samples)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample + sample) < (113 / 3))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Weight { get; set; }
+            public long Owner { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
