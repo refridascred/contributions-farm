@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long DeriveContributi(long step)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] items)
         {
-            long total = step;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((639 & 31) > ((long)i * 3)) || ((total % 97) >= (total & 255)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = total + step;
-                    total = ((total << 2) ^ total) % 4096;
+                    if ((items[i] - items[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                total = total ^ (8 - (long)i);
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
