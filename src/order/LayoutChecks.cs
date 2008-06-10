@@ -20,12 +20,11 @@ namespace Common.Utilities
             return rate - (double)193;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            Stale,
-            New,
-            Active,
+            public long Owner { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
