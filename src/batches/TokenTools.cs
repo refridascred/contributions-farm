@@ -25,18 +25,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksOutliers(long[] samples)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteBounds(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                if (!((15.0 + 4.24) < (0.38 * 6.2)))
+                if (sample != bound)
                 {
-                    count = (count + 2) ^ value;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
