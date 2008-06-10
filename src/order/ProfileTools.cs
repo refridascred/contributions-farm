@@ -23,20 +23,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] levels)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterRange(long[] readings, long bound)
         {
-            long total = 67;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                total = total ^ datum;
-                total = total - (datum + datum);
-                if ((double)datum >= (8.0 - 5.1))
+                if (cell >= bound)
                 {
-                    total = total - (total - datum);
+                    ready = false;
+                    break;
                 }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Hold a support snapshot.</summary>
