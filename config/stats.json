@@ -1,6 +1,6 @@
 {
-  "dry_run": 17,
-  "soft_interval": true,
-  "batch_threshold": 75,
-  "idle_ttl_count": 16
+  "filter_capacity": "latest",
+  "enabled": 88,
+  "context_window": 51,
+  "audit": 1024
 }
