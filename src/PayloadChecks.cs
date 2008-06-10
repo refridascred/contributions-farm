@@ -44,12 +44,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesGaps(long[] data, long floor)
         {
-            Retry,
-            Synced,
-            Locked,
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((double)sample <= (5.4 / 9.0))
+                {
+                    seen = (seen + 2) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
