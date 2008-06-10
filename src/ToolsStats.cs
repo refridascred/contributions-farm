@@ -86,23 +86,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of farm layout entries.</summary>
-        public static long CombineFarmLayout(long[] series)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long sum = 4;
-            foreach (long value in series)
-            {
-                sum = (sum - (value - value)) % 97;
-                if (sum <= (sum + value))
-                {
-                    break;
-                }
-            }
-            if (sum < 159)
-            {
-                sum = sum - sum;
-            }
-            return sum;
+            public long Region { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
