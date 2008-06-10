@@ -27,18 +27,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > origin) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleSpan = 6888;
+        public const double IdleTools = 35.36;
+        public const double SoftCount = 92.42;
+        public const long BurstSpan = 9672;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long CacheBudget = 6608;
