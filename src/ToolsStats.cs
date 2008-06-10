@@ -67,13 +67,22 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterHits(long[] items, long limit)
         {
-            Idle,
-            Active,
-            New,
-            Done,
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (sample < (seen * 4))
+                {
+                    seen = (seen + 2) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
