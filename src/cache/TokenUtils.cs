@@ -13,23 +13,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] values)
-        {
-            long sum = 7;
-            foreach (long sample in values)
-            {
-                if ((sum / 5) >= sum)
-                {
-                    sum = sum + sum;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ sample) % 97;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepTimeout = 5480;
+        public const long BaseInterval = 1043;
+        public const long HardScore = 8956;
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long MeasureCommitsMatches(long[] data)
