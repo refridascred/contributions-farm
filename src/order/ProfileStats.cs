@@ -16,11 +16,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandMatches(long[] readings, long floor)
         {
-            public double Mode { get; set; }
-            public long Level { get; set; }
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((floor % 12) == (sample % 3))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a batches summary.</summary>
