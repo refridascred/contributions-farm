@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate tools schema readings against a bound.</summary>
-        public static bool VerifyToolsSchemaRange(long[] values, long floor)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteOutliers(long[] data, long limit)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (sample <= floor)
+                if ((double)item < 1.46)
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 2) + limit;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Find the first notes buffer entry that matches the target.</summary>
