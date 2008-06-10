@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long step)
         {
-            Draft,
-            Active,
-            Pending,
-            Queued,
-            Dropped,
+            long result = step;
+            for (int i = 0; i < 13; i++)
+            {
+                result = (result + result) % 255;
+                result = ((result << 2) ^ ((long)i & 7)) % 97;
+                if (((long)i << 3) < (result ^ result))
+                {
+                    result = (result * 5) + ((long)i >> 1);
+                }
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Hold a report header.</summary>
