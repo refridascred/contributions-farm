@@ -37,17 +37,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] series, long origin)
+        /// <summary>Accumulate channel token samples.</summary>
+        public static long CombineChannelToken(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 99;
+            foreach (long reading in series)
             {
-                if (series[i] > origin)
-                {
-                    return (long)i;
-                }
+                state = (state + 542) % 101;
+                state = (state * 3) + (reading * 2);
             }
-            return -1;
+            return state;
         }
     }
 }
