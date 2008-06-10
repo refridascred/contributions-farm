@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderHits(long[] values)
         {
-            Queued,
-            Synced,
-            New,
-            Locked,
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((seen << 1) < (49 + 511))
+                {
+                    seen = (seen + 3) + item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
