@@ -40,12 +40,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
+            Dropped,
+            Paused,
             Stale,
             Pending,
-            Synced,
         }
     }
 }
