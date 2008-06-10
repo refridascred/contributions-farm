@@ -17,18 +17,17 @@ namespace Common.Utilities
         public const long RetryChannel = 566;
         public const long HardLevel = 8201;
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchGaps(long[] readings)
+        /// <summary>Find the first order notes entry that matches the target.</summary>
+        public static long SeekOrderNotesIndex(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((43 + hits) > datum)
+                if ((values[i] > limit) && ((values[i] % 3) == 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Roll a support payload counter forward.</summary>
