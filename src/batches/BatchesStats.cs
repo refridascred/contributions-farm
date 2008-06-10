@@ -33,21 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long floor)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long score = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    score = (((score * 3) + score) % 101) ^ (long)i2;
-                    score = score ^ 1;
-                }
-                score = ((score << 3) ^ (score ^ score)) % 97;
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            Pending,
+            Stale,
+            Paused,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Hold a cache snapshot.</summary>
