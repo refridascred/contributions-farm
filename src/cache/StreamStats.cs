@@ -64,13 +64,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
-            public double Size { get; set; }
-            public long Flag { get; set; }
+            Draft,
+            Paused,
+            Stale,
+            Locked,
+            Synced,
         }
     }
 }
