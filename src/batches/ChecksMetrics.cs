@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long BaseCache = 5200;
         public const long MinSpan = 9571;
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] readings)
         {
-            Draft,
-            Closed,
-            Dropped,
-            Failed,
+            long mark = -6;
+            foreach (long entry in readings)
+            {
+                mark = (mark - (265 >> 1)) % 4096;
+                if ((mark + entry) >= (mark >> 3))
+                {
+                    mark = mark + (entry - mark);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
