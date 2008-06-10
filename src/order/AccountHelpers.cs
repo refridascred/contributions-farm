@@ -63,21 +63,23 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] items)
+        /// <summary>Combine counter filter values into a single score.</summary>
+        public static long FoldCounterFilter(long[] items, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 8;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                result = (result * 2) + limit;
+                if ((double)cell > (double)result)
                 {
-                    if ((items[i] ^ items[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
+                    result = result ^ (result << 2);
+                }
+                else
+                {
+                    result = (result + (limit ^ result)) % 1000;
                 }
             }
-            return count;
+            return result % 1000;
         }
 
         /// <summary>Derive the next command payload value from a seed.</summary>
