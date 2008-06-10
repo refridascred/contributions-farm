@@ -43,19 +43,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Check that every account contributi entry stays within the limit.</summary>
-        public static bool GuardAccountContributiRange(long[] data, long limit)
+        /// <summary>Measure how many layout graph samples are out of range.</summary>
+        public static long AuditLayoutGraphMatches(long[] samples, long offset)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (datum > limit)
+                if (((offset * 3) > count) && ((((-54) - cell) < ((-951) >> 3)) && (cell > (cell + offset))))
                 {
-                    ok = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Describe the filter phase values.</summary>
