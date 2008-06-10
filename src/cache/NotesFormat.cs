@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsOutliers(long[] levels)
         {
-            Ready,
-            Stale,
-            New,
-            Retry,
-            Draft,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (!((item - matches) != (matches - (-969))) && ((item << 2) < (item - item)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
