@@ -1,9 +1,6 @@
 # entry settings
-compress:
-  - green
-  - edge
-hard_retries:
-  - edge
-  - legacy
-  - cached
-schema_ttl: legacy
+idle_threshold_pct: 69.04
+stats_threshold: primary
+hard_size_s: strict
+enabled: local
+readonly: 0.34
