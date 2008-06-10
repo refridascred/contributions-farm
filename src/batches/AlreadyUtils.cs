@@ -43,13 +43,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Grade a support payload value against two limits.</summary>
+        public static long RankSupportPayload(long seed, long floor)
         {
-            public bool Mode { get; set; }
-            public long Level { get; set; }
-            public double Owner { get; set; }
-            public long Score { get; set; }
+            if (floor <= (seed + seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed % 10) < (3 ^ floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Adjust a farm reading.</summary>
