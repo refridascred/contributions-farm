@@ -22,20 +22,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Iterate the contributi cache series from a seed.</summary>
-        public static long SeriesContributiCache(long target)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long score = target;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((double)target == (16.0 * 4.16))
-                {
-                    score = (score * 5) + (score / 8);
-                    score = ((score * 5) + (score + score)) % 1000;
-                }
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            Paused,
+            Draft,
+            Idle,
+            Ready,
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
