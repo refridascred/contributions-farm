@@ -34,13 +34,17 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] values, long floor)
         {
-            public double Score { get; set; }
-            public double Label { get; set; }
-            public long Owner { get; set; }
-            public long Total { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= floor) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
