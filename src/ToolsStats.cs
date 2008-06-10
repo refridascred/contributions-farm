@@ -90,19 +90,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate notes stats readings against a bound.</summary>
-        public static bool CheckNotesStatsLimits(long[] series, long floor)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] data)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long anchor = 5;
+            foreach (long value in data)
             {
-                if (sample != floor)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = (anchor ^ value) % 101;
+                anchor = (anchor - (anchor >> 1)) % 97;
             }
-            return found;
+            return anchor;
         }
     }
 }
