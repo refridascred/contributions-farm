@@ -11,21 +11,10 @@ namespace Common.Utilities
         public const string DefaultQueue = "staging-edge";
         public const string DefaultSize = "alpha";
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                sum = (sum + (offset * 4)) % 255;
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    sum = ((sum * 3) + offset) ^ (long)i2;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 671;
+        public const string BurstAlready = "staging";
+        public const long DefaultCount = 1717;
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long FoldBuffer(long[] readings)
