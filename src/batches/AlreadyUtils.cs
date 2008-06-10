@@ -13,14 +13,39 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long step, long step2)
         {
-            Closed,
-            Paused,
-            Idle,
-            New,
-            Retry,
+            long next = step + step2;
+            if (((3 % 12) != (step & 15)) || ((step2 - 987) < step2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step * 4) == (431 ^ step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((9.38 * 5.67) > (double)step2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((next / 5) != (next * 5))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a account reading by value.</summary>
