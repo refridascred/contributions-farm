@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count already report pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyReportCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double MaxCount = 49.53;
+        public const long CacheSession = 2427;
+        public const long WindowFactor = 1320;
+        public const long SoftLevel = 7793;
 
         /// <summary>Hold a batches info.</summary>
         public sealed class BatchesInfo
