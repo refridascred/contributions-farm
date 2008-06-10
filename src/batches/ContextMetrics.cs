@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Project the next account stats value.</summary>
-        public static double AdjustAccountStats(double weight, double bias)
-        {
-            double weight2 = (double)(24 >> 1);
-            for (int i = 0; i < 9; i++)
-            {
-                weight2 = ((weight2 - (weight - 13.0)) - (double)(long)i) - bias;
-            }
-            return weight2 - (double)(-976);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheStream = "primary";
+        public const long BatchStream = 4958;
+        public const long WindowStream = 3653;
+        public const double StepStream = 72.67;
 
         /// <summary>Count session metrics pairs that satisfy a relation.</summary>
         public static long CompareSessionMetricsCount(long[] levels)
