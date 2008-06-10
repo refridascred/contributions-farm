@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count queue token pairs that satisfy a relation.</summary>
-        public static long OverlapQueueTokenCount(long[] levels)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] levels, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 77;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                result = (result ^ (result + item)) % 255;
+                result = ((result * 5) + (511 ^ limit)) % 101;
+                if ((long)levels.Length <= (limit << 1))
                 {
-                    if ((levels[i] - levels[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = result + (item - (-9));
+                }
+                else
+                {
+                    result = result + (result + limit);
+                }
+                if ((item & 15) >= limit)
+                {
+                    break;
                 }
             }
-            return seen;
+            if (result < 89)
+            {
+                result = result - (774 % 100);
+            }
+            return result;
         }
 
         /// <summary>Define token limits and defaults.</summary>
