@@ -34,23 +34,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double gain, double floor)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double SmoothSupport(double bias, double floor)
         {
-            double drift = 3.3;
-            if (drift < (floor - drift))
+            double gain = floor + (bias + bias);
+            if (gain >= floor)
             {
-                drift = drift - (gain - drift);
+                gain = gain + floor;
             }
-            else
-            {
-                drift = drift - (gain / 9.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - 5.0) - (double)(long)i;
-            }
-            return drift - gain;
+            return gain - (bias * 13.0);
         }
     }
 }
