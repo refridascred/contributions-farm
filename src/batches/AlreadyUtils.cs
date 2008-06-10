@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamOutliers(long[] series)
         {
-            public double Total { get; set; }
-            public string Mode { get; set; } = "";
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (count <= (sample % 97))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count record order pairs that satisfy a relation.</summary>
