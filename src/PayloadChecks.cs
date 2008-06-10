@@ -31,10 +31,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinSpan = 8568;
-        public const long RetrySize = 398;
-        public const long MaxRoute = 300;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 3984;
+        public const long CacheBudget = 3970;
+        public const string BurstStats = "cached-v2";
 
         /// <summary>Measure how many metrics githubfarm samples are out of range.</summary>
         public static long AuditMetricsGithubfarmOutliers(long[] series)
