@@ -44,18 +44,21 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesGaps(long[] samples, long floor)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)hits == (2.37 + 16.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = ((hits + 3) + cell) - floor;
+                    if ((levels[i] + levels[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
