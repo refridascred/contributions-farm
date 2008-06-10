@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryOutliers(long[] levels)
+        /// <summary>Audit support stats readings against a rule.</summary>
+        public static long CountSupportStatsMatches(long[] samples, long target)
         {
             long hits = 0;
-            foreach (long sample in levels)
+            foreach (long entry in samples)
             {
-                if (!(((hits + sample) <= (hits + hits)) && ((2.42 * 13.0) > (double)sample)))
+                if ((9 & 1) >= (target << 2))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = (hits + 2) ^ entry;
                 }
             }
             return hits;
