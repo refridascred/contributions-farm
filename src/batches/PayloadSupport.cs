@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] series)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((double)acc < (14.0 / 3.0)) || (seed >= (7 * 2)))
                 {
-                    if ((series[i] ^ series[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = ((acc << 2) ^ (acc & 15)) % 255;
                 }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Accumulate cache samples.</summary>
