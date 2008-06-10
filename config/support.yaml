@@ -1,10 +1,26 @@
 # support settings
-warm_timeout_ms: 32
-order_depth:
-  - blue
-  - edge
-  - strict
-  - legacy
-verbose:
-  - stable
-  - open
+profile_delay:
+  dry_run: 250
+  verbose: 11.65
+  enabled:
+    - local
+    - open
+readonly: 1536
+command_depth: legacy
+entry_size:
+  min_retries_ms:
+    record_interval: 51.73
+    warm_window_pct: green
+    sync_size: latest
+    profile_window: legacy
+  base_delay: 500
+  audit: strict
+  poll_delay_pct:
+    burst_threshold_count: 96.89
+    cache_ratio_count: false
+    base_window_count: open
+    compress: false
+    retry_retries: 1024
+  retry_retries_s: 28.95
+  max_size_count: stable
+context_delay: 53
