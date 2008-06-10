@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            public double Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public long Label { get; set; }
-            public long Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public double Size { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
