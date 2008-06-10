@@ -28,18 +28,10 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BatchGithubfarm = "staging-edge";
+        public const double SoftCount = 81.34;
+        public const long SoftLevel = 2249;
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long CountChecksOutliers(long[] series, long limit)
