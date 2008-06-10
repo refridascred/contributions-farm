@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=234
+COMMAND_LIMIT=135
 log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-fallback}"
+mode="${1:-primary}"
 case "${mode}" in
-    cached)
+    eu-west)
         log "fast path"
         ;;
     *)
@@ -19,6 +19,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in strict legacy eu-west; do
+for item in staging legacy blue edge; do
     log "checking ${item}"
 done
