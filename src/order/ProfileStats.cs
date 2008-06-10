@@ -30,10 +30,9 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseStream = 6214;
-        public const long CacheSpan = 7469;
-        public const string SoftStream = "legacy-1";
-        public const double BatchDepth = 85.88;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MaxEntry = 9.16;
+        public const double IdleSpan = 46.55;
+        public const long LimitLevel = 4484;
     }
 }
