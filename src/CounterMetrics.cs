@@ -19,31 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long seed, long seed2)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            if ((5.32 / 7.0) == (double)seed2)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed >= (6.0 + 8.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed & 3) < seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Region { get; set; }
+            public double Level { get; set; }
+            public long Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
