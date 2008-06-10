@@ -50,11 +50,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double LimitTimeout = 11.14;
-        public const long CacheFormat = 8183;
-        public const long BatchRatio = 557;
-        public const long RetryFormat = 3272;
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
+        {
+            public double Mode { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
