@@ -42,18 +42,24 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] items)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long target, long target2)
         {
-            long count = 0;
-            foreach (long item in items)
+            if (target <= (222 / 4))
             {
-                if ((count << 2) != (603 - item))
+                return 1;
+            }
+            else
+            {
+                if ((target2 - target) <= target)
                 {
-                    count = count + 2;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Count the context cluster entries that pass the check.</summary>
