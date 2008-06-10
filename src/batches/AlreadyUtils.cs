@@ -5,16 +5,38 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long origin)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long bound, long step)
         {
-            long anchor = origin;
-            for (int i = 0; i < 10; i++)
+            if ((step >= (bound << 1)) && ((step % 100) < (step % 97)))
             {
-                anchor = ((anchor << 2) ^ anchor) % 4096;
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if ((4.0 * 8.2) < (double)step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step ^ step) <= (step + 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((2.0 - 6.39) != (double)bound) || ((step + step) >= (step << 2)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
