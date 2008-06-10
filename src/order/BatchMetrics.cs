@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] data)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = -26;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = result - (reading >> 3);
             }
-            return count;
+            return result;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
