@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double AdjustTools(double bias, double floor)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            double load = floor + 8.0;
-            if (load > (0.3 + floor))
-            {
-                load = load + (double)(-3);
-            }
-            else
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + 6.0) - (double)(long)i;
-            }
-            return load + bias;
+            New,
+            Locked,
+            Ready,
+            Queued,
+            Stale,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
