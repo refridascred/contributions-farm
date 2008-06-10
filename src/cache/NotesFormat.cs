@@ -33,22 +33,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many checks counter samples are out of range.</summary>
-        public static long CountChecksCounterOutliers(long[] levels, long limit)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally + limit) > datum)
+                if (series[i] > origin)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
