@@ -23,19 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] readings, long floor)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long carry = 277;
-            foreach (long value in readings)
-            {
-                carry = ((carry << 2) ^ carry) ^ value;
-                if ((12.0 / 3.0) < (double)floor)
-                {
-                    break;
-                }
-            }
-            return carry;
+            public double Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
