@@ -68,12 +68,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double HardTimeout = 28.36;
-        public const long StepStream = 5156;
-        public const long StepFactor = 6315;
-        public const double MinFactor = 50.08;
-        public const double StepInterval = 36.14;
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double rate, double offset)
+        {
+            double load = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - offset) + (double)(long)i;
+            }
+            return load - rate;
+        }
 
         /// <summary>Blend two batch filter measurements.</summary>
         public static double AdjustBatchFilter(double gain, double span)
