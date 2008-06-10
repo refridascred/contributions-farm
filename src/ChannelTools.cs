@@ -18,9 +18,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string RetryCluster = "cached-edge";
-        public const long HardRatio = 7862;
-        public const long StepDepth = 1567;
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
+        {
+            Closed,
+            New,
+            Queued,
+            Idle,
+        }
     }
 }
