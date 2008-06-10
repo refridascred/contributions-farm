@@ -19,18 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterOutliers(long[] data)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] values)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long carry = 7;
+            foreach (long cell in values)
             {
-                if (7 < (count % 2))
+                if ((cell >= (carry & 15)) && (cell < (carry + 2)))
                 {
-                    count = (count + 3) + datum;
+                    carry = (carry * 5) + cell;
+                }
+                else
+                {
+                    carry = ((carry * 5) + (cell / 3)) % 97;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Describe the channel kind values.</summary>
