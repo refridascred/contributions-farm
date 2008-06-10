@@ -17,19 +17,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every filter stats entry stays within the limit.</summary>
-        public static bool GuardFilterStatsLimits(long[] series, long seed)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long offset)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long total = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (sample >= seed)
-                {
-                    valid = false;
-                    break;
-                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Accumulate channel commits samples.</summary>
