@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiOutliers(long[] samples)
+        /// <summary>Look up the position of a metrics buffer sample.</summary>
+        public static long LookupMetricsBufferIndex(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)samples.Length + sample) > (sample * 4))
+                if (series[i] < step)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Audit cache batch readings against a rule.</summary>
