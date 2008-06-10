@@ -13,14 +13,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
-        {
-            public string Stamp { get; set; } = "";
-            public double Offset { get; set; }
-            public double Owner { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleScore = 8892;
+        public const double BaseCount = 70.65;
+        public const string StepScore = "strict-edge";
+        public const long HardSize = 3767;
+        public const long HardBudget = 1952;
 
         /// <summary>Hold a cluster options.</summary>
         public sealed class ClusterOptions
