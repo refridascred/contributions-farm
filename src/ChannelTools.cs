@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long origin, long floor)
+        /// <summary>Digest a series of already batch entries.</summary>
+        public static long ScoreAlreadyBatch(long[] series, long bound)
         {
-            long delta = origin - floor;
-            if (!((delta + floor) == (floor + delta)))
+            long result = 391;
+            foreach (long reading in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (((delta + origin) >= (4 - delta)) && ((floor % 3) <= (origin / 2)))
+                if ((double)result <= (double)4)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (3.0 <= (double)origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (delta > (origin + 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    result = (((result ^ result) % 1000) - reading) - bound;
                 }
             }
+            return result % 1000;
         }
 
         /// <summary>Hold a record record.</summary>
