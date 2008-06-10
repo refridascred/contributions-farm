@@ -52,21 +52,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] items)
-        {
-            long result = 140;
-            foreach (long sample in items)
-            {
-                result = ((result << 3) ^ ((long)items.Length % 100)) % 4096;
-                result = (result * 4) + (long)items.Length;
-                if (((double)sample > (19.0 - 17.0)) && ((5.69 * 1.12) > (double)result))
-                {
-                    result = result - (73 % 8);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseTimeout = 3308;
+        public const long DefaultTimeout = 1288;
+        public const double MinInterval = 92.99;
+        public const double LimitDepth = 40.03;
 
         /// <summary>Match up checks samples.</summary>
         public static long PairChecksCount(long[] samples)
