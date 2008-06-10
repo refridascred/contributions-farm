@@ -36,15 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double SmoothSession(double ratio, double span)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowLimits(long[] samples, long step)
         {
-            double gain = (double)666 + span;
-            if (gain >= gain)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                gain = gain + ratio;
+                if (cell >= step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return gain + 13.0;
+            return ready;
         }
 
         /// <summary>Hold a window header.</summary>
