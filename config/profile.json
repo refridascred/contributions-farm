@@ -1,6 +1,17 @@
 {
-  "dry_run": [362, 183],
-  "token_depth": 250,
-  "default_interval_pct": true,
-  "max_capacity": "blue"
+  "checks_delay": ["edge", "edge", "standard"],
+  "burst_retries": [369, 82, 376],
+  "order_window": "standard",
+  "flush_delay_count": {
+    "graph_depth": 18.38,
+    "default_ratio_ms": {
+      "contributi_threshold": false,
+      "retry_capacity": true,
+      "cache_window_count": true,
+      "sync_threshold": 39,
+      "audit": 1024,
+      "max_delay_count": [92, 322]
+    },
+    "poll_ttl": "strict"
+  }
 }
