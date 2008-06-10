@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Look up the position of a metric account sample.</summary>
+        public static long FindMetricAccountIndex(long[] data, long limit)
         {
-            Synced,
-            Dropped,
-            Paused,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a window graph value against two limits.</summary>
