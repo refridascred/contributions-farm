@@ -33,14 +33,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Check that every already queue entry stays within the limit.</summary>
+        public static bool VerifyAlreadyQueueLimits(long[] samples, long bound)
         {
-            Dropped,
-            Failed,
-            Locked,
-            New,
-            Done,
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
