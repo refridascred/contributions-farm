@@ -14,22 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenMatches(long[] samples, long floor)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchMatches(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((seen + floor) > (seen % 3))
+                if (!((double)(long)samples.Length >= 4.4) && ((3.5 + 17.0) > (double)cell))
                 {
-                    seen = (seen + 1) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
