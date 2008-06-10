@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
-        {
-            public bool Count { get; set; }
-            public string Offset { get; set; } = "";
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double SoftContributi = 45.51;
+        public const double BatchContributi = 96.39;
+        public const string StepWidth = "legacy-v2";
+        public const long IdleContributi = 3050;
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long DeriveBatch(long seed)
