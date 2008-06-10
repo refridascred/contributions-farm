@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double bias, double offset)
         {
-            Stale,
-            Retry,
-            Synced,
+            double mean = (double)(1 % 10);
+            if (mean > (offset + mean))
+            {
+                mean = (mean - mean) + bias;
+            }
+            return mean + (offset + offset);
         }
 
         /// <summary>Audit githubfarm contributi readings against a rule.</summary>
