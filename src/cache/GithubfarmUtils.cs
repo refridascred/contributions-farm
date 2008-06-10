@@ -43,22 +43,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyOutliers(long[] series, long target)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((70 / 5) <= (reading / 9))
+                if (!(((tally - entry) > (tally << 2)) || (10.0 < (double)entry)))
                 {
-                    hits = (hits + 2) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
