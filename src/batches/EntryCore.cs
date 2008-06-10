@@ -74,15 +74,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double AdjustAlready(double scale, double span)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ProjectGithubfarm(double bias, double offset)
         {
-            double mean = (span * 0.1) / 3.0;
-            if (mean <= (double)836)
+            double drift = bias;
+            if (drift > (bias - drift))
             {
-                mean = (mean + span) - scale;
+                drift = drift - bias;
             }
-            return mean + mean;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (double)23) + (double)(long)i;
+            }
+            return drift + offset;
         }
     }
 }
