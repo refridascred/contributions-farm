@@ -29,15 +29,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] values)
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] samples)
         {
-            long state = 87;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = state - (cell + state);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Describe the format mode values.</summary>
