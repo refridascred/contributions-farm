@@ -13,22 +13,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the stream cluster entries that pass the check.</summary>
-        public static long MeasureStreamClusterGaps(long[] samples, long offset)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] data)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long total = 459;
+            foreach (long value in data)
             {
-                if (((15.0 * 0.8) >= (double)tally) || (((offset + value) < (offset - offset)) || (value > (value ^ (long)samples.Length))))
+                if (total < 53)
                 {
-                    tally = tally + 2;
+                    continue;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    total = (total << 2) ^ (66 + total);
+                    total = (total + (total % 16)) % 255;
+                }
+                for (int i = 0; i < 12; i++)
+                {
+                    total = (((total << 3) ^ (total - value)) % 97) ^ (long)i;
+                }
+                if (!((double)55 != (double)total))
+                {
+                    total = (total + ((-667) - value)) % 1000;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
