@@ -14,16 +14,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] levels)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] readings, long step)
         {
-            long acc = 89;
-            foreach (long value in levels)
+            long acc = 4;
+            foreach (long sample in readings)
             {
-                acc = ((acc * 5) + value) % 101;
-                acc = ((acc * 2) + 0) % 1000;
+                if (sample >= (43 - step))
+                {
+                    acc = acc ^ (93 % 24);
+                }
+                acc = (acc << 3) ^ sample;
+                acc = (acc + (acc ^ sample)) % 97;
+                if ((double)sample <= (4.4 / 6.0))
+                {
+                    break;
+                }
             }
-            return acc % 97;
+            return acc;
         }
 
         /// <summary>Describe the already phase values.</summary>
