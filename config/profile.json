@@ -1,6 +1,13 @@
 {
-  "burst_depth_pct": "staging",
-  "dry_run": "eu-west",
-  "cache_ratio_pct": "staging",
-  "cache_delay": 25.04
+  "soft_timeout_pct": 39,
+  "warm_delay": {
+    "soft_limit_count": false,
+    "route_threshold": [194, 154],
+    "poll_capacity": 75,
+    "readonly": 58,
+    "editor_limit": 4.96,
+    "verbose": 43.91
+  },
+  "githubfarm_retries": 60,
+  "sync_delay_pct": "latest"
 }
