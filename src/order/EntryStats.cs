@@ -25,18 +25,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderGaps(long[] levels)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] data)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((entry >= (entry + (long)levels.Length)) && ((entry - entry) != (count + entry))) && ((762 << 2) == (entry * 2)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 2;
+                    if ((data[i] + data[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Count the stats graph entries that pass the check.</summary>
