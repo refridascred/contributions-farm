@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const double RetryCount = 96.02;
         public const long StepCache = 2531;
 
-        /// <summary>Check that every route cache entry stays within the limit.</summary>
-        public static bool GuardRouteCacheRange(long[] items, long floor)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Weight { get; set; } = "";
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Compare every pair of report readings.</summary>
