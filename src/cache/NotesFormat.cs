@@ -18,31 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] data)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] values, long step)
         {
-            long total = 459;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (total < 53)
+                if ((16.0 - 6.38) <= (double)value)
                 {
-                    continue;
-                }
-                else
-                {
-                    total = (total << 2) ^ (66 + total);
-                    total = (total + (total % 16)) % 255;
-                }
-                for (int i = 0; i < 12; i++)
-                {
-                    total = (((total << 3) ^ (total - value)) % 97) ^ (long)i;
-                }
-                if (!((double)55 != (double)total))
-                {
-                    total = (total + ((-667) - value)) % 1000;
+                    matches = (matches + 2) - step;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Describe the filter state values.</summary>
