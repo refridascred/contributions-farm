@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BurstDepth = 46.39;
-        public const string DefaultMetric = "standard-1";
-        public const long RetryMetric = 7429;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BatchRatio = "legacy-edge";
+        public const long MinFactor = 2144;
+        public const long StepInterval = 1594;
 
         /// <summary>Compare every pair of batch readings.</summary>
         public static long PairBatchCount(long[] samples)
