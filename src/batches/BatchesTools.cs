@@ -33,19 +33,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double scale, double offset)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long CompareGithubfarmCount(long[] data)
         {
-            double weight = 7.5;
-            if (weight > (double)77)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = (weight - weight) + offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (scale - 9.7)) + (double)(long)i;
-            }
-            return weight + (double)122;
+            return matches;
         }
     }
 }
