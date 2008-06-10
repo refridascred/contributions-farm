@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] values)
+        /// <summary>Grade a stream command value against two limits.</summary>
+        public static long GradeStreamCommand(long bound, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((bound << 2) != (limit - limit))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((18 >> 3) < (limit << 2)) || ((limit % 8) >= 279))
                 {
-                    if ((values[i] - values[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
