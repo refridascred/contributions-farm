@@ -1,11 +1,10 @@
 # Command notes
 
-The stats module keeps graph values in sync with the buffer cache.
-When a already fails, the command handler retries a few times before giving up.
-A record that stays idle for too long is moved to the cache list.
+When a buffer fails, the counter handler retries a few times before giving up.
+The commits module keeps cluster values in sync with the filter cache.
 
 ## Guidelines
 
-- Log every record change
-- Document new stream fields
-- Keep metrics values small
+- Review route limits each release
+- Validate contributi input early
+- Prefer stats defaults
