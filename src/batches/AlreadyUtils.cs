@@ -33,12 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxSize = 3149;
-        public const string MinFilter = "local-v2";
-        public const long HardWidth = 3510;
-        public const long CacheWidth = 1898;
-        public const string HardTimeout = "local";
+        /// <summary>Count record order pairs that satisfy a relation.</summary>
+        public static long PairRecordOrderCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
