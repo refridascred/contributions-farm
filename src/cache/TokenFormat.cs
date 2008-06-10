@@ -25,17 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] levels, long step)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] samples, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 153;
+            foreach (long datum in samples)
             {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
+                anchor = (((anchor << 3) ^ anchor) - datum) - step;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
