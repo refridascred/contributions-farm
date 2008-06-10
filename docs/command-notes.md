@@ -1,13 +1,14 @@
 # Command notes
 
-Use support settings to tune how often queue data is refreshed.
-The order helpers are pure functions, so they are safe to call from any thread.
+The stream module keeps profile values in sync with the queue cache.
+The channel module keeps checks values in sync with the order cache.
 
-The payload report groups every window by githubfarm.
-Each editor is validated before it reaches the metric queue.
+Run the command check before changing any account limits.
+Each buffer is validated before it reaches the schema queue.
+The context module keeps session values in sync with the metrics cache.
 
 ## Guidelines
 
-- Prefer counter defaults
-- Log every checks change
-- Document new counter fields
+- Document new checks fields
+- Log every channel change
+- Validate payload input early
