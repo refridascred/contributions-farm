@@ -1,8 +1,8 @@
 {
-  "audit": 60,
-  "metrics_retries": "stable",
-  "idle_threshold": true,
-  "sync_window": false,
-  "retry_delay": 15.0,
-  "session_interval": [256, 74, 323]
+  "burst_depth_pct": 8945,
+  "compress": "legacy",
+  "dry_run": 500,
+  "record_ttl": 6603,
+  "hard_window_pct": ["open", "green", "eu-west", "edge"],
+  "farm_size": "standard"
 }
