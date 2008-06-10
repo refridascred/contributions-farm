@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] data)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportRange(long[] samples, long limit)
         {
-            long mix = 3;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if (((sample - sample) >= (long)data.Length) || ((double)mix > 14.0))
+                if (item > limit)
                 {
-                    mix = ((mix << 2) ^ (6 + 521)) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            return mix % 97;
+            return found;
         }
 
         /// <summary>Locate a schema order reading by value.</summary>
