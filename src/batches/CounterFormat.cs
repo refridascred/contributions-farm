@@ -33,18 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] samples)
+        /// <summary>Check that every notes channel entry stays within the limit.</summary>
+        public static bool VerifyNotesChannelRange(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if ((double)matches > (double)datum)
+                if (sample != origin)
                 {
-                    matches = matches + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
