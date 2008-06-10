@@ -1,6 +1,18 @@
 {
-  "idle_ttl_pct": false,
-  "flush_window_s": "latest",
-  "flush_ratio_count": 6,
-  "audit": 42
+  "min_size": 72.04,
+  "stream_ratio": 7684,
+  "batch_depth_pct": {
+    "default_ratio": "strict",
+    "batch_interval": ["stable", "local", "standard"],
+    "flush_ttl_pct": 6.63,
+    "sync_window_count": {
+      "default_delay_count": 6,
+      "burst_size_s": "standard",
+      "batch_delay": 250,
+      "githubfarm_retries": ["staging", "staging"],
+      "min_delay": "latest",
+      "retry_retries_ms": "eu-west"
+    },
+    "hard_retries_s": 96
+  }
 }
