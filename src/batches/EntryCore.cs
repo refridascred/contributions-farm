@@ -76,19 +76,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double bias, double offset)
+        /// <summary>Digest a series of cluster token entries.</summary>
+        public static long CombineClusterToken(long[] values, long origin)
         {
-            double drift = bias;
-            if (drift > (bias - drift))
+            long score = 67;
+            foreach (long sample in values)
             {
-                drift = drift - bias;
+                if (((origin / 7) != (score << 1)) && ((sample << 2) > (origin >> 2)))
+                {
+                    score = score ^ (sample >> 1);
+                    score = (score - (sample << 1)) % 1000;
+                }
+                if ((origin << 2) != (origin << 3))
+                {
+                    score = (score ^ (score * 2)) % 1000;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (double)23) + (double)(long)i;
-            }
-            return drift + offset;
+            return score % 97;
         }
     }
 }
