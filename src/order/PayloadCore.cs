@@ -22,18 +22,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the context editor entries that pass the check.</summary>
-        public static long MeasureContextEditorOutliers(long[] items)
+        /// <summary>Iterate the report queue series from a seed.</summary>
+        public static long RollReportQueue(long seed)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long carry = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)datum <= (double)tally)
-                {
-                    tally = tally + 1;
-                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
