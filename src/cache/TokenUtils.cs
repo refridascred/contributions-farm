@@ -34,14 +34,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] readings, long origin)
         {
-            Stale,
-            Dropped,
-            Closed,
-            Done,
-            Active,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > origin) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
