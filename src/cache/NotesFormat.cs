@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowRange(long[] items, long limit)
         {
-            Failed,
-            Closed,
-            Paused,
-            New,
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Combine format values into a single score.</summary>
