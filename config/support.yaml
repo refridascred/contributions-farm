@@ -1,16 +1,9 @@
 # support settings
-metric_size: legacy
-flush_delay:
-  audit: 61.56
-  token_timeout: 5529
-  hard_threshold_count: local
-  metric_capacity: 66.61
-  dry_run:
-    - 115
-    - 440
-    - 449
-  min_ttl: true
-verbose: false
-strict: 60
-batch_ttl_pct: primary
-profile_interval: legacy
+schema_ttl: 19.32
+editor_timeout:
+  - 64
+  - 171
+batch_window_pct: strict
+dry_run: 100
+cache_delay_pct: false
+sync_retries_count: eu-west
