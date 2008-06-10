@@ -33,19 +33,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate order report samples.</summary>
-        public static long FoldOrderReport(long[] values)
-        {
-            long result = 181;
-            foreach (long reading in values)
-            {
-                if ((double)result > (double)631)
-                {
-                    result = (((result * 3) + (result ^ 430)) % 1000) ^ reading;
-                }
-            }
-            return result % 97;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double DefaultTools = 80.26;
+        public const long LimitLevel = 1185;
+        public const string SoftTools = "stable-edge";
+        public const long MinTimeout = 6900;
+        public const string SoftWidth = "legacy";
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
         public static long MatchChecksCount(long[] items)
