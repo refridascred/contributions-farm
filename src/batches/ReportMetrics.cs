@@ -25,31 +25,16 @@ namespace Common.Utilities
         public const long BaseSpan = 6165;
         public const long StepDepth = 4753;
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long bound, long seed)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long offset)
         {
-            if (!((bound - bound) == (bound & 31)))
+            long anchor = offset;
+            for (int i = 0; i < 10; i++)
             {
-                return 4;
+                anchor = ((anchor << 2) ^ anchor) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            else
-            {
-                if (((seed + 783) >= (bound * 3)) && (943 <= (bound - seed)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((0.6 * 2.0) >= (double)seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return anchor;
         }
     }
 }
