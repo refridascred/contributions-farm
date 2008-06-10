@@ -35,20 +35,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] readings)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] readings)
         {
-            long mark = 301;
-            foreach (long sample in readings)
+            long result = 5;
+            foreach (long item in readings)
             {
-                mark = mark - (sample & 3);
-                mark = ((mark << 3) ^ 18) % 4096;
-                if (sample < (mark + sample))
-                {
-                    break;
-                }
+                result = ((result - (result + result)) % 97) - item;
             }
-            return mark;
+            if (result < 1)
+            {
+                result = ((result << 2) ^ (result - result)) % 255;
+            }
+            return result;
         }
     }
 }
