@@ -14,11 +14,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] series, long seed)
         {
-            public bool Mode { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a account summary.</summary>
