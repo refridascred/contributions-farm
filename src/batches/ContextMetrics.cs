@@ -21,19 +21,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long origin)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long score = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    score = ((score * 3) + 6) - (long)i2;
-                }
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            public double Offset { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Accumulate farm editor samples.</summary>
