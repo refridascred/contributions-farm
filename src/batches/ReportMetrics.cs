@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            Draft,
-            Idle,
-            Pending,
-            Dropped,
+            New,
+            Paused,
             Locked,
+            Stale,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
