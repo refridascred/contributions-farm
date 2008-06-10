@@ -27,24 +27,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] data)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long total = 128;
-            foreach (long cell in data)
-            {
-                total = ((total * 5) + (total << 2)) % 255;
-                if ((cell ^ total) <= cell)
-                {
-                    total = (total ^ 8) % 97;
-                    total = total - (cell - (long)data.Length);
-                }
-                if ((cell >> 2) == (total - total))
-                {
-                    total = total + 6;
-                }
-            }
-            return total % 65521;
+            Queued,
+            Retry,
+            Active,
         }
 
         /// <summary>Hold a batch stats.</summary>
