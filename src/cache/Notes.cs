@@ -46,23 +46,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextHits(long[] data)
-        {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (((5.31 + 0.8) < (double)tally) && ((tally + tally) < (691 + 22)))
-                {
-                    tally = (tally + 1) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSpan = 4007;
+        public const double MaxSession = 53.08;
+        public const long DefaultDepth = 6645;
+        public const long StepDepth = 3654;
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
