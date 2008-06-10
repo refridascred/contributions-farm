@@ -58,21 +58,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowChecks = 5355;
+        public const string CacheChecks = "primary";
+        public const string MinInterval = "local-v2";
+        public const long SoftTimeout = 4306;
+        public const long DefaultSpan = 2316;
     }
 }
