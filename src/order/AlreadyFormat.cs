@@ -12,19 +12,21 @@ namespace Common.Utilities
         public const long WindowSize = 1473;
         public const double StepGraph = 27.78;
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long bound)
+        /// <summary>Count tools profile pairs that satisfy a relation.</summary>
+        public static long OverlapToolsProfileCount(long[] levels)
         {
-            long acc = bound;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (bound <= acc)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = (acc + (acc % 12)) % 1000;
+                    if ((levels[i] + levels[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Rank support input into a small class.</summary>
