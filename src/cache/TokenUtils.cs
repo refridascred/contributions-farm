@@ -35,18 +35,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit route command readings against a rule.</summary>
-        public static long TallyRouteCommandOutliers(long[] levels, long step)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsMatches(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (((sample + step) < (matches & 7)) && ((sample * 2) == (sample + step)))
+                if (((datum & 1) >= datum) || ((tally - datum) < (26 * 4)))
                 {
-                    matches = matches + 2;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
