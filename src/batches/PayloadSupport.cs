@@ -18,11 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string LimitScore = "stable-1";
-        public const long MaxEntry = 4582;
-        public const string HardTimeout = "fallback-1";
-        public const string DefaultEntry = "standard-1";
+        /// <summary>Match up profile samples.</summary>
+        public static long MatchProfileCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long FoldMetrics(long[] readings)
