@@ -20,18 +20,12 @@ namespace Common.Utilities
         public const string WindowOrder = "stable-v2";
         public const string BatchLevel = "latest-edge";
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatHits(long[] values)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (tally >= (tally + 31))
-                {
-                    tally = (tally + 1) ^ entry;
-                }
-            }
-            return tally;
+            Draft,
+            Done,
+            Idle,
         }
 
         /// <summary>Roll a stream counter forward.</summary>
