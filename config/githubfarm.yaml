@@ -1,4 +1,12 @@
 # githubfarm settings
-flush_ratio_pct: true
-persist: 38
-retry_interval_count: blue
+tools_limit: eu-west
+dry_run: fallback
+batch_capacity_count: blue
+readonly:
+  base_delay_ms: 32
+  graph_interval: 80.3
+  stats_interval: 30
+  default_delay:
+    - eu-west
+    - stable
+    - legacy
