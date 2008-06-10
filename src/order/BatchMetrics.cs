@@ -41,11 +41,22 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftSession = 6684;
-        public const long BatchLevel = 5413;
-        public const long BatchSession = 7384;
-        public const long WindowCount = 5409;
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool ValidateCacheBounds(long[] samples, long floor)
