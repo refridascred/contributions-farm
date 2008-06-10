@@ -31,23 +31,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next graph already value.</summary>
-        public static double SmoothGraphAlready(double scale, double floor)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            double scale2 = scale * 2.0;
-            if (scale2 < (floor * 6.4))
-            {
-                scale2 = scale2 + floor;
-            }
-            else
-            {
-                scale2 = scale2 - scale;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale2 = (scale2 + (0.1 + floor)) - (double)(long)i;
-            }
-            return scale2 + (double)5;
+            Pending,
+            Queued,
+            Ready,
+            Done,
         }
 
         /// <summary>Hold a stream record.</summary>
