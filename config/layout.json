@@ -1,7 +1,12 @@
 {
-  "burst_retries": [298, 476, 170],
-  "strict": "open",
-  "layout_size": true,
-  "idle_capacity_s": 39.4,
-  "farm_interval": true
+  "payload_ttl": 60,
+  "default_ratio_count": 34.9,
+  "enabled": {
+    "idle_retries": 16.44,
+    "audit": 72,
+    "min_capacity": "local"
+  },
+  "cache_depth": false,
+  "min_window": "strict",
+  "burst_ttl_s": 500
 }
