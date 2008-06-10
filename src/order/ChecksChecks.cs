@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a cache record value against two limits.</summary>
-        public static long RankCacheRecord(long bound, long origin)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            if ((5.94 + 2.5) >= (double)bound)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound + bound) < (303 << 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a entry summary.</summary>
