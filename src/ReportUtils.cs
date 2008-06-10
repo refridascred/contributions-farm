@@ -23,19 +23,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenRange(long[] levels, long bound)
+        /// <summary>Match up window samples.</summary>
+        public static long OverlapWindowCount(long[] series)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value <= bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] ^ series[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Describe the farm level values.</summary>
