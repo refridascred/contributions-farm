@@ -1,7 +1,16 @@
 {
-  "max_capacity_s": 12.52,
-  "retry_interval_ms": "standard",
-  "githubfarm_timeout": [28, 8, 383, 280],
-  "retry_threshold_ms": false,
-  "default_size_s": false
+  "already_capacity": {
+    "sync_interval_count": 96.17,
+    "retry_depth_s": [496, 67, 103, 495],
+    "cache_limit": "green",
+    "enabled": "green"
+  },
+  "audit": "latest",
+  "batch_retries_ms": {
+    "default_ttl_count": 87,
+    "enabled": 85,
+    "warm_size_s": "local",
+    "persist": "standard",
+    "soft_ratio": true
+  }
 }
