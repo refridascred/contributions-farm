@@ -24,11 +24,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseTimeout = 8936;
-        public const long MaxWidth = 9540;
-        public const long StepOrder = 8227;
-        public const long MinTimeout = 1689;
-        public const long BurstDepth = 8901;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitScore = 2278;
+        public const long WindowScore = 5263;
+        public const string SoftFilter = "cached-edge";
+        public const long BurstFilter = 6073;
     }
 }
