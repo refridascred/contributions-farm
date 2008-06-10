@@ -1,23 +1,6 @@
 {
-  "record_ttl": {
-    "profile_retries": 25.71,
-    "route_limit": ["legacy", "open"],
-    "retry_limit": [220, 344],
-    "payload_depth": ["strict", "edge"]
-  },
-  "flush_threshold": {
-    "counter_delay": 30,
-    "batch_window_count": [376, 464, 53, 292],
-    "farm_interval": {
-      "githubfarm_interval": 500,
-      "default_ratio_ms": 5376,
-      "max_timeout_ms": true,
-      "default_threshold": false,
-      "farm_window": 30,
-      "audit": [361, 311, 61]
-    },
-    "flush_delay": 86.5,
-    "retry_delay": "local"
-  },
-  "audit": true
+  "poll_ratio_count": false,
+  "format_ratio": [366, 478, 300, 143],
+  "strict": "stable",
+  "min_capacity_count": 55
 }
