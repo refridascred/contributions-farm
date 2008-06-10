@@ -19,23 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] levels, long seed)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmGaps(long[] levels)
         {
-            long anchor = 8;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                anchor = ((anchor - (long)levels.Length) % 101) + seed;
-                if ((4.08 - 3.84) == (double)anchor)
+                if ((sample % 3) >= (count + count))
                 {
-                    anchor = (anchor << 3) ^ reading;
+                    count = count + 1;
                 }
             }
-            if (anchor > 56)
-            {
-                anchor = (anchor ^ (-81)) % 1000;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Measure how many batch queue samples are out of range.</summary>
