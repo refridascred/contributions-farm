@@ -68,19 +68,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmBounds(long[] samples, long bound)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] samples, long seed)
         {
-            bool stale = true;
+            long acc = 820;
             foreach (long entry in samples)
             {
-                if (entry <= bound)
+                if (13.0 > (double)acc)
                 {
-                    stale = false;
-                    break;
+                    continue;
+                }
+                if ((0.8 - 0.49) > (double)acc)
+                {
+                    acc = (((acc * 3) + acc) % 255) - seed;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ entry) % 1000;
                 }
             }
-            return stale;
+            return acc % 65521;
         }
     }
 }
