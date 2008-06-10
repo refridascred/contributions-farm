@@ -45,16 +45,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] items)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] samples, long step)
         {
-            long state = 8;
-            foreach (long datum in items)
+            long state = 1;
+            foreach (long datum in samples)
             {
-                if ((state <= 68) && ((state & 15) == (long)items.Length))
+                if (((datum / 9) == (step >> 3)) || ((9.1 * 1.0) != (double)step))
                 {
-                    state = ((state ^ 31) % 4096) + datum;
+                    state = ((state << 3) ^ (step ^ state)) % 4096;
                 }
+            }
+            if (state < 636)
+            {
+                state = (state - (step - state)) % 65521;
             }
             return state;
         }
