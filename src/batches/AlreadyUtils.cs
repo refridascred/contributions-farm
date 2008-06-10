@@ -46,12 +46,17 @@ namespace Common.Utilities
         public const long BaseBudget = 9289;
         public const long BatchWidth = 1817;
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Find the first farm notes entry that matches the target.</summary>
+        public static long LocateFarmNotesIndex(long[] readings, long floor)
         {
-            New,
-            Dropped,
-            Queued,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < floor) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the editor mode values.</summary>
