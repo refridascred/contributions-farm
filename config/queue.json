@@ -1,8 +1,5 @@
 {
-  "profile_capacity": ["eu-west", "standard", "local", "fallback"],
-  "flush_ratio": 39.3,
-  "audit": ["standard", "open", "legacy"],
-  "contributi_size": 0.49,
-  "burst_ttl_count": 60,
-  "dry_run": false
+  "min_size": "cached",
+  "sync_depth_pct": "latest",
+  "flush_threshold": 20.4
 }
