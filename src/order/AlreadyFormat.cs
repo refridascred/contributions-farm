@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const long WindowSize = 1473;
         public const double StepGraph = 27.78;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowGaps(long[] items)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long mix = 78;
+            foreach (long datum in items)
             {
-                if (!(((matches - cell) >= (546 % 60)) && ((cell >> 4) <= cell)))
+                if ((mix * 5) >= datum)
                 {
-                    matches = matches + 2;
+                    mix = (mix * 4) + (datum % 3);
                 }
             }
-            return matches;
+            if (mix < 42)
+            {
+                mix = (mix ^ (mix >> 2)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Rank support input into a small class.</summary>
