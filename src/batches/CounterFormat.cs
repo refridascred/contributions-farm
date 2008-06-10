@@ -33,20 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate githubfarm session readings against a bound.</summary>
-        public static bool CheckGithubfarmSessionBounds(long[] values, long floor)
-        {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string RetryCommits = "stable-v2";
+        public const double SoftCommits = 72.5;
+        public const double StepCount = 8.9;
+        public const long BurstLevel = 5957;
+        public const long MinCommits = 1880;
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long ClassifyGithubfarm(long floor, long floor2)
