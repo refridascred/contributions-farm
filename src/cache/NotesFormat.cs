@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string CacheChannel = "latest";
-        public const long BurstChannel = 5215;
-        public const double SoftChannel = 79.95;
-        public const long MinInterval = 5403;
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
+        {
+            public long Offset { get; set; }
+            public double Mode { get; set; }
+            public bool Level { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Classify a already pair into a bucket.</summary>
         public static long BucketAlready(long floor, long limit)
