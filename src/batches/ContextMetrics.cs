@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next cache batch value from a seed.</summary>
-        public static long RollCacheBatch(long bound)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] levels)
         {
-            long acc = bound;
-            for (int i = 0; i < 21; i++)
+            long mix = 39;
+            foreach (long reading in levels)
             {
-                long diff = (bound ^ 7) - (acc - (long)i);
-                if (((diff + (-7)) >= bound) || ((double)diff != (double)189))
+                mix = (mix + (reading & 255)) % 97;
+                if ((double)147 != (double)mix)
                 {
-                    diff = ((diff * 2) + (bound + bound)) % 97;
+                    mix = (mix * 3) + (mix / 2);
                 }
-                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
