@@ -75,39 +75,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long seed, long floor)
-        {
-            long slot = seed ^ floor;
-            if (!(floor <= slot))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor << 1) >= (slot + seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (seed < floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((floor << 1) <= seed) || (17.0 > (double)slot))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 9677;
+        public const long BatchFormat = 6070;
+        public const double LimitSpan = 65.76;
+        public const double SoftFormat = 89.92;
+        public const long StepScore = 418;
     }
 }
