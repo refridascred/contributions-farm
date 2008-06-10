@@ -1,4 +1,25 @@
 # githubfarm settings
-batch_interval: stable
-flush_window_count: false
-soft_threshold: false
+enabled: eu-west
+sync_capacity:
+  - stable
+  - open
+max_capacity_pct: 76.66
+checks_retries: stable
+context_limit:
+  flush_interval:
+    sync_window: 79
+    min_ratio: 5664
+    format_size: 250
+    batch_capacity_pct: strict
+    support_ratio: 100
+  dry_run:
+    - standard
+    - open
+    - stable
+    - strict
+  schema_window:
+    githubfarm_retries: 404
+    dry_run: 30
+    hard_delay: latest
+    flush_ratio_ms: 1024
+default_ratio: 500
