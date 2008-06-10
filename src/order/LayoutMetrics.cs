@@ -20,12 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamGaps(long[] samples)
         {
-            public double Flag { get; set; }
-            public string Size { get; set; } = "";
-            public double Level { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (((long)samples.Length - item) > (matches ^ item))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate batches checks samples.</summary>
