@@ -34,14 +34,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordRange(long[] values, long limit)
         {
-            Stale,
-            Active,
-            Queued,
-            Retry,
-            Idle,
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
