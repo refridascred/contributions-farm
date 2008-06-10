@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long step, long limit)
-        {
-            long offset = step ^ limit;
-            if ((step % 2) == (83 - step))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset << 1) >= limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step - offset) < (offset & 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultBudget = 8071;
+        public const string BatchSchema = "fallback-1";
+        public const long DefaultSchema = 3426;
+        public const long BurstDepth = 5793;
+        public const long IdleFactor = 9849;
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool CheckFilterRange(long[] readings, long bound)
