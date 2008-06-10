@@ -1,13 +1,4 @@
 # already settings
-batches_retries: 500
-max_retries: blue
-default_delay: stable
-persist: 100
-tools_delay:
-  hard_size: standard
-  enabled: 66
-  cache_capacity:
-    - cached
-    - edge
-  batch_limit_count: green
-tools_interval: 2.08
+min_size_pct: 36
+soft_retries: 57.91
+hard_timeout: 500
