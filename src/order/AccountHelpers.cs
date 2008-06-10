@@ -22,15 +22,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine support entry values into a single score.</summary>
-        public static long DigestSupportEntry(long[] series, long seed)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long total = 25;
-            foreach (long datum in series)
-            {
-                total = ((((total * 4) + (total - (long)series.Length)) % 255) ^ datum) + seed;
-            }
-            return total;
+            public double Region { get; set; }
+            public long Token { get; set; }
+            public double Weight { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Check that every already queue entry stays within the limit.</summary>
