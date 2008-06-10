@@ -40,15 +40,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            Synced,
-            Queued,
-            Dropped,
-            Failed,
-            Idle,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftContributi = 7319;
+        public const long BurstContributi = 3400;
+        public const long SoftLevel = 9496;
+        public const long StepContributi = 9965;
+        public const long DefaultContributi = 8148;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long LimitWidth = 3059;
