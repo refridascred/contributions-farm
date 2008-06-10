@@ -20,38 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long offset, long floor)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            if (((floor - offset) >= offset) && ((double)floor < (15.0 / 8.0)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor & 7) < (0 & 127))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor - 543) <= floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (offset <= (offset + floor))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
