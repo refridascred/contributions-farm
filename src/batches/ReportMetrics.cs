@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the checks editor entries that pass the check.</summary>
-        public static long CountChecksEditorOutliers(long[] values, long target)
+        /// <summary>Fold a list of tools metric readings.</summary>
+        public static long TallyToolsMetric(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long acc = 665;
+            foreach (long value in series)
             {
-                if ((double)datum < 5.0)
+                acc = acc ^ 8;
+                if (!((seed * 4) <= (value - 5)))
                 {
-                    tally = (tally + 3) - target;
+                    break;
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
