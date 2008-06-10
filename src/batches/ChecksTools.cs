@@ -63,12 +63,25 @@ namespace Common.Utilities
         public const string LimitLevel = "alpha-v2";
         public const string IdleTimeout = "open";
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long seed, long limit)
         {
-            New,
-            Retry,
-            Idle,
+            long gap = seed - limit;
+            if ((seed >> 5) <= (13 - seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if (gap < seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
