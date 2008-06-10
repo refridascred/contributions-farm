@@ -29,18 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stream checks entries that pass the check.</summary>
-        public static long CountStreamChecksGaps(long[] levels, long target)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long result = -86;
+            foreach (long reading in levels)
             {
-                if (((3.0 - 4.54) == (double)matches) || ((matches + 577) <= (matches & 7)))
+                if (((8.98 - 7.1) == (double)result) || ((-722) < (long)levels.Length))
                 {
-                    matches = ((matches + 1) ^ cell) - target;
+                    result = ((result + result) - reading) - target;
                 }
             }
-            return matches;
+            return result % 65521;
         }
 
         /// <summary>Adjust a graph reading.</summary>
