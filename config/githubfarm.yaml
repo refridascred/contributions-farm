@@ -1,6 +1,31 @@
 # githubfarm settings
-compress:
+default_capacity_count: standard
+batch_ttl_s:
+  metrics_timeout:
+    context_depth: fallback
+    min_interval:
+      - standard
+      - green
+      - strict
+    soft_timeout: 528
+    flush_capacity_s: true
+    poll_capacity_s: fallback
+  poll_size:
+    cluster_ttl: 84
+    hard_limit: 3.23
+    graph_timeout:
+      - 472
+      - 275
+      - 484
+      - 268
+    filter_timeout: 79.87
+    contributi_ratio: 7
+  burst_timeout_ms:
+    - legacy
+    - blue
+  min_limit_count: edge
+  default_interval_s: 38.85
+  tools_ratio: 6.45
+metrics_ttl:
   - standard
-  - primary
-dry_run: false
-verbose: 500
+  - edge
