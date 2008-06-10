@@ -49,13 +49,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-            public bool Size { get; set; }
-            public string Flag { get; set; } = "";
+            Locked,
+            Draft,
+            Done,
         }
     }
 }
