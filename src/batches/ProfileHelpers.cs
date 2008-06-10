@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long bound, long origin)
         {
-            Failed,
-            New,
-            Pending,
-            Ready,
+            long prev = bound + origin;
+            if ((double)origin <= (2.0 - 9.74))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((7.5 * 5.14) > (double)prev)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define window limits and defaults.</summary>
