@@ -61,26 +61,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] values)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long mark = -2;
-            foreach (long entry in values)
-            {
-                if (((22 - mark) < (entry << 2)) || (((long)values.Length / 3) == (mark >> 1)))
-                {
-                    mark = mark + (entry - entry);
-                }
-                else
-                {
-                    mark = (mark + (5 % 5)) % 65521;
-                }
-                if ((double)entry <= (3.46 - 5.0))
-                {
-                    break;
-                }
-            }
-            return mark % 4096;
+            public double Offset { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define format limits and defaults.</summary>
