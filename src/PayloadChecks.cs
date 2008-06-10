@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long IdleCounter = 535;
         public const long SoftCount = 354;
 
-        /// <summary>Validate metrics cache readings against a bound.</summary>
-        public static bool ValidateMetricsCacheRange(long[] values, long limit)
+        /// <summary>Audit metrics checks readings against a rule.</summary>
+        public static long AuditMetricsChecksOutliers(long[] values)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (reading != limit)
+                if (hits >= (hits << 3))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 3) - entry;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
