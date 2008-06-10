@@ -32,19 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatRange(long[] readings, long offset)
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double gain, double offset)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            double bias = (gain / 5.0) * 2.71;
+            if (bias < (gain * 4.24))
             {
-                if (item != offset)
-                {
-                    stale = false;
-                    break;
-                }
+                bias = (bias - (bias * 5.0)) - offset;
             }
-            return stale;
+            else
+            {
+                bias = bias - (9.0 + gain);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias - 7.19;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
