@@ -20,22 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit githubfarm contributi readings against a rule.</summary>
-        public static long AuditGithubfarmContributiHits(long[] samples, long target)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchBounds(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                if ((double)target > (7.59 / 5.0))
+                if (sample > step)
                 {
-                    matches = (matches + 2) ^ reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Locate a githubfarm payload reading by value.</summary>
