@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] readings, long step)
-        {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string CacheRatio = "strict-v2";
+        public const long SoftMetric = 1096;
+        public const long IdleMetric = 4246;
+        public const double LimitMetric = 89.56;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string StepChannel = "latest-1";
