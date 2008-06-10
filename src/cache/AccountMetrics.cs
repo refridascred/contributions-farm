@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionOutliers(long[] items, long step)
         {
-            Dropped,
-            Pending,
-            Active,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (((datum ^ datum) < datum) && !((step - matches) <= matches))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
