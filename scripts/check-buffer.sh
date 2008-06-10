@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=375
-log "limit is ${BUFFER_LIMIT}"
-
-for item in blue fallback; do
+for item in eu-west latest cached blue; do
     log "checking ${item}"
 done
+
+mode="${1:-staging}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
