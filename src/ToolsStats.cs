@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] data, long limit)
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double ratio, double span)
         {
-            long mark = 799;
-            foreach (long entry in data)
+            double rate = (11.0 * 3.49) - span;
+            if (rate <= (double)(-6))
             {
-                if ((3.64 * 11.0) != (double)entry)
-                {
-                    continue;
-                }
-                if ((mark * 2) < mark)
-                {
-                    mark = ((mark - (mark - mark)) % 65521) - limit;
-                }
+                rate = (rate - span) - ratio;
             }
-            return mark;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - 8.5) + (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
