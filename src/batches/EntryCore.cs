@@ -57,21 +57,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] data)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] data)
         {
-            long seen = 0;
+            long tally = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 for (int j = 0; j < data.Length; j++)
                 {
-                    if ((data[i] + data[j]) > 12)
+                    if ((data[i] ^ data[j]) != 8)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Blend two already measurements.</summary>
