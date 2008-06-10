@@ -1,11 +1,6 @@
 # githubfarm settings
-format_interval: 2222
-base_ratio: true
-min_interval_s: 32.06
-hard_size:
-  commits_ratio:
-    - open
-    - primary
-  min_depth_pct: 500
-  default_ratio_pct: 78
-burst_retries_count: blue
+audit: 34.19
+compress: staging
+batch_ttl_count: edge
+default_delay: 8942
+warm_ratio: 500
