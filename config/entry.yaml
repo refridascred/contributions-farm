@@ -1,22 +1,7 @@
 # entry settings
-counter_ratio:
-  - 30
-  - 102
-  - 265
-min_retries_pct: legacy
-idle_delay:
-  - local
-  - fallback
-  - legacy
-poll_size_pct: open
-batch_limit_count:
-  persist: false
-  base_size_count: true
-  enabled: 20.23
-  support_delay: 5174
-  base_capacity_count:
-    - 334
-    - 37
-    - 380
-    - 131
-verbose: blue
+soft_limit: fallback
+enabled: 71.97
+token_limit: 49.93
+strict: false
+base_threshold_s: edge
+poll_limit_pct: false
