@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            public double Size { get; set; }
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
-            public long Total { get; set; }
+            Draft,
+            Active,
+            Pending,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Hold a report header.</summary>
