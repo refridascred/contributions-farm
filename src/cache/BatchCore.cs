@@ -58,19 +58,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double AdjustBatch(double gain, double offset)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long seed, long offset)
         {
-            double scale = 7.0;
-            if (scale >= (double)57)
+            long prev = seed + offset;
+            if ((8.57 / 8.0) <= (double)seed)
             {
-                scale = (scale - (scale + offset)) + gain;
+                return 8;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                scale = (scale + (19.0 + offset)) - (double)(long)i;
+                if ((seed + 958) >= (offset + offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((76 >> 2) <= (offset - seed)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!(prev < seed))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return scale - 9.0;
         }
     }
 }
