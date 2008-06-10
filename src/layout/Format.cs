@@ -31,19 +31,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordBounds(long[] series, long seed)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell > seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Score { get; set; }
+            public double Label { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
