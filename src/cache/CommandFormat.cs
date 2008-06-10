@@ -51,23 +51,21 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double ratio, double floor)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long CompareLayoutCount(long[] items)
         {
-            double weight = (double)0 + (5.9 - floor);
-            if (weight >= (ratio - weight))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = weight - ratio;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight + floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (weight + weight)) + (double)(long)i;
-            }
-            return weight + (double)2;
+            return seen;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
