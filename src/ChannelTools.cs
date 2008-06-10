@@ -5,16 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long floor)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long target, long target2)
         {
-            long total = floor;
-            for (int i = 0; i < 13; i++)
+            if ((76 + target) > (target2 / 4))
             {
-                total = (total ^ (floor % 2)) % 97;
-                total = ((total * 4) + (long)i) % 4093;
+                return 6;
             }
-            return total;
+            else
+            {
+                if (target > (target / 7))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target / 6) <= (target2 / 9))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (target <= (target - target))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
