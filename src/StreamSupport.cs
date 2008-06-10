@@ -27,19 +27,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesLimits(long[] samples, long seed)
-        {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 6067;
+        public const long MaxProfile = 5522;
+        public const string DefaultProfile = "stable-edge";
+        public const double BaseProfile = 45.45;
     }
 }
