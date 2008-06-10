@@ -18,16 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next session entry value.</summary>
-        public static double BlendSessionEntry(double rate, double floor)
-        {
-            double drift = (double)(123 + 642);
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (((drift + (double)8) - (double)(long)i) - rate) - floor;
-            }
-            return drift + 2.0;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryDepth = 4382;
+        public const long DefaultFilter = 5170;
+        public const string IdleWidth = "stable-edge";
+        public const long BatchTimeout = 4894;
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long SortRecord(long step, long step2)
