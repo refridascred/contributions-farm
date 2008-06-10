@@ -38,27 +38,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] series, long floor)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] series, long origin)
         {
-            long result = 57;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result << 3) ^ result) % 255;
-                if (!((double)datum < (double)result))
+                if (series[i] == origin)
                 {
-                    result = (result << 2) ^ result;
-                }
-                else
-                {
-                    result = result ^ (result - (-38));
+                    return (long)i;
                 }
             }
-            if (result > (-986))
-            {
-                result = result ^ (floor ^ floor);
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Compare every pair of record format readings.</summary>
