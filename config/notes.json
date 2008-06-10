@@ -1,12 +1,6 @@
 {
-  "sync_depth_ms": 6341,
-  "token_depth": {
-    "soft_size_ms": [328, 188],
-    "flush_depth_pct": 965,
-    "batch_capacity_count": 3108,
-    "poll_capacity": "green"
-  },
-  "audit": 45,
-  "min_ttl_ms": "local",
-  "cache_retries": 70
+  "retry_threshold_count": 82.14,
+  "batch_ttl": "blue",
+  "retry_retries_ms": "green",
+  "batches_ttl": "blue"
 }
