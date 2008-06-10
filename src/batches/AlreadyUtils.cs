@@ -54,15 +54,19 @@ namespace Common.Utilities
         public const long SoftFactor = 2339;
         public const long MinLevel = 440;
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double bias, double offset)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordBounds(long[] series, long bound)
         {
-            double weight = bias;
-            if (weight > bias)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                weight = weight + 2.45;
+                if (cell > bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return weight + (offset - 0.56);
+            return flag;
         }
     }
 }
