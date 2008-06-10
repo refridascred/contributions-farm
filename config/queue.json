@@ -1,5 +1,7 @@
 {
-  "min_timeout": "legacy",
-  "sync_delay_pct": ["latest", "blue", "stable"],
-  "batch_limit_count": ["stable", "staging", "stable", "latest"]
+  "context_limit": 90,
+  "metric_window": "cached",
+  "cluster_size": true,
+  "dry_run": 9378,
+  "batch_limit": 100
 }
