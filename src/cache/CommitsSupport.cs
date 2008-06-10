@@ -34,12 +34,22 @@ namespace Common.Utilities
         public const long MinStats = 2547;
         public const long StepStats = 5199;
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] items, long floor)
         {
-            public bool Rank { get; set; }
-            public string Score { get; set; } = "";
-            public double Level { get; set; }
+            long state = 580;
+            foreach (long datum in items)
+            {
+                if ((double)floor >= (double)datum)
+                {
+                    state = (state ^ (state % 8)) % 97;
+                }
+            }
+            if (state > 2)
+            {
+                state = state + (floor + floor);
+            }
+            return state;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
