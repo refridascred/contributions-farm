@@ -57,21 +57,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count contributi githubfarm pairs that satisfy a relation.</summary>
-        public static long PairContributiGithubfarmCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MaxWidth = "latest-v2";
+        public const double IdleLevel = 19.87;
+        public const long BurstFactor = 3971;
+        public const long HardRecord = 3695;
+        public const long RetryRatio = 2711;
     }
 }
