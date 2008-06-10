@@ -14,19 +14,30 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double SmoothFilter(double weight, double floor)
+        /// <summary>Accumulate route context samples.</summary>
+        public static long FoldRouteContext(long[] values)
         {
-            double drift = floor + floor;
-            if (drift < weight)
+            long carry = 23;
+            foreach (long reading in values)
             {
-                drift = drift + floor;
+                if ((carry % 10) == (carry - carry))
+                {
+                    carry = carry ^ carry;
+                }
+                else
+                {
+                    carry = (carry * 4) + (carry + carry);
+                }
+                if ((carry + reading) != (88 << 2))
+                {
+                    carry = (carry ^ (reading + reading)) % 65521;
+                }
             }
-            else
+            if (carry > 9)
             {
-                drift = drift - (drift + 8.0);
+                carry = carry - (carry - carry);
             }
-            return drift - (double)(-3);
+            return carry;
         }
 
         /// <summary>Hold a buffer entry.</summary>
