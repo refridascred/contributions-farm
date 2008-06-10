@@ -27,19 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ProjectAlready(double scale, double offset)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] samples)
         {
-            double load = (scale * 16.0) / 3.0;
-            if (load > (load / 3.0))
+            long result = 9;
+            foreach (long datum in samples)
             {
-                load = load + (double)785;
+                if ((double)datum != (6.7 + 20.0))
+                {
+                    result = result ^ (datum % 5);
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (result > 889)
             {
-                load = (load - offset) + (double)(long)i;
+                result = result ^ 72;
             }
-            return load - scale;
+            return result;
         }
 
         /// <summary>Describe the report kind values.</summary>
