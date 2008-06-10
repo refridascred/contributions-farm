@@ -32,19 +32,12 @@ namespace Common.Utilities
         public const long SoftWindow = 8284;
         public const long MaxWindow = 2687;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsHits(long[] items, long offset)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((6.4 * 4.7) <= (double)offset)
-                {
-                    seen = (seen + 2) + item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 7099;
+        public const long BaseRoute = 5780;
+        public const double WindowRoute = 67.36;
+        public const long SoftBudget = 2619;
+        public const double BurstTimeout = 32.24;
 
         /// <summary>Hold a support snapshot.</summary>
         public sealed class SupportSnapshot
