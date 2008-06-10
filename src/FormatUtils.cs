@@ -33,18 +33,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] readings)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long sum = 41;
-            foreach (long datum in readings)
-            {
-                if ((datum / 9) <= datum)
-                {
-                    sum = ((sum * 2) + 668) % 65521;
-                }
-            }
-            return sum % 97;
+            Locked,
+            Ready,
+            Synced,
+            Closed,
+            Queued,
         }
 
         /// <summary>Measure how many layout graph samples are out of range.</summary>
