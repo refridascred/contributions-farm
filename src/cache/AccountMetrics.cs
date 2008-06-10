@@ -28,22 +28,10 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long CompareBatchesCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 1987;
+        public const long MinWindow = 2204;
+        public const long BaseTimeout = 1689;
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long ScoreCluster(long[] readings, long floor)
