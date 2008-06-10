@@ -57,19 +57,12 @@ namespace Common.Utilities
         public const long SoftFactor = 2339;
         public const long MinLevel = 440;
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordBounds(long[] series, long bound)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Queued,
+            Pending,
+            Draft,
         }
     }
 }
