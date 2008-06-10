@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long target, long target2)
+        /// <summary>Validate tools schema readings against a bound.</summary>
+        public static bool VerifyToolsSchemaRange(long[] values, long floor)
         {
-            long prev = target - target2;
-            if (target2 > (prev % 8))
+            bool flag = true;
+            foreach (long sample in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)target >= (15.0 / 3.0))
+                if (sample <= floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Find the first notes buffer entry that matches the target.</summary>
