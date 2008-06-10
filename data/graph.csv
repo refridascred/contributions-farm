@@ -1,7 +1,9 @@
-id,token,level
-1,primary,standard
-2,237,410
-3,40.8,38.86
-4,20.86,22
-5,68.47,358
-6,55.46,green
+id,count,active
+1,fallback,staging
+2,53.9,98.55
+3,134,latest
+4,490,59.84
+5,fallback,86
+6,edge,779
+7,963,cached
+8,864,21
