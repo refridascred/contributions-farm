@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsGaps(long[] series, long seed)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long offset, long floor)
         {
-            long matches = 0;
-            foreach (long item in series)
+            if ((6.14 / 2.0) < (double)offset)
             {
-                if ((4.87 * 2.46) <= (double)matches)
+                return 8;
+            }
+            else
+            {
+                if ((floor - floor) == (floor % 60))
                 {
-                    matches = ((matches + 1) + item) - seed;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset * 5) > offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((11.0 - 6.4) != (double)floor))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a notes header.</summary>
