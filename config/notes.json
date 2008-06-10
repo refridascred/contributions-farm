@@ -1,12 +1,8 @@
 {
-  "default_size_ms": 33,
-  "batch_window_ms": true,
-  "batches_delay": {
-    "retry_limit_s": 500,
-    "soft_depth_ms": 1024,
-    "strict": "legacy"
-  },
-  "min_delay_count": 500,
-  "batch_limit_ms": ["primary", "cached", "blue"],
-  "cluster_depth": 7369
+  "min_timeout": 8806,
+  "flush_interval_count": 91,
+  "soft_ratio_count": 250,
+  "verbose": true,
+  "base_timeout": "strict",
+  "batch_threshold_s": 86.91
 }
