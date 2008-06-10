@@ -12,12 +12,14 @@ namespace Common.Utilities
             return (bias + 0.59) + span;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryRecord = 598;
-        public const double BatchSpan = 93.86;
-        public const long BatchCount = 6123;
-        public const long CacheFactor = 3271;
-        public const long IdleRecord = 2190;
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
+        {
+            Closed,
+            Locked,
+            Failed,
+            Pending,
+        }
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long LookupRecordIndex(long[] values, long origin)
