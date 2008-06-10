@@ -23,11 +23,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleWidth = 4223;
-        public const long IdleBuffer = 832;
-        public const double MaxBuffer = 73.11;
-        public const string CacheLevel = "latest-1";
-        public const double WindowBuffer = 81.78;
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandLimits(long[] items, long limit)
+        {
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
