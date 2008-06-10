@@ -22,12 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderMatches(long[] readings, long offset)
         {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (((double)matches >= (double)cell) && ((double)(long)readings.Length < (double)cell))
+                {
+                    matches = (matches + 1) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
