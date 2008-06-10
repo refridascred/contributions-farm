@@ -1,33 +1,8 @@
 # entry settings
-compress: local
-idle_capacity:
-  sync_capacity: 0.46
-  idle_depth_pct: 5369
-  hard_ttl_pct: 8724
-  audit: green
-enabled:
-  profile_ratio:
-    warm_size_s:
-      - standard
-      - fallback
-      - stable
-    contributi_retries: 79
-    token_capacity:
-      - 411
-      - 76
-      - 489
-      - 343
-    min_size_ms: standard
-  min_retries_s: false
-  context_capacity:
-    - 449
-    - 67
-    - 246
-    - 496
-  compress: 80
-idle_ttl: 1968
-idle_window_count: 250
-flush_ttl_ms:
-  - primary
-  - fallback
-  - cached
+default_delay_pct:
+  base_capacity_pct: legacy
+  stats_ratio: 628
+  counter_timeout: cached
+  persist: blue
+default_interval_count: 42
+compress: 6702
