@@ -22,21 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] samples)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutHits(long[] items, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((entry ^ entry) > hits)
                 {
-                    if ((samples[i] + samples[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 3) - origin;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
