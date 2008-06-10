@@ -51,11 +51,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 5355;
-        public const string CacheChecks = "primary";
-        public const string MinInterval = "local-v2";
-        public const long SoftTimeout = 4306;
-        public const long DefaultSpan = 2316;
+        /// <summary>Roll a counter commits counter forward.</summary>
+        public static long RollCounterCommits(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 23; i++)
+            {
+                result = result ^ (target / 3);
+                result = (result << 3) ^ (result << 2);
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
+        }
     }
 }
