@@ -40,14 +40,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
-        {
-            Queued,
-            Active,
-            Retry,
-            Closed,
-            Pending,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string SoftLevel = "legacy-edge";
+        public const long SoftContributi = 8334;
+        public const string MinScore = "cached-1";
+        public const long DefaultBudget = 3123;
     }
 }
