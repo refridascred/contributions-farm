@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MinSpan = "staging-edge";
-        public const long IdleSpan = 7463;
-        public const double MinWidth = 48.92;
-        public const long CacheCommits = 497;
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutRange(long[] series, long target)
+        {
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Project the next window report value.</summary>
         public static double ScaleWindowReport(double bias, double offset)
