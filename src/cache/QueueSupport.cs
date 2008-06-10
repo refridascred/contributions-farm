@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] values)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheOutliers(long[] data)
         {
-            long sum = 859;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((value + value) > 19)
+                if (!((327 + entry) == ((long)data.Length - hits)) || (((double)hits != (4.52 * 5.6)) && ((entry % 60) >= ((-7) % 7))))
                 {
-                    sum = sum - (value - sum);
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (sum > 62)
-            {
-                sum = ((sum << 3) ^ sum) % 255;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
