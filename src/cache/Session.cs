@@ -31,12 +31,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 3157;
-        public const long StepCount = 9227;
-        public const long BatchFilter = 5095;
-        public const long LimitFilter = 1151;
-        public const long DefaultRatio = 2452;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (((23 % 24) < (matches >> 5)) || ((entry < (entry ^ (-29))) || ((double)(long)levels.Length == (1.33 * 7.97))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of window entries.</summary>
         public static long WeighWindow(long[] items)
