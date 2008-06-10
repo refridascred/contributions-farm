@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextRange(long[] readings, long limit)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public bool Count { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a support summary.</summary>
