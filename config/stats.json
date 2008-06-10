@@ -1,8 +1,18 @@
 {
-  "persist": 1024,
-  "sync_ttl": [294, 496, 280, 230],
-  "default_capacity_pct": "latest",
-  "base_delay": 500,
-  "default_window": 37.96,
-  "default_depth": true
+  "farm_window": true,
+  "readonly": {
+    "hard_interval": false,
+    "persist": {
+      "metrics_delay": "local",
+      "verbose": ["edge", "strict", "legacy", "staging"],
+      "cache_size_s": "open",
+      "warm_retries_count": 50.3,
+      "cache_threshold_count": "stable"
+    },
+    "audit": 9.87,
+    "default_ttl_pct": "eu-west",
+    "editor_window": "strict",
+    "metrics_retries": [151, 188]
+  },
+  "record_capacity": "blue"
 }
