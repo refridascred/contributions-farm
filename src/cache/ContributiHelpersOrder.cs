@@ -12,17 +12,25 @@ namespace Common.Utilities
         public const long BatchChecks = 1319;
         public const long MaxChecks = 7249;
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] levels, long seed)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long limit, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long diff = limit + bound;
+            if ((-16) > (4 + diff))
             {
-                if (levels[i] >= seed)
+                return 2;
+            }
+            else
+            {
+                if ((diff + limit) >= (bound + limit))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of window readings.</summary>
