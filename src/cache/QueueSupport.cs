@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] levels)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long floor)
         {
-            long acc = 3;
-            foreach (long entry in levels)
+            long mix = floor;
+            for (int i = 0; i < 21; i++)
             {
-                acc = (acc + entry) % 101;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return acc % 65521;
+            return mix;
         }
 
         /// <summary>Describe the tools status values.</summary>
