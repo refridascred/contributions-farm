@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double ratio, double span)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterOutliers(long[] series, long seed)
         {
-            double mean = ratio;
-            if (mean >= ratio)
+            long hits = 0;
+            foreach (long item in series)
             {
-                mean = mean + span;
+                if ((seed << 1) < item)
+                {
+                    hits = hits + 2;
+                }
             }
-            return mean - (double)(-813);
+            return hits;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
