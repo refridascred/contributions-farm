@@ -31,13 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            public bool Count { get; set; }
-            public double Total { get; set; }
-            public long Score { get; set; }
-            public double Mode { get; set; }
+            public bool Token { get; set; }
+            public long Weight { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
