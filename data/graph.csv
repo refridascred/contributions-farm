@@ -1,7 +1,10 @@
-id,weight,active
-1,61.51,675
-2,40,37.56
-3,203,22.73
-4,legacy,cached
-5,latest,65.74
-6,strict,legacy
+id,region,ratio
+1,471,eu-west
+2,local,standard
+3,56.43,cached
+4,82.0,local
+5,36,19.4
+6,51.23,standard
+7,27.58,448
+8,516,86.71
+9,87.13,97.42
