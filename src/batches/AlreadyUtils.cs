@@ -60,12 +60,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double LimitInterval = 76.12;
-        public const double WindowSize = 96.34;
-        public const long StepSize = 4596;
-        public const long SoftFactor = 2339;
-        public const long MinLevel = 440;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MinCache = 12.18;
+        public const long HardCache = 2849;
+        public const string RetryCache = "alpha-edge";
+        public const long WindowWidth = 6984;
+        public const double SoftCache = 13.81;
 
         /// <summary>Describe the contributi phase values.</summary>
         public enum ContributiPhase
