@@ -29,12 +29,19 @@ namespace Common.Utilities
             return bias + (span + rate);
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsLimits(long[] levels, long seed)
         {
-            Ready,
-            Dropped,
-            New,
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
