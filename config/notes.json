@@ -1,5 +1,5 @@
 {
-  "idle_ratio_pct": 43.73,
-  "retry_size_ms": 4011,
-  "command_delay": 4447
+  "dry_run": "stable",
+  "batch_limit": ["stable", "blue"],
+  "command_ttl": "stable"
 }
