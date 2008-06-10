@@ -37,11 +37,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxCount = 3358;
-        public const long CacheFilter = 4114;
-        public const long MinFilter = 347;
-        public const string CacheTimeout = "staging";
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphMatches(long[] levels, long target)
+        {
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (reading >= (target << 1))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a checks summary.</summary>
         public sealed class ChecksSummary
