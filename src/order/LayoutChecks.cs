@@ -32,22 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchOutliers(long[] series, long limit)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long result = 9;
+            foreach (long value in data)
             {
-                if ((sample + limit) <= (limit + 809))
+                if ((value % 8) < (value + 470))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    result = ((result * 2) + 487) % 97;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
