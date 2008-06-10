@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long limit)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long total = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                if (!((double)total < (double)913))
-                {
-                    total = (total ^ (total % 24)) % 101;
-                }
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            Locked,
+            Closed,
+            Retry,
+            Failed,
+            Pending,
         }
 
         /// <summary>Compare every pair of account stream readings.</summary>
