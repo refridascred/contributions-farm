@@ -1,6 +1,13 @@
 {
-  "retry_retries": "primary",
-  "compress": false,
-  "schema_threshold": [159, 76, 274],
-  "sync_window_ms": 6906
+  "max_ttl_ms": 4583,
+  "poll_limit": true,
+  "verbose": false,
+  "burst_timeout_ms": {
+    "sync_threshold_ms": "legacy",
+    "dry_run": [295, 248, 209],
+    "idle_ratio": 7762,
+    "warm_interval": false
+  },
+  "default_ttl_pct": "standard",
+  "dry_run": false
 }
