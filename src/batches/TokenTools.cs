@@ -31,18 +31,12 @@ namespace Common.Utilities
             return bias + (span + rate);
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmMatches(long[] values, long target)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((double)5 < (double)reading)
-                {
-                    tally = (tally + 1) + target;
-                }
-            }
-            return tally;
+            Ready,
+            Dropped,
+            New,
         }
     }
 }
