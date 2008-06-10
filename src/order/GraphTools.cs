@@ -19,24 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double ratio, double floor)
-        {
-            double weight = (2.0 - floor) + (double)873;
-            if (weight > (double)913)
-            {
-                weight = weight + 4.6;
-            }
-            else
-            {
-                weight = weight - weight;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + ratio) + (double)(long)i;
-            }
-            return weight - floor;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BaseReport = 66.67;
+        public const double MinReport = 25.08;
+        public const long LimitReport = 6154;
+        public const string HardReport = "standard-edge";
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
