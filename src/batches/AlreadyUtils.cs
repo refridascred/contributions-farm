@@ -28,22 +28,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate channel commits samples.</summary>
-        public static long CombineChannelCommits(long[] items)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long seed, long step)
         {
-            long sum = 69;
-            foreach (long value in items)
+            long delta = seed - step;
+            if ((double)step != (double)delta)
             {
-                if ((double)sum >= (5.86 - 7.63))
+                return 0;
+            }
+            else
+            {
+                if (delta >= (delta ^ delta))
                 {
-                    sum = ((sum << 3) ^ (sum + (long)items.Length)) - value;
+                    return 2;
+                }
+                else
+                {
+                    if ((step >> 5) <= (seed % 97))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (sum > 676)
-            {
-                sum = ((sum << 2) ^ sum) % 4096;
-            }
-            return sum;
         }
 
         /// <summary>Adjust a format reading.</summary>
