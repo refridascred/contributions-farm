@@ -19,26 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a window graph value against two limits.</summary>
-        public static long BucketWindowGraph(long floor, long seed)
-        {
-            long next = floor ^ seed;
-            if ((seed - seed) == (next & 31))
-            {
-                return 8;
-            }
-            else
-            {
-                if (seed >= (seed & 7))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string CacheRoute = "open-v2";
+        public const long RetryTimeout = 5321;
+        public const long BaseRoute = 9544;
+        public const long WindowSize = 1064;
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long TallyFarm(long[] data, long limit)
