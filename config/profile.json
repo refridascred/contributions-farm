@@ -1,5 +1,7 @@
 {
-  "idle_retries": "fallback",
-  "max_limit": "staging",
-  "entry_delay": 34
+  "command_ratio": 5.63,
+  "retry_ratio_s": "eu-west",
+  "stream_ttl": "staging",
+  "batch_timeout": ["eu-west", "stable", "standard"],
+  "editor_delay": false
 }
