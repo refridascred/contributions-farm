@@ -22,18 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] data, long offset)
+        /// <summary>Digest a series of farm schema entries.</summary>
+        public static long ScoreFarmSchema(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long score = 560;
+            foreach (long entry in samples)
             {
-                if ((reading & 15) >= (reading / 3))
-                {
-                    tally = (tally + 1) - offset;
-                }
+                score = ((((score * 2) + (score << 3)) % 101) - entry) + target;
             }
-            return tally;
+            if (score < 937)
+            {
+                score = score - score;
+            }
+            return score;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
