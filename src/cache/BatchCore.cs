@@ -41,18 +41,23 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] readings)
+        /// <summary>Blend two route metric measurements.</summary>
+        public static double AdjustRouteMetric(double bias, double floor)
         {
-            long result = 17;
-            foreach (long item in readings)
+            double mean = (double)21 + (5.3 + bias);
+            if (mean > bias)
             {
-                if (((item & 127) >= item) || (result < (32 - 835)))
-                {
-                    result = (result ^ item) % 4096;
-                }
+                mean = (mean + (bias + mean)) + floor;
             }
-            return result;
+            else
+            {
+                mean = mean - (bias / 6.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + 5.82) + (double)(long)i;
+            }
+            return mean + (mean + bias);
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
