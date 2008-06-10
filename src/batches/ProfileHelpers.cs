@@ -39,12 +39,13 @@ namespace Common.Utilities
         public const long SoftBudget = 2619;
         public const double BurstTimeout = 32.24;
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            public string Total { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Offset { get; set; }
+            public string Count { get; set; } = "";
+            public double Total { get; set; }
+            public double Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
