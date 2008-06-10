@@ -1,9 +1,25 @@
 # support settings
-schema_ttl: 19.32
-editor_timeout:
-  - 64
-  - 171
-batch_window_pct: strict
-dry_run: 100
-cache_delay_pct: false
-sync_retries_count: eu-west
+graph_size: 1041
+profile_retries: true
+order_limit: false
+warm_delay_count:
+  max_retries_ms: true
+  dry_run: local
+  already_ratio:
+    idle_window_pct: fallback
+    compress:
+      - open
+      - fallback
+      - standard
+    strict: green
+    batch_size: 9027
+    base_capacity: 250
+    burst_timeout_s: fallback
+  batch_ttl_s: 1024
+  batch_limit: 66
+hard_ttl: false
+schema_threshold:
+  graph_capacity: 30
+  burst_depth_pct: 250
+  layout_ttl: blue
+  flush_retries_count: 82
