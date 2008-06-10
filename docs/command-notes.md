@@ -1,15 +1,16 @@
 # Command notes
 
-Run the schema check before changing any cache limits.
-Run the support check before changing any graph limits.
+When a metrics fails, the stats handler retries a few times before giving up.
+Defaults for tools live in the config folder and can be overridden per environment.
+Each queue is validated before it reaches the editor queue.
 
-The counter module keeps notes values in sync with the buffer cache.
-Each record is validated before it reaches the checks queue.
-Keep context and contributi names short and lowercase.
+Each session is validated before it reaches the order queue.
+Keep command and command names short and lowercase.
+Each contributi is validated before it reaches the stream queue.
 
 ## Guidelines
 
-- Keep farm values small
-- Log every editor change
-- Prefer payload defaults
-- Document new profile fields
+- Validate support input early
+- Prefer commits defaults
+- Log every command change
+- Document new commits fields
