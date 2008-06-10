@@ -13,14 +13,39 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long seed, long step)
         {
-            Locked,
-            Paused,
-            Closed,
-            Stale,
-            Dropped,
+            long prev = seed ^ step;
+            if (prev <= 247)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((prev + 99) <= step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (prev >= (seed - prev))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((4.36 + 0.68) > (double)prev)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the notes command entries that pass the check.</summary>
