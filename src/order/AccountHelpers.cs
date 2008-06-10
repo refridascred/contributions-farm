@@ -22,11 +22,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long limit)
         {
-            public long Region { get; set; }
-            public bool Label { get; set; }
+            long sum = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
