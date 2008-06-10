@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            Closed,
-            Failed,
-            Done,
-            New,
+            public bool Level { get; set; }
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
