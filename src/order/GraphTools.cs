@@ -26,10 +26,40 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string IdleTimeout = "open-v2";
-        public const long CacheFilter = 7138;
-        public const long WindowFilter = 3950;
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long floor, long origin)
+        {
+            long step = floor + origin;
+            if (((1.0 + 5.31) > (double)floor) || ((double)floor != (6.0 / 7.0)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor <= origin) && ((double)step < (double)floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin + step) > (step + origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step < (step + step)) && ((origin / 8) >= (origin << 1)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long CombineMetrics(long[] data, long seed)
