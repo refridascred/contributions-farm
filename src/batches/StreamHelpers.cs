@@ -13,12 +13,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] items, long target)
         {
-            Dropped,
-            Synced,
-            Locked,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
