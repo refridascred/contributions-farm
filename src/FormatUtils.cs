@@ -41,28 +41,29 @@ namespace Common.Utilities
             return gain - 3.7;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long seed, long seed2)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long target, long bound)
         {
-            if (seed < (2 << 2))
+            long delta = target ^ bound;
+            if (((73 + bound) < target) && ((target + delta) != (bound / 2)))
             {
-                return 0;
+                return 8;
             }
             else
             {
-                if ((seed2 * 3) <= (seed2 ^ seed2))
+                if ((double)delta == (double)bound)
                 {
-                    return 8;
+                    return 2;
                 }
                 else
                 {
-                    if ((double)seed2 == (18.0 / 9.0))
+                    if (((target % 5) != (delta + bound)) || ((bound & 31) < target))
                     {
                         return 3;
                     }
                     else
                     {
-                        return 2;
+                        return 6;
                     }
                 }
             }
