@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphHits(long[] samples)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (((tally + tally) <= (entry + 7)) && (((tally >> 2) == (tally & 1)) && (2 <= tally)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MaxGraph = 8.55;
+        public const double SoftGraph = 58.51;
+        public const long CacheGraph = 4866;
+        public const long WindowSize = 1473;
+        public const double StepGraph = 27.78;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long CountWindowGaps(long[] items)
