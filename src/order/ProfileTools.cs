@@ -40,17 +40,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first report filter entry that matches the target.</summary>
-        public static long SeekReportFilterIndex(long[] values, long seed)
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double rate, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double load = (double)495 - offset;
+            for (int i = 0; i < 2; i++)
             {
-                if ((values[i] == seed) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                load = (load + rate) + (double)(long)i;
             }
-            return -1;
+            return load + 5.77;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
