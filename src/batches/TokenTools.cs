@@ -33,19 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteBounds(long[] values, long bound)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] data, long limit)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (sample != bound)
+                if ((limit & 31) < limit)
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 3) + sample;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
