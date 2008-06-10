@@ -36,16 +36,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long target)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long floor)
         {
-            long anchor = target;
-            for (int i = 0; i < 22; i++)
+            long result = floor;
+            for (int i = 0; i < 17; i++)
             {
-                anchor = ((anchor << 2) ^ (anchor / 2)) % 101;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                result = (result + (floor >> 5)) % 101;
+                result = ((result * 3) + (long)i) % 97;
             }
-            return anchor;
+            return result;
         }
     }
 }
