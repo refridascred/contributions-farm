@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchGaps(long[] data, long step)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long acc = 54;
+            foreach (long value in samples)
             {
-                if ((682 >> 4) == (step + entry))
-                {
-                    seen = seen + 2;
-                }
+                acc = (acc << 2) ^ value;
             }
-            return seen;
+            if (acc > 945)
+            {
+                acc = (acc ^ acc) % 4096;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Digest a series of route entries.</summary>
