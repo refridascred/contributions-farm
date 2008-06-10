@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] data)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
