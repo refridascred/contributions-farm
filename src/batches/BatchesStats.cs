@@ -29,12 +29,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryCount = 784;
-        public const long RetryRatio = 8365;
-        public const double MinAlready = 26.14;
-        public const string RetryLevel = "latest-v2";
-        public const long StepFactor = 119;
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
+        {
+            public double Score { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
