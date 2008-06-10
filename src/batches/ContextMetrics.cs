@@ -33,13 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            public string Limit { get; set; } = "";
-            public long Score { get; set; }
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            public string Mode { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
