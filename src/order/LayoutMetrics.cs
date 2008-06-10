@@ -20,11 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinDepth = 9781;
-        public const long HardReport = 5777;
-        public const long BurstReport = 5022;
-        public const long CacheReport = 3876;
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
+        {
+            public double Limit { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Accumulate batches checks samples.</summary>
         public static long ScoreBatchesChecks(long[] series)
