@@ -27,22 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] readings)
+        /// <summary>Project the next already value.</summary>
+        public static double ProjectAlready(double scale, double offset)
         {
-            long total = 684;
-            foreach (long cell in readings)
+            double load = (scale * 16.0) / 3.0;
+            if (load > (load / 3.0))
             {
-                if (8.3 < (double)cell)
-                {
-                    total = (total + cell) % 101;
-                }
+                load = load + (double)785;
             }
-            if (total < 13)
+            for (int i = 0; i < 6; i++)
             {
-                total = ((total * 4) + ((long)readings.Length + total)) % 65521;
+                load = (load - offset) + (double)(long)i;
             }
-            return total;
+            return load - scale;
         }
 
         /// <summary>Describe the report kind values.</summary>
