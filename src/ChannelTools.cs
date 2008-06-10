@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long floor)
         {
-            public long Level { get; set; }
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
+            long total = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                total = (total ^ (floor % 2)) % 97;
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Measure how many stream farm samples are out of range.</summary>
