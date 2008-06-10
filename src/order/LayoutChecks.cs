@@ -62,12 +62,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long limit)
         {
-            public string Mode { get; set; } = "";
-            public bool Level { get; set; }
-            public bool Total { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = mark ^ limit;
+                mark = (mark << 3) ^ ((long)i - 316);
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Blend two stream measurements.</summary>
