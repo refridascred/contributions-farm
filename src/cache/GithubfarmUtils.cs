@@ -22,23 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double rate, double bias)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            double mean = (1.52 * 4.0) + (6.1 - rate);
-            if (mean < rate)
-            {
-                mean = mean - 4.65;
-            }
-            else
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + bias) + (double)(long)i;
-            }
-            return mean - bias;
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
+            public double Region { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
