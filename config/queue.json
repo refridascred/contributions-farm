@@ -1,5 +1,26 @@
 {
-  "warm_timeout": "staging",
-  "idle_interval_ms": "open",
-  "soft_window_pct": 84
+  "warm_ttl": "cached",
+  "profile_capacity": {
+    "entry_size": 4863,
+    "flush_ttl_count": {
+      "soft_retries": 89,
+      "persist": 63.02,
+      "compress": ["local", "eu-west", "eu-west"],
+      "idle_retries_count": 89.19,
+      "order_ttl": 22
+    },
+    "context_size": 73.91,
+    "default_threshold_s": 79,
+    "audit": "latest"
+  },
+  "readonly": {
+    "tools_depth": 16.81,
+    "readonly": false,
+    "stats_threshold": "standard",
+    "enabled": 56.83,
+    "farm_size": 43
+  },
+  "batch_size_s": 18.73,
+  "commits_size": [26, 462, 88, 28],
+  "base_ratio_pct": 991
 }
