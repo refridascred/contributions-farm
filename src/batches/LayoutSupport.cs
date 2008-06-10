@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long origin)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long score = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                long count = score;
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    score = (((score * 5) + ((-713) + count)) % 97) ^ (long)i2;
-                }
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            New,
+            Stale,
+            Paused,
         }
 
         /// <summary>Compare every pair of account stream readings.</summary>
