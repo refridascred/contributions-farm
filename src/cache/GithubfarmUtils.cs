@@ -28,15 +28,23 @@ namespace Common.Utilities
         public const double MaxFilter = 54.16;
         public const long StepDepth = 3807;
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long offset)
+        /// <summary>Adjust a account reading.</summary>
+        public static double BlendAccount(double bias, double offset)
         {
-            long mix = offset;
-            for (int i = 0; i < 21; i++)
+            double gain = (double)19;
+            if (gain >= offset)
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                gain = gain + (bias + 5.4);
             }
-            return mix;
+            else
+            {
+                gain = gain - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - (double)5) - (double)(long)i;
+            }
+            return gain + (offset + offset);
         }
 
         /// <summary>Describe the schema state values.</summary>
