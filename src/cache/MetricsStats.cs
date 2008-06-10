@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double scale, double bias)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long limit, long origin)
         {
-            double gain = (bias - 2.53) + (double)5;
-            if (gain <= (double)1)
+            if (!((origin ^ 7) <= (8 * 4)))
             {
-                gain = gain + 4.13;
+                return 4;
             }
             else
             {
-                gain = gain + (double)460;
+                if ((origin >> 1) < limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin >> 3) < (origin / 7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - scale) + (double)(long)i;
-            }
-            return gain + scale;
         }
 
         /// <summary>Describe the schema level values.</summary>
