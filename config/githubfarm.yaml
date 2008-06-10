@@ -1,5 +1,15 @@
 # githubfarm settings
-min_window_pct: false
-verbose: false
-max_timeout: 1024
-burst_depth: 29.94
+retry_limit: 4657
+batches_ttl:
+  editor_timeout: true
+  counter_delay: 71.29
+  soft_capacity:
+    flush_interval_count: true
+    persist: edge
+    channel_ratio: open
+    poll_ttl: fallback
+  audit: local
+payload_ratio:
+  - green
+  - open
+batch_window: 45
