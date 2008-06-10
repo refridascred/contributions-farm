@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] samples)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportHits(long[] items)
         {
-            long carry = 785;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long datum in items)
             {
-                carry = (((carry * 5) + carry) % 1000) + sample;
+                if ((16.0 * 15.0) > (double)count)
+                {
+                    count = (count + 2) + datum;
+                }
             }
-            return carry % 65521;
+            return count;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
