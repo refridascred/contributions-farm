@@ -1,30 +1,11 @@
 # support settings
-commits_depth: 43.3
-compress:
-  retry_ttl_count:
-    - 290
-    - 432
-    - 23
-    - 209
-  channel_retries:
-    - staging
-    - eu-west
-    - staging
-    - local
-  warm_size_pct:
-    enabled: 16
-    hard_threshold:
-      - 71
-      - 350
-    strict: 16
-    soft_ttl_pct: false
-    compress: stable
-    idle_retries_count: 55
-persist: 36.58
-already_delay: stable
-hard_ttl_s: 1024
-warm_limit_s:
-  - 473
-  - 456
-  - 380
-  - 256
+warm_ratio_pct: 89.75
+readonly: 16.13
+enabled:
+  warm_window_pct: 50.39
+  cluster_timeout: true
+  verbose: false
+  hard_retries_s: 30
+cache_window_pct: stable
+retry_timeout: 1024
+persist: eu-west
