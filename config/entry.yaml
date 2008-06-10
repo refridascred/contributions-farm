@@ -1,7 +1,7 @@
 # entry settings
-stats_limit: 6732
-flush_retries_count:
-  - 466
-  - 344
-  - 378
-min_window_count: true
+idle_depth: open
+compress: 26
+batch_depth: green
+cache_size: 50
+poll_ttl: latest
+warm_window: 6449
