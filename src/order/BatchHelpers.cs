@@ -42,19 +42,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchBounds(long[] values, long floor)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] readings)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long acc = 23;
+            foreach (long entry in readings)
             {
-                if (reading > floor)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = acc + (entry - acc);
             }
-            return stale;
+            return acc;
         }
     }
 }
