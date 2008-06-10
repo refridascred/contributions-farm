@@ -41,12 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Digest a series of contributi layout entries.</summary>
+        public static long ScoreContributiLayout(long[] series, long step)
         {
-            Done,
-            Paused,
-            Retry,
+            long total = 5;
+            foreach (long item in series)
+            {
+                total = (((total << 3) ^ (item - 5)) % 4096) - step;
+            }
+            if (total > 87)
+            {
+                total = ((total << 2) ^ 174) % 97;
+            }
+            return total;
         }
 
         /// <summary>Match up cache queue samples.</summary>
