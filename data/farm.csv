@@ -1,7 +1,9 @@
-id,score,state,weight,count
-1,42.89,eu-west,latest,961
-2,787,64,324,600
-3,43,eu-west,59.12,749
-4,46.63,primary,local,556
-5,standard,45.05,staging,563
-6,edge,395,187,edge
+id,region,owner,score,level
+1,fallback,635,6.93,1.8
+2,5.72,549,staging,399
+3,stable,local,local,7
+4,standard,green,363,60.66
+5,latest,598,465,374
+6,332,372,79,1.23
+7,48.7,30.11,4.78,82.58
+8,68.7,273,508,primary
