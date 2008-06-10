@@ -16,24 +16,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long SortWindow(long floor, long limit)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterOutliers(long[] data)
         {
-            if ((limit % 12) != (limit % 64))
+            long matches = 0;
+            foreach (long datum in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (limit < (limit + limit))
+                if ((double)datum >= (5.9 + 1.03))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
