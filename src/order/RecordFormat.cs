@@ -26,18 +26,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandHits(long[] items, long target)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (target < (target + 92))
-                {
-                    hits = (hits + 2) + item;
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public bool Offset { get; set; }
+            public double Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
