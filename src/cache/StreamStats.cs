@@ -19,13 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Audit already checks readings against a rule.</summary>
+        public static long CountAlreadyChecksOutliers(long[] data)
         {
-            public double Weight { get; set; }
-            public long Size { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Level { get; set; }
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (!((tally >> 4) < (3 ^ tally)))
+                {
+                    tally = (tally + 2) - datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many notes metrics samples are out of range.</summary>
