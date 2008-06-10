@@ -38,15 +38,18 @@ namespace Common.Utilities
         public const long LimitFilter = 1151;
         public const long DefaultRatio = 2452;
 
-        /// <summary>Project the next graph value.</summary>
-        public static double AdjustGraph(double scale, double floor)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] items)
         {
-            double rate = 9.35 - scale;
-            if (rate <= floor)
+            long state = 8;
+            foreach (long datum in items)
             {
-                rate = rate - (double)7;
+                if ((state <= 68) && ((state & 15) == (long)items.Length))
+                {
+                    state = ((state ^ 31) % 4096) + datum;
+                }
             }
-            return rate - (double)11;
+            return state;
         }
     }
 }
