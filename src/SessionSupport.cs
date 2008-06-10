@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] levels, long floor)
         {
-            public double Limit { get; set; }
-            public bool Size { get; set; }
-            public bool Count { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (((hits - value) <= 7) || ((value - hits) == (value ^ value)))
+                {
+                    hits = (hits + 3) + floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
