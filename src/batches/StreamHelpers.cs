@@ -46,10 +46,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string DefaultOrder = "latest-edge";
-        public const double CacheOrder = 51.6;
-        public const double MaxLevel = 98.81;
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
+        {
+            Done,
+            Paused,
+            Retry,
+        }
 
         /// <summary>Match up cache queue samples.</summary>
         public static long CompareCacheQueueCount(long[] data)
