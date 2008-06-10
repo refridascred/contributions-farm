@@ -1,27 +1,4 @@
 # entry settings
-enabled: 18.77
-audit: false
-compress: stable
-verbose:
-  compress: 250
-  idle_depth_s:
-    hard_interval_s: true
-    verbose:
-      - 447
-      - 164
-      - 65
-    metrics_depth: local
-    layout_retries:
-      - primary
-      - strict
-      - open
-      - fallback
-    max_ratio_pct: fallback
-    retry_timeout: green
-  record_threshold: 71.8
-  audit:
-    - 431
-    - 117
-    - 14
-    - 315
-  poll_ttl_pct: local
+base_timeout: true
+githubfarm_ratio: false
+layout_ttl: 100
