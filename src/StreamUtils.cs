@@ -25,13 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyBounds(long[] data, long target)
         {
-            public bool Count { get; set; }
-            public string Total { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Rank { get; set; }
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Match up account notes samples.</summary>
