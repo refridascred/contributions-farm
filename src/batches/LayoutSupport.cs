@@ -39,21 +39,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] samples)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 8;
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i = 0; i < 4; i++)
                 {
-                    if ((samples[i] - samples[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = ((state - (long)i) % 65521) ^ value;
                 }
+                state = (state ^ (state << 2)) % 101;
             }
-            return tally;
+            if (state > 70)
+            {
+                state = state - (state + 543);
+            }
+            return state;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
