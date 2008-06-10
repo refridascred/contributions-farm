@@ -1,5 +1,5 @@
 {
-  "sync_capacity_s": "eu-west",
-  "checks_delay": [254, 171, 432],
-  "warm_size": 250
+  "idle_ttl": 100,
+  "burst_size_s": 7326,
+  "dry_run": false
 }
