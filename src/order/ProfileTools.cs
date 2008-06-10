@@ -59,13 +59,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double ratio, double span)
         {
-            Active,
-            Retry,
-            Queued,
-            Stale,
+            double mean = ratio;
+            if (mean >= (mean / 5.0))
+            {
+                mean = mean + 1.6;
+            }
+            return mean + span;
         }
     }
 }
