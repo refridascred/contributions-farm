@@ -27,18 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metric channel entries that pass the check.</summary>
-        public static long MeasureMetricChannelMatches(long[] readings)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long total = 684;
+            foreach (long cell in readings)
             {
-                if ((matches * 4) > matches)
+                if (8.3 < (double)cell)
                 {
-                    matches = (matches + 2) - reading;
+                    total = (total + cell) % 101;
                 }
             }
-            return matches;
+            if (total < 13)
+            {
+                total = ((total * 4) + ((long)readings.Length + total)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Describe the report kind values.</summary>
