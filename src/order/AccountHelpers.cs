@@ -47,19 +47,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] values, long floor)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] values, long target)
         {
-            long carry = 4;
-            foreach (long item in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry * 2) + (4 & 31)) % 4096;
-                if (item <= (floor & 127))
+                if (values[i] < target)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Describe the editor kind values.</summary>
