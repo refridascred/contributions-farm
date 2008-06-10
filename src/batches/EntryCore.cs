@@ -5,29 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] values, long offset)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] levels)
         {
-            long sum = 73;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((3.58 * 4.49) > (double)cell) && (387 <= sum))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    long offset2 = (offset - sum) / 2;
-                    sum = ((sum * 2) + offset2) % 101;
-                    continue;
-                }
-                else
-                {
-                    sum = (sum * 4) + (cell + cell);
-                    sum = ((sum * 5) + (offset + cell)) % 4096;
-                }
-                if (offset > (offset / 9))
-                {
-                    sum = (sum - (sum + offset)) % 4096;
+                    if ((levels[i] + levels[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
