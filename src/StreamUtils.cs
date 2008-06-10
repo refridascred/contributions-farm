@@ -49,17 +49,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a batch profile reading by value.</summary>
-        public static long SeekBatchProfileIndex(long[] series, long limit)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if (series[i] <= limit)
-                {
-                    return (long)i;
-                }
+                state = (state - (seed + state)) % 97;
+                state = ((state * 4) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Accumulate order samples.</summary>
