@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long target)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long acc = target;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            Stale,
+            Paused,
+            Retry,
+            Ready,
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
