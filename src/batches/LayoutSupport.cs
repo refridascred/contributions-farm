@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many editor metric samples are out of range.</summary>
-        public static long TallyEditorMetricHits(long[] items, long offset)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long origin)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long score = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((reading + (long)items.Length) <= (count ^ reading))
+                long count = score;
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    count = (count + 1) + offset;
+                    score = (((score * 5) + ((-713) + count)) % 97) ^ (long)i2;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
