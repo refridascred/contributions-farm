@@ -1,18 +1,6 @@
 {
-  "command_depth": false,
-  "readonly": {
-    "queue_interval": {
-      "base_ratio_pct": 250,
-      "compress": "legacy",
-      "enabled": 100,
-      "retry_retries_ms": "cached",
-      "sync_depth_count": "standard",
-      "sync_depth": false
-    },
-    "context_limit": true,
-    "burst_retries_count": "staging",
-    "audit": "standard",
-    "batch_depth": "primary"
-  },
-  "context_ratio": 37.65
+  "cache_timeout": "standard",
+  "warm_interval": "edge",
+  "compress": [318, 275, 292, 390],
+  "audit": true
 }
