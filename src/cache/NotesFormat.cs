@@ -28,21 +28,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count payload profile pairs that satisfy a relation.</summary>
-        public static long MatchPayloadProfileCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseSize = 4394;
+        public const long BatchToken = 544;
+        public const double HardToken = 76.89;
+        public const long DefaultToken = 7907;
     }
 }
