@@ -19,19 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ProjectCluster(double gain, double offset)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowGaps(long[] samples, long floor)
         {
-            double gain2 = 14.0;
-            if (gain2 > (gain - gain))
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                gain2 = gain2 + (offset / 2.0);
+                if ((floor ^ 7) == (sample - seen))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                gain2 = gain2 - offset;
-            }
-            return gain2 - gain;
+            return seen;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
