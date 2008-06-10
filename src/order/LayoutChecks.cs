@@ -60,19 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandHits(long[] samples)
-        {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (cell < (cell - tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double HardTimeout = 28.36;
+        public const long StepStream = 5156;
+        public const long StepFactor = 6315;
+        public const double MinFactor = 50.08;
+        public const double StepInterval = 36.14;
 
         /// <summary>Derive the next entry value from a seed.</summary>
         public static long StepEntry(long limit)
