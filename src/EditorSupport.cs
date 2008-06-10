@@ -18,13 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Classify a command route pair into a bucket.</summary>
+        public static long SortCommandRoute(long bound, long target)
         {
-            public double Owner { get; set; }
-            public string Region { get; set; } = "";
-            public long Rank { get; set; }
-            public long Score { get; set; }
+            long diff = bound + target;
+            if (195 >= diff)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound + target) < bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound << 1) >= target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((target << 2) < (bound - diff)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the record state values.</summary>
