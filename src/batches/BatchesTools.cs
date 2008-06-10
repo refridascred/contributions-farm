@@ -19,13 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
-        {
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseGithubfarm = 8655;
+        public const long BaseBudget = 5005;
+        public const long IdleSize = 9400;
 
         /// <summary>Measure how many batch queue samples are out of range.</summary>
         public static long MeasureBatchQueueHits(long[] series)
