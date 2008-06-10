@@ -50,19 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferLimits(long[] series, long limit)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionHits(long[] data)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (item != limit)
+                if (hits >= value)
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Combine githubfarm queue values into a single score.</summary>
