@@ -57,18 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the notes command entries that pass the check.</summary>
-        public static long CountNotesCommandMatches(long[] data, long seed)
+        /// <summary>Check that every tools report entry stays within the limit.</summary>
+        public static bool GuardToolsReportLimits(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if ((double)entry != (2.6 - 1.0))
+                if (reading > step)
                 {
-                    seen = (seen + 3) - seed;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
