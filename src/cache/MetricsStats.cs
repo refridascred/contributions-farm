@@ -33,12 +33,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Accumulate order report samples.</summary>
+        public static long FoldOrderReport(long[] values)
         {
-            public bool Flag { get; set; }
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
+            long result = 181;
+            foreach (long reading in values)
+            {
+                if ((double)result > (double)631)
+                {
+                    result = (((result * 3) + (result ^ 430)) % 1000) ^ reading;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
