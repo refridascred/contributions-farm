@@ -1,12 +1,19 @@
 # entry settings
-flush_ttl: false
-flush_ratio_count:
-  - cached
-  - local
-  - eu-west
-format_interval: 30
-editor_size:
-  - 135
-  - 144
-  - 253
-persist: true
+audit: 1024
+default_size: true
+strict: local
+profile_interval:
+  enabled: 1024
+  default_retries:
+    strict: cached
+    compress: true
+    soft_delay_s: 74.24
+    hard_threshold_s: fallback
+  stats_ttl: legacy
+  dry_run:
+    batch_timeout_count: 2203
+    dry_run: 6642
+    flush_limit_pct: 2158
+  batch_threshold: 60.89
+idle_depth_count: 8246
+batch_threshold_pct: 32.18
