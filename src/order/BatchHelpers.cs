@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a cluster contributi pair into a bucket.</summary>
-        public static long BucketClusterContributi(long target, long limit)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            if ((4.13 * 2.1) > (double)target)
-            {
-                return 6;
-            }
-            else
-            {
-                if (target >= (target >> 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit & 7) >= (target >> 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Active,
+            Synced,
+            Failed,
+            Locked,
+            Queued,
         }
 
         /// <summary>Project the next profile value.</summary>
