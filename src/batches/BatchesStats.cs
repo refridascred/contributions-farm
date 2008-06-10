@@ -28,19 +28,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatMatches(long[] items)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((seen - entry) == (seen - seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryCount = 784;
+        public const long RetryRatio = 8365;
+        public const double MinAlready = 26.14;
+        public const string RetryLevel = "latest-v2";
+        public const long StepFactor = 119;
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long MeasureChannelHits(long[] levels, long seed)
