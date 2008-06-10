@@ -22,17 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a contributi session counter forward.</summary>
-        public static long DeriveContributiSession(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                sum = (sum ^ seed) % 65521;
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftScore = 7664;
+        public const long WindowDepth = 6738;
+        public const double MaxWidth = 63.35;
+        public const string BaseInterval = "staging-1";
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long TallyRecordMatches(long[] data, long target)
