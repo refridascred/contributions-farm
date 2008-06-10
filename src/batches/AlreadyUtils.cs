@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportMatches(long[] readings)
+        /// <summary>Grade a tools buffer value against two limits.</summary>
+        public static long BucketToolsBuffer(long target, long seed)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long lane = target - seed;
+            if ((lane * 2) < 797)
             {
-                if ((item * 3) >= count)
+                return 2;
+            }
+            else
+            {
+                if ((lane ^ 1) > (lane + target))
                 {
-                    count = count + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((-780) > (lane - lane))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
