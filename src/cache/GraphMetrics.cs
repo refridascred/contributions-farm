@@ -27,19 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double AdjustSupport(double gain, double span)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long step)
         {
-            double rate = span;
-            if (rate < 4.15)
+            long mix = step;
+            for (int i = 0; i < 10; i++)
             {
-                rate = (rate - (rate + rate)) - gain;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            else
-            {
-                rate = rate + span;
-            }
-            return rate - span;
+            return mix;
         }
 
         /// <summary>Fold a list of already cache readings.</summary>
