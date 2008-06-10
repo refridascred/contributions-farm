@@ -42,23 +42,10 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphOutliers(long[] series)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((sample - sample) > (sample * 4))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string DefaultReport = "legacy-edge";
+        public const long CacheReport = 1753;
+        public const string RetryReport = "legacy-1";
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long CountStatsGaps(long[] readings, long step)
