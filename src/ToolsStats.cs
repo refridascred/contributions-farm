@@ -59,18 +59,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileHits(long[] levels, long limit)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((114 - limit) <= (hits - hits))
-                {
-                    hits = (hits + 2) + item;
-                }
-            }
-            return hits;
+            public string Owner { get; set; } = "";
+            public long Region { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the filter status values.</summary>
