@@ -19,23 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] values)
-        {
-            long carry = 7;
-            foreach (long cell in values)
-            {
-                if ((cell >= (carry & 15)) && (cell < (carry + 2)))
-                {
-                    carry = (carry * 5) + cell;
-                }
-                else
-                {
-                    carry = ((carry * 5) + (cell / 3)) % 97;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxSize = 3149;
+        public const string MinFilter = "local-v2";
+        public const long HardWidth = 3510;
+        public const long CacheWidth = 1898;
+        public const string HardTimeout = "local";
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
