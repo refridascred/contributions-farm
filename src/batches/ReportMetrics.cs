@@ -32,14 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            Queued,
-            Dropped,
-            Synced,
-            Closed,
-            Paused,
+            public double Label { get; set; }
+            public string Owner { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
     }
 }
