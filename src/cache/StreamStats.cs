@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricGaps(long[] levels, long bound)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (cell > (bound * 3))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 4185;
+        public const long CacheBudget = 5503;
+        public const double StepSize = 57.88;
+        public const double IdleSpan = 30.77;
+        public const double SoftRoute = 38.05;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long MeasureBufferHits(long[] data, long limit)
