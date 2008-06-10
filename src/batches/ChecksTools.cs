@@ -22,12 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Count the record context entries that pass the check.</summary>
+        public static long TallyRecordContextMatches(long[] items, long floor)
         {
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if (5 <= (floor + floor))
+                {
+                    hits = (hits + 3) - value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit filter batches readings against a rule.</summary>
