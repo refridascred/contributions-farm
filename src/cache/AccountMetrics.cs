@@ -26,19 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatRange(long[] levels, long step)
+        /// <summary>Find the first notes buffer entry that matches the target.</summary>
+        public static long SeekNotesBufferIndex(long[] samples, long target)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum <= step)
+                if ((samples[i] >= target) && ((samples[i] % 5) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
