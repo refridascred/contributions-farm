@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsMatches(long[] values)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (((entry * 3) == (entry / 6)) || ((entry - entry) > count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Retry,
+            Done,
+            Synced,
+            New,
         }
 
         /// <summary>Fold a list of tools readings.</summary>
