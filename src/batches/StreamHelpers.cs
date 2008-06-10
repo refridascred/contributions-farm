@@ -49,27 +49,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] series, long floor)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] levels)
         {
-            long acc = -97;
-            foreach (long reading in series)
+            long state = 192;
+            foreach (long reading in levels)
             {
-                acc = (acc - reading) % 4096;
-                if ((double)acc >= (double)floor)
+                if (((long)levels.Length >> 1) < ((-1) ^ reading))
                 {
-                    break;
+                    state = ((state * 4) + (3 & 15)) % 1000;
                 }
                 else
                 {
-                    acc = (acc + (floor << 3)) % 255;
+                    state = ((state << 3) ^ 729) % 255;
+                    state = (state ^ (6 ^ reading)) % 101;
                 }
-                if ((double)acc > 2.1)
+                state = (state * 5) + (state + reading);
+                if (!((state << 3) > state))
                 {
-                    acc = ((acc * 2) + (floor & 31)) % 255;
+                    state = ((state * 3) + (state % 60)) % 255;
                 }
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Adjust a context reading.</summary>
