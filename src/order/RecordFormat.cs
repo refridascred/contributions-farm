@@ -46,19 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenLimits(long[] samples, long origin)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandHits(long[] items, long target)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (datum > origin)
+                if (target < (target + 92))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 2) + item;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
