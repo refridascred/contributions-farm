@@ -86,11 +86,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFormat = 103;
-        public const long DefaultRatio = 7012;
-        public const long CacheFormat = 3558;
-        public const string DefaultFormat = "stable-edge";
-        public const double StepRatio = 25.17;
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheLimits(long[] samples, long limit)
+        {
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
