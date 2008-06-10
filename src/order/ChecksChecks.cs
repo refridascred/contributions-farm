@@ -22,19 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double gain, double bias)
+        /// <summary>Derive the next filter payload value from a seed.</summary>
+        public static long SeriesFilterPayload(long target)
         {
-            double weight = (gain - gain) * 4.49;
-            if (weight >= (8.84 / 9.0))
+            long total = target;
+            for (int i = 0; i < 17; i++)
             {
-                weight = (weight - (double)0) + bias;
+                total = total + ((long)i << 1);
+                total = ((total * 5) + (long)i) % 65521;
             }
-            else
-            {
-                weight = weight - (gain * 19.0);
-            }
-            return weight - (double)0;
+            return total;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
