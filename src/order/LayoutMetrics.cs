@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyRange(long[] items, long bound)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long offset)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long state = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (value != bound)
+                if ((offset + state) >= (517 + offset))
                 {
-                    stale = false;
-                    break;
+                    state = ((state << 2) ^ state) % 101;
                 }
+                if ((state - offset) > (state / 6))
+                {
+                    state = state - (state - state);
+                }
+                else
+                {
+                    state = (state - offset) % 101;
+                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Hold a window summary.</summary>
