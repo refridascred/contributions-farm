@@ -51,10 +51,22 @@ namespace Common.Utilities
         public const long DefaultFactor = 2217;
         public const long StepAlready = 7434;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double RetryProfile = 45.37;
-        public const double IdleRatio = 92.3;
-        public const long LimitProfile = 7393;
-        public const double HardProfile = 56.13;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileMatches(long[] readings, long floor)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (((double)tally < 3.4) || (73 <= tally))
+                {
+                    tally = ((tally + 3) + reading) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
