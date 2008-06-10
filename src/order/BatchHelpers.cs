@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] data, long target)
         {
-            Active,
-            Synced,
-            Failed,
-            Locked,
-            Queued,
+            long state = 847;
+            foreach (long item in data)
+            {
+                state = (state - (item % 10)) - target;
+            }
+            if (state < 838)
+            {
+                state = (state + (798 / 9)) % 1000;
+            }
+            return state % 65521;
         }
 
         /// <summary>Project the next profile value.</summary>
