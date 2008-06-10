@@ -25,21 +25,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] series)
+        /// <summary>Iterate the queue record series from a seed.</summary>
+        public static long IterateQueueRecord(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Describe the farm level values.</summary>
