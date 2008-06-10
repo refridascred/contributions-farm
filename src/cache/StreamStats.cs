@@ -22,19 +22,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of session tools readings.</summary>
-        public static long ScoreSessionTools(long[] data)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long bound, long bound2)
         {
-            long mark = 979;
-            foreach (long sample in data)
+            long slot = bound ^ bound2;
+            if (slot <= (91 << 2))
             {
-                mark = (mark + sample) % 4096;
+                return 1;
             }
-            if (mark < 47)
+            else
             {
-                mark = mark - (mark + mark);
+                if ((4.66 * 13.0) <= (double)slot)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((bound - bound) < (bound * 2)) || ((bound + bound) > slot))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return mark;
         }
 
         /// <summary>Match up report samples.</summary>
