@@ -1,19 +1,22 @@
 # entry settings
-audit: 1024
-default_size: true
-strict: local
-profile_interval:
-  enabled: 1024
-  default_retries:
-    strict: cached
-    compress: true
-    soft_delay_s: 74.24
-    hard_threshold_s: fallback
-  stats_ttl: legacy
-  dry_run:
-    batch_timeout_count: 2203
-    dry_run: 6642
-    flush_limit_pct: 2158
-  batch_threshold: 60.89
-idle_depth_count: 8246
-batch_threshold_pct: 32.18
+counter_ratio:
+  - 30
+  - 102
+  - 265
+min_retries_pct: legacy
+idle_delay:
+  - local
+  - fallback
+  - legacy
+poll_size_pct: open
+batch_limit_count:
+  persist: false
+  base_size_count: true
+  enabled: 20.23
+  support_delay: 5174
+  base_capacity_count:
+    - 334
+    - 37
+    - 380
+    - 131
+verbose: blue
