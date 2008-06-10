@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard cached blue local; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=113
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-staging}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-COMMAND_LIMIT=386
-log "limit is ${COMMAND_LIMIT}"
