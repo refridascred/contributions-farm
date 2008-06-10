@@ -26,21 +26,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] levels)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = (result ^ (418 * 3)) % 101;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Describe the window kind values.</summary>
