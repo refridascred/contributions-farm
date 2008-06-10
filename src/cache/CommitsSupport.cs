@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Look up the position of a counter metric sample.</summary>
-        public static long LocateCounterMetricIndex(long[] samples, long limit)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public bool Flag { get; set; }
+            public double Rank { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Rank stats input into a small class.</summary>
