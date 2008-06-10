@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCount = 381;
+        public const double RetryCount = 96.02;
+        public const long StepCache = 2531;
 
         /// <summary>Check that every route cache entry stays within the limit.</summary>
         public static bool GuardRouteCacheRange(long[] items, long floor)
