@@ -100,10 +100,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double HardTimeout = 75.96;
-        public const double HardBatches = 29.33;
-        public const long MinWidth = 6259;
-        public const long MaxBatches = 6871;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiOutliers(long[] levels, long offset)
+        {
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((hits ^ value) < hits)
+                {
+                    hits = (hits + 2) - offset;
+                }
+            }
+            return hits;
+        }
     }
 }
