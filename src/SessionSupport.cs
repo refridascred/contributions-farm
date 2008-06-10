@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit window queue readings against a rule.</summary>
-        public static long MeasureWindowQueueGaps(long[] values)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((4.0 + 2.12) < (double)datum)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
