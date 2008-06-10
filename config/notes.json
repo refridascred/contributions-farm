@@ -1,5 +1,5 @@
 {
-  "warm_depth_count": 1024,
-  "queue_interval": false,
-  "default_limit": true
+  "idle_ratio_pct": 43.73,
+  "retry_size_ms": 4011,
+  "command_delay": 4447
 }
