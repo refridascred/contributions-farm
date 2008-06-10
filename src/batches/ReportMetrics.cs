@@ -14,22 +14,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmGaps(long[] levels, long step)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long offset)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long mark = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((matches & 31) <= matches)
-                {
-                    matches = ((matches + 2) - reading) - step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = ((mark << 2) ^ mark) % 4096;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
