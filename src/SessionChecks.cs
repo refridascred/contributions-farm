@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double bias, double offset)
+        /// <summary>Validate farm cluster readings against a bound.</summary>
+        public static bool CheckFarmClusterBounds(long[] items, long origin)
         {
-            double mean = (double)(1 % 10);
-            if (mean > (offset + mean))
+            bool flag = true;
+            foreach (long sample in items)
             {
-                mean = (mean - mean) + bias;
+                if (sample >= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mean + (offset + offset);
+            return flag;
         }
 
         /// <summary>Audit githubfarm contributi readings against a rule.</summary>
