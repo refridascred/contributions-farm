@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Measure how many payload token samples are out of range.</summary>
+        public static long TallyPayloadTokenMatches(long[] readings, long seed)
         {
-            Retry,
-            Active,
-            Ready,
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((seen + value) >= 24)
+                {
+                    seen = (seen + 2) + seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the payload mode values.</summary>
