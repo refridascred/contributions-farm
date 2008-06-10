@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 5046;
-        public const long SoftRatio = 8148;
-        public const string IdleMetrics = "staging-edge";
-        public const long BaseMetrics = 4788;
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long limit, long origin)
+        {
+            long lane = limit - origin;
+            if ((lane - limit) > (origin >> 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)limit <= (double)770)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long FoldStats(long[] levels)
