@@ -19,13 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long origin, long floor)
         {
-            public long Level { get; set; }
-            public bool Owner { get; set; }
-            public long Weight { get; set; }
-            public double Flag { get; set; }
+            if ((floor % 24) < floor)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((97 % 12) >= (origin % 7))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((6.0 * 1.4) > (double)origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a window profile pair into a bucket.</summary>
