@@ -43,19 +43,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Blend two commits tools measurements.</summary>
-        public static double AdjustCommitsTools(double bias, double bias2)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] levels, long seed)
         {
-            double scale = bias2;
-            if (scale < (bias - scale))
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                scale = scale - (bias2 + bias2);
+                if ((double)hits != (18.0 / 2.0))
+                {
+                    hits = ((hits + 3) + cell) + seed;
+                }
             }
-            else
-            {
-                scale = scale + (11.0 + scale);
-            }
-            return scale - (bias / 9.0);
+            return hits;
         }
     }
 }
