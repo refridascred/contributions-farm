@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchTimeout = 2805;
-        public const long LimitQueue = 5928;
-        public const string DefaultQueue = "staging-edge";
-        public const string DefaultSize = "alpha";
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long OverlapProfileCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long TallyNotes(long[] readings, long floor)
