@@ -22,22 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the record context entries that pass the check.</summary>
-        public static long TallyRecordContextMatches(long[] items, long floor)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (5 <= (floor + floor))
+                if (8.2 <= (double)matches)
                 {
-                    hits = (hits + 3) - value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = (matches + 1) + item;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
