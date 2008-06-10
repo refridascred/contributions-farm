@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long offset, long seed)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] levels)
         {
-            if (offset <= (offset + 70))
+            long total = 72;
+            foreach (long entry in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed >= (7.0 + 17.0))
+                if (entry <= (entry + total))
                 {
-                    return 6;
+                    total = ((total << 3) ^ (entry + entry)) % 1000;
                 }
                 else
                 {
-                    return 1;
+                    total = ((total << 2) ^ (total - total)) % 97;
                 }
             }
+            return total;
         }
 
         /// <summary>Locate a report reading by value.</summary>
