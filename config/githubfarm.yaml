@@ -1,10 +1,6 @@
 # githubfarm settings
-hard_interval:
-  min_capacity_count: 60
-  stats_threshold: false
-  cache_delay_ms: 64
-  min_delay_pct: 18
-idle_threshold_pct: 84.31
-already_window: 5
-persist: true
-readonly: 33.05
+compress:
+  - standard
+  - primary
+dry_run: false
+verbose: 500
