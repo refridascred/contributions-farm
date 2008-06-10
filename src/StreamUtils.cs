@@ -68,23 +68,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] levels)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteHits(long[] items, long floor)
         {
-            long state = 96;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((0.9 + 7.03) == (double)reading)
+                if ((double)floor <= (5.98 - 0.07))
                 {
-                    state = ((state * 4) + (3 << 1)) % 255;
+                    hits = (hits + 2) + cell;
                 }
                 else
                 {
-                    state = state - state;
+                    hits = hits - 1;
                 }
-                state = (state + (state % 24)) % 255;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
