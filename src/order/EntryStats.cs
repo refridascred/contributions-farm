@@ -47,13 +47,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Blend two filter measurements.</summary>
+        public static double AdjustFilter(double scale, double span)
         {
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
-            public double Token { get; set; }
-            public string Label { get; set; } = "";
+            double bias = 2.87;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (((bias - bias) + (double)(long)i) + scale) - span;
+            }
+            return bias - (double)826;
         }
     }
 }
