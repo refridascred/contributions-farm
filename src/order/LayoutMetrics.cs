@@ -28,11 +28,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BatchFactor = 35.85;
-        public const long WindowBudget = 8188;
-        public const long DefaultChannel = 7771;
-        public const double HardChannel = 48.07;
-        public const long LimitChannel = 9302;
+        /// <summary>Accumulate batches checks samples.</summary>
+        public static long ScoreBatchesChecks(long[] series)
+        {
+            long result = 78;
+            foreach (long item in series)
+            {
+                result = result - item;
+            }
+            return result;
+        }
     }
 }
