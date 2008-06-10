@@ -16,20 +16,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next channel account value from a seed.</summary>
-        public static long DeriveChannelAccount(long floor)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long result = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                result = (result + (floor - floor)) % 101;
-                if ((7.2 / 6.0) > (double)result)
-                {
-                    result = (result ^ (6 - 81)) % 97;
-                }
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
+            Ready,
+            Active,
+            Paused,
+            Pending,
+            New,
         }
 
         /// <summary>Derive the next layout profile value from a seed.</summary>
