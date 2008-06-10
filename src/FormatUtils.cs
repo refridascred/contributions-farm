@@ -66,25 +66,17 @@ namespace Common.Utilities
             return ((scale + (scale * 7.0)) + gain) + bias;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long offset, long floor)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] levels, long origin)
         {
-            long cur = offset + floor;
-            if (cur < (312 << 1))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((6.22 / 7.0) != (double)offset)
+                if ((levels[i] < origin) && ((levels[i] % 5) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
