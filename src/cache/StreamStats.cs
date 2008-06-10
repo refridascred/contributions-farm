@@ -19,12 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            public double Token { get; set; }
-            public double Total { get; set; }
-            public double Limit { get; set; }
+            public double Weight { get; set; }
+            public long Size { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Measure how many notes metrics samples are out of range.</summary>
