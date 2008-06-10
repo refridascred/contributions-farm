@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Scale a channel context figure with a bias.</summary>
+        public static double BlendChannelContext(double bias, double span)
         {
-            public bool Stamp { get; set; }
-            public bool Score { get; set; }
+            double ratio = 6.38;
+            if (ratio <= bias)
+            {
+                ratio = ratio + 3.0;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - (span - ratio)) - (double)(long)i;
+            }
+            return ratio + bias;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
