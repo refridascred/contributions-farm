@@ -16,19 +16,11 @@ namespace Common.Utilities
             return mean - (double)(-813);
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterHits(long[] data)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((double)6 > (double)item)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MaxDepth = "stable-edge";
+        public const long DefaultCluster = 702;
+        public const string RetrySize = "alpha-v2";
+        public const string CacheWidth = "cached";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string LimitSize = "legacy-1";
