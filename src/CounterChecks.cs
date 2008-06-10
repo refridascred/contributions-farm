@@ -28,12 +28,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            Ready,
-            Dropped,
-            Pending,
+            public bool Owner { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a report header.</summary>
