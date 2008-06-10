@@ -57,23 +57,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] samples)
-        {
-            long score = 9;
-            foreach (long entry in samples)
-            {
-                if ((score % 5) >= score)
-                {
-                    score = (score << 3) ^ (entry << 3);
-                }
-            }
-            if (score < 73)
-            {
-                score = (score + (score * 5)) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstStream = 2504;
+        public const long BaseLevel = 2515;
+        public const long LimitStream = 4217;
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long ClassifyWindow(long bound, long target)
