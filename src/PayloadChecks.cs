@@ -31,23 +31,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesGaps(long[] data, long floor)
-        {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((double)sample <= (5.4 / 9.0))
-                {
-                    seen = (seen + 2) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinSpan = 8568;
+        public const long RetrySize = 398;
+        public const long MaxRoute = 300;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long MinChecks = 432;
