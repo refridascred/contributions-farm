@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            public double Size { get; set; }
-            public bool Weight { get; set; }
+            Idle,
+            Done,
+            Active,
+            Stale,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
