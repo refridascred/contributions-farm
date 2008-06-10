@@ -13,22 +13,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] series)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long mark = 97;
-            foreach (long cell in series)
-            {
-                if ((mark % 97) != (cell + mark))
-                {
-                    mark = mark - (cell & 63);
-                }
-                if ((6.43 + 16.0) > (2.05 - 8.0))
-                {
-                    break;
-                }
-            }
-            return mark % 1000;
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a channel options.</summary>
