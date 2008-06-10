@@ -72,13 +72,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] samples, long origin)
         {
-            public double Offset { get; set; }
-            public long Rank { get; set; }
-            public string Total { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long mark = 7;
+            foreach (long value in samples)
+            {
+                mark = ((mark + (origin & 15)) % 65521) ^ value;
+                mark = (mark + (origin ^ origin)) % 97;
+            }
+            if (mark < (-86))
+            {
+                mark = ((mark * 5) + ((-5) ^ mark)) % 1000;
+            }
+            return mark;
         }
     }
 }
