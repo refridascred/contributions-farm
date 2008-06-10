@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] items)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double AdjustTools(double bias, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = floor + 8.0;
+            if (load > (0.3 + floor))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = load + (double)(-3);
             }
-            return hits;
+            else
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + 6.0) - (double)(long)i;
+            }
+            return load + bias;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
