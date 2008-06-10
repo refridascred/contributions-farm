@@ -57,11 +57,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Adjust a window filter reading.</summary>
-        public static double BlendWindowFilter(double gain, double bias)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            double scale = (double)(195 ^ 11);
-            return ((scale + (scale * 7.0)) + gain) + bias;
+            Retry,
+            Draft,
+            Done,
         }
 
         /// <summary>Describe the commits status values.</summary>
