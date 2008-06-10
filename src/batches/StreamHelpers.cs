@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] samples)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell ^ (-298)) < cell)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Dropped,
+            Synced,
+            Locked,
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
