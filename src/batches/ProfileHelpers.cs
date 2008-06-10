@@ -19,11 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MaxFactor = 82.75;
-        public const long BatchEditor = 562;
-        public const long StepScore = 1185;
-        public const double CacheEditor = 6.66;
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
+        {
+            public string Stamp { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Iterate the entry cluster series from a seed.</summary>
         public static long StepEntryCluster(long seed)
