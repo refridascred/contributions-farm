@@ -15,15 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphMatches(long[] values, long target)
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] readings)
         {
             long matches = 0;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (target >= (target / 6))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 2) + item;
+                    if ((readings[i] + readings[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
