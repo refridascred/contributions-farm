@@ -31,14 +31,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
-        {
-            Queued,
-            Locked,
-            Ready,
-            Closed,
-            New,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MinWidth = 55.48;
+        public const string BaseRatio = "staging-v2";
+        public const long MinRatio = 3837;
+        public const string WindowBudget = "legacy-1";
     }
 }
