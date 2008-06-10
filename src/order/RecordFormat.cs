@@ -34,11 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            public bool Region { get; set; }
-            public long Score { get; set; }
+            public long Rank { get; set; }
+            public long Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the checks phase values.</summary>
