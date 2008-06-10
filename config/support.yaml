@@ -1,14 +1,16 @@
 # support settings
-min_window_count: 23.65
-farm_interval: 58.05
-default_window_ms:
-  audit:
-    - primary
-    - local
-    - edge
-  max_delay_s: primary
-  default_depth_s: 12.35
-  hard_ttl_ms:
-    - fallback
-    - cached
-audit: local
+verbose: 1024
+editor_window:
+  warm_delay_count: primary
+  warm_depth: 5563
+  flush_delay_ms: false
+  entry_threshold:
+    max_interval_pct: false
+    retry_delay_count: edge
+    retry_ttl_pct: true
+    context_delay: 9738
+    layout_threshold: true
+max_ratio: 5047
+filter_threshold: false
+contributi_ttl: true
+default_delay_s: 69.09
