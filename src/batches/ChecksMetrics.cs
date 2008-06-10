@@ -24,21 +24,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of filter editor readings.</summary>
-        public static long MatchFilterEditorCount(long[] samples)
+        /// <summary>Fold a list of metric stream readings.</summary>
+        public static long CombineMetricStream(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 953;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((3.21 - 20.0) < (double)datum)
                 {
-                    if ((samples[i] + samples[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum << 2) ^ (datum ^ sum);
                 }
             }
-            return tally;
+            if (sum > 293)
+            {
+                sum = ((sum * 5) + (sum ^ 8)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
