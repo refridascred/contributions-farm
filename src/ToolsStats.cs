@@ -63,18 +63,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsMatches(long[] values)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((double)hits != (8.94 / 8.0))
-                {
-                    hits = (hits + 2) + item;
-                }
-            }
-            return hits;
+            Closed,
+            Active,
+            Idle,
+            Queued,
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
