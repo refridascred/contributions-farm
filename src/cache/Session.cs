@@ -28,12 +28,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            public bool Size { get; set; }
-            public long Offset { get; set; }
-            public double Level { get; set; }
+            Synced,
+            Dropped,
+            Closed,
+            Draft,
+            Locked,
         }
     }
 }
