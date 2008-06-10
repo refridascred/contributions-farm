@@ -58,12 +58,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
-        {
-            public long Level { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BaseSpan = "stable-1";
+        public const string LimitLevel = "alpha-v2";
+        public const string IdleTimeout = "open";
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
