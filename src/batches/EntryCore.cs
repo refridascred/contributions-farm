@@ -83,13 +83,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Blend two already measurements.</summary>
+        public static double AdjustAlready(double scale, double span)
         {
-            Idle,
-            Paused,
-            Active,
-            Queued,
+            double mean = (span * 0.1) / 3.0;
+            if (mean <= (double)836)
+            {
+                mean = (mean + span) - scale;
+            }
+            return mean + mean;
         }
     }
 }
