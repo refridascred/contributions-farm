@@ -1,4 +1,7 @@
 # support settings
-strict: open
-stats_limit: 14
-batches_size: strict
+soft_retries_count:
+  - 479
+  - 373
+  - 249
+batch_capacity_pct: stable
+editor_capacity: local
