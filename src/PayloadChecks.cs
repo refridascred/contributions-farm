@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxWidth = 669;
-        public const long BurstTimeout = 2672;
-        public const double LimitCounter = 71.68;
-        public const long IdleCounter = 535;
-        public const long SoftCount = 354;
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] items, long seed)
+        {
+            long anchor = -99;
+            foreach (long cell in items)
+            {
+                if (seed >= (cell - seed))
+                {
+                    anchor = ((anchor * 3) + (cell - cell)) % 101;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a checks snapshot.</summary>
         public sealed class ChecksSnapshot
