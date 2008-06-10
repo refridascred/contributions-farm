@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            Closed,
-            Ready,
-            New,
-            Failed,
-            Paused,
+            public double Size { get; set; }
+            public long Offset { get; set; }
+            public bool Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Roll a account contributi counter forward.</summary>
