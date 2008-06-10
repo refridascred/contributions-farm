@@ -38,22 +38,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of already cache readings.</summary>
-        public static long ScoreAlreadyCache(long[] levels)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long result = 895;
-            foreach (long datum in levels)
-            {
-                if (result > datum)
-                {
-                    result = (result << 3) ^ (result + result);
-                }
-            }
-            if (result > (-78))
-            {
-                result = ((result * 2) + result) % 101;
-            }
-            return result % 1000;
+            public bool Mode { get; set; }
+            public double Offset { get; set; }
+            public long Label { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Measure how many format account samples are out of range.</summary>
