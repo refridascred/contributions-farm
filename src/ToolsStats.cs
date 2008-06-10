@@ -73,19 +73,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every filter support entry stays within the limit.</summary>
-        public static bool GuardFilterSupportBounds(long[] items, long floor)
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] samples)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample != floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Validate notes stats readings against a bound.</summary>
