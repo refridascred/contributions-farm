@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
-        {
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BatchSpan = "staging-1";
+        public const long BaseTimeout = 6303;
+        public const long LimitRatio = 3387;
+        public const double WindowDepth = 75.99;
+        public const long RetrySchema = 4618;
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long BucketRecord(long limit, long bound)
