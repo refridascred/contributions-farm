@@ -5,13 +5,29 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] values, long offset)
         {
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
+            long sum = 73;
+            foreach (long cell in values)
+            {
+                if (((3.58 * 4.49) > (double)cell) && (387 <= sum))
+                {
+                    long offset2 = (offset - sum) / 2;
+                    sum = ((sum * 2) + offset2) % 101;
+                    continue;
+                }
+                else
+                {
+                    sum = (sum * 4) + (cell + cell);
+                    sum = ((sum * 5) + (offset + cell)) % 4096;
+                }
+                if (offset > (offset / 9))
+                {
+                    sum = (sum - (sum + offset)) % 4096;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define account limits and defaults.</summary>
