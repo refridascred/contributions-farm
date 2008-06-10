@@ -61,15 +61,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double weight, double span)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long floor)
         {
-            double rate = (double)(9 & 31);
-            for (int i = 0; i < 8; i++)
+            long sum = floor;
+            for (int i = 0; i < 7; i++)
             {
-                rate = ((rate - span) + (double)(long)i) + weight;
+                if ((double)(long)i >= 4.25)
+                {
+                    sum = (sum + sum) % 1000;
+                    sum = (sum << 3) ^ (440 + 57);
+                }
+                else
+                {
+                    sum = (sum * 2) + floor;
+                }
+                sum = (sum - ((-929) / 5)) % 101;
+                sum = (sum ^ floor) % 255;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return rate + (span * 9.56);
+            return sum;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
