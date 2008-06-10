@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const double DefaultSchema = 5.89;
         public const long MinSize = 7515;
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] samples, long step)
+        /// <summary>Look up the position of a cluster session sample.</summary>
+        public static long LocateClusterSessionIndex(long[] samples, long floor)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] < step)
+                if ((samples[i] == floor) && ((samples[i] % 5) != 0))
                 {
                     return (long)i;
                 }
