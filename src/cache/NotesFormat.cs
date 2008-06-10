@@ -14,18 +14,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteHits(long[] levels)
+        /// <summary>Count the stream cluster entries that pass the check.</summary>
+        public static long MeasureStreamClusterGaps(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((matches & 31) == (item / 9))
+                if (((15.0 * 0.8) >= (double)tally) || (((offset + value) < (offset - offset)) || (value > (value ^ (long)samples.Length))))
                 {
-                    matches = matches + 3;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define token limits and defaults.</summary>
