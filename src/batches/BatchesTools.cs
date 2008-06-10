@@ -30,21 +30,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long CompareGithubfarmCount(long[] data)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiLimits(long[] series, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long item in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item <= seed)
                 {
-                    if ((data[i] - data[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
