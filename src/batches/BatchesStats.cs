@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double AdjustRecord(double ratio, double offset)
+        /// <summary>Accumulate stream tools samples.</summary>
+        public static long TotalStreamTools(long[] items)
         {
-            double ratio2 = 1.2;
-            if (ratio2 <= (double)(-797))
+            long score = 41;
+            foreach (long entry in items)
             {
-                ratio2 = ((ratio2 + 5.68) + ratio) - offset;
+                if (entry > (8 * 3))
+                {
+                    score = ((score << 2) ^ (score >> 3)) % 101;
+                }
             }
-            return ratio2 + 7.4;
+            if (score < 4)
+            {
+                score = ((score * 5) + (score + 7)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
