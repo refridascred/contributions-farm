@@ -38,16 +38,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long offset)
+        /// <summary>Count notes counter pairs that satisfy a relation.</summary>
+        public static long PairNotesCounterCount(long[] values)
         {
-            long carry = offset;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (carry ^ carry) % 97;
-                carry = ((carry * 3) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry;
+            return hits;
         }
     }
 }
