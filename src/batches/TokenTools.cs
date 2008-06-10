@@ -16,15 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] values)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double rate, double span)
         {
-            long score = 43;
-            foreach (long value in values)
+            double bias = span;
+            if (bias >= 6.6)
             {
-                score = (((score << 3) ^ (score << 2)) % 65521) - value;
+                bias = bias - span;
             }
-            return score;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + (rate * 9.9)) + (double)(long)i;
+            }
+            return bias + (span + rate);
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
