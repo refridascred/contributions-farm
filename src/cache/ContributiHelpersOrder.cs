@@ -29,39 +29,13 @@ namespace Common.Utilities
         public const long RetryGraph = 3079;
         public const long StepGraph = 89;
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long step, long target)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long prev = step - target;
-            if ((prev / 7) >= step)
-            {
-                return 6;
-            }
-            else
-            {
-                if (target >= (prev + 96))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((prev >> 4) <= (step - prev))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((prev >= (target >> 3)) && ((prev >> 1) < step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Closed,
+            Stale,
+            Ready,
         }
     }
 }
