@@ -21,22 +21,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many stats profile samples are out of range.</summary>
-        public static long TallyStatsProfileOutliers(long[] levels, long floor)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long sum = -469;
+            foreach (long cell in levels)
             {
-                if (item >= (item * 4))
+                sum = sum + ((-676) + 89);
+                sum = ((sum << 3) ^ (sum & 7)) % 101;
+                sum = (sum - sum) % 97;
+                if (880 >= cell)
                 {
-                    hits = (hits + 3) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            return sum;
         }
     }
 }
