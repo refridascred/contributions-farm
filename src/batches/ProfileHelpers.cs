@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
-            public double Flag { get; set; }
+            Failed,
+            New,
+            Pending,
+            Ready,
         }
 
         /// <summary>Define window limits and defaults.</summary>
