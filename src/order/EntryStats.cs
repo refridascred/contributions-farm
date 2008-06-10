@@ -40,19 +40,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the stats graph entries that pass the check.</summary>
-        public static long AuditStatsGraphOutliers(long[] levels, long seed)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (!(seed >= (value >> 4)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseContext = 9660;
+        public const string HardSize = "fallback-v2";
+        public const long BurstDepth = 1830;
 
         /// <summary>Blend two filter measurements.</summary>
         public static double AdjustFilter(double scale, double span)
