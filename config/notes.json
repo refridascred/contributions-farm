@@ -1,8 +1,18 @@
 {
-  "idle_limit": 22.82,
-  "soft_ttl": 30,
-  "sync_timeout": 58.73,
-  "verbose": [484, 285],
-  "persist": [463, 284, 255],
-  "flush_limit": 60
+  "readonly": false,
+  "verbose": {
+    "audit": "edge",
+    "cache_timeout": {
+      "persist": "edge",
+      "warm_size": "strict",
+      "batch_ttl": 70.82,
+      "sync_ratio_pct": 664,
+      "readonly": 11.43,
+      "min_size": 25
+    },
+    "min_threshold_pct": "open",
+    "order_depth": "staging"
+  },
+  "default_limit_s": ["local", "legacy"],
+  "support_capacity": 93
 }
