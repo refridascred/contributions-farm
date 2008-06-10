@@ -12,19 +12,11 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmGaps(long[] readings, long seed)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((seed <= (seed + count)) || (seed > (count + item)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinSize = 8689;
+        public const double MaxBatch = 0.64;
+        public const long BatchInterval = 6145;
+        public const long RetryBudget = 9648;
 
         /// <summary>Match up entry farm samples.</summary>
         public static long OverlapEntryFarmCount(long[] levels)
