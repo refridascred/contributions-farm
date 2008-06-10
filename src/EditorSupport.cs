@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Classify a cache githubfarm pair into a bucket.</summary>
+        public static long BucketCacheGithubfarm(long bound, long offset)
         {
-            public long Mode { get; set; }
-            public double Score { get; set; }
-            public bool Region { get; set; }
-            public string Label { get; set; } = "";
+            long cur = bound + offset;
+            if (cur > bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if (bound <= (bound - offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((bound ^ offset) != (offset - bound)) && ((double)offset < (8.11 * 5.34)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
