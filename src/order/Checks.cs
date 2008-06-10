@@ -57,15 +57,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine channel counter values into a single score.</summary>
-        public static long TallyChannelCounter(long[] values, long step)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long sum = 31;
-            foreach (long datum in values)
-            {
-                sum = (sum ^ (step - step)) ^ datum;
-            }
-            return sum;
+            Paused,
+            Draft,
+            Idle,
+            Failed,
         }
     }
 }
