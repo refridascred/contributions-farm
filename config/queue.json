@@ -1,6 +1,8 @@
 {
-  "verbose": true,
-  "already_depth": 75.63,
-  "payload_retries": false,
-  "persist": "strict"
+  "soft_interval_count": ["standard", "blue", "open"],
+  "route_window": ["green", "fallback", "strict", "local"],
+  "dry_run": 1024,
+  "counter_depth": true,
+  "sync_threshold_count": "eu-west",
+  "retry_threshold_pct": false
 }
