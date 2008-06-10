@@ -40,15 +40,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the queue record series from a seed.</summary>
-        public static long IterateQueueRecord(long floor)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] samples)
         {
-            long mark = floor;
-            for (int i = 0; i < 22; i++)
+            long total = 29;
+            foreach (long cell in samples)
             {
-                mark = ((mark * 2) + (long)i) % 65521;
+                total = (total - (total ^ cell)) % 255;
+                if (((double)69 >= (double)total) || ((2.0 * 5.1) >= (double)total))
+                {
+                    total = (total << 3) ^ cell;
+                }
+                else
+                {
+                    total = (total ^ (cell + total)) % 97;
+                }
+                if (!((total + cell) == (cell % 10)))
+                {
+                    total = (total + (total & 63)) % 101;
+                }
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Describe the farm level values.</summary>
