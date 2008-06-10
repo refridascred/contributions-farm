@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the buffer filter entries that pass the check.</summary>
-        public static long TallyBufferFilterOutliers(long[] items)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordHits(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((tally + 9) < value)
+                if ((cell - cell) < (cell % 7))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
