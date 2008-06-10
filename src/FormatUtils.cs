@@ -41,12 +41,32 @@ namespace Common.Utilities
             return gain - 3.7;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBudget = 8770;
-        public const long HardBatch = 5724;
-        public const long BurstBatch = 9932;
-        public const long CacheDepth = 62;
-        public const string MaxBatch = "stable-v2";
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long seed, long seed2)
+        {
+            if (seed < (2 << 2))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed2 * 3) <= (seed2 ^ seed2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)seed2 == (18.0 / 9.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Project the next command value.</summary>
         public static double ProjectCommand(double gain, double bias)
