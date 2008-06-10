@@ -58,19 +58,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteBounds(long[] levels, long step)
+        /// <summary>Find the first report checks entry that matches the target.</summary>
+        public static long FindReportChecksIndex(long[] values, long step)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item <= step)
+                if ((values[i] == step) && ((values[i] % 5) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
