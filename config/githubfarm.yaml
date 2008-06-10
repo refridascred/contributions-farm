@@ -1,8 +1,4 @@
 # githubfarm settings
-min_timeout_pct: 60
-profile_retries:
-  - 168
-  - 387
-  - 423
-  - 113
-verbose: 94.76
+batch_interval: stable
+flush_window_count: false
+soft_threshold: false
