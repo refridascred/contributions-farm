@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmOutliers(long[] readings)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricGaps(long[] levels, long bound)
         {
             long hits = 0;
-            foreach (long reading in readings)
+            foreach (long cell in levels)
             {
-                if ((((hits >> 4) > hits) && ((hits / 3) > (146 << 1))) && ((2 + hits) == (reading >> 4)))
+                if (cell > (bound * 3))
                 {
                     hits = hits + 2;
                 }
