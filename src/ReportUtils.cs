@@ -14,11 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinSize = 8689;
-        public const double MaxBatch = 0.64;
-        public const long BatchInterval = 6145;
-        public const long RetryBudget = 9648;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatHits(long[] samples, long seed)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((double)value < 9.2)
+                {
+                    count = (count + 1) - seed;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Match up entry farm samples.</summary>
         public static long OverlapEntryFarmCount(long[] levels)
