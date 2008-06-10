@@ -45,12 +45,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelHits(long[] data, long target)
         {
-            Synced,
-            Idle,
-            Paused,
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (target > (reading >> 1))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
