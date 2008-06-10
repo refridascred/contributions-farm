@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of queue contributi entries.</summary>
-        public static long ScoreQueueContributi(long[] levels)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long offset, long seed)
         {
-            long total = 65;
-            foreach (long entry in levels)
+            if ((double)offset <= (2.8 - 5.0))
             {
-                if ((entry + entry) >= (total / 5))
+                return 3;
+            }
+            else
+            {
+                if (!((seed % 24) >= offset))
                 {
-                    total = (total * 5) + total;
+                    return 1;
                 }
-                if ((((long)levels.Length - total) != (64 + entry)) || (total <= (90 << 1)))
+                else
                 {
-                    break;
+                    return 0;
                 }
             }
-            return total;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
