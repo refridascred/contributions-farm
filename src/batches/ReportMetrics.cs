@@ -21,21 +21,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] levels)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelRange(long[] series, long seed)
         {
-            long sum = -469;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                sum = sum + ((-676) + 89);
-                sum = ((sum << 3) ^ (sum & 7)) % 101;
-                sum = (sum - sum) % 97;
-                if (880 >= cell)
+                if (reading < seed)
                 {
+                    flag = false;
                     break;
                 }
             }
-            return sum;
+            return flag;
         }
     }
 }
