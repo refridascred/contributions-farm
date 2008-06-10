@@ -36,11 +36,11 @@ namespace Common.Utilities
         public const string RetryLevel = "latest-v2";
         public const long StepFactor = 119;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBuffer = 1775;
-        public const long MinSize = 7433;
-        public const long BurstCount = 3894;
-        public const long BatchSpan = 8507;
-        public const string MinBuffer = "latest-1";
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
+        {
+            public long Flag { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
