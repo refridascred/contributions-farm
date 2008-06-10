@@ -59,38 +59,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long bound, long offset)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsBounds(long[] items, long bound)
         {
-            if ((bound << 2) < offset)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset + bound) >= (bound + 210))
+                if (reading > bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((bound * 2) >= (bound - offset)) || (0 <= (bound >> 2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((offset << 1) != (offset >> 4)) || (offset >= (bound % 2)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
