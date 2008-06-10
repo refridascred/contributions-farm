@@ -1,13 +1,8 @@
 {
-  "soft_depth_pct": 8,
-  "soft_retries_s": 5.46,
-  "default_depth": false,
-  "cache_capacity_ms": {
-    "profile_window": ["legacy", "legacy", "blue"],
-    "idle_ttl_count": ["fallback", "legacy", "green", "fallback"],
-    "verbose": [391, 418],
-    "command_interval": 15.79,
-    "cache_retries": ["legacy", "fallback", "staging"]
-  },
-  "persist": 67.46
+  "format_ttl": 66,
+  "flush_ttl_count": "latest",
+  "buffer_interval": 105,
+  "cache_capacity": "standard",
+  "burst_capacity_s": 86.61,
+  "readonly": false
 }
