@@ -52,18 +52,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] readings, long floor)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionMatches(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((floor * 3) > (seen - seen))
+                if ((sample % 64) >= sample)
                 {
-                    seen = (seen + 3) ^ reading;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
