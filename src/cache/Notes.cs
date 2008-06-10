@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long origin, long step)
-        {
-            if ((origin % 64) <= origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step - 876) >= step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)origin != (7.14 - 5.8))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 8968;
+        public const long BaseFactor = 3228;
+        public const double LimitPayload = 64.02;
 
         /// <summary>Roll a buffer layout counter forward.</summary>
         public static long IterateBufferLayout(long bound)
