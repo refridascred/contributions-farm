@@ -20,22 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutOutliers(long[] levels)
+        /// <summary>Combine already entry values into a single score.</summary>
+        public static long WeighAlreadyEntry(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long anchor = -485;
+            foreach (long sample in samples)
             {
-                if (2.5 >= (double)reading)
+                if (((double)sample < (double)406) || ((sample + 92) <= sample))
                 {
-                    hits = hits + 1;
+                    anchor = (anchor + (sample / 6)) % 65521;
                 }
-                else
+                if ((anchor + anchor) != (target + 72))
                 {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
