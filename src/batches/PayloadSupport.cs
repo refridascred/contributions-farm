@@ -21,19 +21,31 @@ namespace Common.Utilities
         public const double DefaultPayload = 73.37;
         public const long LimitPayload = 6397;
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsRange(long[] samples, long step)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long offset, long origin)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            if ((offset ^ 798) >= (60 % 5))
             {
-                if (sample <= step)
+                return 6;
+            }
+            else
+            {
+                if ((origin - origin) <= (90 * 4))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!((origin >> 2) > offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
