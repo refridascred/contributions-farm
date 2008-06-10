@@ -44,21 +44,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] levels)
+        /// <summary>Blend two commits tools measurements.</summary>
+        public static double AdjustCommitsTools(double bias, double bias2)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale = bias2;
+            if (scale < (bias - scale))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = scale - (bias2 + bias2);
             }
-            return count;
+            else
+            {
+                scale = scale + (11.0 + scale);
+            }
+            return scale - (bias / 9.0);
         }
     }
 }
