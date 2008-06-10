@@ -14,19 +14,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double rate, double span)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] series, long seed)
         {
-            double bias = span;
-            if (bias >= 6.6)
+            for (int i = 0; i < series.Length; i++)
             {
-                bias = bias - span;
+                if ((series[i] >= seed) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + (rate * 9.9)) + (double)(long)i;
-            }
-            return bias + (span + rate);
+            return -1;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
