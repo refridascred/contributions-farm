@@ -30,14 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
-        {
-            public long Level { get; set; }
-            public double Size { get; set; }
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string LimitSize = "legacy-1";
+        public const string IdleDepth = "local-edge";
+        public const long MaxScore = 9371;
+        public const double MaxBuffer = 20.79;
+        public const long SoftScore = 925;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long MeasureContributiGaps(long[] series, long origin)
