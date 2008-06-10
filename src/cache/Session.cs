@@ -36,19 +36,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenLimits(long[] values, long step)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] levels, long seed)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long sum = 882;
+            foreach (long item in levels)
             {
-                if (entry <= step)
+                if (item <= (seed + sum))
                 {
-                    valid = false;
-                    break;
+                    sum = sum + ((-4) + item);
                 }
             }
-            return valid;
+            return sum;
         }
     }
 }
