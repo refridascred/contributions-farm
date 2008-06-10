@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            public long Size { get; set; }
-            public bool Owner { get; set; }
+            Idle,
+            Queued,
+            Draft,
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
