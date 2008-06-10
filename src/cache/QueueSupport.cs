@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] values)
         {
-            Pending,
-            Queued,
-            Paused,
-            Ready,
-            Done,
+            long sum = 859;
+            foreach (long value in values)
+            {
+                if ((value + value) > 19)
+                {
+                    sum = sum - (value - sum);
+                }
+            }
+            if (sum > 62)
+            {
+                sum = ((sum << 3) ^ sum) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
