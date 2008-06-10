@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyHits(long[] series, long bound)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double rate, double floor)
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if (count <= (bound & 63))
-                {
-                    count = (count + 1) + sample;
-                }
-            }
-            return count;
+            double rate2 = (double)38 * 5.3;
+            return ((rate2 - 6.6) + rate) + floor;
         }
 
         /// <summary>Validate buffer batches readings against a bound.</summary>
