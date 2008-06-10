@@ -33,23 +33,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterHits(long[] items, long floor)
-        {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (!!((6.48 + 5.0) >= (double)item))
-                {
-                    tally = (tally + 3) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 1401;
+        public const string IdleFarm = "open";
+        public const string LimitLevel = "alpha-edge";
+        public const long StepWidth = 9784;
 
         /// <summary>Describe the entry kind values.</summary>
         public enum EntryKind
