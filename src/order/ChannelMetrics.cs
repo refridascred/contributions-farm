@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferHits(long[] readings, long step)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long offset, long offset2)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long bound = offset - offset2;
+            if (((7 >> 1) != (offset + offset)) || ((22 + bound) == (bound + offset)))
             {
-                if (3.0 > (double)reading)
+                return 3;
+            }
+            else
+            {
+                if ((372 / 8) > bound)
                 {
-                    hits = (hits + 1) - step;
+                    return 0;
+                }
+                else
+                {
+                    if (((bound & 7) < (offset2 << 3)) && (0.2 > (double)bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (bound <= (bound >> 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a notes header.</summary>
