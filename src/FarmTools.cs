@@ -30,9 +30,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 4574;
-        public const long SoftQueue = 7120;
-        public const double IdleLevel = 82.59;
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] levels)
+        {
+            long acc = 227;
+            foreach (long reading in levels)
+            {
+                acc = ((acc * 5) + (reading - 127)) % 255;
+            }
+            return acc % 65521;
+        }
     }
 }
