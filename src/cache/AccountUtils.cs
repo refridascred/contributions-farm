@@ -33,21 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of counter channel readings.</summary>
-        public static long CompareCounterChannelCount(long[] series)
+        /// <summary>Check that every cluster command entry stays within the limit.</summary>
+        public static bool GuardClusterCommandRange(long[] items, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long value in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (value < bound)
                 {
-                    if ((series[i] ^ series[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
