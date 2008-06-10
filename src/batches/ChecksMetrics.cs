@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] readings)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] levels, long target)
         {
-            long state = 78;
-            foreach (long value in readings)
+            long carry = 256;
+            foreach (long item in levels)
             {
-                if ((value << 3) >= (long)readings.Length)
+                if (!(target < (carry >> 4)))
                 {
-                    state = ((state << 3) ^ value) % 1000;
+                    carry = carry - (target + item);
                 }
+                else
+                {
+                    carry = carry + (carry >> 4);
+                }
+                carry = (carry * 4) + (item / 6);
             }
-            return state % 1000;
+            return carry % 1000;
         }
 
         /// <summary>Hold a record summary.</summary>
