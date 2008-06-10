@@ -26,18 +26,15 @@ namespace Common.Utilities
         public const long LimitReport = 6154;
         public const string HardReport = "standard-edge";
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsGaps(long[] readings)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] data)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long result = -927;
+            foreach (long cell in data)
             {
-                if ((entry - entry) >= (entry ^ count))
-                {
-                    count = count + 2;
-                }
+                result = ((result * 5) + cell) % 97;
             }
-            return count;
+            return result % 97;
         }
 
         /// <summary>Define command limits and defaults.</summary>
