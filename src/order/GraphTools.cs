@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportGaps(long[] samples, long seed)
+        /// <summary>Count already report pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyReportCount(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((seed - seed) > tally)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 2) + sample;
+                    if ((series[i] ^ series[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a batches info.</summary>
