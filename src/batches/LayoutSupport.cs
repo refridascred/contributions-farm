@@ -47,35 +47,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] values, long offset)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportHits(long[] series)
         {
-            long carry = 63;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if ((double)offset <= 1.0)
+                if (1.9 > (double)value)
                 {
-                    carry = ((carry << 2) ^ (601 + offset)) % 97;
-                    continue;
-                }
-                for (int i = 0; i < 2; i++)
-                {
-                    carry = ((carry - item) % 4096) + (long)i;
-                }
-                if ((double)offset >= 5.0)
-                {
-                    carry = ((carry << 2) ^ (item + item)) % 1000;
-                }
-                if ((double)item > (double)carry)
-                {
-                    break;
+                    seen = seen + 2;
                 }
             }
-            if (carry > 0)
-            {
-                carry = (carry * 2) + carry;
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
