@@ -31,18 +31,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheGaps(long[] items, long floor)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading >= (tally ^ reading))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 3) - floor;
+                    if ((values[i] - values[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
