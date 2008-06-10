@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitWidth = 2967;
-        public const long RetryEditor = 8536;
-        public const long IdleEditor = 3725;
-        public const double CacheScore = 91.67;
+        /// <summary>Digest a series of queue contributi entries.</summary>
+        public static long ScoreQueueContributi(long[] levels)
+        {
+            long total = 65;
+            foreach (long entry in levels)
+            {
+                if ((entry + entry) >= (total / 5))
+                {
+                    total = (total * 5) + total;
+                }
+                if ((((long)levels.Length - total) != (64 + entry)) || (total <= (90 << 1)))
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long IterateStream(long floor)
