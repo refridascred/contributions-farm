@@ -32,12 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterHits(long[] levels)
         {
-            Synced,
-            Paused,
-            Locked,
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((count * 4) >= (26 + count))
+                {
+                    count = (count + 2) ^ value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
