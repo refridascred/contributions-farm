@@ -62,23 +62,37 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long seed, long seed2)
+        /// <summary>Classify a entry support pair into a bucket.</summary>
+        public static long SortEntrySupport(long bound, long limit)
         {
-            long bound = seed - seed2;
-            if (((3.9 / 4.0) < (double)seed) || ((double)bound < (3.2 / 5.0)))
+            long prev = bound - limit;
+            if ((8.56 <= (double)limit) && (prev >= (-38)))
             {
-                return 0;
+                return 1;
             }
             else
             {
-                if ((seed ^ 9) < (bound << 2))
+                if (((double)limit == (18.0 - 5.12)) || ((bound << 1) == (prev << 2)))
                 {
-                    return 2;
+                    return 0;
                 }
                 else
                 {
-                    return 3;
+                    if ((bound - limit) > limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (prev > (bound + prev))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
