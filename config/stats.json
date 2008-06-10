@@ -1,6 +1,13 @@
 {
-  "contributi_timeout": 3872,
-  "cache_limit": 40,
-  "cache_threshold": "eu-west",
-  "base_window_ms": "edge"
+  "window_interval": "fallback",
+  "default_window": "strict",
+  "stats_interval": 60,
+  "base_size_pct": {
+    "burst_interval": 7577,
+    "hard_ttl_s": 1068,
+    "enabled": 86.42,
+    "readonly": [102, 136],
+    "cache_threshold": "cached"
+  },
+  "max_capacity": [5, 34, 164, 127]
 }
