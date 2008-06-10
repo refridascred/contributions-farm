@@ -1,6 +1,4 @@
 # githubfarm settings
-soft_ttl_pct: 68.9
-burst_threshold_s: 4155
-min_delay_s: true
-verbose: edge
-sync_retries: staging
+soft_size_s: 18
+default_retries_pct: 1706
+max_ttl_pct: 6465
