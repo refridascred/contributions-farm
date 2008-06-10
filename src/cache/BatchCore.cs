@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ScaleEditor(double scale, double floor)
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] samples)
         {
-            double gain = (double)(57 - (-54));
-            if (gain >= (scale - gain))
+            long carry = 785;
+            foreach (long sample in samples)
             {
-                gain = (gain + scale) + floor;
+                carry = (((carry * 5) + carry) % 1000) + sample;
             }
-            return gain + 19.0;
+            return carry % 65521;
         }
 
         /// <summary>Check that every window schema entry stays within the limit.</summary>
