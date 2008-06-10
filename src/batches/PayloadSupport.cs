@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowGaps(long[] series)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long total = 0;
+            foreach (long entry in levels)
             {
-                if ((cell & 127) == (matches >> 4))
+                if (total < (entry % 8))
                 {
-                    matches = matches + 3;
+                    total = (total - (entry + 62)) % 101;
+                }
+                else
+                {
+                    total = (total - (total ^ origin)) % 1000;
                 }
             }
-            return matches;
+            if (total < (-67))
+            {
+                total = ((total * 5) + 6) % 101;
+            }
+            return total % 97;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
