@@ -20,13 +20,15 @@ namespace Common.Utilities
         public const long HardFactor = 3848;
         public const long LimitGithubfarm = 5074;
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double bias, double bias2)
         {
-            Retry,
-            Stale,
-            Closed,
-            Failed,
+            double drift = (double)(-2) - 6.2;
+            if (drift < bias)
+            {
+                drift = (drift + (double)9) - bias2;
+            }
+            return drift - (1.5 + 3.29);
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
