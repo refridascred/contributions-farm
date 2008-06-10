@@ -29,22 +29,22 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Measure how many batch account samples are out of range.</summary>
-        public static long TallyBatchAccountMatches(long[] series)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterHits(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (((count / 7) >= count) && ((count << 2) <= (reading + count)))
+                if (!!((6.48 + 5.0) >= (double)item))
                 {
-                    count = count + 2;
+                    tally = (tally + 3) - floor;
                 }
                 else
                 {
-                    count = count - 1;
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
