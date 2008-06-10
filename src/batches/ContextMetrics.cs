@@ -40,18 +40,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the editor channel entries that pass the check.</summary>
-        public static long AuditEditorChannelOutliers(long[] samples, long offset)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)samples.Length << 2) <= (3 - matches))
+                if (values[i] > target)
                 {
-                    matches = ((matches + 1) - entry) + offset;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
