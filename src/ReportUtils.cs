@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseAlready = 8840;
-        public const string HardAlready = "standard-1";
-        public const double MinLevel = 83.48;
-        public const long RetrySpan = 1651;
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
+        {
+            public double Mode { get; set; }
+            public double Limit { get; set; }
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
+        }
 
         /// <summary>Match up entry farm samples.</summary>
         public static long OverlapEntryFarmCount(long[] levels)
