@@ -22,39 +22,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Classify a profile commits pair into a bucket.</summary>
-        public static long SortProfileCommits(long step, long bound)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double gain, double offset)
         {
-            long cur = step - bound;
-            if (bound >= (cur + cur))
+            double drift = gain;
+            if (drift >= (drift / 2.0))
             {
-                return 2;
+                drift = drift + (double)4;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((step - cur) == (step ^ cur))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((6.0 + 0.26) == (double)cur))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((-7) - cur) != (4 - bound))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                drift = (drift - offset) + (double)(long)i;
             }
+            return drift + offset;
         }
 
         /// <summary>Describe the contributi class values.</summary>
