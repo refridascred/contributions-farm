@@ -33,17 +33,38 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] samples, long offset)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long bound, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((bound / 4) == (offset ^ offset))
             {
-                if ((samples[i] < offset) && ((samples[i] % 5) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((offset & 255) > (bound / 8))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (((0.35 / 7.0) != (double)offset) && ((bound - bound) > (24 + 96)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound + offset) <= (170 * 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
