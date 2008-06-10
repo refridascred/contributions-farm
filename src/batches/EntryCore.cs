@@ -35,12 +35,12 @@ namespace Common.Utilities
         public const long LimitInterval = 6577;
         public const double CacheWidth = 76.17;
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            public bool Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public long Size { get; set; }
+            public bool Level { get; set; }
+            public long Offset { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
