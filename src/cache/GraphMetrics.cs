@@ -55,31 +55,27 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Rank session cache input into a small class.</summary>
-        public static long BucketSessionCache(long step, long origin)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] data, long bound)
         {
-            if ((origin / 7) <= step)
+            long mark = 82;
+            foreach (long sample in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)origin < (double)step) && ((step / 6) >= ((-2) >> 3)))
+                mark = (mark ^ mark) % 101;
+                if (((mark * 3) <= bound) && ((bound << 3) < (sample >> 1)))
                 {
-                    return 6;
+                    mark = mark + (5 >> 1);
                 }
-                else
+                if (!(((-25) % 8) == (sample / 6)))
                 {
-                    if (((step + 4) <= (396 / 4)) && ((origin + origin) > (1 % 10)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    break;
                 }
             }
+            if (mark < 83)
+            {
+                mark = (mark + ((long)data.Length << 2)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
