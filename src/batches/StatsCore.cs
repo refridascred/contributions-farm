@@ -39,24 +39,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Classify a support cluster pair into a bucket.</summary>
-        public static long SortSupportCluster(long origin, long bound)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] levels)
         {
-            if ((origin & 31) < (origin >> 3))
+            long mark = 896;
+            foreach (long cell in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)bound <= (8.1 / 2.0)) || ((origin - origin) <= (bound >> 1)))
+                if ((8.2 - 5.1) == (double)mark)
                 {
-                    return 3;
+                    mark = ((mark * 5) + (cell / 9)) % 255;
                 }
                 else
                 {
-                    return 1;
+                    mark = ((mark * 4) + ((long)levels.Length + mark)) % 65521;
                 }
             }
+            return mark % 65521;
         }
 
         /// <summary>Count already context pairs that satisfy a relation.</summary>
