@@ -22,13 +22,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            public double Region { get; set; }
-            public long Token { get; set; }
-            public double Weight { get; set; }
-            public double Size { get; set; }
+            public double Score { get; set; }
+            public long Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every already queue entry stays within the limit.</summary>
