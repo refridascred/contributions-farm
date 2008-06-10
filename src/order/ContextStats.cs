@@ -25,16 +25,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long offset)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmBounds(long[] data, long seed)
         {
-            long state = offset;
-            for (int i = 0; i < 16; i++)
+            bool valid = true;
+            foreach (long value in data)
             {
-                state = ((state * 3) + (offset % 60)) % 1000;
-                state = ((state * 5) + (long)i) % 4093;
+                if (value != seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Hold a batch stats.</summary>
