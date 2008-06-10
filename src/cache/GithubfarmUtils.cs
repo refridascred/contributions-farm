@@ -52,21 +52,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] readings)
+        /// <summary>Grade a format batches value against two limits.</summary>
+        public static long SortFormatBatches(long step, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long span = step ^ floor;
+            if (((step + floor) > (21 ^ 864)) || ((span % 16) > (10 + step)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (48 < span)
                 {
-                    if ((readings[i] + readings[j]) == 8)
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step > 3.7)
                     {
-                        count = count + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor ^ step) == (floor - step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
