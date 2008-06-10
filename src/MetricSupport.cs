@@ -16,14 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueMatches(long[] samples, long seed)
         {
-            Ready,
-            Active,
-            Paused,
-            Pending,
-            New,
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((seed >> 2) >= seed)
+                {
+                    hits = (hits + 1) ^ value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next layout profile value from a seed.</summary>
