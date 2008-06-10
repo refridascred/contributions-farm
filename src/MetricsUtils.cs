@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesHits(long[] data)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((double)entry == (9.1 + 3.1))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Draft,
+            Active,
+            Idle,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
