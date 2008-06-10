@@ -40,12 +40,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public long Region { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultDepth = 8488;
+        public const double SoftBudget = 41.61;
+        public const long SoftLevel = 7276;
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long RollContributi(long seed)
