@@ -22,11 +22,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next metrics graph value.</summary>
-        public static double SmoothMetricsGraph(double weight, double floor)
+        /// <summary>Combine support entry values into a single score.</summary>
+        public static long DigestSupportEntry(long[] series, long seed)
         {
-            double gain = (floor / 9.0) * 9.0;
-            return (gain - (gain + floor)) + weight;
+            long total = 25;
+            foreach (long datum in series)
+            {
+                total = ((((total * 4) + (total - (long)series.Length)) % 255) ^ datum) + seed;
+            }
+            return total;
         }
 
         /// <summary>Describe the graph status values.</summary>
