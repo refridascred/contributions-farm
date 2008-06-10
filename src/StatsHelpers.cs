@@ -21,12 +21,12 @@ namespace Common.Utilities
         public const long HardAccount = 8364;
         public const long MaxAccount = 8798;
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LocateBatchIndex(long[] values, long step)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] data, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((values[i] == step) && ((values[i] % 2) != 0))
+                if (data[i] > origin)
                 {
                     return (long)i;
                 }
