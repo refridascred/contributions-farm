@@ -86,10 +86,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 1910;
-        public const string BurstStream = "stable-v2";
-        public const double LimitScore = 8.96;
-        public const long BurstInterval = 1230;
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double rate, double offset)
+        {
+            double weight = rate;
+            if (weight <= (6.0 * 1.0))
+            {
+                weight = weight + (offset - rate);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - (rate * 5.7)) + (double)(long)i;
+            }
+            return weight + (rate - rate);
+        }
     }
 }
