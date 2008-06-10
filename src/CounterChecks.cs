@@ -47,19 +47,18 @@ namespace Common.Utilities
         public const long StepContributi = 9965;
         public const long DefaultContributi = 8148;
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double bias, double floor)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] values, long floor)
         {
-            double scale = bias + 1.5;
-            if (scale <= 9.64)
+            long tally = 0;
+            foreach (long item in values)
             {
-                scale = (scale - (double)66) + floor;
+                if (!((tally >> 4) < tally))
+                {
+                    tally = ((tally + 3) + item) - floor;
+                }
             }
-            else
-            {
-                scale = scale - (double)96;
-            }
-            return scale - scale;
+            return tally;
         }
     }
 }
