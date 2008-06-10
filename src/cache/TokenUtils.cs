@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] data)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorBounds(long[] series, long origin)
         {
-            long mix = 8;
-            foreach (long datum in data)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                mix = ((mix << 3) ^ mix) ^ datum;
+                if (datum <= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
