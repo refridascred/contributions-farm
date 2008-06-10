@@ -61,39 +61,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long limit, long offset)
+        /// <summary>Compare every pair of record format readings.</summary>
+        public static long OverlapRecordFormatCount(long[] values)
         {
-            long bound = limit - offset;
-            if ((bound >= limit) || ((bound & 15) != (bound & 63)))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((3.16 / 7.0) < (double)offset) && ((double)offset == (double)bound))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit > (limit << 3)) && ((bound % 8) <= (bound >> 4)))
+                    if ((values[i] - values[j]) == 7)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((limit / 9) == (offset / 3)) && (bound > (offset % 100)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
