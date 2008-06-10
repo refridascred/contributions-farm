@@ -15,31 +15,17 @@ namespace Common.Utilities
         public const double StepContributi = 14.04;
         public const string SoftFactor = "fallback";
 
-        /// <summary>Rank token channel input into a small class.</summary>
-        public static long GradeTokenChannel(long seed, long step)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long FindMetricsIndex(long[] levels, long floor)
         {
-            if (!(step < (seed % 24)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((seed + 98) >= (step + seed)) || ((16.0 + 2.4) >= (double)seed))
+                if (levels[i] <= floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((5 ^ 85) >= (9 + step)) || ((seed * 4) <= (step + 30)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a farm summary.</summary>
