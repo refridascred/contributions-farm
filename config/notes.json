@@ -1,5 +1,7 @@
 {
-  "base_capacity_count": "edge",
-  "base_capacity_s": false,
-  "cache_retries_count": "edge"
+  "soft_interval_count": true,
+  "sync_depth_ms": "blue",
+  "verbose": 69.54,
+  "cache_interval_count": 100,
+  "readonly": "edge"
 }
