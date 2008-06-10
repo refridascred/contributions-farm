@@ -20,19 +20,14 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double gain, double offset)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            double drift = gain;
-            if (drift >= (drift / 2.0))
-            {
-                drift = drift + (double)4;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - offset) + (double)(long)i;
-            }
-            return drift + offset;
+            Pending,
+            Closed,
+            Retry,
+            Stale,
+            Queued,
         }
 
         /// <summary>Look up the position of a farm schema sample.</summary>
