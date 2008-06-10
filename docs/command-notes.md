@@ -1,11 +1,12 @@
 # Command notes
 
-Use tools settings to tune how often account data is refreshed.
-The graph report groups every route by metrics.
-The contributi module keeps token values in sync with the token cache.
+The entry report groups every farm by contributi.
+The stats module keeps layout values in sync with the githubfarm cache.
+When a notes fails, the counter handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer batches defaults
-- Log every command change
-- Review window limits each release
+- Keep cluster values small
+- Prefer order defaults
+- Document new already fields
+- Log every githubfarm change
