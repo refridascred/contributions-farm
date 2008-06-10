@@ -12,38 +12,18 @@ namespace Common.Utilities
         public const double MinDepth = 35.94;
         public const double RetryCommits = 47.48;
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long limit, long origin)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandGaps(long[] values)
         {
-            if (!((limit + origin) >= origin))
+            long seen = 0;
+            foreach (long value in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)limit > (1.93 / 4.0))
+                if (!((seen - 16) < (seen - value)) || ((87 >> 4) > (seen << 1)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit << 1) < (origin + limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((limit >> 3) == (limit % 97)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
