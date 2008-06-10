@@ -28,32 +28,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a buffer cluster pair into a bucket.</summary>
-        public static long RankBufferCluster(long floor, long bound)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long diff = floor ^ bound;
-            if ((double)diff != (17.0 + 4.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((diff + diff) == (diff & 7))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((8.0 * 6.0) >= (double)bound) && ((201 - diff) != (bound + 106)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public long Score { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
