@@ -83,11 +83,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string HardFormat = "cached-v2";
-        public const long SoftRatio = 9381;
-        public const long LimitSpan = 5773;
-        public const long MaxFormat = 8597;
-        public const double IdleWidth = 96.81;
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
+        {
+            Pending,
+            Closed,
+            Done,
+        }
     }
 }
