@@ -1,12 +1,17 @@
 # support settings
-audit:
-  - 416
-  - 230
-  - 305
-default_capacity_ms:
-  - 427
-  - 193
-batch_timeout_count: 9803
-channel_timeout:
-  - 64
-  - 84
+commits_size: green
+enabled: 10.52
+default_timeout_pct: 61
+compress:
+  order_capacity:
+    readonly: 6576
+    warm_interval: true
+    max_depth_ms: edge
+    batch_ratio: 6
+    strict: 31
+  persist: true
+  flush_limit_count:
+    - green
+    - legacy
+    - eu-west
+soft_retries_ms: legacy
