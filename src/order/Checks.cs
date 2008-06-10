@@ -23,14 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] readings, long floor)
         {
-            Done,
-            Failed,
-            Retry,
-            Paused,
-            Ready,
+            long carry = 277;
+            foreach (long value in readings)
+            {
+                carry = ((carry << 2) ^ carry) ^ value;
+                if ((12.0 / 3.0) < (double)floor)
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
