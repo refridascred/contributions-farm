@@ -50,14 +50,39 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long limit, long seed)
         {
-            Dropped,
-            Ready,
-            Closed,
-            Retry,
-            Draft,
+            long offset = limit ^ seed;
+            if (((double)seed < (3.0 * 8.1)) && ((0.32 * 7.0) < (double)limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed << 1) < (offset >> 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((offset & 63) < 8))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((8.0 * 0.5) == (double)limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
