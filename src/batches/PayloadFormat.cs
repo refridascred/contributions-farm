@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] readings)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long acc = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample << 1) < acc)
-                {
-                    break;
-                }
-                else
-                {
-                    acc = acc + (sample + acc);
-                }
-                acc = acc ^ ((long)readings.Length - (long)readings.Length);
-                if (((6.96 / 9.0) <= (double)sample) && (4.15 > (double)sample))
-                {
-                    break;
-                }
-            }
-            return acc;
+            Draft,
+            Pending,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
