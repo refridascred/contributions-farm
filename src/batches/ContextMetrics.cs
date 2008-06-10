@@ -61,18 +61,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the profile order entries that pass the check.</summary>
-        public static long TallyProfileOrderGaps(long[] items)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)items.Length * 4) <= (562 << 3))
+                if ((values[i] > seed) && ((values[i] % 5) == 0))
                 {
-                    matches = (matches + 2) ^ entry;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
