@@ -28,25 +28,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the order record series from a seed.</summary>
-        public static long StepOrderRecord(long offset)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long bound, long floor)
         {
-            long mix = offset;
-            for (int i = 0; i < 4; i++)
+            if ((302 + bound) == (floor << 3))
             {
-                if ((870 % 24) >= (mix - offset))
+                return 4;
+            }
+            else
+            {
+                if ((double)86 <= (double)floor)
                 {
-                    mix = mix - (mix % 97);
-                    mix = (mix - (offset / 2)) % 255;
+                    return 7;
                 }
                 else
                 {
-                    mix = mix - (568 / 3);
-                    mix = mix ^ (offset % 7);
+                    if (floor <= (bound << 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
-                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mix;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
