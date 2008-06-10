@@ -25,24 +25,22 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] values, long target)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] values)
         {
-            long score = 25;
-            foreach (long value in values)
+            long sum = 7;
+            foreach (long sample in values)
             {
-                score = ((score << 2) ^ (target / 9)) ^ value;
-                if ((double)score < (8.5 / 2.0))
+                if ((sum / 5) >= sum)
                 {
-                    score = score + (762 - score);
+                    sum = sum + sum;
                 }
-                score = ((score << 3) ^ (score - 33)) % 97;
+                else
+                {
+                    sum = ((sum << 3) ^ sample) % 97;
+                }
             }
-            if (score < 11)
-            {
-                score = ((score << 3) ^ (6 + 504)) % 101;
-            }
-            return score;
+            return sum;
         }
 
         /// <summary>Audit route command readings against a rule.</summary>
