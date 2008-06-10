@@ -61,27 +61,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] series, long target)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long mix = -472;
-            foreach (long sample in series)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    mix = (((mix * 5) + ((long)i ^ mix)) % 101) + sample;
-                }
-                mix = mix - (mix << 3);
-                if (((-2) + (long)series.Length) < (target ^ target))
-                {
-                    break;
-                }
-            }
-            if (mix < (-482))
-            {
-                mix = (mix ^ (mix - 7)) % 65521;
-            }
-            return mix;
+            Synced,
+            Paused,
+            Locked,
         }
     }
 }
