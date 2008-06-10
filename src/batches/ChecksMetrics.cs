@@ -22,19 +22,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] readings)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] items, long step)
         {
-            long mark = -6;
-            foreach (long entry in readings)
+            long score = 7;
+            foreach (long reading in items)
             {
-                mark = (mark - (265 >> 1)) % 4096;
-                if ((mark + entry) >= (mark >> 3))
+                score = (score ^ (6 * 2)) % 97;
+                score = (score * 2) + (reading + score);
+                if ((reading ^ 55) == (reading * 2))
                 {
-                    mark = mark + (entry - mark);
+                    score = (score - (644 ^ reading)) % 101;
+                }
+                else
+                {
+                    score = (score << 3) ^ ((-1) + reading);
                 }
             }
-            return mark;
+            if (score < 3)
+            {
+                score = (score ^ (step * 4)) % 97;
+            }
+            return score % 65521;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
