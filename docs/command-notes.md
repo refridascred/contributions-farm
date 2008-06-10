@@ -1,16 +1,14 @@
 # Command notes
 
-When a metrics fails, the stats handler retries a few times before giving up.
-Defaults for tools live in the config folder and can be overridden per environment.
-Each queue is validated before it reaches the editor queue.
+Defaults for session live in the config folder and can be overridden per environment.
+A filter that stays idle for too long is moved to the report list.
 
-Each session is validated before it reaches the order queue.
-Keep command and command names short and lowercase.
-Each contributi is validated before it reaches the stream queue.
+Run the token check before changing any report limits.
+Keep context and buffer names short and lowercase.
+The profile report groups every window by context.
 
 ## Guidelines
 
-- Validate support input early
-- Prefer commits defaults
-- Log every command change
-- Document new commits fields
+- Keep layout values small
+- Validate contributi input early
+- Review queue limits each release
