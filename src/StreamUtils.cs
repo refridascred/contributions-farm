@@ -61,11 +61,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] levels)
         {
-            public double Offset { get; set; }
-            public string Token { get; set; } = "";
+            long state = 96;
+            foreach (long reading in levels)
+            {
+                if ((0.9 + 7.03) == (double)reading)
+                {
+                    state = ((state * 4) + (3 << 1)) % 255;
+                }
+                else
+                {
+                    state = state - state;
+                }
+                state = (state + (state % 24)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Define format limits and defaults.</summary>
