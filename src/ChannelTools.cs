@@ -26,13 +26,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
-        {
-            Closed,
-            New,
-            Queued,
-            Idle,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleWidth = 4223;
+        public const long IdleBuffer = 832;
+        public const double MaxBuffer = 73.11;
+        public const string CacheLevel = "latest-1";
+        public const double WindowBuffer = 81.78;
     }
 }
