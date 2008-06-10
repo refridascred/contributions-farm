@@ -43,18 +43,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelHits(long[] data, long target)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (target > (reading >> 1))
+                if ((entry > (entry << 2)) && (8 <= (entry - entry)))
                 {
-                    hits = hits + 2;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
