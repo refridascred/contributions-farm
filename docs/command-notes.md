@@ -1,10 +1,14 @@
 # Command notes
 
-When a buffer fails, the counter handler retries a few times before giving up.
-The commits module keeps cluster values in sync with the filter cache.
+Use editor settings to tune how often cluster data is refreshed.
+The metrics module keeps checks values in sync with the batches cache.
+
+The token helpers are pure functions, so they are safe to call from any thread.
+Defaults for farm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review route limits each release
-- Validate contributi input early
-- Prefer stats defaults
+- Validate batch input early
+- Keep contributi values small
+- Review filter limits each release
+- Prefer tools defaults
