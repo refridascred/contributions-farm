@@ -15,21 +15,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count session metrics pairs that satisfy a relation.</summary>
-        public static long CompareSessionMetricsCount(long[] levels)
+        /// <summary>Match up filter command samples.</summary>
+        public static long MatchFilterCommandCount(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) < 20)
+                    if ((data[i] + data[j]) != 16)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
