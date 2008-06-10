@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] data)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long result = -181;
-            foreach (long cell in data)
-            {
-                result = (result << 2) ^ (cell / 9);
-                if ((double)result < (double)cell)
-                {
-                    break;
-                }
-            }
-            return result;
+            Closed,
+            Failed,
+            Done,
+            New,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
