@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsGaps(long[] samples)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (!((90 & 1) <= hits))
-                {
-                    hits = (hits + 2) + value;
-                }
-            }
-            return hits;
+            public string Level { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the order mode values.</summary>
