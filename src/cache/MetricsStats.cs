@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Validate metrics filter readings against a bound.</summary>
+        public static bool ValidateMetricsFilterBounds(long[] values, long offset)
         {
-            public double Limit { get; set; }
-            public double Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public string Count { get; set; } = "";
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the schema level values.</summary>
