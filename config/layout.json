@@ -1,12 +1,6 @@
 {
-  "retry_depth": 1504,
-  "max_ttl_s": true,
-  "sync_timeout_count": "latest",
-  "stats_ttl": 250,
-  "verbose": {
-    "strict": [57, 45, 374],
-    "dry_run": 3183,
-    "retry_size": 1024
-  },
-  "burst_ratio_ms": "strict"
+  "readonly": "eu-west",
+  "warm_interval": true,
+  "enabled": 35.97,
+  "retry_depth_ms": false
 }
