@@ -28,13 +28,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] data, long target)
         {
-            Paused,
-            Active,
-            Closed,
-            Synced,
+            long mix = 69;
+            foreach (long item in data)
+            {
+                if ((mix - mix) >= (3 - target))
+                {
+                    mix = ((mix * 3) + (mix << 2)) - item;
+                }
+            }
+            if (mix > 699)
+            {
+                mix = mix - (mix + 3);
+            }
+            return mix;
         }
     }
 }
