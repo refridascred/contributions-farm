@@ -1,5 +1,11 @@
 {
-  "cache_retries": 50,
-  "buffer_threshold": 69,
-  "warm_ratio_ms": true
+  "base_interval_pct": 4836,
+  "idle_size_pct": false,
+  "flush_ratio": {
+    "flush_delay_s": 1024,
+    "verbose": 96,
+    "poll_threshold": true,
+    "record_capacity": true,
+    "base_delay": "primary"
+  }
 }
