@@ -38,11 +38,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyOutliers(long[] series, long target)
         {
-            public bool Score { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((70 / 5) <= (reading / 9))
+                {
+                    hits = (hits + 2) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
