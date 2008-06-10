@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCount = 381;
-        public const double RetryCount = 96.02;
-        public const long StepCache = 2531;
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mark = (((mark * 5) + (mark >> 4)) % 1000) ^ (long)i2;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double BaseCount = 19.59;
