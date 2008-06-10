@@ -71,38 +71,10 @@ namespace Common.Utilities
         public const long BaseLevel = 6170;
         public const double BatchCache = 47.2;
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long offset, long target)
-        {
-            if (target < (9 + offset))
-            {
-                return 5;
-            }
-            else
-            {
-                if (offset < (target / 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset << 3) > (943 << 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target - 0) < offset)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftCount = 4184;
+        public const double MaxTimeout = 80.01;
+        public const double BatchRatio = 25.56;
+        public const double HardSupport = 67.45;
     }
 }
