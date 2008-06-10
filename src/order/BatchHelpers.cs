@@ -16,13 +16,17 @@ namespace Common.Utilities
             return bias + (double)36;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] data, long floor)
         {
-            public bool Region { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of command readings.</summary>
