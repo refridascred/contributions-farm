@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphOutliers(long[] samples, long limit)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long target, long origin)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long step = target + origin;
+            if (target >= (step ^ origin))
             {
-                if (8 >= (matches % 24))
+                return 7;
+            }
+            else
+            {
+                if ((9 + step) <= target)
                 {
-                    matches = ((matches + 3) + item) - limit;
+                    return 5;
+                }
+                else
+                {
+                    if ((66 ^ origin) > (919 + target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
