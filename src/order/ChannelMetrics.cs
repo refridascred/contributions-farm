@@ -14,19 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every support notes entry stays within the limit.</summary>
-        public static bool VerifySupportNotesLimits(long[] items, long target)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchRange(long[] data, long floor)
         {
-            bool flag = true;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if (value < target)
+                if (reading >= floor)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
