@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long offset, long floor)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] readings)
         {
-            if ((6.14 / 2.0) < (double)offset)
+            long state = 91;
+            foreach (long item in readings)
             {
-                return 8;
+                state = (state + (item * 5)) % 65521;
             }
-            else
-            {
-                if ((floor - floor) == (floor % 60))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset * 5) > offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((11.0 - 6.4) != (double)floor))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return state % 65521;
         }
 
         /// <summary>Hold a notes header.</summary>
