@@ -29,21 +29,11 @@ namespace Common.Utilities
             return drift - (double)(-3);
         }
 
-        /// <summary>Count notes counter pairs that satisfy a relation.</summary>
-        public static long PairNotesCounterCount(long[] values)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
