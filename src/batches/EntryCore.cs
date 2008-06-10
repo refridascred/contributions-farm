@@ -27,15 +27,12 @@ namespace Common.Utilities
         public const long LimitInterval = 6577;
         public const double CacheWidth = 76.17;
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double ratio, double span)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            double scale = ratio;
-            if (scale > ratio)
-            {
-                scale = scale + span;
-            }
-            return scale + 4.0;
+            public bool Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
