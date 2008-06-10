@@ -34,27 +34,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a filter buffer counter forward.</summary>
-        public static long RollFilterBuffer(long bound)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteBounds(long[] series, long offset)
         {
-            long sum = bound;
-            for (int i = 0; i < 22; i++)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                if (!((long)i >= (sum + 851)))
+                if (sample < offset)
                 {
-                    sum = (sum << 3) ^ (97 / 8);
+                    ready = false;
+                    break;
                 }
-                else
-                {
-                    sum = (sum ^ (bound + bound)) % 65521;
-                }
-                if (!((bound % 24) >= 603))
-                {
-                    sum = (sum - (long)i) % 4096;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
