@@ -58,11 +58,18 @@ namespace Common.Utilities
         public const long StepAlready = 8517;
         public const long BaseFactor = 2927;
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Audit already counter readings against a rule.</summary>
+        public static long MeasureAlreadyCounterHits(long[] samples)
         {
-            public long Flag { get; set; }
-            public bool Weight { get; set; }
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample + sample) < (113 / 3))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
