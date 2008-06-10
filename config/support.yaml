@@ -1,5 +1,18 @@
 # support settings
-default_delay: false
-batch_size_ms: 78.41
-cache_timeout: local
-cluster_delay: false
+idle_timeout_s: 52.82
+base_depth:
+  cache_timeout: 26
+  hard_capacity: 32
+  soft_interval: 500
+  flush_timeout_ms: standard
+  token_depth: green
+persist:
+  soft_capacity_ms:
+    retry_retries_pct: 98.81
+    burst_depth: 85
+    burst_timeout_pct: fallback
+    burst_size: true
+  idle_retries: local
+  batches_size: 8941
+verbose: 1924
+idle_delay_s: 250
