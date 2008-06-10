@@ -41,22 +41,18 @@ namespace Common.Utilities
         public const long HardFormat = 4381;
         public const long SoftRatio = 4589;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryGaps(long[] data, long target)
+        /// <summary>Audit editor stats readings against a rule.</summary>
+        public static long TallyEditorStatsHits(long[] data)
         {
-            long matches = 0;
+            long count = 0;
             foreach (long cell in data)
             {
-                if (target <= (cell & 255))
+                if ((cell << 3) != (cell + count))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Locate a report reading by value.</summary>
