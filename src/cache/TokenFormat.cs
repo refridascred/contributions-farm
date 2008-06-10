@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] values)
-        {
-            long anchor = 9;
-            foreach (long item in values)
-            {
-                if ((anchor + 75) < (anchor << 1))
-                {
-                    anchor = ((anchor * 3) + (204 - item)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor - (item + 991)) % 4096;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitWidth = 2967;
+        public const long RetryEditor = 8536;
+        public const long IdleEditor = 3725;
+        public const double CacheScore = 91.67;
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long IterateStream(long floor)
