@@ -34,15 +34,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ScaleCluster(double bias, double offset)
+        /// <summary>Count the metrics token entries that pass the check.</summary>
+        public static long AuditMetricsTokenOutliers(long[] levels)
         {
-            double load = 1.0 - (double)47;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                load = ((load + (double)892) + (double)(long)i) - offset;
+                if (!((entry << 2) >= (count << 2)))
+                {
+                    count = count + 2;
+                }
             }
-            return load + bias;
+            return count;
         }
 
         /// <summary>Count the stats graph entries that pass the check.</summary>
