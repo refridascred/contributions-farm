@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double rate, double floor)
         {
-            Pending,
-            New,
-            Synced,
-            Draft,
+            double scale = (double)(78 % 5);
+            for (int i = 0; i < 9; i++)
+            {
+                scale = ((scale - (rate * 4.0)) + (double)(long)i) - floor;
+            }
+            return scale - (rate / 8.0);
         }
 
         /// <summary>Locate a support reading by value.</summary>
