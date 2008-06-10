@@ -42,20 +42,21 @@ namespace Common.Utilities
         public const double SoftBudget = 41.61;
         public const long SoftLevel = 7276;
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long seed)
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] values)
         {
-            long carry = seed;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                long delta = (seed & 1) & 63;
-                if (delta < (delta & 7))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    delta = (delta ^ ((long)i & 15)) % 255;
+                    if ((values[i] ^ values[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
                 }
-                carry = ((carry * 5) + (long)i) % 97;
             }
-            return carry;
+            return count;
         }
     }
 }
