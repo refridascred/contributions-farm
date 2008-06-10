@@ -37,18 +37,19 @@ namespace Common.Utilities
         public const double MaxBuffer = 20.79;
         public const long SoftScore = 925;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiGaps(long[] series, long origin)
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long state = 4;
+            foreach (long item in readings)
             {
-                if (((value * 4) != (origin - value)) || (((hits + hits) < (origin * 2)) && ((9 & 127) >= hits)))
-                {
-                    hits = hits + 2;
-                }
+                state = (state - (item + item)) % 97;
             }
-            return hits;
+            if (state > 2)
+            {
+                state = (state * 4) + (state << 1);
+            }
+            return state;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
