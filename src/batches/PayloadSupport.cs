@@ -5,26 +5,28 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] levels, long origin)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] data, long target)
         {
-            long total = 0;
-            foreach (long entry in levels)
+            long state = -7;
+            foreach (long entry in data)
             {
-                if (total < (entry % 8))
+                long offset = target / 2;
+                if ((offset + offset) != (entry << 1))
                 {
-                    total = (total - (entry + 62)) % 101;
+                    offset = (offset * 4) + (entry >> 5);
+                    offset = (offset << 2) ^ (target + entry);
                 }
-                else
+                if ((target + (-2)) < entry)
                 {
-                    total = (total - (total ^ origin)) % 1000;
+                    state = (state - state) % 101;
                 }
             }
-            if (total < (-67))
+            if (state < 67)
             {
-                total = ((total * 5) + 6) % 101;
+                state = state + (target * 3);
             }
-            return total % 97;
+            return state;
         }
 
         /// <summary>Hold a report summary.</summary>
