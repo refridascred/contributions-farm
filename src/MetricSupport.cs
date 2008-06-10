@@ -21,19 +21,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next layout profile value from a seed.</summary>
-        public static long IterateLayoutProfile(long origin)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long score = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((9 << 3) >= (origin ^ origin))
-                {
-                    continue;
-                }
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            public long Flag { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
