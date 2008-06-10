@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BurstChannel = 58.61;
-        public const long WindowChannel = 7211;
-        public const long DefaultChannel = 5357;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyOutliers(long[] values, long seed)
+        {
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if (0 > (matches >> 5))
+                {
+                    matches = ((matches + 1) + item) + seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long MeasureSchemaMatches(long[] values, long bound)
