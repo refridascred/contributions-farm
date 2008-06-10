@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Blend two record profile measurements.</summary>
-        public static double BlendRecordProfile(double rate, double span)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            double bias = rate;
-            return (bias + 0.59) + span;
+            public double Limit { get; set; }
+            public double Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the schema level values.</summary>
