@@ -47,31 +47,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a batches order value against two limits.</summary>
-        public static long BucketBatchesOrder(long limit, long origin)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            if ((origin / 3) < origin)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((9.75 + 8.5) <= (double)limit)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit + origin) < (limit << 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public bool Rank { get; set; }
+            public long Level { get; set; }
         }
     }
 }
