@@ -43,20 +43,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long bound)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long acc = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    acc = ((acc ^ (bound + 8)) % 1000) ^ (long)i2;
-                    acc = (acc + 93) % 101;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            public long Score { get; set; }
+            public string Flag { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the payload kind values.</summary>
