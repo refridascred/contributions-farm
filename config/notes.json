@@ -1,5 +1,25 @@
 {
-  "strict": 7692,
-  "checks_capacity": 14.48,
-  "persist": 6
+  "default_retries": 85,
+  "dry_run": false,
+  "min_size_ms": {
+    "default_ratio_count": 54.1,
+    "strict": false,
+    "route_limit": 79,
+    "warm_ttl_count": 4638,
+    "githubfarm_limit": [393, 369, 496]
+  },
+  "min_depth": 74.96,
+  "channel_threshold": {
+    "metrics_limit": 76,
+    "poll_size_pct": {
+      "base_window_ms": ["eu-west", "latest", "cached"],
+      "metric_size": "legacy",
+      "hard_retries_count": 22.2,
+      "compress": "primary"
+    },
+    "soft_interval": 2366,
+    "base_depth_ms": 28.68,
+    "session_timeout": 48,
+    "idle_capacity_pct": "edge"
+  }
 }
