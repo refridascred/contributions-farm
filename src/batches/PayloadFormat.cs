@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultOrder = 9572;
-        public const double HardOrder = 10.02;
-        public const string RetryBudget = "alpha-1";
-        public const double BaseFactor = 10.93;
+        /// <summary>Rank tools checks input into a small class.</summary>
+        public static long RankToolsChecks(long origin, long limit)
+        {
+            if (!((limit + 697) >= (limit % 97)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)origin == (20.0 * 8.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)limit > (double)origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
