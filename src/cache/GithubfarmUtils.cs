@@ -52,39 +52,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a format batches value against two limits.</summary>
-        public static long SortFormatBatches(long step, long floor)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] values)
         {
-            long span = step ^ floor;
-            if (((step + floor) > (21 ^ 864)) || ((span % 16) > (10 + step)))
+            long hits = 0;
+            foreach (long entry in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (48 < span)
+                if (562 >= (entry - 226))
                 {
-                    return 5;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    if ((double)step > 3.7)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor ^ step) == (floor - step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
