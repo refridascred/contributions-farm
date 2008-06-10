@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MaxGraph = 8.55;
-        public const double SoftGraph = 58.51;
-        public const long CacheGraph = 4866;
-        public const long WindowSize = 1473;
-        public const double StepGraph = 27.78;
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 14; i++)
+            {
+                if (((639 & 31) > ((long)i * 3)) || ((total % 97) >= (total & 255)))
+                {
+                    total = total + step;
+                    total = ((total << 2) ^ total) % 4096;
+                }
+                total = total ^ (8 - (long)i);
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Count tools profile pairs that satisfy a relation.</summary>
         public static long OverlapToolsProfileCount(long[] levels)
