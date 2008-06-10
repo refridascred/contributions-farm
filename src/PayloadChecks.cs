@@ -36,18 +36,14 @@ namespace Common.Utilities
         public const long CacheBudget = 3970;
         public const string BurstStats = "cached-v2";
 
-        /// <summary>Measure how many metrics githubfarm samples are out of range.</summary>
-        public static long AuditMetricsGithubfarmOutliers(long[] series)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((datum * 5) < hits)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Draft,
+            Locked,
+            Stale,
+            Queued,
+            Retry,
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
