@@ -59,13 +59,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] values, long bound)
         {
-            Paused,
-            Stale,
-            Dropped,
-            Queued,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < bound) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a editor reading.</summary>
