@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] samples, long bound)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 0;
+            foreach (long sample in readings)
             {
-                if ((samples[i] == bound) && ((samples[i] % 5) == 0))
+                if ((sample << 1) < acc)
                 {
-                    return (long)i;
+                    break;
+                }
+                else
+                {
+                    acc = acc + (sample + acc);
+                }
+                acc = acc ^ ((long)readings.Length - (long)readings.Length);
+                if (((6.96 / 9.0) <= (double)sample) && (4.15 > (double)sample))
+                {
+                    break;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
