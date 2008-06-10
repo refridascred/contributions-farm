@@ -100,22 +100,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] items)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiRange(long[] data, long bound)
         {
-            long state = 2;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if ((10 * 2) != (reading % 64))
+                if (datum > bound)
                 {
-                    state = (state + (reading + state)) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            if (state < 0)
-            {
-                state = state ^ (state >> 3);
-            }
-            return state;
+            return ok;
         }
     }
 }
