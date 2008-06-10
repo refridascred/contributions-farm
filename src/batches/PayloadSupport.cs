@@ -27,19 +27,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double SmoothGithubfarm(double ratio, double offset)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] items, long seed)
         {
-            double ratio2 = ratio;
-            if (ratio2 >= ratio2)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                ratio2 = ratio2 - (ratio + ratio2);
+                if (datum >= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 + (offset - ratio)) + (double)(long)i;
-            }
-            return ratio2 - (ratio - offset);
+            return ok;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
