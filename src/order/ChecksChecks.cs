@@ -22,16 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next filter payload value from a seed.</summary>
-        public static long SeriesFilterPayload(long target)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long total = target;
-            for (int i = 0; i < 17; i++)
-            {
-                total = total + ((long)i << 1);
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            Pending,
+            Dropped,
+            Closed,
+            Synced,
+            Stale,
         }
 
         /// <summary>Hold a graph snapshot.</summary>
