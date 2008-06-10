@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] readings)
+        /// <summary>Check that every batches checks entry stays within the limit.</summary>
+        public static bool ValidateBatchesChecksBounds(long[] samples, long floor)
         {
-            long state = 91;
-            foreach (long item in readings)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                state = (state + (item * 5)) % 65521;
+                if (entry <= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state % 65521;
+            return ready;
         }
 
         /// <summary>Define account limits and defaults.</summary>
