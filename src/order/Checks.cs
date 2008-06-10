@@ -72,17 +72,19 @@ namespace Common.Utilities
             return rate + (span * 9.56);
         }
 
-        /// <summary>Find the first channel filter entry that matches the target.</summary>
-        public static long SeekChannelFilterIndex(long[] values, long seed)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileLimits(long[] values, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if (values[i] >= seed)
+                if (datum >= seed)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
