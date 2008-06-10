@@ -1,20 +1,7 @@
 {
-  "enabled": false,
-  "base_retries_ms": ["strict", "fallback"],
-  "format_limit": [366, 323, 62, 274],
-  "notes_depth": {
-    "tools_retries": 71,
-    "editor_capacity": {
-      "verbose": 9384,
-      "checks_delay": 5484,
-      "flush_threshold_count": 34.82,
-      "checks_size": "cached",
-      "queue_window": 5.92
-    },
-    "idle_capacity": true,
-    "githubfarm_ttl": "strict",
-    "verbose": 67.44,
-    "dry_run": true
-  },
-  "soft_interval": "legacy"
+  "entry_timeout": 27.27,
+  "compress": 100,
+  "report_ratio": 18.18,
+  "account_retries": "cached",
+  "soft_retries_count": 40
 }
