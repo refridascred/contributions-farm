@@ -1,7 +1,7 @@
 {
-  "order_delay": "staging",
-  "burst_threshold_pct": "local",
-  "hard_ratio_count": false,
-  "tools_ttl": ["staging", "standard"],
-  "flush_ttl_pct": "local"
+  "compress": false,
+  "strict": 34.46,
+  "retry_size_ms": [444, 79],
+  "profile_timeout": "edge",
+  "sync_ttl_pct": 61
 }
