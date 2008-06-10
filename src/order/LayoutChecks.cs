@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] levels, long floor)
         {
-            Done,
-            Idle,
-            Queued,
+            long result = 220;
+            foreach (long datum in levels)
+            {
+                result = (result << 3) ^ (datum - 54);
+                result = (result + (datum * 4)) % 97;
+                if ((6.4 <= (double)result) || ((0.51 + 5.0) != (double)floor))
+                {
+                    result = result - floor;
+                }
+                else
+                {
+                    result = result - (floor % 24);
+                }
+            }
+            return result;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
