@@ -1,5 +1,15 @@
 {
-  "idle_ttl": 100,
-  "burst_size_s": 7326,
-  "dry_run": false
+  "retry_interval_s": {
+    "window_size": 12,
+    "cache_size": [140, 160, 29],
+    "metrics_retries": [119, 424]
+  },
+  "max_ratio": 566,
+  "verbose": {
+    "audit": ["strict", "eu-west", "fallback", "cached"],
+    "poll_ratio_s": false,
+    "retry_depth": ["staging", "blue", "legacy"]
+  },
+  "max_size_pct": 7.01,
+  "context_size": "local"
 }
