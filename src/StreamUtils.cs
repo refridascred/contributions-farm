@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the graph counter series from a seed.</summary>
-        public static long IterateGraphCounter(long origin)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportGaps(long[] levels)
         {
-            long acc = origin;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                acc = ((acc * 5) + acc) % 101;
-                acc = ((acc * 3) + (long)i) % 65521;
+                if (((1.8 + 7.2) == (double)seen) && ((datum >> 2) >= (datum - datum)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
