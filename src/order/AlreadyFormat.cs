@@ -59,17 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a entry route sample.</summary>
-        public static long SeekEntryRouteIndex(long[] data, long bound)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmMatches(long[] levels, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (data[i] >= bound)
+                if ((1.6 / 3.0) > (5.8 * 12.0))
                 {
-                    return (long)i;
+                    tally = ((tally + 3) - datum) - floor;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
