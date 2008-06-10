@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] readings, long floor)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long OverlapReportCount(long[] items)
         {
-            long total = 982;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((total & 15) != (222 ^ total)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = ((total + floor) % 97) + item;
+                    if ((items[i] - items[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (total > 71)
-            {
-                total = (total + (floor + total)) % 255;
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Rank context graph input into a small class.</summary>
