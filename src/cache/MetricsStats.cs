@@ -41,19 +41,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmRange(long[] levels, long seed)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double AdjustBuffer(double bias, double floor)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            double weight = (double)(3 * 2);
+            if (weight > (weight * 7.7))
             {
-                if (item != seed)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = (weight - bias) + floor;
             }
-            return valid;
+            return weight + (weight * 9.7);
         }
 
         /// <summary>Roll a counter commits counter forward.</summary>
