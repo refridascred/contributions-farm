@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long limit, long origin)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] data, long step)
         {
-            long lane = limit - origin;
-            if ((lane - limit) > (origin >> 3))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)limit <= (double)770)
+                if ((data[i] <= step) && ((data[i] % 2) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
