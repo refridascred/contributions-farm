@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a tools buffer value against two limits.</summary>
-        public static long BucketToolsBuffer(long target, long seed)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long lane = target - seed;
-            if ((lane * 2) < 797)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((lane ^ 1) > (lane + target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((-780) > (lane - lane))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Count record order pairs that satisfy a relation.</summary>
