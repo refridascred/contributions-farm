@@ -51,21 +51,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long PairRecordCount(long[] data)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long seed, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((216 * 5) <= (target + seed))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (target < seed)
                 {
-                    if ((data[i] - data[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
     }
 }
