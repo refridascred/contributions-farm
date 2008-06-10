@@ -51,22 +51,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of record format readings.</summary>
-        public static long OverlapRecordFormatCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string CacheSpan = "alpha-v2";
+        public const string StepSupport = "staging-1";
+        public const string MaxSupport = "alpha-v2";
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool CheckProfileLimits(long[] values, long seed)
