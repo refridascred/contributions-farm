@@ -12,17 +12,21 @@ namespace Common.Utilities
         public const double CacheScore = 97.41;
         public const long BurstSize = 414;
 
-        /// <summary>Iterate the commits stats series from a seed.</summary>
-        public static long SeriesCommitsStats(long origin)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] items)
         {
-            long state = origin;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (state - (origin + origin)) % 101;
-                state = ((state * 4) + (origin * 2)) % 101;
-                state = ((state * 4) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
