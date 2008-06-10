@@ -41,12 +41,15 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long offset)
         {
-            public string Stamp { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public double Total { get; set; }
+            long mix = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Match up session samples.</summary>
