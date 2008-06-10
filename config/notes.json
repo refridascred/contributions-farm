@@ -1,7 +1,6 @@
 {
-  "cache_window_s": "local",
-  "layout_timeout": "staging",
-  "counter_window": "eu-west",
-  "base_delay_count": false,
-  "buffer_size": "legacy"
+  "already_retries": [81, 405],
+  "flush_depth": 92,
+  "cache_threshold_ms": "green",
+  "verbose": "local"
 }
