@@ -15,39 +15,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long offset, long target)
+        /// <summary>Look up the position of a entry contributi sample.</summary>
+        public static long SeekEntryContributiIndex(long[] levels, long bound)
         {
-            long delta = offset - target;
-            if (delta < offset)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset < (4.85 / 4.0))
+                if ((levels[i] >= bound) && ((levels[i] % 3) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (delta > (offset ^ delta))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((delta * 2) == (1 - target)) && ((double)delta < (7.5 * 3.33)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
