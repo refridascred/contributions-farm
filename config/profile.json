@@ -1,6 +1,24 @@
 {
-  "route_window": "primary",
-  "default_interval_pct": ["open", "green", "local", "primary"],
-  "filter_threshold": 29,
-  "checks_delay": "primary"
+  "base_timeout_ms": {
+    "compress": 54.29,
+    "dry_run": {
+      "flush_ttl_count": false,
+      "sync_threshold_ms": 26.64,
+      "record_limit": "open",
+      "persist": "strict",
+      "burst_threshold_count": 250
+    },
+    "batches_capacity": "primary",
+    "hard_depth_count": false,
+    "base_timeout_s": ["cached", "edge"]
+  },
+  "context_retries": 91,
+  "batch_timeout_s": "green",
+  "readonly": false,
+  "cache_limit_s": {
+    "githubfarm_interval": [441, 331, 378],
+    "compress": ["stable", "latest", "staging"],
+    "warm_interval_ms": 91.48
+  },
+  "batch_capacity_s": 100
 }
