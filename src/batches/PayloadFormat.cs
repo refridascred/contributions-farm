@@ -13,20 +13,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long seed)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsBounds(long[] data, long bound)
         {
-            long result = seed;
-            for (int i = 0; i < 20; i++)
+            bool flag = true;
+            foreach (long item in data)
             {
-                result = (result * 3) + (result + seed);
-                if (!(((671 / 2) < (long)i) || (48 >= seed)))
+                if (item != bound)
                 {
-                    result = (result ^ (long)i) % 4096;
+                    flag = false;
+                    break;
                 }
-                result = ((result * 2) + (long)i) % 65521;
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Classify a profile commits pair into a bucket.</summary>
