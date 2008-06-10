@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long step, long floor)
-        {
-            long slot = step + floor;
-            if ((double)130 >= (double)step)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((12 + 38) <= step) || ((floor - slot) >= ((-5) ^ floor)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (slot > (floor - step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftFactor = 9572;
+        public const string BaseRoute = "stable-edge";
+        public const long BurstLevel = 563;
+        public const long BurstInterval = 5656;
+        public const long WindowBudget = 9344;
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long BucketMetric(long seed, long seed2)
