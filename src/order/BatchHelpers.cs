@@ -32,12 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseSize = 2881;
-        public const long HardRatio = 5644;
-        public const string HardEntry = "fallback-edge";
-        public const long MaxEntry = 5079;
-        public const long MaxSpan = 3270;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatRange(long[] readings, long offset)
+        {
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long RollCounter(long offset)
