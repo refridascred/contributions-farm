@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] values, long origin)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long sum = 66;
-            foreach (long sample in values)
-            {
-                sum = (sum * 2) + (origin + sample);
-            }
-            if (sum < (-380))
-            {
-                sum = (sum << 3) ^ ((long)values.Length * 3);
-            }
-            return sum;
+            public double Stamp { get; set; }
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
