@@ -1,5 +1,20 @@
 # entry settings
-verbose: 92
-cache_delay: eu-west
-buffer_interval: blue
-support_limit: eu-west
+verbose:
+  - staging
+  - edge
+  - fallback
+sync_timeout_pct:
+  flush_threshold_ms:
+    - green
+    - primary
+    - eu-west
+  default_ratio_ms: 13
+  hard_threshold_count: 100
+  default_limit:
+    context_delay: 65.54
+    persist: 11
+    token_retries: 100
+    compress: 500
+    payload_depth: true
+min_timeout_s: 94
+flush_threshold_ms: true
