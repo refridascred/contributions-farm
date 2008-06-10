@@ -50,14 +50,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            Pending,
-            Active,
-            Queued,
-            Retry,
-            Failed,
+            public bool Score { get; set; }
+            public long Level { get; set; }
         }
     }
 }
