@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long floor)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long FindTokenIndex(long[] data, long offset)
         {
-            long mix = floor;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                if (data[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
