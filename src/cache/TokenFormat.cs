@@ -24,16 +24,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] data)
-        {
-            long state = 435;
-            foreach (long datum in data)
-            {
-                state = ((state << 2) ^ (state % 8)) + datum;
-                state = (state + (state % 10)) % 4096;
-            }
-            return state;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseTimeout = 8936;
+        public const long MaxWidth = 9540;
+        public const long StepOrder = 8227;
+        public const long MinTimeout = 1689;
+        public const long BurstDepth = 8901;
     }
 }
