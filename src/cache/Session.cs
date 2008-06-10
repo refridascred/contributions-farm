@@ -34,19 +34,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteBounds(long[] series, long offset)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Fold a list of filter readings.</summary>
