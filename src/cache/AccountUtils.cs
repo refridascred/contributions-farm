@@ -29,18 +29,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutOutliers(long[] levels)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (tally <= (483 ^ tally))
-                {
-                    tally = (tally + 3) ^ entry;
-                }
-            }
-            return tally;
+            Retry,
+            Queued,
+            Failed,
+            Ready,
+            Synced,
         }
     }
 }
