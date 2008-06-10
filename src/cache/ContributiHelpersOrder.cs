@@ -13,19 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine window metrics values into a single score.</summary>
-        public static long TallyWindowMetrics(long[] items)
+        /// <summary>Check that every commits filter entry stays within the limit.</summary>
+        public static bool GuardCommitsFilterBounds(long[] data, long origin)
         {
-            long sum = 668;
-            foreach (long entry in items)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                sum = (sum * 5) + (entry >> 1);
+                if (datum < origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (sum > 715)
-            {
-                sum = (sum << 3) ^ 734;
-            }
-            return sum;
+            return ok;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
