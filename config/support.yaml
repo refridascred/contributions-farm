@@ -1,28 +1,13 @@
 # support settings
-max_threshold: 4177
-cache_threshold_count: 5692
-min_size: true
-token_threshold:
-  - 132
-  - 494
-  - 403
-  - 323
-batch_timeout:
-  compress: false
-  dry_run: 1024
-  base_capacity:
-    sync_ratio: true
-    verbose: 43
-    audit: 925
-    hard_limit_ms: open
-    batch_limit_s: primary
-    buffer_limit: green
-  persist: false
-  burst_interval_count: false
-  default_delay_ms: fallback
-route_size:
-  poll_delay: blue
-  token_size: 500
-  persist: 13.3
-  verbose: 41
-  cache_timeout: legacy
+retry_delay_s:
+  - 63
+  - 288
+retry_delay_count: true
+enabled: stable
+batch_limit: 37
+min_delay:
+  entry_ttl: 54.37
+  flush_interval: 963
+  channel_retries: latest
+  default_capacity_s: strict
+record_delay: cached
