@@ -1,14 +1,11 @@
 # Command notes
 
-Keep notes and cache names short and lowercase.
-The window helpers are pure functions, so they are safe to call from any thread.
-
-A metric that stays idle for too long is moved to the buffer list.
-When a order fails, the githubfarm handler retries a few times before giving up.
-The profile module keeps farm values in sync with the schema cache.
+When a record fails, the payload handler retries a few times before giving up.
+When a session fails, the layout handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep githubfarm values small
-- Prefer window defaults
-- Document new graph fields
+- Validate session input early
+- Review stats limits each release
+- Log every session change
+- Keep token values small
