@@ -63,21 +63,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] samples)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Paused,
+            New,
+            Done,
         }
     }
 }
