@@ -59,11 +59,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BaseScore = 61.21;
-        public const string SoftDepth = "primary-1";
-        public const string WindowBatch = "staging-edge";
-        public const string BurstBatch = "primary-1";
-        public const long BurstInterval = 6706;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheMetrics = 4770;
+        public const long IdleMetrics = 6470;
+        public const long DefaultMetrics = 4660;
+        public const long MaxMetrics = 1977;
+        public const string SoftRatio = "alpha";
     }
 }
