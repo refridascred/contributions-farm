@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long WindowChannel = 7211;
         public const long DefaultChannel = 5357;
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] items)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaMatches(long[] values, long bound)
         {
-            long score = 377;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                score = ((score << 3) ^ (cell ^ (long)items.Length)) % 255;
+                if (((long)values.Length * 2) >= (4 + datum))
+                {
+                    tally = (tally + 2) - bound;
+                }
             }
-            return score % 65521;
+            return tally;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
