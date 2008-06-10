@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] items, long floor)
-        {
-            long result = 44;
-            foreach (long item in items)
-            {
-                if (4 < (floor << 2))
-                {
-                    result = ((result ^ ((-8) & 63)) % 101) ^ item;
-                }
-            }
-            if (result < 348)
-            {
-                result = (result - (floor / 4)) % 255;
-            }
-            return result;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstDepth = 1759;
+        public const string MinBudget = "standard-1";
+        public const long DefaultGithubfarm = 3980;
+        public const long IdleGithubfarm = 2189;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long MeasureWindowGaps(long[] samples, long floor)
