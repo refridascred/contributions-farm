@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsOutliers(long[] levels)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long sum = 3;
+            foreach (long cell in samples)
             {
-                if (((double)sample > (6.2 - 1.67)) || ((sample + sample) <= (count >> 5)))
+                if (72 > (cell + sum))
                 {
-                    count = count + 1;
+                    sum = sum ^ (cell + 79);
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Hold a account snapshot.</summary>
