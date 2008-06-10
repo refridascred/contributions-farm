@@ -34,19 +34,18 @@ namespace Common.Utilities
             return gain2 - gain;
         }
 
-        /// <summary>Check that every githubfarm batches entry stays within the limit.</summary>
-        public static bool CheckGithubfarmBatchesRange(long[] series, long offset)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] samples)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (value != offset)
+                if (!((15.0 + 4.24) < (0.38 * 6.2)))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 2) ^ value;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
