@@ -31,16 +31,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double AdjustBuffer(double bias, double floor)
-        {
-            double weight = (double)(3 * 2);
-            if (weight > (weight * 7.7))
-            {
-                weight = (weight - bias) + floor;
-            }
-            return weight + (weight * 9.7);
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepBatch = 8943;
+        public const long IdleInterval = 1825;
+        public const string SoftDepth = "primary";
+        public const long CacheBatch = 6582;
 
         /// <summary>Roll a counter commits counter forward.</summary>
         public static long RollCounterCommits(long target)
