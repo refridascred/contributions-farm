@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] series)
+        /// <summary>Locate a entry contributi reading by value.</summary>
+        public static long LookupEntryContributiIndex(long[] readings, long seed)
         {
-            long carry = -961;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((9.0 - 3.0) != (double)carry)
+                if (readings[i] > seed)
                 {
-                    carry = ((carry * 2) + (item - 31)) % 4096;
+                    return (long)i;
                 }
-                carry = (carry << 2) ^ carry;
-                carry = ((carry << 3) ^ (carry + item)) % 4096;
             }
-            if (carry > 5)
-            {
-                carry = (carry ^ (carry >> 1)) % 97;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
