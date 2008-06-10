@@ -51,17 +51,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] values, long target)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Synced,
+            Failed,
+            Locked,
+            Stale,
         }
 
         /// <summary>Describe the editor kind values.</summary>
