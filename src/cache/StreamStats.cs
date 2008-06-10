@@ -27,16 +27,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long seed)
+        /// <summary>Measure how many notes metrics samples are out of range.</summary>
+        public static long TallyNotesMetricsOutliers(long[] series, long floor)
         {
-            long result = seed;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                result = (result ^ (418 * 3)) % 101;
-                result = ((result * 5) + (long)i) % 97;
+                if ((162 >> 5) <= (floor & 3))
+                {
+                    seen = (seen + 1) + entry;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Count support cluster pairs that satisfy a relation.</summary>
