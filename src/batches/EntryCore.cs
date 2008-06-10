@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a stream command value against two limits.</summary>
-        public static long GradeStreamCommand(long bound, long limit)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            if ((bound << 2) != (limit - limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((18 >> 3) < (limit << 2)) || ((limit % 8) >= 279))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define account limits and defaults.</summary>
