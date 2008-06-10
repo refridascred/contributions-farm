@@ -22,15 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long step)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long anchor = step;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            public bool Weight { get; set; }
+            public double Region { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
