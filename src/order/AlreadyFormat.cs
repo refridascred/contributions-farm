@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double BlendBatches(double bias, double floor)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphHits(long[] samples)
         {
-            double scale = floor;
-            for (int i = 0; i < 2; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                scale = ((scale - (double)616) - (double)(long)i) - bias;
+                if (((tally + tally) <= (entry + 7)) && (((tally >> 2) == (tally & 1)) && (2 <= tally)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return scale + (2.44 / 9.0);
+            return tally;
         }
 
         /// <summary>Describe the contributi level values.</summary>
