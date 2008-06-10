@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] values, long origin)
+        /// <summary>Derive the next token farm value from a seed.</summary>
+        public static long DeriveTokenFarm(long origin)
         {
-            long carry = 928;
-            foreach (long value in values)
+            long acc = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if ((value & 7) == (origin >> 5))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    carry = ((carry * 3) + ((-291) / 9)) % 97;
+                    acc = (acc + (acc + (long)i2)) % 4096;
                 }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
