@@ -20,31 +20,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate route context samples.</summary>
-        public static long FoldRouteContext(long[] values)
-        {
-            long carry = 23;
-            foreach (long reading in values)
-            {
-                if ((carry % 10) == (carry - carry))
-                {
-                    carry = carry ^ carry;
-                }
-                else
-                {
-                    carry = (carry * 4) + (carry + carry);
-                }
-                if ((carry + reading) != (88 << 2))
-                {
-                    carry = (carry ^ (reading + reading)) % 65521;
-                }
-            }
-            if (carry > 9)
-            {
-                carry = carry - (carry - carry);
-            }
-            return carry;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string HardGraph = "cached";
+        public const double LimitTimeout = 43.66;
+        public const long RetrySpan = 5252;
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
