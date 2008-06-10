@@ -28,12 +28,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Count payload profile pairs that satisfy a relation.</summary>
+        public static long MatchPayloadProfileCount(long[] samples)
         {
-            public long Count { get; set; }
-            public long Score { get; set; }
-            public bool Owner { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
