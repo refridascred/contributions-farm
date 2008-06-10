@@ -46,19 +46,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] levels)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] data, long floor)
         {
-            long total = -54;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total - (total + total)) % 65521) - item;
+                if ((data[i] <= floor) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (total > (-8))
-            {
-                total = ((total * 3) + (3 ^ total)) % 4096;
-            }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Describe the window class values.</summary>
