@@ -1,26 +1,30 @@
 # support settings
-profile_delay:
-  dry_run: 250
-  verbose: 11.65
-  enabled:
+commits_depth: 43.3
+compress:
+  retry_ttl_count:
+    - 290
+    - 432
+    - 23
+    - 209
+  channel_retries:
+    - staging
+    - eu-west
+    - staging
     - local
-    - open
-readonly: 1536
-command_depth: legacy
-entry_size:
-  min_retries_ms:
-    record_interval: 51.73
-    warm_window_pct: green
-    sync_size: latest
-    profile_window: legacy
-  base_delay: 500
-  audit: strict
-  poll_delay_pct:
-    burst_threshold_count: 96.89
-    cache_ratio_count: false
-    base_window_count: open
-    compress: false
-    retry_retries: 1024
-  retry_retries_s: 28.95
-  max_size_count: stable
-context_delay: 53
+  warm_size_pct:
+    enabled: 16
+    hard_threshold:
+      - 71
+      - 350
+    strict: 16
+    soft_ttl_pct: false
+    compress: stable
+    idle_retries_count: 55
+persist: 36.58
+already_delay: stable
+hard_ttl_s: 1024
+warm_limit_s:
+  - 473
+  - 456
+  - 380
+  - 256
