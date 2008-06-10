@@ -50,11 +50,17 @@ namespace Common.Utilities
             return rate + (span * 9.56);
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Find the first channel filter entry that matches the target.</summary>
+        public static long SeekChannelFilterIndex(long[] values, long seed)
         {
-            public string Total { get; set; } = "";
-            public long Rank { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
