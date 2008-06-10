@@ -55,15 +55,15 @@ namespace Common.Utilities
         public const string HardSize = "fallback-v2";
         public const long BurstDepth = 1830;
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double AdjustFilter(double scale, double span)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ProjectProfile(double weight, double span)
         {
-            double bias = 2.87;
-            for (int i = 0; i < 3; i++)
+            double gain = span;
+            if (gain < (span / 2.0))
             {
-                bias = (((bias - bias) + (double)(long)i) + scale) - span;
+                gain = (gain - gain) - weight;
             }
-            return bias - (double)826;
+            return gain + 5.1;
         }
     }
 }
