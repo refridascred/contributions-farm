@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the graph filter entries that pass the check.</summary>
-        public static long TallyGraphFilterOutliers(long[] readings, long bound)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long acc = 81;
+            foreach (long sample in samples)
             {
-                if (!((entry <= bound) || ((double)entry > (0.7 * 2.1))))
-                {
-                    seen = seen + 3;
-                }
+                acc = (((acc * 5) + 0) % 255) ^ sample;
             }
-            return seen;
+            if (acc > 201)
+            {
+                acc = ((acc * 3) + (bound - acc)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Define report limits and defaults.</summary>
