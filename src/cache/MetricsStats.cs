@@ -19,13 +19,17 @@ namespace Common.Utilities
         public const long CacheFactor = 3271;
         public const long IdleRecord = 2190;
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] values, long origin)
         {
-            Failed,
-            Synced,
-            Ready,
-            Dropped,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
