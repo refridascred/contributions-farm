@@ -56,17 +56,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] samples, long bound)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= bound) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Mode { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a metric summary.</summary>
