@@ -38,19 +38,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] items, long step)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] readings)
         {
-            long acc = 1;
-            foreach (long value in items)
+            long state = 45;
+            foreach (long value in readings)
             {
-                acc = (acc ^ step) % 4096;
-                if (!((value + acc) <= (acc & 255)))
+                if ((state - value) >= state)
                 {
-                    acc = (acc - acc) % 65521;
+                    state = state ^ (state * 3);
+                }
+                if (value < (state + value))
+                {
+                    state = ((state * 4) + (value + value)) % 255;
+                    break;
+                }
+                else
+                {
+                    state = state - (0 + 9);
+                }
+                state = (state << 3) ^ (state / 6);
+                if ((state ^ value) > state)
+                {
+                    break;
                 }
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
