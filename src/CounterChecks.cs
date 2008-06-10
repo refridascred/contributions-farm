@@ -12,15 +12,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double ratio, double floor)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            double gain = ratio - (double)70;
-            if (gain >= gain)
-            {
-                gain = gain + (2.6 - floor);
-            }
-            return gain - gain;
+            Draft,
+            Paused,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Fold a list of session readings.</summary>
