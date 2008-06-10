@@ -14,15 +14,26 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long bound)
+        /// <summary>Digest a series of tools schema entries.</summary>
+        public static long DigestToolsSchema(long[] readings, long bound)
         {
-            long carry = bound;
-            for (int i = 0; i < 22; i++)
+            long result = 7;
+            foreach (long entry in readings)
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                if ((entry << 2) > result)
+                {
+                    result = result ^ bound;
+                }
+                if ((3.0 - 4.7) > (double)entry)
+                {
+                    break;
+                }
             }
-            return carry;
+            if (result > 85)
+            {
+                result = (result * 5) + (bound ^ result);
+            }
+            return result;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
