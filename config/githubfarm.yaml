@@ -1,27 +1,7 @@
 # githubfarm settings
-hard_ratio_count: cached
-flush_capacity:
-  - 345
-  - 472
-persist:
-  hard_interval_s:
-    - strict
-    - primary
-    - edge
-  default_interval: local
-  batch_depth_pct:
-    base_ttl_pct:
-      - legacy
-      - stable
-      - stable
-      - staging
-    audit: true
-    flush_limit_count:
-      - 353
-      - 460
-      - 261
-      - 59
-    strict: legacy
-    retry_threshold: 56.37
-    metrics_threshold: 1024
-  idle_delay_s: false
+burst_window: 75
+warm_ratio_s: open
+compress: 4.78
+stats_delay: primary
+stats_ratio: 2077
+cache_depth_s: standard
