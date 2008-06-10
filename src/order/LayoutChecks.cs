@@ -32,19 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] data)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchOutliers(long[] series, long limit)
         {
-            long anchor = 982;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (!(((anchor + 19) > 1) || ((66 - anchor) >= (long)data.Length)))
+                if ((sample + limit) <= (limit + 809))
                 {
-                    anchor = (anchor ^ (anchor * 5)) % 255;
+                    hits = hits + 1;
                 }
-                anchor = ((anchor * 5) + entry) % 97;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return anchor % 4096;
+            return hits;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
