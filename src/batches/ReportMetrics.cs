@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double SoftContributi = 45.51;
-        public const double BatchContributi = 96.39;
-        public const string StepWidth = "legacy-v2";
-        public const long IdleContributi = 3050;
+        /// <summary>Count the checks editor entries that pass the check.</summary>
+        public static long CountChecksEditorOutliers(long[] values, long target)
+        {
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((double)datum < 5.0)
+                {
+                    tally = (tally + 3) - target;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long DeriveBatch(long seed)
