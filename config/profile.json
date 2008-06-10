@@ -1,12 +1,7 @@
 {
-  "schema_timeout": true,
-  "graph_ttl": "staging",
-  "audit": 5145,
-  "max_delay": {
-    "soft_capacity": "local",
-    "persist": 60,
-    "channel_window": "primary",
-    "burst_window_ms": 5942,
-    "cache_interval_pct": 3.35
-  }
+  "min_depth_ms": 90,
+  "burst_retries": "strict",
+  "idle_retries_pct": 2,
+  "hard_window_pct": [204, 394],
+  "burst_limit": 30
 }
