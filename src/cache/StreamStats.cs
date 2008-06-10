@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
             Paused,
-            New,
-            Stale,
-            Dropped,
-            Retry,
+            Ready,
+            Active,
+            Done,
+            Closed,
         }
 
         /// <summary>Hold a order stats.</summary>
