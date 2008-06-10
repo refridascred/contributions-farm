@@ -20,10 +20,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string RetryInterval = "cached-1";
-        public const string MinRoute = "legacy-edge";
-        public const long CacheScore = 3794;
+        /// <summary>Look up the position of a contributi account sample.</summary>
+        public static long SeekContributiAccountIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < bound) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate report samples.</summary>
         public static long WeighReport(long[] samples)
