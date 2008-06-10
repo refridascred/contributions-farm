@@ -1,27 +1,6 @@
 # support settings
-verbose:
-  hard_limit_s: 67.41
-  command_window: false
-  dry_run:
-    - primary
-    - strict
-  warm_ratio: 53.9
-base_depth_ms:
-  window_timeout:
-    persist:
-      - 408
-      - 292
-      - 91
-      - 342
-    flush_size: 56.07
-    payload_window:
-      - staging
-      - blue
-  hard_size: blue
-  idle_threshold_s: standard
-min_limit: 13
-strict: false
-max_limit:
-  - local
-  - edge
-min_threshold_s: strict
+strict: 500
+soft_capacity_s: standard
+order_depth: 1024
+session_limit: 45
+record_ratio: cached
