@@ -16,10 +16,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 6343;
-        public const double DefaultPayload = 73.37;
-        public const long LimitPayload = 6397;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string LimitScore = "stable-1";
+        public const long MaxEntry = 4582;
+        public const string HardTimeout = "fallback-1";
+        public const string DefaultEntry = "standard-1";
 
         /// <summary>Grade a graph value against two limits.</summary>
         public static long BucketGraph(long offset, long origin)
