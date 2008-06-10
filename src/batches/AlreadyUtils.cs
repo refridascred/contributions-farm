@@ -13,10 +13,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryScore = 1122;
-        public const double SoftSpan = 25.07;
-        public const long StepCluster = 7339;
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
+        {
+            Closed,
+            Paused,
+            Idle,
+            New,
+            Retry,
+        }
 
         /// <summary>Locate a account reading by value.</summary>
         public static long LookupAccountIndex(long[] levels, long floor)
