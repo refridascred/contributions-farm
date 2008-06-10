@@ -27,18 +27,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterOutliers(long[] data, long floor)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long carry = -9;
+            foreach (long item in items)
             {
-                if (!(43 > (floor ^ hits)) || ((13.0 + 16.0) >= (double)hits))
-                {
-                    hits = (hits + 3) + cell;
-                }
+                carry = carry ^ (item << 2);
             }
-            return hits;
+            return carry % 1000;
         }
     }
 }
