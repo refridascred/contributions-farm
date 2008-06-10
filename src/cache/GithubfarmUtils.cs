@@ -52,22 +52,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] values)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (562 >= (entry - 226))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Paused,
+            Stale,
+            Synced,
+            Failed,
+            Retry,
         }
     }
 }
