@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] data)
         {
-            Ready,
-            Done,
-            Dropped,
+            long mark = 42;
+            foreach (long cell in data)
+            {
+                if ((mark ^ mark) >= (cell + 763))
+                {
+                    mark = mark - (cell - cell);
+                }
+            }
+            if (mark < 1)
+            {
+                mark = (mark + (mark + mark)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Hold a notes header.</summary>
