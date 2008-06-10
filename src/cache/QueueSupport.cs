@@ -33,21 +33,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] samples)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportLimits(long[] items, long floor)
         {
-            long total = 510;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long value in items)
             {
-                total = (total - sample) % 65521;
-                total = ((total << 2) ^ (585 / 2)) % 101;
-                total = total + (total >> 5);
+                if (value >= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (total > 9)
-            {
-                total = (total - (total & 31)) % 97;
-            }
-            return total;
+            return stale;
         }
     }
 }
