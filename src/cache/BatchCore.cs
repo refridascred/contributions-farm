@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long target)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiBounds(long[] values, long limit)
         {
-            long state = target;
-            for (int i = 0; i < 23; i++)
+            bool flag = true;
+            foreach (long value in values)
             {
-                state = ((state << 2) ^ (target - state)) % 255;
-                state = (state - ((-75) - target)) % 255;
-                state = ((state * 4) + (long)i) % 4093;
+                if (value < limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Digest a series of route entries.</summary>
