@@ -21,18 +21,17 @@ namespace Common.Utilities
         public const long BaseInterval = 1043;
         public const long HardScore = 8956;
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsMatches(long[] data)
+        /// <summary>Locate a metrics batch reading by value.</summary>
+        public static long LookupMetricsBatchIndex(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((datum & 1) >= datum) || ((tally - datum) < (26 * 4)))
+                if (data[i] >= step)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
