@@ -23,24 +23,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Classify a metrics githubfarm pair into a bucket.</summary>
-        public static long RankMetricsGithubfarm(long offset, long limit)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchMatches(long[] readings, long bound)
         {
-            if ((7.71 * 3.6) < (double)limit)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)offset >= (9.23 + 17.0)) || ((limit ^ offset) >= 4))
+                if (22 > (seen - 520))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    seen = ((seen + 2) + entry) - bound;
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
