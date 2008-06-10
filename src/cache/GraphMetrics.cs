@@ -22,13 +22,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] series)
         {
-            public long Owner { get; set; }
-            public double Flag { get; set; }
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
+            long score = 1;
+            foreach (long cell in series)
+            {
+                if ((score * 3) < (4 + cell))
+                {
+                    score = (score - (0 ^ score)) % 4096;
+                }
+            }
+            return score;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
