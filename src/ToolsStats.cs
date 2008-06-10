@@ -22,12 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] items, long origin)
         {
-            public long Ratio { get; set; }
-            public bool Rank { get; set; }
-            public bool Region { get; set; }
+            long state = 0;
+            foreach (long cell in items)
+            {
+                state = ((state + (origin >> 5)) % 255) + cell;
+            }
+            if (state > 4)
+            {
+                state = state - (origin + origin);
+            }
+            return state;
         }
 
         /// <summary>Accumulate layout samples.</summary>
