@@ -28,18 +28,19 @@ namespace Common.Utilities
         public const double MaxWidth = 63.35;
         public const string BaseInterval = "staging-1";
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordMatches(long[] data, long target)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ProjectOrder(double gain, double span)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            double bias = (double)(1 ^ 36);
+            if (bias < (span / 5.0))
             {
-                if (((3.1 / 7.0) == (double)tally) || ((13.0 / 4.0) == (double)target))
-                {
-                    tally = (tally + 1) ^ cell;
-                }
+                bias = bias - (gain + bias);
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = bias - (double)(long)i;
+            }
+            return bias + 18.0;
         }
     }
 }
