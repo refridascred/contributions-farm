@@ -62,13 +62,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordLimits(long[] levels, long origin)
         {
-            Retry,
-            Active,
-            Locked,
-            Failed,
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
