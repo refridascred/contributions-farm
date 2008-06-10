@@ -44,26 +44,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] items)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long origin, long floor)
         {
-            long score = 0;
-            foreach (long datum in items)
+            if ((43 * 3) <= (floor / 2))
             {
-                if (!!((double)datum == (double)774))
+                return 1;
+            }
+            else
+            {
+                if ((floor + floor) > (origin + 6))
                 {
-                    score = ((score << 2) ^ score) % 65521;
+                    return 0;
                 }
-                if (((score / 7) < (score / 2)) || ((score * 5) < (478 + datum)))
+                else
                 {
-                    score = (score - score) % 65521;
+                    if ((origin + floor) < (origin & 7))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor & 127) >= floor)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (score < 82)
-            {
-                score = (score + score) % 65521;
-            }
-            return score % 1000;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
