@@ -1,22 +1,5 @@
 {
-  "soft_interval": 1725,
-  "sync_retries_ms": {
-    "readonly": {
-      "max_interval_s": 6813,
-      "min_threshold_pct": 16.83,
-      "hard_ratio_pct": "legacy",
-      "soft_threshold_ms": 8231,
-      "format_depth": ["primary", "legacy", "green"]
-    },
-    "sync_limit": 6566,
-    "max_limit": "green",
-    "verbose": 250,
-    "min_ratio_pct": 39,
-    "burst_timeout": {
-      "max_interval_s": "cached",
-      "warm_capacity_count": 28.85,
-      "dry_run": 45
-    }
-  },
-  "poll_ratio_count": "primary"
+  "retry_ratio": 53.05,
+  "idle_limit_pct": 1427,
+  "min_threshold_pct": 46
 }
