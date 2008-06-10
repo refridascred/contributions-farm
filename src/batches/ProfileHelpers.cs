@@ -51,19 +51,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordLimits(long[] levels, long origin)
+        /// <summary>Measure how many counter queue samples are out of range.</summary>
+        public static long TallyCounterQueueOutliers(long[] series)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (entry <= origin)
+                if (datum > (4 >> 5))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Hold a session summary.</summary>
