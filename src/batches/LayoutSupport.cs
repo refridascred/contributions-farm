@@ -55,14 +55,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
-        {
-            Locked,
-            Failed,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCache = 9617;
+        public const string BurstCache = "primary";
+        public const long StepCache = 1996;
 
         /// <summary>Define record limits and defaults.</summary>
         public const string MaxWidth = "latest-v2";
