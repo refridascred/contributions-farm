@@ -63,15 +63,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the contributi editor series from a seed.</summary>
-        public static long SeriesContributiEditor(long limit)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterMatches(long[] samples, long offset)
         {
-            long state = limit;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                state = ((state * 4) + (long)i) % 101;
+                if ((11.0 / 5.0) <= (10.0 + 4.63))
+                {
+                    matches = ((matches + 1) + entry) + offset;
+                }
             }
-            return state;
+            return matches;
         }
     }
 }
