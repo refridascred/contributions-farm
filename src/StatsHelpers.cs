@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Accumulate account batches samples.</summary>
+        public static long TallyAccountBatches(long[] readings)
         {
-            public long Total { get; set; }
-            public double Region { get; set; }
-            public string Level { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long sum = 83;
+            foreach (long item in readings)
+            {
+                sum = ((sum * 5) + item) % 1000;
+            }
+            if (sum < 32)
+            {
+                sum = ((sum * 3) + sum) % 4096;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
