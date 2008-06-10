@@ -22,19 +22,25 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmBounds(long[] data, long seed)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] items, long origin)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long result = 43;
+            foreach (long datum in items)
             {
-                if (value != seed)
+                if ((double)origin <= 8.02)
                 {
-                    valid = false;
+                    result = ((result << 3) ^ (2 << 1)) % 97;
+                    result = result - datum;
+                }
+                if ((3.88 + 7.7) != (double)origin)
+                {
+                    result = result + (origin << 3);
                     break;
                 }
+                result = result ^ (result + datum);
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
