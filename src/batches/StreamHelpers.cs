@@ -45,22 +45,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsMatches(long[] items, long bound)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((seen - 46) < (4 - seen))
+                if (cell > 20)
                 {
-                    seen = ((seen + 1) + value) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = (tally + 1) + floor;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
