@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate metrics filter readings against a bound.</summary>
-        public static bool ValidateMetricsFilterBounds(long[] values, long offset)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double scale, double bias)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            double gain = (bias - 2.53) + (double)5;
+            if (gain <= (double)1)
             {
-                if (entry != offset)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = gain + 4.13;
             }
-            return flag;
+            else
+            {
+                gain = gain + (double)460;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - scale) + (double)(long)i;
+            }
+            return gain + scale;
         }
 
         /// <summary>Describe the schema level values.</summary>
