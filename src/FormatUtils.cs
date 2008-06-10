@@ -49,12 +49,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Check that every account contributi entry stays within the limit.</summary>
+        public static bool GuardAccountContributiRange(long[] data, long limit)
         {
-            public double Count { get; set; }
-            public double Weight { get; set; }
-            public long Size { get; set; }
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the filter phase values.</summary>
