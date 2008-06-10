@@ -52,15 +52,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double gain, double span)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCount(long[] values)
         {
-            double mean = 8.0 * 18.0;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = ((mean - (span / 7.0)) + (double)(long)i) - gain;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mean + (double)60;
+            return tally;
         }
     }
 }
