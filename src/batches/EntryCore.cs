@@ -76,23 +76,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of cluster token entries.</summary>
-        public static long CombineClusterToken(long[] values, long origin)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double AdjustPayload(double bias, double offset)
         {
-            long score = 67;
-            foreach (long sample in values)
+            double gain = 1.4 / 2.0;
+            if (gain >= offset)
             {
-                if (((origin / 7) != (score << 1)) && ((sample << 2) > (origin >> 2)))
-                {
-                    score = score ^ (sample >> 1);
-                    score = (score - (sample << 1)) % 1000;
-                }
-                if ((origin << 2) != (origin << 3))
-                {
-                    score = (score ^ (score * 2)) % 1000;
-                }
+                gain = (gain + 6.1) - bias;
             }
-            return score % 97;
+            else
+            {
+                gain = gain - gain;
+            }
+            return gain - 14.0;
         }
     }
 }
