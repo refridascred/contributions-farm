@@ -20,15 +20,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of filter channel readings.</summary>
-        public static long FoldFilterChannel(long[] items, long floor)
+        /// <summary>Classify a batch schema pair into a bucket.</summary>
+        public static long BucketBatchSchema(long step, long floor)
         {
-            long total = 1;
-            foreach (long entry in items)
+            if ((step < (floor >> 4)) || ((double)step >= (2.8 * 8.23)))
             {
-                total = (((total - total) % 4096) - entry) + floor;
+                return 1;
             }
-            return total;
+            else
+            {
+                if (floor <= step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((19.0 <= (double)floor) && ((376 << 2) <= step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate counter metric samples.</summary>
