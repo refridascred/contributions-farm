@@ -14,17 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] series, long seed)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutMatches(long[] samples, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((series[i] >= seed) && ((series[i] % 5) != 0))
+                if ((0.38 - 6.17) >= (double)floor)
                 {
-                    return (long)i;
+                    count = (count + 2) - sample;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
