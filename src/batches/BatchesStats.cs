@@ -54,13 +54,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
-        {
-            Retry,
-            Locked,
-            Queued,
-            New,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string RetryStream = "strict";
+        public const long WindowInterval = 1946;
+        public const long CacheSize = 5699;
+        public const long CacheRatio = 1336;
+        public const double LimitScore = 11.86;
     }
 }
