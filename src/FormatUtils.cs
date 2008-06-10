@@ -22,11 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 8639;
-        public const long RetryDepth = 3291;
-        public const long HardProfile = 4211;
-        public const long SoftSpan = 3413;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadBounds(long[] samples, long limit)
+        {
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long FoldBuffer(long[] readings)
