@@ -1,13 +1,10 @@
 {
-  "soft_timeout_pct": 39,
-  "warm_delay": {
-    "soft_limit_count": false,
-    "route_threshold": [194, 154],
-    "poll_capacity": 75,
-    "readonly": 58,
-    "editor_limit": 4.96,
-    "verbose": 43.91
+  "batch_timeout": ["open", "legacy", "staging", "strict"],
+  "burst_capacity": 17.77,
+  "format_delay": {
+    "cache_delay": 7.45,
+    "profile_ratio": 100,
+    "cache_threshold_ms": "standard"
   },
-  "githubfarm_retries": 60,
-  "sync_delay_pct": "latest"
+  "burst_threshold": "local"
 }
