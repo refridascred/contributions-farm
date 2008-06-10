@@ -1,17 +1,10 @@
 {
-  "poll_capacity_count": true,
-  "format_depth": "fallback",
-  "compress": {
-    "warm_depth": 50.81,
-    "githubfarm_threshold": {
-      "batches_window": "latest",
-      "audit": 36.79,
-      "base_timeout_s": 97
-    },
-    "audit": 40.77,
-    "readonly": "standard"
+  "cache_threshold": {
+    "idle_threshold_count": "stable",
+    "soft_threshold_count": 60.9,
+    "default_capacity": 500
   },
-  "hard_interval": false,
-  "cache_ratio_count": 1024,
-  "persist": 9284
+  "verbose": 9.67,
+  "min_retries_ms": 10.36,
+  "queue_window": "cached"
 }
