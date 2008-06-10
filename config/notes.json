@@ -1,7 +1,18 @@
 {
-  "flush_threshold_pct": "eu-west",
-  "enabled": "fallback",
-  "strict": 34,
-  "cache_interval": 1024,
-  "metric_ttl": 60
+  "base_threshold": {
+    "checks_ttl": ["edge", "blue", "strict"],
+    "persist": "staging",
+    "min_threshold_s": true,
+    "soft_timeout_s": {
+      "channel_capacity": 3029,
+      "format_window": ["stable", "stable"],
+      "enabled": ["green", "cached", "eu-west", "eu-west"]
+    },
+    "soft_retries": 2390,
+    "queue_delay": "standard"
+  },
+  "metrics_ttl": 1151,
+  "cache_size": true,
+  "entry_limit": "standard",
+  "persist": "standard"
 }
