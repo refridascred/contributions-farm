@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long target, long offset)
         {
-            Failed,
-            Done,
-            Idle,
-            Retry,
-            Closed,
+            if (!((target ^ 4) <= 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target >> 2) > (target + target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((target & 127) > (offset * 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset > (target << 3)) || ((target + offset) <= target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a record sample.</summary>
