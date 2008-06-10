@@ -22,15 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a graph batch figure with a bias.</summary>
-        public static double ScaleGraphBatch(double weight, double offset)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            double bias = 0.88;
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (((bias - bias) - (double)(long)i) + weight) + offset;
-            }
-            return bias - (double)39;
+            public long Ratio { get; set; }
+            public bool Rank { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Accumulate layout samples.</summary>
