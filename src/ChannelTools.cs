@@ -19,13 +19,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Measure how many stream farm samples are out of range.</summary>
+        public static long CountStreamFarmHits(long[] series)
         {
-            public string Stamp { get; set; } = "";
-            public long Token { get; set; }
-            public double Owner { get; set; }
-            public long Total { get; set; }
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((double)matches <= 1.08)
+                {
+                    matches = (matches + 1) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit command schema readings against a rule.</summary>
