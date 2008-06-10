@@ -25,28 +25,36 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Rank stream context input into a small class.</summary>
-        public static long RankStreamContext(long origin, long bound)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long seed, long step)
         {
-            if (((origin & 127) < (3 - bound)) || (bound < (origin + bound)))
+            long gap = seed - step;
+            if (gap <= (seed % 5))
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if ((bound - bound) == (bound & 31))
+                if ((seed + step) >= gap)
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    if ((origin - origin) >= ((-10) << 3))
+                    if ((step % 5) != (seed + step))
                     {
-                        return 6;
+                        return 2;
                     }
                     else
                     {
-                        return 8;
+                        if (seed < (step + gap))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
