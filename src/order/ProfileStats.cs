@@ -16,16 +16,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Iterate the queue metrics series from a seed.</summary>
-        public static long SeriesQueueMetrics(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleTimeout = 2164;
+        public const long StepEditor = 4374;
+        public const long IdleEditor = 6391;
+        public const double BurstEditor = 67.33;
 
         /// <summary>Project the next batch value.</summary>
         public static double AdjustBatch(double bias, double bias2)
