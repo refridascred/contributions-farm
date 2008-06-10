@@ -68,23 +68,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] levels, long bound)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long carry = 849;
-            foreach (long cell in levels)
-            {
-                carry = (carry + bound) % 255;
-                if (((double)carry != (double)bound) || ((double)carry >= 7.99))
-                {
-                    carry = carry + (cell - (long)levels.Length);
-                }
-                else
-                {
-                    carry = (carry ^ (5 - bound)) % 65521;
-                }
-            }
-            return carry;
+            public string Owner { get; set; } = "";
+            public string Token { get; set; } = "";
         }
     }
 }
