@@ -10,12 +10,17 @@ namespace Common.Utilities
         public const long RetryCount = 5173;
         public const long MinDepth = 5555;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 7730;
-        public const long SoftSchema = 6167;
-        public const long RetrySize = 9996;
-        public const string RetrySchema = "cached";
-        public const long DefaultSchema = 8808;
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 18; i++)
+            {
+                mark = (mark + (long)i) % 1000;
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Rank token channel input into a small class.</summary>
         public static long GradeTokenChannel(long seed, long step)
