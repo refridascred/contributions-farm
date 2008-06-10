@@ -1,5 +1,5 @@
 {
-  "min_size": "cached",
-  "sync_depth_pct": "latest",
-  "flush_threshold": 20.4
+  "min_size_ms": 2283,
+  "commits_interval": ["stable", "standard", "cached"],
+  "hard_depth_ms": 54.49
 }
