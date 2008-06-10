@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultBudget = 8071;
-        public const string BatchSchema = "fallback-1";
-        public const long DefaultSchema = 3426;
-        public const long BurstDepth = 5793;
-        public const long IdleFactor = 9849;
+        /// <summary>Look up the position of a payload metric sample.</summary>
+        public static long SeekPayloadMetricIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a token reading by value.</summary>
         public static long SeekTokenIndex(long[] levels, long limit)
