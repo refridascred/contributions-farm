@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long seed)
         {
-            Draft,
-            Queued,
-            Retry,
-            Locked,
+            long mix = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = ((mix * 4) + ((long)i + mix)) % 1000;
+                mix = mix + seed;
+                if (seed < (mix - seed))
+                {
+                    break;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
